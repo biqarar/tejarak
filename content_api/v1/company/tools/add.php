@@ -7,6 +7,18 @@ trait add
 {
 	public function add_company($_args = [])
 	{
+		$default_args =
+		[
+			'method' => 'post';
+		];
+
+		if(!is_array($_args))
+		{
+			$_args = [];
+		}
+
+		$_args = array_merge($default_args, $_args);
+
 		debug::title(T_("Operation Faild"));
 		$log_meta =
 		[
@@ -16,6 +28,13 @@ trait add
 				'input' => utility::request(),
 			]
 		];
+
+		if(!$this->user_id)
+		{
+			logs::set('api:company:user_id:notfound', null, $log_meta);
+			debug::error(T_("User not found"), 'user', 'permission');
+			return false;
+		}
 
 		$title = utility::request('title');
 
@@ -49,7 +68,42 @@ trait add
 		$args['title']   = $title;
 		$args['site']    = $site;
 
-		\lib\db\companies::insert($args);
+		if($_args['method'] === 'post')
+		{
+			$id = utility::request("id");
+
+			if($id)
+			{
+				logs::set('api:company:method:post:set:id', $this->user_id, $log_meta);
+				debug::error(T_("Can not set id in adding company"), 'id', 'access');
+				return false;
+			}
+
+			$company_id = \lib\db\companies::insert($args);
+
+			$branch               = [];
+			$branch['company_id'] = $company_id;
+			$branch['title']      = 'center';
+			$branch['site']       = $site;
+			$branch['creator']    = $this->user_id;
+			$branch['is_default'] = 1;
+
+			\lib\db\branchs::insert($branch);
+		}
+		elseif ($_args['method'] === 'put')
+		{
+			$id = utility::request("id");
+			if(!$id || !is_numeric($id))
+			{
+				logs::set('api:company:method:put:id:not:set', $this->user_id, $log_meta);
+				debug::error(T_("Id of Comany not found"), 'id', 'permission');
+				return false;
+			}
+		}
+		elseif ($_args['method'] === 'pathc')
+		{
+
+		}
 
 		if(debug::$status)
 		{

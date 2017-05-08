@@ -15,7 +15,8 @@ class model extends \content_admin\main\model
 	public function get_list($_args)
 	{
 		$this->user_id = $this->login('id');
-		return $this->get_company($_args);
+		$result =  $this->get_list_company();
+		return $result;
 	}
 
 
@@ -32,6 +33,32 @@ class model extends \content_admin\main\model
 		$request['site']  = utility::post('site');
 		utility::set_request_array($request);
 		$this->add_company();
+	}
+
+
+	/**
+	 * Gets the edit.
+	 *
+	 * @param      <type>   $_args  The arguments
+	 *
+	 * @return     boolean  The edit.
+	 */
+	public function get_edit($_args)
+	{
+
+		if(isset($_args->match->url[0][1]))
+		{
+			$id = $_args->match->url[0][1];
+		}
+		else
+		{
+			return false;
+		}
+
+		$this->user_id = $this->login('id');
+
+		utility::set_request_array(['id' => $id]);
+		return $this->get_company();
 	}
 }
 ?>
