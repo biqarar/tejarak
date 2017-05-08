@@ -1,14 +1,14 @@
 <?php
-namespace content_admin\home;
+namespace content_admin\main;
 
-class controller extends \content_admin\main\controller
+class controller extends \mvc\controller
 {
+
 	/**
 	 * rout
 	 */
 	function _route()
 	{
-		parent::_route();
 
 		if(!$this->access('admin'))
 		{

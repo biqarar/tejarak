@@ -1,7 +1,7 @@
 <?php
 namespace content_admin\home;
 
-class model extends \mvc\model
+class model extends \content_admin\main\model
 {
 
 }
