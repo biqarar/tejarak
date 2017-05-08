@@ -10,10 +10,6 @@ class controller extends \content_admin\main\controller
 	{
 		parent::_route();
 
-		if(!$this->access('admin'))
-		{
-			\lib\error::access(T_("Access denied"));
-		}
 	}
 }
 ?>

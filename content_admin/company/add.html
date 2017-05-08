@@ -1,0 +1,20 @@
+{%extends display.mvc%}
+{%block content%}
+<h1>{%trans "Add Company"%}</h1>
+<form method="post" class="df">
+	<div class="f">
+		<label class="c">{%trans "Title"%}</label>
+		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{company.title}}">
+	</div>
+
+	<div class="f">
+		<label class="c">{%trans "Site"%}</label>
+		<input type="text" name="site" placeholder='{%trans "Site"%}' value="{{company.site}}">
+	</div>
+
+	<div class="f">
+		<label class="c"></label>
+		<input type="submit" value='{%trans "Add"%}' class="c">
+	</div>
+</form>
+{%endblock%}
