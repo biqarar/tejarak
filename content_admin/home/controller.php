@@ -11,25 +11,79 @@ class controller extends \content_admin\main\controller
 		parent::_route();
 
 		$url = \lib\router::get_url();
-		if(preg_match("/^[A-Za-z0-9]+\/addbranch$/", $url))
+
+		$url = explode('/', $url);
+
+		// https://tejarak.com/fa/admin/
+		// https://tejarak.com/fa/admin/company
+		// https://tejarak.com/fa/admin/company/add
+		// https://tejarak.com/fa/admin/company/delete
+		// https://tejarak.com/fa/admin/ermile/
+		// https://tejarak.com/fa/admin/ermile/edit
+		// https://tejarak.com/fa/admin/ermile/branch/
+		// https://tejarak.com/fa/admin/ermile/branch/add
+		// https://tejarak.com/fa/admin/ermile/branch/delete
+		// https://tejarak.com/fa/admin/ermile/sarshomar/
+		// https://tejarak.com/fa/admin/ermile/sarshomar/edit
+		// https://tejarak.com/fa/admin/ermile/sarshomar/staff/
+		// https://tejarak.com/fa/admin/ermile/sarshomar/report/
+		// var_dump($url);exit();
+		if(isset($url[2]) && $url[2])
 		{
-			\lib\router::set_controller("content_admin\brand\controller");
-			return;
+			// for example 'staff'
+			switch ($url[2])
+			{
+				case 'edit':
+					$route = $this->model()->find_company($url[0]);
+
+					if($route)
+					{
+						\lib\router::set_controller("content_admin\branch\controller");
+						return;
+					}
+					break;
+
+				default:
+
+					break;
+			}
 		}
 
-		if(preg_match("/^[A-Za-z0-9]+\/[A-Za-z0-9]+\/edit$/", $url))
+		if(isset($url[1]) && $url[1])
 		{
-			\lib\router::set_controller("content_admin\brand\controller");
-			return;
+			$go_to_company =
+			[
+				'edit',
+			];
+
+			if(!in_array($url[1], $go_to_company))
+			{
+				$route = $this->model()->find_company($url[0]);
+
+				if($route)
+				{
+					\lib\router::set_controller("content_admin\branch\controller");
+					return;
+				}
+			}
 		}
 
-		$route = $this->model()->find_company($url);
-		if($route)
+		if(isset($url[0]) && $url[0])
 		{
-			\lib\router::set_controller("content_admin\brand\controller");
-			return;
-		}
+			// for example 'ermile'
+			$block_list =
+			[
+				'company',
+			];
 
+			$route = $this->model()->find_company($url[0]);
+
+			if($route)
+			{
+				\lib\router::set_controller("content_admin\company\controller");
+				return;
+			}
+		}
 	}
 }
 ?>

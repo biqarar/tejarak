@@ -1,5 +1,5 @@
 <?php
-namespace content_admin\brand;
+namespace content_admin\branch;
 
 class view extends \content_admin\main\view
 {
@@ -12,7 +12,13 @@ class view extends \content_admin\main\view
 	 */
 	public function config()
 	{
-		$this->data->company = \lib\router::get_url();
+		$url = \lib\router::get_url();
+		$url = \lib\utility\safe::safe($url);
+		$url = explode('/', $url);
+		if(isset($url[0]))
+		{
+			$this->data->company = $url[0];
+		}
 	}
 
 
@@ -21,7 +27,7 @@ class view extends \content_admin\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_dashboard($_args)
+	public function view_listbranch($_args)
 	{
 		$result = $_args->api_callback;
 		$this->data->branch_list = $result;
@@ -62,6 +68,11 @@ class view extends \content_admin\main\view
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
 		$this->data->company = $result;
+	}
+
+	public function view_branchdashboard()
+	{
+
 	}
 }
 ?>

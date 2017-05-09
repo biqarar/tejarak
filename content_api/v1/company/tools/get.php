@@ -46,21 +46,23 @@ trait get
 			]
 		];
 
-		$id = utility::request("id");
-
-		if(!$id || !is_numeric($id))
-		{
-			debug::error(T_("Invalid comany id"), 'id', 'permission');
-		}
-
 		if(!$this->user_id)
 		{
 			return false;
 		}
 
+		$company = utility::request("company");
+
+		if(!$company)
+		{
+			logs::set('api:company:not:found', $this->user_id, $log_meta);
+			debug::error(T_("Invalid comany brand"), 'company', 'permission');
+			return false;
+		}
+
 
 		debug::title(T_("Operation complete"));
-		$result = \lib\db\companies::get($id);
+		$result = \lib\db\companies::get_brand($company);
 
 		return $result;
 	}

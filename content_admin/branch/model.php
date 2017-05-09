@@ -1,5 +1,5 @@
 <?php
-namespace content_admin\brand;
+namespace content_admin\branch;
 use \lib\utility;
 
 class model extends \content_admin\main\model
@@ -13,10 +13,10 @@ class model extends \content_admin\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_dashboard($_args)
+	public function get_listbranch($_args)
 	{
 		$this->user_id = $this->login('id');
-		$company = isset($_args->match->url[0][0]) ? $_args->match->url[0][0] : null;
+		$company = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array(['company' => $company]);
 		$result =  $this->get_list_branch();
 		return $result;
@@ -29,6 +29,17 @@ class model extends \content_admin\main\model
 	 * @param      <type>  $_args  The arguments
 	 */
 	public function get_addbranch($_args)
+	{
+
+	}
+
+
+	/**
+	 * Gets the branchdashboard.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function get_branchdashboard($_args)
 	{
 
 	}

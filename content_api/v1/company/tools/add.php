@@ -97,7 +97,11 @@ trait add
 		$id = null;
 		if($_args['method'] === 'patch')
 		{
-			$id = utility::request("id");
+			$temp_company = \lib\db\companies::get_brand(utility::request('company'));
+			if(isset($temp_company['id']))
+			{
+				$id = $temp_company['id'];
+			}
 		}
 
 		$check_duplicate_title = ['brand' => $brand];
@@ -161,7 +165,7 @@ trait add
 		elseif ($_args['method'] === 'patch')
 		{
 			$edit_mode = true;
-			$id = utility::request("id");
+
 			if(!$id || !is_numeric($id))
 			{
 				logs::set('api:company:method:put:id:not:set', $this->user_id, $log_meta);

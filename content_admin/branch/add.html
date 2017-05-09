@@ -1,5 +1,6 @@
 {%extends display.mvc%}
 {%block content%}
+<a href="{{url.base}}/admin/{{company}}/branch">{%trans "Branch List"%}</a>
 {%if edit_mode%}
 	<h1>{%trans "Add Company"%} {{company.title}}</h1>
 {%else%}

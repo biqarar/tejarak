@@ -1,6 +1,6 @@
 {%extends display.mvc%}
 {%block content%}
-<h1>{%trans "Company Dashboard"%}</h1>
+
 <h2>{%trans "Branch"%}</h2>
 
 {%for key, value in branch_list%}
@@ -15,7 +15,7 @@
  </div>
  <div class="f">
  	<div>
-		<a href="{{url.base}}/admin/{{company}}/addbranch">{%trans "Add Branch"%}</a>
+		<a href="{{url.base}}/admin/{{company}}/branch/add">{%trans "Add Branch"%}</a>
  	</div>
 	<div>
 		<a href="{{url.base}}/admin/company">{%trans "List company"%}</a>

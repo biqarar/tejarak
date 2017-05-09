@@ -10,10 +10,11 @@
 	</div>
 {%for key, value in company_list%}
 	<div class="f">
-		<span class="c2"><a href="{{url.base}}/admin/company/edit={{value.id}}">{{value.id}}</a></span>
+		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}/edit">{{value.id}}</a></span>
 		<span class="c2">{{value.title}}</span>
 		<span class="c2"><a href="{{value.site}}">{{value.site}}</a></span>
 		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}">{{value.brand}}</a></span>
+		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}/branch">{%trans "Add branch"%}</a></span>
 	</div>
 {%endfor%}
 
