@@ -37,6 +37,22 @@ class model extends \content_admin\main\model
 
 
 	/**
+	 * Posts an add.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_edit($_args)
+	{
+		$request          = [];
+		$this->user_id    = $this->login('id');
+		$request['id']    = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['title'] = utility::post('title');
+		$request['site']  = utility::post('site');
+		utility::set_request_array($request);
+		$this->add_company(['method' => 'patch']);
+	}
+
+	/**
 	 * Gets the edit.
 	 *
 	 * @param      <type>   $_args  The arguments

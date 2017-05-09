@@ -7,9 +7,10 @@ trait add
 {
 	public function add_company($_args = [])
 	{
+		$edit_mode = false;
 		$default_args =
 		[
-			'method' => 'post';
+			'method' => 'post'
 		];
 
 		if(!is_array($_args))
@@ -53,23 +54,23 @@ trait add
 			return false;
 		}
 
-
-		$check_duplicate_title = ['creator' => $this->user_id, 'title' => $title, 'get_count' => true];
-		$check = \lib\db\companies::search(null, $check_duplicate_title);
-		if($check)
-		{
-			logs::set('api:company:duplocate:title', $this->user_id, $log_meta);
-			debug::error(T_("Duplicate title of company"), 'title', 'arguments');
-			return false;
-		}
-
 		$args            = [];
-		$args['creator'] = $this->user_id;
-		$args['title']   = $title;
-		$args['site']    = $site;
+		$args['creator']   = $this->user_id;
+		$args['boss']      = $this->user_id;
+		$args['technical'] = $this->user_id;
+		$args['title']     = $title;
+		$args['site']      = $site;
 
 		if($_args['method'] === 'post')
 		{
+			$check_duplicate_title = ['creator' => $this->user_id, 'title' => $title, 'get_count' => true];
+			$check = \lib\db\companies::search(null, $check_duplicate_title);
+			if($check)
+			{
+				logs::set('api:company:duplocate:title', $this->user_id, $log_meta);
+				debug::error(T_("Duplicate title of company"), 'title', 'arguments');
+				return false;
+			}
 			$id = utility::request("id");
 
 			if($id)
@@ -86,18 +87,33 @@ trait add
 			$branch['title']      = 'center';
 			$branch['site']       = $site;
 			$branch['creator']    = $this->user_id;
+			$branch['boss']       = $this->user_id;
+			$branch['technical']  = $this->user_id;
 			$branch['is_default'] = 1;
 
 			\lib\db\branchs::insert($branch);
 		}
-		elseif ($_args['method'] === 'put')
+		elseif ($_args['method'] === 'patch')
 		{
+			$edit_mode = true;
 			$id = utility::request("id");
 			if(!$id || !is_numeric($id))
 			{
 				logs::set('api:company:method:put:id:not:set', $this->user_id, $log_meta);
 				debug::error(T_("Id of Comany not found"), 'id', 'permission');
 				return false;
+			}
+			$update = [];
+			foreach ($args as $key => $value)
+			{
+				if(utility::isset_request($key))
+				{
+					$update[$key] = $value;
+				}
+			}
+			if(!empty($update))
+			{
+				\lib\db\companies::update($update, $id);
 			}
 		}
 		elseif ($_args['method'] === 'pathc')
@@ -108,11 +124,25 @@ trait add
 		if(debug::$status)
 		{
 			debug::title(T_("Operation Complete"));
-			debug::true("Comany added");
+			if($edit_mode)
+			{
+				debug::true("Comany edited");
+			}
+			else
+			{
+				debug::true("Comany added");
+			}
 		}
 		else
 		{
-			debug::error(T_("Error in adding company"));
+			if($edit_mode)
+			{
+				debug::error(T_("Error in editing company"));
+			}
+			else
+			{
+				debug::error(T_("Error in adding company"));
+			}
 		}
 
 	}
