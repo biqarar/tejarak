@@ -1,4 +1,11 @@
 {%extends display.mvc%}
 {%block content%}
-admin
+<div class="f">
+	<div>
+		<a href="{{url.base}}/admin/company/add">{%trans "Add company"%}</a>
+	</div>
+	<div>
+		<a href="{{url.base}}/admin/company">{%trans "List company"%}</a>
+	</div>
+</div>
 {%endblock%}

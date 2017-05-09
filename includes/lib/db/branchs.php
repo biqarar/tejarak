@@ -43,6 +43,36 @@ class branchs
 
 
 	/**
+	 * Gets the by brand.
+	 *
+	 * @param      <type>  $_brand_company  The brand company
+	 * @param      <type>  $_brand_branch   The brand branch
+	 *
+	 * @return     <type>  The by brand.
+	 */
+	public static function get_by_brand($_brand_company, $_brand_branch)
+	{
+		if($_brand_branch && $_brand_company)
+		{
+			$query =
+			"
+			SELECT
+				branchs.*
+			FROM
+				branchs
+			INNER JOIN companies ON companies.id = branchs.company_id
+			WHERE
+				branchs.brand = '$_brand_branch' AND
+				companies.brand = '$_brand_company'
+			LIMIT 1";
+			$result = \lib\db::get($query, null, true);
+			return $result;
+		}
+		return false;
+	}
+
+
+	/**
 	 * update election
 	 *
 	 * @param      <type>  $_args  The arguments

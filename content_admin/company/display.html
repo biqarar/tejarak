@@ -5,17 +5,27 @@
 		<span class="c2">{%trans "id"%}</span>
 		<span class="c2">{%trans "Title"%}</span>
 		<span class="c2">{%trans "Site"%}</span>
+		<span class="c2">{%trans "Staff"%}</span>
+
 	</div>
 {%for key, value in company_list%}
 	<div class="f">
 		<span class="c2"><a href="{{url.base}}/admin/company/edit={{value.id}}">{{value.id}}</a></span>
 		<span class="c2">{{value.title}}</span>
 		<span class="c2"><a href="{{value.site}}">{{value.site}}</a></span>
+		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}">{{value.brand}}</a></span>
 	</div>
 {%endfor%}
 
  <div class="pagination-container">
  {%include display.pagination%}
  </div>
-
+<div class="f">
+	<div>
+		<a href="{{url.base}}/admin/company/add">{%trans "Add company"%}</a>
+	</div>
+	<div>
+		<a href="{{url.base}}/admin">{%trans "Admin"%}</a>
+	</div>
+</div>
 {%endblock%}

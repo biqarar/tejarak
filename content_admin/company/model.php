@@ -30,6 +30,7 @@ class model extends \content_admin\main\model
 		$request          = [];
 		$this->user_id    = $this->login('id');
 		$request['title'] = utility::post('title');
+		$request['brand'] = utility::post('brand');
 		$request['site']  = utility::post('site');
 		utility::set_request_array($request);
 		$this->add_company();
@@ -47,6 +48,7 @@ class model extends \content_admin\main\model
 		$this->user_id    = $this->login('id');
 		$request['id']    = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['title'] = utility::post('title');
+		$request['brand'] = utility::post('brand');
 		$request['site']  = utility::post('site');
 		utility::set_request_array($request);
 		$this->add_company(['method' => 'patch']);

@@ -30,6 +30,25 @@ class companies
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
+	public static function get_brand($_brand)
+	{
+		if($_brand)
+		{
+			$query = "SELECT * FROM companies WHERE brand = '$_brand' LIMIT 1";
+			$result = \lib\db::get($query, null, true);
+			return $result;
+		}
+		return false;
+	}
+
+
+	/**
+	 * get election record
+	 *
+	 * @param      <type>  $_id    The identifier
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public static function get($_id)
 	{
 		if($_id && is_numeric($_id))

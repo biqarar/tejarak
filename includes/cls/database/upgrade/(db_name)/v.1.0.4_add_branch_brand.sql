@@ -1,0 +1,1 @@
+ALTER TABLE `branchs` ADD `brand` VARCHAR(100) NULL AFTER `title`;

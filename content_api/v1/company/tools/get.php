@@ -20,7 +20,7 @@ trait get
 			return false;
 		}
 		$search = [];
-		$search['creator'] = $this->user_id;
+		$search['boss'] = $this->user_id;
 		$result = \lib\db\companies::search(null, $search);
 
 		return $result;
@@ -59,6 +59,7 @@ trait get
 		}
 
 
+		debug::title(T_("Operation complete"));
 		$result = \lib\db\companies::get($id);
 
 		return $result;

@@ -5,6 +5,8 @@ use \lib\debug;
 use \lib\db\logs;
 trait add
 {
+
+
 	public function add_company($_args = [])
 	{
 		$edit_mode = false;
@@ -54,24 +56,86 @@ trait add
 			return false;
 		}
 
-		$args            = [];
+		$brand = utility::request('brand');
+
+		if(!$brand)
+		{
+			logs::set('api:company:brand:not:sert', $this->user_id, $log_meta);
+			debug::error(T_("Brand of company can not be null"), 'brand', 'arguments');
+			return false;
+		}
+
+		if(mb_strlen($brand) > 100)
+		{
+			logs::set('api:company:maxlength:brand', $this->user_id, $log_meta);
+			debug::error(T_("Company brand must be less than 500 character"), 'brand', 'arguments');
+			return false;
+		}
+
+
+		if(mb_strlen($brand) < 5)
+		{
+			logs::set('api:company:minlength:brand', $this->user_id, $log_meta);
+			debug::error(T_("Company brand must be larger than 5 character"), 'brand', 'arguments');
+			return false;
+		}
+
+		if(in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
+		{
+			logs::set('api:company:blocklist:brand', $this->user_id, $log_meta);
+			debug::error(T_("Can not use this brand"), 'brand', 'arguments');
+			return false;
+		}
+
+		if(!preg_match("/^[A-Za-z0-9]+$/", $brand))
+		{
+			logs::set('api:company:invalid:brand', $this->user_id, $log_meta);
+			debug::error(T_("Only [A-Za-z0-9] can use in comany brand"), 'brand', 'arguments');
+			return false;
+		}
+
+		$id = null;
+		if($_args['method'] === 'patch')
+		{
+			$id = utility::request("id");
+		}
+
+		$check_duplicate_title = ['brand' => $brand];
+		$check = \lib\db\companies::search(null, $check_duplicate_title);
+		if($check)
+		{
+			if($_args['method'] === 'post')
+			{
+				logs::set('api:company:duplocate:brand', $this->user_id, $log_meta);
+				debug::error(T_("Duplicate title of company"), 'brand', 'arguments');
+				return false;
+			}
+			else
+			{
+				if(isset($check[0]['id']) && intval($check[0]['id']) === intval($id))
+				{
+					// not problem
+				}
+				else
+				{
+					logs::set('api:company:duplocate:brand', $this->user_id, $log_meta);
+					debug::error(T_("Duplicate title of company"), 'brand', 'arguments');
+					return false;
+				}
+			}
+		}
+
+
+		$args              = [];
 		$args['creator']   = $this->user_id;
 		$args['boss']      = $this->user_id;
 		$args['technical'] = $this->user_id;
 		$args['title']     = $title;
+		$args['brand']     = $brand;
 		$args['site']      = $site;
 
 		if($_args['method'] === 'post')
 		{
-			$check_duplicate_title = ['creator' => $this->user_id, 'title' => $title, 'get_count' => true];
-			$check = \lib\db\companies::search(null, $check_duplicate_title);
-			if($check)
-			{
-				logs::set('api:company:duplocate:title', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate title of company"), 'title', 'arguments');
-				return false;
-			}
-			$id = utility::request("id");
 
 			if($id)
 			{
@@ -84,7 +148,8 @@ trait add
 
 			$branch               = [];
 			$branch['company_id'] = $company_id;
-			$branch['title']      = 'center';
+			$branch['brand']      = $brand;
+			$branch['title']      = 'centeral';
 			$branch['site']       = $site;
 			$branch['creator']    = $this->user_id;
 			$branch['boss']       = $this->user_id;
