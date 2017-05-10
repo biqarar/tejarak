@@ -26,10 +26,10 @@ class controller extends \content_admin\main\controller
 		// https://tejarak.com/fa/admin/ermile/sarshomar/
 		// https://tejarak.com/fa/admin/ermile/sarshomar/edit
 		// https://tejarak.com/fa/admin/ermile/staff/
-
 		// https://tejarak.com/fa/admin/ermile/staff/add
 
 		// https://tejarak.com/fa/admin/ermile/sarshomar/staff/
+
 		// https://tejarak.com/fa/admin/ermile/getway/
 		// https://tejarak.com/fa/admin/ermile/getway/add
 		// https://tejarak.com/fa/admin/ermile/getway/delete
@@ -59,28 +59,34 @@ class controller extends \content_admin\main\controller
 			}
 		}
 
+
 		if(isset($url[1]) && $url[1])
 		{
 
-			switch ($url[1])
+			if($url[1] === 'staff')
 			{
-				case 'edit':
-					$route = $this->model()->find_company($url[0]);
-					if($route)
-					{
-						\lib\router::set_controller("content_admin\branch\controller");
-						return;
-					}
-					break;
-				case 'staff':
-					$route = $this->model()->find_company($url[0]);
-					if($route)
-					{
-						\lib\router::set_controller("content_admin\staff\controller");
-						return;
-					}
+				$route = $this->model()->find_company($url[0]);
+				if($route)
+				{
+					\lib\router::set_controller("content_admin\staff\controller");
+					return;
+				}
 			}
+			$go_to_company =
+			[
+				'edit',
+			];
 
+			if(!in_array($url[1], $go_to_company))
+			{
+				$route = $this->model()->find_company($url[0]);
+
+				if($route)
+				{
+					\lib\router::set_controller("content_admin\branch\controller");
+					return;
+				}
+			}
 		}
 
 		if(isset($url[0]) && $url[0])
