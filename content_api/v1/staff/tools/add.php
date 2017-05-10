@@ -55,7 +55,7 @@ trait add
 		}
 
 		$company_id = \lib\db\companies::get_brand($company);
-
+		// var_dump($company);exit();
 		if(isset($company_id['id']))
 		{
 			$company_id = $company_id['id'];
@@ -187,7 +187,13 @@ trait add
 		{
 			\lib\db\usercompanies::insert($args);
 		}
-
+		elseif($_args['method'] === 'patch')
+		{
+			$id = utility::request('id');
+			unset($args['company_id']);
+			unset($args['user_id']);
+			\lib\db\usercompanies::update($args, $id);
+		}
 		elseif ($_args['method'] === 'delete')
 		{
 			\lib\db\staffs::remove($args);
@@ -196,24 +202,34 @@ trait add
 		if(debug::$status)
 		{
 			debug::title(T_("Operation Complete"));
-			if($delete_mode)
+
+			if($_args['method'] === 'post')
 			{
-				debug::true("staff removed");
+				debug::true(T_("staff added"));
+			}
+			elseif($_args['method'] === 'patch')
+			{
+				debug::true(T_("staff update"));
 			}
 			else
 			{
-				debug::true("staff added");
+				debug::true(T_("staff removed"));
 			}
 		}
 		else
 		{
-			if($delete_mode)
+
+			if($_args['method'] === 'post')
 			{
-				debug::error(T_("Error in removing staff"));
+				debug::error(T_("Error in adding staff"));
+			}
+			elseif($_args['method'] === 'patch')
+			{
+				debug::error(T_("Error in updating staff"));
 			}
 			else
 			{
-				debug::error(T_("Error in adding staff"));
+				debug::error(T_("Error in removing staff"));
 			}
 		}
 

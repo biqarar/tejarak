@@ -79,5 +79,17 @@ class view extends \content_admin\main\view
 	{
 		$this->data->staff = $_args->api_callback;
 	}
+
+
+
+
+	/**
+	 * { function_description }
+	 */
+	public function view_editstaff_company($_args)
+	{
+		$this->data->edit_mode = true;
+		$this->data->staff = $_args->api_callback;
+	}
 }
 ?>

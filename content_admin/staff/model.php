@@ -132,5 +132,42 @@ class model extends \content_admin\main\model
 		utility::set_request_array($request);
 		$this->add_staff(['method' => 'patch']);
 	}
+
+
+	/**
+	 * Gets the editstaff company.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function get_editstaff_company($_args)
+	{
+		$usercompany_id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		utility::set_request_array(['id' => $usercompany_id]);
+		$this->user_id = $this->login('id');
+		$result = $this->usercompany_get_details();
+		// var_dump($result);
+		return $result;
+
+	}
+
+
+	/**
+	 * Gets the editstaff company.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_editstaff_company($_args)
+	{
+		$this->user_id      = $this->login('id');
+		$usercompany_id     = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request            = $this->getPost();
+		$request['id']      = $usercompany_id;
+		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		utility::set_request_array($request);
+		$result = $this->add_staff(['method' => 'patch']);
+		// var_dump($result);
+		return $result;
+
+	}
 }
 ?>

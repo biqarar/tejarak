@@ -64,6 +64,40 @@ class usercompanies
 
 
 	/**
+	 * get election record
+	 *
+	 * @param      <type>  $_id    The identifier
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function get_by_id($_usercompanies_id, $_boss)
+	{
+		if($_usercompanies_id && $_boss)
+		{
+			$query =
+			"
+				SELECT
+					usercompanies.*,
+					users.user_mobile AS `mobile`,
+					users.user_displayname AS `displayname`,
+					users.user_email AS `email`
+				FROM
+					usercompanies
+				INNER JOIN users ON users.id = usercompanies.user_id
+				INNER JOIN companies ON companies.id = usercompanies.company_id
+				WHERE
+					usercompanies.id = $_usercompanies_id AND companies.boss = $_boss
+				LIMIT 1
+			";
+			$result = \lib\db::get($query, null, true);
+			return $result;
+		}
+		return false;
+	}
+
+
+
+	/**
 	 * remove
 	 *
 	 * @param      <type>  $_args  The arguments
