@@ -53,6 +53,16 @@ class controller extends \content_admin\main\controller
 					}
 					break;
 
+				case 'staff':
+					$route = $this->model()->find_company($url[0]);
+
+					if($route)
+					{
+						\lib\router::set_controller("content_admin\branch_staff\controller");
+						return;
+					}
+					break;
+
 				default:
 
 					break;
