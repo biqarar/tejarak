@@ -111,7 +111,7 @@ trait add
 			if($_args['method'] === 'post')
 			{
 				logs::set('api:company:duplocate:brand', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate title of company"), 'brand', 'arguments');
+				debug::error(T_("Duplicate brand of company"), 'brand', 'arguments');
 				return false;
 			}
 			else
@@ -123,7 +123,7 @@ trait add
 				else
 				{
 					logs::set('api:company:duplocate:brand', $this->user_id, $log_meta);
-					debug::error(T_("Duplicate title of company"), 'brand', 'arguments');
+					debug::error(T_("Duplicate brand of company"), 'brand', 'arguments');
 					return false;
 				}
 			}

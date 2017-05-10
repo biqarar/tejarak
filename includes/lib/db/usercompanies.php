@@ -2,7 +2,7 @@
 namespace lib\db;
 use \lib\db;
 
-class branchs
+class usercompanies
 {
 
 	/**
@@ -17,7 +17,7 @@ class branchs
 		$set = \lib\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT INTO branchs SET $set");
+			\lib\db::query("INSERT INTO usercompanies SET $set");
 			return \lib\db::insert_id();
 		}
 	}
@@ -64,12 +64,12 @@ class branchs
 			$query =
 			"
 			SELECT
-				branchs.*
+				usercompanies.*
 			FROM
-				branchs
-			INNER JOIN companies ON companies.id = branchs.company_id
+				usercompanies
+			INNER JOIN companies ON companies.id = usercompanies.company_id
 			WHERE
-				branchs.brand = '$_brand_branch' AND
+				usercompanies.brand = '$_brand_branch' AND
 				companies.brand = '$_brand_company'
 			LIMIT 1";
 			$result = \lib\db::get($query, null, true);
@@ -93,7 +93,7 @@ class branchs
 			return false;
 		}
 
-		$query = "UPDATE branchs SET $set WHERE id = $_id LIMIT 1";
+		$query = "UPDATE usercompanies SET $set WHERE id = $_id LIMIT 1";
 		return \lib\db::query($query);
 	}
 
@@ -152,14 +152,14 @@ class branchs
 		if($_options['get_count'] === true)
 		{
 			$get_count      = true;
-			$public_fields  = " COUNT(branchs.id) AS 'branchscount' FROM	branchs";
+			$public_fields  = " COUNT(usercompanies.id) AS 'usercompaniescount' FROM	usercompanies";
 			$limit          = null;
 			$only_one_value = true;
 		}
 		else
 		{
 			$limit         = null;
-			$public_fields = " * FROM branchs";
+			$public_fields = " * FROM usercompanies";
 
 			if($_options['limit'])
 			{
@@ -190,7 +190,7 @@ class branchs
 			}
 			else
 			{
-				$order = " ORDER BY branchs.id DESC ";
+				$order = " ORDER BY usercompanies.id DESC ";
 			}
 		}
 		else
@@ -201,7 +201,7 @@ class branchs
 			}
 			else
 			{
-				$order = " ORDER BY branchs.id $_options[order] ";
+				$order = " ORDER BY usercompanies.id $_options[order] ";
 			}
 		}
 
@@ -229,21 +229,21 @@ class branchs
 			{
 				if(isset($value[0]) && isset($value[1]) && is_string($value[0]) && is_string($value[1]))
 				{
-					// for similar "branchs.`field` LIKE '%valud%'"
-					$where[] = " branchs.`$key` $value[0] $value[1] ";
+					// for similar "usercompanies.`field` LIKE '%valud%'"
+					$where[] = " usercompanies.`$key` $value[0] $value[1] ";
 				}
 			}
 			elseif($value === null)
 			{
-				$where[] = " branchs.`$key` IS NULL ";
+				$where[] = " usercompanies.`$key` IS NULL ";
 			}
 			elseif(is_numeric($value))
 			{
-				$where[] = " branchs.`$key` = $value ";
+				$where[] = " usercompanies.`$key` = $value ";
 			}
 			elseif(is_string($value))
 			{
-				$where[] = " branchs.`$key` = '$value' ";
+				$where[] = " usercompanies.`$key` = '$value' ";
 			}
 		}
 
@@ -253,7 +253,7 @@ class branchs
 		{
 			$_string = trim($_string);
 
-			$search = "(branchs.title  LIKE '%$_string%' )";
+			$search = "(usercompanies.title  LIKE '%$_string%' )";
 			if($where)
 			{
 				$search = " AND ". $search;
@@ -271,7 +271,7 @@ class branchs
 
 		if($pagenation && !$get_count)
 		{
-			$pagenation_query = "SELECT	COUNT(branchs.id) AS `count`	FROM branchs	$where $search ";
+			$pagenation_query = "SELECT	COUNT(usercompanies.id) AS `count`	FROM usercompanies	$where $search ";
 			$pagenation_query = \lib\db::get($pagenation_query, 'count', true);
 
 			list($limit_start, $limit) = \lib\db::pagnation((int) $pagenation_query, $limit);
@@ -291,7 +291,7 @@ class branchs
 		{
 			$limit = null;
 		}
-		$query = " SELECT $public_fields $where $search $order $limit -- branchs::search() 	-- $json";
+		$query = " SELECT $public_fields $where $search $order $limit -- usercompanies::search() 	-- $json";
 
 		if(!$only_one_value)
 		{
@@ -300,7 +300,7 @@ class branchs
 		}
 		else
 		{
-			$result = \lib\db::get($query, 'branchscount', true);
+			$result = \lib\db::get($query, 'usercompaniescount', true);
 		}
 
 		return $result;

@@ -17,20 +17,22 @@ class controller extends \content_admin\main\controller
 		// https://tejarak.com/fa/admin/
 		// https://tejarak.com/fa/admin/company
 		// https://tejarak.com/fa/admin/company/add
-		// https://tejarak.com/fa/admin/company/delete
+		// https://tejarak.com/fa/admin/company/delete -- not inportant but doen :|
 		// https://tejarak.com/fa/admin/ermile/
 		// https://tejarak.com/fa/admin/ermile/edit
 		// https://tejarak.com/fa/admin/ermile/branch/
 		// https://tejarak.com/fa/admin/ermile/branch/add
-		// https://tejarak.com/fa/admin/ermile/branch/delete
+		// https://tejarak.com/fa/admin/ermile/branch/delete -- not inportant
 		// https://tejarak.com/fa/admin/ermile/sarshomar/
 		// https://tejarak.com/fa/admin/ermile/sarshomar/edit
+
+		// https://tejarak.com/fa/admin/ermile/staff/
+
 		// https://tejarak.com/fa/admin/ermile/sarshomar/staff/
 		// https://tejarak.com/fa/admin/ermile/getway/
 		// https://tejarak.com/fa/admin/ermile/getway/add
 		// https://tejarak.com/fa/admin/ermile/getway/delete
 		// https://tejarak.com/fa/admin/ermile/getway/intro/edit
-		// https://tejarak.com/fa/admin/ermile/staff/
 		// https://tejarak.com/fa/admin/ermile/staff/add
 		// https://tejarak.com/fa/admin/ermile/staff/21387/edit
 		// https://tejarak.com/fa/admin/ermile/sarshomar/report/
@@ -59,31 +61,31 @@ class controller extends \content_admin\main\controller
 
 		if(isset($url[1]) && $url[1])
 		{
-			$go_to_company =
-			[
-				'edit',
-			];
 
-			if(!in_array($url[1], $go_to_company))
+			switch ($url[1])
 			{
-				$route = $this->model()->find_company($url[0]);
-
-				if($route)
-				{
-					\lib\router::set_controller("content_admin\branch\controller");
-					return;
-				}
+				case 'edit':
+					$route = $this->model()->find_company($url[0]);
+					if($route)
+					{
+						\lib\router::set_controller("content_admin\branch\controller");
+						return;
+					}
+					break;
+				case 'staff':
+					$route = $this->model()->find_company($url[0]);
+					if($route)
+					{
+						\lib\router::set_controller("content_admin\staff\controller");
+						return;
+					}
 			}
+
 		}
 
 		if(isset($url[0]) && $url[0])
 		{
 			// for example 'ermile'
-			$block_list =
-			[
-				'company',
-			];
-
 			$route = $this->model()->find_company($url[0]);
 
 			if($route)

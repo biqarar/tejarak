@@ -11,7 +11,6 @@ class controller extends \content_admin\main\controller
 		parent::_route();
 
 		$this->get('addbranch', 'addbranch')->ALL("/^([A-Za-z0-9]{5,})\/branch\/add$/");
-		$this->get('addbranch', 'addbranch')->ALL("/^([A-Za-z0-9]{5,})\/branch\/add$/");
 		$this->post('addbranch')			->ALL("/^([A-Za-z0-9]{5,})\/branch\/add$/");
 
 		$this->get('editbranch', 'editbranch')->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/edit$/");

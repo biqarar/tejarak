@@ -1,5 +1,5 @@
 <?php
-namespace content_admin\branch;
+namespace content_admin\staff;
 
 class view extends \content_admin\main\view
 {
@@ -27,10 +27,10 @@ class view extends \content_admin\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_listbranch($_args)
+	public function view_liststaff($_args)
 	{
 		$result = $_args->api_callback;
-		$this->data->branch_list = $result;
+		$this->data->staff_list = $result;
 	}
 
 
@@ -39,7 +39,7 @@ class view extends \content_admin\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_addbranch($_args)
+	public function view_addstaff($_args)
 	{
 
 	}
@@ -50,11 +50,11 @@ class view extends \content_admin\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_editbranch($_args)
+	public function view_editstaff($_args)
 	{
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
-		$this->data->branch = $result;
+		$this->data->staff = $result;
 	}
 
 
@@ -74,9 +74,9 @@ class view extends \content_admin\main\view
 	/**
 	 * { function_description }
 	 */
-	public function view_branchdashboard($_args)
+	public function view_staffdashboard($_args)
 	{
-		$this->data->branch = $_args->api_callback;
+		$this->data->staff = $_args->api_callback;
 	}
 }
 ?>
