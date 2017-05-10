@@ -109,9 +109,79 @@ trait add
 			$user_id = \lib\db\users::signup($signup);
 		}
 
+		$postion     = utility::request('postion');
+
+		if(mb_strlen($postion) > 250)
+		{
+			logs::set('api:staff:postion:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the postion less than 250 character"), 'postion', 'arguments');
+			return false;
+		}
+
+		$code        = utility::request('code');
+		if(mb_strlen($code) > 9 || !ctype_digit($code))
+		{
+			logs::set('api:staff:code:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the code less than 9 character and must ba integer"), 'code', 'arguments');
+			return false;
+		}
+
+		// $telegram_id = utility::request('telegram_id');
+		$full_time   = utility::request('full_time');
+		if($full_time)
+		{
+			$full_time = 1;
+		}
+		else
+		{
+			$full_time = 0;
+		}
+
+		$remote      = utility::request('remote');
+		if($remote)
+		{
+			$remote = 1;
+		}
+		else
+		{
+			$remote = 0;
+		}
+
+		$is_default  = utility::request('is_default');
+		if($is_default)
+		{
+			$is_default = 1;
+		}
+		else
+		{
+			$is_default = 0;
+		}
+
+		$date_enter  = utility::request('date_enter');
+		if($date_enter && \DateTime::createFromFormat('Y-m-d', $date_enter) === false)
+		{
+			logs::set('api:staff:date_enter:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
+			return false;
+		}
+		$date_exit   = utility::request('date_exit');
+		if($date_exit && \DateTime::createFromFormat('Y-m-d', $date_exit) === false)
+		{
+			logs::set('api:staff:date_exit:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
+			return false;
+		}
+
 		$args               = [];
 		$args['company_id'] = $company_id;
 		$args['user_id']    = $user_id;
+		$args['postion']    = $postion;
+		$args['code']       = $code;
+		$args['full_time']  = $full_time;
+		$args['remote']     = $remote;
+		$args['is_default'] = $is_default;
+		$args['date_enter'] = $date_enter;
+		$args['date_exit']  = $date_exit;
 
 		if($_args['method'] === 'post')
 		{

@@ -100,9 +100,18 @@ class model extends \content_admin\main\model
 	{
 		$args =
 		[
-			'name'   => utility::post('name'),
-			'family' => utility::post('family'),
-			'mobile' => utility::post('mobile'),
+			'name'        => utility::post('name'),
+			'family'      => utility::post('family'),
+			'mobile'      => utility::post('mobile'),
+			'postion'     => utility::post('postion'),
+			'code'        => utility::post('code'),
+			'telegram_id' => utility::post('telegram_id'),
+			'full_time'   => utility::post('full_time'),
+			'remote'      => utility::post('remote'),
+			'is_default'  => utility::post('is_default'),
+			'date_enter'  => utility::post('date_enter'),
+			'date_exit'   => utility::post('date_exit'),
+			'status'      => utility::post('status'),
 		];
 		return $args;
 	}

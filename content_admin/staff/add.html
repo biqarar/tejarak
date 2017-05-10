@@ -19,6 +19,42 @@
 	</div>
 
 	<div class="f">
+		<label for="postion">{%trans "postion"%}</label>
+		<input type="text" name="postion" id="postion" placeholder='{%trans "postion" %}' value="{{staff.postion}}">
+	</div>
+	<div class="f">
+		<label for="code">{%trans "code"%}</label>
+		<input type="text" name="code" id="code" placeholder='{%trans "code" %}' value="{{staff.code}}">
+	</div>
+	<div class="f">
+		<label for="telegram_id">{%trans "telegram_id"%}</label>
+		<input type="text" name="telegram_id" id="telegram_id" placeholder='{%trans "telegram_id" %}' value="{{staff.telegram_id}}">
+	</div>
+	<div class="f">
+		<label for="full_time">{%trans "full_time"%}</label>
+		<input type="text" name="full_time" id="full_time" placeholder='{%trans "full_time" %}' value="{{staff.full_time}}">
+	</div>
+	<div class="f">
+		<label for="remote">{%trans "remote"%}</label>
+		<input type="text" name="remote" id="remote" placeholder='{%trans "remote" %}' value="{{staff.remote}}">
+	</div>
+	<div class="f">
+		<label for="is_default">{%trans "is_default"%}</label>
+		<input type="text" name="is_default" id="is_default" placeholder='{%trans "is_default" %}' value="{{staff.is_default}}">
+	</div>
+	<div class="f">
+		<label for="date_enter">{%trans "date_enter"%}</label>
+		<input type="text" name="date_enter" id="date_enter" placeholder='{%trans "date_enter" %}' value="{{staff.date_enter}}">
+	</div>
+	<div class="f">
+		<label for="date_exit">{%trans "date_exit"%}</label>
+		<input type="text" name="date_exit" id="date_exit" placeholder='{%trans "date_exit" %}' value="{{staff.date_exit}}">
+	</div>
+	<div class="f">
+		<label for="status">{%trans "status"%}</label>
+		<input type="text" name="status" id="status" placeholder='{%trans "status" %}' value="{{staff.status}}">
+	</div>
+	<div class="f">
 		<label class="c"></label>
 		{%if edit_mode%}
 			<input type="submit" value='{%trans "Edit"%}' class="c">
