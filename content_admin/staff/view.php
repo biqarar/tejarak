@@ -41,7 +41,8 @@ class view extends \content_admin\main\view
 	 */
 	public function view_addstaff($_args)
 	{
-
+		$result = $_args->api_callback;
+		$this->data->company = $result;
 	}
 
 

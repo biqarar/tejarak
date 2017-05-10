@@ -17,7 +17,7 @@ class usercompanies
 		$set = \lib\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT INTO usercompanies SET $set");
+			\lib\db::query("INSERT IGNORE INTO usercompanies SET $set");
 			return \lib\db::insert_id();
 		}
 	}
@@ -41,7 +41,20 @@ class usercompanies
 				$limit = " LIMIT 1 ";
 			}
 			$where = \lib\db\config::make_where($_args);
-			$query = "SELECT * FROM companies WHERE $where $limit";
+			$query =
+			"
+				SELECT
+					usercompanies.*,
+					users.user_mobile AS `mobile`,
+					users.user_displayname AS `displayname`,
+					users.user_email AS `email`
+				FROM
+					usercompanies
+				INNER JOIN users ON users.id = usercompanies.user_id
+				WHERE
+					$where
+				$limit
+			";
 			$result = \lib\db::get($query, null, $limit ? true : false);
 			return $result;
 		}
@@ -49,33 +62,30 @@ class usercompanies
 	}
 
 
+
 	/**
-	 * Gets the by brand.
+	 * remove
 	 *
-	 * @param      <type>  $_brand_company  The brand company
-	 * @param      <type>  $_brand_branch   The brand branch
+	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The by brand.
+	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function get_by_brand($_brand_company, $_brand_branch)
+	public static function remove($_args)
 	{
-		if($_brand_branch && $_brand_company)
+		if(isset($_args['company_id']) && isset($_args['user_id']) && is_numeric($_args['company_id']) && is_numeric($_args['user_id']))
 		{
 			$query =
 			"
-			SELECT
-				usercompanies.*
-			FROM
-				usercompanies
-			INNER JOIN companies ON companies.id = usercompanies.company_id
-			WHERE
-				usercompanies.brand = '$_brand_branch' AND
-				companies.brand = '$_brand_company'
-			LIMIT 1";
+				DELETE FROM usercompanies
+				WHERE
+					usercompanies.company_id = $_args[company_id] AND
+					usercompanies.user_id = $_args[user_id]
+				LIMIT 1
+			";
 			$result = \lib\db::get($query, null, true);
 			return $result;
+
 		}
-		return false;
 	}
 
 

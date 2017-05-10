@@ -11,10 +11,12 @@ class controller extends \content_admin\main\controller
 		parent::_route();
 
 		$this->get('liststaff', 'liststaff')					->ALL("/^([A-Za-z0-9]{5,})\/staff$/");
-		// $this->post('addstaff')									->ALL("/^([A-Za-z0-9]{5,})\/staff\/add$/");
 
-		$this->get('editstaff', 'editstaff')					->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/edit$/");
-		$this->post('editstaff')			  					->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/edit$/");
+		$this->get('addstaff', 'addstaff')					->ALL("/^([A-Za-z0-9]{5,})\/staff\/add$/");
+		$this->post('addstaff')			  					->ALL("/^([A-Za-z0-9]{5,})\/staff\/add$/");
+
+		$this->get('editstaff', 'editstaff')					->ALL("/^([A-Za-z0-9]{5,})\/\d+\/edit$/");
+		$this->post('editstaff')			  					->ALL("/^([A-Za-z0-9]{5,})\/\d+\/edit$/");
 
 		$this->get('staffdashboard', 'staffdashboard')			->ALL("/^([A-Za-z0-9]{5,})\/([^staff][A-Za-z0-9]{5,})$/");
 		$this->post('staffdashboard')			        		->ALL("/^([A-Za-z0-9]{5,})\/([^staff][A-Za-z0-9]{5,})$/");
