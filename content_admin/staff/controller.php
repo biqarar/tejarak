@@ -37,8 +37,7 @@ class controller extends \content_admin\main\controller
 		if(
 			preg_match("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/edit$/", \lib\router::get_url()) ||
 			preg_match("/^([A-Za-z0-9]{5,})\/staff\/add$/", \lib\router::get_url()) ||
-			preg_match("/^([A-Za-z0-9]{5,})\/staff\/(\d+)\/edit$/", \lib\router::get_url(
-	)	  )
+			preg_match("/^([A-Za-z0-9]{5,})\/staff\/(\d+)\/edit$/", \lib\router::get_url()))
 		{
 			$this->display_name = 'content_admin\staff\add.html';
 		}
