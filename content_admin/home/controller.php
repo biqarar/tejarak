@@ -26,8 +26,16 @@ class controller extends \content_admin\main\controller
 		// https://tejarak.com/fa/admin/ermile/sarshomar/
 		// https://tejarak.com/fa/admin/ermile/sarshomar/edit
 		// https://tejarak.com/fa/admin/ermile/sarshomar/staff/
+		// https://tejarak.com/fa/admin/ermile/getway/
+		// https://tejarak.com/fa/admin/ermile/getway/add
+		// https://tejarak.com/fa/admin/ermile/getway/delete
+		// https://tejarak.com/fa/admin/ermile/getway/intro/edit
+		// https://tejarak.com/fa/admin/ermile/staff/
+		// https://tejarak.com/fa/admin/ermile/staff/add
+		// https://tejarak.com/fa/admin/ermile/staff/21387/edit
 		// https://tejarak.com/fa/admin/ermile/sarshomar/report/
 		// var_dump($url);exit();
+
 		if(isset($url[2]) && $url[2])
 		{
 			// for example 'staff'

@@ -7,9 +7,9 @@ class controller extends \mvc\controller
 	/**
 	 * rout
 	 */
-	function _route()
+	public function _route()
 	{
-
+		parent::_route();
 	}
 }
 ?>

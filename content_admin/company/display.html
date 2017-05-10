@@ -5,8 +5,9 @@
 		<span class="c2">{%trans "id"%}</span>
 		<span class="c2">{%trans "Title"%}</span>
 		<span class="c2">{%trans "Site"%}</span>
-		<span class="c2">{%trans "Staff"%}</span>
-
+		{%if delete_mode%}
+		<span class="c2">{%trans "Delete"%}</span>
+		{%endif%}
 	</div>
 {%for key, value in company_list%}
 	<div class="f">
@@ -14,7 +15,11 @@
 		<span class="c2">{{value.title}}</span>
 		<span class="c2"><a href="{{value.site}}">{{value.site}}</a></span>
 		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}">{{value.brand}}</a></span>
-		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}/branch">{%trans "Add branch"%}</a></span>
+		{%if delete_mode%}
+		<span class="c2">
+			<a href="{{url.full}}" data-ajaxify data-data='{"brand": "{{value.brand}}"}' data-method="post">{%trans "Delete Comany"%}</a>
+		</span>
+		{%endif%}
 	</div>
 {%endfor%}
 

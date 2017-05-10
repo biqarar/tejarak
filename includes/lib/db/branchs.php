@@ -23,6 +23,7 @@ class branchs
 	}
 
 
+
 	/**
 	 * get election record
 	 *
@@ -30,12 +31,18 @@ class branchs
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function get($_id)
+	public static function get($_args)
 	{
-		if($_id && is_numeric($_id))
+		if($_args)
 		{
-			$query = "SELECT * FROM branchs WHERE id = $_id LIMIT 1";
-			$result = \lib\db::get($query, null, true);
+			$limit = null;
+			if(isset($_args['limit']) && $_args['limit'] === 1)
+			{
+				$limit = " LIMIT 1 ";
+			}
+			$_args = \lib\db\config::make_where($_args);
+			$query = "SELECT * FROM companies WHERE $where $limit";
+			$result = \lib\db::get($query, null, $limit ? true : false);
 			return $result;
 		}
 		return false;

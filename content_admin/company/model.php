@@ -6,6 +6,7 @@ class model extends \content_admin\main\model
 {
 	use \content_api\v1\company\tools\get;
 	use \content_api\v1\company\tools\add;
+	use \content_api\v1\company\tools\delete;
 
 	/**
 	 * Gets the list.
@@ -77,6 +78,14 @@ class model extends \content_admin\main\model
 
 		utility::set_request_array(['company' => $company]);
 		return $this->get_company();
+	}
+
+
+	public function post_delete($_args)
+	{
+		utility::set_request_array(['brand' => utility::post('brand')]);
+		$this->user_id = $this->login('id');
+		return $this->delete_company();
 	}
 }
 ?>

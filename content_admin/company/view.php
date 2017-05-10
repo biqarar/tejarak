@@ -22,5 +22,14 @@ class view extends \content_admin\main\view
 		$result = $_args->api_callback;
 		$this->data->company = $result;
 	}
+
+
+	public function view_delete($_args)
+	{
+		$this->data->delete_mode = true;
+		$result = $_args->api_callback;
+
+		$this->data->company_list = $result;
+	}
 }
 ?>

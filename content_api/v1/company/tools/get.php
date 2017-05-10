@@ -21,8 +21,8 @@ trait get
 		}
 		$search = [];
 		$search['boss'] = $this->user_id;
+		$search['status'] = ['<>', "'deleted'"];
 		$result = \lib\db\companies::search(null, $search);
-
 		return $result;
 	}
 
