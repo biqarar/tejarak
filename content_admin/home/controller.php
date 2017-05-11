@@ -28,9 +28,9 @@ class controller extends \content_admin\main\controller
 		// https://tejarak.com/fa/admin/ermile/staff/
 		// https://tejarak.com/fa/admin/ermile/staff/add
 
-		// https://tejarak.com/fa/admin/ermile/sarshomar/staff/
-
 		// https://tejarak.com/fa/admin/ermile/getway/
+
+		// https://tejarak.com/fa/admin/ermile/sarshomar/staff/
 		// https://tejarak.com/fa/admin/ermile/getway/add
 		// https://tejarak.com/fa/admin/ermile/getway/delete
 		// https://tejarak.com/fa/admin/ermile/getway/intro/edit
@@ -49,6 +49,15 @@ class controller extends \content_admin\main\controller
 					if($route)
 					{
 						\lib\router::set_controller("content_admin\branch\controller");
+						return;
+					}
+					break;
+
+				case 'getway':
+					$route = $this->model()->find_company($url[0]);
+					if($route)
+					{
+						\lib\router::set_controller("content_admin\getway\controller");
 						return;
 					}
 					break;
@@ -82,6 +91,8 @@ class controller extends \content_admin\main\controller
 					return;
 				}
 			}
+
+
 			$go_to_company =
 			[
 				'edit',
