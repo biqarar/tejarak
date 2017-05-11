@@ -67,6 +67,13 @@ trait add
 			return false;
 		}
 
+		$access_load = $this->get_company();
+
+		if(!debug::$status)
+		{
+			return;
+		}
+
 		$title = utility::request('title');
 		if(mb_strlen($title) > 500)
 		{
@@ -114,10 +121,10 @@ trait add
 		}
 
 		$code        = utility::request('code');
-		if(mb_strlen($code) > 9)
+		if(mb_strlen($code) > 9 || !is_numeric($code))
 		{
 			logs::set('api:branch:maxlength:code', $this->user_id, $log_meta);
-			debug::error(T_("branch code must be less than 9 character"), 'code', 'arguments');
+			debug::error(T_("branch code must be less than 9 character and must be number"), 'code', 'arguments');
 			return false;
 		}
 
@@ -265,6 +272,29 @@ trait add
 				return false;
 			}
 
+			$check_duplicate_brand_in_company = ['brand' => $brand, 'company_id' => $company_id];
+			$check = \lib\db\branchs::search(null, $check_duplicate_brand_in_company);
+
+			if(isset($check[0]['id']))
+			{
+				if(intval($id) === intval($check[0]['id']))
+				{
+					// no problem!
+				}
+				else
+				{
+					logs::set('api:branch:duplocate:brand:in:company:in:update', $this->user_id, $log_meta);
+					debug::error(T_("Duplicate brand of branch"), 'brand', 'arguments');
+					return false;
+				}
+			}
+			else
+			{
+				logs::set('api:branch:method:put:branch:not:found', $this->user_id, $log_meta);
+				debug::error(T_("Branch not found"), 'branch', 'permission');
+				return false;
+			}
+
 			$update = [];
 			foreach ($args as $key => $value)
 			{
@@ -273,9 +303,10 @@ trait add
 					$update[$key] = $value;
 				}
 			}
+
 			if(!empty($update))
 			{
-				\lib\db\branchs::update($update, $id);
+				\lib\db\branchs::update($update, $check[0]['id']);
 			}
 		}
 
@@ -291,18 +322,6 @@ trait add
 				debug::true("Branch added");
 			}
 		}
-		else
-		{
-			if($edit_mode)
-			{
-				debug::error(T_("Error in editing branch"));
-			}
-			else
-			{
-				debug::error(T_("Error in adding branch"));
-			}
-		}
-
 	}
 }
 ?>

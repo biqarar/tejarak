@@ -3,24 +3,6 @@ namespace content_admin\branch;
 
 class view extends \content_admin\main\view
 {
-	use \content_api\v1\company\tools\get;
-
-
-
-	/**
-	 * { function_description }
-	 */
-	public function config()
-	{
-		$url = \lib\router::get_url();
-		$url = \lib\utility\safe::safe($url);
-		$url = explode('/', $url);
-		if(isset($url[0]))
-		{
-			$this->data->company = $url[0];
-		}
-	}
-
 
 	/**
 	 * { function_description }
@@ -30,7 +12,7 @@ class view extends \content_admin\main\view
 	public function view_listbranch($_args)
 	{
 		$result = $_args->api_callback;
-		$this->data->branch_list = $result;
+		$this->data->result = $result;
 	}
 
 
@@ -41,7 +23,7 @@ class view extends \content_admin\main\view
 	 */
 	public function view_addbranch($_args)
 	{
-
+		$this->data->company = $_args->api_callback;
 	}
 
 

@@ -6,6 +6,89 @@ use \lib\db\logs;
 
 trait get
 {
+
+	/**
+	 * ready data of company to load in api
+	 *
+	 * @param      <type>  $_data  The data
+	 */
+	public function ready_branch($_data, $_options = [])
+	{
+		$default_options =
+		[
+			'check_is_my_company' => true,
+		];
+
+		if(!is_array($_options))
+		{
+			$_options = [];
+		}
+
+		$_options = array_merge($default_options, $_options);
+
+		$result = [];
+		foreach ($_data as $key => $value)
+		{
+			switch ($key)
+			{
+				case 'company_id':
+				case 'code':
+					$result[$key] = (int) $value;
+					break;
+				case 'brand':
+				case 'title':
+				case 'site':
+				case 'address':
+				case 'phone_1':
+				case 'phone_2':
+				case 'phone_3':
+				case 'fax':
+				case 'email':
+				case 'post_code':
+				case 'status':
+					$result[$key] = (string) $value;
+					break;
+
+
+				case 'full_time':
+				case 'remote':
+				case 'is_default':
+					if($value)
+					{
+						$result[$key] = true;
+					}
+					else
+					{
+						$result[$key] = false;
+					}
+					break;
+
+				case 'boss':
+					if($_options['check_is_my_company'])
+					{
+						if(intval($value) === intval($this->user_id))
+						{
+							// no problem
+						}
+						else
+						{
+							return false;
+						}
+					}
+					break;
+				case 'createdate':
+				case 'date_modified':
+				case 'desc':
+				case 'meta':
+				default:
+					continue;
+					break;
+			}
+		}
+		return $result;
+	}
+
+
 	/**
 	 * Gets the branch.
 	 *
@@ -43,7 +126,16 @@ trait get
 			$search               = [];
 			$search['company_id'] = $company_id['id'];
 			$result               = \lib\db\branchs::search(null, $search);
-			return $result;
+			$temp = [];
+			foreach ($result as $key => $value)
+			{
+				$check = $this->ready_branch($value);
+				if($check)
+				{
+					$temp[] =  $check;
+				}
+			}
+			return $temp;
 		}
 	}
 
@@ -92,6 +184,7 @@ trait get
 		}
 
 		$result = \lib\db\branchs::get_by_brand($company, $branch);
+		$result = $this->ready_branch($result);
 		return $result;
 	}
 }

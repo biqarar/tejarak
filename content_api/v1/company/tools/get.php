@@ -15,7 +15,7 @@ trait get
 	{
 		$default_options =
 		[
-			'check_is_my_company' => false,
+			'check_is_my_company' => true,
 		];
 
 		if(!is_array($_options))
@@ -99,7 +99,11 @@ trait get
 		$temp = [];
 		foreach ($result as $key => $value)
 		{
-			$temp[] = $this->ready_company($value, ['check_is_my_company' => true]);
+			$check = $this->ready_company($value);
+			if($check)
+			{
+				$temp[] = $check;
+			}
 		}
 
 		return $temp;

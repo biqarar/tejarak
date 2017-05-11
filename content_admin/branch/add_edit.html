@@ -1,0 +1,83 @@
+{%extends display.tejarak%}
+
+{%block sidenav%}
+<li>
+	<a href="{{url.base}}/admin/{{company.brand}}/branch"><i class="icon-"></i>{%trans "Branch List"%}</a>
+</li>
+{%endblock%}
+
+{%block content%}
+
+{%if edit_mode%}
+	<h1>{%trans "Add Branch"%} {{company.title}}@{{branch.title}}</h1>
+{%else%}
+	<h1>{%trans "Add Branch"%} {{company.title}}</h1>
+{%endif%}
+<form method="post" class="df">
+	<div class="f">
+		<label class="c1" for="title">{%trans "Title"%}</label>
+		<input type="text" class="c3" name="title" id="title" placeholder='{%trans "Title"%}' value="{{branch.title}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="site">{%trans "Site"%}</label>
+		<input type="text" class="c3" name="site" id="site" placeholder='{%trans "Site"%}' value="{{branch.site}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="brand">{%trans "Brand"%}</label>
+		<input type="text" class="c3" name="brand" id="brand" placeholder='{%trans "Brand"%}' value="{{branch.brand}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="address">{%trans "Address"%}</label>
+		<textarea class="c3" name="address" id="address" placeholder='{%trans "Address"%}'>{{branch.address}}</textarea>
+	</div>
+	<div class="f">
+		<label class="c1" for="code">{%trans "Code"%}</label>
+		<input type="text" class="c3" name="code" id="code" placeholder='{%trans "Code"%}' value="{{branch.code}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="phone_1">{%trans "Phone"%}</label>
+		<input type="text" class="c3" name="phone_1" id="phone_1" placeholder='{%trans "Phone"%}' value="{{branch.phone_1}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="phone_2">{%trans "Phone"%}</label>
+		<input type="text" class="c3" name="phone_2" id="phone_2" placeholder='{%trans "Phone"%}' value="{{branch.phone_2}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="phone_3">{%trans "Phone"%}</label>
+		<input type="text" class="c3" name="phone_3" id="phone_3" placeholder='{%trans "Phone"%}' value="{{branch.phone_3}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="fax">{%trans "Fax"%}</label>
+		<input type="text" class="c3" name="fax" id="fax" placeholder='{%trans "Fax"%}' value="{{branch.fax}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="email">{%trans "Email"%}</label>
+		<input type="email" class="c3" name="email" id="email" placeholder='{%trans "Email"%}' value="{{branch.email}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="post_code">{%trans "Post code"%}</label>
+		<input type="text" class="c3" name="post_code" id="post_code" placeholder='{%trans "Post code"%}' value="{{branch.post_code}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="full_time">{%trans "Full time"%}</label>
+		<input type="checkbox" class="c3" name="full_time" id="full_time" {% if branch.full_time %}checked{%endif%}>
+	</div>
+	<div class="f">
+		<label class="c1" for="remote">{%trans "Remote"%}</label>
+		<input type="checkbox" class="c3" name="remote" id="remote" {% if branch.remote %}checked{%endif%}>
+	</div>
+	<div class="f">
+		<label class="c1" for="is_default">{%trans "Default"%}</label>
+		<input type="checkbox" class="c3" name="is_default" id="is_default" {% if branch.is_default %}checked{%endif%}>
+	</div>
+	<div class="f">
+		<label class="c1"></label>
+		{%if edit_mode%}
+	 		<input type="submit" value='{%trans "Edit"%}' class="c3">
+		{%else%}
+			<input type="submit" value='{%trans "Add"%}' class="c3">
+		{%endif%}
+	</div>
+</form>
+
+{%endblock%}
