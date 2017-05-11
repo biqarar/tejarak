@@ -17,7 +17,7 @@ class companies
 	public $alias           = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'alias'           ,'type'=>'varchar@1000'];
 	public $plan            = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'plan'            ,'type'=>'varchar@50'];
 	public $until           = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'until'           ,'type'=>'datetime@'];
-	public $status          = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'status'          ,'type'=>'enum@enable,disable,expire!enable'];
+	public $status          = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'status'          ,'type'=>'enum@enable,disable,expire,deleted!enable'];
 	public $createdate      = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'createdate'      ,'type'=>'datetime@!CURRENT_TIMESTAMP'];
 	public $date_modified   = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
 	public $desc            = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'desc'            ,'type'=>'text@'];

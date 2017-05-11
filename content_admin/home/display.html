@@ -1,11 +1,11 @@
-{%extends display.mvc%}
+{%extends display.tejarak%}
+
+
+
 {%block content%}
-<div class="f">
-	<div>
-		<a href="{{url.base}}/admin/company/add">{%trans "Add company"%}</a>
-	</div>
-	<div>
-		<a href="{{url.base}}/admin/company">{%trans "List company"%}</a>
-	</div>
-</div>
+<h1>{%trans "Hi" %} {%set myName = login.displayname%} {% trans myName  %}</h1>
+<h3>{%trans "Wellcome to Tejarak admin" %}</h3>
+<h6>
+	{%trans "Tejarak was born to serve small and beautiful service for e-business"%}
+</h6>
 {%endblock%}

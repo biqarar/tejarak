@@ -11,6 +11,7 @@ private function transtext()
 	echo T_("id");                  // id
 	echo T_("company");             // company_id
 	echo T_("title");               // title
+	echo T_("brand");               // brand
 	echo T_("site");                // site
 	echo T_("boss");                // boss
 	echo T_("creator");             // creator
@@ -59,7 +60,6 @@ private function transtext()
 	// ------------------------------------------------------------ Table companies
 	echo T_("companies");           // Table companies
 	echo T_("companie");            // companie
-	echo T_("brand");               // brand
 	echo T_("code");                // register_code
 	echo T_("code");                // economical_code
 	echo T_("file");                // file_id
@@ -118,6 +118,28 @@ private function transtext()
 	echo T_("diff");                // diff
 	echo T_("accepted");            // accepted
 
+	// ------------------------------------------------------------ Table invoice_details
+	echo T_("invoice_details");     // Table invoice_details
+	echo T_("invoice_detail");      // invoice_detail
+	echo T_("invoice");             // invoice_id
+	echo T_("price");               // price
+	echo T_("count");               // count
+	echo T_("total");               // total
+	echo T_("discount");            // discount
+
+	// ------------------------------------------------------------ Table invoices
+	echo T_("invoices");            // Table invoices
+	echo T_("invoice");             // invoice
+	echo T_("user _seller");        // user_id_seller
+	echo T_("temp");                // temp
+	echo T_("discount");            // total_discount
+	echo T_("pay");                 // date_pay
+	echo T_("bank");                // transaction_bank
+	echo T_("vat");                 // vat
+	echo T_("pay");                 // vat_pay
+	echo T_("total");               // final_total
+	echo T_("detail");              // count_detail
+
 	// ------------------------------------------------------------ Table logitems
 	echo T_("logitems");            // Table logitems
 	echo T_("logitem");             // logitem
@@ -130,7 +152,6 @@ private function transtext()
 	echo T_("title");               // logitem_title
 	echo T_("desc");                // logitem_desc
 	echo T_("meta");                // logitem_meta
-	echo T_("count");               // count
 	echo T_("priority");            // logitem_priority
 
 	// ------------------------------------------------------------ Table logs
@@ -251,6 +272,7 @@ private function transtext()
 	echo T_("displayname");         // user_displayname
 	echo T_("meta");                // user_meta
 	echo T_("status");              // user_status
+	echo T_("parent");              // user_parent
 	echo T_("permission");          // user_permission
 	echo T_("createdate");          // user_createdate
 	echo T_("username");            // user_username

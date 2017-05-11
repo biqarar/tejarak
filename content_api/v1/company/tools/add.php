@@ -94,6 +94,22 @@ trait add
 			return false;
 		}
 
+		$register_code = utility::request('register_code');
+		if(!is_numeric($register_code))
+		{
+			logs::set('api:company:invalid:register_code', $this->user_id, $log_meta);
+			debug::error(T_("Only numeric value can set in Register code"), 'register_code', 'arguments');
+			return false;
+		}
+
+		$economical_code = utility::request('economical_code');
+		if(!is_numeric($economical_code))
+		{
+			logs::set('api:company:invalid:economical_code', $this->user_id, $log_meta);
+			debug::error(T_("Only numeric value can set in Economical code"), 'economical_code', 'arguments');
+			return false;
+		}
+
 		$id = null;
 		if($_args['method'] === 'patch')
 		{
@@ -105,6 +121,7 @@ trait add
 		}
 
 		$check_duplicate_title = ['brand' => $brand];
+
 		$check = \lib\db\companies::search(null, $check_duplicate_title);
 		if($check)
 		{
@@ -129,18 +146,18 @@ trait add
 			}
 		}
 
-
-		$args              = [];
-		$args['creator']   = $this->user_id;
-		$args['boss']      = $this->user_id;
-		$args['technical'] = $this->user_id;
-		$args['title']     = $title;
-		$args['brand']     = $brand;
-		$args['site']      = $site;
+		$args                    = [];
+		$args['creator']         = $this->user_id;
+		$args['boss']            = $this->user_id;
+		$args['technical']       = $this->user_id;
+		$args['title']           = $title;
+		$args['brand']           = $brand;
+		$args['site']            = $site;
+		$args['register_code']   = $register_code;
+		$args['economical_code'] = $economical_code;
 
 		if($_args['method'] === 'post')
 		{
-
 			if($id)
 			{
 				logs::set('api:company:method:post:set:id', $this->user_id, $log_meta);
@@ -152,7 +169,7 @@ trait add
 
 			$branch               = [];
 			$branch['company_id'] = $company_id;
-			$branch['brand']      = $brand;
+			$branch['brand']      = 'centeral';
 			$branch['title']      = 'centeral';
 			$branch['site']       = $site;
 			$branch['creator']    = $this->user_id;
@@ -172,22 +189,29 @@ trait add
 				debug::error(T_("Id of Comany not found"), 'id', 'permission');
 				return false;
 			}
-			$update = [];
-			foreach ($args as $key => $value)
+
+			$check_is_my_company = $this->get_company();
+			if($check_is_my_company)
 			{
-				if(utility::isset_request($key))
+				$update = [];
+				foreach ($args as $key => $value)
 				{
-					$update[$key] = $value;
+					if(utility::isset_request($key))
+					{
+						$update[$key] = $value;
+					}
+				}
+				if(!empty($update))
+				{
+					\lib\db\companies::update($update, $id);
 				}
 			}
-			if(!empty($update))
-			{
-				\lib\db\companies::update($update, $id);
-			}
 		}
-		elseif ($_args['method'] === 'pathc')
+		else
 		{
-
+			logs::set('api:company:method:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid method of api"), 'method', 'permission');
+			return false;
 		}
 
 		if(debug::$status)
@@ -195,25 +219,13 @@ trait add
 			debug::title(T_("Operation Complete"));
 			if($edit_mode)
 			{
-				debug::true("Comany edited");
+				debug::true("Comany successfuly edited");
 			}
 			else
 			{
-				debug::true("Comany added");
+				debug::true("Comany successfuly added");
 			}
 		}
-		else
-		{
-			if($edit_mode)
-			{
-				debug::error(T_("Error in editing company"));
-			}
-			else
-			{
-				debug::error(T_("Error in adding company"));
-			}
-		}
-
 	}
 }
 ?>

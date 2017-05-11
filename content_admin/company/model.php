@@ -8,6 +8,40 @@ class model extends \content_admin\main\model
 	use \content_api\v1\company\tools\add;
 	use \content_api\v1\company\tools\delete;
 
+
+	/**
+	 * Gets the post.
+	 *
+	 * @return     array  The post.
+	 */
+	public function getPost()
+	{
+		$args =
+		[
+			'title'           => utility::post('title'),
+			'site'            => utility::post('site'),
+			'brand'           => utility::post('brand'),
+			'register_code'   => utility::post('register_code'),
+			'economical_code' => utility::post('economical_code'),
+		];
+		return $args;
+	}
+
+
+	/**
+	 * Posts an add.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_add($_args)
+	{
+		$request          = $this->getPost();
+		$this->user_id    = $this->login('id');
+		utility::set_request_array($request);
+		$this->add_company();
+	}
+
+
 	/**
 	 * Gets the list.
 	 *
@@ -20,40 +54,6 @@ class model extends \content_admin\main\model
 		return $result;
 	}
 
-
-	/**
-	 * Posts an add.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function post_add($_args)
-	{
-		$request          = [];
-		$this->user_id    = $this->login('id');
-		$request['title'] = utility::post('title');
-		$request['brand'] = utility::post('brand');
-		$request['site']  = utility::post('site');
-		utility::set_request_array($request);
-		$this->add_company();
-	}
-
-
-	/**
-	 * Posts an add.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function post_edit($_args)
-	{
-		$request            = [];
-		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['title']   = utility::post('title');
-		$request['brand']   = utility::post('brand');
-		$request['site']    = utility::post('site');
-		utility::set_request_array($request);
-		$this->add_company(['method' => 'patch']);
-	}
 
 	/**
 	 * Gets the edit.
@@ -81,11 +81,26 @@ class model extends \content_admin\main\model
 	}
 
 
-	public function post_delete($_args)
+	/**
+	 * Posts an add.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_edit($_args)
 	{
-		utility::set_request_array(['brand' => utility::post('brand')]);
-		$this->user_id = $this->login('id');
-		return $this->delete_company();
+		$request            = $this->getPost();
+		$this->user_id      = $this->login('id');
+		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		utility::set_request_array($request);
+		$this->add_company(['method' => 'patch']);
 	}
+
+
+	// public function post_delete($_args)
+	// {
+	// 	utility::set_request_array(['brand' => utility::post('brand')]);
+	// 	$this->user_id = $this->login('id');
+	// 	return $this->delete_company();
+	// }
 }
 ?>

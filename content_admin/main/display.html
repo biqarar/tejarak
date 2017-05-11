@@ -1,5 +1,15 @@
 {%extends display.back%}
 
-{%block content%}
-admin
+
+
+{%block sidenav%}
+
+<li>
+	<a href="{{url.base}}/admin/company/add"><i class="icon-"></i>{%trans "Add company"%}</a>
+</li>
+<li>
+	<a href="{{url.base}}/admin/company"><i class="icon-"></i>{%trans "List company"%}</a>
+</li>
+
+
 {%endblock%}

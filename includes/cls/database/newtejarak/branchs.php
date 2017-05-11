@@ -5,6 +5,7 @@ class branchs
 	public $id            = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'id'              ,'type'=>'int@10'];
 	public $company_id    = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'company'         ,'type'=>'int@10'                          ,'foreign'=>'companys@id!id'];
 	public $title         = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'title'           ,'type'=>'varchar@500'];
+	public $brand         = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'brand'           ,'type'=>'varchar@100'];
 	public $site          = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'site'            ,'type'=>'varchar@1000'];
 	public $boss          = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'boss'            ,'type'=>'int@10'];
 	public $creator       = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'creator'         ,'type'=>'int@10'];
@@ -39,6 +40,11 @@ class branchs
 	public function title()
 	{
 		$this->form('#title')->type('textarea')->name('title')->maxlength('500')->required();
+	}
+	//--------------------------------------------------------------------------------id
+	public function brand()
+	{
+		$this->form()->type('text')->name('brand')->maxlength('100');
 	}
 	//--------------------------------------------------------------------------------id
 	public function site()

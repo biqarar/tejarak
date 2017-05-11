@@ -1,31 +1,44 @@
-{%extends display.mvc%}
+{%extends display.tejarak%}
 {%block content%}
 {%if edit_mode%}
 	<h1>{%trans "Add Company"%} {{company.title}}</h1>
 {%else%}
 	<h1>{%trans "Add Company"%}</h1>
 {%endif%}
-<form method="post" class="df">
+<form method="post" class="df" enctype="multipart/form-data">
 	<div class="f">
-		<label class="c">{%trans "Title"%}</label>
-		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{company.title}}">
+		<label class="c1" for="title">{%trans "Title"%}</label>
+		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{company.title}}" class="c3" required>
 	</div>
 
 	<div class="f">
-		<label class="c">{%trans "Site"%}</label>
-		<input type="text" name="site" placeholder='{%trans "Site"%}' value="{{company.site}}">
+		<label class="c1" for="site">{%trans "Site"%}</label>
+		<input type="text" name="site" placeholder='{%trans "Site"%}' value="{{company.site}}" class="c3">
 	</div>
 
 	<div class="f">
-		<label class="c">{%trans "Brand"%}</label>
-		<input type="text" name="brand" placeholder='{%trans "Brand"%}' value="{{company.brand}}">
+		<label class="c1" for="brand">{%trans "Brand"%}</label>
+		<input type="text" name="brand" placeholder='{%trans "Brand"%}' value="{{company.brand}}" class="c3" required>
 	</div>
 	<div class="f">
-		<label class="c"></label>
+		<label class="c1" for="register_code">{%trans "Register code"%}</label>
+		<input type="text" name="register_code" placeholder='{%trans "Register code"%}' value="{{company.register_code}}" class="c3">
+	</div>
+	<div class="f">
+		<label class="c1" for="economical_code">{%trans "Economical code"%}</label>
+		<input type="text" name="economical_code" placeholder='{%trans "Economical code"%}' value="{{company.economical_code}}" class="c3">
+	</div>
+	<div class="f">
+		<label class="c1" for="logo">{%trans "Logo"%}</label>
+		<input type="file" name="logo" class="c3">
+	</div>
+
+	<div class="f">
+		<label class="c1"></label>
 		{%if edit_mode%}
-			<input type="submit" value='{%trans "Edit"%}' class="c">
+			<input type="submit" value='{%trans "Edit"%}' class="c3">
 		{%else%}
-			<input type="submit" value='{%trans "Add"%}' class="c">
+			<input type="submit" value='{%trans "Add"%}' class="c3">
 		{%endif%}
 	</div>
 </form>

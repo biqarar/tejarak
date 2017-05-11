@@ -9,7 +9,8 @@ class users
 	public $user_displayname = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'displayname'     ,'type'=>'varchar@100'];
 	public $user_meta        = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'meta'            ,'type'=>'mediumtext@'];
 	public $user_status      = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'status'          ,'type'=>'enum@active,awaiting,deactive,removed,filter!awaiting'];
-	public $user_permission  = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'permission'      ,'type'=>'smallint@5'];
+	public $user_parent      = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'parent'          ,'type'=>'int@10'                          ,'foreign'=>'users@id!user_title'];
+	public $user_permission  = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'permission'      ,'type'=>'varchar@1000'];
 	public $user_createdate  = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'createdate'      ,'type'=>'datetime@'];
 	public $date_modified    = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
 	public $user_username    = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'username'        ,'type'=>'varchar@100'];
@@ -48,9 +49,15 @@ class users
 		$this->setChild();
 	}
 
+	public function user_parent()
+	{
+		$this->form()->type('select')->name('parent');
+		$this->setChild();
+	}
+
 	public function user_permission()
 	{
-		$this->form()->type('number')->name('permission')->min()->max('99999');
+		$this->form()->type('textarea')->name('permission')->maxlength('1000');
 	}
 
 	public function user_createdate(){}

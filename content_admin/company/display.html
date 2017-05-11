@@ -1,19 +1,27 @@
-{%extends display.mvc%}
+{%extends display.tejarak%}
 {%block content%}
-<h1>{%trans "Company List"%}</h1>
-<div class="f">
-		<span class="c2">{%trans "id"%}</span>
+<h1>{%trans "Your Company List"%}</h1>
+<div class="f" >
+		<span class="c1">{%trans "id"%}</span>
 		<span class="c2">{%trans "Title"%}</span>
 		<span class="c2">{%trans "Site"%}</span>
+		<span class="c1">{%trans "Status"%}</span>
+		<span class="c1">{%trans "Register code"%}</span>
+		<span class="c1">{%trans "Economical code"%}</span>
+		<span class="c2">{%trans "Open Comapny"%}</span>
 		{%if delete_mode%}
 		<span class="c2">{%trans "Delete"%}</span>
 		{%endif%}
 	</div>
-{%for key, value in company_list%}
+	<br>
+	{%for key, value in company_list%}
 	<div class="f">
-		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}/edit">{{value.id}}</a></span>
+		<span class="c1"><a href="{{url.base}}/admin/{{value.brand}}/edit">{{value.id}}</a></span>
 		<span class="c2">{{value.title}}</span>
 		<span class="c2"><a href="{{value.site}}">{{value.site}}</a></span>
+		<span class="c1">{%set myStatus = value.status%}{%trans myStatus%}</span>
+		<span class="c1">{{value.register_code|fitNumber}}</span>
+		<span class="c1">{{value.economical_code|fitNumber}}</span>
 		<span class="c2"><a href="{{url.base}}/admin/{{value.brand}}">{{value.brand}}</a></span>
 		{%if delete_mode%}
 		<span class="c2">
@@ -21,17 +29,10 @@
 		</span>
 		{%endif%}
 	</div>
-{%endfor%}
+	{%endfor%}
 
- <div class="pagination-container">
+<div class="pagination-container">
  {%include display.pagination%}
- </div>
-<div class="f">
-	<div>
-		<a href="{{url.base}}/admin/company/add">{%trans "Add company"%}</a>
-	</div>
-	<div>
-		<a href="{{url.base}}/admin">{%trans "Admin"%}</a>
-	</div>
 </div>
+
 {%endblock%}
