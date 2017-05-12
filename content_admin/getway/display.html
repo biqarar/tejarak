@@ -1,30 +1,34 @@
-{%extends display.mvc%}
+{%extends display.tejarak%}
+
+
+{%block sidenav%}
+<li>
+	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway/add">{%trans "Add getway"%}</a>
+</li>
+{%endblock%}
+
+
 {%block content%}
 
-<h2>{%trans "staff"%}</h2>
-
-{%for key, value in staff_list%}
+<h2>{%trans "Getway list"%} {{comany.title}}@{{branch.title}}</h2>
 	<div class="f">
-		<span class="c2"><a href="{{url.base}}/admin/{{company}}/{{value.brand}}/edit">{{value.id}}</a></span>
-		<span class="c2">{{value.displayname}}</span>
-		<span class="c2">{{value.mobile}}</span>
-		<span class="c2">{{value.email}}</span>
-		<span class="c2"><a href="{{url.base}}/admin/{{company}}/{{value.brand}}">{{value.brand}}</a></span>
+		<span class="c">{%trans "Title"%}</span>
+		<span class="c">{%trans "Cat"%}</span>
+		<span class="c">{%trans "Code"%}</span>
+		<span class="c">{%trans "IP"%}</span>
+		<span class="c">{%trans "Status"%}</span>
+	</div>
+{%for key, value in getway_list%}
+	<div class="f">
+		<span class="c"><a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway/{{value.id}}/edit">{%trans "Edit"%}</a></span>
+		<span class="c">{{value.title}}</span>
+		<span class="c">{{value.cat}}</span>
+		<span class="c">{{value.code}}</span>
+		<span class="c">{{value.ip}}</span>
+		<span class="c">{%set myStatus = value.status %}{%trans myStatus%}</span>
 	</div>
 {%endfor%}
  <div class="pagination-container">
  {%include display.pagination%}
  </div>
- <div class="f">
- 	<div>
-		<a href="{{url.base}}/admin/{{company}}/staff/add">{%trans "Add staff"%}</a>
- 	</div>
-	<div>
-		<a href="{{url.base}}/admin/company">{%trans "List company"%}</a>
-	</div>
-	<div>
-		<a href="{{url.base}}/admin">{%trans "Admin"%}</a>
-	</div>
-</div>
-
 {%endblock%}

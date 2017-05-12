@@ -6,7 +6,6 @@ use \lib\db\logs;
 trait add
 {
 
-
 	/**
 	 * Adds a getway.
 	 *
@@ -46,34 +45,72 @@ trait add
 			return false;
 		}
 
-
 		$company = utility::request('company');
-		if(!$company)
-		{
-			logs::set('api:getway:company:notfound', null, $log_meta);
-			debug::error(T_("Company not found"), 'user', 'permission');
-			return false;
-		}
 
-		$company_id = \lib\db\companies::get_brand($company);
-		if(isset($company_id['id']))
+		$load_company = $this->get_company();
+
+		if(isset($load_company['id']))
 		{
-			$company_id = $company_id['id'];
+			$company_id = $load_company['id'];
 		}
 		else
 		{
-			logs::set('api:getway:company:notfound:invalid', null, $log_meta);
-			debug::error(T_("Company not found"), 'user', 'permission');
+			logs::set('api:getway:access:to:load:company', $this->user_id, $log_meta);
+			debug::error(T_("Comapany not found"), 'company', 'permission');
+			return false;
+		}
+
+		$load_branch = $this->get_branch();
+
+		if(isset($load_branch['id']))
+		{
+			$branch_id = $load_branch['id'];
+		}
+		else
+		{
+			logs::set('api:getway:access:to:load:branch', $this->user_id, $log_meta);
+			debug::error(T_("Branch not found"), 'company', 'permission');
 			return false;
 		}
 
 		$title = utility::request('title');
+		if(!$title)
+		{
+			logs::set('api:getway:title:is:null', $this->user_id, $log_meta);
+			debug::error(T_("Title Can not be null"), 'title', 'arguments');
+			return false;
+		}
+
 		if(mb_strlen($title) > 255)
 		{
 			logs::set('api:getway:title:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Title must be less than 255 character"), 'title', 'arguments');
 			return false;
 		}
+
+		$search =
+		[
+			'company_id' => $company_id,
+			'title'      => $title,
+			'branch_id'  => $branch_id,
+		];
+
+		$check = \lib\db\getwaies::search(null, $search);
+
+		if($check)
+		{
+			if($_args['method'] === 'post')
+			{
+				logs::set('api:getway:title:duplicate', $this->user_id, $log_meta);
+				debug::error(T_("Duplicate title of getway"), 'title', 'arguments');
+				return false;
+			}
+			else
+			{
+
+			}
+		}
+
 		$cat = utility::request('cat');
 		if(mb_strlen($cat) > 255)
 		{
@@ -82,14 +119,14 @@ trait add
 			return false;
 		}
 		$code = utility::request('code');
-		if(!is_numeric($code))
+		if($code && !is_numeric($code))
 		{
 			logs::set('api:getway:code:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Code must be number"), 'code', 'arguments');
 			return false;
 		}
 		$ip = utility::request('ip');
-		if(!is_numeric($ip))
+		if($ip && !is_numeric($ip))
 		{
 			logs::set('api:getway:ip:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid ip"), 'ip', 'arguments');
@@ -103,17 +140,18 @@ trait add
 			return false;
 		}
 
-		$desc = utility::request('desc');
+		$desc               = utility::request('desc');
+
 		$args               = [];
-		$args['title']  = $title;
-		$args['cat']    = $cat;
-		$args['code']   = $code;
-		$args['ip']     = $ip;
-		$args['status'] = $status;
-		$args['desc']   = $desc;
+		$args['title']      = $title;
+		$args['cat']        = $cat;
+		$args['code']       = $code;
+		$args['ip']         = $ip;
+		$args['status']     = $status;
+		$args['desc']       = $desc;
 		$args['company_id'] = $company_id;
 		$args['user_id']    = $this->user_id;
-
+		$args['branch_id']  = $branch_id;
 
 		if($_args['method'] === 'post')
 		{
@@ -137,34 +175,17 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("getway added"));
+				debug::true(T_("Getway successfuly added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("getway update"));
+				debug::true(T_("Getway updated"));
 			}
 			else
 			{
-				debug::true(T_("getway removed"));
+				debug::true(T_("Getway removed"));
 			}
 		}
-		else
-		{
-
-			if($_args['method'] === 'post')
-			{
-				debug::error(T_("Error in adding getway"));
-			}
-			elseif($_args['method'] === 'patch')
-			{
-				debug::error(T_("Error in updating getway"));
-			}
-			else
-			{
-				debug::error(T_("Error in removing getway"));
-			}
-		}
-
 	}
 }
 ?>

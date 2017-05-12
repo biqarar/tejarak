@@ -1,7 +1,24 @@
-{%extends display.mvc%}
+{%extends display.tejarak%}
 {%block content%}
 
 <h2>{%trans "Branch Dashboard"%} {{branch.title}}</h2>
-<a href="{{url.full}}/add">{%trans "Add branch"%}</a>
 
 {%endblock%}
+
+
+
+{%block sidenav%}
+<li>
+	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/edit"><i class="icon-"></i>{%trans "Edit"%} {{branch.title}}</a>
+</li>
+<li>
+	<a href="{{url.base}}/admin/{{company.brand}}/branch/add"><i class="icon-"></i>{%trans "Add branch"%}</a>
+</li>
+<li>
+	<a href="{{url.base}}/admin/{{company.brand}}/branch"><i class="icon-"></i>{%trans "List branch"%}</a>
+</li>
+<li>
+	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway/add"><i class="icon-"></i>{%trans "Getway add"%}</a>
+</li>
+{%endblock%}
+

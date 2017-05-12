@@ -34,6 +34,7 @@ class view extends \content_admin\main\view
 	 */
 	public function view_editbranch($_args)
 	{
+		$this->data->company = $this->model()->get_addbranch($_args);
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
 		$this->data->branch = $result;
@@ -47,6 +48,7 @@ class view extends \content_admin\main\view
 	 */
 	public function view_edit($_args)
 	{
+		$this->data->company = $this->model()->get_addbranch($_args);
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
 		$this->data->company = $result;
@@ -58,6 +60,7 @@ class view extends \content_admin\main\view
 	 */
 	public function view_branchdashboard($_args)
 	{
+		$this->data->company = $this->model()->get_addbranch($_args);
 		$this->data->branch = $_args->api_callback;
 	}
 }

@@ -55,7 +55,7 @@ trait add
 		}
 
 		$company_id = \lib\db\companies::get_brand($company);
-		// var_dump($company);exit();
+
 		if(isset($company_id['id']))
 		{
 			$company_id = $company_id['id'];

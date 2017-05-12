@@ -29,7 +29,13 @@ class controller extends \content_admin\main\controller
 		$this->get('editbranch', 'editbranch')->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/edit$/");
 		$this->post('editbranch')			  ->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/edit$/");
 
-		// $this->get('branchdashboard', 'branchdashboard')->ALL("/^([A-Za-z0-9]{5,})\/([^branch][A-Za-z0-9]{5,})$/");
+		$this->get('branchdashboard', 'branchdashboard')->ALL("/^([A-Za-z0-9]{5,})\/([^branch][A-Za-z0-9]{5,})$/");
+
+		if(preg_match("/^([A-Za-z0-9]{5,})\/([^branch][A-Za-z0-9]{5,})$/", $url))
+		{
+			$this->display_name = 'content_admin\branch\dashboard.html';
+		}
+
 		// $this->post('branchdashboard')			        ->ALL("/^([A-Za-z0-9]{5,})\/([^branch][A-Za-z0-9]{5,})$/");
 
 		// if(preg_match("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})$/", $url, $split))

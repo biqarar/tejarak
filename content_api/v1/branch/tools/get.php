@@ -32,6 +32,7 @@ trait get
 			switch ($key)
 			{
 				case 'company_id':
+				case 'id':
 				case 'code':
 					$result[$key] = (int) $value;
 					break;
