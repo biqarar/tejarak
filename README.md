@@ -36,7 +36,7 @@ Author
 License
 -------
 Licence! What does it mean?
-abcde
+
 
 
 [Ermile]: <http://ermile.com>
