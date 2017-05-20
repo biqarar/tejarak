@@ -52,10 +52,10 @@ class model extends \content_admin\main\model
 	 */
 	public function get_listgetway($_args)
 	{
-		utility::set_request_array(['company' => $company, 'branch' => $branch]);
 		$this->user_id = $this->login('id');
 		$company       = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$branch        = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		utility::set_request_array(['company' => $company, 'branch' => $branch]);
 		$result        =  $this->get_list_getway();
 		return $result;
 	}

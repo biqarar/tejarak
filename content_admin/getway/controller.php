@@ -12,10 +12,11 @@ class controller extends \content_admin\main\controller
 
 		$url = \lib\router::get_url();
 
-		$this->get('listgetway', 'listgetway')					->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway$/");
+		$this->get('listgetway', 'listgetway')	->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway$/");
 
-		$this->get('addgetway', 'addgetway')					->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway\/add$/");
-		$this->post('addgetway')			  					->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway\/add$/");
+		$this->get('addgetway', 'addgetway')	->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway\/add$/");
+
+		$this->post('addgetway')			  	->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway\/add$/");
 
 		if(preg_match("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway\/add$/", $url))
 		{
@@ -25,6 +26,7 @@ class controller extends \content_admin\main\controller
 		// $this->get('getwaydashboard', 'getwaydashboard')		->ALL("/^([A-Za-z0-9]{5,})\/([^getway][A-Za-z0-9]{5,})$/");
 
 		// $this->get('editgetway_company', 'editgetway_company')	->ALL("/^([A-Za-z0-9]{5,})\/getway\/(\d+)\/edit$/");
+
 		// $this->post('editgetway_company')			  			->ALL("/^([A-Za-z0-9]{5,})\/getway\/(\d+)\/edit$/");
 
 		// $this->post('getwaydashboard')			        		->ALL("/^([A-Za-z0-9]{5,})\/([^getway][A-Za-z0-9]{5,})$/");
@@ -33,7 +35,6 @@ class controller extends \content_admin\main\controller
 		// {
 		// 	if(isset($split[2]) && $split[2] === 'getway')
 		// 	{
-
 		// 	}
 		// 	else
 		// 	{

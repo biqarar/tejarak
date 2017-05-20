@@ -62,11 +62,11 @@ self::$social['list']['aparat']               = 'tejarak';
 * t.me
 */
 self::$social['telegram']['status']           = true;
-self::$social['telegram']['name']             = 'tejarak';
-self::$social['telegram']['key']              = '142711391:AAFH0ULw7BzwdmmiZHv2thKQj7ibb49DJ44';
-self::$social['telegram']['bot']              = 'tejarakbot';
-self::$social['telegram']['hookFolder']       = '$*ermile*$';
-self::$social['telegram']['hook']             = 'https://tejarak.com/saloos_tg/tejarakbot/$*ermile*$';
+self::$social['telegram']['name']             = null;
+self::$social['telegram']['key']              = null;
+self::$social['telegram']['bot']              = null;
+self::$social['telegram']['hookFolder']       = null;
+self::$social['telegram']['hook']             = null;
 self::$social['telegram']['debug']            = true;
 self::$social['telegram']['channel']          = null;
 self::$social['telegram']['botan']            = null;

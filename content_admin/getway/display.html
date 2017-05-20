@@ -5,12 +5,15 @@
 <li>
 	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway/add">{%trans "Add getway"%}</a>
 </li>
+<li>
+	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}">{%trans "Branch list"%}</a>
+</li>
 {%endblock%}
 
 
 {%block content%}
 
-<h2>{%trans "Getway list"%} {{comany.title}}@{{branch.title}}</h2>
+<h2>{%trans "Getway list"%} {{company.title}}@{{branch.title}}</h2>
 	<div class="f">
 		<span class="c">{%trans "Title"%}</span>
 		<span class="c">{%trans "Cat"%}</span>

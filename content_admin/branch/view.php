@@ -11,6 +11,11 @@ class view extends \content_admin\main\view
 	 */
 	public function view_listbranch($_args)
 	{
+		if(isset($_args->api_callback['company']))
+		{
+			$this->data->company = $_args->api_callback['company'];
+		}
+
 		$result = $_args->api_callback;
 		$this->data->result = $result;
 	}
