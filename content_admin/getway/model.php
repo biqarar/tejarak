@@ -4,12 +4,6 @@ use \lib\utility;
 
 class model extends \content_admin\main\model
 {
-	use \content_api\v1\branch\tools\get;
-	use \content_api\v1\branch\tools\add;
-	use \content_api\v1\company\tools\get;
-	use \content_api\v1\company\tools\add;
-	use \content_api\v1\getway\tools\get;
-	use \content_api\v1\getway\tools\add;
 
 
 	/**

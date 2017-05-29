@@ -9,8 +9,11 @@
 
 
 {%block content%}
-
-<h1>{%trans "Add Staff"%} {{company.title}}</h1>
+{%if edit_mode%}
+	<h1>{%trans "Edit Staff"%} {{staff.mobile}}@{{company.title}}</h1>
+{%else%}
+	<h1>{%trans "Add Staff"%} {{company.title}}</h1>
+{%endif%}
 
 <form method="post" class="df">
 	<div class="f">
