@@ -1,11 +1,12 @@
 <?php
 namespace content_admin\staff;
 use \lib\utility;
+use \lib\debug;
 
 class model extends \content_admin\main\model
 {
-	use \content_api\v1\company\tools\get;
 
+	use \content_api\v1\company\tools\get;
 	use \content_api\v1\staff\tools\get;
 	use \content_api\v1\staff\tools\add;
 

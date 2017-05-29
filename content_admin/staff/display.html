@@ -1,30 +1,40 @@
-{%extends display.tejarak%}
+{%extends display.back%}
+
+
+{%block sidenav%}
+
+<li>
+	<a href="{{url.base}}/admin/{{company}}/staff/add">{%trans "Add staff"%}</a>
+</li>
+<li>
+	<a href="{{url.base}}/admin/company">{%trans "List company"%}</a>
+</li>
+
+{%endblock%}
+
 {%block content%}
 
-<h2>{%trans "staff"%}</h2>
+<h2>{%trans "Staff List"%}</h2>
+<div class="dt">
+	<div class="f th">
+		<span class="c2">{%trans "ID"%}</span>
+		<span class="c2">{%trans "Name"%}</span>
+		<span class="c2">{%trans "Mobile"%}</span>
+		<span class="c2">{%trans "Email"%}</span>
+	</div>
 
-{%for key, value in staff_list%}
-	<div class="f">
-		<span class="c2"><a href="{{url.base}}/admin/{{company}}/{{value.brand}}/edit">{{value.id}}</a></span>
-		<span class="c2">{{value.displayname}}</span>
-		<span class="c2">{{value.mobile}}</span>
-		<span class="c2">{{value.email}}</span>
-		<span class="c2"><a href="{{url.base}}/admin/{{company}}/{{value.brand}}">{{value.brand}}</a></span>
-	</div>
-{%endfor%}
- <div class="pagination-container">
- {%include display.pagination%}
- </div>
- <div class="f">
- 	<div>
-		<a href="{{url.base}}/admin/{{company}}/staff/add">{%trans "Add staff"%}</a>
- 	</div>
-	<div>
-		<a href="{{url.base}}/admin/company">{%trans "List company"%}</a>
-	</div>
-	<div>
-		<a href="{{url.base}}/admin">{%trans "Admin"%}</a>
-	</div>
+	{%for key, value in staff_list%}
+		<div class="f">
+			<span class="c2"><a href="{{url.base}}/admin/{{company}}/{{value.brand}}/edit">{{value.id}}</a></span>
+			<span class="c2">{{value.displayname}}</span>
+			<span class="c2">{{value.mobile}}</span>
+			<span class="c2">{{value.email}}</span>
+		</div>
+	{%endfor%}
+
+</div>
+<div class="pagination-container">
+{%include display.pagination%}
 </div>
 
 {%endblock%}

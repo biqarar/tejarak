@@ -3,6 +3,7 @@ namespace content_api\v1\staff\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
+
 trait add
 {
 
@@ -30,6 +31,7 @@ trait add
 		$_args = array_merge($default_args, $_args);
 
 		debug::title(T_("Operation Faild"));
+
 		$log_meta =
 		[
 			'data' => null,
@@ -93,6 +95,9 @@ trait add
 		}
 
 		$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+
+		$user_id = null;
+
 		if(isset($check_user_exist['id']))
 		{
 			$user_id = $check_user_exist['id'];
@@ -103,10 +108,17 @@ trait add
 			[
 				'mobile'      => $mobile,
 				'password'    => \lib\utility::hasher($mobile),
-				'displayname' => $name . ' '. $family,
+				'displayname' => $name. ' '. $family,
 			];
 
 			$user_id = \lib\db\users::signup($signup);
+		}
+
+		if(!$user_id)
+		{
+			logs::set('api:staff:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			debug::error(T_("User id not found"), 'user', 'system');
+			return false;
 		}
 
 		$postion     = utility::request('postion');
@@ -119,7 +131,7 @@ trait add
 		}
 
 		$code        = utility::request('code');
-		if(mb_strlen($code) > 9 || !ctype_digit($code))
+		if($code && (mb_strlen($code) > 9 || !ctype_digit($code)))
 		{
 			logs::set('api:staff:code:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the code less than 9 character and must ba integer"), 'code', 'arguments');
@@ -127,6 +139,7 @@ trait add
 		}
 
 		// $telegram_id = utility::request('telegram_id');
+
 		$full_time   = utility::request('full_time');
 		if($full_time)
 		{
@@ -205,31 +218,15 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("staff added"));
+				debug::true(T_("Staff successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("staff update"));
+				debug::true(T_("Staff successfully updated"));
 			}
 			else
 			{
-				debug::true(T_("staff removed"));
-			}
-		}
-		else
-		{
-
-			if($_args['method'] === 'post')
-			{
-				debug::error(T_("Error in adding staff"));
-			}
-			elseif($_args['method'] === 'patch')
-			{
-				debug::error(T_("Error in updating staff"));
-			}
-			else
-			{
-				debug::error(T_("Error in removing staff"));
+				debug::true(T_("Staff successfully removed"));
 			}
 		}
 
