@@ -12,6 +12,7 @@ class controller extends \content_admin\main\controller
 		parent::_route();
 
 		$url = \lib\router::get_url();
+
 		$this->get('addbranch', 'addbranch')->ALL("/^([A-Za-z0-9]{5,})\/branch\/add$/");
 
 		$this->post('addbranch')			->ALL("/^([A-Za-z0-9]{5,})\/branch\/add$/");
@@ -40,6 +41,13 @@ class controller extends \content_admin\main\controller
 			}
 			else
 			{
+				if(isset($split[2]))
+				{
+					if(!$this->check_branch_exist($split[1], $split[2]))
+					{
+						$this->route_check_true = false;
+					}
+				}
 				$this->display_name = 'content_admin\branch\dashboard.html';
 			}
 		}
@@ -59,6 +67,25 @@ class controller extends \content_admin\main\controller
 		// }
 
 		// $this->get('listbranch', 'listbranch')->ALL("/^([A-Za-z0-9]{5,})$/");
+	}
+
+
+	/**
+	 * check the branch exist and is my branch
+	 *
+	 * @param      <type>   $_company  The company
+	 * @param      <type>   $_branch   The branch
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	private function check_branch_exist($_company, $_branch)
+	{
+		$get = \lib\db\branchs::get_by_brand($_company, $_branch);
+		if(isset($get['boss']) && intval($this->login('id')) === intval($get['boss']))
+		{
+			return true;
+		}
+		return false;
 	}
 }
 ?>
