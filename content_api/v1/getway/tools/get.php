@@ -42,7 +42,7 @@ trait get
 		{
 			$where               = [];
 			$where['company_id'] = $company_id['id'];
-			$result               = \lib\db\usercompanies::get($where);
+			$result               = \lib\db\getwaies::search(null, $where);
 			return $result;
 		}
 	}
@@ -93,6 +93,118 @@ trait get
 
 		// $result = \lib\db\getways::get_by_brand($company, $getway);
 		// return $result;
+	}
+
+
+
+
+	/**
+	 * ready data of staff to load in api result
+	 *
+	 * @param      <type>  $_data     The data
+	 * @param      array   $_options  The options
+	 *
+	 * @return     array   ( description_of_the_return_value )
+	 */
+	public function ready_getway($_data, $_options = [])
+	{
+		$default_options =
+		[
+
+		];
+
+		if(!is_array($_options))
+		{
+			$_options = [];
+		}
+
+		$_options = array_merge($default_options, $_options);
+
+		$result = [];
+
+		foreach ($_data as $key => $value)
+		{
+			switch ($key)
+			{
+
+				case 'id':
+
+					$result[$key] = (int) $value;
+					// if(isset($_data['code']) && $_data['code'])
+					// {
+					// 	continue;
+					// }
+					// else
+					// {
+					// 	$result['code'] = \lib\utility\shortURL::encode($value);
+					// }
+					break;
+
+				case 'code':
+					if($value)
+					{
+						$result[$key] = (int) $value;
+					}
+					else
+					{
+						if(isset($_data['id']))
+						{
+							$result[$key] = (int) $_data['id'];
+						}
+					}
+
+					// if($value)
+					// {
+					// 	$result['code'] = (int) $value;
+					// }
+					// else
+					// {
+					// 	continue;
+					// }
+					break;
+
+				case 'company_id':
+				case 'user_id':
+				case 'telegram_id':
+					$result[$key] = (int) $value;
+					break;
+
+				case 'email':
+				case 'displayname':
+				case 'status':
+				case 'postion':
+				case 'desc':
+				case 'mobile':
+					$result[$key] = (string) $value;
+					break;
+
+				case 'date_enter':
+				case 'date_exit':
+					$result[$key] = strtotime($value);
+					break;
+
+				case 'remote':
+				case 'is_default':
+				case 'full_time':
+					if($value)
+					{
+						$result[$key] = true;
+					}
+					else
+					{
+						$result[$key] = false;
+					}
+					break;
+
+				case 'createdate':
+				case 'date_modified':
+				case 'meta':
+				default:
+					continue;
+					break;
+			}
+		}
+		return $result;
 	}
 
 }

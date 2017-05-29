@@ -12,7 +12,18 @@ class controller extends \content_admin\main\controller
 
 		$url = \lib\router::get_url();
 
-		$this->get('listgetway', 'listgetway')	->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway$/");
+		$this->get('listgetway', 'listgetway')->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway$/");
+
+		// $this->get('listgetway', 'listgetway')->ALL(
+		// [
+		// 	// 'url'      => "/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway$/",
+		// 	'url'      => "/.*/",
+		// 	'property' =>
+		// 	[
+		// 		'search' => ["/^.*$/", true, 'search'],
+		// 		'page'   => ["/^.*$/", true, 'page'],
+		// 	],
+		// ]);
 
 		$this->get('addgetway', 'addgetway')	->ALL("/^([A-Za-z0-9]{5,})\/([A-Za-z0-9]{5,})\/getway\/add$/");
 

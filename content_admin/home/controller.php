@@ -18,29 +18,38 @@ class controller extends \content_admin\main\controller
 		// https://tejarak.com/fa/admin/company
 		// https://tejarak.com/fa/admin/company/add
 		// https://tejarak.com/fa/admin/company/delete -- not important but done :|
+
 		// https://tejarak.com/fa/admin/ermile/
 		// https://tejarak.com/fa/admin/ermile/edit
+
 		// https://tejarak.com/fa/admin/ermile/branch/
 		// https://tejarak.com/fa/admin/ermile/branch/add
 		// https://tejarak.com/fa/admin/ermile/branch/delete -- not important
+
 		// https://tejarak.com/fa/admin/ermile/sarshomar/
 		// https://tejarak.com/fa/admin/ermile/sarshomar/edit
+
 		// https://tejarak.com/fa/admin/ermile/staff/
 		// https://tejarak.com/fa/admin/ermile/staff/add
-
 		// https://tejarak.com/fa/admin/ermile/staff/21387/edit -- when have code
 		// https://tejarak.com/fa/admin/ermile/staff/2Kfg/edit -- when have not code
-
 		// https://tejarak.com/fa/admin/ermile/staff/21387 -- when have code
 		// https://tejarak.com/fa/admin/ermile/staff/2Kfg -- when have not code
 
 		// https://tejarak.com/fa/admin/ermile/sarshomar/staff/
-		// https://tejarak.com/fa/admin/ermile/getway/
+
+		// https://tejarak.com/fa/admin/ermile/sarshomar/getway
+		// https://tejarak.com/fa/admin/ermile/sarshomar/getway/add
+		// https://tejarak.com/fa/admin/ermile/sarshomar/getway/1/edit
+		// https://tejarak.com/fa/admin/ermile/sarshomar/getway/1/delete
+
+		// https://tejarak.com/fa/admin/ermile/getway/  -- ???
 		// https://tejarak.com/fa/admin/ermile/getway/add
 		// https://tejarak.com/fa/admin/ermile/getway/delete
 		// https://tejarak.com/fa/admin/ermile/getway/intro/edit
-		//
+
 		// https://tejarak.com/fa/admin/ermile/sarshomar/report/
+
 		// var_dump($url);exit();
 
 		if(isset($url[2]) && $url[2])

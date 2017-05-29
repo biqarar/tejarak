@@ -1,4 +1,4 @@
-{%extends display.tejarak%}
+{%extends display.back%}
 
 
 {%block sidenav%}
@@ -14,7 +14,8 @@
 {%block content%}
 
 <h2>{%trans "Getway list"%} {{company.title}}@{{branch.title}}</h2>
-	<div class="f">
+<div class="dt">
+	<div class="f th">
 		<span class="c">{%trans "Title"%}</span>
 		<span class="c">{%trans "Cat"%}</span>
 		<span class="c">{%trans "Code"%}</span>
@@ -23,14 +24,15 @@
 	</div>
 {%for key, value in getway_list%}
 	<div class="f">
-		<span class="c"><a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway/{{value.id}}/edit">{%trans "Edit"%}</a></span>
-		<span class="c">{{value.title}}</span>
+		<span class="c"><a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway/{{value.id}}/edit">{{value.title}}</a></span>
 		<span class="c">{{value.cat}}</span>
 		<span class="c">{{value.code}}</span>
 		<span class="c">{{value.ip}}</span>
 		<span class="c">{%set myStatus = value.status %}{%trans myStatus%}</span>
 	</div>
 {%endfor%}
+
+</div>
  <div class="pagination-container">
  {%include display.pagination%}
  </div>

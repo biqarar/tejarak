@@ -6,7 +6,7 @@ class getwaies
 {
 
 	/**
-	 * add new election
+	 * add new getway
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
@@ -25,7 +25,7 @@ class getwaies
 
 
 	/**
-	 * get election record
+	 * get getway record
 	 *
 	 * @param      <type>  $_id    The identifier
 	 *
@@ -40,17 +40,21 @@ class getwaies
 			{
 				$limit = " LIMIT 1 ";
 			}
-			$where = \lib\db\config::make_where($_args);
+			$where = \lib\db\config::make_where($_args, ['table_name' => 'getwaies']);
 			$query =
 			"
 				SELECT
 					getwaies.*,
+					companies.*,
+					branchs.*,
 					users.user_mobile AS `mobile`,
 					users.user_displayname AS `displayname`,
 					users.user_email AS `email`
 				FROM
 					getwaies
 				INNER JOIN users ON users.id = getwaies.user_id
+				INNER JOIN companies ON companies.id = getwaies.company_id
+				INNER JOIN branchs ON branchs.id = getwaies.branch_id
 				WHERE
 					$where
 				$limit
@@ -64,7 +68,7 @@ class getwaies
 
 
 	/**
-	 * get election record
+	 * get getway record
 	 *
 	 * @param      <type>  $_id    The identifier
 	 *
@@ -124,7 +128,7 @@ class getwaies
 
 
 	/**
-	 * update election
+	 * update getway
 	 *
 	 * @param      <type>  $_args  The arguments
 	 * @param      <type>  $_id    The identifier
@@ -154,7 +158,7 @@ class getwaies
 
 		if(!$_string && empty($_options))
 		{
-			// default return of this function 10 last record of election
+			// default return of this function 10 last record of getway
 			$_options['get_last'] = true;
 		}
 
@@ -167,7 +171,7 @@ class getwaies
 			// for example in get_count mode we needless to limit and pagenation
 			// default limit of record is 15
 			// set the limit = null and pagenation = false to get all record whitout limit
-			"limit"          => 15,
+			"limit"          => 5,
 			// for manual pagenation set the statrt_limit and end limit
 			"start_limit"    => 0,
 			// for manual pagenation set the statrt_limit and end limit
