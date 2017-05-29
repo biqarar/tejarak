@@ -75,7 +75,6 @@ trait get
 		}
 
 		$company = utility::request("company");
-		$getway  = utility::request("getway");
 
 		if(!$company)
 		{
@@ -84,6 +83,7 @@ trait get
 			return false;
 		}
 
+		$getway  = utility::request("getway");
 		if(!$getway)
 		{
 			logs::set('api:getway:getway:notfound', $this->user_id, $log_meta);
@@ -91,8 +91,17 @@ trait get
 			return false;
 		}
 
-		// $result = \lib\db\getways::get_by_brand($company, $getway);
-		// return $result;
+		$id = utility::request('id');
+		if(!$id || !ctype_digit($id))
+		{
+			logs::set('api:getway:id:notfound', $this->user_id, $log_meta);
+			debug::error(T_("Invalid getway id"), 'id', 'permission');
+			return false;
+		}
+
+		$result = \lib\db\getwaies::get(['id' => $id, 'limit' => 1]);
+
+		return $result;
 	}
 
 

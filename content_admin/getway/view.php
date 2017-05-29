@@ -73,16 +73,5 @@ class view extends \content_admin\main\view
 		$this->data->getway = $_args->api_callback;
 	}
 
-
-	/**
-	 * { function_description }
-	*/
-	public function view_editgetway_company($_args)
-	{
-		$this->view_addgetway($_args);
-		$this->data->edit_mode = true;
-		$this->data->getway = $_args->api_callback;
-	}
-
 }
 ?>

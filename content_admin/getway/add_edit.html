@@ -15,8 +15,11 @@
 
 
 {%block content%}
-
-<h1>{%trans "Add Getway"%} {{company.title}}@{{branch.title}}</h1>
+{%if edit_mode%}
+	<h1>{%trans "Edit Getway"%} {{company.title}}@{{branch.title}}</h1>
+{%else%}
+	<h1>{%trans "Add Getway"%} {{company.title}}@{{branch.title}}</h1>
+{%endif%}
 
 <form method="post" class="df">
 	<div class="f">

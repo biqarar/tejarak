@@ -35,31 +35,17 @@ class getwaies
 	{
 		if($_args)
 		{
+			$only_one_value = false;
 			$limit = null;
 			if(isset($_args['limit']) && $_args['limit'] === 1)
 			{
+				$only_one_value = true;
 				$limit = " LIMIT 1 ";
+				unset($_args['limit']);
 			}
 			$where = \lib\db\config::make_where($_args, ['table_name' => 'getwaies']);
-			$query =
-			"
-				SELECT
-					getwaies.*,
-					companies.*,
-					branchs.*,
-					users.user_mobile AS `mobile`,
-					users.user_displayname AS `displayname`,
-					users.user_email AS `email`
-				FROM
-					getwaies
-				INNER JOIN users ON users.id = getwaies.user_id
-				INNER JOIN companies ON companies.id = getwaies.company_id
-				INNER JOIN branchs ON branchs.id = getwaies.branch_id
-				WHERE
-					$where
-				$limit
-			";
-			$result = \lib\db::get($query, null, $limit ? true : false);
+			$query = " SELECT getwaies.* FROM getwaies WHERE $where $limit ";
+			$result = \lib\db::get($query, null, $only_one_value);
 			return $result;
 		}
 		return false;

@@ -62,6 +62,11 @@ trait add
 
 		$load_branch = $this->get_branch();
 
+		if(!debug::$status)
+		{
+			return false;
+		}
+
 		if(isset($load_branch['id']))
 		{
 			$branch_id = $load_branch['id'];
@@ -152,7 +157,6 @@ trait add
 		$args['company_id'] = $company_id;
 		$args['user_id']    = $this->user_id;
 		$args['branch_id']  = $branch_id;
-
 		if($_args['method'] === 'post')
 		{
 			\lib\db\getwaies::insert($args);

@@ -94,6 +94,7 @@ class model extends \content_admin\main\model
 		$this->user_id      = $this->login('id');
 		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['getway']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request['id']      = isset($_args->match->url[0][3]) ? $_args->match->url[0][3] : null;
 		utility::set_request_array($request);
 		return $this->get_getway();
 	}
@@ -142,50 +143,15 @@ class model extends \content_admin\main\model
 	 */
 	public function post_editgetway($_args)
 	{
-		$request          = $this->getPost();
-		$this->user_id    = $this->login('id');
+		$request            = $this->getPost();
+		$this->user_id      = $this->login('id');
 		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['getway']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request['branch']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request['id']      = isset($_args->match->url[0][3]) ? $_args->match->url[0][3] : null;
 
 		utility::set_request_array($request);
 		$this->add_getway(['method' => 'patch']);
 	}
 
-
-	/**
-	 * Gets the editgetway company.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_editgetway_company($_args)
-	{
-		$usercompany_id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-		utility::set_request_array(['id' => $usercompany_id]);
-		$this->user_id = $this->login('id');
-		$result = $this->usercompany_get_details();
-		// var_dump($result);
-		return $result;
-
-	}
-
-
-	/**
-	 * Gets the editgetway company.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function post_editgetway_company($_args)
-	{
-		$this->user_id      = $this->login('id');
-		$usercompany_id     = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-		$request            = $this->getPost();
-		$request['id']      = $usercompany_id;
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		utility::set_request_array($request);
-		$result = $this->add_getway(['method' => 'patch']);
-		// var_dump($result);
-		return $result;
-
-	}
 }
 ?>
