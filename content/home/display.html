@@ -1,4 +1,4 @@
-{%extends display.mvc%}
+{%extends display.main%}
 
 
 {%block body%}
@@ -48,52 +48,8 @@
   </p>
  </div>
 </article>
-<footer>
- <div id="footer-above">
-  <div class='chevron'></div>
-  <div class="container row">
-  <div class="span4">
-      <h3>{%trans "About"%} {{site.title | upper }}</h3>
-      <p>{{site.title}} {%trans " is a free to use, open source PHP framework created by"%} <a href="https://ermile.com" target="_blank">{%trans "Ermile"%}</a>.</p>
-  </div>
-  <div class="span4">
-   <h3>{%trans "Another Languages"%}</h3>
-   <p>
-{%for key, lang in site.langlist if site.langlist|length >1 and site.currentlang != key|slice(0, 2)%}
-    <a href="{{url.root}}{%if site.defaultLang != key|slice(0, 2) %}/{{key|slice(0, 2)}}{%endif%}" hreflang="{{key|slice(0, 2)}}" data-action>{{lang}}</a>
-{%endfor%}
-   </p>
-  </div>
-  <div class="span4">
-   <h3>{%trans "Location"%}</h3>
-   <p>{%trans "#614, Omranieh, Moallem St"%}<br>{%trans "Qom, IRAN"%}<br>{%trans "+98 25 3773 5183"%}</p>
-  </div>
-  </div>
- </div>
- <div id="copyright">
- {%trans "Copyright"%} &copy; {%trans "Ermile"%} {%trans "2016"%}
- </div>
-</footer>
+
+{% include template.footer %}
+
 {%endblock%}
 
-
-
-
-
-{%block foot_js%}
-
- <script>
-  $(function() {
-    $('a[href*="#"]:not([href="#"])').click(function() {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html, body').animate({
-            scrollTop: (target.offset().top -400)
-          }, 500);
-          return false;
-        }
-    });
-  });
- </script>
-{%endblock%}
