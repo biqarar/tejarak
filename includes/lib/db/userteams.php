@@ -2,7 +2,7 @@
 namespace lib\db;
 use \lib\db;
 
-class usercompanies
+class userteams
 {
 
 	/**
@@ -17,7 +17,7 @@ class usercompanies
 		$set = \lib\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT IGNORE INTO usercompanies SET $set");
+			\lib\db::query("INSERT IGNORE INTO userteams SET $set");
 			return \lib\db::insert_id();
 		}
 	}
@@ -44,13 +44,13 @@ class usercompanies
 			$query =
 			"
 				SELECT
-					usercompanies.*,
+					userteams.*,
 					users.user_mobile AS `mobile`,
 					users.user_displayname AS `displayname`,
 					users.user_email AS `email`
 				FROM
-					usercompanies
-				INNER JOIN users ON users.id = usercompanies.user_id
+					userteams
+				INNER JOIN users ON users.id = userteams.user_id
 				WHERE
 					$where
 				$limit
@@ -70,23 +70,23 @@ class usercompanies
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function get_by_id($_usercompanies_id, $_boss)
+	public static function get_by_id($_userteams_id, $_boss)
 	{
-		if($_usercompanies_id && $_boss)
+		if($_userteams_id && $_boss)
 		{
 			$query =
 			"
 				SELECT
-					usercompanies.*,
+					userteams.*,
 					users.user_mobile AS `mobile`,
 					users.user_displayname AS `displayname`,
 					users.user_email AS `email`
 				FROM
-					usercompanies
-				INNER JOIN users ON users.id = usercompanies.user_id
-				INNER JOIN companies ON companies.id = usercompanies.company_id
+					userteams
+				INNER JOIN users ON users.id = userteams.user_id
+				INNER JOIN teams ON teams.id = userteams.team_id
 				WHERE
-					usercompanies.id = $_usercompanies_id AND companies.boss = $_boss
+					userteams.id = $_userteams_id AND teams.boss = $_boss
 				LIMIT 1
 			";
 			$result = \lib\db::get($query, null, true);
@@ -106,14 +106,14 @@ class usercompanies
 	 */
 	public static function remove($_args)
 	{
-		if(isset($_args['company_id']) && isset($_args['user_id']) && is_numeric($_args['company_id']) && is_numeric($_args['user_id']))
+		if(isset($_args['team_id']) && isset($_args['user_id']) && is_numeric($_args['team_id']) && is_numeric($_args['user_id']))
 		{
 			$query =
 			"
-				DELETE FROM usercompanies
+				DELETE FROM userteams
 				WHERE
-					usercompanies.company_id = $_args[company_id] AND
-					usercompanies.user_id = $_args[user_id]
+					userteams.team_id = $_args[team_id] AND
+					userteams.user_id = $_args[user_id]
 				LIMIT 1
 			";
 			$result = \lib\db::get($query, null, true);
@@ -137,7 +137,7 @@ class usercompanies
 			return false;
 		}
 
-		$query = "UPDATE usercompanies SET $set WHERE id = $_id LIMIT 1";
+		$query = "UPDATE userteams SET $set WHERE id = $_id LIMIT 1";
 		return \lib\db::query($query);
 	}
 
@@ -196,14 +196,14 @@ class usercompanies
 		if($_options['get_count'] === true)
 		{
 			$get_count      = true;
-			$public_fields  = " COUNT(usercompanies.id) AS 'usercompaniescount' FROM	usercompanies";
+			$public_fields  = " COUNT(userteams.id) AS 'userteamscount' FROM	userteams";
 			$limit          = null;
 			$only_one_value = true;
 		}
 		else
 		{
 			$limit         = null;
-			$public_fields = " * FROM usercompanies";
+			$public_fields = " * FROM userteams";
 
 			if($_options['limit'])
 			{
@@ -234,7 +234,7 @@ class usercompanies
 			}
 			else
 			{
-				$order = " ORDER BY usercompanies.id DESC ";
+				$order = " ORDER BY userteams.id DESC ";
 			}
 		}
 		else
@@ -245,7 +245,7 @@ class usercompanies
 			}
 			else
 			{
-				$order = " ORDER BY usercompanies.id $_options[order] ";
+				$order = " ORDER BY userteams.id $_options[order] ";
 			}
 		}
 
@@ -273,21 +273,21 @@ class usercompanies
 			{
 				if(isset($value[0]) && isset($value[1]) && is_string($value[0]) && is_string($value[1]))
 				{
-					// for similar "usercompanies.`field` LIKE '%valud%'"
-					$where[] = " usercompanies.`$key` $value[0] $value[1] ";
+					// for similar "userteams.`field` LIKE '%valud%'"
+					$where[] = " userteams.`$key` $value[0] $value[1] ";
 				}
 			}
 			elseif($value === null)
 			{
-				$where[] = " usercompanies.`$key` IS NULL ";
+				$where[] = " userteams.`$key` IS NULL ";
 			}
 			elseif(is_numeric($value))
 			{
-				$where[] = " usercompanies.`$key` = $value ";
+				$where[] = " userteams.`$key` = $value ";
 			}
 			elseif(is_string($value))
 			{
-				$where[] = " usercompanies.`$key` = '$value' ";
+				$where[] = " userteams.`$key` = '$value' ";
 			}
 		}
 
@@ -297,7 +297,7 @@ class usercompanies
 		{
 			$_string = trim($_string);
 
-			$search = "(usercompanies.title  LIKE '%$_string%' )";
+			$search = "(userteams.title  LIKE '%$_string%' )";
 			if($where)
 			{
 				$search = " AND ". $search;
@@ -315,7 +315,7 @@ class usercompanies
 
 		if($pagenation && !$get_count)
 		{
-			$pagenation_query = "SELECT	COUNT(usercompanies.id) AS `count`	FROM usercompanies	$where $search ";
+			$pagenation_query = "SELECT	COUNT(userteams.id) AS `count`	FROM userteams	$where $search ";
 			$pagenation_query = \lib\db::get($pagenation_query, 'count', true);
 
 			list($limit_start, $limit) = \lib\db::pagnation((int) $pagenation_query, $limit);
@@ -335,7 +335,7 @@ class usercompanies
 		{
 			$limit = null;
 		}
-		$query = " SELECT $public_fields $where $search $order $limit -- usercompanies::search() 	-- $json";
+		$query = " SELECT $public_fields $where $search $order $limit -- userteams::search() 	-- $json";
 
 		if(!$only_one_value)
 		{
@@ -344,7 +344,7 @@ class usercompanies
 		}
 		else
 		{
-			$result = \lib\db::get($query, 'usercompaniescount', true);
+			$result = \lib\db::get($query, 'userteamscount', true);
 		}
 
 		return $result;

@@ -3,22 +3,22 @@
 
 {%block sidenav%}
 <li>
-	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway/add">{%trans "Add getway"%}</a>
+	<a href="{{url.base}}/admin/{{team.brand}}/{{branch.brand}}/getway/add">{%trans "Add getway"%}</a>
 </li>
 <li>
-	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}/getway">{%trans "Getway list"%}</a>
+	<a href="{{url.base}}/admin/{{team.brand}}/{{branch.brand}}/getway">{%trans "Getway list"%}</a>
 </li>
 <li>
-	<a href="{{url.base}}/admin/{{company.brand}}/{{branch.brand}}">{%trans "Branch list"%}</a>
+	<a href="{{url.base}}/admin/{{team.brand}}/{{branch.brand}}">{%trans "Branch list"%}</a>
 </li>
 {%endblock%}
 
 
 {%block content%}
 {%if edit_mode%}
-	<h1>{%trans "Edit Getway"%} {{company.title}}@{{branch.title}}</h1>
+	<h1>{%trans "Edit Getway"%} {{team.title}}@{{branch.title}}</h1>
 {%else%}
-	<h1>{%trans "Add Getway"%} {{company.title}}@{{branch.title}}</h1>
+	<h1>{%trans "Add Getway"%} {{team.title}}@{{branch.title}}</h1>
 {%endif%}
 
 <form method="post" class="df">

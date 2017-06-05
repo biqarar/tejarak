@@ -41,7 +41,7 @@ class branchs
 				$limit = " LIMIT 1 ";
 			}
 			$where = \lib\db\config::make_where($_args);
-			$query = "SELECT * FROM companies WHERE $where $limit";
+			$query = "SELECT * FROM teams WHERE $where $limit";
 			$result = \lib\db::get($query, null, $limit ? true : false);
 			return $result;
 		}
@@ -52,14 +52,14 @@ class branchs
 	/**
 	 * Gets the by brand.
 	 *
-	 * @param      <type>  $_brand_company  The brand company
+	 * @param      <type>  $_brand_team  The brand team
 	 * @param      <type>  $_brand_branch   The brand branch
 	 *
 	 * @return     <type>  The by brand.
 	 */
-	public static function get_by_brand($_brand_company, $_brand_branch)
+	public static function get_by_brand($_brand_team, $_brand_branch)
 	{
-		if($_brand_branch && $_brand_company)
+		if($_brand_branch && $_brand_team)
 		{
 			$query =
 			"
@@ -67,10 +67,10 @@ class branchs
 				branchs.*
 			FROM
 				branchs
-			INNER JOIN companies ON companies.id = branchs.company_id
+			INNER JOIN teams ON teams.id = branchs.team_id
 			WHERE
 				branchs.brand = '$_brand_branch' AND
-				companies.brand = '$_brand_company'
+				teams.brand = '$_brand_team'
 			LIMIT 1";
 			$result = \lib\db::get($query, null, true);
 			return $result;

@@ -1,14 +1,6 @@
 {%extends display.tejarak%}
-{%block content%}
-
-<h2>{%trans "Branch Dashboard"%} {{branch.title}}</h2>
-
-{%endblock%}
-
-
 
 {%block sidenav%}
-
 <li>
 	<a href="{{url.base}}/admin/{{team.brand}}/branch/add"><i class="icon-"></i>{%trans "Add branch"%}</a>
 </li>
@@ -16,8 +8,13 @@
 	<a href="{{url.base}}/admin/{{team.brand}}/branch"><i class="icon-"></i>{%trans "List branch"%}</a>
 </li>
 <li>
-	<a href="{{url.base}}/admin/{{team.brand}}/{{branch.brand}}/getway"><i class="icon-"></i>{%trans "Getway"%}</a>
+	<a href="{{url.base}}/admin/{{team.brand}}/staff"><i class="icon-"></i>{%trans "List staff"%}</a>
 </li>
-
+<li>
+	<a href="{{url.base}}/admin/{{team.brand}}/staff/add"><i class="icon-"></i>{%trans "Add staff"%}</a>
+</li>
 {%endblock%}
 
+{%block content%}
+<h1>{%trans "Dashboard of team"%} {{team.title}}</h1>
+{%endblock%}

@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\company\tools;
+namespace content_api\v1\team\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -8,13 +8,13 @@ trait delete
 {
 
 	/**
-	 * Gets the company.
+	 * Gets the team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The company.
+	 * @return     <type>  The team.
 	 */
-	public function delete_company($_args = [])
+	public function delete_team($_args = [])
 	{
 		if(!$this->user_id)
 		{
@@ -35,7 +35,7 @@ trait delete
 
 		if(!$brand)
 		{
-			logs::set('api:company:delete:brand:not:set', $this->user_id, $log_meta);
+			logs::set('api:team:delete:brand:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Brand not set"), 'brand', 'arguments');
 			return false;
 		}
@@ -45,19 +45,19 @@ trait delete
 		$where['brand']     = $brand;
 		$where['limit']     = 1;
 
-		$result = \lib\db\companies::get($where);
+		$result = \lib\db\teams::get($where);
 		if(isset($result['id']))
 		{
-			if(\lib\db\companies::update(['status' => 'deleted'], $result['id']))
+			if(\lib\db\teams::update(['status' => 'deleted'], $result['id']))
 			{
-				$log_meta['meta']['company'] = $result;
-				logs::set('api:company:delete:company:complete', $this->user_id, $log_meta);
+				$log_meta['meta']['team'] = $result;
+				logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
 				debug::title(T_("Operation Complete"));
 			}
 		}
 		else
 		{
-			logs::set('api:company:delete:brand:not:found', $this->user_id, $log_meta);
+			logs::set('api:team:delete:brand:not:found', $this->user_id, $log_meta);
 			debug::error(T_("Brand not found"), 'brand', 'arguments');
 			return false;
 		}

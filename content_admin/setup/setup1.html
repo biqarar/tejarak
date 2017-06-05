@@ -3,6 +3,18 @@
 
 
 {%block content%}
-step 1
+<h3>{%trans "Add Team"%}</h3>
+
+<form method="post" class="df" action="admin/team/add">
+	<div class="f">
+		<label class="c1" for="title">{%trans "Title"%}</label>
+		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{team.title}}" class="c3" required id="title">
+	</div>
+
+	<div class="f">
+		<label class="c1"></label>
+		<input type="submit" value='{%trans "Add"%}' class="c3">
+	</div>
+</form>
 
 {%endblock%}

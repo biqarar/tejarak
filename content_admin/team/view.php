@@ -1,5 +1,5 @@
 <?php
-namespace content_admin\company;
+namespace content_admin\team;
 
 class view extends \content_admin\main\view
 {
@@ -12,7 +12,7 @@ class view extends \content_admin\main\view
 	public function view_list($_args)
 	{
 		$result = $_args->api_callback;
-		$this->data->company_list = $result;
+		$this->data->team_list = $result;
 	}
 
 
@@ -25,7 +25,7 @@ class view extends \content_admin\main\view
 	{
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
-		$this->data->company = $result;
+		$this->data->team = $result;
 	}
 
 
@@ -39,7 +39,7 @@ class view extends \content_admin\main\view
 		$this->data->delete_mode = true;
 		$result = $_args->api_callback;
 
-		$this->data->company_list = $result;
+		$this->data->team_list = $result;
 	}
 
 
@@ -51,7 +51,7 @@ class view extends \content_admin\main\view
 	public function view_dashboard($_args)
 	{
 		$result = $_args->api_callback;
-		$this->data->company = $result;
+		$this->data->team = $result;
 	}
 }
 ?>

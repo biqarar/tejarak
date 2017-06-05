@@ -11,9 +11,9 @@ class view extends \content_admin\main\view
 	 */
 	public function view_listbranch($_args)
 	{
-		if(isset($_args->api_callback['company']))
+		if(isset($_args->api_callback['team']))
 		{
-			$this->data->company = $_args->api_callback['company'];
+			$this->data->team = $_args->api_callback['team'];
 		}
 
 		$result = $_args->api_callback;
@@ -28,7 +28,7 @@ class view extends \content_admin\main\view
 	 */
 	public function view_addbranch($_args)
 	{
-		$this->data->company = $_args->api_callback;
+		$this->data->team = $_args->api_callback;
 	}
 
 
@@ -39,7 +39,7 @@ class view extends \content_admin\main\view
 	 */
 	public function view_editbranch($_args)
 	{
-		$this->data->company = $this->model()->getCompany($_args);
+		$this->data->team = $this->model()->getTeam($_args);
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
 		$this->data->branch = $result;
@@ -53,10 +53,10 @@ class view extends \content_admin\main\view
 	 */
 	public function view_edit($_args)
 	{
-		$this->data->company = $this->model()->getCompany($_args);
+		$this->data->team = $this->model()->getTeam($_args);
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
-		$this->data->company = $result;
+		$this->data->team = $result;
 	}
 
 
@@ -65,7 +65,7 @@ class view extends \content_admin\main\view
 	 */
 	public function view_branchdashboard($_args)
 	{
-		$this->data->company = $this->model()->getCompany($_args);
+		$this->data->team = $this->model()->getTeam($_args);
 		$this->data->branch = $_args->api_callback;
 	}
 }

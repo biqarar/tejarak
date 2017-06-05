@@ -1,6 +1,6 @@
 {%extends display.tejarak%}
 {%block content%}
-<h1>{%trans "Your Company List"%}</h1>
+<h1>{%trans "Your Team List"%}</h1>
 <div class="f" >
 		<span class="c1">{%trans "id"%}</span>
 		<span class="c2">{%trans "Title"%}</span>
@@ -14,7 +14,7 @@
 		{%endif%}
 	</div>
 	<br>
-	{%for key, value in company_list%}
+	{%for key, value in team_list%}
 	<div class="f">
 		<span class="c1"><a href="{{url.base}}/admin/{{value.brand}}/edit">{{value.id}}</a></span>
 		<span class="c2">{{value.title}}</span>

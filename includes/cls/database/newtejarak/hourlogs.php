@@ -3,9 +3,9 @@ namespace database\newtejarak;
 class hourlogs
 {
 	public $id             = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'id'              ,'type'=>'int@10'];
-	public $company_id     = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'company'         ,'type'=>'int@10'                          ,'foreign'=>'companys@id!id'];
+	public $team_id     = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'team'         ,'type'=>'int@10'                          ,'foreign'=>'teams@id!id'];
 	public $user_id        = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!user_displayname'];
-	public $usercompany_id = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'usercompany'     ,'type'=>'int@10'                          ,'foreign'=>'usercompanys@id!id'];
+	public $userteam_id = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'userteam'     ,'type'=>'int@10'                          ,'foreign'=>'userteams@id!id'];
 	public $userbranch_id  = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'userbranch'      ,'type'=>'int@10'                          ,'foreign'=>'userbranchs@id!id'];
 	public $date           = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'date'            ,'type'=>'date@'];
 	public $shamsi_date    = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'date'            ,'type'=>'date@'];
@@ -19,9 +19,9 @@ class hourlogs
 	//--------------------------------------------------------------------------------id
 	public function id(){}
 	//--------------------------------------------------------------------------------foreign
-	public function company_id()
+	public function team_id()
 	{
-		$this->form()->type('select')->name('company_')->required();
+		$this->form()->type('select')->name('team_')->required();
 		$this->setChild();
 	}
 	//--------------------------------------------------------------------------------foreign
@@ -31,9 +31,9 @@ class hourlogs
 		$this->setChild();
 	}
 	//--------------------------------------------------------------------------------foreign
-	public function usercompany_id()
+	public function userteam_id()
 	{
-		$this->form()->type('select')->name('usercompany_')->required();
+		$this->form()->type('select')->name('userteam_')->required();
 		$this->setChild();
 	}
 	//--------------------------------------------------------------------------------foreign

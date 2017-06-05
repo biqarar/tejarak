@@ -48,24 +48,24 @@ trait add
 			return false;
 		}
 
-		$company = utility::request('company');
-		if(!$company)
+		$team = utility::request('team');
+		if(!$team)
 		{
-			logs::set('api:staff:company:notfound', null, $log_meta);
-			debug::error(T_("Company not found"), 'user', 'permission');
+			logs::set('api:staff:team:notfound', null, $log_meta);
+			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
 
-		$company_id = \lib\db\companies::get_brand($company);
+		$team_id = \lib\db\teams::get_brand($team);
 
-		if(isset($company_id['id']))
+		if(isset($team_id['id']))
 		{
-			$company_id = $company_id['id'];
+			$team_id = $team_id['id'];
 		}
 		else
 		{
-			logs::set('api:staff:company:notfound:invalid', null, $log_meta);
-			debug::error(T_("Company not found"), 'user', 'permission');
+			logs::set('api:staff:team:notfound:invalid', null, $log_meta);
+			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
 
@@ -186,7 +186,7 @@ trait add
 		}
 
 		$args               = [];
-		$args['company_id'] = $company_id;
+		$args['team_id'] = $team_id;
 		$args['user_id']    = $user_id;
 		$args['postion']    = $postion;
 		$args['code']       = $code;
@@ -198,14 +198,14 @@ trait add
 
 		if($_args['method'] === 'post')
 		{
-			\lib\db\usercompanies::insert($args);
+			\lib\db\userteams::insert($args);
 		}
 		elseif($_args['method'] === 'patch')
 		{
 			$id = utility::request('id');
-			unset($args['company_id']);
+			unset($args['team_id']);
 			unset($args['user_id']);
-			\lib\db\usercompanies::update($args, $id);
+			\lib\db\userteams::update($args, $id);
 		}
 		elseif ($_args['method'] === 'delete')
 		{

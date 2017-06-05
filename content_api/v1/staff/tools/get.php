@@ -29,20 +29,20 @@ trait get
 			return false;
 		}
 
-		if(!utility::request('company'))
+		if(!utility::request('team'))
 		{
 			logs::set('api:staff:comany:brand:notfound', null, $log_meta);
 			debug::error(T_("Comany not found"), 'comany', 'permission');
 			return false;
 		}
 
-		$company_id = \lib\db\companies::get_brand(utility::request('company'));
+		$team_id = \lib\db\teams::get_brand(utility::request('team'));
 
-		if(isset($company_id['id']))
+		if(isset($team_id['id']))
 		{
 			$where               = [];
-			$where['company_id'] = $company_id['id'];
-			$result               = \lib\db\usercompanies::get($where);
+			$where['team_id'] = $team_id['id'];
+			$result               = \lib\db\userteams::get($where);
 			$temp = [];
 			if(is_array($result))
 			{
@@ -83,13 +83,13 @@ trait get
 			return false;
 		}
 
-		$company = utility::request("company");
+		$team = utility::request("team");
 		$staff  = utility::request("staff");
 
-		if(!$company)
+		if(!$team)
 		{
 			logs::set('api:staff:comany:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany"), 'company', 'permission');
+			debug::error(T_("Invalid comany"), 'team', 'permission');
 			return false;
 		}
 
@@ -100,13 +100,13 @@ trait get
 			return false;
 		}
 
-		// $result = \lib\db\staffs::get_by_brand($company, $staff);
+		// $result = \lib\db\staffs::get_by_brand($team, $staff);
 		// return $result;
 	}
 
-	public function usercompany_get_details()
+	public function userteam_get_details()
 	{
-		$usercompany_id  = utility::request("id");
+		$userteam_id  = utility::request("id");
 
 		$log_meta =
 		[
@@ -119,19 +119,19 @@ trait get
 
 		if(!$this->user_id)
 		{
-			logs::set('api:staff:user_id:not:set:usercompany_get_details', null, $log_meta);
+			logs::set('api:staff:user_id:not:set:userteam_get_details', null, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
-		if(!$usercompany_id)
+		if(!$userteam_id)
 		{
-			logs::set('api:usercompany_id:comany:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany id"), 'company', 'permission');
+			logs::set('api:userteam_id:comany:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Invalid comany id"), 'team', 'permission');
 			return false;
 		}
 
-		$load_detail  = \lib\db\usercompanies::get_by_id($usercompany_id, $this->user_id);
+		$load_detail  = \lib\db\userteams::get_by_id($userteam_id, $this->user_id);
 
 		return $load_detail;
 	}
@@ -202,7 +202,7 @@ trait get
 					// }
 					break;
 
-				case 'company_id':
+				case 'team_id':
 				case 'user_id':
 				case 'telegram_id':
 					$result[$key] = (int) $value;

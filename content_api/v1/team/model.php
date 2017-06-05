@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\company;
+namespace content_api\v1\team;
 
 class model extends \mvc\model
 {

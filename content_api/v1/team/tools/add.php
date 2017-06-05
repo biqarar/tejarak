@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\company\tools;
+namespace content_api\v1\team\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -7,7 +7,7 @@ trait add
 {
 
 
-	public function add_company($_args = [])
+	public function add_team($_args = [])
 	{
 		$edit_mode = false;
 		$default_args =
@@ -34,7 +34,7 @@ trait add
 
 		if(!$this->user_id)
 		{
-			logs::set('api:company:user_id:notfound', null, $log_meta);
+			logs::set('api:team:user_id:notfound', null, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -43,16 +43,16 @@ trait add
 
 		if(mb_strlen($title) > 500)
 		{
-			logs::set('api:company:maxlength:title', $this->user_id, $log_meta);
-			debug::error(T_("Company title must be less than 500 character"), 'title', 'arguments');
+			logs::set('api:team:maxlength:title', $this->user_id, $log_meta);
+			debug::error(T_("Team title must be less than 500 character"), 'title', 'arguments');
 			return false;
 		}
 
 		$site = utility::request('site');
 		if(mb_strlen($site) > 1000)
 		{
-			logs::set('api:company:maxlength:site', $this->user_id, $log_meta);
-			debug::error(T_("Company site must be less than 1000 character"), 'site', 'arguments');
+			logs::set('api:team:maxlength:site', $this->user_id, $log_meta);
+			debug::error(T_("Team site must be less than 1000 character"), 'site', 'arguments');
 			return false;
 		}
 
@@ -60,36 +60,36 @@ trait add
 
 		if(!$brand)
 		{
-			logs::set('api:company:brand:not:sert', $this->user_id, $log_meta);
-			debug::error(T_("Brand of company can not be null"), 'brand', 'arguments');
+			logs::set('api:team:brand:not:sert', $this->user_id, $log_meta);
+			debug::error(T_("Brand of team can not be null"), 'brand', 'arguments');
 			return false;
 		}
 
 		if(mb_strlen($brand) > 100)
 		{
-			logs::set('api:company:maxlength:brand', $this->user_id, $log_meta);
-			debug::error(T_("Company brand must be less than 500 character"), 'brand', 'arguments');
+			logs::set('api:team:maxlength:brand', $this->user_id, $log_meta);
+			debug::error(T_("Team brand must be less than 500 character"), 'brand', 'arguments');
 			return false;
 		}
 
 
 		if(mb_strlen($brand) < 5)
 		{
-			logs::set('api:company:minlength:brand', $this->user_id, $log_meta);
-			debug::error(T_("Company brand must be larger than 5 character"), 'brand', 'arguments');
+			logs::set('api:team:minlength:brand', $this->user_id, $log_meta);
+			debug::error(T_("Team brand must be larger than 5 character"), 'brand', 'arguments');
 			return false;
 		}
 
 		if(in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
 		{
-			logs::set('api:company:blocklist:brand', $this->user_id, $log_meta);
+			logs::set('api:team:blocklist:brand', $this->user_id, $log_meta);
 			debug::error(T_("Can not use this brand"), 'brand', 'arguments');
 			return false;
 		}
 
 		if(!preg_match("/^[A-Za-z0-9]+$/", $brand))
 		{
-			logs::set('api:company:invalid:brand', $this->user_id, $log_meta);
+			logs::set('api:team:invalid:brand', $this->user_id, $log_meta);
 			debug::error(T_("Only [A-Za-z0-9] can use in comany brand"), 'brand', 'arguments');
 			return false;
 		}
@@ -97,7 +97,7 @@ trait add
 		$register_code = utility::request('register_code');
 		if(!is_numeric($register_code))
 		{
-			logs::set('api:company:invalid:register_code', $this->user_id, $log_meta);
+			logs::set('api:team:invalid:register_code', $this->user_id, $log_meta);
 			debug::error(T_("Only numeric value can set in Register code"), 'register_code', 'arguments');
 			return false;
 		}
@@ -105,7 +105,7 @@ trait add
 		$economical_code = utility::request('economical_code');
 		if(!is_numeric($economical_code))
 		{
-			logs::set('api:company:invalid:economical_code', $this->user_id, $log_meta);
+			logs::set('api:team:invalid:economical_code', $this->user_id, $log_meta);
 			debug::error(T_("Only numeric value can set in Economical code"), 'economical_code', 'arguments');
 			return false;
 		}
@@ -113,22 +113,22 @@ trait add
 		$id = null;
 		if($_args['method'] === 'patch')
 		{
-			$temp_company = \lib\db\companies::get_brand(utility::request('company'));
-			if(isset($temp_company['id']))
+			$temp_team = \lib\db\teams::get_brand(utility::request('team'));
+			if(isset($temp_team['id']))
 			{
-				$id = $temp_company['id'];
+				$id = $temp_team['id'];
 			}
 		}
 
 		$check_duplicate_title = ['brand' => $brand];
 
-		$check = \lib\db\companies::search(null, $check_duplicate_title);
+		$check = \lib\db\teams::search(null, $check_duplicate_title);
 		if($check)
 		{
 			if($_args['method'] === 'post')
 			{
-				logs::set('api:company:duplocate:brand', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate brand of company"), 'brand', 'arguments');
+				logs::set('api:team:duplocate:brand', $this->user_id, $log_meta);
+				debug::error(T_("Duplicate brand of team"), 'brand', 'arguments');
 				return false;
 			}
 			else
@@ -139,8 +139,8 @@ trait add
 				}
 				else
 				{
-					logs::set('api:company:duplocate:brand', $this->user_id, $log_meta);
-					debug::error(T_("Duplicate brand of company"), 'brand', 'arguments');
+					logs::set('api:team:duplocate:brand', $this->user_id, $log_meta);
+					debug::error(T_("Duplicate brand of team"), 'brand', 'arguments');
 					return false;
 				}
 			}
@@ -160,15 +160,15 @@ trait add
 		{
 			if($id)
 			{
-				logs::set('api:company:method:post:set:id', $this->user_id, $log_meta);
-				debug::error(T_("Can not set id in adding company"), 'id', 'access');
+				logs::set('api:team:method:post:set:id', $this->user_id, $log_meta);
+				debug::error(T_("Can not set id in adding team"), 'id', 'access');
 				return false;
 			}
 
-			$company_id = \lib\db\companies::insert($args);
+			$team_id = \lib\db\teams::insert($args);
 
 			$branch               = [];
-			$branch['company_id'] = $company_id;
+			$branch['team_id'] = $team_id;
 			$branch['brand']      = 'centeral';
 			$branch['title']      = 'centeral';
 			$branch['site']       = $site;
@@ -185,13 +185,13 @@ trait add
 
 			if(!$id || !is_numeric($id))
 			{
-				logs::set('api:company:method:put:id:not:set', $this->user_id, $log_meta);
+				logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);
 				debug::error(T_("Id of Comany not found"), 'id', 'permission');
 				return false;
 			}
 
-			$check_is_my_company = $this->get_company();
-			if($check_is_my_company)
+			$check_is_my_team = $this->get_team();
+			if($check_is_my_team)
 			{
 				$update = [];
 				foreach ($args as $key => $value)
@@ -203,13 +203,13 @@ trait add
 				}
 				if(!empty($update))
 				{
-					\lib\db\companies::update($update, $id);
+					\lib\db\teams::update($update, $id);
 				}
 			}
 		}
 		else
 		{
-			logs::set('api:company:method:invalid', $this->user_id, $log_meta);
+			logs::set('api:team:method:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid method of api"), 'method', 'permission');
 			return false;
 		}

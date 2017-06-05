@@ -1,32 +1,32 @@
 {%extends display.tejarak%}
 {%block content%}
 {%if edit_mode%}
-	<h1>{%trans "Add Company"%} {{company.title}}</h1>
+	<h1>{%trans "Add Team"%} {{team.title}}</h1>
 {%else%}
-	<h1>{%trans "Add Company"%}</h1>
+	<h1>{%trans "Add Team"%}</h1>
 {%endif%}
 <form method="post" class="df" enctype="multipart/form-data">
 	<div class="f">
 		<label class="c1" for="title">{%trans "Title"%}</label>
-		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{company.title}}" class="c3" required id="title">
+		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{team.title}}" class="c3" required id="title">
 	</div>
 
 	<div class="f">
 		<label class="c1" for="site">{%trans "Site"%}</label>
-		<input type="text" name="site" placeholder='{%trans "Site"%}' value="{{company.site}}" class="c3" id="site">
+		<input type="text" name="site" placeholder='{%trans "Site"%}' value="{{team.site}}" class="c3" id="site">
 	</div>
 
 	<div class="f">
 		<label class="c1" for="brand">{%trans "Brand"%}</label>
-		<input type="text" name="brand" placeholder='{%trans "Brand"%}' value="{{company.brand}}" class="c3" required id="brand">
+		<input type="text" name="brand" placeholder='{%trans "Brand"%}' value="{{team.brand}}" class="c3" required id="brand">
 	</div>
 	<div class="f">
 		<label class="c1" for="register_code">{%trans "Register code"%}</label>
-		<input type="text" name="register_code" placeholder='{%trans "Register code"%}' value="{{company.register_code}}" class="c3" id="register_code">
+		<input type="text" name="register_code" placeholder='{%trans "Register code"%}' value="{{team.register_code}}" class="c3" id="register_code">
 	</div>
 	<div class="f">
 		<label class="c1" for="economical_code">{%trans "Economical code"%}</label>
-		<input type="text" name="economical_code" placeholder='{%trans "Economical code"%}' value="{{company.economical_code}}" class="c3" id="economical_code">
+		<input type="text" name="economical_code" placeholder='{%trans "Economical code"%}' value="{{team.economical_code}}" class="c3" id="economical_code">
 	</div>
 	<div class="f">
 		<label class="c1" for="logo">{%trans "Logo"%}</label>

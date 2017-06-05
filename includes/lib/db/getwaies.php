@@ -74,9 +74,9 @@ class getwaies
 				FROM
 					getwaies
 				INNER JOIN users ON users.id = getwaies.user_id
-				INNER JOIN companies ON companies.id = getwaies.company_id
+				INNER JOIN teams ON teams.id = getwaies.team_id
 				WHERE
-					getwaies.id = $_getwaies_id AND companies.boss = $_boss
+					getwaies.id = $_getwaies_id AND teams.boss = $_boss
 				LIMIT 1
 			";
 			$result = \lib\db::get($query, null, true);
@@ -96,13 +96,13 @@ class getwaies
 	 */
 	public static function remove($_args)
 	{
-		if(isset($_args['company_id']) && isset($_args['user_id']) && is_numeric($_args['company_id']) && is_numeric($_args['user_id']))
+		if(isset($_args['team_id']) && isset($_args['user_id']) && is_numeric($_args['team_id']) && is_numeric($_args['user_id']))
 		{
 			$query =
 			"
 				DELETE FROM getwaies
 				WHERE
-					getwaies.company_id = $_args[company_id] AND
+					getwaies.team_id = $_args[team_id] AND
 					getwaies.user_id = $_args[user_id]
 				LIMIT 1
 			";

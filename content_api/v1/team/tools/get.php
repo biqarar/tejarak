@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\company\tools;
+namespace content_api\v1\team\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -7,15 +7,15 @@ use \lib\db\logs;
 trait get
 {
 	/**
-	 * ready data of company to load in api
+	 * ready data of team to load in api
 	 *
 	 * @param      <type>  $_data  The data
 	 */
-	public function ready_company($_data, $_options = [])
+	public function ready_team($_data, $_options = [])
 	{
 		$default_options =
 		[
-			'check_is_my_company' => true,
+			'check_is_my_team' => true,
 		];
 
 		if(!is_array($_options))
@@ -44,7 +44,7 @@ trait get
 					break;
 
 				case 'boss':
-					if($_options['check_is_my_company'])
+					if($_options['check_is_my_team'])
 					{
 						if(intval($value) === intval($this->user_id))
 						{
@@ -80,13 +80,13 @@ trait get
 
 
 	/**
-	 * Gets the company.
+	 * Gets the team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The company.
+	 * @return     <type>  The team.
 	 */
-	public function get_list_company($_args = [])
+	public function get_list_team($_args = [])
 	{
 		if(!$this->user_id)
 		{
@@ -95,11 +95,11 @@ trait get
 		$search = [];
 		$search['boss'] = $this->user_id;
 		$search['status'] = ['<>', "'deleted'"];
-		$result = \lib\db\companies::search(null, $search);
+		$result = \lib\db\teams::search(null, $search);
 		$temp = [];
 		foreach ($result as $key => $value)
 		{
-			$check = $this->ready_company($value);
+			$check = $this->ready_team($value);
 			if($check)
 			{
 				$temp[] = $check;
@@ -111,13 +111,13 @@ trait get
 
 
 	/**
-	 * Gets the company.
+	 * Gets the team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The company.
+	 * @return     <type>  The team.
 	 */
-	public function get_company($_options = [])
+	public function get_team($_options = [])
 	{
 		debug::title(T_("Operation Faild"));
 		$log_meta =
@@ -134,28 +134,28 @@ trait get
 			return false;
 		}
 
-		$company = utility::request("company");
+		$team = utility::request("team");
 
-		if(!$company)
+		if(!$team)
 		{
-			logs::set('api:company:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany brand"), 'company', 'permission');
+			logs::set('api:team:not:found', $this->user_id, $log_meta);
+			debug::error(T_("Invalid comany brand"), 'team', 'permission');
 			return false;
 		}
 
 		debug::title(T_("Operation complete"));
-		$result = \lib\db\companies::get_brand($company);
+		$result = \lib\db\teams::get_brand($team);
 
 		$options =
 		[
-			'check_is_my_company' => true,
+			'check_is_my_team' => true,
 		];
-		$result = $this->ready_company($result, $options);
+		$result = $this->ready_team($result, $options);
 
 		if($result === false)
 		{
-			logs::set('api:company:access:to:load', $this->user_id, $log_meta);
-			debug::error(T_("You can not load this company"));
+			logs::set('api:team:access:to:load', $this->user_id, $log_meta);
+			debug::error(T_("You can not load this team"));
 			return false;
 		}
 		return $result;

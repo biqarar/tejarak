@@ -2,7 +2,7 @@
 namespace lib\db;
 use \lib\db;
 
-class companies
+class teams
 {
 
 	/**
@@ -17,7 +17,7 @@ class companies
 		$set = \lib\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT INTO companies SET $set");
+			\lib\db::query("INSERT INTO teams SET $set");
 			return \lib\db::insert_id();
 		}
 	}
@@ -34,7 +34,7 @@ class companies
 	{
 		if($_brand)
 		{
-			$query = "SELECT * FROM companies WHERE brand = '$_brand' LIMIT 1";
+			$query = "SELECT * FROM teams WHERE brand = '$_brand' LIMIT 1";
 			$result = \lib\db::get($query, null, true);
 			return $result;
 		}
@@ -60,7 +60,7 @@ class companies
 			}
 			unset($_args['limit']);
 			$where = \lib\db\config::make_where($_args);
-			$query = "SELECT * FROM companies WHERE $where $limit";
+			$query = "SELECT * FROM teams WHERE $where $limit";
 			$result = \lib\db::get($query, null, $limit ? true : false);
 			return $result;
 		}
@@ -82,7 +82,7 @@ class companies
 			return false;
 		}
 
-		$query = "UPDATE companies SET $set WHERE id = $_id LIMIT 1";
+		$query = "UPDATE teams SET $set WHERE id = $_id LIMIT 1";
 		return \lib\db::query($query);
 	}
 
@@ -141,14 +141,14 @@ class companies
 		if($_options['get_count'] === true)
 		{
 			$get_count      = true;
-			$public_fields  = " COUNT(companies.id) AS 'companiescount' FROM	companies";
+			$public_fields  = " COUNT(teams.id) AS 'teamscount' FROM	teams";
 			$limit          = null;
 			$only_one_value = true;
 		}
 		else
 		{
 			$limit         = null;
-			$public_fields = " * FROM companies";
+			$public_fields = " * FROM teams";
 
 			if($_options['limit'])
 			{
@@ -179,7 +179,7 @@ class companies
 			}
 			else
 			{
-				$order = " ORDER BY companies.id DESC ";
+				$order = " ORDER BY teams.id DESC ";
 			}
 		}
 		else
@@ -190,7 +190,7 @@ class companies
 			}
 			else
 			{
-				$order = " ORDER BY companies.id $_options[order] ";
+				$order = " ORDER BY teams.id $_options[order] ";
 			}
 		}
 
@@ -218,21 +218,21 @@ class companies
 			{
 				if(isset($value[0]) && isset($value[1]) && is_string($value[0]) && is_string($value[1]))
 				{
-					// for similar "companies.`field` LIKE '%valud%'"
-					$where[] = " companies.`$key` $value[0] $value[1] ";
+					// for similar "teams.`field` LIKE '%valud%'"
+					$where[] = " teams.`$key` $value[0] $value[1] ";
 				}
 			}
 			elseif($value === null)
 			{
-				$where[] = " companies.`$key` IS NULL ";
+				$where[] = " teams.`$key` IS NULL ";
 			}
 			elseif(is_numeric($value))
 			{
-				$where[] = " companies.`$key` = $value ";
+				$where[] = " teams.`$key` = $value ";
 			}
 			elseif(is_string($value))
 			{
-				$where[] = " companies.`$key` = '$value' ";
+				$where[] = " teams.`$key` = '$value' ";
 			}
 		}
 
@@ -242,7 +242,7 @@ class companies
 		{
 			$_string = trim($_string);
 
-			$search = "(companies.title  LIKE '%$_string%' )";
+			$search = "(teams.title  LIKE '%$_string%' )";
 			if($where)
 			{
 				$search = " AND ". $search;
@@ -260,7 +260,7 @@ class companies
 
 		if($pagenation && !$get_count)
 		{
-			$pagenation_query = "SELECT	COUNT(companies.id) AS `count`	FROM companies	$where $search ";
+			$pagenation_query = "SELECT	COUNT(teams.id) AS `count`	FROM teams	$where $search ";
 			$pagenation_query = \lib\db::get($pagenation_query, 'count', true);
 
 			list($limit_start, $limit) = \lib\db::pagnation((int) $pagenation_query, $limit);
@@ -280,7 +280,7 @@ class companies
 		{
 			$limit = null;
 		}
-		$query = " SELECT $public_fields $where $search $order $limit -- companies::search() 	-- $json";
+		$query = " SELECT $public_fields $where $search $order $limit -- teams::search() 	-- $json";
 
 		if(!$only_one_value)
 		{
@@ -289,7 +289,7 @@ class companies
 		}
 		else
 		{
-			$result = \lib\db::get($query, 'companiescount', true);
+			$result = \lib\db::get($query, 'teamscount', true);
 		}
 
 		return $result;

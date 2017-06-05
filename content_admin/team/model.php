@@ -1,5 +1,5 @@
 <?php
-namespace content_admin\company;
+namespace content_admin\team;
 use \lib\utility;
 
 class model extends \content_admin\main\model
@@ -35,7 +35,7 @@ class model extends \content_admin\main\model
 		$request          = $this->getPost();
 		$this->user_id    = $this->login('id');
 		utility::set_request_array($request);
-		$this->add_company();
+		$this->add_team();
 	}
 
 
@@ -47,7 +47,7 @@ class model extends \content_admin\main\model
 	public function get_list($_args)
 	{
 		$this->user_id = $this->login('id');
-		$result =  $this->get_list_company();
+		$result =  $this->get_list_team();
 		return $result;
 	}
 
@@ -64,7 +64,7 @@ class model extends \content_admin\main\model
 
 		if(isset($_args->match->url[0][1]))
 		{
-			$company = $_args->match->url[0][1];
+			$team = $_args->match->url[0][1];
 		}
 		else
 		{
@@ -73,8 +73,8 @@ class model extends \content_admin\main\model
 
 		$this->user_id = $this->login('id');
 
-		utility::set_request_array(['company' => $company]);
-		return $this->get_company();
+		utility::set_request_array(['team' => $team]);
+		return $this->get_team();
 	}
 
 
@@ -87,9 +87,9 @@ class model extends \content_admin\main\model
 	{
 		$request            = $this->getPost();
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array($request);
-		$this->add_company(['method' => 'patch']);
+		$this->add_team(['method' => 'patch']);
 	}
 
 
@@ -97,7 +97,7 @@ class model extends \content_admin\main\model
 	// {
 	// 	utility::set_request_array(['brand' => utility::post('brand')]);
 	// 	$this->user_id = $this->login('id');
-	// 	return $this->delete_company();
+	// 	return $this->delete_team();
 	// }
 }
 ?>

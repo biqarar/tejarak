@@ -13,8 +13,8 @@ class model extends \content_admin\main\model
 	public function get_liststaff($_args)
 	{
 		$this->user_id = $this->login('id');
-		$company = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		utility::set_request_array(['company' => $company]);
+		$team = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		utility::set_request_array(['team' => $team]);
 		$result =  $this->get_list_staff();
 
 		return $result;
@@ -30,9 +30,9 @@ class model extends \content_admin\main\model
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array($request);
-		$result = $this->get_company();
+		$result = $this->get_team();
 		return $result;
 
 	}
@@ -47,7 +47,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['staff']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array($request);
 		$result = $this->get_staff();
@@ -64,7 +64,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['staff']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array($request);
 		return $this->get_staff();
@@ -80,7 +80,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = $this->getPost();
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array($request);
 		$this->add_staff();
 	}
@@ -121,7 +121,7 @@ class model extends \content_admin\main\model
 	{
 		$request          = $this->getPost();
 		$this->user_id    = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['staff']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 
 		utility::set_request_array($request);
@@ -130,16 +130,16 @@ class model extends \content_admin\main\model
 
 
 	/**
-	 * Gets the editstaff company.
+	 * Gets the editstaff team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_editstaff_company($_args)
+	public function get_editstaff_team($_args)
 	{
-		$usercompany_id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-		utility::set_request_array(['id' => $usercompany_id]);
+		$userteam_id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		utility::set_request_array(['id' => $userteam_id]);
 		$this->user_id = $this->login('id');
-		$result = $this->usercompany_get_details();
+		$result = $this->userteam_get_details();
 		// var_dump($result);
 		return $result;
 
@@ -147,17 +147,17 @@ class model extends \content_admin\main\model
 
 
 	/**
-	 * Gets the editstaff company.
+	 * Gets the editstaff team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_editstaff_company($_args)
+	public function post_editstaff_team($_args)
 	{
 		$this->user_id      = $this->login('id');
-		$usercompany_id     = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$userteam_id     = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		$request            = $this->getPost();
-		$request['id']      = $usercompany_id;
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['id']      = $userteam_id;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array($request);
 		$result = $this->add_staff(['method' => 'patch']);
 		// var_dump($result);

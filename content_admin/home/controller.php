@@ -23,9 +23,9 @@ class controller extends \content_admin\main\controller
 		}
 
 		// https://tejarak.com/fa/admin/
-		// https://tejarak.com/fa/admin/company
-		// https://tejarak.com/fa/admin/company/add
-		// https://tejarak.com/fa/admin/company/delete -- not important but done :|
+		// https://tejarak.com/fa/admin/team
+		// https://tejarak.com/fa/admin/team/add
+		// https://tejarak.com/fa/admin/team/delete -- not important but done :|
 
 		// https://tejarak.com/fa/admin/ermile/
 		// https://tejarak.com/fa/admin/ermile/edit
@@ -66,30 +66,30 @@ class controller extends \content_admin\main\controller
 			switch ($url[2])
 			{
 				case 'edit':
-					$route = $this->model()->find_company($url[0]);
+					$route = $this->model()->find_team($url[0]);
 
 					if($route)
 					{
-						\lib\router::set_controller("content_admin\branch\controller");
+						\lib\router::set_controller('content_admin\branch\controller');
 						return;
 					}
 					break;
 
 				case 'getway':
-					$route = $this->model()->find_company($url[0]);
+					$route = $this->model()->find_team($url[0]);
 					if($route)
 					{
-						\lib\router::set_controller("content_admin\getway\controller");
+						\lib\router::set_controller('content_admin\getway\controller');
 						return;
 					}
 					break;
 
 				case 'staff':
-					$route = $this->model()->find_company($url[0]);
+					$route = $this->model()->find_team($url[0]);
 
 					if($route)
 					{
-						\lib\router::set_controller("content_admin\branch_staff\controller");
+						\lib\router::set_controller('content_admin\branch_staff\controller');
 						return;
 					}
 					break;
@@ -106,27 +106,27 @@ class controller extends \content_admin\main\controller
 
 			if($url[1] === 'staff')
 			{
-				$route = $this->model()->find_company($url[0]);
+				$route = $this->model()->find_team($url[0]);
 				if($route)
 				{
-					\lib\router::set_controller("content_admin\staff\controller");
+					\lib\router::set_controller('content_admin\staff\controller');
 					return;
 				}
 			}
 
 
-			$go_to_company =
+			$go_to_team =
 			[
 				'edit',
 			];
 
-			if(!in_array($url[1], $go_to_company))
+			if(!in_array($url[1], $go_to_team))
 			{
-				$route = $this->model()->find_company($url[0]);
+				$route = $this->model()->find_team($url[0]);
 
 				if($route)
 				{
-					\lib\router::set_controller("content_admin\branch\controller");
+					\lib\router::set_controller('content_admin\branch\controller');
 					return;
 				}
 			}
@@ -135,11 +135,11 @@ class controller extends \content_admin\main\controller
 		if(isset($url[0]) && $url[0])
 		{
 			// for example 'ermile'
-			$route = $this->model()->find_company($url[0]);
+			$route = $this->model()->find_team($url[0]);
 
 			if($route)
 			{
-				\lib\router::set_controller("content_admin\company\controller");
+				\lib\router::set_controller('content_admin\team\controller');
 				return;
 			}
 		}

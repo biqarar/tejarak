@@ -1,6 +1,6 @@
 <?php
 namespace database\newtejarak;
-class companies
+class teams
 {
 	public $id              = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'id'              ,'type'=>'int@10'];
 	public $title           = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'title'           ,'type'=>'varchar@500'];

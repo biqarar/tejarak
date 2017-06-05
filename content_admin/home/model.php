@@ -12,7 +12,7 @@ class model extends \content_admin\main\model
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	public function find_company($_url)
+	public function find_team($_url)
 	{
 		$_url = utility\safe::safe($_url);
 
@@ -21,8 +21,8 @@ class model extends \content_admin\main\model
 			return false;
 		}
 
-		$search_company = \lib\db\companies::search(null, ['brand' => $_url, 'boss' => $this->login('id'), 'get_count' => true]);
-		if(intval($search_company) === 1)
+		$search_team = \lib\db\teams::search(null, ['brand' => $_url, 'boss' => $this->login('id'), 'get_count' => true]);
+		if(intval($search_team) === 1)
 		{
 			return true;
 		}

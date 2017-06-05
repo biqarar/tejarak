@@ -8,7 +8,7 @@ trait get
 {
 
 	/**
-	 * ready data of company to load in api
+	 * ready data of team to load in api
 	 *
 	 * @param      <type>  $_data  The data
 	 */
@@ -16,7 +16,7 @@ trait get
 	{
 		$default_options =
 		[
-			'check_is_my_company' => true,
+			'check_is_my_team' => true,
 		];
 
 		if(!is_array($_options))
@@ -31,7 +31,7 @@ trait get
 		{
 			switch ($key)
 			{
-				case 'company_id':
+				case 'team_id':
 				case 'id':
 				case 'code':
 					$result[$key] = (int) $value;
@@ -65,7 +65,7 @@ trait get
 					break;
 
 				case 'boss':
-					if($_options['check_is_my_company'])
+					if($_options['check_is_my_team'])
 					{
 						if(intval($value) === intval($this->user_id))
 						{
@@ -113,19 +113,19 @@ trait get
 			return false;
 		}
 
-		if(!utility::request('company'))
+		if(!utility::request('team'))
 		{
 			logs::set('api:branch:comany:brand:notfound', null, $log_meta);
 			debug::error(T_("Comany not found"), 'comany', 'permission');
 			return false;
 		}
 
-		$company_id = \lib\db\companies::get_brand(utility::request('company'));
+		$team_id = \lib\db\teams::get_brand(utility::request('team'));
 
-		if(isset($company_id['id']))
+		if(isset($team_id['id']))
 		{
 			$search               = [];
-			$search['company_id'] = $company_id['id'];
+			$search['team_id'] = $team_id['id'];
 			$result               = \lib\db\branchs::search(null, $search);
 			$temp = [];
 			foreach ($result as $key => $value)
@@ -167,13 +167,13 @@ trait get
 			return false;
 		}
 
-		$company = utility::request("company");
+		$team = utility::request("team");
 		$branch  = utility::request("branch");
 
-		if(!$company)
+		if(!$team)
 		{
 			logs::set('api:branch:comany:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany"), 'company', 'permission');
+			debug::error(T_("Invalid comany"), 'team', 'permission');
 			return false;
 		}
 
@@ -184,7 +184,7 @@ trait get
 			return false;
 		}
 
-		$result = \lib\db\branchs::get_by_brand($company, $branch);
+		$result = \lib\db\branchs::get_by_brand($team, $branch);
 		$result = $this->ready_branch($result);
 		return $result;
 	}

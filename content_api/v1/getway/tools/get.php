@@ -29,19 +29,19 @@ trait get
 			return false;
 		}
 
-		if(!utility::request('company'))
+		if(!utility::request('team'))
 		{
 			logs::set('api:getway:comany:brand:notfound', null, $log_meta);
 			debug::error(T_("Comany not found"), 'comany', 'permission');
 			return false;
 		}
 
-		$company_id = \lib\db\companies::get_brand(utility::request('company'));
+		$team_id = \lib\db\teams::get_brand(utility::request('team'));
 
-		if(isset($company_id['id']))
+		if(isset($team_id['id']))
 		{
 			$where               = [];
-			$where['company_id'] = $company_id['id'];
+			$where['team_id'] = $team_id['id'];
 			$result               = \lib\db\getwaies::search(null, $where);
 			return $result;
 		}
@@ -74,12 +74,12 @@ trait get
 			return false;
 		}
 
-		$company = utility::request("company");
+		$team = utility::request("team");
 
-		if(!$company)
+		if(!$team)
 		{
 			logs::set('api:getway:comany:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany"), 'company', 'permission');
+			debug::error(T_("Invalid comany"), 'team', 'permission');
 			return false;
 		}
 
@@ -172,7 +172,7 @@ trait get
 					// }
 					break;
 
-				case 'company_id':
+				case 'team_id':
 				case 'user_id':
 				case 'telegram_id':
 					$result[$key] = (int) $value;

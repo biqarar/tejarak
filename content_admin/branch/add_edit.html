@@ -3,10 +3,10 @@
 
 {%block sidenav%}
 <li>
-	<a href="{{url.base}}/admin/{{company.brand}}/branch/add"><i class="icon-"></i>{%trans "Branch add"%}</a>
+	<a href="{{url.base}}/admin/{{team.brand}}/branch/add"><i class="icon-"></i>{%trans "Branch add"%}</a>
 </li>
 <li>
-	<a href="{{url.base}}/admin/{{company.brand}}/branch"><i class="icon-"></i>{%trans "Branch List"%}</a>
+	<a href="{{url.base}}/admin/{{team.brand}}/branch"><i class="icon-"></i>{%trans "Branch List"%}</a>
 </li>
 {%endblock%}
 
@@ -15,9 +15,9 @@
 {%block content%}
 
 {%if edit_mode%}
-	<h1>{%trans "Add Branch"%} {{company.title}}@{{branch.title}}</h1>
+	<h1>{%trans "Add Branch"%} {{team.title}}@{{branch.title}}</h1>
 {%else%}
-	<h1>{%trans "Add Branch"%} {{company.title}}</h1>
+	<h1>{%trans "Add Branch"%} {{team.title}}</h1>
 {%endif%}
 <form method="post" class="df">
 	<div class="f">

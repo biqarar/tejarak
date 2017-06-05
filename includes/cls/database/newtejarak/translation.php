@@ -9,7 +9,7 @@ private function transtext()
 	echo T_("disable");             // Enum disable
 	echo T_("expire");              // Enum expire
 	echo T_("id");                  // id
-	echo T_("company");             // company_id
+	echo T_("team");             // team_id
 	echo T_("title");               // title
 	echo T_("brand");               // brand
 	echo T_("site");                // site
@@ -57,8 +57,8 @@ private function transtext()
 	echo T_("type");                // comment_type
 	echo T_("visitor");             // visitor_id
 
-	// ------------------------------------------------------------ Table companies
-	echo T_("companies");           // Table companies
+	// ------------------------------------------------------------ Table teams
+	echo T_("teams");           // Table teams
 	echo T_("companie");            // companie
 	echo T_("code");                // register_code
 	echo T_("code");                // economical_code
@@ -81,7 +81,7 @@ private function transtext()
 	echo T_("hourlog");             // hourlog
 	echo T_("enter");               // Enum enter
 	echo T_("exit");                // Enum exit
-	echo T_("usercompany");         // usercompany_id
+	echo T_("userteam");         // userteam_id
 	echo T_("userbranch");          // userbranch_id
 	echo T_("date");                // date
 	echo T_("date");                // shamsi_date
@@ -259,8 +259,8 @@ private function transtext()
 	echo T_("enter");               // date_enter
 	echo T_("exit");                // date_exit
 
-	// ------------------------------------------------------------ Table usercompanies
-	echo T_("usercompanies");       // Table usercompanies
+	// ------------------------------------------------------------ Table userteams
+	echo T_("userteams");       // Table userteams
 	echo T_("usercompanie");        // usercompanie
 
 	// ------------------------------------------------------------ Table users

@@ -2,9 +2,9 @@
 
 // self::$perm_list[] =
 // [
-// 	'caller'      => 'add:company',
-// 	'title'       => T_("Add new company"),
-// 	'desc'        => T_("Add new company"),
+// 	'caller'      => 'add:team',
+// 	'title'       => T_("Add new team"),
+// 	'desc'        => T_("Add new team"),
 // 	'group'       => 'plan_1',
 // 	'need_check'  => true,
 // 	'need_verify' => true,

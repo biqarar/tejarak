@@ -3,7 +3,7 @@ namespace content_admin\branch_staff;
 
 class view extends \content_admin\main\view
 {
-	use \content_api\v1\company\tools\get;
+	use \content_api\v1\team\tools\get;
 
 
 
@@ -17,7 +17,7 @@ class view extends \content_admin\main\view
 		$url = explode('/', $url);
 		if(isset($url[0]))
 		{
-			$this->data->company = $url[0];
+			$this->data->team = $url[0];
 		}
 	}
 
@@ -42,7 +42,7 @@ class view extends \content_admin\main\view
 	public function view_addstaff($_args)
 	{
 		$result = $_args->api_callback;
-		$this->data->company = $result;
+		$this->data->team = $result;
 	}
 
 
@@ -68,7 +68,7 @@ class view extends \content_admin\main\view
 	{
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
-		$this->data->company = $result;
+		$this->data->team = $result;
 	}
 
 
@@ -86,7 +86,7 @@ class view extends \content_admin\main\view
 	/**
 	 * { function_description }
 	 */
-	public function view_editstaff_company($_args)
+	public function view_editstaff_team($_args)
 	{
 		$this->data->edit_mode = true;
 		$this->data->staff = $_args->api_callback;

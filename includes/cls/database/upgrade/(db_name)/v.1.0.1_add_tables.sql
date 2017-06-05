@@ -1,4 +1,4 @@
-CREATE TABLE companies (
+CREATE TABLE teams (
 `id`					       int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `title`					     varchar(500) NOT NULL,
 `site`					     varchar(1000) NULL DEFAULT NULL,
@@ -20,15 +20,15 @@ CREATE TABLE companies (
 `desc`					     text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
 `meta`					     mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
-CONSTRAINT `companies_creator` FOREIGN KEY (`creator`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
-CONSTRAINT `companies_boss` FOREIGN KEY (`boss`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
-CONSTRAINT `companies_technical` FOREIGN KEY (`technical`) REFERENCES `users` (`id`) ON UPDATE CASCADE
+CONSTRAINT `teams_creator` FOREIGN KEY (`creator`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `teams_boss` FOREIGN KEY (`boss`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `teams_technical` FOREIGN KEY (`technical`) REFERENCES `users` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE branchs (
 `id`			          int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-`company_id`			  int(10) UNSIGNED NOT NULL,
+`team_id`			  int(10) UNSIGNED NOT NULL,
 `title`			        varchar(500) NOT NULL,
 `site`			        varchar(1000) NULL DEFAULT NULL,
 `boss`			        int(10) UNSIGNED NULL DEFAULT NULL,
@@ -55,13 +55,13 @@ PRIMARY KEY (`id`),
 CONSTRAINT `branchs_creator` FOREIGN KEY (`creator`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `branchs_boss` FOREIGN KEY (`boss`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `branchs_technical` FOREIGN KEY (`technical`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
-CONSTRAINT `branchs_company_id` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON UPDATE CASCADE
+CONSTRAINT `branchs_team_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE usercompanies (
+CREATE TABLE userteams (
 `id`           			int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-`company_id`   			int(10) UNSIGNED NOT NULL,
+`team_id`   			int(10) UNSIGNED NOT NULL,
 `user_id`      			int(10) UNSIGNED NOT NULL,
 `postion`      			varchar(255) NULL DEFAULT NULL,
 `code`         			int(10) UNSIGNED NULL DEFAULT NULL,
@@ -77,14 +77,14 @@ CREATE TABLE usercompanies (
 `desc`          		text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
 `meta`          		mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
-CONSTRAINT `usercompanies_company_id` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON UPDATE CASCADE,
-CONSTRAINT `usercompanies_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
+CONSTRAINT `userteams_team_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `userteams_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE userbranchs (
 `id`           		int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-`company_id`   		int(10) UNSIGNED NOT NULL,
+`team_id`   		int(10) UNSIGNED NOT NULL,
 `branch_id`   		int(10) UNSIGNED NOT NULL,
 `user_id`     		int(10) UNSIGNED NOT NULL,
 `postion`      		varchar(255) NULL DEFAULT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE userbranchs (
 `desc`          	text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
 `meta`          	mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
-CONSTRAINT `userbranch_company_id` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `userbranch_team_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `userbranch_branch_id` FOREIGN KEY (`branch_id`) REFERENCES `branchs` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `userbranch_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -109,7 +109,7 @@ CONSTRAINT `userbranch_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`
 
 CREATE TABLE getwaies (
 `id`           		int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-`company_id`   		int(10) UNSIGNED NOT NULL,
+`team_id`   		int(10) UNSIGNED NOT NULL,
 `branch_id` 	 		int(10) UNSIGNED NOT NULL,
 `user_id`      		int(10) UNSIGNED NOT NULL,
 `title` 	     		varchar(255) NULL DEFAULT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE getwaies (
 `desc`          	text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
 `meta`          mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
-CONSTRAINT `getway_company_id` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `getway_team_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `getway_branch_id` FOREIGN KEY (`branch_id`) REFERENCES `branchs` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `getway_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -133,8 +133,8 @@ CONSTRAINT `getway_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON
 CREATE TABLE `hours` (
 `id`							      int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `user_id`							  int(10) UNSIGNED NOT NULL,
-`company_id`						int(10) UNSIGNED NOT NULL,
-`usercompany_id`				int(10) UNSIGNED NOT NULL,
+`team_id`						int(10) UNSIGNED NOT NULL,
+`userteam_id`				int(10) UNSIGNED NOT NULL,
 `userbranch_id`					int(10) UNSIGNED NOT NULL,
 `start_getway_id`				int(10) UNSIGNED NOT NULL,
 `end_getway_id`					int(10) UNSIGNED NULL DEFAULT NULL,
@@ -165,9 +165,9 @@ CONSTRAINT `hours_users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON
 
 CREATE TABLE `hourlogs` (
 `id`                    int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-`company_id`		        int(10) UNSIGNED NOT NULL,
+`team_id`		        int(10) UNSIGNED NOT NULL,
 `user_id`               int(10) UNSIGNED NOT NULL,
-`usercompany_id`        int(10) UNSIGNED NOT NULL,
+`userteam_id`        int(10) UNSIGNED NOT NULL,
 `userbranch_id`         int(10) UNSIGNED NOT NULL,
 `date`     							date NOT NULL,
 `shamsi_date`    				date NOT NULL,

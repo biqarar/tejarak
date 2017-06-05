@@ -1,9 +1,9 @@
 <?php
 namespace database\newtejarak;
-class usercompanies
+class userteams
 {
 	public $id            = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'id'              ,'type'=>'int@10'];
-	public $company_id    = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'company'         ,'type'=>'int@10'                          ,'foreign'=>'companys@id!id'];
+	public $team_id    = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'team'         ,'type'=>'int@10'                          ,'foreign'=>'teams@id!id'];
 	public $user_id       = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!user_displayname'];
 	public $postion       = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'postion'         ,'type'=>'varchar@255'];
 	public $code          = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'code'            ,'type'=>'int@10'];
@@ -22,9 +22,9 @@ class usercompanies
 	//--------------------------------------------------------------------------------id
 	public function id(){}
 	//--------------------------------------------------------------------------------foreign
-	public function company_id()
+	public function team_id()
 	{
-		$this->form()->type('select')->name('company_')->required();
+		$this->form()->type('select')->name('team_')->required();
 		$this->setChild();
 	}
 	//--------------------------------------------------------------------------------foreign

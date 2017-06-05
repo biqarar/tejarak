@@ -46,28 +46,28 @@ trait add
 			return false;
 		}
 
-		$company = utility::request('company');
-		if(!$company)
+		$team = utility::request('team');
+		if(!$team)
 		{
-			logs::set('api:branch:company:notfound', null, $log_meta);
-			debug::error(T_("Company not found"), 'user', 'permission');
+			logs::set('api:branch:team:notfound', null, $log_meta);
+			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
 
-		$company_id = \lib\db\companies::get_brand($company);
+		$team_id = \lib\db\teams::get_brand($team);
 
-		if(isset($company_id['id']))
+		if(isset($team_id['id']))
 		{
-			$company_id = $company_id['id'];
+			$team_id = $team_id['id'];
 		}
 		else
 		{
-			logs::set('api:branch:company:notfound:invalid', null, $log_meta);
-			debug::error(T_("Company not found"), 'user', 'permission');
+			logs::set('api:branch:team:notfound:invalid', null, $log_meta);
+			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
 
-		$access_load = $this->get_company();
+		$access_load = $this->get_team();
 
 		if(!debug::$status)
 		{
@@ -115,7 +115,7 @@ trait add
 
 		if(in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
 		{
-			logs::set('api:company:blocklist:brand', $this->user_id, $log_meta);
+			logs::set('api:team:blocklist:brand', $this->user_id, $log_meta);
 			debug::error(T_("Can not use this brand"), 'brand', 'arguments');
 			return false;
 		}
@@ -210,7 +210,7 @@ trait add
 		$args               = [];
 		$args['creator']    = $this->user_id;
 		$args['boss']       = $this->user_id;
-		$args['company_id'] = $company_id;
+		$args['team_id'] = $team_id;
 		$args['technical']  = $this->user_id;
 		$args['title']      = $title;
 		$args['site']       = $site;
@@ -229,11 +229,11 @@ trait add
 
 		if($_args['method'] === 'post')
 		{
-			$check_duplicate_brand_in_company = ['brand' => $brand, 'company_id' => $company_id, 'get_count' => true];
-			$check = \lib\db\branchs::search(null, $check_duplicate_brand_in_company);
+			$check_duplicate_brand_in_team = ['brand' => $brand, 'team_id' => $team_id, 'get_count' => true];
+			$check = \lib\db\branchs::search(null, $check_duplicate_brand_in_team);
 			if($check)
 			{
-				logs::set('api:branch:duplocate:brand:in:company', $this->user_id, $log_meta);
+				logs::set('api:branch:duplocate:brand:in:team', $this->user_id, $log_meta);
 				debug::error(T_("Duplicate brand of branch"), 'brand', 'arguments');
 				return false;
 			}
@@ -260,7 +260,7 @@ trait add
 				return false;
 			}
 
-			$find_branch_id = \lib\db\branchs::search(null, ['company_id' => $company_id, 'brand' => $branch]);
+			$find_branch_id = \lib\db\branchs::search(null, ['team_id' => $team_id, 'brand' => $branch]);
 			if(isset($find_branch_id[0]['id']))
 			{
 				$id = $find_branch_id[0]['id'];
@@ -272,8 +272,8 @@ trait add
 				return false;
 			}
 
-			$check_duplicate_brand_in_company = ['brand' => $brand, 'company_id' => $company_id];
-			$check = \lib\db\branchs::search(null, $check_duplicate_brand_in_company);
+			$check_duplicate_brand_in_team = ['brand' => $brand, 'team_id' => $team_id];
+			$check = \lib\db\branchs::search(null, $check_duplicate_brand_in_team);
 
 			if(isset($check[0]['id']))
 			{
@@ -283,7 +283,7 @@ trait add
 				}
 				else
 				{
-					logs::set('api:branch:duplocate:brand:in:company:in:update', $this->user_id, $log_meta);
+					logs::set('api:branch:duplocate:brand:in:team:in:update', $this->user_id, $log_meta);
 					debug::error(T_("Duplicate brand of branch"), 'brand', 'arguments');
 					return false;
 				}

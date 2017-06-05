@@ -31,7 +31,7 @@ class view extends \content_admin\main\view
 	*/
 	public function view_addgetway($_args)
 	{
-		$this->data->company = $this->model()->load_company($_args);
+		$this->data->team = $this->model()->load_team($_args);
 		$this->data->branch = $this->model()->load_branch($_args);
 	}
 
@@ -60,7 +60,7 @@ class view extends \content_admin\main\view
 		$this->view_addgetway($_args);
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
-		$this->data->company = $result;
+		$this->data->team = $result;
 	}
 
 

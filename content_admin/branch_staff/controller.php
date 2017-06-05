@@ -16,8 +16,8 @@ class controller extends \content_admin\main\controller
 		$this->get('addstaff', 'addstaff')					->ALL("/^([A-Za-z0-9]{5,})\/staff\/add$/");
 		$this->post('addstaff')			  					->ALL("/^([A-Za-z0-9]{5,})\/staff\/add$/");
 
-		$this->get('editstaff_company', 'editstaff_company')->ALL("/^([A-Za-z0-9]{5,})\/staff\/(\d+)\/edit$/");
-		$this->post('editstaff_company')			  		->ALL("/^([A-Za-z0-9]{5,})\/staff\/(\d+)\/edit$/");
+		$this->get('editstaff_team', 'editstaff_team')->ALL("/^([A-Za-z0-9]{5,})\/staff\/(\d+)\/edit$/");
+		$this->post('editstaff_team')			  		->ALL("/^([A-Za-z0-9]{5,})\/staff\/(\d+)\/edit$/");
 
 		$this->get('staffdashboard', 'staffdashboard')		->ALL("/^([A-Za-z0-9]{5,})\/([^staff][A-Za-z0-9]{5,})$/");
 		$this->post('staffdashboard')			        	->ALL("/^([A-Za-z0-9]{5,})\/([^staff][A-Za-z0-9]{5,})$/");

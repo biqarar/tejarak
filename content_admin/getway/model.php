@@ -7,18 +7,18 @@ class model extends \content_admin\main\model
 
 
 	/**
-	 * Loads a company.
+	 * Loads a team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function load_company($_args)
+	public function load_team($_args)
 	{
 		$this->user_id = $this->login('id');
-		$company = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		\lib\utility::set_request_array(['company' => $company]);
-		return $this->get_company();
+		$team = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		\lib\utility::set_request_array(['team' => $team]);
+		return $this->get_team();
 	}
 
 
@@ -31,7 +31,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['branch']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array($request);
 		$result = $this->get_branch();
@@ -47,9 +47,9 @@ class model extends \content_admin\main\model
 	public function get_listgetway($_args)
 	{
 		$this->user_id = $this->login('id');
-		$company       = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$team       = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$branch        = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-		utility::set_request_array(['company' => $company, 'branch' => $branch]);
+		utility::set_request_array(['team' => $team, 'branch' => $branch]);
 		$result        =  $this->get_list_getway();
 		return $result;
 	}
@@ -75,7 +75,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['getway']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array($request);
 		$result = $this->get_getway();
@@ -92,7 +92,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['getway']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		$request['id']      = isset($_args->match->url[0][3]) ? $_args->match->url[0][3] : null;
 		utility::set_request_array($request);
@@ -109,7 +109,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = $this->getPost();
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['branch']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array($request);
 		$this->add_getway();
@@ -145,7 +145,7 @@ class model extends \content_admin\main\model
 	{
 		$request            = $this->getPost();
 		$this->user_id      = $this->login('id');
-		$request['company'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		$request['branch']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		$request['id']      = isset($_args->match->url[0][3]) ? $_args->match->url[0][3] : null;
 

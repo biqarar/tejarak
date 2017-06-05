@@ -45,18 +45,18 @@ trait add
 			return false;
 		}
 
-		$company = utility::request('company');
+		$team = utility::request('team');
 
-		$load_company = $this->get_company();
+		$load_team = $this->get_team();
 
-		if(isset($load_company['id']))
+		if(isset($load_team['id']))
 		{
-			$company_id = $load_company['id'];
+			$team_id = $load_team['id'];
 		}
 		else
 		{
-			logs::set('api:getway:access:to:load:company', $this->user_id, $log_meta);
-			debug::error(T_("Comapany not found"), 'company', 'permission');
+			logs::set('api:getway:access:to:load:team', $this->user_id, $log_meta);
+			debug::error(T_("Comapany not found"), 'team', 'permission');
 			return false;
 		}
 
@@ -74,7 +74,7 @@ trait add
 		else
 		{
 			logs::set('api:getway:access:to:load:branch', $this->user_id, $log_meta);
-			debug::error(T_("Branch not found"), 'company', 'permission');
+			debug::error(T_("Branch not found"), 'team', 'permission');
 			return false;
 		}
 
@@ -95,7 +95,7 @@ trait add
 
 		$search =
 		[
-			'company_id' => $company_id,
+			'team_id' => $team_id,
 			'title'      => $title,
 			'branch_id'  => $branch_id,
 		];
@@ -154,7 +154,7 @@ trait add
 		$args['ip']         = $ip;
 		$args['status']     = $status;
 		$args['desc']       = $desc;
-		$args['company_id'] = $company_id;
+		$args['team_id'] = $team_id;
 		$args['user_id']    = $this->user_id;
 		$args['branch_id']  = $branch_id;
 		if($_args['method'] === 'post')
@@ -164,7 +164,7 @@ trait add
 		elseif($_args['method'] === 'patch')
 		{
 			$id = utility::request('id');
-			unset($args['company_id']);
+			unset($args['team_id']);
 			unset($args['user_id']);
 			\lib\db\getwaies::update($args, $id);
 		}

@@ -73,14 +73,14 @@ class controller extends \content_admin\main\controller
 	/**
 	 * check the branch exist and is my branch
 	 *
-	 * @param      <type>   $_company  The company
+	 * @param      <type>   $_team  The team
 	 * @param      <type>   $_branch   The branch
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	private function check_branch_exist($_company, $_branch)
+	private function check_branch_exist($_team, $_branch)
 	{
-		$get = \lib\db\branchs::get_by_brand($_company, $_branch);
+		$get = \lib\db\branchs::get_by_brand($_team, $_branch);
 		if(isset($get['boss']) && intval($this->login('id')) === intval($get['boss']))
 		{
 			return true;

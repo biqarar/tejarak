@@ -3,16 +3,16 @@
 
 {%block sidenav%}
 <li>
-	<a href="{{url.base}}/admin/{{company.brand}}/staff">{%trans "Staff List"%}</a>
+	<a href="{{url.base}}/admin/{{team.brand}}/staff">{%trans "Staff List"%}</a>
 </li>
 {%endblock%}
 
 
 {%block content%}
 {%if edit_mode%}
-	<h1>{%trans "Edit Staff"%} {{staff.mobile}}@{{company.title}}</h1>
+	<h1>{%trans "Edit Staff"%} {{staff.mobile}}@{{team.title}}</h1>
 {%else%}
-	<h1>{%trans "Add Staff"%} {{company.title}}</h1>
+	<h1>{%trans "Add Staff"%} {{team.title}}</h1>
 {%endif%}
 
 <form method="post" class="df">

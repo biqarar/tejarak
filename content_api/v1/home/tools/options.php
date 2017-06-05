@@ -4,7 +4,7 @@ namespace content_api\v1\home\tools;
 trait options
 {
 	/**
-	 * company brand block list
+	 * team brand block list
 	 *
 	 * @var        array
 	 */
@@ -13,7 +13,7 @@ trait options
 		'addbranch',
 		'branch',
 		'admin',
-		'company',
+		'team',
 		'staff',
 		'add',
 		'edit',
