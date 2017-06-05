@@ -9,5 +9,6 @@ desktop.ini
 /public_html/sitemap.xml
 /includes/cls/database/backup
 /includes/cls/database/log
+includes/cls/database/log
 *sftp-config.json
 *.me.php
