@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\staff\tools;
+namespace content_api\v1\member\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -9,13 +9,13 @@ trait add
 
 
 	/**
-	 * Adds a staff.
+	 * Adds a member.
 	 *
 	 * @param      array    $_args  The arguments
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	public function add_staff($_args = [])
+	public function add_member($_args = [])
 	{
 		$delete_mode = false;
 		$default_args =
@@ -43,7 +43,7 @@ trait add
 
 		if(!$this->user_id)
 		{
-			logs::set('api:staff:user_id:notfound', null, $log_meta);
+			logs::set('api:member:user_id:notfound', null, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -51,7 +51,7 @@ trait add
 		$team = utility::request('team');
 		if(!$team)
 		{
-			logs::set('api:staff:team:notfound', null, $log_meta);
+			logs::set('api:member:team:notfound', null, $log_meta);
 			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
@@ -64,7 +64,7 @@ trait add
 		}
 		else
 		{
-			logs::set('api:staff:team:notfound:invalid', null, $log_meta);
+			logs::set('api:member:team:notfound:invalid', null, $log_meta);
 			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
@@ -73,7 +73,7 @@ trait add
 		$mobile = \lib\utility\filter::mobile($mobile);
 		if(!$mobile)
 		{
-			logs::set('api:staff:mobile:not:set', $this->user_id, $log_meta);
+			logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Invalid mobile number"), 'mobile', 'arguments');
 			return false;
 		}
@@ -81,7 +81,7 @@ trait add
 		$name = utility::request("name");
 		if(mb_strlen($name) > 50)
 		{
-			logs::set('api:staff:name:max:length', $this->user_id, $log_meta);
+			logs::set('api:member:name:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
@@ -89,7 +89,7 @@ trait add
 		$family = utility::request("family");
 		if(mb_strlen($family) > 50)
 		{
-			logs::set('api:staff:family:max:length', $this->user_id, $log_meta);
+			logs::set('api:member:family:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the family less than 50 character"), 'family', 'arguments');
 			return false;
 		}
@@ -116,7 +116,7 @@ trait add
 
 		if(!$user_id)
 		{
-			logs::set('api:staff:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
 			debug::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
@@ -125,7 +125,7 @@ trait add
 
 		if(mb_strlen($postion) > 250)
 		{
-			logs::set('api:staff:postion:max:length', $this->user_id, $log_meta);
+			logs::set('api:member:postion:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the postion less than 250 character"), 'postion', 'arguments');
 			return false;
 		}
@@ -133,7 +133,7 @@ trait add
 		$code        = utility::request('code');
 		if($code && (mb_strlen($code) > 9 || !ctype_digit($code)))
 		{
-			logs::set('api:staff:code:max:length', $this->user_id, $log_meta);
+			logs::set('api:member:code:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the code less than 9 character and must ba integer"), 'code', 'arguments');
 			return false;
 		}
@@ -173,14 +173,14 @@ trait add
 		$date_enter  = utility::request('date_enter');
 		if($date_enter && \DateTime::createFromFormat('Y-m-d', $date_enter) === false)
 		{
-			logs::set('api:staff:date_enter:invalid', $this->user_id, $log_meta);
+			logs::set('api:member:date_enter:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
 			return false;
 		}
 		$date_exit   = utility::request('date_exit');
 		if($date_exit && \DateTime::createFromFormat('Y-m-d', $date_exit) === false)
 		{
-			logs::set('api:staff:date_exit:invalid', $this->user_id, $log_meta);
+			logs::set('api:member:date_exit:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
 			return false;
 		}
@@ -209,7 +209,7 @@ trait add
 		}
 		elseif ($_args['method'] === 'delete')
 		{
-			\lib\db\staffs::remove($args);
+			\lib\db\members::remove($args);
 		}
 
 		if(debug::$status)
@@ -218,15 +218,15 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("Staff successfully added"));
+				debug::true(T_("member successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("Staff successfully updated"));
+				debug::true(T_("member successfully updated"));
 			}
 			else
 			{
-				debug::true(T_("Staff successfully removed"));
+				debug::true(T_("member successfully removed"));
 			}
 		}
 

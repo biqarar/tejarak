@@ -1,58 +1,58 @@
 {%extends display.mvc%}
 {%block content%}
-<a href="{{url.base}}/admin/{{team.brand}}/staff">{%trans "staff List"%}</a>
+<a href="{{url.base}}/admin/{{team.brand}}/member">{%trans "member List"%}</a>
 
-<h1>{%trans "Add Staff"%} {{team.title}}</h1>
+<h1>{%trans "Add member"%} {{team.title}}</h1>
 
 <form method="post" class="df">
 	<div class="f">
 		<label for="name">{%trans "name"%}</label>
-		<input type="text" name="name" placeholder='{%trans "name"%}' value="{{staff.name}}">
+		<input type="text" name="name" placeholder='{%trans "name"%}' value="{{member.name}}">
 	</div>
 	<div class="f">
 		<label for="family">{%trans "family"%}</label>
-		<input type="text" name="family" placeholder='{%trans "family"%}' value="{{staff.family}}">
+		<input type="text" name="family" placeholder='{%trans "family"%}' value="{{member.family}}">
 	</div>
 	<div class="f">
 		<label for="mobile">{%trans "mobile"%}</label>
-		<input type="text" name="mobile" placeholder='{%trans "mobile"%}' value="{{staff.mobile}}">
+		<input type="text" name="mobile" placeholder='{%trans "mobile"%}' value="{{member.mobile}}">
 	</div>
 
 	<div class="f">
 		<label for="postion">{%trans "postion"%}</label>
-		<input type="text" name="postion" id="postion" placeholder='{%trans "postion" %}' value="{{staff.postion}}">
+		<input type="text" name="postion" id="postion" placeholder='{%trans "postion" %}' value="{{member.postion}}">
 	</div>
 	<div class="f">
 		<label for="code">{%trans "code"%}</label>
-		<input type="text" name="code" id="code" placeholder='{%trans "code" %}' value="{{staff.code}}">
+		<input type="text" name="code" id="code" placeholder='{%trans "code" %}' value="{{member.code}}">
 	</div>
 	<div class="f">
 		<label for="telegram_id">{%trans "telegram_id"%}</label>
-		<input type="text" name="telegram_id" id="telegram_id" placeholder='{%trans "telegram_id" %}' value="{{staff.telegram_id}}">
+		<input type="text" name="telegram_id" id="telegram_id" placeholder='{%trans "telegram_id" %}' value="{{member.telegram_id}}">
 	</div>
 	<div class="f">
 		<label for="full_time">{%trans "full_time"%}</label>
-		<input type="text" name="full_time" id="full_time" placeholder='{%trans "full_time" %}' value="{{staff.full_time}}">
+		<input type="text" name="full_time" id="full_time" placeholder='{%trans "full_time" %}' value="{{member.full_time}}">
 	</div>
 	<div class="f">
 		<label for="remote">{%trans "remote"%}</label>
-		<input type="text" name="remote" id="remote" placeholder='{%trans "remote" %}' value="{{staff.remote}}">
+		<input type="text" name="remote" id="remote" placeholder='{%trans "remote" %}' value="{{member.remote}}">
 	</div>
 	<div class="f">
 		<label for="is_default">{%trans "is_default"%}</label>
-		<input type="text" name="is_default" id="is_default" placeholder='{%trans "is_default" %}' value="{{staff.is_default}}">
+		<input type="text" name="is_default" id="is_default" placeholder='{%trans "is_default" %}' value="{{member.is_default}}">
 	</div>
 	<div class="f">
 		<label for="date_enter">{%trans "date_enter"%}</label>
-		<input type="text" name="date_enter" id="date_enter" placeholder='{%trans "date_enter" %}' value="{{staff.date_enter}}">
+		<input type="text" name="date_enter" id="date_enter" placeholder='{%trans "date_enter" %}' value="{{member.date_enter}}">
 	</div>
 	<div class="f">
 		<label for="date_exit">{%trans "date_exit"%}</label>
-		<input type="text" name="date_exit" id="date_exit" placeholder='{%trans "date_exit" %}' value="{{staff.date_exit}}">
+		<input type="text" name="date_exit" id="date_exit" placeholder='{%trans "date_exit" %}' value="{{member.date_exit}}">
 	</div>
 	<div class="f">
 		<label for="status">{%trans "status"%}</label>
-		<input type="text" name="status" id="status" placeholder='{%trans "status" %}' value="{{staff.status}}">
+		<input type="text" name="status" id="status" placeholder='{%trans "status" %}' value="{{member.status}}">
 	</div>
 	<div class="f">
 		<label class="c"></label>

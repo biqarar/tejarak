@@ -1,5 +1,5 @@
 <?php
-namespace content_admin\branch_staff;
+namespace content_admin\branch_member;
 
 class view extends \content_admin\main\view
 {
@@ -27,10 +27,10 @@ class view extends \content_admin\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_liststaff($_args)
+	public function view_listmember($_args)
 	{
 		$result = $_args->api_callback;
-		$this->data->staff_list = $result;
+		$this->data->member_list = $result;
 	}
 
 
@@ -39,7 +39,7 @@ class view extends \content_admin\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_addstaff($_args)
+	public function view_addmember($_args)
 	{
 		$result = $_args->api_callback;
 		$this->data->team = $result;
@@ -51,11 +51,11 @@ class view extends \content_admin\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_editstaff($_args)
+	public function view_editmember($_args)
 	{
 		$this->data->edit_mode = true;
 		$result = $_args->api_callback;
-		$this->data->staff = $result;
+		$this->data->member = $result;
 	}
 
 
@@ -75,9 +75,9 @@ class view extends \content_admin\main\view
 	/**
 	 * { function_description }
 	 */
-	public function view_staffdashboard($_args)
+	public function view_memberdashboard($_args)
 	{
-		$this->data->staff = $_args->api_callback;
+		$this->data->member = $_args->api_callback;
 	}
 
 
@@ -86,10 +86,10 @@ class view extends \content_admin\main\view
 	/**
 	 * { function_description }
 	 */
-	public function view_editstaff_team($_args)
+	public function view_editmember_team($_args)
 	{
 		$this->data->edit_mode = true;
-		$this->data->staff = $_args->api_callback;
+		$this->data->member = $_args->api_callback;
 	}
 }
 ?>

@@ -14,7 +14,7 @@ trait options
 		'branch',
 		'admin',
 		'team',
-		'staff',
+		'member',
 		'add',
 		'edit',
 		'delete',

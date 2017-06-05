@@ -10,8 +10,8 @@ class model extends \mvc\model
 	use \content_api\v1\team\tools\get;
 	use \content_api\v1\team\tools\delete;
 
-	use \content_api\v1\staff\tools\add;
-	use \content_api\v1\staff\tools\get;
+	use \content_api\v1\member\tools\add;
+	use \content_api\v1\member\tools\get;
 
 	use \content_api\v1\getway\tools\get;
 	use \content_api\v1\getway\tools\add;

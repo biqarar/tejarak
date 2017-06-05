@@ -108,7 +108,7 @@ trait get
 
 
 	/**
-	 * ready data of staff to load in api result
+	 * ready data of member to load in api result
 	 *
 	 * @param      <type>  $_data     The data
 	 * @param      array   $_options  The options

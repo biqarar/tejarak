@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\staff\tools;
+namespace content_api\v1\member\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -7,13 +7,13 @@ use \lib\db\logs;
 trait get
 {
 	/**
-	 * Gets the staff.
+	 * Gets the member.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The staff.
+	 * @return     <type>  The member.
 	 */
-	public function get_list_staff($_args = [])
+	public function get_list_member($_args = [])
 	{
 		$log_meta =
 		[
@@ -31,7 +31,7 @@ trait get
 
 		if(!utility::request('team'))
 		{
-			logs::set('api:staff:team:brand:notfound', null, $log_meta);
+			logs::set('api:member:team:brand:notfound', null, $log_meta);
 			debug::error(T_("team not found"), 'team', 'permission');
 			return false;
 		}
@@ -48,7 +48,7 @@ trait get
 			{
 				foreach ($result as $key => $value)
 				{
-					$temp[] = $this->ready_staff($value);
+					$temp[] = $this->ready_member($value);
 				}
 			}
 
@@ -58,13 +58,13 @@ trait get
 
 
 	/**
-	 * Gets the staff.
+	 * Gets the member.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The staff.
+	 * @return     <type>  The member.
 	 */
-	public function get_staff($_args = [])
+	public function get_member($_args = [])
 	{
 		debug::title(T_("Operation Faild"));
 		$log_meta =
@@ -78,29 +78,29 @@ trait get
 
 		if(!$this->user_id)
 		{
-			logs::set('api:staff:user_id:notfound', null, $log_meta);
+			logs::set('api:member:user_id:notfound', null, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
 		$team = utility::request("team");
-		$staff  = utility::request("staff");
+		$member  = utility::request("member");
 
 		if(!$team)
 		{
-			logs::set('api:staff:team:notfound', $this->user_id, $log_meta);
+			logs::set('api:member:team:notfound', $this->user_id, $log_meta);
 			debug::error(T_("Invalid team"), 'team', 'permission');
 			return false;
 		}
 
-		if(!$staff)
+		if(!$member)
 		{
-			logs::set('api:staff:staff:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid staff"), 'staff', 'permission');
+			logs::set('api:member:member:notfound', $this->user_id, $log_meta);
+			debug::error(T_("Invalid member"), 'member', 'permission');
 			return false;
 		}
 
-		// $result = \lib\db\staffs::get_by_brand($team, $staff);
+		// $result = \lib\db\members::get_by_brand($team, $member);
 		// return $result;
 	}
 
@@ -119,7 +119,7 @@ trait get
 
 		if(!$this->user_id)
 		{
-			logs::set('api:staff:user_id:not:set:userteam_get_details', null, $log_meta);
+			logs::set('api:member:user_id:not:set:userteam_get_details', null, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -138,14 +138,14 @@ trait get
 
 
 	/**
-	 * ready data of staff to load in api result
+	 * ready data of member to load in api result
 	 *
 	 * @param      <type>  $_data     The data
 	 * @param      array   $_options  The options
 	 *
 	 * @return     array   ( description_of_the_return_value )
 	 */
-	public function ready_staff($_data, $_options = [])
+	public function ready_member($_data, $_options = [])
 	{
 		$default_options =
 		[

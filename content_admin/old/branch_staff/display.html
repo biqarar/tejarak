@@ -1,9 +1,9 @@
 {%extends display.mvc%}
 {%block content%}
 
-<h2>{%trans "staff"%}</h2>
+<h2>{%trans "member"%}</h2>
 
-{%for key, value in staff_list%}
+{%for key, value in member_list%}
 	<div class="f">
 		<span class="c2"><a href="{{url.base}}/admin/{{team}}/{{value.brand}}/edit">{{value.id}}</a></span>
 		<span class="c2">{{value.displayname}}</span>
@@ -17,7 +17,7 @@
  </div>
  <div class="f">
  	<div>
-		<a href="{{url.base}}/admin/{{team}}/staff/add">{%trans "Add staff"%}</a>
+		<a href="{{url.base}}/admin/{{team}}/member/add">{%trans "Add member"%}</a>
  	</div>
 	<div>
 		<a href="{{url.base}}/admin/team">{%trans "List team"%}</a>
