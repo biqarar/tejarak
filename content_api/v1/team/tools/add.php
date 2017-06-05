@@ -49,7 +49,7 @@ trait add
 		}
 
 		$site = utility::request('site');
-		if(mb_strlen($site) > 1000)
+		if($site && mb_strlen($site) > 1000)
 		{
 			logs::set('api:team:maxlength:site', $this->user_id, $log_meta);
 			debug::error(T_("Team site must be less than 1000 character"), 'site', 'arguments');
@@ -95,7 +95,7 @@ trait add
 		}
 
 		$register_code = utility::request('register_code');
-		if(!is_numeric($register_code))
+		if($register_code && !is_numeric($register_code))
 		{
 			logs::set('api:team:invalid:register_code', $this->user_id, $log_meta);
 			debug::error(T_("Only numeric value can set in Register code"), 'register_code', 'arguments');
@@ -103,7 +103,7 @@ trait add
 		}
 
 		$economical_code = utility::request('economical_code');
-		if(!is_numeric($economical_code))
+		if($economical_code && !is_numeric($economical_code))
 		{
 			logs::set('api:team:invalid:economical_code', $this->user_id, $log_meta);
 			debug::error(T_("Only numeric value can set in Economical code"), 'economical_code', 'arguments');

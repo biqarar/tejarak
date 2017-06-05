@@ -93,11 +93,18 @@ class model extends \content_admin\main\model
 	}
 
 
-	// public function post_delete($_args)
-	// {
-	// 	utility::set_request_array(['brand' => utility::post('brand')]);
-	// 	$this->user_id = $this->login('id');
-	// 	return $this->delete_team();
-	// }
+	/**
+	 * Posts a delete.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function post_delete($_args)
+	{
+		utility::set_request_array(['brand' => utility::post('brand')]);
+		$this->user_id = $this->login('id');
+		return $this->delete_team();
+	}
 }
 ?>
