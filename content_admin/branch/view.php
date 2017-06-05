@@ -4,6 +4,70 @@ namespace content_admin\branch;
 class view extends \content_admin\main\view
 {
 
+	public function view_add($_args)
+	{
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * { function_description }
 	 *

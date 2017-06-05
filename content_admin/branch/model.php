@@ -37,6 +37,57 @@ class model extends \content_admin\main\model
 
 
 	/**
+	 * add new branch
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_add($_args)
+	{
+		$request         = $this->getPost();
+		$this->user_id   = $this->login('id');
+		$team            = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['team'] = $team;
+		utility::set_request_array($request);
+		$this->add_branch();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
 	 * Gets the addbranch.
 	 *
 	 * @param      <type>  $_args  The arguments
@@ -84,20 +135,6 @@ class model extends \content_admin\main\model
 		return $this->get_branch();
 	}
 
-
-	/**
-	 * Posts an addbranch.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function post_addbranch($_args)
-	{
-		$request            = $this->getPost();
-		$this->user_id      = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		utility::set_request_array($request);
-		$this->add_branch();
-	}
 
 
 	/**

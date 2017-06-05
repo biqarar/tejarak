@@ -92,7 +92,13 @@ trait add
 
 		$brand = utility::request('brand');
 
-		if(!$brand)
+		if(!$brand && $title)
+		{
+			$brand = \lib\utility\filter::slug($title);
+		}
+
+
+		if(!$brand && !$title)
 		{
 			logs::set('api:branch:brand:not:sert', $this->user_id, $log_meta);
 			debug::error(T_("Brand of branch can not be null"), 'brand', 'arguments');
@@ -121,7 +127,7 @@ trait add
 		}
 
 		$code        = utility::request('code');
-		if(mb_strlen($code) > 9 || !is_numeric($code))
+		if($code &&  (mb_strlen($code) > 9 || !is_numeric($code)))
 		{
 			logs::set('api:branch:maxlength:code', $this->user_id, $log_meta);
 			debug::error(T_("branch code must be less than 9 character and must be number"), 'code', 'arguments');
@@ -129,7 +135,7 @@ trait add
 		}
 
 		$phone_1     = utility::request('phone_1');
-		if(mb_strlen($phone_1) > 50)
+		if($phone_1 &&  mb_strlen($phone_1) > 50)
 		{
 			logs::set('api:branch:maxlength:phone_1', $this->user_id, $log_meta);
 			debug::error(T_("branch phone_1 must be less than 50 character"), 'phone_1', 'arguments');
@@ -137,7 +143,7 @@ trait add
 		}
 
 		$phone_2     = utility::request('phone_2');
-		if(mb_strlen($phone_2) > 50)
+		if($phone_2 &&  mb_strlen($phone_2) > 50)
 		{
 			logs::set('api:branch:maxlength:phone_2', $this->user_id, $log_meta);
 			debug::error(T_("branch phone_2 must be less than 50 character"), 'phone_2', 'arguments');
@@ -145,7 +151,7 @@ trait add
 		}
 
 		$phone_3     = utility::request('phone_3');
-		if(mb_strlen($phone_3) > 50)
+		if($phone_3 &&  mb_strlen($phone_3) > 50)
 		{
 			logs::set('api:branch:maxlength:phone_3', $this->user_id, $log_meta);
 			debug::error(T_("branch phone_3 must be less than 50 character"), 'phone_3', 'arguments');
@@ -153,7 +159,7 @@ trait add
 		}
 
 		$fax     = utility::request('fax');
-		if(mb_strlen($fax) > 50)
+		if($fax &&  mb_strlen($fax) > 50)
 		{
 			logs::set('api:branch:maxlength:fax', $this->user_id, $log_meta);
 			debug::error(T_("branch fax must be less than 50 character"), 'fax', 'arguments');
@@ -161,14 +167,14 @@ trait add
 		}
 
 		$email     = utility::request('email');
-		if(mb_strlen($email) > 50)
+		if($email &&  mb_strlen($email) > 50)
 		{
 			logs::set('api:branch:maxlength:email', $this->user_id, $log_meta);
 			debug::error(T_("branch email must be less than 50 character"), 'email', 'arguments');
 			return false;
 		}
 		$post_code     = utility::request('post_code');
-		if(mb_strlen($post_code) > 50)
+		if($post_code &&  mb_strlen($post_code) > 50)
 		{
 			logs::set('api:branch:maxlength:post_code', $this->user_id, $log_meta);
 			debug::error(T_("branch post_code must be less than 50 character"), 'post_code', 'arguments');

@@ -16,10 +16,15 @@ class view extends \mvc\view
 		if(isset($_args->match->url[0]) && $_args->match->url[0])
 		{
 			$url = $_args->match->url[0];
-			$url = str_replace('team/', '', $url);
-			return $url;
+
+			if(preg_match("/^team\/([a-zA-Z0-9]+)(.*)$/", $url, $split))
+			{
+				if(isset($split[1]))
+				{
+					return $split[1];
+				}
+			}
 		}
-		return null;
 	}
 
 
