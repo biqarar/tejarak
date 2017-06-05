@@ -17,6 +17,11 @@ class view extends \lib\mvc\view
 		$this->data->display['ganje_et'] = "content_ganje/home/et.html";
 		$this->data->bodyclass           = 'unselectable';
 
+		$this->include->css_ermile   = false;
+		// $this->include->js_main      = false;
+		$this->include->css          = false;
+		// $this->include->js           = false;
+
 
 		// if(! ($this->url('sub') === 'cp' || $this->url('sub') === 'account') )
 		// 	$this->url->MainStatic       = false;
