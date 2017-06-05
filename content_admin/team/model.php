@@ -51,29 +51,17 @@ class model extends \content_admin\main\model
 		return $result;
 	}
 
-
 	/**
-	 * Gets the edit.
+	 * load team data to load for edit
 	 *
-	 * @param      <type>   $_args  The arguments
+	 * @param      <type>  $_team  The team
 	 *
-	 * @return     boolean  The edit.
+	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function get_edit($_args)
+	public function edit($_team)
 	{
-
-		if(isset($_args->match->url[0][1]))
-		{
-			$team = $_args->match->url[0][1];
-		}
-		else
-		{
-			return false;
-		}
-
 		$this->user_id = $this->login('id');
-
-		utility::set_request_array(['team' => $team]);
+		utility::set_request_array(['team' => $_team]);
 		return $this->get_team();
 	}
 
@@ -85,9 +73,9 @@ class model extends \content_admin\main\model
 	 */
 	public function post_edit($_args)
 	{
-		$request            = $this->getPost();
-		$this->user_id      = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request         = $this->getPost();
+		$this->user_id   = $this->login('id');
+		$request['team'] = $this->view()->find_team_name_url($_args);
 		utility::set_request_array($request);
 		$this->add_team(['method' => 'patch']);
 	}

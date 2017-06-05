@@ -29,5 +29,31 @@ class model extends \mvc\model
 		\lib\utility::set_request_array(['team' => $team]);
 		return $this->get_team();
 	}
+
+
+	/**
+	 * load check brand of team exist or no
+	 *
+	 * @param      <type>   $_name   The name of brand
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	public function is_exist_team($_name)
+	{
+		$_name = \lib\utility\safe::safe($_name);
+
+		if(!$this->login())
+		{
+			return false;
+		}
+		// search in teams
+		$search_team = \lib\db\teams::search(null, ['brand' => $_name, 'boss' => $this->login('id'), 'get_count' => true]);
+
+		if(intval($search_team) === 1)
+		{
+			return true;
+		}
+		return false;
+	}
 }
 ?>
