@@ -19,10 +19,20 @@ class controller extends \content_admin\main\controller
 		$this->get(false, 'add')->ALL($add_reg);
 		$this->post('add')->ALL($add_reg);
 
-		if(preg_match($add_reg, $url))
-		{
-			$this->display_name = 'content_admin\branch\add_edit.html';
-		}
+		// url like this team/ermile/branch=sarshomar
+		// route to edit sarshomar
+		$this->get(false, 'edit')->ALL(
+		[
+			'url'      => "/^team\/([a-zA-Z0-9]+)(.*)$/",
+			'property' =>
+			[
+				'branch' => ["/^[a-zA-Z0-9]+$/", true, 'branch'],
+			],
+		]);
+
+		// to save change items of branch
+		$edit_reg = "/^team\/([a-zA-Z0-9]+)\/branch\=([a-zA-Z0-9]+)$/";
+		$this->post('edit')->ALL($edit_reg);
 	}
 }
 ?>

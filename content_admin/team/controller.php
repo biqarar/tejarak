@@ -16,9 +16,19 @@ class controller extends \content_admin\main\controller
 		$this->get(false, 'add')->ALL('team');
 		$this->post('add')->ALL('team');
 
-		if(preg_match("/^team\/([a-zA-Z0-9]+)\/branch$/", $url))
+		// the url like this admin/ermile/branch
+		if(preg_match("/^team\/([a-zA-Z0-9]+)\/branch(|\=([a-zA-Z0-9]+))$/", $url))
 		{
 			\lib\router::set_controller('content_admin\branch\controller');
+			return;
+		}
+
+		// the url like this admin/ermile/sarshomar
+		// load the member list
+		if(preg_match("/^team\/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$/", $url, $split))
+		{
+			// muset check $split[2] whit $split[1]
+			\lib\router::set_controller('content_admin\member\controller');
 			return;
 		}
 

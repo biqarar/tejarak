@@ -52,89 +52,20 @@ class model extends \content_admin\main\model
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
-	 * Gets the addbranch.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_addbranch($_args)
-	{
-		$this->user_id = $this->login('id');
-		$team = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		\lib\utility::set_request_array(['team' => $team]);
-		return $this->get_team();
-	}
-
-
-	/**
-	 * Gets the list.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_listbranch($_args)
-	{
-		$this->user_id = $this->login('id');
-		$team = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		utility::set_request_array(['team' => $team]);
-
-		$result                = [];
-		$result['team']     = $this->get_team();
-		$result['branch_list'] = $this->get_list_branch();
-
-		return $result;
-	}
-
-
 	/**
 	 * Gets the editbranch.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_editbranch($_args)
+	public function edit($_args)
 	{
-		$request            = [];
-		$this->user_id      = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['branch']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request           = [];
+		$this->user_id     = $this->login('id');
+		$request['team']   = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['branch'] = $_args->get('branch')[0];
 		utility::set_request_array($request);
 		return $this->get_branch();
 	}
-
 
 
 	/**
@@ -142,32 +73,16 @@ class model extends \content_admin\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_editbranch($_args)
+	public function post_edit($_args)
 	{
-		$request          = $this->getPost();
-		$this->user_id    = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['branch']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request           = $this->getPost();
+		$this->user_id     = $this->login('id');
+		$request['team']   = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['branch'] = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 
 		utility::set_request_array($request);
 		$this->add_branch(['method' => 'patch']);
 	}
 
-
-	/**
-	 * Gets the branchdashboard.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_branchdashboard($_args)
-	{
-		$request            = [];
-		$this->user_id      = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['branch']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-		utility::set_request_array($request);
-		$result = $this->get_branch();
-		return $result;
-	}
 }
 ?>

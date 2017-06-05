@@ -1,5 +1,5 @@
 <?php
-namespace content_admin\staff;
+namespace content_admin\member;
 use \lib\utility;
 use \lib\debug;
 
@@ -12,23 +12,23 @@ class model extends \content_admin\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_liststaff($_args)
+	public function get_listmember($_args)
 	{
 		$this->user_id = $this->login('id');
 		$team = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array(['team' => $team]);
-		$result =  $this->get_list_staff();
+		$result =  $this->get_list_member();
 
 		return $result;
 	}
 
 
 	/**
-	 * Gets the addstaff.
+	 * Gets the addmember.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_addstaff($_args)
+	public function get_addmember($_args)
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
@@ -41,50 +41,50 @@ class model extends \content_admin\main\model
 
 
 	/**
-	 * Gets the staffdashboard.
+	 * Gets the memberdashboard.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_staffdashboard($_args)
+	public function get_memberdashboard($_args)
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
 		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['staff']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request['member']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array($request);
-		$result = $this->get_staff();
+		$result = $this->get_member();
 		return $result;
 	}
 
 
 	/**
-	 * Gets the editstaff.
+	 * Gets the editmember.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_editstaff($_args)
+	public function get_editmember($_args)
 	{
 		$request            = [];
 		$this->user_id      = $this->login('id');
 		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['staff']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request['member']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array($request);
-		return $this->get_staff();
+		return $this->get_member();
 	}
 
 
 	/**
-	 * Posts an addstaff.
+	 * Posts an addmember.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_addstaff($_args)
+	public function post_addmember($_args)
 	{
 		$request            = $this->getPost();
 		$this->user_id      = $this->login('id');
 		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array($request);
-		$this->add_staff();
+		$this->add_member();
 	}
 
 
@@ -119,24 +119,24 @@ class model extends \content_admin\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_editstaff($_args)
+	public function post_editmember($_args)
 	{
 		$request          = $this->getPost();
 		$this->user_id    = $this->login('id');
 		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['staff']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request['member']  = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 
 		utility::set_request_array($request);
-		$this->add_staff(['method' => 'patch']);
+		$this->add_member(['method' => 'patch']);
 	}
 
 
 	/**
-	 * Gets the editstaff team.
+	 * Gets the editmember team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_editstaff_team($_args)
+	public function get_editmember_team($_args)
 	{
 		$userteam_id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		utility::set_request_array(['id' => $userteam_id]);
@@ -149,11 +149,11 @@ class model extends \content_admin\main\model
 
 
 	/**
-	 * Gets the editstaff team.
+	 * Gets the editmember team.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_editstaff_team($_args)
+	public function post_editmember_team($_args)
 	{
 		$this->user_id      = $this->login('id');
 		$userteam_id     = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
@@ -161,7 +161,7 @@ class model extends \content_admin\main\model
 		$request['id']      = $userteam_id;
 		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
 		utility::set_request_array($request);
-		$result = $this->add_staff(['method' => 'patch']);
+		$result = $this->add_member(['method' => 'patch']);
 		// var_dump($result);
 		return $result;
 
