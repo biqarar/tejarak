@@ -11,11 +11,11 @@ self::$language =
 
 self::$config['default_language']             = 'en';
 
-self::$config['redirect_url']                 = 'https://tejarak.com';
+self::$config['redirect_url']                 = 'https://tejarak.dev';
 self::$config['multi_domain']                 = true;
 self::$config['redirect_to_main']             = true;
-self::$config['https']                        = true;
-self::$config['default_tld']                  = 'com';
+self::$config['https']                        = false;
+self::$config['default_tld']                  = 'dev';
 self::$config['default_permission']           = null;
 self::$config['debug']                        = true;
 self::$config['coming']                       = false;
@@ -41,7 +41,7 @@ self::$config['use_main_account']             = false;
 
 self::$config['domain_same']                  = true;
 self::$config['domain_name']                  = 'tejarak';
-self::$config['main_site']                    = 'https://tejarak.com';
+self::$config['main_site']                    = 'https://tejarak.dev';
 
 
 /**
