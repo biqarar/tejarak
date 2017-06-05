@@ -10,7 +10,7 @@ class model extends \content_admin\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_setup1($_args)
+	public function setup1()
 	{
 
 	}
@@ -21,7 +21,7 @@ class model extends \content_admin\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_setup2($_args)
+	public function setup2()
 	{
 
 	}
@@ -32,7 +32,7 @@ class model extends \content_admin\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_setup3($_args)
+	public function setup3()
 	{
 
 	}

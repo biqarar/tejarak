@@ -36,15 +36,15 @@ class controller extends \content_admin\main\controller
 		}
 
 		// route step 1
-		$this->get('setup1', 'setup1')->ALL("setup/1");
+		$this->get(false, 'setup1')->ALL("setup/1");
 		$this->post('setup1')->ALL("setup/1");
 
 		// route step 2
-		$this->get('setup2', 'setup2')->ALL("setup/2");
+		$this->get(false, 'setup2')->ALL("setup/2");
 		$this->post('setup2')->ALL("setup/2");
 
 		// route step 3
-		$this->get('setup3', 'setup3')->ALL("setup/3");
+		$this->get(false, 'setup3')->ALL("setup/3");
 		$this->post('setup3')->ALL("setup/3");
 	}
 }
