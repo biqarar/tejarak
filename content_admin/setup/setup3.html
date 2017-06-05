@@ -1,7 +1,17 @@
-{%extends display.back%}
+{%extends display.admin%}
 
+{%set contentClass%} flex justify-center align-center{%endset%}
 
 {%block content%}
-<h1>{%trans "Thank Your for setup"%}</h1>
-<h5><a href="{{url.base}}/admin/team/{{last_team_added}}">{%trans "Lets Go ;)"%}</a></h5>
+<div class="setup-card-box">
+ <div class="flex f-column justify-center align-center setup-card">
+  <h2>{%trans "Congratulations! Now you can use Tejarak."%}</h2>
+  <a href="{{url.base}}/admin/team/{{last_team_added}}" class="df-button">{%trans "Go to Tejarak"%}</a>
+ </div>
+ <div class="setup-card-indicator">
+  <span class="done"></span>
+  <span class="done"></span>
+  <span class="done"></span>
+ </div>
+</div>
 {%endblock%}

@@ -1,20 +1,27 @@
-{%extends display.back%}
+{%extends display.admin%}
 
-
+{%set contentClass%} flex justify-center align-center{%endset%}
 
 {%block content%}
-<h3>{%trans "Add Team"%}</h3>
-
-<form method="post" class="df">
-	<div class="f">
-		<label class="c1" for="title">{%trans "Title"%}</label>
-		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{team.title}}" class="c3" required id="title">
-	</div>
-
-	<div class="f">
-		<label class="c1"></label>
-		<input type="submit" value='{%trans "Next"%}' class="c3">
-	</div>
-</form>
-
+<div class="setup-card-box">
+ <div class="flex f-column justify-center align-center setup-card">
+  <h2>{%trans "Welcome to Tejarak initialization process!"%}</h2>
+  <h3><label for="title">{%trans "Please enter team name."%}</label></h3>
+  <form method="post" class="df">
+   <div class="f form-group">
+    <div class="c8">
+     <input type="text" name="title" placeholder='{%trans "Name"%}' value="{{team.title}}" class="c3" required id="title">
+    </div>
+    <div class="c4">
+     <input type="submit" value='{%trans "Next"%}' class="c3">
+    </div>
+   </div>
+  </form>
+ </div>
+ <div class="setup-card-indicator">
+  <span class="done"></span>
+  <span></span>
+  <span></span>
+ </div>
+</div>
 {%endblock%}

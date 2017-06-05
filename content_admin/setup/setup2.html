@@ -1,20 +1,45 @@
-{%extends display.back%}
+{%extends display.admin%}
 
-
+{%set contentClass%} flex justify-center align-center{%endset%}
 
 {%block content%}
-<h3>{%trans "Add Your Detail"%}</h3>
-
-<form method="post" class="df">
-	<div class="f">
-		<label class="c1" for="name">{%trans "Name"%}</label>
-		<input type="text" name="name" placeholder='{%trans "Name"%}' value="{{login.displayname}}" class="c3" required id="name">
-	</div>
-
-	<div class="f">
-		<label class="c1"></label>
-		<input type="submit" value='{%trans "Next"%}' class="c3">
-	</div>
-</form>
-
+<div class="setup-card-box">
+ <div class="flex f-column justify-center align-center setup-card">
+  <h2>{%trans "Please enter your information"%}</h2>
+  <form method="post" class="df">
+   <div class="f">
+    <div class="c9">
+     <div class="f form-group form-group-padding">
+      <div class="c6">
+       <input type="text" name="name" placeholder='{%trans "First Name"%}' value="{{login.displayname}}" id="name" required>
+      </div>
+      <div class="c6">
+       <input type="text" name="family" placeholder='{%trans "Last Name"%}' id="family" required>
+      </div>
+      <div class="c12">
+       <input type="text" name="post" placeholder="Post" id="post" required>
+      </div>
+     </div>
+    </div>
+    <div class="c3">
+     <input type="file" name="avatar" id="avatar">
+     <label for="avatar" class="avatar-upload">
+      <img src='{{url.static}}images/avatar/avatar.svg' alt='{%trans "Avatar"%}' class="default-avatar">
+     </label>
+    </div>
+   </div>
+   <div class="f form-group form-group-padding">
+    <div class="c9">
+     <input type="submit" value='{%trans "Next"%}'>
+    </div>
+    <div class="c3"></div>
+   </div>
+  </form>
+ </div>
+ <div class="setup-card-indicator">
+  <span class="done"></span>
+  <span class="done"></span>
+  <span></span>
+ </div>
+</div>
 {%endblock%}

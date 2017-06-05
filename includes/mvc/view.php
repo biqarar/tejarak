@@ -17,6 +17,9 @@ class view extends \lib\mvc\view
 		$this->data->display['ganje_et'] = "content_ganje/home/et.html";
 		$this->data->bodyclass           = 'unselectable';
 
+		$this->data->display['admin']        = 'content_admin/main/layout.html';
+
+
 		$this->include->css_ermile   = false;
 		// $this->include->js_main      = false;
 		$this->include->css          = false;
