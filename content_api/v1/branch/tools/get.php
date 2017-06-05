@@ -115,8 +115,8 @@ trait get
 
 		if(!utility::request('team'))
 		{
-			logs::set('api:branch:comany:brand:notfound', null, $log_meta);
-			debug::error(T_("Comany not found"), 'comany', 'permission');
+			logs::set('api:branch:team:brand:notfound', null, $log_meta);
+			debug::error(T_("team not found"), 'team', 'permission');
 			return false;
 		}
 
@@ -172,8 +172,8 @@ trait get
 
 		if(!$team)
 		{
-			logs::set('api:branch:comany:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany"), 'team', 'permission');
+			logs::set('api:branch:team:notfound', $this->user_id, $log_meta);
+			debug::error(T_("Invalid team"), 'team', 'permission');
 			return false;
 		}
 

@@ -51,7 +51,7 @@ class view extends \content_admin\main\view
 
 
 	/**
-	 * get comapny detail for edit
+	 * get team detail for edit
 	 *
 	 * @param      <type>  $_args  The arguments
 	*/

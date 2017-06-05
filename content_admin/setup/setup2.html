@@ -3,6 +3,18 @@
 
 
 {%block content%}
-step 2
+<h3>{%trans "Add Your Detail"%}</h3>
+
+<form method="post" class="df">
+	<div class="f">
+		<label class="c1" for="name">{%trans "Name"%}</label>
+		<input type="text" name="name" placeholder='{%trans "Name"%}' value="{{login.displayname}}" class="c3" required id="name">
+	</div>
+
+	<div class="f">
+		<label class="c1"></label>
+		<input type="submit" value='{%trans "Next"%}' class="c3">
+	</div>
+</form>
 
 {%endblock%}

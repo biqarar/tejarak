@@ -6,7 +6,7 @@ use \lib\utility;
 class model extends \content_admin\main\model
 {
 	/**
-	 * load brand comapny
+	 * load brand team
 	 *
 	 * @param      <type>   $_url   The url
 	 *

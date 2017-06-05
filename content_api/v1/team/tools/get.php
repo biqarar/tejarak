@@ -139,7 +139,7 @@ trait get
 		if(!$team)
 		{
 			logs::set('api:team:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany brand"), 'team', 'permission');
+			debug::error(T_("Invalid team brand"), 'team', 'permission');
 			return false;
 		}
 

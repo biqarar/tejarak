@@ -58,11 +58,17 @@ trait add
 
 		$brand = utility::request('brand');
 
-		if(!$brand)
+		if(!$brand && !$title)
 		{
 			logs::set('api:team:brand:not:sert', $this->user_id, $log_meta);
 			debug::error(T_("Brand of team can not be null"), 'brand', 'arguments');
 			return false;
+		}
+
+		// get slug of title in brand if the brand is not set
+		if(!$brand && $title)
+		{
+			$brand = \lib\utility\filter::slug($title);
 		}
 
 		if(mb_strlen($brand) > 100)
@@ -80,17 +86,10 @@ trait add
 			return false;
 		}
 
-		if(in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
-		{
-			logs::set('api:team:blocklist:brand', $this->user_id, $log_meta);
-			debug::error(T_("Can not use this brand"), 'brand', 'arguments');
-			return false;
-		}
-
 		if(!preg_match("/^[A-Za-z0-9]+$/", $brand))
 		{
 			logs::set('api:team:invalid:brand', $this->user_id, $log_meta);
-			debug::error(T_("Only [A-Za-z0-9] can use in comany brand"), 'brand', 'arguments');
+			debug::error(T_("Only [A-Za-z0-9] can use in team brand"), 'brand', 'arguments');
 			return false;
 		}
 
@@ -123,24 +122,42 @@ trait add
 		$check_duplicate_title = ['brand' => $brand];
 
 		$check = \lib\db\teams::search(null, $check_duplicate_title);
-		if($check)
+
+		if($check || in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
 		{
+			$change_name = true;
 			if($_args['method'] === 'post')
 			{
-				logs::set('api:team:duplocate:brand', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate brand of team"), 'brand', 'arguments');
-				return false;
+				// the name of this team must be changed
 			}
 			else
 			{
 				if(isset($check[0]['id']) && intval($check[0]['id']) === intval($id))
 				{
-					// not problem
+					// the user id edit team name and needless to change name of team
+					$change_name = false;
 				}
 				else
 				{
-					logs::set('api:team:duplocate:brand', $this->user_id, $log_meta);
-					debug::error(T_("Duplicate brand of team"), 'brand', 'arguments');
+					// the name of this team must be changed
+				}
+			}
+			// replase name of team to team1
+			if($change_name)
+			{
+				$get_similar_brand['brand']     = ['LIKE', "'$brand%'"];
+				$get_similar_brand['get_count'] = true;
+
+				$count = \lib\db\teams::search(null, $get_similar_brand);
+
+				if($count && is_numeric($count))
+				{
+					$brand = $brand . ++$count;
+				}
+				else
+				{
+					logs::set('api:team:cannot:change_name', $this->user_id, $log_meta);
+					debug::error(T_("Duplicate name of team please choose another name"), 'brand', 'arguments');
 					return false;
 				}
 			}
@@ -155,6 +172,8 @@ trait add
 		$args['site']            = $site;
 		$args['register_code']   = $register_code;
 		$args['economical_code'] = $economical_code;
+
+		\lib\storage::set_last_team_added($brand);
 
 		if($_args['method'] === 'post')
 		{
@@ -186,7 +205,7 @@ trait add
 			if(!$id || !is_numeric($id))
 			{
 				logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);
-				debug::error(T_("Id of Comany not found"), 'id', 'permission');
+				debug::error(T_("Id of team not found"), 'id', 'permission');
 				return false;
 			}
 
@@ -219,11 +238,11 @@ trait add
 			debug::title(T_("Operation Complete"));
 			if($edit_mode)
 			{
-				debug::true("Comany successfuly edited");
+				debug::true("team successfuly edited");
 			}
 			else
 			{
-				debug::true("Comany successfuly added");
+				debug::true("team successfuly added");
 			}
 		}
 	}

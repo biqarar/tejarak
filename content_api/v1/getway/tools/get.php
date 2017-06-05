@@ -31,8 +31,8 @@ trait get
 
 		if(!utility::request('team'))
 		{
-			logs::set('api:getway:comany:brand:notfound', null, $log_meta);
-			debug::error(T_("Comany not found"), 'comany', 'permission');
+			logs::set('api:getway:team:brand:notfound', null, $log_meta);
+			debug::error(T_("team not found"), 'team', 'permission');
 			return false;
 		}
 
@@ -78,8 +78,8 @@ trait get
 
 		if(!$team)
 		{
-			logs::set('api:getway:comany:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid comany"), 'team', 'permission');
+			logs::set('api:getway:team:notfound', $this->user_id, $log_meta);
+			debug::error(T_("Invalid team"), 'team', 'permission');
 			return false;
 		}
 

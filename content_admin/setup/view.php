@@ -45,7 +45,10 @@ class view extends \content_admin\main\view
 	 */
 	public function view_setup3($_args)
 	{
-
+		if(isset($_SESSION['last_team_added']))
+		{
+			$this->data->last_team_added = $_SESSION['last_team_added'];
+		}
 	}
 }
 ?>
