@@ -46,8 +46,13 @@ class model extends \mvc\model
 		{
 			return false;
 		}
+		$search_meta              = [];
+		$search_meta['brand']     = $_name;
+		$search_meta['boss']      = $this->login('id');
+		$search_meta['get_count'] = true;
+		$search_meta['status']    = ['<>', "'deleted'"];
 		// search in teams
-		$search_team = \lib\db\teams::search(null, ['brand' => $_name, 'boss' => $this->login('id'), 'get_count' => true]);
+		$search_team = \lib\db\teams::search(null, $search_meta);
 
 		if(intval($search_team) === 1)
 		{

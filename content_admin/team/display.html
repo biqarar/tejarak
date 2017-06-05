@@ -1,7 +1,7 @@
 {%extends display.back%}
 {%block content%}
 {%if edit_mode%}
-	<h1>{%trans "Add Team"%} {{team.title}}</h1>
+	<h1>{%trans "Edit Team"%} {{team.title}}</h1>
 {%else%}
 	<h1>{%trans "Add Team"%}</h1>
 {%endif%}
@@ -33,13 +33,20 @@
 		<input type="file" name="logo" class="c3" id="logo">
 	</div>
 
-	<div class="f">
-		<label class="c1"></label>
-		{%if edit_mode%}
+	{%if edit_mode%}
+		<div class="f">
+			<label class="c1"></label>
 			<input type="submit" value='{%trans "Edit"%}' class="c3">
-		{%else%}
+		</div>
+		<div class="f">
+			<label class="c1"></label>
+			<a href="{{url.full}}"   class="c3" data-data='{"delete":true}' data-method="post" data-ajaxify>{%trans "Delete"%}</a>
+		</div>
+	{%else%}
+		<div class="f">
+			<label class="c1"></label>
 			<input type="submit" value='{%trans "Add"%}' class="c3">
-		{%endif%}
-	</div>
+		</div>
+	{%endif%}
 </form>
 {%endblock%}

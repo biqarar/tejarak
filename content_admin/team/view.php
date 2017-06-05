@@ -24,6 +24,7 @@ class view extends \content_admin\main\view
 		{
 			$this->data->team = $this->model()->edit($name);
 		}
+		$this->data->edit_mode = true;
 	}
 }
 ?>

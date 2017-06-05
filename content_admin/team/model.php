@@ -1,6 +1,7 @@
 <?php
 namespace content_admin\team;
 use \lib\utility;
+use \lib\debug;
 
 class model extends \content_admin\main\model
 {
@@ -40,18 +41,6 @@ class model extends \content_admin\main\model
 
 
 	/**
-	 * Gets the list.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_list($_args)
-	{
-		$this->user_id = $this->login('id');
-		$result =  $this->get_list_team();
-		return $result;
-	}
-
-	/**
 	 * load team data to load for edit
 	 *
 	 * @param      <type>  $_team  The team
@@ -73,11 +62,31 @@ class model extends \content_admin\main\model
 	 */
 	public function post_edit($_args)
 	{
+		$brand = $this->view()->find_team_name_url($_args);
+		// if delete link is clicked
+		// go to delete function and return
+		if(utility::post('delete'))
+		{
+			$this->post_delete($brand);
+			return;
+		}
+
 		$request         = $this->getPost();
 		$this->user_id   = $this->login('id');
-		$request['team'] = $this->view()->find_team_name_url($_args);
+		$request['team'] = $brand;
 		utility::set_request_array($request);
+
+		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
+		if(debug::$status)
+		{
+			$new_brand = \lib\storage::get_last_team_added();
+
+			if($new_brand && $new_brand != $request['team'])
+			{
+				$this->redirector()->set_domain()->set_url("admin/team/$new_brand");
+			}
+		}
 	}
 
 
@@ -88,10 +97,10 @@ class model extends \content_admin\main\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function post_delete($_args)
+	public function post_delete($_brand)
 	{
-		utility::set_request_array(['brand' => utility::post('brand')]);
 		$this->user_id = $this->login('id');
+		utility::set_request_array(['brand' => $_brand]);
 		return $this->delete_team();
 	}
 }
