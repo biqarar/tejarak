@@ -11,7 +11,7 @@ self::$language =
 
 self::$config['default_language']             = 'en';
 
-self::$config['redirect_url']                 = 'https://tejarak.dev';
+self::$config['redirect_url']                 = 'http://tejarak.dev';
 self::$config['multi_domain']                 = true;
 self::$config['redirect_to_main']             = true;
 self::$config['https']                        = false;
@@ -41,7 +41,7 @@ self::$config['use_main_account']             = false;
 
 self::$config['domain_same']                  = true;
 self::$config['domain_name']                  = 'tejarak';
-self::$config['main_site']                    = 'https://tejarak.dev';
+self::$config['main_site']                    = 'http://tejarak.dev';
 
 
 /**

@@ -14,6 +14,14 @@ class controller extends \content_admin\main\controller
 
 		$url = explode('/', $url);
 
+
+		// if user_setup is null redirect to setup page
+		if(!$this->login('setup'))
+		{
+			$this->redirector()->set_domain()->set_url('admin/setup')->redirect();
+			return;
+		}
+
 		// https://tejarak.com/fa/admin/
 		// https://tejarak.com/fa/admin/company
 		// https://tejarak.com/fa/admin/company/add
