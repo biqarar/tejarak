@@ -145,20 +145,19 @@ trait add
 			// replase name of team to team1
 			if($change_name)
 			{
+
 				$get_similar_brand['brand']     = ['LIKE', "'$brand%'"];
 				$get_similar_brand['get_count'] = true;
-
 				$count = \lib\db\teams::search(null, $get_similar_brand);
 
-				if($count && is_numeric($count))
+				while ($change_name)
 				{
+					if(!\lib\db\teams::get(['brand' => $brand, 'limit' => 1]))
+					{
+						$change_name = false;
+						break;
+					}
 					$brand = $brand . ++$count;
-				}
-				else
-				{
-					logs::set('api:team:cannot:change_name', $this->user_id, $log_meta);
-					debug::error(T_("Duplicate name of team please choose another name"), 'brand', 'arguments');
-					return false;
 				}
 			}
 		}
