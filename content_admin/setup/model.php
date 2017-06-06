@@ -83,6 +83,7 @@ class model extends \content_admin\main\model
 	{
 		// update user details
 		$update_user = [];
+		$user_session = [];
 
 		// check the user is login
 		if(!$this->login())
@@ -114,6 +115,7 @@ class model extends \content_admin\main\model
 			{
 				$code = utility\shortURL::decode($uploaded_file['code']);
 				$update_user['user_file_id'] = $code;
+				$user_session['file_id'] = $update_user['user_file_id'];
 			}
 			// if in upload have error return
 			if(!debug::$status)
@@ -129,21 +131,24 @@ class model extends \content_admin\main\model
 			return false;
 		}
 		// if the name exist update user display name
-		if(utility::post('name') && utility::post('name') != $this->login('displayname'))
+		if(utility::post('name') && utility::post('name') != $this->login('name'))
 		{
-			$update_user['user_displayname'] = utility::post('name');
+			$update_user['user_name'] = utility::post('name');
+			$user_session['name'] = $update_user['user_name'];
 		}
 
 		// if the family exist update user display family
 		if(utility::post('family') && utility::post('family') != $this->login('family'))
 		{
 			$update_user['user_family'] = utility::post('family');
+			$user_session['family'] = $update_user['user_family'];
 		}
 
 		// if the postion exist update user display postion
 		if(utility::post('post') && utility::post('post') != $this->login('postion'))
 		{
 			$update_user['user_postion'] = utility::post('post');
+			$user_session['postion'] = $update_user['user_postion'];
 		}
 
 		// update user record
@@ -152,7 +157,7 @@ class model extends \content_admin\main\model
 			\lib\db\users::update($update_user, $this->login('id'));
 			if(isset($_SESSION['user']) && is_array($_SESSION['user']))
 			{
-				array_merge($_SESSION['user'], $update_user);
+				$_SESSION['user'] = array_merge($_SESSION['user'], $user_session);
 			}
 		}
 
