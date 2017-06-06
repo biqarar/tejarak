@@ -1,11 +1,33 @@
 {%extends display.admin%}
 
+{%set contentClass%} flex justify-center align-center{%endset%}
 
 {%block content%}
 {%for key, value in list_member%}
-<img src="{{value.file}}" height="100" width="100">
-<h1>{{value.displayname}}</h1>
-<h2>{{value.mobile}}</h2>
-<h3>{{value.postion}}</h3>
+<div class="t-card-box">
+ <div class="t-card">
+  <div class="t-card-front">
+   <div class="t-card-img"><img src='{{value.file}}' alt=''></div>
+   <div class="t-card-bottom">
+    <div class="t-card-name">{{value.displayname}}</div>
+    <div class="t-card-post">{{value.postion}}</div>
+   </div>
+  </div>
+
+  <div class="t-card-back">
+   <div class="t-card-back-top">
+    <div class="t-card-back-name" data-number='{{key}}'>{{value.displayname}}</div>
+   </div>
+  </div>
+ </div>
+</div>
 {%endfor%}
+
+<a class="t-card-box t-card-add t-card-fix" href="member">
+ <div class="t-card">
+  <div class="t-card-front">
+   <span class="t-card-add-plus">+</span>
+  </div>
+ </div>
+</a>
 {%endblock%}

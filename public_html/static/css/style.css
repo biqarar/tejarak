@@ -169,9 +169,39 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 
 /* card */
 .t-card-box{margin:2em;-webkit-perspective:1000px;perspective:1000px}
-.t-card-box.flipped .t-card{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
+.t-card-box:not(.t-card-fix):hover .t-card{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
 .t-card-box,.t-card,.t-card-front,.t-card-back{width:180px;height:250px}
 .t-card{position:relative;-webkit-transition:.6s;-webkit-transition:.6s;transition:.6s;background-color:white;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
 .t-card-front,.t-card-back{position:absolute;top:0;left:0;background-color:#fff;-webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .t-card-front{z-index:2;-webkit-transform:rotateY(0deg);transform:rotateY(0deg)}
-.t-card-back{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
+.t-card-back{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;flex-direction:column;-webkit-transform:rotateY(180deg);transform:rotateY(180deg);-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;-moz-box-pack:justify;justify-content:space-between}
+
+.t-card .t-card-img{position:relative;overflow:hidden;height:180px}
+.t-card .t-card-img::before{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;content:''}
+.t-card .t-card-img img{display:block;height:100%}
+
+.t-card .t-card-bottom{height:70px}
+.t-card .t-card-bottom .t-card-name,.t-card .t-card-bottom .t-card-post{overflow:hidden;max-width:100%;text-align:center;white-space:nowrap;text-overflow:ellipsis}
+.t-card .t-card-bottom .t-card-name{font-size:1.25em;font-weight:700;padding:1.75rem 1rem 1rem}
+.t-card .t-card-bottom .t-card-post{font-size:1.1em;padding:0 1rem}
+
+.t-card-back .t-card-back-name{font-size:1.1em;overflow:hidden;max-width:100%;padding:1rem 1rem 0 1rem;white-space:nowrap;text-overflow:ellipsis}
+.t-card-back .t-card-back-name::before{display:inline-block;margin-right:.5rem;padding:.4rem .5rem .1rem;content:attr(data-number);text-align:center;vertical-align:baseline;color:#fff;border-radius:2px;background-color:#009688;text-shadow:0 0 1px #ccc}
+.rtl .t-card-back .t-card-back-name::before{margin-right:0;margin-left:.5rem}
+
+.t-card .t-card-data{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;margin:0 1rem 1rem;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;-moz-box-pack:justify;justify-content:space-between}
+.t-card .t-card-heading{font-size:1.25em;font-weight:700}
+.t-card div.t-card-heading{margin:1rem 1rem .5rem}
+.t-card .t-card-value{display:block;font-size:1.2em;text-align:center}
+
+.t-card .time-module{overflow:hidden;margin:0 1rem 1rem;border-radius:2px}
+.t-card .time-module .time-module-input{overflow:hidden}
+.t-card .time-module .time-module-input input{font-size:1.5em;max-width:100%;height:100%;text-align:center;color:#333;border:none;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;outline:none;background-color:#eee}
+.t-card .time-module .time-module-minus,.t-card .time-module .time-module-plus{font-size:2em;font-weight:bold;line-height:4rem;width:4rem;height:4rem;cursor:pointer;text-align:center;color:#f4f4f4}
+.t-card .time-module .time-module-minus{background-color:#ef3a07}
+.t-card .time-module .time-module-plus{background-color:#3ca541}
+
+.t-card .btn{display:block;margin-bottom:1rem}
+
+.t-card-add .t-card .t-card-front{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;-moz-box-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;-moz-box-align:center;align-items:center;background-color:#eee}
+.t-card-add .t-card .t-card-add-plus{font-size:10em;border-radius:50%;display:block;text-align:center;color:#666;margin-top:20px}

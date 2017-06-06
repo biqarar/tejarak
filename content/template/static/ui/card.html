@@ -5,20 +5,44 @@
 {%block content%}
 <div class="t-card-box" ontouchstart="this.classList.toggle('flipped');">
  <div class="t-card">
-  <div class="t-card-front"></div>
-  <div class="t-card-back"></div>
- </div>
-</div>
+  <div class="t-card-front">
+   <div class="t-card-img"><img src='{{url.static}}images/avatar/tejarak/1.jpg' alt=''></div>
+   <div class="t-card-bottom">
+    <div class="t-card-name">Javad Evazzadeh</div>
+    <div class="t-card-post">CEO</div>
+   </div>
+  </div>
 
-<div class="t-card-box" ontouchstart="this.classList.toggle('flipped');">
- <div class="t-card">
-  <div class="t-card-front"></div>
-  <div class="t-card-back"></div>
+  <div class="t-card-back">
+   <div class="t-card-back-top">
+    <div class="t-card-back-name" data-number='1'>Javad Evazzadeh</div>
+    <div class="t-card-heading">Outside</div>
+    <div class="f time-module">
+     <div class="c3 time-module-minus">-</div>
+     <div class="c6 time-module-input"><input type="text" name="" placeholder=''></div>
+     <div class="c3 time-module-plus">+</div>
+    </div>
+
+    <div class="t-card-data">
+     <span class="t-card-heading">Enter</span>
+     <span class="t-card-value">14:30</span>
+    </div>
+
+    <div class="t-card-data">
+     <span class="t-card-heading">Total</span>
+     <span class="t-card-value">14:30</span>
+    </div>
+   </div>
+
+   <div class="t-card-back-bottom">
+    <div class="btn">Enter</div>
+   </div>
+  </div>
  </div>
 </div>
 {%endblock%}
 
-{%block foot_js%}
+{%block foot_js2%}
 <script type="text/javascript">
  document.querySelectorAll('.t-card-box').forEach(function(c, index){
   c.addEventListener('click', function(){
