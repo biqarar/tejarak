@@ -168,5 +168,10 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 
 
 /* card */
-
-
+.t-card-box{margin:2em;-webkit-perspective:1000px;perspective:1000px}
+.t-card-box.flipped .t-card{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
+.t-card-box,.t-card,.t-card-front,.t-card-back{width:180px;height:250px}
+.t-card{position:relative;-webkit-transition:.6s;-webkit-transition:.6s;transition:.6s;background-color:white;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
+.t-card-front,.t-card-back{position:absolute;top:0;left:0;background-color:#fff;-webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.t-card-front{z-index:2;-webkit-transform:rotateY(0deg);transform:rotateY(0deg)}
+.t-card-back{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}

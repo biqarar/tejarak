@@ -1,4 +1,29 @@
 {%extends display.admin%}
 
+{%set contentClass%} flex justify-center align-center{%endset%}
+
 {%block content%}
+<div class="t-card-box" ontouchstart="this.classList.toggle('flipped');">
+ <div class="t-card">
+  <div class="t-card-front"></div>
+  <div class="t-card-back"></div>
+ </div>
+</div>
+
+<div class="t-card-box" ontouchstart="this.classList.toggle('flipped');">
+ <div class="t-card">
+  <div class="t-card-front"></div>
+  <div class="t-card-back"></div>
+ </div>
+</div>
+{%endblock%}
+
+{%block foot_js%}
+<script type="text/javascript">
+ document.querySelectorAll('.t-card-box').forEach(function(c, index){
+  c.addEventListener('click', function(){
+   this.classList.toggle('flipped');
+  });
+ });
+</script>
 {%endblock%}
