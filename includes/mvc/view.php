@@ -9,7 +9,7 @@ class view extends \lib\mvc\view
 
 		$this->data->site['title']       = T_("Tejarak");
 		$this->data->site['desc']        = T_("Tejarak was born to serve small and beautiful service for e-business");
-		$this->data->site['slogan']      = T_("Enjoy work time");
+		$this->data->site['slogan']      = T_("Modern Solutions For Your Business");
 
 		$this->data->page['desc']        = $this->data->site['slogan'];
 		$this->data->display['ganje']    = "content_ganje/home/layout.html";
@@ -17,7 +17,7 @@ class view extends \lib\mvc\view
 		$this->data->display['ganje_et'] = "content_ganje/home/et.html";
 		$this->data->bodyclass           = 'unselectable';
 
-		$this->data->display['admin']        = 'content_admin/main/layout.html';
+		$this->data->display['admin']    = 'content_admin/main/layout.html';
 
 
 		$this->include->css_ermile   = false;

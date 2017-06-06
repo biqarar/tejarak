@@ -2,6 +2,32 @@
 
 
 {%block content%}
+ <div class="tile">
+  <div class="cn">
+   <h2>{{site.slogan}}</h2>
+   <h3>{{site.desc}}</h3>
+   {{block('getStarted')}}
+  </div>
+ </div>
+
+ <div class="tile bg-white" id='easy-setup'>
+  <div class="cn">
+   <h2>{%trans "Transfer to Tejarak is Easy"%}</h2>
+   <img src="{{url.static}}images/homepage/tour.gif" />
+   <h4>{%trans "Set up a team in less than a minute!"%} {%trans "It's FREE!"%} <a href="{{url.base}}/enter" data-direct>{%trans "Try it."%}</a></h4>
+  </div>
+ </div>
+
+
+
+{%endblock%}
+
+
+
+
+
+
+{%block content2%}
 <div id="cover">
  <h1>{{site.title}}</h1>
  <h2>{{site.desc}}</h2>

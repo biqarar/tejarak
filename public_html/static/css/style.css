@@ -17,10 +17,26 @@ header .btn{margin:10px;}
 /* pages style*/
 .page-block{margin:5em 0;font-size:1.2em}
 /* section head*/
-.section-head{text-align:center;margin-bottom:4em;}
-.section-head h2{margin:0;font-size:3em;color:#333}
-.section-head h3{margin:0;font-weight:200;color:#888}
-.section-head h4{margin:0;font-weight:200;color:#999}
+.tile{text-align:center;margin-bottom:4em;padding:2em 0}
+.tile h2{margin:0;font-size:3em;color:#333}
+.tile h3{margin:0;font-weight:200;color:#888}
+.tile h4{margin:0;font-weight:200;color:#999}
+
+.tile{padding:4em 0;width:100%;overflow:hidden;}
+.bg-white{background-color:#fff;}
+.bg-gray{background-color:#eee;}
+.bg-gray2{background-color:#ddd;}
+
+/* homepage */
+.getStarted{min-width:300px;width:400px;margin:1em auto;font-size:1.5em;}
+.getStarted form{height:50px;}
+.getStarted input.c{height:100%;background-color:#fff;border:1px solid #4070c0;line-height:50px;padding:0 1em;color:#777}
+.getStarted button.c{height:100%;background-color:#4070c0;border:none;color:#eee;padding:0;line-height:50px;max-width:150px;transition:0.3s}
+.getStarted button.c:hover{background-color:#2957a5}
+.getStarted button.c:focus{background-color:#2957a5;color:#fff;}
+
+.getStarted p{padding:1em 0;color:#888;font-size:0.8em}
+
 
 
 

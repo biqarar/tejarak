@@ -1,10 +1,8 @@
-
 {%set logoImg%}
 {%if site.currentlang =='fa'%}
 <img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%else%}
 <img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%endif%}
 {%endset%}
-
 
  <header data-scroll>
   <div class="cn f">
@@ -24,6 +22,5 @@
     <a href="{{url.base}}/help" class="header-profile-button">{%trans "Help"%}</a>
     <a href="{{url.base}}/enter" data-direct class="btn">{%trans "Get started"%}</a>
     </nav>
-
   </div>
  </header>
