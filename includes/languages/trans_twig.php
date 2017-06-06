@@ -29,33 +29,31 @@ private function transtext()
 	echo T_("Some right reserved!");                                                  // Line 28
 
 	//----------------------------------------------------content\template\footer.html
-	echo T_("Home");                                                                  // Line 6
-	echo T_("About");                                                                 // Line 54
-	echo T_("Press and Media");                                                       // Line 8
-	echo T_("Careers");                                                               // Line 9
-	echo T_("Social Responsibility");                                                 // Line 10
-	echo T_("Help Center");                                                           // Line 31
-	echo T_("API");                                                                   // Line 12
-	echo T_("Eco Friendly");                                                          // Line 13
-	echo T_("Enamad");                                                                // Line 21
-	echo T_("Support");                                                               // Line 28
-	echo T_("Contact us");                                                            // Line 30
-	echo T_("Logo");                                                                  // Line 32
-	echo T_("Questions answered");                                                    // Line 39
-	echo T_("Proudly Made in IRAN");                                                  // Line 40
-	echo T_(" is a free to use, open source PHP framework created by");               // Line 55
-	echo T_("Ermile");                                                                // Line 72
-	echo T_("Another Languages");                                                     // Line 58
-	echo T_("Location");                                                              // Line 66
-	echo T_("#614, Omranieh, Moallem St");                                            // Line 67
-	echo T_("Qom, IRAN");                                                             // Line 67
-	echo T_("+98 25 3773 5183");                                                      // Line 67
-	echo T_("Copyright");                                                             // Line 72
-	echo T_("2016");                                                                  // Line 11 Seperate
-
-	//----------------------------------------------------content\template\header.html
+	echo T_("Home");                                                                  // Line 5
+	echo T_("About");                                                                 // Line 6
+	echo T_("Press and Media");                                                       // Line 7
+	echo T_("Careers");                                                               // Line 8
+	echo T_("Social Responsibility");                                                 // Line 9
+	echo T_("Help Center");                                                           // Line 37
+	echo T_("Enamad");                                                                // Line 16
+	echo T_("Service");                                                               // Line 54 Seperate
 	echo T_("Benefits");                                                              // Line 15
 	echo T_("Pricing");                                                               // Line 16
+	echo T_("Learn More");                                                            // Line 28
+	echo T_("Terms of Service");                                                      // Line 29
+	echo T_("Privacy Policy");                                                        // Line 30
+	echo T_("Changelog");                                                             // Line 31
+	echo T_("Support");                                                               // Line 35
+	echo T_("Contact us");                                                            // Line 36
+	echo T_("FAQ");                                                                   // Line 38
+	echo T_("Logo");                                                                  // Line 32
+	echo T_("Proudly Made in IRAN");                                                  // Line 47
+	echo T_("Control Panel");                                                         // Line 55
+	echo T_("Admin Panel");                                                           // Line 56
+	echo T_("Exit Session");                                                          // Line 57
+	echo T_("Another Session");                                                       // Line 58
+
+	//----------------------------------------------------content\template\header.html
 	echo T_("Sales +98 25 3773 5183");                                                // Line 17
 	echo T_("Help");                                                                  // Line 22
 	echo T_("Get started");                                                           // Line 23
@@ -208,6 +206,7 @@ private function transtext()
 	echo T_("2013");                                                                  // Line 8 Seperate
 	echo T_("2014");                                                                  // Line 9 Seperate
 	echo T_("2015");                                                                  // Line 10 Seperate
+	echo T_("2016");                                                                  // Line 11 Seperate
 	echo T_("2017");                                                                  // Line 12 Seperate
 	echo T_("2018");                                                                  // Line 13 Seperate
 	echo T_("2019");                                                                  // Line 14 Seperate
@@ -246,7 +245,6 @@ private function transtext()
 	echo T_("Shareholder");                                                           // Line 50 Seperate
 	echo T_("Chrikt");                                                                // Line 51 Seperate
 	echo T_("Content Expert");                                                        // Line 53 Seperate
-	echo T_("Service");                                                               // Line 54 Seperate
 	echo T_("UI Developer");                                                          // Line 55 Seperate
 	echo T_("Frontend Developer");                                                    // Line 56 Seperate
 	echo T_("Research & Develepment");                                                // Line 57 Seperate
