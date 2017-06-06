@@ -18,31 +18,22 @@ class view extends \lib\mvc\view
 		$this->data->bodyclass           = 'unselectable';
 
 		$this->data->display['admin']    = 'content_admin/main/layout.html';
-		$this->data->template['social']      = 'content/template/social.html';
-		$this->data->template['share']       = 'content/template/share.html';
+		$this->data->template['social']  = 'content/template/social.html';
+		$this->data->template['share']   = 'content/template/share.html';
 
+		// get total uses
+		$total_users                     = \lib\utility\users::tejarak_total_users();
+		$total_users                     = number_format($total_users);
+		$total_users                     = \lib\utility\human::number($total_users);
+		$this->data->total_users         = T_("Tejarak help :count people to work beter!", ['count' => $total_users]);
 
-		$this->include->css_ermile   = false;
-		// $this->include->js_main      = false;
-		$this->include->css          = false;
-		// $this->include->js           = false;
-
-
-		// if(! ($this->url('sub') === 'cp' || $this->url('sub') === 'account') )
-		// 	$this->url->MainStatic       = false;
-
-		/*
-		// add language list for use in display
-		$this->global->langlist		= array(
-												'fa_IR' => 'فارسی',
-												'en_US' => 'English',
-												'de_DE' => 'Deutsch'
-												);
-
+		$this->include->css_ermile       = false;
+		// $this->include->js_main       = false;
+		$this->include->css              = false;
+		// $this->include->js            = false;
 
 		// if you need to set a class for body element in html add in this value
-		$this->data->bodyclass      = null;
-		*/
+		$this->data->bodyclass           = null;
 
 		if(method_exists($this, 'options'))
 		{
