@@ -33,6 +33,18 @@ class controller extends \content_admin\main\controller
 		// to save change items of branch
 		$edit_reg = "/^team\/([a-zA-Z0-9]+)\/branch\=([a-zA-Z0-9]+)$/";
 		$this->post('edit')->ALL($edit_reg);
+
+		$dash_reg = "/^[^team][a-zA-Z0-9]+$/";
+		if(preg_match($dash_reg, $url, $split))
+		{
+
+			$this->display_name = 'content_admin\branch\dashboard.html';
+			if(isset($split[0]))
+			{
+				$this->get(false, 'dashboard')->ALL($split[0]);
+			}
+		}
+
 	}
 }
 ?>

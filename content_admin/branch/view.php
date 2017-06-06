@@ -25,5 +25,13 @@ class view extends \content_admin\main\view
 		$this->data->branch = $this->model()->edit($_args);
 		$this->data->edit_mode = true;
 	}
+
+
+	public function view_dashboard($_args)
+	{
+		$team = (isset($_args->match->url[0]) &&  is_string($_args->match->url[0])) ? $_args->match->url[0] : null;
+		$this->data->branch_list = $this->model()->branch_list($team);
+		// var_dump($this->data->branch_list);exit();
+	}
 }
 ?>

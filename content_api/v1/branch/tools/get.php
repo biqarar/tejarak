@@ -124,10 +124,10 @@ trait get
 
 		if(isset($team_id['id']))
 		{
-			$search               = [];
+			$search            = [];
 			$search['team_id'] = $team_id['id'];
-			$result               = \lib\db\branchs::search(null, $search);
-			$temp = [];
+			$result            = \lib\db\branchs::search(null, $search);
+			$temp              = [];
 			foreach ($result as $key => $value)
 			{
 				$check = $this->ready_branch($value);

@@ -84,5 +84,23 @@ class model extends \content_admin\main\model
 		$this->add_branch(['method' => 'patch']);
 	}
 
+
+	/**
+	 * get list of branch of team
+	 *
+	 * @param      <type>  $_team  The team
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function branch_list($_team)
+	{
+		if($this->login())
+		{
+			$this->user_id = $this->login('id');
+			utility::set_request_array(['team' => $_team]);
+			return $this->get_list_branch();
+		}
+	}
+
 }
 ?>
