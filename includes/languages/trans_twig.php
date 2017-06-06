@@ -181,6 +181,19 @@ private function transtext()
 	//----------------------------------------------content\template\static\terms.html
 	echo T_("Terms of Service Agreement");                                            // Line 3
 	echo T_("Tejarak acts upon international rules, depends on the countries receiving its services and renders its activities within this framework.");// Line 6
+	echo T_("Utilizing Tejarak's services means the acceptance of and commitment to observing all the tenors of this agreement.");// Line 19
+	echo T_("It is worth mentioning that due to the insecurity of cyberspace, you should never post your vital information on either Tejarak or any other services!");// Line 22
+	echo T_("User's personal information is strictly confidential in our service. Tejarak preserves the information as encoded and will not under any conditions transfer it to another person.");// Line 23
+	echo T_("In case there is a request for receiving user's information by the competent authorities, according to the country the user lives in, Tejarak will cooperate with them only upon receiving the judicial order issued by the country submitting the request.");// Line 24
+	echo T_("Tejarak will not offer any guarantee as to the quality of the products or services presented by the teams and will not accept any responsibility in this regard!");// Line 25
+	echo T_("Users should assume responsibility for any harm, both material and immaterial, caused by direct, indirect or penal factors and due to their utilization of this service; and, Tejarak bears no responsibility accordingly.");// Line 26
+	echo T_("Tejarak accepts no responsibility, under any conditions, for the harms caused by users' mutual trust in each other or by the disclosure of information by users.");// Line 27
+	echo T_("Tejarak will do its best to protect both the users' information and the service; however, regarding the lack of certainty within the cyberspace, it will not assume any responsibility for the loss of the information entered on the service.");// Line 28
+	echo T_("We will publicize our information and news only via Tejarak's formal website. Accordingly, those who publicize any attributed news and claims, within social media and networks, must assume the responsibility and Tejarak will not assume any responsibility.");// Line 29
+	echo T_("Tejarak will bear no responsibility for whatsoever messages sent to users, including those indicating winning a lottery, and all our information dissemination will be through the ways of Tejarak's contact with users.");// Line 30
+	echo T_("Any misuse of Tejarak's trade name is prohibited and will be suable by making a complaint to the legal competent authorities.");// Line 31
+	echo T_("Furthermore, this agreement, under the name Terms and Conditions, will be available and observable, in all pages of the website. Users will be responsible for a lack of information on the most recent changes.");// Line 32
+	echo T_("It should be mentioned that in case there would be any modifications in the above-mentioned tenors, an updated version will be available for the public, and as well, all the users will be informed.");// Line 35
 
 	//---------------------------------------------content_admin\branch\dashboard.html
 	echo T_("Branch Dashboard");                                                      // Line 12
