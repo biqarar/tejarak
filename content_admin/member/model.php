@@ -6,6 +6,72 @@ use \lib\debug;
 class model extends \content_admin\main\model
 {
 
+	/**
+	 * Gets the post.
+	 *
+	 * @return     array  The post.
+	 */
+	public function getPost()
+	{
+		$args =
+		[
+			'name'        => utility::post('name'),
+			'family'      => utility::post('family'),
+			'mobile'      => utility::post('mobile'),
+			'postion'     => utility::post('postion'),
+			'code'        => utility::post('code'),
+			'telegram_id' => utility::post('telegram_id'),
+			'full_time'   => utility::post('full_time'),
+			'remote'      => utility::post('remote'),
+			'is_default'  => utility::post('is_default'),
+			'date_enter'  => utility::post('date_enter'),
+			'date_exit'   => utility::post('date_exit'),
+			'status'      => utility::post('status'),
+		];
+		return $args;
+	}
+
+
+	/**
+	 * Gets the addmember.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function get_add($_args)
+	{
+		$request         = [];
+		$this->user_id   = $this->login('id');
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		utility::set_request_array($request);
+		$result = $this->get_team();
+		return $result;
+
+	}
+
+
+	/**
+	 * Posts an addmember.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_add($_args)
+	{
+
+		$request         = $this->getPost();
+		$this->user_id   = $this->login('id');
+		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		utility::set_request_array($request);
+		$this->add_member();
+	}
+
+
+
+// OLD CODE ************************************************************************************
+
+
+
+
+
 
 	/**
 	 * Gets the list.
@@ -20,23 +86,6 @@ class model extends \content_admin\main\model
 		$result =  $this->get_list_member();
 
 		return $result;
-	}
-
-
-	/**
-	 * Gets the addmember.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_addmember($_args)
-	{
-		$request            = [];
-		$this->user_id      = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		utility::set_request_array($request);
-		$result = $this->get_team();
-		return $result;
-
 	}
 
 
@@ -73,45 +122,7 @@ class model extends \content_admin\main\model
 	}
 
 
-	/**
-	 * Posts an addmember.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function post_addmember($_args)
-	{
-		$request            = $this->getPost();
-		$this->user_id      = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		utility::set_request_array($request);
-		$this->add_member();
-	}
 
-
-	/**
-	 * Gets the post.
-	 *
-	 * @return     array  The post.
-	 */
-	public function getPost()
-	{
-		$args =
-		[
-			'name'        => utility::post('name'),
-			'family'      => utility::post('family'),
-			'mobile'      => utility::post('mobile'),
-			'postion'     => utility::post('postion'),
-			'code'        => utility::post('code'),
-			'telegram_id' => utility::post('telegram_id'),
-			'full_time'   => utility::post('full_time'),
-			'remote'      => utility::post('remote'),
-			'is_default'  => utility::post('is_default'),
-			'date_enter'  => utility::post('date_enter'),
-			'date_exit'   => utility::post('date_exit'),
-			'status'      => utility::post('status'),
-		];
-		return $args;
-	}
 
 
 	/**

@@ -6,7 +6,7 @@
 <div class="setup-card-box">
  <div class="flex f-column justify-center align-center setup-card">
   <h2>{%trans "Please enter your information"%}</h2>
-  <form method="post" class="df">
+  <form method="post" class="df" enctype="multipart/form-data">
    <div class="f">
     <div class="c9">
      <div class="f form-group form-group-padding">
@@ -17,7 +17,7 @@
        <input type="text" name="family" placeholder='{%trans "Last Name"%}' id="family" required>
       </div>
       <div class="c12">
-       <input type="text" name="post" placeholder="Post" id="post" required>
+       <input type="text" name="post" placeholder="Post" id="post">
       </div>
      </div>
     </div>

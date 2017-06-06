@@ -81,6 +81,9 @@ class model extends \content_admin\main\model
 	 */
 	public function post_setup2($_args)
 	{
+		// update user details
+		$update_user = [];
+
 		// check the user is login
 		if(!$this->login())
 		{
@@ -94,6 +97,31 @@ class model extends \content_admin\main\model
 			debug::error(T_("Please enter your name"), 'name', 'arguments');
 			return false;
 		}
+
+		// check posted family
+		if(!utility::post('family'))
+		{
+			debug::error(T_("Please enter your family"), 'family', 'arguments');
+			return false;
+		}
+
+		if(utility::files('avatar'))
+		{
+			$this->user_id = $this->login('id');
+			utility::set_request_array(['upload_name' => 'avatar']);
+			$uploaded_file = $this->upload_file();
+			if(isset($uploaded_file['code']))
+			{
+				$code = utility\shortURL::decode($uploaded_file['code']);
+				$update_user['user_file_id'] = $code;
+			}
+			// if in upload have error return
+			if(!debug::$status)
+			{
+				return false;
+			}
+		}
+
 		// check name lenght
 		if(mb_strlen(utility::post('name')) > 90)
 		{
@@ -103,8 +131,29 @@ class model extends \content_admin\main\model
 		// if the name exist update user display name
 		if(utility::post('name') && utility::post('name') != $this->login('displayname'))
 		{
-			\lib\db\users::update(['user_displayname' => utility::post('name')], $this->login('id'));
-			$_SESSION['user']['displayname'] = utility::post('name');
+			$update_user['user_displayname'] = utility::post('name');
+		}
+
+		// if the family exist update user display family
+		if(utility::post('family') && utility::post('family') != $this->login('family'))
+		{
+			$update_user['user_family'] = utility::post('family');
+		}
+
+		// if the postion exist update user display postion
+		if(utility::post('post') && utility::post('post') != $this->login('postion'))
+		{
+			$update_user['user_postion'] = utility::post('post');
+		}
+
+		// update user record
+		if(!empty($update_user))
+		{
+			\lib\db\users::update($update_user, $this->login('id'));
+			if(isset($_SESSION['user']) && is_array($_SESSION['user']))
+			{
+				array_merge($_SESSION['user'], $update_user);
+			}
 		}
 
 		// if the team is added redirect to setup 3
