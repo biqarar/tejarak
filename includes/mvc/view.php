@@ -18,6 +18,8 @@ class view extends \lib\mvc\view
 		$this->data->bodyclass           = 'unselectable';
 
 		$this->data->display['admin']    = 'content_admin/main/layout.html';
+		$this->data->template['social']      = 'content/template/social.html';
+		$this->data->template['share']       = 'content/template/share.html';
 
 
 		$this->include->css_ermile   = false;
