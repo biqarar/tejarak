@@ -28,6 +28,10 @@ header .btn{margin:10px;}
 .rtl .tile h2{font-weight:700;}
 .tile h3{margin:0;font-weight:200;color:#888}
 .tile h4{margin:0;font-weight:200;color:#999}
+/*content*/
+.content{color:#333;}
+.content p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
+.rtl .content p{text-align:justify;}
 /* bg*/
 .bg-white{background-color:#fff;}
 .bg-gray{background-color:#eee;}

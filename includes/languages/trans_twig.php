@@ -47,11 +47,11 @@ private function transtext()
 	echo T_("Contact us");                                                            // Line 36
 	echo T_("FAQ");                                                                   // Line 38
 	echo T_("Logo");                                                                  // Line 32
-	echo T_("Proudly Made in IRAN");                                                  // Line 47
-	echo T_("Control Panel");                                                         // Line 55
-	echo T_("Admin Panel");                                                           // Line 56
-	echo T_("Exit Session");                                                          // Line 57
-	echo T_("Another Session");                                                       // Line 58
+	echo T_("Proudly Made in IRAN");                                                  // Line 53
+	echo T_("Control Panel");                                                         // Line 61
+	echo T_("Admin Panel");                                                           // Line 62
+	echo T_("Exit Session");                                                          // Line 63
+	echo T_("Another Session");                                                       // Line 64
 
 	//----------------------------------------------------content\template\header.html
 	echo T_("Sales +98 25 3773 5183");                                                // Line 17
@@ -66,17 +66,42 @@ private function transtext()
 	echo T_("Facebook");                                                              // Line 23
 	echo T_("LinkedIn");                                                              // Line 29
 
+	//----------------------------------------------content\template\static\about.html
+	echo T_("About Tejarak");                                                         // Line 3
+	echo T_("Need know more about Tejarak? Be patient...");                           // Line 6
+
 	//------------------------------------------content\template\static\changelog.html
-	echo T_("Tejarak's change log");                                                  // Line 3
-	echo T_("We were born to do Best!");                                              // Line 59
-	echo T_("We are Developers, please wait!");                                       // Line 26
-	echo T_("Date");                                                                  // Line 21
+	echo T_("Change log of Tejarak");                                                 // Line 3
+	echo T_("We were born to do Best!");                                              // Line 57
+	echo T_("We are Developers, please wait!");                                       // Line 24
+	echo T_("Date");                                                                  // Line 19
 	echo T_("Description");                                                           // Line 51
-	echo T_("Version 1 of Tejarak is comming");                                       // Line 32
-	echo T_("Beta version of Tejarak released");                                      // Line 37
-	echo T_("Finally Tejarak logo is accepted and we started branding");              // Line 44
-	echo T_("Alfa version of Tejarak released");                                      // Line 50
-	echo T_("The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> domains registered.");// Line 54
+	echo T_("Version 1 of Tejarak is comming");                                       // Line 30
+	echo T_("Beta version of Tejarak released");                                      // Line 35
+	echo T_("Finally Tejarak logo is accepted and we started branding");              // Line 42
+	echo T_("Alfa version of Tejarak released");                                      // Line 48
+	echo T_("The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> domains registered.");// Line 52
+
+	//------------------------------content\template\static\social-responsibility.html
+	echo T_("Tejarak Social Responsibility");                                         // Line 3
+	echo T_("Social responsibility refers to our role in maintaining, caring about and helping our society, while having set as its goal a responsibility-centered enterprise along with wealth production.");// Line 19
+	echo T_("The issue of the social responsibility of organizations and corporations towards the society is from among the important issues being focused on in recent years.");// Line 20
+	echo T_("The social responsibility of organizations relates to the organization's responsibility towards society, human beings and the environment in which they are active.");// Line 21
+	echo T_("Tejarak's Social Responsibilities");                                     // Line 24
+	echo T_("Based on the mentioned definitions of social responsibility, Tejarak considers itself committed to society. Accordingly, besides attempting to offer creative and effective services, Tejarak has invariably had social responsibility as one of its most important missions and, God willing, will continue to do so.");// Line 26
+	echo T_("Environmentalist");                                                      // Line 29
+	echo T_("In spite of technological advancements, paper usage is unfortunately preferred to modern ways. One of Tejarak's objectives is trying to change this habit and contribute to the elimination of paper from the routine life and, therefore, to save the environment.");// Line 31
+	echo T_("Accordingly, with the aim of total elimination of paper use as well as electronic presentation of services, Tejarak has taken significant steps towards environmentalism. Be informed about Tejarak's paper-saving quantity.");// Line 32
+	echo T_("Philanthropist Activities");                                             // Line 35
+	echo T_("One of the most valuable resources of charity organizations is the voluntary and active participation of the individuals who, without any expectations, provide them with their skillfulness and capital.");// Line 37
+	echo T_("Tejarak as well, with regard to its contribution to philanthropist activities, will honorably provide them with its services free of charge. To make use of these services, send your identity documents along with your request to Tejarak's support center.");// Line 38
+	echo T_("Recruiting Motivated Staff");                                            // Line 41
+	echo T_("An outstanding characteristic of any organization is its specialized and highly motivated staff, playing a vital role in growth and development.");// Line 43
+	echo T_("By the same token, we are always looking for creative and motivated Iranian youths in order to make the best and be effective in cooperation with them.");// Line 43
+	echo T_("Join us and grow in a different location.");                             // Line 43
+	echo T_("Customer Care and Complete Satisfaction");                               // Line 47
+	echo T_("Attracting people's participation as well as having their valuable presence has always been a great honor for Tejarak and to appreciate your support, in return, Tejarak presents services to promote customer satisfaction.");// Line 49
+	echo T_("These services are presented in different time intervals and are aimed at costomer care mission and appreciation of your valuable presence.");// Line 50
 
 	//---------------------------------------------content_admin\branch\dashboard.html
 	echo T_("Branch Dashboard");                                                      // Line 4
