@@ -8,10 +8,11 @@ header .logo:hover{opacity:0.8}
 header nav{}
 header a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
 header nav a:hover{background-color:rgba(255,255,255,0.6);}
+header .btn{margin:10px;}
 /* default btn */
-.btn{background-color:#333;border-radius:3px;line-height:40px;height:40px;color:#fff;padding:0 2em;margin:0 1em;}
+.btn{background-color:#333;border-radius:3px;line-height:40px;height:40px;color:#eee;padding:0 2em;margin:0 1em;}
 .btn:hover{background-color:#222;}
-.btn:focus{background-color:#111;}
+.btn:focus{background-color:#111;color:#fff;}
 
 /* pages style*/
 .page-block{margin:5em 0;font-size:1.2em}
