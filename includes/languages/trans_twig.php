@@ -139,6 +139,23 @@ private function transtext()
 
 	//--------------------------------------------content\template\static\privacy.html
 	echo T_("We wish to assure you that our main concern is to secure your privacy and protect your information against impermissible access.");// Line 6
+	echo T_("What is Privacy?");                                                      // Line 19
+	echo T_("Privacy means that any individual is entitled to choose the information related to them, and selectively, share it with others.");// Line 20
+	echo T_("privacy is so important for mental peace as well as a peaceful personality that some experts have considered invasion of privacy disrespectful to human dignity.");// Line 21
+	echo T_("Controversies over the Invasion of Privacy");                            // Line 23
+	echo T_("Within e-commerce, privacy has always been from among the most controversial topics and continues to be.");// Line 24
+	echo T_("Accordingly, formulating privacy policies is regarded as one of the crucial concerns of technology companies.");// Line 24
+	echo T_("Meanwhile, widespread controversies have been provoked over invasion of privacy in e-commerce so that, occasionally, the regulations have to be revised to eliminate the existing weaknesses.");// Line 24
+	echo T_("Privacy from Our Point of View");                                        // Line 26
+	echo T_("Let us be straightforward! Cyberspace is not a safe location for personal information.");// Line 27
+	echo T_("For that reason, Tejarak makes no request for important information of yours and allow to save some general information including age, gender, education, interests, etc  is only for private use of your team or company.");// Line 28
+	echo T_("It is worth mentioning that recording the aforementioned points is totally voluntary.");// Line 28
+	echo T_("However, taking the nature of cyberspace into account, we should remember that offering an absolute assurance might not be possible.");// Line 29
+	echo T_("Assuring privacy and security, with that ideal concept we bear in mind, does not exist; and if somebody gives you an assurance of securing your privacy, he has certainly abused your trust.");// Line 29
+	echo T_("Upon buying any digital or the so-called smart device, you have invaded your own privacy yourself.");// Line 30
+	echo T_("If you want your privacy not to be invaded, you should depart from technology and say goodbye to any digital and smart device.");// Line 30
+	echo T_("In fact, we have employed all updated technologies of the world to provide you with the maximum security.");// Line 30
+	echo T_("As the final remark, we wish to assure you that our main concern is to secure your privacy and protect your information against impermissible access.");// Line 32
 
 	//------------------------------content\template\static\social-responsibility.html
 	echo T_("Tejarak Social Responsibility");                                         // Line 3
