@@ -54,11 +54,10 @@ class userbranchs
 			$query =
 			"
 				SELECT
+					users.*,
 					userbranchs.*,
-					users.user_mobile AS `mobile`,
-					users.user_displayname AS `displayname`,
-					users.user_email AS `email`,
-					posts.post_meta AS `file_detail`
+					posts.post_meta AS `file_detail`,
+					userbranchs.id AS `id`
  				FROM
 					userbranchs
 				INNER JOIN users ON users.id = userbranchs.user_id

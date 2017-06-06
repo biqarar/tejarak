@@ -13,7 +13,7 @@
 	<h1>{%trans "Add member"%} {{team.title}}</h1>
 {%endif%}
 
-<form method="post" class="df">
+<form method="post" class="df" enctype="multipart/form-data">
 	<div class="f">
 		<label class="c1" for="mobile">{%trans "Mobile"%}</label>
 		<input class="c3" type="text" name="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}">
@@ -57,6 +57,10 @@
 	<div class="f">
 		<label class="c1" for="date_exit">{%trans "Date exit"%}</label>
 		<input class="c3" type="text" name="date_exit" id="date_exit" placeholder='{%trans "Date exit" %}' value="{{member.date_exit}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="avatar">{%trans "Date exit"%}</label>
+		<input class="c3" type="file" name="avatar" id="avatar">
 	</div>
 	<div class="f">
 		<label class="c1" for="status">{%trans "Status"%}</label>

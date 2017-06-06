@@ -232,6 +232,13 @@ trait get
 					$result[$key] = (string) $value;
 					break;
 
+				case 'user_name':
+				case 'user_family':
+				case 'user_displayname':
+				case 'user_status':
+					$result[substr($key, 5)] = (string) $value;
+					break;
+
 				case 'date_enter':
 				case 'date_exit':
 					$result[$key] = strtotime($value);
