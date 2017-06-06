@@ -106,6 +106,7 @@ class model extends \content_admin\main\model
 			return false;
 		}
 
+		$file_code = null;
 		if(utility::files('avatar'))
 		{
 			$this->user_id = $this->login('id');
@@ -113,8 +114,9 @@ class model extends \content_admin\main\model
 			$uploaded_file = $this->upload_file();
 			if(isset($uploaded_file['code']))
 			{
-				$code = utility\shortURL::decode($uploaded_file['code']);
-				$update_user['user_file_id'] = $code;
+				$file_code = $uploaded_file['code'];
+				$file_id = utility\shortURL::decode($uploaded_file['code']);
+				$update_user['user_file_id'] = $file_id;
 				$user_session['file_id'] = $update_user['user_file_id'];
 			}
 			// if in upload have error return
@@ -160,13 +162,25 @@ class model extends \content_admin\main\model
 				$_SESSION['user'] = array_merge($_SESSION['user'], $user_session);
 			}
 		}
+		// add user to team member and centeral branch member
+		$request            = [];
+		$request['mobile']  = $this->login('mobile');
+		$request['name']    = utility::post('name');
+		$request['family']  = utility::post('family');
+		$request['postion'] = utility::post('post');
+		// $request['file']    = $file_code;
+		$request['team']    = isset($_SESSION['last_team_added']) ? $_SESSION['last_team_added'] : null;
+		$request['branch']  = 'centeral';
+		utility::set_request_array($request);
+		$this->user_id      = $this->login('id');
+		// API ADD MEMBER FUNCTION
+		$this->add_member();
 
-		// if the team is added redirect to setup 3
+		// if the member is added redirect to setup 3
 		if(debug::$status)
 		{
 			$this->redirector()->set_domain()->set_url('admin/setup/3');
 		}
-
 	}
 
 

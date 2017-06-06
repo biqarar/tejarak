@@ -1,7 +1,11 @@
-{%extends display.mvc%}
+{%extends display.admin%}
+
+
 {%block content%}
-
-<h2>{%trans "member Dashboard"%} {{member.title}}</h2>
-<a href="{{url.full}}/add">{%trans "Add member"%}</a>
-
+{%for key, value in list_member%}
+<img src="{{value.file}}" height="100" width="100">
+<h1>{{value.displayname}}</h1>
+<h2>{{value.mobile}}</h2>
+<h3>{{value.postion}}</h3>
+{%endfor%}
 {%endblock%}

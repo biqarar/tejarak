@@ -65,28 +65,28 @@ class model extends \content_admin\main\model
 	}
 
 
-
-// OLD CODE ************************************************************************************
-
-
-
-
-
-
 	/**
 	 * Gets the list.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_listmember($_args)
+	public function list_member($_args)
 	{
-		$this->user_id = $this->login('id');
-		$team = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		utility::set_request_array(['team' => $team]);
+		$this->user_id     = $this->login('id');
+		$request           = [];
+		$request['team']   = isset($_args['team']) ? $_args['team'] : null;
+		$request['branch'] = isset($_args['branch']) ? $_args['branch'] : null;
+		utility::set_request_array($request);
 		$result =  $this->get_list_member();
-
 		return $result;
 	}
+
+
+
+
+// OLD CODE ************************************************************************************
+
+
 
 
 	/**

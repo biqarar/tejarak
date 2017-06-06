@@ -38,12 +38,27 @@ trait get
 
 		$team_id = \lib\db\teams::get_brand(utility::request('team'));
 
+		if(utility::request('branch'))
+		{
+			$branch_id = \lib\db\branchs::get_by_brand(utility::request('team'), utility::request('branch'));
+		}
+
 		if(isset($team_id['id']))
 		{
-			$where               = [];
+			$where            = [];
 			$where['team_id'] = $team_id['id'];
-			$result               = \lib\db\userteams::get($where);
-			$temp = [];
+
+			if(isset($branch_id['id']))
+			{
+				$where['branch_id'] = $branch_id['id'];
+				$result           = \lib\db\userbranchs::get($where);
+			}
+			else
+			{
+				$result           = \lib\db\userteams::get($where);
+			}
+
+			$temp             = [];
 			if(is_array($result))
 			{
 				foreach ($result as $key => $value)
@@ -235,6 +250,17 @@ trait get
 					}
 					break;
 
+				case 'file_detail':
+					if(is_string($value) && substr($value, 0, 1) === '{')
+					{
+						$value = json_decode($value, true);
+					}
+
+					if(isset($value['url']))
+					{
+						$result['file'] = Protocol."://" . \lib\router::get_root_domain(). '/'. $value['url'];
+					}
+					break;
 				case 'createdate':
 				case 'date_modified':
 				case 'meta':
