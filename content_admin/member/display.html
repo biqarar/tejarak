@@ -3,38 +3,78 @@
 
 {%block sidenav%}
 
-<li>
-	<a href="{{url.base}}/admin/{{team}}/member/add">{%trans "Add member"%}</a>
-</li>
-<li>
-	<a href="{{url.base}}/admin/team">{%trans "List team"%}</a>
-</li>
-
 {%endblock%}
 
+
 {%block content%}
+{%if edit_mode%}
+	<h1>{%trans "Edit member"%} {{member.mobile}}@{{team.title}}</h1>
+{%else%}
+	<h1>{%trans "Add member"%} {{team.title}}</h1>
+{%endif%}
 
-<h2>{%trans "member List"%}</h2>
-<div class="dt">
-	<div class="f th">
-		<span class="c2">{%trans "ID"%}</span>
-		<span class="c2">{%trans "Name"%}</span>
-		<span class="c2">{%trans "Mobile"%}</span>
-		<span class="c2">{%trans "Email"%}</span>
+<form method="post" class="df">
+	<div class="f">
+		<label class="c1" for="mobile">{%trans "Mobile"%}</label>
+		<input class="c3" type="text" name="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}">
 	</div>
-
-	{%for key, value in member_list%}
-		<div class="f">
-			<span class="c2"><a href="{{url.base}}/admin/{{team}}/member/{{value.code}}/edit">{{value.code}}</a></span>
-			<span class="c2">{{value.displayname}}</span>
-			<span class="c2">{{value.mobile}}</span>
-			<span class="c2">{{value.email}}</span>
-		</div>
-	{%endfor%}
-
-</div>
-<div class="pagination-container">
-{%include display.pagination%}
-</div>
+	<div class="f">
+		<label class="c1" for="name">{%trans "Name"%}</label>
+		<input class="c3" type="text" name="name" placeholder='{%trans "Name"%}' value="{{member.name}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="family">{%trans "Family"%}</label>
+		<input class="c3" type="text" name="family" placeholder='{%trans "Family"%}' value="{{member.family}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="postion">{%trans "Postion"%}</label>
+		<input class="c3" type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="code">{%trans "Code"%}</label>
+		<input class="c3" type="text" name="code" id="code" placeholder='{%trans "Code" %}' value="{{member.code}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="telegram_id">{%trans "Telegram ID"%}</label>
+		<input class="c3" type="text" name="telegram_id" id="telegram_id" placeholder='{%trans "Telegram ID" %}' value="{{member.telegram_id}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="full_time">{%trans "Is full time?"%}</label>
+		<input class="c3" type="checkbox" name="full_time" id="full_time" {%if member.full_time%} checked="checked" {%endif%}>
+	</div>
+	<div class="f">
+		<label class="c1" for="remote">{%trans "Remote member"%}</label>
+		<input class="c3" type="checkbox" name="remote" id="remote" {%if member.remote%} checked="checked" {%endif%}>
+	</div>
+	<div class="f">
+		<label class="c1" for="is_default">{%trans "Is default"%}</label>
+		<input class="c3" type="checkbox" name="is_default" id="is_default" {%if member.is_default%} checked="checked" {%endif%}>
+	</div>
+	<div class="f">
+		<label class="c1" for="date_enter">{%trans "Date enter"%}</label>
+		<input class="c3" type="text" name="date_enter" id="date_enter" placeholder='{%trans "Date enter" %}' value="{{member.date_enter}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="date_exit">{%trans "Date exit"%}</label>
+		<input class="c3" type="text" name="date_exit" id="date_exit" placeholder='{%trans "Date exit" %}' value="{{member.date_exit}}">
+	</div>
+	<div class="f">
+		<label class="c1" for="status">{%trans "Status"%}</label>
+		<select name="status" class="c3" id="status">
+			<option value="">{%trans "Please select one item"%}</option>
+			<option value="enable" {%if member.status == 'enable' %} selected="selected" {%endif%}>{%trans "Enable"%}</option>
+			<option value="disable" {%if member.status == 'disable' %} selected="selected" {%endif%}>{%trans "Disable"%}</option>
+			<option value="expire" {%if member.status == 'expire' %} selected="selected" {%endif%}>{%trans "Expire"%}</option>
+		</select>
+	</div>
+	<div class="f">
+		<label class="c1" ></label>
+		{%if edit_mode%}
+			<input type="submit" value='{%trans "Edit"%}' class="c3">
+		{%else%}
+			<input type="submit" value='{%trans "Add"%}' class="c3">
+		{%endif%}
+	</div>
+</form>
 
 {%endblock%}
