@@ -117,6 +117,24 @@ trait get
 	 *
 	 * @return     <type>  The team.
 	 */
+	public function get_list_team_child($_args = [])
+	{
+		if(!$this->user_id)
+		{
+			return false;
+		}
+		$search = [];
+		$result = \lib\db\teams::team_child($this->user_id);
+		return $result;
+	}
+
+	/**
+	 * Gets the team.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 *
+	 * @return     <type>  The team.
+	 */
 	public function get_team($_options = [])
 	{
 		debug::title(T_("Operation Faild"));

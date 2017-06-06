@@ -49,6 +49,71 @@ class teams
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
+	public static function team_child($_user_id)
+	{
+		if($_user_id && is_numeric($_user_id))
+		{
+			$query =
+			"
+				SELECT
+					teams.*,
+					teams.title AS `team_title`,
+					teams.brand AS `team_brand`,
+					branchs.*,
+					branchs.title AS `branch_title`,
+					branchs.brand AS `branch_brand`
+				FROM
+					teams
+				LEFT JOIN branchs ON branchs.team_id = teams.id
+				WHERE teams.boss = $_user_id ";
+			$result = \lib\db::get($query, null);
+
+			if(!is_array($result))
+			{
+				return false;
+			}
+
+			$temp = [];
+			foreach ($result as $key => $value)
+			{
+				if(isset($temp[$value['team_brand']]['branchs']))
+				{
+					array_push($temp[$value['team_brand']]['branchs'],
+					[
+						'title' => $value['branch_title'],
+						'brand' => $value['branch_brand'],
+					]);
+				}
+				else
+				{
+					$temp[$value['team_brand']] = [];
+					$temp[$value['team_brand']] =
+					[
+						'title' => $value['team_title'],
+						'brand' => $value['team_brand'],
+						'branchs' =>
+						[
+							[
+								'title' => $value['branch_title'],
+								'brand' => $value['branch_brand'],
+							],
+						],
+					];
+				}
+			}
+			return $temp;
+		}
+		return false;
+	}
+
+
+	/**
+	 * get election record
+	 *
+	 * @param      <type>  $_id    The identifier
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public static function get($_args)
 	{
 		if($_args)

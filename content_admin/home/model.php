@@ -15,7 +15,7 @@ class model extends \content_admin\main\model
 		{
 			$this->user_id = $this->login('id');
 			// API GET LIST TEAM FUNCTION
-			return $this->get_list_team();
+			return $this->get_list_team_child();
 		}
 	}
 }
