@@ -1,3 +1,30 @@
+
+/* header */
+header{height:60px;font-weight:700;font-size:1.2em;}
+header .logo{transition:0.3s}
+header .logo h1{display:none}
+header .logo img{height:60px;width:auto;padding:10px 1em;display:block;}
+header .logo:hover{opacity:0.8}
+header nav{}
+header a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
+header nav a:hover{background-color:rgba(255,255,255,0.6);}
+/* default btn */
+.btn{background-color:#333;border-radius:3px;line-height:40px;height:40px;color:#fff;padding:0 2em;margin:0 1em;}
+.btn:hover{background-color:#222;}
+.btn:focus{background-color:#111;}
+
+/* pages style*/
+.page-block{margin:5em 0;font-size:1.2em}
+/* section head*/
+.section-head{text-align:center;margin-bottom:4em;}
+.section-head h2{margin:0;font-size:3em;color:#333}
+.section-head h3{margin:0;font-weight:200;color:#888}
+.section-head h4{margin:0;font-weight:200;color:#999}
+
+
+
+
+/* admin custom styles*/
 body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 
 .setup-card-box{margin-bottom:10vh}

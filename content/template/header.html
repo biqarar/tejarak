@@ -1,15 +1,29 @@
-  <header data-scroll>
-   <h1 class='logo flex align-center s-justify-center'>
-    <a href='{{url.base}}' tabindex='1'>
-{%if false%}
-{%if site.currentlang =='fa'%}
-     <img src='{{url.static}}images/logo/logo-fa.svg' alt='{{site.title}} | {{site.desc}}'>
-{%else%}
-      <img src='{{url.static}}images/logo/logo-en.svg' alt='{{site.title}} | {{site.desc}}'>
-{%endif%}
-{%endif%}
-    </a>
-    <span>{{site.title}}</span>
-   </h1>
 
-  </header>
+{%set logoImg%}
+{%if site.currentlang =='fa'%}
+<img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%else%}
+<img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%endif%}
+{%endset%}
+
+
+ <header data-scroll>
+  <div class="cn f">
+   <div class="cauto logo">
+    <h1>{{site.title}}</h1>
+    <a href='{{url.base}}' tabindex='1'>{{logoImg}}</a>
+   </div>
+
+   <nav class="c flex">
+    <a href="{{url.base}}/benefits">{%trans "Benefits"%}</a>
+    <a href="{{url.base}}/pricing">{%trans "Pricing"%}</a>
+    <a href="tel:00982537735183">{%trans "Sales +98 25 3773 5183"%}</a>
+   </nav>
+
+   <nav data-xhr="header-profile" class="c4 flex os align-center">
+    <div class="vm"><i class="icon-globe"></i>{{langList({'html':true, 'all2':true})}}</div>
+    <a href="{{url.base}}/help" class="header-profile-button">{%trans "Help"%}</a>
+    <a href="{{url.base}}/enter" data-direct class="btn">{%trans "Get started"%}</a>
+    </nav>
+
+  </div>
+ </header>
