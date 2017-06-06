@@ -8,6 +8,7 @@
 .site-header a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
 .site-header nav a:hover{background-color:rgba(255,255,255,0.6);}
 .site-header .btn{margin:10px;line-height:40px;color:#eee}
+.site-header .btn:hover{background-color:#222;}
 
 /* default btn*/
 .btn{background-color:#333;border-radius:3px;line-height:40px;height:40px;color:#eee;padding:0 2em;margin:0 1em;display:inline-block;}
@@ -75,11 +76,11 @@
 .site-footer nav a:hover{color:#eee}
 .site-footer nav a:focus{color:#fff}
 /* footer top nav*/
-.site-footer .top{border-bottom:1px solid #e5a428;font-size:1.3em;font-weight:900;position:relative}
+.site-footer .top{border-bottom:1px solid #4070c0;font-size:1.3em;font-weight:900;position:relative}
 .site-footer .top a{display:inline-block;padding:1.2em .5em;color:#aaa;margin-right:1.5em;}
 .rtl .site-footer .top a{margin-right:0;margin-left:1.5em}
 /* footer-links*/
-.site-footer .middle{font-size:1.2em;border-bottom:1px solid #e5a428;padding:2em 0}
+.site-footer .middle{font-size:1.2em;border-bottom:1px solid #4070c0;padding:2em 0}
 .site-footer .middle h4{font-weight:500;color:#ccc;margin-bottom:5px;font-size:1.1em}
 .site-footer .middle nav a{display:block;padding:0.5em 0}
 .site-footer .middle .enamad{min-width:150px;padding:1em 0}
