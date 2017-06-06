@@ -23,11 +23,16 @@
 .ps{padding:2em 0;}
 .pl{padding:7em 0;}
 .px{padding:10em 0;}
+.pa{padding:5em;}
+.pas{padding:2em;}
+.pal{padding:7em;}
+.pax{padding:10em;}
+
 /* tile*/
 .tile h2{margin:0;font-size:3em;color:#333}
 .rtl .tile h2{font-weight:700;}
-.tile h3{margin:0;font-weight:200;color:#888}
-.tile h4{margin:0;font-weight:200;color:#999}
+.tile h3{margin:0;font-weight:200;color:#888;padding:0 15%;}
+.tile h4{margin:0;font-weight:200;color:#999;padding:0 15%;}
 /*content*/
 .content{color:#333;}
 .content p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
@@ -61,8 +66,8 @@
 #offer-enterprise h3{margin-bottom:0.5em}
 #offer-enterprise .btn{height:50px;line-height:50px;}
 #offer-enterprise h2{color:#fff;}
-#offer-enterprise h3{color:#eee;}
-#offer-enterprise h4{color:#ddd;}
+#offer-enterprise h3{color:#eee;padding:0}
+#offer-enterprise h4{color:#ddd;padding:0}
 
 /* footer*/
 .site-footer{font-size:1.2em;padding:3em 0;}
@@ -80,7 +85,7 @@
 .site-footer .middle .enamad{min-width:150px;padding:1em 0}
 .site-footer .middle .enamad a{display:block;max-width:90px;padding:0;position:relative;}
 .site-footer .middle .enamad img{display:block;max-width:100%;background-color:#eaeae9;padding:0.5em 0}
-.site-footer .middle .enamad a:before{content:"";position:absolute;top:-4px;right:0;left:0;height:4px;background-image:url(../images/cert/.site-footer-box.svg);background-repeat:repeat-x;}
+.site-footer .middle .enamad a:before{content:"";position:absolute;top:-4px;right:0;left:0;height:4px;background-image:url(../images/cert/footer-box.svg);background-repeat:repeat-x;}
 .site-footer .middle .enamad a:after{content:"";position:absolute;bottom:-4px;right:0;left:0;height:4px;background-image:url(../images/cert/footer-box.svg);background-repeat:repeat-x;-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 /* footer-note*/
 .site-footer .bottom{padding:2em 0;color:#aaa}
@@ -115,8 +120,14 @@
 .sharebox>a.facebook:hover,.sharebox>a.facebook:focus{background-color:#3b5998}
 .sharebox>a.linkedin:hover,.sharebox>a.linkedin:focus{background-color:#0077b5}
 .sharebox i{font-size:1.2em;vertical-align:middle;color:inherit}
-
-
+/* default form style*/
+.df button{border:none}
+.df textarea{min-height:100px;height:150px;max-height:500px;}
+/*vcard*/
+.vcard{font-style:normal}
+.vcard .adr{padding:1em}
+.vcard .adr div, .vcard .adr span, .vcard .email, .vcard .tel{display:block;padding:0.5em}
+.vcard .adr span{display:inline-block;}
 
 
 
