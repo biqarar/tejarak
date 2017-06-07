@@ -109,11 +109,11 @@ trait check
 	 */
 	public function find_send_way($_current = null)
 	{
-		// sarshomar admin send code from admin
-		if($this->user_id && intval($this->user_id) < 1000)
-		{
-			return 'telegram';
-		}
+		// // sarshomar admin send code from admin
+		// if($this->user_id && intval($this->user_id) < 1000)
+		// {
+		// 	return 'telegram';
+		// }
 
 		$return = 'sms1';
 		if(!empty($this->user_data))

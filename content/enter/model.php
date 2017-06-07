@@ -45,9 +45,9 @@ class model extends \mvc\model
 	public $create_new_code   = false;
 	public $resend_rate =
 	[
-		'telegram',
 		'sms1',
 		'call',
+		'telegram',
 		'sms2',
 	];
 
@@ -315,11 +315,11 @@ class model extends \mvc\model
 				$resend_on = $this->step_resend();
 				switch ($resend_on)
 				{
-					case 'telegram':
 					case 'code':
 					case 'sms1':
 					case 'sms2':
 					case 'call':
+					case 'telegram':
 						$this->step_mobile($resend_on);
 						break;
 
