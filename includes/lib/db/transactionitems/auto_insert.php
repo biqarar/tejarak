@@ -32,6 +32,7 @@ trait auto_insert
 	[
 		// for test
 		'charge:real'                       => ['id' => 1010, 'unit_id' => 1, 'type' => 'real', 	'caller' => 'charge:real', 'title' => 'charge for test', 'minus' => null,'plus' => null,'autoverify' => 'no','forcechange' => 'yes','desc' => null,'meta' => null,'status' => 'enable','count' => 0, 'enddate' => null, 'date_modified' => null,],
+		'gift:charge:toman'                 => ['id' => null, 'unit_id' => 2, 'type' => 'gift', 	'caller' => 'gift:charge:toman', 'title' => 'gift charge toman', 'minus' => null,'plus' => null,'autoverify' => 'no','forcechange' => 'no','desc' => null,'meta' => null,'status' => 'enable','count' => 0, 'enddate' => null, 'date_modified' => null,],
 
 		'real:answer:poll:sarshomar'        => ['id' => 1013, 'unit_id' => 1, 'type' => 'real', 	'caller' => 'real:answer:poll:sarshomar', 'title' => 'answer to public poll', 'minus' => null,'plus' => '2','autoverify' => 'yes','forcechange' => 'yes','desc' => null,'meta' => null,'status' => 'enable','count' => 0, 'enddate' => null, 'date_modified' => null,],
 		'real:answer:custom:poll:sarshomar' => ['id' => 1017, 'unit_id' => 1, 'type' => 'real', 	'caller' => 'real:answer:custom:poll:sarshomar', 'title' => 'answer to sarshomar custom poll', 'minus' => null,'plus' => '2','autoverify' => 'yes','forcechange' => 'yes','desc' => null,'meta' => null,'status' => 'enable','count' => 0, 'enddate' => null, 'date_modified' => null,],

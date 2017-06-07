@@ -79,31 +79,31 @@
 
             <div class="default-tbl billing-history-table">
                 <h3 id="billing-history">{%trans "Billing History"%}</h3>
-                <div class="tbl">
-                    <div class="tbl-header">
-                        <span>{%trans "Date"%}</span>
-                        <span>{%trans "Title"%}</span>
-                        <span>{%trans "Type"%}</span>
-                        <span>{%trans "Plus"%}</span>
-                        <span>{%trans "Minus"%}</span>
+                <div class="dt">
+                    <div class="f th">
+                        <span class="c1">{%trans "Date"%}</span>
+                        <span class="c1">{%trans "Title"%}</span>
+                        <span class="c1">{%trans "Type"%}</span>
+                        <span class="c1">{%trans "Plus"%}</span>
+                        <span class="c1">{%trans "Minus"%}</span>
                     </div>
                     {% for key, value in history %}
-                    <div>
-                        <span>{{value.date|jdate}}</span>
-                        <span>{%set myTitle = value.title%}{%trans myTitle%}</span>
-                        <span>{%set myType = value.type%}{%trans myType%}</span>
-                        <span>
+                    <div class="f">
+                        <span class="c1">{{value.date|jdate}}</span>
+                        <span class="c1">{%set myTitle = value.title%}{%trans myTitle%}</span>
+                        <span class="c1">{%set myType = value.type%}{%trans myType%}</span>
+                        <span class="c1">
                             {%if value.plus%}
-                                <span>{{value.plus|number_format(2, ".", ",")|fitNumber}}</span>
-                                <span>{%set myUnit = value.unit%}{%trans myUnit%}</span>
+                                <span class="c1">{{value.plus|number_format(2, ".", ",")|fitNumber}}</span>
+                                <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
                             {%else%}
                                 {{0|fitNumber}}
                             {%endif%}
                         </span>
-                        <span>
+                        <span class="c1">
                             {%if value.minus%}
-                                <span>{{value.minus|number_format(2, ".", ",")|fitNumber}}</span>
-                                <span>{%set myUnit = value.unit%}{%trans myUnit%}</span>
+                                <span class="c1">{{value.minus|number_format(2, ".", ",")|fitNumber}}</span>
+                                <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
                             {%else%}
                                 {{0|fitNumber}}
                             {%endif%}
