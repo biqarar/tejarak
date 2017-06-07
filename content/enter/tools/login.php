@@ -26,7 +26,7 @@ trait login
 		}
 		elseif(isset($_SESSION['first_signup']) && $_SESSION['first_signup'] === true)
 		{
-			$url .= '/ask';
+			$url .= '/'. \lib\option::config('redirect');
 		}
 		else
 		{
