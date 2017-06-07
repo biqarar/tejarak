@@ -10,7 +10,7 @@
    <div class="t-card-img"><img src='{{value.file}}' alt=''></div>
    <div class="t-card-bottom">
     <div class="t-card-name">{{value.name}} {{value.family}}</div>
-    <div class="t-card-post">{{value.postion}}</div>
+    {%if value.postion%}<div class="t-card-post">{{value.postion}}</div>{%endif%}
    </div>
   </div>
 
