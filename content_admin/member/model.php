@@ -15,18 +15,19 @@ class model extends \content_admin\main\model
 	{
 		$args =
 		[
-			'name'        => utility::post('name'),
-			'family'      => utility::post('family'),
-			'mobile'      => utility::post('mobile'),
-			'postion'     => utility::post('postion'),
-			'code'        => utility::post('code'),
-			'telegram_id' => utility::post('telegram_id'),
-			'full_time'   => utility::post('full_time'),
-			'remote'      => utility::post('remote'),
-			'is_default'  => utility::post('is_default'),
-			'date_enter'  => utility::post('date_enter'),
-			'date_exit'   => utility::post('date_exit'),
-			'status'      => utility::post('status'),
+			'mobile'         => utility::post('mobile'),
+			'name'           => utility::post('name'),
+			'family'         => utility::post('family'),
+			'mobile'         => utility::post('mobile'),
+			'postion'        => utility::post('postion'),
+			'code'           => utility::post('code'),
+			// 'telegram_id' => utility::post('telegram_id'),
+			'full_time'      => utility::post('full_time'),
+			'remote'         => utility::post('remote'),
+			'is_default'     => utility::post('is_default'),
+			// 'date_enter'  => utility::post('date_enter'),
+			// 'date_exit'   => utility::post('date_exit'),
+			'status'         => utility::post('status'),
 		];
 		return $args;
 	}
@@ -56,11 +57,59 @@ class model extends \content_admin\main\model
 	 */
 	public function post_add($_args)
 	{
+		// update user details
+		$update_user = [];
+		$user_session = [];
 
-		$request         = $this->getPost();
-		$this->user_id   = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		// check the user is login
+		if(!$this->login())
+		{
+			debug::error(T_("Please login to add a team"), false, 'arguments');
+			return false;
+		}
+
+		// check posted name
+		if(!utility::post('name'))
+		{
+			debug::error(T_("Please enter your name"), 'name', 'arguments');
+			return false;
+		}
+
+		// check name lenght
+		if(mb_strlen(utility::post('name')) > 90)
+		{
+			debug::error(T_("Please enter your name less than 90 character"), 'name', 'arguments');
+			return false;
+		}
+
+		$file_code = null;
+		if(utility::files('avatar'))
+		{
+			$this->user_id = $this->login('id');
+			utility::set_request_array(['upload_name' => 'avatar']);
+			$uploaded_file = $this->upload_file();
+			if(isset($uploaded_file['code']))
+			{
+				$file_code = $uploaded_file['code'];
+				$file_id = utility\shortURL::decode($uploaded_file['code']);
+				$update_user['user_file_id'] = $file_id;
+				$user_session['file_id'] = $update_user['user_file_id'];
+			}
+			// if in upload have error return
+			if(!debug::$status)
+			{
+				return false;
+			}
+		}
+
+		// get posted data to create the request
+		$request           = $this->getPost();
+		$request['team']   = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['branch'] = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		$request['file']   = $file_code;
+		$this->user_id     = $this->login('id');
 		utility::set_request_array($request);
+		// API ADD MEMBER FUNCTION
 		$this->add_member();
 	}
 

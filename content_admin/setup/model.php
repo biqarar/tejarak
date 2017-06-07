@@ -105,6 +105,12 @@ class model extends \content_admin\main\model
 			debug::error(T_("Please enter your family"), 'family', 'arguments');
 			return false;
 		}
+		// check name lenght
+		if(mb_strlen(utility::post('name')) > 90)
+		{
+			debug::error(T_("Please enter your name less than 90 character"), 'name', 'arguments');
+			return false;
+		}
 
 		$file_code = null;
 		if(utility::files('avatar'))
@@ -126,12 +132,6 @@ class model extends \content_admin\main\model
 			}
 		}
 
-		// check name lenght
-		if(mb_strlen(utility::post('name')) > 90)
-		{
-			debug::error(T_("Please enter your name less than 90 character"), 'name', 'arguments');
-			return false;
-		}
 		// if the name exist update user display name
 		if(utility::post('name') && utility::post('name') != $this->login('name'))
 		{

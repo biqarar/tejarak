@@ -46,6 +46,9 @@ trait add
 			]
 		];
 
+		// update user details
+		$update_user = [];
+
 		// check user id is exist
 		if(!$this->user_id)
 		{
@@ -104,6 +107,12 @@ trait add
 			debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
+		// update user name
+		if($name)
+		{
+			$update_user['user_name'] = $name;
+		}
+
 		// get family
 		$family = utility::request("family");
 		if($family && mb_strlen($family) > 50)
@@ -111,6 +120,11 @@ trait add
 			logs::set('api:member:family:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the family less than 50 character"), 'family', 'arguments');
 			return false;
+		}
+		// update user family
+		if($family)
+		{
+			$update_user['user_family'] = $family;
 		}
 
 		$check_user_exist = \lib\db\users::get_by_mobile($mobile);
@@ -126,7 +140,7 @@ trait add
 			$signup =
 			[
 				'mobile'      => $mobile,
-				'password'    => \lib\utility::hasher($mobile),
+				'password'    => null,
 				'displayname' => $name. ' '. $family,
 			];
 
@@ -139,6 +153,7 @@ trait add
 			debug::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
+
 		// get postion
 		$postion     = utility::request('postion');
 		if($postion && mb_strlen($postion) > 100)
@@ -146,6 +161,12 @@ trait add
 			logs::set('api:member:postion:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
 			return false;
+		}
+
+		// update user postion
+		if($postion)
+		{
+			$update_user['user_postion'] = $postion;
 		}
 
 		$code       = utility::request('code');
@@ -198,37 +219,42 @@ trait add
 			}
 		}
 		// get file code
-		// $file_code  = utility::request('file');
-		// $file_id = null;
-		// if($file_code)
-		// {
-		// 	// decode file code
-		// 	$file = \lib\utility\shortURL::decode($file_code);
-		// 	if($file && is_int($file))
-		// 	{
-		// 		// check this user upload this file and the file is draft or publish
-		// 		$check_file_permission =
-		// 		"
-		// 			SELECT
-		// 				posts.id AS `id`
-		// 			FROM
-		// 				posts
-		// 			WHERE
-		// 				posts.id        = $file AND
-		// 				posts.user_id   = {$this->user_id} AND
-		// 				posts.post_type = 'attachment' AND
-		// 				posts.post_status IN ('draft', 'publish')
-		// 			LIMIT 1
-		// 		";
-		// 		// if file permission is ok set the file_id
-		// 		if(\lib\db::get($check_file_permission, 'id', true))
-		// 		{
-		// 			$file_id = $file;
-		// 		}
-		// 	}
-		// }
+		$file_code  = utility::request('file');
+		$file_id = null;
+		if($file_code)
+		{
+			// decode file code
+			$file = \lib\utility\shortURL::decode($file_code);
+			if($file && is_int($file))
+			{
+				// check the file is draft or publish and is attachment
+				$check_file_permission =
+				"
+					SELECT
+						posts.id AS `id`
+					FROM
+						posts
+					WHERE
+						posts.id        = $file AND
+						posts.post_type = 'attachment' AND
+						posts.post_status IN ('draft', 'publish')
+					LIMIT 1
+				";
+				// if file permission is ok set the file_id
+				if(\lib\db::get($check_file_permission, 'id', true))
+				{
+					$update_user['user_file_id'] = $file;
+				}
+			}
+		}
 
+		// save update user if not empty
+		if(!empty($update_user))
+		{
+			\lib\db\users::update($update_user, $user_id);
+		}
 
+		// ready to insert userteam or userbranch record
 		$args               = [];
 		$args['team_id']    = $team_id;
 		$args['user_id']    = $user_id;
