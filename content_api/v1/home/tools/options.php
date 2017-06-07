@@ -10,15 +10,18 @@ trait options
 	 */
 	public static $brand_black_list =
 	[
-		'addbranch',
 		'branch',
-		'admin',
 		'team',
+		'admin',
 		'member',
 		'add',
 		'edit',
 		'delete',
 		'user',
+		'hours',
+		'about',
+		'api',
+
 
 	];
 }
