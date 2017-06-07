@@ -1,0 +1,121 @@
+{%extends display.admin%}
+
+{%block content%}
+
+<div class="main billing" >
+    <div>
+        <div class="in xxlarge">
+            <div class="billing-stats row auto">
+                <div class="billing-info span4">
+                    <div class="icon">
+                        <img alt="Coin" src="{{url.static}}images/gateway/coin.svg" class="flip-rtl" width="60" height="60">
+                    </div>
+                    <div>
+                        <h5 class="title">{%trans "Your Money"%}</h5>
+                        <div class="amount"><span>{{user_cash.real|number_format|fitNumber}}</span> <span>{%trans user_unit%}</span></div>
+                    </div>
+                </div>
+                <div class="billing-info span4">
+                    <div class="icon">
+                        <img alt="Gift" src="{{url.static}}images/gateway/gift.svg" width="60" height="60">
+                    </div>
+                    <div>
+                        <h5 class="title">{%trans "Your Gift"%}</h5>
+                        <div class="amount"><span>{{user_cash.gift|number_format|fitNumber}}</span> <span>{%trans user_unit%}</span></div>
+                    </div>
+                </div>
+                <div class="billing-info span4">
+                    <div class="icon">
+                        <img alt="Money bag" src="{{url.static}}images/gateway/money-bag.svg" width="60" height="60">
+                    </div>
+                    <div>
+                        <h5 class="title">{%trans "Your Credit"%}</h5>
+                        <div class="amount"><strong><span>{{user_cash.total|number_format|fitNumber}}</span> <span>{%trans user_unit%}</span></strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="billing-info charge-account-box">
+                <div class="row auto">
+                    <h3 class="title" id="charge-account">{%trans "Charge your account"%}</h3>
+                    <div class="charge-amount">{%trans "Choose a gateway and enter an amount to charge your account"%}</div>
+                    <div class="gateways">
+                        <form class="row auto" method="post">
+                            <div class="span6">
+                        <label><span>
+                            <input type="radio" name="bank" id="ZarinPal" value="ZarinPal" checked>
+                            <img alt="ZarrinPal" src="{{url.static}}images/gateway/ZarinPal.svg" width="60" height="60">
+                        </span></label>
+                            </div>
+                        <div class="span3 billing-buttons">
+                            <label for="amount-number" class="currency-label">{%trans user_unit%}</label>
+                            <input id="amount-number" class="amount-number" type="number" name="amount" value="{{amount}}" placeholder="{%trans "Amount"%}">
+                            <button class="billing-btn" type="submit">{%trans "Confirm"%}</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="billing-info promo-info">
+                <div class="row auto promo-box">
+                    <div class="span6">
+                        <h3 class="title" id="promo-code">{%trans "Promo code"%}</h3>
+                        <div class="promo-subtitle">{%trans "If you have a promo code, please enter it below to receive your credit."%}</div>
+                    </div>
+                    <div class="span3 promo-codes">
+                        <form class="row auto" method="post">
+                            <div class="span12 billing-buttons">
+                                <input class="amount-number" type="text" name="promo" value="" placeholder="{%trans "Code"%}">
+                                <button class="billing-btn" type="submit">{%trans "Submit"%}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div class="promo-msg-box">
+                    <h3 class="promo-msg">
+                        {#%trans "Thanks for signing up! You’ve automatically redeemed a referral promo credit of $10.00."%#}
+                    </h3>
+                </div> -->
+            </div>
+
+            <div class="default-tbl billing-history-table">
+                <h3 id="billing-history">{%trans "Billing History"%}</h3>
+                <div class="tbl">
+                    <div class="tbl-header">
+                        <span>{%trans "Date"%}</span>
+                        <span>{%trans "Title"%}</span>
+                        <span>{%trans "Type"%}</span>
+                        <span>{%trans "Plus"%}</span>
+                        <span>{%trans "Minus"%}</span>
+                    </div>
+                    {% for key, value in history %}
+                    <div>
+                        <span>{{value.date|jdate}}</span>
+                        <span>{%set myTitle = value.title%}{%trans myTitle%}</span>
+                        <span>{%set myType = value.type%}{%trans myType%}</span>
+                        <span>
+                            {%if value.plus%}
+                                <span>{{value.plus|number_format(2, ".", ",")|fitNumber}}</span>
+                                <span>{%set myUnit = value.unit%}{%trans myUnit%}</span>
+                            {%else%}
+                                {{0|fitNumber}}
+                            {%endif%}
+                        </span>
+                        <span>
+                            {%if value.minus%}
+                                <span>{{value.minus|number_format(2, ".", ",")|fitNumber}}</span>
+                                <span>{%set myUnit = value.unit%}{%trans myUnit%}</span>
+                            {%else%}
+                                {{0|fitNumber}}
+                            {%endif%}
+                        </span>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="pagination-container">
+                {%include display.pagination%}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
