@@ -71,20 +71,6 @@ class units
 		{
 			return $user_unit;
 		}
-
-		// $where =
-		// [
-		// 	'user_id'       => $_user_id,
-		// 	'option_cat'    => "user_detail_". $_user_id,
-		// 	'option_key'    => 'unit',
-		// 	'option_status' => 'enable',
-		// 	'limit'         => 1,
-		// ];
-		// $user_unit = \lib\db\options::get($where);
-		// if($user_unit && isset($user_unit['value']))
-		// {
-		// 	return $user_unit['value'];
-		// }
 		return false;
 	}
 
@@ -104,65 +90,8 @@ class units
 			return false;
 		}
 
-		$old_user_unit = \lib\utility\users::get_unit($_user_id);
 		\lib\utility\users::set_unit($_user_id, $_unit);
-
-		if(!$old_user_unit && is_string($_unit))
-		{
-			$sarshomar_budget = \lib\db\transactions::budget($_user_id, ['unit' => 1]);
-			if(!empty($sarshomar_budget) && is_array($sarshomar_budget))
-			{
-				foreach ($sarshomar_budget as $key => $value)
-				{
-					\lib\db::transaction();
-					$insert_id = \lib\db\transactions::set("$key:change:minus:sarshomar", $_user_id, ['minus' => $value]);
-					$change_to_new_unit_value = \lib\db\exchangerates::change_unit_to('sarshomar', $_unit, $value);
-					\lib\db\transactions::set("$key:change:plus:$_unit", $_user_id, ['plus' => $change_to_new_unit_value, 'parent_id' => $insert_id]);
-					if(\lib\debug::$status)
-					{
-						\lib\db::commit();
-					}
-					else
-					{
-						\lib\db::rollback();
-					}
-				}
-			}
-		}
-
 		return true;
-		// $result = false;
-		// $disable_old_unit =
-		// [
-		// 	'user_id'       => $_user_id,
-		// 	'option_cat'    => "user_detail_". $_user_id,
-		// 	'option_key'    => 'unit',
-		// ];
-		// \lib\db\options::update_on_error(['option_status' => 'disable'], $disable_old_unit);
-
-		// $where =
-		// [
-		// 	'user_id'       => $_user_id,
-		// 	'option_cat'    => "user_detail_". $_user_id,
-		// 	'option_key'    => 'unit',
-		// 	'option_value'  => $_unit,
-		// 	'limit'         => 1,
-		// ];
-
-		// $current_unit = \lib\db\options::get($where);
-		// unset($where['limit']);
-
-		// if(empty($current_unit))
-		// {
-		// 	$result = \lib\db\options::insert($where);
-		// }
-		// else
-		// {
-		// 	$args = $where;
-		// 	$args['option_status'] = 'enable';
-		// 	$result = \lib\db\options::update_on_error($args, $where);
-		// }
-		// return $result;
 	}
 
 
@@ -180,44 +109,11 @@ class units
 			return $isset_unit;
 		}
 
-		// get user language
-		$user_language = \lib\utility\users::get_language($_user_id);
-		if($user_language === 'fa' || $user_language === 'fa_IR')
+		if($_set_user_unit_if_find)
 		{
-			if($_set_user_unit_if_find)
-			{
-				self::set_user_unit($_user_id, 'toman');
-			}
-			return 'toman';
+			self::set_user_unit($_user_id, 'toman');
 		}
-
-		// get users answer
-		$query =
-		"
-			SELECT COUNT(answers.id) AS `count`, posts.post_language AS `lang` FROM answers
-			INNER JOIN posts ON posts.id = answers.post_id
-			WHERE
-				answers.user_id = $_user_id
-			GROUP BY lang
-		";
-		$result = \lib\db::get($query, ['lang', 'count']);
-		$max    = null;
-
-		if(is_array($result) && !empty($result))
-		{
-			// fin max answered users  to poll
-			$max = array_search(max($result), $result);
-		}
-
-		if($max === 'fa')
-		{
-			if($_set_user_unit_if_find)
-			{
-				self::set_user_unit($_user_id, 'toman');
-			}
-			return 'toman';
-		}
-		return false;
+		return 'toman';
 	}
 
 

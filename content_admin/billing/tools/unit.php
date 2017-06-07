@@ -8,7 +8,7 @@ trait unit
 	public $active_units =
 	[
 		'toman',
-		'dollar',
+		// 'dollar',
 	];
 
 
