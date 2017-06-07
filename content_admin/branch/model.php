@@ -16,15 +16,15 @@ class model extends \content_admin\main\model
 		[
 			'title'       => utility::post('title'),
 			'site'        => utility::post('site'),
-			'brand'       => utility::post('brand'),
-			'boss'        => utility::post('boss'),
-			'technical'   => utility::post('technical'),
+			// 'brand'       => utility::post('brand'),
+			// 'boss'        => utility::post('boss'),
+			// 'technical'   => utility::post('technical'),
 			'address'     => utility::post('address'),
 			'code'        => utility::post('code'),
-			'telegram_id' => utility::post('telegram_id'),
+			// 'telegram_id' => utility::post('telegram_id'),
 			'phone_1'     => utility::post('phone_1'),
-			'phone_2'     => utility::post('phone_2'),
-			'phone_3'     => utility::post('phone_3'),
+			// 'phone_2'     => utility::post('phone_2'),
+			// 'phone_3'     => utility::post('phone_3'),
 			'fax'         => utility::post('fax'),
 			'email'       => utility::post('email'),
 			'post_code'   => utility::post('post_code'),
@@ -54,6 +54,7 @@ class model extends \content_admin\main\model
 
 	/**
 	 * Gets the editbranch.
+	 * load data of branch to edit it
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */

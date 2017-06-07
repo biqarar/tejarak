@@ -22,39 +22,39 @@
 <form method="post" class="df">
 	<div class="f">
 		<label class="c1" for="title">{%trans "Title"%}</label>
-		<input type="text" class="c3" name="title" id="title" placeholder='{%trans "Title"%}' value="{{branch.title}}">
+		<input type="text" class="c3" name="title" id="title" placeholder='{%trans "Title"%}' value="{{branch.title}}" required>
 	</div>
 	<div class="f">
 		<label class="c1" for="site">{%trans "Site"%}</label>
 		<input type="text" class="c3" name="site" id="site" placeholder='{%trans "Site"%}' value="{{branch.site}}">
 	</div>
-	<div class="f">
+	<!-- <div class="f">
 		<label class="c1" for="brand">{%trans "Brand"%}</label>
 		<input type="text" class="c3" name="brand" id="brand" placeholder='{%trans "Brand"%}' value="{{branch.brand}}">
-	</div>
+	</div> -->
 	<div class="f">
 		<label class="c1" for="address">{%trans "Address"%}</label>
 		<textarea class="c3" name="address" id="address" placeholder='{%trans "Address"%}'>{{branch.address}}</textarea>
 	</div>
 	<div class="f">
 		<label class="c1" for="code">{%trans "Code"%}</label>
-		<input type="text" class="c3" name="code" id="code" placeholder='{%trans "Code"%}' value="{{branch.code}}">
+		<input type="number" class="c3" name="code" id="code" placeholder='{%trans "Code"%}' value="{{branch.code}}">
 	</div>
 	<div class="f">
 		<label class="c1" for="phone_1">{%trans "Phone"%}</label>
-		<input type="text" class="c3" name="phone_1" id="phone_1" placeholder='{%trans "Phone"%}' value="{{branch.phone_1}}">
+		<input type="tel" class="c3" name="phone_1" id="phone_1" placeholder='{%trans "Phone"%}' value="{{branch.phone_1}}">
 	</div>
-	<div class="f">
+	<!-- <div class="f">
 		<label class="c1" for="phone_2">{%trans "Phone"%}</label>
-		<input type="text" class="c3" name="phone_2" id="phone_2" placeholder='{%trans "Phone"%}' value="{{branch.phone_2}}">
+		<input type="tel" class="c3" name="phone_2" id="phone_2" placeholder='{%trans "Phone"%}' value="{{branch.phone_2}}">
 	</div>
 	<div class="f">
 		<label class="c1" for="phone_3">{%trans "Phone"%}</label>
-		<input type="text" class="c3" name="phone_3" id="phone_3" placeholder='{%trans "Phone"%}' value="{{branch.phone_3}}">
-	</div>
+		<input type="tel" class="c3" name="phone_3" id="phone_3" placeholder='{%trans "Phone"%}' value="{{branch.phone_3}}">
+	</div> -->
 	<div class="f">
 		<label class="c1" for="fax">{%trans "Fax"%}</label>
-		<input type="text" class="c3" name="fax" id="fax" placeholder='{%trans "Fax"%}' value="{{branch.fax}}">
+		<input type="tel" class="c3" name="fax" id="fax" placeholder='{%trans "Fax"%}' value="{{branch.fax}}">
 	</div>
 	<div class="f">
 		<label class="c1" for="email">{%trans "Email"%}</label>
@@ -62,7 +62,7 @@
 	</div>
 	<div class="f">
 		<label class="c1" for="post_code">{%trans "Post code"%}</label>
-		<input type="text" class="c3" name="post_code" id="post_code" placeholder='{%trans "Post code"%}' value="{{branch.post_code}}">
+		<input type="number" class="c3" name="post_code" id="post_code" placeholder='{%trans "Post code"%}' value="{{branch.post_code}}">
 	</div>
 	<div class="f">
 		<label class="c1" for="full_time">{%trans "Full time"%}</label>

@@ -71,14 +71,6 @@ trait add
 			$brand = \lib\utility\filter::slug($title);
 		}
 
-		if(mb_strlen($brand) > 100)
-		{
-			logs::set('api:team:maxlength:brand', $this->user_id, $log_meta);
-			debug::error(T_("Team brand must be less than 500 character"), 'brand', 'arguments');
-			return false;
-		}
-
-
 		if(mb_strlen($brand) < 5)
 		{
 			logs::set('api:team:minlength:brand', $this->user_id, $log_meta);
@@ -160,6 +152,13 @@ trait add
 					$brand = $brand . ++$count;
 				}
 			}
+		}
+		// check brand
+		if(mb_strlen($brand) > 100)
+		{
+			logs::set('api:team:maxlength:brand', $this->user_id, $log_meta);
+			debug::error(T_("Team brand must be less than 500 character"), 'brand', 'arguments');
+			return false;
 		}
 
 		$args                    = [];

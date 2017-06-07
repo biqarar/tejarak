@@ -16,7 +16,7 @@ trait add
 	 */
 	public function add_branch($_args = [])
 	{
-		$edit_mode = false;
+		// default args
 		$default_args =
 		[
 			'method' => 'post'
@@ -29,7 +29,12 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
+		// set default title of debug
 		debug::title(T_("Operation Faild"));
+
+		// defult edit mode is false
+		$edit_mode = false;
+		// set log meta
 		$log_meta =
 		[
 			'data' => null,
@@ -39,6 +44,7 @@ trait add
 			]
 		];
 
+		// check user id
 		if(!$this->user_id)
 		{
 			logs::set('api:branch:user_id:notfound', null, $log_meta);
@@ -46,6 +52,7 @@ trait add
 			return false;
 		}
 
+		// get team name
 		$team = utility::request('team');
 		if(!$team)
 		{
@@ -53,92 +60,79 @@ trait add
 			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
-
-		$team_id = \lib\db\teams::get_brand($team);
-
-		if(isset($team_id['id']))
-		{
-			$team_id = $team_id['id'];
-		}
-		else
-		{
-			logs::set('api:branch:team:notfound:invalid', null, $log_meta);
-			debug::error(T_("Team not found"), 'user', 'permission');
-			return false;
-		}
-
+		// check permission to load this team for this user
 		$access_load = $this->get_team();
 
-		if(!debug::$status)
+		// the user can not access to load this team
+		if(!debug::$status || !isset($access_load['id']))
 		{
 			return;
 		}
+		// get the team id
+		$team_id = $access_load['id'];
 
+		// get title of branch
 		$title = utility::request('title');
-		if(mb_strlen($title) > 500)
+		// check branch title
+		if($title && mb_strlen($title) > 500)
 		{
 			logs::set('api:branch:maxlength:title', $this->user_id, $log_meta);
-			debug::error(T_("branch title must be less than 500 character"), 'title', 'arguments');
+			debug::error(T_("Branch title must be less than 500 character"), 'title', 'arguments');
 			return false;
 		}
 
+		// get the branch site
 		$site = utility::request('site');
-		if(mb_strlen($site) > 1000)
+		// check site string
+		if($site && mb_strlen($site) > 1000)
 		{
 			logs::set('api:branch:maxlength:site', $this->user_id, $log_meta);
-			debug::error(T_("branch site must be less than 1000 character"), 'site', 'arguments');
+			debug::error(T_("Branch site must be less than 1000 character"), 'site', 'arguments');
 			return false;
 		}
-
+		// get the brand of branch
 		$brand = utility::request('brand');
 
+		// replace brand whit slog of title
 		if(!$brand && $title)
 		{
 			$brand = \lib\utility\filter::slug($title);
 		}
-
-
+		// check brand or title is set
 		if(!$brand && !$title)
 		{
 			logs::set('api:branch:brand:not:sert', $this->user_id, $log_meta);
 			debug::error(T_("Brand of branch can not be null"), 'brand', 'arguments');
 			return false;
 		}
-
-		if(mb_strlen($brand) > 100)
-		{
-			logs::set('api:branch:maxlength:brand', $this->user_id, $log_meta);
-			debug::error(T_("branch brand must be less than 500 character"), 'brand', 'arguments');
-			return false;
-		}
-
+		// check reqular of brand
 		if(!preg_match("/^[A-Za-z0-9]+$/", $brand))
 		{
 			logs::set('api:branch:invalid:brand', $this->user_id, $log_meta);
 			debug::error(T_("Only [A-Za-z0-9] can use in branch brand"), 'brand', 'arguments');
 			return false;
 		}
-
-		if(in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
+		// if the brand was set and title not set
+		// set the title = brand
+		if($brand && !$title)
 		{
-			logs::set('api:team:blocklist:brand', $this->user_id, $log_meta);
-			debug::error(T_("Can not use this brand"), 'brand', 'arguments');
-			return false;
+			$title = $brand;
 		}
-
-		$code        = utility::request('code');
+		// get code
+		$code = utility::request('code');
+		// check code
 		if($code &&  (mb_strlen($code) > 9 || !is_numeric($code)))
 		{
 			logs::set('api:branch:maxlength:code', $this->user_id, $log_meta);
-			debug::error(T_("branch code must be less than 9 character and must be number"), 'code', 'arguments');
+			debug::error(T_("Branch code must be less than 9 character and must be number"), 'code', 'arguments');
 			return false;
 		}
-
+		// get and check phone(s)
 		$phone_1     = utility::request('phone_1');
 		if($phone_1 &&  mb_strlen($phone_1) > 50)
 		{
 			logs::set('api:branch:maxlength:phone_1', $this->user_id, $log_meta);
-			debug::error(T_("branch phone_1 must be less than 50 character"), 'phone_1', 'arguments');
+			debug::error(T_("Branch phone_1 must be less than 50 character"), 'phone_1', 'arguments');
 			return false;
 		}
 
@@ -146,7 +140,7 @@ trait add
 		if($phone_2 &&  mb_strlen($phone_2) > 50)
 		{
 			logs::set('api:branch:maxlength:phone_2', $this->user_id, $log_meta);
-			debug::error(T_("branch phone_2 must be less than 50 character"), 'phone_2', 'arguments');
+			debug::error(T_("Branch phone_2 must be less than 50 character"), 'phone_2', 'arguments');
 			return false;
 		}
 
@@ -154,7 +148,7 @@ trait add
 		if($phone_3 &&  mb_strlen($phone_3) > 50)
 		{
 			logs::set('api:branch:maxlength:phone_3', $this->user_id, $log_meta);
-			debug::error(T_("branch phone_3 must be less than 50 character"), 'phone_3', 'arguments');
+			debug::error(T_("Branch phone_3 must be less than 50 character"), 'phone_3', 'arguments');
 			return false;
 		}
 
@@ -162,7 +156,7 @@ trait add
 		if($fax &&  mb_strlen($fax) > 50)
 		{
 			logs::set('api:branch:maxlength:fax', $this->user_id, $log_meta);
-			debug::error(T_("branch fax must be less than 50 character"), 'fax', 'arguments');
+			debug::error(T_("Branch fax must be less than 50 character"), 'fax', 'arguments');
 			return false;
 		}
 
@@ -170,53 +164,63 @@ trait add
 		if($email &&  mb_strlen($email) > 50)
 		{
 			logs::set('api:branch:maxlength:email', $this->user_id, $log_meta);
-			debug::error(T_("branch email must be less than 50 character"), 'email', 'arguments');
+			debug::error(T_("Branch email must be less than 50 character"), 'email', 'arguments');
 			return false;
 		}
+
 		$post_code     = utility::request('post_code');
 		if($post_code &&  mb_strlen($post_code) > 50)
 		{
 			logs::set('api:branch:maxlength:post_code', $this->user_id, $log_meta);
-			debug::error(T_("branch post_code must be less than 50 character"), 'post_code', 'arguments');
+			debug::error(T_("Branch post_code must be less than 50 character"), 'post_code', 'arguments');
 			return false;
 		}
 
-		if(utility::request('full_time'))
-		{
-			$full_time = 1;
-		}
-		else
-		{
-			$full_time = 0;
-		}
+		// get full time, remote and default branch
+		$full_time  = utility::request('full_time') 	? 1 : 0;
+		$remote     = utility::request('remote') 		? 1 : 0;
+		$is_default = utility::request('is_default') 	? 1 : 0;
 
-		if(utility::request('remote'))
-		{
-			$remote = 1;
-		}
-		else
-		{
-			$remote = 0;
-		}
-
-		if(utility::request('is_default'))
-		{
-			$is_default = 1;
-		}
-		else
-		{
-			$is_default = 0;
-		}
-
-		// $boss        = utility::request('boss');
-		// $technical   = utility::request('technical');
+		// get the address
 		$address     = utility::request('address');
-		// $telegram_id = utility::request('telegram_id');
+		if($address &&  mb_strlen($address) > 5000)
+		{
+			logs::set('api:branch:maxlength:address', $this->user_id, $log_meta);
+			debug::error(T_("Branch address must be less than 5000 character"), 'address', 'arguments');
+			return false;
+		}
 
+		$check_duplicate_brand_in_team = ['brand' => $brand, 'team_id' => $team_id, 'get_count' => true];
+		$count = \lib\db\branchs::search(null, $check_duplicate_brand_in_team);
+
+		// check duplicate branch brand and change branch brand
+		if($count || in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
+		{
+			$change_name = true;
+			while ($change_name)
+			{
+				if(!\lib\db\branchs::get(['brand' => $brand, 'team_id' => $team_id, 'limit' => 1]))
+				{
+					$change_name = false;
+					break;
+				}
+				$brand = $brand . ++$count;
+				$args['brand'] = $brand;
+			}
+		}
+		// check brand
+		if($brand && mb_strlen($brand) > 100)
+		{
+			logs::set('api:branch:maxlength:brand', $this->user_id, $log_meta);
+			debug::error(T_("Branch brand must be less than 500 character"), 'brand', 'arguments');
+			return false;
+		}
+
+		// ready to insert branch record
 		$args               = [];
 		$args['creator']    = $this->user_id;
 		$args['boss']       = $this->user_id;
-		$args['team_id'] = $team_id;
+		$args['team_id']    = $team_id;
 		$args['technical']  = $this->user_id;
 		$args['title']      = $title;
 		$args['site']       = $site;
@@ -233,25 +237,10 @@ trait add
 		$args['remote']     = $remote;
 		$args['is_default'] = $is_default;
 
+		// insert new branch
 		if($_args['method'] === 'post')
 		{
-			$check_duplicate_brand_in_team = ['brand' => $brand, 'team_id' => $team_id, 'get_count' => true];
-			$check = \lib\db\branchs::search(null, $check_duplicate_brand_in_team);
-			if($check)
-			{
-				logs::set('api:branch:duplocate:brand:in:team', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate brand of branch"), 'brand', 'arguments');
-				return false;
-			}
-			$id = utility::request("id");
-
-			if($id)
-			{
-				logs::set('api:branch:method:post:set:id', $this->user_id, $log_meta);
-				debug::error(T_("Can not set id in adding branch"), 'id', 'access');
-				return false;
-			}
-
+			// insert new branch
 			\lib\db\branchs::insert($args);
 		}
 		elseif ($_args['method'] === 'patch')
@@ -270,29 +259,6 @@ trait add
 			if(isset($find_branch_id[0]['id']))
 			{
 				$id = $find_branch_id[0]['id'];
-			}
-			else
-			{
-				logs::set('api:branch:method:put:branch:not:found', $this->user_id, $log_meta);
-				debug::error(T_("Branch not found"), 'branch', 'permission');
-				return false;
-			}
-
-			$check_duplicate_brand_in_team = ['brand' => $brand, 'team_id' => $team_id];
-			$check = \lib\db\branchs::search(null, $check_duplicate_brand_in_team);
-
-			if(isset($check[0]['id']))
-			{
-				if(intval($id) === intval($check[0]['id']))
-				{
-					// no problem!
-				}
-				else
-				{
-					logs::set('api:branch:duplocate:brand:in:team:in:update', $this->user_id, $log_meta);
-					debug::error(T_("Duplicate brand of branch"), 'brand', 'arguments');
-					return false;
-				}
 			}
 			else
 			{
