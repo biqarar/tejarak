@@ -7,7 +7,7 @@
 .site-header nav{}
 .site-header a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
 .site-header nav a:hover{background-color:rgba(255,255,255,0.6);}
-.site-header .btn{margin:10px;line-height:40px;color:#eee}
+.site-header .btn{margin:10px;line-height:40px;color:#eee;padding:0 2em}
 .site-header .btn:hover{background-color:#222;}
 
 /* default btn*/
@@ -29,6 +29,7 @@
 .pal{padding:7em;}
 .pax{padding:10em;}
 
+.pc{font-size:1.2em;background-color:#eee;}
 /* tile*/
 .tile h2{margin:0;font-size:3em;color:#333}
 .rtl .tile h2{font-weight:700;}
@@ -46,7 +47,7 @@
 /* table style*/
 .dt > div{transition:0.3s;}
 .dt > div > div{padding:1em 1em;}
-.dt > .th{background-color:rgba(255,255,255,0.2);}
+.dt > .th{background-color:rgba(0,0,0,0.2);}
 .dt > div:hover{background-color:rgba(0,0,0, 0.1);}
 /* align left*/
 .al{text-align:left;}
@@ -130,9 +131,9 @@
 .vcard .adr div, .vcard .adr span, .vcard .email, .vcard .tel{display:block;padding:0.5em}
 .vcard .adr span{display:inline-block;}
 /* list*/
-.page-block ul.list{margin:3em 5%;}
-.page-block ul.list li{font-size:1.1em;line-height:2em;transition:0.3s}
-.page-block ul.list li:hover{background-color:rgba(0,0,0,0.1);}
+.pc ul.list{margin:3em 5%;}
+.pc ul.list li{font-size:1.1em;line-height:2em;transition:0.3s}
+.pc ul.list li:hover{background-color:rgba(0,0,0,0.1);}
 
 
 
