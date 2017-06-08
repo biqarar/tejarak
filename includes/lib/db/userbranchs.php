@@ -17,7 +17,7 @@ class userbranchs
 		$set = \lib\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT IGNORE INTO userbranchs SET $set");
+			\lib\db::query("INSERT INTO userbranchs SET $set");
 			return \lib\db::insert_id();
 		}
 	}
@@ -50,18 +50,45 @@ class userbranchs
 
 			unset($_args['limit']);
 
-			$where = \lib\db\config::make_where($_args);
+			$where = \lib\db\config::make_where($_args, ['table_name' => 'userbranchs']);
 			$query =
 			"
 				SELECT
-					users.*,
-					userbranchs.*,
-					posts.post_meta AS `file_detail`,
-					userbranchs.id AS `id`
+					(
+						SELECT
+							userteams.name
+						FROM
+							userteams
+						WHERE
+							userteams.user_id = userbranchs.user_id AND
+							userteams.team_id = userbranchs.team_id
+						LIMIT 1) AS `name`,
+					(
+						SELECT
+							userteams.family
+						FROM
+							userteams
+						WHERE
+							userteams.user_id = userbranchs.user_id AND
+							userteams.team_id = userbranchs.team_id
+						LIMIT 1) AS `family`,
+					(
+						SELECT posts.post_meta FROM posts WHERE posts.id =
+						(
+							SELECT
+								userteams.file_id
+							FROM
+								userteams
+							WHERE
+								userteams.user_id = userbranchs.user_id AND
+								userteams.team_id = userbranchs.team_id
+							LIMIT 1
+						)
+						LIMIT 1
+					) AS `file_detail`,
+					userbranchs.*
  				FROM
 					userbranchs
-				INNER JOIN users ON users.id = userbranchs.user_id
-				LEFT JOIN posts ON posts.id = users.user_file_id
 				WHERE
 					$where
 				$limit

@@ -46,9 +46,6 @@ trait add
 			]
 		];
 
-		// update user details
-		$update_user = [];
-
 		// check user id is exist
 		if(!$this->user_id)
 		{
@@ -107,11 +104,6 @@ trait add
 			debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
-		// update user name
-		if($name)
-		{
-			$update_user['user_name'] = $name;
-		}
 
 		// get family
 		$family = utility::request("family");
@@ -120,11 +112,6 @@ trait add
 			logs::set('api:member:family:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the family less than 50 character"), 'family', 'arguments');
 			return false;
-		}
-		// update user family
-		if($family)
-		{
-			$update_user['user_family'] = $family;
 		}
 
 		$check_user_exist = \lib\db\users::get_by_mobile($mobile);
@@ -162,13 +149,7 @@ trait add
 			debug::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
 			return false;
 		}
-
-		// update user postion
-		if($postion)
-		{
-			$update_user['user_postion'] = $postion;
-		}
-
+		// get the code
 		$code       = utility::request('code');
 		if($code && (mb_strlen($code) > 9 || !ctype_digit($code)))
 		{
@@ -243,15 +224,9 @@ trait add
 				// if file permission is ok set the file_id
 				if(\lib\db::get($check_file_permission, 'id', true))
 				{
-					$update_user['user_file_id'] = $file;
+					$file_id = $file;
 				}
 			}
-		}
-
-		// save update user if not empty
-		if(!empty($update_user))
-		{
-			\lib\db\users::update($update_user, $user_id);
 		}
 
 		// ready to insert userteam or userbranch record
@@ -265,12 +240,34 @@ trait add
 		$args['is_default'] = $is_default;
 		$args['date_enter'] = $date_enter;
 		$args['date_exit']  = $date_exit;
+		$args['name']       = $name;
+		$args['family']     = $family;
+		$args['postion']    = $postion;
+		$args['file_id']    = $file_id;
 
 		if($_args['method'] === 'post')
 		{
+			$check_duplicate_user = \lib\db\userteams::get(['user_id' => $user_id, 'team_id' => $team_id, 'limit' => 1]);
+			if($check_duplicate_user)
+			{
+				logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
+				debug::error(T_("Duplicate user in team"), 'mobile', 'arguments');
+				return false;
+			}
 			\lib\db\userteams::insert($args);
 			if($add_to_branch)
 			{
+				$check_duplicate_user = \lib\db\userbranchs::get(['user_id' => $user_id, 'team_id' => $team_id, 'branch_id' => $branch_id, 'limit' => 1]);
+				if($check_duplicate_user)
+				{
+					logs::set('api:member:duplicate:user:branch', $this->user_id, $log_meta);
+					debug::error(T_("Duplicate user in branch"), 'mobile', 'arguments');
+					return false;
+				}
+
+				unset($args['name']);
+				unset($args['family']);
+				unset($args['file_id']);
 				$args['branch_id'] = $branch_id;
 				\lib\db\userbranchs::insert($args);
 			}
@@ -280,6 +277,10 @@ trait add
 			$id = utility::request('id');
 			unset($args['team_id']);
 			unset($args['user_id']);
+			unset($args['name']);
+			unset($args['family']);
+			unset($args['file_id']);
+
 			if($add_to_branch)
 			{
 				\lib\db\userbranchs::update($args, $id);

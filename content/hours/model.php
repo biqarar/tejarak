@@ -7,12 +7,6 @@ class model extends \content\main\model
 {
 
 	/**
-	 * the user name
-	 */
-	public static $user_id;
-	public static $user_name;
-
-	/**
 	 * Gets the list.
 	 *
 	 * @param      <type>  $_args  The arguments

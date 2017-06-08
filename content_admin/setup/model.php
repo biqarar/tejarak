@@ -168,7 +168,7 @@ class model extends \content_admin\main\model
 		$request['name']    = utility::post('name');
 		$request['family']  = utility::post('family');
 		$request['postion'] = utility::post('post');
-		// $request['file']    = $file_code;
+		$request['file']    = $file_code;
 		$request['team']    = isset($_SESSION['last_team_added']) ? $_SESSION['last_team_added'] : null;
 		$request['branch']  = 'centeral';
 		utility::set_request_array($request);

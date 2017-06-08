@@ -17,7 +17,7 @@ class userteams
 		$set = \lib\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT IGNORE INTO userteams SET $set");
+			\lib\db::query("INSERT INTO userteams SET $set");
 			return \lib\db::insert_id();
 		}
 	}
@@ -35,11 +35,20 @@ class userteams
 	{
 		if($_args)
 		{
-			$limit = null;
-			if(isset($_args['limit']) && $_args['limit'] === 1)
+			$only_one_value = false;
+			$limit          = null;
+
+			if(isset($_args['limit']))
 			{
-				$limit = " LIMIT 1 ";
+				if($_args['limit'] === 1)
+				{
+					$only_one_value = true;
+				}
+
+				$limit = " LIMIT $_args[limit] ";
 			}
+
+			unset($_args['limit']);
 			$where = \lib\db\config::make_where($_args);
 			$query =
 			"
@@ -55,7 +64,7 @@ class userteams
 					$where
 				$limit
 			";
-			$result = \lib\db::get($query, null, $limit ? true : false);
+			$result = \lib\db::get($query, null, $only_one_value);
 			return $result;
 		}
 		return false;

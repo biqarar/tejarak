@@ -229,6 +229,8 @@ trait get
 				case 'postion':
 				case 'desc':
 				case 'mobile':
+				case 'name':
+				case 'family':
 					$result[$key] = (string) $value;
 					break;
 
