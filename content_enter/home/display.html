@@ -1,21 +1,23 @@
 {%extends display.mvc%}
 
+{%set codeUrl%}{%if url.tld == 'dev'%}http://code.ermile.dev/{%else%}https://code.ermile.com/{%endif%}{%endset%}
+
+
 {%block head_css%}
- <link rel="stylesheet"       href="https://code.ermile.com/css/ermile-10.1.0.css">
- <link rel="stylesheet"       href="{{url.static}}css/responsive.css">
- <link rel="stylesheet"       href="{{url.static}}css/enter.css">
+ <link rel="stylesheet"       href="{{codeUrl}}css/ermile-10.2.0.css">
+ <link rel="stylesheet"       href="{{codeUrl}}enter/enter.css">
 {%endblock%}
 
 
 {%block foot_js%}
 
-  <script src="{{url.static}}js/enter.js"></script>
+  <script src="{{codeUrl}}enter/enter.js"></script>
 {%endblock%}
 
 
 {%block body%}
-<div class='enter{%if get_mobile%} large{%endif%}'>
- <div class='enter-header'></div>
+<div class='{%if get_mobile%} large{%endif%}' id='enter'>
+ <div id='enter-header'></div>
  <h1 class='logo'>
   <a href='{{url.base}}' tabindex='1' data-direct>
 {%if site.currentlang =='fa'%}
