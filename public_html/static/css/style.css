@@ -4,7 +4,7 @@
 #theader .logo h1{display:none}
 #theader .logo img{height:60px;width:auto;padding:10px 1em;display:block;}
 #theader .logo:hover{opacity:0.8}
-#theader .logo a:focus{opacity:0.6; border-bottom:1px solid #000}
+#theader .logo a:focus{opacity:0.6;}
 #theader nav{}
 #theader a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
 #theader nav a:hover{background-color:rgba(255,255,255,0.5);}

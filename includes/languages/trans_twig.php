@@ -9,7 +9,7 @@ private function transtext()
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
 	echo T_("Name");                                                                  // Line 13
 	echo T_("Full Name");                                                             // Line 20
-	echo T_("Mobile");                                                                // Line 19
+	echo T_("Mobile");                                                                // Line 42
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
 	echo T_("Email");                                                                 // Line 61
 	echo T_("Message");                                                               // Line 32
@@ -21,18 +21,6 @@ private function transtext()
 	echo T_("Moallem Sq");                                                            // Line 62
 	echo T_("Qom");                                                                   // Line 61
 	echo T_("Iran");                                                                  // Line 60
-
-	//------------------------------------------------------content\enter\display.html
-	echo T_("Please be patient...");                                                  // Line 31
-	echo T_("Dont recieve code?");                                                    // Line 31
-	echo T_("You are guest, Enter your mobile");                                      // Line 31
-	echo T_("Enter to tejarak");                                                      // Line 31
-	echo T_("Please enter valid mobile number");                                      // Line 42
-	echo T_("Username");                                                              // Line 42
-	echo T_("Password");                                                              // Line 52
-	echo T_("Pin");                                                                   // Line 59
-	echo T_("Code");                                                                  // Line 21
-	echo T_("Go");                                                                    // Line 79
 
 	//-------------------------------------------------------content\home\display.html
 	echo T_("Transfer to Tejarak is Easy");                                           // Line 15
@@ -62,9 +50,9 @@ private function transtext()
 	echo T_("Press and Media");                                                       // Line 7
 	echo T_("Careers");                                                               // Line 8
 	echo T_("Social Responsibility");                                                 // Line 9
-	echo T_("Help Center");                                                           // Line 3
+	echo T_("FAQ");                                                                   // Line 3
 	echo T_("Enamad");                                                                // Line 16
-	echo T_("Service");                                                               // Line 54 Seperate
+	echo T_("Tejarak");                                                               // Line 22
 	echo T_("Benefits");                                                              // Line 15
 	echo T_("Pricing");                                                               // Line 16
 	echo T_("Learn More");                                                            // Line 28
@@ -73,13 +61,12 @@ private function transtext()
 	echo T_("Changelog");                                                             // Line 31
 	echo T_("Support");                                                               // Line 108
 	echo T_("Contact us");                                                            // Line 36
-	echo T_("FAQ");                                                                   // Line 3
 	echo T_("Logo");                                                                  // Line 32
-	echo T_("Proudly Made in IRAN");                                                  // Line 53
-	echo T_("Control Panel");                                                         // Line 60
-	echo T_("Admin Panel");                                                           // Line 61
-	echo T_("Exit Session");                                                          // Line 62
-	echo T_("Another Session");                                                       // Line 63
+	echo T_("Proudly Made in IRAN");                                                  // Line 52
+	echo T_("Control Panel");                                                         // Line 59
+	echo T_("Admin Panel");                                                           // Line 60
+	echo T_("Exit Session");                                                          // Line 61
+	echo T_("Another Session");                                                       // Line 62
 
 	//----------------------------------------------------content\template\header.html
 	echo T_("Sales +98 25 3773 5183");                                                // Line 17
@@ -97,6 +84,17 @@ private function transtext()
 	//----------------------------------------------content\template\static\about.html
 	echo T_("About Tejarak");                                                         // Line 3
 	echo T_("Need know more about Tejarak? Be patient...");                           // Line 6
+	echo T_("Advancement of technology and development of Web-based business Cause Need new tools to resolve the daily needs and that’s the goal of making Tejarak.");// Line 14
+	echo T_("Tejarak have a set of simple and practical tools on a regular basis for modern businesses.");// Line 14
+	echo T_("It’s good to know that in addition to the core services, features such as inventory and invoice will be added.");// Line 17
+	echo T_("Attendance system");                                                     // Line 19
+	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak. This service is being used from September 2016 in Ermile and Everyone was satisfied.");// Line 20
+	echo T_("Daily report");                                                          // Line 22
+	echo T_("In many collections received daily reports of the employees is very important. On the other hands Employees reluctant to do that.");// Line 23
+	echo T_("In addition to the classical method, using social networks on Twitter and Daily Telegram reported in Tejarak possible to get there.");// Line 23
+	echo T_("Salary calculator");                                                     // Line 25
+	echo T_("For many small business is very complex method of calculating monthly salary and they Need to have simpler method.");// Line 26
+	echo T_("In addition to supporting traditional methods, Tejarak provide monthly salary simple solutions to employees have modern and beautiful Payroll.");// Line 26
 
 	//-------------------------------------------content\template\static\benefits.html
 	echo T_("Tejarak benefits");                                                      // Line 3
@@ -120,8 +118,32 @@ private function transtext()
 
 	//-------------------------------------------content\template\static\help\faq.html
 	echo T_("This FAQ provides answers to basic questions about Tejarak.");           // Line 6
+	echo T_("General questions");                                                     // Line 179
+	echo T_("How does Tejarak work?");                                                // Line 186
+	echo T_("Tejarak is simple. Enter to check it!");                                 // Line 183
+	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 187
+	echo T_("What is your privacy and security policy?");                             // Line 190
+	echo T_("View Tejarak's privacy and security policy at");                         // Line 191
+	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 194
+	echo T_("You can find them at");                                                  // Line 195
+	echo T_("What are your bandwidth fees?");                                         // Line 198
+	echo T_("There are none. All Tejarak plans include unlimited bandwidth for free.");// Line 199
+	echo T_("Do I need a web host?");                                                 // Line 202
+	echo T_("No! Tejarak includes secure, unlimited hosting on all plans with free bandwith.");// Line 203
+	echo T_("Billing & Invoicing");                                                   // Line 151
+	echo T_("Is there a setup fee?");                                                 // Line 154
+	echo T_("No. There are no setup fees on any of our plans!");                      // Line 155
+	echo T_("Can I cancel my account at any time?");                                  // Line 159
+	echo T_("Yes. If you ever decide that Tejarak isn’t the best platform for your business, simply cancel your account.");// Line 160
+	echo T_("How long are your contracts?");                                          // Line 164
+	echo T_("All Tejarak plans are month to month. simple.");                         // Line 165
+	echo T_("Can I change my plan later on?");                                        // Line 168
+	echo T_("Absolutely! You can upgrade or downgrade your plan at any time.");       // Line 169
+	echo T_("When is my billing date?");                                              // Line 172
+	echo T_("The date you first select a paid plan will be the recurring billing date. For example: If you sign up for the first time on July 15, all future charges will be billed on the 15th of every month.");// Line 173
 
 	//------------------------------------------content\template\static\help\home.html
+	echo T_("Help Center");                                                           // Line 3
 	echo T_("Need HELP? Be patient...");                                              // Line 6
 
 	//-----------------------------------------------content\template\static\logo.html
@@ -159,29 +181,6 @@ private function transtext()
 	echo T_("Emergency phone support");                                               // Line 124
 	echo T_("Ready to use Tejarak Enterprise?");                                      // Line 137
 	echo T_("Get started with our Enterprise plan.");                                 // Line 138
-	echo T_("Billing & Invoicing");                                                   // Line 151
-	echo T_("Is there a setup fee?");                                                 // Line 153
-	echo T_("No. There are no setup fees on any of our plans!");                      // Line 154
-	echo T_("Can I cancel my account at any time?");                                  // Line 156
-	echo T_("Yes. If you ever decide that Tejarak isn’t the best platform for your business, simply cancel your account.");// Line 157
-	echo T_("How long are your contracts?");                                          // Line 159
-	echo T_("All Tejarak plans are month to month. simple.");                         // Line 160
-	echo T_("Can I change my plan later on?");                                        // Line 162
-	echo T_("Absolutely! You can upgrade or downgrade your plan at any time.");       // Line 163
-	echo T_("When is my billing date?");                                              // Line 165
-	echo T_("The date you first select a paid plan will be the recurring billing date. For example: If you sign up for the first time on July 15, all future charges will be billed on the 15th of every month.");// Line 166
-	echo T_("General questions");                                                     // Line 171
-	echo T_("How does Tejarak work?");                                                // Line 176
-	echo T_("Tejarak is simple. Enter to check it!");                                 // Line 174
-	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 177
-	echo T_("What is your privacy and security policy?");                             // Line 179
-	echo T_("View Tejarak's privacy and security policy at");                         // Line 180
-	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 182
-	echo T_("You can find them at");                                                  // Line 183
-	echo T_("What are your bandwidth fees?");                                         // Line 185
-	echo T_("There are none. All Tejarak plans include unlimited bandwidth for free.");// Line 186
-	echo T_("Do I need a web host?");                                                 // Line 188
-	echo T_("No! Tejarak includes secure, unlimited hosting on all plans with free bandwith.");// Line 189
 
 	//--------------------------------------------content\template\static\privacy.html
 	echo T_("We wish to assure you that our main concern is to secure your privacy and protect your information against impermissible access.");// Line 6
@@ -251,6 +250,7 @@ private function transtext()
 	echo T_("Confirm");                                                               // Line 52
 	echo T_("Promo code");                                                            // Line 61
 	echo T_("If you have a promo code, please enter it below to receive your credit.");// Line 62
+	echo T_("Code");                                                                  // Line 69
 	echo T_("Submit");                                                                // Line 68
 	echo T_("Billing History");                                                       // Line 81
 	echo T_("Title");                                                                 // Line 11
@@ -366,6 +366,17 @@ private function transtext()
 	//-------------------------------------------------content_api\v1\doc\display.html
 	echo T_("Tejarak API");                                                           // Line 4
 
+	//-------------------------------------------------content_enter\home\display.html
+	echo T_("Please be patient...");                                                  // Line 31
+	echo T_("Dont recieve code?");                                                    // Line 31
+	echo T_("You are guest, Enter your mobile");                                      // Line 31
+	echo T_("Enter to tejarak");                                                      // Line 31
+	echo T_("Please enter valid mobile number");                                      // Line 42
+	echo T_("Username");                                                              // Line 42
+	echo T_("Password");                                                              // Line 52
+	echo T_("Pin");                                                                   // Line 59
+	echo T_("Go");                                                                    // Line 79
+
 	//--------------------------------------------includes\languages\trans_static.html
 	echo T_("Saloos");                                                                // Line 7 Seperate
 	echo T_("2013");                                                                  // Line 8 Seperate
@@ -410,6 +421,7 @@ private function transtext()
 	echo T_("Shareholder");                                                           // Line 50 Seperate
 	echo T_("Chrikt");                                                                // Line 51 Seperate
 	echo T_("Content Expert");                                                        // Line 53 Seperate
+	echo T_("Service");                                                               // Line 54 Seperate
 	echo T_("UI Developer");                                                          // Line 55 Seperate
 	echo T_("Frontend Developer");                                                    // Line 56 Seperate
 	echo T_("Research & Develepment");                                                // Line 57 Seperate
