@@ -36,12 +36,17 @@
 
  <div class='usernameBox'>
   <div class='f fix field'>
-   <label for='username' class='c2 flex justify-center align-center'>
+   <label for='username' class='c2 flex justify-center align-center mobile'>
+
+    <svg version="1.1" id="i-mobile" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 35 35" xml:space="preserve"><path d="M25.302,0H9.698c-1.3,0-2.364,1.063-2.364,2.364v30.271C7.334,33.936,8.398,35,9.698,35h15.604 c1.3,0,2.364-1.062,2.364-2.364V2.364C27.666,1.063,26.602,0,25.302,0z M15.004,1.704h4.992c0.158,0,0.286,0.128,0.286,0.287 c0,0.158-0.128,0.286-0.286,0.286h-4.992c-0.158,0-0.286-0.128-0.286-0.286C14.718,1.832,14.846,1.704,15.004,1.704z M17.5,33.818 c-0.653,0-1.182-0.529-1.182-1.183s0.529-1.182,1.182-1.182s1.182,0.528,1.182,1.182S18.153,33.818,17.5,33.818z M26.021,30.625 H8.979V3.749h17.042V30.625z" fill="#6f6f6f"/></svg>
+
+    <svg version="1.1" id="i-username" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 59 59" xml:space="preserve" width="40px" height="40px"><path style="fill:#777;" d="M18.613,42.552l-7.907,4.313c-0.464,0.253-0.881,0.564-1.269,0.903 C14.047,51.655,19.998,54,26.5,54c6.454,0,12.367-2.31,16.964-6.144c-0.424-0.358-0.884-0.68-1.394-0.934l-8.467-4.233 c-1.094-0.547-1.785-1.665-1.785-2.888v-3.322c0.238-0.271,0.51-0.619,0.801-1.03c1.154-1.63,2.027-3.423,2.632-5.304 c1.086-0.335,1.886-1.338,1.886-2.53v-3.546c0-0.78-0.347-1.477-0.886-1.965v-5.126c0,0,1.053-7.977-9.75-7.977 s-9.75,7.977-9.75,7.977v5.126c-0.54,0.488-0.886,1.185-0.886,1.965v3.546c0,0.934,0.491,1.756,1.226,2.231 c0.886,3.857,3.206,6.633,3.206,6.633v3.24C20.296,40.899,19.65,41.986,18.613,42.552z"/></svg>
+
     <span class='hide'>{%trans "Mobile"%}</span>
     <span class='icon-mobile2'></span>
     <span class='icon-range-right' id='go2'></span>
    </label>
-   <input id='username' type='tel' class='c10' maxlength="15" placeholder='{%trans "Mobile"%}' data-invalid='{%trans "Please enter valid mobile number"%}' value="{{get_mobile}}" autocomplete="off" data-pl-user='{%trans "Username"%}'>
+   <input id='username' type='tel' class='c10' maxlength="15" placeholder='{%trans "Mobile"%}' data-invalid='{%trans "Please enter valid mobile number"%}' value="{{get_mobile}}" data-pl-user='{%trans "Username"%}' autocomplete="new-password">
   </div>
  </div>
 
@@ -51,7 +56,7 @@
     <span class='hide'>{%trans "Password"%}</span>
     <span class='icon-key2'></span>
    </label>
-   <input id='passcode' type='password' class='c10' placeholder='{%trans "Password"%}' autocomplete="off">
+   <input id='passcode' type='password' class='c10' placeholder='{%trans "Password"%}' autocomplete="new-password">
   </div>
  </div>
 
@@ -61,7 +66,7 @@
     <span class='hide'>{%trans "Pin"%}</span>
     <span>PIN</span>
    </label>
-   <input id='pin' type='password' class='c10' maxlength="4" placeholder='_ _ _ _' autocomplete="off">
+   <input id='pin' type='password' class='c10' maxlength="4" placeholder='_ _ _ _' autocomplete="new-password">
   </div>
  </div>
 
@@ -69,9 +74,9 @@
   <div class='f fix field'>
    <label for='code' class='c2 flex justify-center align-center'>
     <span class='hide'>{%trans "Code"%}</span>
-    <span class="icon-barcode"></span>
+    <span class="icon-barcode">code</span>
    </label>
-   <input id='code' type='number' class='c10' max="99999" placeholder='_ _ _ _ _' autocomplete="off">
+   <input id='code' type='number' class='c10' max="99999" placeholder='_ _ _ _ _' autocomplete="new-password">
   </div>
  </div>
 
