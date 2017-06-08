@@ -1,5 +1,5 @@
 <?php
-namespace content\enter\tools\step;
+namespace content_enter\home\tools\step;
 use \lib\utility;
 use \lib\debug;
 use \lib\db;

@@ -1,5 +1,5 @@
 <?php
-namespace content\enter\sms;
+namespace content_enter\home\sms;
 
 
 class model extends \mvc\model

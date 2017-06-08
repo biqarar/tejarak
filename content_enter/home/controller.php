@@ -1,5 +1,5 @@
 <?php
-namespace content\enter;
+namespace content_enter\home;
 
 class controller extends \content\main\controller
 {

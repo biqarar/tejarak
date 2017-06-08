@@ -1,5 +1,5 @@
 <?php
-namespace content\enter\sms;
+namespace content_enter\home\sms;
 
 class view extends \mvc\view
 {

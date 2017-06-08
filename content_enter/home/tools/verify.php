@@ -1,5 +1,5 @@
 <?php
-namespace content\enter\tools;
+namespace content_enter\home\tools;
 use \lib\utility\visitor;
 use \lib\utility;
 use \lib\debug;

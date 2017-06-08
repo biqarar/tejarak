@@ -1,5 +1,5 @@
 <?php
-namespace content\enter;
+namespace content_enter\home;
 
 class view extends \mvc\view
 {

@@ -1,5 +1,5 @@
 <?php
-namespace content\enter\sms;
+namespace content_enter\home\sms;
 
 class controller extends \content\main\controller
 {
