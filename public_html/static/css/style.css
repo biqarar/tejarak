@@ -11,8 +11,8 @@
 #theader .btn:hover{background-color:#222;}
 
 /* default btn*/
-.btn{background-color:#333;border-radius:3px;line-height:40px;height:40px;color:#eee;padding:0 2em;margin:0 1em;display:inline-block;}
-.btn:hover{background-color:#222;}
+.btn{background-color:#555;border-radius:3px;line-height:40px;height:40px;color:#eee;padding:0 2em;margin:0 1em;display:inline-block;transition:0.3s}
+.btn:hover{background-color:#333;}
 .btn:focus{background-color:#111;color:#fff;}
 
 /* pages style*/
@@ -39,6 +39,13 @@
 .ltr .pricingTable .c4, .ltr .pricingTable .c12{text-align:left}
 .rtl .pricingTable .c4, .rtl .pricingTable .c12{text-align:right;}
 body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd}
+/* list*/
+.pc ul.list{margin:3em 5%;}
+.pc ul.list li{font-size:1.1em;line-height:2em;transition:0.3s}
+.pc ul.list li:hover{background-color:rgba(0,0,0,0.1);}
+.pc h3{font-size:3em;}
+.pc h4{font-size:1.5em;margin-bottom:0}
+
 /* tile*/
 .tile h2{margin:0;font-size:3em;color:#333}
 .rtl .tile h2{font-weight:700;}
@@ -75,6 +82,9 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 #offer-enterprise h2{color:#fff;}
 #offer-enterprise h3{color:#eee;padding:0}
 #offer-enterprise h4{color:#ddd;padding:0}
+#offer-enterprise-small{background-color:#fff;text-align:initial;padding:2em}
+#offer-enterprise-small h3, #offer-enterprise-small h4{padding:0 5%;}
+#offer-enterprise-small .btn{padding:0 5em;}
 
 /* footer*/
 #tfooter{font-size:1.2em;padding:3em 0;background-color:#333;}
@@ -135,10 +145,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .vcard .adr{padding:1em}
 .vcard .adr div, .vcard .adr span, .vcard .email, .vcard .tel{display:block;padding:0.5em}
 .vcard .adr span{display:inline-block;}
-/* list*/
-.pc ul.list{margin:3em 5%;}
-.pc ul.list li{font-size:1.1em;line-height:2em;transition:0.3s}
-.pc ul.list li:hover{background-color:rgba(0,0,0,0.1);}
+
 
 
 

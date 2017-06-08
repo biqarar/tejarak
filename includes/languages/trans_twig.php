@@ -41,16 +41,16 @@ private function transtext()
 	echo T_("Try it.");                                                               // Line 17
 	echo T_("Is your team interested in deploying?");                                 // Line 23
 	echo T_("We can help.");                                                          // Line 23
-	echo T_("Get in Touch");                                                          // Line 24
+	echo T_("Get in Touch");                                                          // Line 141
 	echo T_("Enter your team name");                                                  // Line 35
 	echo T_("Get Started");                                                           // Line 36
 	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 38
 
 	//--------------------------------------------------------content\main\layout.html
-	echo T_("Next →");                                                                // Line 75
-	echo T_("← Back");                                                                // Line 75
-	echo T_("Skip");                                                                  // Line 75
-	echo T_("Done");                                                                  // Line 75
+	echo T_("Next →");                                                                // Line 76
+	echo T_("← Back");                                                                // Line 76
+	echo T_("Skip");                                                                  // Line 76
+	echo T_("Done");                                                                  // Line 76
 
 	//---------------------------------------------------content\template\dafault.html
 	echo T_("View your current location and navigate to parent of it");               // Line 9
@@ -157,6 +157,31 @@ private function transtext()
 	echo T_("2 hours");                                                               // Line 119
 	echo T_("15 minutes");                                                            // Line 120
 	echo T_("Emergency phone support");                                               // Line 124
+	echo T_("Ready to use Tejarak Enterprise?");                                      // Line 137
+	echo T_("Get started with our Enterprise plan.");                                 // Line 138
+	echo T_("Billing & Invoicing");                                                   // Line 151
+	echo T_("Is there a setup fee?");                                                 // Line 153
+	echo T_("No. There are no setup fees on any of our plans!");                      // Line 154
+	echo T_("Can I cancel my account at any time?");                                  // Line 156
+	echo T_("Yes. If you ever decide that Tejarak isn’t the best platform for your business, simply cancel your account.");// Line 157
+	echo T_("How long are your contracts?");                                          // Line 159
+	echo T_("All Tejarak plans are month to month. simple.");                         // Line 160
+	echo T_("Can I change my plan later on?");                                        // Line 162
+	echo T_("Absolutely! You can upgrade or downgrade your plan at any time.");       // Line 163
+	echo T_("When is my billing date?");                                              // Line 165
+	echo T_("The date you first select a paid plan will be the recurring billing date. For example: If you sign up for the first time on July 15, all future charges will be billed on the 15th of every month.");// Line 166
+	echo T_("General questions");                                                     // Line 171
+	echo T_("How does Tejarak work?");                                                // Line 176
+	echo T_("Tejarak is simple. Enter to check it!");                                 // Line 174
+	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 177
+	echo T_("What is your privacy and security policy?");                             // Line 179
+	echo T_("View Tejarak's privacy and security policy at");                         // Line 180
+	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 182
+	echo T_("You can find them at");                                                  // Line 183
+	echo T_("What are your bandwidth fees?");                                         // Line 185
+	echo T_("There are none. All Tejarak plans include unlimited bandwidth for free.");// Line 186
+	echo T_("Do I need a web host?");                                                 // Line 188
+	echo T_("No! Tejarak includes secure, unlimited hosting on all plans with free bandwith.");// Line 189
 
 	//--------------------------------------------content\template\static\privacy.html
 	echo T_("We wish to assure you that our main concern is to secure your privacy and protect your information against impermissible access.");// Line 6
