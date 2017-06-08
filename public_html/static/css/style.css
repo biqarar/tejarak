@@ -6,17 +6,22 @@
 #theader .logo:hover{opacity:0.8}
 #theader nav{}
 #theader a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
-#theader nav a:hover{background-color:rgba(255,255,255,0.6);}
+#theader nav a:hover{background-color:rgba(255,255,255,0.5);}
+#theader nav a:focus{background-color:rgba(255,255,255,0.8);}
 #theader .btn{margin:10px;line-height:40px;color:#eee;padding:0 2em}
-#theader .btn:hover{background-color:#222;}
+#theader .btn:hover{background-color:#333;}
+#theader .btn:focus{background-color:#000;}
+
+body{min-height:100vh;display:flex;flex-direction:column;}
+.wrapper{flex:1;}
 
 /* default btn*/
 .btn{background-color:#555;border-radius:3px;line-height:40px;height:40px;color:#eee;padding:0 2em;margin:0 1em;display:inline-block;transition:0.3s}
 .btn:hover{background-color:#333;}
-.btn:focus{background-color:#111;color:#fff;}
+.btn:focus{background-color:#000;color:#fff;}
 
 /* pages style*/
-.page-block{margin:5em 0;font-size:1.2em}
+.page-block{padding:5em 0;font-size:1.2em}
 /* section head*/
 .tile{padding:5em 0;width:100%;overflow:hidden;text-align:center;}
 /* pad*/
@@ -38,7 +43,11 @@
 .pricingTable .price .c{font-size:1.4em;font-weight:500;color:#333}
 .ltr .pricingTable .c4, .ltr .pricingTable .c12{text-align:left}
 .rtl .pricingTable .c4, .rtl .pricingTable .c12{text-align:right;}
-body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd}
+body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd;}
+ul.faq li{transition:0.3s;padding:1em; margin-bottom:1em;border-radius:3px}
+ul.faq li:hover{background:#fff}
+ul.faq li p{margin:0}
+
 /* list*/
 .pc ul.list{margin:3em 5%;}
 .pc ul.list li{font-size:1.1em;line-height:2em;transition:0.3s}
@@ -82,8 +91,8 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 #offer-enterprise h2{color:#fff;}
 #offer-enterprise h3{color:#eee;padding:0}
 #offer-enterprise h4{color:#ddd;padding:0}
-#offer-enterprise-small{background-color:#fff;text-align:initial;padding:2em}
-#offer-enterprise-small h3, #offer-enterprise-small h4{padding:0 5%;}
+#offer-enterprise-small{background-color:#fff;background-color:#50b0b0;text-align:initial;padding:2em}
+#offer-enterprise-small h3, #offer-enterprise-small h4{padding:0 5%;color:#fff}
 #offer-enterprise-small .btn{padding:0 5em;}
 
 /* footer*/
@@ -101,7 +110,8 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 #tfooter .middle nav a{display:block;padding:0.5em 0}
 #tfooter .middle .enamad{min-width:150px;padding:1em 0}
 #tfooter .middle .enamad a{display:block;max-width:90px;padding:0;position:relative;}
-#tfooter .middle .enamad img{display:block;max-width:100%;background-color:#eaeae9;padding:0.5em 0}
+#tfooter .middle .enamad a:focus{background-color:#ccc}
+#tfooter .middle .enamad img{display:block;max-width:100%;background-color:#eee;padding:0.5em 0}
 #tfooter .middle .enamad a:before{content:"";position:absolute;top:-4px;right:0;left:0;height:4px;background-image:url(../images/cert/footer-box.svg);background-repeat:repeat-x;}
 #tfooter .middle .enamad a:after{content:"";position:absolute;bottom:-4px;right:0;left:0;height:4px;background-image:url(../images/cert/footer-box.svg);background-repeat:repeat-x;-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 /* footer-note*/
@@ -235,7 +245,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 
 /* teams */
 .team-section-header{}
-.team-section-header .team-section-header-name{font-size:1.618rem;font-weight:700;margin:0;display:inline-block;vertical-align: middle;}
+.team-section-header .team-section-header-name{font-size:1.618rem;font-weight:700;margin:0;display:inline-block;vertical-align:middle;}
 .team-section-list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-bottom:3em}
 .team-section-list li{max-width:20%;-webkit-box-flex:0;-webkit-flex:0 0 20%;-ms-flex:0 0 20%;-moz-box-flex:0;flex:0 0 20%;
 padding: 0 1em 1em 0}
