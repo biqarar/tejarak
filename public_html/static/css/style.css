@@ -28,17 +28,16 @@
 .pas{padding:2em;}
 .pal{padding:7em;}
 .pax{padding:10em;}
-
-.pc{font-size:1.2em;background-color:#eee;}
+/* page content*/
+.pc{font-size:1.2em;background-color:#eee;color:#333;}
+.pc p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
+.rtl .pc p{text-align:justify;}
+body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd}
 /* tile*/
 .tile h2{margin:0;font-size:3em;color:#333}
 .rtl .tile h2{font-weight:700;}
 .tile h3{margin:0;font-weight:200;color:#888;padding:0 15%;}
 .tile h4{margin:0;font-weight:200;color:#999;padding:0 15%;}
-/*content*/
-.content{color:#333;}
-.content p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
-.rtl .content p{text-align:justify;}
 /* bg*/
 .bg-white{background-color:#fff;}
 .bg-gray{background-color:#eee;}
