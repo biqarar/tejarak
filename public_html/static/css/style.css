@@ -4,6 +4,7 @@
 #theader .logo h1{display:none}
 #theader .logo img{height:60px;width:auto;padding:10px 1em;display:block;}
 #theader .logo:hover{opacity:0.8}
+#theader .logo a:focus{opacity:0.6; border-bottom:1px solid #000}
 #theader nav{}
 #theader a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
 #theader nav a:hover{background-color:rgba(255,255,255,0.5);}
@@ -44,9 +45,12 @@ body{min-height:100vh;display:flex;flex-direction:column;}
 .ltr .pricingTable .c4, .ltr .pricingTable .c12{text-align:left}
 .rtl .pricingTable .c4, .rtl .pricingTable .c12{text-align:right;}
 body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd;}
-ul.faq li{transition:0.3s;padding:1em; margin-bottom:1em;border-radius:3px}
-ul.faq li:hover{background:#fff}
-ul.faq li p{margin:0}
+/* faq design*/
+.faq h3{margin:0;}
+.faq ul{margin-bottom:5em;}
+.faq li{transition:0.3s;padding:1em; margin-bottom:1em;border-radius:3px}
+.faq li:hover{background:#fff}
+.faq li p{margin:0}
 
 /* list*/
 .pc ul.list{margin:3em 5%;}
@@ -85,13 +89,13 @@ ul.faq li p{margin:0}
 .getStarted button.c:focus{background-color:#2957a5;color:#fff;}
 .getStarted p{padding:1em 0;color:#888;font-size:0.8em}
 /* enterprise box*/
-#offer-enterprise{font-size:1.8em;background-color:#50b0b0;}
+#offer-enterprise{font-size:1.6em;background-color:#4070c0;}
 #offer-enterprise h3{margin-bottom:0.5em}
 #offer-enterprise .btn{height:50px;line-height:50px;}
 #offer-enterprise h2{color:#fff;}
 #offer-enterprise h3{color:#eee;padding:0}
 #offer-enterprise h4{color:#ddd;padding:0}
-#offer-enterprise-small{background-color:#fff;background-color:#50b0b0;text-align:initial;padding:2em}
+#offer-enterprise-small{background-color:#fff;background-color:#4070c0;text-align:initial;padding:2em}
 #offer-enterprise-small h3, #offer-enterprise-small h4{padding:0 5%;color:#fff}
 #offer-enterprise-small .btn{padding:0 5em;}
 
