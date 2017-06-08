@@ -17,6 +17,9 @@ class view extends \lib\mvc\view
 		$this->data->display['ganje_et'] = "content_ganje/home/et.html";
 		$this->data->bodyclass           = 'unselectable';
 
+		// for pushstate of main page
+		$this->data->template['xhr']     = 'content/main/layout-xhr.html';
+
 		$this->data->display['admin']    = 'content_admin/main/layout.html';
 		$this->data->template['social']  = 'content/template/social.html';
 		$this->data->template['share']   = 'content/template/share.html';
