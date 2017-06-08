@@ -11,7 +11,13 @@
    </div>
   </div>
   <div class="pc">
-   <div class="cn">{%block page%}{%endblock%}</div>
+   <div class="cn">
+{%if page_cn%}
+{{page_cn | raw}}
+{%else%}
+{%block page%}{%endblock%}
+{%endif%}
+   </div>
   </div>
 {%endblock%}
  </div>

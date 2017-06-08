@@ -49,7 +49,7 @@
 
 {%block body%}
 {%include template.header%}
-{%include template.xhr%}
+{%include template.xhr with {page_cn: block('page')}%}
 {%include template.footer%}
 
 
