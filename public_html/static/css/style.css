@@ -32,6 +32,12 @@
 .pc{font-size:1.2em;background-color:#eee;color:#333;}
 .pc p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
 .rtl .pc p{text-align:justify;}
+.pricingTable{text-align:center;color:#888}
+.pricingTable .th{font-weight:700}
+.pricingTable .gh{font-weight:700;background-color:rgba(255,255,255, 0.3);}
+.pricingTable .price .c{font-size:1.4em;font-weight:500;color:#333}
+.ltr .pricingTable .c4, .ltr .pricingTable .c12{text-align:left}
+.rtl .pricingTable .c4, .rtl .pricingTable .c12{text-align:right;}
 body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd}
 /* tile*/
 .tile h2{margin:0;font-size:3em;color:#333}
@@ -46,8 +52,8 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 /* table style*/
 .dt > div{transition:0.3s;}
 .dt > div > div{padding:1em 1em;}
-.dt > .th{background-color:rgba(0,0,0,0.2);}
-.dt > div:hover{background-color:rgba(0,0,0, 0.1);}
+.dt > .th{background-color:rgba(0,0,0,0.1);}
+.dt > div:hover{background-color:rgba(0,0,0, 0.05);}
 /* align left*/
 .al{text-align:left;}
 .ar{text-align:right;}

@@ -7,9 +7,125 @@
 {%endset%}
 
 
+
+{%set ft%}<div class="c">✔️</div>{%endset%}
+{%set ff%}<div class="c">-</div>{%endset%}
+{%set fu%}<div class="c">{%trans "Unlimited"%}</div>{%endset%}
+
+
+
 {%block page%}
 
+    <div class="p dt pricingTable pc">
+     <div class="f th">
+      <div class="c4"></div>
+      <div class="c">{%trans "FREE"%}</div>
+      <div class="c">{%trans "Pro"%}</div>
+      <div class="c">{%trans "Business"%}</div>
+      <div class="c">{%trans "Enterprise"%}</div>
+     </div>
+
+     <div class="f price">
+      <div class="c4">{%trans "Price per person/month"%}</div>
+      <div class="c">0</div>
+      <div class="c">1<sup>$</sup></div>
+      <div class="c">10<sup>$</sup></div>
+      <div class="c">{%trans "Contact Us"%}</div>
+     </div>
+
+
+     <div class="f">
+      <div class="c4">{%trans "Number of persons"%}</div>
+      <div class="c">10</div>
+      {{fu}} {{fu}} {{fu}}
+     </div>
 
 
 
+
+
+
+     <div class="f gh"><div class="c4">{%trans "Analytics"%}</div></div>
+
+     <div class="f">
+      <div class="c4">{%trans "Simple reports"%}</div>
+      {{ft}} {{ft}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Professional reports"%}</div>
+      {{ff}} {{ft}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Report via telegram"%}</div>
+      {{ff}} {{ft}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Report via SMS"%}</div>
+      {{ff}} {{ff}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Visual reports with chart"%}</div>
+      {{ff}} {{ff}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Advanced report builder"%}</div>
+      {{ff}} {{ff}} {{ff}} {{ft}}
+     </div>
+
+
+
+
+     <div class="f gh"><div class="c4">{%trans "Branding"%}</div></div>
+
+     <div class="f">
+      <div class="c4">{%trans "Free SSL certificate"%}</div>
+      {{ft}} {{ft}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Custom message format"%}</div>
+      {{ff}} {{ff}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Custom brand logo"%}</div>
+      {{ff}} {{ff}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Custom domain"%}</div>
+      {{ff}} {{ff}} {{ff}} {{ft}}
+     </div>
+
+
+
+
+     <div class="f gh"><div class="c4">{%trans "Support"%}</div></div>
+
+     <div class="f">
+      <div class="c4">{%trans "Technical Support"%}</div>
+      {{ft}} {{ft}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Email response time"%}</div>
+      <div class="c">{%trans "48 hours"%}</div>
+      <div class="c">{%trans "12 hours"%}</div>
+      <div class="c">{%trans "2 hours"%}</div>
+      <div class="c">{%trans "15 minutes"%}</div>
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Emergency phone support"%}</div>
+      {{ff}} {{ff}} {{ff}} {{ft}}
+     </div>
+
+
+    </div>
 {%endblock%}
+
