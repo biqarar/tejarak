@@ -49,13 +49,13 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .faq h3{margin:0;}
 .faq ul{margin-bottom:5em;}
 .faq li{transition:0.3s;padding:1em; margin-bottom:1em;border-radius:3px}
-.faq li:hover{background:#fff}
+.faq li:hover{background-color:#aabf40}
 .faq li p{margin:0}
 
 /* list*/
 .pc ul.list{margin:3em 5%;}
 .pc ul.list li{font-size:1.1em;line-height:2em;transition:0.3s}
-.pc ul.list li:hover{background-color:rgba(0,0,0,0.1);}
+.pc ul.list li:hover{background-color:#aabf40;}
 .pc h3{font-size:3em;}
 .pc h4{font-size:1.5em;margin-bottom:0}
 
@@ -73,7 +73,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .dt > div{transition:0.3s;}
 .dt > div > div{padding:1em 1em;}
 .dt > .th{background-color:rgba(0,0,0,0.1);}
-.dt > div:hover{background-color:rgba(0,0,0, 0.05);}
+.dt > div:hover{background-color:#aabf40;color:#fff}
 /* align left*/
 .al{text-align:left;}
 .ar{text-align:right;}
