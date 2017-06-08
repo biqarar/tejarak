@@ -115,7 +115,7 @@ trait add
 
 		$check = \lib\db\teams::search(null, $check_duplicate_title);
 
-		if($check || in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
+		if($check || in_array($brand, \content\home\controller::$static_pages))
 		{
 			$change_name = true;
 			if($_args['method'] === 'post')

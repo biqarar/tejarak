@@ -2,7 +2,38 @@
 namespace lib\db;
 use \lib\db;
 
-class hours {
+class hours
+{
+
+	// CREATE TABLE `hours` (
+	//   `id`					int(10) UNSIGNED NOT NULL,
+	//   `user_id`				int(10) UNSIGNED NOT NULL,
+	//   `team_id`				int(10) UNSIGNED NOT NULL,
+	//   `userteam_id`			int(10) UNSIGNED NOT NULL,
+	//   `userbranch_id`		int(10) UNSIGNED NOT NULL,
+	//   `start_getway_id`		int(10) UNSIGNED NOT NULL,
+	//   `end_getway_id`		int(10) UNSIGNED DEFAULT NULL,
+	//   `start_userbranch_id`	int(10) UNSIGNED NOT NULL,
+	//   `end_userbranch_id`	int(10) UNSIGNED DEFAULT NULL,
+	//   `date`					date NOT NULL,
+	//   `year`					int(4) UNSIGNED NOT NULL,
+	//   `month`				int(2) UNSIGNED NOT NULL,
+	//   `day`					int(2) UNSIGNED NOT NULL,
+	//   `shamsi_date`			date NOT NULL,
+	//   `shamsi_year`			int(4) UNSIGNED NOT NULL,
+	//   `shamsi_month`			int(2) UNSIGNED NOT NULL,
+	//   `shamsi_day`			int(2) UNSIGNED NOT NULL,
+	//   `start`				time NOT NULL,
+	//   `end`					time DEFAULT NULL,
+	//   `diff`					int(10) UNSIGNED DEFAULT NULL,
+	//   `minus`				int(10) UNSIGNED DEFAULT NULL,
+	//   `plus`					int(10) UNSIGNED DEFAULT NULL,
+	//   `type`					enum('nothing','base','wplus','wminus','all') DEFAULT 'all',
+	//   `accepted`				int(10) UNSIGNED DEFAULT NULL,
+	//   `createdate`			datetime DEFAULT CURRENT_TIMESTAMP,
+	//   `date_modified`		timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+	//   `status`				enum('active','awaiting','deactive','removed','filter') DEFAULT 'awaiting'
+	// ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 	/**
@@ -15,13 +46,28 @@ class hours {
 	public static function insert($_args)
 	{
 
-		$date    = $_args['date'] 	 ? $_args['date'] 	 : date("Y-m-d") ;
-		$start   = $_args['start'] 	 ? $_args['start'] 	 : null;
-		$end     = $_args['end'] 	 ? $_args['end'] 	 : null;
-		$user_id = $_args['user_id'] ? $_args['user_id'] : 0;
-		$minus   = $_args['minus'] 	 ? $_args['minus'] 	 : 0;
-		$plus    = $_args['plus'] 	 ? $_args['plus'] 	 : 0;
+		$date                = $_args['date'] 	 ? $_args['date'] 	 : date("Y-m-d") ;
+		$start               = $_args['start'] 	 ? $_args['start'] 	 : null;
+		$end                 = $_args['end'] 	 ? $_args['end'] 	 : null;
+		$user_id             = $_args['user_id'] ? $_args['user_id'] : 0;
+		$minus               = $_args['minus'] 	 ? $_args['minus'] 	 : 0;
+		$plus                = $_args['plus'] 	 ? $_args['plus'] 	 : 0;
 
+		$user_id             = $_args['user_id'] ? $_args['user_id'] : null;
+		$team_id             = $_args['team_id'] ? $_args['team_id'] : null;
+		$userteam_id         = $_args['userteam_id'] ? $_args['userteam_id'] : null;
+		$userbranch_id       = $_args['userbranch_id'] ? $_args['userbranch_id'] : null;
+		$start_getway_id     = $_args['start_getway_id'] ? $_args['start_getway_id'] : null;
+		$start_userbranch_id = $_args['start_userbranch_id'] ? $_args['start_userbranch_id'] : null;
+		$date                = $_args['date'] ? $_args['date'] : null;
+		$year                = $_args['year'] ? $_args['year'] : null;
+		$month               = $_args['month'] ? $_args['month'] : null;
+		$day                 = $_args['day'] ? $_args['day'] : null;
+		$shamsi_date         = $_args['shamsi_date'] ? $_args['shamsi_date'] : null;
+		$shamsi_year         = $_args['shamsi_year'] ? $_args['shamsi_year'] : null;
+		$shamsi_month        = $_args['shamsi_month'] ? $_args['shamsi_month'] : null;
+		$shamsi_day          = $_args['shamsi_day'] ? $_args['shamsi_day'] : null;
+		$start               = $_args['start'] ? $_args['start'] : null;
 		if(!$user_id || !$start || !$end)
 		{
 			\lib\debug::error(T_("user id, start time and end time is require"));
@@ -32,15 +78,38 @@ class hours {
 				hours
 			SET
 				user_id   	  = $user_id,
-				hour_date     = '$date',
-				hour_start    = '$start',
-				hour_end      = '$end',
-				hour_diff     = TIME_TO_SEC(TIMEDIFF(hour_end,hour_start)) / 60,
-				hour_plus     = IF('$plus' = 0, NULL, '$plus'),
-				hour_minus    = IF('$minus' = 0, NULL, '$minus')
+				date     = '$date',
+				start    = '$start',
+				end      = '$end',
+				diff     = TIME_TO_SEC(TIMEDIFF(end,start)) / 60,
+				plus     = IF('$plus' = 0, NULL, '$plus'),
+				minus    = IF('$minus' = 0, NULL, '$minus')
 				";
 		return \lib\db::query($query);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	/**
@@ -67,7 +136,7 @@ class hours {
 
 		if(isset($_args['status']))
 		{
-			$status = " hours.hour_status = '" . $_args['status'] . "' ";
+			$status = " hours.status = '" . $_args['status'] . "' ";
 		}
 		else
 		{
@@ -79,9 +148,9 @@ class hours {
 
 			$qry =
 			"	SELECT
-					hour_start,
-					hour_end,
-					hour_status
+					start,
+					end,
+					status
 				FROM
 					hours
 				WHERE id = $id
@@ -95,7 +164,7 @@ class hours {
 			else
 			{
 				$time = $_args['time'];
-				$saved_time = $check['hour_start'];
+				$saved_time = $check['start'];
 				if($saved_time > $time)
 				{
 					$temp       = $time;
@@ -104,13 +173,13 @@ class hours {
 				}
 				else
 				{
-					$saved_time = "hour_start";
-					$time       = "hour_end";
+					$saved_time = "start";
+					$time       = "end";
 				}
 				$time_query =
 				"
-						hour_start = $saved_time,
-						hour_end   = $time
+						start = $saved_time,
+						end   = $time
 				";
 			}
 		}
@@ -144,7 +213,7 @@ class hours {
 
 
 	/**
-	 * get hours.id and hours.hour_status and update hours status
+	 * get hours.id and hours.status and update hours status
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
@@ -171,7 +240,7 @@ class hours {
 		$saved_type =
 		"
 			SELECT
-				hours.hour_type AS 'type'
+				hours.type AS 'type'
 			FROM
 				hours
 			WHERE
@@ -268,7 +337,7 @@ class hours {
 			UPDATE
 				hours
 			SET
-				hours.hour_type = '$new_type'
+				hours.type = '$new_type'
 			WHERE
 				hours.id = $id
 		";
@@ -309,7 +378,7 @@ class hours {
 
 		if(isset($_args['date']))
 		{
-			$date = " hours.hour_date = '". $_args['date']. "'";
+			$date = " hours.date = '". $_args['date']. "'";
 		}
 		else
 		{
@@ -333,17 +402,17 @@ class hours {
 		$field =
 		"
 			hours.id 						AS 'id',
-			hours.hour_date 				AS 'date',
+			hours.date 				AS 'date',
 			$user_displayname
-			hours.hour_start 				AS 'start',
-			hours.hour_end 					AS 'end',
-			hours.hour_end 					AS 'end',
-			IFNULL(hours.hour_diff,0) 	 	AS 'diff',
-			IFNULL(hours.hour_plus,0) 	 	AS 'plus',
-			IFNULL(hours.hour_minus,0) 	 	AS 'minus',
-			hours.hour_status				AS 'status',
-			hours.hour_type					AS 'type',
-			IFNULL(hours.hour_accepted,0) 	AS 'accepted'
+			hours.start 				AS 'start',
+			hours.end 					AS 'end',
+			hours.end 					AS 'end',
+			IFNULL(hours.diff,0) 	 	AS 'diff',
+			IFNULL(hours.plus,0) 	 	AS 'plus',
+			IFNULL(hours.minus,0) 	 	AS 'minus',
+			hours.status				AS 'status',
+			hours.type					AS 'type',
+			IFNULL(hours.accepted,0) 	AS 'accepted'
 		";
 		// pagnation
 		$count_record =
@@ -380,7 +449,7 @@ class hours {
 				$date
 				$user
 				ORDER BY
-					hours.hour_date DESC, hours.hour_end ASC
+					hours.date DESC, hours.end ASC
 				$limit
 				";
 		$report = db::get($query);
@@ -427,20 +496,20 @@ class hours {
 			if($year && $month)
 			{
 				list($start_date, $end_date)  = \lib\utility\jdate::jalali_month($year, $month);
-				$q['month'] = " hours.hour_date > '$start_date' AND hours.hour_date < '$end_date' ";
+				$q['month'] = " hours.date > '$start_date' AND hours.date < '$end_date' ";
 
 			}
 			elseif($year && !$month)
 			{
 				list($start_date, $end_date)  = \lib\utility\jdate::jalali_year($year);
-				$q['month'] = " hours.hour_date > '$start_date' AND hours.hour_date < '$end_date' ";
+				$q['month'] = " hours.date > '$start_date' AND hours.date < '$end_date' ";
 			}
 		}
 		else
 		{
-			$q['month'] = $month  != null ? "YEAR(hours.hour_date) = '$year' AND MONTH(hours.hour_date) = '$month' " : null;
-			$q['year']  = $year   != null ? "YEAR(hours.hour_date) = '$year' " : null;
-			$q['week']  = $week   != null ? "WEEKOFYEAR(hours.hour_date)=WEEKOFYEAR('$week')" : null;
+			$q['month'] = $month  != null ? "YEAR(hours.date) = '$year' AND MONTH(hours.date) = '$month' " : null;
+			$q['year']  = $year   != null ? "YEAR(hours.date) = '$year' " : null;
+			$q['week']  = $week   != null ? "WEEKOFYEAR(hours.date)=WEEKOFYEAR('$week')" : null;
 		}
 
 		$condition = ' AND '. implode(" AND ", array_filter($q));
@@ -456,15 +525,15 @@ class hours {
 					users.id as id,
 					users.user_displayname as name,
 					TRIM(BOTH '".'"'."' FROM IFNULL(users.user_meta, '$no_position')) as meta,
-					sum(hours.hour_diff) as diff,
-					sum(hours.hour_plus) as plus,
-					sum(hours.hour_minus) as minus,
-					sum(hours.hour_accepted) as accepted
+					sum(hours.diff) as diff,
+					sum(hours.plus) as plus,
+					sum(hours.minus) as minus,
+					sum(hours.accepted) as accepted
 				FROM
 					hours
 				INNER JOIN users on hours.user_id = users.id
 				WHERE
-					  (hours.hour_status = 'filter' OR hours.hour_status = 'active')
+					  (hours.status = 'filter' OR hours.status = 'active')
 				$condition
 				$USER
 				LIMIT $start,$end
@@ -586,14 +655,14 @@ class hours {
 		// fields of table whit sum function
 		$sum_fields =
 		"
-			SUM(IFNULL(hours.hour_diff,0))		AS 'diff',
-			SUM(IFNULL(hours.hour_plus,0))		AS 'plus',
-			SUM(IFNULL(hours.hour_minus,0))		AS 'minus',
-			SUM(IFNULL(hours.hour_accepted,0))	AS 'accepted'
+			SUM(IFNULL(hours.diff,0))		AS 'diff',
+			SUM(IFNULL(hours.plus,0))		AS 'plus',
+			SUM(IFNULL(hours.minus,0))		AS 'minus',
+			SUM(IFNULL(hours.accepted,0))	AS 'accepted'
 		";
 		$field =
 		"
-			count(hours.hour_date) 				as 'count',
+			count(hours.date) 				as 'count',
 			$sum_fields
 		";
 
@@ -611,25 +680,25 @@ class hours {
 					}
 					$jdate = \lib\utility\jdate::toGregorian($year,$month, $i);
 					$jdate = join($jdate, "-");
-					$day_query .=	" WHEN hours.hour_date = '{$jdate}' THEN '$i' \n";
+					$day_query .=	" WHEN hours.date = '{$jdate}' THEN '$i' \n";
 				}
 				list($start_date, $end_date) = \lib\utility\jdate::jalali_month($year, $month);
-				$where = " hours.hour_date >= '$start_date' AND hours.hour_date <= '$end_date' ";
+				$where = " hours.date >= '$start_date' AND hours.date <= '$end_date' ";
 				$group = " GROUP BY users.user_displayname, day";
 				$field =
 				"
 			 		$day_query END) 		AS 'day',
-			 		COUNT(hours.hour_date)	AS 'count',
+			 		COUNT(hours.date)	AS 'count',
 					$sum_fields
 				";
 			}
 			else
 			{
-				$where = " hours.hour_date LIKE '$year-$month%'	";
-				$group = " GROUP BY hours.user_id, DAY(hours.hour_date)";
+				$where = " hours.date LIKE '$year-$month%'	";
+				$group = " GROUP BY hours.user_id, DAY(hours.date)";
 				$field =
 				"
-					DAY(hours.hour_date)	AS 'day',
+					DAY(hours.date)	AS 'day',
 			 		COUNT(hours.id)			AS 'count',
 					$sum_fields
 				";
@@ -648,11 +717,11 @@ class hours {
 			"
 				'$year' 							AS 'year',
 				hours.user_id,
-		 		COUNT(DATE(hours.hour_date)) 		AS 'count',
-				SUM(hours.hour_diff)	 			AS 'diff',
-				SUM(IFNULL(hours.hour_plus,0))		AS 'plus',
-				SUM(IFNULL(hours.hour_minus,0))		AS 'minus',
-				SUM(hours.hour_accepted)	 		AS 'accepted'
+		 		COUNT(DATE(hours.date)) 		AS 'count',
+				SUM(hours.diff)	 			AS 'diff',
+				SUM(IFNULL(hours.plus,0))		AS 'plus',
+				SUM(IFNULL(hours.minus,0))		AS 'minus',
+				SUM(hours.accepted)	 		AS 'accepted'
 			";
 			if($lang == 'fa')
 			{
@@ -664,17 +733,17 @@ class hours {
 					}
 					$jdate = \lib\utility\jdate::jalali_month($year, $i);
 					$month_name = \lib\utility\jdate::date("m", $jdate[0],false);
-					$month_query .=	" WHEN hours.hour_date >= '{$jdate[0]}' AND hours.hour_date <= '{$jdate[1]}' THEN '$month_name' \n";
+					$month_query .=	" WHEN hours.date >= '{$jdate[0]}' AND hours.date <= '{$jdate[1]}' THEN '$month_name' \n";
 				}
 				list($start_date, $end_date) = \lib\utility\jdate::jalali_year($year);
-				$where = " hours.hour_date >= '$start_date' AND hours.hour_date <= '$end_date' ";
+				$where = " hours.date >= '$start_date' AND hours.date <= '$end_date' ";
 				$group = " GROUP BY hours.user_id, month ";
 				$field = "	$month_query  END) 					AS 'month'," . $field;
 			}
 			else
 			{
-				$where = " hours.hour_date LIKE '$year%' ";
-				$group = " GROUP BY hours.user_id, MONTH(hours.hour_date)";
+				$where = " hours.date LIKE '$year%' ";
+				$group = " GROUP BY hours.user_id, MONTH(hours.date)";
 			}
 
 			if(!$user_id)
@@ -748,25 +817,25 @@ class hours {
 
 		//--------- repeat to every query
 		$field = "users.id,users.user_displayname as displayname,
-				 SUM(IFNULL(hours.hour_accepted,0))   	as 'accepted',
-				 SUM(IFNULL(hours.hour_diff,0)) 		as 'diff',
-				 SUM(IFNULL(hours.hour_plus,0)) 	 	as 'plus',
-				 SUM(IFNULL(hours.hour_minus,0)) 	 	as 'minus'
+				 SUM(IFNULL(hours.accepted,0))   	as 'accepted',
+				 SUM(IFNULL(hours.diff,0)) 		as 'diff',
+				 SUM(IFNULL(hours.plus,0)) 	 	as 'plus',
+				 SUM(IFNULL(hours.minus,0)) 	 	as 'minus'
 				";
 
 		$join =	"FROM hours
 				  INNER JOIN users on hours.user_id = users.id
 				  WHERE
-				  (hours.hour_status = 'filter' OR hours.hour_status = 'active') ";
+				  (hours.status = 'filter' OR hours.status = 'active') ";
 
 		$qry = "SELECT $field,
 			'daily' as type
 			$join
-			AND hours.hour_date = '$today'
+			AND hours.date = '$today'
 			$user_id
 			GROUP BY
 				hours.user_id,
-				hours.hour_date
+				hours.date
 		";
 
 		if(\lib\define::get_language() === 'fa')
@@ -784,13 +853,13 @@ class hours {
 				SELECT $field,
 				'week' as type
 				$join
-				AND (hours.hour_date >= '$start_week' AND hours.hour_date < '$end_week')
+				AND (hours.date >= '$start_week' AND hours.date < '$end_week')
 				GROUP BY hours.user_id
 			UNION
 			SELECT $field,
 			'month' as type
 			$join
-			AND (hours.hour_date >= '$start_date' AND hours.hour_date < '$end_date')
+			AND (hours.date >= '$start_date' AND hours.date < '$end_date')
 			GROUP BY hours.user_id";
 
 		}
@@ -801,13 +870,13 @@ class hours {
 				SELECT $field,
 				'week' as type
 				$join
-				AND WEEKOFYEAR(hours.hour_date)=WEEKOFYEAR(NOW())
+				AND WEEKOFYEAR(hours.date)=WEEKOFYEAR(NOW())
 				GROUP BY hours.user_id
 			UNION
 				SELECT $field,
 				'month' as type
 				$join
-				AND YEAR(hours.hour_date) = YEAR(NOW()) AND MONTH(hours.hour_date)=MONTH(NOW())
+				AND YEAR(hours.date) = YEAR(NOW()) AND MONTH(hours.date)=MONTH(NOW())
 				GROUP BY hours.user_id";
 		}
 

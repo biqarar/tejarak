@@ -3,15 +3,47 @@ namespace content\home;
 
 class controller extends \content\main\controller
 {
-	public function config()
-	{
+	/**
+	 * the static page to not run any query
+	 * and brand black list
+	 * @var        array
+	 */
+	public static  $static_pages =
+	[
+		'benefits',
+		'pricing',
+		'help',
+		'admin',
+		'enter',
+		'about',
+		'social-responsibility',
+		'terms',
+		'privacy',
+		'changelog',
+		'logo',
+		'contact',
+		'api',
+		// brand black list
+		'branch',
+		'team',
+		'member',
+		'add',
+		'edit',
+		'delete',
+		'user',
+		'hours',
 
-	}
+	];
 
 	// for routing check
 	function _route()
 	{
 		$url = \lib\router::get_url();
+		// if the url in static page [and black list] return
+		if(in_array($url, self::$static_pages))
+		{
+			return;
+		}
 
 		// check url like this /ermile/sarshomar
 		if(preg_match("/^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$/", $url, $split))

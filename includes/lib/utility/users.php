@@ -55,19 +55,13 @@ class users
 			$file_time = \filemtime($url);
 			if((time() - $file_time) >  (60 * 10))
 			{
-				$result_exist = intval(\lib\utility\file::read($url));
 				$result       = self::user_count();
-
-				if($result_exist != $result)
-				{
-					\lib\utility\file::write($url, $result);
-				}
+				\lib\utility\file::write($url, $result);
 			}
 			else
 			{
 				$result = \lib\utility\file::read($url);
 			}
-
 		}
 		return $result;
 	}

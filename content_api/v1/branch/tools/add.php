@@ -194,7 +194,7 @@ trait add
 		$count = \lib\db\branchs::search(null, $check_duplicate_brand_in_team);
 
 		// check duplicate branch brand and change branch brand
-		if($count || in_array($brand, \content_api\v1\home\tools\options::$brand_black_list))
+		if($count || in_array($brand, \content\home\controller::$static_pages))
 		{
 			$change_name = true;
 			while ($change_name)
