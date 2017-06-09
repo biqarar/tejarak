@@ -2,7 +2,7 @@
 #theader{height:60px;font-weight:700;font-size:1.2em;}
 #theader .logo{transition:0.3s}
 #theader .logo h1{display:none}
-#theader .logo img{height:60px;width:auto;padding:10px 1em;display:block;}
+#theader .logo img{height:60px;width:auto;padding:5px 1em;display:block;}
 #theader .logo:hover{opacity:0.8}
 #theader .logo a:focus{opacity:0.6;}
 #theader nav{}

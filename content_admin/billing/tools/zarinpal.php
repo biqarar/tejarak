@@ -10,7 +10,7 @@ trait zarinpal
 	 */
 	private static $zarinpal =
 	[
-		'MerchantID'  => "669de6b4-f744-11e6-9180-005056a205be",
+		'MerchantID'  => "c2bf5bee-4d2a-11e7-93bb-000c295eb8fc",
 		'Description' => "Tejarak",
 		'CallbackURL' => 'https://tejarak.com/admin/billing/verify/zarinpal',
 		'Email'       => null,
