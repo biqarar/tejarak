@@ -88,13 +88,11 @@ private function transtext()
 	echo T_("Tejarak have a set of simple and practical tools on a regular basis for modern businesses.");// Line 14
 	echo T_("It’s good to know that in addition to the core services, features such as inventory and invoice will be added.");// Line 17
 	echo T_("Attendance system");                                                     // Line 19
-	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak. This service is being used from September 2016 in Ermile and Everyone was satisfied.");// Line 20
+	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak.");// Line 20
 	echo T_("Daily report");                                                          // Line 22
-	echo T_("In many collections received daily reports of the employees is very important. On the other hands Employees reluctant to do that.");// Line 23
-	echo T_("In addition to the classical method, using social networks on Twitter and Daily Telegram reported in Tejarak possible to get there.");// Line 23
+	echo T_("In many collections received daily reports of the employees is very important. On the other hands Employees reluctant to do that. In addition to the classical method, using social networks on Twitter and Daily Telegram reported in Tejarak possible to get there.");// Line 23
 	echo T_("Salary calculator");                                                     // Line 25
-	echo T_("For many small business is very complex method of calculating monthly salary and they Need to have simpler method.");// Line 26
-	echo T_("In addition to supporting traditional methods, Tejarak provide monthly salary simple solutions to employees have modern and beautiful Payroll.");// Line 26
+	echo T_("For many small business is very complex method of calculating monthly salary and they Need to have simpler method. In addition to supporting traditional methods, Tejarak provide monthly salary simple solutions to employees have modern and beautiful Payroll.");// Line 26
 
 	//-------------------------------------------content\template\static\benefits.html
 	echo T_("Tejarak benefits");                                                      // Line 3
@@ -104,7 +102,7 @@ private function transtext()
 	echo T_("Change log of Tejarak");                                                 // Line 3
 	echo T_("We were born to do Best!");                                              // Line 53
 	echo T_("We are Developers, please wait!");                                       // Line 20
-	echo T_("Date");                                                                  // Line 196
+	echo T_("Date");                                                                  // Line 192
 	echo T_("Description");                                                           // Line 51
 	echo T_("Version 1 of Tejarak is comming");                                       // Line 26
 	echo T_("Beta version of Tejarak released");                                      // Line 31
@@ -245,30 +243,30 @@ private function transtext()
 	echo T_("Earn More Credit");                                                      // Line 12
 	echo T_("Usage");                                                                 // Line 19
 	echo T_("View Usage Details");                                                    // Line 22
-	echo T_("Charge your account");                                                   // Line 151
-	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 152
-	echo T_("Amount");                                                                // Line 163
+	echo T_("Charge your account");                                                   // Line 147
+	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 148
+	echo T_("Amount");                                                                // Line 159
 	echo T_("Checkout");                                                              // Line 43
-	echo T_("Promo code");                                                            // Line 173
-	echo T_("If you have a promo code, please enter it below to receive your credit.");// Line 174
+	echo T_("Promo code");                                                            // Line 169
+	echo T_("If you have a promo code, please enter it below to receive your credit.");// Line 170
 	echo T_("Promo Code");                                                            // Line 58
 	echo T_("Apply Code");                                                            // Line 59
-	echo T_("Billing History");                                                       // Line 193
+	echo T_("Billing History");                                                       // Line 189
 	echo T_("Desc");                                                                  // Line 73
 	echo T_("Invoice");                                                               // Line 75
-	echo T_("Your Money");                                                            // Line 126
-	echo T_("Your Gift");                                                             // Line 135
-	echo T_("Your Credit");                                                           // Line 144
-	echo T_("Confirm");                                                               // Line 164
+	echo T_("Your Money");                                                            // Line 122
+	echo T_("Your Gift");                                                             // Line 131
+	echo T_("Your Credit");                                                           // Line 140
+	echo T_("Confirm");                                                               // Line 160
 	echo T_("Code");                                                                  // Line 76
-	echo T_("Submit");                                                                // Line 180
+	echo T_("Submit");                                                                // Line 176
 	echo T_("Title");                                                                 // Line 13
-	echo T_("Type");                                                                  // Line 198
-	echo T_("Plus");                                                                  // Line 199
-	echo T_("Minus");                                                                 // Line 200
+	echo T_("Type");                                                                  // Line 194
+	echo T_("Plus");                                                                  // Line 195
+	echo T_("Minus");                                                                 // Line 196
 
 	//---------------------------------------------content_admin\branch\dashboard.html
-	echo T_("Branch Dashboard");                                                      // Line 12
+	echo T_("Branch Dashboard");                                                      // Line 7
 
 	//-----------------------------------------------content_admin\branch\display.html
 	echo T_("Branch add");                                                            // Line 6
@@ -287,29 +285,32 @@ private function transtext()
 	echo T_("Add");                                                                   // Line 50
 
 	//-------------------------------------------------content_admin\home\display.html
-	echo T_("Billing");                                                               // Line 6
 	echo T_("Hi");                                                                    // Line 8
-	echo T_("Wellcome to Tejarak admin");                                             // Line 13
-	echo T_("Tejarak was born to serve small and beautiful service for e-business");  // Line 14
+	echo T_("Wellcome to Tejarak admin");                                             // Line 15
+	echo T_("Tejarak was born to serve small and beautiful service for e-business");  // Line 16
 
 	//-------------------------------------------------content_admin\main\display.html
 	echo T_("Add team");                                                              // Line 7
 	echo T_("List team");                                                             // Line 23
 
+	//--------------------------------------------------content_admin\main\layout.html
+	echo T_("Add new team");                                                          // Line 22
+	echo T_("Billing");                                                               // Line 23
+
 	//-----------------------------------------------content_admin\member\display.html
-	echo T_("Edit member");                                                           // Line 11
+	echo T_("Edit member");                                                           // Line 8
 	echo T_("Add member");                                                            // Line 5
-	echo T_("Family");                                                                // Line 27
-	echo T_("Postion");                                                               // Line 31
+	echo T_("Family");                                                                // Line 24
+	echo T_("Postion");                                                               // Line 28
 	echo T_("Avatar");                                                                // Line 26
 	echo T_("Status");                                                                // Line 23
 	echo T_("Please select one item");                                                // Line 44
 	echo T_("Enable");                                                                // Line 45
 	echo T_("Disable");                                                               // Line 46
-	echo T_("Expire");                                                                // Line 48
-	echo T_("Is full time?");                                                         // Line 52
-	echo T_("Remote member");                                                         // Line 56
-	echo T_("Is default");                                                            // Line 60
+	echo T_("Expire");                                                                // Line 45
+	echo T_("Is full time?");                                                         // Line 49
+	echo T_("Remote member");                                                         // Line 53
+	echo T_("Is default");                                                            // Line 57
 
 	//-----------------------------------------content_admin\old\branch_staff\add.html
 	echo T_("member List");                                                           // Line 3
