@@ -17,7 +17,7 @@
 .wrapper{flex:1;}
 
 /* default btn*/
-.btn{background-color:#555;border-radius:3px;line-height:40px;height:40px;color:#eee;padding:0 2em;margin:0 1em;display:inline-block;transition:0.3s}
+.btn{background-color:#555;border-radius:3px;line-height:40px;height:40px;color:#eee;padding:0 2em;margin:0 1em;display:inline-block;transition:0.3s;border:none;}
 .btn:hover{background-color:#333;}
 .btn:focus{background-color:#000;color:#fff;}
 
@@ -70,10 +70,10 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .bg-gray2{background-color:#ddd;}
 .bg-dark{background-color:#333;}
 /* table style*/
-.dt > div{transition:0.3s;}
-.dt > div > div{padding:1em 1em;}
-.dt > .th{background-color:rgba(0,0,0,0.1);}
-.dt > div:hover{background-color:#aabf40;color:#fff}
+.dtc > div{transition:0.3s;}
+.dtc > div > *{padding:1em 1em;}
+.dtc > .th{background-color:rgba(0,0,0,0.1);}
+.dtc > div:hover{background-color:#aabf40;color:#fff}
 /* align left*/
 .al{text-align:left;}
 .ar{text-align:right;}
@@ -175,9 +175,34 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 .df input[type="submit"], .df button{background-color:#4070c0;}
 
+/*billing*/
+.box{background-color:#eee;padding:4em;margin:1em;font-size:1.2em;border-radius:3px;}
+.box.mh{min-height:150px;}
+.box.nh{min-height:200px;}
+.box h2{display:inline-block;margin:0}
+.box h3{display:inline-block;margin:0}
+.box h4{display:inline-block;margin:0}
+.box h3 sup{color:#999}
+.box .btn{width:100%;margin:0;margin-top:2em;}
+.box .gateways label{padding:1em;position:relative;cursor:pointer;}
+.box .gateways label img{width:74px;height:74px;padding:1em;border: 2px solid transparent;transition:0.3s;background-color:rgba(255,255,255,0.3)}
+.box .gateways label input{position:absolute;width:0;height:0;overflow:hidden;z-index:-1;}
+.box .gateways label input:checked+img{border-color:#37aaa7;background-color:rgba(255,255,255,0.6)}
+.box .gateways label input:hover+img{opacity:0.8}
+.box .gateways label input:focus+img{background-color:#fff;}
+.box p{margin-bottom:1em;}
+.box .singleInput{border:1px solid #4070c0;margin:1em;font-size:1.2em;border-radius:3px;}
+.box .singleInput label{cursor:default;padding:1em 1em;line-height:30px;}
+.box .singleInput input{width:100%;padding:0 2%;min-height:50px;border:none;font-size:1.5em;font-weight:100;}
+.box .singleInput button{max-width:200px;margin:0;border:none;background-color:#4070c0;color:#eee;cursor:pointer;transition:0.3s}
+.box .singleInput button:hover{opacity:0.8;}
+.box .singleInput button:focus{opacity:1;background-color:#2957a5;}
+.box .tbl{font-size:1.2em}
+
+
+
 
 .setup-card-box{margin-bottom:10vh}
-
 .setup-card-box .setup-card-indicator{text-align:center;padding:2em 0 0}
 .setup-card-box .setup-card-indicator span{display:inline-block;vertical-align:middle;width:10px;height:10px;background-color:#eee;border-radius:50%}
 .setup-card-box .setup-card-indicator span.done{background-color:#fff;box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)}
@@ -200,7 +225,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 .setup-card .avatar-upload .default-avatar{margin-top:10px}
 
 /* default style of button*/
-.df-button{font-size:1.2em;line-height:2em;padding:1em 2em;cursor:pointer;transition:.3s;color:#fff;border:none;background-color:#4070c0}
+.df-button{font-size:1.2em;line-height:2em;padding:1em 2em;cursor:pointer;transition:.3s;color:#fff;border:none;background-color:#4070c0;display:inline-block;}
 .df-button:hover{background-color:#2957a5;}
 .df-button:focus{background-color:#2957a5;color: #fff}
 
