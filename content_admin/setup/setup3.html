@@ -1,12 +1,11 @@
 {%extends display.admin%}
 
-{%set contentClass%} flex justify-center align-center{%endset%}
 
-{%block content%}
+{%block contentCenter%}
 <div class="setup-card-box">
  <div class="flex f-column justify-center align-center setup-card">
   <h2>{%trans "Congratulations! Now you can use Tejarak."%}</h2>
-  <a href="{{url.base}}/admin/{{last_team_added}}/centeral" class="df-button">{%trans "Go to Tejarak"%}</a>
+  <a href="{{url.base}}/admin/{{last_team_added}}/centeral" class="df-button" data-direct>{%trans "Go to Tejarak"%}</a>
  </div>
  <div class="setup-card-indicator">
   <span class="done"></span>
@@ -15,3 +14,8 @@
  </div>
 </div>
 {%endblock%}
+
+
+
+{%block sideBox%}{%endblock%}
+

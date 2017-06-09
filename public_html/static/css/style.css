@@ -169,8 +169,12 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 
 
 
+
+
 /* admin custom styles*/
 body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
+.df input[type="submit"], .df button{background-color:#4070c0;}
+
 
 .setup-card-box{margin-bottom:10vh}
 
@@ -196,9 +200,9 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 .setup-card .avatar-upload .default-avatar{margin-top:10px}
 
 /* default style of button*/
-.df-button{font-size:1.2em;line-height:2em;padding:1em 2em;cursor:pointer;transition:.3s;color:#fff;border:none;background-color:#eaeaea;background-color:#37aaa7}
-.df-button:hover{background-color:#0fa09f;}
-.df-button:focus{background-color:#309090}
+.df-button{font-size:1.2em;line-height:2em;padding:1em 2em;cursor:pointer;transition:.3s;color:#fff;border:none;background-color:#4070c0}
+.df-button:hover{background-color:#2957a5;}
+.df-button:focus{background-color:#2957a5;color: #fff}
 
 
 
@@ -253,7 +257,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 .team-section-list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-bottom:3em}
 .team-section-list li{max-width:20%;-webkit-box-flex:0;-webkit-flex:0 0 20%;-ms-flex:0 0 20%;-moz-box-flex:0;flex:0 0 20%;
 padding: 0 1em 1em 0}
-.team-section-list .branch-title{
+.team-section-list .branch-title{transition:0.3s;
 	    background-color: #fff;
     background-size: cover;
     background-position: center center;
@@ -265,6 +269,8 @@ padding: 0 1em 1em 0}
     text-decoration: none;
     -webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
 }
+.team-section-list .branch-title:hover{background-color:#eee}
+.team-section-list .branch-title:focus{background-color:#ddd}
 
 .team-section-list .branch-title .branch-title-name{
 	min-height:60px;
