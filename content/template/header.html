@@ -20,7 +20,11 @@
    <nav data-xhr="header-profile" class="c4 flex os">
     <div class="vm"><i class="icon-globe"></i>{{langList({'html':true, 'all2':true})}}</div>
     <a href="{{url.base}}/help" class="header-profile-button">{%trans "Help"%}</a>
+{%if login.id%}
+    <a href="{{url.base}}/admin" data-direct class="btn">{%trans "Admin Panel"%}</a>
+{%else%}
     <a href="{{url.base}}/enter" data-direct class="btn">{%trans "Enter"%}</a>
+{%endif%}
     </nav>
   </div>
  </header>

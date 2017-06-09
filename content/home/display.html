@@ -30,6 +30,8 @@
 
 
 {%block getStarted%}
+{%if login.id%}
+{%else%}
  <div class="getStarted">
   <form class="f" action="{{url.base}}/enter" method="post">
    <input type="text" name="param-team" class="c" placeholder='{%trans "Enter your team name"%}'>
@@ -37,5 +39,6 @@
   </form>
   <p>{%trans "Try Tejarak FREE;) no credit, no risk!"%}</p>
  </div>
+{%endif%}
 {%endblock%}
 
