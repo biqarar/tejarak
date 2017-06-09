@@ -7,16 +7,16 @@ private function transtext()
 	echo T_("Knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 7
 	echo T_("Thank you for choosing us.");                                            // Line 14
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
-	echo T_("Name");                                                                  // Line 13
+	echo T_("Name");                                                                  // Line 12
 	echo T_("Full Name");                                                             // Line 20
-	echo T_("Mobile");                                                                // Line 42
+	echo T_("Mobile");                                                                // Line 49
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
 	echo T_("Email");                                                                 // Line 61
 	echo T_("Message");                                                               // Line 32
 	echo T_("Your Message");                                                          // Line 33
 	echo T_("Send");                                                                  // Line 37
 	echo T_("How to contact tejarak");                                                // Line 45
-	echo T_("tejarak");                                                               // Line 26
+	echo T_("tejarak");                                                               // Line 28
 	echo T_("#614, Omranieh");                                                        // Line 63
 	echo T_("Moallem Sq");                                                            // Line 62
 	echo T_("Qom");                                                                   // Line 61
@@ -61,7 +61,7 @@ private function transtext()
 	echo T_("Changelog");                                                             // Line 31
 	echo T_("Support");                                                               // Line 108
 	echo T_("Contact us");                                                            // Line 36
-	echo T_("Logo");                                                                  // Line 32
+	echo T_("Logo");                                                                  // Line 34
 	echo T_("Proudly Made in IRAN");                                                  // Line 52
 	echo T_("Control Panel");                                                         // Line 59
 	echo T_("Admin Panel");                                                           // Line 60
@@ -104,7 +104,7 @@ private function transtext()
 	echo T_("Change log of Tejarak");                                                 // Line 3
 	echo T_("We were born to do Best!");                                              // Line 53
 	echo T_("We are Developers, please wait!");                                       // Line 20
-	echo T_("Date");                                                                  // Line 84
+	echo T_("Date");                                                                  // Line 196
 	echo T_("Description");                                                           // Line 51
 	echo T_("Version 1 of Tejarak is comming");                                       // Line 26
 	echo T_("Beta version of Tejarak released");                                      // Line 31
@@ -241,22 +241,31 @@ private function transtext()
 	echo T_("It should be mentioned that in case there would be any modifications in the above-mentioned tenors, an updated version will be available for the public, and as well, all the users will be informed.");// Line 30
 
 	//----------------------------------------------content_admin\billing\display.html
-	echo T_("Your Money");                                                            // Line 14
-	echo T_("Your Gift");                                                             // Line 23
-	echo T_("Your Credit");                                                           // Line 32
-	echo T_("Charge your account");                                                   // Line 39
-	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 40
-	echo T_("Amount");                                                                // Line 51
-	echo T_("Confirm");                                                               // Line 52
-	echo T_("Promo code");                                                            // Line 61
-	echo T_("If you have a promo code, please enter it below to receive your credit.");// Line 62
-	echo T_("Code");                                                                  // Line 69
-	echo T_("Submit");                                                                // Line 68
-	echo T_("Billing History");                                                       // Line 81
-	echo T_("Title");                                                                 // Line 11
-	echo T_("Type");                                                                  // Line 86
-	echo T_("Plus");                                                                  // Line 87
-	echo T_("Minus");                                                                 // Line 88
+	echo T_("Your credit");                                                           // Line 9
+	echo T_("Earn More Credit");                                                      // Line 12
+	echo T_("Usage");                                                                 // Line 19
+	echo T_("View Usage Details");                                                    // Line 22
+	echo T_("Charge your account");                                                   // Line 151
+	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 152
+	echo T_("Amount");                                                                // Line 163
+	echo T_("Checkout");                                                              // Line 43
+	echo T_("Promo code");                                                            // Line 173
+	echo T_("If you have a promo code, please enter it below to receive your credit.");// Line 174
+	echo T_("Promo Code");                                                            // Line 58
+	echo T_("Apply Code");                                                            // Line 59
+	echo T_("Billing History");                                                       // Line 193
+	echo T_("Desc");                                                                  // Line 73
+	echo T_("Invoice");                                                               // Line 75
+	echo T_("Your Money");                                                            // Line 126
+	echo T_("Your Gift");                                                             // Line 135
+	echo T_("Your Credit");                                                           // Line 144
+	echo T_("Confirm");                                                               // Line 164
+	echo T_("Code");                                                                  // Line 76
+	echo T_("Submit");                                                                // Line 180
+	echo T_("Title");                                                                 // Line 13
+	echo T_("Type");                                                                  // Line 198
+	echo T_("Plus");                                                                  // Line 199
+	echo T_("Minus");                                                                 // Line 200
 
 	//---------------------------------------------content_admin\branch\dashboard.html
 	echo T_("Branch Dashboard");                                                      // Line 12
@@ -265,8 +274,8 @@ private function transtext()
 	echo T_("Branch add");                                                            // Line 6
 	echo T_("Branch List");                                                           // Line 9
 	echo T_("Add Branch");                                                            // Line 20
-	echo T_("Site");                                                                  // Line 16
-	echo T_("Brand");                                                                 // Line 21
+	echo T_("Site");                                                                  // Line 18
+	echo T_("Brand");                                                                 // Line 23
 	echo T_("Address");                                                               // Line 37
 	echo T_("Phone");                                                                 // Line 53
 	echo T_("Fax");                                                                   // Line 57
@@ -274,8 +283,8 @@ private function transtext()
 	echo T_("Full time");                                                             // Line 68
 	echo T_("Remote");                                                                // Line 72
 	echo T_("Default");                                                               // Line 76
-	echo T_("Edit");                                                                  // Line 39
-	echo T_("Add");                                                                   // Line 48
+	echo T_("Edit");                                                                  // Line 41
+	echo T_("Add");                                                                   // Line 50
 
 	//-------------------------------------------------content_admin\home\display.html
 	echo T_("Billing");                                                               // Line 6
@@ -284,7 +293,7 @@ private function transtext()
 	echo T_("Tejarak was born to serve small and beautiful service for e-business");  // Line 14
 
 	//-------------------------------------------------content_admin\main\display.html
-	echo T_("Add team");                                                              // Line 10
+	echo T_("Add team");                                                              // Line 7
 	echo T_("List team");                                                             // Line 23
 
 	//-----------------------------------------------content_admin\member\display.html
@@ -292,7 +301,7 @@ private function transtext()
 	echo T_("Add member");                                                            // Line 5
 	echo T_("Family");                                                                // Line 27
 	echo T_("Postion");                                                               // Line 31
-	echo T_("Avatar");                                                                // Line 27
+	echo T_("Avatar");                                                                // Line 26
 	echo T_("Status");                                                                // Line 23
 	echo T_("Please select one item");                                                // Line 44
 	echo T_("Enable");                                                                // Line 45
@@ -343,39 +352,39 @@ private function transtext()
 	//------------------------------------------------content_admin\setup\display.html
 
 	//-------------------------------------------------content_admin\setup\setup1.html
-	echo T_("Welcome to Tejarak initialization process!");                            // Line 8
-	echo T_("Please enter team name.");                                               // Line 9
-	echo T_("Next");                                                                  // Line 33
+	echo T_("Welcome to Tejarak initialization process!");                            // Line 7
+	echo T_("Please enter team name.");                                               // Line 8
+	echo T_("Next");                                                                  // Line 32
 
 	//-------------------------------------------------content_admin\setup\setup2.html
-	echo T_("Please enter your information");                                         // Line 8
-	echo T_("First Name");                                                            // Line 14
-	echo T_("Last Name");                                                             // Line 17
+	echo T_("Please enter your information");                                         // Line 7
+	echo T_("First Name");                                                            // Line 13
+	echo T_("Last Name");                                                             // Line 16
 
 	//-------------------------------------------------content_admin\setup\setup3.html
-	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 8
-	echo T_("Go to Tejarak");                                                         // Line 9
+	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 7
+	echo T_("Go to Tejarak");                                                         // Line 8
 
 	//-------------------------------------------------content_admin\team\display.html
-	echo T_("Edit Team");                                                             // Line 4
-	echo T_("Add Team");                                                              // Line 6
-	echo T_("Register code");                                                         // Line 25
-	echo T_("Economical code");                                                       // Line 29
-	echo T_("Delete");                                                                // Line 43
+	echo T_("Edit Team");                                                             // Line 6
+	echo T_("Add Team");                                                              // Line 8
+	echo T_("Register code");                                                         // Line 27
+	echo T_("Economical code");                                                       // Line 31
+	echo T_("Delete");                                                                // Line 45
 
 	//-------------------------------------------------content_api\v1\doc\display.html
 	echo T_("Tejarak API");                                                           // Line 4
 
 	//-------------------------------------------------content_enter\home\display.html
-	echo T_("Please be patient...");                                                  // Line 31
-	echo T_("Dont recieve code?");                                                    // Line 31
-	echo T_("You are guest, Enter your mobile");                                      // Line 31
-	echo T_("Enter to tejarak");                                                      // Line 31
-	echo T_("Please enter valid mobile number");                                      // Line 42
-	echo T_("Username");                                                              // Line 42
-	echo T_("Password");                                                              // Line 52
-	echo T_("Pin");                                                                   // Line 59
-	echo T_("Go");                                                                    // Line 79
+	echo T_("Please be patient...");                                                  // Line 33
+	echo T_("Dont recieve code?");                                                    // Line 33
+	echo T_("You are guest, Enter your mobile");                                      // Line 33
+	echo T_("Enter to tejarak");                                                      // Line 33
+	echo T_("Please enter valid mobile number");                                      // Line 49
+	echo T_("Username");                                                              // Line 49
+	echo T_("Password");                                                              // Line 59
+	echo T_("Pin");                                                                   // Line 66
+	echo T_("Go");                                                                    // Line 86
 
 	//--------------------------------------------includes\languages\trans_static.html
 	echo T_("Saloos");                                                                // Line 7 Seperate

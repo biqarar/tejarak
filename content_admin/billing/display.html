@@ -6,7 +6,7 @@
    <div class="c6 account-balance">
     <div class="box">
      <div class="f align-center">
-      <h2 class="c">Your credit</h2>
+      <h2 class="c">{%trans "Your credit"%}</h2>
       <h3 class="cauto os"><span>{{user_cash.total|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
      </div>
      <a href="{{url.base}}/admin/ref" class="btn">{%trans "Earn More Credit"%}</a>
@@ -16,7 +16,7 @@
    <div class="c6 account-balance">
     <div class="box">
      <div class="f align-center">
-      <h2 class="c">Usage</h2>
+      <h2 class="c">{%trans "Usage"%}</h2>
       <h3 class="cauto os"><span>{{user_cash.total|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
      </div>
      <a href="{{url.base}}/admin/billing/detail" class="btn">{%trans "View Usage Details"%}</a>
@@ -82,38 +82,34 @@
        <span class="c1">{%set myType = value.type%}{%trans myType%}</span>
        <span class="c1">
 {%if value.plus%}
-               <span class="c1">{{value.plus|number_format(2, ".", ",")|fitNumber}}</span>
-               <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
+       <span class="c1">{{value.plus|number_format(2, ".", ",")|fitNumber}}</span>
+       <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
 {%else%}
-               {{0|fitNumber}}
+        {{0|fitNumber}}
 {%endif%}
        </span>
        <span class="c1">
 {%if value.minus%}
-               <span class="c1">{{value.minus|number_format(2, ".", ",")|fitNumber}}</span>
-               <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
+       <span class="c1">{{value.minus|number_format(2, ".", ",")|fitNumber}}</span>
+       <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
 {%else%}
-               {{0|fitNumber}}
+       {{0|fitNumber}}
 {%endif%}
        </span>
      </div>
-     {%endfor%}
+{%endfor%}
     </div>
    </div>
    <div class="pagination-container">
        {%include display.pagination%}
    </div>
 
+{%endblock%}
 
 
 
+{%block contentOld%}
 
-
-
-<br/>
-<br/>
-<br/>
-<br/>
 <div class="main billing" >
     <div>
         <div class="in xxlarge">
