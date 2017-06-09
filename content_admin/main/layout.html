@@ -1,15 +1,28 @@
 {%extends display.back%}
 
 
+
 {%block head_css%}
 {{parent()}}
  <link rel="stylesheet"       href="{{url.static}}css/style.css">
 {%endblock%}
 
+
+
 {%block content%}
 <div class="full flex justify-center align-center">
 {%block contentCenter%}{%endblock%}
 </div>
+{%endblock%}
+
+
+
+{%block sidenav%}
+{{parent()}}
+<li><a href="{{url.base}}/admin/team"><i class="icon-flow-tree"></i>{%trans "Add new team"%}</a></li>
+<li><a href="{{url.base}}/admin/billing"><i class="icon-credit-card"></i>{%trans "Billing"%}</a></li>
+
+
 {%endblock%}
 
 

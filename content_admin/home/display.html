@@ -2,11 +2,13 @@
 
 {%block sidenav%}
 {{parent()}}
-<li>
-  <a href="{{url.base}}/admin/billing">{%trans "Billing"%}</a>
-</li>
+
 
 {%endblock%}
+
+
+
+
 {%block content%}
 
 <h1>{%trans "Hi" %} {%set myName = login.displayname%} {% trans myName  %}</h1>
