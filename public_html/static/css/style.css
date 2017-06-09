@@ -13,7 +13,7 @@
 #theader .btn:hover{background-color:#333;}
 #theader .btn:focus{background-color:#000;}
 
-body{min-height:100vh;display:flex;flex-direction:column;}
+.vflex{min-height:100vh;display:flex;flex-direction:column;}
 .wrapper{flex:1;}
 
 /* default btn*/

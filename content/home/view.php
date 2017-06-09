@@ -5,7 +5,7 @@ class view extends \mvc\view
 {
 	function config()
 	{
-		$this->data->bodyclass = 'unselectable';
+		$this->data->bodyclass = 'unselectable vflex';
 		$this->include->js     = false;
 	}
 
