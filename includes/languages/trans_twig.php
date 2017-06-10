@@ -30,9 +30,9 @@ private function transtext()
 	echo T_("Is your team interested in deploying?");                                 // Line 23
 	echo T_("We can help.");                                                          // Line 23
 	echo T_("Get in Touch");                                                          // Line 141
-	echo T_("Enter your team name");                                                  // Line 35
-	echo T_("Get Started");                                                           // Line 36
-	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 38
+	echo T_("Enter your team name");                                                  // Line 37
+	echo T_("Get Started");                                                           // Line 38
+	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 40
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 76
@@ -53,8 +53,8 @@ private function transtext()
 	echo T_("FAQ");                                                                   // Line 3
 	echo T_("Enamad");                                                                // Line 16
 	echo T_("Tejarak");                                                               // Line 22
-	echo T_("Benefits");                                                              // Line 15
-	echo T_("Pricing");                                                               // Line 16
+	echo T_("Benefits");                                                              // Line 14
+	echo T_("Pricing");                                                               // Line 15
 	echo T_("Learn More");                                                            // Line 28
 	echo T_("Terms of Service");                                                      // Line 29
 	echo T_("Privacy Policy");                                                        // Line 3
@@ -64,14 +64,13 @@ private function transtext()
 	echo T_("Logo");                                                                  // Line 34
 	echo T_("Proudly Made in IRAN");                                                  // Line 52
 	echo T_("Control Panel");                                                         // Line 59
-	echo T_("Admin Panel");                                                           // Line 60
+	echo T_("Admin Panel");                                                           // Line 22
 	echo T_("Exit Session");                                                          // Line 61
 	echo T_("Another Session");                                                       // Line 62
 
 	//----------------------------------------------------content\template\header.html
-	echo T_("Sales +98 25 3773 5183");                                                // Line 17
-	echo T_("Help");                                                                  // Line 22
-	echo T_("Enter");                                                                 // Line 23
+	echo T_("Sales +98 25 3773 5183");                                                // Line 16
+	echo T_("Enter");                                                                 // Line 24
 
 	//----------------------------------------------------content\template\social.html
 	echo T_("Twitter");                                                               // Line 3
@@ -83,16 +82,15 @@ private function transtext()
 
 	//----------------------------------------------content\template\static\about.html
 	echo T_("About Tejarak");                                                         // Line 3
-	echo T_("Need know more about Tejarak? Be patient...");                           // Line 6
 	echo T_("Advancement of technology and development of Web-based business Cause Need new tools to resolve the daily needs and that’s the goal of making Tejarak.");// Line 14
 	echo T_("Tejarak have a set of simple and practical tools on a regular basis for modern businesses.");// Line 14
-	echo T_("It’s good to know that in addition to the core services, features such as inventory and invoice will be added.");// Line 17
-	echo T_("Attendance system");                                                     // Line 19
-	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak.");// Line 20
-	echo T_("Daily report");                                                          // Line 22
-	echo T_("In many collections received daily reports of the employees is very important. On the other hands Employees reluctant to do that. In addition to the classical method, using social networks on Twitter and Daily Telegram reported in Tejarak possible to get there.");// Line 23
-	echo T_("Salary calculator");                                                     // Line 25
-	echo T_("For many small business is very complex method of calculating monthly salary and they Need to have simpler method. In addition to supporting traditional methods, Tejarak provide monthly salary simple solutions to employees have modern and beautiful Payroll.");// Line 26
+	echo T_("It’s good to know that in addition to the core services, features such as inventory and invoice will be added.");// Line 16
+	echo T_("Attendance system");                                                     // Line 18
+	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak.");// Line 19
+	echo T_("Daily report");                                                          // Line 21
+	echo T_("In many collections received daily reports of the employees is very important. On the other hands Employees reluctant to do that. In addition to the classical method, using social networks on Twitter and Daily Telegram reported in Tejarak possible to get there.");// Line 22
+	echo T_("Salary calculator");                                                     // Line 24
+	echo T_("For many small business is very complex method of calculating monthly salary and they Need to have simpler method. In addition to supporting traditional methods, Tejarak provide monthly salary simple solutions to employees have modern and beautiful Payroll.");// Line 25
 
 	//-------------------------------------------content\template\static\benefits.html
 	echo T_("Tejarak benefits");                                                      // Line 3
@@ -288,6 +286,7 @@ private function transtext()
 	echo T_("Hi");                                                                    // Line 8
 	echo T_("Wellcome to Tejarak admin");                                             // Line 15
 	echo T_("Tejarak was born to serve small and beautiful service for e-business");  // Line 16
+	echo T_("Add new branch");                                                        // Line 35
 
 	//-------------------------------------------------content_admin\main\display.html
 	echo T_("Add team");                                                              // Line 7

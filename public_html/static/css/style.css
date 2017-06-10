@@ -186,7 +186,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 .box h3 sup{color:#999}
 .box .btn{width:100%;margin:0;margin-top:2em;}
 .box .gateways label{padding:1em;position:relative;cursor:pointer;}
-.box .gateways label img{width:74px;height:74px;padding:1em;border: 2px solid transparent;transition:0.3s;background-color:rgba(255,255,255,0.3)}
+.box .gateways label img{width:74px;height:74px;padding:1em;border:2px solid transparent;transition:0.3s;background-color:rgba(255,255,255,0.3)}
 .box .gateways label input{position:absolute;width:0;height:0;overflow:hidden;z-index:-1;}
 .box .gateways label input:checked+img{border-color:#37aaa7;background-color:rgba(255,255,255,0.6)}
 .box .gateways label input:hover+img{opacity:0.8}
@@ -228,7 +228,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 /* default style of button*/
 .df-button{font-size:1.2em;line-height:2em;padding:1em 2em;cursor:pointer;transition:.3s;color:#fff;border:none;background-color:#4070c0;display:inline-block;}
 .df-button:hover{background-color:#2957a5;}
-.df-button:focus{background-color:#2957a5;color: #fff}
+.df-button:focus{background-color:#2957a5;color:#fff}
 
 
 
@@ -278,28 +278,11 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 
 
 /* teams */
-.team-section-header{}
-.team-section-header .team-section-header-name{font-size:1.618rem;font-weight:700;margin:0;display:inline-block;vertical-align:middle;}
-.team-section-list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-bottom:3em}
-.team-section-list li{max-width:20%;-webkit-box-flex:0;-webkit-flex:0 0 20%;-ms-flex:0 0 20%;-moz-box-flex:0;flex:0 0 20%;
-padding: 0 1em 1em 0}
-.team-section-list .branch-title{transition:0.3s;
-	    background-color: #fff;
-    background-size: cover;
-    background-position: center center;
-    border-radius: 2px;
-    color: #333;
-    display: block;
-    padding: 1em 1em;
-    position: relative;
-    text-decoration: none;
-    -webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
-}
+.team-section-header .team-section-header-name{font-size:1.618rem;font-weight:700;display:inline-block;margin:0;vertical-align:middle}
+.team-section-list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;margin-bottom:3em;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.team-section-list li{max-width:20%;padding:0 1em 1em 0;-webkit-box-flex:0;-webkit-flex:0 0 20%;-ms-flex:0 0 20%;-moz-box-flex:0;flex:0 0 20%}
+.rtl .team-section-list li{padding:0 0 1em 1em}
+.team-section-list .branch-title{position:relative;display:block;padding:1em 1em;transition:.3s;text-decoration:none;color:#333;border-radius:2px;background-color:#fff;background-position:center center;background-size:cover;-webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)}
 .team-section-list .branch-title:hover{background-color:#eee}
 .team-section-list .branch-title:focus{background-color:#ddd}
-
-.team-section-list .branch-title .branch-title-name{
-	min-height:60px;
-	display: block;
-	font-size: 1.2em
-}
+.team-section-list .branch-title .branch-title-name{font-size:1.2em;display:block;min-height:60px}
