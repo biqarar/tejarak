@@ -286,7 +286,9 @@ private function transtext()
 	echo T_("Hi");                                                                    // Line 8
 	echo T_("Wellcome to Tejarak admin");                                             // Line 15
 	echo T_("Tejarak was born to serve small and beautiful service for e-business");  // Line 16
-	echo T_("Add new branch");                                                        // Line 35
+	echo T_("Members");                                                               // Line 29
+	echo T_("Settings");                                                              // Line 33
+	echo T_("Add new branch");                                                        // Line 50
 
 	//-------------------------------------------------content_admin\main\display.html
 	echo T_("Add team");                                                              // Line 7
