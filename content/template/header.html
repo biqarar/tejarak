@@ -1,15 +1,14 @@
 {%set logoImg%}
 {%if site.currentlang =='fa'%}
-<img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%else%}
-<img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%endif%}
+<img class="c" src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%else%}
+<img class="c" src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%endif%}
 {%endset%}
 
  <header id="theader" data-scroll>
   <div class="cn f">
-   <div class="cauto logo">
-    <h1>{{site.title}}</h1>
-    <a href='{{url.base}}' tabindex='1'>{{logoImg}}</a>
-   </div>
+   <h1 class="cauto logo">
+    <a class="flex" href='{{url.base}}' tabindex='1'>{{logoImg}}<span class="c">{{site.title}}</span></a>
+   </h1>
 
    <nav class="c flex">
     <a href="{{url.base}}/benefits">{%trans "Benefits"%}</a>
@@ -17,9 +16,8 @@
     <a href="tel:00982537735183">{%trans "Sales +98 25 3773 5183"%}</a>
    </nav>
 
-   <nav data-xhr="header-profile" class="c4 flex os">
+   <nav data-xhr="header-profile" class="cauto flex os">
     <div class="vm"><i class="icon-globe"></i>{{langList({'html':true, 'all2':true})}}</div>
-    <a href="{{url.base}}/help" class="header-profile-button">{%trans "Help"%}</a>
 {%if login.id%}
     <a href="{{url.base}}/admin" data-direct class="btn">{%trans "Admin Panel"%}</a>
 {%else%}
