@@ -100,6 +100,30 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 #offer-enterprise-small h3, #offer-enterprise-small h4{padding:0 5%;color:#fff}
 #offer-enterprise-small .btn{padding:0 5em;}
 
+#plans{background-color:#fff}
+#plans .plans-card{margin:0 1em;padding:2em 1em;border-radius:2px;height:100%;min-height:500px}
+#plans .plans-card h4{color:#fff;/*font-weight:700;*/padding:0;border-bottom:1px solid #fff;padding-bottom:1.5rem;margin:0 1rem;font-size:2em;line-height:2em}
+
+#plans .plans-card.plan-free{background:#85cba8;background:-webkit-gradient(linear, right top, left bottom, from(#85cba8), to(#76c4e2));background:linear-gradient(to bottom left, #85cba8, #76c4e2);background-position:center;background-size:cover}
+#plans .plans-card.plan-pro{background:#f69259;background:-webkit-gradient(linear, right top, left bottom, from(#f69259), to(#f16975));background:linear-gradient(to bottom left, #f69259, #f16975);background-position:center;background-size:cover}
+#plans .plans-card.plan-business{background:#ba77b1;background:-webkit-gradient(linear, right top, left bottom, from(#ba77b1), to(#8176b5));background:linear-gradient(to bottom left, #ba77b1, #8176b5);background-position:center;background-size:cover}
+#plans .plans-card.plan-enterprise{background:#76c4e2;background:-webkit-gradient(linear, right top, left bottom, from(#76c4e2), to(#8176b5));background:linear-gradient(to bottom left, #76c4e2, #8176b5);background-position:center;background-size:cover}
+
+#plans .plans-card .plans-card-learn-more{font-size:1.4em;display:block;margin-bottom:2rem;text-align:center;color:#fff}
+#plans .plans-card .btn{font-size:1.618rem;border-radius:2px;background-color:#fff}
+#plans .plans-card.plan-free .btn{color:#85cba8}
+#plans .plans-card.plan-pro .btn{color:#f69259}
+#plans .plans-card.plan-business .btn{color:#ba77b1}
+#plans .plans-card.plan-enterprise .btn{color:#76c4e2}
+
+#plans .plans-card .plans-card-price{padding:3em 0}
+#plans .plans-card .plans-card-price *{font-size:3em;color:#fff;font-weight:100}
+#plans .plans-card .plans-card-price .plans-card-price-unit{font-size:1.5rem;vertical-align:top}
+
+#plans .plans-card .plans-card-content{padding:0 1rem 0 2rem;text-align:left}
+.rtl #plans .plans-card .plans-card-content{padding:0 2rem 0 1rem;text-align:right}
+#plans .plans-card .plans-card-content li{font-size:1.2em;line-height:1.5;margin-bottom:1.2rem;color:#fff}
+
 /* footer*/
 #tfooter{font-size:1.2em;padding:3em 0;background-color:#333;}
 #tfooter a{color:#888;transition:0.3s;}
