@@ -1,7 +1,7 @@
 <?php
 namespace content_enter\home;
 
-class controller extends \content\main\controller
+class controller extends \content_enter\main\controller
 {
 	/**
 	 * check route of account
@@ -10,9 +10,15 @@ class controller extends \content\main\controller
 	function _route()
 	{
 		// parent::_route();
-
-		$this->get('enter', 'enter')->ALL();
-		$this->post('enter')->ALL();
+		if(self::check_valid_route('mobile'))
+		{
+			$this->get('enter', 'enter')->ALL();
+			$this->post('enter')->ALL();
+		}
+		else
+		{
+			\lib\error::page(T_("Unavalible"));
+		}
 	}
 }
 ?>

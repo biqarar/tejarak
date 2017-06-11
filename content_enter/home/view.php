@@ -1,19 +1,8 @@
 <?php
 namespace content_enter\home;
 
-class view extends \mvc\view
+class view extends \content_enter\main\view
 {
-
-	/**
-	 * config
-	 */
-	public function config()
-	{
-		$this->include->css    = true;
-		$this->include->js     = false;
-		$this->data->bodyclass = 'unselectable';
-		$this->data->bodyclass .= ' bg'. rand(1, 17);
-	}
 
 	/**
 	 * view enter

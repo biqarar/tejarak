@@ -1,6 +1,5 @@
 <?php
-namespace content_enter\pass;
-
+namespace content_enter\pass\signup;
 
 class view extends \content_enter\main\view
 {
@@ -10,7 +9,7 @@ class view extends \content_enter\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function config()
+	public function view_pass($_args)
 	{
 		$this->data->get_mobile = $this->model()->get_enter_session('mobile');
 	}
