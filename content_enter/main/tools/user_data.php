@@ -41,7 +41,38 @@ trait user_data
 			}
 			return null;
 		}
-		return $_SESSION['enter']['user_data'];
+
+		if(isset($_SESSION['enter']['user_data']))
+		{
+			return $_SESSION['enter']['user_data'];
+		}
+		return null;
+	}
+
+
+	/**
+	*	Signup new user
+	*/
+	public static function signup()
+	{
+		$mobile = self::get_enter_session('mobile');
+		if($mobile)
+		{
+			$args = 
+			[
+				'mobile' => $mobile,
+				'displayname' => null,
+				'password' => null,
+				'status' => 'awaiting'
+			];
+			$user_id = \lib\db\users::signup($args);
+
+			if($user_id)
+			{
+				self::set_enter_session('id', $user_id);
+				self::set_enter_session('status', 'awaiting');
+			}
+		}
 	}
 }
 ?>

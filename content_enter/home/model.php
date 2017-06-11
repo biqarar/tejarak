@@ -24,6 +24,9 @@ class model extends \content_enter\main\model
 	 */
 	public function post_enter($_args)
 	{
+		// clean existing session
+		self::clean_session();
+
 		// check inup is ok
 		if(!self::check_input('mobile'))
 		{
@@ -49,6 +52,7 @@ class model extends \content_enter\main\model
 
 		// load user data by mobile
 		$user_data = self::user_data();
+		
 		// the user not found must be signup
 		if(!$user_data)
 		{

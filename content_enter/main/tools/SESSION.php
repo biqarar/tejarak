@@ -6,6 +6,16 @@ use \lib\debug;
 trait SESSION
 {
 	/**
+	* Clean session
+	*
+	*/
+	public static function clean_session()
+	{
+		$_SESSION['enter'] = [];
+	}
+
+
+	/**
 	 * Sets the enter session.
 	 *
 	 * @param      <type>  $_key    The key
