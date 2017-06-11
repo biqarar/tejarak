@@ -8,12 +8,8 @@
   <h3><label for="title">{%trans "Please enter team name."%}</label></h3>
   <form method="post" class="df">
    <div class="f form-group">
-    <div class="c8">
-     <input type="text" name="title" placeholder='{%trans "Name"%}' value="{{team.title}}" class="c3" required id="title">
-    </div>
-    <div class="c4">
-     <input type="submit" value='{%trans "Next"%}' class="c3">
-    </div>
+    <div class="c8"><input type="text" name="title" placeholder='{%trans "Name"%}' value="{{team.title}}" id="title" autocomplete="off" required></div>
+    <div class="c4"><input type="submit" value='{%trans "Next"%}'></div>
    </div>
   </form>
  </div>

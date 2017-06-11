@@ -7,7 +7,7 @@ private function transtext()
 	echo T_("Knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 7
 	echo T_("Thank you for choosing us.");                                            // Line 14
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
-	echo T_("Name");                                                                  // Line 12
+	echo T_("Name");                                                                  // Line 11
 	echo T_("Full Name");                                                             // Line 20
 	echo T_("Mobile");                                                                // Line 49
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
@@ -362,6 +362,8 @@ private function transtext()
 	echo T_("Please enter your information");                                         // Line 7
 	echo T_("First Name");                                                            // Line 13
 	echo T_("Last Name");                                                             // Line 16
+	echo T_("Position");                                                              // Line 19
+	echo T_("Only jpg and png. Max 60Kb");                                            // Line 26
 
 	//-------------------------------------------------content_admin\setup\setup3.html
 	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 7

@@ -222,8 +222,10 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 
 .setup-card input[type='file']{position:absolute;z-index:-1;width:0;height:0;opacity:0}
 
-.setup-card .avatar-upload{display:block;width:100px;height:100px;margin:3px auto 0;padding:0;background-color:#eaeaea;overflow:hidden}
+.setup-card .avatar-upload{display:block;width:110px;height:101px;margin:.25rem .25rem 0;padding:0;background-color:#eaeaea;overflow:hidden}
 .setup-card .avatar-upload .default-avatar{margin-top:10px}
+
+[data-page='setup_2'] form>.form-group-padding{margin-top:2rem}
 
 /* default style of button*/
 .df-button{font-size:1.2em;line-height:2em;padding:1em 2em;cursor:pointer;transition:.3s;color:#fff;border:none;background-color:#4070c0;display:inline-block;}
@@ -246,7 +248,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
 .t-card-front{z-index:2;-webkit-transform:rotateY(0deg);transform:rotateY(0deg)}
 .t-card-back{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;flex-direction:column;-webkit-transform:rotateY(180deg);transform:rotateY(180deg);-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;-moz-box-pack:justify;justify-content:space-between}
 
-.t-card .t-card-img{position:relative;overflow:hidden;height:180px}
+.t-card .t-card-img{position:relative;overflow:hidden;height:180px;background-color:#eee}
 .t-card .t-card-img::before{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;content:''}
 .t-card .t-card-img img{display:block;height:100%}
 

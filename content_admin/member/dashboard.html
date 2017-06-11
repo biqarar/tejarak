@@ -6,7 +6,7 @@
 <div class="t-card-box">
  <div class="t-card">
   <div class="t-card-front">
-   <div class="t-card-img"><img src='{{value.file}}' alt=''></div>
+   <div class="t-card-img">{%if value.file%}<img src='{{value.file}}' alt=''>{%endif%}</div>
    <div class="t-card-bottom">
     <div class="t-card-name">{{value.name}} {{value.family}}</div>
     {%if value.postion%}<div class="t-card-post">{{value.postion}}</div>{%endif%}

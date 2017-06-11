@@ -16,22 +16,21 @@
        <input type="text" name="family" placeholder='{%trans "Last Name"%}' id="family" required>
       </div>
       <div class="c12">
-       <input type="text" name="post" placeholder="Post" id="post">
+       <input type="text" name="post" placeholder='{%trans "Position"%}' id="post">
       </div>
      </div>
     </div>
     <div class="c3">
      <input type="file" name="avatar" id="avatar">
      <label for="avatar" class="avatar-upload">
-      <img src='{{url.static}}images/avatar/avatar.svg' alt='{%trans "Avatar"%}' class="default-avatar">
+      <img src='{{url.static}}images/avatar/avatar.svg' alt='{%trans "Avatar"%}' class="default-avatar" title='{%trans "Only jpg and png. Max 60Kb"%}'>
      </label>
     </div>
    </div>
    <div class="f form-group form-group-padding">
-    <div class="c9">
+    <div class="c12">
      <input type="submit" value='{%trans "Next"%}'>
     </div>
-    <div class="c3"></div>
    </div>
   </form>
  </div>
