@@ -1,13 +1,13 @@
 {%set logoImg%}
 {%if site.currentlang =='fa'%}
-<img class="c" src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%else%}
-<img class="c" src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%endif%}
+<img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%else%}
+<img src='{{url.static}}images/logo/logo.png' alt='{{site.title}} | {{site.desc}}'>{%endif%}
 {%endset%}
 
  <header id="theader" data-scroll>
   <div class="cn f">
    <h1 class="cauto logo">
-    <a class="flex" href='{{url.base}}' tabindex='1'>{{logoImg}}<span class="c">{{site.title}}</span></a>
+    <a class="flex" href='{{url.base}}' tabindex='1'>{{logoImg}}<span>{{site.title}}</span></a>
    </h1>
 
    <nav class="c flex">
