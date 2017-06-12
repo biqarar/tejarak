@@ -2,7 +2,17 @@
 
 
 
-{%block content%}
+{%block contentForm%}
+
+{{block('emobile')}}
+{{block('epass')}}
+{{block('eramz')}}
+{{block('elogin')}}
+
+{%endblock%}
+
+
+{%block content2%}
 {{parent()}}
 
 <form method="post">

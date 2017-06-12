@@ -13,6 +13,9 @@ class view extends \mvc\view
 		$this->include->js     = false;
 		$this->data->bodyclass = 'unselectable';
 		$this->data->bodyclass .= ' bg'. rand(1, 15);
+
+		$this->data->get_mobile = $this->model()->get_enter_session('mobile');
+
 	}
 }
 ?>

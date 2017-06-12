@@ -1,6 +1,17 @@
 {%extends display.enter%}
 
-{%block content%}
+
+{%block contentForm%}
+
+{{block('emobile')}}
+{{block('epass')}}
+{{block('eramz')}}
+{{block('esignup')}}
+
+{%endblock%}
+
+
+{%block content2%}
 {{parent()}}
 
 <form method="post">

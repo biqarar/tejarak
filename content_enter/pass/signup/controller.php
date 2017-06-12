@@ -10,7 +10,7 @@ class controller extends \content_enter\main\controller
 	function _route()
 	{
 		// parent::_route();
-		$this->get('pass', 'pass')->ALL('pass/signup');
+		$this->get('pass')->ALL('pass/signup');
 		$this->post('pass')->ALL('pass/signup');
 	}
 }
