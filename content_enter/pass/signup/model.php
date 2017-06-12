@@ -50,9 +50,16 @@ class model extends \content_enter\main\model
 
 		// find send way to send code
 		$way = self::send_way();
-
-		// go to verify page
-		self::go_to('verify/'. $way);
+		if(!$way)
+		{
+			// no way to send code
+			self::go_to('verify/what');
+		}
+		else
+		{
+			// go to verify page
+			self::go_to('verify/'. $way);
+		}
 	}
 }
 ?>

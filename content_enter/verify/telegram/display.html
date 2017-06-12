@@ -1,9 +1,11 @@
 {%extends display.enter%}
 
 
+{%block contentForm%}
+<a>{%trans "Please check your telegram"%}</a>
+{{block('emobile')}}
+{{block('ecode')}}
 
-{%block content%}
-<p class="f">{%trans "Please check your telegram"%}</p>
 
 {%endblock%}
 
