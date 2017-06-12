@@ -1,5 +1,5 @@
 /* header*/
-#theader{height:60px;font-size:1.2em;}
+#theader{height:60px;font-size:1.2em;overflow:hidden;}
 #theader .logo{transition:0.3s;padding:0;margin:0;font-weight:700;}
 #theader .logo a{padding:0 1em}
 #theader .logo h1{display:inline-block;margin:0;line-height:60px;}
@@ -82,7 +82,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .rtl .al{text-align:right;}
 .rtl .ar{text-align:left;}
 /* getStarted*/
-.getStarted{min-width:300px;width:400px;margin:1em auto;font-size:1.5em;}
+.getStarted{min-width:300px;max-width:400px;margin:1em auto;font-size:1.5em;}
 .getStarted form{height:50px;}
 .getStarted input.c{height:100%;background-color:#fff;border:1px solid #4070c0;line-height:50px;padding:0 1em;color:#777}
 .getStarted button.c{height:100%;background-color:#4070c0;border:none;color:#eee;padding:0;line-height:50px;max-width:150px;transition:0.3s}
