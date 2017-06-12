@@ -40,9 +40,7 @@ class model extends \content_enter\main\model
 			debug::error(T_("Invalid Password"));
 			return false;
 		}
-		// check exist verification code
-		// or create new code
-		self::generate_verification_code();
+
 		// set session verify_from signup
 		self::set_enter_session('verify_from', 'signup');
 		// find send way to send code

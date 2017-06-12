@@ -4,6 +4,14 @@ namespace content_enter\main;
 
 class model extends \mvc\model
 {
+	use \content_enter\main\tools\check_input;
+	use \content_enter\main\tools\user_data;
+	use \content_enter\main\tools\go_to;
+	use \content_enter\main\tools\SESSION;
+	use \content_enter\main\tools\verification_code;
+	use \content_enter\main\tools\send_code;
+	use \content_enter\main\tools\done_step;
+	use \content_enter\main\tools\error;
 	/**
 	 * dev mode
 	 * make code as 11111
@@ -11,7 +19,6 @@ class model extends \mvc\model
 	 * @var        boolean
 	 */
 	public static $dev_mode          = false;
-
 
 	public static $have_main_account = false;
 
@@ -25,7 +32,7 @@ class model extends \mvc\model
 	public static $signup            = false;
 	public static $telegram_chat_id  = null;
 	public static $telegram_detail   = [];
-	// public static $block_type     = 'ip-agent';
+	// public static $block_type     = 'ip';
 	public static $block_type        = 'session';
 	public static $is_guest          = false;
 
@@ -38,23 +45,61 @@ class model extends \mvc\model
 
 	public static $sended_code       = [];
 	public static $create_new_code   = false;
-	public static $resend_rate =
+
+	/**
+	 * send code rate
+	 * you can custumise in very project in option.php -> self::$enter['send_rate']
+	 *
+	 * @var        array
+	 */
+	public static $send_rate =
 	[
+		'telegram',
 		'sms1',
 		'call',
-		'telegram',
 		'sms2',
 	];
 
 
-	use \content_enter\main\tools\check_input;
-	use \content_enter\main\tools\user_data;
-	use \content_enter\main\tools\go_to;
-	use \content_enter\main\tools\SESSION;
-	use \content_enter\main\tools\verification_code;
-	use \content_enter\main\tools\send_code;
-	use \content_enter\main\tools\done_step;
-	use \content_enter\main\tools\error;
+	/**
+	 * resend code rating
+	 * you can custumise in very project in option.php -> self::$enter['resend_rate']
+	 *
+	 * @var        array
+	 */
+	public static $resend_rate =
+	[
+		'telegram',
+		'sms1',
+		'call',
+		'sms2',
+	];
+
+
+
+	/**
+	 * load some data from options
+	 */
+	public function _construct()
+	{
+		// get the enter way sorting from options
+		if(\lib\option::enter('send_rate') && is_array(\lib\option::enter('send_rate')))
+		{
+			self::$send_rate = \lib\option::enter('send_rate');
+		}
+
+		// get resend rate code from lib option
+		if(\lib\option::enter('resend_rate') && is_array(\lib\option::enter('resend_rate')))
+		{
+			self::$resend_rate = \lib\option::enter('resend_rate');
+		}
+
+		// load parent::_construct if exist
+		if(method_exists('parent', '_construct'))
+		{
+			parent::_construct();
+		}
+	}
 
 }
 ?>
