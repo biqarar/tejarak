@@ -35,7 +35,7 @@ trait send_code
 		{
 			$rate = self::$send_rate;
 		}
-
+		
 		// first send way code
 		if(!$old_way)
 		{

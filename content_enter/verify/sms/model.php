@@ -90,5 +90,46 @@ class model extends \content_enter\main\model
 
 		return false;
 	}
+
+
+	/**
+	*  check verify code
+	*/
+	public function post_verify()
+	{
+		if(!self::check_input_current_mobile())
+		{
+			debug::error(T_("Dont!"));
+			return false;
+		}
+
+		if(!utility::post('code'))
+		{
+			debug::error(T_("Please fill the verification code"), 'code');
+			return false;
+		}
+
+		if(!is_numeric(utility::post('code')))
+		{
+			debug::error(T_("What happend? the code is number. you try to send string!?"), 'code');
+			return false;
+		}
+
+		if(intval(utility::post('code')) === intval(self::get_enter_session('verification_code')))
+		{
+			if(self::get_enter_session('verify_from') === 'signup' && self::get_enter_session('temp_ramz_hash') && is_numeric(self::user_data('id')))
+			{
+				// set temp ramz in use pass
+				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
+			}
+			// set login session
+			self::enter_set_login();
+		}
+		else
+		{
+			debug::error(T_("Invalid code, try again"), 'code');
+			return false;
+		}
+	}
 }
 ?>

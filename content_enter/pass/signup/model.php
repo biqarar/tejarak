@@ -33,7 +33,19 @@ class model extends \content_enter\main\model
 
 		if(utility::post('ramz'))
 		{
-			self::set_enter_session('temp_ramz', utility::post('ramz'));
+			$temp_ramz = utility::post('ramz');
+			// hesh ramz to find is this ramz is easy or no
+			// creazy password !
+			$temp_ramz_hash = \lib\utility::hasher($temp_ramz);
+			if(debug::$status)
+			{
+				self::set_enter_session('temp_ramz', $temp_ramz);
+				self::set_enter_session('temp_ramz_hash', $temp_ramz_hash);
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{

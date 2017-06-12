@@ -130,6 +130,12 @@ class model extends \content_enter\main\model
 
 		if(intval(utility::post('code')) === intval(self::get_enter_session('verification_code')))
 		{
+			if(self::get_enter_session('verify_from') === 'signup' && self::get_enter_session('temp_ramz_hash') && is_numeric(self::user_data('id')))
+			{
+				// set temp ramz in use pass
+				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
+			}
+			// set login session
 			self::enter_set_login();
 		}
 		else

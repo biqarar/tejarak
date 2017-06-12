@@ -6,6 +6,33 @@ use \lib\db;
 
 class model extends \content_enter\main\model
 {
+	public function post_check()
+	{
+		if(!utility::post('ramz'))
+		{
+			debug::error(T_("Please enter your password"));
+			return false;
+		}
 
+		$ramz = utility::post('ramz');
+		if(self::user_data('user_pass'))
+		{	
+			// the password is okay
+			if(\lib\utility::hasher($ramz, self::user_data('user_pass')))
+			{
+				// set login session
+				self::enter_set_login();
+			}
+			else
+			{
+				debug::error(T_("Invalid password, try again"));
+				return false;
+			}
+		}
+		else
+		{
+			self::go_to('error');
+		}
+	}
 }
 ?>
