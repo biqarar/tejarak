@@ -53,6 +53,8 @@ class model extends \mvc\model
 	use \content_enter\main\tools\SESSION;
 	use \content_enter\main\tools\verification_code;
 	use \content_enter\main\tools\send_code;
+	use \content_enter\main\tools\done_step;
+	use \content_enter\main\tools\error;
 
 }
 ?>

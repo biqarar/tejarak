@@ -9,9 +9,18 @@ class controller extends \content_enter\main\controller
 	 */
 	function _route()
 	{
-		// parent::_route();
-		$this->get('pass')->ALL('pass/signup');
-		$this->post('pass')->ALL('pass/signup');
+		// if step mobile is done
+		if(self::done_step('mobile'))
+		{
+			// parent::_route();
+			$this->get('pass')->ALL('pass/signup');
+			$this->post('pass')->ALL('pass/signup');
+		}
+		else
+		{
+			// make page error or redirect
+			self::error_page('pass');
+		}
 	}
 }
 ?>

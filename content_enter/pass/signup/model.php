@@ -47,9 +47,14 @@ class model extends \content_enter\main\model
 		self::set_enter_session('verify_from', 'signup');
 		// find send way to send code
 		// and send code
-		self::send_code();
+		// set step pass is done
+		self::set_step_session('pass', true);
+
+		// find send way to send code
+		$way = self::send_way();
+
 		// go to verify page
-		self::go_to('verify');
+		self::go_to('verify/'. $way);
 	}
 }
 ?>

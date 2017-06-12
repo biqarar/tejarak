@@ -6,7 +6,16 @@ class controller extends \content_enter\main\controller
 {
 	public function _route()
 	{
-		$this->get()->ALL('verify/telegram');
+		// if step mobile is done
+		// and step pass is done
+		if(self::done_step('mobile') && self::done_step('pass'))
+		{
+			$this->get()->ALL('verify/telegram');
+		}
+		else
+		{
+			self::error_page('verify/telegram');
+		}
 	}
 }
 ?>

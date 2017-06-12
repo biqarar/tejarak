@@ -24,6 +24,9 @@ class model extends \content_enter\main\model
 	 */
 	public function post_enter($_args)
 	{
+		// get saved mobile in session to find count of change mobile
+		$old_mobile = self::get_enter_session('mobile');
+
 		// clean existing session
 		self::clean_session();
 
@@ -47,12 +50,22 @@ class model extends \content_enter\main\model
 			return false;
 		}
 
+		// if old mobile is different by new mobile
+		// save in session this user change the mobile
+		if(self::$mobile != $old_mobile)
+		{
+			self::plus_try_session('diffrent_mobile');
+		}
+
 		// set posted mobile in SESSION
 		self::set_enter_session('mobile', self::$mobile);
 
 		// load user data by mobile
 		$user_data = self::user_data();
-		
+
+		// set this step is done
+		self::set_step_session('mobile', true);
+
 		// the user not found must be signup
 		if(!$user_data)
 		{
