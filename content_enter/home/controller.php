@@ -9,9 +9,23 @@ class controller extends \content_enter\main\controller
 	 */
 	function _route()
 	{
-		// parent::_route();
-		$this->get('enter', 'enter')->ALL();
-		$this->post('enter')->ALL();
+		if(self::get_request_method() === 'get')
+		{
+			if($this->login())
+			{
+				self::go_to($this->url('base'));
+				return;
+			}
+			$this->get('enter', 'enter')->ALL();
+		}
+		elseif(self::get_request_method() === 'post')
+		{
+			$this->post('enter')->ALL();
+		}
+		else
+		{
+			self::error_method('home');
+		}
 	}
 }
 ?>
