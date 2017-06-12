@@ -11,6 +11,8 @@ trait _use
 	use \content_enter\main\tools\send_code;
 	use \content_enter\main\tools\done_step;
 	use \content_enter\main\tools\error;
+	use \content_enter\main\tools\request_method;
+	use \content_enter\main\tools\login;
 	/**
 	 * dev mode
 	 * make code as 11111

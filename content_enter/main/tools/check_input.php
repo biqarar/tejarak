@@ -6,6 +6,39 @@ use \lib\debug;
 trait check_input
 {
 	/**
+	 * check posted mobile whit saved mobile in session
+	 */
+	public static function check_input_current_mobile($_mobile = null)
+	{
+		if($_mobile === null)
+		{
+			$_mobile = utility::post('mobile');
+		}
+
+		if(intval(utility::post('mobile')) === intval(self::get_enter_session('mobile')))
+		{
+			return true;
+		}
+		return false;
+	}
+
+
+	/**
+	 * check the passwrod input is null
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	public static function check_password_is_null()
+	{
+		if(utility::post('password'))
+		{
+			return false;
+		}
+		return true;
+	}
+
+
+	/**
 	 * check valid route page
 	 *
 	 * @param      <type>  $_url   The url

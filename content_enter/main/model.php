@@ -30,6 +30,11 @@ class model extends \mvc\model
 			self::$sms_rate = \lib\option::enter('sms_rate');
 		}
 
+		// in dev mode
+		if(Tld === 'dev')
+		{
+			self::$dev_mode = true;
+		}
 		// load parent::_construct if exist
 		if(method_exists('parent', '_construct'))
 		{

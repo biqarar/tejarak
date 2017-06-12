@@ -10,27 +10,38 @@ class controller extends \content_enter\main\controller
 		// and step pass is done
 		if(self::done_step('mobile') && self::done_step('pass'))
 		{
-			// if the user start my bot and wa have her chat id
-			// if user start my bot try to send code to this use
-			// if okay route this
-			// else go to nex way
-			if($this->model()->send_call_code())
+			if(self::get_request_method() === 'get')
 			{
-				$this->get()->ALL('verify/call');
-			}
-			else
-			{
-				$way = self::send_way();
-				if($way)
+				// if the user start my bot and wa have her chat id
+				// if user start my bot try to send code to this use
+				// if okay route this
+				// else go to nex way
+				if($this->model()->send_call_code())
 				{
-					// go to next way of send code
-					self::go_to($way);
-					return;
+					$this->get()->ALL('verify/call');
 				}
 				else
 				{
-					self::go_to('what');
+					$way = self::send_way();
+					if($way)
+					{
+						// go to next way of send code
+						self::go_to($way);
+						return;
+					}
+					else
+					{
+						self::go_to('what');
+					}
 				}
+			}
+			elseif(self::get_request_method() === 'post')
+			{
+				$this->post('verify')->ALL('verify/call');
+			}
+			else
+			{
+				self::error_method('verify/call');
 			}
 		}
 		else

@@ -107,5 +107,37 @@ class model extends \content_enter\main\model
 		return false;
 	}
 
+
+	public function post_verify()
+	{
+		if(!self::check_input_current_mobile())
+		{
+			debug::error(T_("Dont!"));
+			return false;
+		}
+
+		if(!utility::post('code'))
+		{
+			debug::error(T_("Please fill the verification code"), 'code');
+			return false;
+		}
+
+		if(!is_numeric(utility::post('code')))
+		{
+			debug::error(T_("What happend? the code is number. you try to send string!?"), 'code');
+			return false;
+		}
+
+		if(intval(utility::post('code')) === intval(self::get_enter_session('verification_code')))
+		{
+			self::enter_set_login();
+		}
+		else
+		{
+			debug::error(T_("Invalid code, try again"), 'code');
+			return false;
+		}
+	}
+
 }
 ?>
