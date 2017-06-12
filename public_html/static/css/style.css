@@ -120,9 +120,8 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 #plans .plans-card .plans-card-price *{font-size:3em;color:#fff;font-weight:100}
 #plans .plans-card .plans-card-price .plans-card-price-unit{font-size:1.5rem;vertical-align:top}
 
-#plans .plans-card .plans-card-content{padding:0 1rem 0 2rem;text-align:left}
-.rtl #plans .plans-card .plans-card-content{padding:0 2rem 0 1rem;text-align:right}
-#plans .plans-card .plans-card-content li{font-size:1.2em;line-height:1.5;margin-bottom:1.2rem;color:#fff}
+#plans .plans-card .plans-card-content{font-size:1.25em;line-height:1.5;padding:0 2rem;text-align:left;color:#fff}
+.rtl #plans .plans-card .plans-card-content{text-align:right}
 
 /* footer*/
 #tfooter{font-size:1.2em;padding:3em 0;background-color:#333;}

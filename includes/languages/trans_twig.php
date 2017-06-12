@@ -9,14 +9,14 @@ private function transtext()
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
 	echo T_("Name");                                                                  // Line 11
 	echo T_("Full Name");                                                             // Line 20
-	echo T_("Mobile");                                                                // Line 49
+	echo T_("Mobile");                                                                // Line 21
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
 	echo T_("Email");                                                                 // Line 61
 	echo T_("Message");                                                               // Line 32
 	echo T_("Your Message");                                                          // Line 33
 	echo T_("Send");                                                                  // Line 37
 	echo T_("How to contact tejarak");                                                // Line 45
-	echo T_("tejarak");                                                               // Line 28
+	echo T_("tejarak");                                                               // Line 51
 	echo T_("#614, Omranieh");                                                        // Line 63
 	echo T_("Moallem Sq");                                                            // Line 62
 	echo T_("Qom");                                                                   // Line 61
@@ -30,9 +30,15 @@ private function transtext()
 	echo T_("Is your team interested in deploying?");                                 // Line 23
 	echo T_("We can help.");                                                          // Line 23
 	echo T_("Get in Touch");                                                          // Line 141
-	echo T_("Enter your team name");                                                  // Line 37
-	echo T_("Get Started");                                                           // Line 38
-	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 40
+	echo T_("FREE");                                                                  // Line 22
+	echo T_("Month");                                                                 // Line 87
+	echo T_("Learn More");                                                            // Line 28
+	echo T_("Pro");                                                                   // Line 23
+	echo T_("Business");                                                              // Line 24
+	echo T_("Enterprise");                                                            // Line 25
+	echo T_("Enter your team name");                                                  // Line 136
+	echo T_("Get Started");                                                           // Line 137
+	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 139
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 76
@@ -55,7 +61,6 @@ private function transtext()
 	echo T_("Tejarak");                                                               // Line 22
 	echo T_("Benefits");                                                              // Line 14
 	echo T_("Pricing");                                                               // Line 15
-	echo T_("Learn More");                                                            // Line 28
 	echo T_("Terms of Service");                                                      // Line 29
 	echo T_("Privacy Policy");                                                        // Line 3
 	echo T_("Changelog");                                                             // Line 31
@@ -109,7 +114,6 @@ private function transtext()
 	echo T_("The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> domains registered.");// Line 48
 
 	//-----------------------------------------content\template\static\enterprise.html
-	echo T_("Enterprise");                                                            // Line 25
 	echo T_("Have a headaches? We have soulutions. Be patient...");                   // Line 6
 
 	//-------------------------------------------content\template\static\help\faq.html
@@ -151,9 +155,6 @@ private function transtext()
 	echo T_("Always know what you'll pay per month.");                                // Line 6
 	echo T_("Simple pricing");                                                        // Line 6
 	echo T_("Unlimited");                                                             // Line 13
-	echo T_("FREE");                                                                  // Line 22
-	echo T_("Pro");                                                                   // Line 23
-	echo T_("Business");                                                              // Line 24
 	echo T_("Price per person/month");                                                // Line 29
 	echo T_("Number of persons");                                                     // Line 38
 	echo T_("Analytics");                                                             // Line 48
@@ -256,7 +257,7 @@ private function transtext()
 	echo T_("Your Gift");                                                             // Line 131
 	echo T_("Your Credit");                                                           // Line 140
 	echo T_("Confirm");                                                               // Line 160
-	echo T_("Code");                                                                  // Line 76
+	echo T_("Code");                                                                  // Line 21
 	echo T_("Submit");                                                                // Line 176
 	echo T_("Title");                                                                 // Line 13
 	echo T_("Type");                                                                  // Line 194
@@ -379,16 +380,24 @@ private function transtext()
 	//-------------------------------------------------content_api\v1\doc\display.html
 	echo T_("Tejarak API");                                                           // Line 4
 
-	//-------------------------------------------------content_enter\home\display.html
-	echo T_("Please be patient...");                                                  // Line 33
-	echo T_("Dont recieve code?");                                                    // Line 33
-	echo T_("You are guest, Enter your mobile");                                      // Line 33
-	echo T_("Enter to tejarak");                                                      // Line 33
-	echo T_("Please enter valid mobile number");                                      // Line 49
-	echo T_("Username");                                                              // Line 49
-	echo T_("Password");                                                              // Line 59
-	echo T_("Pin");                                                                   // Line 66
-	echo T_("Go");                                                                    // Line 86
+	//-------------------------------------------------content_enter\pass\display.html
+	echo T_("Please enter valid mobile number");                                      // Line 21
+	echo T_("Password");                                                              // Line 39
+	echo T_("Go");                                                                    // Line 45
+
+	//------------------------------------------content_enter\pass\signup\display.html
+
+	//------------------------------------------content_enter\verify\call\display.html
+	echo T_("We can not find eny way to send verification code to you!");             // Line 6
+
+	//-----------------------------------------content_enter\verify\email\display.html
+
+	//-------------------------------------------content_enter\verify\sms\display.html
+
+	//--------------------------------------content_enter\verify\telegram\display.html
+	echo T_("Please check your telegram");                                            // Line 6
+
+	//------------------------------------------content_enter\verify\what\display.html
 
 	//--------------------------------------------includes\languages\trans_static.html
 	echo T_("Saloos");                                                                // Line 7 Seperate
@@ -449,7 +458,9 @@ private function transtext()
 	echo T_("summary");                                                               // Line 70 Seperate
 	echo T_("ganje");                                                                 // Line 71 Seperate
 	echo T_("Ganje");                                                                 // Line 72 Seperate
-	echo T_(" ");                                                                     // Line 76 Seperate
+	echo T_("Centeral");                                                              // Line 73 Seperate
+	echo T_("centeral");                                                              // Line 74 Seperate
+	echo T_(" ");                                                                     // Line 78 Seperate
 
 }
 ?>
