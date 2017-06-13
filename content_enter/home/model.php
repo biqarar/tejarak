@@ -76,6 +76,13 @@ class model extends \content_enter\main\model
 		}
 		else
 		{
+			// if this user is blocked or filtered go to block page
+			if(self::user_data('user_status') === 'filter' || self::user_data('user_status') === 'block')
+			{
+				self::go_to('block');
+				return;
+			}
+
 			// the user_pass field is empty
 			if(!self::user_data('user_pass'))
 			{
