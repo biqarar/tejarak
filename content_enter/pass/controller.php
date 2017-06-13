@@ -9,7 +9,14 @@ class controller extends \content_enter\main\controller
 		// if the user is login redirect to base
 		parent::if_login_not_route();
 
-		$this->post('check')->ALL('pass');
+		if(self::done_step('mobile') && self::user_data('user_pass'))
+		{
+			$this->post('check')->ALL('pass');
+		}
+		else
+		{
+			self::error_page('pass');
+		}
 	}
 }
 ?>

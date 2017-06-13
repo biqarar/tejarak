@@ -12,7 +12,7 @@ class controller extends \content_enter\main\controller
 		// if the user is login redirect to base
 		parent::if_login_not_route();
 		// if step mobile is done
-		if(self::done_step('mobile'))
+		if(self::done_step('mobile') && !self::user_data('user_pass'))
 		{
 			// parent::_route();
 			$this->get('pass')->ALL('pass/signup');
@@ -21,7 +21,7 @@ class controller extends \content_enter\main\controller
 		else
 		{
 			// make page error or redirect
-			self::error_page('pass');
+			self::error_page('pass/signup');
 		}
 	}
 }

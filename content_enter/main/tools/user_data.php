@@ -58,19 +58,21 @@ trait user_data
 		$mobile = self::get_enter_session('mobile');
 		if($mobile)
 		{
+			// set mobile to use in other function
+			self::$mobile = $mobile;
+
 			$args =
 			[
-				'mobile' => $mobile,
+				'mobile'      => $mobile,
 				'displayname' => null,
-				'password' => null,
-				'status' => 'awaiting'
+				'password'    => null,
+				'status'      => 'awaiting'
 			];
 			$user_id = \lib\db\users::signup($args);
 
 			if($user_id)
 			{
-				self::set_enter_session('id', $user_id);
-				self::set_enter_session('status', 'awaiting');
+				self::load_user_data();
 			}
 		}
 	}

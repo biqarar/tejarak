@@ -72,5 +72,14 @@ class model extends \content_enter\main\model
 		// can not send by telegram
 		return false;
 	}
+
+
+	/**
+	* check sended code
+	*/
+	public function post_verify()
+	{
+		self::check_code('telegram');
+	}
 }
 ?>

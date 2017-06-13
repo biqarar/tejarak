@@ -44,15 +44,16 @@ class model extends \content_enter\main\model
 		}
 		else
 		{
+			// plus count invalid mobile
+			self::plus_try_session('invalid_mobile');
+			// make error
 			debug::error(T_("Invalid Mobile"), 'mobile', 'arguments');
-			// redirect to error page
-			// self::go_to('error');
 			return false;
 		}
 
 		// if old mobile is different by new mobile
 		// save in session this user change the mobile
-		if(self::$mobile != $old_mobile)
+		if($old_mobile && self::$mobile != $old_mobile)
 		{
 			self::plus_try_session('diffrent_mobile');
 		}

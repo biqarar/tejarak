@@ -10,11 +10,16 @@ class model extends \content_enter\main\model
 	{
 		if(!utility::post('ramz'))
 		{
+			// plus count empty password
+			self::plus_try_session('empty_password');
+
 			debug::error(T_("Please enter your password"));
 			return false;
 		}
 
+		// get ramz
 		$ramz = utility::post('ramz');
+
 		if(self::user_data('user_pass'))
 		{
 			// the password is okay

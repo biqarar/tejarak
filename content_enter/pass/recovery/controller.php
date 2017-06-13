@@ -13,7 +13,7 @@ class controller extends \content_enter\main\controller
 		parent::if_login_not_route();
 
 		// if step mobile is done
-		if(self::done_step('mobile'))
+		if(self::done_step('mobile') && self::user_data('user_pass'))
 		{
 			// parent::_route();
 			$this->get('pass')->ALL('pass/recovery');
@@ -22,7 +22,7 @@ class controller extends \content_enter\main\controller
 		else
 		{
 			// make page error or redirect
-			self::error_page('pass');
+			self::error_page('pass/recovery');
 		}
 	}
 }
