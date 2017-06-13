@@ -9,6 +9,8 @@ class controller extends \content_enter\main\controller
 	 */
 	function _route()
 	{
+		// if the user is login redirect to base
+		parent::if_login_not_route();
 		// if step mobile is done
 		if(self::done_step('mobile'))
 		{

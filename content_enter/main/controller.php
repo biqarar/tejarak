@@ -17,5 +17,17 @@ class controller extends \mvc\controller
 			\lib\error::page(T_("Unavalible"));
 		}
 	}
+
+
+	/**
+	* if the user is login redirect to base
+	*/
+	public function if_login_not_route()
+	{
+		if($this->login())
+		{
+			self::go_to($this->url('base'));
+		}
+	}
 }
 ?>

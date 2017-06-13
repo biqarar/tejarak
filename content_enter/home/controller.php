@@ -9,13 +9,11 @@ class controller extends \content_enter\main\controller
 	 */
 	function _route()
 	{
+		// if the user login redirect to base
+		parent::if_login_not_route();
+		
 		if(self::get_request_method() === 'get')
 		{
-			if($this->login())
-			{
-				self::go_to($this->url('base'));
-				return;
-			}
 			$this->get('enter', 'enter')->ALL();
 		}
 		elseif(self::get_request_method() === 'post')
