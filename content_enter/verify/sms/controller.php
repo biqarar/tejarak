@@ -8,13 +8,13 @@ class controller extends \content_enter\main\controller
 	{
 		// if the user is login redirect to base
 		parent::if_login_not_route();
-		
+
 		// if step mobile is done
 		// and step pass is done
 		if(self::done_step('mobile') && self::done_step('pass'))
 		{
 			if(self::get_request_method() === 'get')
-			{	
+			{
 				// if the user start my bot and wa have her chat id
 				// if user start my bot try to send code to this use
 				// if okay route this

@@ -81,6 +81,21 @@ trait _use
 	];
 
 
+	/**
+	* sleep code
+	*/
+	public static function sleep_code($_seconds = null)
+	{
+		if(self::$wait)
+		{
+			sleep(self::$wait);
+		}
+		else
+		{
+			sleep(3);
+		}
+	}
+
 }
 
 

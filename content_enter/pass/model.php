@@ -16,7 +16,7 @@ class model extends \content_enter\main\model
 
 		$ramz = utility::post('ramz');
 		if(self::user_data('user_pass'))
-		{	
+		{
 			// the password is okay
 			if(\lib\utility::hasher($ramz, self::user_data('user_pass')))
 			{
@@ -25,6 +25,12 @@ class model extends \content_enter\main\model
 			}
 			else
 			{
+				// plus count invalid password
+				self::plus_try_session('invalid_password');
+
+				// wrong password sleep code
+				self::sleep_code();
+
 				debug::error(T_("Invalid password, try again"));
 				return false;
 			}

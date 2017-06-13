@@ -64,6 +64,9 @@ class model extends \content_enter\main\model
 		}
 		else
 		{
+			// plus count invalid password
+			self::plus_try_session('no_password_send_verify');
+
 			debug::error(T_("Invalid Password"));
 			return false;
 		}

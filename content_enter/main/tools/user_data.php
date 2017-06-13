@@ -58,7 +58,7 @@ trait user_data
 		$mobile = self::get_enter_session('mobile');
 		if($mobile)
 		{
-			$args = 
+			$args =
 			[
 				'mobile' => $mobile,
 				'displayname' => null,

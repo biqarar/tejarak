@@ -127,6 +127,12 @@ class model extends \content_enter\main\model
 		}
 		else
 		{
+			// wrong code sleep code
+			self::sleep_code();
+
+			// plus count invalid code
+			self::plus_try_session('invalid_code_sms');
+
 			debug::error(T_("Invalid code, try again"), 'code');
 			return false;
 		}

@@ -11,7 +11,7 @@ class controller extends \content_enter\main\controller
 	{
 		// if the user login redirect to base
 		parent::if_login_not_route();
-		
+
 		if(self::get_request_method() === 'get')
 		{
 			$this->get('enter', 'enter')->ALL();

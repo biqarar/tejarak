@@ -64,7 +64,10 @@ class model extends \content_enter\main\model
 		}
 		else
 		{
-			debug::error(T_("Invalid Password"));
+			// plus count invalid password
+			self::plus_try_session('no_password_send_signup');
+
+			debug::error(T_("No password was send"));
 			return false;
 		}
 
