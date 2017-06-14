@@ -213,7 +213,13 @@ trait verification_code
 				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
 			}
 			// set login session
-			self::enter_set_login();
+			$redirect_url = self::enter_set_login();
+
+			// save redirect url in session to get from okay page
+			self::set_enter_session('redirect_url', $redirect_url);
+
+			// go to okay page
+			self::go_to('okay');
 		}
 		else
 		{

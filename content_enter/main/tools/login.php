@@ -60,7 +60,7 @@ trait login
 	/**
 	 * login
 	 */
-	public static function enter_set_login($_url = null)
+	public static function enter_set_login($_url = null, $_auto_redirect = false)
 	{
 		// if($this->is_guest)
 		// {
@@ -70,8 +70,19 @@ trait login
 		\lib\db\users::set_login_session(self::user_data());
 		// set remeber and save session
 		\lib\db\sessions::set(self::user_data('id'));
-		// go to new address
-		self::go_to(self::find_redirect_url($_url));
+
+		$url = self::find_redirect_url($_url);
+
+		if($_auto_redirect)
+		{
+			// go to new address
+			self::go_to($url);
+		}
+		else
+		{
+			return $url;
+		}
+
 	}
 
 
