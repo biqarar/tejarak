@@ -11,29 +11,45 @@ trait user_data
 	 */
 	public static function load_user_data($_type = 'mobile')
 	{
-		if($_type === 'mobile')
+		$data = [];
+
+		switch ($_type)
 		{
-			if(self::$mobile)
-			{
-				$data = \lib\db\users::get_by_mobile(self::$mobile);
-				if($data)
+			// get user data by mobile
+			case 'mobile':
+				if(self::$mobile)
 				{
-					$_SESSION['enter']['user_data'] = $data;
+					$data = \lib\db\users::get_by_mobile(self::$mobile);
 				}
-			}
+				break;
+
+			// get use data by username
+			case 'username':
+				if(self::$username)
+				{
+					$data = \lib\db\users::get_by_username(self::$username);
+				}
+				break;
+
+			// get user data by user id
+			case 'user_id':
+				if(self::$user_id)
+				{
+					$data = \lib\db\users::get(self::$user_id);
+				}
+				break;
+
+			default:
+				# code...
+				break;
 		}
-		elseif ($_type === 'username')
+
+		if($data)
 		{
-			if(self::$username)
-			{
-				$data = \lib\db\users::get_by_username(self::$username);
-				if($data)
-				{
-					$_SESSION['enter']['user_data'] = $data;
-				}
-			}
+			$_SESSION['enter']['user_data'] = $data;
 		}
 	}
+
 
 	/**
 	 * { function_description }

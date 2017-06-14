@@ -9,6 +9,10 @@ class controller extends \content_enter\main\controller
 		// if the user is login redirect to base
 		parent::if_login_not_route();
 
+		// check remeber me is set
+		// if remeber me is set: login!
+		parent::check_remeber_me();
+
 		// if step mobile is done
 		// and step pass is done
 		if(self::done_step('mobile') && self::done_step('pass'))

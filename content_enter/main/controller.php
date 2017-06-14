@@ -29,5 +29,26 @@ class controller extends \mvc\controller
 			self::go_to($this->url('base'));
 		}
 	}
+
+	/**
+	* check is set remeber me of this user
+	*/
+	public function check_remeber_me()
+	{
+		if(\lib\db\sessions::get_cookie() && !$this->login())
+		{
+			$user_id = \lib\db\sessions::get_user_id();
+
+			if($user_id && is_numeric($user_id))
+			{
+				// set user id in static var
+				self::$user_id = $user_id;
+				// load user data by user id
+				self::load_user_data('user_id');
+				// set login session
+				self::enter_set_login();
+			}
+		}
+	}
 }
 ?>

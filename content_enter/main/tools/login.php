@@ -58,67 +58,6 @@ trait login
 
 
 	/**
-	 * sync guest data to new login
-	 */
-	public static function sync_guest()
-	{
-		$old_user_id = $this->login('id');
-		$new_user_id = self::user_data('id');
-
-		if(intval($old_user_id) === intval($new_user_id))
-		{
-			\lib\db\logs::set('enter:guest:userid:is:guestid', self::user_data('id'), $log_meta);
-			return;
-		}
-
-		\lib\utility\sync::web_guest($new_user_id, $old_user_id);
-	}
-
-
-	/**
-	 * the gues has login
-	 * logout the guest
-	 * sync guset by new user
-	 * login new user
-	 *
-	 * @param      <type>  $_url   The url
-	 */
-	public static function login_set_guest($_url = null)
-	{
-		$log_meta =
-		[
-			'data' => null,
-			'meta' =>
-			[
-				'mobile'  => $this->mobile,
-				'user_id' => self::user_data('id'),
-				'input'   => utility::post(),
-				'session' => $_SESSION,
-			]
-		];
-
-		$user_status = \lib\utility\users::get_status(self::user_data('id'));
-		switch ($user_status)
-		{
-			case 'active':
-				\lib\db\logs::set('enter:guest:have:active:user', self::user_data('id'), $log_meta);
-				break;
-			case 'awaiting':
-				$this->sync_guest();
-				break;
-
-			default:
-				\lib\db\logs::set('enter:guest:invalid:status', self::user_data('id'), $log_meta);
-				break;
-		}
-		// distroy guest session to set new session
-		\lib\db\sessions::logout(self::user_data('id'));
-		$this->put_logout();
-
-	}
-
-
-	/**
 	 * login
 	 */
 	public static function enter_set_login($_url = null)
@@ -189,25 +128,64 @@ trait login
 	}
 
 
+	/**
+	 * sync guest data to new login
+	 */
+	public static function sync_guest()
+	{
+		$old_user_id = $this->login('id');
+		$new_user_id = self::user_data('id');
+
+		if(intval($old_user_id) === intval($new_user_id))
+		{
+			\lib\db\logs::set('enter:guest:userid:is:guestid', self::user_data('id'), $log_meta);
+			return;
+		}
+
+		\lib\utility\sync::web_guest($new_user_id, $old_user_id);
+	}
+
 
 	/**
-	 * login whit remember
+	 * the gues has login
+	 * logout the guest
+	 * sync guset by new user
+	 * login new user
+	 *
+	 * @param      <type>  $_url   The url
 	 */
-	public static function login_by_remember($_url = null)
+	public static function login_set_guest($_url = null)
 	{
-		if(\lib\db\sessions::get_cookie() && !$this->login())
-		{
-			$user_id = \lib\db\sessions::get_user_id();
+		$log_meta =
+		[
+			'data' => null,
+			'meta' =>
+			[
+				'mobile'  => $this->mobile,
+				'user_id' => self::user_data('id'),
+				'input'   => utility::post(),
+				'session' => $_SESSION,
+			]
+		];
 
-			if($user_id)
-			{
-				$this->user_data = \lib\utility\users::get($user_id);
-				$this->mobile    = \lib\utility\users::get_mobile($user_id);
-				$this->login_set($_url);
-				return true;
-			}
+		$user_status = \lib\utility\users::get_status(self::user_data('id'));
+		switch ($user_status)
+		{
+			case 'active':
+				\lib\db\logs::set('enter:guest:have:active:user', self::user_data('id'), $log_meta);
+				break;
+			case 'awaiting':
+				$this->sync_guest();
+				break;
+
+			default:
+				\lib\db\logs::set('enter:guest:invalid:status', self::user_data('id'), $log_meta);
+				break;
 		}
-		return false;
+		// distroy guest session to set new session
+		\lib\db\sessions::logout(self::user_data('id'));
+		$this->put_logout();
+
 	}
 }
 ?>
