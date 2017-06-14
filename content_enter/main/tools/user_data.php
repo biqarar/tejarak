@@ -9,14 +9,28 @@ trait user_data
 	/**
 	 * Loads an user data.
 	 */
-	private static function load_user_data()
+	public static function load_user_data($_type = 'mobile')
 	{
-		if(self::$mobile)
+		if($_type === 'mobile')
 		{
-			$data = \lib\db\users::get_by_mobile(self::$mobile);
-			if($data)
+			if(self::$mobile)
 			{
-				$_SESSION['enter']['user_data'] = $data;
+				$data = \lib\db\users::get_by_mobile(self::$mobile);
+				if($data)
+				{
+					$_SESSION['enter']['user_data'] = $data;
+				}
+			}
+		}
+		elseif ($_type === 'username')
+		{
+			if(self::$username)
+			{
+				$data = \lib\db\users::get_by_username(self::$username);
+				if($data)
+				{
+					$_SESSION['enter']['user_data'] = $data;
+				}
 			}
 		}
 	}
