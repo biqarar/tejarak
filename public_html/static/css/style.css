@@ -101,26 +101,25 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 #offer-enterprise-small .btn{padding:0 5em;}
 
 #plans{background-color:#fff}
-#plans .plans-card{margin:0 1em;padding:2em 1em;border-radius:2px;height:100%;min-height:500px}
-#plans .plans-card h4{color:#fff;/*font-weight:700;*/padding:0;border-bottom:1px solid #fff;padding-bottom:1.5rem;margin:0 1rem;font-size:2em;line-height:2em}
 
-#plans .plans-card.plan-free{background:#85cba8}
-#plans .plans-card.plan-pro{background:#f69259}
-#plans .plans-card.plan-business{background:#ba77b1}
-#plans .plans-card.plan-enterprise{background:#76c4e2}
+#plans .cn{width:80%}
+
+#plans .plans-card{background-color:#fff;box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);border-radius:2px;margin:0 2em;padding:2em 1em;border-radius:2px;height:100%;min-height:400px}
+#plans .plans-card h4{padding:0;padding-bottom:1.5rem;margin:0 1rem;font-size:2em;line-height:2em;color:#333;border-bottom:1px solid #ccc}
 
 #plans .plans-card .plans-card-learn-more{font-size:1.4em;display:block;margin-bottom:2rem;text-align:center;color:#fff}
-#plans .plans-card .btn{font-size:1.618rem;border-radius:2px;background-color:#fff}
-#plans .plans-card.plan-free .btn{color:#85cba8}
-#plans .plans-card.plan-pro .btn{color:#f69259}
-#plans .plans-card.plan-business .btn{color:#ba77b1}
-#plans .plans-card.plan-enterprise .btn{color:#76c4e2}
+#plans .plans-card .btn{font-size:1.618rem;border-radius:2px;color:#fff !important}
+
+#plans .plans-card.plan-free .btn{background-color:#85cba8}
+#plans .plans-card.plan-pro .btn{background-color:#f69259}
+#plans .plans-card.plan-business .btn{background-color:#ba77b1}
+#plans .plans-card.plan-enterprise .btn{background-color:#76c4e2}
 
 #plans .plans-card .plans-card-price{padding:3em 0}
-#plans .plans-card .plans-card-price *{font-size:3em;color:#fff;font-weight:100}
+#plans .plans-card .plans-card-price *{font-size:3em;color:#333;font-weight:100}
 #plans .plans-card .plans-card-price .plans-card-price-unit{font-size:1.5rem;vertical-align:top}
 
-#plans .plans-card .plans-card-content{font-size:1.25em;line-height:1.5;padding:0 2rem;text-align:left;color:#fff}
+#plans .plans-card .plans-card-content{font-size:1.25em;line-height:1.5;padding:0 2rem;text-align:left;color:#333}
 .rtl #plans .plans-card .plans-card-content{text-align:right}
 
 /* footer*/
