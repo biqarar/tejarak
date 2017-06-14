@@ -1,0 +1,17 @@
+{%extends display.enter%}
+
+{%block contentForm%}
+<div class="f dt">
+	{%for key, value in sessions_list%}
+		{%if key == 0%}
+			{%for k, v in value%}
+				<div class="c">{{k}}</div>
+			{%endfor%}
+		{%endif%}
+		{%for i, data in value%}
+			<div class="c">{{data}}</div>
+		{%endfor%}
+		<a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"id" : "{{value.id}}", "type": "terminate" }'>{%trans "Terminate"%}</a>
+	{%endfor%}
+</div>
+{%endblock%}

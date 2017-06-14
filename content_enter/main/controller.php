@@ -30,6 +30,19 @@ class controller extends \mvc\controller
 		}
 	}
 
+
+	/**
+	* if login route
+	*/
+	public function if_login_route()
+	{
+		if(!$this->login())
+		{
+			self::go_to($this->url('base'));
+		}
+	}
+
+
 	/**
 	* check is set remeber me of this user
 	*/
