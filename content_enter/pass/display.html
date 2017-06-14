@@ -4,11 +4,15 @@
 
 {%block contentForm%}
 
-{{block('emobile')}}
+{{block(mobile_username)}}
 {{block('epass')}}
 {{block('eramz')}}
 {{block('elogin')}}
-<a href="{{url.base}}/enter/pass/recovery">{%trans "Forget Password?"%}</a>
+{% if mobile_username == 'eusername'%}
+  <a href="{{url.base}}/enter">{%trans "Forget Password?"%}</a>
+{%else%}
+  <a href="{{url.base}}/enter/pass/recovery">{%trans "Forget Password?"%}</a>
+{%endif%}
 {%endblock%}
 
 

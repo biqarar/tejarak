@@ -96,7 +96,7 @@ trait SESSION
 	 *
 	 * @return     <type>  The session.
 	 */
-	private static function get_session($_index, $_key)
+	public static function get_session($_index, $_key)
 	{
 		if(isset($_SESSION[$_index]))
 		{
@@ -116,7 +116,7 @@ trait SESSION
 	 * @param      <type>  $_key    The key
 	 * @param      <type>  $_value  The value
 	 */
-	private static function set_session($_index, $_key, $_value)
+	public static function set_session($_index, $_key, $_value)
 	{
 		if(!isset($_SESSION[$_index]))
 		{

@@ -21,56 +21,50 @@ class model extends \content_enter\main\model
 			return false;
 		}
 
-		// get password [ramz]
-		$ramz = utility::post('ramz');
-		if(!$ramz)
-		{
-			debug::error(T_("Please fill the password field"));
-			return false;
-		}
+		// clean session
+		self::clean_session();
+
 		// set username
 		self::$username = $username;
 		// load userdata by username
 		self::load_user_data('username');
+
+		// save username in $_SESSION['username']['temp_username']
+		self::set_session('username', 'temp_username', $username);
+
 		// check username exist
 		if(!self::user_data() || !self::user_data('id'))
 		{
-			// plus count invalid username
 			self::plus_try_session('invalid_username');
 
 			debug::error(T_("Username not found"));
 			return false;
 		}
-
-		$log_meta =
-		[
-			'meta' =>
-			[
-				'session'   => $_SESSION,
-				'user_data' => self::user_data(),
-			],
-		];
-
-		if(!self::user_data('user_pass'))
+		elseif(!self::user_data('user_pass'))
 		{
 			// BUG username set and password is not set
+
+			// log meta
+			$log_meta =
+			[
+				'meta' =>
+				[
+					'session'   => $_SESSION,
+					'user_data' => self::user_data(),
+				],
+			];
 			\lib\db\logs::set('enter:username:set:password:notset', self::user_data('id'), $log_meta);
-			debug::error(T_("Invalid password"));
-			return false;
-		}
-		// check password
-		if(\lib\utility::hasher($ramz, self::user_data('user_pass')))
-		{
-			// set login
-			self::enter_set_login();
+			// go to mobile
+			self::go_to('base');
 		}
 		else
 		{
-			self::plus_try_session('invalid_password');
-
-			debug::error(T_("Invalid password"));
-			return false;
+			// set step session
+			self::set_step_session('username', true);
+			// go to pass page
+			self::go_to('pass');
 		}
+
 	}
 }
 ?>

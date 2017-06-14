@@ -16,6 +16,14 @@ trait go_to
 	{
 		switch ($_url)
 		{
+			// redirect to base
+			case 'base':
+				$host = Protocol."://" . \lib\router::get_root_domain();
+				$host .= \lib\define::get_current_language_string();
+				$host .= '/enter';
+				self::go_redirect($host);
+				break;
+
 			default:
 				self::go_redirect($_url);
 				break;
@@ -30,8 +38,9 @@ trait go_to
 	 */
 	public static function go_redirect($_url)
 	{
-		$redirect = (new \lib\redirector($_url))->redirect();
 		debug::msg('direct', true);
+		$redirect = new \lib\redirector($_url);
+		$redirect->redirect();
 	}
 }
 ?>

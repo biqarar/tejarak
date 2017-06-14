@@ -18,15 +18,24 @@ trait login
 		{
 			return $_url;
 		}
-
+		// get url language
 		$url = \lib\define::get_current_language_string();
+		// if have referer redirect to referer
 		if(utility::get('referer'))
 		{
 			$url = utility::get('referer');
 		}
-		elseif(isset($_SESSION['first_signup']) && $_SESSION['first_signup'] === true)
+		elseif(self::get_enter_session('first_signup'))
 		{
-			$url .= '/ask';
+			// if first signup
+			if(\lib\option::enter('singup_redirect'))
+			{
+				$url .= '/'. \lib\option::enter('singup_redirect');
+			}
+			else
+			{
+				$url .= \lib\option::config('redirect_url');
+			}
 		}
 		else
 		{
