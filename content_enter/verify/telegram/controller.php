@@ -19,7 +19,7 @@ class controller extends \content_enter\main\controller
 				// if user start my bot try to send code to this use
 				// if okay route this
 				// else go to nex way
-				if($this->model()->user_start_telegram_bot() && $this->model()->send_telegram_code())
+				if($this->model()->send_telegram_code())
 				{
 					$this->get()->ALL('verify/telegram');
 				}

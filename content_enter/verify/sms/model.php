@@ -39,7 +39,7 @@ class model extends \content_enter\main\model
 
 		$request           = [];
 		$request['mobile'] = self::get_enter_session('mobile');
-		$request['msg']    = 'signup';
+		$request['msg']    = T_("Your verification code is :code", ['code' => $code]);
 		$request['args']   = $code;
 
 		if(self::$dev_mode)

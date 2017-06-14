@@ -8,19 +8,6 @@ use \lib\telegram\tg as bot;
 
 class model extends \content_enter\main\model
 {
-	/**
-	 * check the user start my bot or no
-	 *
-	 * @return     <type>  ( description_of_the_return_value )
-	 */
-	public function user_start_telegram_bot()
-	{
-		if(self::user_data('user_chat_id') && self::user_data('user_start_tg_bot'))
-		{
-			return true;
-		}
-		return false;
-	}
 
 	/**
 	 * send verification code to the user telegram
@@ -32,6 +19,12 @@ class model extends \content_enter\main\model
 	 */
 	public function send_telegram_code()
 	{
+		// check the user have chat id or no
+		if(!self::user_data('user_chat_id') && self::user_data('user_start_tg_bot'))
+		{
+			return false;
+		}
+
 		$code = self::get_enter_session('verification_code');
 		// make text
 		$text = '';
