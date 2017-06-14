@@ -198,5 +198,17 @@ trait login
 		$this->put_logout();
 
 	}
+
+
+	public static function set_logout()
+	{
+		// unset and destroy session then regenerate it
+		session_unset();
+		if(session_status() === PHP_SESSION_ACTIVE)
+		{
+			session_destroy();
+			// session_regenerate_id(true);
+		}
+	}
 }
 ?>

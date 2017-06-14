@@ -212,14 +212,58 @@ trait verification_code
 				// set temp ramz in use pass
 				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
 			}
-			// set login session
-			$redirect_url = self::enter_set_login();
 
-			// save redirect url in session to get from okay page
-			self::set_enter_session('redirect_url', $redirect_url);
+			if(self::get_enter_session('verify_from') === 'delete')
+			{
+				if(self::get_enter_session('why'))
+				{
+					$update_meta  = [];
 
-			// go to okay page
-			self::go_to('okay');
+					$user_meta = self::user_data('user_meta');
+					if(!$user_meta)
+					{
+						$update_meta['why'] = self::get_enter_session('why');
+					}
+					elseif(is_string($user_meta) && substr($user_meta, 0, 1) !== '{')
+					{
+						$update_meta['other'] = $user_meta;
+						$update_meta['why'] = self::get_enter_session('why');
+					}
+					elseif(is_string($user_meta) && substr($user_meta, 0, 1) === '{')
+					{
+						$json = json_decode($user_meta, true);
+						$update_meta = array_merge($json, ['why' => self::get_enter_session('why')]);
+					}
+
+				}
+
+				$update_user = [];
+				if(!empty($update_meta))
+				{
+					$update_user['user_meta'] = json_encode($update_meta, JSON_UNESCAPED_UNICODE);
+				}
+				$update_user['user_status'] = 'removed';
+
+				\lib\db\users::update($update_user, self::user_data('id'));
+
+				\lib\db\sessions::delete_account(self::user_data('id'));
+
+				//put logout
+				self::set_logout();
+
+				self::go_to('byebye');
+			}
+			else
+			{
+				// set login session
+				$redirect_url = self::enter_set_login();
+
+				// save redirect url in session to get from okay page
+				self::set_enter_session('redirect_url', $redirect_url);
+
+				// go to okay page
+				self::go_to('okay');
+			}
 		}
 		else
 		{
