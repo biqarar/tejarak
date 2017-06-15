@@ -2,7 +2,7 @@
 namespace content_enter\verify\call;
 
 
-class view extends \content_enter\main\view
+class view extends \content_enter\verify\view
 {
 
 }
