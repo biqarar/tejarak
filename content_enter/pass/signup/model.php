@@ -72,20 +72,8 @@ class model extends \content_enter\pass\model
 		// set step pass is done
 		self::set_step_session('pass', true);
 
-		// find send way to send code
-		$way = self::send_way();
-		if(!$way)
-		{
-			self::next_step('verify/what');
-			// no way to send code
-			self::go_to('verify/what');
-		}
-		else
-		{
-			self::next_step('verify/'. $way);
-			// go to verify page
-			self::go_to('verify/'. $way);
-		}
+		// send code way
+		self::send_code_way();
 	}
 }
 ?>

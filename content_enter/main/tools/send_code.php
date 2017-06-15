@@ -5,6 +5,31 @@ use \lib\debug;
 
 trait send_code
 {
+
+	/**
+	 * Sends a code way.
+	 */
+	public static function send_code_way()
+	{
+		$way = self::send_way();
+		if($way)
+		{
+			// open next step to route it
+			self::next_step('verify/'. $way);
+		}
+		else
+		{
+			// open next step to route it
+			self::next_step('verify/what');
+		}
+
+		$host = Protocol."://" . \lib\router::get_root_domain();
+		$host .= \lib\define::get_current_language_string();
+		$host .= '/enter/verify/'. $way;
+		self::go_redirect($host);
+	}
+
+
 	/**
 	 * Sends a way.
 	 * find send way

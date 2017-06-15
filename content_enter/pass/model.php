@@ -25,8 +25,20 @@ class model extends \content_enter\main\model
 			// the password is okay
 			if(\lib\utility::hasher($ramz, self::user_data('user_pass')))
 			{
-				// set login session
-				self::enter_set_login();
+				// if the user set two step verification send code
+				if(self::user_data('user_twostep'))
+				{
+					// find way and redirect to it
+					self::send_code_way();
+					return;
+				}
+				else
+				{
+					self::next_step('okay');
+					// set login session
+					self::enter_set_login(self::user_data('id'));
+					self::go_to('okay');
+				}
 			}
 			else
 			{

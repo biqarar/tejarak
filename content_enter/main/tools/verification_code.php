@@ -207,7 +207,15 @@ trait verification_code
 
 		if(intval(utility::post('code')) === intval(self::get_enter_session('verification_code')))
 		{
-			if(self::get_enter_session('verify_from') === 'signup' && self::get_enter_session('temp_ramz_hash') && is_numeric(self::user_data('id')))
+			if(
+				(
+					self::get_enter_session('verify_from') === 'signup' ||
+					self::get_enter_session('verify_from') === 'set' ||
+					self::get_enter_session('verify_from') === 'recovery'
+				) &&
+				self::get_enter_session('temp_ramz_hash') &&
+				is_numeric(self::user_data('id'))
+			  )
 			{
 				// set temp ramz in use pass
 				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
@@ -253,17 +261,16 @@ trait verification_code
 
 				self::go_to('byebye');
 			}
-			else
-			{
-				// set login session
-				$redirect_url = self::enter_set_login();
 
-				// save redirect url in session to get from okay page
-				self::set_enter_session('redirect_url', $redirect_url);
+			// set login session
+			$redirect_url = self::enter_set_login();
 
-				// go to okay page
-				self::go_to('okay');
-			}
+			// save redirect url in session to get from okay page
+			self::set_enter_session('redirect_url', $redirect_url);
+
+			// go to okay page
+			self::go_to('okay');
+
 		}
 		else
 		{

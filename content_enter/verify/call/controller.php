@@ -33,21 +33,8 @@ class controller extends \content_enter\main\controller
 			}
 			else
 			{
-				$way = self::send_way();
-				if($way)
-				{
-					// open lock of next step to route it
-					self::next_step('verify/'. $way);
-					// go to next way of send code
-					self::go_to($way);
-					return;
-				}
-				else
-				{
-					// open lock from what
-					self::next_step('verify/what');
-					self::go_to('what');
-				}
+				// send code way
+				self::send_code_way();
 			}
 		}
 		elseif(self::get_request_method() === 'post')
