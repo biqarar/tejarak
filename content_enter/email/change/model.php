@@ -12,19 +12,29 @@ class model extends \content_enter\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_email($_args)
+	public function post_change($_args)
 	{
-		if(utility::post('email'))
+		if(!utility::post('emailNew'))
 		{
-			self::set_enter_session('temp_email', utility::post('email'));
-		}
-		else
-		{
-			// plus count invalid emailword
-			self::plus_try_session('no_email_send_set');
-
-			debug::error(T_("No email was send"));
+			debug::error(T_("Plese fill the new email"));
 			return false;
+		}
+
+		if(!utility::post('email'))
+		{
+			debug::error(T_("Plese fill the old email"));
+			return false;
+		}
+
+		if(utility::post('email') == utility::post('emailNew'))
+		{
+			debug::error(T_("Please select a different email"));
+			return false;
+		}
+
+		if(utility::post('emailNew'))
+		{
+			self::set_enter_session('temp_email', utility::post('emailNew'));
 		}
 
 		// set session verify_from set

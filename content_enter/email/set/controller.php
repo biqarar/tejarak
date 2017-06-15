@@ -13,6 +13,13 @@ class controller extends \content_enter\main\controller
 		parent::if_login_route();
 
 		// parent::_route();
+		// if the user have email can not set email again
+		// he must change her email
+		if($this->login('email'))
+		{
+			$this->redirector()->set_domain()->set_url('enter/email/change')->redirect();
+			return;
+		}
 
 		$this->get()->ALL('email/set');
 

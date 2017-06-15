@@ -292,7 +292,18 @@ trait verification_code
 	 */
 	public static function send_code_email()
 	{
-		$email  = self::get_enter_session('temp_email');
+		$email = self::get_enter_session('temp_email');
+		$code  = self::generate_verification_code();
+		$mail =
+		[
+			'from'    => 'info@sarshomar.com',
+			'to'      => $email,
+			'subject' => 'contact',
+			'body'    => "salam". $code,
+			'debug'   => true,
+		];
+		$mail = \lib\utility\mail::send($mail);
+		return $mail;
 	}
 }
 ?>
