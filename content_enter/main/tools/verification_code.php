@@ -284,5 +284,15 @@ trait verification_code
 			return false;
 		}
 	}
+
+
+	/**
+	 * Sends a code email.
+	 * send verification code whit email address
+	 */
+	public static function send_code_email()
+	{
+		$email  = self::get_enter_session('temp_email');
+	}
 }
 ?>
