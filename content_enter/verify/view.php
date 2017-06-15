@@ -88,6 +88,29 @@ class view extends \content_enter\main\view
 				}
 				break;
 
+			// user from change password go to this page
+			case 'change':
+				// swich way
+				switch (self::get_enter_session('verification_code_way'))
+				{
+					// telegram
+					case 'telegram':
+						$verify_msg = T_("Your verifycation code send to your telegram, you try to change your password");
+						break;
+					// call
+					case 'call':
+						$verify_msg = T_("We near call to you, you try to change your password");
+						break;
+					// sms
+					case 'sms':
+						$verify_msg = T_("Your verifycation code send to mobile number by sms, you try to change your password");
+						break;
+
+					default:
+						$verify_msg = T_("What happend?, dont change your password");
+						break;
+				}
+				break;
 			default:
 
 				$verify_msg = T_("What happend? where you here?");

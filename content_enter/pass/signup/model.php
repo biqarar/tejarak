@@ -4,7 +4,7 @@ use \lib\utility;
 use \lib\debug;
 use \lib\db;
 
-class model extends \content_enter\main\model
+class model extends \content_enter\pass\model
 {
 	/**
 	 * Gets the enter.
@@ -35,18 +35,12 @@ class model extends \content_enter\main\model
 		{
 			$temp_ramz = utility::post('ramz');
 
-			// cehck min leng of password is 6 character
-			if(mb_strlen($temp_ramz) < 6)
+			// check min and max of password and make error
+			if(!$this->check_pass_syntax($temp_ramz))
 			{
-				debug::error(T_("You must set 6 character and large in password"));
 				return false;
 			}
-			// cehck max length of password
-			if(mb_strlen($temp_ramz) > 100)
-			{
-				debug::error(T_("You must set less than 100 character in password"));
-				return false;
-			}
+
 			// hesh ramz to find is this ramz is easy or no
 			// creazy password !
 			$temp_ramz_hash = \lib\utility::hasher($temp_ramz);
