@@ -19,6 +19,7 @@ class model extends \content_enter\main\model
 	 */
 	public function send_sms_code()
 	{
+
 		if(!self::get_enter_session('mobile'))
 		{
 			return false;

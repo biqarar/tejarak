@@ -13,6 +13,7 @@ trait SESSION
 	{
 		$_SESSION['enter'] = [];
 		$_SESSION['step']  = [];
+		$_SESSION['lock']  = [];
 	}
 
 

@@ -24,6 +24,12 @@ trait go_to
 				self::go_redirect($host);
 				break;
 
+			case 'main':
+				$host = Protocol."://" . \lib\router::get_root_domain();
+				$host .= \lib\define::get_current_language_string();
+				self::go_redirect($host);
+				break;
+
 			default:
 				self::go_redirect($_url);
 				break;

@@ -9,6 +9,13 @@ class controller extends \content_enter\main\controller
 	 */
 	function _route()
 	{
+
+		// if this step is locked go to error page and return
+		if(self::lock('pass/change'))
+		{
+			self::error_page('pass/change');
+			return;
+		}
 		// if the user is login redirect to base
 		parent::if_login_route();
 

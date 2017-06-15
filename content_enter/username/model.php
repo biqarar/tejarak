@@ -59,8 +59,21 @@ class model extends \content_enter\main\model
 		}
 		else
 		{
+			// user enter by username
+			// we need to her mobile to recovery this
+			if(!self::get_enter_session('mobile') && self::user_data('user_mobile'))
+			{
+				self::set_enter_session('mobile', self::user_data('user_mobile'));
+			}
+
 			// set step session
 			self::set_step_session('username', true);
+
+			// open this pages after this page
+			self::next_step('pass');
+			// open lock pass/recovery to load it
+			self::open_lock('pass/recovery');
+
 			// go to pass page
 			self::go_to('pass');
 		}

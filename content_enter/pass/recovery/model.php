@@ -31,9 +31,9 @@ class model extends \content_enter\pass\model
 			return false;
 		}
 
-		if(utility::post('ramz'))
+		if(utility::post('ramzNew'))
 		{
-			$temp_ramz = utility::post('ramz');
+			$temp_ramz = utility::post('ramzNew');
 			// check min and max of password
 			// if not okay make debug error and return false
 			if(!$this->check_pass_syntax($temp_ramz))
@@ -76,11 +76,14 @@ class model extends \content_enter\pass\model
 		$way = self::send_way();
 		if(!$way)
 		{
+			self::next_step('verify/what');
 			// no way to send code
 			self::go_to('verify/what');
 		}
 		else
 		{
+			// just this module can route after this
+			self::next_step('verify/'. $way);
 			// go to verify page
 			self::go_to('verify/'. $way);
 		}

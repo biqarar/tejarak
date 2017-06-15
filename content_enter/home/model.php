@@ -72,6 +72,10 @@ class model extends \content_enter\main\model
 		{
 			// signup new user
 			self::signup();
+
+			// lock all step and set just this page to load
+			self::next_step('pass/signup');
+
 			// got to pass/signupt to get password from user
 			self::go_to('pass/signup');
 		}
@@ -87,11 +91,18 @@ class model extends \content_enter\main\model
 			// the user_pass field is empty
 			if(!self::user_data('user_pass'))
 			{
-				// go to pass/signup to get password from user
-				self::go_to('pass/signup');
+				// lock all step and set just this page to load
+				self::next_step('pass/set');
+
+				// go to pass/set to get password from user
+				self::go_to('pass/set');
 			}
 			else
 			{
+				// lock all step and set just this page to load
+				self::next_step('pass');
+				// open lock pass/recovery
+				self::open_lock('pass/recovery');
 				// go to pass to check password
 				self::go_to('pass');
 			}

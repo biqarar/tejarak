@@ -80,6 +80,7 @@ trait login
 		}
 		else
 		{
+			self::set_enter_session('redirect_url', $url);
 			return $url;
 		}
 
@@ -207,21 +208,20 @@ trait login
 	 */
 	public static function set_logout($_user_id)
 	{
-		if(!$_user_id || !is_numeric($_user_id))
+		if($_user_id && is_numeric($_user_id))
 		{
 			// set this session as logout
 			\lib\db\sessions::logout($_user_id);
-
-			// unset and destroy session then regenerate it
-			session_unset();
-			if(session_status() === PHP_SESSION_ACTIVE)
-			{
-				session_destroy();
-				// session_regenerate_id(true);
-			}
-			// go to base
-			self::go_to('base');
 		}
+		// unset and destroy session then regenerate it
+		session_unset();
+		if(session_status() === PHP_SESSION_ACTIVE)
+		{
+			session_destroy();
+			// session_regenerate_id(true);
+		}
+		// go to base
+		self::go_to('main');
 	}
 }
 ?>

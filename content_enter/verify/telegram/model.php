@@ -60,6 +60,7 @@ class model extends \content_enter\main\model
 		// if result is ok return true
 		if(isset($result['ok']) && $result['ok'] === true)
 		{
+
 			return true;
 		}
 		// can not send by telegram
