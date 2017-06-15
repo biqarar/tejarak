@@ -249,7 +249,7 @@ trait verification_code
 				\lib\db\sessions::delete_account(self::user_data('id'));
 
 				//put logout
-				self::set_logout();
+				self::set_logout(self::user_data('id'));
 
 				self::go_to('byebye');
 			}

@@ -200,14 +200,27 @@ trait login
 	}
 
 
-	public static function set_logout()
+	/**
+	 * Sets the logout.
+	 *
+	 * @param      <type>  $_user_id  The user identifier
+	 */
+	public static function set_logout($_user_id)
 	{
-		// unset and destroy session then regenerate it
-		session_unset();
-		if(session_status() === PHP_SESSION_ACTIVE)
+		if(!$_user_id || !is_numeric($_user_id))
 		{
-			session_destroy();
-			// session_regenerate_id(true);
+			// set this session as logout
+			\lib\db\sessions::logout($_user_id);
+
+			// unset and destroy session then regenerate it
+			session_unset();
+			if(session_status() === PHP_SESSION_ACTIVE)
+			{
+				session_destroy();
+				// session_regenerate_id(true);
+			}
+			// go to base
+			self::go_to('base');
 		}
 	}
 }

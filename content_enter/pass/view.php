@@ -6,6 +6,9 @@ class view extends \content_enter\main\view
 {
 	public function config()
 	{
+		// read parent config to fill the mobile input and other thing
+		parent::config();
+
 		// change inpu
 		if(self::done_step('username'))
 		{
