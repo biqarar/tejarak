@@ -26,6 +26,23 @@ class view extends \content_enter\main\view
 		{
 			$this->data->get_username = self::get_session('username', 'temp_username');
 		}
+
+		$this->data->page['title'] = T_('Password');
+		$this->data->page['desc']  = T_('Please enter password to login');
+
+		switch (\lib\router::get_url(1))
+		{
+			case 'recovery':
+				$this->data->page['desc']  = T_('Please enter new password!');
+				break;
+
+			case 'signup':
+				$this->data->page['desc']  = T_('Please set your password');
+				break;
+
+			default:
+				break;
+		}
 	}
 }
 ?>

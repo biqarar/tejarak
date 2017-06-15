@@ -1,7 +1,7 @@
 <?php
 namespace content_enter\pass\signup;
 
-class view extends \content_enter\main\view
+class view extends \content_enter\pass\view
 {
 
 
