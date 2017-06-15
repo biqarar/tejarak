@@ -33,11 +33,18 @@ class view extends \content_enter\main\view
 		switch (\lib\router::get_url(1))
 		{
 			case 'recovery':
+				$this->data->page['title'] = T_('Recovery Password');
 				$this->data->page['desc']  = T_('Please enter new password!');
 				break;
 
 			case 'signup':
+				$this->data->page['title'] = T_('Set Password');
 				$this->data->page['desc']  = T_('Please set your password');
+				break;
+
+			case 'change':
+				$this->data->page['title'] = T_('Change Password');
+				$this->data->page['desc']  = T_('Please set your old and new password to change it');
 				break;
 
 			default:
