@@ -2,9 +2,16 @@
 
 
 
-{%block contentForm%}
+{%block contentBody%}
 
-<p>{%trans "You are logined ;)"%}</p>
-<p>{%trans "If not redirect to home page automaticly"%} <a href="{{redirect_url}}">{%trans "Click me"%}</a></p>
+  <div class='text'>
+   <p>{%trans "You are logined ;)"%}</p>
+   <p>{%trans "Be patient or"%} <a href="{{redirect_url}}" id="okayLink" data-direct>{%trans "click here!"%}</a></p>
+  </div>
+  <script>
+    setTimeout(function()
+    {
+      document.getElementById('okayLink').click();
+    }, 1000);
+  </script>
 {%endblock%}
-
