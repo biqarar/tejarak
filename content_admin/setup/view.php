@@ -8,6 +8,8 @@ class view extends \content_admin\main\view
 	 */
 	public function config()
 	{
+		parent::config();
+
 		// if  the user is login and first login
 		// we set the setup field of user on 1
 		if($this->login() && !$this->login('setup'))

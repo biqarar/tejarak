@@ -3,6 +3,12 @@ namespace content_admin\home;
 
 class view extends \content_admin\main\view
 {
+	public function config()
+	{
+		parent::config();
+	}
+
+
 	/**
 	 * view all team and branch
 	 *

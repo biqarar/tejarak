@@ -3,6 +3,11 @@ namespace content_admin\main;
 
 class view extends \mvc\view
 {
+	public function config()
+	{
+		$this->data->bodyclass = 'fixed unselectable dash';
+	}
+
 
 	/**
 	 * find team name in url
@@ -25,15 +30,6 @@ class view extends \mvc\view
 				}
 			}
 		}
-	}
-
-
-	/**
-	 * Pushes a state.
-	 */
-	public function pushState()
-	{
-
 	}
 }
 ?>

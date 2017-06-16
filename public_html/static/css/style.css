@@ -195,7 +195,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 
 
 /* admin custom styles*/
-body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat}
+body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;background-color:#eee;}
 .df input[type="submit"], .df button{background-color:#4070c0;}
 
 /*billing*/
