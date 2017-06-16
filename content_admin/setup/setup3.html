@@ -2,7 +2,7 @@
 
 
 {%block contentCenter%}
-<div class="setup-card-box">
+<div id="setup">
  <div class="flex f-column justify-center align-center setup-card">
  	<a href="" class='setup-card-logo'>
  		<img src='{{url.static}}images/logo-tejarak_v8.png' alt=''>
@@ -10,7 +10,7 @@
   <h2>{%trans "Congratulations! Now you can use Tejarak."%}</h2>
   <a href="{{url.base}}/admin/{{last_team_added}}/centeral" class="df-button" data-direct>{%trans "Go to Tejarak"%}</a>
  </div>
- <div class="setup-card-indicator">
+ <div class="setup-step">
   <span class="done"></span>
   <span class="done"></span>
   <span class="done"></span>
