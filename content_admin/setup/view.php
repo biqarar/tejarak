@@ -17,6 +17,35 @@ class view extends \content_admin\main\view
 			$_SESSION['user']['setup'] = '1';
 			\lib\db\users::update(['user_setup' => 1], $this->login('id'));
 		}
+
+
+		// set page title
+		$step = null;
+		switch (\lib\router::get_url(1))
+		{
+			case '1':
+				$step                     = T_('Team');
+				$this->data->page['desc'] = T_('Set team name');
+				break;
+
+			case '2':
+				$step = T_('You');
+				$this->data->page['desc'] = T_('Set your personal information');
+				break;
+
+			case '3':
+				$step = T_('Finish');
+				$this->data->page['desc'] = T_('Setup is finished!');
+				break;
+		}
+		$this->data->page['title']   = T_('Tejarak Quick Setup');
+		if($step)
+		{
+			$this->data->page['title'] .= ' | ' . $step;
+		}
+		$this->data->page['special'] = true;
+		// $this->data->page['desc']    = $this->data->page['title'];
+
 	}
 
 
