@@ -2,18 +2,19 @@
 
 
 {%block contentCenter%}
-<div id="setup">
- <div class="flex f-column justify-center align-center setup-card">
- 	<a href="" class='setup-card-logo'>
- 		<img src='{{url.static}}images/logo-tejarak_v8.png' alt=''>
- 	</a>
+<div id="setup" class="step3">
+ <div class="flex f-column justify-center dbox">
+  <a href="{{url.base}}/admin" class='logo' data-direct>
+   <img src='{{url.static}}images/logo/logo.png' alt='{{site.title}}'>
+  </a>
   <h2>{%trans "Congratulations! Now you can use Tejarak."%}</h2>
-  <a href="{{url.base}}/admin/{{last_team_added}}/centeral" class="df-button" data-direct>{%trans "Go to Tejarak"%}</a>
+  <div class="center df">
+   <a class="bp w150" href="{{url.base}}/admin/{{last_team_added}}/centeral" data-direct>{%trans "Start"%}</a>
+  </div>
  </div>
+
  <div class="setup-step">
-  <span class="done"></span>
-  <span class="done"></span>
-  <span class="done"></span>
+  <span class="done"></span> <span class="done"></span> <span class="done"></span>
  </div>
 </div>
 {%endblock%}

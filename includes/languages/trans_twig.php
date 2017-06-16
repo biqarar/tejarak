@@ -7,7 +7,7 @@ private function transtext()
 	echo T_("Knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 7
 	echo T_("Thank you for choosing us.");                                            // Line 14
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
-	echo T_("Name");                                                                  // Line 11
+	echo T_("Name");                                                                  // Line 20
 	echo T_("Full Name");                                                             // Line 20
 	echo T_("Mobile");                                                                // Line 16
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
@@ -284,7 +284,7 @@ private function transtext()
 	echo T_("Add");                                                                   // Line 50
 
 	//-------------------------------------------------content_admin\home\display.html
-	echo T_("Hi");                                                                    // Line 8
+	echo T_("Hi");                                                                    // Line 6
 	echo T_("Wellcome to Tejarak admin");                                             // Line 15
 	echo T_("Tejarak was born to serve small and beautiful service for e-business");  // Line 16
 	echo T_("Members");                                                               // Line 29
@@ -304,7 +304,7 @@ private function transtext()
 	echo T_("Add member");                                                            // Line 5
 	echo T_("Family");                                                                // Line 24
 	echo T_("Postion");                                                               // Line 28
-	echo T_("Avatar");                                                                // Line 26
+	echo T_("Avatar");                                                                // Line 22
 	echo T_("Status");                                                                // Line 23
 	echo T_("Please select one item");                                                // Line 44
 	echo T_("Enable");                                                                // Line 45
@@ -352,23 +352,26 @@ private function transtext()
 
 	//-----------------------------------------------content_admin\option\display.html
 
-	//------------------------------------------------content_admin\setup\display.html
-
 	//-------------------------------------------------content_admin\setup\setup1.html
 	echo T_("Welcome to Tejarak initialization process!");                            // Line 7
-	echo T_("Please enter team name.");                                               // Line 8
-	echo T_("Next");                                                                  // Line 32
+	echo T_("Please enter team name *");                                              // Line 9
+	echo T_("Enter a valid team name from 3 to 30 character");                        // Line 9
+	echo T_("Next");                                                                  // Line 10
 
 	//-------------------------------------------------content_admin\setup\setup2.html
 	echo T_("Please enter your information");                                         // Line 7
-	echo T_("First Name");                                                            // Line 13
-	echo T_("Last Name");                                                             // Line 16
-	echo T_("Position");                                                              // Line 19
-	echo T_("Only jpg and png. Max 60Kb");                                            // Line 26
+	echo T_("First Name *");                                                          // Line 12
+	echo T_("Enter a valid name from 3 to 30 character");                             // Line 12
+	echo T_("Last Name");                                                             // Line 13
+	echo T_("Enter a valid family from 3 to 50 character");                           // Line 13
+	echo T_("Job position");                                                          // Line 16
+	echo T_("Enter a valid team position from 3 to 30 character");                    // Line 16
+	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 22
+	echo T_("Finish");                                                                // Line 26
 
 	//-------------------------------------------------content_admin\setup\setup3.html
 	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 10
-	echo T_("Go to Tejarak");                                                         // Line 11
+	echo T_("Start");                                                                 // Line 12
 
 	//-------------------------------------------------content_admin\team\display.html
 	echo T_("Edit Team");                                                             // Line 6

@@ -2,43 +2,33 @@
 
 
 {%block contentCenter%}
-<div id="setup">
- <div class="flex f-column justify-center setup-card">
+<div id="setup" class="step2">
+ <div class="flex f-column justify-center dbox">
   <h2>{%trans "Please enter your information"%}</h2>
-  <form method="post" class="df" enctype="multipart/form-data">
-   <div class="f">
+  <form method="post" class="df f" data-denctype="multipart/form-data">
+   <div class="flex">
     <div class="c9">
-     <div class="f form-group form-group-padding">
-      <div class="c6">
-       <input type="text" name="name" placeholder='{%trans "First Name (required)"%}' id="name" required autofocus="">
-      </div>
-      <div class="c6">
-       <input type="text" name="family" placeholder='{%trans "Last Name"%}' id="family">
-      </div>
-      <div class="c12">
-       <input type="text" name="post" placeholder='{%trans "Position"%}' id="post">
-      </div>
+     <div class="flex">
+      <input type="text" name="name" placeholder='{%trans "First Name *"%}' id="name" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
+      <input type="text" name="family" placeholder='{%trans "Last Name"%}' id="family" maxlength='50' minlength="3" pattern=".{3,50}" title='{%trans "Enter a valid family from 3 to 50 character"%}'>
+     </div>
+     <div class="flex">
+      <input type="text" name="post" placeholder='{%trans "Job position"%}' id="post" maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid team position from 3 to 30 character"%}'>
      </div>
     </div>
     <div class="c3">
-     <input type="file" name="avatar" id="avatar">
-     <label for="avatar" class="avatar-upload">
-      <img src='{{url.static}}images/avatar/avatar.svg' alt='{%trans "Avatar"%}' class="default-avatar" title='{%trans "Only jpg and png. Max 60Kb"%}'>
+     <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png">
+     <label for="avatar">
+      <img src='{{url.static}}images/avatar/avatar.svg' alt='{%trans "Avatar"%}' title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
      </label>
     </div>
    </div>
-   <div class="f form-group form-group-padding">
-    <div class="c12">
-     <input type="submit" value='{%trans "Next"%}'>
-    </div>
-   </div>
+   <input class="b1" type="submit" value='{%trans "Finish"%}'>
   </form>
  </div>
 
  <div class="setup-step">
-  <span class="done"></span>
-  <span class="done"></span>
-  <span></span>
+  <span class="done"></span> <span class="done"></span> <span></span>
  </div>
 </div>
 {%endblock%}

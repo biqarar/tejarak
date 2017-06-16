@@ -174,9 +174,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .sharebox>a.facebook:hover,.sharebox>a.facebook:focus{background-color:#3b5998}
 .sharebox>a.linkedin:hover,.sharebox>a.linkedin:focus{background-color:#0077b5}
 .sharebox i{font-size:1.2em;vertical-align:middle;color:inherit}
-/* default form style*/
-.df button{border:none}
-.df textarea{min-height:100px;height:150px;max-height:500px;}
+
 /*vcard*/
 .vcard{font-style:normal}
 .vcard .adr{padding:1em}
@@ -196,7 +194,6 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 
 /* admin custom styles*/
 body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;background-color:#eee;}
-.df input[type="submit"], .df button{background-color:#4070c0;}
 
 /*billing*/
 .box{background-color:#eee;padding:4em;margin:1em;font-size:1.2em;border-radius:3px;}
@@ -226,35 +223,28 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 
 /* setup process*/
 #setup{margin-bottom:10vh}
-#setup .setup-card{background-color:#fff;box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);border-radius:2px;width:50em;height:30em;padding:2rem}
+#setup .dbox{width:50em;}
 #setup h2{margin-bottom:2em;text-align:center;}
 #setup h3{font-size:1.618rem;font-weight:normal;line-height:1.618;margin-bottom:1.618rem}
 #setup h3 label{display:inherit;text-align}
-#setup form{width:100%}
-#setup .form-group.form-group-padding [class*='c']{padding:.25rem}
-#setup .form-group input{display:block;width:100%;margin:0}
-#setup input[type='file']{position:absolute;z-index:-1;width:0;height:0;opacity:0}
-#setup .avatar-upload{display:block;width:110px;height:101px;margin:.25rem .25rem 0;padding:0;background-color:#eaeaea;overflow:hidden}
-#setup .avatar-upload .default-avatar{margin-top:10px}
-#setup .setup-card-logo{display:block;max-width:5em;margin:0 auto 4em;-webkit-animation-name:spin;animation-name:spin;-webkit-animation-duration:3000ms;animation-duration:3000ms;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}
-#setup .setup-card-logo img{display:block}
+#setup #avatar{padding:0;margin:0;position:absolute;z-index:-1;width:0;height:0;opacity:0}
+#setup #avatar:focus+label{background-color:rgba(0,0,0,0.1);}
+#setup #avatar+label{padding:0;display:block;height:110px;width:110px;margin:5px;}
+#setup #avatar+label img{margin:0;padding:1em;width:100%;height:100%;background-color:transparent;}
+#setup .logo{display:block;max-width:5em;margin:0 auto 4em;-webkit-animation-name:spin;animation-name:spin;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}
+#setup .logo img{display:block}
 #setup .setup-step{text-align:center;padding:2em 0 0}
 #setup .setup-step span{display:inline-block;vertical-align:middle;width:1.5em;height:1.5em;background-color:#aaa;border-radius:50%;margin:0 0.2em;}
 #setup .setup-step span.done{background-color:#8aad1f;}
 
-[data-page='setup_2'] form>.form-group-padding{margin-top:2rem}
+#setup.step2 .b1{margin-top:2em;}
+
 
 @-webkit-keyframes spin{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(360deg)}}
 @keyframes spin{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)} to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 
 
 
-
-
-/* default style of button*/
-.df-button{font-size:1.2em;line-height:2em;padding:1em 2em;cursor:pointer;transition:.3s;color:#fff;border:none;background-color:#4070c0;display:inline-block;}
-.df-button:hover{background-color:#2957a5;}
-.df-button:focus{background-color:#2957a5;color:#fff}
 
 
 
