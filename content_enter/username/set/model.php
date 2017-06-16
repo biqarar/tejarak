@@ -4,18 +4,8 @@ use \lib\utility;
 use \lib\debug;
 use \lib\db;
 
-class model extends \content_enter\username\model
+class model extends \content_enter\main\model
 {
-	/**
-	 * Gets the enter.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_username($_args)
-	{
-
-	}
-
 
 	/**
 	 * Posts an enter.
@@ -24,56 +14,45 @@ class model extends \content_enter\username\model
 	 */
 	public function post_username($_args)
 	{
-		// check inup is ok
-		if(!self::check_input('username/set'))
+		$username = utility::post('username');
+		$username = trim($username);
+		if($username)
 		{
-			debug::error(T_("Dont!"));
-			return false;
-		}
-
-		if(utility::post('ramz'))
-		{
-			$temp_ramz = utility::post('ramz');
-
-			// check min and max of usernameword and make error
-			if(!$this->check_username_syntax($temp_ramz))
+			if(mb_strlen($username) < 5)
 			{
+				debug::error(T_("You must set large than 5 character in username"));
 				return false;
 			}
 
-			// hesh ramz to find is this ramz is easy or no
-			// creazy usernameword !
-			$temp_ramz_hash = \lib\utility::hasher($temp_ramz);
-			// if debug status continue
-			if(debug::$status)
+			if(mb_strlen($username) > 50)
 			{
-				self::set_enter_session('temp_ramz', $temp_ramz);
-				self::set_enter_session('temp_ramz_hash', $temp_ramz_hash);
-			}
-			else
-			{
-				// creazy usernameword
+				debug::error(T_("You must set less than 50 character in username"));
 				return false;
 			}
+
+			// check username exist
+			$check_exist_user_name = \lib\db\users::get_by_username($username);
+
+			if(!empty($check_exist_user_name))
+			{
+				debug::error(T_("This username alreay taked!"));
+				return false;
+			}
+
+			\lib\db\users::update(['user_username' => $username], $this->login('id'));
+			// set the alert message
+			self::set_alert(T_("Your username was set"));
+			// open lock of alert page
+			self::next_step('alert');
+			// go to alert page
+			self::go_to('alert');
+
 		}
 		else
 		{
-			// plus count invalid usernameword
-			self::plus_try_session('no_usernameword_send_set');
-
-			debug::error(T_("No usernameword was send"));
+			debug::error(T_("Please enter the username"));
 			return false;
 		}
-
-		// set session verify_from set
-		self::set_enter_session('verify_from', 'set');
-		// find send way to send code
-		// and send code
-		// set step username is done
-		self::set_step_session('username', true);
-
-		// send code way
-		self::send_code_way();
 	}
 }
 ?>

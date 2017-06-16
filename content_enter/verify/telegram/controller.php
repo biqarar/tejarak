@@ -13,13 +13,6 @@ class controller extends \content_enter\main\controller
 			return;
 		}
 
-		// if the user is login redirect to base
-		parent::if_login_not_route();
-
-		// check remeber me is set
-		// if remeber me is set: login!
-		parent::check_remeber_me();
-
 		if(self::get_request_method() === 'get')
 		{
 			// if the user start my bot and wa have her chat id

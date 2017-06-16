@@ -6,6 +6,23 @@ use \lib\db;
 
 class model extends \content_enter\main\model
 {
+	/**
+	 * Removes an email.
+	 */
+	public function remove_email()
+	{
+		if($this->login('email') && $this->login('id'))
+		{
+			\lib\db\users::update(['user_email' => null], $this->login('id'));
+			// set the alert message
+			self::set_alert(T_("Your email was removed"));
+			// open lock of alert page
+			self::next_step('alert');
+			// go to alert page
+			self::go_to('alert');
+		}
+	}
+
 
 	/**
 	 * Posts an enter.
@@ -14,19 +31,19 @@ class model extends \content_enter\main\model
 	 */
 	public function post_change($_args)
 	{
+		if(utility::post('type') === 'remove')
+		{
+			$this->remove_email();
+			return;
+		}
+
 		if(!utility::post('emailNew'))
 		{
 			debug::error(T_("Plese fill the new email"));
 			return false;
 		}
 
-		if(!utility::post('email'))
-		{
-			debug::error(T_("Plese fill the old email"));
-			return false;
-		}
-
-		if(utility::post('email') == utility::post('emailNew'))
+		if($this->login('email') == utility::post('emailNew'))
 		{
 			debug::error(T_("Please select a different email"));
 			return false;

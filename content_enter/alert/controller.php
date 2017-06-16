@@ -1,20 +1,17 @@
 <?php
-namespace content_enter\verify\what;
+namespace content_enter\alert;
 
 
 class controller extends \content_enter\main\controller
 {
 	public function _route()
 	{
-
 		// if this step is locked go to error page and return
-		if(self::lock('verify/what'))
+		if(self::lock('alert'))
 		{
-			self::error_page('verify/what');
+			self::error_page('alert');
 			return;
 		}
-
-		$this->get()->ALL('verify/what');
 	}
 }
 ?>

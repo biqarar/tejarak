@@ -16,6 +16,7 @@ trait _use
 	use \content_enter\main\tools\error;
 	use \content_enter\main\tools\request_method;
 	use \content_enter\main\tools\login;
+	use \content_enter\main\tools\alert;
 
 	/**
 	 * in debug mode disable check route and lock moduls

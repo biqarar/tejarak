@@ -207,6 +207,14 @@ trait verification_code
 
 		if(intval(utility::post('code')) === intval(self::get_enter_session('verification_code')))
 		{
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * PASS/SIGNUP
+			 * PASS/SET
+			 * PASS/RECOVERY
+			 ***********************************************************
+			 */
 			if(
 				(
 					self::get_enter_session('verify_from') === 'signup' ||
@@ -221,6 +229,36 @@ trait verification_code
 				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
 			}
 
+
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * USERNAME
+			 * TRY TO REMOVE USER NAME
+			 ***********************************************************
+			 */
+			if(self::get_enter_session('verify_from') === 'username_remove' && is_numeric(self::user_data('id')))
+			{
+				// set temp ramz in use pass
+				\lib\db\users::update(['user_username' => null], self::user_data('id'));
+				// remove usename from sessions
+				unset($_SESSION['user']['username']);
+				// set the alert message
+				self::set_alert(T_("Your username was removed"));
+				// open lock of alert page
+				self::next_step('alert');
+				// go to alert page
+				self::go_to('alert');
+				return;
+			}
+
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * ENTER/DELETE
+			 * DELETE ACCOUNT
+			 ***********************************************************
+			 */
 			if(self::get_enter_session('verify_from') === 'delete')
 			{
 				if(self::get_enter_session('why'))
@@ -262,12 +300,73 @@ trait verification_code
 				self::go_to('byebye');
 			}
 
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * USERNAME/SET
+			 * USERNAME/CHANGE
+			 ***********************************************************
+			 */
+			if(
+				(
+					self::get_enter_session('verify_from') === 'username_set' ||
+					self::get_enter_session('verify_from') === 'username_change'
+				) &&
+				self::get_enter_session('temp_username') &&
+				is_numeric(self::user_data('id'))
+			  )
+			{
+				// set temp ramz in use pass
+				\lib\db\users::update(['user_username' => self::get_enter_session('temp_username')], self::user_data('id'));
+				// set the alert message
+				if(self::get_enter_session('verify_from') === 'username_set')
+				{
+					self::set_alert(T_("Your username was set"));
+				}
+				else
+				{
+					self::set_alert(T_("Your username was change"));
+				}
+
+				if(isset($_SESSION['user']) && is_array($_SESSION['user']))
+				{
+					$_SESSION['user']['username'] = self::get_enter_session('temp_username');
+				}
+
+				// open lock of alert page
+				self::next_step('alert');
+				// go to alert page
+				self::go_to('alert');
+				return;
+			}
+
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * EMAIL/SET
+			 * EMAIL/CHANGE
+			 ***********************************************************
+			 */
+			if(
+				(
+					self::get_enter_session('verify_from') === 'email_set' ||
+					self::get_enter_session('verify_from') === 'email_change'
+				) &&
+				self::get_enter_session('temp_email') &&
+				is_numeric(self::user_data('id'))
+			  )
+			{
+				// set temp ramz in use pass
+				\lib\db\users::update(['user_email' => self::get_enter_session('temp_email')], self::user_data('id'));
+			}
+
 			// set login session
 			$redirect_url = self::enter_set_login();
 
 			// save redirect url in session to get from okay page
 			self::set_enter_session('redirect_url', $redirect_url);
-
+			// set okay as next step
+			self::next_step('okay');
 			// go to okay page
 			self::go_to('okay');
 

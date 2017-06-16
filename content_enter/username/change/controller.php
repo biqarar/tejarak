@@ -12,9 +12,12 @@ class controller extends \content_enter\main\controller
 		// if the user is login redirect to base
 		parent::if_login_route();
 
+		// if the user have not an email can not change her email
+		// he must set email
 		if(!$this->login('username'))
 		{
-			self::error_page('username');
+			$this->redirector()->set_domain()->set_url('enter/username/set')->redirect();
+			return;
 		}
 
 		// parent::_route();

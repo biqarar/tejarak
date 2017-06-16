@@ -14,73 +14,61 @@ class model extends \content_enter\main\model
 	 */
 	public function post_username($_args)
 	{
-		// check inup is ok
-		if(!self::check_input('username/change'))
+		// remove username
+		if(utility::post('type') === 'remove')
 		{
-			debug::error(T_("Dont!"));
+			// set session verify_from username remove
+			self::set_enter_session('verify_from', 'username_remove');
+
+			// send code way
+			self::send_code_way();
+
+			return;
+		}
+
+		if(!utility::post('usernameNew'))
+		{
+			debug::error(T_("Plese fill the new username"));
 			return false;
 		}
 
-		// check ramz fill
-		if(!utility::post('ramz'))
+		if(mb_strlen(utility::post('usernameNew')) < 5)
 		{
-			debug::error(T_("Please fill the usernameword field"));
+			debug::error(T_("You must set large than 5 character in new username"));
 			return false;
 		}
 
-		// check ramz fill
-		if(!utility::post('ramzNew'))
+		if(mb_strlen(utility::post('usernameNew')) > 50)
 		{
-			debug::error(T_("Please fill the new usernameword field"));
+			debug::error(T_("You must set less than 50 character in new username"));
 			return false;
 		}
 
-		// check old username == new username?
-		if(utility::post('ramz') == utility::post('ramzNew'))
+
+		if($this->login('username') == utility::post('usernameNew'))
 		{
-			debug::error(T_("Please set a different usernameword!"));
+			debug::error(T_("Please select a different username"));
 			return false;
 		}
 
-		// check min and max usernameword
-		if(!$this->check_username_syntax(utility::post('ramz')))
+
+		// check username exist
+		$check_exist_user_name = \lib\db\users::get_by_username(utility::post('usernameNew'));
+
+		if(!empty($check_exist_user_name))
 		{
+			debug::error(T_("This username alreay taked!"));
 			return false;
 		}
 
-		// check min and max usernameword
-		if(!$this->check_username_syntax(utility::post('ramzNew')))
+
+		if(utility::post('usernameNew'))
 		{
-			return false;
+			self::set_enter_session('temp_username', utility::post('usernameNew'));
 		}
 
-		// check old usernameword is okay
-		if(!\lib\utility::hasher(utility::post('ramz'), $this->login('username')))
-		{
-			self::plus_try_session('change_usernameword_invalid_old');
-			debug::error(T_("Invalid old usernameword"));
-			return false;
-		}
-
-		// hesh ramz to find is this ramz is easy or no
-		// creazy usernameword !
-		$temp_ramz_hash = \lib\utility::hasher(utility::post('ramzNew'));
-		// if debug status continue
-		if(debug::$status)
-		{
-			self::set_enter_session('temp_ramz', utility::post('ramzNew'));
-			self::set_enter_session('temp_ramz_hash', $temp_ramz_hash);
-		}
-		else
-		{
-			// creazy usernameword
-			return false;
-		}
-
-		// set session verify_from change
-		self::set_enter_session('verify_from', 'change');
-		// find send way to send code
-		// and send code
+		// set session verify_from set
+		self::set_enter_session('verify_from', 'username_change');
 
 		// send code way
 		self::send_code_way();

@@ -1,7 +1,7 @@
 <?php
 namespace content_enter\username\set;
 
-class view extends \content_enter\username\view
+class view extends \content_enter\main\view
 {
 
 
