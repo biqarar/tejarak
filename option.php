@@ -74,16 +74,29 @@ self::$social['telegram']['botan']            = null;
 /**
 * FACEBOOK
 */
-self::$social['facebook']['status']           = false;
+self::$social['facebook']['status']           = true;
 self::$social['facebook']['name']             = 'tejarak';
 self::$social['facebook']['key']              = null;
-self::$social['facebook']['app_id']           = null;
-self::$social['facebook']['app_secret']       = null;
+self::$social['facebook']['app_id']           = '236377626849014';
+self::$social['facebook']['app_secret']       = 'c7055125a0e70d2125664b009df3f3cd';
+self::$social['facebook']['api_version']      = '2.9';
 self::$social['facebook']['redirect_url']     = null;
 self::$social['facebook']['required_scope']   = null;
 self::$social['facebook']['page_id']          = null;
 self::$social['facebook']['access_token']     = null;
-self::$social['facebook']['client_token']     = null;
+self::$social['facebook']['client_token']     = 'df0047eb1af1e2acba2a3645bcb4f472';
+
+/**
+* GOOGLE
+*/
+self::$social['google']['status']                      = true;
+self::$social['google']['clinet_id']                   = '395232553225-140n5eq7ha34thagrbcnns125ocmqk96.apps.googleusercontent.com';
+self::$social['google']['project_id']                  = 'ermile-tejarak';
+self::$social['google']['auth_uri']                    = 'https://accounts.google.com/o/oauth2/auth';
+self::$social['google']['token_uri']                   = 'https://accounts.google.com/o/oauth2/token';
+self::$social['google']['auth_provider_x509_cert_url'] = 'https://www.googleapis.com/oauth2/v1/certs';
+self::$social['google']['client_secret']               = 'h3q_yNJFqbqO5SV-PK2cXMmc';
+
 
 /**
 * TWITTER
