@@ -39,6 +39,14 @@ trait user_data
 				}
 				break;
 
+			// get use data by email
+			case 'email':
+				if(self::$email)
+				{
+					$data = \lib\db\users::get_by_email(self::$email);
+				}
+				break;
+
 			default:
 				# code...
 				break;
@@ -83,27 +91,38 @@ trait user_data
 	/**
 	*	Signup new user
 	*/
-	public static function signup()
+	public static function signup($_args = [])
 	{
+
+		$default_args =
+		[
+			'mobile'      => null,
+			'displayname' => null,
+			'password'    => null,
+			'email'       => null,
+			'status'      => 'awaiting'
+		];
+
+		if(is_array($_args))
+		{
+			$_args = array_merge($default_args, $_args);
+		}
+
 		$mobile = self::get_enter_session('mobile');
 		if($mobile)
 		{
 			// set mobile to use in other function
-			self::$mobile = $mobile;
+			self::$mobile    = $mobile;
+			$_args['mobile'] = $mobile;
+			$_args['email']  = self::$email;
 
-			$args =
-			[
-				'mobile'      => $mobile,
-				'displayname' => null,
-				'password'    => null,
-				'status'      => 'awaiting'
-			];
-			$user_id = \lib\db\users::signup($args);
+			$user_id = \lib\db\users::signup($_args);
 
 			if($user_id)
 			{
 				self::load_user_data();
 			}
+			return $user_id;
 		}
 	}
 }

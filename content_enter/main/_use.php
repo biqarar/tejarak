@@ -57,6 +57,13 @@ trait _use
 	public static $username          = null;
 
 	/**
+	 * user email
+	 * to load data by this
+	 *
+	 * @var        <type>
+	 */
+	public static $email             = null;
+	/**
 	 * the user id
 	 * to load data by this
 	 *

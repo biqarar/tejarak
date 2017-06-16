@@ -8,7 +8,7 @@ class view extends \content_enter\main\view
 	{
 		parent::config();
 
-		$this->data->auth_url = \lib\google\google::auth_url();
+		$this->data->auth_url = \lib\social\google::auth_url();
 	}
 }
 ?>
