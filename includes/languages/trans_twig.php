@@ -9,7 +9,7 @@ private function transtext()
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
 	echo T_("Name");                                                                  // Line 11
 	echo T_("Full Name");                                                             // Line 20
-	echo T_("Mobile");                                                                // Line 21
+	echo T_("Mobile");                                                                // Line 16
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
 	echo T_("Email");                                                                 // Line 61
 	echo T_("Message");                                                               // Line 32
@@ -31,14 +31,14 @@ private function transtext()
 	echo T_("We can help.");                                                          // Line 23
 	echo T_("Get in Touch");                                                          // Line 141
 	echo T_("FREE");                                                                  // Line 22
-	echo T_("Month");                                                                 // Line 87
+	echo T_("Month");                                                                 // Line 79
 	echo T_("Learn More");                                                            // Line 28
 	echo T_("Pro");                                                                   // Line 23
 	echo T_("Business");                                                              // Line 24
 	echo T_("Enterprise");                                                            // Line 25
-	echo T_("Enter your team name");                                                  // Line 136
-	echo T_("Get Started");                                                           // Line 137
-	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 139
+	echo T_("Enter your team name");                                                  // Line 120
+	echo T_("Get Started");                                                           // Line 121
+	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 123
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 76
@@ -367,8 +367,8 @@ private function transtext()
 	echo T_("Only jpg and png. Max 60Kb");                                            // Line 26
 
 	//-------------------------------------------------content_admin\setup\setup3.html
-	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 7
-	echo T_("Go to Tejarak");                                                         // Line 8
+	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 10
+	echo T_("Go to Tejarak");                                                         // Line 11
 
 	//-------------------------------------------------content_admin\team\display.html
 	echo T_("Edit Team");                                                             // Line 6
@@ -380,22 +380,46 @@ private function transtext()
 	//-------------------------------------------------content_api\v1\doc\display.html
 	echo T_("Tejarak API");                                                           // Line 4
 
-	//-------------------------------------------------content_enter\pass\display.html
-	echo T_("Please enter valid mobile number");                                      // Line 21
-	echo T_("Password");                                                              // Line 39
-	echo T_("Go");                                                                    // Line 45
+	//--------------------------------------------------content_enter\ban\display.html
+	echo T_("What are you doing!");                                                   // Line 7
+	echo T_("If you are bot, be easy and call your mom");                             // Line 8
+	echo T_("If you are human being, what are you doing here! be personable...");     // Line 9
 
-	//------------------------------------------content_enter\pass\signup\display.html
+	//------------------------------------------------content_enter\block\display.html
+	echo T_("You are blocked!");                                                      // Line 7
+
+	//-----------------------------------------------content_enter\byebye\display.html
+	echo T_("Bye Bye :(");                                                            // Line 7
+	echo T_("Pish ma biya.");                                                         // Line 8
+
+	//-----------------------------------------------content_enter\delete\display.html
+	echo T_("Why you want to delete your account?");                                  // Line 6
+
+	//-------------------------------------------------content_enter\okay\display.html
+	echo T_("You are logined ;)");                                                    // Line 8
+	echo T_("Be patient or");                                                         // Line 9
+	echo T_("click here!");                                                           // Line 9
+
+	//-------------------------------------------------content_enter\pass\display.html
+	echo T_("Can't access your account?");                                            // Line 12
+
+	//----------------------------------------content_enter\pass\recovery\display.html
+	echo T_("Remembered your password?");                                             // Line 11
+
+	//---------------------------------------------content_enter\sessions\display.html
+	echo T_("Terminate");                                                             // Line 11
 
 	//------------------------------------------content_enter\verify\call\display.html
-	echo T_("We can not find eny way to send verification code to you!");             // Line 6
+	echo T_("Please check your call");                                                // Line 5
 
 	//-----------------------------------------content_enter\verify\email\display.html
+	echo T_("We can not find eny way to send verification code to you!");             // Line 6
 
 	//-------------------------------------------content_enter\verify\sms\display.html
+	echo T_("Please check your sms");                                                 // Line 5
 
 	//--------------------------------------content_enter\verify\telegram\display.html
-	echo T_("Please check your telegram");                                            // Line 6
+	echo T_("Please check your telegram");                                            // Line 5
 
 	//------------------------------------------content_enter\verify\what\display.html
 
