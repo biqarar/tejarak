@@ -98,6 +98,33 @@ self::$social['google']['auth_provider_x509_cert_url'] = 'https://www.googleapis
 self::$social['google']['client_secret']               = 'h3q_yNJFqbqO5SV-PK2cXMmc';
 
 
+
+self::$social['google']['status']                      = true;
+self::$social['google']['clinet_id']                   = '395232553225-5filcn07d2rdjl2fld57mf8e50ac146j.apps.googleusercontent.com';
+self::$social['google']['project_id']                  = 'ermile-tejarak';
+self::$social['google']['auth_uri']                    = 'https://accounts.google.com/o/oauth2/auth';
+self::$social['google']['token_uri']                   = 'https://accounts.google.com/o/oauth2/token';
+self::$social['google']['auth_provider_x509_cert_url'] = 'https://www.googleapis.com/oauth2/v1/certs';
+self::$social['google']['client_secret']               = 'oo6LPHZXJA6JWkgPgPb7uJ0U';
+
+
+
+// {
+//   "web": {
+//     "client_id": "395232553225-5filcn07d2rdjl2fld57mf8e50ac146j.apps.googleusercontent.com",
+//     "project_id": "ermile-tejarak",
+//     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+//     "token_uri": "https://accounts.google.com/o/oauth2/token",
+//     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+//     "client_secret": "oo6LPHZXJA6JWkgPgPb7uJ0U",
+//     "redirect_uris": [
+//       "https://tejarak.com/enter/google"
+//     ]
+//   }
+// }
+
+
+
 /**
 * TWITTER
 */
