@@ -19,6 +19,11 @@ class model extends \content_enter\main\model
 	 */
 	public function send_telegram_code()
 	{
+		// the telegram is off for this project
+		if(!\lib\option::social('telegram', 'status'))
+		{
+			return false;
+		}
 		// check the user have chat id or no
 		if(!self::user_data('user_chat_id') && self::user_data('user_start_tg_bot'))
 		{

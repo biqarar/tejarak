@@ -26,8 +26,9 @@ class model extends \content_enter\main\model
 			if(\lib\utility::hasher($ramz, self::user_data('user_pass')))
 			{
 				// if the user set two step verification send code
-				if(self::user_data('user_twostep'))
+				if(self::user_data('user_two_step'))
 				{
+					self::set_enter_session('verify_from', 'two_step');
 					// find way and redirect to it
 					self::send_code_way();
 					return;

@@ -360,6 +360,43 @@ trait verification_code
 				\lib\db\users::update(['user_email' => self::get_enter_session('temp_email')], self::user_data('id'));
 			}
 
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * TWO STEP VERICICATION
+			 ***********************************************************
+			 */
+			if(self::get_enter_session('verify_from') === 'two_step' &&	is_numeric(self::user_data('id')))
+			{
+				// no thing yet
+			}
+
+
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * TWO STEP VERICICATION SET
+			 ***********************************************************
+			 */
+			if(self::get_enter_session('verify_from') === 'two_step_set' &&	is_numeric(self::user_data('id')))
+			{
+				// set on two_step of this user
+				\lib\db\users::update(['user_two_step' => 1], self::user_data('id'));
+			}
+
+
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
+			 * TWO STEP VERICICATION SET
+			 ***********************************************************
+			 */
+			if(self::get_enter_session('verify_from') === 'two_step_unset' &&	is_numeric(self::user_data('id')))
+			{
+				// set off two_step of this user
+				\lib\db\users::update(['user_two_step' => 0], self::user_data('id'));
+			}
+
 			// set login session
 			$redirect_url = self::enter_set_login();
 
