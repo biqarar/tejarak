@@ -43,7 +43,7 @@ trait user_data
 			case 'email':
 				if(self::$email)
 				{
-					$data = \lib\db\users::get_by_email(self::$email);
+					$data = \lib\db\users::get_by_email(self::$email, true);
 				}
 				break;
 
@@ -111,6 +111,11 @@ trait user_data
 		$mobile = self::get_enter_session('mobile');
 		if($mobile)
 		{
+			$update_user = [];
+			if(isset($_args['user_google_mail']))
+			{
+				$update_user['user_google_mail'] = $_args['user_google_mail'];
+			}
 			// set mobile to use in other function
 			self::$mobile    = $mobile;
 			$_args['mobile'] = $mobile;
@@ -120,6 +125,10 @@ trait user_data
 
 			if($user_id)
 			{
+				if(!empty($update_user))
+				{
+					\lib\db\users::update($update_user, $user_id);
+				}
 				self::load_user_data();
 			}
 			return $user_id;

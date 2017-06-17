@@ -361,10 +361,15 @@ trait verification_code
 					case 'google_email_exist':
 						// the user click on dont will mobile
 						// we save this time to user_dont_will_set_mobile to never show this message again
+						$update_user_google = [];
+
 						if(self::get_enter_session('dont_will_set_mobile'))
 						{
-							\lib\db\users::update(['user_dont_will_set_mobile' => date("Y-m-d H:i:s")], self::user_data('id'));
+							$update_user_google['user_dont_will_set_mobile'] = date("Y-m-d H:i:s");
 						}
+
+						\lib\db\users::update($update_user_google, self::user_data('id'));
+
 						self::go_to('okay');
 						return;
 						break;

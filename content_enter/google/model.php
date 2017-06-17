@@ -64,6 +64,8 @@ class model extends \content_enter\main\model
 						$args['displayname'] = trim(google::user_info('familyName'). ' '. google::user_info('givenName'));
 					}
 
+					$args['user_google_mail'] = google::user_info('email');
+
 					self::set_enter_session('mobile_request_from', 'google_email_not_exist');
 
 					self::set_enter_session('must_signup', $args);
