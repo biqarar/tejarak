@@ -100,7 +100,14 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 #offer-enterprise-small h3, #offer-enterprise-small h4{padding:0 5%;color:#fff}
 #offer-enterprise-small .btn{padding:0 5em;}
 
-#plans{background-color:#fff}
+#plans {
+  background-image: url(../images/pattern/confectionary.png);
+  /*background-image: url(../images/pattern/dark-triangles.png);*/
+  /*background-image: url(../images/pattern/pinkdust.png);*/
+  /*background-image: url(../images/pattern/Sports.png);*/
+  /*background-image: url(../images/pattern/weather.png);*/
+  /*background-image: url(../images/pattern/zigzagwool.png);*/
+}
 
 #plans .cn{width:80%}
 
