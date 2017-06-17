@@ -224,8 +224,8 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 /* setup process*/
 #setup{width:100%;max-height:100%;}
 #setup .dbox{width:500px;}
-#setup h2{margin-bottom:2em;text-align:center;}
-#setup h3{font-size:1.618rem;font-weight:normal;line-height:1.618;margin-bottom:1.618rem}
+#setup h2{margin-bottom:1em;text-align:center;}
+#setup h3{font-size:1.6rem;font-weight:normal;line-height:1.6;margin-bottom:1em}
 #setup h3 label{display:inherit;text-align}
 #setup #avatar{padding:0;margin:0;position:absolute;z-index:-1;width:0;height:0;opacity:0}
 #setup #avatar:focus+label{background-color:rgba(0,0,0,0.1);}
@@ -238,6 +238,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 #setup .setup-step span.done{background-color:#8aad1f;}
 
 #setup.step2 .b1{margin-top:2em;}
+#setup .c3.s12{order:-1}
 
 
 @-webkit-keyframes spin{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(360deg)}}
