@@ -26,7 +26,7 @@ class view extends \content_enter\main\view
 						break;
 
 					case 'call':
-						$myDesc = T_("We near call to you");
+						$myDesc = T_("We try to call to you");
 						break;
 
 					case 'sms':
@@ -48,7 +48,7 @@ class view extends \content_enter\main\view
 						break;
 
 					case 'call':
-						$myDesc = T_("We near call to you, you try to delete account");
+						$myDesc = T_("We try to call to you, you try to delete account");
 						break;
 
 					case 'sms':
@@ -70,7 +70,7 @@ class view extends \content_enter\main\view
 						break;
 
 					case 'call':
-						$myDesc = T_("We near call to you, you try to recovery your password");
+						$myDesc = T_("We try to call to you, you try to recovery your password");
 						break;
 
 					case 'sms':
@@ -93,7 +93,7 @@ class view extends \content_enter\main\view
 						break;
 
 					case 'call':
-						$myDesc = T_("We near call to you, you try to change your password");
+						$myDesc = T_("We try to call to you, you try to change your password");
 						break;
 
 					case 'sms':
