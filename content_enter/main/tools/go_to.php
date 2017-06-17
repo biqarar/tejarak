@@ -42,9 +42,12 @@ trait go_to
 	 *
 	 * @param      <type>  $_url   The url
 	 */
-	public static function go_redirect($_url)
+	public static function go_redirect($_url, $_direct = null)
 	{
-		debug::msg('direct', true);
+		if($_direct)
+		{
+			debug::msg('direct', true);
+		}
 		$redirect = new \lib\redirector($_url);
 		$redirect->redirect();
 	}
