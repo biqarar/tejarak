@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-06-17 17:35+0430\n"
-"PO-Revision-Date: 2017-06-17 17:35+0430\n"
+"POT-Creation-Date: 2017-06-17 18:30+0430\n"
+"PO-Revision-Date: 2017-06-17 18:47+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4623,15 +4623,15 @@ msgstr "تنها مقدار عددی می‌تواند در کد ثبت‌نام
 
 #: tejarak/content_api/v1/team/tools/add.php:100
 msgid "Only numeric value can set in Economical code"
-msgstr ""
+msgstr "تنها مقادیر عددی برای کد اقتصادی قابل استفاده هستند"
 
 #: tejarak/content_api/v1/team/tools/add.php:160
 msgid "Team brand must be less than 500 character"
-msgstr ""
+msgstr "نام تجاری تیم باید کمتر از ۵۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:181
 msgid "Can not set id in adding team"
-msgstr ""
+msgstr "در زمان افزودن تیم نمی‌توانید شناسه را وارد کنید"
 
 #: tejarak/content_api/v1/team/tools/add.php:206
 msgid "Id of team not found"
@@ -4639,19 +4639,19 @@ msgstr "شناسه تیم یافت نشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:230
 msgid "Invalid method of api"
-msgstr ""
+msgstr "متد API نامعتبر"
 
 #: tejarak/content_api/v1/team/tools/delete.php:39
 msgid "Brand not set"
-msgstr ""
+msgstr "نام تجاری وارد نشده است"
 
 #: tejarak/content_api/v1/team/tools/delete.php:61
 msgid "Brand not found"
-msgstr ""
+msgstr "نام تجاری یافت نشد"
 
 #: tejarak/content_api/v1/team/tools/get.php:160
 msgid "Invalid team brand"
-msgstr ""
+msgstr "نام تجاری تیم نامعتبر است"
 
 #: tejarak/content_api/v1/team/tools/get.php:164
 msgid "Operation complete"
@@ -4659,7 +4659,7 @@ msgstr "عملیات کامل شد"
 
 #: tejarak/content_api/v1/team/tools/get.php:176
 msgid "You can not load this team"
-msgstr ""
+msgstr "شما نمی‌توانید این تیم را بارگذاری کنید"
 
 #: tejarak/content_enter/alert/view.php:12
 msgid "Alert!"
@@ -4677,7 +4677,7 @@ msgstr "شما غذغن شدید!"
 
 #: tejarak/content_enter/byebye/view.php:12
 msgid "Come back to us!"
-msgstr ""
+msgstr "پیش ما برگردید!"
 
 #: tejarak/content_enter/delete/request/model.php:34
 #: tejarak/content_enter/mobile/request/model.php:37
@@ -4725,7 +4725,7 @@ msgstr "تغییر بده"
 
 #: tejarak/content_enter/email/set/model.php:26
 msgid "No email was send"
-msgstr ""
+msgstr "ایمیلی ارسال نشده است"
 
 #: tejarak/content_enter/email/set/view.php:13
 #, fuzzy
@@ -4741,7 +4741,7 @@ msgstr "رایانامه‌ی معتبر را وارد کنید!"
 
 #: tejarak/content_enter/google/view.php:19
 msgid "Enter to :name with google"
-msgstr ""
+msgstr "با استفاده از گوگل وارد :name شوید"
 
 #: tejarak/content_enter/home/model.php:36
 #: tejarak/content_enter/main/tools/verification_code.php:183
@@ -4801,22 +4801,22 @@ msgstr "کد اشتباه، دوباره تلاش کنید"
 #: tejarak/content_enter/mobile/change/model.php:27
 #: tejarak/content_enter/pass/change/model.php:27
 msgid "Please fill the password field"
-msgstr ""
+msgstr "لطفا کلمه‌ی عبور را وارد کنید"
 
 #: tejarak/content_enter/mobile/change/model.php:34
 #: tejarak/content_enter/pass/change/model.php:34
 msgid "Please fill the new password field"
-msgstr ""
+msgstr "لطفا کلمه‌ی عبور جدید را وارد کنید"
 
 #: tejarak/content_enter/mobile/change/model.php:41
 #: tejarak/content_enter/pass/change/model.php:41
 msgid "Please set a different password!"
-msgstr ""
+msgstr "لطفا یک رمز عبور متفاوت وارد کنید!"
 
 #: tejarak/content_enter/mobile/change/model.php:61
 #: tejarak/content_enter/pass/change/model.php:61
 msgid "Invalid old password"
-msgstr ""
+msgstr "کلمه‌ی عبور قدیمی نامعتبر است"
 
 #: tejarak/content_enter/mobile/change/view.php:11
 #, fuzzy
@@ -4858,7 +4858,7 @@ msgstr "زگهواره تا گور دانش بجوی!"
 
 #: tejarak/content_enter/pass/model.php:16
 msgid "Please enter your password"
-msgstr ""
+msgstr "لطفا کلمه‌ی عبور خود را وارد کنید"
 
 #: tejarak/content_enter/pass/model.php:52
 msgid "Invalid password, try again"
@@ -4866,11 +4866,11 @@ msgstr "گذرواژه‌ی اشتباه، دوباره تلاش کنید"
 
 #: tejarak/content_enter/pass/model.php:77
 msgid "You must set 6 character and large in password"
-msgstr ""
+msgstr "کلمه‌ی عبور باید حداقل ۶ کاراکتر باشد"
 
 #: tejarak/content_enter/pass/model.php:87
 msgid "You must set less than 99 character in password"
-msgstr ""
+msgstr "کلمه‌ی عبور باید کمتر از ۹۹ کاراکتر باشد"
 
 #: tejarak/content_enter/pass/recovery/model.php:64
 msgid "Invalid Password"
@@ -4949,7 +4949,7 @@ msgstr "لطفا یک گزینه را انتخاب کنید"
 #: tejarak/content_enter/username/change/model.php:60
 #: tejarak/content_enter/username/set/model.php:38
 msgid "This username alreay taked!"
-msgstr ""
+msgstr "این نام کاربری در حال حاضر گرفته شده است"
 
 #: tejarak/content_enter/username/change/view.php:12
 #, fuzzy
@@ -4959,11 +4959,11 @@ msgstr "نام کاربری"
 
 #: tejarak/content_enter/username/model.php:20
 msgid "Please fill the username field"
-msgstr ""
+msgstr "لطفا نام کاربری را وارد کنید"
 
 #: tejarak/content_enter/username/model.php:40
 msgid "Username not found"
-msgstr ""
+msgstr "نام کاربری یافت نشد"
 
 #: tejarak/content_enter/username/set/model.php:23
 #, fuzzy
@@ -5039,11 +5039,12 @@ msgstr "ما در حال تلاش برای تماس با شما هستیم"
 
 #: tejarak/content_enter/verify/view.php:33
 msgid "Your verifycation code send to mobile number by sms"
-msgstr ""
+msgstr "کد تایید شما توسط پیامک ارسال شد"
 
 #: tejarak/content_enter/verify/view.php:47
 msgid "Your verifycation code send to your telegram, you try to delete account"
 msgstr ""
+"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید"
 
 #: tejarak/content_enter/verify/view.php:51
 #, fuzzy
@@ -5055,15 +5056,17 @@ msgstr "چرا می‌خواهید حساب‌کاربری خود را حذف ک
 msgid ""
 "Your verifycation code send to mobile number by sms, you try to delete account"
 msgstr ""
+"کد تایید شما توسط پیامک ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید"
 
 #: tejarak/content_enter/verify/view.php:59
 msgid "What happend?, dont delete account"
-msgstr ""
+msgstr "چه اتفاقی افتاده؟ حساب کاربری خود را پاک نکنید"
 
 #: tejarak/content_enter/verify/view.php:69
 msgid ""
 "Your verifycation code send to your telegram, you try to recovery your password"
 msgstr ""
+"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید کلمه‌ی عبور خود را بازیابی کنید"
 
 #: tejarak/content_enter/verify/view.php:73
 #, fuzzy
@@ -5076,29 +5079,30 @@ msgid ""
 "Your verifycation code send to mobile number by sms, you try to recovery your "
 "password"
 msgstr ""
+"کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود را بازیابی کنید"
 
 #: tejarak/content_enter/verify/view.php:81
 msgid "What happend?, dont recovery your password"
-msgstr ""
+msgstr "چه اتفاقی افتاده؟ کلمه‌ی عبور خود را بازیابی نکنید"
 
 #: tejarak/content_enter/verify/view.php:92
 msgid ""
 "Your verifycation code send to your telegram, you try to change your password"
-msgstr ""
+msgstr "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود تغییر دهید"
 
 #: tejarak/content_enter/verify/view.php:96
 msgid "We try to call to you, you try to change your password"
-msgstr ""
+msgstr "با شما تماس خواهیم گرفت، شما سعی دارید کلمه‌ی عبور خود را تغییر دهید"
 
 #: tejarak/content_enter/verify/view.php:100
 msgid ""
 "Your verifycation code send to mobile number by sms, you try to change your "
 "password"
-msgstr ""
+msgstr "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود تغییر دهید"
 
 #: tejarak/content_enter/verify/view.php:104
 msgid "What happend?, dont change your password"
-msgstr ""
+msgstr "چه اتفاقی افتاده؟ کلمه‌ی عبور خود را تغییر ندهید"
 
 #: tejarak/content_enter/verify/view.php:117
 #, fuzzy
@@ -5114,7 +5118,7 @@ msgstr "گزارش از طریق تلگرام"
 
 #: tejarak/content_enter/verify/view.php:125
 msgid "verify with SMS"
-msgstr ""
+msgstr "تایید با پیامک"
 
 #: tejarak/includes/cls/database/tejarak/translation.php:26
 msgid "hours"
@@ -5554,7 +5558,7 @@ msgstr "نسخه بتای تجارک منتشر شد"
 
 #: tejarak/includes/languages/trans_twig.php:117
 msgid "Finally Tejarak logo is accepted and we started branding"
-msgstr ""
+msgstr "بالاخره نشان‌واره‌ی تجارک پذیرفته شد و ما برندسازی خود را آغاز کردیم"
 
 #: tejarak/includes/languages/trans_twig.php:118
 msgid "Alfa version of Tejarak released"
@@ -6484,7 +6488,7 @@ msgstr "تاریخ خروچ"
 
 #: tejarak/includes/languages/trans_twig.php:338
 msgid "member Dashboard"
-msgstr ""
+msgstr "داشبورد اعضا"
 
 #: tejarak/includes/languages/trans_twig.php:341
 msgid "member"
@@ -6590,7 +6594,7 @@ msgstr "کد ثبت‌نام"
 
 #: tejarak/includes/languages/trans_twig.php:385
 msgid "Economical code"
-msgstr ""
+msgstr "کد اقتصادی"
 
 #: tejarak/includes/languages/trans_twig.php:389
 msgid "Tejarak API"
@@ -6610,11 +6614,11 @@ msgstr "اگر انسان هستید، اینجا چیکار میکنید! با 
 
 #: tejarak/includes/languages/trans_twig.php:397
 msgid "You are blocked becauese of some reason!"
-msgstr ""
+msgstr "شما به دلایلی بلاک شده‌اید!"
 
 #: tejarak/includes/languages/trans_twig.php:398
 msgid "If have problem"
-msgstr ""
+msgstr "در صورت بروز مشکل"
 
 #: tejarak/includes/languages/trans_twig.php:399
 msgid "Contact us"
@@ -6622,15 +6626,15 @@ msgstr "با ما تماس بگیرید"
 
 #: tejarak/includes/languages/trans_twig.php:402
 msgid "We are so sorry for losing you!"
-msgstr ""
+msgstr "ما برای از دست دادن شما خیلی متاسفیم!"
 
 #: tejarak/includes/languages/trans_twig.php:403
 msgid "if you want you can come back to"
-msgstr ""
+msgstr "در صورتی که بخواهید می‌توانید برگردید"
 
 #: tejarak/includes/languages/trans_twig.php:404
 msgid "join us"
-msgstr ""
+msgstr "به ما ملحق شوید"
 
 #: tejarak/includes/languages/trans_twig.php:405
 msgid "Bye Bye :("
