@@ -8,6 +8,9 @@ class view extends \content_enter\main\view
 		parent::config();
 
 		$this->data->get_username = $this->login('username');
+
+		$this->data->page['title']   = T_('Change username');
+		$this->data->page['desc']    = $this->data->page['title'];
 	}
 }
 ?>

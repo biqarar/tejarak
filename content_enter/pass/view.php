@@ -39,12 +39,17 @@ class view extends \content_enter\main\view
 
 			case 'signup':
 				$this->data->page['title'] = T_('Set Password');
-				$this->data->page['desc']  = T_('Please set your password');
+				$this->data->page['desc']  = T_('Please set your password to secure signup');
 				break;
 
 			case 'change':
-				$this->data->page['title'] = T_('Change Password');
+				$this->data->page['title'] = T_('Change to new Password');
 				$this->data->page['desc']  = T_('Please set your old and new password to change it');
+				break;
+
+			case 'set':
+				$this->data->page['title'] = T_('Set Password');
+				$this->data->page['desc']  = T_('Please set password to secure your account');
 				break;
 
 			default:
