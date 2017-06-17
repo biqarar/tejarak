@@ -14,6 +14,15 @@ trait go_to
 	 */
 	public static function go_to($_url = null)
 	{
+		if(isset($_SESSION['go_to']) && is_array($_SESSION['go_to']))
+		{
+			array_push($_SESSION['go_to'], $_url);
+		}
+		else
+		{
+			$_SESSION['go_to'] = [$_url];
+		}
+
 		switch ($_url)
 		{
 			// redirect to base

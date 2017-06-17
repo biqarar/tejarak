@@ -467,6 +467,8 @@ trait verification_code
 				{
 					// sign up user
 					$user_id = self::signup(self::get_enter_session('must_signup'));
+					self::$user_id = $user_id;
+					self::load_user_data('user_id');
 					if($user_id)
 					{
 						\lib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], $user_id);
