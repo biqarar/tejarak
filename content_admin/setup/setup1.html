@@ -5,9 +5,11 @@
 <div id="setup" class="step1">
  <div class="flex f-column justify-center dbox">
   <h2>{%trans "Welcome to Tejarak initialization process!"%}</h2>
-  <form method="post" class="df flex">
-   <input type="text" name="title" placeholder='{%trans "Please enter team name *"%}' value="{{team.title}}" autocomplete="off" autofocus required maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid team name from 3 to 30 character"%}'>
-   <button class="b1 w150">{%trans "Next"%}</button>
+  <form method="post" class="df f g1">
+   <div class="c8 s12">
+    <input type="text" name="title" placeholder='{%trans "Please enter team name *"%}' value="{{team.title}}" autocomplete="off" autofocus required maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid team name from 3 to 30 character"%}'>
+   </div>
+   <div class="c4 s12"><button class="b1">{%trans "Next"%}</button></div>
   </form>
  </div>
 

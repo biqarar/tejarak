@@ -229,7 +229,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 #setup h3 label{display:inherit;text-align}
 #setup #avatar{padding:0;margin:0;position:absolute;z-index:-1;width:0;height:0;opacity:0}
 #setup #avatar:focus+label{background-color:rgba(0,0,0,0.1);}
-#setup #avatar+label{padding:0;display:block;height:110px;width:110px;margin:5px;}
+#setup #avatar+label{padding:0;display:block;height:110px;width:110px;margin:5px auto;}
 #setup #avatar+label img{margin:0;padding:1em;width:100%;height:100%;background-color:transparent;}
 #setup .logo{display:block;max-width:5em;margin:0 auto 4em;-webkit-animation-name:spin;animation-name:spin;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}
 #setup .logo img{display:block}
