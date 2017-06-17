@@ -15,7 +15,7 @@ class controller extends \content_a\main\controller
 		// redirect setup to setup/1
 		if($url === 'setup')
 		{
-			$this->redirector()->set_domain()->set_url('admin/setup/1')->redirect();
+			$this->redirector()->set_domain()->set_url('a/setup/1')->redirect();
 			return;
 		}
 

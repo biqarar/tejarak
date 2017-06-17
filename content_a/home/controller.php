@@ -15,7 +15,7 @@ class controller extends \content_a\main\controller
 		// if user_setup is null redirect to setup page
 		if(!$this->login('setup'))
 		{
-			$this->redirector()->set_domain()->set_url('admin/setup')->redirect();
+			$this->redirector()->set_domain()->set_url('a/setup')->redirect();
 			return;
 		}
 

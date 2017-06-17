@@ -18,10 +18,10 @@ class controller extends \content_a\main\controller
 
 
 		// route url like:
-		// admin/ermile/member
-		// admin/ermile/member=123
-		// admin/ermile/branch=sarshomar/member
-		// admin/ermile/branch=sarshomar/member=123
+		// a/ermile/member
+		// a/ermile/member=123
+		// a/ermile/branch=sarshomar/member
+		// a/ermile/branch=sarshomar/member=123
 		if(
 			preg_match("/^team\/([a-zA-Z0-9]+)\/branch\=([a-zA-Z0-9]+)\/member(|\=([a-zA-Z0-9]+))$/", $url) ||
 			preg_match("/^team\/([a-zA-Z0-9]+)\/member(|\=([a-zA-Z0-9]+))$/", $url)
@@ -31,14 +31,14 @@ class controller extends \content_a\main\controller
 			return;
 		}
 
-		// the url like this admin/ermile/branch
+		// the url like this a/ermile/branch
 		if(preg_match("/^team\/([a-zA-Z0-9]+)\/branch(|\=([a-zA-Z0-9]+))$/", $url))
 		{
 			\lib\router::set_controller('content_a\branch\controller');
 			return;
 		}
 
-		// the url like this admin/ermile/sarshomar
+		// the url like this a/ermile/sarshomar
 		// load the member list
 		// if(preg_match("/^team\/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$/", $url, $split))
 		// {

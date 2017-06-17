@@ -84,7 +84,7 @@ class model extends \content_a\main\model
 
 			if($new_brand && $new_brand != $request['team'])
 			{
-				$this->redirector()->set_domain()->set_url("admin/team/$new_brand");
+				$this->redirector()->set_domain()->set_url("a/team/$new_brand");
 			}
 		}
 	}

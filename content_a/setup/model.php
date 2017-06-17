@@ -69,7 +69,7 @@ class model extends \content_a\main\model
 		// if the team is added redirect to setup 2
 		if(debug::$status)
 		{
-			$this->redirector()->set_domain()->set_url('admin/setup/2');
+			$this->redirector()->set_domain()->set_url('a/setup/2');
 		}
 	}
 
@@ -179,7 +179,7 @@ class model extends \content_a\main\model
 		// if the member is added redirect to setup 3
 		if(debug::$status)
 		{
-			$this->redirector()->set_domain()->set_url('admin/setup/3');
+			$this->redirector()->set_domain()->set_url('a/setup/3');
 		}
 	}
 
