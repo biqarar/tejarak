@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-06-16 17:58+0430\n"
-"PO-Revision-Date: 2017-06-16 17:58+0430\n"
+"POT-Creation-Date: 2017-06-17 17:35+0430\n"
+"PO-Revision-Date: 2017-06-17 17:35+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -509,7 +509,7 @@ msgstr "صفحه نخست"
 #: saloos/lib/view/twigAddons.php:350
 #: saloos/saloos-addons/includes/languages/trans_addons.php:335
 #: tejarak/includes/languages/trans_addons.php:335
-#: tejarak/includes/languages/trans_twig.php:54
+#: tejarak/includes/languages/trans_twig.php:59
 msgid "Home"
 msgstr "صفحه نخست"
 
@@ -785,7 +785,7 @@ msgstr "کتاب‌ها"
 
 #: saloos/saloos-addons/content_cp/manifest.php:48
 #: saloos/saloos-addons/content_cp1/manifest.php:48
-#: tejarak/includes/languages/trans_twig.php:146
+#: tejarak/includes/languages/trans_twig.php:151
 msgid "Help Center"
 msgstr "مرکز راهنمایی"
 
@@ -991,7 +991,7 @@ msgstr "تعریف یا ویرایش سطوح‌دسترسی برای اجازه
 #: saloos/saloos-addons/content_cp1/posts/model.php:712
 #: saloos/saloos-addons/includes/languages/trans_addons.php:170
 #: tejarak/includes/languages/trans_addons.php:170
-#: tejarak/includes/languages/trans_twig.php:283
+#: tejarak/includes/languages/trans_twig.php:288
 msgid "Edit"
 msgstr "ویرایش"
 
@@ -1132,7 +1132,7 @@ msgstr "متا"
 #: tejarak/includes/cls/database/tejarak/translation.php:92
 #: tejarak/includes/cls/database/tejarak/translation.php:112
 #: tejarak/includes/cls/database/tejarak/translation.php:149
-#: tejarak/includes/languages/trans_twig.php:330
+#: tejarak/includes/languages/trans_twig.php:335
 msgid "status"
 msgstr "وضعیت"
 
@@ -1459,7 +1459,7 @@ msgstr "فیلتر"
 
 #: saloos/saloos-addons/includes/cls/database/saloos/translation.php:126
 #: tejarak/includes/cls/database/tejarak/translation.php:144
-#: tejarak/includes/languages/trans_twig.php:321
+#: tejarak/includes/languages/trans_twig.php:326
 msgid "mobile"
 msgstr "موبایل"
 
@@ -1529,7 +1529,7 @@ msgid "Remember me"
 msgstr "من را به خاطر بسپار"
 
 #: saloos/saloos-addons/includes/cls/form/account.php:48
-#: tejarak/includes/languages/trans_twig.php:260
+#: tejarak/includes/languages/trans_twig.php:265
 msgid "Code"
 msgstr "کد"
 
@@ -1570,7 +1570,7 @@ msgstr "کلمه عبور"
 #: saloos/saloos-addons/includes/cls/form/options.php:46
 #: saloos/saloos-addons/includes/languages/trans_addons.php:440
 #: tejarak/includes/languages/trans_addons.php:440
-#: tejarak/includes/languages/trans_twig.php:274
+#: tejarak/includes/languages/trans_twig.php:279
 msgid "Site"
 msgstr "سایت"
 
@@ -1589,7 +1589,7 @@ msgstr ""
 #: saloos/saloos-addons/includes/cls/form/options.php:33
 #: saloos/saloos-addons/includes/languages/trans_addons.php:418
 #: tejarak/includes/languages/trans_addons.php:418
-#: tejarak/includes/languages/trans_twig.php:109
+#: tejarak/includes/languages/trans_twig.php:114
 msgid "Description"
 msgstr "توضیح"
 
@@ -1739,7 +1739,7 @@ msgstr "انتقال به دامنه اصلی"
 #: saloos/saloos-addons/includes/cls/form/options.php:291
 #: saloos/saloos-addons/includes/languages/trans_addons.php:139
 #: tejarak/includes/languages/trans_addons.php:139
-#: tejarak/includes/languages/trans_twig.php:81
+#: tejarak/includes/languages/trans_twig.php:86
 msgid "Twitter"
 msgstr "توییتر"
 
@@ -1753,14 +1753,14 @@ msgstr "توییتر"
 #: saloos/saloos-addons/includes/cls/form/options.php:353
 #: saloos/saloos-addons/includes/languages/trans_addons.php:140
 #: tejarak/includes/languages/trans_addons.php:140
-#: tejarak/includes/languages/trans_twig.php:85
+#: tejarak/includes/languages/trans_twig.php:90
 msgid "Facebook"
 msgstr "فیس‌بوک"
 
 #: saloos/saloos-addons/includes/cls/form/options.php:221
 #: saloos/saloos-addons/includes/languages/trans_addons.php:461
 #: tejarak/includes/languages/trans_addons.php:461
-#: tejarak/includes/languages/trans_twig.php:84
+#: tejarak/includes/languages/trans_twig.php:89
 msgid "Google Plus"
 msgstr "گوگل پلاس"
 
@@ -1785,7 +1785,7 @@ msgstr "لینکدین"
 #: saloos/saloos-addons/includes/cls/form/options.php:414
 #: saloos/saloos-addons/includes/languages/trans_addons.php:141
 #: tejarak/includes/languages/trans_addons.php:141
-#: tejarak/includes/languages/trans_twig.php:83
+#: tejarak/includes/languages/trans_twig.php:88
 msgid "Telegram"
 msgstr "تلگرام"
 
@@ -2118,7 +2118,7 @@ msgstr "برای بازیابی کلمه عبور کلیک کنید"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:16
 #: tejarak/includes/languages/trans_addons.php:16
-#: tejarak/includes/languages/trans_twig.php:407
+#: tejarak/includes/languages/trans_twig.php:432
 msgid "Can't access your account?"
 msgstr "نمی توانید به حساب خود وارد شوید؟"
 
@@ -2144,7 +2144,7 @@ msgstr "برای ورود به اکانت خود کلیک کنید"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:23
 #: tejarak/includes/languages/trans_addons.php:23
-#: tejarak/includes/languages/trans_twig.php:410
+#: tejarak/includes/languages/trans_twig.php:435
 msgid "Remembered your password?"
 msgstr "کلمه عبور خود را به خاطر آوردید!؟"
 
@@ -2217,7 +2217,7 @@ msgstr "برخی از حقوق محفوظ است!"
 #: saloos/saloos-addons/includes/languages/trans_addons.php:47
 #: saloos/saloos-addons/lib/mvc/viewes/constructor.php:40
 #: tejarak/includes/languages/trans_addons.php:47
-#: tejarak/includes/languages/trans_twig.php:430
+#: tejarak/includes/languages/trans_twig.php:449
 msgid "Saloos"
 msgstr "سالوس"
 
@@ -2338,7 +2338,7 @@ msgstr "پشتیبان با دامپ"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:73
 #: tejarak/includes/languages/trans_addons.php:73
-#: tejarak/includes/languages/trans_twig.php:261
+#: tejarak/includes/languages/trans_twig.php:266
 msgid "Submit"
 msgstr "تایید"
 
@@ -2489,7 +2489,7 @@ msgstr "افزودن رکورد جدید"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:108
 #: tejarak/includes/languages/trans_addons.php:108
-#: tejarak/includes/languages/trans_twig.php:50
+#: tejarak/includes/languages/trans_twig.php:55
 msgid "View your current location and navigate to parent of it"
 msgstr "مکان فعلی خود را دیده و به مکان‌های والد آن منتقل شوید"
 
@@ -2500,25 +2500,25 @@ msgstr "با کمک این منو می‌توانید به تمامی بخش‌�
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:113
 #: tejarak/includes/languages/trans_addons.php:113
-#: tejarak/includes/languages/trans_twig.php:44
+#: tejarak/includes/languages/trans_twig.php:49
 msgid "Next →"
 msgstr "→ بعدی"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:114
 #: tejarak/includes/languages/trans_addons.php:114
-#: tejarak/includes/languages/trans_twig.php:45
+#: tejarak/includes/languages/trans_twig.php:50
 msgid "← Back"
 msgstr "قبلی ←"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:115
 #: tejarak/includes/languages/trans_addons.php:115
-#: tejarak/includes/languages/trans_twig.php:46
+#: tejarak/includes/languages/trans_twig.php:51
 msgid "Skip"
 msgstr "خروج"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:116
 #: tejarak/includes/languages/trans_addons.php:116
-#: tejarak/includes/languages/trans_twig.php:47
+#: tejarak/includes/languages/trans_twig.php:52
 msgid "Done"
 msgstr "اتمام"
 
@@ -2543,7 +2543,6 @@ msgid "My Profile"
 msgstr "پروفایل من"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:121
-#: tejarak/content_enter/pass/view.php:46
 #: tejarak/includes/languages/trans_addons.php:121
 msgid "Change Password"
 msgstr "تغییر گذرواژه"
@@ -2677,7 +2676,7 @@ msgstr "یا"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:158
 #: tejarak/includes/languages/trans_addons.php:158
-#: tejarak/includes/languages/trans_twig.php:381
+#: tejarak/includes/languages/trans_twig.php:386
 msgid "Delete"
 msgstr "حذف"
 
@@ -2718,7 +2717,7 @@ msgstr "اجازه یا عدم اجازه به کاربر برای مشاهده 
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:168
 #: tejarak/includes/languages/trans_addons.php:168
-#: tejarak/includes/languages/trans_twig.php:284
+#: tejarak/includes/languages/trans_twig.php:289
 msgid "Add"
 msgstr "افزودن"
 
@@ -2739,7 +2738,7 @@ msgstr "دسترسی یا عدم دسترسی به اطلاعات سایر کا�
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:173
 #: tejarak/includes/languages/trans_addons.php:173
-#: tejarak/includes/languages/trans_twig.php:337
+#: tejarak/includes/languages/trans_twig.php:342
 msgid "Admin"
 msgstr "مدیریت"
 
@@ -2882,7 +2881,7 @@ msgstr "همه زبان ها"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:201
 #: tejarak/includes/languages/trans_addons.php:201
-#: tejarak/includes/languages/trans_twig.php:308
+#: tejarak/includes/languages/trans_twig.php:313
 msgid "Status"
 msgstr "وضعیت"
 
@@ -3483,7 +3482,7 @@ msgstr "بارگذاری"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:380
 #: tejarak/includes/languages/trans_addons.php:380
-#: tejarak/includes/languages/trans_twig.php:71
+#: tejarak/includes/languages/trans_twig.php:76
 msgid "Control Panel"
 msgstr "کنترل پنل"
 
@@ -3564,13 +3563,13 @@ msgstr "شبکه‌اجتماعی"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:419
 #: tejarak/includes/languages/trans_addons.php:419
-#: tejarak/includes/languages/trans_twig.php:262
+#: tejarak/includes/languages/trans_twig.php:267
 msgid "Title"
 msgstr "عنوان"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:420
 #: tejarak/includes/languages/trans_addons.php:420
-#: tejarak/includes/languages/trans_twig.php:108
+#: tejarak/includes/languages/trans_twig.php:113
 msgid "Date"
 msgstr "تاریخ"
 
@@ -3875,7 +3874,7 @@ msgstr "ما به شماره موبایل نیاز داریم!"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:566
 #: tejarak/includes/languages/trans_addons.php:566
-#: tejarak/includes/languages/trans_twig.php:490
+#: tejarak/includes/languages/trans_twig.php:509
 msgid " "
 msgstr " "
 
@@ -4101,7 +4100,7 @@ msgstr "برو"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:618
 #: tejarak/includes/languages/trans_addons.php:618
-#: tejarak/includes/languages/trans_twig.php:359
+#: tejarak/includes/languages/trans_twig.php:364
 msgid "Next"
 msgstr "بعدی"
 
@@ -4121,7 +4120,7 @@ msgid "Log in with mobile"
 msgstr "ورود با موبایل"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:624
-#: tejarak/includes/languages/trans_addons.php:624
+#: tejarak/includes/languages/trans_addons.php:628
 #: tejarak/includes/languages/trans_twig.php:19
 msgid "tejarak"
 msgstr "تجارک"
@@ -4181,6 +4180,12 @@ msgstr "آدرس نادرست: کد یافت نشد"
 #: saloos/saloos-addons/lib/mvc/models/terms.php:183
 msgid "Does not exist!"
 msgstr "هیچ داده ای موجود نیست!"
+
+#: saloos/saloos-addons/lib/social/google.php:122
+#, fuzzy
+#| msgid "access_token"
+msgid "Invalid access token"
+msgstr "access_token"
 
 #: saloos/saloos-addons/lib/telegram/commands/step_register.php:84
 msgid "return"
@@ -4242,8 +4247,7 @@ msgstr "این درگاه توسط سرشمار پشتیبانی نمی‌شود
 msgid "Amount not set"
 msgstr "مقدار تعیین نشده است"
 
-#: tejarak/content_a/billing/model.php:105
-#: tejarak/content_a/billing/model.php:113
+#: tejarak/content_a/billing/model.php:105 tejarak/content_a/billing/model.php:113
 msgid "Invalid promo code"
 msgstr "کد اعتبار هدیه نامعتبر است"
 
@@ -4255,8 +4259,7 @@ msgstr "حساب شما :amount شارژ شد"
 msgid "You must login to load this page"
 msgstr "شما برای داشتن این صفحه باید وارد سیستم شوید"
 
-#: tejarak/content_a/billing/model.php:168
-#: tejarak/content_enter/verify/view.php:38
+#: tejarak/content_a/billing/model.php:168 tejarak/content_enter/verify/view.php:37
 msgid "What happend?"
 msgstr "اتفاقی افتاده؟"
 
@@ -4301,23 +4304,20 @@ msgid "Please select a valid units"
 msgstr "لطفا یک واحد مالی را انتخاب کنید"
 
 #: tejarak/content_a/billing/view.php:9
-#: tejarak/includes/languages/trans_twig.php:300
+#: tejarak/includes/languages/trans_twig.php:305
 msgid "Billing"
 msgstr "مالی"
 
-#: tejarak/content_a/member/model.php:67
-#: tejarak/content_a/setup/model.php:51
+#: tejarak/content_a/member/model.php:67 tejarak/content_a/setup/model.php:51
 #: tejarak/content_a/setup/model.php:91
 msgid "Please login to add a team"
 msgstr "لطفا برای افزودن تیم وارد شوید"
 
-#: tejarak/content_a/member/model.php:74
-#: tejarak/content_a/setup/model.php:98
+#: tejarak/content_a/member/model.php:74 tejarak/content_a/setup/model.php:98
 msgid "Please enter your name"
 msgstr "لطفا نام خود را وارد کنید"
 
-#: tejarak/content_a/member/model.php:81
-#: tejarak/content_a/setup/model.php:111
+#: tejarak/content_a/member/model.php:81 tejarak/content_a/setup/model.php:111
 msgid "Please enter your name less than 90 character"
 msgstr "لطفا نام کمتر از ۹۰ کاراکتر را وارد کنید"
 
@@ -4333,16 +4333,32 @@ msgstr "لطفا نام خانوادگی خود را وارد کنید"
 msgid "Team"
 msgstr "تیم"
 
-#: tejarak/content_a/setup/view.php:31
+#: tejarak/content_a/setup/view.php:28
+#, fuzzy
+#| msgid "Enter your team name"
+msgid "Set team name"
+msgstr "نام تیم خود را وارد کنید"
+
+#: tejarak/content_a/setup/view.php:32
 msgid "You"
 msgstr "شما"
 
-#: tejarak/content_a/setup/view.php:35
-#: tejarak/includes/languages/trans_twig.php:370
+#: tejarak/content_a/setup/view.php:33
+#, fuzzy
+#| msgid "Please enter your information"
+msgid "Set your personal information"
+msgstr "لطفا اطلاعات خود را وارد کنید"
+
+#: tejarak/content_a/setup/view.php:37
+#: tejarak/includes/languages/trans_twig.php:375
 msgid "Finish"
 msgstr "تمام"
 
 #: tejarak/content_a/setup/view.php:38
+msgid "Setup is finished!"
+msgstr "راه‌اندازی پایان یافت!"
+
+#: tejarak/content_a/setup/view.php:41
 msgid "Tejarak Quick Setup"
 msgstr "راه‌اندازی سریع تجارک"
 
@@ -4366,55 +4382,55 @@ msgstr "تیم یافت نشده"
 
 #: tejarak/content_api/v1/branch/tools/add.php:80
 msgid "Branch title must be less than 500 character"
-msgstr ""
+msgstr "عنوان شعبه باید کمتر از ۵۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:90
 msgid "Branch site must be less than 1000 character"
-msgstr ""
+msgstr "سایت شعبه باید کمتر از ۱۰۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:105
 msgid "Brand of branch can not be null"
-msgstr ""
+msgstr "برند شعبه نمی‌تواند null باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:112
 msgid "Only [A-Za-z0-9] can use in branch brand"
-msgstr ""
+msgstr "فقط حروف الفبا و اعداد می‌توانند برای برند شعبه استفاده شوند"
 
 #: tejarak/content_api/v1/branch/tools/add.php:127
 msgid "Branch code must be less than 9 character and must be number"
-msgstr ""
+msgstr "کد شعبه باید کمتر از ۹ کاراکتر و حتما عدد باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:135
 msgid "Branch phone_1 must be less than 50 character"
-msgstr ""
+msgstr "تلفن اول شعبه باید کمتر از ۵۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:143
 msgid "Branch phone_2 must be less than 50 character"
-msgstr ""
+msgstr "تلفن دوم شعبه باید کمتر از ۵۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:151
 msgid "Branch phone_3 must be less than 50 character"
-msgstr ""
+msgstr "تلفن سوم شعبه باید کمتر از ۵۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:159
 msgid "Branch fax must be less than 50 character"
-msgstr ""
+msgstr "فکس شعبه باید کمتر از ۵۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:167
 msgid "Branch email must be less than 50 character"
-msgstr ""
+msgstr "ایمیل شعبه باید کمتر از ۵۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:175
 msgid "Branch post_code must be less than 50 character"
-msgstr ""
+msgstr "کد پستی شعبه باید کمتر از ۵۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:189
 msgid "Branch address must be less than 5000 character"
-msgstr ""
+msgstr "آدرس شعبه باید کمتر از ۵۰۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:215
 msgid "Branch brand must be less than 500 character"
-msgstr ""
+msgstr "برند شعبه باید کمتر از ۵۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/branch/tools/add.php:254
 msgid "Branch not set"
@@ -4483,11 +4499,11 @@ msgstr "عنوان تکراری برای درگاه ورودی"
 
 #: tejarak/content_api/v1/getway/tools/add.php:123
 msgid "Cat  must be less than 255 character"
-msgstr ""
+msgstr "دسته‌بندی باید کمتر از ۲۵۵ کاراکتر باشد"
 
 #: tejarak/content_api/v1/getway/tools/add.php:130
 msgid "Code must be number"
-msgstr ""
+msgstr "کد باید عدد باشد"
 
 #: tejarak/content_api/v1/getway/tools/add.php:137
 msgid "Invalid ip"
@@ -4499,111 +4515,111 @@ msgstr "وضعیت اشتباه"
 
 #: tejarak/content_api/v1/getway/tools/add.php:182
 msgid "Getway successfuly added"
-msgstr ""
+msgstr "درگاه با موفقیت افزوده شد"
 
 #: tejarak/content_api/v1/getway/tools/add.php:186
 msgid "Getway updated"
-msgstr ""
+msgstr "درگاه به‌روزرسانی شد"
 
 #: tejarak/content_api/v1/getway/tools/add.php:190
 msgid "Getway removed"
-msgstr ""
+msgstr "درگاه پاک شد"
 
 #: tejarak/content_api/v1/getway/tools/get.php:90
 msgid "Invalid getway"
-msgstr ""
+msgstr "درگاه نادرست"
 
 #: tejarak/content_api/v1/getway/tools/get.php:98
 msgid "Invalid getway id"
-msgstr ""
+msgstr "شناسه درگاه نامعتبر است"
 
 #: tejarak/content_api/v1/member/tools/add.php:87
 msgid "Permission denide to add member of this team"
-msgstr ""
+msgstr "اجازه‌ی افزودن عضو به این تیم را ندارید"
 
 #: tejarak/content_api/v1/member/tools/add.php:96
 msgid "Invalid mobile number"
-msgstr ""
+msgstr "شماره‌ی تلفن همراه نامعتبر است"
 
 #: tejarak/content_api/v1/member/tools/add.php:104
 msgid "You can set the name less than 50 character"
-msgstr ""
+msgstr "شما می‌توانید نام را با کمتر از ۵۰ کاراکتر اضافه کنید"
 
 #: tejarak/content_api/v1/member/tools/add.php:113
 msgid "You can set the family less than 50 character"
-msgstr ""
+msgstr "شما می‌توانید نام خانوادگی با حداکثر ۵۰ کاراکتر اضافه کنید"
 
 #: tejarak/content_api/v1/member/tools/add.php:140
 msgid "User id not found"
-msgstr ""
+msgstr "شناسه کاربر یافت نشد"
 
 #: tejarak/content_api/v1/member/tools/add.php:149
 msgid "You can set the postion less than 100 character"
-msgstr ""
+msgstr "موقعیت باید کمتر از ۱۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/member/tools/add.php:157
 msgid "You can set the code less than 9 character and must ba integer"
-msgstr ""
+msgstr "کد باید کمتر از ۹ کاراکتر و عدد صحیح باشد"
 
 #: tejarak/content_api/v1/member/tools/add.php:172
 msgid "Invalid date of date enter"
-msgstr ""
+msgstr "تاریخ ورود نامعتبر است"
 
 #: tejarak/content_api/v1/member/tools/add.php:181
 msgid "Invalid date of date exit"
-msgstr ""
+msgstr "تاریخ خروخ نامعتبر است"
 
 #: tejarak/content_api/v1/member/tools/add.php:254
 msgid "Duplicate user in team"
-msgstr ""
+msgstr "عضو تکراری در تیم"
 
 #: tejarak/content_api/v1/member/tools/add.php:264
 msgid "Duplicate user in branch"
-msgstr ""
+msgstr "عضو تکراری در شعبه"
 
 #: tejarak/content_api/v1/member/tools/add.php:308
 msgid "member successfully added"
-msgstr ""
+msgstr "عضو با موفقیت افزوده شد"
 
 #: tejarak/content_api/v1/member/tools/add.php:312
 msgid "member successfully updated"
-msgstr ""
+msgstr "عضو با موفقیت به‌روزرسانی شد"
 
 #: tejarak/content_api/v1/member/tools/add.php:316
 msgid "member successfully removed"
-msgstr ""
+msgstr "عضو با موفقیت حذف شد"
 
 #: tejarak/content_api/v1/member/tools/get.php:114
 msgid "Invalid member"
-msgstr ""
+msgstr "عضو نامعتبر"
 
 #: tejarak/content_api/v1/member/tools/get.php:145
 msgid "Invalid team id"
-msgstr ""
+msgstr "شناسه تیم نامعتبر است"
 
 #: tejarak/content_api/v1/team/tools/add.php:47
 msgid "Team title must be less than 500 character"
-msgstr ""
+msgstr "عنوان تیم باید کمتر از ۵۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:55
 msgid "Team site must be less than 1000 character"
-msgstr ""
+msgstr "سایت تیم باید کمتر از ۱۰۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:64
 msgid "Brand of team can not be null"
-msgstr ""
+msgstr "برند تیم نمی‌تواند null باشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:77
 msgid "Team brand must be larger than 5 character"
-msgstr ""
+msgstr "برند تیم باید بیشتر از ۵ کاراکتر باشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:84
 msgid "Only [A-Za-z0-9] can use in team brand"
-msgstr ""
+msgstr "فقط حروف الفبا و اعداد می‌توانند در برند تیم استفاده شوند"
 
 #: tejarak/content_api/v1/team/tools/add.php:92
 msgid "Only numeric value can set in Register code"
-msgstr ""
+msgstr "تنها مقدار عددی می‌تواند در کد ثبت‌نام وارد شود"
 
 #: tejarak/content_api/v1/team/tools/add.php:100
 msgid "Only numeric value can set in Economical code"
@@ -4619,7 +4635,7 @@ msgstr ""
 
 #: tejarak/content_api/v1/team/tools/add.php:206
 msgid "Id of team not found"
-msgstr ""
+msgstr "شناسه تیم یافت نشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:230
 msgid "Invalid method of api"
@@ -4645,37 +4661,97 @@ msgstr "عملیات کامل شد"
 msgid "You can not load this team"
 msgstr ""
 
+#: tejarak/content_enter/alert/view.php:12
+msgid "Alert!"
+msgstr "هشدار!"
+
 #: tejarak/content_enter/ban/view.php:12
 msgid "You are Banned!!"
 msgstr "شما مسدود شدید!"
 
-#: tejarak/content_enter/email/change/model.php:19
+#: tejarak/content_enter/block/view.php:12
+#, fuzzy
+#| msgid "You are blocked!"
+msgid "Hey! You are Blocked!!"
+msgstr "شما غذغن شدید!"
+
+#: tejarak/content_enter/byebye/view.php:12
+msgid "Come back to us!"
+msgstr ""
+
+#: tejarak/content_enter/delete/request/model.php:34
+#: tejarak/content_enter/mobile/request/model.php:37
+#, fuzzy
+#| msgid "Please enter the team title"
+msgid "Please enter mobile or skip this step"
+msgstr "لطفا عنوان تیم را وارد کنید"
+
+#: tejarak/content_enter/delete/request/model.php:42
+#: tejarak/content_enter/mobile/request/model.php:45
+msgid "Please enter a valid mobile number"
+msgstr "لطفا شماره موبایل معتبری وارد کنید"
+
+#: tejarak/content_enter/delete/request/view.php:10
+#, fuzzy
+#| msgid "create an account"
+msgid "Request delete account"
+msgstr "اکانت بسازید"
+
+#: tejarak/content_enter/delete/view.php:22
+#, fuzzy
+#| msgid "create an account"
+msgid "Delete account"
+msgstr "اکانت بسازید"
+
+#: tejarak/content_enter/email/change/model.php:18
+#, fuzzy
+#| msgid "Your enter was registered"
+msgid "Your email was removed"
+msgstr "ورود شما ثبت شد."
+
+#: tejarak/content_enter/email/change/model.php:42
 msgid "Plese fill the new email"
-msgstr ""
+msgstr "ایمیل جدید را وارد کنید"
 
-#: tejarak/content_enter/email/change/model.php:25
-msgid "Plese fill the old email"
-msgstr ""
-
-#: tejarak/content_enter/email/change/model.php:31
+#: tejarak/content_enter/email/change/model.php:48
 msgid "Please select a different email"
-msgstr ""
+msgstr "لطفا یک ایمیل دیگر انتخاب کنید"
+
+#: tejarak/content_enter/email/change/view.php:12
+#, fuzzy
+#| msgid "Change it"
+msgid "Change email"
+msgstr "تغییر بده"
 
 #: tejarak/content_enter/email/set/model.php:26
 msgid "No email was send"
 msgstr ""
 
+#: tejarak/content_enter/email/set/view.php:13
+#, fuzzy
+#| msgid "email"
+msgid "set email"
+msgstr "رایانامه"
+
+#: tejarak/content_enter/email/view.php:12
+#, fuzzy
+#| msgid "Enter a valid eamil!"
+msgid "Enter to :name with email"
+msgstr "رایانامه‌ی معتبر را وارد کنید!"
+
+#: tejarak/content_enter/google/view.php:19
+msgid "Enter to :name with google"
+msgstr ""
+
 #: tejarak/content_enter/home/model.php:36
-#: tejarak/content_enter/main/tools/verification_code.php:192
+#: tejarak/content_enter/main/tools/verification_code.php:183
 #: tejarak/content_enter/mobile/change/model.php:20
 #: tejarak/content_enter/mobile/set/model.php:30
 #: tejarak/content_enter/pass/change/model.php:20
 #: tejarak/content_enter/pass/recovery/model.php:30
 #: tejarak/content_enter/pass/set/model.php:30
 #: tejarak/content_enter/pass/signup/model.php:30
-#: tejarak/content_enter/username/change/model.php:20
 #: tejarak/content_enter/username/model.php:12
-#: tejarak/content_enter/username/set/model.php:30
 msgid "Dont!"
 msgstr "نکن عزیزم!"
 
@@ -4691,15 +4767,34 @@ msgstr "ورود به"
 msgid "Unavalible"
 msgstr "موجود نیست"
 
-#: tejarak/content_enter/main/tools/verification_code.php:198
+#: tejarak/content_enter/main/tools/verification_code.php:189
 msgid "Please fill the verification code"
 msgstr "لطفا کد اعتبارسنجی را وارد کنید"
 
-#: tejarak/content_enter/main/tools/verification_code.php:204
+#: tejarak/content_enter/main/tools/verification_code.php:195
 msgid "What happend? the code is number. you try to send string!?"
 msgstr "چی شده؟ کد باید عددی باشد. شما چطوری دارین متن وارد میکنید!؟"
 
-#: tejarak/content_enter/main/tools/verification_code.php:283
+#: tejarak/content_enter/main/tools/verification_code.php:238
+#, fuzzy
+#| msgid "Your enter was registered"
+msgid "Your username was removed"
+msgstr "ورود شما ثبت شد."
+
+#: tejarak/content_enter/main/tools/verification_code.php:315
+#: tejarak/content_enter/username/set/model.php:44
+#, fuzzy
+#| msgid "Your enter was registered"
+msgid "Your username was set"
+msgstr "ورود شما ثبت شد."
+
+#: tejarak/content_enter/main/tools/verification_code.php:319
+#, fuzzy
+#| msgid "Your unit has change"
+msgid "Your username was change"
+msgstr "واحد مالی شما تغییر یافت"
+
+#: tejarak/content_enter/main/tools/verification_code.php:426
 msgid "Invalid code, try again"
 msgstr "کد اشتباه، دوباره تلاش کنید"
 
@@ -4723,11 +4818,35 @@ msgstr ""
 msgid "Invalid old password"
 msgstr ""
 
+#: tejarak/content_enter/mobile/change/view.php:11
+#, fuzzy
+#| msgid "We need mobile number!"
+msgid "change mobile number"
+msgstr "ما به شماره موبایل نیاز داریم!"
+
+#: tejarak/content_enter/mobile/request/model.php:60
+#, fuzzy
+#| msgid "create an account"
+msgid "Duplicate account"
+msgstr "اکانت بسازید"
+
+#: tejarak/content_enter/mobile/request/view.php:10
+#, fuzzy
+#| msgid "We need mobile number!"
+msgid "Request mobile number"
+msgstr "ما به شماره موبایل نیاز داریم!"
+
 #: tejarak/content_enter/mobile/set/model.php:64
 #: tejarak/content_enter/pass/set/model.php:64
 #: tejarak/content_enter/pass/signup/model.php:64
 msgid "No password was send"
 msgstr "گذرواژه‌ای ارسال نشد"
+
+#: tejarak/content_enter/mobile/set/view.php:10
+#, fuzzy
+#| msgid "We need mobile number!"
+msgid "set mobile number"
+msgstr "ما به شماره موبایل نیاز داریم!"
 
 #: tejarak/content_enter/okay/view.php:12
 msgid "Horray!"
@@ -4741,15 +4860,15 @@ msgstr "زگهواره تا گور دانش بجوی!"
 msgid "Please enter your password"
 msgstr ""
 
-#: tejarak/content_enter/pass/model.php:51
+#: tejarak/content_enter/pass/model.php:52
 msgid "Invalid password, try again"
 msgstr "گذرواژه‌ی اشتباه، دوباره تلاش کنید"
 
-#: tejarak/content_enter/pass/model.php:76
+#: tejarak/content_enter/pass/model.php:77
 msgid "You must set 6 character and large in password"
 msgstr ""
 
-#: tejarak/content_enter/pass/model.php:86
+#: tejarak/content_enter/pass/model.php:87
 msgid "You must set less than 99 character in password"
 msgstr ""
 
@@ -4769,17 +4888,31 @@ msgstr "بازیابی گذرواژه"
 msgid "Please enter new password!"
 msgstr "لطفا گذرواژه‌ی جدید را وارد کنید"
 
-#: tejarak/content_enter/pass/view.php:41
+#: tejarak/content_enter/pass/view.php:41 tejarak/content_enter/pass/view.php:51
 msgid "Set Password"
 msgstr "تنظیم گذرواژه"
 
 #: tejarak/content_enter/pass/view.php:42
-msgid "Please set your password"
+#, fuzzy
+#| msgid "Please set your password"
+msgid "Please set your password to secure signup"
 msgstr "لطفا گذرواژه‌ی خود را تنظیم کنید"
+
+#: tejarak/content_enter/pass/view.php:46
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change to new Password"
+msgstr "تغییر گذرواژه"
 
 #: tejarak/content_enter/pass/view.php:47
 msgid "Please set your old and new password to change it"
 msgstr "لطفا گذرواژه‌ی قبلی و جدید خود را برای تغییر وارد کنید"
+
+#: tejarak/content_enter/pass/view.php:52
+#, fuzzy
+#| msgid "Please enter password to login"
+msgid "Please set password to secure your account"
+msgstr "لطفا گذرواژه را برای ورود وارد کنید"
 
 #: tejarak/content_enter/sessions/model.php:42
 msgid "Session terminated"
@@ -4789,21 +4922,40 @@ msgstr "این روش ورود مسدود شد"
 msgid "Active sessions"
 msgstr "ورودهای فعال"
 
-#: tejarak/content_enter/username/change/model.php:27
-msgid "Please fill the usernameword field"
+#: tejarak/content_enter/username/change/model.php:31
+#, fuzzy
+#| msgid "Please enter your name"
+msgid "Plese fill the new username"
+msgstr "لطفا نام خود را وارد کنید"
+
+#: tejarak/content_enter/username/change/model.php:37
+#, fuzzy
+#| msgid "Title must be less than 255 character"
+msgid "You must set large than 5 character in new username"
+msgstr "عنوان باید کمتر از ۲۵۵ کارکتر باشد"
+
+#: tejarak/content_enter/username/change/model.php:43
+#, fuzzy
+#| msgid "Title must be less than 255 character"
+msgid "You must set less than 50 character in new username"
+msgstr "عنوان باید کمتر از ۲۵۵ کارکتر باشد"
+
+#: tejarak/content_enter/username/change/model.php:50
+#, fuzzy
+#| msgid "Please select one item"
+msgid "Please select a different username"
+msgstr "لطفا یک گزینه را انتخاب کنید"
+
+#: tejarak/content_enter/username/change/model.php:60
+#: tejarak/content_enter/username/set/model.php:38
+msgid "This username alreay taked!"
 msgstr ""
 
-#: tejarak/content_enter/username/change/model.php:34
-msgid "Please fill the new usernameword field"
-msgstr ""
-
-#: tejarak/content_enter/username/change/model.php:41
-msgid "Please set a different usernameword!"
-msgstr ""
-
-#: tejarak/content_enter/username/change/model.php:61
-msgid "Invalid old usernameword"
-msgstr ""
+#: tejarak/content_enter/username/change/view.php:12
+#, fuzzy
+#| msgid "username"
+msgid "Change username"
+msgstr "نام کاربری"
 
 #: tejarak/content_enter/username/model.php:20
 msgid "Please fill the username field"
@@ -4813,96 +4965,156 @@ msgstr ""
 msgid "Username not found"
 msgstr ""
 
-#: tejarak/content_enter/username/set/model.php:64
-msgid "No usernameword was send"
-msgstr ""
+#: tejarak/content_enter/username/set/model.php:23
+#, fuzzy
+#| msgid "Title must be less than 255 character"
+msgid "You must set large than 5 character in username"
+msgstr "عنوان باید کمتر از ۲۵۵ کارکتر باشد"
+
+#: tejarak/content_enter/username/set/model.php:29
+#, fuzzy
+#| msgid "Title must be less than 255 character"
+msgid "You must set less than 50 character in username"
+msgstr "عنوان باید کمتر از ۲۵۵ کارکتر باشد"
+
+#: tejarak/content_enter/username/set/model.php:53
+#, fuzzy
+#| msgid "Please enter team name."
+msgid "Please enter the username"
+msgstr "لطفا نام تیم را وارد کنید"
+
+#: tejarak/content_enter/username/set/view.php:12
+#, fuzzy
+#| msgid "username"
+msgid "Set username"
+msgstr "نام کاربری"
+
+#: tejarak/content_enter/username/view.php:12
+#, fuzzy
+#| msgid "Enter your team name"
+msgid "Enter to :name with username"
+msgstr "نام تیم خود را وارد کنید"
 
 #: tejarak/content_enter/verify/sms/model.php:43
-msgid "Your verification code is :code"
+#, fuzzy
+#| msgid "Your verification code is :code"
+msgid ""
+"Your verification code is :code \n"
+":service"
 msgstr "کد ورود شما :code است"
 
-#: tejarak/content_enter/verify/telegram/model.php:31
+#: tejarak/content_enter/verify/telegram/model.php:36
 msgid "Your login code is :code"
 msgstr "کد ورود شما :code است"
 
-#: tejarak/content_enter/verify/telegram/model.php:32
+#: tejarak/content_enter/verify/telegram/model.php:37
 msgid "This code can be used to log in to your account. Do not give it to anyone!"
 msgstr "این کد برای ورود به حساب‌کاربری‌تان استفاده می‌شود. آن را به سایرین ندهید!"
 
-#: tejarak/content_enter/verify/telegram/model.php:33
+#: tejarak/content_enter/verify/telegram/model.php:38
 msgid "If you didn't request this code, ignore this message."
 msgstr "اگر شما درخواست کد را نداده‌اید،‌ این کد را نادیده بگیرید."
 
-#: tejarak/content_enter/verify/view.php:26
+#: tejarak/content_enter/verify/view.php:15
+#, fuzzy
+#| msgid "Verify Code"
+msgid "Verify"
+msgstr "کد اعتبارسنجی"
+
+#: tejarak/content_enter/verify/view.php:16
+#, fuzzy
+#| msgid "Please enter your pin"
+msgid "Please verify your account"
+msgstr "لطفا پین کد خود را وارد کنید"
+
+#: tejarak/content_enter/verify/view.php:25
 msgid "Your verifycation code send to your telegram"
 msgstr "کد تایید به تلگرام شما ارسال خواهد شد"
 
-#: tejarak/content_enter/verify/view.php:30
-msgid "We near call to you"
+#: tejarak/content_enter/verify/view.php:29
+#, fuzzy
+#| msgid "We near call to you"
+msgid "We try to call to you"
 msgstr "ما در حال تلاش برای تماس با شما هستیم"
 
-#: tejarak/content_enter/verify/view.php:34
+#: tejarak/content_enter/verify/view.php:33
 msgid "Your verifycation code send to mobile number by sms"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:50
+#: tejarak/content_enter/verify/view.php:47
 msgid "Your verifycation code send to your telegram, you try to delete account"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:54
-msgid "We near call to you, you try to delete account"
-msgstr ""
+#: tejarak/content_enter/verify/view.php:51
+#, fuzzy
+#| msgid "Why you want to delete your account?"
+msgid "We try to call to you, you try to delete account"
+msgstr "چرا می‌خواهید حساب‌کاربری خود را حذف کنید؟"
 
-#: tejarak/content_enter/verify/view.php:58
+#: tejarak/content_enter/verify/view.php:55
 msgid ""
 "Your verifycation code send to mobile number by sms, you try to delete account"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:62
+#: tejarak/content_enter/verify/view.php:59
 msgid "What happend?, dont delete account"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:74
+#: tejarak/content_enter/verify/view.php:69
 msgid ""
 "Your verifycation code send to your telegram, you try to recovery your password"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:78
-msgid "We near call to you, you try to recovery your password"
-msgstr ""
+#: tejarak/content_enter/verify/view.php:73
+#, fuzzy
+#| msgid "Click here for recovery your password"
+msgid "We try to call to you, you try to recovery your password"
+msgstr "برای بازیابی کلمه عبور کلیک کنید"
 
-#: tejarak/content_enter/verify/view.php:82
+#: tejarak/content_enter/verify/view.php:77
 msgid ""
 "Your verifycation code send to mobile number by sms, you try to recovery your "
 "password"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:86
+#: tejarak/content_enter/verify/view.php:81
 msgid "What happend?, dont recovery your password"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:98
+#: tejarak/content_enter/verify/view.php:92
 msgid ""
 "Your verifycation code send to your telegram, you try to change your password"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:102
-msgid "We near call to you, you try to change your password"
+#: tejarak/content_enter/verify/view.php:96
+msgid "We try to call to you, you try to change your password"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:106
+#: tejarak/content_enter/verify/view.php:100
 msgid ""
 "Your verifycation code send to mobile number by sms, you try to change your "
 "password"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:110
+#: tejarak/content_enter/verify/view.php:104
 msgid "What happend?, dont change your password"
 msgstr ""
 
-#: tejarak/content_enter/verify/view.php:116
-msgid "What happend? where you here?"
-msgstr "چی شده؟ شما کجایید؟"
+#: tejarak/content_enter/verify/view.php:117
+#, fuzzy
+#| msgid "Verify Code"
+msgid "Verify by Call"
+msgstr "کد اعتبارسنجی"
+
+#: tejarak/content_enter/verify/view.php:121
+#, fuzzy
+#| msgid "Report via telegram"
+msgid "Verify via Telegram"
+msgstr "گزارش از طریق تلگرام"
+
+#: tejarak/content_enter/verify/view.php:125
+msgid "verify with SMS"
+msgstr ""
 
 #: tejarak/includes/cls/database/tejarak/translation.php:26
 msgid "hours"
@@ -4955,6 +5167,30 @@ msgstr "دور کاری"
 #: tejarak/includes/cls/database/tejarak/translation.php:45
 msgid "accepted"
 msgstr "تاییدشده"
+
+#: tejarak/includes/languages/trans_addons.php:622
+#, fuzzy
+#| msgid "Log in with mobile"
+msgid "Sign in with Google"
+msgstr "ورود با موبایل"
+
+#: tejarak/includes/languages/trans_addons.php:623
+#, fuzzy
+#| msgid "email"
+msgid "New email"
+msgstr "رایانامه"
+
+#: tejarak/includes/languages/trans_addons.php:624
+#, fuzzy
+#| msgid "username"
+msgid "New username"
+msgstr "نام کاربری"
+
+#: tejarak/includes/languages/trans_addons.php:625
+#, fuzzy
+#| msgid "Enter a valid eamil!"
+msgid "Enter a valid username!"
+msgstr "رایانامه‌ی معتبر را وارد کنید!"
 
 #: tejarak/includes/languages/trans_twig.php:6
 msgid "Contact Us"
@@ -5024,7 +5260,7 @@ msgstr "انتقال به تجارک آسان است"
 
 #: tejarak/includes/languages/trans_twig.php:27
 msgid "Set up a team in less than a minute!"
-msgstr "در کمتر از یک دقیقه تیم خود را در تجارک راه‌اندازی کنید."
+msgstr "در کمتر از یک دقیقه تیم خود را در تجارک راه‌اندازی کنید!"
 
 #: tejarak/includes/languages/trans_twig.php:28
 msgid "It's FREE!"
@@ -5051,138 +5287,171 @@ msgid "FREE"
 msgstr "رایگان"
 
 #: tejarak/includes/languages/trans_twig.php:34
-msgid "Month"
-msgstr "ماه"
+msgid "Tomans"
+msgstr "تومان"
 
 #: tejarak/includes/languages/trans_twig.php:35
+msgid "per user/month"
+msgstr "به ازای نفر/ماه"
+
+#: tejarak/includes/languages/trans_twig.php:36
+msgid "For teams that are less than 10 people requiring simple reports."
+msgstr "برای تیم‌هایی که کمتر از ۱۰ نفر هستند و به گزارش‌های ساده نیاز دارند."
+
+#: tejarak/includes/languages/trans_twig.php:37
 msgid "Learn More"
 msgstr "بیشتر بدانید"
 
-#: tejarak/includes/languages/trans_twig.php:36
+#: tejarak/includes/languages/trans_twig.php:38
 msgid "Pro"
 msgstr "حرفه‌ای"
 
-#: tejarak/includes/languages/trans_twig.php:37
+#: tejarak/includes/languages/trans_twig.php:39
+msgid ""
+"For teams with unlimited people requiring <b>professional reports</b>, <b>report "
+"via Telegram</b>."
+msgstr ""
+"برای تیم‌هایی با نفرات نامحدود که به <b>گزارش‌های حرفه‌ای</b> و <b>گزارش تلگرام</b> "
+"نیاز دارند."
+
+#: tejarak/includes/languages/trans_twig.php:40
 msgid "Business"
 msgstr "تجاری"
 
-#: tejarak/includes/languages/trans_twig.php:38
+#: tejarak/includes/languages/trans_twig.php:41
+msgid ""
+"For teams with unlimited people requiring <b>report via SMS</b>, <b>visual "
+"reports with chart</b>, <b>custom message format</b>, <b>custom brand logo</b>."
+msgstr ""
+"برای تیم‌هایی با نفرات نامحدود که به <b>گزارش‌های حرفه‌ای</b>، <b>گزارش تلگرام</b>، "
+"<b>گزارش با پیامک</b>، <b>گزارش تصویری همراه با نمودار</b>، <b>پیغام دلخواه</b> "
+"و <b>لوگوی دلخواه</b> نیاز دارند."
+
+#: tejarak/includes/languages/trans_twig.php:42
 msgid "Enterprise"
 msgstr "مشتریان سازمان"
 
-#: tejarak/includes/languages/trans_twig.php:39
+#: tejarak/includes/languages/trans_twig.php:43
+msgid ""
+"For teams with unlimited people requiring <b>advanced report builder</b>, "
+"<b>custom domain</b>."
+msgstr ""
+"برای تیم‌هایی با نفرات نامحدود که به <b>گزارش‌ساز پیشرفته</b> و <b>دامنه دلخواه</"
+"b> نیاز دارند."
+
+#: tejarak/includes/languages/trans_twig.php:44
 msgid "Enter your team name"
 msgstr "نام تیم خود را وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:40
+#: tejarak/includes/languages/trans_twig.php:45
 msgid "Get Started"
 msgstr "شروع کنیم"
 
-#: tejarak/includes/languages/trans_twig.php:41
+#: tejarak/includes/languages/trans_twig.php:46
 msgid "Try Tejarak FREE;) no credit, no risk!"
 msgstr "تجارک را به رایگان بررسی کنید;) بدون هزینه، بدون ریسک!"
 
-#: tejarak/includes/languages/trans_twig.php:51
+#: tejarak/includes/languages/trans_twig.php:56
 msgid "Some right reserved!"
 msgstr "برخی از حقوق محفوظ است!"
 
-#: tejarak/includes/languages/trans_twig.php:55
+#: tejarak/includes/languages/trans_twig.php:60
 msgid "About"
 msgstr "درباره"
 
-#: tejarak/includes/languages/trans_twig.php:56
+#: tejarak/includes/languages/trans_twig.php:61
 msgid "Press and Media"
 msgstr "مطبوعات و رسانه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:57
+#: tejarak/includes/languages/trans_twig.php:62
 msgid "Careers"
 msgstr "فرصت‌های شغلی"
 
-#: tejarak/includes/languages/trans_twig.php:58
+#: tejarak/includes/languages/trans_twig.php:63
 msgid "Social Responsibility"
 msgstr "مسئولیت اجتماعی"
 
-#: tejarak/includes/languages/trans_twig.php:59
+#: tejarak/includes/languages/trans_twig.php:64
 msgid "FAQ"
 msgstr "سوالات پرتکرار"
 
-#: tejarak/includes/languages/trans_twig.php:60
+#: tejarak/includes/languages/trans_twig.php:65
 msgid "Enamad"
 msgstr "نماد اعتماد"
 
-#: tejarak/includes/languages/trans_twig.php:61 tejarak/includes/mvc/view.php:10
+#: tejarak/includes/languages/trans_twig.php:66 tejarak/includes/mvc/view.php:10
 msgid "Tejarak"
 msgstr "تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:62
+#: tejarak/includes/languages/trans_twig.php:67
 msgid "Benefits"
 msgstr "مزایا"
 
-#: tejarak/includes/languages/trans_twig.php:63
+#: tejarak/includes/languages/trans_twig.php:68
 msgid "Pricing"
 msgstr "هزینه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:64
+#: tejarak/includes/languages/trans_twig.php:69
 msgid "Terms of Service"
 msgstr "شرایط استفاده"
 
-#: tejarak/includes/languages/trans_twig.php:65
+#: tejarak/includes/languages/trans_twig.php:70
 msgid "Privacy Policy"
 msgstr "حریم خصوصی"
 
-#: tejarak/includes/languages/trans_twig.php:66
+#: tejarak/includes/languages/trans_twig.php:71
 msgid "Changelog"
 msgstr "پیشرفت پروژه"
 
-#: tejarak/includes/languages/trans_twig.php:67
+#: tejarak/includes/languages/trans_twig.php:72
 msgid "Support"
 msgstr "پشتیبانی"
 
-#: tejarak/includes/languages/trans_twig.php:68
-msgid "Contact us"
-msgstr "با ما تماس بگیرید"
+#: tejarak/includes/languages/trans_twig.php:73
+msgid "Contact"
+msgstr "تماس"
 
-#: tejarak/includes/languages/trans_twig.php:69
+#: tejarak/includes/languages/trans_twig.php:74
 msgid "Logo"
 msgstr "لوگو"
 
-#: tejarak/includes/languages/trans_twig.php:70
+#: tejarak/includes/languages/trans_twig.php:75
 msgid "Proudly Made in IRAN"
 msgstr "با افتخار ساخت ایران"
 
-#: tejarak/includes/languages/trans_twig.php:72
+#: tejarak/includes/languages/trans_twig.php:77
 msgid "Admin Panel"
 msgstr "پنل ادمین"
 
-#: tejarak/includes/languages/trans_twig.php:73
+#: tejarak/includes/languages/trans_twig.php:78
 msgid "Exit Session"
 msgstr "خروج از نشست"
 
-#: tejarak/includes/languages/trans_twig.php:74
+#: tejarak/includes/languages/trans_twig.php:79
 msgid "Another Session"
 msgstr "نشست دیگر"
 
-#: tejarak/includes/languages/trans_twig.php:77
+#: tejarak/includes/languages/trans_twig.php:82
 msgid "Sales +98 25 3773 5183"
 msgstr "فروش ۰۲۵۳۷۷۳۵۱۸۳"
 
-#: tejarak/includes/languages/trans_twig.php:78
+#: tejarak/includes/languages/trans_twig.php:83
 msgid "Enter"
 msgstr "ورود"
 
-#: tejarak/includes/languages/trans_twig.php:82
+#: tejarak/includes/languages/trans_twig.php:87
 msgid "RSS"
 msgstr "آراس‌اس"
 
-#: tejarak/includes/languages/trans_twig.php:86
+#: tejarak/includes/languages/trans_twig.php:91
 msgid "LinkedIn"
 msgstr "لینکدین"
 
-#: tejarak/includes/languages/trans_twig.php:89
+#: tejarak/includes/languages/trans_twig.php:94
 msgid "About Tejarak"
 msgstr "درباره تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:90
+#: tejarak/includes/languages/trans_twig.php:95
 msgid ""
 "Advancement of technology and development of Web-based business Cause Need new "
 "tools to resolve the daily needs and that’s the goal of making Tejarak."
@@ -5190,7 +5459,7 @@ msgstr ""
 "با پیشرفت روزافزون تکنولوژی و گسترش کسب و کارهای مدرن مبتنی بر وب، احتیاج به "
 "ابزارهایی مدرن برای رفع نیازهای روزمره، جرقه‌ای برای تولد تجارک بود."
 
-#: tejarak/includes/languages/trans_twig.php:91
+#: tejarak/includes/languages/trans_twig.php:96
 msgid ""
 "Tejarak have a set of simple and practical tools on a regular basis for modern "
 "businesses."
@@ -5198,7 +5467,7 @@ msgstr ""
 "تجارک مجموعه ابزارهایی ساده و کاربردی را به‌صورت یکپارچه در اختیار کسب و کارهای "
 "مدرن و همینطور تجارت‌های سنتی مایل به حرکت به‌سوی تکنولوژی قرار می‌دهد."
 
-#: tejarak/includes/languages/trans_twig.php:92
+#: tejarak/includes/languages/trans_twig.php:97
 msgid ""
 "It’s good to know that in addition to the core services, features such as "
 "inventory and invoice will be added."
@@ -5206,11 +5475,11 @@ msgstr ""
 "قابل توجه اینکه علاوه‌بر توسعه‌ی خدمات اصلی، بخش‌های کوچک‌تر و کاربردی در روند توسعه "
 "تجارک به آن افزوده خواهند شد."
 
-#: tejarak/includes/languages/trans_twig.php:93
+#: tejarak/includes/languages/trans_twig.php:98
 msgid "Attendance system"
 msgstr "سرویس حضور و غیاب"
 
-#: tejarak/includes/languages/trans_twig.php:94
+#: tejarak/includes/languages/trans_twig.php:99
 msgid ""
 "Attendance is so different in Tejarak. Beautiful and stylish design without "
 "requiring any hardware. Notification via social networks, Online reports and "
@@ -5221,11 +5490,11 @@ msgstr ""
 "آنلاین و لحظه‌ای بودن گزارشات و مهم‌تر از همه تفاوت آن، از بارزترین مزایای سرویس "
 "حضور و غیاب تجارک است."
 
-#: tejarak/includes/languages/trans_twig.php:95
+#: tejarak/includes/languages/trans_twig.php:100
 msgid "Daily report"
 msgstr "گزارش روزانه"
 
-#: tejarak/includes/languages/trans_twig.php:96
+#: tejarak/includes/languages/trans_twig.php:101
 msgid ""
 "In many collections received daily reports of the employees is very important. "
 "On the other hands Employees reluctant to do that. In addition to the classical "
@@ -5238,11 +5507,11 @@ msgstr ""
 "دریافت گزارش کار را از طریق توییتر و تلگرام نیز امکان‌پذیر کرده و عملکردهای جدیدی "
 "را نیز ارائه می‌دهد."
 
-#: tejarak/includes/languages/trans_twig.php:97
+#: tejarak/includes/languages/trans_twig.php:102
 msgid "Salary calculator"
 msgstr "محاسبه حقوق و دستمزد"
 
-#: tejarak/includes/languages/trans_twig.php:98
+#: tejarak/includes/languages/trans_twig.php:103
 msgid ""
 "For many small business is very complex method of calculating monthly salary and "
 "they Need to have simpler method. In addition to supporting traditional methods, "
@@ -5255,43 +5524,43 @@ msgstr ""
 "راه‌حل‌هایی ساده برای حقوق ماهیانه کارکنان ارائه می‌دهد تا کارکنان امروزی، فیش‌های "
 "حقوقی مدرن و زیبا را هم تجربه کنند."
 
-#: tejarak/includes/languages/trans_twig.php:101
+#: tejarak/includes/languages/trans_twig.php:106
 msgid "Tejarak benefits"
 msgstr "مزایای تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:102
+#: tejarak/includes/languages/trans_twig.php:107
 msgid "What can you do with Tejarak?"
 msgstr "تجارک چه کارهایی میتواند انجام دهد؟"
 
-#: tejarak/includes/languages/trans_twig.php:105
+#: tejarak/includes/languages/trans_twig.php:110
 msgid "Change log of Tejarak"
 msgstr "پیشرفت پروژه تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:106
+#: tejarak/includes/languages/trans_twig.php:111
 msgid "We were born to do Best!"
 msgstr "ما برای انجام بهترین‌ها متولد شدیم!"
 
-#: tejarak/includes/languages/trans_twig.php:107
+#: tejarak/includes/languages/trans_twig.php:112
 msgid "We are Developers, please wait!"
 msgstr "ما توسعه دهنده هستیم، صبور باشید!"
 
-#: tejarak/includes/languages/trans_twig.php:110
+#: tejarak/includes/languages/trans_twig.php:115
 msgid "Version 1 of Tejarak is comming"
 msgstr "نسخه اول تجارک در حال آماده‌سازی است"
 
-#: tejarak/includes/languages/trans_twig.php:111
+#: tejarak/includes/languages/trans_twig.php:116
 msgid "Beta version of Tejarak released"
 msgstr "نسخه بتای تجارک منتشر شد"
 
-#: tejarak/includes/languages/trans_twig.php:112
+#: tejarak/includes/languages/trans_twig.php:117
 msgid "Finally Tejarak logo is accepted and we started branding"
 msgstr ""
 
-#: tejarak/includes/languages/trans_twig.php:113
+#: tejarak/includes/languages/trans_twig.php:118
 msgid "Alfa version of Tejarak released"
 msgstr "نسخه آلفای تجارک منتشر شد"
 
-#: tejarak/includes/languages/trans_twig.php:114
+#: tejarak/includes/languages/trans_twig.php:119
 msgid ""
 "The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak."
 "ir</a> domains registered."
@@ -5299,27 +5568,27 @@ msgstr ""
 "نام تجارک برای این پروژه برگزیده شده و دامنه‌ی <a href='http://Tejarak."
 "ir'>Tejarak.ir</a> ثبت شد."
 
-#: tejarak/includes/languages/trans_twig.php:117
+#: tejarak/includes/languages/trans_twig.php:122
 msgid "Have a headaches? We have soulutions. Be patient..."
 msgstr "سردرد دارید؟ ما راه‌حل‌هایی برای شما داریم. صبور باشید..."
 
-#: tejarak/includes/languages/trans_twig.php:120
+#: tejarak/includes/languages/trans_twig.php:125
 msgid "This FAQ provides answers to basic questions about Tejarak."
 msgstr "این سوالات متداول برای پاسخ به سوالات ساده‌ای درباره تجارک است"
 
-#: tejarak/includes/languages/trans_twig.php:121
+#: tejarak/includes/languages/trans_twig.php:126
 msgid "General questions"
 msgstr "سوالات عمومی"
 
-#: tejarak/includes/languages/trans_twig.php:122
+#: tejarak/includes/languages/trans_twig.php:127
 msgid "How does Tejarak work?"
 msgstr "تجارک چگونه کار می‌کند؟"
 
-#: tejarak/includes/languages/trans_twig.php:123
+#: tejarak/includes/languages/trans_twig.php:128
 msgid "Tejarak is simple. Enter to check it!"
 msgstr "تجارک خیلی ساده کار می‌کند! وارد شوید و آن را بررسی کنید."
 
-#: tejarak/includes/languages/trans_twig.php:124
+#: tejarak/includes/languages/trans_twig.php:129
 msgid ""
 "The easiest way to learn how to use Tejark is enter to it, which takes less than "
 "3 minutes to setup your team."
@@ -5327,60 +5596,60 @@ msgstr ""
 "آسان‌ترین راه برای یادگیری نحوه‌ی کارکرد تجارک ورود به آن است که کمتر از ۳ دقیقه "
 "از زمان شما را برای راه‌اندازی اولیه و شروع به‌کار می‌گیرد."
 
-#: tejarak/includes/languages/trans_twig.php:125
+#: tejarak/includes/languages/trans_twig.php:130
 msgid "What is your privacy and security policy?"
 msgstr "قوانین و شرایط حریم خصوصی شما چیست؟"
 
-#: tejarak/includes/languages/trans_twig.php:126
+#: tejarak/includes/languages/trans_twig.php:131
 msgid "View Tejarak's privacy and security policy at"
 msgstr "نگاه ما به حریم خصوصی را در این صفحه بخوانید"
 
-#: tejarak/includes/languages/trans_twig.php:127
+#: tejarak/includes/languages/trans_twig.php:132
 msgid "Where can I find your Terms of Service (TOS)?"
 msgstr "کجا می‌توانم شرایط و قوانین استفاده از سرویس را پیدا کنم؟"
 
-#: tejarak/includes/languages/trans_twig.php:128
+#: tejarak/includes/languages/trans_twig.php:133
 msgid "You can find them at"
 msgstr "شما می‌توانید آن را در اینجا بیابید"
 
-#: tejarak/includes/languages/trans_twig.php:129
+#: tejarak/includes/languages/trans_twig.php:134
 msgid "What are your bandwidth fees?"
 msgstr "تعرفه‌ی پهنای باند شما چقدر است؟"
 
-#: tejarak/includes/languages/trans_twig.php:130
+#: tejarak/includes/languages/trans_twig.php:135
 msgid "There are none. All Tejarak plans include unlimited bandwidth for free."
 msgstr ""
 "هیچ! تمامی پلن‌های تجارک شامل پهنای‌باند نامحدود رایگان هستند و شما هزینه‌ای برای "
 "پهنای‌باند پرداخت نمی‌کنید."
 
-#: tejarak/includes/languages/trans_twig.php:131
+#: tejarak/includes/languages/trans_twig.php:136
 msgid "Do I need a web host?"
 msgstr "آیا برای استفاده از تجارک نیاز به هاست دارم؟"
 
-#: tejarak/includes/languages/trans_twig.php:132
+#: tejarak/includes/languages/trans_twig.php:137
 msgid ""
 "No! Tejarak includes secure, unlimited hosting on all plans with free bandwith."
 msgstr ""
 "خیر! تجارک به‌همراه هاست نامحدود و امن شده بر روی تمامی پلن‌ها به همراه پهنای باند "
 "نامحدود برای شما قابل استفاده است."
 
-#: tejarak/includes/languages/trans_twig.php:133
+#: tejarak/includes/languages/trans_twig.php:138
 msgid "Billing & Invoicing"
 msgstr "مالی و فاکتور"
 
-#: tejarak/includes/languages/trans_twig.php:134
+#: tejarak/includes/languages/trans_twig.php:139
 msgid "Is there a setup fee?"
 msgstr "آیا هزینه اولیه راه‌اندازی وجود داد؟"
 
-#: tejarak/includes/languages/trans_twig.php:135
+#: tejarak/includes/languages/trans_twig.php:140
 msgid "No. There are no setup fees on any of our plans!"
 msgstr "نه. هیچ‌گونه هزینه اولیه راه‌اندازی برای هیچ‌کدام از پلن‌ها وجود ندارد!"
 
-#: tejarak/includes/languages/trans_twig.php:136
+#: tejarak/includes/languages/trans_twig.php:141
 msgid "Can I cancel my account at any time?"
 msgstr "آیا می‌توانم حساب‌کاربری خودم را هر زمانی لغو کنم؟"
 
-#: tejarak/includes/languages/trans_twig.php:137
+#: tejarak/includes/languages/trans_twig.php:142
 msgid ""
 "Yes. If you ever decide that Tejarak isn’t the best platform for your business, "
 "simply cancel your account."
@@ -5388,29 +5657,29 @@ msgstr ""
 "بله. اگر هر زمانی تصمیم گرفتید که تجارک بهترین خدمات موجود را به کسب و کار شما "
 "ارائه نمی‌دهد، به‌راحتی اکانت خود را لغو کنید."
 
-#: tejarak/includes/languages/trans_twig.php:138
+#: tejarak/includes/languages/trans_twig.php:143
 msgid "How long are your contracts?"
 msgstr "مدت زمان قراردادهای شما چقدر است؟"
 
-#: tejarak/includes/languages/trans_twig.php:139
+#: tejarak/includes/languages/trans_twig.php:144
 msgid "All Tejarak plans are month to month. simple."
 msgstr "تمامی پلن‌های تجارک به مدت یکماه است. ساده‌ی ساده."
 
-#: tejarak/includes/languages/trans_twig.php:140
+#: tejarak/includes/languages/trans_twig.php:145
 msgid "Can I change my plan later on?"
 msgstr "آیا در آینده می‌توانم پلن انتخابی را تغییر دهم؟"
 
-#: tejarak/includes/languages/trans_twig.php:141
+#: tejarak/includes/languages/trans_twig.php:146
 msgid "Absolutely! You can upgrade or downgrade your plan at any time."
 msgstr ""
 "قطعا! شما هر زمانی لازم دیدید می‌توانید پلن خود را ارتقا داده و یا به پلن‌های "
 "پایین‌تر جابجا شوید."
 
-#: tejarak/includes/languages/trans_twig.php:142
+#: tejarak/includes/languages/trans_twig.php:147
 msgid "When is my billing date?"
 msgstr "موعد پرداخت هزینه‌های مالی من چه‌زمانی است؟"
 
-#: tejarak/includes/languages/trans_twig.php:143
+#: tejarak/includes/languages/trans_twig.php:148
 msgid ""
 "The date you first select a paid plan will be the recurring billing date. For "
 "example: If you sign up for the first time on July 15, all future charges will "
@@ -5421,127 +5690,127 @@ msgstr ""
 "انتخاب کردید، تمامی فاکتورهای بعدی در تاریخ ۱۷‌ ام ماه‌های آینده صادر و کسر خواهند "
 "شد."
 
-#: tejarak/includes/languages/trans_twig.php:147
+#: tejarak/includes/languages/trans_twig.php:152
 msgid "Need HELP? Be patient..."
 msgstr "کمک نیاز دارید؟ صبور باشید..."
 
-#: tejarak/includes/languages/trans_twig.php:150
+#: tejarak/includes/languages/trans_twig.php:155
 msgid "Tejarak Logo"
 msgstr "لوگوی تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:151
+#: tejarak/includes/languages/trans_twig.php:156
 msgid "Need know more about Tejarak Logo? Be patient..."
 msgstr "نیاز به دانستن بیشتر درباره لوگوی تجارک دارید؟ صبور باشید..."
 
-#: tejarak/includes/languages/trans_twig.php:154
+#: tejarak/includes/languages/trans_twig.php:159
 msgid "Plans and Pricing"
 msgstr "پلن‌ها و هزینه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:155
+#: tejarak/includes/languages/trans_twig.php:160
 msgid "Always know what you'll pay per month."
 msgstr "همیشه از پرداختی ماهیانه خود آگاه باشید."
 
-#: tejarak/includes/languages/trans_twig.php:156
+#: tejarak/includes/languages/trans_twig.php:161
 msgid "Simple pricing"
 msgstr "هزینه‌های شفاف و ساده"
 
-#: tejarak/includes/languages/trans_twig.php:157
+#: tejarak/includes/languages/trans_twig.php:162
 msgid "Unlimited"
 msgstr "نامحدود"
 
-#: tejarak/includes/languages/trans_twig.php:158
+#: tejarak/includes/languages/trans_twig.php:163
 msgid "Price per person/month"
 msgstr "هزینه به‌ازای نفر در ماه"
 
-#: tejarak/includes/languages/trans_twig.php:159
+#: tejarak/includes/languages/trans_twig.php:164
 msgid "Number of persons"
 msgstr "تعداد افراد"
 
-#: tejarak/includes/languages/trans_twig.php:160
+#: tejarak/includes/languages/trans_twig.php:165
 msgid "Analytics"
 msgstr "آمارها"
 
-#: tejarak/includes/languages/trans_twig.php:161
+#: tejarak/includes/languages/trans_twig.php:166
 msgid "Simple reports"
 msgstr "گزارش ساده"
 
-#: tejarak/includes/languages/trans_twig.php:162
+#: tejarak/includes/languages/trans_twig.php:167
 msgid "Professional reports"
 msgstr "گزارشات پیشرفته"
 
-#: tejarak/includes/languages/trans_twig.php:163
+#: tejarak/includes/languages/trans_twig.php:168
 msgid "Report via telegram"
 msgstr "گزارش از طریق تلگرام"
 
-#: tejarak/includes/languages/trans_twig.php:164
+#: tejarak/includes/languages/trans_twig.php:169
 msgid "Report via SMS"
 msgstr "گزارش از طریق پیامک"
 
-#: tejarak/includes/languages/trans_twig.php:165
+#: tejarak/includes/languages/trans_twig.php:170
 msgid "Visual reports with chart"
 msgstr "گزارشات تصویر با نمودار"
 
-#: tejarak/includes/languages/trans_twig.php:166
+#: tejarak/includes/languages/trans_twig.php:171
 msgid "Advanced report builder"
 msgstr "ساخت گزارشات پیشرفته"
 
-#: tejarak/includes/languages/trans_twig.php:167
+#: tejarak/includes/languages/trans_twig.php:172
 msgid "Branding"
 msgstr "برندینگ"
 
-#: tejarak/includes/languages/trans_twig.php:168
+#: tejarak/includes/languages/trans_twig.php:173
 msgid "Free SSL certificate"
 msgstr "گواهی اس‌اس‌ال رایگان"
 
-#: tejarak/includes/languages/trans_twig.php:169
+#: tejarak/includes/languages/trans_twig.php:174
 msgid "Custom message format"
 msgstr "فرمت پیام سفارشی"
 
-#: tejarak/includes/languages/trans_twig.php:170
+#: tejarak/includes/languages/trans_twig.php:175
 msgid "Custom brand logo"
 msgstr "لوگوی سفارشی نام‌تجاری"
 
-#: tejarak/includes/languages/trans_twig.php:171
+#: tejarak/includes/languages/trans_twig.php:176
 msgid "Custom domain"
 msgstr "دامنه سفارشی"
 
-#: tejarak/includes/languages/trans_twig.php:172
+#: tejarak/includes/languages/trans_twig.php:177
 msgid "Technical Support"
 msgstr "پشتیبانی فنی"
 
-#: tejarak/includes/languages/trans_twig.php:173
+#: tejarak/includes/languages/trans_twig.php:178
 msgid "Email response time"
 msgstr "زمان پاسخ به ایمیل"
 
-#: tejarak/includes/languages/trans_twig.php:174
+#: tejarak/includes/languages/trans_twig.php:179
 msgid "48 hours"
 msgstr "۴۸ ساعت"
 
-#: tejarak/includes/languages/trans_twig.php:175
+#: tejarak/includes/languages/trans_twig.php:180
 msgid "12 hours"
 msgstr "۱۲ ساعت"
 
-#: tejarak/includes/languages/trans_twig.php:176
+#: tejarak/includes/languages/trans_twig.php:181
 msgid "2 hours"
 msgstr "۲ ساعت"
 
-#: tejarak/includes/languages/trans_twig.php:177
+#: tejarak/includes/languages/trans_twig.php:182
 msgid "15 minutes"
 msgstr "۱۵ دقیقه"
 
-#: tejarak/includes/languages/trans_twig.php:178
+#: tejarak/includes/languages/trans_twig.php:183
 msgid "Emergency phone support"
 msgstr "پشتیبانی اضطراری تلفنی"
 
-#: tejarak/includes/languages/trans_twig.php:179
+#: tejarak/includes/languages/trans_twig.php:184
 msgid "Ready to use Tejarak Enterprise?"
 msgstr "آماده استفاده از پلن سازمانی تجارک هستید؟"
 
-#: tejarak/includes/languages/trans_twig.php:180
+#: tejarak/includes/languages/trans_twig.php:185
 msgid "Get started with our Enterprise plan."
 msgstr "با پلن سازمانی ما شروع کنید."
 
-#: tejarak/includes/languages/trans_twig.php:183
+#: tejarak/includes/languages/trans_twig.php:188
 msgid ""
 "We wish to assure you that our main concern is to secure your privacy and "
 "protect your information against impermissible access."
@@ -5549,11 +5818,11 @@ msgstr ""
 "ما این اطمینان را به شما می‌دهیم که دغدغه‌ی ما، حفظ حریم‌خصوصی و محافظت از اطلاعات "
 "شما در برابر دسترسی‌های غیرمجاز هست."
 
-#: tejarak/includes/languages/trans_twig.php:184
+#: tejarak/includes/languages/trans_twig.php:189
 msgid "What is Privacy?"
 msgstr "حریم‌خصوصی چیست؟"
 
-#: tejarak/includes/languages/trans_twig.php:185
+#: tejarak/includes/languages/trans_twig.php:190
 msgid ""
 "Privacy means that any individual is entitled to choose the information related "
 "to them, and selectively, share it with others."
@@ -5561,7 +5830,7 @@ msgstr ""
 "حریم‌خصوصی یعنی شخص بتواند اطلاعات مربوط به خود را مجزا کرده و به انتخاب خویش، در "
 "برابر دیگران آشکار کند."
 
-#: tejarak/includes/languages/trans_twig.php:186
+#: tejarak/includes/languages/trans_twig.php:191
 msgid ""
 "privacy is so important for mental peace as well as a peaceful personality that "
 "some experts have considered invasion of privacy disrespectful to human dignity."
@@ -5569,11 +5838,11 @@ msgstr ""
 "حریم‌خصوصی برای آرامش روانی و شخصیتی، بسیار مهم است تا جایی‌که بعضی از صاحب‌نظران "
 "نقض آن را به عنوان یک اقدام توهین‌آمیز نسبت به شرافت بشری قلمداد کرده‌اند."
 
-#: tejarak/includes/languages/trans_twig.php:187
+#: tejarak/includes/languages/trans_twig.php:192
 msgid "Controversies over the Invasion of Privacy"
 msgstr "جنجال‌های نقض حریم‌خصوصی"
 
-#: tejarak/includes/languages/trans_twig.php:188
+#: tejarak/includes/languages/trans_twig.php:193
 msgid ""
 "Within e-commerce, privacy has always been from among the most controversial "
 "topics and continues to be."
@@ -5581,7 +5850,7 @@ msgstr ""
 "حریم‌خصوصی در کسب‌و‌کارهای الکترونیکی همیشه یکی از بحث‌برانگیزترین موضوعات بوده و "
 "هست؛"
 
-#: tejarak/includes/languages/trans_twig.php:189
+#: tejarak/includes/languages/trans_twig.php:194
 msgid ""
 "Accordingly, formulating privacy policies is regarded as one of the crucial "
 "concerns of technology companies."
@@ -5589,7 +5858,7 @@ msgstr ""
 "به همین دلیل، تعیین سیاست‌های حریم‌خصوصی جزء دغدغه‌های بسیار مهم شرکت‌های فناورانه "
 "محسوب می‌شود."
 
-#: tejarak/includes/languages/trans_twig.php:190
+#: tejarak/includes/languages/trans_twig.php:195
 msgid ""
 "Meanwhile, widespread controversies have been provoked over invasion of privacy "
 "in e-commerce so that, occasionally, the regulations have to be revised to "
@@ -5599,17 +5868,17 @@ msgstr ""
 "گرفته است؛ به‌گونه‌ای که هرچند وقت یک‌بار مجبور هستند قوانین را بازبینی نموده تا "
 "حفره‌های موجود را رفع نمایند."
 
-#: tejarak/includes/languages/trans_twig.php:191
+#: tejarak/includes/languages/trans_twig.php:196
 msgid "Privacy from Our Point of View"
 msgstr "حریم‌خصوصی از دیدگاه ما"
 
-#: tejarak/includes/languages/trans_twig.php:192
+#: tejarak/includes/languages/trans_twig.php:197
 msgid ""
 "Let us be straightforward! Cyberspace is not a safe location for personal "
 "information."
 msgstr "رو راست باشیم، فضای مجازی محل امنی برای اطلاعات خصوصی نیست."
 
-#: tejarak/includes/languages/trans_twig.php:193
+#: tejarak/includes/languages/trans_twig.php:198
 msgid ""
 "For that reason, Tejarak makes no request for important information of yours and "
 "allow to save some general information including age, gender, education, "
@@ -5619,13 +5888,13 @@ msgstr ""
 "برخی از اطلاعات عمومی شامل سن، جنسیت، مدرک تحصیلی، علاقمندی‌ها و ... را برای "
 "استفاده خصوصی در تیم یا شرکت شما می‌دهد."
 
-#: tejarak/includes/languages/trans_twig.php:194
+#: tejarak/includes/languages/trans_twig.php:199
 msgid ""
 "It is worth mentioning that recording the aforementioned points is totally "
 "voluntary."
 msgstr "لازم به توضیح است که ثبت موارد ذکرشده نیز به‌صورت کاملا اختیاری است."
 
-#: tejarak/includes/languages/trans_twig.php:195
+#: tejarak/includes/languages/trans_twig.php:200
 msgid ""
 "However, taking the nature of cyberspace into account, we should remember that "
 "offering an absolute assurance might not be possible."
@@ -5633,7 +5902,7 @@ msgstr ""
 "این را در نظر داشته باشید که با توجه به ماهیت فضای مجازی، ارائه تضمین صددرصدی "
 "به‌طور کل ممکن نیست؛"
 
-#: tejarak/includes/languages/trans_twig.php:196
+#: tejarak/includes/languages/trans_twig.php:201
 msgid ""
 "Assuring privacy and security, with that ideal concept we bear in mind, does not "
 "exist; and if somebody gives you an assurance of securing your privacy, he has "
@@ -5643,7 +5912,7 @@ msgstr ""
 "اگر کسی در دنیای مجازی، تضمین امنیت حریم‌خصوصی شما را بدهد قطعا از اعتماد شما "
 "سوءاستفاده کرده است."
 
-#: tejarak/includes/languages/trans_twig.php:197
+#: tejarak/includes/languages/trans_twig.php:202
 msgid ""
 "Upon buying any digital or the so-called smart device, you have invaded your own "
 "privacy yourself."
@@ -5651,7 +5920,7 @@ msgstr ""
 "شما با خرید هر دستگاه دیجیتالی یا به اصطلاح هوشمند، با دست خود حریم‌خصوصی‌تان را "
 "نقض کرده‌اید."
 
-#: tejarak/includes/languages/trans_twig.php:198
+#: tejarak/includes/languages/trans_twig.php:203
 msgid ""
 "If you want your privacy not to be invaded, you should depart from technology "
 "and say goodbye to any digital and smart device."
@@ -5659,7 +5928,7 @@ msgstr ""
 "اگر می‌خواهید این حریم‌خصوصی نقض نشود باید به‌طور کل از دنیای تکنولوژی فاصله بگیرید "
 "و با هر دستگاه دیجیتالی و هوشمندی خداحافظی کنید!"
 
-#: tejarak/includes/languages/trans_twig.php:199
+#: tejarak/includes/languages/trans_twig.php:204
 msgid ""
 "In fact, we have employed all updated technologies of the world to provide you "
 "with the maximum security."
@@ -5667,7 +5936,7 @@ msgstr ""
 "ما به‌لحاظ فنی تمام تکنولوژی‌های روز دنیا را به‌کار برده‌ایم تا امنیت حداکثری را "
 "برای شما به ارمغان بیاوریم."
 
-#: tejarak/includes/languages/trans_twig.php:200
+#: tejarak/includes/languages/trans_twig.php:205
 msgid ""
 "As the final remark, we wish to assure you that our main concern is to secure "
 "your privacy and protect your information against impermissible access."
@@ -5675,11 +5944,11 @@ msgstr ""
 "در پایان، این اطمینان را به شما می‌دهیم که دغدغه‌ی ما، حفظ حریم‌خصوصی و محافظت از "
 "اطلاعات شما در برابر دسترسی‌های غیرمجاز هست."
 
-#: tejarak/includes/languages/trans_twig.php:203
+#: tejarak/includes/languages/trans_twig.php:208
 msgid "Tejarak Social Responsibility"
 msgstr "مسئولیت اجتماعی تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:204
+#: tejarak/includes/languages/trans_twig.php:209
 msgid ""
 "Social responsibility refers to our role in maintaining, caring about and "
 "helping our society, while having set as its goal a responsibility-centered "
@@ -5688,7 +5957,7 @@ msgstr ""
 "مسئولیت اجتماعی به نقش ما در جهت حفظ، مراقبت و کمک به جامعه‌ای که در آن هستیم "
 "اشاره می‌کند و هدف آن کسب‌وکار مسئولانه‌ی همراه با تولید ثروت است."
 
-#: tejarak/includes/languages/trans_twig.php:205
+#: tejarak/includes/languages/trans_twig.php:210
 msgid ""
 "The issue of the social responsibility of organizations and corporations towards "
 "the society is from among the important issues being focused on in recent years."
@@ -5696,7 +5965,7 @@ msgstr ""
 "موضوع مسئولیت اجتماعی سازمان‌ها و شرکت‌ها نسبت به جامعه از جمله موضوعات مهمی است "
 "که در سال‌های اخیر مورد اهمیت قرار گرفته است."
 
-#: tejarak/includes/languages/trans_twig.php:206
+#: tejarak/includes/languages/trans_twig.php:211
 msgid ""
 "The social responsibility of organizations relates to the organization's "
 "responsibility towards society, human beings and the environment in which they "
@@ -5706,11 +5975,11 @@ msgstr ""
 "است که در آن فعالیت می‌کند. این مسئولیت فراتر از قوانین مرسوم و منافع مالی سازمان "
 "بوده و پیشرفت منافع اجتماعی را دنبال می‌کند."
 
-#: tejarak/includes/languages/trans_twig.php:207
+#: tejarak/includes/languages/trans_twig.php:212
 msgid "Tejarak's Social Responsibilities"
 msgstr "مسئولیت‌های اجتماعی تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:208
+#: tejarak/includes/languages/trans_twig.php:213
 msgid ""
 "Based on the mentioned definitions of social responsibility, Tejarak considers "
 "itself committed to society. Accordingly, besides attempting to offer creative "
@@ -5721,11 +5990,11 @@ msgstr ""
 "دانسته و در کنار تلاش جهت ارائه خدمات خلاقانه و اثربخش، همواره مسئولیت اجتماعی "
 "از مهم‌ترین ماموریت‌های تجارک بوده و به‌امیدخدا خواهد بود."
 
-#: tejarak/includes/languages/trans_twig.php:209
+#: tejarak/includes/languages/trans_twig.php:214
 msgid "Environmentalist"
 msgstr "دوست‌دار محیط‌زیست"
 
-#: tejarak/includes/languages/trans_twig.php:210
+#: tejarak/includes/languages/trans_twig.php:215
 msgid ""
 "In spite of technological advancements, paper usage is unfortunately preferred "
 "to modern ways. One of Tejarak's objectives is trying to change this habit and "
@@ -5736,7 +6005,7 @@ msgstr ""
 "از روش‌های مدرن است؛ یکی از اهداف تجارک تلاش برای تغییر این عادت و کمک به حذف "
 "کاغذ از زندگی روزمره و درنتیجه حفظ محیط‌زیست است."
 
-#: tejarak/includes/languages/trans_twig.php:211
+#: tejarak/includes/languages/trans_twig.php:216
 msgid ""
 "Accordingly, with the aim of total elimination of paper use as well as "
 "electronic presentation of services, Tejarak has taken significant steps towards "
@@ -5746,11 +6015,11 @@ msgstr ""
 "اقدامی مهم در زمینه حفظ محیط‌زیست داشته باشد. از میزان صرفه‌جویی تجارک در مصرف "
 "کاغذ آگاه شوید."
 
-#: tejarak/includes/languages/trans_twig.php:212
+#: tejarak/includes/languages/trans_twig.php:217
 msgid "Philanthropist Activities"
 msgstr "فعالیت‌های خیرخواهانه"
 
-#: tejarak/includes/languages/trans_twig.php:213
+#: tejarak/includes/languages/trans_twig.php:218
 msgid ""
 "One of the most valuable resources of charity organizations is the voluntary and "
 "active participation of the individuals who, without any expectations, provide "
@@ -5759,7 +6028,7 @@ msgstr ""
 "یکی از ارزشمندترین سرمایه‌‌ی سازمان‌های خیریه، فعالیت و مشارکت داوطلبانه افرادی است "
 "که مهارت و سرمایه خود را بدون هیچ چشم‌داشتی در اختیار آن‌ها قرار می‌دهند."
 
-#: tejarak/includes/languages/trans_twig.php:214
+#: tejarak/includes/languages/trans_twig.php:219
 msgid ""
 "Tejarak as well, with regard to its contribution to philanthropist activities, "
 "will honorably provide them with its services free of charge. To make use of "
@@ -5771,11 +6040,11 @@ msgstr ""
 "خدمات، درخواست خود را همراه با مدارک احراز هویت به مرکز پشتیبانی تجارک ارسال "
 "نمایید."
 
-#: tejarak/includes/languages/trans_twig.php:215
+#: tejarak/includes/languages/trans_twig.php:220
 msgid "Recruiting Motivated Staff"
 msgstr "بکارگیری نیروهای باانگیزه"
 
-#: tejarak/includes/languages/trans_twig.php:216
+#: tejarak/includes/languages/trans_twig.php:221
 msgid ""
 "An outstanding characteristic of any organization is its specialized and highly "
 "motivated staff, playing a vital role in growth and development."
@@ -5783,7 +6052,7 @@ msgstr ""
 "ویژگی چشم‌گیر و بارز هر سازمانی وجود نیروی‌ انسانی باانگیزه و متخصص است که نقشی "
 "بنیادین در رشد و توسعه دارند."
 
-#: tejarak/includes/languages/trans_twig.php:217
+#: tejarak/includes/languages/trans_twig.php:222
 msgid ""
 "By the same token, we are always looking for creative and motivated Iranian "
 "youths in order to make the best and be effective in cooperation with them."
@@ -5791,15 +6060,15 @@ msgstr ""
 "ما هم در این راستا و برای خدمت به سرزمین‌مان، به دنبال جوانان ایرانی خلاق و "
 "باانگیزه هستیم تا با کمک هم برترین‌ها را بسازیم و اثرگذار باشیم."
 
-#: tejarak/includes/languages/trans_twig.php:218
+#: tejarak/includes/languages/trans_twig.php:223
 msgid "Join us and grow in a different location."
 msgstr "به ما بپیوندید و در مکانی متفاوت رشد کنید."
 
-#: tejarak/includes/languages/trans_twig.php:219
+#: tejarak/includes/languages/trans_twig.php:224
 msgid "Customer Care and Complete Satisfaction"
 msgstr "مشتری‌مداری و کسب رضایت کامل"
 
-#: tejarak/includes/languages/trans_twig.php:220
+#: tejarak/includes/languages/trans_twig.php:225
 msgid ""
 "Attracting people's participation as well as having their valuable presence has "
 "always been a great honor for Tejarak and to appreciate your support, in return, "
@@ -5809,7 +6078,7 @@ msgstr ""
 "قدردانی از این حمایت، تجارک نیز خدمات متقابلی را برای افزایش رضایت مشتریان خود "
 "ارائه می‌کند."
 
-#: tejarak/includes/languages/trans_twig.php:221
+#: tejarak/includes/languages/trans_twig.php:226
 msgid ""
 "These services are presented in different time intervals and are aimed at "
 "costomer care mission and appreciation of your valuable presence."
@@ -5817,11 +6086,11 @@ msgstr ""
 "این خدمات در بازه‌های زمانی متفاوت ارائه‌شده و در راستای ماموریت مشتری‌مداری و ارج "
 "نهادن به این حضور گرانبها می‌باشد."
 
-#: tejarak/includes/languages/trans_twig.php:224
+#: tejarak/includes/languages/trans_twig.php:229
 msgid "Terms of Service Agreement"
 msgstr "توافق‌نامه استفاده از سرویس"
 
-#: tejarak/includes/languages/trans_twig.php:225
+#: tejarak/includes/languages/trans_twig.php:230
 msgid ""
 "Tejarak acts upon international rules, depends on the countries receiving its "
 "services and renders its activities within this framework."
@@ -5829,7 +6098,7 @@ msgstr ""
 "تجارک مطابق قوانین بین‌الملل و وابسته به کشورهای دریافت‌کننده خدمات بوده و در این "
 "چارچوب فعالیت می‌نماید."
 
-#: tejarak/includes/languages/trans_twig.php:226
+#: tejarak/includes/languages/trans_twig.php:231
 msgid ""
 "Utilizing Tejarak's services means the acceptance of and commitment to observing "
 "all the tenors of this agreement."
@@ -5837,7 +6106,7 @@ msgstr ""
 "استفاده از خدمات تجارک به منزله‌ پذیرش و تعهد به رعایت تمام مفاد مندرج در این "
 "توافق‌نامه است."
 
-#: tejarak/includes/languages/trans_twig.php:227
+#: tejarak/includes/languages/trans_twig.php:232
 msgid ""
 "It is worth mentioning that due to the insecurity of cyberspace, you should "
 "never post your vital information on either Tejarak or any other services!"
@@ -5845,7 +6114,7 @@ msgstr ""
 "لازم به یادآوری‌ست که با توجه به ناامن بودن فضای ‌مجازی، نه تنها در تجارک بلکه در "
 "هیچ سرویس دیگری، اطلاعات حیاتی خود را منتشر نکنید!"
 
-#: tejarak/includes/languages/trans_twig.php:228
+#: tejarak/includes/languages/trans_twig.php:233
 msgid ""
 "User's personal information is strictly confidential in our service. Tejarak "
 "preserves the information as encoded and will not under any conditions transfer "
@@ -5855,7 +6124,7 @@ msgstr ""
 "اطلاعات را به صورت کدشده نگه‌داری کرده و تحت هیچ شرایطی آن‌را به غیر واگذار نخواهد "
 "کرد."
 
-#: tejarak/includes/languages/trans_twig.php:229
+#: tejarak/includes/languages/trans_twig.php:234
 msgid ""
 "In case there is a request for receiving user's information by the competent "
 "authorities, according to the country the user lives in, Tejarak will cooperate "
@@ -5866,7 +6135,7 @@ msgstr ""
 "اطلاعات‌کاربری، تجارک تنها پس از دریافت حکم قضایی کشور درخواست کننده، توانایی "
 "همکاری با آنان را خواهد داشت."
 
-#: tejarak/includes/languages/trans_twig.php:230
+#: tejarak/includes/languages/trans_twig.php:235
 msgid ""
 "Tejarak will not offer any guarantee as to the quality of the products or "
 "services presented by the teams and will not accept any responsibility in this "
@@ -5875,7 +6144,7 @@ msgstr ""
 "تجارک هیچگونه ضمانتی در مورد کیفیت محصولات یا خدمات ارائه شده توسط تیم‌ها را "
 "نمی‌پذیرد و مسئولیتی در قبال آن ندارد!"
 
-#: tejarak/includes/languages/trans_twig.php:231
+#: tejarak/includes/languages/trans_twig.php:236
 msgid ""
 "Users should assume responsibility for any harm, both material and immaterial, "
 "caused by direct, indirect or penal factors and due to their utilization of this "
@@ -5884,7 +6153,7 @@ msgstr ""
 "خسارت‌های‌ مادی و معنوی ناشی از عوامل مستقیم، غیرمستقیم و کیفری، در قبال استفاده "
 "از این سرویس برعهده کاربران بوده و تجارک هیچ‌گونه مسئولیتی دراین‌باره ندارد."
 
-#: tejarak/includes/languages/trans_twig.php:232
+#: tejarak/includes/languages/trans_twig.php:237
 msgid ""
 "Tejarak accepts no responsibility, under any conditions, for the harms caused by "
 "users' mutual trust in each other or by the disclosure of information by users."
@@ -5892,7 +6161,7 @@ msgstr ""
 "تحت هیچ شرایطی تجارک مسئولیت خسارت‌های وارده در اثر اعتماد و اتکاء اعضاء به "
 "یکدیگر و فاش‌شدن اطلاعات توسط کاربر را نمی‌پذیرد."
 
-#: tejarak/includes/languages/trans_twig.php:233
+#: tejarak/includes/languages/trans_twig.php:238
 msgid ""
 "Tejarak will do its best to protect both the users' information and the service; "
 "however, regarding the lack of certainty within the cyberspace, it will not "
@@ -5902,7 +6171,7 @@ msgstr ""
 "توجه به عدم قطعیت در فضای مجازی، مسئولیتی در مورد از بين رفتن اطلاعات قرارگرفته "
 "بر روی سرویس نخواهد پذیرفت."
 
-#: tejarak/includes/languages/trans_twig.php:234
+#: tejarak/includes/languages/trans_twig.php:239
 msgid ""
 "We will publicize our information and news only via Tejarak's formal website. "
 "Accordingly, those who publicize any attributed news and claims, within social "
@@ -5913,7 +6182,7 @@ msgstr ""
 "خبر و ادعای نسبت‌داده‌شده در رسانه‌ها و شبکه‌های اجتماعی به عهده منتشرکننده آن بوده "
 "و تجارک مسئولیتی در قبال آن ندارد."
 
-#: tejarak/includes/languages/trans_twig.php:235
+#: tejarak/includes/languages/trans_twig.php:240
 msgid ""
 "Tejarak will bear no responsibility for whatsoever messages sent to users, "
 "including those indicating winning a lottery, and all our information "
@@ -5923,7 +6192,7 @@ msgstr ""
 "پیام دیگری نداشته و تمام اطلاع‌رسانی‌های ما از طریق روش‌های برقراری ارتباط کاربر با "
 "تجارک خواهد بود."
 
-#: tejarak/includes/languages/trans_twig.php:236
+#: tejarak/includes/languages/trans_twig.php:241
 msgid ""
 "Any misuse of Tejarak's trade name is prohibited and will be suable by making a "
 "complaint to the legal competent authorities."
@@ -5931,7 +6200,7 @@ msgstr ""
 "هرگونه سوءاستفاده از نام تجاری تجارک ممنوع بوده و از طریق شکایت به مراجع قانونی "
 "دارای صلاحیت، قابل پیگرد خواهد بود."
 
-#: tejarak/includes/languages/trans_twig.php:237
+#: tejarak/includes/languages/trans_twig.php:242
 msgid ""
 "Furthermore, this agreement, under the name Terms and Conditions, will be "
 "available and observable, in all pages of the website. Users will be responsible "
@@ -5940,7 +6209,7 @@ msgstr ""
 "هم‌چنین این توافق‌نامه در تمام صفحات وب‌سایت با عنوان شرایط و قوانین موجود و قابل "
 "مشاهده است. مسئولیت عدم کسب اطلاع از آخرین تغییرات برعهده کاربر خواهد بود."
 
-#: tejarak/includes/languages/trans_twig.php:238
+#: tejarak/includes/languages/trans_twig.php:243
 msgid ""
 "It should be mentioned that in case there would be any modifications in the "
 "above-mentioned tenors, an updated version will be available for the public, and "
@@ -5949,677 +6218,737 @@ msgstr ""
 "لازم به ذکر است که درصورت هرگونه تغییر در مفاد ذکر شده، نسخه به‌روزشده آن در "
 "دسترس عموم قرار خواهد گرفت و به اطلاع تمام کاربران خواهد رسید."
 
-#: tejarak/includes/languages/trans_twig.php:241
+#: tejarak/includes/languages/trans_twig.php:246
 msgid "Your credit"
 msgstr "اعتبار شما"
 
-#: tejarak/includes/languages/trans_twig.php:242
+#: tejarak/includes/languages/trans_twig.php:247
 msgid "Earn More Credit"
 msgstr "کسب اعتبار بیشتر"
 
-#: tejarak/includes/languages/trans_twig.php:243
+#: tejarak/includes/languages/trans_twig.php:248
 msgid "Usage"
 msgstr "میزان مصرف"
 
-#: tejarak/includes/languages/trans_twig.php:244
+#: tejarak/includes/languages/trans_twig.php:249
 msgid "View Usage Details"
 msgstr "مشاهده جزئیات استفاده"
 
-#: tejarak/includes/languages/trans_twig.php:245
+#: tejarak/includes/languages/trans_twig.php:250
 msgid "Charge your account"
 msgstr "شارژ حساب کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:246
+#: tejarak/includes/languages/trans_twig.php:251
 msgid "Choose a gateway and enter an amount to charge your account"
 msgstr "درگاه پرداخت خود را انتخاب کنید و میزان شارژ حساب کاربری خود را وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:247
+#: tejarak/includes/languages/trans_twig.php:252
 msgid "Amount"
 msgstr "مقدار"
 
-#: tejarak/includes/languages/trans_twig.php:248
+#: tejarak/includes/languages/trans_twig.php:253
 msgid "Checkout"
 msgstr "پرداخت"
 
-#: tejarak/includes/languages/trans_twig.php:249
+#: tejarak/includes/languages/trans_twig.php:254
 msgid "Promo code"
 msgstr "کد تخفیف"
 
-#: tejarak/includes/languages/trans_twig.php:250
+#: tejarak/includes/languages/trans_twig.php:255
 msgid "If you have a promo code, please enter it below to receive your credit."
 msgstr "اگر کد تخفیف دارید، برای دریافت اعتبار در کادر زیر وارد کنید."
 
-#: tejarak/includes/languages/trans_twig.php:251
+#: tejarak/includes/languages/trans_twig.php:256
 msgid "Promo Code"
 msgstr "کد تخفیف"
 
-#: tejarak/includes/languages/trans_twig.php:252
+#: tejarak/includes/languages/trans_twig.php:257
 msgid "Apply Code"
 msgstr "اعمال کد"
 
-#: tejarak/includes/languages/trans_twig.php:253
+#: tejarak/includes/languages/trans_twig.php:258
 msgid "Billing History"
 msgstr "تاریخچه پرداخت"
 
-#: tejarak/includes/languages/trans_twig.php:254
+#: tejarak/includes/languages/trans_twig.php:259
 msgid "Desc"
 msgstr "توضیح"
 
-#: tejarak/includes/languages/trans_twig.php:255
+#: tejarak/includes/languages/trans_twig.php:260
 msgid "Invoice"
 msgstr "فاکتور"
 
-#: tejarak/includes/languages/trans_twig.php:256
+#: tejarak/includes/languages/trans_twig.php:261
 msgid "Your Money"
 msgstr "پول شما"
 
-#: tejarak/includes/languages/trans_twig.php:257
+#: tejarak/includes/languages/trans_twig.php:262
 msgid "Your Gift"
 msgstr "هدیه شما"
 
-#: tejarak/includes/languages/trans_twig.php:258
+#: tejarak/includes/languages/trans_twig.php:263
 msgid "Your Credit"
 msgstr "اعتبار شما"
 
-#: tejarak/includes/languages/trans_twig.php:259
+#: tejarak/includes/languages/trans_twig.php:264
 msgid "Confirm"
 msgstr "تایید"
 
-#: tejarak/includes/languages/trans_twig.php:263
+#: tejarak/includes/languages/trans_twig.php:268
 msgid "Type"
 msgstr "نوع"
 
-#: tejarak/includes/languages/trans_twig.php:264
+#: tejarak/includes/languages/trans_twig.php:269
 msgid "Plus"
 msgstr "دور کاری"
 
-#: tejarak/includes/languages/trans_twig.php:265
+#: tejarak/includes/languages/trans_twig.php:270
 msgid "Minus"
 msgstr "هدر رفت"
 
-#: tejarak/includes/languages/trans_twig.php:268
+#: tejarak/includes/languages/trans_twig.php:273
 msgid "Branch Dashboard"
 msgstr "داشبورد شعبه"
 
-#: tejarak/includes/languages/trans_twig.php:271
+#: tejarak/includes/languages/trans_twig.php:276
 msgid "Branch add"
 msgstr "افزودن شعبه"
 
-#: tejarak/includes/languages/trans_twig.php:272
+#: tejarak/includes/languages/trans_twig.php:277
 msgid "Branch List"
 msgstr "لیست شعبه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:273
+#: tejarak/includes/languages/trans_twig.php:278
 msgid "Add Branch"
 msgstr "افزودن شعبه"
 
-#: tejarak/includes/languages/trans_twig.php:275
+#: tejarak/includes/languages/trans_twig.php:280
 msgid "Brand"
 msgstr "نام تجاری"
 
-#: tejarak/includes/languages/trans_twig.php:276
+#: tejarak/includes/languages/trans_twig.php:281
 msgid "Address"
 msgstr "آدرس"
 
-#: tejarak/includes/languages/trans_twig.php:277
+#: tejarak/includes/languages/trans_twig.php:282
 msgid "Phone"
 msgstr "شماره تلفن"
 
-#: tejarak/includes/languages/trans_twig.php:278
+#: tejarak/includes/languages/trans_twig.php:283
 msgid "Fax"
 msgstr "فکس"
 
-#: tejarak/includes/languages/trans_twig.php:279
+#: tejarak/includes/languages/trans_twig.php:284
 msgid "Post code"
 msgstr "کدپستی"
 
-#: tejarak/includes/languages/trans_twig.php:280
+#: tejarak/includes/languages/trans_twig.php:285
 msgid "Full time"
 msgstr "تمام وقت"
 
-#: tejarak/includes/languages/trans_twig.php:281
+#: tejarak/includes/languages/trans_twig.php:286
 msgid "Remote"
 msgstr "ریموت"
 
-#: tejarak/includes/languages/trans_twig.php:282
+#: tejarak/includes/languages/trans_twig.php:287
 msgid "Default"
 msgstr "پیش‌فرض"
 
-#: tejarak/includes/languages/trans_twig.php:287
+#: tejarak/includes/languages/trans_twig.php:292
 msgid "Hi"
 msgstr "سلام"
 
-#: tejarak/includes/languages/trans_twig.php:288
+#: tejarak/includes/languages/trans_twig.php:293
 msgid "Wellcome to Tejarak admin"
 msgstr "به ادمین تجارک خوش‌آمدید"
 
-#: tejarak/includes/languages/trans_twig.php:289 tejarak/includes/mvc/view.php:11
+#: tejarak/includes/languages/trans_twig.php:294 tejarak/includes/mvc/view.php:11
 msgid "Tejarak was born to serve small and beautiful service for e-business"
 msgstr "تجارک برای ارائه سرویس‌های کوچک و زیبا به کسب و کارهای الکترونیکی متولد شد"
 
-#: tejarak/includes/languages/trans_twig.php:290
+#: tejarak/includes/languages/trans_twig.php:295
 msgid "Members"
 msgstr "اعضا"
 
-#: tejarak/includes/languages/trans_twig.php:291
+#: tejarak/includes/languages/trans_twig.php:296
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: tejarak/includes/languages/trans_twig.php:292
+#: tejarak/includes/languages/trans_twig.php:297
 msgid "Add new branch"
 msgstr "افزودن شعبه جدید"
 
-#: tejarak/includes/languages/trans_twig.php:295
+#: tejarak/includes/languages/trans_twig.php:300
 msgid "Add team"
 msgstr "افزودن تیم"
 
-#: tejarak/includes/languages/trans_twig.php:296
+#: tejarak/includes/languages/trans_twig.php:301
 msgid "List team"
 msgstr "لیست تیم‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:299
+#: tejarak/includes/languages/trans_twig.php:304
 msgid "Add new team"
 msgstr "افزودن تیم"
 
-#: tejarak/includes/languages/trans_twig.php:303
+#: tejarak/includes/languages/trans_twig.php:308
 msgid "Edit member"
 msgstr "ویرایش عضو"
 
-#: tejarak/includes/languages/trans_twig.php:304
+#: tejarak/includes/languages/trans_twig.php:309
 msgid "Add member"
 msgstr "افزودن عضو"
 
-#: tejarak/includes/languages/trans_twig.php:305
+#: tejarak/includes/languages/trans_twig.php:310
 msgid "Family"
 msgstr "خانواده "
 
-#: tejarak/includes/languages/trans_twig.php:306
+#: tejarak/includes/languages/trans_twig.php:311
 msgid "Postion"
 msgstr "موقعیت"
 
-#: tejarak/includes/languages/trans_twig.php:307
+#: tejarak/includes/languages/trans_twig.php:312
 msgid "Avatar"
 msgstr "آواتار"
 
-#: tejarak/includes/languages/trans_twig.php:309
+#: tejarak/includes/languages/trans_twig.php:314
 msgid "Please select one item"
 msgstr "لطفا یک گزینه را انتخاب کنید"
 
-#: tejarak/includes/languages/trans_twig.php:310
+#: tejarak/includes/languages/trans_twig.php:315
 msgid "Enable"
 msgstr "فعال"
 
-#: tejarak/includes/languages/trans_twig.php:311
+#: tejarak/includes/languages/trans_twig.php:316
 msgid "Disable"
 msgstr "غیرفعال"
 
-#: tejarak/includes/languages/trans_twig.php:312
+#: tejarak/includes/languages/trans_twig.php:317
 msgid "Expire"
 msgstr "منقضی شده"
 
-#: tejarak/includes/languages/trans_twig.php:313
+#: tejarak/includes/languages/trans_twig.php:318
 msgid "Is full time?"
 msgstr "آیا تمام‌وقت است؟"
 
-#: tejarak/includes/languages/trans_twig.php:314
+#: tejarak/includes/languages/trans_twig.php:319
 msgid "Remote member"
 msgstr "عضو ریموت"
 
-#: tejarak/includes/languages/trans_twig.php:315
+#: tejarak/includes/languages/trans_twig.php:320
 msgid "Is default"
 msgstr "آیا پیش‌فرض است؟"
 
-#: tejarak/includes/languages/trans_twig.php:318
+#: tejarak/includes/languages/trans_twig.php:323
 msgid "member List"
 msgstr "لیست اعضا"
 
-#: tejarak/includes/languages/trans_twig.php:319
+#: tejarak/includes/languages/trans_twig.php:324
 msgid "name"
 msgstr "نام"
 
-#: tejarak/includes/languages/trans_twig.php:320
+#: tejarak/includes/languages/trans_twig.php:325
 msgid "family"
 msgstr "خانواده"
 
-#: tejarak/includes/languages/trans_twig.php:322
+#: tejarak/includes/languages/trans_twig.php:327
 msgid "postion"
 msgstr "موقعیت"
 
-#: tejarak/includes/languages/trans_twig.php:323
+#: tejarak/includes/languages/trans_twig.php:328
 msgid "code"
 msgstr "کد"
 
-#: tejarak/includes/languages/trans_twig.php:324
+#: tejarak/includes/languages/trans_twig.php:329
 msgid "telegram_id"
 msgstr "آی‌دی تلگرام"
 
-#: tejarak/includes/languages/trans_twig.php:325
+#: tejarak/includes/languages/trans_twig.php:330
 msgid "full_time"
 msgstr "تمام وقت"
 
-#: tejarak/includes/languages/trans_twig.php:326
+#: tejarak/includes/languages/trans_twig.php:331
 msgid "remote"
 msgstr "ریموت"
 
-#: tejarak/includes/languages/trans_twig.php:327
+#: tejarak/includes/languages/trans_twig.php:332
 msgid "is_default"
 msgstr "آیا پیش‌فرض است؟"
 
-#: tejarak/includes/languages/trans_twig.php:328
+#: tejarak/includes/languages/trans_twig.php:333
 msgid "date_enter"
 msgstr "تاریخ ورود"
 
-#: tejarak/includes/languages/trans_twig.php:329
+#: tejarak/includes/languages/trans_twig.php:334
 msgid "date_exit"
 msgstr "تاریخ خروچ"
 
-#: tejarak/includes/languages/trans_twig.php:333
+#: tejarak/includes/languages/trans_twig.php:338
 msgid "member Dashboard"
 msgstr ""
 
-#: tejarak/includes/languages/trans_twig.php:336
+#: tejarak/includes/languages/trans_twig.php:341
 msgid "member"
 msgstr "عضو"
 
-#: tejarak/includes/languages/trans_twig.php:340
+#: tejarak/includes/languages/trans_twig.php:345
 msgid "Add getway"
 msgstr "افزودن درگاه"
 
-#: tejarak/includes/languages/trans_twig.php:341
+#: tejarak/includes/languages/trans_twig.php:346
 msgid "Getway list"
 msgstr "لیست درگاه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:342
+#: tejarak/includes/languages/trans_twig.php:347
 msgid "Branch list"
 msgstr "لیست شعبه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:343
+#: tejarak/includes/languages/trans_twig.php:348
 msgid "Edit Getway"
 msgstr "ویرایش درگاه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:344
+#: tejarak/includes/languages/trans_twig.php:349
 msgid "Add Getway"
 msgstr "افزودن درگاه"
 
-#: tejarak/includes/languages/trans_twig.php:345
+#: tejarak/includes/languages/trans_twig.php:350
 msgid "Cat"
 msgstr "دسته‌بندی"
 
-#: tejarak/includes/languages/trans_twig.php:346
+#: tejarak/includes/languages/trans_twig.php:351
 msgid "IP"
 msgstr "آی‌پی"
 
-#: tejarak/includes/languages/trans_twig.php:349
+#: tejarak/includes/languages/trans_twig.php:354
 msgid "getways List"
 msgstr "لیست درگاه‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:356
+#: tejarak/includes/languages/trans_twig.php:361
 msgid "Welcome to Tejarak initialization process!"
 msgstr "به فرآیند راه‌اندازی تجارک خوش آمدید"
 
-#: tejarak/includes/languages/trans_twig.php:357
+#: tejarak/includes/languages/trans_twig.php:362
 msgid "Please enter team name *"
 msgstr "لطفا نام تیم را وارد کنید *"
 
-#: tejarak/includes/languages/trans_twig.php:358
+#: tejarak/includes/languages/trans_twig.php:363
 msgid "Enter a valid team name from 3 to 30 character"
 msgstr "نام تیم معتبری بین ۳ تا ۳۰ کاراکتر وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:362
+#: tejarak/includes/languages/trans_twig.php:367
 msgid "Please enter your information"
 msgstr "لطفا اطلاعات خود را وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:363
+#: tejarak/includes/languages/trans_twig.php:368
 msgid "First Name *"
 msgstr "نام *"
 
-#: tejarak/includes/languages/trans_twig.php:364
+#: tejarak/includes/languages/trans_twig.php:369
 msgid "Enter a valid name from 3 to 30 character"
 msgstr "نام معتبری بین ۳ تا ۳۰ کاراکتر وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:365
+#: tejarak/includes/languages/trans_twig.php:370
 msgid "Last Name"
 msgstr "نام خانوادگی"
 
-#: tejarak/includes/languages/trans_twig.php:366
+#: tejarak/includes/languages/trans_twig.php:371
 msgid "Enter a valid family from 3 to 50 character"
 msgstr "نام خانوادگی معتبری بین ۳ تا ۵۰ کاراکتر وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:367
+#: tejarak/includes/languages/trans_twig.php:372
 msgid "Job position"
 msgstr "موقعیت شغلی"
 
-#: tejarak/includes/languages/trans_twig.php:368
+#: tejarak/includes/languages/trans_twig.php:373
 msgid "Enter a valid team position from 3 to 30 character"
 msgstr "موقعیت شغلی مناسبی بین ۳ تا ۳۰ کاراکتر وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:369
+#: tejarak/includes/languages/trans_twig.php:374
 msgid "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"
 msgstr ""
 "پسوندهای مجاز jpg و png هستند( gif برای پلن‌های تجاری). حداکثر حجم ۵۰۰ مجاز ۵۰۰ "
 "کیلوبایت"
 
-#: tejarak/includes/languages/trans_twig.php:373
+#: tejarak/includes/languages/trans_twig.php:378
 msgid "Congratulations! Now you can use Tejarak."
 msgstr "تبریک! الان می‌توانید از تجارک استفاده کنید."
 
-#: tejarak/includes/languages/trans_twig.php:374
+#: tejarak/includes/languages/trans_twig.php:379
 msgid "Start"
 msgstr "شروع"
 
-#: tejarak/includes/languages/trans_twig.php:377
+#: tejarak/includes/languages/trans_twig.php:382
 msgid "Edit Team"
 msgstr "ویرایش تیم"
 
-#: tejarak/includes/languages/trans_twig.php:378
+#: tejarak/includes/languages/trans_twig.php:383
 msgid "Add Team"
 msgstr "افزودن تیم"
 
-#: tejarak/includes/languages/trans_twig.php:379
+#: tejarak/includes/languages/trans_twig.php:384
 msgid "Register code"
 msgstr "کد ثبت‌نام"
 
-#: tejarak/includes/languages/trans_twig.php:380
+#: tejarak/includes/languages/trans_twig.php:385
 msgid "Economical code"
 msgstr ""
 
-#: tejarak/includes/languages/trans_twig.php:384
+#: tejarak/includes/languages/trans_twig.php:389
 msgid "Tejarak API"
 msgstr "رابط برنامه‌نویسی تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:387
+#: tejarak/includes/languages/trans_twig.php:392
 msgid "What are you doing!"
 msgstr "چیکار میکنی!"
 
-#: tejarak/includes/languages/trans_twig.php:388
+#: tejarak/includes/languages/trans_twig.php:393
 msgid "If you are bot, be easy and call your mom"
 msgstr "اگر شما بات هستید، آرام باشید و با مامان جونتون تماس بگیرید"
 
-#: tejarak/includes/languages/trans_twig.php:389
+#: tejarak/includes/languages/trans_twig.php:394
 msgid "If you are human being, what are you doing here! be personable..."
 msgstr "اگر انسان هستید، اینجا چیکار میکنید! با شخصیت باشید..."
 
-#: tejarak/includes/languages/trans_twig.php:392
-msgid "You are blocked!"
-msgstr "شما غذغن شدید!"
+#: tejarak/includes/languages/trans_twig.php:397
+msgid "You are blocked becauese of some reason!"
+msgstr ""
 
-#: tejarak/includes/languages/trans_twig.php:395
+#: tejarak/includes/languages/trans_twig.php:398
+msgid "If have problem"
+msgstr ""
+
+#: tejarak/includes/languages/trans_twig.php:399
+msgid "Contact us"
+msgstr "با ما تماس بگیرید"
+
+#: tejarak/includes/languages/trans_twig.php:402
+msgid "We are so sorry for losing you!"
+msgstr ""
+
+#: tejarak/includes/languages/trans_twig.php:403
+msgid "if you want you can come back to"
+msgstr ""
+
+#: tejarak/includes/languages/trans_twig.php:404
+msgid "join us"
+msgstr ""
+
+#: tejarak/includes/languages/trans_twig.php:405
 msgid "Bye Bye :("
 msgstr "خداحافط :("
 
-#: tejarak/includes/languages/trans_twig.php:396
-msgid "Pish ma biya."
-msgstr "پیش ما بیا"
-
-#: tejarak/includes/languages/trans_twig.php:399
-msgid "Why you want to delete your account?"
+#: tejarak/includes/languages/trans_twig.php:408
+#, fuzzy
+#| msgid "Why you want to delete your account?"
+msgid "Why you want to delete your account!?"
 msgstr "چرا می‌خواهید حساب‌کاربری خود را حذف کنید؟"
 
-#: tejarak/includes/languages/trans_twig.php:402
+#: tejarak/includes/languages/trans_twig.php:411
+#, fuzzy
+#| msgid "We send a verification code for you"
+msgid "We detected two accout for you"
+msgstr "ما کد اعتبارسنجی را برای شما ارسال خواهیم کرد"
+
+#: tejarak/includes/languages/trans_twig.php:412
+#, fuzzy
+#| msgid "Please select one item"
+msgid "Please remove one of them and"
+msgstr "لطفا یک گزینه را انتخاب کنید"
+
+#: tejarak/includes/languages/trans_twig.php:413
+#, fuzzy
+#| msgid "Why you want to delete your account?"
+msgid "if you want to delete this account"
+msgstr "چرا می‌خواهید حساب‌کاربری خود را حذف کنید؟"
+
+#: tejarak/includes/languages/trans_twig.php:414
+#, fuzzy
+#| msgid "click here!"
+msgid "click here"
+msgstr "اینجا کلیک کنید!"
+
+#: tejarak/includes/languages/trans_twig.php:417
+#, fuzzy
+#| msgid "Remove Filters"
+msgid "Remove my email address"
+msgstr "حذف فیلترها"
+
+#: tejarak/includes/languages/trans_twig.php:420
+#, fuzzy
+#| msgid "Code must be number"
+msgid "You must not be here!"
+msgstr "کد باید عدد باشد"
+
+#: tejarak/includes/languages/trans_twig.php:423
+#, fuzzy
+#| msgid "If you want to have more secure enter your mobile"
+msgid "If you wanna more secure enter your mobile"
+msgstr "اگر می‌خواهید امنیت بیشتری داشته باشید، شماره‌ی تلفن همراه خود را وارد کنید"
+
+#: tejarak/includes/languages/trans_twig.php:424
+#, fuzzy
+#| msgid "Log in with mobile"
+msgid "I dont want use mobile"
+msgstr "ورود با موبایل"
+
+#: tejarak/includes/languages/trans_twig.php:427
 msgid "You are logined ;)"
 msgstr "شما وارد سیستم هستید;)"
 
-#: tejarak/includes/languages/trans_twig.php:403
+#: tejarak/includes/languages/trans_twig.php:428
 msgid "Be patient or"
 msgstr "صبور باشید یا"
 
-#: tejarak/includes/languages/trans_twig.php:404
+#: tejarak/includes/languages/trans_twig.php:429
 msgid "click here!"
 msgstr "اینجا کلیک کنید!"
 
-#: tejarak/includes/languages/trans_twig.php:413
+#: tejarak/includes/languages/trans_twig.php:438
 msgid "Terminate"
 msgstr "مسدودسازی"
 
-#: tejarak/includes/languages/trans_twig.php:416
-msgid "Please check your call"
-msgstr ""
+#: tejarak/includes/languages/trans_twig.php:441
+#, fuzzy
+#| msgid "username"
+msgid "Remove username"
+msgstr "نام کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:419
+#: tejarak/includes/languages/trans_twig.php:444
 msgid "We can not find eny way to send verification code to you!"
 msgstr "ما راهی برای ارسال کد به شما نیافتیم!"
 
-#: tejarak/includes/languages/trans_twig.php:422
-msgid "Please check your sms"
-msgstr ""
-
-#: tejarak/includes/languages/trans_twig.php:425
-msgid "Please check your telegram"
-msgstr "لطفا تلگرام خود را بررسی کنید"
-
-#: tejarak/includes/languages/trans_twig.php:431
+#: tejarak/includes/languages/trans_twig.php:450
 msgid "2013"
 msgstr "۱۳۹۲"
 
-#: tejarak/includes/languages/trans_twig.php:432
+#: tejarak/includes/languages/trans_twig.php:451
 msgid "2014"
 msgstr "۱۳۹۳"
 
-#: tejarak/includes/languages/trans_twig.php:433
+#: tejarak/includes/languages/trans_twig.php:452
 msgid "2015"
 msgstr "۱۳۹۴"
 
-#: tejarak/includes/languages/trans_twig.php:434
+#: tejarak/includes/languages/trans_twig.php:453
 msgid "2016"
 msgstr "۱۳۹۵"
 
-#: tejarak/includes/languages/trans_twig.php:435
+#: tejarak/includes/languages/trans_twig.php:454
 msgid "2017"
 msgstr "۱۳۹۶"
 
-#: tejarak/includes/languages/trans_twig.php:436
+#: tejarak/includes/languages/trans_twig.php:455
 msgid "2018"
 msgstr "۱۳۹۷"
 
-#: tejarak/includes/languages/trans_twig.php:437
+#: tejarak/includes/languages/trans_twig.php:456
 msgid "2019"
 msgstr "۱۳۹۸"
 
-#: tejarak/includes/languages/trans_twig.php:438
+#: tejarak/includes/languages/trans_twig.php:457
 msgid "Sadegh Salehi"
 msgstr "صادق صالحی"
 
-#: tejarak/includes/languages/trans_twig.php:439
+#: tejarak/includes/languages/trans_twig.php:458
 msgid "Ali Modabber"
 msgstr "علی مدبر"
 
-#: tejarak/includes/languages/trans_twig.php:440
+#: tejarak/includes/languages/trans_twig.php:459
 msgid "SeyedMahdi Hoseini"
 msgstr "سیدمهدی حسینی"
 
-#: tejarak/includes/languages/trans_twig.php:441
+#: tejarak/includes/languages/trans_twig.php:460
 msgid "Ali Kharidar"
 msgstr "علی خریدار"
 
-#: tejarak/includes/languages/trans_twig.php:442
+#: tejarak/includes/languages/trans_twig.php:461
 msgid "MohamadAli Salehi"
 msgstr "محمدعلی صالحی"
 
-#: tejarak/includes/languages/trans_twig.php:443
+#: tejarak/includes/languages/trans_twig.php:462
 msgid "Sara Torkamani"
 msgstr "سارا ترکمنی"
 
-#: tejarak/includes/languages/trans_twig.php:444
+#: tejarak/includes/languages/trans_twig.php:463
 msgid "Saeed Bodaghi"
 msgstr "سعید بوداقی"
 
-#: tejarak/includes/languages/trans_twig.php:445
+#: tejarak/includes/languages/trans_twig.php:464
 msgid "SeyedMohsen Mortazavi"
 msgstr "سیدمحسن مرتضوی"
 
-#: tejarak/includes/languages/trans_twig.php:446
+#: tejarak/includes/languages/trans_twig.php:465
 msgid "SeyedMohsen Mortazavi Hoseini"
 msgstr "سیدمحسن مرتضوی حسینی"
 
-#: tejarak/includes/languages/trans_twig.php:447
+#: tejarak/includes/languages/trans_twig.php:466
 msgid "Arash Shakery"
 msgstr "آرش شاکری"
 
-#: tejarak/includes/languages/trans_twig.php:448
+#: tejarak/includes/languages/trans_twig.php:467
 msgid "Majid Hamidian"
 msgstr "مجید حمیدیان"
 
-#: tejarak/includes/languages/trans_twig.php:449
+#: tejarak/includes/languages/trans_twig.php:468
 msgid "Moslem Hamzehnejadi"
 msgstr "مسلم حمزه‌نژادی"
 
-#: tejarak/includes/languages/trans_twig.php:450
+#: tejarak/includes/languages/trans_twig.php:469
 msgid "MohamadHosein Hamzehnejadi"
 msgstr "محمدحسین حمزه‌نژادی"
 
-#: tejarak/includes/languages/trans_twig.php:451
+#: tejarak/includes/languages/trans_twig.php:470
 msgid "Saman Soltani"
 msgstr "سامان سلطانی"
 
-#: tejarak/includes/languages/trans_twig.php:452
+#: tejarak/includes/languages/trans_twig.php:471
 msgid "Mohamad Aboutalebi"
 msgstr "محمد ابوطالبی"
 
-#: tejarak/includes/languages/trans_twig.php:453
+#: tejarak/includes/languages/trans_twig.php:472
 msgid "Mojtaba Sadeghi"
 msgstr "مجتبی صادقی"
 
-#: tejarak/includes/languages/trans_twig.php:454
+#: tejarak/includes/languages/trans_twig.php:473
 msgid "Mahdi Karimi"
 msgstr "مهدی کریمی"
 
-#: tejarak/includes/languages/trans_twig.php:455
+#: tejarak/includes/languages/trans_twig.php:474
 msgid "hours in this week"
 msgstr "ساعت در این هفته"
 
-#: tejarak/includes/languages/trans_twig.php:456
+#: tejarak/includes/languages/trans_twig.php:475
 msgid "hours in this month"
 msgstr "ساعت در این ماه"
 
-#: tejarak/includes/languages/trans_twig.php:457
+#: tejarak/includes/languages/trans_twig.php:476
 msgid "hours remote in this month"
 msgstr "ساعت ریموت در این ماه"
 
-#: tejarak/includes/languages/trans_twig.php:458
+#: tejarak/includes/languages/trans_twig.php:477
 msgid "hours in idle this month"
 msgstr "ساعت هدر داده در این ماه"
 
-#: tejarak/includes/languages/trans_twig.php:459
+#: tejarak/includes/languages/trans_twig.php:478
 msgid "Founder & CEO"
 msgstr "موسس و مدیرعامل"
 
-#: tejarak/includes/languages/trans_twig.php:460
+#: tejarak/includes/languages/trans_twig.php:479
 msgid "Founder and CEO"
 msgstr "موسس و مدیرعامل"
 
-#: tejarak/includes/languages/trans_twig.php:461
+#: tejarak/includes/languages/trans_twig.php:480
 msgid "CEO & Solution Designer"
 msgstr "مدیرعامل و طراح راه‌کار"
 
-#: tejarak/includes/languages/trans_twig.php:462
+#: tejarak/includes/languages/trans_twig.php:481
 msgid "CEO and Solution Designer"
 msgstr "مدیرعامل و طراح راه‌کار"
 
-#: tejarak/includes/languages/trans_twig.php:463
+#: tejarak/includes/languages/trans_twig.php:482
 msgid "CEO"
 msgstr "مدیرعامل"
 
-#: tejarak/includes/languages/trans_twig.php:464
+#: tejarak/includes/languages/trans_twig.php:483
 msgid "Solution Designer"
 msgstr "طراح راهکار"
 
-#: tejarak/includes/languages/trans_twig.php:465
+#: tejarak/includes/languages/trans_twig.php:484
 msgid "Full Stack Developer"
 msgstr "برنامه‌نویس تمام‌عیار"
 
-#: tejarak/includes/languages/trans_twig.php:466
+#: tejarak/includes/languages/trans_twig.php:485
 msgid "Backend Developer"
 msgstr "برنامه‌نویس سمت سرور"
 
-#: tejarak/includes/languages/trans_twig.php:467
+#: tejarak/includes/languages/trans_twig.php:486
 msgid "Frontend Designer"
 msgstr "طراح رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:468
+#: tejarak/includes/languages/trans_twig.php:487
 msgid "UI Designer"
 msgstr "طراح رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:469
+#: tejarak/includes/languages/trans_twig.php:488
 msgid "Graphic Designer"
 msgstr "طراح گرافیک"
 
-#: tejarak/includes/languages/trans_twig.php:470
+#: tejarak/includes/languages/trans_twig.php:489
 msgid "Shareholder"
 msgstr "سهام‌دار"
 
-#: tejarak/includes/languages/trans_twig.php:471
+#: tejarak/includes/languages/trans_twig.php:490
 msgid "Chrikt"
 msgstr "چریکت"
 
-#: tejarak/includes/languages/trans_twig.php:472
+#: tejarak/includes/languages/trans_twig.php:491
 msgid "Content Expert"
 msgstr "کارشناس محتوا"
 
-#: tejarak/includes/languages/trans_twig.php:473
+#: tejarak/includes/languages/trans_twig.php:492
 msgid "Service"
 msgstr "مسئول خدمات"
 
-#: tejarak/includes/languages/trans_twig.php:474
+#: tejarak/includes/languages/trans_twig.php:493
 msgid "UI Developer"
 msgstr "برنامه‌نویس رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:475
+#: tejarak/includes/languages/trans_twig.php:494
 msgid "Frontend Developer"
 msgstr "برنامه‌نویس سمت کاربر"
 
-#: tejarak/includes/languages/trans_twig.php:476
+#: tejarak/includes/languages/trans_twig.php:495
 msgid "Research & Develepment"
 msgstr "تحقیق و توسعه"
 
-#: tejarak/includes/languages/trans_twig.php:477
+#: tejarak/includes/languages/trans_twig.php:496
 msgid "Research &amp; Develepment"
 msgstr "تحقیق و توسعه"
 
-#: tejarak/includes/languages/trans_twig.php:478
+#: tejarak/includes/languages/trans_twig.php:497
 msgid "UI Expert"
 msgstr "متخصص رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:479
+#: tejarak/includes/languages/trans_twig.php:498
 msgid "Android Developer"
 msgstr "توسعه‌دهنده اندروید"
 
-#: tejarak/includes/languages/trans_twig.php:480
+#: tejarak/includes/languages/trans_twig.php:499
 msgid "IOS Developer"
 msgstr "توسعه‌دهنده آی‌اواس"
 
-#: tejarak/includes/languages/trans_twig.php:481
+#: tejarak/includes/languages/trans_twig.php:500
 msgid "WP Developer"
 msgstr "توسعه‌دهنده ویندوزفون"
 
-#: tejarak/includes/languages/trans_twig.php:482
+#: tejarak/includes/languages/trans_twig.php:501
 msgid "Nothing!"
 msgstr "بیکار!"
 
-#: tejarak/includes/languages/trans_twig.php:483
+#: tejarak/includes/languages/trans_twig.php:502
 msgid "Traveler"
 msgstr "مسافر"
 
-#: tejarak/includes/languages/trans_twig.php:484
+#: tejarak/includes/languages/trans_twig.php:503
 msgid "Intern"
 msgstr "کارآموز"
 
-#: tejarak/includes/languages/trans_twig.php:485
+#: tejarak/includes/languages/trans_twig.php:504
 msgid "summary"
 msgstr "خلاصه"
 
-#: tejarak/includes/languages/trans_twig.php:486
+#: tejarak/includes/languages/trans_twig.php:505
 msgid "ganje"
 msgstr "گنجه"
 
-#: tejarak/includes/languages/trans_twig.php:487
+#: tejarak/includes/languages/trans_twig.php:506
 msgid "Ganje"
 msgstr "گنجه"
 
-#: tejarak/includes/languages/trans_twig.php:488
+#: tejarak/includes/languages/trans_twig.php:507
 msgid "Centeral"
 msgstr "مرکزی"
 
-#: tejarak/includes/languages/trans_twig.php:489
+#: tejarak/includes/languages/trans_twig.php:508
 msgid "centeral"
 msgstr "مرکزی"
 
@@ -6670,17 +6999,50 @@ msgstr "ما به :count نفر کمک کرده‌ایم تا بهتر کار ک
 
 #: tejarak/permission.php:19
 msgid "Can view the admin page"
-msgstr ""
+msgstr "شما می‌توانید صفحه‌ی مدیریت را ببینید"
 
 #: tejarak/permission.php:27
 msgid "Can add hourse for all users in admin page"
-msgstr ""
+msgstr "شما می‌توانید ساعات همه‌ی کاربران را در صفحه مدیریت وارد کنید"
+
+#~ msgid "User/Month"
+#~ msgstr "کاربر/ماه"
+
+#~ msgid "What happend? where you here?"
+#~ msgstr "چی شده؟ شما کجایید؟"
+
+#~ msgid ""
+#~ "For teams with unlimited people requiring <b>professional reports</b>, "
+#~ "<b>report via Telegram</b>, <b>report via SMS</b>, <b>visual reports with "
+#~ "chart</b>, <b>advanced report builder</b>, free SSL certificate, <b>custom "
+#~ "message format</b>, <b>custom brand logo</b>, <b>custom domain</b> and <b>15-"
+#~ "minute technical support with emergency phone support</b>."
+#~ msgstr ""
+#~ "برای تیم‌هایی با نفرات نامحدود که به <b>گزارش‌های حرفه‌ای</b>، <b>گزارش تلگرام</"
+#~ "b>، <b>گزارش با پیامک</b>، <b>گزارش تصویری همراه با نمودار</b>، <b>گزارش‌ساز "
+#~ "پیشرفته</b>، گواهی SSL رایگان، <b>پیغام دلخواه</b>، <b>لوگوی دلخواه</b>، "
+#~ "<b>دامنه دلخواه</b>، و <b>پشتیبانی فنی تا حداکثر ۱۵ دقیقه به همراه پشتیبانی "
+#~ "تلفنی اورژانسی</b>."
+
+#~ msgid "Pish ma biya."
+#~ msgstr "پیش ما بیا"
+
+#, fuzzy
+#~| msgid "click here!"
+#~ msgid "Click here"
+#~ msgstr "اینجا کلیک کنید!"
+
+#~ msgid "Please check your call"
+#~ msgstr "لطفا تماس خود را بررسی کنید"
+
+#~ msgid "Please check your sms"
+#~ msgstr "لطفا پیامک خود را بررسی کنید"
+
+#~ msgid "Please check your telegram"
+#~ msgstr "لطفا تلگرام خود را بررسی کنید"
 
 #~ msgid "Go to Tejarak"
 #~ msgstr "برو به تجارک"
-
-#~ msgid "Please enter team name."
-#~ msgstr "لطفا نام تیم را وارد کنید"
 
 #~ msgid "First Name"
 #~ msgstr "نام"
@@ -6715,9 +7077,6 @@ msgstr ""
 #~ msgid "A verification code will be sent soon"
 #~ msgstr "کد فعال‌سازی بزودی برای شما ارسال می‌شود"
 
-#~ msgid "Please enter a valid mobile number"
-#~ msgstr "لطفا شماره موبایل معتبری وارد کنید"
-
 #~ msgid "Logged in successfully"
 #~ msgstr "با موفقیت وارد شدید"
 
@@ -6729,9 +7088,6 @@ msgstr ""
 
 #~ msgid "Invalid verfication code"
 #~ msgstr "کد تایید نامعتبر است"
-
-#~ msgid "Please enter your pin"
-#~ msgstr "لطفا پین کد خود را وارد کنید"
 
 #~ msgid "A verification code will be sent to your telegram"
 #~ msgstr "کد تایید به تلگرام شما ارسال خواهد شد"
@@ -6765,9 +7121,6 @@ msgstr ""
 
 #~ msgid "Dont recieve code?"
 #~ msgstr "کد را دریافت نکردید؟"
-
-#~ msgid "You are guest, Enter your mobile"
-#~ msgstr "شما مهمان هستید. موبایل خود را وارد کنید"
 
 #~ msgid "Enter to tejarak"
 #~ msgstr "ورود به تجارک"
@@ -7314,9 +7667,6 @@ msgstr ""
 #~ msgid "Demo"
 #~ msgstr "نسخه‌ی نمایشی"
 
-#~ msgid "Remove Filters"
-#~ msgstr "حذف فیلترها"
-
 #~ msgid "in this month"
 #~ msgstr "در این ماه"
 
@@ -7353,9 +7703,6 @@ msgstr ""
 #~ msgid "in idle this month"
 #~ msgstr "بلااستفاده در این ماه"
 
-#~ msgid "Your enter was registered"
-#~ msgstr "ورود شما ثبت شد."
-
 #~ msgid "Bye Bye;)"
 #~ msgstr "خدانگهدار ;)"
 
@@ -7388,9 +7735,6 @@ msgstr ""
 
 #~ msgid "Slogan"
 #~ msgstr "شعار"
-
-#~ msgid "Contact"
-#~ msgstr "تماس"
 
 #~ msgid "Documentation"
 #~ msgstr "مستندات"

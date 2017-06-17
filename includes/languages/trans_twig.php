@@ -31,14 +31,19 @@ private function transtext()
 	echo T_("We can help.");                                                          // Line 23
 	echo T_("Get in Touch");                                                          // Line 141
 	echo T_("FREE");                                                                  // Line 22
-	echo T_("Month");                                                                 // Line 79
+	echo T_("Tomans");                                                                // Line 90
+	echo T_("per user/month");                                                        // Line 93
+	echo T_("For teams that are less than 10 people requiring simple reports.");      // Line 47
 	echo T_("Learn More");                                                            // Line 28
 	echo T_("Pro");                                                                   // Line 23
+	echo T_("For teams with unlimited people requiring <b>professional reports</b>, <b>report via Telegram</b>.");// Line 71
 	echo T_("Business");                                                              // Line 24
+	echo T_("For teams with unlimited people requiring <b>report via SMS</b>, <b>visual reports with chart</b>, <b>custom message format</b>, <b>custom brand logo</b>.");// Line 95
 	echo T_("Enterprise");                                                            // Line 25
-	echo T_("Enter your team name");                                                  // Line 120
-	echo T_("Get Started");                                                           // Line 121
-	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 123
+	echo T_("For teams with unlimited people requiring <b>advanced report builder</b>, <b>custom domain</b>.");// Line 110
+	echo T_("Enter your team name");                                                  // Line 130
+	echo T_("Get Started");                                                           // Line 131
+	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 133
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 76
