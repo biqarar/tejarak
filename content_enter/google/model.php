@@ -19,7 +19,7 @@ class model extends \content_enter\main\model
 
 				$user_data = google::user_info();
 				// get user email
-				$self::$email = google::user_info('email');
+				self::$email = google::user_info('email');
 				// load data by email
 				self::load_user_data('email');
 				// the user exist in system
