@@ -233,7 +233,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 #setup #avatar+label img{margin:0;padding:1em;width:100%;height:100%;background-color:transparent;}
 #setup .logo{display:block;max-width:5em;margin:0 auto 4em;-webkit-animation-name:spin;animation-name:spin;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}
 #setup .logo img{display:block}
-#setup .setup-step{text-align:center;padding:2em 0 0}
+#setup .setup-step{text-align:center;padding:2em 0}
 #setup .setup-step span{display:inline-block;vertical-align:middle;width:1.5em;height:1.5em;background-color:#aaa;border-radius:50%;margin:0 0.2em;}
 #setup .setup-step span.done{background-color:#8aad1f;}
 
