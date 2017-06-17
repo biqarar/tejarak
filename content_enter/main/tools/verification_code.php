@@ -466,9 +466,8 @@ trait verification_code
 				if(self::get_enter_session('must_signup'))
 				{
 					// sign up user
-					$user_id = self::signup(self::get_enter_session('must_signup'));
-					self::$user_id = $user_id;
-					self::load_user_data('user_id');
+					$user_id = self::signup_email(self::get_enter_session('must_signup'));
+
 					if($user_id)
 					{
 						self::enter_set_login(self::user_data('id'));

@@ -72,14 +72,16 @@ class model extends \content_enter\main\model
 					$args = [];
 					if(google::user_info('name'))
 					{
-						$args['displayname'] = google::user_info('name');
+						$args['user_displayname'] = google::user_info('name');
 					}
 					elseif(google::user_info('familyName') || google::user_info('givenName'))
 					{
-						$args['displayname'] = trim(google::user_info('familyName'). ' '. google::user_info('givenName'));
+						$args['user_displayname'] = trim(google::user_info('familyName'). ' '. google::user_info('givenName'));
 					}
 
 					$args['user_google_mail'] = google::user_info('email');
+					$args['user_email']       = google::user_info('email');
+					$args['user_createdate']  = date("Y-m-d H:i:s");
 
 					self::set_enter_session('mobile_request_from', 'google_email_not_exist');
 

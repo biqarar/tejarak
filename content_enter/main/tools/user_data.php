@@ -134,5 +134,23 @@ trait user_data
 			return $user_id;
 		}
 	}
+
+
+	/**
+	*	Signup new user
+	*/
+	public static function signup_email($_args = [])
+	{
+
+		$user_id = \lib\db\users::insert($_args);
+
+		if($user_id)
+		{
+			self::$user_id = \lib\db::insert_id();
+			self::load_user_data('user_id');
+		}
+		return self::$user_id;
+
+	}
 }
 ?>
