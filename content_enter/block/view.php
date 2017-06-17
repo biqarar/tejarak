@@ -1,18 +1,16 @@
 <?php
-namespace content_enter\email\set;
+namespace content_enter\block;
+
 
 class view extends \content_enter\main\view
 {
-
 	public function config()
 	{
+		// read parent config to fill the mobile input and other thing
 		parent::config();
 
-		$this->data->get_email = $this->login('email');
-
-		$this->data->page['title']   = T_('set email');
+		$this->data->page['title']   = T_('Hey! You are Blocked!!');
 		$this->data->page['desc']    = $this->data->page['title'];
 	}
-
 }
 ?>

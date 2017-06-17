@@ -2,9 +2,12 @@
 
 
 
-{%block contentForm%}
-<a href="{{auth_url}}">Check with google ...</a>
-<br>
+{%block contentBody%}
+<div class="text">
+ <p>{%trans "Hi"%}. {%trans "You must not be here!"%}</p>
+
+</div>
+
 {{block('eMethods')}}
 
 
