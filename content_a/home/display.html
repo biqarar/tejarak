@@ -18,7 +18,7 @@
 {%for key, value in team_list%}
  <div class="team-section-header">
   <h3 class="team-section-header-name">
-   <a href="{{url.base}}/a/{{value.brand}}">{{value.title}}</a>
+   <a href="{{url.baseFull}}/{{value.brand}}">{{value.title}}</a>
   </h3>
   <a href="#" class="team-section-header-option">
    <span class="icon icon-pencil"></span>
@@ -37,7 +37,7 @@
  <ul class="team-section-list">
   {%for k, v in value.branchs%}
    <li>
-    <a class="branch-title" href="{{url.base}}/a/{{value.brand}}/{{v.brand}}">
+    <a class="branch-title" href="{{url.baseFull}}/{{value.brand}}/{{v.brand}}">
      <span class="branch-title-overlay">
       <i class="icon icon-star-o"></i>
      </span>
@@ -46,7 +46,7 @@
    </li>
   {%endfor%}
   <li>
-   <a class="branch-title" href="{{url.base}}/a/team/{{value.brand}}/branch">
+   <a class="branch-title" href="{{url.baseFull}}/team/{{value.brand}}/branch">
     <span class="flex justify-center align-center branch-title-name">{%trans "Add new branch"%}...</span>
    </a>
   </li>

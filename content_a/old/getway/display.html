@@ -3,10 +3,10 @@
 
 {%block sidenav%}
 <li>
-	<a href="{{url.base}}/a/{{team.brand}}/{{branch.brand}}/getway/add">{%trans "Add getway"%}</a>
+	<a href="{{url.baseFull}}/{{team.brand}}/{{branch.brand}}/getway/add">{%trans "Add getway"%}</a>
 </li>
 <li>
-	<a href="{{url.base}}/a/{{team.brand}}/{{branch.brand}}">{%trans "Branch list"%}</a>
+	<a href="{{url.baseFull}}/{{team.brand}}/{{branch.brand}}">{%trans "Branch list"%}</a>
 </li>
 {%endblock%}
 
@@ -24,7 +24,7 @@
 	</div>
 {%for key, value in getway_list%}
 	<div class="f">
-		<span class="c"><a href="{{url.base}}/a/{{team.brand}}/{{branch.brand}}/getway/{{value.id}}/edit">{{value.title}}</a></span>
+		<span class="c"><a href="{{url.baseFull}}/{{team.brand}}/{{branch.brand}}/getway/{{value.id}}/edit">{{value.title}}</a></span>
 		<span class="c">{{value.cat}}</span>
 		<span class="c">{{value.code}}</span>
 		<span class="c">{{value.ip}}</span>
