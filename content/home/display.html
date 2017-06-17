@@ -116,8 +116,8 @@
 {%if login.id%}
 {%else%}
  <div class="getStarted">
-  <form class="f" action="{{url.base}}/enter" method="post">
-   <input type="text" name="param-team" class="c" placeholder='{%trans "Enter your team name"%}'>
+  <form class="f" action="{{url.base}}/enter" method="get" data-action>
+   <input type="text" name="param-team" class="c" placeholder='{%trans "Enter your team name"%}' autofocus>
    <button class="c">{%trans "Get Started"%}</button>
   </form>
   <p>{%trans "Try Tejarak FREE;) no credit, no risk!"%}</p>
