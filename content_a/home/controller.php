@@ -21,7 +21,7 @@ class controller extends \content_a\main\controller
 
 		$this->get(false, 'dashboard')->ALL();
 
-		// route url like this /admin/ermile
+		// route url like this /a/ermile
 		if(preg_match("/^[a-zA-Z0-9]+$/", $url))
 		{
 			if($this->model()->is_exist_team($url))
@@ -31,7 +31,7 @@ class controller extends \content_a\main\controller
 			}
 		}
 
-		// route url like this /admin/ermile/sarshomar
+		// route url like this /a/ermile/sarshomar
 		if(preg_match("/^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$/", $url, $split))
 		{
 			if(isset($split[1]) && isset($split[2]))

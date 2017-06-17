@@ -34,7 +34,7 @@ class controller extends \content_a\main\controller
 		$edit_reg = "/^team\/([a-zA-Z0-9]+)\/branch\=([a-zA-Z0-9]+)$/";
 		$this->post('edit')->ALL($edit_reg);
 
-		// route url like /admin/ermile
+		// route url like /a/ermile
 		$dash_reg = "/^[^team][a-zA-Z0-9]+$/";
 		if(preg_match($dash_reg, $url, $split))
 		{

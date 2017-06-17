@@ -5,11 +5,11 @@
 
 {%for key, value in member_list%}
 	<div class="f">
-		<span class="c2"><a href="{{url.base}}/admin/{{team}}/{{value.brand}}/edit">{{value.id}}</a></span>
+		<span class="c2"><a href="{{url.base}}/a/{{team}}/{{value.brand}}/edit">{{value.id}}</a></span>
 		<span class="c2">{{value.displayname}}</span>
 		<span class="c2">{{value.mobile}}</span>
 		<span class="c2">{{value.email}}</span>
-		<span class="c2"><a href="{{url.base}}/admin/{{team}}/{{value.brand}}">{{value.brand}}</a></span>
+		<span class="c2"><a href="{{url.base}}/a/{{team}}/{{value.brand}}">{{value.brand}}</a></span>
 	</div>
 {%endfor%}
  <div class="pagination-container">
@@ -17,13 +17,13 @@
  </div>
  <div class="f">
  	<div>
-		<a href="{{url.base}}/admin/{{team}}/member/add">{%trans "Add member"%}</a>
+		<a href="{{url.base}}/a/{{team}}/member/add">{%trans "Add member"%}</a>
  	</div>
 	<div>
-		<a href="{{url.base}}/admin/team">{%trans "List team"%}</a>
+		<a href="{{url.base}}/a/team">{%trans "List team"%}</a>
 	</div>
 	<div>
-		<a href="{{url.base}}/admin">{%trans "Admin"%}</a>
+		<a href="{{url.base}}/a">{%trans "Admin"%}</a>
 	</div>
 </div>
 

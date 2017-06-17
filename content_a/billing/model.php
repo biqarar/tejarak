@@ -124,7 +124,7 @@ class model extends \mvc\model
 	{
 		$this->controller->display = false;
 		$new_url = $this->view()->url->base;
-		$new_url .= '/admin/billing';
+		$new_url .= '/a/billing';
 		debug::msg('direct', true);
 
 		$log_meta =

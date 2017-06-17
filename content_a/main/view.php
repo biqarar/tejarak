@@ -11,7 +11,7 @@ class view extends \mvc\view
 
 	/**
 	 * find team name in url
-	 * tejarak.com/admin/ermile
+	 * tejarak.com/a/ermile
 	 * @return ermile
 	 *
 	 * @param      <type>  $_args  The arguments

@@ -60,7 +60,7 @@ trait payment
 		$host  = Protocol."://" . \lib\router::get_root_domain();
 		$lang = \lib\define::get_current_language_string();
 		$host .= $lang;
-		$host .= '/admin/billing/verify/zarinpal';
+		$host .= '/a/billing/verify/zarinpal';
 
 		self::$zarinpal['CallbackURL'] = $host;
 
