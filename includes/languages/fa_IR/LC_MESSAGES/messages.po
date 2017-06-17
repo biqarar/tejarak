@@ -4230,119 +4230,119 @@ msgstr "اوقات خوبی داشته باشید."
 msgid "Bye Bye :name ;)"
 msgstr "خدانگهدار :name جون;)"
 
-#: tejarak/content_admin/billing/model.php:63
+#: tejarak/content_a/billing/model.php:63
 msgid "You must login to pay amount"
 msgstr "برای دریافت جایزه، ابتدا باید وارد سیستم شوید"
 
-#: tejarak/content_admin/billing/model.php:77
+#: tejarak/content_a/billing/model.php:77
 msgid "This gateway is not supported by Sarshomar"
 msgstr "این درگاه توسط سرشمار پشتیبانی نمی‌شود"
 
-#: tejarak/content_admin/billing/model.php:82
+#: tejarak/content_a/billing/model.php:82
 msgid "Amount not set"
 msgstr "مقدار تعیین نشده است"
 
-#: tejarak/content_admin/billing/model.php:105
-#: tejarak/content_admin/billing/model.php:113
+#: tejarak/content_a/billing/model.php:105
+#: tejarak/content_a/billing/model.php:113
 msgid "Invalid promo code"
 msgstr "کد اعتبار هدیه نامعتبر است"
 
-#: tejarak/content_admin/billing/model.php:109
+#: tejarak/content_a/billing/model.php:109
 msgid "Your account charge :amount"
 msgstr "حساب شما :amount شارژ شد"
 
-#: tejarak/content_admin/billing/model.php:143
+#: tejarak/content_a/billing/model.php:143
 msgid "You must login to load this page"
 msgstr "شما برای داشتن این صفحه باید وارد سیستم شوید"
 
-#: tejarak/content_admin/billing/model.php:168
+#: tejarak/content_a/billing/model.php:168
 #: tejarak/content_enter/verify/view.php:38
 msgid "What happend?"
 msgstr "اتفاقی افتاده؟"
 
-#: tejarak/content_admin/billing/model.php:175
+#: tejarak/content_a/billing/model.php:175
 msgid "What happend?, more than one zarinpal request!"
 msgstr "اتفاقی افتاده؟ بیش‌تر از یک درخواست زرین‌پال دریافت شده!"
 
-#: tejarak/content_admin/billing/model.php:185
+#: tejarak/content_a/billing/model.php:185
 msgid "Invalid bank"
 msgstr "بانک نامعتبر"
 
-#: tejarak/content_admin/billing/model.php:205
+#: tejarak/content_a/billing/model.php:205
 msgid "Amount not found"
 msgstr "مقدار یافت نشد"
 
-#: tejarak/content_admin/billing/model.php:227
+#: tejarak/content_a/billing/model.php:227
 msgid "toman"
 msgstr "تومان"
 
-#: tejarak/content_admin/billing/model.php:227
+#: tejarak/content_a/billing/model.php:227
 msgid "Payment operation was successfull and :amount :unit added to your cash"
 msgstr "عملیات پرداخت با موفقیت انجام شد و مبلغ :amount :unit به حساب شما شارژ شد"
 
-#: tejarak/content_admin/billing/tools/payment.php:58
+#: tejarak/content_a/billing/tools/payment.php:58
 msgid "Charge Tejarak"
 msgstr "شارژ تجارک"
 
-#: tejarak/content_admin/billing/tools/payment.php:74
+#: tejarak/content_a/billing/tools/payment.php:74
 msgid "Invalid amount"
 msgstr "مقدار نامعتبر"
 
-#: tejarak/content_admin/billing/tools/unit.php:38
+#: tejarak/content_a/billing/tools/unit.php:38
 msgid "Please select one units"
 msgstr "لطفا یک واحد مالی انتخاب کنید"
 
-#: tejarak/content_admin/billing/tools/unit.php:51
+#: tejarak/content_a/billing/tools/unit.php:51
 msgid "Your unit has change"
 msgstr "واحد مالی شما تغییر یافت"
 
-#: tejarak/content_admin/billing/tools/unit.php:56
+#: tejarak/content_a/billing/tools/unit.php:56
 msgid "Please select a valid units"
 msgstr "لطفا یک واحد مالی را انتخاب کنید"
 
-#: tejarak/content_admin/billing/view.php:9
+#: tejarak/content_a/billing/view.php:9
 #: tejarak/includes/languages/trans_twig.php:300
 msgid "Billing"
 msgstr "مالی"
 
-#: tejarak/content_admin/member/model.php:67
-#: tejarak/content_admin/setup/model.php:51
-#: tejarak/content_admin/setup/model.php:91
+#: tejarak/content_a/member/model.php:67
+#: tejarak/content_a/setup/model.php:51
+#: tejarak/content_a/setup/model.php:91
 msgid "Please login to add a team"
 msgstr "لطفا برای افزودن تیم وارد شوید"
 
-#: tejarak/content_admin/member/model.php:74
-#: tejarak/content_admin/setup/model.php:98
+#: tejarak/content_a/member/model.php:74
+#: tejarak/content_a/setup/model.php:98
 msgid "Please enter your name"
 msgstr "لطفا نام خود را وارد کنید"
 
-#: tejarak/content_admin/member/model.php:81
-#: tejarak/content_admin/setup/model.php:111
+#: tejarak/content_a/member/model.php:81
+#: tejarak/content_a/setup/model.php:111
 msgid "Please enter your name less than 90 character"
 msgstr "لطفا نام کمتر از ۹۰ کاراکتر را وارد کنید"
 
-#: tejarak/content_admin/setup/model.php:57
+#: tejarak/content_a/setup/model.php:57
 msgid "Please enter the team title"
 msgstr "لطفا عنوان تیم را وارد کنید"
 
-#: tejarak/content_admin/setup/model.php:105
+#: tejarak/content_a/setup/model.php:105
 msgid "Please enter your family"
 msgstr "لطفا نام خانوادگی خود را وارد کنید"
 
-#: tejarak/content_admin/setup/view.php:27
+#: tejarak/content_a/setup/view.php:27
 msgid "Team"
 msgstr "تیم"
 
-#: tejarak/content_admin/setup/view.php:31
+#: tejarak/content_a/setup/view.php:31
 msgid "You"
 msgstr "شما"
 
-#: tejarak/content_admin/setup/view.php:35
+#: tejarak/content_a/setup/view.php:35
 #: tejarak/includes/languages/trans_twig.php:370
 msgid "Finish"
 msgstr "تمام"
 
-#: tejarak/content_admin/setup/view.php:38
+#: tejarak/content_a/setup/view.php:38
 msgid "Tejarak Quick Setup"
 msgstr "راه‌اندازی سریع تجارک"
 

@@ -237,7 +237,7 @@ private function transtext()
 	echo T_("Furthermore, this agreement, under the name Terms and Conditions, will be available and observable, in all pages of the website. Users will be responsible for a lack of information on the most recent changes.");// Line 27
 	echo T_("It should be mentioned that in case there would be any modifications in the above-mentioned tenors, an updated version will be available for the public, and as well, all the users will be informed.");// Line 30
 
-	//----------------------------------------------content_admin\billing\display.html
+	//----------------------------------------------content_a\billing\display.html
 	echo T_("Your credit");                                                           // Line 9
 	echo T_("Earn More Credit");                                                      // Line 12
 	echo T_("Usage");                                                                 // Line 19
@@ -264,10 +264,10 @@ private function transtext()
 	echo T_("Plus");                                                                  // Line 195
 	echo T_("Minus");                                                                 // Line 196
 
-	//---------------------------------------------content_admin\branch\dashboard.html
+	//---------------------------------------------content_a\branch\dashboard.html
 	echo T_("Branch Dashboard");                                                      // Line 7
 
-	//-----------------------------------------------content_admin\branch\display.html
+	//-----------------------------------------------content_a\branch\display.html
 	echo T_("Branch add");                                                            // Line 6
 	echo T_("Branch List");                                                           // Line 9
 	echo T_("Add Branch");                                                            // Line 20
@@ -283,7 +283,7 @@ private function transtext()
 	echo T_("Edit");                                                                  // Line 41
 	echo T_("Add");                                                                   // Line 50
 
-	//-------------------------------------------------content_admin\home\display.html
+	//-------------------------------------------------content_a\home\display.html
 	echo T_("Hi");                                                                    // Line 6
 	echo T_("Wellcome to Tejarak admin");                                             // Line 15
 	echo T_("Tejarak was born to serve small and beautiful service for e-business");  // Line 16
@@ -291,15 +291,15 @@ private function transtext()
 	echo T_("Settings");                                                              // Line 33
 	echo T_("Add new branch");                                                        // Line 50
 
-	//-------------------------------------------------content_admin\main\display.html
+	//-------------------------------------------------content_a\main\display.html
 	echo T_("Add team");                                                              // Line 7
 	echo T_("List team");                                                             // Line 23
 
-	//--------------------------------------------------content_admin\main\layout.html
+	//--------------------------------------------------content_a\main\layout.html
 	echo T_("Add new team");                                                          // Line 22
 	echo T_("Billing");                                                               // Line 23
 
-	//-----------------------------------------------content_admin\member\display.html
+	//-----------------------------------------------content_a\member\display.html
 	echo T_("Edit member");                                                           // Line 8
 	echo T_("Add member");                                                            // Line 5
 	echo T_("Family");                                                                // Line 24
@@ -314,7 +314,7 @@ private function transtext()
 	echo T_("Remote member");                                                         // Line 53
 	echo T_("Is default");                                                            // Line 57
 
-	//-----------------------------------------content_admin\old\branch_staff\add.html
+	//-----------------------------------------content_a\old\branch_staff\add.html
 	echo T_("member List");                                                           // Line 3
 	echo T_("name");                                                                  // Line 69 Seperate
 	echo T_("family");                                                                // Line 14
@@ -329,14 +329,14 @@ private function transtext()
 	echo T_("date_exit");                                                             // Line 51
 	echo T_("status");                                                                // Line 55
 
-	//-----------------------------------content_admin\old\branch_staff\dashboard.html
+	//-----------------------------------content_a\old\branch_staff\dashboard.html
 	echo T_("member Dashboard");                                                      // Line 4
 
-	//-------------------------------------content_admin\old\branch_staff\display.html
+	//-------------------------------------content_a\old\branch_staff\display.html
 	echo T_("member");                                                                // Line 4
 	echo T_("Admin");                                                                 // Line 26
 
-	//------------------------------------------content_admin\old\getway\add_edit.html
+	//------------------------------------------content_a\old\getway\add_edit.html
 	echo T_("Add getway");                                                            // Line 6
 	echo T_("Getway list");                                                           // Line 16
 	echo T_("Branch list");                                                           // Line 9
@@ -345,20 +345,20 @@ private function transtext()
 	echo T_("Cat");                                                                   // Line 20
 	echo T_("IP");                                                                    // Line 22
 
-	//-----------------------------------------content_admin\old\getway\dashboard.html
+	//-----------------------------------------content_a\old\getway\dashboard.html
 	echo T_("getways List");                                                          // Line 4
 
-	//-------------------------------------------content_admin\old\getway\display.html
+	//-------------------------------------------content_a\old\getway\display.html
 
-	//-----------------------------------------------content_admin\option\display.html
+	//-----------------------------------------------content_a\option\display.html
 
-	//-------------------------------------------------content_admin\setup\setup1.html
+	//-------------------------------------------------content_a\setup\setup1.html
 	echo T_("Welcome to Tejarak initialization process!");                            // Line 7
 	echo T_("Please enter team name *");                                              // Line 9
 	echo T_("Enter a valid team name from 3 to 30 character");                        // Line 9
 	echo T_("Next");                                                                  // Line 10
 
-	//-------------------------------------------------content_admin\setup\setup2.html
+	//-------------------------------------------------content_a\setup\setup2.html
 	echo T_("Please enter your information");                                         // Line 7
 	echo T_("First Name *");                                                          // Line 12
 	echo T_("Enter a valid name from 3 to 30 character");                             // Line 12
@@ -369,11 +369,11 @@ private function transtext()
 	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 22
 	echo T_("Finish");                                                                // Line 26
 
-	//-------------------------------------------------content_admin\setup\setup3.html
+	//-------------------------------------------------content_a\setup\setup3.html
 	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 10
 	echo T_("Start");                                                                 // Line 12
 
-	//-------------------------------------------------content_admin\team\display.html
+	//-------------------------------------------------content_a\team\display.html
 	echo T_("Edit Team");                                                             // Line 6
 	echo T_("Add Team");                                                              // Line 8
 	echo T_("Register code");                                                         // Line 27
