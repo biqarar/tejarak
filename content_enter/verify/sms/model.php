@@ -40,7 +40,7 @@ class model extends \content_enter\main\model
 
 		$request           = [];
 		$request['mobile'] = self::get_enter_session('mobile');
-		$request['msg']    = T_("Your verification code is :code", ['code' => $code]);
+		$request['msg']    = T_("Your verification code is :code \n:service", ['code' => $code, 'service' => \lib\router::get_root_domain()]);
 		$request['args']   = $code;
 
 		if(self::$dev_mode)

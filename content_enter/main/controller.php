@@ -59,7 +59,7 @@ class controller extends \mvc\controller
 				// load user data by user id
 				self::load_user_data('user_id');
 				// set login session
-				self::enter_set_login();
+				self::enter_set_login(null, true);
 			}
 		}
 	}
