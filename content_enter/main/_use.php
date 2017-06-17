@@ -124,6 +124,18 @@ trait _use
 
 
 	/**
+	 * this status of user move to block page
+	 *
+	 * @var        array
+	 */
+	public static $block_status =
+	[
+		'filter',
+		'block',
+	];
+
+
+	/**
 	* sleep code
 	*/
 	public static function sleep_code($_seconds = null)

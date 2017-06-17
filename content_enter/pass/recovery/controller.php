@@ -16,12 +16,7 @@ class controller extends \content_enter\main\controller
 			self::error_page('pass/recovery');
 			return;
 		}
-		// if the user is login redirect to base
-		parent::if_login_not_route();
 
-		// check remeber me is set
-		// if remeber me is set: login!
-		parent::check_remeber_me();
 		// parent::_route();
 		$this->get('pass')->ALL('pass/recovery');
 		$this->post('pass')->ALL('pass/recovery');

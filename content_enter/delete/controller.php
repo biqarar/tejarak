@@ -11,13 +11,10 @@ class controller extends \content_enter\main\controller
 	{
 		// if the user login redirect to base
 		parent::if_login_route();
-		// check remeber me is set
-		// if remeber me is set: login!
-		parent::check_remeber_me();
 
 		if(self::get_request_method() === 'get')
 		{
-			$this->get(false, 'delete')->ALL();
+			$this->get()->ALL();
 		}
 		elseif(self::get_request_method() === 'post')
 		{

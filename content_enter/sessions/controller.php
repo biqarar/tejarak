@@ -12,10 +12,6 @@ class controller extends \content_enter\main\controller
 		// if user was login route this page
 		parent::if_login_route();
 
-		// check remeber me is set
-		// if remeber me is set: login!
-		parent::check_remeber_me();
-
 		if(self::get_request_method() === 'get')
 		{
 			$this->get(false, 'sessions')->ALL();

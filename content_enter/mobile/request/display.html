@@ -1,0 +1,14 @@
+{%extends display.enter%}
+
+
+
+{%block contentForm%}
+<p>{%trans "If you want to have more secure enter your mobile"%}</p>
+
+{{block('emobile')}}
+{{block('ego')}}
+
+<a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"will":"no"}' class="link">{%trans "Dont will"%}</a>
+
+{%endblock%}
+

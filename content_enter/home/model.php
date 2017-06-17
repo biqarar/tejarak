@@ -82,8 +82,11 @@ class model extends \content_enter\main\model
 		else
 		{
 			// if this user is blocked or filtered go to block page
-			if(self::user_data('user_status') === 'filter' || self::user_data('user_status') === 'block')
+			if(in_array(self::user_data('user_status'), self::$block_status))
 			{
+				// block page
+				self::next_step('block');
+				// go to block page
 				self::go_to('block');
 				return;
 			}

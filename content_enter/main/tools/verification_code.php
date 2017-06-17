@@ -33,23 +33,14 @@ trait verification_code
 			],
 		];
 
-		// if the user id is set in session
-		if(self::user_data('id'))
-		{
-			// save this code in logs table for this user
-			$log_id = \lib\db\logs::set('user:verification:code', self::user_data('id'), $log_meta);
-			// update users user_verifycode field
-			// the user_verifycode like this
-			// // 						 [CODE]	 _	[TIME]   _  [WAY]   _    [ID]
-			// $user_verifycode_field = $code. "_". $time. "_". $way. "_". $log_id;
-			// // update user field
-			// \lib\db\users::update(['user_verifycode'], self::user_data('id'));
-			// save data in session
-			self::set_enter_session('verification_code', $code);
-			self::set_enter_session('verification_code_time', $time);
-			self::set_enter_session('verification_code_way', $_way);
-			self::set_enter_session('verification_code_id', $log_id);
-		}
+
+		// save this code in logs table and session
+		$log_id = \lib\db\logs::set('user:verification:code', self::user_data('id'), $log_meta);
+
+		self::set_enter_session('verification_code', $code);
+		self::set_enter_session('verification_code_time', $time);
+		self::set_enter_session('verification_code_way', $_way);
+		self::set_enter_session('verification_code_id', $log_id);
 
 		return $code;
 	}
@@ -343,6 +334,51 @@ trait verification_code
 			/**
 			 ***********************************************************
 			 * VERIFY FROM
+			 * MOBILI /REQUEST
+			 ***********************************************************
+			 */
+			if(self::get_enter_session('verify_from') === 'mobile_request' && is_numeric(self::user_data('id')))
+			{
+				// set temp ramz in use pass
+				switch (self::get_enter_session('mobile_request_from'))
+				{
+					case 'google_email_not_exist':
+						if(self::get_enter_session('must_signup'))
+						{
+							// sign up user
+							$user_id = self::signup(self::get_enter_session('must_signup'));
+
+							\lib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], $user_id);
+							// the user click on dont will mobile
+							// we save this time to user_dont_will_set_mobile to never show this message again
+							if(self::get_enter_session('dont_will_set_mobile'))
+							{
+								\lib\db\users::update(['user_dont_will_set_mobile' => date("Y-m-d H:i:s")], $user_id);
+							}
+						}
+						break;
+
+					case 'google_email_exist':
+						// the user click on dont will mobile
+						// we save this time to user_dont_will_set_mobile to never show this message again
+						if(self::get_enter_session('dont_will_set_mobile'))
+						{
+							\lib\db\users::update(['user_dont_will_set_mobile' => date("Y-m-d H:i:s")], self::user_data('id'));
+						}
+						self::go_to('okay');
+						return;
+						break;
+
+					default:
+						# code...
+						break;
+				}
+			}
+
+
+			/**
+			 ***********************************************************
+			 * VERIFY FROM
 			 * EMAIL/SET
 			 * EMAIL/CHANGE
 			 ***********************************************************
@@ -441,5 +477,6 @@ trait verification_code
 		$mail = \lib\utility\mail::send($mail);
 		return $mail;
 	}
+
 }
 ?>

@@ -30,6 +30,12 @@ class model extends \mvc\model
 			self::$sms_rate = \lib\option::enter('sms_rate');
 		}
 
+		// get block status
+		if(\lib\option::enter('block_status') && is_array(\lib\option::enter('block_status')))
+		{
+			self::$block_status = \lib\option::enter('block_status');
+		}
+
 		// in dev mode
 		if(Tld === 'dev')
 		{

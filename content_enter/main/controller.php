@@ -46,7 +46,7 @@ class controller extends \mvc\controller
 	/**
 	* check is set remeber me of this user
 	*/
-	public function check_remeber_me()
+	public function check_remember_me()
 	{
 		if(\lib\db\sessions::get_cookie() && !$this->login())
 		{

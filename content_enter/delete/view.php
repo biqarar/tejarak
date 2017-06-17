@@ -9,12 +9,13 @@ class view extends \content_enter\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_delete($_args)
+	public function config()
 	{
-		$mobile = \lib\utility::get('mobile');
-		if($mobile)
+		parent::config();
+
+		if(self::get_enter_session('request_delete_msg'))
 		{
-			$this->data->get_mobile = \lib\utility\filter::mobile($mobile);
+			$this->data->get_why = self::get_enter_session('request_delete_msg');
 		}
 	}
 }
