@@ -471,6 +471,8 @@ trait verification_code
 					self::load_user_data('user_id');
 					if($user_id)
 					{
+						self::enter_set_login(self::user_data('id'));
+
 						\lib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], $user_id);
 						// the user click on dont will mobile
 						// we save this time to user_dont_will_set_mobile to never show this message again
@@ -495,9 +497,9 @@ trait verification_code
 					}
 
 					\lib\db\users::update($update_user_google, self::user_data('id'));
+					self::enter_set_login(self::user_data('id'));
 				}
 
-				self::go_to('okay');
 				return false;
 				break;
 
