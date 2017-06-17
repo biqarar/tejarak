@@ -4,6 +4,21 @@ use \lib\debug;
 use \lib\utility;
 use \lib\social\google;
 
+// class google
+// {
+// 	use \content_enter\main\_use;
+
+// 	public static function check()
+// 	{
+// 		return true;
+// 	}
+
+// 	public static function user_info($_key = null)
+// 	{
+// 		return self::user_data($_key);
+// 	}
+// }
+
 class model extends \content_enter\main\model
 {
 	public function get_google()

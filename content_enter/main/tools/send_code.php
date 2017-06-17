@@ -12,20 +12,22 @@ trait send_code
 	public static function send_code_way()
 	{
 		$way = self::send_way();
+		$host = Protocol."://" . \lib\router::get_root_domain();
+		$host .= \lib\define::get_current_language_string();
+
 		if($way)
 		{
 			// open next step to route it
+			$host .= '/enter/verify/'. $way;
 			self::next_step('verify/'. $way);
 		}
 		else
 		{
+			$host .= '/enter/verify/what';
 			// open next step to route it
 			self::next_step('verify/what');
 		}
 
-		$host = Protocol."://" . \lib\router::get_root_domain();
-		$host .= \lib\define::get_current_language_string();
-		$host .= '/enter/verify/'. $way;
 		self::go_redirect($host);
 	}
 

@@ -68,8 +68,11 @@ trait login
 		// }
 		// set session
 		\lib\db\users::set_login_session(self::user_data());
-		// set remeber and save session
-		\lib\db\sessions::set(self::user_data('id'));
+		if(self::user_data('id'))
+		{
+			// set remeber and save session
+			\lib\db\sessions::set(self::user_data('id'));
+		}
 
 		$url = self::find_redirect_url($_url);
 

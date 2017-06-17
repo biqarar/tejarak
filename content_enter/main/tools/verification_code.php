@@ -339,45 +339,11 @@ trait verification_code
 			 */
 			if(self::get_enter_session('verify_from') === 'mobile_request' && is_numeric(self::user_data('id')))
 			{
-				// set temp ramz in use pass
-				switch (self::get_enter_session('mobile_request_from'))
+				if(!self::mobile_request_next_step())
 				{
-					case 'google_email_not_exist':
-						if(self::get_enter_session('must_signup'))
-						{
-							// sign up user
-							$user_id = self::signup(self::get_enter_session('must_signup'));
-
-							\lib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], $user_id);
-							// the user click on dont will mobile
-							// we save this time to user_dont_will_set_mobile to never show this message again
-							if(self::get_enter_session('dont_will_set_mobile'))
-							{
-								\lib\db\users::update(['user_dont_will_set_mobile' => date("Y-m-d H:i:s")], $user_id);
-							}
-						}
-						break;
-
-					case 'google_email_exist':
-						// the user click on dont will mobile
-						// we save this time to user_dont_will_set_mobile to never show this message again
-						$update_user_google = [];
-
-						if(self::get_enter_session('dont_will_set_mobile'))
-						{
-							$update_user_google['user_dont_will_set_mobile'] = date("Y-m-d H:i:s");
-						}
-
-						\lib\db\users::update($update_user_google, self::user_data('id'));
-
-						self::go_to('okay');
-						return;
-						break;
-
-					default:
-						# code...
-						break;
+					return false;
 				}
+
 			}
 
 
@@ -483,5 +449,61 @@ trait verification_code
 		return $mail;
 	}
 
+
+
+	/**
+	 * user fill the mobile/request
+	 * this function find next step
+	 * signup user
+	 * or login only
+	 */
+	public static function mobile_request_next_step()
+	{
+		// set temp ramz in use pass
+		switch (self::get_enter_session('mobile_request_from'))
+		{
+			case 'google_email_not_exist':
+				if(self::get_enter_session('must_signup'))
+				{
+					// sign up user
+					$user_id = self::signup(self::get_enter_session('must_signup'));
+					if($user_id)
+					{
+						\lib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], $user_id);
+						// the user click on dont will mobile
+						// we save this time to user_dont_will_set_mobile to never show this message again
+						if(self::get_enter_session('dont_will_set_mobile'))
+						{
+							\lib\db\users::update(['user_dont_will_set_mobile' => date("Y-m-d H:i:s")], $user_id);
+						}
+					}
+				}
+				break;
+
+			case 'google_email_exist':
+				if(is_numeric(self::user_data('id')))
+				{
+					// the user click on dont will mobile
+					// we save this time to user_dont_will_set_mobile to never show this message again
+					$update_user_google = [];
+
+					if(self::get_enter_session('dont_will_set_mobile'))
+					{
+						$update_user_google['user_dont_will_set_mobile'] = date("Y-m-d H:i:s");
+					}
+
+					\lib\db\users::update($update_user_google, self::user_data('id'));
+				}
+
+				self::go_to('okay');
+				return false;
+				break;
+
+			default:
+				# code...
+				break;
+		}
+		return true;
+	}
 }
 ?>
