@@ -69,47 +69,7 @@ trait verification_code
 				$last_code_ok = true;
 			}
 		}
-		// // code not found in session
-		// // load user data to find code
-		// if(!$last_code_ok)
-		// {
-		// 	// get last verification code in users detail
-		// 	$verification = self::user_data('user_verifiycode');
-		// 	if($verification)
-		// 	{
-		// 		// the user_verifycode like this [[CODE]_[TIME]_[WAY]_[ID]]
-		// 		// the user_verifycode like this [12345_2017-12-12 14:08:25_telegram_45]
-		// 		$explode = explode('_', $verification);
-		// 		if(isset($explode[1]))
-		// 		{
-		// 			if(strtotime($explode[1]) < self::$life_time_code)
-		// 			{
-		// 				// last save users code is okay
-		// 				$last_code_ok = true;
-		// 				// save last code in session
-		// 				if(isset($explode[0]) && is_numeric($explode[0]))
-		// 				{
-		// 					self::set_enter_session('verification_code', $explode[0]);
-		// 				}
-		// 				// save last code time in session
-		// 				if(isset($explode[1]))
-		// 				{
-		// 					self::set_enter_session('verification_code_time', $explode[1]);
-		// 				}
-		// 				// save last code way in session
-		// 				if(isset($explode[2]))
-		// 				{
-		// 					self::set_enter_session('verification_code_way', $explode[2]);
-		// 				}
-		// 				// sve last code id in session
-		// 				if(isset($explode[3]))
-		// 				{
-		// 					self::set_enter_session('verification_code_id', $explode[3]);
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
+
 
 		// user code not found
 		if(!$last_code_ok)
@@ -494,8 +454,11 @@ trait verification_code
 					{
 						$update_user_google['user_dont_will_set_mobile'] = date("Y-m-d H:i:s");
 					}
+					if(!empty($update_user_google))
+					{
+						\lib\db\users::update($update_user_google, self::user_data('id'));
+					}
 
-					\lib\db\users::update($update_user_google, self::user_data('id'));
 					self::enter_set_login(self::user_data('id'));
 				}
 

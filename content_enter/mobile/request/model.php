@@ -26,7 +26,7 @@ class model extends \content_enter\main\model
 			self::set_enter_session('dont_will_set_mobile', true);
 
 			self::mobile_request_next_step();
-			self::enter_set_login();
+
 			self::next_step('okay');
 			self::go_to('okay');
 			return;
@@ -64,9 +64,6 @@ class model extends \content_enter\main\model
 			self::go_to('delete/request');
 			return;
 		}
-
-		self::mobile_request_next_step();
-
 	}
 }
 ?>
