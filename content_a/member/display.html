@@ -37,18 +37,22 @@
    <div class="c6 s12">
     <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}">
    </div>
-  </div>
 
-  <div class="divider"></div>
-
-  <div class="f g1">
-   <div class="c6 s12">
-    <!-- <label for="code">{%trans "Code"%}</label> -->
+   <div class="c12 s12">
     <input type="text" name="code" id="code" placeholder='{%trans "Code" %}' value="{{member.code}}">
    </div>
 
+   <div class="c12">
+    <label>
+     <input type="checkbox" name="remote" id="remote" {%if member.remote%} checked="checked" {%endif%}>
+     {%trans "Remote member"%}
+    </label>
+   </div>
+  </div>
+
+{%if fasle%}
+  <div class="f g1">
    <div class="c6 s12">
-    <!-- <label for="status">{%trans "Status"%}</label> -->
     <select name="status" id="status">
      <option value="" selected="selected">{%trans "Status"%}</option>
      <option value="enable" {%if member.status == 'enable' or not member.status %} {%endif%}>{%trans "Enable"%}</option>
@@ -64,16 +68,12 @@
     </label>
 
     <label>
-     <input type="checkbox" name="remote" id="remote" {%if member.remote%} checked="checked" {%endif%}>
-     {%trans "Remote member"%}
-    </label>
-
-    <label>
      <input type="checkbox" name="is_default" {%if member.is_default%} checked="checked" {%endif%}>
      {%trans "Is default"%}
     </label>
    </div>
   </div>
+{%endif%}
 
   <div class="f g1">
    <div class="c12 s12">
