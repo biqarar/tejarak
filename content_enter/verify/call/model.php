@@ -16,13 +16,37 @@ class model extends \content_enter\main\model
 	 */
 	public function send_call_code()
 	{
+		$code = self::get_enter_session('verification_code');
 		if(!self::get_enter_session('mobile'))
 		{
 			return false;
 		}
 
-		$code = self::get_enter_session('verification_code');
+		if(!\lib\option::enter('call'))
+		{
+			return false;
+		}
 
+		$language     = \lib\define::get_language();
+		// find template to call by it
+		if(\lib\option::enter('call_template', $language))
+		{
+			$template   = \lib\option::enter('call_template', $language);
+		}
+		else
+		{
+			return false;
+		}
+
+		$request =
+		[
+			'mobile'   => self::get_enter_session('mobile'),
+			'template' => $template,
+			'token'    => $code,
+		 	'type'     => 'call',
+		];
+
+		// ready to save log
 		$log_meta =
 		[
 			'data' => $code,
@@ -32,30 +56,6 @@ class model extends \content_enter\main\model
 			]
 		];
 
-		$service_name = 'sarshomar';
-		$language     = \lib\define::get_language();
-
-		if($language === 'fa')
-		{
-			$template   = $service_name . '-fa';
-			$verifytype = 'call';
-		}
-		else
-		{
-			$template   = $service_name . '-en';
-		}
-
-		$request =
-		[
-			'mobile'   => self::get_enter_session('mobile'),
-			'template' => $template,
-			'token'    => $code,
-		];
-
-		if(isset($verifytype))
-		{
-			$request['type'] = $verifytype;
-		}
 
 		if(self::$dev_mode)
 		{
