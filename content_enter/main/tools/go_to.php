@@ -6,7 +6,7 @@ use \lib\debug;
 trait go_to
 {
 	/**
-	 * redirecto to url
+	 * redirect to url
 	 *
 	 * @param      <type>  $_url   The url
 	 *
@@ -14,7 +14,6 @@ trait go_to
 	 */
 	public static function go_to($_url = null)
 	{
-
 
 		switch ($_url)
 		{
@@ -44,7 +43,7 @@ trait go_to
 	 *
 	 * @param      <type>  $_url   The url
 	 */
-	public static function go_redirect($_url, $_direct = null)
+	public static function go_redirect($_url, $_return = false, $_direct = false)
 	{
 		if(isset($_SESSION['go_to']) && is_array($_SESSION['go_to']))
 		{
@@ -59,8 +58,18 @@ trait go_to
 		{
 			debug::msg('direct', true);
 		}
+
 		$redirect = new \lib\redirector($_url);
-		$redirect->redirect();
+
+		if($_return)
+		{
+			return $redirect->redirect(true);
+		}
+		else
+		{
+			$redirect->redirect();
+		}
+
 	}
 }
 ?>
