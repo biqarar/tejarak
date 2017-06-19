@@ -46,6 +46,12 @@ class view extends \content_a\main\view
 		$this->data->page['special'] = true;
 		// $this->data->page['desc']    = $this->data->page['title'];
 
+		// get team name from param
+		// saved in enter at the first page of tejarak
+		if(isset($_SESSION['param']['team']) && is_string($_SESSION['param']['team']))
+		{
+			$this->data->param_team = $_SESSION['param']['team'];
+		}
 	}
 
 

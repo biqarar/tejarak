@@ -66,6 +66,11 @@ class model extends \content_a\main\model
 		// save last team added to session to get in step 3
 		$_SESSION['last_team_added'] = \lib\storage::get_last_team_added();
 
+		// change param team to load again true
+		if(isset($_SESSION['param']['team']))
+		{
+			$_SESSION['param']['team'] = utility::post('title');
+		}
 		// if the team is added redirect to setup 2
 		if(debug::$status)
 		{
@@ -99,12 +104,13 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		// check posted family
-		if(!utility::post('family'))
-		{
-			debug::error(T_("Please enter your family"), 'family', 'arguments');
-			return false;
-		}
+		// // check posted family
+		// if(!utility::post('family'))
+		// {
+		// 	debug::error(T_("Please enter your family"), 'family', 'arguments');
+		// 	return false;
+		// }
+
 		// check name lenght
 		if(mb_strlen(utility::post('name')) > 90)
 		{

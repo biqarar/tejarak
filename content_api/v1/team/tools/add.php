@@ -77,6 +77,11 @@ trait add
 			debug::error(T_("Team brand must be larger than 5 character"), 'brand', 'arguments');
 			return false;
 		}
+		// remove - from brand
+		// if the title is persian and brand not set
+		// we change the brand as slug of title
+		// in the slug we have some '-' in return
+		$brand = str_replace('-', '', $brand);
 
 		if(!preg_match("/^[A-Za-z0-9]+$/", $brand))
 		{
