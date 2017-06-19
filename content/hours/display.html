@@ -2,6 +2,18 @@
 
 
 {%block content%}
+<h1>
+
+<form method="post" class="df">
+  <div class="f">
+    user_id<input type="text" name="user" value="4"><br>
+    plus<input type="text" name="plus" value="10"><br>
+    minus<input type="text" name="minus" value="10"><br>
+    type<input type="text" name="type" value="enter"><br>
+    <input type="submit" ><br>
+  </div>
+</form>
+</h1>
 {%for key, value in list_member%}
 <div class="t-card-box">
  <div class="t-card">
@@ -21,12 +33,6 @@
  </div>
 </div>
 {%endfor%}
-<form method="post" class="df">
-  <div class="f">
-    user_id<input type="text" name="user" value="4"><br>
-    plus<input type="text" name="plus" value="10"><br>
-    minus<input type="text" name="minus" value="10"><br>
-    <input type="submit" ><br>
-  </div>
-</form>
+{%endblock%}
+{%block sideBox%}
 {%endblock%}

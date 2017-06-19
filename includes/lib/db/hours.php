@@ -1,7 +1,7 @@
 <?php
 namespace lib\db;
 use \lib\db;
-
+use \lib\utility\jdate;
 class hours
 {
 
@@ -45,51 +45,140 @@ class hours
 	 */
 	public static function insert($_args)
 	{
-
-		$date                = $_args['date'] 	 ? $_args['date'] 	 : date("Y-m-d") ;
-		$start               = $_args['start'] 	 ? $_args['start'] 	 : null;
-		$end                 = $_args['end'] 	 ? $_args['end'] 	 : null;
-		$user_id             = $_args['user_id'] ? $_args['user_id'] : 0;
-		$minus               = $_args['minus'] 	 ? $_args['minus'] 	 : 0;
-		$plus                = $_args['plus'] 	 ? $_args['plus'] 	 : 0;
-
-		$user_id             = $_args['user_id'] ? $_args['user_id'] : null;
-		$team_id             = $_args['team_id'] ? $_args['team_id'] : null;
-		$userteam_id         = $_args['userteam_id'] ? $_args['userteam_id'] : null;
-		$userbranch_id       = $_args['userbranch_id'] ? $_args['userbranch_id'] : null;
-		$start_getway_id     = $_args['start_getway_id'] ? $_args['start_getway_id'] : null;
-		$start_userbranch_id = $_args['start_userbranch_id'] ? $_args['start_userbranch_id'] : null;
-		$date                = $_args['date'] ? $_args['date'] : null;
-		$year                = $_args['year'] ? $_args['year'] : null;
-		$month               = $_args['month'] ? $_args['month'] : null;
-		$day                 = $_args['day'] ? $_args['day'] : null;
-		$shamsi_date         = $_args['shamsi_date'] ? $_args['shamsi_date'] : null;
-		$shamsi_year         = $_args['shamsi_year'] ? $_args['shamsi_year'] : null;
-		$shamsi_month        = $_args['shamsi_month'] ? $_args['shamsi_month'] : null;
-		$shamsi_day          = $_args['shamsi_day'] ? $_args['shamsi_day'] : null;
-		$start               = $_args['start'] ? $_args['start'] : null;
-		if(!$user_id || !$start || !$end)
-		{
-			\lib\debug::error(T_("user id, start time and end time is require"));
-		}
-
-		$query = "
-			INSERT INTO
-				hours
-			SET
-				user_id   	  = $user_id,
-				date     = '$date',
-				start    = '$start',
-				end      = '$end',
-				diff     = TIME_TO_SEC(TIMEDIFF(end,start)) / 60,
-				plus     = IF('$plus' = 0, NULL, '$plus'),
-				minus    = IF('$minus' = 0, NULL, '$minus')
-				";
+		$set = \lib\db\config::make_set($_args);
+		$query = "INSERT INTO hours SET $set ";
 		return \lib\db::query($query);
 	}
 
 
+	public static function save($_args)
+	{
+		// date of now
+		$date = date("Y-m-d");
+		// start or end of time
+		$type = isset($_args['type']) ? $_args['type'] : null;
 
+		switch ($type)
+		{
+			// save enter time
+			case 'enter':
+				return self::save_enter($_args);
+				break;
+			// save exit time
+			case 'exit':
+				return self::save_exit($_args);
+				break;
+			// error return false
+			default:
+				return false;
+				break;
+		}
+	}
+
+	/**
+	 * get
+	 *
+	 * @param      <type>  $_where  The where
+	 */
+	public static function get()
+	{
+		return \lib\db\config::public_get('hours', ...func_get_args());
+	}
+
+
+	/**
+	 * update
+	 *
+	 * @param      <type>  $_where  The where
+	 */
+	public static function update()
+	{
+		return \lib\db\config::public_update('hours', ...func_get_args());
+	}
+
+
+	/**
+	 * Saves an enter.
+	 * save enter time of user
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public static function save_enter($_args)
+	{
+		$date = date("Y-m-d");
+
+		$userteam_id   = \lib\db\userteams::get_id(['team_id' => $_args['team_id'], 'user_id' => $_args['user_id']]);
+		$userbranch_id = \lib\db\userbranchs::get_id(['branch_id' => $_args['branch_id'], 'user_id' => $_args['user_id']]);
+
+		if(self::get(['user_id' => $_args['user_id'], 'date' => date("Y-m-d")]))
+		{
+			\lib\debug::error(T_("You was already save your enter time"));
+			return ;
+		}
+
+		$insert                        = [];
+		$insert['user_id']             = $_args['user_id'];
+		$insert['team_id']             = $_args['team_id'];
+		$insert['userteam_id']         = $userbranch_id;
+		$insert['userbranch_id']       = $userteam_id;
+		$insert['start_userbranch_id'] = $_args['branch_id'];
+		$insert['date']                = date("Y-m-d");
+		$insert['year']                = date("Y");
+		$insert['month']               = date("m");
+		$insert['day']                 = date("d");
+		$insert['shamsi_date']         = jdate::date("Y-m-d", strtotime($date), false, true);
+		$insert['shamsi_year']         = jdate::date("Y", strtotime($date), false, true);
+		$insert['shamsi_month']        = jdate::date("m", strtotime($date), false, true);;
+		$insert['shamsi_day']          = jdate::date("d", strtotime($date), false, true);;
+		$insert['start']               = date("H:i");
+
+		return self::insert($insert);
+	}
+
+	/**
+	 * save exit time of user
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public static function save_exit($_args)
+	{
+		if($start = self::get(['user_id' => $_args['user_id'], 'date' => date("Y-m-d"), 'limit' => 1]))
+		{
+		}
+		else
+		{
+			\lib\debug::error(T_("You was not save your enter time"));
+			return ;
+		}
+
+		$check = true;
+
+		if(!isset($start['start'])) $check = false;
+		if(!isset($start['date'])) $check = false;
+		if(!isset($start['id'])) $check = false;
+
+		if(!$check)
+		{
+			\lib\debug::error(T_("Invalid data"));
+			return false;
+		}
+
+		$update = [];
+
+		$start_time = $start['date'] . ' '. $start['start'];
+
+		$start_time = strtotime($start_time);
+		$end_time   = strtotime(date("Y-m-d H:i:s"));
+		$diff       = round(($end_time - $start_time) / 60);
+
+
+		$update['end']   = date("H:i");
+		$update['diff']  = $diff;
+		$update['minus'] = null;
+		$update['plus']  = null;
+
+		return self::update($update, $start['id']);
+	}
 
 
 
@@ -120,7 +209,7 @@ class hours
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	public static function update($_args)
+	public static function update_old($_args)
 	{
 
 		if(!isset($_args['id']))
@@ -550,7 +639,7 @@ class hours
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function get($_args)
+	public static function get_old($_args)
 	{
 		$year    = $_args['year'];
 		$month   = $_args['month'];

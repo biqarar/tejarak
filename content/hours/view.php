@@ -17,6 +17,8 @@ class view extends \mvc\view
 	public function view_show($_args)
 	{
 		// check read url
+		// only valid url like this
+		// tejarak.com/ermile/centeral
 		if(
 			isset($_args->match->url[0]) &&
 			is_string($_args->match->url[0]) &&
@@ -27,9 +29,11 @@ class view extends \mvc\view
 		}
 		else
 		{
-			\lib\error::bad();
+			// 404 invalid url and we make page error
+			\lib\error::page();
 			return;
 		}
+		// get list memeber
 		if(isset($split[1]) && isset($split[2]))
 		{
 			$request            = [];

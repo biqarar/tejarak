@@ -23,6 +23,24 @@ class userteams
 	}
 
 
+	/**
+	 * Gets the identifier.
+	 *
+	 * @param      <type>  $_where  The where
+	 *
+	 * @return     <type>  The identifier.
+	 */
+	public static function get_id($_where)
+	{
+		$_where['limit'] = 1;
+		$id              =  \lib\db\config::public_get('userteams', $_where);
+		if(isset($id['id']))
+		{
+			return $id['id'];
+		}
+		return false;
+	}
+
 
 	/**
 	 * get election record
