@@ -619,7 +619,7 @@ private function transtext()
 	echo T_("Signup");                                                                // Line 87
 	echo T_("Log in with another methods");                                           // Line 121
 	echo T_("Log in with mobile");                                                    // Line 134
-	echo T_("Sign in with Google");                                                   // Line 155
+	echo T_("Enter with Google");                                                     // Line 155
 	echo T_("New email");                                                             // Line 221
 	echo T_("New username");                                                          // Line 229
 	echo T_("Enter a valid username!");                                               // Line 229
