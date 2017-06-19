@@ -14,46 +14,47 @@ trait login
 	 */
 	public static function find_redirect_url($_url = null)
 	{
+		$host = Protocol."://" . \lib\router::get_root_domain();
 		if($_url)
 		{
 			return $_url;
 		}
 		// get url language
-		$url = \lib\define::get_current_language_string();
 		// if have referer redirect to referer
 		if(utility::get('referer'))
 		{
-			$url = utility::get('referer');
+			$host = utility::get('referer');
 		}
 		elseif(self::get_enter_session('first_signup'))
 		{
+			$host .= \lib\define::get_current_language_string();
 			// if first signup
 			if(\lib\option::enter('singup_redirect'))
 			{
-				$url .= '/'. \lib\option::enter('singup_redirect');
+				$host .= '/'. \lib\option::enter('singup_redirect');
 			}
 			else
 			{
-				$url .= \lib\option::config('redirect_url');
+				$host .= \lib\option::config('redirect_url');
 			}
 		}
 		else
 		{
-			$url = null;
+
 			$user_language = \lib\utility\users::get_language(self::user_data('id'));
 			if($user_language && \lib\utility\location\languages::check($user_language))
 			{
-				$url .= \lib\define::get_current_language_string($user_language);
+				$host .= \lib\define::get_current_language_string($user_language);
 			}
 			else
 			{
-				$url .= \lib\define::get_current_language_string();
+				$host .= \lib\define::get_current_language_string();
 			}
 
-			$url .= \lib\option::config('redirect_url');
+			$host .='/'. \lib\option::config('redirect');
 		}
 
-		return $url;
+		return $host;
 	}
 
 
@@ -79,7 +80,7 @@ trait login
 		if($_auto_redirect)
 		{
 			// go to new address
-			self::go_to($url);
+			self::go_redirect($url);
 		}
 		else
 		{
