@@ -1,54 +1,68 @@
 {%extends display.admin%}
 
+{%block contentCenter%}
+<div class='dbox' id="addTeam">
 
-{%block content%}
+ {%if edit_mode%}
+  <h2>{%trans "Edit Team"%} {{team.title}}</h2>
+ {%else%}
+  <h2>{%trans "Add new team"%}</h2>
+ {%endif%}
+
+ <form method="post" class="df" enctype="multipart/form-data">
+  <div class="f">
+
+   <div class="f c9 s12 g1">
+    <div class="c12 s12">
+     <input type="text" name="title" placeholder='{%trans "Name"%}' value="{{team.title}}" required>
+    </div>
+
+    <div class="c12 s12">
+     <input type="text" name="brand" placeholder='{%trans "Slug"%}' value="{{team.brand}}" required>
+    </div>
+   </div>
+
+   <div class="c3 s12 g1 df-file">
+    <div>
+     <input type="file" name="logo" id="logo">
+     <label for="logo"></label>
+    </div>
+   </div>
+  </div>
+
+  <div class="f g1">
+   <div class="c12 s12">
+    <input type="text" name="site" placeholder='{%trans "Website"%}' value="{{team.site}}">
+   </div>
+  </div>
+
+  <div class="f g1">
+   <div class="c12">
+    <textarea name="desc" placeholder='{%trans "Description"%}' value='{{team.desc}}'></textarea>
+   </div>
+  </div>
+
 {%if edit_mode%}
-	<h1>{%trans "Edit Team"%} {{team.title}}</h1>
+  <div class="f g1">
+   <div class="c12">
+    <input type="submit" value='{%trans "Edit"%}' class='b1'>
+   </div>
+  </div>
+
+  <div class="f g1">
+   <div class="c12">
+    <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="bn" data-ajaxify>{%trans "Delete"%}</a>
+   </div>
+  </div>
 {%else%}
-	<h1>{%trans "Add Team"%}</h1>
+
+  <div class="f g1">
+   <div class="c12">
+    <input type="submit" value='{%trans "Add"%}' class="bp">
+   </div>
+  </div>
 {%endif%}
-<form method="post" class="df" enctype="multipart/form-data">
-	<div class="f">
-		<label class="c1" for="title">{%trans "Title"%}</label>
-		<input type="text" name="title" placeholder='{%trans "Title"%}' value="{{team.title}}" class="c3" required id="title">
-	</div>
+ </form>
+</div>
 
-	<div class="f">
-		<label class="c1" for="site">{%trans "Site"%}</label>
-		<input type="text" name="site" placeholder='{%trans "Site"%}' value="{{team.site}}" class="c3" id="site">
-	</div>
-
-	<div class="f">
-		<label class="c1" for="brand">{%trans "Brand"%}</label>
-		<input type="text" name="brand" placeholder='{%trans "Brand"%}' value="{{team.brand}}" class="c3" required id="brand">
-	</div>
-	<div class="f">
-		<label class="c1" for="register_code">{%trans "Register code"%}</label>
-		<input type="text" name="register_code" placeholder='{%trans "Register code"%}' value="{{team.register_code}}" class="c3" id="register_code">
-	</div>
-	<div class="f">
-		<label class="c1" for="economical_code">{%trans "Economical code"%}</label>
-		<input type="text" name="economical_code" placeholder='{%trans "Economical code"%}' value="{{team.economical_code}}" class="c3" id="economical_code">
-	</div>
-	<div class="f">
-		<label class="c1" for="logo">{%trans "Logo"%}</label>
-		<input type="file" name="logo" class="c3" id="logo">
-	</div>
-
-	{%if edit_mode%}
-		<div class="f">
-			<label class="c1"></label>
-			<input type="submit" value='{%trans "Edit"%}' class="c3">
-		</div>
-		<div class="f">
-			<label class="c1"></label>
-			<a href="{{url.full}}"   class="c3" data-data='{"delete":true}' data-method="post" data-ajaxify>{%trans "Delete"%}</a>
-		</div>
-	{%else%}
-		<div class="f">
-			<label class="c1"></label>
-			<input type="submit" value='{%trans "Add"%}' class="c3">
-		</div>
-	{%endif%}
-</form>
 {%endblock%}

@@ -1,70 +1,91 @@
 {%extends display.admin%}
 
+{%block contentCenter%}
 
+<div class="dbox" id="addMember">
 
+ {%if edit_mode%}
+  <h2>{%trans "Edit member"%} {{member.mobile}}@{{team.title}}</h2>
+ {%else%}
+  <h2>{%trans "Add new member"%} {{team.title}}</h2>
+ {%endif%}
 
-{%block content%}
-{%if edit_mode%}
-	<h1>{%trans "Edit member"%} {{member.mobile}}@{{team.title}}</h1>
-{%else%}
-	<h1>{%trans "Add member"%} {{team.title}}</h1>
-{%endif%}
+ <form method="post" class="df" enctype="multipart/form-data">
+  <div class="f">
+   <div class="f c9 s12 g1">
+    <div class="c12 s12">
+     <input type="text" name="name" id="name" placeholder='{%trans "Name"%}' value="{{member.name}}" required>
+    </div>
 
-<form method="post" class="df" enctype="multipart/form-data">
-	<div class="f">
-		<label class="c1" for="mobile">{%trans "Mobile"%}</label>
-		<input class="c3" type="tel" name="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}" required>
-	</div>
-	<div class="f">
-		<label class="c1" for="name">{%trans "Name"%}</label>
-		<input class="c3" type="text" name="name" placeholder='{%trans "Name"%}' value="{{member.name}}" required>
-	</div>
-	<div class="f">
-		<label class="c1" for="family">{%trans "Family"%}</label>
-		<input class="c3" type="text" name="family" placeholder='{%trans "Family"%}' value="{{member.family}}">
-	</div>
-	<div class="f">
-		<label class="c1" for="postion">{%trans "Postion"%}</label>
-		<input class="c3" type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}">
-	</div>
-	<div class="f">
-		<label class="c1" for="code">{%trans "Code"%}</label>
-		<input class="c3" type="text" name="code" id="code" placeholder='{%trans "Code" %}' value="{{member.code}}">
-	</div>
-	<div class="f">
-		<label class="c1" for="avatar">{%trans "Avatar"%}</label>
-		<input class="c3" type="file" name="avatar" id="avatar">
-	</div>
+    <div class="c12 s12">
+     <input type="text" name="family" id="family" placeholder='{%trans "Family"%}' value="{{member.family}}">
+    </div>
+   </div>
+   <div class="c3 s12 g1 df-file df-avatar">
+    <div>
+     <input type="file" name="avatar" id="avatar">
+     <label for="avatar"></label>
+    </div>
+   </div>
+  </div>
 
-	<div class="f">
-		<label class="c1" for="status">{%trans "Status"%}</label>
-		<select name="status" class="c3" id="status">
-			<option value="">{%trans "Please select one item"%}</option>
-			<option value="enable" {%if member.status == 'enable' or not member.status %} selected="selected" {%endif%}>{%trans "Enable"%}</option>
-			<option value="disable" {%if member.status == 'disable' %} selected="selected" {%endif%}>{%trans "Disable"%}</option>
-			<option value="expire" {%if member.status == 'expire' %} selected="selected" {%endif%}>{%trans "Expire"%}</option>
-		</select>
-	</div>
-	<div class="f">
-		<label class="c1" for="full_time">{%trans "Is full time?"%}</label>
-		<input class="c3" type="checkbox" name="full_time" id="full_time" {%if member.full_time%} checked="checked" {%endif%}>
-	</div>
-	<div class="f">
-		<label class="c1" for="remote">{%trans "Remote member"%}</label>
-		<input class="c3" type="checkbox" name="remote" id="remote" {%if member.remote%} checked="checked" {%endif%}>
-	</div>
-	<div class="f">
-		<label class="c1" for="is_default">{%trans "Is default"%}</label>
-		<input class="c3" type="checkbox" name="is_default" id="is_default" {%if member.is_default%} checked="checked" {%endif%}>
-	</div>
-	<div class="f">
-		<label class="c1" ></label>
-		{%if edit_mode%}
-			<input type="submit" value='{%trans "Edit"%}' class="c3">
-		{%else%}
-			<input type="submit" value='{%trans "Add"%}' class="c3">
-		{%endif%}
-	</div>
-</form>
+  <div class="f g1">
+   <div class="c6 s12">
+    <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}" required>
+   </div>
+
+   <div class="c6 s12">
+    <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}">
+   </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="f g1">
+   <div class="c6 s12">
+    <!-- <label for="code">{%trans "Code"%}</label> -->
+    <input type="text" name="code" id="code" placeholder='{%trans "Code" %}' value="{{member.code}}">
+   </div>
+
+   <div class="c6 s12">
+    <!-- <label for="status">{%trans "Status"%}</label> -->
+    <select name="status" id="status">
+     <option value="" selected="selected">{%trans "Status"%}</option>
+     <option value="enable" {%if member.status == 'enable' or not member.status %} {%endif%}>{%trans "Enable"%}</option>
+     <option value="disable" {%if member.status == 'disable' %} selected="selected" {%endif%}>{%trans "Disable"%}</option>
+     <option value="expire" {%if member.status == 'expire' %} selected="selected" {%endif%}>{%trans "Expire"%}</option>
+    </select>
+   </div>
+
+   <div class="c6">
+    <label>
+     <input type="checkbox" name="full_time" {%if member.full_time%} checked="checked" {%endif%}>
+     {%trans "Is full time?"%}
+    </label>
+
+    <label>
+     <input type="checkbox" name="remote" id="remote" {%if member.remote%} checked="checked" {%endif%}>
+     {%trans "Remote member"%}
+    </label>
+
+    <label>
+     <input type="checkbox" name="is_default" {%if member.is_default%} checked="checked" {%endif%}>
+     {%trans "Is default"%}
+    </label>
+   </div>
+  </div>
+
+  <div class="f g1">
+   <div class="c12 s12">
+    {%if edit_mode%}
+     <input type="submit" value='{%trans "Edit"%}' class="b1">
+    {%else%}
+     <input type="submit" value='{%trans "Add"%}' class="bp">
+    {%endif%}
+   </div>
+  </div>
+
+ </form>
+</div>
 
 {%endblock%}
