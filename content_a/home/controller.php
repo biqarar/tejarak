@@ -14,6 +14,9 @@ class controller extends \content_a\main\controller
 
 
 		// if user_setup is null redirect to setup page
+		// The user is the first time he uses the system,
+		// so we will transfer him to the installation file
+		// But before that we check that this user is not registered in any team.
 		if(!$this->login('setup'))
 		{
 			$this->redirector()->set_domain()->set_url('a/setup')->redirect();
