@@ -110,7 +110,7 @@ private function transtext()
 	echo T_("Change log of Tejarak");                                                 // Line 3
 	echo T_("We were born to do Best!");                                              // Line 53
 	echo T_("We are Developers, please wait!");                                       // Line 20
-	echo T_("Date");                                                                  // Line 192
+	echo T_("Date");                                                                  // Line 12
 	echo T_("Description");                                                           // Line 41
 	echo T_("Version 1 of Tejarak is comming");                                       // Line 26
 	echo T_("Beta version of Tejarak released");                                      // Line 31
@@ -268,9 +268,9 @@ private function transtext()
 	echo T_("Code");                                                                  // Line 21
 	echo T_("Submit");                                                                // Line 176
 	echo T_("Title");                                                                 // Line 19
-	echo T_("Type");                                                                  // Line 194
-	echo T_("Plus");                                                                  // Line 195
-	echo T_("Minus");                                                                 // Line 196
+	echo T_("Type");                                                                  // Line 18
+	echo T_("Plus");                                                                  // Line 17
+	echo T_("Minus");                                                                 // Line 16
 
 	//-------------------------------------------------content_a\branch\dashboard.html
 	echo T_("Branch Dashboard");                                                      // Line 7
@@ -310,8 +310,8 @@ private function transtext()
 	//---------------------------------------------------content_a\member\display.html
 	echo T_("Edit member");                                                           // Line 8
 	echo T_("Add new member");                                                        // Line 10
-	echo T_("Family");                                                                // Line 21
-	echo T_("Postion");                                                               // Line 38
+	echo T_("Family");                                                                // Line 10
+	echo T_("Postion");                                                               // Line 11
 	echo T_("Remote member");                                                         // Line 48
 	echo T_("Status");                                                                // Line 23
 	echo T_("Enable");                                                                // Line 45
@@ -360,6 +360,17 @@ private function transtext()
 
 	//---------------------------------------------------content_a\option\display.html
 
+	//---------------------------------------------content_a\report\daily\display.html
+
+	//---------------------------------------------------content_a\report\display.html
+
+	//----------------------------------------------content_a\report\last\display.html
+	echo T_("Displayname");                                                           // Line 8
+	echo T_("Start");                                                                 // Line 12
+	echo T_("End");                                                                   // Line 14
+	echo T_("Diff");                                                                  // Line 15
+	echo T_("Accepted");                                                              // Line 19
+
 	//-----------------------------------------------------content_a\setup\setup1.html
 	echo T_("Welcome to Tejarak initialization process!");                            // Line 7
 	echo T_("Please enter team name *");                                              // Line 10
@@ -380,7 +391,6 @@ private function transtext()
 
 	//-----------------------------------------------------content_a\setup\setup3.html
 	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 10
-	echo T_("Start");                                                                 // Line 12
 
 	//-----------------------------------------------------content_a\team\display.html
 	echo T_("Edit Team");                                                             // Line 7
