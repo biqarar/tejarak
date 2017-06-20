@@ -138,6 +138,21 @@ trait add
 			return false;
 		}
 
+		$type = utility::request('type');
+		if(!$type)
+		{
+			logs::set('api:hours:type:notset', $this->user_id, $log_meta);
+			debug::error(T_("Type not set"), 'type', 'arguments');
+			return false;
+		}
+
+		if(!in_array($type, ['enter', 'exit']))
+		{
+			logs::set('api:hours:type:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid arguments type"), 'type', 'arguments');
+			return false;
+		}
+
 		$args              = [];
 		$args['user_id']   = $user;
 		$args['minus']     = $minus;
@@ -148,8 +163,15 @@ trait add
 
 		if($_args['method'] === 'post')
 		{
-			// save hours
-			$hours_id = \lib\db\hours::save($args);
+			if($type === 'enter')
+			{
+				// save hours
+				$hours_id = \lib\db\hours::save_enter($args);
+			}
+			else
+			{
+				$hours_id = \lib\db\hours::save_exit($args);
+			}
 		}
 		else
 		{
@@ -161,7 +183,14 @@ trait add
 		if(debug::$status)
 		{
 			debug::title(T_("Operation Complete"));
-			debug::true("hours successfuly added");
+			if($type === 'enter')
+			{
+				debug::true(T_("Hi Dear ;)"));
+			}
+			else
+			{
+				debug::true(T_("ByeBye :("));
+			}
 		}
 	}
 }
