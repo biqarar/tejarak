@@ -11,6 +11,7 @@
    <div class="t-card-bottom">
     <div class="t-card-name">{{value.name}} {{value.family}}</div>
     {%if value.postion%}<div class="t-card-post">{{value.postion}}</div>{%endif%}
+    {%if value.last_time%}<div class="t-card-post">{{value.last_time}}</div>{%else%}<div class="t-card-post">:|</div>{%endif%}
    </div>
   </div>
 

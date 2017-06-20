@@ -66,7 +66,6 @@ trait get
 					$temp[] = $this->ready_member($value);
 				}
 			}
-
 			return $temp;
 		}
 	}
@@ -231,6 +230,7 @@ trait get
 				case 'mobile':
 				case 'name':
 				case 'family':
+				case 'last_time':
 					$result[$key] = (string) $value;
 					break;
 

@@ -6,7 +6,7 @@ class userbranchs
 {
 
 	/**
-	 * add new election
+	 * add new userbranch
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
@@ -43,7 +43,7 @@ class userbranchs
 
 
 	/**
-	 * get election record
+	 * get userbranch record
 	 *
 	 * @param      <type>  $_id    The identifier
 	 *
@@ -51,6 +51,7 @@ class userbranchs
 	 */
 	public static function get($_args)
 	{
+
 		if($_args)
 		{
 			$only_one_value = false;
@@ -69,6 +70,7 @@ class userbranchs
 			unset($_args['limit']);
 
 			$where = \lib\db\config::make_where($_args, ['table_name' => 'userbranchs']);
+			$date = date("Y-m-d");
 			$query =
 			"
 				SELECT
@@ -80,7 +82,8 @@ class userbranchs
 						WHERE
 							userteams.user_id = userbranchs.user_id AND
 							userteams.team_id = userbranchs.team_id
-						LIMIT 1) AS `name`,
+						LIMIT 1
+					) AS `name`,
 					(
 						SELECT
 							userteams.family
@@ -89,7 +92,8 @@ class userbranchs
 						WHERE
 							userteams.user_id = userbranchs.user_id AND
 							userteams.team_id = userbranchs.team_id
-						LIMIT 1) AS `family`,
+						LIMIT 1
+					) AS `family`,
 					(
 						SELECT posts.post_meta FROM posts WHERE posts.id =
 						(
@@ -104,9 +108,23 @@ class userbranchs
 						)
 						LIMIT 1
 					) AS `file_detail`,
+					(
+						SELECT
+							CONCAT(hours.date, ' ', hours.start)
+						FROM
+							hours
+						WHERE
+							hours.user_id = userbranchs.user_id AND
+							hours.userbranch_id = userbranchs.id AND
+							-- hours.date = '$date' AND
+							hours.end IS NULL
+						ORDER BY hours.id DESC
+						LIMIT 1
+					) AS `last_time`,
 					userbranchs.*
  				FROM
 					userbranchs
+
 				WHERE
 					$where
 				$limit
@@ -120,7 +138,7 @@ class userbranchs
 
 
 	/**
-	 * get election record
+	 * get userbranch record
 	 *
 	 * @param      <type>  $_id    The identifier
 	 *
@@ -180,7 +198,7 @@ class userbranchs
 
 
 	/**
-	 * update election
+	 * update userbranch
 	 *
 	 * @param      <type>  $_args  The arguments
 	 * @param      <type>  $_id    The identifier
@@ -210,7 +228,7 @@ class userbranchs
 
 		if(!$_string && empty($_options))
 		{
-			// default return of this function 10 last record of election
+			// default return of this function 10 last record of userbranch
 			$_options['get_last'] = true;
 		}
 
