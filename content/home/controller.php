@@ -32,6 +32,9 @@ class controller extends \content\main\controller
 		'delete',
 		'user',
 		'hours',
+		'report',
+		'last',
+		'daily',
 
 	];
 

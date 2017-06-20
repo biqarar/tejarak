@@ -24,6 +24,9 @@ class model extends \mvc\model
 	use \content_api\v1\file\tools\get;
 	use \content_api\v1\file\tools\link;
 
+	// API REPORT
+	use \content_api\v1\report\tools\get;
+
 
 	/**
 	 * Gets the addbranch.

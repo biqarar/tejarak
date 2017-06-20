@@ -162,6 +162,24 @@ class teams
 
 
 	/**
+	 * Determines if my team.
+	 * check if this team is my tam
+	 * @param      <type>  $_team  The team
+	 * @param      <type>  $_boss  The boss
+	 */
+	public static function is_my_team($_team, $_boss)
+	{
+		if(!$_team || !$_boss || !is_numeric($_boss))
+		{
+			return false;
+		}
+
+		$query = "SELECT * FROM teams WHERE teams.boss = $_boss AND teams.brand = '$_team' LIMIT 1";
+		return \lib\db::get($query, null, true);
+	}
+
+
+	/**
 	 * Searches for the first match.
 	 *
 	 * @param      <type>  $_string   The string

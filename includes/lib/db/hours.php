@@ -8,36 +8,7 @@ use \lib\utility;
 class hours
 {
 
-	// CREATE TABLE `hours` (
-	//   `id`					int(10) UNSIGNED NOT NULL,
-	//   `user_id`				int(10) UNSIGNED NOT NULL,
-	//   `team_id`				int(10) UNSIGNED NOT NULL,
-	//   `userteam_id`			int(10) UNSIGNED NOT NULL,
-	//   `userbranch_id`		int(10) UNSIGNED NOT NULL,
-	//   `start_getway_id`		int(10) UNSIGNED NOT NULL,
-	//   `end_getway_id`		int(10) UNSIGNED DEFAULT NULL,
-	//   `start_userbranch_id`	int(10) UNSIGNED NOT NULL,
-	//   `end_userbranch_id`	int(10) UNSIGNED DEFAULT NULL,
-	//   `date`					date NOT NULL,
-	//   `year`					int(4) UNSIGNED NOT NULL,
-	//   `month`				int(2) UNSIGNED NOT NULL,
-	//   `day`					int(2) UNSIGNED NOT NULL,
-	//   `shamsi_date`			date NOT NULL,
-	//   `shamsi_year`			int(4) UNSIGNED NOT NULL,
-	//   `shamsi_month`			int(2) UNSIGNED NOT NULL,
-	//   `shamsi_day`			int(2) UNSIGNED NOT NULL,
-	//   `start`				time NOT NULL,
-	//   `end`					time DEFAULT NULL,
-	//   `diff`					int(10) UNSIGNED DEFAULT NULL,
-	//   `minus`				int(10) UNSIGNED DEFAULT NULL,
-	//   `plus`					int(10) UNSIGNED DEFAULT NULL,
-	//   `type`					enum('nothing','base','wplus','wminus','all') DEFAULT 'all',
-	//   `accepted`				int(10) UNSIGNED DEFAULT NULL,
-	//   `createdate`			datetime DEFAULT CURRENT_TIMESTAMP,
-	//   `date_modified`		timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-	//   `status`				enum('active','awaiting','deactive','removed','filter') DEFAULT 'awaiting'
-	// ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+	use hours\search;
 
 	/**
 	 * insert new record in hours table

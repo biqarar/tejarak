@@ -12,6 +12,7 @@ class controller extends \content_a\main\controller
 
 		$url = \lib\router::get_url();
 
+
 		// if user_setup is null redirect to setup page
 		if(!$this->login('setup'))
 		{
@@ -45,6 +46,17 @@ class controller extends \content_a\main\controller
 					}
 				}
 			}
+		}
+
+
+		/**
+		 * route report urls
+		 * in url must be find .../report/... | .../report
+		 */
+		if(preg_match("/(\/report\/)|(\/report$)/", $url))
+		{
+			\lib\router::set_controller("content_a\\report\\controller");
+			return;
 		}
 	}
 }
