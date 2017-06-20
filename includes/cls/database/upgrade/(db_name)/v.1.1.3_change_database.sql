@@ -16,6 +16,7 @@ CREATE TABLE teams (
 `plan`					  varchar(50) NULL DEFAULT NULL,
 `startplan`				  datetime NULL DEFAULT NULL,
 `startplanday`		      smallint(2) NULL DEFAULT NULL,
+`parent`				  int(10) UNSIGNED NULL DEFAULT NULL,
 `desc`					  text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
 `meta`					  mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
 `createdate`			  datetime DEFAULT CURRENT_TIMESTAMP,
@@ -38,33 +39,33 @@ CREATE TABLE userteams (
 `isdefault`   			bit(1) NULL DEFAULT NULL,
 `dateenter`   			datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `dateexit`   			datetime NULL DEFAULT NULL,
-`permission`			varchar(1000) NULL DEFAULT NULL;
-`rule`					varchar(50) NULL DEFAULT NULL;
-`fileid`				bigint(20) UNSIGNED DEFAULT NULL;
-`postion`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`displayname`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`name`					varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`family`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`father`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`birthday`				datetime NULL DEFAULT NULL;
-`nationalcode`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`from`					varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`nationality`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`brithplace`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`region`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`pasportcode`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`marital`				enum('single','marride') NULL DEFAULT NULL;
-`childcount`			smallint(2) NULL DEFAULT NULL;
-`education`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`insurancetype`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`insurancecode`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-`status` 				enum('enable','disable','expire','removed','filter', 'leave') NOT NULL DEFAULT 'enable';
+`permission`			varchar(1000) NULL DEFAULT NULL,
+`rule`					varchar(50) NULL DEFAULT NULL,
+`fileid`				bigint(20) UNSIGNED DEFAULT NULL,
+`postion`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`displayname`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`name`					varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`family`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`father`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`birthday`				datetime NULL DEFAULT NULL,
+`nationalcode`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`from`					varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`nationality`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`brithplace`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`region`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`pasportcode`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`marital`				enum('single','marride') NULL DEFAULT NULL,
+`childcount`			smallint(2) NULL DEFAULT NULL,
+`education`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`insurancetype`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`insurancecode`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`status` 				enum('enable','disable','expire','removed','filter', 'leave') NOT NULL DEFAULT 'enable',
 `desc`          		text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
 `meta`          		mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
 `createdate`   			datetime DEFAULT CURRENT_TIMESTAMP,
 `date_modified` 		timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY (`id`),
-ADD UNIQUE (`user_id`, `team_id`);
+UNIQUE (`user_id`, `team_id`),
 CONSTRAINT `userteams_team_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `userteams_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -97,7 +98,7 @@ CREATE TABLE `hours` (
 `user_id`					int(10) UNSIGNED NOT NULL,
 `team_id`					int(10) UNSIGNED NOT NULL,
 `userteam_id`				int(10) UNSIGNED NOT NULL,
-`start_getway_id`			int(10) UNSIGNED NOT NULL,
+`start_getway_id`			int(10) UNSIGNED NULL,
 `end_getway_id`				int(10) UNSIGNED NULL DEFAULT NULL,
 `start_userteam_id`			int(10) UNSIGNED NOT NULL,
 `end_userteam_id`			int(10) UNSIGNED NULL DEFAULT NULL,

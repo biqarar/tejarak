@@ -18,4 +18,3 @@ ALTER TABLE `users` ADD `user_dependantscount` 	smallint(4) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_postion` 			varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `logs` ADD `log_desc` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_pass` `user_pass` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL;
-ALTER TABLE `teams` ADD `privacy` ENUM('public','private') NULL DEFAULT 'public' AFTER `status`;
