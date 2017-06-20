@@ -308,8 +308,8 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 .teams-item{overflow:hidden;width:200px;margin:2rem;border-radius:3px;-webkit-transition:.3s;transition:.3s;background-color:#fff}
 .teams-item .teams-item-square{position:relative;overflow:hidden;width:200px;height:200px;padding:2rem;}
 .teams-item .teams-item-square img{max-height:100%}
-.teams-item .teams-item-label{font-size:1.4em;line-height:5rem;height:5rem;padding:0 2rem;text-align:center;color:#333;background-color:rgba(0,0,0,.1);font-weight:500;}
-.teams-item .teams-item-label span{display:block;overflow:hidden;max-width:100%;white-space:nowrap;text-overflow:ellipsis;}
+.teams-item .teams-item-label{font-size:1.4em;line-height:4rem;height:4rem;padding:0 2rem;text-align:center;color:#333;background-color:rgba(0,0,0,.1);font-weight:500;}
+.teams-item .teams-item-label h3{font-size:1.4rem;line-height:inherit;overflow:hidden;max-width:100%;height:inherit;margin:0;white-space:nowrap;text-overflow:ellipsis;}
 .teams-item:focus,.teams-item:hover{background-color:rgba(255,255,255,.5)}
 
 #addTeam,#addMember{max-width:50rem}
