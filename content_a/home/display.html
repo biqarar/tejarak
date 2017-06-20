@@ -2,55 +2,21 @@
 
 {%block sidenav%}
 {{parent()}}
-
-
 {%endblock%}
 
+{%block contentCenter%}
 
-
-
-{%block content%}
-
-<!-- <h1>{%trans "Hi" %} {%set myName = login.displayname%} {% trans myName  %}</h1> -->
-<!-- <h3>{%trans "Wellcome to Tejarak admin" %}</h3> -->
-<!-- <h6>{%trans "Tejarak was born to serve small and beautiful service for e-business"%}</h6> -->
-
-{%for key, value in team_list%}
- <div class="team-section-header">
-  <h3 class="team-section-header-name">
-   <a href="{{url.baseFull}}/{{value.brand}}">{{value.title}}</a>
-  </h3>
-  <a href="#" class="team-section-header-option">
-   <span class="icon icon-pencil"></span>
-   <span class="team-section-header-option-name">{%trans "Edit"%}</span>
+<div class="flex justify-center wrap">
+ {%for key, value in team_list%}
+  <a class='teams-item' href='{{url.baseFull}}/{{value.brand}}' data-direct>
+   <div class="flex justify-center align-center teams-item-square">
+    <img src="{{url.static}}images/logo/logo.png" alt="{{value.title}}">
+   </div>
+   <div class="teams-item-label">
+    <span>{{value.title}}</span>
+   </div>
   </a>
-  <a href="#" class="team-section-header-option">
-   <span class="icon icon-user"></span>
-   <span class="team-section-header-option-name">{%trans "Members"%}</span>
-  </a>
-  <a href="#" class="team-section-header-option">
-   <span class="icon icon-wrench-2"></span>
-   <span class="team-section-header-option-name">{%trans "Settings"%}</span>
-  </a>
- </div>
-
- <ul class="team-section-list">
-  {%for k, v in value.branchs%}
-   <li>
-    <a class="branch-title" href="{{url.baseFull}}/{{value.brand}}/{{v.brand}}">
-     <span class="branch-title-overlay">
-      <i class="icon icon-star-o"></i>
-     </span>
-     <span class="flex justify-center align-center branch-title-name">{{v.title}}</span>
-    </a>
-   </li>
-  {%endfor%}
-  <li>
-   <a class="branch-title" href="{{url.baseFull}}/team/{{value.brand}}/branch">
-    <span class="flex justify-center align-center branch-title-name">{%trans "Add new branch"%}...</span>
-   </a>
-  </li>
- </ul>
-{%endfor%}
+ {%endfor%}
+</div>
 
 {%endblock%}
