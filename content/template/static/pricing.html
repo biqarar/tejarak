@@ -10,6 +10,8 @@
 
 {%set ft%}<div class="c">✔️</div>{%endset%}
 {%set ff%}<div class="c">-</div>{%endset%}
+{%set f1%}<div class="c">1</div>{%endset%}
+{%set f3%}<div class="c">3</div>{%endset%}
 {%set fu%}<div class="c">{%trans "Unlimited"%}</div>{%endset%}
 
 
@@ -26,11 +28,18 @@
      </div>
 
      <div class="f price">
-      <div class="c4">{%trans "Price per person/month"%}</div>
+      <div class="c4">{%trans "Price per member/month"%} {%trans "(Toman)"%}</div>
+{%if site.currentlang == 'fa'%}
+      <div class="c">{{0 | fitNumber}}</div>
+      <div class="c">{{"1,000" | fitNumber}}</div>
+      <div class="c">{{"10,000" | fitNumber}}</div>
+      <div class="c">{%trans "Contact Us"%}</div>
+{%else%}
       <div class="c">0</div>
       <div class="c">1<sup>$</sup></div>
       <div class="c">10<sup>$</sup></div>
       <div class="c">{%trans "Contact Us"%}</div>
+{%endif%}
      </div>
 
 
@@ -53,6 +62,11 @@
      </div>
 
      <div class="f">
+      <div class="c4">{%trans "Automatically send reports"%}</div>
+      {{ff}} {{ft}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
       <div class="c4">{%trans "Professional reports"%}</div>
       {{ff}} {{ft}} {{ft}} {{ft}}
      </div>
@@ -70,6 +84,11 @@
      <div class="f">
       <div class="c4">{%trans "Visual reports with chart"%}</div>
       {{ff}} {{ff}} {{ft}} {{ft}}
+     </div>
+
+     <div class="f">
+      <div class="c4">{%trans "Number of report reciever"%}</div>
+      {{ff}} {{f1}} {{f3}} {{fu}}
      </div>
 
      <div class="f">
