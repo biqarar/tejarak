@@ -242,8 +242,6 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 #setup .setup-step span.done{background-color:#8aad1f;}
 
 #setup.step2 .b1{margin-top:2em;}
-#setup .cauto.s12{order:-1}
-#addTeam .cauto.s12{order:-1}
 
 
 @-webkit-keyframes spin{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(360deg)}}
@@ -311,4 +309,6 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 @media only screen and (max-width:767px) {
 	#addTeam,#addMember{max-width:40rem}
 	#addTeam .df-file,#addMember .df-file{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}
+	#setup .cauto.s12{order:-1}
+	#addTeam .cauto.s12{order:-1}
 }

@@ -32,43 +32,48 @@
    </div>
 
 
+   <div data-response='advance' data-response-effect='slide' data-response-hide2>
 
-   <div class="f g1" data-response='advance' data-response-effect='slide' data-response-hide2>
 
-    <div class="c12 g1">
-     <div class="f radio1">
-      <div class="cauto s0"><b>{%trans "Privacy mode"%}</b></div>
-      <div class="cauto s6">
-       <input type="radio" id="r-private" name="privacy" checked>
-       <label for="r-private">{%trans "Private"%}</label>
+    <div class="f g1">
+      <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
+      <div class="c">
+       <div class="f radio1">
+        <div class="c6 s6">
+         <input type="radio" id="r-private" name="privacy" checked>
+         <label for="r-private">{%trans "Private"%}</label>
+        </div>
+        <div class="c6 s6">
+         <input type="radio" id="r-public" name="privacy">
+         <label for="r-public">{%trans "Public"%}</label>
+        </div>
+       </div>
       </div>
-      <div class="cauto s6">
-       <input type="radio" id="r-public" name="privacy">
-       <label for="r-public">{%trans "Public"%}</label>
+    </div>
+
+    <div  class="f g1">
+     <div class="c12 s12">
+      <input type="text" name="brand" placeholder='{%trans "Slug"%}' value="{{team.brand}}" required>
+     </div>
+
+     <div class="f">
+      <div class="c s6">
+       <input type="checkbox" name="24h" id="24h">
+       <label for="24h">{%trans "24 hour"%}</label>
+      </div>
+      <div class="c s6">
+       <input type="checkbox" name="allowRemote" id="allowRemote">
+       <label for="allowRemote">{%trans "Allow remote"%}</label>
+      </div>
+      <div class="c s6">
+       <input type="checkbox" name="allowMinus" id="allowMinus">
+       <label for="allowMinus">{%trans "Allow minus"%}</label>
       </div>
      </div>
-    </div>
+     <div class="c12">
+      <textarea name="desc" placeholder='{%trans "Description"%}' value='{{team.desc}}'></textarea>
+     </div>
 
-    <div class="c12 s12">
-     <input type="text" name="brand" placeholder='{%trans "Slug"%}' value="{{team.brand}}" required>
-    </div>
-
-    <div class="f">
-     <div class="c s6">
-      <input type="checkbox" name="24h" id="24h">
-      <label for="24h">{%trans "24 hour"%}</label>
-     </div>
-     <div class="c s6">
-      <input type="checkbox" name="allowRemote" id="allowRemote">
-      <label for="allowRemote">{%trans "Allow remote"%}</label>
-     </div>
-     <div class="c s6">
-      <input type="checkbox" name="allowMinus" id="allowMinus">
-      <label for="allowMinus">{%trans "Allow minus"%}</label>
-     </div>
-    </div>
-    <div class="c12">
-     <textarea name="desc" placeholder='{%trans "Description"%}' value='{{team.desc}}'></textarea>
     </div>
 
    </div>
