@@ -13,7 +13,7 @@
   <form method="post" class="df" enctype="multipart/form-data">
 
    <div class="f">
-    <div class="f c9 s12 g1">
+    <div class="f c s12 g1">
      <div class="c12 s12">
       <input type="text" name="title" placeholder='{%trans "Name"%}' value="{{team.title}}" required>
      </div>
@@ -23,7 +23,7 @@
      </div>
     </div>
 
-    <div class="c3 s12 g1 df-file">
+    <div class="cauto s12 g1">
      <div>
       <input type="file" name="logo" id="logo">
       <label for="logo"></label>
@@ -33,9 +33,39 @@
 
 
 
-   <div class="f g1" data-response='advance' data-response-effect='slide' data-response-hide>
+   <div class="f g1" data-response='advance' data-response-effect='slide' data-response-hide2>
+
+    <div class="c12 g1">
+     <div class="f radio1">
+      <div class="cauto s0"><b>{%trans "Privacy mode"%}</b></div>
+      <div class="cauto s6">
+       <input type="radio" id="r-private" name="privacy" checked>
+       <label for="r-private">{%trans "Private"%}</label>
+      </div>
+      <div class="cauto s6">
+       <input type="radio" id="r-public" name="privacy">
+       <label for="r-public">{%trans "Public"%}</label>
+      </div>
+     </div>
+    </div>
+
     <div class="c12 s12">
      <input type="text" name="brand" placeholder='{%trans "Slug"%}' value="{{team.brand}}" required>
+    </div>
+
+    <div class="f">
+     <div class="c s6">
+      <input type="checkbox" name="24h" id="24h">
+      <label for="24h">{%trans "24 hour"%}</label>
+     </div>
+     <div class="c s6">
+      <input type="checkbox" name="allowRemote" id="allowRemote">
+      <label for="allowRemote">{%trans "Allow remote"%}</label>
+     </div>
+     <div class="c s6">
+      <input type="checkbox" name="allowMinus" id="allowMinus">
+      <label for="allowMinus">{%trans "Allow minus"%}</label>
+     </div>
     </div>
     <div class="c12">
      <textarea name="desc" placeholder='{%trans "Description"%}' value='{{team.desc}}'></textarea>
@@ -58,7 +88,7 @@
    <div class="f g1">
     <div class="c9">
      <input type="checkbox" name="advance" id="advance">
-     <label for="advance" class="inline">{%trans "Advance"%}</label>
+     <label for="advance">{%trans "Advance"%}</label>
     </div>
     <div class="c3 os">
      <input type="submit" value='{%trans "Add"%}' class="bp">
