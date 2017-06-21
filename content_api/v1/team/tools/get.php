@@ -6,6 +6,8 @@ use \lib\db\logs;
 
 trait get
 {
+	public $logo_urls = [];
+
 	/**
 	 * ready data of team to load in api
 	 *
@@ -31,43 +33,54 @@ trait get
 			switch ($key)
 			{
 				case 'id':
-				case 'register_code':
-				case 'economical_code':
 					$result[$key] = (int) $value;
 					break;
 
 				case 'status':
-				case 'title':
-				case 'site':
-				case 'brand':
-					$result[$key] = (string) $value;
+				case 'name':
+				case 'website':
+				case 'desc':
+				case 'alias':
+				case 'privacy':
+					$result[$key] = $value ? (string) $value : null;
+					break;
+				case 'shortname':
+					$result['short_name'] = $value ? (string) $value : null;
+					break;
+				case 'showavatar':
+					$result['show_avatar'] = $value ? true : false;
+					break;
+				case 'allowplus':
+					$result['allow_plus'] = $value ? true : false;
+					break;
+				case 'allowminus':
+					$result['allow_minus'] = $value ? true : false;
+					break;
+				case 'remote':
+					$result['remote_user'] = $value ? true : false;
+					break;
+				case '24h':
+					$result['24h'] = $value ? true : false;
 					break;
 
-				case 'boss':
-					if($_options['check_is_my_team'])
+				case 'logo':
+					if(isset($this->logo_urls[$value]))
 					{
-						if(intval($value) === intval($this->user_id))
-						{
-							// no problem
-						}
-						else
-						{
-							return false;
-						}
+						$result['logo'] = $this->host('file'). '/'. $this->logo_urls[$value];
+					}
+					else
+					{
+						$result['logo'] = null;
 					}
 					break;
 
 				case 'file_id':
-				case 'logo':
 				case 'creator':
-				case 'technical':
 				case 'telegram_id':
-				case 'alias':
 				case 'plan':
 				case 'until':
 				case 'createdate':
 				case 'date_modified':
-				case 'desc':
 				case 'meta':
 				case 'value':
 				default:
@@ -78,6 +91,32 @@ trait get
 		return $result;
 	}
 
+
+	/**
+	 * Loads file records.
+	 *
+	 * @param      <type>  $_result  The result
+	 */
+	public function load_file_records($_result)
+	{
+		if(is_array($_result))
+		{
+			$logos = array_column($_result, 'logo');
+			$logos = array_filter($logos);
+			$logos = array_unique($logos);
+			if(!empty($logos))
+			{
+				$get_post_record = \lib\db\posts::get_some_id($logos);
+				if(!empty($get_post_record))
+				{
+					$id              = array_column($get_post_record, 'id');
+					$post_meta       = array_column($get_post_record, 'post_meta');
+					$url             = array_column($post_meta, 'url');
+					$this->logo_urls = array_combine($id, $url);
+				}
+			}
+		}
+	}
 
 	/**
 	 * Gets the team.
@@ -92,10 +131,11 @@ trait get
 		{
 			return false;
 		}
-		$search = [];
-		$search['boss'] = $this->user_id;
-		$search['status'] = ['<>', "'deleted'"];
-		$result = \lib\db\teams::search(null, $search);
+
+		$result = \lib\db\teams::team_list($this->user_id);
+
+		$this->load_file_records($result);
+
 		$temp = [];
 		foreach ($result as $key => $value)
 		{
@@ -105,7 +145,6 @@ trait get
 				$temp[] = $check;
 			}
 		}
-
 		return $temp;
 	}
 
@@ -123,9 +162,6 @@ trait get
 		{
 			return false;
 		}
-		$search = [];
-		$result = \lib\db\teams::team_child($this->user_id);
-		return $result;
 	}
 
 	/**
@@ -161,21 +197,20 @@ trait get
 			return false;
 		}
 
-		debug::title(T_("Operation complete"));
-		$result = \lib\db\teams::get_brand($team);
-
-		$options =
-		[
-			'check_is_my_team' => true,
-		];
-		$result = $this->ready_team($result, $options);
-
-		if($result === false)
+		$result = \lib\db\teams::access_team($team, $this->user_id);
+		if(!$result)
 		{
-			logs::set('api:team:access:to:load', $this->user_id, $log_meta);
-			debug::error(T_("You can not load this team"));
+			logs::set('api:team:access:denide', $this->user_id, $log_meta);
+			debug::error(T_("Can not access to load this team details"), 'team', 'permission');
 			return false;
 		}
+
+		debug::title(T_("Operation complete"));
+
+		$this->load_file_records([$result]);
+
+		$result = $this->ready_team($result);
+
 		return $result;
 	}
 }

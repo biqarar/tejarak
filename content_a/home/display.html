@@ -5,15 +5,18 @@
 {%endblock%}
 
 {%block contentCenter%}
-
 <div class="flex justify-center wrap">
  {%for key, value in team_list%}
-  <a class='teams-item' href='{{url.baseFull}}/{{value.brand}}' data-direct>
+  <a class='teams-item' href='{{url.baseFull}}/{{value.short_name}}/edit' data-direct>
    <div class="flex justify-center align-center teams-item-square">
-    <img src="{{url.static}}images/logo/logo.png" alt="{{value.title}}">
+   	{%if value.logo%}
+    <img src="{{value.logo}}" alt="{{value.name}}">
+    {%else%}
+    <img src="{{url.static}}images/logo/logo.png" alt="{{value.name}}">
+    {%endif%}
    </div>
    <div class="teams-item-label">
-    <h3>{{value.title}}</h3>
+    <h3>{{value.name}}</h3>
    </div>
   </a>
  {%endfor%}

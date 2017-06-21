@@ -39,193 +39,194 @@ trait add
 			return false;
 		}
 
-		$title = utility::request('title');
-
-		if(mb_strlen($title) > 500)
+		$name = utility::request('name');
+		$name = trim($name);
+		if(mb_strlen($name) > 100)
 		{
-			logs::set('api:team:maxlength:title', $this->user_id, $log_meta);
-			debug::error(T_("Team title must be less than 500 character"), 'title', 'arguments');
+			logs::set('api:team:maxlength:name', $this->user_id, $log_meta);
+			debug::error(T_("Team name must be less than 100 character"), 'name', 'arguments');
 			return false;
 		}
 
-		$site = utility::request('site');
-		if($site && mb_strlen($site) > 1000)
+		$website = utility::request('website');
+		$website = trim($website);
+		if($website && mb_strlen($website) > 1000)
 		{
-			logs::set('api:team:maxlength:site', $this->user_id, $log_meta);
-			debug::error(T_("Team site must be less than 1000 character"), 'site', 'arguments');
+			logs::set('api:team:maxlength:website', $this->user_id, $log_meta);
+			debug::error(T_("Team website must be less than 1000 character"), 'website', 'arguments');
 			return false;
 		}
 
-		$brand = utility::request('brand');
-
-		if(!$brand && !$title)
+		$privacy = utility::request('privacy');
+		if(!$privacy)
 		{
-			logs::set('api:team:brand:not:sert', $this->user_id, $log_meta);
-			debug::error(T_("Brand of team can not be null"), 'brand', 'arguments');
+			logs::set('api:team:privacy:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Team privacy not set"), 'privacy', 'arguments');
 			return false;
 		}
 
-		// get slug of title in brand if the brand is not set
-		if(!$brand && $title)
+		if(!in_array(mb_strtolower($privacy), ['public', 'private']))
 		{
-			$brand = \lib\utility\filter::slug($title);
-		}
-
-		if(mb_strlen($brand) < 5)
-		{
-			logs::set('api:team:minlength:brand', $this->user_id, $log_meta);
-			debug::error(T_("Team brand must be larger than 5 character"), 'brand', 'arguments');
+			logs::set('api:team:privacy:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid privacy field"), 'privacy', 'arguments');
 			return false;
 		}
-		// remove - from brand
-		// if the title is persian and brand not set
-		// we change the brand as slug of title
+		$privacy = mb_strtolower($privacy);
+
+		$shortname = utility::request('short_name');
+		$shortname = trim($shortname);
+
+		if(!$shortname && !$name)
+		{
+			logs::set('api:team:shortname:not:sert', $this->user_id, $log_meta);
+			debug::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
+			return false;
+		}
+
+		// get slug of name in shortname if the shortname is not set
+		if(!$shortname && $name)
+		{
+			$shortname = \lib\utility\filter::slug($name);
+		}
+
+		// remove - from shortname
+		// if the name is persian and shortname not set
+		// we change the shortname as slug of name
 		// in the slug we have some '-' in return
-		$brand = str_replace('-', '', $brand);
+		$shortname = str_replace('-', '', $shortname);
 
-		if(!preg_match("/^[A-Za-z0-9]+$/", $brand))
+		if(mb_strlen($shortname) < 5)
 		{
-			logs::set('api:team:invalid:brand', $this->user_id, $log_meta);
-			debug::error(T_("Only [A-Za-z0-9] can use in team brand"), 'brand', 'arguments');
+			logs::set('api:team:minlength:shortname', $this->user_id, $log_meta);
+			debug::error(T_("Team shortname must be larger than 5 character"), 'shortname', 'arguments');
 			return false;
 		}
 
-		$register_code = utility::request('register_code');
-		if($register_code && !is_numeric($register_code))
+		if(!preg_match("/^[A-Za-z0-9]+$/", $shortname))
 		{
-			logs::set('api:team:invalid:register_code', $this->user_id, $log_meta);
-			debug::error(T_("Only numeric value can set in Register code"), 'register_code', 'arguments');
+			logs::set('api:team:invalid:shortname', $this->user_id, $log_meta);
+			debug::error(T_("Only [A-Za-z0-9] can use in team shortname"), 'shortname', 'arguments');
 			return false;
 		}
 
-		$economical_code = utility::request('economical_code');
-		if($economical_code && !is_numeric($economical_code))
+		// check shortname
+		if(mb_strlen($shortname) > 100)
 		{
-			logs::set('api:team:invalid:economical_code', $this->user_id, $log_meta);
-			debug::error(T_("Only numeric value can set in Economical code"), 'economical_code', 'arguments');
+			logs::set('api:team:maxlength:shortname', $this->user_id, $log_meta);
+			debug::error(T_("Team shortname must be less than 500 character"), 'shortname', 'arguments');
 			return false;
 		}
 
-		$id = null;
-		if($_args['method'] === 'patch')
+		$desc = utility::request('desc');
+		if($desc && mb_strlen($desc) > 200)
 		{
-			$temp_team = \lib\db\teams::get_brand(utility::request('team'));
-			if(isset($temp_team['id']))
+			logs::set('api:team:maxlength:desc', $this->user_id, $log_meta);
+			debug::error(T_("Team desc must be less than 200 character"), 'desc', 'arguments');
+			return false;
+		}
+
+		$logo_id = null;
+		$logo = utility::request('logo');
+		if($logo)
+		{
+			$logo_id = \lib\utility\shortURL::decode($logo);
+			if($logo_id)
 			{
-				$id = $temp_team['id'];
-			}
-		}
-
-		$check_duplicate_title = ['brand' => $brand];
-
-		$check = \lib\db\teams::search(null, $check_duplicate_title);
-
-		if($check || in_array($brand, \content\home\controller::$static_pages))
-		{
-			$change_name = true;
-			if($_args['method'] === 'post')
-			{
-				// the name of this team must be changed
+				if(!\lib\db\posts::is_attachment($logo_id))
+				{
+					$logo_id = null;
+				}
 			}
 			else
 			{
-				if(isset($check[0]['id']) && intval($check[0]['id']) === intval($id))
-				{
-					// the user id edit team name and needless to change name of team
-					$change_name = false;
-				}
-				else
-				{
-					// the name of this team must be changed
-				}
-			}
-			// replase name of team to team1
-			if($change_name)
-			{
-
-				$get_similar_brand['brand']     = ['LIKE', "'$brand%'"];
-				$get_similar_brand['get_count'] = true;
-				$count = \lib\db\teams::search(null, $get_similar_brand);
-
-				while ($change_name)
-				{
-					if(!\lib\db\teams::get(['brand' => $brand, 'limit' => 1]))
-					{
-						$change_name = false;
-						break;
-					}
-					$brand = $brand . ++$count;
-				}
+				$logo_id = null;
 			}
 		}
-		// check brand
-		if(mb_strlen($brand) > 100)
-		{
-			logs::set('api:team:maxlength:brand', $this->user_id, $log_meta);
-			debug::error(T_("Team brand must be less than 500 character"), 'brand', 'arguments');
-			return false;
-		}
 
-		$args                    = [];
-		$args['creator']         = $this->user_id;
-		$args['boss']            = $this->user_id;
-		$args['technical']       = $this->user_id;
-		$args['title']           = $title;
-		$args['brand']           = $brand;
-		$args['site']            = $site;
-		$args['register_code']   = $register_code;
-		$args['economical_code'] = $economical_code;
+		$args               = [];
+		$args['creator']    = $this->user_id;
+		$args['name']       = $name;
+		$args['shortname']  = $shortname;
+		$args['website']    = $website;
+		$args['desc']       = $desc;
+		$args['showavatar'] = utility::isset_request('show_avatar') ? utility::request('show_avatar')   ? 1 : 0 : null;
+		$args['allowplus']  = utility::isset_request('allow_plus')  ? utility::request('allow_plus')    ? 1 : 0 : null;
+		$args['allowminus'] = utility::isset_request('allow_minus') ? utility::request('allow_minus')   ? 1 : 0 : null;
+		$args['remote']     = utility::isset_request('remote_user') ? utility::request('remote_user') 	? 1 : 0 : null;
+		$args['24h']        = utility::isset_request('24h')         ? utility::request('24h')			? 1 : 0 : null;
+		$args['logo']       = $logo_id;
+		$args['privacy']    = $privacy;
 
-		\lib\storage::set_last_team_added($brand);
+		\lib\storage::set_last_team_added($shortname);
 
 		if($_args['method'] === 'post')
 		{
-			if($id)
+			\lib\db::$debug_error = false;
+			$team_id = \lib\db\teams::insert($args);
+			\lib\db::$debug_error = true;
+
+			// var_dump($team_id);exit();
+			if(!$team_id)
 			{
-				logs::set('api:team:method:post:set:id', $this->user_id, $log_meta);
-				debug::error(T_("Can not set id in adding team"), 'id', 'access');
+				$args['shortname'] = $this->shortname_fix($args);
+				$team_id = \lib\db\teams::insert($args);
+			}
+
+			if(!$team_id)
+			{
+				logs::set('api:team:no:way:to:insert:team', $this->user_id, $log_meta);
+				debug::error(T_("No way to insert team"), 'db', 'system');
 				return false;
 			}
 
-			$team_id = \lib\db\teams::insert($args);
+			$userteam_args            = [];
+			$userteam_args['user_id'] = $this->user_id;
+			$userteam_args['team_id'] = $team_id;
+			$userteam_args['rule']    = 'admin';
+			\lib\db\userteams::insert($userteam_args);
 
-			$branch               = [];
-			$branch['team_id'] = $team_id;
-			$branch['brand']      = 'centeral';
-			$branch['title']      = 'centeral';
-			$branch['site']       = $site;
-			$branch['creator']    = $this->user_id;
-			$branch['boss']       = $this->user_id;
-			$branch['technical']  = $this->user_id;
-			$branch['is_default'] = 1;
-
-			\lib\db\branchs::insert($branch);
 		}
 		elseif ($_args['method'] === 'patch')
 		{
 			$edit_mode = true;
-
-			if(!$id || !is_numeric($id))
+			if(!utility::request('id') || !is_numeric(utility::request('id')))
 			{
 				logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);
-				debug::error(T_("Id of team not found"), 'id', 'permission');
+				debug::error(T_("Id not set"), 'id', 'permission');
 				return false;
 			}
 
-			$check_is_my_team = $this->get_team();
-			if($check_is_my_team)
+			$admin_of_team = \lib\db\teams::access_team_id(utility::request('id'), $this->user_id);
+
+			if(!$admin_of_team || !isset($admin_of_team['id']))
 			{
-				$update = [];
-				foreach ($args as $key => $value)
+				logs::set('api:team:method:put:permission:denide', $this->user_id, $log_meta);
+				debug::error(T_("Can not access to edit it"), 'team', 'permission');
+				return false;
+			}
+
+			unset($args['creator']);
+			if(!utility::isset_request('name')) 			unset($args['name']);
+			if(!utility::isset_request('short_name')) 		unset($args['shortname']);
+			if(!utility::isset_request('website')) 			unset($args['website']);
+			if(!utility::isset_request('desc')) 			unset($args['desc']);
+			if(!utility::isset_request('show_avatar')) 		unset($args['showavatar']);
+			if(!utility::isset_request('allo_wplus')) 		unset($args['allowplus']);
+			if(!utility::isset_request('allow_minus')) 		unset($args['allowminus']);
+			if(!utility::isset_request('remote_user')) 		unset($args['remote']);
+			if(!utility::isset_request('24h')) 				unset($args['24h']);
+			if(!utility::isset_request('logo')) 			unset($args['logo']);
+			if(!utility::isset_request('privacy')) 			unset($args['privacy']);
+
+			if(!empty($args))
+			{
+				\lib\db::$debug_error = false;
+				$update = \lib\db\teams::update($args, $admin_of_team['id']);
+				\lib\db::$debug_error = true;
+				if(!$update)
 				{
-					if(utility::isset_request($key))
-					{
-						$update[$key] = $value;
-					}
-				}
-				if(!empty($update))
-				{
-					\lib\db\teams::update($update, $id);
+					$args['shortname'] = $this->shortname_fix($args);
+					$update = \lib\db\teams::update($args, $admin_of_team['id']);
 				}
 			}
 		}
@@ -241,13 +242,41 @@ trait add
 			debug::title(T_("Operation Complete"));
 			if($edit_mode)
 			{
-				debug::true("team successfuly edited");
+				debug::true(T_("Team successfuly edited"));
 			}
 			else
 			{
-				debug::true("team successfuly added");
+				debug::true(T_("Team successfuly added"));
 			}
 		}
+	}
+
+
+	/**
+	 * fix duplicate shortname
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function shortname_fix($_args)
+	{
+		if(!isset($_args['shortname']))
+		{
+			$_args['shortname'] = (string) $this->user_id. (string) rand(1000,5000);
+		}
+
+		$new_short_name    = null;
+		$similar_shortname = \lib\db\teams::get_similar_shortname($_args['shortname']);
+		$count             = count($similar_shortname);
+		$i                 = 1;
+		$new_short_name    = (string) $_args['shortname']. (string) ((int) $count +  (int) $i);
+		while (in_array($new_short_name, $similar_shortname))
+		{
+			$i++;
+			$new_short_name    = (string) $_args['shortname']. (string) ((int) $count +  (int) $i);
+		}
+
+		\lib\storage::set_last_team_added($new_short_name);
+		return $new_short_name;
 	}
 }
 ?>

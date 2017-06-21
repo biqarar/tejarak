@@ -20,11 +20,8 @@ class view extends \content_a\main\view
 	 */
 	public function view_edit($_args)
 	{
-		$name = $this->find_team_name_url($_args);
-		if($name)
-		{
-			$this->data->team = $this->model()->edit($name);
-		}
+		$team_name = \lib\router::get_url(0);
+		$this->data->team = $this->model()->edit($team_name);
 		$this->data->edit_mode = true;
 
 		if(isset($this->data->team['name']))

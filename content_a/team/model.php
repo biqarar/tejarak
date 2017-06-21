@@ -16,13 +16,45 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'title'           => utility::post('title'),
-			'site'            => utility::post('site'),
-			'brand'           => utility::post('brand'),
-			'register_code'   => utility::post('register_code'),
-			'economical_code' => utility::post('economical_code'),
+			'name'        => utility::post('name'),
+			'website'     => utility::post('website'),
+			'privacy'     => utility::post('privacy'),
+			'short_name'  => utility::post('shortName'),
+			'desc'        => utility::post('desc'),
+			'show_avatar' => utility::post('showAvatar'),
+			'allow_plus'  => utility::post('allowPlus'),
+			'allow_minus' => utility::post('allowMinus'),
+			'remote_user' => utility::post('remoteUser'),
+			'24h'         => utility::post('24h'),
 		];
+
+		if(utility::files('logo'))
+		{
+			$args['logo'] = $this->upload_logo();
+		}
+
 		return $args;
+	}
+
+
+	/**
+	 * Uploads a logo.
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	public function upload_logo()
+	{
+		if(utility::files('logo'))
+		{
+			$this->user_id = $this->login('id');
+			utility::set_request_array(['upload_name' => 'logo']);
+			$uploaded_file = $this->upload_file(['debug' => false]);
+			if(isset($uploaded_file['code']))
+			{
+				return $uploaded_file['code'];
+			}
+		}
+		return null;
 	}
 
 
@@ -62,29 +94,32 @@ class model extends \content_a\main\model
 	 */
 	public function post_edit($_args)
 	{
-		$brand = $this->view()->find_team_name_url($_args);
+		$team = \lib\router::get_url(1);
 		// if delete link is clicked
 		// go to delete function and return
 		if(utility::post('delete'))
 		{
-			$this->post_delete($brand);
+			$this->post_delete($team);
 			return;
 		}
 
-		$request         = $this->getPost();
-		$this->user_id   = $this->login('id');
-		$request['team'] = $brand;
+		$request       = $this->getPost();
+		$this->user_id = $this->login('id');
+		$request['id'] = utility::post('id');
+
 		utility::set_request_array($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
+
 		if(debug::$status)
 		{
-			$new_brand = \lib\storage::get_last_team_added();
+			$new_team = \lib\storage::get_last_team_added();
 
-			if($new_brand && $new_brand != $request['team'])
+			if($new_team)
 			{
-				$this->redirector()->set_domain()->set_url("a/team/$new_brand");
+				debug::msg('direct', true);
+				$this->redirector()->set_domain()->set_url("a/$new_team/edit");
 			}
 		}
 	}
@@ -97,10 +132,10 @@ class model extends \content_a\main\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function post_delete($_brand)
+	public function post_delete($_team)
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['brand' => $_brand]);
+		utility::set_request_array(['team' => $_team]);
 		return $this->delete_team();
 	}
 }

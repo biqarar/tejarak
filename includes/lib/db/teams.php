@@ -4,6 +4,12 @@ use \lib\db;
 
 class teams
 {
+	/**
+	 * SAVE OFFLINE RESULT
+	 *
+	 * @var        array
+	 */
+	public static $TEAMS_SHORT_NAME = [];
 
 	/**
 	 * add new election
@@ -24,21 +30,28 @@ class teams
 
 
 	/**
-	 * get election record
+	 * Gets the shortname.
+	 * get team by shortname
+	 * @param      <type>  $_shortname  The shortname
 	 *
-	 * @param      <type>  $_id    The identifier
-	 *
-	 * @return     <type>  ( description_of_the_return_value )
+	 * @return     <type>  The shortname.
 	 */
-	public static function get_brand($_brand)
+	public static function get_by_shortname($_shortname)
 	{
-		if($_brand)
+		if(!isset(self::$TEAMS_SHORT_NAME[$_shortname]))
 		{
-			$query = "SELECT * FROM teams WHERE brand = '$_brand' LIMIT 1";
-			$result = \lib\db::get($query, null, true);
-			return $result;
+			if($_shortname)
+			{
+				$query = "SELECT * FROM teams WHERE teams.shortname = '$_shortname' LIMIT 1";
+				self::$TEAMS_SHORT_NAME[$_shortname] = \lib\db::get($query, null, true);
+			}
 		}
-		return false;
+
+		if(isset(self::$TEAMS_SHORT_NAME[$_shortname]))
+		{
+			return self::$TEAMS_SHORT_NAME[$_shortname];
+		}
+		return null;
 	}
 
 
@@ -49,96 +62,9 @@ class teams
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function team_child($_user_id)
+	public static function get()
 	{
-		if($_user_id && is_numeric($_user_id))
-		{
-			$query =
-			"
-				SELECT
-					teams.*,
-					teams.title AS `team_title`,
-					teams.brand AS `team_brand`,
-					branchs.*,
-					branchs.title AS `branch_title`,
-					branchs.brand AS `branch_brand`
-				FROM
-					teams
-				LEFT JOIN branchs ON branchs.team_id = teams.id
-				WHERE teams.boss = $_user_id ";
-			$result = \lib\db::get($query, null);
-
-			if(!is_array($result))
-			{
-				return false;
-			}
-
-			$temp = [];
-			foreach ($result as $key => $value)
-			{
-				if(isset($temp[$value['team_brand']]['branchs']))
-				{
-					array_push($temp[$value['team_brand']]['branchs'],
-					[
-						'title' => $value['branch_title'],
-						'brand' => $value['branch_brand'],
-					]);
-				}
-				else
-				{
-					$temp[$value['team_brand']] = [];
-					$temp[$value['team_brand']] =
-					[
-						'title' => $value['team_title'],
-						'brand' => $value['team_brand'],
-						'branchs' =>
-						[
-							[
-								'title' => $value['branch_title'],
-								'brand' => $value['branch_brand'],
-							],
-						],
-					];
-				}
-			}
-			return $temp;
-		}
-		return false;
-	}
-
-
-	/**
-	 * get election record
-	 *
-	 * @param      <type>  $_id    The identifier
-	 *
-	 * @return     <type>  ( description_of_the_return_value )
-	 */
-	public static function get($_args)
-	{
-		if($_args)
-		{
-			$only_one_value = false;
-			$limit          = null;
-
-			if(isset($_args['limit']))
-			{
-				if($_args['limit'] === 1)
-				{
-					$only_one_value = true;
-				}
-
-				$limit = " LIMIT $_args[limit] ";
-			}
-
-			unset($_args['limit']);
-
-			$where = \lib\db\config::make_where($_args);
-			$query = "SELECT * FROM teams WHERE $where $limit";
-			$result = \lib\db::get($query, null, $only_one_value);
-			return $result;
-		}
-		return false;
+		return \lib\db\config::public_get('teams', ...func_get_args());
 	}
 
 
@@ -148,16 +74,9 @@ class teams
 	 * @param      <type>  $_args  The arguments
 	 * @param      <type>  $_id    The identifier
 	 */
-	public static function update($_args, $_id)
+	public static function update()
 	{
-		$set = \lib\db\config::make_set($_args);
-		if(!$set || !$_id || !is_numeric($_id))
-		{
-			return false;
-		}
-
-		$query = "UPDATE teams SET $set WHERE id = $_id LIMIT 1";
-		return \lib\db::query($query);
+		return \lib\db\config::public_update('teams', ...func_get_args());
 	}
 
 
@@ -167,15 +86,107 @@ class teams
 	 * @param      <type>  $_team  The team
 	 * @param      <type>  $_boss  The boss
 	 */
-	public static function is_my_team($_team, $_boss)
+	public static function access_team($_team, $_user_id)
 	{
-		if(!$_team || !$_boss || !is_numeric($_boss))
+
+		if(!$_team || !$_user_id || !is_numeric($_user_id))
 		{
 			return false;
 		}
 
-		$query = "SELECT * FROM teams WHERE teams.boss = $_boss AND teams.brand = '$_team' LIMIT 1";
-		return \lib\db::get($query, null, true);
+		$query =
+		"
+			SELECT
+				teams.*
+			FROM
+				teams
+			INNER JOIN userteams ON userteams.team_id = teams.id
+			WHERE
+				teams.shortname   = '$_team' AND
+				userteams.user_id = $_user_id AND
+				userteams.rule    = 'admin'
+			LIMIT 1
+		";
+
+		$result =  \lib\db::get($query, null, true);
+		return $result;
+	}
+
+	/**
+	 * Determines if my team.
+	 * check if this team is my tam
+	 * @param      <type>  $_team  The team
+	 * @param      <type>  $_boss  The boss
+	 */
+	public static function access_team_id($_team_id, $_user_id)
+	{
+
+		if(!$_team_id || !$_user_id || !is_numeric($_user_id))
+		{
+			return false;
+		}
+
+		$query =
+		"
+			SELECT
+				teams.*
+			FROM
+				teams
+			INNER JOIN userteams ON userteams.team_id = teams.id
+			WHERE
+				teams.id   = '$_team_id' AND
+				userteams.user_id = $_user_id AND
+				userteams.rule    = 'admin'
+			LIMIT 1
+		";
+
+		$result =  \lib\db::get($query, null, true);
+		return $result;
+	}
+
+
+	/**
+	 * team list
+	 *
+	 * @param      <type>   $_team     The team
+	 * @param      <type>   $_user_id  The user identifier
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	public static function team_list($_user_id)
+	{
+		if(!$_user_id || !is_numeric($_user_id))
+		{
+			return false;
+		}
+
+		$query =
+		"
+			SELECT
+				teams.*
+			FROM
+				teams
+			INNER JOIN userteams ON userteams.team_id = teams.id
+			WHERE
+				userteams.user_id = $_user_id
+		";
+
+		$result =  \lib\db::get($query);
+		return $result;
+	}
+
+	/**
+	 * Gets the similar shortname.
+	 * GET list of shortname like this
+	 * for change when duplicate
+	 * @param      <type>  $_like  The like
+	 *
+	 * @return     <type>  The similar shortname.
+	 */
+	public static function get_similar_shortname($_like)
+	{
+		$query = "SELECT teams.shortname AS `shortname` FROM teams WHERE teams.shortname LIKE '$_like%' ";
+		return \lib\db::get($query, 'shortname');
 	}
 
 
@@ -334,7 +345,7 @@ class teams
 		{
 			$_string = trim($_string);
 
-			$search = "(teams.title  LIKE '%$_string%' )";
+			$search = "(teams.name  LIKE '%$_string%' )";
 			if($where)
 			{
 				$search = " AND ". $search;

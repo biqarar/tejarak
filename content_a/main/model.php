@@ -3,9 +3,10 @@ namespace content_a\main;
 
 class model extends \mvc\model
 {
-	// API BRANCH
-	use \content_api\v1\branch\tools\get;
-	use \content_api\v1\branch\tools\add;
+	use \content_api\v1\home\tools\options;
+	// // API BRANCH
+	// use \content_api\v1\branch\tools\get;
+	// use \content_api\v1\branch\tools\add;
 
 	// API TEAM
 	use \content_api\v1\team\tools\add;
@@ -57,15 +58,10 @@ class model extends \mvc\model
 		{
 			return false;
 		}
-		$search_meta              = [];
-		$search_meta['brand']     = $_name;
-		$search_meta['boss']      = $this->login('id');
-		$search_meta['get_count'] = true;
-		$search_meta['status']    = ['<>', "'deleted'"];
-		// search in teams
-		$search_team = \lib\db\teams::search(null, $search_meta);
 
-		if(intval($search_team) === 1)
+		$search_team = \lib\db\teams::get(['shortname' => $_name, 'limit' => 1]);
+
+		if($search_team)
 		{
 			return true;
 		}

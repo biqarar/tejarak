@@ -16,6 +16,7 @@ trait link
 		[
 			'upload_name' => utility::request('upload_name'),
 			'url'         => null,
+			'debug'       => true,
 		];
 
 		if(!is_array($_options))
@@ -43,6 +44,7 @@ trait link
 
 		$ready_upload            = [];
 		$ready_upload['user_id'] = $this->user_id;
+		$ready_upload['debug']   = $_options['debug'];
 
 		if($file_path)
 		{
@@ -61,6 +63,7 @@ trait link
 		// {
 		// 	$ready_upload['post_status'] = 'draft';
 		// }
+
 		$ready_upload['post_status'] = 'publish';
 
 		$ready_upload['user_size_remaining'] = self::remaining($this->user_id);

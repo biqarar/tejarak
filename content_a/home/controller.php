@@ -24,13 +24,13 @@ class controller extends \content_a\main\controller
 		}
 
 		$this->get(false, 'dashboard')->ALL();
-
 		// route url like this /a/ermile
-		if(preg_match("/^[a-zA-Z0-9]+$/", $url))
+		if(preg_match("/^([a-zA-Z0-9]+)\/edit$/", $url, $split))
 		{
-			if($this->model()->is_exist_team($url))
+
+			if($this->model()->is_exist_team($split[1]))
 			{
-				\lib\router::set_controller("content_a\\branch\\controller");
+				\lib\router::set_controller("content_a\\team\\controller");
 				return;
 			}
 		}
@@ -42,15 +42,10 @@ class controller extends \content_a\main\controller
 			{
 				if($this->model()->is_exist_team($split[1]))
 				{
-					if(\lib\db\branchs::get_by_brand($split[1], $split[2]))
-					{
-						\lib\router::set_controller("content_a\\member\\controller");
-						return;
-					}
+					\lib\router::set_controller("content_a\\member\\controller");
 				}
 			}
 		}
-
 
 		/**
 		 * route report urls
