@@ -1,5 +1,10 @@
+
+/* page loading effect*/
+#theader .logo img{transition:0.1s;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;}
+body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;animation-name:spin;opacity:0.7}
+
 /* header*/
-#theader{height:60px;font-size:1.2em;overflow:hidden;}
+#theader{height:60px;font-size:1.2em;overflow:hidden;background-color:rgba(255,255,255,0.5);}
 #theader .logo{transition:0.3s;padding:0;margin:0;font-weight:700;}
 #theader .logo a{padding:0 1em}
 #theader .logo h1{display:inline-block;margin:0;line-height:60px;}
@@ -90,7 +95,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .getStarted button.c:focus{background-color:#2957a5;color:#fff;}
 .getStarted p{padding:1em 0;color:#888;font-size:0.8em}
 /* enterprise box*/
-#offer-enterprise{font-size:1.6em;background-color:#4070c0;}
+#offer-enterprise{font-size:1.5em;background-color:#4070c0;}
 #offer-enterprise h3{margin-bottom:0.5em}
 #offer-enterprise .btn{height:50px;line-height:50px;}
 #offer-enterprise h2{color:#fff;}
