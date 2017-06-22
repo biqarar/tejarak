@@ -77,7 +77,7 @@ class model extends \content_a\main\model
 			if($new_team_code)
 			{
 				debug::msg('direct', true);
-				$this->redirector()->set_domain()->set_url("a/team/$new_team_code");
+				$this->redirector()->set_domain()->set_url("a/$new_team_code");
 			}
 		}
 

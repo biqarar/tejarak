@@ -34,10 +34,3 @@
 </a>
 {%endblock%}
 
-
-{%block sidenav%}
-{{parent()}}
-    <li><a href="{{url.baseFull}}/team/{{team}}"><i class="icon-cog"></i>{%trans "Team Settings"%}</a></li>
-    <li><a href="{{url.baseFull}}/team/{{team}}/plan"><i class="icon-bolt"></i>{%trans "Change Plan"%}</a></li>
-{%endblock%}
-

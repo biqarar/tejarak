@@ -88,6 +88,11 @@ class model extends \content_a\main\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member();
+		if(debug::$status)
+		{
+			$this->redirector()->set_domain()->set_url("a/$team");
+		}
+
 	}
 
 
@@ -191,11 +196,7 @@ class model extends \content_a\main\model
 		$this->add_member(['method' => 'patch']);
 		if(debug::$status)
 		{
-			$new_user_coee = \lib\storage::get_new_user_code();
-			if($new_user_coee != $member)
-			{
-				$this->redirector()->set_domain()->set_url("a/team/$team/member=$new_user_coee");
-			}
+			$this->redirector()->set_domain()->set_url("a/$team");
 		}
 	}
 }
