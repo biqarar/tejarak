@@ -18,10 +18,10 @@
 
 
 {%block sidenav%}
-{{parent()}}
-<li><a href="{{url.baseFull}}/team"><i class="icon-flow-tree"></i>{%trans "Add new team"%}</a></li>
-<li><a href="{{url.baseFull}}/billing"><i class="icon-credit-card"></i>{%trans "Billing"%}</a></li>
 
+    <li><a href="{{url.baseFull}}"><i class='icon-tachometer'></i> <span>{% trans "Dashboard" %}</span></a></li>
+    <li><a href="{{url.baseFull}}/billing"><i class="icon-credit-card"></i>{%trans "Billing"%}</a></li>
+    <!-- <li><a href="{{url.baseFull}}/options"><i class="icon-cog"></i>{%trans "Options"%}</a></li> -->
 
 {%endblock%}
 

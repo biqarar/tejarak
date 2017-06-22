@@ -12,6 +12,13 @@ class view extends \content_a\main\view
 	{
 		$this->data->page['title'] = T_('Add new member');
 		$this->data->page['desc']  = $this->data->page['title'];
+
+		// fix title on edit
+		if(isset($this->data->list_member['title']))
+		{
+			$this->data->page['title'] = T_('Edit team');
+			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->list_member['title']]);
+		}
 	}
 
 
@@ -27,11 +34,7 @@ class view extends \content_a\main\view
 		$this->data->team        = $request['id'] = $team;
 		$this->data->list_member = $this->model()->list_member($request);
 
-		if(isset($this->data->list_member['title']))
-		{
-			$this->data->page['title'] = T_('Edit team');
-			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->list_member['title']]);
-		}
+		$this->data->page['title'] = T_('Team Dashboard');
 	}
 
 }
