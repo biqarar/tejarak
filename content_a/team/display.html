@@ -73,25 +73,25 @@
      <h4>{%trans "Default setting for new members of team"%}</h4>
      <div class="f">
 
-      <div class="c5 s12">
+      <div class="c4 s12">
        <input type="checkbox" name="showAvatar" id="showAvatar" {%if team.show_avatar or not team%}checked{%endif%} >
        <label for="showAvatar">{%trans "Show users avatars"%}</label>
       </div>
 
-      <div class="c3 s6">
+      <div class="c4 s6">
        <input type="checkbox" name="allowPlus" id="allowPlus" {%if team.allow_plus or not team%}checked{%endif%}>
        <label for="allowPlus">{%trans "Allow plus"%}</label>
       </div>
-      <div class="c3 s6">
+      <div class="c4 s6">
        <input type="checkbox" name="allowMinus" id="allowMinus" {%if team.allow_minus or not team%}checked{%endif%}>
        <label for="allowMinus">{%trans "Allow minus"%}</label>
       </div>
 
-      <div class="c5 s6">
+      <div class="c4 s6">
        <input type="checkbox" name="remoteUser" id="remoteUser" {%if team.remote_user %}checked{%endif%}>
        <label for="remoteUser">{%trans "Remote user"%}</label>
       </div>
-      <div class="c3 s6">
+      <div class="c4 s6">
        <input type="checkbox" name="24h" id="24h" {%if team['24h']%}checked{%endif%}>
        <label for="24h">{%trans "24 hour"%}</label>
       </div>
@@ -105,19 +105,19 @@
    <div class="f g1 mt1">
 
 {%if edit_mode%}
-    <div class="c9">
+    <div class="c9 s12">
      <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="bn" data-ajaxify>{%trans "Delete"%}</a>
     </div>
-    <div class="c3 os">
+    <div class="c3 os s12">
      <input type="submit" value='{%trans "Edit"%}' class='b1'>
     </div>
 {%else%}
 
-    <div class="c9">
+    <div class="c9 s12">
      <input type="checkbox" name="advance" id="advance">
      <label for="advance">{%trans "Advance"%}</label>
     </div>
-    <div class="c3 os">
+    <div class="c3 os s12">
      <input type="submit" value='{%trans "Add"%}' class="bp">
     </div>
 {%endif%}

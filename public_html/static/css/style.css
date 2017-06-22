@@ -236,7 +236,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 
 /* setup process*/
 #setup{width:100%;max-height:100%;}
-#setup .dbox{width:500px;min-height:300px;}
+#setup .dbox{width:500px;min-height:300px;margin-bottom:1em}
 #setup h2{margin-bottom:1em;text-align:center;}
 #setup h3{font-size:1.6rem;font-weight:normal;line-height:1.6;margin-bottom:1em}
 #setup h3 label{display:inherit;text-align}
