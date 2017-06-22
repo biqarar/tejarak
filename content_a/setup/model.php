@@ -60,7 +60,7 @@ class model extends \content_a\main\model
 		// set user id to use in api
 		$this->user_id = $this->login('id');
 		// set the posted title in request to use in api
-		utility::set_request_array(['title' => utility::post('title')]);
+		utility::set_request_array(['name' => utility::post('title')]);
 		// API ADD TEAM FUNCTION
 		$this->add_team();
 		// save last team added to session to get in step 3
@@ -104,17 +104,10 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		// // check posted family
-		// if(!utility::post('family'))
-		// {
-		// 	debug::error(T_("Please enter your family"), 'family', 'arguments');
-		// 	return false;
-		// }
-
 		// check name lenght
-		if(mb_strlen(utility::post('name')) > 90)
+		if(mb_strlen(utility::post('name')) > 50)
 		{
-			debug::error(T_("Please enter your name less than 90 character"), 'name', 'arguments');
+			debug::error(T_("Please enter your name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
 
@@ -123,7 +116,7 @@ class model extends \content_a\main\model
 		{
 			$this->user_id = $this->login('id');
 			utility::set_request_array(['upload_name' => 'avatar']);
-			$uploaded_file = $this->upload_file();
+			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
 				$file_code = $uploaded_file['code'];
@@ -176,7 +169,7 @@ class model extends \content_a\main\model
 		$request['postion'] = utility::post('post');
 		$request['file']    = $file_code;
 		$request['team']    = isset($_SESSION['last_team_added']) ? $_SESSION['last_team_added'] : null;
-		$request['branch']  = 'centeral';
+
 		utility::set_request_array($request);
 		$this->user_id      = $this->login('id');
 		// API ADD MEMBER FUNCTION

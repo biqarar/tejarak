@@ -55,15 +55,16 @@ trait add
 		}
 
 		// get team and check it
-		$team = utility::request('team');
-		if(!$team)
+		$id = utility::request('id');
+		$id = utility\shortURL::decode($id);
+		if(!$id)
 		{
-			logs::set('api:member:team:notfound', null, $log_meta);
-			debug::error(T_("Team not found"), 'user', 'permission');
+			logs::set('api:member:id:notfound', null, $log_meta);
+			debug::error(T_("Team id not found"), 'user', 'permission');
 			return false;
 		}
 		// load team data
-		$team_detail = \lib\db\teams::get_brand($team);
+		$team_detail = \lib\db\teams::access_team_id($id, $this->user_id, 'add:member');
 		// check the team exist
 		if(isset($team_detail['id']))
 		{
@@ -76,45 +77,41 @@ trait add
 			return false;
 		}
 
-		// check team boos is the user id
-		if(isset($team_detail['boss']) && intval($team_detail['boss']) === intval($this->user_id))
+		// get firstname
+		$firstname = utility::request("firstname");
+		$firstname = trim($firstname);
+		if($firstname && mb_strlen($firstname) > 50)
 		{
-			// no problem to add member fo this
-		}
-		else
-		{
-			logs::set('api:member:team:permission', null, $log_meta);
-			debug::error(T_("Permission denide to add member of this team"), 'user', 'permission');
+			logs::set('api:member:firstname:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
 			return false;
 		}
+
+		// get lastname
+		$lastname = utility::request("lastname");
+		$lastname = trim($lastname);
+		if($lastname && mb_strlen($lastname) > 50)
+		{
+			logs::set('api:member:lastname:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
+			return false;
+		}
+
 		// get mobile of user
-		$mobile = utility::request("mobile");
-		$mobile = \lib\utility\filter::mobile($mobile);
-		if(!$mobile)
+		$mobile           = utility::request("mobile");
+		$mobile_syntax    = \lib\utility\filter::mobile($mobile);
+		$check_user_exist = null;
+		if($mobile && !$mobile_syntax)
 		{
 			logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Invalid mobile number"), 'mobile', 'arguments');
 			return false;
 		}
-		// get name
-		$name = utility::request("name");
-		if($name && mb_strlen($name) > 50)
+		elseif($mobile && $mobile_syntax && ctype_digit($mobile))
 		{
-			logs::set('api:member:name:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
-			return false;
+			$mobile = $mobile_syntax;
+			$check_user_exist = \lib\db\users::get_by_mobile($mobile);
 		}
-
-		// get family
-		$family = utility::request("family");
-		if($family && mb_strlen($family) > 50)
-		{
-			logs::set('api:member:family:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the family less than 50 character"), 'family', 'arguments');
-			return false;
-		}
-
-		$check_user_exist = \lib\db\users::get_by_mobile($mobile);
 
 		$user_id = null;
 
@@ -126,12 +123,14 @@ trait add
 		{
 			$signup =
 			[
-				'mobile'      => $mobile,
-				'password'    => null,
-				'displayname' => $name. ' '. $family,
+				'user_mobile'      => $mobile ? $mobile : null,
+				'user_pass'        => null,
+				'user_displayname' => $firstname. ' '. $lastname,
+				'user_createdate'  => date("Y-m-d H:i:s"),
 			];
 
-			$user_id = \lib\db\users::signup($signup);
+			\lib\db\users::insert($signup);
+			$user_id = \lib\db::insert_id();
 		}
 
 		if(!$user_id)
@@ -150,19 +149,20 @@ trait add
 			return false;
 		}
 		// get the code
-		$code       = utility::request('code');
-		if($code && (mb_strlen($code) > 9 || !ctype_digit($code)))
+		$code = utility::request('code');
+		if($code && mb_strlen($code) > 9)
 		{
 			logs::set('api:member:code:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the code less than 9 character and must ba integer"), 'code', 'arguments');
+			debug::error(T_("You can set the code less than 9 character "), 'code', 'arguments');
 			return false;
 		}
 
-		// $telegram_id = utility::request('telegram_id');
 
-		$full_time   = utility::request('full_time')	? 1 : 0;
-		$remote      = utility::request('remote') 		? 1 : 0;
-		$is_default  = utility::request('is_default') 	? 1 : 0;
+		$allowplus  = utility::isset_request('allowplus') 	? utility::request('allow_plus') 	? 1 : 0 : null;
+		$allowminus = utility::isset_request('allowminus')	? utility::request('allow_minus') 	? 1 : 0 : null;
+		$is24h        = utility::isset_request('24h') 		? utility::request('24h') 			? 1 : 0 : null;
+		$remote     = utility::isset_request('remote')		? utility::request('remote_user') 	? 1 : 0 : null;
+		$isdefault  = utility::isset_request('isdefault') 	? utility::request('is_default')	? 1 : 0 : null;
 
 		// get date enter
 		$date_enter  = utility::request('date_enter');
@@ -182,68 +182,52 @@ trait add
 			return false;
 		}
 
-		// default the user add to team only
-		// if the branch is set the user add to team and branch
-		$add_to_branch = false;
-
-		// get date exit
-		$branch   = utility::request('branch');
-		if($branch)
-		{
-			if($load_branch = \lib\db\branchs::get_by_brand($team, $branch))
-			{
-				if(isset($load_branch['id']))
-				{
-					$branch_id = $load_branch['id'];
-					$add_to_branch = true;
-				}
-			}
-		}
 		// get file code
-		$file_code  = utility::request('file');
-		$file_id = null;
+		$file_code = utility::request('file');
+		$file_id   = null;
+		$file_url  = null;
+
 		if($file_code)
 		{
-			// decode file code
-			$file = \lib\utility\shortURL::decode($file_code);
-			if($file && is_int($file))
+			$file_id = \lib\utility\shortURL::decode($file_code);
+			if($file_id)
 			{
-				// check the file is draft or publish and is attachment
-				$check_file_permission =
-				"
-					SELECT
-						posts.id AS `id`
-					FROM
-						posts
-					WHERE
-						posts.id        = $file AND
-						posts.post_type = 'attachment' AND
-						posts.post_status IN ('draft', 'publish')
-					LIMIT 1
-				";
-				// if file permission is ok set the file_id
-				if(\lib\db::get($check_file_permission, 'id', true))
+				$logo_record = \lib\db\posts::is_attachment($file_id);
+				if(!$logo_record)
 				{
-					$file_id = $file;
+					$file_id = null;
 				}
+				elseif(isset($logo_record['post_meta']['url']))
+				{
+					$file_url = $logo_record['post_meta']['url'];
+				}
+			}
+			else
+			{
+				$file_id = null;
 			}
 		}
 
 		// ready to insert userteam or userbranch record
-		$args               = [];
-		$args['team_id']    = $team_id;
-		$args['user_id']    = $user_id;
-		$args['postion']    = $postion;
-		$args['code']       = $code;
-		$args['full_time']  = $full_time;
-		$args['remote']     = $remote;
-		$args['is_default'] = $is_default;
-		$args['date_enter'] = $date_enter;
-		$args['date_exit']  = $date_exit;
-		$args['name']       = $name;
-		$args['family']     = $family;
-		$args['postion']    = $postion;
-		$args['file_id']    = $file_id;
+		$args                  = [];
+		$args['team_id']       = $team_id;
+		$args['user_id']       = $user_id;
+		$args['postion']       = $postion;
+		$args['personnelcode'] = $code;
+		$args['24h']           = $is24h;
+		$args['remote']        = $remote;
+		$args['isdefault']     = $isdefault;
+		if($date_enter)
+		{
+			$args['dateenter']     = $date_enter;
+		}
+		$args['dateexit']      = $date_exit;
+		$args['firstname']     = $firstname;
+		$args['lastname']      = $lastname;
+		$args['fileid']        = $file_id;
+		$args['fileurl']       = $file_url;
+		$args['allowplus']     = $allowplus;
+		$args['allowminus']    = $allowminus;
 
 		if($_args['method'] === 'post')
 		{
@@ -251,51 +235,44 @@ trait add
 			if($check_duplicate_user)
 			{
 				logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate user in team"), 'mobile', 'arguments');
+				debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
 				return false;
 			}
 			\lib\db\userteams::insert($args);
-			if($add_to_branch)
-			{
-				$check_duplicate_user = \lib\db\userbranchs::get(['user_id' => $user_id, 'team_id' => $team_id, 'branch_id' => $branch_id, 'limit' => 1]);
-				if($check_duplicate_user)
-				{
-					logs::set('api:member:duplicate:user:branch', $this->user_id, $log_meta);
-					debug::error(T_("Duplicate user in branch"), 'mobile', 'arguments');
-					return false;
-				}
-
-				unset($args['name']);
-				unset($args['family']);
-				unset($args['file_id']);
-				$args['branch_id'] = $branch_id;
-				\lib\db\userbranchs::insert($args);
-			}
 		}
 		elseif($_args['method'] === 'patch')
 		{
 			$id = utility::request('id');
+			$id = utility\shortURL::decode($id);
+			if(!$id)
+			{
+				logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
+				debug::error(T_("Id not set"), 'id', 'arguments');
+				return false;
+			}
+
 			unset($args['team_id']);
 			unset($args['user_id']);
-			unset($args['name']);
-			unset($args['family']);
-			unset($args['file_id']);
+			if(!utility::isset_request('postion')) 		unset($args['postion']);
+			if(!utility::isset_request('code')) 		unset($args['code']);
+			if(!utility::isset_request('24h')) 			unset($args['24h']);
+			if(!utility::isset_request('remote_user')) 	unset($args['remote']);
+			if(!utility::isset_request('is_default')) 	unset($args['isdefault']);
+			if(!utility::isset_request('date_enter')) 	unset($args['dateenter']);
+			if(!utility::isset_request('date_exit')) 	unset($args['dateexit']);
+			if(!utility::isset_request('firstname')) 	unset($args['firstname']);
+			if(!utility::isset_request('lastname')) 	unset($args['lastname']);
+			if(!utility::isset_request('file')) 		unset($args['fileid'], $args['fileurl']);
+			if(!utility::isset_request('allowplus')) 	unset($args['allowplus']);
+			if(!utility::isset_request('allowminus')) 	unset($args['allowminus']);
 
-			if($add_to_branch)
-			{
-				\lib\db\userbranchs::update($args, $id);
-			}
-			else
+			if(!empty($args))
 			{
 				\lib\db\userteams::update($args, $id);
 			}
 		}
 		elseif ($_args['method'] === 'delete')
 		{
-			if($add_to_branch)
-			{
-				$args['branch_id'] = $branch_id;
-			}
 			\lib\db\members::remove($args);
 		}
 
@@ -305,15 +282,15 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("member successfully added"));
+				debug::true(T_("Member successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("member successfully updated"));
+				debug::true(T_("Member successfully updated"));
 			}
 			else
 			{
-				debug::true(T_("member successfully removed"));
+				debug::true(T_("Member successfully removed"));
 			}
 		}
 

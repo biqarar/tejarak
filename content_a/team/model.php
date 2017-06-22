@@ -112,7 +112,7 @@ class model extends \content_a\main\model
 		// go to delete function and return
 		if(utility::post('delete'))
 		{
-			$this->post_delete();
+			$this->post_close();
 			return;
 		}
 
@@ -135,12 +135,12 @@ class model extends \content_a\main\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function post_delete()
+	public function post_close()
 	{
 		$code = \lib\router::get_url(1);
 		$this->user_id = $this->login('id');
 		utility::set_request_array(['id' => $code]);
-		$this->delete_team();
+		$this->close_team();
 		if(debug::$status)
 		{
 			debug::msg('direct', true);

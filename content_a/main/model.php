@@ -11,7 +11,7 @@ class model extends \mvc\model
 	// API TEAM
 	use \content_api\v1\team\tools\add;
 	use \content_api\v1\team\tools\get;
-	use \content_api\v1\team\tools\delete;
+	use \content_api\v1\team\tools\close;
 
 	// API MEMBER
 	use \content_api\v1\member\tools\add;
@@ -59,7 +59,7 @@ class model extends \mvc\model
 			return false;
 		}
 
-		$search_team = \lib\db\teams::get(['shortname' => $_name, 'limit' => 1, 'status' => 'enable']);
+		$search_team = \lib\db\teams::get(['shortname' => $_name, 'limit' => 1]);
 
 		if($search_team)
 		{
@@ -83,7 +83,7 @@ class model extends \mvc\model
 			return false;
 		}
 
-		$search_team = \lib\db\teams::get(['id' => $_id, 'limit' => 1, 'status' => 'enable']);
+		$search_team = \lib\db\teams::get(['id' => $_id, 'limit' => 1]);
 
 		if($search_team)
 		{

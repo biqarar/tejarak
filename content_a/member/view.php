@@ -24,7 +24,7 @@ class view extends \content_a\main\view
 	{
 		$team                    = \lib\router::get_url(0);
 		$request                 = [];
-		$this->data->team        = $request['shortname'] = $team;
+		$this->data->team        = $request['id'] = $team;
 		$this->data->list_member = $this->model()->list_member($request);
 
 		if(isset($this->data->list_member['title']))

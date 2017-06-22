@@ -15,20 +15,20 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'mobile'         => utility::post('mobile'),
 			'name'           => utility::post('name'),
-			'family'         => utility::post('family'),
-			'mobile'         => utility::post('mobile'),
 			'postion'        => utility::post('postion'),
-			'code'           => utility::post('code'),
-			// 'telegram_id' => utility::post('telegram_id'),
-			'full_time'      => utility::post('full_time'),
-			'remote'         => utility::post('remote'),
-			'is_default'     => utility::post('is_default'),
-			// 'date_enter'  => utility::post('date_enter'),
-			// 'date_exit'   => utility::post('date_exit'),
+			'mobile'         => utility::post('mobile'),
+			'rule'           => utility::post('rule'),
+			'firstname'      => utility::post('firstName'),
+			'lastname'       => utility::post('lastName'),
+			'personnel_code' => utility::post('personnelcode'),
+			'allow_plus'     => utility::post('allowPlus'),
+			'allow_minus'    => utility::post('allowMinus'),
+			'remote_user'    => utility::post('remoteUser'),
+			'24h'            => utility::post('24h'),
 			'status'         => utility::post('status'),
 		];
+
 		return $args;
 	}
 
@@ -57,10 +57,6 @@ class model extends \content_a\main\model
 	 */
 	public function post_add($_args)
 	{
-		// update user details
-		$update_user = [];
-		$user_session = [];
-
 		// check the user is login
 		if(!$this->login())
 		{
@@ -81,19 +77,18 @@ class model extends \content_a\main\model
 			debug::error(T_("Please enter your name less than 90 character"), 'name', 'arguments');
 			return false;
 		}
+		$this->user_id = $this->login('id');
+		// ready request
+		$request           = $this->getPost();
 
 		$file_code = null;
 		if(utility::files('avatar'))
 		{
-			$this->user_id = $this->login('id');
 			utility::set_request_array(['upload_name' => 'avatar']);
-			$uploaded_file = $this->upload_file();
+			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
-				$file_code = $uploaded_file['code'];
-				$file_id = utility\shortURL::decode($uploaded_file['code']);
-				$update_user['user_file_id'] = $file_id;
-				$user_session['file_id'] = $update_user['user_file_id'];
+				$request['fileid'] = $uploaded_file['code'];
 			}
 			// if in upload have error return
 			if(!debug::$status)
@@ -102,13 +97,12 @@ class model extends \content_a\main\model
 			}
 		}
 
+		$team = \lib\router::get_url(1);
 		// get posted data to create the request
-		$request           = $this->getPost();
-		$request['team']   = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$request['branch'] = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-		$request['file']   = $file_code;
-		$this->user_id     = $this->login('id');
+		$request['id']  = $team;
+
 		utility::set_request_array($request);
+
 		// API ADD MEMBER FUNCTION
 		$this->add_member();
 	}

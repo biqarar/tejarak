@@ -60,9 +60,7 @@ trait add
 		$privacy = utility::request('privacy');
 		if(!$privacy)
 		{
-			logs::set('api:team:privacy:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Team privacy not set"), 'privacy', 'arguments');
-			return false;
+			$privacy = 'public';
 		}
 
 		if(!in_array(mb_strtolower($privacy), ['public', 'private']))
