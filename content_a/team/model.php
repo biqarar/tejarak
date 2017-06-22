@@ -69,6 +69,18 @@ class model extends \content_a\main\model
 		$this->user_id    = $this->login('id');
 		utility::set_request_array($request);
 		$this->add_team();
+
+		if(debug::$status)
+		{
+			$new_team_code = \lib\storage::get_last_team_code_added();
+
+			if($new_team_code)
+			{
+				debug::msg('direct', true);
+				$this->redirector()->set_domain()->set_url("a/team/$new_team_code");
+			}
+		}
+
 	}
 
 
@@ -100,7 +112,7 @@ class model extends \content_a\main\model
 		// go to delete function and return
 		if(utility::post('delete'))
 		{
-			$this->post_delete($team);
+			$this->post_delete();
 			return;
 		}
 
@@ -116,17 +128,24 @@ class model extends \content_a\main\model
 
 
 	/**
+	 *
 	 * Posts a delete.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function post_delete($_team)
+	public function post_delete()
 	{
+		$code = \lib\router::get_url(1);
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['team' => $_team]);
-		return $this->delete_team();
+		utility::set_request_array(['id' => $code]);
+		$this->delete_team();
+		if(debug::$status)
+		{
+			debug::msg('direct', true);
+			$this->redirector()->set_domain()->set_url('a');
+		}
 	}
 }
 ?>

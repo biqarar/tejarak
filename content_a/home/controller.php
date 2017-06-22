@@ -25,10 +25,9 @@ class controller extends \content_a\main\controller
 
 		$this->get(false, 'dashboard')->ALL();
 		// route url like this /a/ermile
-		if(preg_match("/^([a-zA-Z0-9]+)\/edit$/", $url, $split))
+		if(preg_match("/^([a-zA-Z0-9]+)$/", $url))
 		{
-
-			if($this->model()->is_exist_team($split[1]))
+			if($this->model()->is_exist_team($url))
 			{
 				\lib\router::set_controller("content_a\\team\\controller");
 				return;

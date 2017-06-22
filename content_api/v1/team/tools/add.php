@@ -86,7 +86,8 @@ trait add
 		// get slug of name in shortname if the shortname is not set
 		if(!$shortname && $name)
 		{
-			$shortname = \lib\utility\filter::slug($name);
+			$shortname = \lib\utility\shortURL::encode((int) $this->user_id + (int) rand(10000,99999) * 10000);
+			// $shortname = \lib\utility\filter::slug($name);
 		}
 
 		// remove - from shortname
@@ -186,6 +187,8 @@ trait add
 				debug::error(T_("No way to insert team"), 'db', 'system');
 				return false;
 			}
+
+			\lib\storage::set_last_team_code_added(\lib\utility\shortURL::encode($team_id));
 
 			$userteam_args            = [];
 			$userteam_args['user_id'] = $this->user_id;

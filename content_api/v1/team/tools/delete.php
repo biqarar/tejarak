@@ -31,36 +31,31 @@ trait delete
 			]
 		];
 
-		$brand = utility::request("brand");
-
-		if(!$brand)
+		$id = utility::request("id");
+		$id = \lib\utility\shortURL::decode($id);
+		if(!$id)
 		{
-			logs::set('api:team:delete:brand:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Brand not set"), 'brand', 'arguments');
+			logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
-		$where              = [];
-		$where['boss']      = $this->user_id;
-		$where['brand']     = $brand;
-		$where['limit']     = 1;
-
-		$result = \lib\db\teams::get($where);
-		if(isset($result['id']))
+		$team_details = \lib\db\teams::access_team_id($id, $this->user_id);
+		if(!$team_details || !isset($team_details['id']))
 		{
-			if(\lib\db\teams::update(['status' => 'deleted'], $result['id']))
-			{
-				$log_meta['meta']['team'] = $result;
-				logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
-				debug::title(T_("Operation Complete"));
-			}
-		}
-		else
-		{
-			logs::set('api:team:delete:brand:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Brand not found"), 'brand', 'arguments');
+			logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);
+			debug::error(T_("Can not access to delete this team"), 'id', 'permission');
 			return false;
 		}
+
+		if(\lib\db\teams::update(['status' => 'deleted'], $team_details['id']))
+		{
+			$log_meta['meta']['team'] = $team_details;
+			logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
+			debug::title(T_("Operation Complete"));
+			debug::warn(T_("The team was deleted"));
+		}
+
 	}
 }
 ?>

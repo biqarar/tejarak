@@ -18,23 +18,11 @@ class controller extends \content_a\main\controller
 			$this->get(false, 'add')->ALL('team');
 			$this->post('add')->ALL('team');
 		}
-		elseif(
-			preg_match("/^team\/([a-zA-Z0-9]+)\/branch\=([a-zA-Z0-9]+)\/member(|\=([a-zA-Z0-9]+))$/", $url) ||
-			preg_match("/^team\/([a-zA-Z0-9]+)\/member(|\=([a-zA-Z0-9]+))$/", $url)
-		  )
+		elseif(preg_match("/^[a-zA-Z0-9]+$/", $url) && substr($url, 0, 4) !== 'team')
 		{
-		// route url like:
-		// a/ermile/member
-		// a/ermile/member=123
-		// a/ermile/branch=sarshomar/member
-		// a/ermile/branch=sarshomar/member=123
+			// route url like:
+			// a/ermile
 			\lib\router::set_controller('content_a\member\controller');
-			return;
-		}
-		elseif(preg_match("/^team\/([a-zA-Z0-9]+)\/branch(|\=([a-zA-Z0-9]+))$/", $url))
-		{
-		// the url like this a/ermile/branch
-			\lib\router::set_controller('content_a\branch\controller');
 			return;
 		}
 		else

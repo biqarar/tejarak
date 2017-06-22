@@ -37,6 +37,17 @@ trait get
 					break;
 
 				case 'status':
+					// only enable team can be show
+					switch ($value)
+					{
+						case 'enable':
+							$result[$key] = $value ? (string) $value : null;
+							break;
+						default:
+							return false;
+							break;
+					}
+					break;
 				case 'name':
 				case 'website':
 				case 'desc':

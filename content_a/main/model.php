@@ -59,7 +59,7 @@ class model extends \mvc\model
 			return false;
 		}
 
-		$search_team = \lib\db\teams::get(['shortname' => $_name, 'limit' => 1]);
+		$search_team = \lib\db\teams::get(['shortname' => $_name, 'limit' => 1, 'status' => 'enable']);
 
 		if($search_team)
 		{
@@ -83,7 +83,7 @@ class model extends \mvc\model
 			return false;
 		}
 
-		$search_team = \lib\db\teams::get(['id' => $_id, 'limit' => 1]);
+		$search_team = \lib\db\teams::get(['id' => $_id, 'limit' => 1, 'status' => 'enable']);
 
 		if($search_team)
 		{
