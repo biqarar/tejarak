@@ -63,14 +63,15 @@ class userteams
 			}
 
 			unset($_args['limit']);
-			$where = \lib\db\config::make_where($_args);
+			$where = \lib\db\config::make_where($_args, ['table_name' => 'userteams']);
 			$query =
 			"
 				SELECT
-					userteams.*
+					userteams.*,
+					users.user_mobile AS `mobile`
 				FROM
 					userteams
-				INNER JOIN users ON users.id = userteams.user_id
+				LEFT JOIN users ON users.id = userteams.user_id
 				WHERE
 					$where
 				$limit

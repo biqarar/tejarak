@@ -11,14 +11,14 @@
     <div class="t-card-number">{{key+1}}</div>
    </div>
    <div class="t-card-bottom">
-    <div class="t-card-name">{{value.name}} {{value.family}}</div>
+    <div class="t-card-name">{{value.displayname}} {{value.family}}</div>
     {%if value.postion%}<div class="t-card-post">{{value.postion}}</div>{%endif%}
    </div>
   </div>
 
   <div class="t-card-back">
    <div class="t-card-back-top">
-    <div class="t-card-back-name" data-number='{{key+1}}'>{{value.name}} {{value.family}}</div>
+    <div class="t-card-back-name" data-number='{{key+1}}'><a href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">{{value.displayname}}</a></div>
    </div>
   </div>
  </div>

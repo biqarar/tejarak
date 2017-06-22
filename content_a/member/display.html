@@ -9,7 +9,7 @@
      <div class="f">
       <div class="f c s12 g1">
        <div class="c12">
-        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.name}}" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
+        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.displayname}}" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
        </div>
 
        <div class="c12">
@@ -21,8 +21,8 @@
        <div>
         <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
         <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-{%if edit_mode and team.avatar%}
-         <img src="{{team.avatar}}" alt="{{team.name}}" id="avatarPreview">
+{%if edit_mode and member.file%}
+         <img src="{{member.file}}" alt="{{member.displayname}}" id="avatarPreview">
 {%endif%}
         </label>
        </div>
@@ -35,8 +35,8 @@
        </div>
        <div class="c6 s12">
         <select name="rule">
-         <option value="user">{%trans "User"%}</option>
-         <option value="admin">{%trans "Admin"%}</option>
+         <option value="user" {%if member.rule == 'user'%} selected {%endif%} >{%trans "User"%}</option>
+         <option value="admin" {%if member.rule == 'admin'%} selected {%endif%} >{%trans "Admin"%}</option>
         </select>
        </div>
       </div>
@@ -46,21 +46,21 @@
       <div class="f g1">
        <div class="cauto s0 lbl"><label for="firstName">{%trans "First name"%}</label></div>
        <div class="c">
-         <input type="text" name="firstName" id="firstName" placeholder='{%trans "First name"%}' value="{{member.firstName}}" maxlength='30'>
+         <input type="text" name="firstName" id="firstName" placeholder='{%trans "First name"%}' value="{{member.firstname}}" maxlength='30'>
        </div>
       </div>
 
       <div class="f g1">
        <div class="cauto s0 lbl"><label for="lastName">{%trans "Last name"%}</label></div>
        <div class="c">
-         <input type="text" name="lastName" id="lastName" placeholder='{%trans "Last name"%}' value="{{member.lastName}}" maxlength='50'>
+         <input type="text" name="lastName" id="lastName" placeholder='{%trans "Last name"%}' value="{{member.lastname}}" maxlength='50'>
        </div>
       </div>
 
       <div class="f g1">
        <div class="cauto s0 lbl"><label for="personnelcode">{%trans "Personnel code"%}</label></div>
        <div class="c">
-         <input type="text" name="personnelcode" id="personnelcode" placeholder='{%trans "Personnel code"%}' value="{{member.personnelcode}}" maxlength='30'>
+         <input type="text" name="personnelcode" id="personnelcode" placeholder='{%trans "Personnel code"%}' value="{{member.personnel_code}}" maxlength='30'>
        </div>
       </div>
 
@@ -95,15 +95,15 @@
         <div class="c">
          <div class="f radio1">
           <div class="c4">
-           <input type="radio" id="r-active" name="status" value="active" {%if team.status == 'active' or not team.status%}checked{%endif%} >
+           <input type="radio" id="r-active" name="status" value="active" {%if member.status == 'active' or not member.status%}checked{%endif%} >
            <label for="r-active">{%trans "Active"%}</label>
           </div>
           <div class="c4">
-           <input type="radio" id="r-deactive" name="status" value="deactive" {%if team.status == 'deactive' %}checked{%endif%}>
+           <input type="radio" id="r-deactive" name="status" value="deactive" {%if member.status == 'deactive' %}checked{%endif%}>
            <label for="r-deactive">{%trans "Deactive"%}</label>
           </div>
           <div class="c4">
-           <input type="radio" id="r-disable" name="status" value="disable" {%if team.status == 'disable' %}checked{%endif%}>
+           <input type="radio" id="r-disable" name="status" value="disable" {%if member.status == 'disable' %}checked{%endif%}>
            <label for="r-disable">{%trans "disable"%}</label>
           </div>
          </div>
@@ -112,8 +112,6 @@
 
 
      </div>
-
-
 
 
      <div class="f g1">

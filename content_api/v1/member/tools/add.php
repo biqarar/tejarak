@@ -55,16 +55,16 @@ trait add
 		}
 
 		// get team and check it
-		$id = utility::request('id');
-		$id = utility\shortURL::decode($id);
-		if(!$id)
+		$team = utility::request('team');
+		$team = utility\shortURL::decode($team);
+		if(!$team)
 		{
-			logs::set('api:member:id:notfound', null, $log_meta);
-			debug::error(T_("Team id not found"), 'user', 'permission');
+			logs::set('api:member:team:not:set', null, $log_meta);
+			debug::error(T_("Team not set"), 'user', 'permission');
 			return false;
 		}
 		// load team data
-		$team_detail = \lib\db\teams::access_team_id($id, $this->user_id, 'add:member');
+		$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, 'add:member');
 		// check the team exist
 		if(isset($team_detail['id']))
 		{
@@ -74,6 +74,16 @@ trait add
 		{
 			logs::set('api:member:team:notfound:invalid', null, $log_meta);
 			debug::error(T_("Team not found"), 'user', 'permission');
+			return false;
+		}
+
+		// get firstname
+		$displayname = utility::request("displayname");
+		$displayname = trim($displayname);
+		if($displayname && mb_strlen($displayname) > 50)
+		{
+			logs::set('api:member:displayname:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
 		}
 
@@ -110,34 +120,196 @@ trait add
 		elseif($mobile && $mobile_syntax && ctype_digit($mobile))
 		{
 			$mobile = $mobile_syntax;
-			$check_user_exist = \lib\db\users::get_by_mobile($mobile);
-		}
-
-		$user_id = null;
-
-		if(isset($check_user_exist['id']))
-		{
-			$user_id = $check_user_exist['id'];
 		}
 		else
 		{
-			$signup =
-			[
-				'user_mobile'      => $mobile ? $mobile : null,
-				'user_pass'        => null,
-				'user_displayname' => $firstname. ' '. $lastname,
-				'user_createdate'  => date("Y-m-d H:i:s"),
-			];
-
-			\lib\db\users::insert($signup);
-			$user_id = \lib\db::insert_id();
+			$mobile_syntax = $mobile = null;
 		}
+
+		/**
+		 ****************************************************************************
+		 * find user id
+		 *
+		 * @var        <type>
+		 */
+		$user_id = null;
+		// check userid exist in userteam by this team
+		$check_not_duplicate_userteam = false;
+		// post to add new member
+		if($_args['method'] === 'post')
+		{
+			// mobile is set
+			if($mobile)
+			{
+				$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+				// the mobile was exist
+				if(isset($check_user_exist['id']))
+				{
+					$user_id = $check_user_exist['id'];
+				}
+				else
+				{
+					// we need to get user id to insert new record of userteams
+					// signup empty to get user id
+					$signup =
+					[
+						'user_mobile'      => $mobile,
+						'user_pass'        => null,
+						'user_displayname' => null,
+						'user_createdate'  => date("Y-m-d H:i:s"),
+					];
+
+					\lib\db\users::insert($signup);
+					$user_id = \lib\db::insert_id();
+				}
+			}
+			else
+			{
+				// we need to get user id to insert new record of userteams
+				// signup empty to get user id
+				$signup =
+				[
+					'user_mobile'      => null,
+					'user_pass'        => null,
+					'user_displayname' => null,
+					'user_createdate'  => date("Y-m-d H:i:s"),
+				];
+
+				\lib\db\users::insert($signup);
+				$user_id = \lib\db::insert_id();
+			}
+		}
+		elseif($_args['method'] === 'patch')
+		{
+			$request_user_id = utility::request('id');
+			if($request_user_id && $request_user_id = utility\shortURL::decode($request_user_id))
+			{
+				$old_user_id = \lib\db\userteams::get(['user_id' => $request_user_id,'team_id' => $team_id, 'limit' => 1]);
+				if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
+				{
+					logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
+					debug::error(T_("Invalid user id"), 'user', 'system');
+					return false;
+				}
+			}
+			else
+			{
+				logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
+				debug::error(T_("User id not set"), 'user', 'system');
+				return false;
+			}
+
+			if($old_user_id['mobile'])
+			{
+				if($mobile)
+				{
+					if($mobile == $old_user_id['mobile'])
+					{
+						$user_id = $old_user_id['user_id'];
+					}
+					else
+					{
+						$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+						// the mobile was exist
+						if(isset($check_user_exist['id']))
+						{
+							$user_id = $check_user_exist['id'];
+							$check_not_duplicate_userteam = true;
+						}
+						else
+						{
+							// we need to get user id to insert new record of userteams
+							// signup empty to get user id
+							$signup =
+							[
+								'user_mobile'      => $mobile,
+								'user_pass'        => null,
+								'user_displayname' => null,
+								'user_createdate'  => date("Y-m-d H:i:s"),
+							];
+
+							\lib\db\users::insert($signup);
+							$user_id = \lib\db::insert_id();
+						}
+					}
+
+				}
+				else
+				{
+					// the user remove mobile
+					// signup empty to get user id
+					$signup =
+					[
+						'user_mobile'      => null,
+						'user_pass'        => null,
+						'user_displayname' => null,
+						'user_createdate'  => date("Y-m-d H:i:s"),
+					];
+
+					\lib\db\users::insert($signup);
+					$user_id = \lib\db::insert_id();
+				}
+			}
+			else
+			{
+				if($mobile)
+				{
+					// unreachable old user id
+					\lib\db\users::update(['user_status' => 'unreachable'], $old_user_id['user_id']);
+
+					$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+					// the mobile was exist
+					if(isset($check_user_exist['id']))
+					{
+						$user_id = $check_user_exist['id'];
+						$check_not_duplicate_userteam = true;
+					}
+					else
+					{
+						// we need to get user id to insert new record of userteams
+						// signup empty to get user id
+						$signup =
+						[
+							'user_mobile'      => $mobile,
+							'user_pass'        => null,
+							'user_displayname' => null,
+							'user_createdate'  => date("Y-m-d H:i:s"),
+						];
+
+						\lib\db\users::insert($signup);
+						$user_id = \lib\db::insert_id();
+					}
+				}
+				else
+				{
+					$user_id = $old_user_id['user_id'];
+				}
+			}
+		}
+
+		/**
+		 * end find userid
+		 ****************************************************************************
+		 */
 
 		if(!$user_id)
 		{
 			logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
 			debug::error(T_("User id not found"), 'user', 'system');
 			return false;
+		}
+		// to redirect site in new url
+		\lib\storage::set_new_user_code(utility\shortURL::encode($user_id));
+
+		if($check_not_duplicate_userteam)
+		{
+			$userteam_record = \lib\db\userteams::get(['user_id' => $user_id, 'team_id' => $team_id, 'limit' => 1]);
+			if($userteam_record)
+			{
+				logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
+				debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
+				return false;
+			}
 		}
 
 		// get postion
@@ -148,21 +320,54 @@ trait add
 			debug::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
 			return false;
 		}
+
 		// get the code
-		$code = utility::request('code');
-		if($code && mb_strlen($code) > 9)
+		$personnelcode = utility::request('personnel_code');
+		$personnelcode = trim($personnelcode);
+		if($personnelcode && mb_strlen($personnelcode) > 9)
 		{
 			logs::set('api:member:code:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the code less than 9 character "), 'code', 'arguments');
+			debug::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
 			return false;
 		}
 
+		// get rule
+		$rule = utility::request('rule');
+		if($rule)
+		{
+			if(!in_array($rule, ['user', 'admin']))
+			{
+				logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
+				debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$rule = 'user';
+		}
 
-		$allowplus  = utility::isset_request('allowplus') 	? utility::request('allow_plus') 	? 1 : 0 : null;
-		$allowminus = utility::isset_request('allowminus')	? utility::request('allow_minus') 	? 1 : 0 : null;
-		$is24h        = utility::isset_request('24h') 		? utility::request('24h') 			? 1 : 0 : null;
-		$remote     = utility::isset_request('remote')		? utility::request('remote_user') 	? 1 : 0 : null;
-		$isdefault  = utility::isset_request('isdefault') 	? utility::request('is_default')	? 1 : 0 : null;
+		// get status
+		$status = utility::request('status');
+		if($status)
+		{
+			if(!in_array($status, ['active', 'deactive', 'disable']))
+			{
+				logs::set('api:member:status:invalid', $this->user_id, $log_meta);
+				debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$status = 'active';
+		}
+
+		$allowplus  = utility::isset_request('allow_plus') 	? utility::request('allow_plus') 	? 1 : 0 : null;
+		$allowminus = utility::isset_request('allow_minus')	? utility::request('allow_minus') 	? 1 : 0 : null;
+		$is24h      = utility::isset_request('24h') 		? utility::request('24h') 			? 1 : 0 : null;
+		$remote     = utility::isset_request('remote_user')		? utility::request('remote_user') 	? 1 : 0 : null;
+		$isdefault  = utility::isset_request('is_default') 	? utility::request('is_default')	? 1 : 0 : null;
 
 		// get date enter
 		$date_enter  = utility::request('date_enter');
@@ -186,7 +391,6 @@ trait add
 		$file_code = utility::request('file');
 		$file_id   = null;
 		$file_url  = null;
-
 		if($file_code)
 		{
 			$file_id = \lib\utility\shortURL::decode($file_code);
@@ -213,7 +417,7 @@ trait add
 		$args['team_id']       = $team_id;
 		$args['user_id']       = $user_id;
 		$args['postion']       = $postion;
-		$args['personnelcode'] = $code;
+		$args['personnelcode'] = $personnelcode;
 		$args['24h']           = $is24h;
 		$args['remote']        = $remote;
 		$args['isdefault']     = $isdefault;
@@ -228,16 +432,12 @@ trait add
 		$args['fileurl']       = $file_url;
 		$args['allowplus']     = $allowplus;
 		$args['allowminus']    = $allowminus;
+		$args['status']        = $status;
+		$args['displayname']   = $displayname;
+		$args['rule']          = $rule;
 
 		if($_args['method'] === 'post')
 		{
-			$check_duplicate_user = \lib\db\userteams::get(['user_id' => $user_id, 'team_id' => $team_id, 'limit' => 1]);
-			if($check_duplicate_user)
-			{
-				logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
-				debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
-				return false;
-			}
 			\lib\db\userteams::insert($args);
 		}
 		elseif($_args['method'] === 'patch')
@@ -251,10 +451,18 @@ trait add
 				return false;
 			}
 
+			$check_user_in_team = \lib\db\userteams::get(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
+
+			if(!$check_user_in_team || !isset($check_user_in_team['id']))
+			{
+				logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
+				debug::error(T_("This user is not in this team"), 'id', 'arguments');
+				return false;
+			}
+
 			unset($args['team_id']);
-			unset($args['user_id']);
 			if(!utility::isset_request('postion')) 		unset($args['postion']);
-			if(!utility::isset_request('code')) 		unset($args['code']);
+			if(!utility::isset_request('personnel_code'))unset($args['personnelcode']);
 			if(!utility::isset_request('24h')) 			unset($args['24h']);
 			if(!utility::isset_request('remote_user')) 	unset($args['remote']);
 			if(!utility::isset_request('is_default')) 	unset($args['isdefault']);
@@ -263,12 +471,15 @@ trait add
 			if(!utility::isset_request('firstname')) 	unset($args['firstname']);
 			if(!utility::isset_request('lastname')) 	unset($args['lastname']);
 			if(!utility::isset_request('file')) 		unset($args['fileid'], $args['fileurl']);
-			if(!utility::isset_request('allowplus')) 	unset($args['allowplus']);
-			if(!utility::isset_request('allowminus')) 	unset($args['allowminus']);
+			if(!utility::isset_request('allow_plus')) 	unset($args['allowplus']);
+			if(!utility::isset_request('allow_minus')) 	unset($args['allowminus']);
+			if(!utility::isset_request('status')) 		unset($args['status']);
+			if(!utility::isset_request('displayname')) 	unset($args['displayname']);
+			if(!utility::isset_request('rule')) 		unset($args['rule']);
 
 			if(!empty($args))
 			{
-				\lib\db\userteams::update($args, $id);
+				\lib\db\userteams::update($args, $check_user_in_team['id']);
 			}
 		}
 		elseif ($_args['method'] === 'delete')

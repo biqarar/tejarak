@@ -95,27 +95,60 @@ trait get
 			return false;
 		}
 
-		$team = utility::request("team");
-		$member  = utility::request("member");
+		$MEMBER_REQUEST = utility::request();
+
+		$team = utility::request('team');
 
 		if(!$team)
 		{
-			logs::set('api:member:team:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid team"), 'team', 'permission');
+			logs::set('api:member:team:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
 
-		if(!$member)
+
+		$id = utility::request('id');
+		$id = utility\shortURL::decode($id);
+		if(!$id)
 		{
-			logs::set('api:member:member:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid member"), 'member', 'permission');
+			logs::set('api:member:id:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
-		// $result = \lib\db\members::get_by_brand($team, $member);
-		// return $result;
+		utility::set_request_array(['id' => $team]);
+
+		$team_detail = $this->get_team();
+
+		if(!debug::$status || !isset($team_detail['id']))
+		{
+			return false;
+		}
+
+		$team_id = utility\shortURL::decode($team_detail['id']);
+
+		utility::set_request_array($MEMBER_REQUEST);
+
+		$check_user_in_team = \lib\db\userteams::get(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
+		// var_dump($check_user_in_team);exit();
+		if(!$check_user_in_team)
+		{
+			logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
+			debug::error(T_("This user is not in this team"), 'id', 'arguments');
+			return false;
+		}
+
+		$result = $this->ready_member($check_user_in_team);
+
+		return $result;
 	}
 
+
+	/**
+	 * { function_description }
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
 	public function userteam_get_details()
 	{
 		$userteam_id  = utility::request("id");
@@ -177,8 +210,8 @@ trait get
 		{
 			switch ($key)
 			{
-				case 'id':
-					$result['id'] = \lib\utility\shortURL::encode($value);
+				case 'user_id':
+					$result['user_id'] = \lib\utility\shortURL::encode($value);
 					break;
 
 				case 'fileurl':
@@ -193,33 +226,41 @@ trait get
 					break;
 
 				case 'allowplus':
+					$result['allow_plus'] = $value ? true : false;
+					break;
 				case 'allowminus':
+					$result['allow_minus'] = $value ? true : false;
+					break;
 				case '24h':
+					$result['24h'] = $value ? true : false;
+					break;
 				case 'remote':
-					$result[$key] = $value ? true : false;
+					$result['remote_user'] = $value ? true : false;
 					break;
 
 				case 'postion':
 				case 'displayname':
-				case 'fistname':
+				case 'firstname':
 				case 'lastname':
 				case 'status':
 				case 'rule':
 				case 'telegram_id':
-				case 'personnelcode':
+				case 'mobile':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
-
+				case 'personnelcode':
+					$result['personnel_code'] = isset($value) ? (string) $value : null;
+					break;
+				case 'id':
 				case 'team_id':
-				case 'user_id':
 				case 'desc':
 				case 'meta':
 				case 'createdate':
+				case 'fileid':
 				case 'date_modified':
 				case 'isdefault':
 				case 'dateenter':
 				case 'dateexit':
-				case 'fileid':
 				default:
 					continue;
 					break;

@@ -20,14 +20,21 @@ class controller extends \content_a\main\controller
 		elseif(preg_match("/^[a-zA-Z0-9]+$/", $url) && substr($url, 0, 4) !== 'team')
 		{
 			// route url like:
-			// a/ermile
+			// a/2kf
 			\lib\router::set_controller('content_a\\member\\controller');
 			return;
 		}
 		elseif(preg_match("/^team\/[a-zA-Z0-9]+\/member$/", $url))
 		{
 			// route url like:
-			// a/ermile
+			// a/team/2kf/member
+			\lib\router::set_controller('content_a\\member\\controller');
+			return;
+		}
+		elseif(preg_match("/^team\/[a-zA-Z0-9]+\/member\=[a-zA-Z0-9]+$/", $url))
+		{
+			// route url like:
+			// a/team/2kf/member=123
 			\lib\router::set_controller('content_a\\member\\controller');
 			return;
 		}
