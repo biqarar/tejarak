@@ -74,7 +74,11 @@ class model extends \content_a\main\model
 		{
 			return false;
 		}
-		$request['file'] = $file_code;
+
+		if($file_code)
+		{
+			$request['file'] = $file_code;
+		}
 
 		$team = \lib\router::get_url(1);
 		// get posted data to create the request
@@ -172,7 +176,11 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$request['file'] = $file_code;
+		if($file_code)
+		{
+			$request['file'] = $file_code;
+		}
+
 		$url             = \lib\router::get_url();
 		$member          = substr($url, strpos($url,'=') + 1);
 		$request['id']   = $member;
