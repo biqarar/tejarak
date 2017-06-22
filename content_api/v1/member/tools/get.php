@@ -29,16 +29,17 @@ trait get
 			return false;
 		}
 
-		$shortname = utility::request('shortname');
+		$id = utility::request('id');
+		$id = \lib\utility\shortURL::decode($id);
 
-		if(!$shortname)
+		if(!$id)
 		{
-			logs::set('api:member:team:shortname:not:set', null, $log_meta);
+			logs::set('api:member:team:id:not:set', null, $log_meta);
 			debug::error(T_("Id not found"), 'id', 'permission');
 			return false;
 		}
 
-		$team_detail = \lib\db\teams::access_team($shortname, $this->user_id);
+		$team_detail = \lib\db\teams::access_team_id($id, $this->user_id);
 
 		if(!$team_detail)
 		{
@@ -46,7 +47,6 @@ trait get
 			debug::error(T_("Can not access to load this team"), 'id', 'permission');
 			return false;
 		}
-
 
 		if(isset($team_detail['id']))
 		{

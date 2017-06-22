@@ -24,11 +24,15 @@ class view extends \lib\mvc\view
 		$this->data->template['social']  = 'content/template/social.html';
 		$this->data->template['share']   = 'content/template/share.html';
 
-		// get total uses
-		$total_users                     = intval(\lib\utility\users::tejarak_total_users());
-		$total_users                     = number_format($total_users);
-		$this->data->total_users         = \lib\utility\human::number($total_users);
-		$this->data->footer_stat         = T_("We help :count people to work beter!", ['count' => $this->data->total_users]);
+
+		if(in_array(\lib\router::get_repository_name(), ['content']))
+		{
+			// get total uses
+			$total_users                     = intval(\lib\utility\users::tejarak_total_users());
+			$total_users                     = number_format($total_users);
+			$this->data->total_users         = \lib\utility\human::number($total_users);
+			$this->data->footer_stat         = T_("We help :count people to work beter!", ['count' => $this->data->total_users]);
+		}
 
 		$this->include->css_ermile       = false;
 		// $this->include->js_main       = false;

@@ -11,7 +11,6 @@ class controller extends \content_a\main\controller
 		parent::_route();
 
 		$url = \lib\router::get_url();
-
 		if($url === 'team')
 		{
 			// add team
@@ -25,13 +24,22 @@ class controller extends \content_a\main\controller
 			\lib\router::set_controller('content_a\\member\\controller');
 			return;
 		}
+		elseif(preg_match("/^team\/[a-zA-Z0-9]+\/member$/", $url))
+		{
+			// route url like:
+			// a/ermile
+			\lib\router::set_controller('content_a\\member\\controller');
+			return;
+		}
 		else
 		{
 			// the url is team/ermile we remove team/ from first of url to get the 'ermile' [team brand]
 			$name = str_replace('team/', '', $url);
 			// check the team exist or no and this user is the boss ot this team
 			// this function in content_admi/main/model
-			if($this->model()->is_exist_team_id(\lib\utility\shortURL::decode($name)))
+			$id = \lib\utility\shortURL::decode($name);
+
+			if($id && $this->model()->is_exist_team_id($id))
 			{
 				$this->get(false, 'edit')->ALL("team/$name");
 				$this->post('edit')->ALL("team/$name");

@@ -123,7 +123,7 @@ class model extends \content_a\main\model
 	{
 		$this->user_id = $this->login('id');
 		$request       = [];
-		$request['shortname'] = isset($_args['shortname']) ? $_args['shortname'] : null;
+		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
 		utility::set_request_array($request);
 		$result =  $this->get_list_member();
 		return $result;

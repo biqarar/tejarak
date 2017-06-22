@@ -34,12 +34,13 @@ class controller extends \content_a\main\controller
 			}
 		}
 
-		// route url like this /a/ermile/sarshomar
-		if(preg_match("/^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$/", $url, $split))
+		// route url like this /a/2kf
+		if(preg_match("/^([a-zA-Z0-9]+)$/", $url, $split))
 		{
-			if(isset($split[1]) && isset($split[2]))
+			if(isset($split[1]))
 			{
-				if($this->model()->is_exist_team($split[1]))
+				$id = \lib\utility\shortURL::decode($split[1]);
+				if($id && $this->model()->is_exist_team_id($id))
 				{
 					\lib\router::set_controller("content_a\\member\\controller");
 				}

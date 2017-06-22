@@ -13,12 +13,12 @@ class controller extends \content_a\main\controller
 		$url = \lib\router::get_url();
 
 		// route url like this /a/team/ermile/member
-		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/member$/");
-		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/member$/");
+		$this->get(false, 'add')->ALL("/^team\/([a-zA-Z0-9]+)\/member$/");
+		$this->post('add')->ALL("/^team\/([a-zA-Z0-9]+)\/member$/");
 
 		// route url like this /a/team/ermile/branch=sarshomar/member
-		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
-		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
+		$this->get(false, 'add')->ALL("/^team\/([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
+		$this->post('add')->ALL("/^team\/([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
 
 		// route url like this /a/ermile/sarshomar
 		// route url like this /a/ermile
