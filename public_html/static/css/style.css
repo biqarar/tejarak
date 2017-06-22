@@ -107,11 +107,11 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 
 #plans{
   background-image:url(../images/pattern/confectionary.png);
-  /*background-image: url(../images/pattern/dark-triangles.png);*/
-  /*background-image: url(../images/pattern/pinkdust.png);*/
-  /*background-image: url(../images/pattern/Sports.png);*/
-  /*background-image: url(../images/pattern/weather.png);*/
-  /*background-image: url(../images/pattern/zigzagwool.png);*/
+  /*background-image:url(../images/pattern/dark-triangles.png);*/
+  /*background-image:url(../images/pattern/pinkdust.png);*/
+  /*background-image:url(../images/pattern/Sports.png);*/
+  /*background-image:url(../images/pattern/weather.png);*/
+  /*background-image:url(../images/pattern/zigzagwool.png);*/
 }
 
 #plans .cn{width:80%}
@@ -315,11 +315,16 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 
 #addTeam,#addMember{max-width:50rem}
 
-.cn .txt{max-width:700px;margin:0 auto;padding:10rem 0;}
+.cn .logo-txt{max-width:700px;margin:0 auto;padding:10rem 0;}
+.cn .logo-txt h4,.cn .logo-txt h5{text-align:center;}
+.cn .logo-txt h4{font-size:1.8em;position:relative;margin-bottom:5rem;}
+.cn .logo-txt h4:before{position:absolute;top:120%;right:0;left:0;width:50%;height:1px;margin:auto;content:'';background-color:rgba(0, 0, 0, .25);}
+.cn .logo-txt h5{font-size:1.618rem;color:#666;}
 
-.logo-showcase{margin-bottom:5rem;text-align:center;}
-.logo-showcase-img{width:64px;height:64px;margin:0 auto 2rem;-webkit-transition:.3s;transition:.3s;}
-.logo-showcase-img:hover{background-color:rgba(0, 0, 0, .1);}
+.logo-showcase{text-align:center;}
+.logo-showcase:not(:last-of-type){margin-bottom:5rem;}
+.logo-showcase-img{width:64px;height:64px;margin:0 auto 2rem;-webkit-transition:.3s;transition:.3s;border:1px solid rgba(0, 0, 0, .05);}
+.logo-showcase-img:hover{background-color:rgba(0,0,0,.025);}
 .logo-showcase-img.logo-showcase-img-circle{border-radius:50%;}
 .logo-showcase-img img{display:block;}
 
