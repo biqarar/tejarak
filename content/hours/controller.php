@@ -17,8 +17,11 @@ class controller extends \content\main\controller
 		{
 			\lib\error::page();
 		}
+
 		$this->get(false, 'show')->ALL($url);
 		$this->post('hours')->ALL($url);
+
+
 	}
 }
 ?>

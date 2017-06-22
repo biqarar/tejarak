@@ -3,10 +3,6 @@ namespace content\main;
 
 class model extends \mvc\model
 {
-	// API BRANCH
-	use \content_api\v1\branch\tools\get;
-	use \content_api\v1\branch\tools\add;
-
 	// API TEAM
 	use \content_api\v1\team\tools\add;
 	use \content_api\v1\team\tools\get;

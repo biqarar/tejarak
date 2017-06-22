@@ -16,10 +16,7 @@ class model extends \content_a\main\model
 		$this->user_id     = $this->login('id');
 		$request           = [];
 		$request['team']   = isset($_args['team']) ? $_args['team'] : null;
-		$request['branch'] = isset($_args['branch']) ? $_args['branch'] : null;
-
 		utility::set_request_array($request);
-
 		return $this->report_last_time();
 	}
 }

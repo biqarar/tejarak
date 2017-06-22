@@ -4,9 +4,6 @@ namespace content_a\main;
 class model extends \mvc\model
 {
 	use \content_api\v1\home\tools\options;
-	// // API BRANCH
-	// use \content_api\v1\branch\tools\get;
-	// use \content_api\v1\branch\tools\add;
 
 	// API TEAM
 	use \content_api\v1\team\tools\add;

@@ -69,22 +69,6 @@ class hours
 			return false;
 		}
 
-		$userbranch_id = \lib\db\userbranchs::get_id(
-			[
-				'team_id'   => $_args['team_id'],
-				'branch_id' => $_args['branch_id'],
-				'user_id'   => $_args['user_id'],
-				'limit'     => 1
-			]
-		);
-
-		if(!$userbranch_id)
-		{
-			debug::error(T_("User branch not found!"));
-			return false;
-		}
-
-		$_args['userbranch_id'] = $userbranch_id;
 		$_args['userteam_id']   = $userteam_id;
 		$_args['date']          = $date;
 
@@ -97,21 +81,20 @@ class hours
 			return false;
 		}
 
-		$insert                        = [];
-		$insert['user_id']             = $_args['user_id'];
-		$insert['team_id']             = $_args['team_id'];
-		$insert['userteam_id']         = $userbranch_id;
-		$insert['userbranch_id']       = $userteam_id;
-		$insert['start_userbranch_id'] = $_args['branch_id'];
-		$insert['date']                = date("Y-m-d");
-		$insert['year']                = date("Y");
-		$insert['month']               = date("m");
-		$insert['day']                 = date("d");
-		$insert['shamsi_date']         = jdate::date("Y-m-d", strtotime($date), false, true);
-		$insert['shamsi_year']         = jdate::date("Y", strtotime($date), false, true);
-		$insert['shamsi_month']        = jdate::date("m", strtotime($date), false, true);;
-		$insert['shamsi_day']          = jdate::date("d", strtotime($date), false, true);;
-		$insert['start']               = date("H:i");
+		$insert                      = [];
+		$insert['user_id']           = $_args['user_id'];
+		$insert['team_id']           = $_args['team_id'];
+		$insert['start_userteam_id'] = $_args['user_id'];
+		$insert['userteam_id']       = $userteam_id;
+		$insert['date']              = date("Y-m-d");
+		$insert['year']              = date("Y");
+		$insert['month']             = date("m");
+		$insert['day']               = date("d");
+		$insert['shamsi_date']       = jdate::date("Y-m-d", strtotime($date), false, true);
+		$insert['shamsi_year']       = jdate::date("Y", strtotime($date), false, true);
+		$insert['shamsi_month']      = jdate::date("m", strtotime($date), false, true);;
+		$insert['shamsi_day']        = jdate::date("d", strtotime($date), false, true);;
+		$insert['start']             = date("H:i");
 
 		return self::insert($insert);
 	}
@@ -140,22 +123,6 @@ class hours
 			return false;
 		}
 
-		$userbranch_id = \lib\db\userbranchs::get_id(
-			[
-				'team_id'   => $_args['team_id'],
-				'branch_id' => $_args['branch_id'],
-				'user_id'   => $_args['user_id'],
-				'limit'     => 1
-			]
-		);
-
-		if(!$userbranch_id)
-		{
-			debug::error(T_("User branch not found!"));
-			return false;
-		}
-
-		$_args['userbranch_id'] = $userbranch_id;
 		$_args['userteam_id']   = $userteam_id;
 		$_args['date']          = $date;
 
@@ -213,11 +180,6 @@ class hours
 		if(isset($_args['userteam_id']) && is_numeric($_args['userteam_id']))
 		{
 			$where[] = " hours.userteam_id = $_args[userteam_id] ";
-		}
-
-		if(isset($_args['userbranch_id']) && is_numeric($_args['userbranch_id']))
-		{
-			$where[] = " hours.userbranch_id = $_args[userbranch_id] ";
 		}
 
 		if(isset($_args['user_id']) && is_numeric($_args['user_id']))

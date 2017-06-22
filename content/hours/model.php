@@ -17,8 +17,7 @@ class model extends \content\main\model
 	{
 		$this->user_id     = $this->login('id');
 		$request           = [];
-		$request['team']   = isset($_args['team']) ? $_args['team'] : null;
-		$request['branch'] = isset($_args['branch']) ? $_args['branch'] : null;
+		$request['shortname']   = isset($_args['shortname']) ? $_args['shortname'] : null;
 		utility::set_request_array($request);
 		$result =  $this->get_list_member();
 		return $result;
@@ -50,7 +49,6 @@ class model extends \content\main\model
 
 		$request           = [];
 		$request['team']   = isset($url[0]) ? $url[0] : null;
-		$request['branch'] = isset($url[1]) ? $url[1] : null;
 		$request['user']   = utility::post('user');
 		$request['plus']   = utility::post('plus');
 		$request['minus']  = utility::post('minus');

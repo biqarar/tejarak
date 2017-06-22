@@ -48,7 +48,9 @@ trait add
 		}
 
 		$user = utility::request('user');
-		if(!$user || !is_numeric($user))
+		$user = utility\shortURL::decode($user);
+
+		if(!$user)
 		{
 			logs::set('api:hours:user:notfound', $this->user_id, $log_meta);
 			debug::error(T_("Member not found"), 'user', 'arguments');
@@ -65,7 +67,7 @@ trait add
 			return false;
 		}
 		// load team data
-		$team_detail = \lib\db\teams::get_brand($team);
+		$team_detail = \lib\db\teams::get_by_shortname($team);
 		// check the team exist
 		if(isset($team_detail['id']))
 		{
@@ -78,49 +80,8 @@ trait add
 			return false;
 		}
 
-		// check team boos is the user id
-		if(isset($team_detail['boss']) && intval($team_detail['boss']) === intval($this->user_id))
-		{
-			// no problem to add hours fo this team
-		}
-		else
-		{
-			logs::set('api:hours:team:permission', null, $log_meta);
-			debug::error(T_("Permission denide to add hours of this team"), 'user', 'permission');
-			return false;
-		}
-
-
-		// get date exit
-		$branch   = utility::request('branch');
-		if(!$branch)
-		{
-			logs::set('api:hours:branch:notfound', null, $log_meta);
-			debug::error(T_("Branch not found"), 'branch', 'permission');
-			return false;
-		}
-
-		if($load_branch = \lib\db\branchs::get_by_brand($team, $branch))
-		{
-			if(isset($load_branch['id']))
-			{
-				$branch_id = $load_branch['id'];
-			}
-			else
-			{
-				logs::set('api:hours:branch:invalid', null, $log_meta);
-				debug::error(T_("Invalid branch"), 'branch', 'permission');
-				return false;
-			}
-		}
-
-		$type = utility::request('type');
-		if(!$type || !in_array($type, ['enter', 'exit']))
-		{
-			logs::set('api:hours:type:notfound', $this->type_id, $log_meta);
-			debug::error(T_("Invalid arguments type"), 'type', 'arguments');
-			return false;
-		}
+		// CHECK PERMISSION TO ADD TIME
+		// if(\lib\db\teams::access_in_team_id($team_id, $this->user_id))
 
 		$minus = utility::request('minus');
 		if($minus && !is_numeric($minus))
@@ -159,7 +120,6 @@ trait add
 		$args['plus']      = $plus;
 		$args['type']      = $type;
 		$args['team_id']   = $team_id;
-		$args['branch_id'] = $branch_id;
 
 		if($_args['method'] === 'post')
 		{

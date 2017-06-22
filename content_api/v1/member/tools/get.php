@@ -32,14 +32,29 @@ trait get
 		$id = utility::request('id');
 		$id = \lib\utility\shortURL::decode($id);
 
-		if(!$id)
+		$shortname =  utility::request('shortname');
+
+		if(!$id && !$shortname)
 		{
 			logs::set('api:member:team:id:not:set', null, $log_meta);
-			debug::error(T_("Id not found"), 'id', 'permission');
+			debug::error(T_("Id or shortname not set"), 'id', 'arguments');
+			return false;
+		}
+		elseif($id && $shortname)
+		{
+			logs::set('api:member:team:id:and:shortname:together:set', null, $log_meta);
+			debug::error(T_("Can not set id and shortname together"), 'id', 'arguments');
 			return false;
 		}
 
-		$team_detail = \lib\db\teams::access_team_id($id, $this->user_id);
+		if($id)
+		{
+			$team_detail = \lib\db\teams::access_team_id($id, $this->user_id);
+		}
+		elseif($shortname)
+		{
+			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id);
+		}
 
 		if(!$team_detail)
 		{

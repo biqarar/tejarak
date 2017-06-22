@@ -7,7 +7,6 @@ class view extends \content_a\main\view
 	{
 		$args           = [];
 		$args['team']   = \lib\router::get_url(0);
-		$args['branch'] = \lib\router::get_url(1);
 		$this->data->last_time = $this->model()->get_last_time($args);
 	}
 }
