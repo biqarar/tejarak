@@ -126,15 +126,22 @@ trait add
 		}
 
 		$logo_id = null;
+		$logo_url = null;
+
 		$logo = utility::request('logo');
 		if($logo)
 		{
 			$logo_id = \lib\utility\shortURL::decode($logo);
 			if($logo_id)
 			{
-				if(!\lib\db\posts::is_attachment($logo_id))
+				$logo_record = \lib\db\posts::is_attachment($logo_id);
+				if(!$logo_record)
 				{
 					$logo_id = null;
+				}
+				elseif(isset($logo_record['post_meta']['url']))
+				{
+					$logo_url = $logo_record['post_meta']['url'];
 				}
 			}
 			else
@@ -155,6 +162,7 @@ trait add
 		$args['remote']     = utility::isset_request('remote_user') ? utility::request('remote_user') 	? 1 : 0 : null;
 		$args['24h']        = utility::isset_request('24h')         ? utility::request('24h')			? 1 : 0 : null;
 		$args['logo']       = $logo_id;
+		$args['logourl']    = $logo_url;
 		$args['privacy']    = $privacy;
 
 		\lib\storage::set_last_team_added($shortname);
@@ -189,14 +197,16 @@ trait add
 		elseif ($_args['method'] === 'patch')
 		{
 			$edit_mode = true;
-			if(!utility::request('id') || !is_numeric(utility::request('id')))
+			$id = utility::request('id');
+			$id = \lib\utility\shortURL::decode($id);
+			if(!$id || !is_numeric($id))
 			{
 				logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);
 				debug::error(T_("Id not set"), 'id', 'permission');
 				return false;
 			}
 
-			$admin_of_team = \lib\db\teams::access_team_id(utility::request('id'), $this->user_id);
+			$admin_of_team = \lib\db\teams::access_team_id($id, $this->user_id);
 
 			if(!$admin_of_team || !isset($admin_of_team['id']))
 			{
@@ -215,7 +225,7 @@ trait add
 			if(!utility::isset_request('allow_minus')) 		unset($args['allowminus']);
 			if(!utility::isset_request('remote_user')) 		unset($args['remote']);
 			if(!utility::isset_request('24h')) 				unset($args['24h']);
-			if(!utility::isset_request('logo')) 			unset($args['logo']);
+			if(!utility::isset_request('logo')) 			unset($args['logo'], $args['logourl']);
 			if(!utility::isset_request('privacy')) 			unset($args['privacy']);
 
 			if(!empty($args))

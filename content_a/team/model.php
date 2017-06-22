@@ -94,7 +94,8 @@ class model extends \content_a\main\model
 	 */
 	public function post_edit($_args)
 	{
-		$team = \lib\router::get_url(1);
+		$code = \lib\router::get_url(1);
+
 		// if delete link is clicked
 		// go to delete function and return
 		if(utility::post('delete'))
@@ -105,23 +106,12 @@ class model extends \content_a\main\model
 
 		$request       = $this->getPost();
 		$this->user_id = $this->login('id');
-		$request['id'] = utility::post('id');
+		$request['id'] = $code;
 
 		utility::set_request_array($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
-
-		if(debug::$status)
-		{
-			$new_team = \lib\storage::get_last_team_added();
-
-			if($new_team)
-			{
-				debug::msg('direct', true);
-				$this->redirector()->set_domain()->set_url("a/$new_team/edit");
-			}
-		}
 	}
 
 

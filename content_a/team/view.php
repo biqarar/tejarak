@@ -26,8 +26,8 @@ class view extends \content_a\main\view
 
 		if(isset($this->data->team['name']))
 		{
-			$this->data->page['title'] = 'Edit team';
-			$this->data->page['desc'] = 'Edit team'. $this->data->team['name'];
+			$this->data->page['title'] = T_('Edit team');
+			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->team['name']]);
 		}
 	}
 }

@@ -7,9 +7,6 @@
   <h2>{{page.desc}}</h2>
 
   <form method="post" class="df" enctype="multipart/form-data">
-    {%if edit_mode%}
-      <input type="hidden" name="id" value="{{team.id}}">
-    {%endif%}
    <div class="f">
     <div class="f c s12 g1">
      <div class="c12 s12">
@@ -21,16 +18,15 @@
      </div>
     </div>
 
-      {%if edit_mode and team.logo%}
-        <div class="flex justify-center align-center teams-item-square">
-        <img src="{{team.logo}}" alt="{{team.name}}">
-       </div>
-      {%endif%}
 
       <div class="cauto s12 g1">
        <div>
         <input type="file" name="logo" id="logo" accept="image/gif, image/jpeg, image/png" data-preview>
-        <label for="logo" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'></label>
+        <label for="logo" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
+        {%if edit_mode and team.logo%}
+          <img src="{{team.logo}}" alt="{{team.name}}" id="logoPreview">
+        {%endif%}
+        </label>
        </div>
       </div>
    </div>
@@ -105,7 +101,7 @@
    <div class="f g1 mt1">
 
 {%if edit_mode%}
-    <div class="c9 s12">
+    <div class="c3 s12">
      <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="bn" data-ajaxify>{%trans "Delete"%}</a>
     </div>
     <div class="c3 os s12">

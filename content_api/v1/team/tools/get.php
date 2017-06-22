@@ -63,7 +63,12 @@ trait get
 					$result['24h'] = $value ? true : false;
 					break;
 
+				case 'logourl':
+					$result['logo'] = $this->host('file'). '/'. $value;
+					break;
+
 				case 'logo':
+					continue;
 					if(isset($this->logo_urls[$value]))
 					{
 						$result['logo'] = $this->host('file'). '/'. $this->logo_urls[$value];
@@ -74,7 +79,7 @@ trait get
 					}
 					break;
 
-				case 'file_id':
+				case 'fileid':
 				case 'creator':
 				case 'telegram_id':
 				case 'plan':
@@ -133,8 +138,6 @@ trait get
 		}
 
 		$result = \lib\db\teams::team_list($this->user_id);
-
-		$this->load_file_records($result);
 
 		$temp = [];
 		foreach ($result as $key => $value)
@@ -207,8 +210,6 @@ trait get
 		}
 
 		debug::title(T_("Operation complete"));
-
-		$this->load_file_records([$result]);
 
 		$result = $this->ready_team($result);
 
