@@ -5,21 +5,29 @@
 {%endblock%}
 
 {%block contentCenter%}
-<div class="flex justify-center wrap">
- {%for key, value in team_list%}
-  <a class='teams-item' href='{{url.baseFull}}/{{value.id}}' data-direct>
-   <div class="flex justify-center align-center teams-item-square">
-   	{%if value.logo%}
-    <img src="{{value.logo}}" alt="{{value.name}}">
-    {%else%}
-    <img src="{{url.static}}images/logo/logo.png" alt="{{value.name}}">
-    {%endif%}
-   </div>
-   <div class="teams-item-label">
-    <h3>{{value.name}}</h3>
-   </div>
-  </a>
- {%endfor%}
-</div>
+  <div class='middle' id="teamList">
+   <div class="f justify-center">
 
+{%for key, value in team_list%}
+    <a class='teams-item' href='{{url.baseFull}}/{{value.id}}' data-direct>
+     <figure>
+      <div class="f align-center">
+{%if value.logo%}
+       <img src="{{value.logo}}" alt="{{value.name}}">
+{%else%}
+       <img src="{{url.static}}images/a/without-brand-logo.png" alt="{{value.name}}">
+{%endif%}
+      </div>
+      <figcaption>{{value.name}}</figcaption>
+     </figure>
+    </a>
+
+{%endfor%}
+
+    <a class='teams-item' href="{{url.baseFull}}/team">
+     <span class="addNew">+</span>
+    </a>
+   </div>
+  </div>
 {%endblock%}
+
