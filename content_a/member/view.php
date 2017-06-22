@@ -10,7 +10,8 @@ class view extends \content_a\main\view
 	 */
 	public function view_add($_args)
 	{
-
+		$this->data->page['title'] = T_('Add new member');
+		$this->data->page['desc']  = $this->data->page['title'];
 	}
 
 
@@ -25,6 +26,12 @@ class view extends \content_a\main\view
 		$request                 = [];
 		$this->data->team        = $request['shortname'] = $team;
 		$this->data->list_member = $this->model()->list_member($request);
+
+		if(isset($this->data->list_member['title']))
+		{
+			$this->data->page['title'] = T_('Edit team');
+			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->list_member['title']]);
+		}
 	}
 
 }

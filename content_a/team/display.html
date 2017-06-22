@@ -3,7 +3,6 @@
 {%block contentCenter%}
 <div class='middle' id="addTeam">
  <div class='dbox'>
-
   <h2>{{page.desc}}</h2>
 
   <form method="post" class="df" enctype="multipart/form-data">
@@ -32,7 +31,7 @@
    </div>
 
 
-   <div data-response='advance' data-response-effect='slide' data-response-hide2>
+   <div data-response='advance' data-response-effect='slide' {%if not edit_mode%}data-response-hide{%endif%}>
 
     <div class="f g1">
       <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
@@ -102,7 +101,7 @@
 
 {%if edit_mode%}
     <div class="c3 s12">
-     <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="bn" data-ajaxify>{%trans "Delete"%}</a>
+     <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="bn" data-ajaxify>{%trans "Close"%}</a>
     </div>
     <div class="c3 os s12">
      <input type="submit" value='{%trans "Edit"%}' class='b1'>
