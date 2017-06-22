@@ -9,11 +9,11 @@
      <div class="f">
       <div class="f c s12 g1">
        <div class="c12">
-        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.name}}" required autofocus maxlength='50' minlength="3" pattern=".{3,50}" title='{%trans "Enter a valid name from 3 to 50 character"%}'>
+        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.name}}" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
        </div>
 
        <div class="c12">
-       <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}">
+       <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}" maxlength='30'>
        </div>
       </div>
 
@@ -29,19 +29,60 @@
       </div>
      </div>
 
-     <div data-response='advance' data-response-effect='slide' {%if not edit_mode and false%}data-response-hide{%endif%}>
       <div class="f g1">
-
-       <div class="c12">
-         <input type="text" name="family" id="family" placeholder='{%trans "Family"%}' value="{{member.family}}">
+       <div class="c6">
+         <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}" maxlength="15">
+       </div>
+       <div class="c6">
+         <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Role"%}' value="{{member.mobile}}" maxlength="15">
        </div>
       </div>
-     </div>
+
+     <div data-response='advance' data-response-effect='slide' {%if not edit_mode and false%}data-response-hide{%endif%}>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="firstName">{%trans "First Name"%}</label></div>
+       <div class="c">
+         <input type="text" name="firstName" id="firstName" placeholder='{%trans "First Name"%}' value="{{member.firstName}}" maxlength='30'>
+       </div>
+      </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="lastName">{%trans "Last Name"%}</label></div>
+       <div class="c">
+         <input type="text" name="lastName" id="lastName" placeholder='{%trans "Last Name"%}' value="{{member.lastName}}" maxlength='50'>
+       </div>
+      </div>
+
+
+
+      <div  class="f g1">
+       <h4>{%trans "Extra setting for special use"%}</h4>
+       <div class="f">
+        <div class="c4 s6">
+         <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or not member%}checked{%endif%}>
+         <label for="allowPlus">{%trans "Allow plus"%}</label>
+        </div>
+        <div class="c4 s6">
+         <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or not member%}checked{%endif%}>
+         <label for="allowMinus">{%trans "Allow minus"%}</label>
+        </div>
+
+        <div class="c4 s6">
+         <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user %}checked{%endif%}>
+         <label for="remoteUser">{%trans "Remote user"%}</label>
+        </div>
+        <div class="c4 s6">
+         <input type="checkbox" name="24h" id="24h" {%if member['24h']%}checked{%endif%}>
+         <label for="24h">{%trans "24 hour"%}</label>
+        </div>
+       </div>
+      </div>
+
+
 
      <div class="f g1">
-      <div class="c6">
-       <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}">
-      </div>
+
 
 
       <div class="c12">
@@ -55,6 +96,12 @@
        </label>
       </div>
      </div>
+
+
+
+     </div>
+
+
 
 {%if fasle%}
      <div class="f g1">
