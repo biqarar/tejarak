@@ -7,16 +7,16 @@
 
     <form method="post" class="df" enctype="multipart/form-data">
      <div class="f">
-      <div class="f c9 s12 g1">
-       <div class="c12 s12">
+      <div class="f c9 g1">
+       <div class="c12">
         <input type="text" name="name" id="name" placeholder='{%trans "Name"%}' value="{{member.name}}" required>
        </div>
 
-       <div class="c12 s12">
+       <div class="c12">
         <input type="text" name="family" id="family" placeholder='{%trans "Family"%}' value="{{member.family}}">
        </div>
       </div>
-      <div class="c3 s12 g1 df-file df-avatar">
+      <div class="c3 g1 df-file df-avatar">
        <div>
         <input type="file" name="avatar" id="avatar">
         <label for="avatar"></label>
@@ -25,15 +25,15 @@
      </div>
 
      <div class="f g1">
-      <div class="c6 s12">
-       <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}" required>
+      <div class="c6">
+       <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}">
       </div>
 
-      <div class="c6 s12">
+      <div class="c6">
        <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}">
       </div>
 
-      <div class="c12 s12">
+      <div class="c12">
        <input type="text" name="code" id="code" placeholder='{%trans "Code" %}' value="{{member.code}}">
       </div>
 
@@ -45,9 +45,9 @@
       </div>
      </div>
 
-   {%if fasle%}
+{%if fasle%}
      <div class="f g1">
-      <div class="c6 s12">
+      <div class="c6">
        <select name="status" id="status">
         <option value="" selected="selected">{%trans "Status"%}</option>
         <option value="enable" {%if member.status == 'enable' or not member.status %} {%endif%}>{%trans "Enable"%}</option>
@@ -68,10 +68,10 @@
        </label>
       </div>
      </div>
-   {%endif%}
+{%endif%}
 
      <div class="f g1">
-      <div class="c12 s12">
+      <div class="c12">
        {%if edit_mode%}
         <input type="submit" value='{%trans "Edit"%}' class="b1">
        {%else%}
@@ -84,3 +84,4 @@
    </div>
 
 {%endblock%}
+

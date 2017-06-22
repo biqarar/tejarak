@@ -1,126 +1,125 @@
 {%extends display.admin%}
 
 {%block contentCenter%}
-<div class='middle' id="addTeam">
- <div class='dbox'>
-  <h2>{{page.desc}}</h2>
+   <div class='middle' id="addTeam">
+    <div class='dbox'>
+     <h2>{{page.desc}}</h2>
 
-  <form method="post" class="df" enctype="multipart/form-data">
-   <div class="f">
-    <div class="f c s12 g1">
-     <div class="c12 s12">
-      <input type="text" name="name" placeholder='{%trans "Name"%}' value="{{team.name}}" required autofocus maxlength='30' minlength="5" pattern=".{5,30}" title='{%trans "Enter a valid name from 5 to 50 character"%}'>
-     </div>
-
-     <div class="c12 s12">
-      <input type="url" name="website" placeholder='{%trans "Website"%}' value="{{team.website}}" maxlength='30' minlength="3">
-     </div>
-    </div>
-
-
-      <div class="cauto s12 g1">
-       <div>
-        <input type="file" name="logo" id="logo" accept="image/gif, image/jpeg, image/png" data-preview>
-        <label for="logo" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-        {%if edit_mode and team.logo%}
-          <img src="{{team.logo}}" alt="{{team.name}}" id="logoPreview">
-        {%endif%}
-        </label>
-       </div>
-      </div>
-   </div>
-
-
-   <div data-response='advance' data-response-effect='slide' {%if not edit_mode%}data-response-hide{%endif%}>
-
-    <div class="f g1">
-      <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
-      <div class="c">
-       <div class="f radio1">
-        <div class="c6">
-         <input type="radio" id="r-private" name="privacy" value="private" {%if team.privacy == 'private' or not team.prvacy%}checked{%endif%} >
-         <label for="r-private">{%trans "Private"%}</label>
+     <form method="post" class="df" enctype="multipart/form-data">
+      <div class="f">
+       <div class="f c s12 g1">
+        <div class="c12">
+         <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{team.name}}" required autofocus maxlength='30' minlength="5" pattern=".{5,30}" title='{%trans "Enter a valid name from 5 to 50 character"%}'>
         </div>
-        <div class="c6">
-         <input type="radio" id="r-public" name="privacy" value="public" {%if team.privacy == 'public' %}checked{%endif%}>
-         <label for="r-public">{%trans "Public"%}</label>
+
+        <div class="c12">
+         <input type="url" name="website" placeholder='{%trans "Website"%}' value="{{team.website}}" maxlength='30' minlength="3">
         </div>
        </div>
-      </div>
-    </div>
-
-    <div class="f g1">
-      <div class="cauto s0 lbl"><span>{%trans "Short Name"%}</span></div>
-      <div class="c s12">
-       <input type="text" name="shortName" placeholder='{%trans "Like"%} "Ermile"' value="{{team.short_name}}" maxlength='30' minlength="5" pattern=".{5,30}" title='{%trans "Enter a valid short name from 5 to 50 character"%}'>
-      </div>
-
-    </div>
-
-    <div class="f g1">
-     <div class="c12">
-      <textarea name="desc" placeholder='{%trans "Description"%}' maxlength='200'>{{team.desc}}</textarea>
-     </div>
-    </div>
 
 
-    <div  class="f g1">
-     <h4>{%trans "Default setting for new members of team"%}</h4>
-     <div class="f">
-
-      <div class="c4 s12">
-       <input type="checkbox" name="showAvatar" id="showAvatar" {%if team.show_avatar or not team%}checked{%endif%} >
-       <label for="showAvatar">{%trans "Show users avatars"%}</label>
+         <div class="cauto s12 g1">
+          <div>
+           <input type="file" name="logo" id="logo" accept="image/gif, image/jpeg, image/png" data-preview>
+           <label for="logo" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
+{%if edit_mode and team.logo%}
+             <img src="{{team.logo}}" alt="{{team.name}}" id="logoPreview">
+{%endif%}
+           </label>
+          </div>
+         </div>
       </div>
 
-      <div class="c4 s6">
-       <input type="checkbox" name="allowPlus" id="allowPlus" {%if team.allow_plus or not team%}checked{%endif%}>
-       <label for="allowPlus">{%trans "Allow plus"%}</label>
+
+      <div data-response='advance' data-response-effect='slide' {%if not edit_mode%}data-response-hide{%endif%}>
+
+       <div class="f g1">
+         <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
+         <div class="c">
+          <div class="f radio1">
+           <div class="c6">
+            <input type="radio" id="r-private" name="privacy" value="private" {%if team.privacy == 'private' or not team.prvacy%}checked{%endif%} >
+            <label for="r-private">{%trans "Private"%}</label>
+           </div>
+           <div class="c6">
+            <input type="radio" id="r-public" name="privacy" value="public" {%if team.privacy == 'public' %}checked{%endif%}>
+            <label for="r-public">{%trans "Public"%}</label>
+           </div>
+          </div>
+         </div>
+       </div>
+
+       <div class="f g1">
+         <div class="cauto s0 lbl"><span>{%trans "Short Name"%}</span></div>
+         <div class="c s12">
+          <input type="text" name="shortName" placeholder='{%trans "Like"%} "Ermile"' value="{{team.short_name}}" maxlength='30' minlength="5" pattern=".{5,30}" title='{%trans "Enter a valid short name from 5 to 50 character"%}'>
+         </div>
+       </div>
+
+       <div class="f g1">
+        <div class="c12">
+         <textarea name="desc" placeholder='{%trans "Description"%}' maxlength='200'>{{team.desc}}</textarea>
+        </div>
+       </div>
+
+
+       <div  class="f g1">
+        <h4>{%trans "Default setting for new members of team"%}</h4>
+        <div class="f">
+
+         <div class="c4 s12">
+          <input type="checkbox" name="showAvatar" id="showAvatar" {%if team.show_avatar or not team%}checked{%endif%} >
+          <label for="showAvatar">{%trans "Show users avatars"%}</label>
+         </div>
+
+         <div class="c4 s6">
+          <input type="checkbox" name="allowPlus" id="allowPlus" {%if team.allow_plus or not team%}checked{%endif%}>
+          <label for="allowPlus">{%trans "Allow plus"%}</label>
+         </div>
+         <div class="c4 s6">
+          <input type="checkbox" name="allowMinus" id="allowMinus" {%if team.allow_minus or not team%}checked{%endif%}>
+          <label for="allowMinus">{%trans "Allow minus"%}</label>
+         </div>
+
+         <div class="c4 s6">
+          <input type="checkbox" name="remoteUser" id="remoteUser" {%if team.remote_user %}checked{%endif%}>
+          <label for="remoteUser">{%trans "Remote user"%}</label>
+         </div>
+         <div class="c4 s6">
+          <input type="checkbox" name="24h" id="24h" {%if team['24h']%}checked{%endif%}>
+          <label for="24h">{%trans "24 hour"%}</label>
+         </div>
+
+        </div>
+       </div>
+
       </div>
-      <div class="c4 s6">
-       <input type="checkbox" name="allowMinus" id="allowMinus" {%if team.allow_minus or not team%}checked{%endif%}>
-       <label for="allowMinus">{%trans "Allow minus"%}</label>
-      </div>
-
-      <div class="c4 s6">
-       <input type="checkbox" name="remoteUser" id="remoteUser" {%if team.remote_user %}checked{%endif%}>
-       <label for="remoteUser">{%trans "Remote user"%}</label>
-      </div>
-      <div class="c4 s6">
-       <input type="checkbox" name="24h" id="24h" {%if team['24h']%}checked{%endif%}>
-       <label for="24h">{%trans "24 hour"%}</label>
-      </div>
-
-     </div>
-    </div>
-
-   </div>
 
 
-   <div class="f g1 mt1">
+      <div class="f g1 mt1">
 
 {%if edit_mode%}
-    <div class="c3 s12">
-     <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="bn" data-ajaxify>{%trans "Close"%}</a>
-    </div>
-    <div class="c3 os s12">
-     <input type="submit" value='{%trans "Edit"%}' class='b1'>
-    </div>
+       <div class="c3 s12">
+        <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="bn" data-ajaxify>{%trans "Close"%}</a>
+       </div>
+       <div class="c3 os s12">
+        <input type="submit" value='{%trans "Edit"%}' class='b1'>
+       </div>
 {%else%}
 
-    <div class="c9 s12">
-     <input type="checkbox" name="advance" id="advance">
-     <label for="advance">{%trans "Advance"%}</label>
-    </div>
-    <div class="c3 os s12">
-     <input type="submit" value='{%trans "Add"%}' class="bp">
-    </div>
+       <div class="c9 s12">
+        <input type="checkbox" name="advance" id="advance">
+        <label for="advance">{%trans "Advance"%}</label>
+       </div>
+       <div class="c3 os s12">
+        <input type="submit" value='{%trans "Add"%}' class="bp">
+       </div>
 {%endif%}
 
+      </div>
+     </form>
+
+    </div>
    </div>
-  </form>
-
- </div>
-</div>
-
 {%endblock%}
+
