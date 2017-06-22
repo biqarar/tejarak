@@ -13,16 +13,17 @@ class controller extends \content_a\main\controller
 		$url = \lib\router::get_url();
 
 		// route url like this /a/team/ermile/member
-		$this->get(false, 'add')->ALL("/^team\/([a-zA-Z0-9]+)\/member$/");
-		$this->post('add')->ALL("/^team\/([a-zA-Z0-9]+)\/member$/");
+		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/member$/");
+		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/member$/");
 
 		// route url like this /a/team/ermile/branch=sarshomar/member
-		$this->get(false, 'add')->ALL("/^team\/([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
-		$this->post('add')->ALL("/^team\/([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
+		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
+		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/branch=([a-zA-Z0-9]+)\/member$/");
 
 		// route url like this /a/ermile/sarshomar
-		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$/");
-		if(preg_match("/^([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)$/", $url))
+		// route url like this /a/ermile
+		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/");
+		if(preg_match("/^([a-zA-Z0-9]+)(|\/(^member)([a-zA-Z0-9]+))$/", $url))
 		{
 			$this->display_name = 'content_a\member\dashboard.html';
 		}

@@ -29,34 +29,31 @@ trait get
 			return false;
 		}
 
-		if(!utility::request('team'))
+		$shortname = utility::request('shortname');
+
+		if(!$shortname)
 		{
-			logs::set('api:member:team:brand:notfound', null, $log_meta);
-			debug::error(T_("team not found"), 'team', 'permission');
+			logs::set('api:member:team:shortname:not:set', null, $log_meta);
+			debug::error(T_("Id not found"), 'id', 'permission');
 			return false;
 		}
 
-		$team_id = \lib\db\teams::get_brand(utility::request('team'));
+		$team_detail = \lib\db\teams::access_team($shortname, $this->user_id);
 
-		if(utility::request('branch'))
+		if(!$team_detail)
 		{
-			$branch_id = \lib\db\branchs::get_by_brand(utility::request('team'), utility::request('branch'));
+			logs::set('api:member:team:id:permission:denide', null, $log_meta);
+			debug::error(T_("Can not access to load this team"), 'id', 'permission');
+			return false;
 		}
 
-		if(isset($team_id['id']))
+
+		if(isset($team_detail['id']))
 		{
 			$where            = [];
-			$where['team_id'] = $team_id['id'];
-
-			if(isset($branch_id['id']))
-			{
-				$where['branch_id'] = $branch_id['id'];
-				$result           = \lib\db\userbranchs::get($where);
-			}
-			else
-			{
-				$result           = \lib\db\userteams::get($where);
-			}
+			$where['team_id'] = $team_detail['id'];
+			$where['status']  = 'active';
+			$result           = \lib\db\userteams::get($where);
 
 			$temp             = [];
 			if(is_array($result))
@@ -66,6 +63,7 @@ trait get
 					$temp[] = $this->ready_member($value);
 				}
 			}
+
 			return $temp;
 		}
 	}
@@ -179,100 +177,49 @@ trait get
 		{
 			switch ($key)
 			{
-
 				case 'id':
-
-					$result[$key] = (int) $value;
-					// if(isset($_data['code']) && $_data['code'])
-					// {
-					// 	continue;
-					// }
-					// else
-					// {
-					// 	$result['code'] = \lib\utility\shortURL::encode($value);
-					// }
+					$result['id'] = \lib\utility\shortURL::encode($value);
 					break;
 
-				case 'code':
+				case 'fileurl':
 					if($value)
 					{
-						$result[$key] = (int) $value;
+						$result['file'] = $this->host('file'). '/'. $value;
 					}
 					else
 					{
-						if(isset($_data['id']))
-						{
-							$result[$key] = (int) $_data['id'];
-						}
+						$result['file'] = null;
 					}
+					break;
 
-					// if($value)
-					// {
-					// 	$result['code'] = (int) $value;
-					// }
-					// else
-					// {
-					// 	continue;
-					// }
+				case 'allowplus':
+				case 'allowminus':
+				case '24h':
+				case 'remote':
+					$result[$key] = $value ? true : false;
+					break;
+
+				case 'postion':
+				case 'displayname':
+				case 'fistname':
+				case 'lastname':
+				case 'status':
+				case 'rule':
+				case 'telegram_id':
+				case 'personnelcode':
+					$result[$key] = isset($value) ? (string) $value : null;
 					break;
 
 				case 'team_id':
 				case 'user_id':
-				case 'telegram_id':
-					$result[$key] = (int) $value;
-					break;
-
-				case 'email':
-				case 'displayname':
-				case 'status':
-				case 'postion':
 				case 'desc':
-				case 'mobile':
-				case 'name':
-				case 'family':
-				case 'last_time':
-					$result[$key] = (string) $value;
-					break;
-
-				case 'user_name':
-				case 'user_family':
-				case 'user_displayname':
-				case 'user_status':
-					$result[substr($key, 5)] = (string) $value;
-					break;
-
-				case 'date_enter':
-				case 'date_exit':
-					$result[$key] = strtotime($value);
-					break;
-
-				case 'remote':
-				case 'is_default':
-				case 'full_time':
-					if($value)
-					{
-						$result[$key] = true;
-					}
-					else
-					{
-						$result[$key] = false;
-					}
-					break;
-
-				case 'file_detail':
-					if(is_string($value) && substr($value, 0, 1) === '{')
-					{
-						$value = json_decode($value, true);
-					}
-
-					if(isset($value['url']))
-					{
-						$result['file'] = Protocol."://" . \lib\router::get_root_domain(). '/'. $value['url'];
-					}
-					break;
+				case 'meta':
 				case 'createdate':
 				case 'date_modified':
-				case 'meta':
+				case 'isdefault':
+				case 'dateenter':
+				case 'dateexit':
+				case 'fileid':
 				default:
 					continue;
 					break;

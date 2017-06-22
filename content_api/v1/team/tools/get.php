@@ -53,7 +53,7 @@ trait get
 				case 'desc':
 				case 'alias':
 				case 'privacy':
-					$result[$key] = $value ? (string) $value : null;
+					$result[$key] = isset($value) ? (string) $value : null;
 					break;
 				case 'shortname':
 					$result['short_name'] = $value ? (string) $value : null;
@@ -75,7 +75,14 @@ trait get
 					break;
 
 				case 'logourl':
-					$result['logo'] = $this->host('file'). '/'. $value;
+					if($value)
+					{
+						$result['logo'] = $this->host('file'). '/'. $value;
+					}
+					else
+					{
+						$result['logo'] = null;
+					}
 					break;
 
 				case 'logo':

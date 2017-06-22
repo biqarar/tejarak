@@ -21,12 +21,10 @@ class view extends \content_a\main\view
 	 */
 	public function view_list($_args)
 	{
-		$request            = [];
-		$this->data->team   = $request['team']         = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		$this->data->branch = $request['branch']       = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-
+		$team                    = \lib\router::get_url(0);
+		$request                 = [];
+		$this->data->team        = $request['shortname'] = $team;
 		$this->data->list_member = $this->model()->list_member($request);
-		// var_dump($this->data->list_member);exit();
 	}
 
 }

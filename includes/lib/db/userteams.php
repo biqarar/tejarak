@@ -67,10 +67,7 @@ class userteams
 			$query =
 			"
 				SELECT
-					userteams.*,
-					users.user_mobile AS `mobile`,
-					users.user_displayname AS `displayname`,
-					users.user_email AS `email`
+					userteams.*
 				FROM
 					userteams
 				INNER JOIN users ON users.id = userteams.user_id

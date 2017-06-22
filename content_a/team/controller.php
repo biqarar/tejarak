@@ -22,7 +22,7 @@ class controller extends \content_a\main\controller
 		{
 			// route url like:
 			// a/ermile
-			\lib\router::set_controller('content_a\member\controller');
+			\lib\router::set_controller('content_a\\member\\controller');
 			return;
 		}
 		else

@@ -190,10 +190,11 @@ trait add
 
 			\lib\storage::set_last_team_code_added(\lib\utility\shortURL::encode($team_id));
 
-			$userteam_args            = [];
-			$userteam_args['user_id'] = $this->user_id;
-			$userteam_args['team_id'] = $team_id;
-			$userteam_args['rule']    = 'admin';
+			$userteam_args                = [];
+			$userteam_args['user_id']     = $this->user_id;
+			$userteam_args['team_id']     = $team_id;
+			$userteam_args['rule']        = 'admin';
+			$userteam_args['displayname'] = 'You';
 			\lib\db\userteams::insert($userteam_args);
 
 		}
