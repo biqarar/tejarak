@@ -33,7 +33,7 @@ trait get
 			switch ($key)
 			{
 				case 'id':
-					$result[$key] = (int) $value;
+					$result[$key] = \lib\utility\shortURL::encode($value);
 					break;
 
 				case 'status':
@@ -188,16 +188,17 @@ trait get
 			return false;
 		}
 
-		$team = utility::request("team");
+		$id = utility::request("id");
+		$id = \lib\utility\shortURL::decode($id);
 
-		if(!$team)
+		if(!$id)
 		{
 			logs::set('api:team:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Invalid team brand"), 'team', 'permission');
+			debug::error(T_("Team id not set"), 'id', 'arguments');
 			return false;
 		}
 
-		$result = \lib\db\teams::access_team($team, $this->user_id);
+		$result = \lib\db\teams::access_team_id($id, $this->user_id);
 		if(!$result)
 		{
 			logs::set('api:team:access:denide', $this->user_id, $log_meta);

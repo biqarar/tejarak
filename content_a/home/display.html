@@ -7,7 +7,7 @@
 {%block contentCenter%}
 <div class="flex justify-center wrap">
  {%for key, value in team_list%}
-  <a class='teams-item' href='{{url.baseFull}}/{{value.short_name}}/edit' data-direct>
+  <a class='teams-item' href='{{url.baseFull}}/team/{{value.id}}' data-direct>
    <div class="flex justify-center align-center teams-item-square">
    	{%if value.logo%}
     <img src="{{value.logo}}" alt="{{value.name}}">

@@ -38,8 +38,15 @@ class controller extends \content_a\main\controller
 			return;
 		}
 
-		$this->get(false, 'edit')->ALL($url);
-		$this->post('edit')->ALL($url);
+		// the url is team/ermile we remove team/ from first of url to get the 'ermile' [team brand]
+		$name = str_replace('team/', '', $url);
+		// check the team exist or no and this user is the boss ot this team
+		// this function in content_admi/main/model
+		if($this->model()->is_exist_team_id(\lib\utility\shortURL::decode($name)))
+		{
+			$this->get(false, 'edit')->ALL("team/$name");
+			$this->post('edit')->ALL("team/$name");
+		}
 	}
 }
 ?>

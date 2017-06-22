@@ -75,14 +75,14 @@ class model extends \content_a\main\model
 	/**
 	 * load team data to load for edit
 	 *
-	 * @param      <type>  $_team  The team
+	 * @param      <type>  $_code  The team
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function edit($_team)
+	public function edit($_code)
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['team' => $_team]);
+		utility::set_request_array(['id' => $_code]);
 		return $this->get_team();
 	}
 
