@@ -38,11 +38,11 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function get_add($_args)
+	public function getTeamDetail($_team)
 	{
 		$request         = [];
 		$this->user_id   = $this->login('id');
-		$request['team'] = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$request['id'] = $_team;
 		utility::set_request_array($request);
 		$result = $this->get_team();
 		return $result;

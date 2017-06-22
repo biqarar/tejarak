@@ -223,7 +223,7 @@ trait add
 			if(!utility::isset_request('website')) 			unset($args['website']);
 			if(!utility::isset_request('desc')) 			unset($args['desc']);
 			if(!utility::isset_request('show_avatar')) 		unset($args['showavatar']);
-			if(!utility::isset_request('allo_wplus')) 		unset($args['allowplus']);
+			if(!utility::isset_request('allow_plus')) 		unset($args['allowplus']);
 			if(!utility::isset_request('allow_minus')) 		unset($args['allowminus']);
 			if(!utility::isset_request('remote_user')) 		unset($args['remote']);
 			if(!utility::isset_request('24h')) 				unset($args['24h']);

@@ -12,7 +12,10 @@ class view extends \content_a\main\view
 	{
 		$this->data->page['title'] = T_('Add new member');
 		$this->data->page['desc']  = $this->data->page['title'];
-
+		$team                      = \lib\router::get_url(1);
+		$team_default              = $this->model()->getTeamDetail($team);
+		$this->data->team_default  = $team_default;
+		// var_dump($team_default);exit();
 		// fix title on edit
 		if(isset($this->data->list_member['title']))
 		{

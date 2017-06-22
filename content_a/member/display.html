@@ -70,20 +70,20 @@
        <h4>{%trans "Extra setting for special use"%}</h4>
        <div class="f">
         <div class="c4 s6">
-         <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or not member%}checked{%endif%}>
+         <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or team_default.allow_plus or ( not member and not team_default) %}checked{%endif%}>
          <label for="allowPlus">{%trans "Allow plus"%}</label>
         </div>
         <div class="c4 s6">
-         <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or not member%}checked{%endif%}>
+         <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or team_default.allow_minus or ( not member and not team_default)%}checked{%endif%}>
          <label for="allowMinus">{%trans "Allow minus"%}</label>
         </div>
 
         <div class="c4 s6">
-         <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user %}checked{%endif%}>
+         <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
          <label for="remoteUser">{%trans "Remote user"%}</label>
         </div>
         <div class="c4 s6">
-         <input type="checkbox" name="24h" id="24h" {%if member['24h']%}checked{%endif%}>
+         <input type="checkbox" name="24h" id="24h" {%if member['24h'] or team_default['24h'] %}checked{%endif%}>
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
        </div>
