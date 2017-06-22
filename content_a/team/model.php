@@ -124,6 +124,11 @@ class model extends \content_a\main\model
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
+		if(debug::$status)
+		{
+			debug::msg('direct', true);
+			$this->redirector()->set_domain()->set_url("a/$code");
+		}
 	}
 
 
