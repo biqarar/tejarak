@@ -7,19 +7,33 @@
 
     <form method="post" class="df" enctype="multipart/form-data">
      <div class="f">
-      <div class="f c9 g1">
+      <div class="f c s12 g1">
        <div class="c12">
-        <input type="text" name="name" id="name" placeholder='{%trans "Name"%}' value="{{member.name}}" required>
+        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.name}}" required autofocus maxlength='50' minlength="3" pattern=".{3,50}" title='{%trans "Enter a valid name from 3 to 50 character"%}'>
        </div>
 
        <div class="c12">
        <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}">
        </div>
       </div>
-      <div class="c3 g1 df-file df-avatar">
+
+      <div class="cauto s12 g1">
        <div>
-        <input type="file" name="avatar" id="avatar">
-        <label for="avatar"></label>
+        <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
+        <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
+{%if edit_mode and team.avatar%}
+         <img src="{{team.avatar}}" alt="{{team.name}}" id="avatarPreview">
+{%endif%}
+        </label>
+       </div>
+      </div>
+     </div>
+
+     <div data-response='advance' data-response-effect='slide' {%if not edit_mode and false%}data-response-hide{%endif%}>
+      <div class="f g1">
+
+       <div class="c12">
+         <input type="text" name="family" id="family" placeholder='{%trans "Family"%}' value="{{member.family}}">
        </div>
       </div>
      </div>
@@ -29,9 +43,6 @@
        <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}">
       </div>
 
-      <div class="c6">
-        <input type="text" name="family" id="family" placeholder='{%trans "Family"%}' value="{{member.family}}">
-      </div>
 
       <div class="c12">
        <input type="text" name="code" id="code" placeholder='{%trans "Code" %}' value="{{member.code}}">
@@ -71,7 +82,11 @@
 {%endif%}
 
      <div class="f g1">
-      <div class="c12">
+       <div class="c9 s12">
+        <input type="checkbox" name="advance" id="advance">
+        <label for="advance">{%trans "Advance"%}</label>
+       </div>
+      <div class="c3 os">
        {%if edit_mode%}
         <input type="submit" value='{%trans "Edit"%}' class="b1">
        {%else%}
