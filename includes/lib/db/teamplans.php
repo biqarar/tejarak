@@ -141,7 +141,16 @@ class teamplans
 		}
 		$log_meta['meta']['current'] = $current;
 		\lib\db\logs::set('plan:changed', $_args['creator'], $log_meta);
-		return self::insert($_args);
+
+		self::insert($_args);
+		$update_team =
+		[
+			'plan'         => self::plan_name($_args['plan']),
+			'startplan'    => date("Y-m-d H:i:s"),
+			'startplanday' => date("d"),
+		];
+		\lib\db\teams::update($update_team, $_args['team_id']);
+		return true;
 	}
 }
 ?>
