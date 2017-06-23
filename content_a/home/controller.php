@@ -17,10 +17,13 @@ class controller extends \content_a\main\controller
 		// The user is the first time he uses the system,
 		// so we will transfer him to the installation file
 		// But before that we check that this user is not registered in any team.
-		if(!$this->login('setup'))
+		if($this->login('id') && !$this->login('setup'))
 		{
-			$this->redirector()->set_domain()->set_url('a/setup')->redirect();
-			return;
+			if(!\lib\db\userteams::get(['user_id' => $this->login('id'), 'status' => 'active', 'limit' => 1]))
+			{
+				$this->redirector()->set_domain()->set_url('a/setup')->redirect();
+				return;
+			}
 		}
 
 		$this->get(false, 'dashboard')->ALL();
