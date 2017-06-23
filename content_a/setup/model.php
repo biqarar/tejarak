@@ -64,7 +64,8 @@ class model extends \content_a\main\model
 		// API ADD TEAM FUNCTION
 		$this->add_team();
 		// save last team added to session to get in step 3
-		$_SESSION['last_team_added'] = \lib\storage::get_last_team_added();
+		$_SESSION['last_team_added']      = \lib\storage::get_last_team_added();
+		$_SESSION['last_team_added_code'] = \lib\storage::get_last_team_code_added();
 
 		// change param team to load again true
 		if(isset($_SESSION['param']['team']))
@@ -162,18 +163,20 @@ class model extends \content_a\main\model
 			}
 		}
 		// add user to team member and centeral branch member
-		$request            = [];
-		$request['mobile']  = $this->login('mobile');
-		$request['name']    = utility::post('name');
-		$request['family']  = utility::post('family');
-		$request['postion'] = utility::post('post');
-		$request['file']    = $file_code;
-		$request['team']    = isset($_SESSION['last_team_added']) ? $_SESSION['last_team_added'] : null;
+		$request                = [];
+		$request['mobile']      = $this->login('mobile');
+		$request['firstname']   = utility::post('name');
+		$request['lastname']    = utility::post('family');
+		$request['displayname'] = utility::post('name') . ' '. utility::post('family');
+		$request['postion']     = utility::post('post');
+		$request['file']        = $file_code;
+		$request['team']        = isset($_SESSION['last_team_added_code']) ? $_SESSION['last_team_added_code'] : null;
+		$request['id']          = \lib\utility\shortURL::encode($this->login('id'));
 
 		utility::set_request_array($request);
 		$this->user_id      = $this->login('id');
 		// API ADD MEMBER FUNCTION
-		$this->add_member();
+		$this->add_member(['method' => 'patch']);
 
 		// if the member is added redirect to setup 3
 		if(debug::$status)

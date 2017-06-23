@@ -16,6 +16,7 @@ class model extends \content\main\model
 		$this->user_id     = $this->login('id');
 		$request           = [];
 		$request['shortname']   = isset($_args['shortname']) ? $_args['shortname'] : null;
+		// to get last hours. what i want to do?
 		utility::set_request_array($request);
 		$result =  $this->get_list_member();
 		return $result;

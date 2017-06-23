@@ -82,9 +82,9 @@ class view extends \content_a\main\view
 	 */
 	public function view_setup3($_args)
 	{
-		if(isset($_SESSION['last_team_added']))
+		if(isset($_SESSION['last_team_added_code']))
 		{
-			$this->data->last_team_added = $_SESSION['last_team_added'];
+			$this->data->last_team_added_code = $_SESSION['last_team_added_code'];
 		}
 	}
 }
