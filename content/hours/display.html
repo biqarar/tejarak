@@ -5,10 +5,13 @@
   <div class='middle' id="showMember">
 
 {%for key, value in list_member%}
-   <div class="tcard">
+   <div class="tcard" data-status='{{value.status}}' data-live='{%if value.last_time%}on{%else%}off{%endif%}'>
     <div class="cbox">
      <div class="front">
       <div class="cfimg">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</div>
+      <div class="cfdetail">
+       <span class="cfnum">{{key+1}}</span>
+      </div>
       <div class="cfinfo">
        <div class="cfname">{{value.displayname}}</div>
        {%if value.postion%}<div class="cfpos">{{value.postion}}</div>{%endif%}
