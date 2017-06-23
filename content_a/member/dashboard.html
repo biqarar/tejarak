@@ -32,7 +32,7 @@
 {{parent()}}
     <li><a href="{{url.baseFull}}/team/{{team}}"><i class="icon-cog"></i>{%trans "Team Settings"%}</a></li>
     <li><a href="{{url.baseFull}}/team/{{team}}/plan"><i class="icon-bolt"></i>{%trans "Change Plan"%}</a></li>
-    {%if current_team.short_name%}
+{%if current_team.short_name%}
       <li><a href="{{url.base}}/{{current_team.short_name}}" data-direct><i class="icon-bolt"></i>{%trans "Attendance"%}</a></li>
-    {%endif%}
+{%endif%}
 {%endblock%}

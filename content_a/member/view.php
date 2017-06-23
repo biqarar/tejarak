@@ -19,17 +19,12 @@ class view extends \content_a\main\view
 	 */
 	public function view_add($_args)
 	{
-		$this->data->page['title'] = T_('Add new member');
-		$this->data->page['desc']  = $this->data->page['title'];
 		$team                      = \lib\router::get_url(1);
 		$team_default              = $this->load_current_team($team);
 		$this->data->current_team  = $this->data->team_default  = $team_default;
-		// fix title on edit
-		if(isset($this->data->list_member['title']))
-		{
-			$this->data->page['title'] = T_('Edit team');
-			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->list_member['title']]);
-		}
+
+		$this->data->page['title'] = T_('Add new member');
+		$this->data->page['desc']  = $this->data->page['title'];
 	}
 
 
@@ -46,10 +41,11 @@ class view extends \content_a\main\view
 		$this->data->team         = $request['id'] = $team;
 		$list                     = $this->model()->list_member($request);
 		$this->data->list_member  = $list;
-		if(isset($this->data->list_member['title']))
+
+		if(isset($this->data->current_team['name']))
 		{
-			$this->data->page['title'] = T_('Edit team');
-			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->list_member['title']]);
+			$this->data->page['title'] = $this->data->current_team['name'];
+			$this->data->page['desc']  = $this->data->page['title'];
 		}
 	}
 
@@ -61,8 +57,7 @@ class view extends \content_a\main\view
 	 */
 	public function view_edit($_args)
 	{
-		$this->data->page['title'] = T_('Edit member');
-		$this->data->page['desc']  = $this->data->page['title'];
+
 		$this->data->edit_mode     = true;
 		$url                       = \lib\router::get_url();
 		$team                      = \lib\router::get_url(1);
@@ -70,6 +65,17 @@ class view extends \content_a\main\view
 		$member                    = substr($url, strpos($url,'=') + 1);
 		$member                    = $this->model()->edit($team, $member);
 		$this->data->member        = $member;
+
+		if(isset($member['displayname']))
+		{
+			$this->data->page['title'] = T_('Edit :name', ['name' => $member['displayname']]);
+		}
+		else
+		{
+			$this->data->page['title'] = T_('Edit member!');
+		}
+		$this->data->page['desc']  = $this->data->page['title'];
+
 	}
 
 }

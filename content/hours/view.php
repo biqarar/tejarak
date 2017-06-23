@@ -5,6 +5,7 @@ class view extends \mvc\view
 {
 	function config()
 	{
+		$this->data->bodyclass     = 'unselectable dash attendance';
 
 	}
 
@@ -22,6 +23,8 @@ class view extends \mvc\view
 		$this->data->team   = $request['shortname']         = $team;
 		$this->data->list_member = $this->model()->list_member($request);
 
+		$this->data->page['title'] = T_($team);
+		$this->data->page['desc']  = T_('Setup is finished!');
 	}
 }
 ?>
