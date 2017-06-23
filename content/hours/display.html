@@ -1,38 +1,64 @@
 {%extends display.admin%}
 
 
-{%block content%}
+{%block contentCenter%}
+  <div class='middle' id="showMember">
 
 {%for key, value in list_member%}
-<div class="t-card-box">
- <div class="t-card">
-  <div class="t-card-front">
-   <div class="t-card-img"><img src='{{value.file}}' alt=''></div>
-   <div class="t-card-bottom">
-    <div class="t-card-name">{{value.name}} {{value.family}}</div>
-    {%if value.postion%}<div class="t-card-post">{{value.postion}}</div>{%endif%}
-    {%if value.last_time%}<div class="t-card-post">{{value.last_time}}</div>{%else%}<div class="t-card-post">:|</div>{%endif%}
-   </div>
-  </div>
+   <div class="tcard">
+    <div class="cbox">
+     <div class="front">
+      <div class="cfimg">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</div>
+      <div class="cfinfo">
+       <div class="cfname">{{value.displayname}}</div>
+       {%if value.postion%}<div class="cfpos">{{value.postion}}</div>{%endif%}
+      </div>
+     </div>
 
-  <div class="t-card-back">
-   <div class="t-card-back-top">
-    <div class="t-card-back-name" data-number='{{key}}'>{{value.name}} {{value.family}}</div>
+     <div class="back">
+      <div class="t-card-back-top">
+       <div class="t-card-back-name" data-number='{{key}}'>{{value.name}} {{value.family}}</div>
+
+{%if value.last_time%}<div class="t-c-post">{{value.last_time}}</div>{%else%}<div class="t-c-post">:|</div>{%endif%}
+   <form method="post" class="df">
+     <input type="hidden" name="user" value="{{value.user_id}}">
+     <input type="hidden" name="type" value="enter">
+     <input type="submit" value="enter" >
+   </form>
+   <form method="post" class="df">
+     <input type="hidden" name="user" value="{{value.user_id}}">
+     <input type="hidden" name="type" value="exit">
+     <input type="submit" value="exit" >
+   </form>
+
+
+      </div>
+     </div>
+    </div>
    </div>
-  </div>
- </div>
-</div>
-<form method="post" class="df">
-  <input type="hidden" name="user" value="{{value.user_id}}">
-  <input type="hidden" name="type" value="enter">
-  <input type="submit" value="enter" >
-</form>
-<form method="post" class="df">
-  <input type="hidden" name="user" value="{{value.user_id}}">
-  <input type="hidden" name="type" value="exit">
-  <input type="submit" value="exit" >
-</form>
+
+
 {%endfor%}
+  </div>
 {%endblock%}
+
+
 {%block sideBox%}
+{%endblock%}
+{%block sideBox2%}
+
+   <div class="tcard">
+    <div class="cbox">
+     <div class="front">
+      <a class="cfimg" href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt=''>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
+      <div class="cfdetail">
+       <span class="cfnum">{{key+1}}</span>
+      </div>
+      <a class="cfinfo" href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">
+       <div class="cfname">{{value.displayname}} {{value.family}}</div>
+       {%if value.postion%}<div class="cfpos">{{value.postion}}</div>{%endif%}
+      </a>
+     </div>
+    </div>
+   </div>
 {%endblock%}

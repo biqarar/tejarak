@@ -1,37 +1,29 @@
 {%extends display.admin%}
 
-
 {%block contentCenter%}
-{%for key, value in list_member%}
-<div class="t-card-box">
- <div class="t-card">
-  <div class="t-card-front">
-   <div class="t-card-img">{%if value.file%}<img src='{{value.file}}' alt=''>{%endif%}</div>
-   <div class="t-card-absolute">
-    <div class="t-card-number">{{key+1}}</div>
-   </div>
-   <div class="t-card-bottom">
-    <div class="t-card-name">{{value.displayname}} {{value.family}}</div>
-    {%if value.postion%}<div class="t-card-post">{{value.postion}}</div>{%endif%}
-   </div>
-  </div>
+  <div class='middle' id="showMember">
 
-  <div class="t-card-back">
-   <div class="t-card-back-top">
-    <div class="t-card-back-name" data-number='{{key+1}}'><a href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">{{value.displayname}}</a></div>
+{%for key, value in list_member%}
+   <div class="tcard">
+    <div class="cbox">
+     <div class="front">
+      <a class="cfimg" href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
+      <div class="cfdetail">
+       <span class="cfnum">{{key+1}}</span>
+      </div>
+      <a class="cfinfo" href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">
+       <div class="cfname">{{value.displayname}}</div>
+       {%if value.postion%}<div class="cfpos">{{value.postion}}</div>{%endif%}
+      </a>
+     </div>
+    </div>
    </div>
-  </div>
- </div>
-</div>
 {%endfor%}
 
-<a class="t-card-box t-card-add t-card-fix" href="{{url.baseFull}}/team/{{team}}/member">
- <div class="t-card">
-  <div class="t-card-front">
-   <span class="t-card-add-plus">+</span>
+   <a class="tcard add" href="{{url.baseFull}}/team/{{team}}/member">
+      <span class="plus">+</span>
+   </a>
   </div>
- </div>
-</a>
 {%endblock%}
 
 {%block sidenav%}
