@@ -10,6 +10,7 @@ class teams
 	 * @var        array
 	 */
 	public static $TEAMS_SHORT_NAME = [];
+	public static $TEAMS_ID         = [];
 
 	/**
 	 * add new team
@@ -28,6 +29,30 @@ class teams
 		}
 	}
 
+	/**
+	 * Gets the shortname.
+	 * get team by shortname
+	 * @param      <type>  $_shortname  The shortname
+	 *
+	 * @return     <type>  The shortname.
+	 */
+	public static function get_by_id($_id)
+	{
+		if(!isset(self::$TEAMS_ID[$_id]))
+		{
+			if($_id)
+			{
+				$query = "SELECT * FROM teams WHERE teams.id = '$_id' LIMIT 1";
+				self::$TEAMS_ID[$_id] = \lib\db::get($query, null, true);
+			}
+		}
+
+		if(isset(self::$TEAMS_ID[$_id]))
+		{
+			return self::$TEAMS_ID[$_id];
+		}
+		return null;
+	}
 
 	/**
 	 * Gets the shortname.
@@ -76,6 +101,9 @@ class teams
 	 */
 	public static function update()
 	{
+		// clear cash
+		self::$TEAMS_SHORT_NAME = [];
+
 		return \lib\db\config::public_update('teams', ...func_get_args());
 	}
 
