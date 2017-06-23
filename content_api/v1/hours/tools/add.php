@@ -116,10 +116,10 @@ trait add
 
 		$args              = [];
 		$args['user_id']   = $user;
+		$args['team_id']   = $team_id;
 		$args['minus']     = $minus;
 		$args['plus']      = $plus;
 		$args['type']      = $type;
-		$args['team_id']   = $team_id;
 
 		if($_args['method'] === 'post')
 		{

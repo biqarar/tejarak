@@ -52,6 +52,7 @@ class userteams
 		return $result;
 	}
 
+
 	/**
 	 * add new userteam
 	 *
@@ -63,6 +64,17 @@ class userteams
 	{
 		\lib\db\config::public_insert('userteams', ...func_get_args());
 		return \lib\db::insert_id();
+	}
+
+
+	/**
+	 * hours
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function get()
+	{
+		return \lib\db\config::public_get('userteams', ...func_get_args());
 	}
 
 
@@ -92,7 +104,7 @@ class userteams
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function get($_args)
+	public static function get_list($_args)
 	{
 		if($_args)
 		{

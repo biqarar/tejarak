@@ -72,7 +72,7 @@ trait get
 			$where['team_id']   = $team_detail['id'];
 			$where['get_hours'] = $get_hours;
 			$where['status']    = ['IN', "('active', 'deactive')"];
-			$result             = \lib\db\userteams::get($where);
+			$result             = \lib\db\userteams::get_list($where);
 			$temp               = [];
 			if(is_array($result))
 			{
@@ -146,7 +146,7 @@ trait get
 
 		utility::set_request_array($MEMBER_REQUEST);
 
-		$check_user_in_team = \lib\db\userteams::get(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
+		$check_user_in_team = \lib\db\userteams::get_list(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
 		// var_dump($check_user_in_team);exit();
 		if(!$check_user_in_team)
 		{

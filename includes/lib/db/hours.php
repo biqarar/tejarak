@@ -44,6 +44,41 @@ class hours
 		return db\config::public_update('hours', ...func_get_args());
 	}
 
+	/**
+	 * check some data before save hours
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	private static function check_before_save($_args)
+	{
+		$date = date("Y-m-d");
+
+		$userteam_id   = \lib\db\userteams::get(
+			[
+				'team_id' => $_args['team_id'],
+				'user_id' => $_args['user_id'],
+				'limit'   => 1,
+			]
+		);
+
+		if(!$userteam_id || !isset($userteam_id['id']) || !isset($userteam_id['status']))
+		{
+			debug::error(T_("User team not found!"));
+			return false;
+		}
+
+		if($userteam_id['status'] !== 'active')
+		{
+			debug::error(T_("User is diactive!"));
+			return false;
+		}
+
+		$_args['userteam_id'] = $userteam_id['id'];
+		$_args['date']        = $date;
+
+		return $_args;
+	}
+
 
 	/**
 	 * Saves an enter.
@@ -55,23 +90,12 @@ class hours
 	{
 		$date = date("Y-m-d");
 
-		$userteam_id   = \lib\db\userteams::get_id(
-			[
-				'team_id' => $_args['team_id'],
-				'user_id' => $_args['user_id'],
-				'limit'   => 1,
-			]
-		);
+		$_args = self::check_before_save($_args);
 
-		if(!$userteam_id)
+		if(!debug::$status)
 		{
-			debug::error(T_("User team not found!"));
 			return false;
 		}
-
-		$_args['userteam_id']   = $userteam_id;
-		$_args['date']          = $date;
-
 		// get last not exit time of this user and this teamd
 		$in_use_time = self::in_use_time($_args);
 
@@ -85,7 +109,7 @@ class hours
 		$insert['user_id']           = $_args['user_id'];
 		$insert['team_id']           = $_args['team_id'];
 		$insert['start_userteam_id'] = $_args['user_id'];
-		$insert['userteam_id']       = $userteam_id;
+		$insert['userteam_id']       = $_args['userteam_id'];
 		$insert['date']              = date("Y-m-d");
 		$insert['year']              = date("Y");
 		$insert['month']             = date("m");
@@ -109,22 +133,12 @@ class hours
 	{
 		$date = date("Y-m-d");
 
-		$userteam_id   = \lib\db\userteams::get_id(
-			[
-				'team_id' => $_args['team_id'],
-				'user_id' => $_args['user_id'],
-				'limit'   => 1,
-			]
-		);
+		$_args = self::check_before_save($_args);
 
-		if(!$userteam_id)
+		if(!debug::$status)
 		{
-			debug::error(T_("User team not found!"));
 			return false;
 		}
-
-		$_args['userteam_id']   = $userteam_id;
-		$_args['date']          = $date;
 
 		// get last not exit time of this user and this teamd
 		$start = self::in_use_time($_args);
