@@ -6,6 +6,53 @@ class userteams
 {
 
 	/**
+	 * get total of userteam
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function total_count()
+	{
+		return intval(\lib\db::get("SELECT COUNT(*) AS `count` FROM userteams", 'count', true));
+	}
+
+
+	/**
+	 * get total userteam and save in file
+	 * to show in footer
+	 *
+	 * @return     integer  ( description_of_the_return_value )
+	 */
+	public static function total_userteam()
+	{
+		$result = 0;
+		$url    = root. 'public_html/files/data/';
+		if(!\lib\utility\file::exists($url))
+		{
+			\lib\utility\file::makeDir($url, null, true);
+		}
+		$url .= 'total_userteam.txt';
+		if(!\lib\utility\file::exists($url))
+		{
+			$result = self::total_count();
+			\lib\utility\file::write($url, $result);
+		}
+		else
+		{
+			$file_time = \filemtime($url);
+			if((time() - $file_time) >  (60 * 10))
+			{
+				$result       = self::total_count();
+				\lib\utility\file::write($url, $result);
+			}
+			else
+			{
+				$result = \lib\utility\file::read($url);
+			}
+		}
+		return $result;
+	}
+
+	/**
 	 * add new userteam
 	 *
 	 * @param      <type>  $_args  The arguments
