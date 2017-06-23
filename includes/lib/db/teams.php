@@ -12,7 +12,7 @@ class teams
 	public static $TEAMS_SHORT_NAME = [];
 
 	/**
-	 * add new election
+	 * add new team
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
@@ -56,7 +56,7 @@ class teams
 
 
 	/**
-	 * get election record
+	 * get team record
 	 *
 	 * @param      <type>  $_id    The identifier
 	 *
@@ -69,7 +69,7 @@ class teams
 
 
 	/**
-	 * update election
+	 * update team
 	 *
 	 * @param      <type>  $_args  The arguments
 	 * @param      <type>  $_id    The identifier
@@ -202,7 +202,7 @@ class teams
 
 		if(!$_string && empty($_options))
 		{
-			// default return of this function 10 last record of election
+			// default return of this function 10 last record of team
 			$_options['get_last'] = true;
 		}
 

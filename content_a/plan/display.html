@@ -1,0 +1,71 @@
+{%extends display.admin%}
+
+{%block content%}
+
+  <div class="f">
+   <div class="c6 account-balance">
+    <div class="box">
+     <div class="f align-center">
+      <h2 class="c">{%trans "Current Plan"%}</h2>
+      <h3 class="cauto os"><span>{{current_plan.plan_name}}</span></h3>
+     </div>
+    </div>
+   </div>
+
+   <div class="c6 account-balance">
+    <div class="box">
+     <div class="f align-center">
+      <h2 class="c">{%trans "Start date"%}</h2>
+      <h3 class="cauto os"><span>{{current_plan.start|jdate("Y-m-d")}}</span><sub>{{current_plan.start|jdate("H:i:s")}}</sub></h3>
+     </div>
+    </div>
+   </div>
+  </div>
+
+
+  <div class="f">
+   <div class="box">
+    <h2>{%trans "Choose a new plan of your team"%}</h2>
+    <p>{%trans "Choose a plan to change your team plan"%}</p>
+
+    <form method="post"  autocomplete="off">
+     <div class="f">
+      <label class="">
+       <input type="radio" name="plan" id="free" value="free" checked>
+       <h1>FREE</h1>
+      </label>
+     </div>
+
+     <div class="f">
+      <label class="cauto">
+       <input type="radio" name="plan" id="pro" value="pro">
+       <h1>PRO</h1>
+      </label>
+     </div>
+
+     <div class="f">
+      <label class="cauto">
+       <input type="radio" name="plan" id="business" value="business">
+       <h1>BUSINESS</h1>
+      </label>
+     </div>
+
+     <div class=" b1">
+      <button class="c" type="submit">{%trans "Apply"%}</button>
+     </div>
+    </form>
+
+   </div>
+  </div>
+
+{%if false%}
+  <div class="f">
+   <div class="box msg">
+    <h2>{%trans "Alert for change team plan"%}</h2>
+   </div>
+  </div>
+{%endif%}
+
+
+
+{%endblock%}

@@ -172,7 +172,6 @@ trait add
 			$team_id = \lib\db\teams::insert($args);
 			\lib\db::$debug_error = true;
 
-			// var_dump($team_id);exit();
 			if(!$team_id)
 			{
 				$args['shortname'] = $this->shortname_fix($args);
@@ -194,6 +193,14 @@ trait add
 			$userteam_args['rule']        = 'admin';
 			$userteam_args['displayname'] = 'You';
 			\lib\db\userteams::insert($userteam_args);
+
+			$insert_team_plan =
+			[
+				'team_id' => $team_id,
+				'plan'    => 'free',
+				'creator' => $this->login('id'),
+			];
+			\lib\db\teamplans::set($insert_team_plan);
 
 		}
 		elseif ($_args['method'] === 'patch')

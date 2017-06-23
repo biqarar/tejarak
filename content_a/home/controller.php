@@ -50,6 +50,20 @@ class controller extends \content_a\main\controller
 			}
 		}
 
+
+		// route url like this /a/2kf/plan
+		if(preg_match("/^([a-zA-Z0-9]+)\/plan$/", $url, $split))
+		{
+			if(isset($split[1]))
+			{
+				$id = \lib\utility\shortURL::decode($split[1]);
+				if($id && $this->model()->is_exist_team_id($id))
+				{
+					\lib\router::set_controller("content_a\\plan\\controller");
+				}
+			}
+		}
+
 		/**
 		 * route report urls
 		 * in url must be find .../report/... | .../report
