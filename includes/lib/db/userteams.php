@@ -137,7 +137,7 @@ class userteams
 					LEFT JOIN hours ON hours.userteam_id = userteams.id AND (IF(userteams.24h, hours.date = '$date', TRUE) AND hours.end IS NULL)
 					WHERE
 						$where
-					ORDER BY userteams.sort ASC
+					ORDER BY userteams.sort, userteams.id ASC
 					$limit
 				";
 			}
@@ -153,7 +153,7 @@ class userteams
 					LEFT JOIN users ON users.id = userteams.user_id
 					WHERE
 						$where
-					ORDER BY userteams.sort ASC
+					ORDER BY userteams.sort, userteams.id ASC
 					$limit
 				";
 			}
