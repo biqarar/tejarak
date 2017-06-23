@@ -67,9 +67,8 @@ trait get
 		{
 			$where            = [];
 			$where['team_id'] = $team_detail['id'];
-			$where['status']  = 'active';
+			$where['status']  = ['IN', "('active', 'deactive')"];
 			$result           = \lib\db\userteams::get($where);
-
 			$temp             = [];
 			if(is_array($result))
 			{
@@ -78,7 +77,6 @@ trait get
 					$temp[] = $this->ready_member($value);
 				}
 			}
-
 			return $temp;
 		}
 	}
@@ -281,6 +279,7 @@ trait get
 					break;
 			}
 		}
+		krsort($result);
 		return $result;
 	}
 }

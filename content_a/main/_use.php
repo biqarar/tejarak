@@ -6,6 +6,9 @@ trait _use
 	// API OPTIONS
 	use \content_api\v1\home\tools\options;
 
+	// API HOURS
+	use \content_api\v1\hours\tools\add;
+
 	// API TEAM
 	use \content_api\v1\team\tools\add;
 	use \content_api\v1\team\tools\get;
