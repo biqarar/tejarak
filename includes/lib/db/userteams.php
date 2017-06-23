@@ -96,6 +96,7 @@ class userteams
 	{
 		if($_args)
 		{
+
 			$only_one_value = false;
 			$limit          = null;
 
@@ -108,21 +109,54 @@ class userteams
 
 				$limit = " LIMIT $_args[limit] ";
 			}
+			$get_hours = false;
+			if(isset($_args['get_hours']) && $_args['get_hours'])
+			{
+				$get_hours = true;
+			}
 
 			unset($_args['limit']);
+			unset($_args['get_hours']);
+
 			$where = \lib\db\config::make_where($_args, ['table_name' => 'userteams']);
-			$query =
-			"
-				SELECT
-					userteams.*,
-					users.user_mobile AS `mobile`
-				FROM
-					userteams
-				LEFT JOIN users ON users.id = userteams.user_id
-				WHERE
-					$where
-				$limit
-			";
+
+			$date = date("Y-m-d");
+
+			if($get_hours)
+			{
+				$query =
+				"
+					SELECT
+						userteams.*,
+						users.user_mobile AS `mobile`,
+						hours.start AS `last_time`,
+						hours.plus AS `plus`
+					FROM
+						userteams
+					LEFT JOIN users ON users.id = userteams.user_id
+					LEFT JOIN hours ON hours.userteam_id = userteams.id AND (IF(userteams.24h, hours.date = '$date', TRUE) AND hours.end IS NULL)
+					WHERE
+						$where
+					ORDER BY userteams.sort ASC
+					$limit
+				";
+			}
+			else
+			{
+				$query =
+				"
+					SELECT
+						userteams.*,
+						users.user_mobile AS `mobile`
+					FROM
+						userteams
+					LEFT JOIN users ON users.id = userteams.user_id
+					WHERE
+						$where
+					ORDER BY userteams.sort ASC
+					$limit
+				";
+			}
 			$result = \lib\db::get($query, null, $only_one_value);
 			return $result;
 		}

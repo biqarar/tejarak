@@ -63,13 +63,17 @@ trait get
 			return false;
 		}
 
+		$get_hours = utility::request('hours');
+		$get_hours = $get_hours ? true : false;
+
 		if(isset($team_detail['id']))
 		{
-			$where            = [];
-			$where['team_id'] = $team_detail['id'];
-			$where['status']  = ['IN', "('active', 'deactive')"];
-			$result           = \lib\db\userteams::get($where);
-			$temp             = [];
+			$where              = [];
+			$where['team_id']   = $team_detail['id'];
+			$where['get_hours'] = $get_hours;
+			$where['status']    = ['IN', "('active', 'deactive')"];
+			$result             = \lib\db\userteams::get($where);
+			$temp               = [];
 			if(is_array($result))
 			{
 				foreach ($result as $key => $value)
@@ -251,6 +255,9 @@ trait get
 					$result['remote_user'] = $value ? true : false;
 					break;
 
+				case 'plus':
+					$result[$key] = isset($value) ? (int) $value : null;
+					break;
 				case 'postion':
 				case 'displayname':
 				case 'firstname':
@@ -259,6 +266,7 @@ trait get
 				case 'rule':
 				case 'telegram_id':
 				case 'mobile':
+				case 'last_time':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
 				case 'personnelcode':

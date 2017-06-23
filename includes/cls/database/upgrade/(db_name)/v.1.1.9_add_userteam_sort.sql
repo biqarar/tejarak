@@ -1,0 +1,1 @@
+ALTER TABLE `userteams` ADD `sort`  smallint(5)  NULL DEFAULT NULL;
