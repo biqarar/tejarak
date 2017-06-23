@@ -19,6 +19,37 @@
      </div>
 
      <div class="back">
+
+
+<form method="post">
+ <div class="cbname"> <span class="cfnum">{{key+1}}</span><span>Javad Evazzadeh</span></div>
+
+ <div class="f parameter">
+  <div class="c3 decrease bn" data-val='5'>-</div>
+  <div class="c6 input"><input type="number" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="1440"></div>
+  <div class="c3 increase bp" data-val='10'>+</div>
+ </div>
+
+</form>
+
+
+
+
+{%if false%}
+
+   <div class="t-card-data">
+    <span class="t-card-heading">Enter</span>
+    <span class="t-card-value">14:30</span>
+   </div>
+
+   <div class="t-card-data">
+    <span class="t-card-heading">Total</span>
+    <span class="t-card-value">14:30</span>
+   </div>
+
+<div class="t-card-back-bottom">
+ <div class="btn">Enter</div>
+</div>
       <div class="t-card-back-top">
        <div class="t-card-back-name" data-number='{{key}}'>{{value.name}} {{value.family}}</div>
 
@@ -28,6 +59,8 @@
      <input type="hidden" name="type" value="enter">
      <input type="submit" value="enter" >
    </form>
+
+
    <form method="post" class="df">
      <input type="hidden" name="user" value="{{value.user_id}}">
      <input type="hidden" name="type" value="exit">
@@ -36,6 +69,10 @@
 
 
       </div>
+
+{%endif%}
+
+
      </div>
     </div>
    </div>
@@ -46,6 +83,12 @@
 {%endblock%}
 
 
+
+
 {%block sideBox%}
+<aside id='sidebar'></aside>
 {%endblock%}
 
+
+
+{%block headerBox%}{%endblock%}

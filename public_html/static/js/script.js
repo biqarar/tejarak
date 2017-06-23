@@ -5,7 +5,7 @@ $('.tcard').on('click', function()
 	{
 		if($(this).hasClass('flipped'))
 		{
-			$(this).removeClass('flipped');
+			// $(this).removeClass('flipped');
 		}
 		else
 		{
