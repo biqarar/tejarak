@@ -147,7 +147,7 @@ CONSTRAINT `hours_users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON
 
 
 CREATE TABLE `hourlogs` (
-`id`                 int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+`id`                 bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 `team_id`		     int(10) UNSIGNED NOT NULL,
 `user_id`            int(10) UNSIGNED NOT NULL,
 `userteam_id`        int(10) UNSIGNED NOT NULL,
