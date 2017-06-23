@@ -4,6 +4,15 @@ namespace content_a\member;
 class view extends \content_a\main\view
 {
 	/**
+	 * load team data
+	 */
+	public function load_current_team($_team)
+	{
+		$current_team = $this->model()->getTeamDetail($_team);
+		return $current_team;
+	}
+
+	/**
 	 * { function_description }
 	 *
 	 * @param      <type>  $_args  The arguments
@@ -13,9 +22,8 @@ class view extends \content_a\main\view
 		$this->data->page['title'] = T_('Add new member');
 		$this->data->page['desc']  = $this->data->page['title'];
 		$team                      = \lib\router::get_url(1);
-		$team_default              = $this->model()->getTeamDetail($team);
-		$this->data->team_default  = $team_default;
-		// var_dump($team_default);exit();
+		$team_default              = $this->load_current_team($team);
+		$this->data->current_team  = $this->data->team_default  = $team_default;
 		// fix title on edit
 		if(isset($this->data->list_member['title']))
 		{
@@ -32,11 +40,12 @@ class view extends \content_a\main\view
 	 */
 	public function view_list($_args)
 	{
-		$team                    = \lib\router::get_url(0);
-		$request                 = [];
-		$this->data->team        = $request['id'] = $team;
-		$list = $this->model()->list_member($request);
-		$this->data->list_member = $list;
+		$team                     = \lib\router::get_url(0);
+		$this->data->current_team = $this->load_current_team($team);
+		$request                  = [];
+		$this->data->team         = $request['id'] = $team;
+		$list                     = $this->model()->list_member($request);
+		$this->data->list_member  = $list;
 		if(isset($this->data->list_member['title']))
 		{
 			$this->data->page['title'] = T_('Edit team');
@@ -54,12 +63,13 @@ class view extends \content_a\main\view
 	{
 		$this->data->page['title'] = T_('Edit member');
 		$this->data->page['desc']  = $this->data->page['title'];
-		$this->data->edit_mode = true;
-		$url = \lib\router::get_url();
-		$team = \lib\router::get_url(1);
-		$member = substr($url, strpos($url,'=') + 1);
-		$member = $this->model()->edit($team, $member);
-		$this->data->member = $member;
+		$this->data->edit_mode     = true;
+		$url                       = \lib\router::get_url();
+		$team                      = \lib\router::get_url(1);
+		$this->data->current_team  = $this->load_current_team($team);
+		$member                    = substr($url, strpos($url,'=') + 1);
+		$member                    = $this->model()->edit($team, $member);
+		$this->data->member        = $member;
 	}
 
 }
