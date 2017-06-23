@@ -91,9 +91,9 @@ trait _use
 	 */
 	public static $send_rate =
 	[
-		'telegram',
 		'sms',
 		'call',
+		'telegram',
 	];
 
 
@@ -105,9 +105,9 @@ trait _use
 	 */
 	public static $resend_rate =
 	[
-		'telegram',
 		'sms',
 		'call',
+		'telegram',
 	];
 
 	/**
