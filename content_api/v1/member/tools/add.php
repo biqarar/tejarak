@@ -199,6 +199,13 @@ trait add
 				return false;
 			}
 
+			if(isset($old_user_id['rule']) && $old_user_id['rule'] === 'admin')
+			{
+				logs::set('api:member:try:to:change:admin:mobile', $this->user_id, $log_meta);
+				debug::error(T_("You can not change the mobile of admin of team"), 'mobile', 'access');
+				return false;
+			}
+
 			if($old_user_id['mobile'])
 			{
 				if($mobile)
