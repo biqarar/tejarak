@@ -6,8 +6,6 @@ use \lib\debug;
 class model extends \content\main\model
 {
 
-	use \content_api\v1\hours\tools\add;
-
 	/**
 	 * Gets the list.
 	 *
