@@ -59,6 +59,25 @@ trait login
 
 
 	/**
+	 * login if have remember me
+	 */
+	public static function login_by_remember($_url = null)
+	{
+		$cookie = \lib\db\sessions::get_cookie();
+		if($cookie)
+		{
+			$user_id = \lib\db\sessions::get_user_id();
+			if($user_id)
+			{
+				$user_data = \lib\db\users::get_user_data($user_id);
+				\lib\db\users::set_login_session($user_data);
+				\lib\db\sessions::set($user_id);
+			}
+		}
+	}
+
+
+	/**
 	 * login
 	 */
 	public static function enter_set_login($_url = null, $_auto_redirect = false)

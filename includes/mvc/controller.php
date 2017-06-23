@@ -9,21 +9,12 @@ class controller extends \lib\mvc\controller
 	 */
 	public function _route()
 	{
-		$this->check_login();
-	}
-
-
-	/**
-	 * check login
-	 */
-	public function check_login()
-	{
-		// check logined and if not loggined, redirect to login page
+		// check if have cookie set login by remember
 		if(!$this->login())
 		{
-			$this->redirector()->set_domain()->set_url('login')->redirect();
+			\content_enter\main\tools\login::login_by_remember();
 		}
-
 	}
+
 }
 ?>

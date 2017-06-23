@@ -4,10 +4,10 @@ namespace content\main;
 
 class controller extends \mvc\controller
 {
-	// function _route()
-	// {
-	// 	parent::_route();
-	// }
-	//
+	public function _route()
+	{
+		parent::_route();
+	}
+
 }
 ?>
