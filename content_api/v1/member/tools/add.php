@@ -184,7 +184,7 @@ trait add
 			$request_user_id = utility::request('id');
 			if($request_user_id && $request_user_id = utility\shortURL::decode($request_user_id))
 			{
-				$old_user_id = \lib\db\userteams::get(['user_id' => $request_user_id,'team_id' => $team_id, 'limit' => 1]);
+				$old_user_id = \lib\db\userteams::get_list(['user_id' => $request_user_id,'team_id' => $team_id, 'limit' => 1]);
 				if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
 				{
 					logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
