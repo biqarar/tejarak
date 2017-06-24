@@ -364,8 +364,19 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 .cn .logo-txt h4 span{display:inline-block;padding:0 2rem 1rem;vertical-align:middle;border-bottom:1px solid rgba(0, 0, 0, .25);}
 .cn .logo-txt h5{font-size:1.618rem;color:#666;}
 
-.cn .logo-txt .logo-blueprint{margin:0 auto 5rem;}
+.cn .logo-txt .logo-blueprint{margin:0 auto 3rem;}
 .cn .logo-txt .logo-blueprint img{display:block;}
+
+.cn .logo-txt .logo-colors-box{margin-bottom:3rem;}
+.cn .logo-txt .logo-colors-square{width:100px;height:100px;}
+.cn .logo-txt .logo-color-one{background-color:#c01040;}
+.cn .logo-txt .logo-color-two{background-color:#e0d7c0;}
+.cn .logo-txt .logo-colors-box ul{padding:0 1rem;}
+.cn .logo-txt .logo-colors-box ul li{direction:ltr;text-align:left;}
+.cn .logo-txt .logo-colors-box ul li:not(:last-of-type){margin-bottom:5px;}
+.cn .logo-txt .logo-colors-box ul li span{display:inline-block;vertical-align:middle;}
+.cn .logo-txt .logo-colors-box ul li span:nth-child(odd){font-weight:700;min-width:15px;}
+.cn .logo-txt .logo-colors-box ul li span:nth-child(2){min-width:50px;}
 
 .logo-showcase{text-align:center;}
 .logo-showcase:not(:last-of-type){margin-bottom:5rem;}

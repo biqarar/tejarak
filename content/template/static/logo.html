@@ -8,10 +8,73 @@
 
 {%block page%}
 <div class="logo-txt">
+{%if url.tld == 'dev'%}
  <h4><span>{%trans "Drawing logo"%}</span></h4>
  <div class="logo-blueprint">
   <img src="{{url.static}}images/logo/extra/tejarak-logo-blueprint.png" alt=''>
  </div>
+
+ <div class="logo-colors">
+  <div class="flex {%if site.currentlang == 'fa'%}f-row-reverse{%endif%} logo-colors-box">
+   <div class="logo-colors-square logo-color-one"></div>
+   <ul class="flex f-column justify-center">
+    <li>
+     <span>R</span>
+     <span>192</span>
+     <span>C</span>
+     <span>17</span>
+    </li>
+    <li>
+     <span>G</span>
+     <span>16</span>
+     <span>M</span>
+     <span>100</span>
+    </li>
+    <li>
+     <span>B</span>
+     <span>64</span>
+     <span>Y</span>
+     <span>63</span>
+    </li>
+    <li>
+     <span>#</span>
+     <span>c01040</span>
+     <span>K</span>
+     <span>7</span>
+    </li>
+   </ul>
+  </div>
+  <div class="flex {%if site.currentlang == 'fa'%}f-row-reverse{%endif%} logo-colors-box">
+   <div class="logo-colors-square logo-color-two"></div>
+   <ul class="flex f-column justify-center">
+    <li>
+     <span>R</span>
+     <span>192</span>
+     <span>C</span>
+     <span>17</span>
+    </li>
+    <li>
+     <span>G</span>
+     <span>16</span>
+     <span>M</span>
+     <span>100</span>
+    </li>
+    <li>
+     <span>B</span>
+     <span>64</span>
+     <span>Y</span>
+     <span>63</span>
+    </li>
+    <li>
+     <span>#</span>
+     <span>c01040</span>
+     <span>K</span>
+     <span>7</span>
+    </li>
+   </ul>
+  </div>
+ </div>
+{%endif%}
 
  <h4><span>{%trans "Dowload our logo"%}</span></h4>
  <h5>{%trans "Square"%}</h5>
