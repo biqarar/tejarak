@@ -99,15 +99,16 @@ private function transtext()
 
 	//----------------------------------------------content\template\static\about.html
 	echo T_("About Tejarak");                                                         // Line 3
-	echo T_("Advancement of technology and development of Web-based business Cause Need new tools to resolve the daily needs and that’s the goal of making Tejarak.");// Line 14
-	echo T_("Tejarak have a set of simple and practical tools on a regular basis for modern businesses.");// Line 14
-	echo T_("It’s good to know that in addition to the core services, features such as inventory and invoice will be added.");// Line 16
-	echo T_("Attendance system");                                                     // Line 18
-	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak.");// Line 19
-	echo T_("Daily report");                                                          // Line 21
-	echo T_("In many collections received daily reports of the employees is very important. On the other hands Employees reluctant to do that. In addition to the classical method, using social networks on Twitter and Daily Telegram reported in Tejarak possible to get there.");// Line 22
-	echo T_("Salary calculator");                                                     // Line 24
-	echo T_("For many small business is very complex method of calculating monthly salary and they Need to have simpler method. In addition to supporting traditional methods, Tejarak provide monthly salary simple solutions to employees have modern and beautiful Payroll.");// Line 25
+	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware and many other features.");// Line 6
+	echo T_("Advancement of technology and development of Web-based business Cause Need new tools to resolve the daily needs and that’s the goal of making Tejarak.");// Line 13
+	echo T_("Tejarak have a set of simple and practical tools on a regular basis for modern businesses.");// Line 13
+	echo T_("It’s good to know that in addition to the core services, features such as inventory and invoice will be added.");// Line 15
+	echo T_("Attendance system");                                                     // Line 17
+	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak.");// Line 18
+	echo T_("Daily report");                                                          // Line 20
+	echo T_("In many collections received daily reports of the employees is very important. On the other hands Employees reluctant to do that. In addition to the classical method, using social networks on Twitter and Daily Telegram reported in Tejarak possible to get there.");// Line 21
+	echo T_("Salary calculator");                                                     // Line 23
+	echo T_("For many small business is very complex method of calculating monthly salary and they Need to have simpler method. In addition to supporting traditional methods, Tejarak provide monthly salary simple solutions to employees have modern and beautiful Payroll.");// Line 24
 
 	//-------------------------------------------content\template\static\benefits.html
 	echo T_("Tejarak benefits");                                                      // Line 3
@@ -161,10 +162,10 @@ private function transtext()
 	//-----------------------------------------------content\template\static\logo.html
 	echo T_("Tejarak Logo");                                                          // Line 3
 	echo T_("Need know more about Tejarak Logo? Be patient...");                      // Line 6
-	echo T_("Drawing logo");                                                          // Line 11
-	echo T_("Dowload our logo");                                                      // Line 15
-	echo T_("Square");                                                                // Line 16
-	echo T_("Circle");                                                                // Line 50
+	echo T_("Drawing logo");                                                          // Line 12
+	echo T_("Dowload our logo");                                                      // Line 79
+	echo T_("Square");                                                                // Line 80
+	echo T_("Circle");                                                                // Line 114
 
 	//--------------------------------------------content\template\static\pricing.html
 	echo T_("Plans and Pricing");                                                     // Line 3
