@@ -25,7 +25,7 @@
         <div class="cbname"> <span class="cfnum">{{key+1}}</span><span>{{value.displayname}}</span></div>
         <div class="f parameter">
          <div class="c3 decrease bn" data-val='-5' data-connect='plus'>-</div>
-         <div class="c6 input"><input type="number" name="plus" placeholder='{%trans "Plus"%}' step="5" min="0" max="1440"></div>
+         <div class="c6 input"><input type="number" class="inputPlus" name="plus" placeholder='{%trans "Plus"%}' step="5" min="0" max="1440"></div>
          <div class="c3 increase bp" data-val='10' data-connect='plus'>+</div>
         </div>
         <input type="hidden" name="user" value="{{value.user_id}}">
@@ -41,7 +41,7 @@
         <div class="cbname"> <span class="cfnum">{{key+1}}</span><span>{{value.displayname}}</span></div>
         <div class="tinfo">
          <div class="inOut">
-          <span data-val='{{value.last_time}}' class='timeEnter'>{{value.last_time | tdate('H:m')}}</span>
+          <span data-val='{{value.last_time }}' class='timeEnter'>{{value.last_time | tdate('H:m')}}</span>
           <span data-val='400' class='timeDiff'>{{"400" | fitNumber}}</span>
           <span data-val='{{"now" | tdate}}' class='timeNow'>{{"now" | tdate('H:m')}}</span>
          </div>
@@ -50,7 +50,7 @@
 
         <div class="f parameter">
          <div class="c3 decrease bn" data-val='-5' data-connect='minus'>-</div>
-         <div class="c6 input"><input type="number" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="1440"></div>
+         <div class="c6 input"><input type="number" class="inputMinus" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="1440"></div>
          <div class="c3 increase bp" data-val='10' data-connect='minus'>+</div>
         </div>
         <input type="hidden" name="user" value="{{value.user_id}}">

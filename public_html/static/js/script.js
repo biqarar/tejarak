@@ -16,6 +16,7 @@ $('.tcard').on('click', function()
       {
         // add flip to this card
         $(this).addClass('flipped');
+        calcTotalExit($(this));
       }
       else
       {
@@ -110,6 +111,7 @@ function setExtra(_target, _extra, _exact)
   else
   {
     _target.val(newVal);
+    calcTotalExit(_target.parents('.tcard'));
   }
 
 }
@@ -128,6 +130,31 @@ function setExtraInvalid(_target)
   }, 300);
 }
 
+
+/**
+ * [calcTotalExit description]
+ * @return {[type]} [description]
+ */
+function calcTotalExit(_card)
+{
+  var enter = _card.find('.timeEnter').attr('data-val');
+  var exit  = _card.find('.timeNow').attr('data-val');
+  var diff  = parseInt(_card.find('.timeDiff').attr('data-val')) || 0;
+  var plus  = parseInt(_card.find('.timePlus').attr('data-val')) || 0;
+  var minus = parseInt(_card.find('.inputMinus').val()) || 0;
+
+  // calc diff from time of server
+
+  var finalTime = diff + plus - minus;
+   _card.find('.timePure').attr('data-val', finalTime).text(finalTime);
+
+  console.log(enter);
+  console.log(exit);
+  console.log(diff);
+  console.log(plus);
+  console.log(minus);
+  console.log(finalTime);
+}
 
 
 
