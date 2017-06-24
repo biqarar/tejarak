@@ -47,6 +47,12 @@ private function transtext()
 	echo T_("Get Started");                                                           // Line 131
 	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 133
 
+	//------------------------------------------------------content\hours\display.html
+	echo T_("Plus");                                                                  // Line 17
+	echo T_("Enter");                                                                 // Line 24
+	echo T_("Minus");                                                                 // Line 16
+	echo T_("Exit");                                                                  // Line 62
+
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 76
 	echo T_("← Back");                                                                // Line 76
@@ -82,7 +88,6 @@ private function transtext()
 
 	//----------------------------------------------------content\template\header.html
 	echo T_("Sales +98 25 3773 5183");                                                // Line 16
-	echo T_("Enter");                                                                 // Line 24
 
 	//----------------------------------------------------content\template\social.html
 	echo T_("Twitter");                                                               // Line 3
@@ -156,9 +161,10 @@ private function transtext()
 	//-----------------------------------------------content\template\static\logo.html
 	echo T_("Tejarak Logo");                                                          // Line 3
 	echo T_("Need know more about Tejarak Logo? Be patient...");                      // Line 6
-	echo T_("Dowload our logo");                                                      // Line 11
-	echo T_("Square");                                                                // Line 13
-	echo T_("Circle");                                                                // Line 47
+	echo T_("Drawing logo");                                                          // Line 11
+	echo T_("Dowload our logo");                                                      // Line 15
+	echo T_("Square");                                                                // Line 16
+	echo T_("Circle");                                                                // Line 50
 
 	//--------------------------------------------content\template\static\pricing.html
 	echo T_("Plans and Pricing");                                                     // Line 3
@@ -274,8 +280,6 @@ private function transtext()
 	echo T_("Submit");                                                                // Line 176
 	echo T_("Title");                                                                 // Line 193
 	echo T_("Type");                                                                  // Line 18
-	echo T_("Plus");                                                                  // Line 17
-	echo T_("Minus");                                                                 // Line 16
 
 	//-----------------------------------------------------content_a\main\display.html
 	echo T_("Add team");                                                              // Line 6
@@ -287,8 +291,9 @@ private function transtext()
 	echo T_("Options");                                                               // Line 24
 
 	//-------------------------------------------------content_a\member\dashboard.html
-	echo T_("Team Settings");                                                         // Line 39
-	echo T_("Change Plan");                                                           // Line 40
+	echo T_("Team Settings");                                                         // Line 139
+	echo T_("Change Plan");                                                           // Line 140
+	echo T_("Attendance");                                                            // Line 142
 
 	//---------------------------------------------------content_a\member\display.html
 	echo T_("Enter a valid name from 3 to 30 character");                             // Line 13
@@ -314,6 +319,14 @@ private function transtext()
 
 	//---------------------------------------------------content_a\option\display.html
 	echo T_("Hi");                                                                    // Line 7
+
+	//-----------------------------------------------------content_a\plan\display.html
+	echo T_("Current Plan");                                                          // Line 9
+	echo T_("Start date");                                                            // Line 18
+	echo T_("Choose a new plan of your team");                                        // Line 28
+	echo T_("Choose a plan to change your team plan");                                // Line 29
+	echo T_("Apply");                                                                 // Line 54
+	echo T_("Alert for change team plan");                                            // Line 64
 
 	//---------------------------------------------content_a\report\daily\display.html
 

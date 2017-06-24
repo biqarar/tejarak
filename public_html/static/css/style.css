@@ -364,6 +364,9 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 .cn .logo-txt h4 span{display:inline-block;padding:0 2rem 1rem;vertical-align:middle;border-bottom:1px solid rgba(0, 0, 0, .25);}
 .cn .logo-txt h5{font-size:1.618rem;color:#666;}
 
+.cn .logo-txt .logo-blueprint{margin:0 auto 5rem;}
+.cn .logo-txt .logo-blueprint img{display:block;}
+
 .logo-showcase{text-align:center;}
 .logo-showcase:not(:last-of-type){margin-bottom:5rem;}
 .logo-showcase-img{width:64px;height:64px;margin:0 auto 2rem;-webkit-transition:.3s;transition:.3s;border:1px solid rgba(0, 0, 0, .05);}
