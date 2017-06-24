@@ -1,5 +1,5 @@
 <?php
-namespace content_a\report;
+namespace content_a\report\sum;
 use \lib\debug;
 use \lib\utility;
 

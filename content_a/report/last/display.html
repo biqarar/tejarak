@@ -39,3 +39,8 @@
 	{%include display.pagination%}
 </div>
 {%endblock%}
+
+{%block sidenav%}
+{{parent()}}
+{%include template.teamLink%}
+{%endblock%}

@@ -4,5 +4,11 @@
 
 {%block content%}
 <h1>{%trans "Hi" %} {%set myName = login.displayname%} {% trans myName  %}</h1>
-<H2>THE reportS PAGE</H2>
+
+{%endblock%}
+
+
+{%block sidenav%}
+{{parent()}}
+{%include template.teamLink%}
 {%endblock%}

@@ -21,13 +21,13 @@ class view extends \content_a\main\view
 	public function view_edit($_args)
 	{
 		$team_code = \lib\router::get_url(0);
-		$this->data->team = $this->model()->edit($team_code);
+		$this->data->team_detail = $this->model()->edit($team_code);
 		$this->data->edit_mode = true;
 
-		if(isset($this->data->team['name']))
+		if(isset($this->data->team_detail['name']))
 		{
 			$this->data->page['title'] = T_('Edit team');
-			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->team['name']]);
+			$this->data->page['desc']  = T_("Edit team :name", ['name' => $this->data->team_detail['name']]);
 		}
 	}
 }

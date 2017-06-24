@@ -3,6 +3,7 @@ namespace content_a\member;
 
 class view extends \content_a\main\view
 {
+
 	/**
 	 * load team data
 	 */
@@ -38,7 +39,7 @@ class view extends \content_a\main\view
 		$team                     = \lib\router::get_url(0);
 		$this->data->current_team = $this->load_current_team($team);
 		$request                  = [];
-		$this->data->team         = $request['id'] = $team;
+		$request['id']            = $team;
 		$list                     = $this->model()->list_member($request);
 		$this->data->list_member  = $list;
 

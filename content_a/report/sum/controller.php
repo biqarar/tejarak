@@ -1,5 +1,5 @@
 <?php
-namespace content_a\report\daily;
+namespace content_a\report\sum;
 
 class controller extends \content_a\main\controller
 {
@@ -9,6 +9,8 @@ class controller extends \content_a\main\controller
 	public function _route()
 	{
 		parent::_route();
+		$this->get()->ALL("/^([a-zA-Z0-9]+)\/report\/sum$/");
+
 	}
 }
 ?>
