@@ -141,12 +141,12 @@ class userteams
 					SELECT
 						userteams.*,
 						users.user_mobile AS `mobile`,
-						hours.start AS `last_time`,
+						CONCAT(hours.date, ' ', hours.start) AS `last_time`,
 						hours.plus AS `plus`
 					FROM
 						userteams
 					LEFT JOIN users ON users.id = userteams.user_id
-					LEFT JOIN hours ON hours.userteam_id = userteams.id AND (IF(userteams.24h, hours.date = '$date', TRUE) AND hours.end IS NULL)
+					LEFT JOIN hours ON hours.userteam_id = userteams.id AND (IF(userteams.24h = 0 OR userteams.24h IS NULL , hours.date = '$date', TRUE) AND hours.end IS NULL)
 					WHERE
 						$where
 					ORDER BY userteams.sort, userteams.id ASC
@@ -170,6 +170,7 @@ class userteams
 				";
 			}
 			$result = \lib\db::get($query, null, $only_one_value);
+			// var_dump($result);exit();
 			return $result;
 		}
 		return false;

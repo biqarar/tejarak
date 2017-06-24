@@ -488,7 +488,7 @@ trait add
 		}
 		elseif ($_args['method'] === 'delete')
 		{
-			\lib\db\members::remove($args);
+			// \lib\db\members::remove($args);
 		}
 
 		if(debug::$status)

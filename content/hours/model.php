@@ -20,6 +20,7 @@ class model extends \content\main\model
 		// to get last hours. what i want to do?
 		utility::set_request_array($request);
 		$result =  $this->get_list_member();
+		// var_dump($result);exit();
 		return $result;
 	}
 

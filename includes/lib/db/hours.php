@@ -73,8 +73,9 @@ class hours
 			return false;
 		}
 
-		$_args['userteam_id'] = $userteam_id['id'];
-		$_args['date']        = $date;
+		$_args['userteam_id']      = $userteam_id['id'];
+		$_args['userteam_details'] = $userteam_id;
+		$_args['date']             = $date;
 
 		return $_args;
 	}
@@ -170,10 +171,18 @@ class hours
 		$diff       = round(($end_time - $start_time) / 60);
 
 
-		$update['end']   = date("H:i");
-		$update['diff']  = $diff;
-		$update['minus'] = null;
-		$update['plus']  = null;
+		$update['end']             = date("H:i");
+		$update['diff']            = $diff;
+		$update['minus']           = null;
+		$update['plus']            = null;
+		$update['enddate']         = date("Y-m-d");
+		$update['endyear']         = date("Y");
+		$update['endmonth']        = date("m");
+		$update['endday']          = date("d");
+		$update['endshamsi_date']  = jdate::date("Y-m-d", strtotime($date), false, true);
+		$update['endshamsi_year']  = jdate::date("Y", strtotime($date), false, true);
+		$update['endshamsi_month'] = jdate::date("m", strtotime($date), false, true);;
+		$update['endshamsi_day']   = jdate::date("d", strtotime($date), false, true);;
 
 		return self::update($update, $start['id']);
 	}
@@ -186,26 +195,24 @@ class hours
 	public static function in_use_time($_args)
 	{
 		$where = [];
-		if(isset($_args['team_id']) && is_numeric($_args['team_id']))
-		{
-			$where[] = " hours.team_id = $_args[team_id] ";
-		}
 
 		if(isset($_args['userteam_id']) && is_numeric($_args['userteam_id']))
 		{
 			$where[] = " hours.userteam_id = $_args[userteam_id] ";
 		}
 
-		if(isset($_args['user_id']) && is_numeric($_args['user_id']))
+		if(isset($_args['userteam_details']['24h']) && $_args['userteam_details']['24h'])
 		{
-			$where[] = " hours.user_id = $_args[user_id] ";
+			// the user has 24h
+			// needless to check date of enter
 		}
-
-		if(isset($_args['date']) && is_string($_args['date']))
+		else
 		{
-			$where[] = " hours.date = '$_args[date]' ";
+			if(isset($_args['date']) && is_string($_args['date']))
+			{
+				$where[] = " hours.date = '$_args[date]' ";
+			}
 		}
-
 
 		if(!empty($where))
 		{

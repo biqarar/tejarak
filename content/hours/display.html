@@ -45,7 +45,7 @@
           <span data-val='400' class='timeDiff'>{{"400" | fitNumber}}</span>
           <span data-val='{{"now" | tdate}}' class='timeNow'>{{"now" | tdate('H:m')}}</span>
          </div>
-         <div class="timePlus" data-val='100'>{{"100" | fitNumber}}</div>
+         {%if value.plus%}<div class="timePlus" data-val='100'>{{value.plus | fitNumber}}</div>{%else%}{%endif%}
         </div>
 
         <div class="f parameter">
