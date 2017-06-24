@@ -428,22 +428,40 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 
 /* ---------------------------------------------------------------- responsive of site */
 
-@media only screen and (max-width:619px){
-	#plans .f .c3.m6.s6{-webkit-box-flex:0;-webkit-flex:0 0 100%;-ms-flex:0 0 100%;-moz-box-flex:0;flex:0 0 100%;max-width:100%;}
-}
+@media all and (min-width: 1400px) {}
+@media all and (min-width: 768px) and (max-width: 959px) {}
 
-@media only screen and (max-width:767px){
+@media all and (max-width: 767px) {
+	/* homepage */
+	.tile h3,.tile h4{padding:0 4%;}
+	.tile h3{font-size:1.618rem;}
+	.tile h4{font-size:1.4em;}
+
+	#setup-tour h2{font-size:2em;margin-bottom:2rem;}
+
+	/* plans */
+	#plans .c3.m6.s12:not(:last-of-type){padding:0 0 3rem;}
+	#plans .plans-card{min-height:initial;}
+	#plans .plans-card .plans-card-content{display:none;}
+	#plans .plans-card .btn{margin:0;}
+
+	/* footer */
+	#tfooter .top{font-size:1em;}
+
+	#tfooter .middle{padding:2rem 1rem;}
+	#tfooter .middle .enamad{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
+	#tfooter .middle nav:not(.enamad){margin-bottom:2rem;}
+	#tfooter .middle .socialbox a{display:inline-block;vertical-align:middle;}
+
+	#tfooter .bottom .counter{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
+	#tfooter .bottom .love,.rtl #tfooter .bottom .love{text-align:center;}
+	#tfooter .bottom .langlist{display:block;text-align:center;}
+
 	#addTeam,#addMember{max-width:40rem}
 	#addTeam .df-file,#addMember .df-file{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}
 	#setup .cauto.s12{order:-1}
 	#addTeam .cauto.s12{order:-1}
 	#addMember .cauto.s12{order:-1}
-
 	.teams-item{margin:1rem 0.5rem ;width:140px;height:180px;}
 	.teams-item figure div{padding:5px;height:140px;}
-
-}
-
-@media only screen and (max-width:959px){
-	#plans .f .c3.m6.s6{padding:2rem}
 }
