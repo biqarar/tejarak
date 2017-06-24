@@ -11,9 +11,16 @@ $('.tcard').on('click', function()
 		{
 			// remove flip of all other cards
 			$('.tcard').removeClass('flipped');
-			// add flip to this card
-			$(this).addClass('flipped');
 
+			if($(this).attr('data-status') === 'active')
+			{
+				// add flip to this card
+				$(this).addClass('flipped');
+			}
+			else
+			{
+				console.log('this user is deactive!');
+			}
 		}
 	}
 });
