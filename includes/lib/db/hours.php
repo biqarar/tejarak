@@ -107,6 +107,7 @@ class hours
 		}
 
 		$insert                      = [];
+		$insert['plus']              = $_args['plus'];
 		$insert['user_id']           = $_args['user_id'];
 		$insert['team_id']           = $_args['team_id'];
 		$insert['start_userteam_id'] = $_args['user_id'];
@@ -170,11 +171,18 @@ class hours
 		$end_time   = strtotime(date("Y-m-d H:i:s"));
 		$diff       = round(($end_time - $start_time) / 60);
 
+		$plus = 0;
+		if(isset($start['plus']))
+		{
+			$plus = intval($start['plus']);
+		}
 
+		$update['total']           = ((int) $diff + (int) $plus) - (int) $_args['minus'];
+		$update['accepted']        = $update['total'];
+		$update['status']          = 'awaiting';
 		$update['end']             = date("H:i");
 		$update['diff']            = $diff;
-		$update['minus']           = null;
-		$update['plus']            = null;
+		$update['minus']           = $_args['minus'];
 		$update['enddate']         = date("Y-m-d");
 		$update['endyear']         = date("Y");
 		$update['endmonth']        = date("m");

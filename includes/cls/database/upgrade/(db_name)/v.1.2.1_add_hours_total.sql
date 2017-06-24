@@ -1,0 +1,1 @@
+ALTER TABLE `hours` ADD `total`							int(10) NULL DEFAULT NULL AFTER `accepted`;
