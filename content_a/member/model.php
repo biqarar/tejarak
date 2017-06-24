@@ -34,23 +34,6 @@ class model extends \content_a\main\model
 
 
 	/**
-	 * Gets the addmember.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function getTeamDetail($_team)
-	{
-		$request         = [];
-		$this->user_id   = $this->login('id');
-		$request['id'] = $_team;
-		utility::set_request_array($request);
-		$result = $this->get_team();
-		return $result;
-
-	}
-
-
-	/**
 	 * Posts an addmember.
 	 *
 	 * @param      <type>  $_args  The arguments

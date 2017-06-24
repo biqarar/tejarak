@@ -41,6 +41,7 @@ class model extends \content\main\model
 
 		$url = (isset($_args->match->url[0])) ? $_args->match->url[0] : null;
 
+		$this->user_id = $this->login('id');
 		if(!$url)
 		{
 			return false;
@@ -49,13 +50,28 @@ class model extends \content\main\model
 		$url = explode("/", $url);
 
 		$request           = [];
+
+		/**
+		 * ajax to check members status
+		 */
+		if(utility::post('check'))
+		{
+			$request['shortname'] = isset($url[0]) ? $url[0] : null;
+			$request['hours']     = true;
+
+			// to get last hours. what i want to do?
+			utility::set_request_array($request);
+			$result = $this->get_list_member();
+			debug::msg('memberList', json_encode($result, JSON_UNESCAPED_UNICODE));
+			return true;
+		}
+
 		$request['team']   = isset($url[0]) ? $url[0] : null;
 		$request['user']   = utility::post('user');
 		$request['plus']   = utility::post('plus');
 		$request['minus']  = utility::post('minus');
 		$request['type']   = utility::post('type');
 
-		$this->user_id = $this->login('id');
 
 		utility::set_request_array($request);
 

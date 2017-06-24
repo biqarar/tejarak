@@ -18,13 +18,20 @@ class view extends \mvc\view
 	public function view_show($_args)
 	{
 		$team = \lib\router::get_url();
-
 		$request            = [];
 		$this->data->team   = $request['shortname']         = $team;
 		$this->data->list_member = $this->model()->list_member($request);
 
 		$this->data->page['title'] = T_($team);
 		$this->data->page['desc']  = T_('Setup is finished!');
+		$current_team = $this->model()->getTeamDetailShortname($team);
+		if(!isset($current_team['logo']) || (isset($current_team['logo']) && !$current_team['logo']))
+		{
+			$current_team['logo'] = $this->url->static. 'images/logo.png';
+		}
+
+		$this->data->current_team = $current_team;
+
 	}
 }
 ?>

@@ -29,5 +29,36 @@ trait _use
 	// API REPORT
 	use \content_api\v1\report\tools\get;
 
+
+	/**
+	 * Gets the addmember.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function getTeamDetail($_team)
+	{
+		$request         = [];
+		$this->user_id   = $this->login('id');
+		$request['id'] = $_team;
+		\lib\utility::set_request_array($request);
+		$result = $this->get_team();
+		return $result;
+	}
+
+
+	/**
+	 * Gets the addmember.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function getTeamDetailShortname($_shortname)
+	{
+		$request             = [];
+		$this->user_id       = $this->login('id');
+		$request['shortname'] = $_shortname;
+		\lib\utility::set_request_array($request);
+		$result = $this->get_team();
+		return $result;
+	}
 }
 ?>

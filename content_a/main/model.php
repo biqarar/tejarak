@@ -8,18 +8,6 @@ class model extends \mvc\model
 	 */
 	use _use;
 
-	/**
-	 * Gets the addbranch.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function getTeam($_args)
-	{
-		$this->user_id = $this->login('id');
-		$team = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
-		\lib\utility::set_request_array(['team' => $team]);
-		return $this->get_team();
-	}
 
 
 	/**

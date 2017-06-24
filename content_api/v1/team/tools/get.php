@@ -212,14 +212,30 @@ trait get
 		$id = utility::request("id");
 		$id = \lib\utility\shortURL::decode($id);
 
-		if(!$id)
+		$shortname = utility::request('shortname');
+
+		if(!$id && !$shortname)
 		{
-			logs::set('api:team:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Team id not set"), 'id', 'arguments');
+			logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Team id or shortname not set"), 'id', 'arguments');
 			return false;
 		}
 
-		$result = \lib\db\teams::access_team_id($id, $this->user_id);
+		if($id && $shortname)
+		{
+			logs::set('api:team:id:shortname:together:set', $this->user_id, $log_meta);
+			debug::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
+			return false;
+		}
+
+		if($id)
+		{
+			$result = \lib\db\teams::access_team_id($id, $this->user_id);
+		}
+		else
+		{
+			$result = \lib\db\teams::access_team($shortname, $this->user_id);
+		}
 		if(!$result)
 		{
 			logs::set('api:team:access:denide', $this->user_id, $log_meta);
