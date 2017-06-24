@@ -106,7 +106,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_edit($_args)
 	{
-		$code = \lib\router::get_url(1);
+		$code = \lib\router::get_url(0);
 
 		// if delete link is clicked
 		// go to delete function and return
@@ -142,7 +142,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_close()
 	{
-		$code = \lib\router::get_url(1);
+		$code = \lib\router::get_url(0);
 		$this->user_id = $this->login('id');
 		utility::set_request_array(['id' => $code]);
 		$this->close_team();

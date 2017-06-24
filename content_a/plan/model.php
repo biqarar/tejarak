@@ -3,7 +3,7 @@ namespace content_a\plan;
 use \lib\utility;
 use \lib\debug;
 
-class model extends \mvc\model
+class model extends \content_a\main\model
 {
 	/**
 	 * get plan data to show

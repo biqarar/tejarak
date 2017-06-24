@@ -22,8 +22,6 @@ class view extends \mvc\view
 		$this->data->team   = $request['shortname']         = $team;
 		$this->data->list_member = $this->model()->list_member($request);
 
-		$this->data->page['title'] = T_($team);
-		$this->data->page['desc']  = T_('Setup is finished!');
 		$current_team = $this->model()->getTeamDetailShortname($team);
 		if(!isset($current_team['logo']) || (isset($current_team['logo']) && !$current_team['logo']))
 		{
@@ -31,6 +29,16 @@ class view extends \mvc\view
 		}
 
 		$this->data->current_team = $current_team;
+
+		if(isset($current_team['name']))
+		{
+			$this->data->page['title'] = T_($current_team['name']);
+		}
+		else
+		{
+			$this->data->page['title'] = T_($team);
+		}
+		$this->data->page['desc']  = T_('Tejarak provides beautiful solutions for your business;');
 
 	}
 }

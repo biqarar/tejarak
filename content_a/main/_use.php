@@ -60,5 +60,77 @@ trait _use
 		$result = $this->get_team();
 		return $result;
 	}
+
+
+	/**
+	 * load check brand of team exist or no
+	 *
+	 * @param      <type>   $_name   The name of brand
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	public function is_exist_team_shortname($_shortname)
+	{
+		return $this->is_exist_team($_shortname, 'shortname');
+	}
+
+
+	/**
+	 * Determines if exist team identifier.
+	 *
+	 * @param      <type>  $_id    The identifier
+	 */
+	public function is_exist_team_code($_code)
+	{
+		return $this->is_exist_team($_code, 'code');
+	}
+
+	/**
+	 * Determines if exist team identifier.
+	 *
+	 * @param      <type>   $_id    The identifier
+	 *
+	 * @return     boolean  True if exist team identifier, False otherwise.
+	 */
+	public function is_exist_team_id($_id)
+	{
+		return $this->is_exist_team($_id, 'id');
+	}
+
+	/**
+	 *
+	 * load check brand of team exist or no
+	 *
+	 * @param      <type>   $_name   The name of brand
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	public function is_exist_team($_unique, $_type = null)
+	{
+		$_unique = \lib\utility\safe::safe($_unique);
+
+		if(!$_unique)
+		{
+			return false;
+		}
+
+		$search_team = false;
+
+		switch ($_type)
+		{
+			case 'code':
+				$_unique = \lib\utility\shortURL::decode($_unique);
+			case 'id':
+				$search_team = \lib\db\teams::get(['id' => $_unique, 'limit' => 1]);
+				break;
+			case 'shortname':
+				$search_team = \lib\db\teams::get(['shortname' => $_unique, 'limit' => 1]);
+				break;
+			default:
+				return false;
+				break;
+		}
+		return $search_team;
+	}
 }
 ?>

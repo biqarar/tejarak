@@ -63,7 +63,7 @@ class model extends \content_a\main\model
 			$request['file'] = $file_code;
 		}
 
-		$team = \lib\router::get_url(1);
+		$team = \lib\router::get_url(0);
 		// get posted data to create the request
 		$request['team']  = $team;
 
@@ -172,7 +172,7 @@ class model extends \content_a\main\model
 		$url             = \lib\router::get_url();
 		$member          = substr($url, strpos($url,'=') + 1);
 		$request['id']   = $member;
-		$request['team'] = $team = \lib\router::get_url(1);
+		$request['team'] = $team = \lib\router::get_url(0);
 		utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION

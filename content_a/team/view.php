@@ -20,7 +20,7 @@ class view extends \content_a\main\view
 	 */
 	public function view_edit($_args)
 	{
-		$team_code = \lib\router::get_url(1);
+		$team_code = \lib\router::get_url(0);
 		$this->data->team = $this->model()->edit($team_code);
 		$this->data->edit_mode = true;
 

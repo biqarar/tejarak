@@ -12,7 +12,6 @@ class controller extends \content_a\main\controller
 
 		$url = \lib\router::get_url();
 
-
 		// if user_setup is null redirect to setup page
 		// The user is the first time he uses the system,
 		// so we will transfer him to the installation file
@@ -25,43 +24,32 @@ class controller extends \content_a\main\controller
 				return;
 			}
 		}
-
+		// list of all team the user is them
 		$this->get(false, 'dashboard')->ALL();
-		// route url like this /a/ermile
-		if(preg_match("/^([a-zA-Z0-9]+)$/", $url))
+
+		// route url like this /a/2kf
+		if(preg_match("/^([a-zA-Z0-9]+)\/edit$/", $url))
 		{
-			if($this->model()->is_exist_team($url))
-			{
-				\lib\router::set_controller("content_a\\team\\controller");
-				return;
-			}
+			\lib\router::set_controller("content_a\\team\\controller");
+			return;
 		}
 
 		// route url like this /a/2kf
-		if(preg_match("/^([a-zA-Z0-9]+)$/", $url, $split))
+		if(preg_match("/^([a-zA-Z0-9]+)$/", $url))
 		{
-			if(isset($split[1]))
-			{
-				$id = \lib\utility\shortURL::decode($split[1]);
-				if($id && $this->model()->is_exist_team_id($id))
-				{
-					\lib\router::set_controller("content_a\\member\\controller");
-				}
-			}
+			\lib\router::set_controller("content_a\\member\\controller");
 		}
 
+		// route url like this /a/2kf/member
+		if(preg_match("/^([a-zA-Z0-9]+)\/member(|\=[a-zA-Z0-9]+)$/", $url))
+		{
+			\lib\router::set_controller("content_a\\member\\controller");
+		}
 
 		// route url like this /a/2kf/plan
-		if(preg_match("/^([a-zA-Z0-9]+)\/plan$/", $url, $split))
+		if(preg_match("/^([a-zA-Z0-9]+)\/plan$/", $url))
 		{
-			if(isset($split[1]))
-			{
-				$id = \lib\utility\shortURL::decode($split[1]);
-				if($id && $this->model()->is_exist_team_id($id))
-				{
-					\lib\router::set_controller("content_a\\plan\\controller");
-				}
-			}
+			\lib\router::set_controller("content_a\\plan\\controller");
 		}
 
 		/**

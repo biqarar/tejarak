@@ -26,9 +26,12 @@ class controller extends \content_a\main\controller
 						{
 							case 'last':
 							case 'daily':
+							case 'u':
+							case 'sum':
 								\lib\router::set_controller("content_a\\report\\$split[2]\\controller");
 								return;
 								break;
+
 							default:
 								\lib\error::page();
 								break;

@@ -7,11 +7,11 @@
    <div class="tcard" data-status='{{value.status}}'>
     <div class="cbox">
      <div class="front">
-      <a class="top" href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
+      <a class="top" href="{{url.baseFull}}/{{team}}/member={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
       <div class="cfdetail">
        <span class="cfnum">{{key+1}}</span>
       </div>
-      <a class="cfinfo" href="{{url.baseFull}}/team/{{team}}/member={{value.user_id}}">
+      <a class="cfinfo" href="{{url.baseFull}}/{{team}}/member={{value.user_id}}">
        <div class="cfname">{{value.displayname}}</div>
        {%if value.postion%}<div class="cfpos">{{value.postion}}</div>{%endif%}
       </a>
@@ -20,7 +20,7 @@
    </div>
 {%endfor%}
 
-   <a class="tcard add" href="{{url.baseFull}}/team/{{team}}/member">
+   <a class="tcard add" href="{{url.baseFull}}/{{team}}/member">
     <div class="cbox">
      <span class="plus">+</span>
     </div>
@@ -30,8 +30,8 @@
 
 {%block sidenav%}
 {{parent()}}
-    <li><a href="{{url.baseFull}}/team/{{team}}"><i class="icon-cog"></i>{%trans "Team Settings"%}</a></li>
-    <li><a href="{{url.baseFull}}/team/{{team}}/plan"><i class="icon-bolt"></i>{%trans "Change Plan"%}</a></li>
+    <li><a href="{{url.baseFull}}/{{team}}/edit"><i class="icon-cog"></i>{%trans "Team Settings"%}</a></li>
+    <li><a href="{{url.baseFull}}/{{team}}/plan"><i class="icon-bolt"></i>{%trans "Change Plan"%}</a></li>
 {%if current_team.short_name%}
       <li><a href="{{url.base}}/{{current_team.short_name}}" data-direct><i class="icon-bolt"></i>{%trans "Attendance"%}</a></li>
 {%endif%}
