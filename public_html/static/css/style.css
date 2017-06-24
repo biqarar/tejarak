@@ -360,8 +360,8 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 /* ---------------------------------------------------------------- design of site */
 .cn .logo-txt{max-width:700px;margin:0 auto;padding:10rem 0;}
 .cn .logo-txt h4,.cn .logo-txt h5{text-align:center;}
-.cn .logo-txt h4{font-size:1.8em;position:relative;margin-bottom:5rem;}
-.cn .logo-txt h4:before{position:absolute;top:120%;right:0;left:0;width:50%;height:1px;margin:auto;content:'';background-color:rgba(0, 0, 0, .25);}
+.cn .logo-txt h4{font-size:1.8em;margin-bottom:5rem;}
+.cn .logo-txt h4 span{display:inline-block;padding:0 2rem 1rem;vertical-align:middle;border-bottom:1px solid rgba(0, 0, 0, .25);}
 .cn .logo-txt h5{font-size:1.618rem;color:#666;}
 
 .logo-showcase{text-align:center;}
