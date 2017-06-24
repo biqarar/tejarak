@@ -113,7 +113,15 @@
 
 
 {%block sideBox%}
-<aside id='sidebar'></aside>
+ <aside id='sidebar'>
+  <h3 id="god">{% trans "In the Name of God" %}</h3>
+  <div class="time"><span class="hour">{{ "now"|date("H") |fitNumber }}</span>:<span class="minute">{{ "now"|date("i") |fitNumber }}</span>:<span class="second">{{ "now"|date("s") |fitNumber}}</span></div>
+  <div id="date">{% if site.currentlang == "fa" %} {{"now"|jdate("l j F Y") |fitNumber}} {% else %} {{"now"|date("l j F Y")}} {% endif %}</div>
+  <div id="logo">
+   <img src="{{url.static}}images/logo.png" alt='{%trans "Tejarak"%}'>
+    <h1>{% trans "Tejarak" %}</h1>
+  </div>
+ </aside>
 {%endblock%}
 
 

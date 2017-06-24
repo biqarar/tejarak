@@ -1,4 +1,11 @@
 
+$(document).ready(function()
+{
+  startTime();
+});
+
+
+
 $('.tcard').on('click', function()
 {
   // if tcard has back
@@ -154,6 +161,66 @@ function calcTotalExit(_card)
   console.log(plus);
   console.log(minus);
   console.log(finalTime);
+}
+
+
+
+/**
+ * [startTime description]
+ * @return {[type]} [description]
+ */
+function startTime()
+{
+  var today = new Date();
+
+  changetime(addZero(today.getSeconds()), 'second');
+  changetime(addZero(today.getMinutes()), 'minute');
+  changetime(today.getHours(), 'hour');
+  var t = setTimeout(startTime,500);
+}
+
+
+/**
+ * [addZero description]
+ * @param {[type]} i [description]
+ */
+function addZero(i)
+{
+  if (i < 10)
+  {
+    i = "0" + i
+  };
+  return i;
+}
+
+
+/**
+ * [changetime description]
+ * @param  {[type]} _new   [description]
+ * @param  {[type]} _class [description]
+ * @return {[type]}        [description]
+ */
+function changetime(_value, _class)
+{
+  _new = String(_value);
+  // change time to persian if we are in rtl design
+  if($('body').hasClass('rtl'))
+  {
+    // convert time to persian
+    persian={0:'۰',1:'۱',2:'۲',3:'۳',4:'۴',5:'۵',6:'۶',7:'۷',8:'۸',9:'۹'};
+    for(var i=0; i<=9; i++)
+    {
+        var re = new RegExp(i,"g");
+        _new = _new.replace(re, persian[i]);
+    }
+  }
+  // if time is not changed, return false
+  if($('.time .'+ _class).attr('data-time') == _value)
+  {
+    return false;
+  }
+  // set new value with effect
+  $('.time .'+ _class).html(_new).attr('data-time', _value);
 }
 
 
