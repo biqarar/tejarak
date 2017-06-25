@@ -76,10 +76,12 @@ class model extends \content\main\model
 		$request['minus']  = utility::post('minus');
 		$request['type']   = utility::post('type');
 
-
 		utility::set_request_array($request);
 
 		$this->add_hours();
+
+		debug::msg('now_val', date("Y-m-d H:i:s"));
+		debug::msg('now', date("H:i"));
 	}
 }
 ?>
