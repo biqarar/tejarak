@@ -264,7 +264,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 
 
 /*card detail*/
-.tcard{cursor:pointer;margin:10px;-webkit-perspective:1000px;perspective:1000px;width:180px;height:240px;display:inline-block;overflow:auto;transition:0.3s}
+.tcard{cursor:pointer;margin:1em;-webkit-perspective:1000px;perspective:1000px;width:180px;height:240px;display:inline-block;overflow:auto;transition:0.3s}
 .tcard.flipped .cbox{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
 .tcard.selected{box-shadow:0 0px 15px 5px rgba(0,0,0,0.2)}
 .tcard .cbox{width:100%;height:100%;position:relative;-webkit-transition:.6s;-webkit-transition:.6s;transition:.6s;background-color:white;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
@@ -278,19 +278,19 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 .tcard .front .top i::before{vertical-align:bottom;}
 .tcard .front .top img{display:block;height:100%}
 .tcard .back .top{background-color:#fff;}
-.tcard .cfdetail{position:absolute;top:0;left:0;padding:10px}
+.tcard .cfdetail{position:absolute;top:0;left:0;padding:1em}
 .tcard .cfnum{position:relative;padding:3px 5px 1px;text-align:center;color:#fff;border-radius:3px;background-color:#009688;height:20px;line-height:16px;}
 .tcard .cfinfo{height:60px;font-size:1.1em;color:#777;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;flex-direction:column;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;-moz-box-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;-moz-box-align:center;align-items:center}
 .tcard .cfinfo>*{overflow:hidden;width:100%;max-width:100%;text-align:center;white-space:nowrap;text-overflow:ellipsis;}
-.tcard .cfinfo .cfname{font-size:1.25em;font-weight:700;margin-top:3px;padding:0 10px;color:#333;}
-.tcard .cfinfo .cfpos{margin-top:5px;padding:0 10px;}
+.tcard .cfinfo .cfname{font-size:1.25em;font-weight:700;margin-top:3px;padding:0 1em;color:#333;}
+.tcard .cfinfo .cfpos{margin-top:5px;padding:0 1em;}
 
 .tcard .tinfo{margin:1em;font-size:1.2em;font-weight:100;color:#777;}
 .tcard .tinfo .inOut{line-height:25px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;-moz-box-pack:justify;justify-content:space-between}
 .tcard .tinfo .timeDiff{font-size:2em;font-weight:300;}
 .tcard .tinfo .timePlus{font-size:1.2em;line-height:20px;}
 .tcard .tinfo .timePlus::before{content:"\e03e";font-family:"dash"!important;vertical-align:middle;color:#60A020;margin-left:-15px;}
-.tcard .timePure{font-size:2em;line-height:20px;font-weight:700;padding:10px 10px 0;display:none;}
+.tcard .timePure{font-size:2em;line-height:20px;font-weight:700;padding:1em 1em 0;display:none;}
 
 
 .tcard.add .plus{font-size:10em;display:block;text-align:center;color:#666;height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-moz-box;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;-moz-box-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;-moz-box-align:center;align-items:center;background-color:#eee}
@@ -311,7 +311,7 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 .rtl .tcard .back .cbname::before{margin-right:0;margin-left:5px}
 
 /* small design*/
-.small .tcard{width:120px;height:160px;font-size:0.8em}
+.small .tcard{width:120px;height:160px;font-size:0.8em;margin:0.5em;}
 .small .tcard .top{height:120px;}
 .small .tcard .cfinfo{height:40px}
 .small .tcard .front .top i{font-size:10rem;}
