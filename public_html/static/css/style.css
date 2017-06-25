@@ -136,7 +136,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 
 
 /* footer*/
-#tfooter{font-size:1.2em;padding:3em 0;background-color:#333;}
+#tfooter{font-size:1.2em;padding:3rem 0 0;background-color:#333;}
 #tfooter a{color:#888;transition:0.3s;}
 #tfooter nav a:hover{color:#eee}
 #tfooter nav a:focus{color:#fff}
@@ -469,6 +469,16 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 	#tfooter .bottom .love,.rtl #tfooter .bottom .love{text-align:center;}
 	#tfooter .bottom .langlist{display:block;text-align:center;}
 	#tfooter .bottom .langlist a{padding:1em;}
+
+	/* about */
+	.p,.pa{padding:5rem 4%;padding:5rem 0;}
+
+	/* pricing */
+	.pricingTable .f > div{font-size:1rem;}
+	.pricingTable .f.price .c{font-size:1.2rem;}
+	.dtc > div > *{padding:1rem .5rem;}
+
+	#offer-enterprise-small{text-align:center;}
 
 	#addTeam,#addMember{max-width:40rem}
 	#addTeam .df-file,#addMember .df-file{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}
