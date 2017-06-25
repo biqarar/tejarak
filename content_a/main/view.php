@@ -9,6 +9,7 @@ class view extends \mvc\view
 		$this->data->template['teamLink'] = 'content_a\\main\\teamLink.html';
 		$this->data->team                 = \lib\router::get_url(0);
 
+		$this->data->display['adminTeam'] = 'content_a\main\layoutTeam.html';
 	}
 }
 ?>

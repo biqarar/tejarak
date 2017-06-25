@@ -1,4 +1,4 @@
-{%extends display.admin%}
+{%extends display.adminTeam%}
 
 {%block contentCenter%}
   <div class='middle {%if list_member|length >= 8%}small{%endif%}' id="showMember">
@@ -28,7 +28,3 @@
   </div>
 {%endblock%}
 
-{%block sidenav%}
-{{parent()}}
-{%include template.teamLink%}
-{%endblock%}
