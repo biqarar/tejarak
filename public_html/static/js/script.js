@@ -44,6 +44,10 @@ function changeCardStatusOnResult()
       if($(this).hasClass('enter'))
       {
         myCard.attr('data-live', 'on');
+        if(_result.msg.now_val)
+        {
+          myCard.find('.timeEnter').attr('data-val', _result.msg.now_val).text(fitNumber(_result.msg.now, false));
+        }
       }
       else if($(this).hasClass('exit'))
       {
