@@ -143,7 +143,7 @@ trait get
 
 		$team_id = $team_detail['id'];
 
-		$check_user_in_team = \lib\db\userteams::get_list(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
+		$check_user_in_team = \lib\db\userteams::get_list(['user_id' => $id, 'team_id' => $team_id, 'rule' => 'getway', 'limit' => 1]);
 
 		if(!$check_user_in_team)
 		{

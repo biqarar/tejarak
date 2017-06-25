@@ -321,6 +321,12 @@ class teams
 							)
 							OR
 							(
+								userteams.user_id = $_user_id AND
+								userteams.rule    = 'getway' AND
+								$_user_id != $_options[change_hour_user]
+							)
+							OR
+							(
 								userteams.user_id = $_options[change_hour_user] AND
 								userteams.remote = 1 AND
 								$_user_id = $_options[change_hour_user]
