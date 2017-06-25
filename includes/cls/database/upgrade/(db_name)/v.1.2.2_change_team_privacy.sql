@@ -1,0 +1,1 @@
+ALTER TABLE `teams` CHANGE `privacy` `privacy` ENUM('public','private','team') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'private';

@@ -6,6 +6,11 @@ use \lib\db\logs;
 
 trait get
 {
+	public $remote_user         = false;
+	public $rule                = null;
+	public $show_another_status = false;
+	public $team_privacy        = 'private';
+
 	/**
 	 * Gets the member.
 	 *
@@ -23,7 +28,6 @@ trait get
 				'input' => utility::request(),
 			]
 		];
-
 		if(!$this->user_id)
 		{
 			// return false;
@@ -56,6 +60,7 @@ trait get
 			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'get_member']);
 		}
 
+
 		if(!$team_detail)
 		{
 			logs::set('api:member:team:id:permission:denide', null, $log_meta);
@@ -65,6 +70,23 @@ trait get
 
 		$get_hours = utility::request('hours');
 		$get_hours = $get_hours ? true : false;
+
+		if(isset($team_detail['userteam_remote']) && $team_detail['userteam_remote'])
+		{
+			$this->remote_user = true;
+		}
+
+		if(isset($team_detail['privacy']))
+		{
+			$this->team_privacy = $team_detail['privacy'];
+		}
+
+		if(isset($team_detail['rule']))
+		{
+			$this->rule = $team_detail['rule'];
+		}
+
+		$this->show_another_status = true;
 
 		if(isset($team_detail['id']))
 		{
@@ -78,7 +100,11 @@ trait get
 			{
 				foreach ($result as $key => $value)
 				{
-					$temp[] = $this->ready_member($value);
+					$a = $this->ready_member($value);
+					if($a)
+					{
+						$temp[] = $a;
+					}
 				}
 			}
 			return $temp;
@@ -104,7 +130,6 @@ trait get
 				'input' => utility::request(),
 			]
 		];
-
 		if(!$this->user_id)
 		{
 			logs::set('api:member:user_id:notfound', null, $log_meta);
@@ -112,17 +137,13 @@ trait get
 			return false;
 		}
 
-		$MEMBER_REQUEST = utility::request();
-
 		$team = utility::request('team');
-
 		if(!$team)
 		{
 			logs::set('api:member:team:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
-
 
 		$id = utility::request('id');
 		$id = utility\shortURL::decode($id);
@@ -133,21 +154,17 @@ trait get
 			return false;
 		}
 
-		utility::set_request_array(['id' => $team]);
+		$team_detail = \lib\db\teams::access_team_code($team, $this->user_id, ['action' => 'edit_member']);
 
-		$team_detail = $this->get_team();
-
-		if(!debug::$status || !isset($team_detail['id']))
+		if(!isset($team_detail['id']))
 		{
 			return false;
 		}
 
-		$team_id = utility\shortURL::decode($team_detail['id']);
-
-		utility::set_request_array($MEMBER_REQUEST);
+		$team_id = $team_detail['id'];
 
 		$check_user_in_team = \lib\db\userteams::get_list(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
-		// var_dump($check_user_in_team);exit();
+
 		if(!$check_user_in_team)
 		{
 			logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
@@ -155,7 +172,7 @@ trait get
 			return false;
 		}
 
-		$result = $this->ready_member($check_user_in_team);
+		$result = $this->ready_member($check_user_in_team, ['condition_checked' => true]);
 
 		return $result;
 	}
@@ -211,7 +228,7 @@ trait get
 	{
 		$default_options =
 		[
-
+			'condition_checked' => false,
 		];
 
 		if(!is_array($_options))
@@ -221,6 +238,7 @@ trait get
 
 		$_options = array_merge($default_options, $_options);
 
+
 		$result = [];
 
 		foreach ($_data as $key => $value)
@@ -228,6 +246,117 @@ trait get
 			switch ($key)
 			{
 				case 'user_id':
+					if(!$_options['condition_checked'])
+					{
+						if($this->team_privacy === 'public')
+						{
+
+							switch ($this->rule)
+							{
+								case 'admin':
+								case 'getway':
+									$result['card_action'] = true;
+									break;
+								case 'user':
+									if($this->remote_user)
+									{
+										if(intval($value) === intval($this->user_id))
+										{
+											$result['card_action'] = true;
+										}
+										else
+										{
+											if(!$this->show_another_status)
+											{
+												unset($_data['status']);
+												unset($_data['last_time']);
+											}
+										}
+									}
+									else
+									{
+										return false;
+									}
+
+								default:
+									if(!$this->show_another_status)
+									{
+										unset($_data['status']);
+										unset($_data['last_time']);
+									}
+									break;
+							}
+						}
+						elseif($this->team_privacy === 'team')
+						{
+
+							switch ($this->rule)
+							{
+								case 'admin':
+								case 'getway':
+									$result['card_action'] = true;
+									break;
+
+								case 'user':
+									if($this->remote_user)
+									{
+										if(intval($value) === intval($this->user_id))
+										{
+											$result['card_action'] = true;
+										}
+										else
+										{
+											if(!$this->show_another_status)
+											{
+												unset($_data['status']);
+												unset($_data['last_time']);
+											}
+										}
+									}
+									break;
+
+								default:
+									return false;
+									break;
+							}
+						}
+						elseif($this->team_privacy === 'private')
+						{
+							switch ($this->rule)
+							{
+								case 'admin':
+								case 'getway':
+									$result['card_action'] = true;
+									break;
+
+								case 'user':
+									if($this->remote_user)
+									{
+										if(intval($value) === intval($this->user_id))
+										{
+											$result['card_action'] = true;
+										}
+										else
+										{
+											return false;
+										}
+									}
+									else
+									{
+										return false;
+									}
+									break;
+
+								default:
+									return false;
+									break;
+							}
+						}
+						else
+						{
+							return false;
+						}
+					}
 					$result['user_id'] = \lib\utility\shortURL::encode($value);
 					break;
 
@@ -262,26 +391,17 @@ trait get
 				case 'displayname':
 				case 'firstname':
 				case 'lastname':
-				case 'status':
 				case 'rule':
 				case 'telegram_id':
 				case 'mobile':
+				case 'status':
 				case 'last_time':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
 				case 'personnelcode':
 					$result['personnel_code'] = isset($value) ? (string) $value : null;
 					break;
-				case 'id':
-				case 'team_id':
-				case 'desc':
-				case 'meta':
-				case 'createdate':
-				case 'fileid':
-				case 'date_modified':
-				case 'isdefault':
-				case 'dateenter':
-				case 'dateexit':
+
 				default:
 					continue;
 					break;

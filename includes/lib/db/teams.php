@@ -12,6 +12,25 @@ class teams
 	public static $TEAMS_SHORT_NAME = [];
 	public static $TEAMS_ID         = [];
 
+	public static $public_fields =
+	"
+		teams.*,
+		userteams.*,
+		userteams.id AS `userteam_id`,
+		teams.id AS `id`,
+		teams.status AS `status`,
+		userteams.telegram_id   AS `userteam_telegram_id`,
+		userteams.24h           AS `userteam_24h`,
+		userteams.remote        AS `userteam_remote`,
+		userteams.allowminus    AS `userteam_allowminus`,
+		userteams.allowplus     AS `userteam_allowplus`,
+		userteams.status        AS `userteam_status`,
+		userteams.fileid        AS `userteam_fileid`,
+		userteams.fileurl       AS `userteam_fileurl`,
+		userteams.isdefault     AS `userteam_isdefault`
+	";
+
+
 	/**
 	 * add new team
 	 *
@@ -28,6 +47,39 @@ class teams
 			return \lib\db::insert_id();
 		}
 	}
+
+
+
+	/**
+	 * Gets all admins.
+	 *
+	 * @param      <type>  $_team_id  The team identifier
+	 *
+	 * @return     <type>  All admins.
+	 */
+	public static function get_all_admins($_team_id)
+	{
+		if(!$_team_id || !is_numeric($_team_id))
+		{
+			return false;
+		}
+
+		$field = self::$public_fields;
+		$query =
+		"
+			SELECT
+				$field
+			FROM
+				teams
+			LEFT JOIN userteams ON userteams.team_id = teams.id
+			WHERE
+				userteams.team_id = $_team_id AND
+				userteams.rule   = 'admin' AND
+				userteams.status = 'active'
+		";
+		return \lib\db::get($query);
+	}
+
 
 	/**
 	 * Gets the shortname.
@@ -136,13 +188,14 @@ class teams
 
 		$query = null;
 
+		$field = self::$public_fields;
+
 		switch ($_options['action'])
 		{
 			/**
 			 * if the team is public no problem to load data of team
 			 * if is private cannot access to load
 			 */
-			case 'get_member':
 			case 'view':
 			case 'get_member':
 				if(!$_user_id || !is_numeric($_user_id))
@@ -153,16 +206,40 @@ class teams
 				$query =
 				"
 					SELECT
-						teams.*
+						$field
 					FROM
 						teams
-					INNER JOIN userteams ON userteams.team_id = teams.id
+					LEFT JOIN userteams ON userteams.team_id = teams.id AND userteams.user_id = $_user_id
 					WHERE
 						teams.$_options[type]   = '$_team' AND
-						IF(teams.privacy = 'private', userteams.user_id = $_user_id AND userteams.rule = 'admin', TRUE)
+						(
+							(
+								userteams.user_id = $_user_id AND
+								userteams.rule    = 'admin'
+							)
+							OR
+							(
+								teams.privacy     = 'team' AND
+								userteams.user_id = $_user_id AND
+								userteams.rule    = 'user'
+							)
+							OR
+							(
+								userteams.user_id = $_user_id AND
+								userteams.rule    = 'getway'
+							)
+							OR
+							(
+								userteams.user_id = $_user_id AND
+								userteams.remote  = 1
+							)
+							OR
+							(
+								teams.privacy = 'public'
+							)
+						)
 					LIMIT 1
 				";
-
 				break;
 
 			/**
@@ -177,9 +254,7 @@ class teams
 				$query =
 				"
 					SELECT
-						teams.*,
-						userteams.*,
-						userteams.id AS `userteam_id`
+						$field
 					FROM
 						teams
 					INNER JOIN userteams ON userteams.team_id = teams.id
@@ -199,6 +274,7 @@ class teams
 			case 'close':
 			case 'delete':
 			case 'add_member':
+			case 'edit_member':
 			case 'edit':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
@@ -208,10 +284,7 @@ class teams
 				$query =
 				"
 					SELECT
-						teams.*,
-						userteams.*,
-						userteams.id AS `userteam_id`,
-						teams.id AS `id`
+						$field
 					FROM
 						teams
 					INNER JOIN userteams ON userteams.team_id = teams.id
@@ -232,10 +305,7 @@ class teams
 				$query =
 				"
 					SELECT
-						teams.*,
-						userteams.*,
-						userteams.id AS `userteam_id`,
-						teams.id AS `id`
+						$field
 					FROM
 						teams
 					INNER JOIN userteams ON userteams.team_id = teams.id
@@ -268,8 +338,10 @@ class teams
 		}
 
 		$result =  \lib\db::get($query, null, true);
+
 		return $result;
 	}
+
 
 	/**
 	 * Determines if my team.
@@ -287,6 +359,29 @@ class teams
 		$_options = array_merge($_options, ['type' => 'id']);
 
 		return self::access_team($_team_id, $_user_id, $_options);
+	}
+
+
+	/**
+	 * Determines if my team.
+	 * check if this team is my tam
+	 * @param      <type>  $_team  The team
+	 * @param      <type>  $_boss  The boss
+	 */
+	public static function access_team_code($_code, $_user_id, $_options = [])
+	{
+		if(!is_array($_options))
+		{
+			$_options = [];
+		}
+
+		$_options = array_merge($_options, ['type' => 'id']);
+		$id = \lib\utility\shortURL::decode($_code);
+		if(!$id)
+		{
+			return false;
+		}
+		return self::access_team($id, $_user_id, $_options);
 	}
 
 

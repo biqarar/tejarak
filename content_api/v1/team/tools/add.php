@@ -70,7 +70,7 @@ trait add
 			$privacy = 'public';
 		}
 
-		if(!in_array(mb_strtolower($privacy), ['public', 'private']))
+		if(!in_array(mb_strtolower($privacy), ['public', 'private', 'team']))
 		{
 			logs::set('api:team:privacy:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid privacy field"), 'privacy', 'arguments');

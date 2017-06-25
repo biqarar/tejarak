@@ -185,6 +185,7 @@ trait add
 			if($request_user_id && $request_user_id = utility\shortURL::decode($request_user_id))
 			{
 				$old_user_id = \lib\db\userteams::get_list(['user_id' => $request_user_id,'team_id' => $team_id, 'limit' => 1]);
+
 				if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
 				{
 					logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
@@ -236,7 +237,6 @@ trait add
 							$user_id = \lib\db::insert_id();
 						}
 					}
-
 				}
 				else
 				{
@@ -339,7 +339,7 @@ trait add
 		$rule = utility::request('rule');
 		if($rule)
 		{
-			if(!in_array($rule, ['user', 'admin']))
+			if(!in_array($rule, ['user', 'admin', 'getway']))
 			{
 				logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
 				debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
@@ -350,6 +350,7 @@ trait add
 		{
 			$rule = 'user';
 		}
+
 
 		// get status
 		$status = utility::request('status');
@@ -365,6 +366,19 @@ trait add
 		else
 		{
 			$status = 'active';
+		}
+
+		$current_rule = (isset($old_user_id['rule'])) ? $old_user_id['rule'] : null;;
+		if(($rule === 'user' && $current_rule === 'admin') || ($current_rule === 'admin' && $status !== 'active'))
+		{
+			$another_admin = \lib\db\teams::get_all_admins($team_id);
+
+			if(count($another_admin) === 1)
+			{
+				logs::set('api:member:no:admin:in:team', $this->user_id, $log_meta);
+				debug::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
+				return false;
+			}
 		}
 
 		$allowplus  = utility::isset_request('allow_plus') 	? utility::request('allow_plus') 	? 1 : 0 : null;

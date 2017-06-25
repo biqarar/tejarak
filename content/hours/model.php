@@ -22,7 +22,7 @@ class model extends \content\main\model
 		$result =  $this->get_list_member();
 		if($result === false)
 		{
-			\lib\error::access();
+			\lib\error::access(T_("Can not access to show this team"));
 		}
 
 		return $result;
