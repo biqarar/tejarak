@@ -37,14 +37,22 @@
         <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
         <div class="c">
          <div class="f radio1">
-          <div class="c6">
+
+          <div class="c4">
            <input type="radio" id="r-private" name="privacy" value="private" {%if team_detail.privacy == 'private' or not team_detail.prvacy%}checked{%endif%} >
            <label for="r-private">{%trans "Private"%}</label>
           </div>
-          <div class="c6">
+
+          <div class="c4">
+           <input type="radio" id="r-team" name="privacy" value="team" {%if team_detail.privacy == 'team' %}checked{%endif%}>
+           <label for="r-team">{%trans "Team"%}</label>
+          </div>
+
+          <div class="c4">
            <input type="radio" id="r-public" name="privacy" value="public" {%if team_detail.privacy == 'public' %}checked{%endif%}>
            <label for="r-public">{%trans "Public"%}</label>
           </div>
+
          </div>
         </div>
       </div>
