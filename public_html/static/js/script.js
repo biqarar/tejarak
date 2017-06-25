@@ -2,36 +2,62 @@
 $(document).ready(function()
 {
   startTime();
+  bindExtraInput();
+  runLoadCard();
+
 });
 
 
-
-$('.tcard').on('click', function()
+function refreshAttendance()
 {
-  // if tcard has back
-  if($(this).find('.back').length)
+  if($('body').hasClass('attendance'))
   {
-    if($(this).hasClass('flipped'))
-    {
-      // $(this).removeClass('flipped');
-    }
-    else
-    {
-      unflipAllCards();
+    var myUrl       = window.location.pathname;
+    window.location = myUrl;
+  }
+}
 
-      if($(this).attr('data-status') === 'active')
+
+/**
+ * [reloadAttendance description]
+ * @param  {[type]} _force [description]
+ * @return {[type]}        [description]
+ */
+function reloadAttendance(_force)
+{
+
+}
+
+
+function runLoadCard()
+{
+  $('.tcard').on('click', function()
+  {
+    // if tcard has back
+    if($(this).find('.back').length)
+    {
+      if($(this).hasClass('flipped'))
       {
-        // add flip to this card
-        $(this).addClass('flipped');
-        calcTotalExit($(this), true);
+        // $(this).removeClass('flipped');
       }
       else
       {
-        console.log('this user is deactive!');
+        unflipAllCards();
+
+        if($(this).attr('data-status') === 'active')
+        {
+          // add flip to this card
+          $(this).addClass('flipped');
+          calcTotalExit($(this), true);
+        }
+        else
+        {
+          console.log('this user is deactive!');
+        }
       }
     }
-  }
-});
+  });
+}
 
 
 /**
@@ -47,29 +73,30 @@ function unflipAllCards()
 
 
 
-
-$('.tcard form [data-connect]').on('click', function()
+function bindExtraInput()
 {
-  var myInput = $(this).parent().find('input');
-  var extra   = parseInt($(this).attr('data-val')) || 0;
-  // add this value to target
-  setExtra(myInput, extra);
-});
-
-
-
-// up and down minus with scrool
-$('.tcard form .parameter').bind('mousewheel', function(e)
-{
-  var myInput = $(this).find('input[type="number"]');
-  if(e.originalEvent.wheelDelta /120 > 0)
+  $('.tcard form [data-connect]').on('click', function()
   {
-    setExtra(myInput, true);
-  }
-  else{
-    setExtra(myInput, false);
-  }
-});
+    var myInput = $(this).parent().find('input');
+    var extra   = parseInt($(this).attr('data-val')) || 0;
+    // add this value to target
+    setExtra(myInput, extra);
+  });
+
+
+  // up and down minus with scrool
+  $('.tcard form .parameter').bind('mousewheel', function(e)
+  {
+    var myInput = $(this).find('input[type="number"]');
+    if(e.originalEvent.wheelDelta /120 > 0)
+    {
+      setExtra(myInput, true);
+    }
+    else{
+      setExtra(myInput, false);
+    }
+  });
+}
 
 
 /**
@@ -158,7 +185,7 @@ function calcTotalExit(_card, _recalc)
     var dexit  = new Date(exit);
     // diff in minute
     var diff   = Math.floor((dexit- denter)/1000/60);
-    _card.find('.timeDiff').attr('data-val', diff).text(diff);
+    _card.find('.timeDiff').attr('data-val', diff).text(fitNumber(diff));
     // set max with maximum of total tile
     var maxAllowed = Math.ceil(diff/10)*10;
     _card.find('.inputMinus').attr('max', maxAllowed);
@@ -174,7 +201,7 @@ function calcTotalExit(_card, _recalc)
   {
     finalTime = 0;
   }
-  _card.find('.timePure').attr('data-val', finalTime).text(finalTime);
+  _card.find('.timePure').attr('data-val', finalTime).text(fitNumber(finalTime));
   return finalTime;
 }
 
@@ -217,25 +244,13 @@ function addZero(i)
  */
 function changetime(_value, _class)
 {
-  _new = String(_value);
-  // change time to persian if we are in rtl design
-  if($('body').hasClass('rtl'))
-  {
-    // convert time to persian
-    persian={0:'۰',1:'۱',2:'۲',3:'۳',4:'۴',5:'۵',6:'۶',7:'۷',8:'۸',9:'۹'};
-    for(var i=0; i<=9; i++)
-    {
-        var re = new RegExp(i,"g");
-        _new = _new.replace(re, persian[i]);
-    }
-  }
   // if time is not changed, return false
   if($('.time .'+ _class).attr('data-time') == _value)
   {
     return false;
   }
   // set new value with effect
-  $('.time .'+ _class).html(_new).attr('data-time', _value);
+  $('.time .'+ _class).html(fitNumber(_value, false)).attr('data-time', _value);
 }
 
 

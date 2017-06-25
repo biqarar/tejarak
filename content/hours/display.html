@@ -10,7 +10,7 @@
      <div class="front">
       <div class="top">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</div>
       <div class="cfdetail">
-       <span class="cfnum">{{key+1}}</span>
+       <span class="cfnum">{{(key+1) | fitNumber}}</span>
       </div>
       <div class="cfinfo">
        <div class="cfname">{{value.displayname}}</div>
@@ -22,7 +22,7 @@
 
       <form method="post" class="enter">
        <div class="top">
-        <div class="cbname"> <span class="cfnum">{{key+1}}</span><span>{{value.displayname}}</span></div>
+        <div class="cbname"> <span class="cfnum">{{(key+1) | fitNumber}}</span><span>{{value.displayname}}</span></div>
         <div class="f parameter">
          <div class="c3 decrease bn" data-val='-5' data-connect='plus'>-</div>
          <div class="c6 input"><input type="number" class="inputPlus" name="plus" placeholder='{%trans "Plus"%}' step="5" min="0" max="1440"></div>
@@ -38,7 +38,7 @@
 
       <form method="post" class="exit">
        <div class="top">
-        <div class="cbname"> <span class="cfnum">{{key+1}}</span><span>{{value.displayname}}</span></div>
+        <div class="cbname"> <span class="cfnum">{{(key+1) | fitNumber}}</span><span>{{value.displayname}}</span></div>
         <div class="tinfo">
          <div class="inOut">
           <span data-val='{{value.last_time| date("Y-m-d H:i:s") }}' class='timeEnter'>{{value.last_time | tdate('H:i')}}</span>
@@ -50,7 +50,7 @@
 
         <div class="f parameter">
          <div class="c3 decrease bn" data-val='-5' data-connect='minus'>-</div>
-         <div class="c6 input"><input type="number" class="inputMinus" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="1440"></div>
+         <div class="c6 input"><input type="number" class="inputMinus" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="10000"></div>
          <div class="c3 increase bp" data-val='10' data-connect='minus'>+</div>
         </div>
         <input type="hidden" name="user" value="{{value.user_id}}">
