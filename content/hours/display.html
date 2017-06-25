@@ -41,8 +41,8 @@
         <div class="tinfo">
          <div class="inOut">
           <span data-val='{{value.last_time| date("Y-m-d H:i:s") }}' class='timeEnter'>{{value.last_time | tdate('H:i')}}</span>
-          <span data-val='400' class='timeDiff'>{{"400" | fitNumber}}</span>
-          <span data-val='{{"now" | date("Y-m-d H:i:s")}}' class='timeNow'>{{"now" | tdate('H:i')}}</span>
+          <span data-val='400' class='timeDiff'></span>
+          <span class='timeNow'></span>
          </div>
          {%if value.plus%}<div class="timePlus" data-val='100'>{{value.plus | fitNumber}}</div>{%else%}{%endif%}
         </div>
@@ -77,8 +77,10 @@
 {%block sideBox%}
  <aside id='sidebar' class="scr">
   <h3 id="god">{% trans "In the Name of God" %}</h3>
-  <div class="time"><span class="hour">{{ "now"|date("H") |fitNumber }}</span>:<span class="minute">{{ "now"|date("i") |fitNumber }}</span>:<span class="second">{{ "now"|date("s") |fitNumber}}</span></div>
-  <div id="date">{% if site.currentlang == "fa" %} {{"now"|jdate("l j F Y") |fitNumber}} {% else %} {{"now"|date("l j F Y")}} {% endif %}</div>
+  <div class="dateTime" data-val-start='{{ "now"| date("Y-m-d H:i:s") }}'>
+   <div class="time"><span class="hour">{{ "now"|date("H") |fitNumber }}</span>:<span class="minute">{{ "now"|date("i") |fitNumber }}</span>:<span class="second">{{ "now"|date("s") |fitNumber}}</span></div>
+   <div id="date">{% if site.currentlang == "fa" %} {{"now"|jdate("l j F Y") |fitNumber}} {% else %} {{"now"|date("l j F Y")}} {% endif %}</div>
+  </div>
   <div id="logo">
    <img src="{{current_team.logo}}" alt='{{current_team.name}}'>
     <h1>{{current_team.name}}</h1>

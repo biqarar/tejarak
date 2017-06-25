@@ -257,11 +257,15 @@ function calcTotalExit(_card, _recalc)
   // check recalc all
   if(_recalc)
   {
+    // set currentDate time from dateTime el
+    var myDateTime = getDatetime();
+    // fill in now
+    _card.find('.timeNow').html(fitNumber(myDateTime.html, false));
+    // get enter value
     var enter = _card.find('.timeEnter').attr('data-val');
-    var exit  = _card.find('.timeNow').attr('data-val');
     // calc diff from time of server
     var denter = new Date(enter);
-    var dexit  = new Date(exit);
+    var dexit  = new Date(myDateTime.val);
     // diff in minute
     var diff   = Math.floor((dexit- denter)/1000/60);
     _card.find('.timeDiff').attr('data-val', diff).text(fitNumber(diff));
@@ -280,7 +284,16 @@ function calcTotalExit(_card, _recalc)
   {
     finalTime = 0;
   }
-  _card.find('.timePure').attr('data-val', finalTime).text(fitNumber(finalTime));
+  var timePure = _card.find('.timePure');
+  timePure.attr('data-val', finalTime).text(fitNumber(finalTime));
+  if(finalTime === diff)
+  {
+    timePure.fadeOut('fast');
+  }
+  else
+  {
+    timePure.fadeIn();
+  }
   return finalTime;
 }
 
@@ -292,12 +305,22 @@ function calcTotalExit(_card, _recalc)
  */
 function startClock()
 {
-  var today = new Date();
+  var myDateTime    = $('#sidebar .dateTime');
+  var myDateTimeVal = myDateTime.data('data-val');
+  if(!myDateTimeVal)
+  {
+    myDateTimeVal   = myDateTime.attr('data-val-start');
+  }
+  var myNow         = new Date(myDateTimeVal);
+  myNow             = new Date(myNow.getTime() + 1000);
+  myDateTime.data('data-val', myNow);
 
-  changetime(addZero(today.getSeconds()), 'second');
-  changetime(addZero(today.getMinutes()), 'minute');
-  changetime(today.getHours(), 'hour');
-  var t = setTimeout(startClock,500);
+  // change time
+  // var today = new Date();
+  changetime(addZero(myNow.getSeconds()), 'second');
+  changetime(addZero(myNow.getMinutes()), 'minute');
+  changetime(myNow.getHours(), 'hour');
+  var t = setTimeout(startClock,1000);
 
   function addZero(i)
   {
@@ -318,6 +341,15 @@ function startClock()
     // set new value with effect
     $('.time .'+ _class).html(fitNumber(_value, false)).attr('data-time', _value);
   }
+}
+
+
+function getDatetime()
+{
+  var d      = $('#sidebar .dateTime').data('data-val');
+  var myVal  = d.getFullYear()+ '-'+ (d.getMonth()+1)+ '-'+ d.getDate()+ ' ' +d.getHours() +':' +d.getMinutes() +':' +d.getSeconds();
+  var myHtml = d.getHours() +':' +d.getMinutes();
+  return {html:myHtml, val:myVal};
 }
 
 
