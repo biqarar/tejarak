@@ -1,57 +1,47 @@
 {%extends display.adminTeam%}
 
-{%block content%}
+{%block contentCenter%}
+  <div class='middle' id="addTeam">
+   <div class='dbox'>
+    <h2>{{page.desc}}</h2>
 
-  <div class="f">
-   <div class="c6 account-balance">
-    <div class="box">
-     <div class="f align-center">
-      <h2 class="c">{%trans "Current Plan"%}</h2>
-      <h3 class="cauto os"><span>{{current_plan.plan_name}}</span></h3>
+     <div class="f pas">
+      <h3 class="c">{%trans "Current Plan"%} <b>{{current_plan.plan_name |capitalize }}</b></h2>
+      <h4 class="cauto os" title="{{current_plan.start|tdate("Y-m-d")}}"><sub>{{current_plan.start|sdate}}</sub></h3>
      </div>
-    </div>
-   </div>
-
-   <div class="c6 account-balance">
-    <div class="box">
-     <div class="f align-center">
-      <h2 class="c">{%trans "Start date"%}</h2>
-      <h3 class="cauto os"><span>{{current_plan.start|jdate("Y-m-d")}}</span><sub>{{current_plan.start|jdate("H:i:s")}}</sub></h3>
-     </div>
-    </div>
-   </div>
-  </div>
 
 
-  <div class="f">
-   <div class="box">
+  <div class="f pas">
+   <div class="bg-gray pas">
     <h2>{%trans "Choose a new plan of your team"%}</h2>
-    <p>{%trans "Choose a plan to change your team plan"%}</p>
 
-    <form method="post"  autocomplete="off">
-     <div class="f">
-      <label class="">
-       <input type="radio" name="plan" id="free" value="free" checked>
-       <h1>FREE</h1>
-      </label>
-     </div>
 
-     <div class="f">
-      <label class="cauto">
-       <input type="radio" name="plan" id="pro" value="pro">
-       <h1>PRO</h1>
-      </label>
-     </div>
 
-     <div class="f">
-      <label class="cauto">
-       <input type="radio" name="plan" id="business" value="business">
-       <h1>BUSINESS</h1>
-      </label>
-     </div>
+    <form method="post" class='df'>
+     <div class="f radio1 v">
 
-     <div class=" b1">
-      <button class="c" type="submit">{%trans "Apply"%}</button>
+      <div class="c12 f ps">
+       <div class="c12">
+        <input type="radio" name="plan" id="r-free" value="free" {%if current_plan.plan_name =='free'%}checked{%endif%}>
+        <label for="r-free">{%trans "FREE"%}</label>
+       </div>
+
+       <div class="c12">
+        <input type="radio" name="plan" id="r-pro" value="pro" {%if current_plan.plan_name =='pro'%}checked{%endif%}>
+        <label for="r-pro">{%trans "Pro"%}</label>
+       </div>
+
+       <div class="c12">
+        <input type="radio" name="plan" id="r-business" value="business" {%if current_plan.plan_name =='business'%}checked{%endif%}>
+        <label for="r-business">{%trans "Business"%}</label>
+       </div>
+
+      </div>
+
+      <div class="c12">
+       <button class="b1" type="submit">{%trans "Apply"%}</button>
+      </div>
+
      </div>
     </form>
 
@@ -67,5 +57,6 @@
 {%endif%}
 
 
-
+   </div>
+  </div>
 {%endblock%}
