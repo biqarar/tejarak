@@ -67,7 +67,8 @@ trait add
 			return false;
 		}
 		// load team data
-		$team_detail = \lib\db\teams::access_team($team, $this->user_id, ['action' => 'save_hours']);
+		$team_detail = \lib\db\teams::access_team($team, $this->user_id, ['action' => 'save_hours', 'change_hour_user' => $user]);
+
 		// check the team exist
 		if(isset($team_detail['id']))
 		{

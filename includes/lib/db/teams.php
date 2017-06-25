@@ -124,8 +124,9 @@ class teams
 
 		$default_options =
 		[
-			'action' => null,
-			'type'   => 'shortname',
+			'action'           => null,
+			'type'             => 'shortname',
+			'change_hour_user' => null,
 		];
 
 		if(is_array($_options))
@@ -199,7 +200,6 @@ class teams
 			case 'delete':
 			case 'add_member':
 			case 'edit':
-			case 'save_hours':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;
@@ -209,6 +209,8 @@ class teams
 				"
 					SELECT
 						teams.*
+						userteams.*,
+						userteams.id AS `userteam_id`
 					FROM
 						teams
 					INNER JOIN userteams ON userteams.team_id = teams.id
@@ -216,6 +218,40 @@ class teams
 						teams.$_options[type] = '$_team' AND
 						userteams.user_id = $_user_id AND
 						userteams.rule    = 'admin'
+					LIMIT 1
+				";
+				break;
+
+			case 'save_hours':
+				if(!$_user_id || !is_numeric($_user_id) || !$_options['change_hour_user'] || !is_numeric($_options['change_hour_user']))
+				{
+					return false;
+				}
+
+				$query =
+				"
+					SELECT
+						teams.*,
+						userteams.*,
+						userteams.id AS `userteam_id`,
+						teams.id AS `id`
+					FROM
+						teams
+					INNER JOIN userteams ON userteams.team_id = teams.id
+						WHERE
+						teams.$_options[type] = '$_team' AND
+						(
+							(
+								userteams.user_id = $_user_id AND
+								userteams.rule    = 'admin'
+							)
+							OR
+							(
+								userteams.user_id = $_options[change_hour_user] AND
+								userteams.remote = 1 AND
+								$_user_id = $_options[change_hour_user]
+							)
+						)
 					LIMIT 1
 				";
 				break;
