@@ -71,23 +71,28 @@ function runLoadCard()
       }
       else
       {
-        unflipAllCards();
-
-        if($(this).attr('data-status') === 'active')
-        {
-          // add flip to this card
-          $(this).addClass('flipped');
-          calcTotalExit($(this), true);
-        }
-        else
-        {
-          console.log('this user is deactive!');
-        }
+        flipCard($(this))
       }
     }
   });
 }
 
+
+function flipCard(_card)
+{
+  unflipAllCards();
+
+  if(_card.attr('data-status') === 'active')
+  {
+    // add flip to this card
+    _card.addClass('flipped');
+    calcTotalExit(_card, true);
+  }
+  else
+  {
+    console.log('this user is deactive!');
+  }
+}
 
 /**
  * unflip all cards
