@@ -38,7 +38,7 @@ trait get
 			return false;
 		}
 
-		if(!$check_is_my_team = \lib\db\teams::access_team($team, $this->user_id))
+		if(!$check_is_my_team = \lib\db\teams::access_team($team, $this->user_id, ['action'=> 'report_last']))
 		{
 			logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
 			debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');

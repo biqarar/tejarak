@@ -206,7 +206,7 @@ trait get
 
 		if(!$this->user_id)
 		{
-			return false;
+			// return false;
 		}
 
 		$id = utility::request("id");
@@ -230,12 +230,13 @@ trait get
 
 		if($id)
 		{
-			$result = \lib\db\teams::access_team_id($id, $this->user_id);
+			$result = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'view']);
 		}
 		else
 		{
-			$result = \lib\db\teams::access_team($shortname, $this->user_id);
+			$result = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'view']);
 		}
+
 		if(!$result)
 		{
 			logs::set('api:team:access:denide', $this->user_id, $log_meta);

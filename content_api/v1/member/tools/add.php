@@ -64,7 +64,7 @@ trait add
 			return false;
 		}
 		// load team data
-		$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, 'add:member');
+		$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, ['action' => 'add_member']);
 		// check the team exist
 		if(isset($team_detail['id']))
 		{

@@ -41,6 +41,13 @@ trait add
 
 		$name = utility::request('name');
 		$name = trim($name);
+		if(!$name)
+		{
+			logs::set('api:team:name:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Team name of team can not be null"), 'name', 'arguments');
+			return false;
+		}
+
 		if(mb_strlen($name) > 100)
 		{
 			logs::set('api:team:maxlength:name', $this->user_id, $log_meta);
@@ -215,7 +222,7 @@ trait add
 				return false;
 			}
 
-			$admin_of_team = \lib\db\teams::access_team_id($id, $this->user_id);
+			$admin_of_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'edit']);
 
 			if(!$admin_of_team || !isset($admin_of_team['id']))
 			{

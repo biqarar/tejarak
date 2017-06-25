@@ -114,27 +114,85 @@ class teams
 	 * @param      <type>  $_team  The team
 	 * @param      <type>  $_boss  The boss
 	 */
-	public static function access_team($_team, $_user_id)
+	public static function access_team($_team, $_user_id, $_options = [])
 	{
 
-		if(!$_team || !$_user_id || !is_numeric($_user_id))
+		if(!$_team)
 		{
 			return false;
 		}
 
-		$query =
-		"
-			SELECT
-				teams.*
-			FROM
-				teams
-			INNER JOIN userteams ON userteams.team_id = teams.id
-			WHERE
-				teams.shortname   = '$_team' AND
-				userteams.user_id = $_user_id AND
-				userteams.rule    = 'admin'
-			LIMIT 1
-		";
+		$default_options =
+		[
+			'action' => null,
+			'type'   => 'shortname',
+		];
+
+		if(is_array($_options))
+		{
+			$_options = array_merge($default_options, $_options);
+		}
+
+		$chec_admin = true;
+
+		switch ($_options['action'])
+		{
+			case 'get_member':
+			case 'view':
+			case 'get_member':
+				$chec_admin = false;
+				if(!$_user_id || !is_numeric($_user_id))
+				{
+					$_user_id = 0;
+				}
+				break;
+
+			case 'report_last':
+			case 'close':
+			case 'delete':
+			case 'add_member':
+			case 'edit':
+			case 'save_hours':
+			default:
+				if(!$_user_id || !is_numeric($_user_id))
+				{
+					return false;
+				}
+				$chec_admin = true;
+				break;
+		}
+
+		if($chec_admin)
+		{
+			$query =
+			"
+				SELECT
+					teams.*
+				FROM
+					teams
+				INNER JOIN userteams ON userteams.team_id = teams.id
+					WHERE
+					teams.$_options[type] = '$_team' AND
+					userteams.user_id = $_user_id AND
+					userteams.rule    = 'admin'
+				LIMIT 1
+			";
+		}
+		else
+		{
+			$query =
+			"
+				SELECT
+					teams.*
+				FROM
+					teams
+				INNER JOIN userteams ON userteams.team_id = teams.id
+				WHERE
+					teams.$_options[type]   = '$_team' AND
+					IF(teams.privacy = 'private', userteams.user_id = $_user_id AND userteams.rule = 'admin', TRUE)
+				LIMIT 1
+			";
+		}
 
 		$result =  \lib\db::get($query, null, true);
 		return $result;
@@ -146,30 +204,16 @@ class teams
 	 * @param      <type>  $_team  The team
 	 * @param      <type>  $_boss  The boss
 	 */
-	public static function access_team_id($_team_id, $_user_id)
+	public static function access_team_id($_team_id, $_user_id, $_options = [])
 	{
-
-		if(!$_team_id || !$_user_id || !is_numeric($_user_id))
+		if(!is_array($_options))
 		{
-			return false;
+			$_options = [];
 		}
 
-		$query =
-		"
-			SELECT
-				teams.*
-			FROM
-				teams
-			INNER JOIN userteams ON userteams.team_id = teams.id
-			WHERE
-				teams.id   = '$_team_id' AND
-				userteams.user_id = $_user_id AND
-				userteams.rule    = 'admin'
-			LIMIT 1
-		";
+		$_options = array_merge($_options, ['type' => 'id']);
 
-		$result =  \lib\db::get($query, null, true);
-		return $result;
+		return self::access_team($_team_id, $_user_id, $_options);
 	}
 
 

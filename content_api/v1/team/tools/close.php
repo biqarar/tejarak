@@ -40,7 +40,7 @@ trait close
 			return false;
 		}
 
-		$team_details = \lib\db\teams::access_team_id($id, $this->user_id);
+		$team_details = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'close']);
 		if(!$team_details || !isset($team_details['id']))
 		{
 			logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);

@@ -67,7 +67,7 @@ trait add
 			return false;
 		}
 		// load team data
-		$team_detail = \lib\db\teams::get_by_shortname($team);
+		$team_detail = \lib\db\teams::access_team($team, $this->user_id, ['action' => 'save_hours']);
 		// check the team exist
 		if(isset($team_detail['id']))
 		{
@@ -76,7 +76,7 @@ trait add
 		else
 		{
 			logs::set('api:hours:team:notfound:invalid', null, $log_meta);
-			debug::error(T_("Team not found"), 'team', 'permission');
+			debug::error(T_("Can not access to set time of this team"), 'team', 'permission');
 			return false;
 		}
 

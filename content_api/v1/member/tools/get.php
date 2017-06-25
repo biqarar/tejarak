@@ -26,7 +26,7 @@ trait get
 
 		if(!$this->user_id)
 		{
-			return false;
+			// return false;
 		}
 
 		$id = utility::request('id');
@@ -49,11 +49,11 @@ trait get
 
 		if($id)
 		{
-			$team_detail = \lib\db\teams::access_team_id($id, $this->user_id);
+			$team_detail = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'get_member']);
 		}
 		elseif($shortname)
 		{
-			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id);
+			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'get_member']);
 		}
 
 		if(!$team_detail)
