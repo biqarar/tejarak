@@ -2,10 +2,10 @@
 
 
 {%block contentCenter%}
-  <div class='middle' id="showMember">
+  <div class='middle{% if list_member|length>=8 %} small{%endif%}' id="showMember">
 
 {%for key, value in list_member%}
-   <div class="tcard" data-status='{{value.status}}' data-live='{%if value.last_time%}on{%else%}off{%endif%}'>
+   <div class="tcard small" data-status='{{value.status}}' data-live='{%if value.last_time%}on{%else%}off{%endif%}'>
     <div class="cbox">
      <div class="front">
       <div class="top">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</div>
