@@ -208,9 +208,10 @@ class teams
 				$query =
 				"
 					SELECT
-						teams.*
+						teams.*,
 						userteams.*,
-						userteams.id AS `userteam_id`
+						userteams.id AS `userteam_id`,
+						teams.id AS `id`
 					FROM
 						teams
 					INNER JOIN userteams ON userteams.team_id = teams.id
