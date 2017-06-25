@@ -5,9 +5,17 @@ class view extends \mvc\view
 {
 	public function config()
 	{
-		$this->data->bodyclass            = 'fixed unselectable dash';
-		$this->data->template['teamLink'] = 'content_a\\main\\teamLink.html';
-		$this->data->team                 = \lib\router::get_url(0);
+		$this->data->bodyclass = 'fixed unselectable dash';
+
+		// get part 2 of url and use as team name
+		$this->data->team      = \lib\router::get_url(0);
+
+		if($this->reservedNames($this->data->team))
+		{
+			$this->data->team  = null;
+		}
+
+
 
 		$this->data->display['adminTeam'] = 'content_a\main\layoutTeam.html';
 	}

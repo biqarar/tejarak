@@ -11,5 +11,29 @@ class controller extends \mvc\controller
 	{
 		parent::_route();
 	}
+
+
+	/**
+	 * check reserved names
+	 * @return [type] [description]
+	 */
+	function reservedNames($_name)
+	{
+		$result = null;
+		switch ($_name)
+		{
+			case 'home':
+			case 'team':
+			case 'billing':
+				$result = true;
+				break;
+
+			default:
+				$result = false;
+				break;
+		}
+		return $result;
+	}
+
 }
 ?>
