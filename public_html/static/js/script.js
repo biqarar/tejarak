@@ -1,11 +1,24 @@
 
 $(document).ready(function()
 {
-  startTime();
-  bindExtraInput();
-  runLoadCard();
-
+  checkAndRunAttendance();
 });
+
+
+// ---------------------------------------------------------------------- Attendance Page
+/**
+ * check and if we are in attendance page run needed code
+ * @return {[type]} [description]
+ */
+function checkAndRunAttendance()
+{
+  if($('body').hasClass('attendance'))
+  {
+    startClock();
+    bindExtraInput();
+    runLoadCard();
+  }
+}
 
 
 function refreshAttendance()
@@ -29,8 +42,24 @@ function reloadAttendance(_force)
 }
 
 
+/**
+ * [runLoadCard description]
+ * @return {[type]} [description]
+ */
 function runLoadCard()
 {
+  $('body').on('click', function(e, f, a)
+  {
+    if($(e.target).parents('.tcard').is($('.tcard')))
+    {
+
+    }
+    else
+    {
+      unflipAllCards();
+    }
+  })
+
   $('.tcard').on('click', function()
   {
     // if tcard has back
@@ -70,7 +99,6 @@ function unflipAllCards()
   $('.tcard').removeClass('flipped');
   $('.tcard input:not([type="hidden"])').val('');
 }
-
 
 
 function bindExtraInput()
@@ -208,63 +236,43 @@ function calcTotalExit(_card, _recalc)
 
 
 /**
- * [startTime description]
+ * [startClock description]
  * @return {[type]} [description]
  */
-function startTime()
+function startClock()
 {
   var today = new Date();
 
   changetime(addZero(today.getSeconds()), 'second');
   changetime(addZero(today.getMinutes()), 'minute');
   changetime(today.getHours(), 'hour');
-  var t = setTimeout(startTime,500);
-}
+  var t = setTimeout(startClock,500);
 
-
-/**
- * [addZero description]
- * @param {[type]} i [description]
- */
-function addZero(i)
-{
-  if (i < 10)
+  function addZero(i)
   {
-    i = "0" + i
-  };
-  return i;
-}
-
-
-/**
- * [changetime description]
- * @param  {[type]} _new   [description]
- * @param  {[type]} _class [description]
- * @return {[type]}        [description]
- */
-function changetime(_value, _class)
-{
-  // if time is not changed, return false
-  if($('.time .'+ _class).attr('data-time') == _value)
-  {
-    return false;
+    if (i < 10)
+    {
+      i = "0" + i
+    };
+    return i;
   }
-  // set new value with effect
-  $('.time .'+ _class).html(fitNumber(_value, false)).attr('data-time', _value);
+
+  function changetime(_value, _class)
+  {
+    // if time is not changed, return false
+    if($('.time .'+ _class).attr('data-time') == _value)
+    {
+      return false;
+    }
+    // set new value with effect
+    $('.time .'+ _class).html(fitNumber(_value, false)).attr('data-time', _value);
+  }
 }
 
 
 
 
-$('body').on('click', function(e, f, a)
-{
-  if($(e.target).parents('.tcard').is($('.tcard')))
-  {
 
-  }
-  else
-  {
-    unflipAllCards();
-  }
-})
+
+
 
