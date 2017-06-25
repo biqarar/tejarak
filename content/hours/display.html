@@ -41,9 +41,9 @@
         <div class="cbname"> <span class="cfnum">{{key+1}}</span><span>{{value.displayname}}</span></div>
         <div class="tinfo">
          <div class="inOut">
-          <span data-val='{{value.last_time }}' class='timeEnter'>{{value.last_time | tdate('H:m')}}</span>
+          <span data-val='{{value.last_time| date("Y-m-d H:i:s") }}' class='timeEnter'>{{value.last_time | tdate('H:i')}}</span>
           <span data-val='400' class='timeDiff'>{{"400" | fitNumber}}</span>
-          <span data-val='{{"now" | tdate}}' class='timeNow'>{{"now" | tdate('H:m')}}</span>
+          <span data-val='{{"now" | date("Y-m-d H:i:s")}}' class='timeNow'>{{"now" | tdate('H:i')}}</span>
          </div>
          {%if value.plus%}<div class="timePlus" data-val='100'>{{value.plus | fitNumber}}</div>{%else%}{%endif%}
         </div>

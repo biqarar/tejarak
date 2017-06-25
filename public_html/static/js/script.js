@@ -23,7 +23,7 @@ $('.tcard').on('click', function()
       {
         // add flip to this card
         $(this).addClass('flipped');
-        calcTotalExit($(this));
+        calcTotalExit($(this), true);
       }
       else
       {
@@ -59,9 +59,9 @@ $('.tcard form [data-connect]').on('click', function()
 
 
 // up and down minus with scrool
-$('.tcard form').bind('mousewheel', function(e)
+$('.tcard form .parameter').bind('mousewheel', function(e)
 {
-  var myInput = $('.tcard form input[type="number"]');
+  var myInput = $(this).find('input[type="number"]');
   if(e.originalEvent.wheelDelta /120 > 0)
   {
     setExtra(myInput, true);
@@ -103,8 +103,6 @@ function setExtra(_target, _extra, _exact)
   {
     newVal += parseInt(_extra);
   }
-  console.log(newVal);
-
   if(_target.attr('min') && newVal < parseInt(_target.attr('min')))
   {
     // do nothing
@@ -118,9 +116,12 @@ function setExtra(_target, _extra, _exact)
   else
   {
     _target.val(newVal);
-    calcTotalExit(_target.parents('.tcard'));
+    $setResult = calcTotalExit(_target.parents('.tcard'));
+    if($setResult === 0)
+    {
+      setExtraInvalid(_target);
+    }
   }
-
 }
 
 
@@ -142,25 +143,39 @@ function setExtraInvalid(_target)
  * [calcTotalExit description]
  * @return {[type]} [description]
  */
-function calcTotalExit(_card)
+function calcTotalExit(_card, _recalc)
 {
-  var enter = _card.find('.timeEnter').attr('data-val');
-  var exit  = _card.find('.timeNow').attr('data-val');
-  var diff  = parseInt(_card.find('.timeDiff').attr('data-val')) || 0;
+  // get plus and minus
   var plus  = parseInt(_card.find('.timePlus').attr('data-val')) || 0;
   var minus = parseInt(_card.find('.inputMinus').val()) || 0;
-
-  // calc diff from time of server
-
+  // check recalc all
+  if(_recalc)
+  {
+    var enter = _card.find('.timeEnter').attr('data-val');
+    var exit  = _card.find('.timeNow').attr('data-val');
+    // calc diff from time of server
+    var denter = new Date(enter);
+    var dexit  = new Date(exit);
+    // diff in minute
+    var diff   = Math.floor((dexit- denter)/1000/60);
+    _card.find('.timeDiff').attr('data-val', diff).text(diff);
+    // set max with maximum of total tile
+    var maxAllowed = Math.ceil(diff/10)*10;
+    _card.find('.inputMinus').attr('max', maxAllowed);
+  }
+  else
+  {
+    var diff  = parseInt(_card.find('.timeDiff').attr('data-val')) || 0;
+  }
+  // calc finalTime
   var finalTime = diff + plus - minus;
-   _card.find('.timePure').attr('data-val', finalTime).text(finalTime);
-
-  console.log(enter);
-  console.log(exit);
-  console.log(diff);
-  console.log(plus);
-  console.log(minus);
-  console.log(finalTime);
+  // set value if time pure
+  if(finalTime < 0)
+  {
+    finalTime = 0;
+  }
+  _card.find('.timePure').attr('data-val', finalTime).text(finalTime);
+  return finalTime;
 }
 
 
