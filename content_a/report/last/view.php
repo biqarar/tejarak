@@ -8,6 +8,11 @@ class view extends \content_a\main\view
 		$args           = [];
 		$args['id']   = \lib\router::get_url(0);
 		$this->data->last_time = $this->model()->get_last_time($args);
+
+		if(isset($this->controller->pagnation))
+		{
+			$this->data->pagnation = $this->controller->pagnation_get();
+		}
 	}
 }
 ?>

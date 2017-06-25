@@ -58,6 +58,7 @@ class controller extends \content_a\main\controller
 		 */
 		if(preg_match("/(\/report\/)|(\/report$)/", $url))
 		{
+			\lib\storage::set_team_code_url(\lib\router::get_url(0));
 			\lib\router::set_controller("content_a\\report\\controller");
 			return;
 		}
