@@ -19,7 +19,6 @@
      </div>
 
      <div class="back">
-
       <form method="post" class="enter">
        <div class="top">
         <div class="cbname"> <span class="cfnum">{{(key+1) | fitNumber}}</span><span>{{value.displayname}}</span></div>
@@ -62,45 +61,8 @@
         <button class="btn b2">{%trans "Exit"%}</button>
        </div>
       </form>
-
-
-
-{%if false%}
-
-   <div class="t-card-data">
-    <span class="t-card-heading">Enter</span>
-    <span class="t-card-value">14:30</span>
-   </div>
-
-   <div class="t-card-data">
-    <span class="t-card-heading">Total</span>
-    <span class="t-card-value">14:30</span>
-   </div>
-
-      <div class="t-card-back-top">
-       <div class="t-card-back-name" data-number='{{key}}'>{{value.name}} {{value.family}}</div>
-
-{%if value.last_time%}<div class="t-c-post">{{value.last_time}}</div>{%else%}<div class="t-c-post">:|</div>{%endif%}
-   <form method="post" class="df">
-     <input type="hidden" name="user" value="{{value.user_id}}">
-     <input type="hidden" name="type" value="enter">
-     <input type="submit" value="enter" >
-   </form>
-
-
-   <form method="post" class="df">
-     <input type="hidden" name="user" value="{{value.user_id}}">
-     <input type="hidden" name="type" value="exit">
-     <input type="submit" value="exit" >
-   </form>
-
-
-      </div>
-
-{%endif%}
-
-
      </div>
+
     </div>
    </div>
 
@@ -113,7 +75,7 @@
 
 
 {%block sideBox%}
- <aside id='sidebar'>
+ <aside id='sidebar' class="scr">
   <h3 id="god">{% trans "In the Name of God" %}</h3>
   <div class="time"><span class="hour">{{ "now"|date("H") |fitNumber }}</span>:<span class="minute">{{ "now"|date("i") |fitNumber }}</span>:<span class="second">{{ "now"|date("s") |fitNumber}}</span></div>
   <div id="date">{% if site.currentlang == "fa" %} {{"now"|jdate("l j F Y") |fitNumber}} {% else %} {{"now"|date("l j F Y")}} {% endif %}</div>

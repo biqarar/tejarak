@@ -17,6 +17,7 @@ function checkAndRunAttendance()
     startClock();
     bindExtraInput();
     runLoadCard();
+    changeCardStatusOnResult();
   }
 }
 
@@ -28,6 +29,34 @@ function refreshAttendance()
     var myUrl       = window.location.pathname;
     window.location = myUrl;
   }
+}
+
+
+function changeCardStatusOnResult()
+{
+  $('.attendance form').on('ajaxify:success', function(_e, _result)
+  {
+    // our request is done successfully
+    if(_result.status === 1)
+    {
+      var myCard = $(this).parents('.tcard');
+      // if this request is enter, enable card
+      if($(this).hasClass('enter'))
+      {
+        myCard.attr('data-live', 'on');
+      }
+      else if($(this).hasClass('exit'))
+      {
+        myCard.attr('data-live', 'off');
+      }
+
+      unflipAllCards();
+    }
+    else
+    {
+      console.log('has error!');
+    }
+  });
 }
 
 
@@ -80,8 +109,13 @@ function runLoadCard()
 
 function flipCard(_card)
 {
-  unflipAllCards();
+  if($('body').hasClass('loading-form'))
+  {
+    console.log('in loading dont allow to show another card...');
+    return false;
+  }
 
+  unflipAllCards();
   if(_card.attr('data-status') === 'active')
   {
     // add flip to this card
@@ -110,6 +144,10 @@ function bindExtraInput()
 {
   $('.tcard form [data-connect]').on('click', function()
   {
+    if($('body').hasClass('loading-form'))
+    {
+      return false;
+    }
     var myInput = $(this).parent().find('input');
     var extra   = parseInt($(this).attr('data-val')) || 0;
     // add this value to target
@@ -120,6 +158,10 @@ function bindExtraInput()
   // up and down minus with scrool
   $('.tcard form .parameter').bind('mousewheel', function(e)
   {
+    if($('body').hasClass('loading-form'))
+    {
+      return false;
+    }
     var myInput = $(this).find('input[type="number"]');
     if(e.originalEvent.wheelDelta /120 > 0)
     {
@@ -176,8 +218,8 @@ function setExtra(_target, _extra, _exact)
   else
   {
     _target.val(newVal);
-    $setResult = calcTotalExit(_target.parents('.tcard'));
-    if($setResult === 0)
+    var setResult = calcTotalExit(_target.parents('.tcard'));
+    if(setResult === 0 && _target.hasClass('inputMinus'))
     {
       setExtraInvalid(_target);
     }
