@@ -175,7 +175,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .rtl #tfooter #xaccess a:hover{margin-right:0;margin-left:0;}
 
 /* sharebox*/
-.sharebox>a{display:inline-block;background-color:#aaa;width:2.2em;height:2.2em;line-height:2.2em;text-align:center;color:#fff !important;-webkit-transition:.3s ease;-o-transition:.3s ease;-moz-transition:.3s ease;transition:.3s ease;border-radius:2px}
+.sharebox>a{display:inline-block;background-color:#aaa;width:24px;height:24px;line-height:24px;text-align:center;color:#fff !important;-webkit-transition:.3s ease;-o-transition:.3s ease;-moz-transition:.3s ease;transition:.3s ease;border-radius:2px}
 .rtl .sharebox>a:not(:last-child){margin-right:0;margin-left:.3em}
 .ltr .sharebox>a:not(:last-child){margin-right:.3em;margin-left:0}
 .sharebox>a span:first-child{display:none}
@@ -436,7 +436,13 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 .dd-items > a:hover{color:#fff;background-color:rgba(0, 0, 0, .5);}
 
 
-
+.socialbox a{padding:0!important;opacity:.8;-webkit-transition:.3s;;transition:.3s;border-radius:2px;overflow:hidden;}
+.socialbox a:hover{opacity:1;}
+.socialbox [class*='icon-']{display:inline-block;vertical-align:middle;width:24px;height:24px;background-image:url(../images/sprite/sprite.png);}
+.socialbox .twitter .icon-twitter{background-position:-24px -24px;}
+.socialbox .telegram .icon-send{background-position:0 -24px;}
+.socialbox .gplus .icon-google-plus{background-position:-24px 0;}
+.socialbox .facebook .icon-facebook{background-position:0 0;}
 
 
 /* ---------------------------------------------------------------- responsive of site */
