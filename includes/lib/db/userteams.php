@@ -141,6 +141,7 @@ class userteams
 					SELECT
 						userteams.*,
 						users.user_mobile AS `mobile`,
+						users.user_username AS `username`,
 						CONCAT(hours.date, ' ', hours.start) AS `last_time`,
 						hours.plus AS `plus`
 					FROM
@@ -159,6 +160,7 @@ class userteams
 				"
 					SELECT
 						userteams.*,
+						users.user_username AS `username`,
 						users.user_mobile AS `mobile`
 					FROM
 						userteams

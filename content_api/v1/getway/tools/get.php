@@ -60,7 +60,6 @@ trait get
 			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'get_getway']);
 		}
 
-
 		if(!$team_detail)
 		{
 			logs::set('api:getway:team:id:permission:denide', null, $log_meta);
@@ -68,39 +67,20 @@ trait get
 			return false;
 		}
 
-		$get_hours = utility::request('hours');
-		$get_hours = $get_hours ? true : false;
-
-		if(isset($team_detail['userteam_remote']) && $team_detail['userteam_remote'])
-		{
-			$this->remote_user = true;
-		}
-
-		if(isset($team_detail['privacy']))
-		{
-			$this->team_privacy = $team_detail['privacy'];
-		}
-
-		if(isset($team_detail['rule']))
-		{
-			$this->rule = $team_detail['rule'];
-		}
-
-		$this->show_another_status = true;
-
 		if(isset($team_detail['id']))
 		{
-			$where              = [];
-			$where['team_id']   = $team_detail['id'];
-			$where['get_hours'] = $get_hours;
-			$where['status']    = ['IN', "('active', 'deactive')"];
-			$result             = \lib\db\userteams::get_list($where);
-			$temp               = [];
+			$where            = [];
+			$where['team_id'] = $team_detail['id'];
+			$where['rule']    = 'getway';
+			$where['status']  = ['IN', "('active', 'deactive')"];
+			$result           = \lib\db\userteams::get_list($where);
+
+			$temp             = [];
 			if(is_array($result))
 			{
 				foreach ($result as $key => $value)
 				{
-					$a = $this->ready_getway($value);
+					$a = $this->ready_getway($value, ['condition_checked' => true]);
 					if($a)
 					{
 						$temp[] = $a;
@@ -208,154 +188,23 @@ trait get
 			switch ($key)
 			{
 				case 'user_id':
-					if(!$_options['condition_checked'])
-					{
-						if($this->team_privacy === 'public')
-						{
-
-							switch ($this->rule)
-							{
-								case 'admin':
-								case 'getway':
-									$result['card_action'] = true;
-									break;
-								case 'user':
-									if($this->remote_user)
-									{
-										if(intval($value) === intval($this->user_id))
-										{
-											$result['card_action'] = true;
-										}
-										else
-										{
-											if(!$this->show_another_status)
-											{
-												unset($_data['status']);
-												unset($_data['last_time']);
-											}
-										}
-									}
-									else
-									{
-										return false;
-									}
-
-								default:
-									if(!$this->show_another_status)
-									{
-										unset($_data['status']);
-										unset($_data['last_time']);
-									}
-									break;
-							}
-						}
-						elseif($this->team_privacy === 'team')
-						{
-
-							switch ($this->rule)
-							{
-								case 'admin':
-								case 'getway':
-									$result['card_action'] = true;
-									break;
-
-								case 'user':
-									if($this->remote_user)
-									{
-										if(intval($value) === intval($this->user_id))
-										{
-											$result['card_action'] = true;
-										}
-										else
-										{
-											if(!$this->show_another_status)
-											{
-												unset($_data['status']);
-												unset($_data['last_time']);
-											}
-										}
-									}
-									break;
-
-								default:
-									return false;
-									break;
-							}
-						}
-						elseif($this->team_privacy === 'private')
-						{
-							switch ($this->rule)
-							{
-								case 'admin':
-								case 'getway':
-									$result['card_action'] = true;
-									break;
-
-								case 'user':
-									if($this->remote_user)
-									{
-										if(intval($value) === intval($this->user_id))
-										{
-											$result['card_action'] = true;
-										}
-										else
-										{
-											return false;
-										}
-									}
-									else
-									{
-										return false;
-									}
-									break;
-
-								default:
-									return false;
-									break;
-							}
-						}
-						else
-						{
-							return false;
-						}
-					}
 					$result['user_id'] = \lib\utility\shortURL::encode($value);
 					break;
 
-				case 'fileurl':
-					if($value)
-					{
-						$result['file'] = $this->host('file'). '/'. $value;
-					}
-					else
-					{
-						$result['file'] = null;
-					}
-					break;
-
-				case 'allowplus':
-					$result['allow_plus'] = $value ? true : false;
-					break;
-				case 'allowminus':
-					$result['allow_minus'] = $value ? true : false;
-					break;
-				case '24h':
-					$result['24h'] = $value ? true : false;
-					break;
-				case 'remote':
-					$result['remote_user'] = $value ? true : false;
-					break;
-
-				case 'plus':
-					$result[$key] = isset($value) ? (int) $value : null;
-					break;
-				case 'postion':
 				case 'displayname':
+					$result['name'] = $value;
+					break;
 				case 'firstname':
+					$result['ip'] = $value;
+					break;
 				case 'lastname':
+					$result['agent'] = $value;
+					break;
+				case 'username':
+					$result['username'] = $value;
+					break;
 				case 'rule':
 				case 'telegram_id':
-				case 'mobile':
 				case 'status':
 				case 'last_time':
 					$result[$key] = isset($value) ? (string) $value : null;

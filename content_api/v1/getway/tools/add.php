@@ -145,7 +145,18 @@ trait add
 		}
 		elseif($_args['method'] === 'patch')
 		{
-
+			$id = utility::request('id');
+			$user_id = utility\shortURL::decode($id);
+			if($user_id)
+			{
+				$check_user_is_getway = \lib\db\userteams::get(['user_id' => $user_id, 'rule' => 'getway', 'limit' => 1]);
+				if(!$check_user_is_getway)
+				{
+					logs::set('api:getway:user_id:is:not:getway:user', $this->user_id, $log_meta);
+					debug::error(T_("User id is not a getway user!"), 'user', 'permission');
+					return false;
+				}
+			}
 		}
 
 
@@ -210,10 +221,10 @@ trait add
 
 			unset($args['team_id']);
 
-			if(!utility::isset_request('firstname')) 	unset($args['firstname']);
-			if(!utility::isset_request('lastname')) 	unset($args['lastname']);
+			if(!utility::isset_request('ip')) 			unset($args['firstname']);
+			if(!utility::isset_request('agent')) 		unset($args['lastname']);
 			if(!utility::isset_request('status')) 		unset($args['status']);
-			if(!utility::isset_request('displayname')) 	unset($args['displayname']);
+			if(!utility::isset_request('name')) 		unset($args['displayname']);
 			if(!utility::isset_request('rule')) 		unset($args['rule']);
 
 			if(!empty($args))
