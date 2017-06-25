@@ -6,6 +6,11 @@ use \lib\db\logs;
 
 trait get
 {
+	public $remote_user         = false;
+	public $rule                = null;
+	public $show_another_status = false;
+	public $team_privacy        = 'private';
+
 	/**
 	 * Gets the getway.
 	 *
@@ -23,27 +28,86 @@ trait get
 				'input' => utility::request(),
 			]
 		];
-
 		if(!$this->user_id)
 		{
+			// return false;
+		}
+
+		$id = utility::request('id');
+		$id = \lib\utility\shortURL::decode($id);
+
+		$shortname =  utility::request('shortname');
+
+		if(!$id && !$shortname)
+		{
+			logs::set('api:getway:team:id:not:set', null, $log_meta);
+			debug::error(T_("Id or shortname not set"), 'id', 'arguments');
+			return false;
+		}
+		elseif($id && $shortname)
+		{
+			logs::set('api:getway:team:id:and:shortname:together:set', null, $log_meta);
+			debug::error(T_("Can not set id and shortname together"), 'id', 'arguments');
 			return false;
 		}
 
-		if(!utility::request('team'))
+		if($id)
 		{
-			logs::set('api:getway:team:brand:notfound', null, $log_meta);
-			debug::error(T_("team not found"), 'team', 'permission');
+			$team_detail = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'get_getway']);
+		}
+		elseif($shortname)
+		{
+			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'get_getway']);
+		}
+
+
+		if(!$team_detail)
+		{
+			logs::set('api:getway:team:id:permission:denide', null, $log_meta);
+			debug::error(T_("Can not access to load this team"), 'id', 'permission');
 			return false;
 		}
 
-		$team_id = \lib\db\teams::get_brand(utility::request('team'));
+		$get_hours = utility::request('hours');
+		$get_hours = $get_hours ? true : false;
 
-		if(isset($team_id['id']))
+		if(isset($team_detail['userteam_remote']) && $team_detail['userteam_remote'])
 		{
-			$where               = [];
-			$where['team_id'] = $team_id['id'];
-			$result               = \lib\db\getwaies::search(null, $where);
-			return $result;
+			$this->remote_user = true;
+		}
+
+		if(isset($team_detail['privacy']))
+		{
+			$this->team_privacy = $team_detail['privacy'];
+		}
+
+		if(isset($team_detail['rule']))
+		{
+			$this->rule = $team_detail['rule'];
+		}
+
+		$this->show_another_status = true;
+
+		if(isset($team_detail['id']))
+		{
+			$where              = [];
+			$where['team_id']   = $team_detail['id'];
+			$where['get_hours'] = $get_hours;
+			$where['status']    = ['IN', "('active', 'deactive')"];
+			$result             = \lib\db\userteams::get_list($where);
+			$temp               = [];
+			if(is_array($result))
+			{
+				foreach ($result as $key => $value)
+				{
+					$a = $this->ready_getway($value);
+					if($a)
+					{
+						$temp[] = $a;
+					}
+				}
+			}
+			return $temp;
 		}
 	}
 
@@ -66,7 +130,6 @@ trait get
 				'input' => utility::request(),
 			]
 		];
-
 		if(!$this->user_id)
 		{
 			logs::set('api:getway:user_id:notfound', null, $log_meta);
@@ -74,41 +137,49 @@ trait get
 			return false;
 		}
 
-		$team = utility::request("team");
-
+		$team = utility::request('team');
 		if(!$team)
 		{
-			logs::set('api:getway:team:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid team"), 'team', 'permission');
-			return false;
-		}
-
-		$getway  = utility::request("getway");
-		if(!$getway)
-		{
-			logs::set('api:getway:getway:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid getway"), 'getway', 'permission');
+			logs::set('api:getway:team:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
 
 		$id = utility::request('id');
-		if(!$id || !ctype_digit($id))
+		$id = utility\shortURL::decode($id);
+		if(!$id)
 		{
-			logs::set('api:getway:id:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid getway id"), 'id', 'permission');
+			logs::set('api:getway:id:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
-		$result = \lib\db\getwaies::get(['id' => $id, 'limit' => 1]);
+		$team_detail = \lib\db\teams::access_team_code($team, $this->user_id, ['action' => 'edit_getway']);
+
+		if(!isset($team_detail['id']))
+		{
+			return false;
+		}
+
+		$team_id = $team_detail['id'];
+
+		$check_user_in_team = \lib\db\userteams::get_list(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
+
+		if(!$check_user_in_team)
+		{
+			logs::set('api:getway:user:not:in:team', $this->user_id, $log_meta);
+			debug::error(T_("This user is not in this team"), 'id', 'arguments');
+			return false;
+		}
+
+		$result = $this->ready_getway($check_user_in_team, ['condition_checked' => true]);
 
 		return $result;
 	}
 
 
-
-
 	/**
-	 * ready data of member to load in api result
+	 * ready data of getway to load in api result
 	 *
 	 * @param      <type>  $_data     The data
 	 * @param      array   $_options  The options
@@ -119,7 +190,7 @@ trait get
 	{
 		$default_options =
 		[
-
+			'condition_checked' => false,
 		];
 
 		if(!is_array($_options))
@@ -129,92 +200,177 @@ trait get
 
 		$_options = array_merge($default_options, $_options);
 
+
 		$result = [];
 
 		foreach ($_data as $key => $value)
 		{
 			switch ($key)
 			{
-
-				case 'id':
-
-					$result[$key] = (int) $value;
-					// if(isset($_data['code']) && $_data['code'])
-					// {
-					// 	continue;
-					// }
-					// else
-					// {
-					// 	$result['code'] = \lib\utility\shortURL::encode($value);
-					// }
-					break;
-
-				case 'code':
-					if($value)
+				case 'user_id':
+					if(!$_options['condition_checked'])
 					{
-						$result[$key] = (int) $value;
-					}
-					else
-					{
-						if(isset($_data['id']))
+						if($this->team_privacy === 'public')
 						{
-							$result[$key] = (int) $_data['id'];
+
+							switch ($this->rule)
+							{
+								case 'admin':
+								case 'getway':
+									$result['card_action'] = true;
+									break;
+								case 'user':
+									if($this->remote_user)
+									{
+										if(intval($value) === intval($this->user_id))
+										{
+											$result['card_action'] = true;
+										}
+										else
+										{
+											if(!$this->show_another_status)
+											{
+												unset($_data['status']);
+												unset($_data['last_time']);
+											}
+										}
+									}
+									else
+									{
+										return false;
+									}
+
+								default:
+									if(!$this->show_another_status)
+									{
+										unset($_data['status']);
+										unset($_data['last_time']);
+									}
+									break;
+							}
+						}
+						elseif($this->team_privacy === 'team')
+						{
+
+							switch ($this->rule)
+							{
+								case 'admin':
+								case 'getway':
+									$result['card_action'] = true;
+									break;
+
+								case 'user':
+									if($this->remote_user)
+									{
+										if(intval($value) === intval($this->user_id))
+										{
+											$result['card_action'] = true;
+										}
+										else
+										{
+											if(!$this->show_another_status)
+											{
+												unset($_data['status']);
+												unset($_data['last_time']);
+											}
+										}
+									}
+									break;
+
+								default:
+									return false;
+									break;
+							}
+						}
+						elseif($this->team_privacy === 'private')
+						{
+							switch ($this->rule)
+							{
+								case 'admin':
+								case 'getway':
+									$result['card_action'] = true;
+									break;
+
+								case 'user':
+									if($this->remote_user)
+									{
+										if(intval($value) === intval($this->user_id))
+										{
+											$result['card_action'] = true;
+										}
+										else
+										{
+											return false;
+										}
+									}
+									else
+									{
+										return false;
+									}
+									break;
+
+								default:
+									return false;
+									break;
+							}
+						}
+						else
+						{
+							return false;
 						}
 					}
-
-					// if($value)
-					// {
-					// 	$result['code'] = (int) $value;
-					// }
-					// else
-					// {
-					// 	continue;
-					// }
+					$result['user_id'] = \lib\utility\shortURL::encode($value);
 					break;
 
-				case 'team_id':
-				case 'user_id':
-				case 'telegram_id':
-					$result[$key] = (int) $value;
-					break;
-
-				case 'email':
-				case 'displayname':
-				case 'status':
-				case 'postion':
-				case 'desc':
-				case 'mobile':
-					$result[$key] = (string) $value;
-					break;
-
-				case 'date_enter':
-				case 'date_exit':
-					$result[$key] = strtotime($value);
-					break;
-
-				case 'remote':
-				case 'is_default':
-				case 'full_time':
+				case 'fileurl':
 					if($value)
 					{
-						$result[$key] = true;
+						$result['file'] = $this->host('file'). '/'. $value;
 					}
 					else
 					{
-						$result[$key] = false;
+						$result['file'] = null;
 					}
 					break;
 
-				case 'createdate':
-				case 'date_modified':
-				case 'meta':
+				case 'allowplus':
+					$result['allow_plus'] = $value ? true : false;
+					break;
+				case 'allowminus':
+					$result['allow_minus'] = $value ? true : false;
+					break;
+				case '24h':
+					$result['24h'] = $value ? true : false;
+					break;
+				case 'remote':
+					$result['remote_user'] = $value ? true : false;
+					break;
+
+				case 'plus':
+					$result[$key] = isset($value) ? (int) $value : null;
+					break;
+				case 'postion':
+				case 'displayname':
+				case 'firstname':
+				case 'lastname':
+				case 'rule':
+				case 'telegram_id':
+				case 'mobile':
+				case 'status':
+				case 'last_time':
+					$result[$key] = isset($value) ? (string) $value : null;
+					break;
+				case 'personnelcode':
+					$result['personnel_code'] = isset($value) ? (string) $value : null;
+					break;
+
 				default:
 					continue;
 					break;
 			}
 		}
+		krsort($result);
 		return $result;
 	}
-
 }
 ?>

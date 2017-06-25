@@ -55,6 +55,13 @@ class controller extends \content_a\main\controller
 			return;
 		}
 
+		// route url like this /a/2kf/getway
+		if(preg_match("/^([a-zA-Z0-9]+)\/getway$/", $url))
+		{
+			\lib\router::set_controller("content_a\\getway\\controller");
+			return;
+		}
+
 		/**
 		 * route report urls
 		 * in url must be find .../report/... | .../report

@@ -3,8 +3,10 @@ namespace content_api\v1\getway\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
+
 trait add
 {
+
 
 	/**
 	 * Adds a getway.
@@ -15,7 +17,7 @@ trait add
 	 */
 	public function add_getway($_args = [])
 	{
-		$delete_mode = false;
+		// default args
 		$default_args =
 		[
 			'method' => 'post'
@@ -25,10 +27,16 @@ trait add
 		{
 			$_args = [];
 		}
-
+		// merge default args and args
 		$_args = array_merge($default_args, $_args);
 
+		// set default title of debug
 		debug::title(T_("Operation Faild"));
+
+		// delete getway mode
+		$delete_mode = false;
+
+		// set the log meta
 		$log_meta =
 		[
 			'data' => null,
@@ -38,6 +46,7 @@ trait add
 			]
 		];
 
+		// check user id is exist
 		if(!$this->user_id)
 		{
 			logs::set('api:getway:user_id:notfound', null, $log_meta);
@@ -45,132 +54,176 @@ trait add
 			return false;
 		}
 
+		// get team and check it
 		$team = utility::request('team');
-
-		$load_team = $this->get_team();
-
-		if(isset($load_team['id']))
+		$team = utility\shortURL::decode($team);
+		if(!$team)
 		{
-			$team_id = $load_team['id'];
+			logs::set('api:getway:team:not:set', null, $log_meta);
+			debug::error(T_("Team not set"), 'user', 'permission');
+			return false;
+		}
+		// load team data
+		$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, ['action' => 'add_getway']);
+		// check the team exist
+		if(isset($team_detail['id']))
+		{
+			$team_id = $team_detail['id'];
 		}
 		else
 		{
-			logs::set('api:getway:access:to:load:team', $this->user_id, $log_meta);
-			debug::error(T_("Comapany not found"), 'team', 'permission');
+			logs::set('api:getway:team:notfound:invalid', null, $log_meta);
+			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
 
-		$load_branch = $this->get_branch();
-
-		if(!debug::$status)
+		// get firstname
+		$name = utility::request("name");
+		$name = trim($name);
+		if($name && mb_strlen($name) > 50)
 		{
+			logs::set('api:getway:name:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
 
-		if(isset($load_branch['id']))
+		if(!$name)
 		{
-			$branch_id = $load_branch['id'];
-		}
-		else
-		{
-			logs::set('api:getway:access:to:load:branch', $this->user_id, $log_meta);
-			debug::error(T_("Branch not found"), 'team', 'permission');
+			logs::set('api:getway:name:not:set', $this->user_id, $log_meta);
+			debug::error(T_("The getway name can not be null"), 'name', 'arguments');
 			return false;
 		}
 
-		$title = utility::request('title');
-		if(!$title)
+		$displayname = $name;
+
+		// get firstname
+		$ip = utility::request("ip");
+		$ip = trim($ip);
+		if($ip && mb_strlen($ip) > 50)
 		{
-			logs::set('api:getway:title:is:null', $this->user_id, $log_meta);
-			debug::error(T_("Title Can not be null"), 'title', 'arguments');
+			logs::set('api:getway:ip:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the ip less than 50 character"), 'ip', 'arguments');
 			return false;
 		}
+		$firstname = $ip;
 
-		if(mb_strlen($title) > 255)
+
+		// get lastname
+		$agent = utility::request("agent");
+		$agent = trim($agent);
+		if($agent && mb_strlen($agent) > 90)
 		{
-			logs::set('api:getway:title:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Title must be less than 255 character"), 'title', 'arguments');
+			logs::set('api:getway:agent:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You can set the agent less than 90 character"), 'agent', 'arguments');
 			return false;
 		}
+		$lastname = $agent;
 
-		$search =
-		[
-			'team_id' => $team_id,
-			'title'      => $title,
-			'branch_id'  => $branch_id,
-		];
+		$username = null;
+		$user_id  = null;
 
-		$check = \lib\db\getwaies::search(null, $search);
-
-		if($check)
-		{
-			if($_args['method'] === 'post')
-			{
-				logs::set('api:getway:title:duplicate', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate title of getway"), 'title', 'arguments');
-				return false;
-			}
-			else
-			{
-
-			}
-		}
-
-		$cat = utility::request('cat');
-		if(mb_strlen($cat) > 255)
-		{
-			logs::set('api:getway:cat:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Cat  must be less than 255 character"), 'cat', 'arguments');
-			return false;
-		}
-		$code = utility::request('code');
-		if($code && !is_numeric($code))
-		{
-			logs::set('api:getway:code:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Code must be number"), 'code', 'arguments');
-			return false;
-		}
-		$ip = utility::request('ip');
-		if($ip && !is_numeric($ip))
-		{
-			logs::set('api:getway:ip:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid ip"), 'ip', 'arguments');
-			return false;
-		}
-		$status = utility::request('status');
-		if(!in_array($status, ['enable', 'disable']))
-		{
-			logs::set('api:getway:status:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid status"), 'status', 'arguments');
-			return false;
-		}
-
-		$desc               = utility::request('desc');
-
-		$args               = [];
-		$args['title']      = $title;
-		$args['cat']        = $cat;
-		$args['code']       = $code;
-		$args['ip']         = $ip;
-		$args['status']     = $status;
-		$args['desc']       = $desc;
-		$args['team_id'] = $team_id;
-		$args['user_id']    = $this->user_id;
-		$args['branch_id']  = $branch_id;
 		if($_args['method'] === 'post')
 		{
-			\lib\db\getwaies::insert($args);
+			$insert_users =
+			[
+				'user_parent'      => $this->user_id,
+				'user_createdate'  => date("Y-m-d H:i:s"),
+				'user_displayname' => $displayname,
+			];
+			\lib\db\users::insert($insert_users);
+			$user_id = \lib\db::insert_id();
+
+			if($user_id)
+			{
+				$username = 'g-'. utility\shortURL::encode($user_id);
+				$update_user =
+				[
+					'user_username' => $username
+				];
+				\lib\db\users::update($update_user, $user_id);
+			}
+		}
+		elseif($_args['method'] === 'patch')
+		{
+
+		}
+
+
+		if(!$user_id)
+		{
+			logs::set('api:getway:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			debug::error(T_("User id not found"), 'user', 'system');
+			return false;
+		}
+		// to redirect site in new url
+		\lib\storage::set_new_user_code(utility\shortURL::encode($user_id));
+
+		// get status
+		$status = utility::request('status');
+		if($status)
+		{
+			if(!in_array($status, ['active', 'deactive', 'disable']))
+			{
+				logs::set('api:getway:status:invalid', $this->user_id, $log_meta);
+				debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$status = 'active';
+		}
+
+		// ready to insert userteam or userbranch record
+		$args                  = [];
+		$args['team_id']       = $team_id;
+		$args['user_id']       = $user_id;
+		$args['displayname']   = $displayname;
+		$args['firstname']     = $firstname;
+		$args['lastname']      = $lastname;
+		$args['status']        = $status;
+		$args['rule']          = 'getway';
+
+		if($_args['method'] === 'post')
+		{
+			\lib\db\userteams::insert($args);
 		}
 		elseif($_args['method'] === 'patch')
 		{
 			$id = utility::request('id');
+			$id = utility\shortURL::decode($id);
+			if(!$id)
+			{
+				logs::set('api:getway:pathc:id:not:set', $this->user_id, $log_meta);
+				debug::error(T_("Id not set"), 'id', 'arguments');
+				return false;
+			}
+
+			$check_user_in_team = \lib\db\userteams::get(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
+
+			if(!$check_user_in_team || !isset($check_user_in_team['id']))
+			{
+				logs::set('api:getway:user:not:in:team', $this->user_id, $log_meta);
+				debug::error(T_("This user is not in this team"), 'id', 'arguments');
+				return false;
+			}
+
 			unset($args['team_id']);
-			unset($args['user_id']);
-			\lib\db\getwaies::update($args, $id);
+
+			if(!utility::isset_request('firstname')) 	unset($args['firstname']);
+			if(!utility::isset_request('lastname')) 	unset($args['lastname']);
+			if(!utility::isset_request('status')) 		unset($args['status']);
+			if(!utility::isset_request('displayname')) 	unset($args['displayname']);
+			if(!utility::isset_request('rule')) 		unset($args['rule']);
+
+			if(!empty($args))
+			{
+				\lib\db\userteams::update($args, $check_user_in_team['id']);
+			}
 		}
 		elseif ($_args['method'] === 'delete')
 		{
-			\lib\db\getwaies::remove($args);
+			// \lib\db\getways::remove($args);
 		}
 
 		if(debug::$status)
@@ -179,17 +232,18 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("Getway successfuly added"));
+				debug::true(T_("Getway successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("Getway updated"));
+				debug::true(T_("Getway successfully updated"));
 			}
 			else
 			{
-				debug::true(T_("Getway removed"));
+				debug::true(T_("Getway successfully removed"));
 			}
 		}
+
 	}
 }
 ?>

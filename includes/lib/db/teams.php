@@ -275,6 +275,8 @@ class teams
 			case 'delete':
 			case 'add_member':
 			case 'edit_member':
+			case 'add_getway':
+			case 'edit_getway':
 			case 'edit':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
