@@ -102,8 +102,28 @@ class plan
 			'detail'  => null,
 			'contain' =>
 			[
-				'telegram:report:daily',
-				'team:add:10',
+				'number:of:persons:10',
+				'simple:reports',
+				// 'telegram:auto:send:report:1',
+				// 'telegram:auto:send:report:2',
+				// 'telegram:auto:send:report:3',
+				// 'telegram:auto:send:report:4',
+				// 'telegram:auto:send:report:5',
+				// 'perfessional:report',
+				// 'telegram:report',
+				// 'sms:report',
+				// 'chart:report',
+				// 'picture:report',
+				// 'custom:report',
+				'report:reciever:1'
+				'ssl',
+				// 'custom:report:text',
+				// 'custom:logo',
+				// 'custom:domain',
+				'support',
+				'answer:email',
+				// 'answer:phone',
+
 			],
 		];
 
@@ -116,9 +136,28 @@ class plan
 			'detail'  => null,
 			'contain' =>
 			[
-				'telegram:report:daily',
-				'telegram:report:exit',
-				'team:add:10',
+				'number:of:persons:ultimited',
+				'simple:reports',
+				'telegram:auto:send:report:1',
+				'telegram:auto:send:report:2',
+				'telegram:auto:send:report:3',
+				'telegram:auto:send:report:4',
+				'telegram:auto:send:report:5',
+				'perfessional:report',
+				'telegram:report',
+				// 'sms:report',
+				// 'chart:report',
+				// 'picture:report',
+				// 'custom:report',
+				'report:reciever:1'
+				'ssl',
+				// 'custom:report:text',
+				// 'custom:logo',
+				// 'custom:domain',
+				'support',
+				'answer:email',
+				// 'answer:phone',
+
 			],
 		];
 
@@ -131,11 +170,60 @@ class plan
 			'detail'  => null,
 			'contain' =>
 			[
-				'telegram:report:daily',
-				'telegram:report:month',
-				'telegram:report:enter',
-				'telegram:report:exit',
-				'team:add:10',
+				'number:of:persons:ultimited',
+				'simple:reports',
+				'telegram:auto:send:report:1',
+				'telegram:auto:send:report:2',
+				'telegram:auto:send:report:3',
+				'telegram:auto:send:report:4',
+				'telegram:auto:send:report:5',
+				'perfessional:report',
+				'telegram:report',
+				'sms:report',
+				'chart:report',
+				'picture:report',
+				'custom:report',
+				'report:reciever:3'
+				'ssl',
+				'custom:report:text',
+				'custom:logo',
+				// 'custom:domain',
+				'support',
+				'answer:email',
+				'answer:phone',
+			],
+		];
+
+		/**
+		 * plan enterprise
+		 */
+		$plan[4] =
+		[
+			'name'    => 'enterprise',
+			'detail'  => null,
+			'contain' =>
+			[
+				'number:of:persons:ultimited',
+				'simple:reports',
+				'telegram:auto:send:report:1',
+				'telegram:auto:send:report:2',
+				'telegram:auto:send:report:3',
+				'telegram:auto:send:report:4',
+				'telegram:auto:send:report:5',
+				'perfessional:report',
+				'telegram:report',
+				'sms:report',
+				'chart:report',
+				'picture:report',
+				'custom:report',
+				'report:reciever:3'
+				'ssl',
+				'custom:report:text',
+				'custom:logo',
+				'custom:domain',
+				'support',
+				'answer:email',
+				'answer:phone',
 			],
 		];
 
