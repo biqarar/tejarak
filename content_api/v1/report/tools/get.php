@@ -30,15 +30,16 @@ trait get
 			],
 		];
 
-		$team = utility::request('team');
-		if(!$team)
+		$id = utility::request('id');
+		$id = utility\shortURL::decode($id);
+		if(!$id)
 		{
 			logs::set('api:report:team:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Team not set"), 'team', 'arguments');
+			debug::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
-		if(!$check_is_my_team = \lib\db\teams::access_team($team, $this->user_id, ['action'=> 'report_last']))
+		if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_last']))
 		{
 			logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
 			debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
@@ -50,23 +51,6 @@ trait get
 			logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
 			debug::error(T_("Invalid team data"), 'team', 'system');
 			return false;
-		}
-
-		$branch = utility::request('branch');
-		// report is not a branch !
-		if($branch === 'report')
-		{
-			$branch = null;
-		}
-
-		if($branch)
-		{
-			if(!$branch_detail = \lib\db\branchs::get_by_brand($team, $branch))
-			{
-				logs::set('api:report:branch:team:not:mathc', $this->user_id, $log_meta);
-				debug::error(T_("Invalid branch name"), 'branch', 'arguments');
-				return false;
-			}
 		}
 
 		$meta            = [];

@@ -13,9 +13,9 @@ class model extends \content_a\main\model
 	 */
 	public function get_last_time($_args)
 	{
-		$this->user_id     = $this->login('id');
-		$request           = [];
-		$request['team']   = isset($_args['team']) ? $_args['team'] : null;
+		$this->user_id = $this->login('id');
+		$request       = [];
+		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
 		utility::set_request_array($request);
 		return $this->report_last_time();
 	}
