@@ -1,7 +1,7 @@
 <?php
 namespace content_a\report\sum;
 
-class controller extends \content_a\main\controller
+class controller extends \content_a\report\controller
 {
 	/**
 	 * rout

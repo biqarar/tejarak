@@ -133,65 +133,101 @@ class teams
 			$_options = array_merge($default_options, $_options);
 		}
 
-		$chec_admin = true;
+		$query = null;
 
 		switch ($_options['action'])
 		{
+			/**
+			 * if the team is public no problem to load data of team
+			 * if is private cannot access to load
+			 */
 			case 'get_member':
 			case 'view':
 			case 'get_member':
-				$chec_admin = false;
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					$_user_id = 0;
 				}
+
+				$query =
+				"
+					SELECT
+						teams.*
+					FROM
+						teams
+					INNER JOIN userteams ON userteams.team_id = teams.id
+					WHERE
+						teams.$_options[type]   = '$_team' AND
+						IF(teams.privacy = 'private', userteams.user_id = $_user_id AND userteams.rule = 'admin', TRUE)
+					LIMIT 1
+				";
+
 				break;
 
+			/**
+			 * the use must be in team
+			 * user or admin or eny thing
+			 */
+			case 'report_u':
+				if(!$_user_id || !is_numeric($_user_id))
+				{
+					return false;
+				}
+				$query =
+				"
+					SELECT
+						teams.*,
+						userteams.*,
+						userteams.id AS `userteam_id`
+					FROM
+						teams
+					INNER JOIN userteams ON userteams.team_id = teams.id
+						WHERE
+						teams.$_options[type] = '$_team' AND
+						userteams.user_id = $_user_id
+					LIMIT 1
+				";
+				break;
+
+			/**
+			 * the user must be admin of team to load this data
+			 */
+			case 'report_last':
+			case 'report_sum':
 			case 'report_last':
 			case 'close':
 			case 'delete':
 			case 'add_member':
 			case 'edit':
 			case 'save_hours':
-			default:
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;
 				}
-				$chec_admin = true;
+
+				$query =
+				"
+					SELECT
+						teams.*
+					FROM
+						teams
+					INNER JOIN userteams ON userteams.team_id = teams.id
+						WHERE
+						teams.$_options[type] = '$_team' AND
+						userteams.user_id = $_user_id AND
+						userteams.rule    = 'admin'
+					LIMIT 1
+				";
 				break;
+
+				default:
+					return false;
+					break;
 		}
 
-		if($chec_admin)
+		if(!$query)
 		{
-			$query =
-			"
-				SELECT
-					teams.*
-				FROM
-					teams
-				INNER JOIN userteams ON userteams.team_id = teams.id
-					WHERE
-					teams.$_options[type] = '$_team' AND
-					userteams.user_id = $_user_id AND
-					userteams.rule    = 'admin'
-				LIMIT 1
-			";
-		}
-		else
-		{
-			$query =
-			"
-				SELECT
-					teams.*
-				FROM
-					teams
-				INNER JOIN userteams ON userteams.team_id = teams.id
-				WHERE
-					teams.$_options[type]   = '$_team' AND
-					IF(teams.privacy = 'private', userteams.user_id = $_user_id AND userteams.rule = 'admin', TRUE)
-				LIMIT 1
-			";
+			return false;
 		}
 
 		$result =  \lib\db::get($query, null, true);

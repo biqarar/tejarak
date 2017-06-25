@@ -6,8 +6,8 @@
 <div class="dt">
 	<div class="f th">
 		<div class="c">{%trans "Displayname"%}</div>
-		<div class="c">{%trans "Name"%}</div>
-		<div class="c">{%trans "Family"%}</div>
+		<!-- <div class="c">{%trans "Name"%}</div> -->
+		<!-- <div class="c">{%trans "Family"%}</div> -->
 		<div class="c">{%trans "Postion"%}</div>
 		<div class="c2">{%trans "Date"%}</div>
 		<div class="c">{%trans "Start"%}</div>
@@ -21,8 +21,8 @@
 	{%for key, value in last_time%}
 	<div class="f">
 		<div class="c">{{value.displayname}}</div>
-		<div class="c">{{value.name}}</div>
-		<div class="c">{{value.family}}</div>
+		<!-- <div class="c">{{value.name}}</div> -->
+		<!-- <div class="c">{{value.family}}</div> -->
 		<div class="c">{{value.postion}}</div>
 		<div class="c">{{value.date|jdate("Y-m-d")}}</div>
 		<div class="c">{{value.start|fitNumber}}</div>

@@ -38,18 +38,21 @@ class controller extends \content_a\main\controller
 		if(preg_match("/^([a-zA-Z0-9]+)$/", $url))
 		{
 			\lib\router::set_controller("content_a\\member\\controller");
+			return;
 		}
 
 		// route url like this /a/2kf/member
 		if(preg_match("/^([a-zA-Z0-9]+)\/member(|\=[a-zA-Z0-9]+)$/", $url))
 		{
 			\lib\router::set_controller("content_a\\member\\controller");
+			return;
 		}
 
 		// route url like this /a/2kf/plan
 		if(preg_match("/^([a-zA-Z0-9]+)\/plan$/", $url))
 		{
 			\lib\router::set_controller("content_a\\plan\\controller");
+			return;
 		}
 
 		/**

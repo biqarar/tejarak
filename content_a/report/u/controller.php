@@ -1,7 +1,7 @@
 <?php
 namespace content_a\report\u;
 
-class controller extends \content_a\main\controller
+class controller extends \content_a\report\controller
 {
 	/**
 	 * rout
@@ -9,8 +9,7 @@ class controller extends \content_a\main\controller
 	function _route()
 	{
 		parent::_route();
-
-		$this->get(false, 'last')->ALL("/^([a-zA-Z0-9]+)\/report\/u$/");
+		$this->get(false, 'u')->ALL("/^([a-zA-Z0-9]+)\/report\/u$/");
 	}
 }
 ?>

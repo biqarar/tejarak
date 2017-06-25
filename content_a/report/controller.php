@@ -19,6 +19,7 @@ class controller extends \content_a\main\controller
 		{
 			\lib\router::set_url(\lib\storage::get_team_code_url(). '/'. \lib\router::get_url());
 		}
+
 		$url = \lib\router::get_url();
 
 		$split = explode('/', $url);

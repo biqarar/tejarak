@@ -58,7 +58,7 @@ trait search
 		if($_options['get_count'] === true)
 		{
 			$get_count      = true;
-			$public_fields  = " COUNT(*) AS 'searchcount' FROM	`hours`";
+			$public_fields  = " COUNT(*) AS 'searchcount' FROM	`hours` INNER JOIN userteams ON userteams.id = hours.userteam_id";
 			$limit          = null;
 			$only_one_value = true;
 		}
@@ -181,7 +181,7 @@ trait search
 
 		if($pagenation && !$get_count)
 		{
-			$pagenation_query = "SELECT	COUNT(*) AS `count`	FROM `hours`	$where $search ";
+			$pagenation_query = "SELECT	COUNT(*) AS `count`	FROM `hours` INNER JOIN userteams ON userteams.id = hours.userteam_id	$where $search ";
 			$pagenation_query = \lib\db::get($pagenation_query, 'count', true);
 
 			list($limit_start, $limit) = \lib\db::pagnation((int) $pagenation_query, $limit);

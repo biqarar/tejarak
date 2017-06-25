@@ -177,8 +177,14 @@ class hours
 			$plus = intval($start['plus']);
 		}
 
-		$update['total']           = ((int) $diff + (int) $plus) - (int) $_args['minus'];
-		$update['accepted']        = $update['total'];
+		$total = ((int) $diff + (int) $plus) - (int) $_args['minus'];
+
+		if($plus < 0) $plus = 0;
+		if($diff < 0) $diff = 0;
+		if($total < 0) $total = 0;
+
+		$update['total']           = $total;
+		$update['accepted']        = $total;
 		$update['status']          = 'awaiting';
 		$update['end']             = date("H:i");
 		$update['diff']            = $diff;
