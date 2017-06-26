@@ -224,7 +224,7 @@ trait add
 
 			$admin_of_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'edit']);
 
-			if(!$admin_of_team || !isset($admin_of_team['id']))
+			if(!$admin_of_team || !isset($admin_of_team['id']) || !isset($admin_of_team['shortname']))
 			{
 				logs::set('api:team:method:put:permission:denide', $this->user_id, $log_meta);
 				debug::error(T_("Can not access to edit it"), 'team', 'permission');
@@ -253,6 +253,20 @@ trait add
 				{
 					$args['shortname'] = $this->shortname_fix($args);
 					$update = \lib\db\teams::update($args, $admin_of_team['id']);
+				}
+				// user change shortname
+				if($admin_of_team['shortname'] != $args['shortname'])
+				{
+					logs::set('api:team:change:shortname', $this->user_id, $log_meta);
+					// must be update all gateway username user old shortname at the first of herusername
+					// to new shortname
+					$update_gateway =
+					[
+						'old_shortname' => $admin_of_team['shortname'],
+						'new_shortname' => $args['shortname'],
+						'team_id'       => $admin_of_team['id'],
+					];
+					\lib\db\userteams::gateway_username_fix($update_gateway);
 				}
 			}
 		}

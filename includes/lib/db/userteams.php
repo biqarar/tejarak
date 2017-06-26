@@ -98,6 +98,54 @@ class userteams
 
 
 	/**
+	 * if the user change the team shortnam
+	 * and this team have gateway
+	 * the gateway useranme must be change
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public static function gateway_username_fix($_args)
+	{
+		$default_args =
+		[
+			'old_shortname' => null,
+			'new_shortname' => null,
+			'team_id'       => null,
+		];
+
+		if(is_array($_args))
+		{
+			$_args = array_merge($default_args, $_args);
+		}
+
+		if(!$_args['old_shortname'] || !$_args['new_shortname'] || !$_args['team_id'])
+		{
+			return false;
+		}
+
+		$query =
+		"
+			UPDATE
+				users
+			SET
+				users.user_username = REPLACE(users.user_username, '$_args[old_shortname]', '$_args[new_shortname]')
+			WHERE
+				users.id IN
+				(
+					SELECT
+						userteams.user_id
+					FROM
+						userteams
+					WHERE
+						userteams.team_id = $_args[team_id] AND
+						userteams.rule = 'gateway'
+				)
+		";
+		\lib\db::query($query);
+	}
+
+
+	/**
 	 * get userteam record
 	 *
 	 * @param      <type>  $_id    The identifier

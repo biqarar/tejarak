@@ -135,6 +135,12 @@ trait add
 			debug::error(T_("You can set the username less than 50 character"), 'username', 'arguments');
 			return false;
 		}
+		if(!preg_match("/^[a-zA-Z0-9]+$/", $username))
+		{
+			logs::set('api:gateway:username:reqular:not:match', $this->user_id, $log_meta);
+			debug::error(T_("Only [a-z,A-Z,0-9] character can use in username"), 'username', 'arguments');
+			return false;
+		}
 
 		$username = $team_detail['shortname']. '-'. $username;
 
