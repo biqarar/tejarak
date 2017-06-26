@@ -383,9 +383,13 @@ body #billing{max-width:800px;margin:0 auto}
 
 
 
-#addTeam,#addMember{max-width:50rem}
+#addTeam,#addMember,#reportList{max-width:50rem}
 
+.list li{transition:0.3s}
+.list li:hover{background-color:#eee}
+.list li a{display: block;}
 
+.pagination-container{padding:2em 0;}
 
 
 
