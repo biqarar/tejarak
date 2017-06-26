@@ -1,5 +1,7 @@
 {%extends display.admin%}
 
+{%use 'content/main/header-social.html'%}
+
 
 {%block contentCenter%}
   <div class='middle{% if list_member|length>=8 %} small{%endif%}' id="showMember">
@@ -91,3 +93,10 @@
 
 
 {%block headerBox%}{%endblock%}
+
+
+{%block facebookImages%}
+ <meta property ="og:image"                content="{{current_team.logo}}"/>
+ <meta property ="og:image:width"          content="512"/>
+ <meta property ="og:image:height"         content="512"/>
+{%endblock%}
