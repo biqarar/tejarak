@@ -6,11 +6,11 @@
 
 {%if team is not null%}
     <li class="title">{%trans "Team Operation"%}</li>
-    <li><a href="{{url.baseFull}}/{{team}}"><i class="icon-user"></i>{%trans "Show member"%}</a></li>
+    <li><a href="{{url.baseFull}}/{{team}}"><i class="icon-user"></i>{%trans "Team Dashboard"%}</a></li>
     <li><a href="{{url.baseFull}}/{{team}}/edit"><i class="icon-wrench"></i>{%trans "Team Settings"%}</a></li>
     <li><a href="{{url.baseFull}}/{{team}}/plan"><i class="icon-bolt"></i>{%trans "Change Plan"%}</a></li>
     <li><a href="{{url.baseFull}}/{{team}}/report"><i class="icon-chart"></i>{%trans "Report"%}</a></li>
-    <li><a href="{{url.baseFull}}/{{team}}/getway/list"><i class="icon-chart"></i>{%trans "Getway"%}</a></li>
+    <li><a href="{{url.baseFull}}/{{team}}/getway/list"><i class="icon-enter"></i>{%trans "Getway"%}</a></li>
 {%if current_team.short_name%}
     <li><a href="{{url.base}}/{{current_team.short_name}}" data-direct target="_blank"><i class="icon-desktop"></i>{%trans "Attendance"%}</a></li>
 {%endif%}
