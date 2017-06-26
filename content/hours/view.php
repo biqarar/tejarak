@@ -38,7 +38,12 @@ class view extends \mvc\view
 		{
 			$this->data->page['title'] = T_($team);
 		}
+
 		$this->data->page['desc']  = T_('Tejarak provides beautiful solutions for your business;');
+		if($current_team['desc'])
+		{
+			$this->data->page['desc'] = $current_team['desc']. ' | '. $this->data->page['desc'];
+		}
 
 	}
 }
