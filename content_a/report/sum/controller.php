@@ -9,7 +9,7 @@ class controller extends \content_a\report\controller
 	public function _route()
 	{
 		parent::_route();
-		$this->get()->ALL("/^([a-zA-Z0-9]+)\/report\/sum$/");
+		$this->get(false, 'sum')->ALL("/^([a-zA-Z0-9]+)\/report\/sum$/");
 
 	}
 }

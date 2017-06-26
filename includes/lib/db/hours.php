@@ -9,6 +9,7 @@ class hours
 {
 
 	use hours\search;
+	use hours\sum;
 
 	/**
 	 * insert new record in hours table

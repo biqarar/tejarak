@@ -3,7 +3,41 @@
 
 
 {%block content%}
-<h1>{%trans "Hi" %} {%set myName = login.displayname%} {% trans myName  %}</h1>
+<form method="get" class="df" data-action>
+	<div class="f">
+		<label for="year">{%trans "Year"%}</label>
+		<input type="number" name="year" class="c1" id="year" value='{%if get_year%}{{get_year}}{%else%}{{"now"|jdate("Y", false)}}{%endif%}'>
+	</div>
+	<div class="f">
+		<label for="month">{%trans "Month"%}</label>
+		<input type="number" name="month" class="c1" id="month" value='{%if get_month%}{{get_month}}{%else%}{{"now"|jdate("m", false)}}{%endif%}'>
+	</div>
+	<div class="f">
+		<label for="day">{%trans "Day"%}</label>
+		<input type="number" name="day" class="c1" id="day" value='{%if get_day%}{{get_day}}{%else%}{{"now"|jdate("d", false)}}{%endif%}'>
+	</div>
+	<div class="f">
+		<label></label>
+		<input type="submit"  class="c1 b1"  value='{%trans "Go"%}'>
+	</div>
+</form>
 
+<div class="dt">
+	<div class="f th">
+		{%for x,y in sum_report[0]%}
+			<div class="c">{{x}}</div>
+		{%endfor%}
+	</div>
+	{%for key, value in sum_report%}
+	<div class="f">
+		{%for k,v in value%}
+			<div class="c">{{v}}</div>
+		{%endfor%}
+	</div>
+	{%endfor%}
+</div>
+<div class="pagination-container">
+	{%include display.pagination%}
+</div>
 {%endblock%}
 

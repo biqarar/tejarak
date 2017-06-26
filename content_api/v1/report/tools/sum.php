@@ -53,9 +53,75 @@ trait sum
 			return false;
 		}
 
-		$meta            = [];
-		$meta['team_id'] = $check_is_my_team['id'];
-		$result          = \lib\db\hours::search(null, $meta);
+		$year  = utility::request('year');
+		$month = utility::request('month');
+		$day   = utility::request('day');
+
+		if($year && (!is_numeric($year) || mb_strlen($year) !== 4))
+		{
+			logs::set('api:report:sum:invalid:year', $this->user_id, $log_meta);
+			debug::error(T_("Invalid input year"), 'year', 'arguments');
+			return false;
+		}
+
+		if($month && intval($month) < 10)
+		{
+			$month = '0'. (string) intval($month);
+		}
+
+		if($month && (!is_numeric($month) || mb_strlen($month) !== 2))
+		{
+			logs::set('api:report:sum:invalid:month', $this->user_id, $log_meta);
+			debug::error(T_("Invalid input month"), 'month', 'arguments');
+			return false;
+		}
+
+		if($day && intval($day) < 10)
+		{
+			$day = '0'. (string) intval($day);
+		}
+
+		if($day && (!is_numeric($day) || mb_strlen($day) !== 2))
+		{
+			logs::set('api:report:sum:invalid:day', $this->user_id, $log_meta);
+			debug::error(T_("Invalid input day"), 'day', 'arguments');
+			return false;
+		}
+
+		$date_is_shamsi = false;
+		if($year && intval($year) > 1300 && intval($year) < 1600)
+		{
+			$date_is_shamsi = true;
+		}
+
+		$user = utility::request('user');
+		$user = utility\shortURL::decode($user);
+		if($user)
+		{
+			$check_user_in_team = \lib\db\userteams::get(['team_id' => $id, 'user_id' => $user, 'limit' => 1, 'rule'=> ['IN', '("user", "admin")']]);
+
+			if(!$check_is_my_team || !isset($check_is_my_team['userteam_id']))
+			{
+				logs::set('api:report:sum:user:is:not:in:team', $this->user_id, $log_meta);
+				debug::error(T_("This user is not in this team"), 'user', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$user = null;
+		}
+
+		$meta                   = [];
+		$meta['team_id']        = $id;
+		$meta['user_id']        = $user;
+		$meta['userteam_id']    = $check_is_my_team['userteam_id'];
+		$meta['year']           = $year;
+		$meta['month']          = $month;
+		$meta['day']            = $day;
+		$meta['date_is_shamsi'] = $date_is_shamsi;
+		$result                 = \lib\db\hours::sum_time($meta);
+
 		$temp = [];
 		foreach ($result as $key => $value)
 		{
@@ -86,32 +152,8 @@ trait sum
 		{
 			switch ($key)
 			{
-				case 'date':
-					$temp['date'] = strtotime($value);
-					break;
-				case 'enddate':
-					$temp['end_date'] = strtotime($value);
-					break;
-
-				case 'start':
-				case 'end':
-				case 'diff':
-				case 'minus':
-				case 'plus':
-				case 'type':
-				case 'accepted':
-				case 'total':
-				case 'personnelcode':
-				case 'postion':
-				case 'displayname':
-				case 'firstname':
-				case 'lastname':
-				case 'sort':
-					$temp[$key] = $value;
-					break;
-
 				default:
-					continue;
+					$temp[$key] = $value;
 					break;
 			}
 		}

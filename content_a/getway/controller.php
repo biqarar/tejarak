@@ -28,8 +28,9 @@ class controller extends \content_a\main\controller
 		$this->get(false, 'edit')->ALL("/^([a-zA-Z0-9]+)\/getway\=([a-zA-Z0-9]+)$/");
 		$this->post('edit')->ALL("/^([a-zA-Z0-9]+)\/getway\=([a-zA-Z0-9]+)$/");
 
-		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/");
-		if(preg_match("/^([a-zA-Z0-9]+)(|\/(^getway)([a-zA-Z0-9]+))$/", $url))
+		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)\/getway\/list$/");
+
+		if(preg_match("/^([a-zA-Z0-9]+)\/getway\/list$/", $url))
 		{
 			$this->display_name = 'content_a\getway\dashboard.html';
 		}

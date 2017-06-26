@@ -55,6 +55,7 @@ trait last
 
 		$meta            = [];
 		$meta['team_id'] = $check_is_my_team['id'];
+		$meta['order']   = 'DESC';
 		$result          = \lib\db\hours::search(null, $meta);
 		$temp = [];
 		foreach ($result as $key => $value)
