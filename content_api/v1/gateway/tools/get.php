@@ -194,24 +194,19 @@ trait get
 				case 'displayname':
 					$result['name'] = $value;
 					break;
-				case 'firstname':
-					$result['ip'] = $value;
-					break;
-				case 'lastname':
-					$result['agent'] = $value;
-					break;
+
 				case 'username':
-					$result['username'] = $value;
+					$split = explode('-', $value);
+					if(isset($split[1]))
+					{
+						$result['username'] = $split[1];
+
+					}
 					break;
-				case 'rule':
-				case 'telegram_id':
 				case 'status':
-				case 'last_time':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
-				case 'personnelcode':
-					$result['personnel_code'] = isset($value) ? (string) $value : null;
-					break;
+
 
 				default:
 					continue;

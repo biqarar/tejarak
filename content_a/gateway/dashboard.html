@@ -18,7 +18,7 @@
       </div>
       <a class="cfinfo" href="{{url.baseFull}}/{{team}}/gateway={{value.user_id}}">
        <div class="cfname">{{value.name}}</div>
-       {%if value.username%}<div class="cfpos">{{value.username}}</div>{%endif%}
+       {%if value.username%}<div class="cfpos">{{current_team.short_name}}-{{value.username}}</div>{%endif%}
       </a>
      </div>
     </div>

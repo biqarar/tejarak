@@ -15,10 +15,10 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'name'   => utility::post('name'),
-			'ip'     => utility::post('ip'),
-			'agent'  => utility::post('agent'),
-			'status' => utility::post('status'),
+			'name'     => utility::post('name'),
+			'username' => utility::post('username'),
+			'password' => utility::post('ramz'),
+			'status'   => utility::post('status'),
 		];
 
 		return $args;
