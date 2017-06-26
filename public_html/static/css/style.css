@@ -315,10 +315,10 @@ body #billing{max-width:800px;margin:0 auto}
 
 /*card status*/
 .tcard[data-live='on'] .cfnum:before{content:'';position:absolute;top:0;bottom:0;right:0;left:0;border-radius:50%;animation:pulseOn 1.25s infinite cubic-bezier(0.66,0,0,1);box-shadow:0 0 0 0 rgba(15,161,166,0.7);}
-.tcard[data-live='off']{opacity:0.7;}
+.tcard[data-live='off']{opacity:0.5;}
 .tcard[data-live='off'] .cfnum{background-color:rgba(204,169,44,0.4);color:#333}
 .tcard[data-live='off'] .cfnum:before{content:'';position:absolute;top:0;bottom:0;right:0;left:0;border-radius:50%;animation:pulseOff 2s infinite;box-shadow:0 0 0 rgba(204,169,44,0.4);}
-.tcard[data-status='deactive']{opacity:0.3;cursor:not-allowed}
+.tcard[data-status='deactive']{opacity:0.2;cursor:not-allowed}
 .tcard[data-status='deactive'] .cfnum{background-color:#e0e1e2}
 .tcard[data-live='on'] .enter{display:none;}
 .tcard[data-live='off'] .exit{display:none;}
