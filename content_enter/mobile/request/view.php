@@ -7,6 +7,8 @@ class view extends \content_enter\main\view
 	{
 		parent::config();
 
+		$this->data->mobile_readonly = false;
+
 		$this->data->page['title']   = T_('Request mobile number');
 		$this->data->page['desc']    = $this->data->page['title'];
 	}
