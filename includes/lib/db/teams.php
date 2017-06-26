@@ -226,7 +226,7 @@ class teams
 							OR
 							(
 								userteams.user_id = $_user_id AND
-								userteams.rule    = 'getway'
+								userteams.rule    = 'gateway'
 							)
 							OR
 							(
@@ -275,9 +275,9 @@ class teams
 			case 'delete':
 			case 'add_member':
 			case 'edit_member':
-			case 'add_getway':
-			case 'edit_getway':
-			case 'get_getway':
+			case 'add_gateway':
+			case 'edit_gateway':
+			case 'get_gateway':
 			case 'edit':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
@@ -322,7 +322,7 @@ class teams
 							OR
 							(
 								userteams.user_id = $_user_id AND
-								userteams.rule    = 'getway' AND
+								userteams.rule    = 'gateway' AND
 								$_user_id != $_options[change_hour_user]
 							)
 							OR

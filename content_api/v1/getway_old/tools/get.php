@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\getway\tools;
+namespace content_api\v1\gateway\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -7,13 +7,13 @@ use \lib\db\logs;
 trait get
 {
 	/**
-	 * Gets the getway.
+	 * Gets the gateway.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The getway.
+	 * @return     <type>  The gateway.
 	 */
-	public function get_list_getway($_args = [])
+	public function get_list_gateway($_args = [])
 	{
 		$log_meta =
 		[
@@ -31,7 +31,7 @@ trait get
 
 		if(!utility::request('team'))
 		{
-			logs::set('api:getway:team:brand:notfound', null, $log_meta);
+			logs::set('api:gateway:team:brand:notfound', null, $log_meta);
 			debug::error(T_("team not found"), 'team', 'permission');
 			return false;
 		}
@@ -49,13 +49,13 @@ trait get
 
 
 	/**
-	 * Gets the getway.
+	 * Gets the gateway.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The getway.
+	 * @return     <type>  The gateway.
 	 */
-	public function get_getway($_args = [])
+	public function get_gateway($_args = [])
 	{
 		debug::title(T_("Operation Faild"));
 		$log_meta =
@@ -69,7 +69,7 @@ trait get
 
 		if(!$this->user_id)
 		{
-			logs::set('api:getway:user_id:notfound', null, $log_meta);
+			logs::set('api:gateway:user_id:notfound', null, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -78,24 +78,24 @@ trait get
 
 		if(!$team)
 		{
-			logs::set('api:getway:team:notfound', $this->user_id, $log_meta);
+			logs::set('api:gateway:team:notfound', $this->user_id, $log_meta);
 			debug::error(T_("Invalid team"), 'team', 'permission');
 			return false;
 		}
 
-		$getway  = utility::request("getway");
-		if(!$getway)
+		$gateway  = utility::request("gateway");
+		if(!$gateway)
 		{
-			logs::set('api:getway:getway:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid getway"), 'getway', 'permission');
+			logs::set('api:gateway:gateway:notfound', $this->user_id, $log_meta);
+			debug::error(T_("Invalid gateway"), 'gateway', 'permission');
 			return false;
 		}
 
 		$id = utility::request('id');
 		if(!$id || !ctype_digit($id))
 		{
-			logs::set('api:getway:id:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Invalid getway id"), 'id', 'permission');
+			logs::set('api:gateway:id:notfound', $this->user_id, $log_meta);
+			debug::error(T_("Invalid gateway id"), 'id', 'permission');
 			return false;
 		}
 
@@ -115,7 +115,7 @@ trait get
 	 *
 	 * @return     array   ( description_of_the_return_value )
 	 */
-	public function ready_getway($_data, $_options = [])
+	public function ready_gateway($_data, $_options = [])
 	{
 		$default_options =
 		[

@@ -6,7 +6,7 @@ class getwaies
 {
 
 	/**
-	 * add new getway
+	 * add new gateway
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
@@ -25,7 +25,7 @@ class getwaies
 
 
 	/**
-	 * get getway record
+	 * get gateway record
 	 *
 	 * @param      <type>  $_id    The identifier
 	 *
@@ -54,7 +54,7 @@ class getwaies
 
 
 	/**
-	 * get getway record
+	 * get gateway record
 	 *
 	 * @param      <type>  $_id    The identifier
 	 *
@@ -114,7 +114,7 @@ class getwaies
 
 
 	/**
-	 * update getway
+	 * update gateway
 	 *
 	 * @param      <type>  $_args  The arguments
 	 * @param      <type>  $_id    The identifier
@@ -144,7 +144,7 @@ class getwaies
 
 		if(!$_string && empty($_options))
 		{
-			// default return of this function 10 last record of getway
+			// default return of this function 10 last record of gateway
 			$_options['get_last'] = true;
 		}
 

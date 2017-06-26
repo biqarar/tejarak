@@ -108,8 +108,8 @@ CREATE TABLE getwaies (
 `desc`          	text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
 `meta`          	mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
-CONSTRAINT `getway_team_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE CASCADE,
-CONSTRAINT `getway_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
+CONSTRAINT `gateway_team_id` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `gateway_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -119,8 +119,8 @@ CREATE TABLE `hours` (
 `user_id`					int(10) UNSIGNED NOT NULL,
 `team_id`					int(10) UNSIGNED NOT NULL,
 `userteam_id`				int(10) UNSIGNED NOT NULL,
-`start_getway_id`			int(10) UNSIGNED NULL,
-`end_getway_id`				int(10) UNSIGNED NULL DEFAULT NULL,
+`start_gateway_id`			int(10) UNSIGNED NULL,
+`end_gateway_id`				int(10) UNSIGNED NULL DEFAULT NULL,
 `start_userteam_id`			int(10) UNSIGNED NOT NULL,
 `end_userteam_id`			int(10) UNSIGNED NULL DEFAULT NULL,
 `date`						date NOT NULL,

@@ -18,9 +18,9 @@ trait _use
 	use \content_api\v1\member\tools\add;
 	use \content_api\v1\member\tools\get;
 
-	// API GETWAY
-	use \content_api\v1\getway\tools\get;
-	use \content_api\v1\getway\tools\add;
+	// API gateway
+	use \content_api\v1\gateway\tools\get;
+	use \content_api\v1\gateway\tools\add;
 
 	// API FILE
 	use \content_api\v1\file\tools\get;

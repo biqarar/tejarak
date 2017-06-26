@@ -1,5 +1,5 @@
 <?php
-namespace content_a\getway;
+namespace content_a\gateway;
 
 class controller extends \content_a\main\controller
 {
@@ -22,21 +22,21 @@ class controller extends \content_a\main\controller
 			\lib\error::page();
 		}
 
-		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/getway$/");
-		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/getway$/");
+		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/gateway$/");
+		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/gateway$/");
 
-		$this->get(false, 'edit')->ALL("/^([a-zA-Z0-9]+)\/getway\=([a-zA-Z0-9]+)$/");
-		$this->post('edit')->ALL("/^([a-zA-Z0-9]+)\/getway\=([a-zA-Z0-9]+)$/");
+		$this->get(false, 'edit')->ALL("/^([a-zA-Z0-9]+)\/gateway\=([a-zA-Z0-9]+)$/");
+		$this->post('edit')->ALL("/^([a-zA-Z0-9]+)\/gateway\=([a-zA-Z0-9]+)$/");
 
-		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)\/getway\/list$/");
+		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)\/gateway\/list$/");
 
-		if(preg_match("/^([a-zA-Z0-9]+)\/getway\/list$/", $url))
+		if(preg_match("/^([a-zA-Z0-9]+)\/gateway\/list$/", $url))
 		{
-			$this->display_name = 'content_a\getway\dashboard.html';
+			$this->display_name = 'content_a\gateway\dashboard.html';
 		}
 
-		// unroute url /a/getway
-		if($url === 'getway')
+		// unroute url /a/gateway
+		if($url === 'gateway')
 		{
 			\lib\error::page();
 		}

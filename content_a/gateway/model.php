@@ -1,5 +1,5 @@
 <?php
-namespace content_a\getway;
+namespace content_a\gateway;
 use \lib\utility;
 use \lib\debug;
 
@@ -26,7 +26,7 @@ class model extends \content_a\main\model
 
 
 	/**
-	 * Posts an addgetway.
+	 * Posts an addgateway.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
@@ -49,11 +49,11 @@ class model extends \content_a\main\model
 
 		utility::set_request_array($request);
 
-		// API ADD getway FUNCTION
-		$this->add_getway();
+		// API ADD gateway FUNCTION
+		$this->add_gateway();
 		if(debug::$status)
 		{
-			$this->redirector()->set_domain()->set_url("a/$team/getway/list");
+			$this->redirector()->set_domain()->set_url("a/$team/gateway/list");
 		}
 
 	}
@@ -64,40 +64,40 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function list_getway($_args)
+	public function list_gateway($_args)
 	{
 		$this->user_id = $this->login('id');
 		$request       = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
 		utility::set_request_array($request);
-		$result =  $this->get_list_getway();
+		$result =  $this->get_list_gateway();
 		return $result;
 	}
 
 
 	/**
-	 * ready to edit getway
+	 * ready to edit gateway
 	 * load data
 	 *
 	 * @param      <type>  $_team    The team
-	 * @param      <type>  $_getway  The getway
+	 * @param      <type>  $_gateway  The gateway
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function edit($_team, $_getway)
+	public function edit($_team, $_gateway)
 	{
 		$this->user_id   = $this->login('id');
 		$request         = [];
 		$request['team'] = $_team;
-		$request['id']   = $_getway;
+		$request['id']   = $_gateway;
 		utility::set_request_array($request);
-		$result =  $this->get_getway();
+		$result =  $this->get_gateway();
 		return $result;
 	}
 
 
 	/**
-	 * Posts an addgetway.
+	 * Posts an addgateway.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
@@ -114,16 +114,16 @@ class model extends \content_a\main\model
 		$request       = $this->getPost();
 
 		$url             = \lib\router::get_url();
-		$getway          = substr($url, strpos($url,'=') + 1);
-		$request['id']   = $getway;
+		$gateway          = substr($url, strpos($url,'=') + 1);
+		$request['id']   = $gateway;
 		$request['team'] = $team = \lib\router::get_url(0);
 		utility::set_request_array($request);
 
-		// API ADD getway FUNCTION
-		$this->add_getway(['method' => 'patch']);
+		// API ADD gateway FUNCTION
+		$this->add_gateway(['method' => 'patch']);
 		if(debug::$status)
 		{
-			$this->redirector()->set_domain()->set_url("a/$team/getway/list");
+			$this->redirector()->set_domain()->set_url("a/$team/gateway/list");
 		}
 	}
 }

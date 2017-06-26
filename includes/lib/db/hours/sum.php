@@ -7,8 +7,8 @@ trait sum
 // user_id
 // team_id
 // userteam_id
-// start_getway_id
-// end_getway_id
+// start_gateway_id
+// end_gateway_id
 // start_userteam_id
 // end_userteam_id
 // date

@@ -9,14 +9,14 @@
      <div class="f">
       <div class="f c s12 g1">
        <div class="c12">
-        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{getway.name}}" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
+        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{gateway.name}}" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
        </div>
 
        <div class="c12">
-       <input type="text" name="ip" id="ip" placeholder='{%trans "Ip" %}' value="{{getway.ip}}" maxlength='30'>
+       <input type="text" name="ip" id="ip" placeholder='{%trans "Ip" %}' value="{{gateway.ip}}" maxlength='30'>
        </div>
         <div class="c12">
-       <input type="text" name="agent" id="agent" placeholder='{%trans "agent" %}' value="{{getway.agent}}" maxlength='30'>
+       <input type="text" name="agent" id="agent" placeholder='{%trans "agent" %}' value="{{gateway.agent}}" maxlength='30'>
        </div>
       </div>
 
@@ -27,15 +27,15 @@
         <div class="c">
          <div class="f radio1">
           <div class="c4">
-           <input type="radio" id="r-active" name="status" value="active" {%if getway.status == 'active' or not getway.status%}checked{%endif%} >
+           <input type="radio" id="r-active" name="status" value="active" {%if gateway.status == 'active' or not gateway.status%}checked{%endif%} >
            <label for="r-active">{%trans "Active"%}</label>
           </div>
           <div class="c4">
-           <input type="radio" id="r-deactive" name="status" value="deactive" {%if getway.status == 'deactive' %}checked{%endif%}>
+           <input type="radio" id="r-deactive" name="status" value="deactive" {%if gateway.status == 'deactive' %}checked{%endif%}>
            <label for="r-deactive">{%trans "Deactive"%}</label>
           </div>
           <div class="c4">
-           <input type="radio" id="r-disable" name="status" value="disable" {%if getway.status == 'disable' %}checked{%endif%}>
+           <input type="radio" id="r-disable" name="status" value="disable" {%if gateway.status == 'disable' %}checked{%endif%}>
            <label for="r-disable">{%trans "disable"%}</label>
           </div>
          </div>

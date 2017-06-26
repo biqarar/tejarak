@@ -1,22 +1,22 @@
 {%extends display.adminTeam%}
 
 {%block contentCenter%}
-  <div class='middle {%if list_getway|length >= 8%}small{%endif%}' id="showMember">
+  <div class='middle {%if list_gateway|length >= 8%}small{%endif%}' id="showMember">
 
-   <a class="tcard add" href="{{url.baseFull}}/{{team}}/getway">
+   <a class="tcard add" href="{{url.baseFull}}/{{team}}/gateway">
     <div class="cbox">
      <span class="plus">+</span>
     </div>
    </a>
-{%for key, value in list_getway%}
+{%for key, value in list_gateway%}
    <div class="tcard" data-status='{{value.status}}'>
     <div class="cbox">
      <div class="front">
-      <a class="top" href="{{url.baseFull}}/{{team}}/getway={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.name}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
+      <a class="top" href="{{url.baseFull}}/{{team}}/gateway={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.name}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
       <div class="cfdetail">
        <span class="cfnum">{{key+1}}</span>
       </div>
-      <a class="cfinfo" href="{{url.baseFull}}/{{team}}/getway={{value.user_id}}">
+      <a class="cfinfo" href="{{url.baseFull}}/{{team}}/gateway={{value.user_id}}">
        <div class="cfname">{{value.name}}</div>
        {%if value.username%}<div class="cfpos">{{value.username}}</div>{%endif%}
       </a>

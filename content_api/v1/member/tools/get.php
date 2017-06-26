@@ -255,7 +255,7 @@ trait get
 							switch ($this->rule)
 							{
 								case 'admin':
-								case 'getway':
+								case 'gateway':
 									$result['card_action'] = true;
 									break;
 								case 'user':
@@ -294,7 +294,7 @@ trait get
 							switch ($this->rule)
 							{
 								case 'admin':
-								case 'getway':
+								case 'gateway':
 									$result['card_action'] = true;
 									break;
 
@@ -326,7 +326,7 @@ trait get
 							switch ($this->rule)
 							{
 								case 'admin':
-								case 'getway':
+								case 'gateway':
 									$result['card_action'] = true;
 									break;
 

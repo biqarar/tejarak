@@ -339,7 +339,7 @@ trait add
 		$rule = utility::request('rule');
 		if($rule)
 		{
-			if(!in_array($rule, ['user', 'admin', 'getway']))
+			if(!in_array($rule, ['user', 'admin', 'gateway']))
 			{
 				logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
 				debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');

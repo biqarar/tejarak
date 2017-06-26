@@ -1,5 +1,5 @@
 <?php
-namespace content_a\getway;
+namespace content_a\gateway;
 
 class view extends \content_a\main\view
 {
@@ -24,13 +24,13 @@ class view extends \content_a\main\view
 		$team_default              = $this->load_current_team($team);
 		$this->data->current_team  = $this->data->team_default  = $team_default;
 
-		$this->data->page['title'] = T_('Add new getway');
+		$this->data->page['title'] = T_('Add new gateway');
 		$this->data->page['desc']  = $this->data->page['title'];
 	}
 
 
 	/**
-	 * get list of getway on this team and branch
+	 * get list of gateway on this team and branch
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
@@ -40,8 +40,8 @@ class view extends \content_a\main\view
 		$this->data->current_team = $this->load_current_team($team);
 		$request                  = [];
 		$request['id']            = $team;
-		$list                     = $this->model()->list_getway($request);
-		$this->data->list_getway  = $list;
+		$list                     = $this->model()->list_gateway($request);
+		$this->data->list_gateway  = $list;
 
 		if(isset($this->data->current_team['name']))
 		{
@@ -52,7 +52,7 @@ class view extends \content_a\main\view
 
 
 	/**
-	 * edit getway
+	 * edit gateway
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
@@ -63,17 +63,17 @@ class view extends \content_a\main\view
 		$url                       = \lib\router::get_url();
 		$team                      = \lib\router::get_url(0);
 		$this->data->current_team  = $this->load_current_team($team);
-		$getway                    = substr($url, strpos($url,'=') + 1);
-		$getway                    = $this->model()->edit($team, $getway);
-		$this->data->getway        = $getway;
+		$gateway                    = substr($url, strpos($url,'=') + 1);
+		$gateway                    = $this->model()->edit($team, $gateway);
+		$this->data->gateway        = $gateway;
 
-		if(isset($getway['displayname']))
+		if(isset($gateway['displayname']))
 		{
-			$this->data->page['title'] = T_('Edit :name', ['name' => $getway['displayname']]);
+			$this->data->page['title'] = T_('Edit :name', ['name' => $gateway['displayname']]);
 		}
 		else
 		{
-			$this->data->page['title'] = T_('Edit getway!');
+			$this->data->page['title'] = T_('Edit gateway!');
 		}
 		$this->data->page['desc']  = $this->data->page['title'];
 

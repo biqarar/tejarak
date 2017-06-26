@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\getway\tools;
+namespace content_api\v1\gateway\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -9,13 +9,13 @@ trait add
 
 
 	/**
-	 * Adds a getway.
+	 * Adds a gateway.
 	 *
 	 * @param      array    $_args  The arguments
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	public function add_getway($_args = [])
+	public function add_gateway($_args = [])
 	{
 		// default args
 		$default_args =
@@ -33,7 +33,7 @@ trait add
 		// set default title of debug
 		debug::title(T_("Operation Faild"));
 
-		// delete getway mode
+		// delete gateway mode
 		$delete_mode = false;
 
 		// set the log meta
@@ -49,7 +49,7 @@ trait add
 		// check user id is exist
 		if(!$this->user_id)
 		{
-			logs::set('api:getway:user_id:notfound', null, $log_meta);
+			logs::set('api:gateway:user_id:notfound', null, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -59,12 +59,12 @@ trait add
 		$team = utility\shortURL::decode($team);
 		if(!$team)
 		{
-			logs::set('api:getway:team:not:set', null, $log_meta);
+			logs::set('api:gateway:team:not:set', null, $log_meta);
 			debug::error(T_("Team not set"), 'user', 'permission');
 			return false;
 		}
 		// load team data
-		$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, ['action' => 'add_getway']);
+		$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, ['action' => 'add_gateway']);
 		// check the team exist
 		if(isset($team_detail['id']))
 		{
@@ -72,7 +72,7 @@ trait add
 		}
 		else
 		{
-			logs::set('api:getway:team:notfound:invalid', null, $log_meta);
+			logs::set('api:gateway:team:notfound:invalid', null, $log_meta);
 			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
@@ -82,15 +82,15 @@ trait add
 		$name = trim($name);
 		if($name && mb_strlen($name) > 50)
 		{
-			logs::set('api:getway:name:max:length', $this->user_id, $log_meta);
+			logs::set('api:gateway:name:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
 
 		if(!$name)
 		{
-			logs::set('api:getway:name:not:set', $this->user_id, $log_meta);
-			debug::error(T_("The getway name can not be null"), 'name', 'arguments');
+			logs::set('api:gateway:name:not:set', $this->user_id, $log_meta);
+			debug::error(T_("The gateway name can not be null"), 'name', 'arguments');
 			return false;
 		}
 
@@ -101,7 +101,7 @@ trait add
 		$ip = trim($ip);
 		if($ip && mb_strlen($ip) > 50)
 		{
-			logs::set('api:getway:ip:max:length', $this->user_id, $log_meta);
+			logs::set('api:gateway:ip:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the ip less than 50 character"), 'ip', 'arguments');
 			return false;
 		}
@@ -113,7 +113,7 @@ trait add
 		$agent = trim($agent);
 		if($agent && mb_strlen($agent) > 90)
 		{
-			logs::set('api:getway:agent:max:length', $this->user_id, $log_meta);
+			logs::set('api:gateway:agent:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set the agent less than 90 character"), 'agent', 'arguments');
 			return false;
 		}
@@ -149,11 +149,11 @@ trait add
 			$user_id = utility\shortURL::decode($id);
 			if($user_id)
 			{
-				$check_user_is_getway = \lib\db\userteams::get(['user_id' => $user_id, 'rule' => 'getway', 'limit' => 1]);
-				if(!$check_user_is_getway)
+				$check_user_is_gateway = \lib\db\userteams::get(['user_id' => $user_id, 'rule' => 'gateway', 'limit' => 1]);
+				if(!$check_user_is_gateway)
 				{
-					logs::set('api:getway:user_id:is:not:getway:user', $this->user_id, $log_meta);
-					debug::error(T_("User id is not a getway user!"), 'user', 'permission');
+					logs::set('api:gateway:user_id:is:not:gateway:user', $this->user_id, $log_meta);
+					debug::error(T_("User id is not a gateway user!"), 'user', 'permission');
 					return false;
 				}
 			}
@@ -162,7 +162,7 @@ trait add
 
 		if(!$user_id)
 		{
-			logs::set('api:getway:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			logs::set('api:gateway:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
 			debug::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
@@ -175,7 +175,7 @@ trait add
 		{
 			if(!in_array($status, ['active', 'deactive', 'disable']))
 			{
-				logs::set('api:getway:status:invalid', $this->user_id, $log_meta);
+				logs::set('api:gateway:status:invalid', $this->user_id, $log_meta);
 				debug::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
@@ -193,7 +193,7 @@ trait add
 		$args['firstname']     = $firstname;
 		$args['lastname']      = $lastname;
 		$args['status']        = $status;
-		$args['rule']          = 'getway';
+		$args['rule']          = 'gateway';
 
 		if($_args['method'] === 'post')
 		{
@@ -205,7 +205,7 @@ trait add
 			$id = utility\shortURL::decode($id);
 			if(!$id)
 			{
-				logs::set('api:getway:pathc:id:not:set', $this->user_id, $log_meta);
+				logs::set('api:gateway:pathc:id:not:set', $this->user_id, $log_meta);
 				debug::error(T_("Id not set"), 'id', 'arguments');
 				return false;
 			}
@@ -214,7 +214,7 @@ trait add
 
 			if(!$check_user_in_team || !isset($check_user_in_team['id']))
 			{
-				logs::set('api:getway:user:not:in:team', $this->user_id, $log_meta);
+				logs::set('api:gateway:user:not:in:team', $this->user_id, $log_meta);
 				debug::error(T_("This user is not in this team"), 'id', 'arguments');
 				return false;
 			}
@@ -234,7 +234,7 @@ trait add
 		}
 		elseif ($_args['method'] === 'delete')
 		{
-			// \lib\db\getways::remove($args);
+			// \lib\db\gateways::remove($args);
 		}
 
 		if(debug::$status)
@@ -243,15 +243,15 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("Getway successfully added"));
+				debug::true(T_("gateway successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("Getway successfully updated"));
+				debug::true(T_("gateway successfully updated"));
 			}
 			else
 			{
-				debug::true(T_("Getway successfully removed"));
+				debug::true(T_("gateway successfully removed"));
 			}
 		}
 
