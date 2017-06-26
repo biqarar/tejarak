@@ -118,20 +118,14 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 
 #plans .plans-card{background-color:#fff;box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);border-radius:2px;margin:2rem 1rem;padding:2em 1em;border-radius:2px;width:94%;height:100%;max-width:250px;min-height:400px}
 #plans .plans-card h4{padding:0;padding-bottom:1.5rem;margin:0 1rem;font-size:2em;line-height:2em;color:#333;border-bottom:1px solid #ccc}
-
 #plans .plans-card .plans-card-learn-more{font-size:1.4em;display:block;margin-bottom:2rem;text-align:center;color:#fff}
 #plans .plans-card .btn{font-size:1.618rem;border-radius:2px;color:#fff !important}
-
 #plans .plans-card .plans-card-price{height:120px}
 #plans .plans-card .plans-card-price-box{font-size:3em;color:#333;font-weight:100}
-
 #plans .plans-card .plans-card-price .plans-card-price-unit{font-size:1.25rem;vertical-align:top}
-
 #plans .plans-card .plans-card-user-month{font-size:1.618em;font-weight:100;color:#666;margin-top:1rem}
-
 #plans .plans-card .plans-card-content{font-size:1.25em;line-height:1.85em;padding:0 1rem;text-align:left;color:#333}
 .rtl #plans .plans-card .plans-card-content{text-align:right}
-
 #plans .plans-card.plan-enterprise .plans-card-price-box{font-size:2.4em}
 
 
@@ -245,14 +239,13 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 #setup .setup-step{text-align:center;padding:2em 0}
 #setup .setup-step span{display:inline-block;vertical-align:middle;width:1.5em;height:1.5em;background-color:#aaa;border-radius:50%;margin:0 0.2em;}
 #setup .setup-step span.done{background-color:#8aad1f;}
-
 #setup.step2 .b1{margin-top:2em;}
 
 
 @-webkit-keyframes spin{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(360deg)}}
 @keyframes spin{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)} to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 
-
+body #billing{max-width:800px;margin:0 auto}
 
 
 
@@ -498,4 +491,6 @@ body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;
 	#addMember .cauto.s12{order:-1}
 	.teams-item{margin:1rem 0.5rem ;width:140px;height:180px;}
 	.teams-item figure div{padding:5px;height:140px;}
+
+	.box{padding:2em;margin:0.5em;}
 }
