@@ -6,7 +6,7 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 /* header*/
 #theader{height:60px;font-size:1.2em;overflow:hidden;background-color:rgba(255,255,255,0.5);}
 #theader .logo{transition:0.3s;padding:0;margin:0;font-weight:700;}
-#theader .logo a{padding:0 1em}
+#theader .logo a{padding:0 1em;color:#c01541}
 #theader .logo h1{display:inline-block;margin:0;line-height:60px;}
 #theader .logo img{height:60px;width:60px;padding:5px 5px;}
 #theader .logo:hover{opacity:0.8}
@@ -200,7 +200,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 
 
 /* admin custom styles*/
-body{background-image:url(../images/shattered_@2X.png);background-repeat:repeat;background-color:#eee;}
+body{background-image:url(../images/bg1.png);background-repeat:repeat;background-color:#eee;}
 
 /*billing*/
 .box{background-color:#eee;padding:4em;margin:1em;font-size:1.2em;border-radius:3px;}
