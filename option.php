@@ -50,9 +50,10 @@ self::$config['main_site']                    = 'http://tejarak.dev';
 self::$social['status']                       = true;
 
 self::$social['list']['telegram']             = 'tejarak';
-self::$social['list']['facebook']             = 'tejarak';
-self::$social['list']['twitter']              = 'tejarak';
-self::$social['list']['googleplus']           = '109727653714508522373';
+self::$social['list']['facebook']             = 'tejarak.ermile';
+self::$social['list']['twitter']              = 'ermile_tejarak';
+self::$social['list']['instagram']            = 'ermile_tejarak';
+self::$social['list']['googleplus']           = '113130164586721131168';
 self::$social['list']['github']               = 'ermile';
 self::$social['list']['linkedin']             = null;
 self::$social['list']['aparat']               = 'tejarak';
