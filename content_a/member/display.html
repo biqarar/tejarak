@@ -9,11 +9,11 @@
      <div class="f">
       <div class="f c s12 g1">
        <div class="c12">
-        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.displayname}}" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
+        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.displayname}}" required autofocus maxlength='40' minlength="3" pattern=".{3,40}" title='{%trans "Enter a valid name from 3 to 40 character"%}'>
        </div>
 
        <div class="c12">
-       <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}" maxlength='30'>
+       <input type="text" name="postion" id="postion" placeholder='{%trans "Postion" %}' value="{{member.postion}}" maxlength='50' pattern=".{3,50}" title='{%trans "Enter a valid team position from 3 to 50 character"%}'>
        </div>
       </div>
 
