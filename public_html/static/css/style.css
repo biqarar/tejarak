@@ -443,58 +443,71 @@ body #billing{max-width:800px;margin:0 auto}
 
 
 /* ---------------------------------------------------------------- responsive of site */
+@media all and (min-width: 1400px) {
 
-@media all and (min-width: 1400px) {}
-@media all and (min-width: 768px) and (max-width: 959px) {}
+}
+
+
+@media all and (min-width: 768px) and (max-width: 959px) {
+
+}
+
 
 @media all and (max-width: 767px) {
-	/* header */
-	#theader .logo a{padding:0;}
-	#theader .theader-links{display:none!important;}
-	#theader .vm{display:none!important;}
+  /* header */
+  #theader .logo a{padding:0;}
+  #theader .theader-links{display:none!important;}
+  #theader .vm{display:none!important;}
 
-	/* homepage */
-	.tile h3,.tile h4{padding:0 4%;}
-	.tile h3{font-size:1.618rem;}
-	.tile h4{font-size:1.4em;}
+  /* homepage */
+  .tile h3,.tile h4{padding:0 4%;}
+  .tile h3{font-size:1.618rem;}
+  .tile h4{font-size:1.4em;}
 
-	#setup-tour h2{font-size:2em;margin-bottom:2rem;}
+  #setup-tour h2{font-size:2em;margin-bottom:2rem;}
 
-	/* plans */
-	#plans .plans-card{min-height:initial;}
-	#plans .plans-card .plans-card-content{display:none;}
-	#plans .plans-card .btn{margin:0;}
+  /* plans */
+  #plans .plans-card{min-height:initial;}
+  #plans .plans-card .plans-card-content{display:none;}
+  #plans .plans-card .btn{margin:0;}
 
-	/* footer */
-	#tfooter .top{font-size:1em;}
+  /* footer */
+  #tfooter .top{font-size:1em;}
 
-	#tfooter .middle{padding:2rem 1rem;}
-	#tfooter .middle .enamad{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
-	#tfooter .middle nav:not(.enamad){margin-bottom:2rem;}
-	#tfooter .middle .socialbox a{display:inline-block;vertical-align:middle;}
+  #tfooter .middle{padding:2rem 1rem;}
+  #tfooter .middle .enamad{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
+  #tfooter .middle nav:not(.enamad){margin-bottom:2rem;}
+  #tfooter .middle .socialbox a{display:inline-block;vertical-align:middle;}
 
-	#tfooter .bottom .counter{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
-	#tfooter .bottom .love,.rtl #tfooter .bottom .love{text-align:center;}
-	#tfooter .bottom .langlist{display:block;text-align:center;}
-	#tfooter .bottom .langlist a{padding:1em;}
+  #tfooter .bottom .counter{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
+  #tfooter .bottom .love,.rtl #tfooter .bottom .love{text-align:center;}
+  #tfooter .bottom .langlist{display:block;text-align:center;}
+  #tfooter .bottom .langlist a{padding:1em;}
 
-	/* about */
-	.p,.pa{padding:5rem 4%;padding:5rem 0;}
+  /* about */
+  .p,.pa{padding:5rem 4%;padding:5rem 0;}
 
-	/* pricing */
-	.pricingTable .f > div{font-size:1rem;}
-	.pricingTable .f.price .c{font-size:1.2rem;}
-	.dtc > div > *{padding:1rem .5rem;}
+  /* pricing */
+  .pricingTable .f > div{font-size:1rem;}
+  .pricingTable .f.price .c{font-size:1.2rem;}
+  .dtc > div > *{padding:1rem .5rem;}
 
-	#offer-enterprise-small{text-align:center;}
+  #offer-enterprise-small{text-align:center;}
 
-	#addTeam,#addMember{max-width:40rem}
-	#addTeam .df-file,#addMember .df-file{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}
-	#setup .cauto.s12{order:-1}
-	#addTeam .cauto.s12{order:-1}
-	#addMember .cauto.s12{order:-1}
-	.teams-item{margin:1rem 0.5rem ;width:140px;height:180px;}
-	.teams-item figure div{padding:5px;height:140px;}
+  #addTeam,#addMember{max-width:40rem}
+  #addTeam .df-file,#addMember .df-file{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}
+  #setup .cauto.s12{order:-1}
+  #addTeam .cauto.s12{order:-1}
+  #addMember .cauto.s12{order:-1}
+  .teams-item{margin:1rem 0.5rem ;width:140px;height:180px;}
+  .teams-item figure div{padding:5px;height:140px;}
 
-	.box{padding:2em;margin:0.5em;}
+  .box{padding:2em;margin:0.5em;}
 }
+
+
+/* Design for print */
+@media print {
+  footer{display:none;}
+}
+
