@@ -169,6 +169,7 @@ class model extends \content_a\main\model
 		$request['lastname']    = utility::post('family');
 		$request['displayname'] = utility::post('name') . ' '. utility::post('family');
 		$request['postion']     = utility::post('post');
+		$request['rule']        = 'admin';
 		$request['file']        = $file_code;
 		$request['team']        = isset($_SESSION['last_team_added_code']) ? $_SESSION['last_team_added_code'] : null;
 		$request['id']          = \lib\utility\shortURL::encode($this->login('id'));
