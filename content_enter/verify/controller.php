@@ -13,7 +13,7 @@ class controller extends \content_enter\main\controller
 
 		if($url === 'verify')
 		{
-			\lib\error::page();
+			self::error_page('verify');
 		}
 	}
 }

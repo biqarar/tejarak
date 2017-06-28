@@ -20,7 +20,7 @@ class controller extends \content_enter\main\controller
 
 		if(self::get_request_method() === 'get')
 		{
-			$this->get('enter', 'enter')->ALL();
+			$this->get(false, 'enter')->ALL();
 		}
 		elseif(self::get_request_method() === 'post')
 		{
@@ -33,6 +33,11 @@ class controller extends \content_enter\main\controller
 	}
 
 
+	/**
+	 * Saves a parameter.
+	 * save all param-* in url into the session
+	 *
+	 */
 	public function save_param()
 	{
 		$post = \lib\utility::post();

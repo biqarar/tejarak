@@ -6,6 +6,12 @@ class controller extends \content_enter\main\controller
 {
 	public function _route()
 	{
+		// bug fix two redirect to this page
+		if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
+		{
+			return;
+		}
+
 		// if this step is locked go to error page and return
 		if(self::lock('verify/call'))
 		{
@@ -20,14 +26,23 @@ class controller extends \content_enter\main\controller
 			// if user start my bot try to send code to this use
 			// if okay route this
 			// else go to nex way
-			if($this->model()->send_call_code())
+			if(!self::loaded_module('verify/call'))
 			{
-				$this->get()->ALL('verify/call');
+				self::loaded_module('verify/call', true);
+
+				if($this->model()->send_call_code())
+				{
+					$this->get()->ALL('verify/call');
+				}
+				else
+				{
+					// send code way
+					self::send_code_way();
+				}
 			}
 			else
 			{
-				// send code way
-				self::send_code_way();
+				$this->get()->ALL('verify/call');
 			}
 		}
 		elseif(self::get_request_method() === 'post')

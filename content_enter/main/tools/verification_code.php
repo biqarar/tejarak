@@ -106,6 +106,10 @@ trait verification_code
 						if(isset($log_code['log_desc']))
 						{
 							self::set_enter_session('verification_code_way', $log_code['log_desc']);
+							if($prev_way = self::get_last_way())
+							{
+								self::set_enter_session('verification_code_way', $prev_way);
+							}
 						}
 						// save log id
 						if(isset($log_code['id']))

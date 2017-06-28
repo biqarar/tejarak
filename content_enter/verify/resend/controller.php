@@ -1,5 +1,5 @@
 <?php
-namespace content_enter\verify\telegram;
+namespace content_enter\verify\resend;
 
 
 class controller extends \content_enter\main\controller
@@ -13,25 +13,26 @@ class controller extends \content_enter\main\controller
 		}
 
 		// if this step is locked go to error page and return
-		if(self::lock('verify/telegram'))
+		if(self::lock('verify/resend'))
 		{
-			self::error_page('verify/telegram');
+			self::error_page('verify/resend');
 			return;
 		}
 
+		// check method
 		if(self::get_request_method() === 'get')
 		{
 			// if the user start my bot and wa have her chat id
 			// if user start my bot try to send code to this use
 			// if okay route this
 			// else go to nex way
-			if(!self::loaded_module('verify/telegram'))
-			{
-				self::loaded_module('verify/telegram', true);
 
-				if($this->model()->send_telegram_code())
+			if(self::get_enter_session('send_code_at_time'))
+			{
+				if(time() - intval(self::get_enter_session('send_code_at_time')) < self::$resend_after)
 				{
-					$this->get()->ALL('verify/telegram');
+					self::error_page('verify/resend/why/harry?');
+					return;
 				}
 				else
 				{
@@ -41,17 +42,14 @@ class controller extends \content_enter\main\controller
 			}
 			else
 			{
-				$this->get()->ALL('verify/telegram');
+				self::error_page('verify/resend/time?');
 			}
-		}
-		elseif(self::get_request_method() === 'post')
-		{
-			$this->post('verify')->ALL('verify/telegram');
 		}
 		else
 		{
-			self::error_method('verify/telegram');
+			self::error_method('verify/resend');
 		}
+
 	}
 }
 ?>

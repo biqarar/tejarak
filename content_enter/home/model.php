@@ -6,16 +6,6 @@ use \lib\db;
 
 class model extends \content_enter\main\model
 {
-	/**
-	 * Gets the enter.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function get_enter($_args)
-	{
-
-	}
-
 
 	/**
 	 * Posts an enter.

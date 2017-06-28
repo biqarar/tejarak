@@ -10,6 +10,12 @@ class controller extends \mvc\controller
 	public function _route()
 	{
 		parent::_route();
+
+		if(!$this->login())
+		{
+			$this->redirector($this->view()->url->base)->redirect();
+			return;
+		}
 	}
 
 

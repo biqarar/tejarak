@@ -100,5 +100,33 @@ trait lock
 		// set jusn this lock
 		self::set_session('lock', $_module, false);
 	}
+
+
+	/**
+	 * check and set loaded module
+	 *
+	 * @param      <type>  $_module  The module
+	 * @param      <type>  $_type    The type
+	 */
+	public static function loaded_module($_module, $_type = null)
+	{
+		if($_type === null)
+		{
+			if(self::get_session('loaded_module', $_module))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		if($_type === true)
+		{
+			$_SESSION['loaded_module'] = [];
+			self::set_session('loaded_module', $_module, true);
+		}
+	}
 }
 ?>

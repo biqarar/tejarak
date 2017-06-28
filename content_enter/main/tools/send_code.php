@@ -20,6 +20,8 @@ trait send_code
 			// open next step to route it
 			$host .= '/enter/verify/'. $way;
 			self::next_step('verify/'. $way);
+			self::open_lock('verify/resend');
+			self::set_enter_session('send_code_at_time', time());
 		}
 		else
 		{
@@ -103,6 +105,57 @@ trait send_code
 					}
 				}
 			}
+		}
+		return false;
+	}
+
+
+	/**
+	 * Gets the last way.
+	 * get last way of send rate
+	 *
+	 */
+	public static function get_last_way($_type = 'send_rate')
+	{
+		// get the old way code
+		$old_way = self::get_enter_session('verification_code_way');
+
+		// get send rate by look at $_type
+		if($_type == 'send_rate')
+		{
+			$rate = self::$send_rate;
+		}
+		elseif($_type == 'resend_rate')
+		{
+			$rate = self::$resend_rate;
+		}
+		else
+		{
+			$rate = self::$send_rate;
+		}
+
+		// first send way code
+		if(!$old_way)
+		{
+			$old_way = ':/';
+		}
+
+		// find key of this old way
+		$current_key = array_search($old_way, $rate);
+		// if the key is find
+		if(isset($current_key))
+		{
+			// go to nex key
+			$next_key = $current_key - 1;
+			if(isset($rate[$next_key]) && is_string($rate[$next_key]))
+			{
+				return $rate[$next_key];
+			}
+		}
+
+		if(isset($rate[0]) && is_string($rate[0]))
+		{
+			return $rate[0];
 		}
 		return false;
 	}
