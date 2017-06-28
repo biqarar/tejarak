@@ -121,6 +121,7 @@ trait add
 		$args['minus']     = $minus;
 		$args['plus']      = $plus;
 		$args['type']      = $type;
+		$args['gateway']   = $this->user_id;
 
 		if($_args['method'] === 'post')
 		{

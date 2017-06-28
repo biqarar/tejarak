@@ -111,7 +111,7 @@ class hours
 		$insert['plus']              = $_args['plus'];
 		$insert['user_id']           = $_args['user_id'];
 		$insert['team_id']           = $_args['team_id'];
-		$insert['start_userteam_id'] = $_args['user_id'];
+		$insert['start_userteam_id'] = $_args['userteam_id'];
 		$insert['userteam_id']       = $_args['userteam_id'];
 		$insert['date']              = date("Y-m-d");
 		$insert['year']              = date("Y");
@@ -119,9 +119,10 @@ class hours
 		$insert['day']               = date("d");
 		$insert['shamsi_date']       = jdate::date("Y-m-d", strtotime($date), false, true);
 		$insert['shamsi_year']       = jdate::date("Y", strtotime($date), false, true);
-		$insert['shamsi_month']      = jdate::date("m", strtotime($date), false, true);;
-		$insert['shamsi_day']        = jdate::date("d", strtotime($date), false, true);;
+		$insert['shamsi_month']      = jdate::date("m", strtotime($date), false, true);
+		$insert['shamsi_day']        = jdate::date("d", strtotime($date), false, true);
 		$insert['start']             = date("H:i");
+		$insert['start_gateway_id']  = $_args['gateway'];
 
 		return self::insert($insert);
 	}
@@ -196,8 +197,10 @@ class hours
 		$update['endday']          = date("d");
 		$update['endshamsi_date']  = jdate::date("Y-m-d", strtotime($date), false, true);
 		$update['endshamsi_year']  = jdate::date("Y", strtotime($date), false, true);
-		$update['endshamsi_month'] = jdate::date("m", strtotime($date), false, true);;
-		$update['endshamsi_day']   = jdate::date("d", strtotime($date), false, true);;
+		$update['endshamsi_month'] = jdate::date("m", strtotime($date), false, true);
+		$update['endshamsi_day']   = jdate::date("d", strtotime($date), false, true);
+		$update['end_gateway_id']  = $_args['gateway'];
+		$update['end_userteam_id'] = $_args['userteam_id'];
 
 		return self::update($update, $start['id']);
 	}
