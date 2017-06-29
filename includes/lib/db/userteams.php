@@ -184,23 +184,52 @@ class userteams
 
 			if($get_hours)
 			{
+				// $query =
+				// "
+				// 	SELECT
+				// 		userteams.*,
+				// 		users.user_mobile AS `mobile`,
+				// 		users.user_username AS `username`,
+				// 		(
+				// 			SELECT
+				// 				CONCAT(hours.date, ' ', hours.start)
+				// 			FROM
+				// 				hours
+				// 			WHERE
+				// 				hours.userteam_id = userteams.id AND
+				// 				IF(userteams.24h = 0 OR userteams.24h IS NULL , hours.date = '$date', hours.id = (SELECT MAX(hours.id) FROM hours WHERE hours.userteam_id = userteams.id)) AND
+				// 				hours.end IS NULL
+				// 			ORDER BY hours.id DESC
+				// 			LIMIT 1
+				// 		) AS `last_time`
+
+				// 	FROM
+				// 		userteams
+				// 	LEFT JOIN users ON users.id = userteams.user_id
+
+				// 	WHERE
+				// 		$where
+				// 	ORDER BY userteams.sort, userteams.id ASC
+				// 	$limit
+				// ";
 				$query =
 				"
 					SELECT
 						userteams.*,
-						users.user_mobile AS `mobile`,
-						users.user_username AS `username`,
-						CONCAT(hours.date, ' ', hours.start) AS `last_time`,
-						hours.plus AS `plus`
+						hours.date,
+						hours.start,
+						hours.end,
+						hours.minus,
+						hours.plus
 					FROM
 						userteams
-					LEFT JOIN users ON users.id = userteams.user_id
-					LEFT JOIN hours ON hours.userteam_id = userteams.id AND (IF(userteams.24h = 0 OR userteams.24h IS NULL , hours.date = '$date', TRUE) AND hours.end IS NULL)
+					LEFT JOIN hours ON hours.id = (SELECT hours.id FROM hours WHERE hours.userteam_id = userteams.id ORDER BY hours.id DESC LIMIT 1)
 					WHERE
 						$where
 					ORDER BY userteams.sort, userteams.id ASC
 					$limit
 				";
+
 			}
 			else
 			{

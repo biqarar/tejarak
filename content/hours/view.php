@@ -40,12 +40,12 @@ class view extends \mvc\view
 		}
 		// set page desc
 		$this->data->page['desc']  = T_('Tejarak provides beautiful solutions for your business;');
-		if($current_team['desc'])
+		if(isset($current_team['desc']))
 		{
 			$this->data->page['desc'] = $current_team['desc']. ' | '. $this->data->page['desc'];
 		}
 		// set page logo
-		if($current_team['logo'])
+		if(isset($current_team['logo']))
 		{
 			$this->data->share['image'] = $current_team['logo'];
 		}

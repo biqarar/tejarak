@@ -97,6 +97,7 @@ trait get
 			$where['rule']      = ['IN', "('user', 'admin')"];
 			$result             = \lib\db\userteams::get_list($where);
 			$temp               = [];
+
 			if(is_array($result))
 			{
 				foreach ($result as $key => $value)
@@ -108,6 +109,7 @@ trait get
 					}
 				}
 			}
+
 			return $temp;
 		}
 	}
@@ -265,18 +267,12 @@ trait get
 										{
 											$result['card_action'] = true;
 										}
-										else
-										{
-											if(!$this->show_another_status)
-											{
-												unset($_data['status']);
-												unset($_data['last_time']);
-											}
-										}
 									}
-									else
+
+									if(!$this->show_another_status)
 									{
-										return false;
+										unset($_data['status']);
+										unset($_data['last_time']);
 									}
 
 								default:
@@ -305,13 +301,11 @@ trait get
 										{
 											$result['card_action'] = true;
 										}
-										else
+
+										if(!$this->show_another_status)
 										{
-											if(!$this->show_another_status)
-											{
-												unset($_data['status']);
-												unset($_data['last_time']);
-											}
+											unset($_data['status']);
+											unset($_data['last_time']);
 										}
 									}
 									break;
@@ -378,9 +372,7 @@ trait get
 				case 'allowminus':
 					$result['allow_minus'] = $value ? true : false;
 					break;
-				case '24h':
-					$result['24h'] = $value ? true : false;
-					break;
+
 				case 'remote':
 					$result['remote_user'] = $value ? true : false;
 					break;
@@ -396,13 +388,52 @@ trait get
 				case 'telegram_id':
 				case 'mobile':
 				case 'status':
-				case 'last_time':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
+
 				case 'personnelcode':
 					$result['personnel_code'] = isset($value) ? (string) $value : null;
 					break;
 
+				case '24h':
+					$result['24h'] = $value ? true : false;
+					if(array_key_exists('date', $_data) && array_key_exists('start', $_data) && array_key_exists('end', $_data))
+					{
+						// the user is 24h
+						if($value)
+						{
+							if($_data['end'])
+							{
+								$result['last_time_end'] = $_data['end'];
+								$result['last_time'] = null;
+							}
+							else
+							{
+								$result['last_time'] = $_data['start'];
+							}
+						}
+						else
+						{
+							if($_data['end'])
+							{
+								$result['last_time_end'] = $_data['end'];
+								$result['last_time'] = null;
+							}
+							else
+							{
+								if($_data['date'] == date("Y-m-d"))
+								{
+									$result['last_time'] = $_data['start'];
+								}
+								else
+								{
+									$result['last_time'] = null;
+								}
+							}
+
+						}
+					}
+					break;
 				default:
 					continue;
 					break;
