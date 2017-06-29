@@ -23,6 +23,10 @@ class controller extends \content_a\main\controller
 				$this->redirector()->set_domain()->set_url('a/setup')->redirect();
 				return;
 			}
+			else
+			{
+				$_SESSION['user']['setup'] = 1;
+			}
 		}
 
 		// check if the user is gateway redirect to hours page
