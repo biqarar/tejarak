@@ -45,9 +45,8 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 .pc p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
 .rtl .pc p{text-align:justify;}
 .pricingTable{text-align:center;color:#888}
-.pricingTable .th{font-weight:700}
-.pricingTable .gh{font-weight:700;background-color:rgba(255,255,255, 0.3);}
 .pricingTable .price .c{font-size:1.4em;font-weight:500;color:#333}
+.pricingTable .price:hover .c{color:#fff}
 .ltr .pricingTable .c4, .ltr .pricingTable .c12{text-align:left}
 .rtl .pricingTable .c4, .rtl .pricingTable .c12{text-align:right;}
 body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd;}
@@ -78,8 +77,11 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 /* table style*/
 .dtc > div{transition:0.3s;}
 .dtc > div > *{padding:1em 1em;}
-.dtc > .th{background-color:rgba(0,0,0,0.1);}
-.dtc > div:hover{background-color:#aabf40;color:#fff}
+.dtc > .th{background-color:#e0d7c1;font-weight:700}
+.dtc > .gh{font-weight:700;background-color:#d9dddd;margin-top:1em;}
+.dtc > .th:hover{background-color:#d0c7b1;}
+.dtc > .th.gh:hover{background-color:#c9cdcd;}
+.dtc > div:not(.th):hover{background-color:#c01541;color:#fff!important}
 /* align left*/
 .al{text-align:left;}
 .ar{text-align:right;}
