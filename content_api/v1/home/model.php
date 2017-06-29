@@ -187,17 +187,17 @@ class model extends \mvc\model
 	 */
 	public function telegram_token()
 	{
-		$tg_id = utility::header("tg_id");
+		$telegramid = utility::header("telegramid");
 
-		if(!$tg_id)
+		if(!$telegramid)
 		{
-			debug::error(T_("tg_id is not set"), 'tg_id', 'header');
+			debug::error(T_("telegramid is not set"), 'telegramid', 'header');
 			return false;
 		}
 
 		$where =
 		[
-			'user_chat_id' => $tg_id,
+			'user_chat_id' => $telegramid,
 			'limit'        => 1
 		];
 
