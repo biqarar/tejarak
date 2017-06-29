@@ -27,6 +27,7 @@ class model extends \content_a\main\model
 			'remote_user'    => utility::post('remoteUser'),
 			'24h'            => utility::post('24h'),
 			'status'         => utility::post('status'),
+			'visibility'     => utility::post('visibility'),
 		];
 
 		return $args;

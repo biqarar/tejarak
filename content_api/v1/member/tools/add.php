@@ -351,12 +351,26 @@ trait add
 			$rule = 'user';
 		}
 
+		$visibility = utility::request('visibility');
+		if($visibility)
+		{
+			if(!in_array($visibility, ['visible', 'hidden']))
+			{
+				logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
+				debug::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$visibility = 'visible';
+		}
 
 		// get status
 		$status = utility::request('status');
 		if($status)
 		{
-			if(!in_array($status, ['active', 'deactive', 'disable']))
+			if(!in_array($status, ['active', 'deactive', 'suspended']))
 			{
 				logs::set('api:member:status:invalid', $this->user_id, $log_meta);
 				debug::error(T_("Invalid parameter status"), 'status', 'arguments');
@@ -453,6 +467,7 @@ trait add
 		$args['status']        = $status;
 		$args['displayname']   = $displayname;
 		$args['rule']          = $rule;
+		$args['visibility']    = $visibility;
 
 		if($_args['method'] === 'post')
 		{
@@ -479,21 +494,22 @@ trait add
 			}
 
 			unset($args['team_id']);
-			if(!utility::isset_request('postion')) 		unset($args['postion']);
-			if(!utility::isset_request('personnel_code'))unset($args['personnelcode']);
-			if(!utility::isset_request('24h')) 			unset($args['24h']);
-			if(!utility::isset_request('remote_user')) 	unset($args['remote']);
-			if(!utility::isset_request('is_default')) 	unset($args['isdefault']);
-			if(!utility::isset_request('date_enter')) 	unset($args['dateenter']);
-			if(!utility::isset_request('date_exit')) 	unset($args['dateexit']);
-			if(!utility::isset_request('firstname')) 	unset($args['firstname']);
-			if(!utility::isset_request('lastname')) 	unset($args['lastname']);
-			if(!utility::isset_request('file')) 		unset($args['fileid'], $args['fileurl']);
-			if(!utility::isset_request('allow_plus')) 	unset($args['allowplus']);
-			if(!utility::isset_request('allow_minus')) 	unset($args['allowminus']);
-			if(!utility::isset_request('status')) 		unset($args['status']);
-			if(!utility::isset_request('displayname')) 	unset($args['displayname']);
-			if(!utility::isset_request('rule')) 		unset($args['rule']);
+			if(!utility::isset_request('postion')) 			unset($args['postion']);
+			if(!utility::isset_request('personnel_code'))	unset($args['personnelcode']);
+			if(!utility::isset_request('24h')) 				unset($args['24h']);
+			if(!utility::isset_request('remote_user')) 		unset($args['remote']);
+			if(!utility::isset_request('is_default')) 		unset($args['isdefault']);
+			if(!utility::isset_request('date_enter')) 		unset($args['dateenter']);
+			if(!utility::isset_request('date_exit')) 		unset($args['dateexit']);
+			if(!utility::isset_request('firstname')) 		unset($args['firstname']);
+			if(!utility::isset_request('lastname')) 		unset($args['lastname']);
+			if(!utility::isset_request('file')) 			unset($args['fileid'], $args['fileurl']);
+			if(!utility::isset_request('allow_plus')) 		unset($args['allowplus']);
+			if(!utility::isset_request('allow_minus')) 		unset($args['allowminus']);
+			if(!utility::isset_request('status')) 			unset($args['status']);
+			if(!utility::isset_request('displayname')) 		unset($args['displayname']);
+			if(!utility::isset_request('rule')) 			unset($args['rule']);
+			if(!utility::isset_request('visibility')) 		unset($args['visibility']);
 
 			if(!empty($args))
 			{

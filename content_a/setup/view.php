@@ -10,15 +10,6 @@ class view extends \content_a\main\view
 	{
 		parent::config();
 
-		// if  the user is login and first login
-		// we set the setup field of user on 1
-		if($this->login() && !$this->login('setup'))
-		{
-			$_SESSION['user']['setup'] = '1';
-			\lib\db\users::update(['user_setup' => 1], $this->login('id'));
-		}
-
-
 		// set page title
 		$step = null;
 		switch (\lib\router::get_url(1))

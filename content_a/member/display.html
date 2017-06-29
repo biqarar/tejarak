@@ -99,18 +99,32 @@
            <label for="r-active">{%trans "Active"%}</label>
           </div>
           <div class="c4">
-           <input type="radio" id="r-deactive" name="status" value="deactive" {%if member.status == 'deactive' %}checked{%endif%}>
-           <label for="r-deactive">{%trans "Deactive"%}</label>
+           <input type="radio" id="r-suspended" name="status" value="suspended" {%if member.status == 'suspended' %}checked{%endif%}>
+           <label for="r-suspended">{%trans "Suspended"%}</label>
           </div>
           <div class="c4">
-           <input type="radio" id="r-disable" name="status" value="disable" {%if member.status == 'disable' %}checked{%endif%}>
-           <label for="r-disable">{%trans "disable"%}</label>
+           <input type="radio" id="r-deactive" name="status" value="deactive" {%if member.status == 'deactive' %}checked{%endif%}>
+           <label for="r-deactive">{%trans "Deactive"%}</label>
           </div>
          </div>
         </div>
       </div>
 
-
+       <div class="f g1">
+        <div class="cauto s0 lbl"><span>{%trans "Visibility"%}</span></div>
+        <div class="c">
+         <div class="f radio1">
+          <div class="c6">
+           <input type="radio" id="r-visible" name="visibility" value="visible" {%if member.visibility == 'visible' or not member.visibility%}checked{%endif%} >
+           <label for="r-visible">{%trans "Visible"%}</label>
+          </div>
+          <div class="c6">
+           <input type="radio" id="r-hidden" name="visibility" value="hidden" {%if member.visibility == 'hidden' %}checked{%endif%}>
+           <label for="r-hidden">{%trans "Hidden"%}</label>
+          </div>
+         </div>
+        </div>
+      </div>
      </div>
 
 

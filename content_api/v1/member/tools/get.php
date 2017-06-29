@@ -57,7 +57,7 @@ trait get
 		}
 		elseif($shortname)
 		{
-			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'get_member']);
+			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'view']);
 		}
 
 
@@ -390,7 +390,12 @@ trait get
 				case 'status':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
-
+				case 'visibility':
+					if($value === 'hidden')
+					{
+						return false;
+					}
+					break;
 				case 'personnelcode':
 					$result['personnel_code'] = isset($value) ? (string) $value : null;
 					break;
