@@ -150,7 +150,7 @@ trait _use
 		}
 		else
 		{
-			sleep(3);
+			sleep(1);
 		}
 	}
 }
