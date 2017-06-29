@@ -24,7 +24,6 @@ class model extends \mvc\model
 		if(debug::$status)
 		{
 			debug::title(T_("Operation complete"));
-			debug::true(T_("Please get data from response header"));
 		}
 		else
 		{
@@ -70,24 +69,30 @@ class model extends \mvc\model
 	 */
 	public function telegram_token()
 	{
-		$telegram_id = utility::header("tg_id");
-		$first_name  = utility::header('tg_first_name');
-		$last_name   = utility::header('tg_last_name');
-		$username    = utility::header('tg_username');
-		$started     = utility::header('tg_start');
-		$ref         = utility::header('tg_ref');
-		$mobile      = utility::header('tg_mobile');
+		$telegram_id = utility::request("tg_id");
+		$first_name  = utility::request('tg_first_name');
+		$last_name   = utility::request('tg_last_name');
+		$username    = utility::request('tg_username');
+		$started     = utility::request('tg_start');
+		$ref         = utility::request('tg_ref');
+		$mobile      = utility::request('tg_mobile');
 		$mobile      = utility\filter::mobile($mobile);
+
+		if(!$mobile)
+		{
+			debug::error(T_("Mobile is not set"), 'tg_mobile', 'post');
+			return false;
+		}
 
 		if(!$telegram_id)
 		{
-			debug::error(T_("Telegram id not found"), 'telegram_id', 'header');
+			debug::error(T_("Telegram id not found"), 'telegram_id', 'post');
 			return false;
 		}
 
 		if(!is_numeric($telegram_id))
 		{
-			debug::error(T_("Invalid telegram id"), 'telegram_id', 'header');
+			debug::error(T_("Invalid telegram id"), 'telegram_id', 'post');
 			return false;
 		}
 
@@ -98,60 +103,46 @@ class model extends \mvc\model
 		];
 
 		$exist_chart_id = \lib\db\config::public_get('users', $where);
-		$exist_mobile   = false;
 
-
-		if($mobile)
-		{
-			$exist_mobile = \lib\db\users::get_by_mobile($mobile);
-		}
+		$exist_mobile = \lib\db\users::get_by_mobile($mobile);
 
 		if(!$exist_chart_id && !$mobile)
 		{
 			// calc full_name of user
 			$fullName = trim($first_name. ' '. $last_name);
 			$fullName = \lib\utility\safe::safe($fullName, 'sqlinjection');
-			$mobile = 'tg_'. $telegram_id;
 
-			if(mb_strlen($mobile) > 15)
+			if(mb_strlen($fullName) > 50)
 			{
-				debug::error(T_("Invalid telegram id leng"), 'telegram_id', 'header');
-				return false;
+				$fullName = null;
 			}
 
-			$user = \lib\db\users::get_by_mobile($mobile);
+			$insert_user                     = [];
+			$insert_user['user_mobile']      = $mobile;
+			$insert_user['user_displayname'] = $fullName;
+			$insert_user['user_chat_id']     = $telegram_id;
+			\lib\db\users::insert($insert_user);
+			$this->user_id = \lib\db::insert_id();
 
-			if(empty($user))
-			{
-				$port = $started ? 'telegram' : 'telegram_guest';
-
-				$this->user_id = \lib\db\users::signup(
-				[
-					'mobile'      => $mobile,
-					'password'    => null,
-					'displayname' => $fullName,
-					'ref'         => $ref,
-				]);
-			}
-			elseif(isset($user['id']) && is_numeric($user['id']))
-			{
-				$this->user_id = (int) $user['id'];
-			}
-			else
-			{
-				debug::error(T_("System error"));
-				return false;
-			}
 		}
 		elseif($exist_chart_id && $exist_mobile)
 		{
-			if(isset($exist_mobile['id']))
+			if(isset($exist_chart_id['id']) && isset($exist_mobile['id']))
 			{
-				$this->user_id = (int) $exist_mobile['id'];
+				if(intval($exist_chart_id['id']) === intval($exist_mobile['id']))
+				{
+					$this->user_id = (int) $exist_mobile['id'];
+				}
+				else
+				{
+					\lib\db\users::update(['user_chat_id' => null], $exist_chart_id['id']);
+					\lib\db\users::update(['user_chat_id' => $telegram_id], $exist_mobile['id']);
+					$this->user_id = (int) $exist_mobile['id'];
+				}
 			}
 			else
 			{
-				debug::error(T_("System error"));
+				debug::error(T_("System error 1"));
 				return false;
 			}
 		}
@@ -167,7 +158,7 @@ class model extends \mvc\model
 			}
 			else
 			{
-				debug::error(T_("System error"));
+				debug::error(T_("System error 2"));
 				return false;
 			}
 		}
@@ -183,46 +174,11 @@ class model extends \mvc\model
 			}
 			else
 			{
-				debug::error(T_("System error"));
+				debug::error(T_("System error 3"));
 				return false;
 			}
 		}
 
-		if($this->user_id)
-		{
-			$user_data = \lib\utility\users::get($this->user_id);
-
-			header("user_code: ". \lib\utility\shortURL::encode($this->user_id));
-
-			if(array_key_exists('user_mobile', $user_data))
-			{
-				header("user_mobile: ". $user_data['user_mobile']);
-			}
-
-			if(array_key_exists('user_displayname', $user_data))
-			{
-				header("user_displayname: ". $user_data['user_displayname']);
-			}
-
-			if(array_key_exists('unit_id', $user_data))
-			{
-				header("user_unit_id: ". $user_data['unit_id']);
-				if($user_data['unit_id'])
-				{
-					header("user_unit: ". \lib\db\units::get($user_data['unit_id'], true));
-				}
-			}
-
-			if(array_key_exists('user_language', $user_data))
-			{
-				header("user_language: ". $user_data['user_language']);
-			}
-		}
-		else
-		{
-			debug::error(T_("User id can not be find"));
-			return false;
-		}
 	}
 
 

@@ -187,23 +187,27 @@ class model extends \mvc\model
 	 */
 	public function telegram_token()
 	{
-		$user_code = utility::header("user_code");
+		$tg_id = utility::header("tg_id");
 
-		if(!$user_code)
+		if(!$tg_id)
 		{
-			debug::error(T_("User code not set"), 'user_code', 'header');
+			debug::error(T_("tg_id is not set"), 'tg_id', 'header');
 			return false;
 		}
 
-		$user_id = \lib\utility\shortURL::decode($user_code);
+		$where =
+		[
+			'user_chat_id' => $tg_id,
+			'limit'        => 1
+		];
 
-		if(!$user_id)
+		$user_data = \lib\db\config::public_get('users', $where);
+		if(!$user_data || !isset($user_data['id']))
 		{
-			debug::error(T_("Invalid user code"), 'user_code', 'header');
+			debug::error(T_("User not found, please register from /enter/hook"), 'tg_id', 'header');
 			return false;
 		}
-
-		$this->user_id = $user_id;
+		$this->user_id = (int) $user_data['id'];
 	}
 
 
