@@ -35,5 +35,22 @@ trait options
 				break;
 		}
 	}
+
+
+	/**
+	 * check permission
+	 *
+	 * @param      <type>  $_content     The content
+	 * @param      <type>  $_permission  The permission
+	 * @param      <type>  $_actions     The actions
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function check_api_permission($_caller, $_action = null, $_user_id = null)
+	{
+		\lib\permission::$user_id = $_user_id;
+		return \lib\permission::access(...func_get_args());
+	}
+
 }
 ?>

@@ -7,10 +7,10 @@ class controller extends \content_enter\main\controller
 	public function _route()
 	{
 		// bug fix two redirect to this page
-		if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
-		{
-			return ;
-		}
+		// if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
+		// {
+		// 	return ;
+		// }
 
 		// if this step is locked go to error page and return
 		if(self::lock('verify/resend'))
@@ -38,6 +38,12 @@ class controller extends \content_enter\main\controller
 				{
 					// send code way
 					self::send_code_way();
+
+					$args['force_json']   = false;
+					$args['force_stop']   = true;
+					$args['not_redirect'] = false;
+
+					$this->_processor($args);
 				}
 			}
 			else

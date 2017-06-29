@@ -7,10 +7,10 @@ class controller extends \content_enter\main\controller
 	public function _route()
 	{
 		// bug fix two redirect to this page
-		if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
-		{
-			return ;
-		}
+		// if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
+		// {
+		// 	return ;
+		// }
 
 		// if this step is locked go to error page and return
 		if(self::lock('verify/telegram'))
