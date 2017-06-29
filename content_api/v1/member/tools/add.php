@@ -369,7 +369,7 @@ trait add
 		}
 
 		$current_rule = (isset($old_user_id['rule'])) ? $old_user_id['rule'] : null;;
-		if(($rule === 'user' && $current_rule === 'admin') || ($current_rule === 'admin' && $status !== 'active'))
+		if(($rule === 'user' && $current_rule === 'admin'))
 		{
 			$another_admin = \lib\db\teams::get_all_admins($team_id);
 
