@@ -13,13 +13,68 @@ class model extends \mvc\model
 	 */
 	public $user_id = null;
 
+	public function delete_chat_id()
+	{
+		if($this->check_api_key())
+		{
+			$telegram_id = utility::request("telegramid");
+
+
+			if(!$telegram_id)
+			{
+				debug::error(T_("Telegram id not found"), 'telegram_id', 'post');
+				return false;
+			}
+
+			if(!is_numeric($telegram_id))
+			{
+				debug::error(T_("Invalid telegram id"), 'telegram_id', 'post');
+				return false;
+			}
+
+			$where =
+			[
+				'user_chat_id' => $telegram_id,
+				'limit'        => 1
+			];
+
+			$exist_chart_id = \lib\db\config::public_get('users', $where);
+
+			$log_meta =
+			[
+				'meta' =>
+					[
+						'request'        => utility::request(),
+						'record_chat_id' => $exist_chart_id,
+					],
+			];
+			if(isset($exist_chart_id['id']))
+			{
+				$remove_all_this_chat_id = "UPDATE users SET user_chat_id = NULL WHERE user_chat_id = '$telegram_id' ";
+				\lib\db::query($remove_all_this_chat_id);
+				\lib\db\logs::set('enter:hook:remove:all:chat:id:by:delete:request', $exist_chart_id['id'], $log_meta);
+			}
+		}
+
+		if(debug::$status)
+		{
+			debug::title(T_("Operation complete"));
+		}
+		else
+		{
+			debug::title(T_("Operation faild"));
+		}
+	}
 
 	/**
 	 * get user data
 	 */
 	public function post_user()
 	{
-		$this->check_api_key();
+		if($this->check_api_key())
+		{
+			$this->config_user_data();
+		}
 
 		if(debug::$status)
 		{
@@ -46,19 +101,21 @@ class model extends \mvc\model
 
 		if(!$authorization)
 		{
-			return debug::error(T_('Authorization not found'), 'authorization', 'access');
+			debug::error(T_('Authorization not found'), 'authorization', 'access');
+			return false;
 		}
 
 		if($authorization === \lib\option::enter('telegram_hook'))
 		{
-			$this->telegram_token();
+			$this->authorization = $authorization;
+			return true;
 		}
 		else
 		{
-			return debug::error(T_('Invalid Authorization'), 'authorization', 'access');
+			debug::error(T_('Invalid Authorization'), 'authorization', 'access');
+			return false;
 		}
 
-		$this->authorization = $authorization;
 	}
 
 
@@ -67,7 +124,7 @@ class model extends \mvc\model
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	public function telegram_token()
+	public function config_user_data()
 	{
 		$telegram_id = utility::request("tg_id");
 		$first_name  = utility::request('tg_first_name');
