@@ -88,6 +88,11 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .ac{text-align:center;}
 .rtl .al{text-align:right;}
 .rtl .ar{text-align:left;}
+
+/*special parts of homepage*/
+#firstView h3{padding:0;width:60%;margin:0 auto;max-width:700px;min-width:650px;}
+#firstView h3 span{font-weight:700}
+
 /* getStarted*/
 .getStarted{min-width:300px;max-width:400px;margin:1em auto;font-size:1.5em;}
 .getStarted form{height:50px;}
@@ -450,7 +455,7 @@ body #billing{max-width:800px;margin:0 auto}
 }
 
 
-@media all and (min-width: 768px) and (max-width: 959px) {
+@media all and (max-width: 959px) {
 
 }
 
@@ -462,9 +467,11 @@ body #billing{max-width:800px;margin:0 auto}
   #theader .vm{display:none!important;}
 
   /* homepage */
+  .tile h2{font-size:2.5em;}
   .tile h3,.tile h4{padding:0 4%;}
   .tile h3{font-size:1.618rem;}
   .tile h4{font-size:1.4em;}
+  .tile#firstView h3{min-width:initial;width:100%;}
 
   #setup-tour h2{font-size:2em;margin-bottom:2rem;}
 

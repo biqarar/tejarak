@@ -2,27 +2,28 @@
 
 
 {%block content%}
- <div class="tile">
-  <div class="cn">
-   <h2>{%trans "Do attendance easily and enjoy realtime reports."%}</h2>
-   <h3>سامانه‌ی حضور و غیاب اختصاصی و چشم‌نواز خودتان را در چند دقیقه راه‌اندازی کرده و از هرجایی بر کسب و کارتان نظارت <b>لحظه‌ای</b> و موشکافانه داشته باشید.</h3>
-   {{block('getStarted')}}
-  </div>
- </div>
 
-
-   {{block('preview')}}
-   {{block('sync')}}
-   {{block('everyteam')}}
-   {{block('setupTour')}}
-   {{block('pricing')}}
-   {{block('enterprise')}}
-   {{block('tryRegister')}}
-
+ {{block('topHomepage')}}
+ {{block('preview')}}
+ {{block('sync')}}
+ {{block('everyteam')}}
+ {{block('setupTour')}}
+ {{block('pricing')}}
+ {{block('enterprise')}}
+ {{block('tryRegister')}}
 
 {%endblock%}
 
 
+{%block topHomepage%}
+ <div class="tile" id='firstView'>
+  <div class="cn">
+   <h2>{%trans "Do attendance easily and enjoy real time reports."%}</h2>
+   <h3>{%trans "Setup your dedicated and beautiful attendance system in less than a minute and have a <span>real time</span> and scrupulously monitoring on your business from anywhere"%}</h3>
+   {{block('getStarted')}}
+  </div>
+ </div>
+{%endblock%}
 
 {%block getStarted%}
 {%if login.id%}
