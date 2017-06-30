@@ -29,7 +29,8 @@ private function transtext()
 	echo T_("Get Started");                                                           // Line 35
 	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 37
 	echo T_("In not enough?");                                                        // Line 46
-	echo T_("Ermile Preview");                                                        // Line 59
+	echo T_("Our technology team with flexible time in addition of introduce team members, use Tejarak for register remote and wasted time for working hours and attendance.");// Line 57
+	echo T_("Ermile Preview");                                                        // Line 58
 	echo T_("Wherever You Go.");                                                      // Line 67
 	echo T_("Everything is in sync.");                                                // Line 67
 	echo T_("Is your team interested in deploying?");                                 // Line 89

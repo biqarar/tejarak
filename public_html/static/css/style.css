@@ -15,9 +15,9 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 #theader a{padding:0 1em;line-height:60px;color:#333;display:inline-block;transition:0.3s}
 #theader nav a:hover{background-color:rgba(255,255,255,0.5);}
 #theader nav a:focus{background-color:rgba(255,255,255,0.8);}
-#theader .btn{margin:10px;line-height:40px;color:#eee;padding:0 2em}
-#theader .btn:hover{background-color:#333;}
-#theader .btn:focus{background-color:#000;}
+#theader .btn{margin:10px;line-height:40px;color:#333;padding:0 2em;border:1px solid #c01541;background-color:transparent;transition:0.3s;}
+#theader .btn:hover{box-shadow:0 0px 3px 0 #c01541;}
+#theader .btn:focus{}
 
 .vflex{min-height:100vh;display:flex;flex-direction:column;}
 .wrapper{flex:1;}
@@ -74,6 +74,10 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .bg-gray{background-color:#eee;}
 .bg-gray2{background-color:#ddd;}
 .bg-dark{background-color:#333;}
+.bg-khaki{background-color:#e0d7c1;}
+.bg-blue{background-color:#e0d7c1;color:#fff}
+.bg-hot{background-color:#c01541;color:#fff}
+
 /* table style*/
 .dtc > div{transition:0.3s;}
 .dtc > div > *{padding:1em 1em;}
@@ -92,6 +96,10 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 /*special parts of homepage*/
 #firstView h3{padding:0;width:60%;margin:0 auto;max-width:700px;min-width:650px;}
 #firstView h3 span{font-weight:700}
+#caseStudy{background-color:#c01541;padding-bottom:0}
+#caseStudy h3{color:#fff;padding:1em 15%;}
+#caseStudy picture{display:block;}
+#caseStudy img{margin:0 auto;display:block;border-top-left-radius:5px;border-top-right-radius:5px;}
 
 /* getStarted*/
 .getStarted{min-width:300px;max-width:400px;margin:1em auto;font-size:1.5em;}
@@ -474,6 +482,7 @@ body #billing{max-width:800px;margin:0 auto}
   .tile#firstView h3{min-width:initial;width:100%;}
 
   #setup-tour h2{font-size:2em;margin-bottom:2rem;}
+  #caseStudy h3{padding:0.5em 4%; }
 
   /* plans */
   #plans .plans-card{min-height:initial;}

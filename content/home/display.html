@@ -25,6 +25,7 @@
  </div>
 {%endblock%}
 
+
 {%block getStarted%}
 {%if login.id%}
 {%else%}
@@ -51,11 +52,14 @@
 
 
 {%block preview%}
- <div class="tile bg-gray" id='sample-preview'>
-  <div class="cn">
-   <h3>تیم فناورانه‌ی ما با زمان کاری انعطاف‌پذیر علاوه بر معرفی اعضا، از تجارک برای دور کاری و هدر رفت در ثبت ساعت کاری و حضور و غیاب‌های خود استفاده می‌کند.</h3>
+ <div class="tile" id='caseStudy'>
+  <div class="cn" data-case='ermile'>
+   <h3>{%trans "Our technology team with flexible time in addition of introduce team members, use Tejarak for register remote and wasted time for working hours and attendance."%}</h3>
+   <picture>
+    <source srcset="{{url.static}}images/homepage/preview-ermile.jpg" media="(min-width: 500px)">
+    <img src="{{url.static}}images/homepage/preview-ermile.jpg" alt='{%trans "Ermile Preview"%}'>
+   </picture>
   </div>
-   <img src="{{url.static}}images/homepage/preview-ermile.jpg" alt='{%trans "Ermile Preview"%}'/>
  </div>
 {%endblock%}
 
