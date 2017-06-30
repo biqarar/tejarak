@@ -4,12 +4,105 @@
 {%block content%}
  <div class="tile">
   <div class="cn">
-   <h2>{{site.slogan}}</h2>
-   <h3>{%trans "Do attendance easily and enjoy realtime reports."%}</h3>
+   <h2>{%trans "Do attendance easily and enjoy realtime reports."%}</h2>
+   <h3>سامانه‌ی حضور و غیاب اختصاصی و چشم‌نواز خودتان را در چند دقیقه راه‌اندازی کرده و از هرجایی بر کسب و کارتان نظارت <b>لحظه‌ای</b> و موشکافانه داشته باشید.</h3>
    {{block('getStarted')}}
   </div>
  </div>
 
+
+   {{block('preview')}}
+   {{block('sync')}}
+   {{block('everyteam')}}
+   {{block('setupTour')}}
+   {{block('pricing')}}
+   {{block('enterprise')}}
+   {{block('tryRegister')}}
+
+
+{%endblock%}
+
+
+
+{%block getStarted%}
+{%if login.id%}
+{%else%}
+ <div class="getStarted">
+  <form class="f" action="{{url.base}}/enter" method="get" data-action>
+   <input type="text" name="param-team" class="c" placeholder='{%trans "Enter your team name"%}' autofocus>
+   <button class="c">{%trans "Get Started"%}</button>
+  </form>
+  <p>{%trans "Try Tejarak FREE;) no credit, no risk!"%}</p>
+ </div>
+{%endif%}
+{%endblock%}
+
+
+{%block tryRegister%}
+ <div class="tile">
+  <div class="cn">
+   <h2>{%trans "In not enough?"%}</h2>
+   {{block('getStarted')}}
+  </div>
+ </div>
+
+{%endblock%}
+
+
+{%block preview%}
+ <div class="tile bg-gray" id='sample-preview'>
+  <div class="cn">
+   <h3>تیم فناورانه‌ی ما با زمان کاری انعطاف‌پذیر علاوه بر معرفی اعضا، از تجارک برای دور کاری و هدر رفت در ثبت ساعت کاری و حضور و غیاب‌های خود استفاده می‌کند.</h3>
+  </div>
+   <img src="{{url.static}}images/homepage/preview-ermile.jpg" alt='{%trans "Ermile Preview"%}'/>
+ </div>
+{%endblock%}
+
+
+{%block sync%}
+ <div class="tile bg-gray" id='everything-sync'>
+  <div class="cn">
+   <h2>{%trans "Wherever You Go."%} {%trans "Everything is in sync."%}</h2>
+   <h3>از سفرهای کاری خود لذت ببرید و دغدغه‌ی کنترل حضور و غیاب در کسب و کار خود را نداشته باشید.</h3>
+   <h3>گزارش‌های بی‌درنگ از وضعیت کارکنان‌تان را علاوه بر وب‌سایت، بدون نیاز به نصب هیچ‌گونه نرم‌افزاری از طریق پیام‌رسان‌هایی نظیر تلگرام، پیامک و ایمیل در تلفن همراه خود دریافت کنید. در هر جایی از پشت صندلی مدیریت گرفته تا دراز کشیده لب ساحل!</h3>
+  </div>
+ </div>
+{%endblock%}
+
+
+{%block everyteam%}
+ <div class="tile" id='every-team'>
+  <div class="cn">
+   <h2>با هر تیمی کار کنید</h2>
+   <h3>برای تک‌تک کارهایتان تجارک را بکار بگیرید!</h3>
+   <h3>کسب و کارتان، پروژه‌های جانبی و هر جایی که نیاز به کنترل تردد و نظم بخشیدن دارید.</h3>
+  </div>
+ </div>
+{%endblock%}
+
+
+{%block enterpriseold%}
+ <div class="tile" id='offer-enterprise'>
+  <div class="cn">
+   <h3>{%trans "Is your team interested in deploying?"%} {%trans "We can help."%}</h3>
+   <a href="{{url.base}}/enterprise" class="btn">{%trans "Get in Touch"%}</a>
+  </div>
+ </div>
+{%endblock%}
+
+
+{%block enterprise%}
+ <div class="tile" id='offer-enterprise'>
+  <div class="cn">
+   <h2>{%trans "All of the above, at Enterprise scale"%}</h2>
+   <h3>{%trans "Enterprise plan brings the power and utility of Tejarak to large, complex organizations."%}</h3>
+   <a href="{{url.base}}/enterprise" class="btn">{%trans "Get in Touch"%}</a>
+  </div>
+ </div>
+{%endblock%}
+
+
+{%block setupTour%}
  <div class="tile bg-white" id='setup-tour'>
   <div class="cn">
    <h2>{%trans "Transfer to Tejarak is Easy"%}</h2>
@@ -17,7 +110,10 @@
    <h4>{%trans "Set up a team in less than a minute!"%} {%trans "It's FREE!"%} <a href="{{url.base}}/enter" data-direct>{%trans "Try it."%}</a></h4>
   </div>
  </div>
+{%endblock%}
 
+
+{%block pricing%}
  <div class="tile" id='plans'>
   <div class="cn">
    <div class="flex justify-center wrap">
@@ -105,27 +201,5 @@
    </div>
   </div>
  </div>
-
-  <div class="tile" id='offer-enterprise'>
-  <div class="cn">
-   <h3>{%trans "Is your team interested in deploying?"%} {%trans "We can help."%}</h3>
-   <a href="{{url.base}}/enterprise" class="btn">{%trans "Get in Touch"%}</a>
-  </div>
- </div>
-{%endblock%}
-
-
-
-{%block getStarted%}
-{%if login.id%}
-{%else%}
- <div class="getStarted">
-  <form class="f" action="{{url.base}}/enter" method="get" data-action>
-   <input type="text" name="param-team" class="c" placeholder='{%trans "Enter your team name"%}' autofocus>
-   <button class="c">{%trans "Get Started"%}</button>
-  </form>
-  <p>{%trans "Try Tejarak FREE;) no credit, no risk!"%}</p>
- </div>
-{%endif%}
 {%endblock%}
 
