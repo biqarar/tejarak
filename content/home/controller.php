@@ -8,7 +8,7 @@ class controller extends \content\main\controller
 	 */
 	public function config()
 	{
-		// \lib\utility\telegram::sendMessage(33263188, 'salam');
+		// \lib\utility\telegram::sendMessage(-1001071026501, "تست تجارک در گروه");
 	}
 
 

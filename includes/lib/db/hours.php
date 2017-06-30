@@ -214,7 +214,7 @@ class hours
 		$updated                         = self::update($update, $start['id']);
 		$plan_feature                    = [];
 		$plan_feature['type']            = 'exit';
-		$plan_feature['inserted_record'] = $update;
+		$plan_feature['updated_record']  = $update;
 		$plan_feature['args']            = $_args;
 		$plan_feature['start']           = $start;
 

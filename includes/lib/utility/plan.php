@@ -22,7 +22,7 @@ class plan
 		self::list();
 		if(self::$team_id)
 		{
-			self::$team_id = \lib\utility\shortURL::decode(self::$team_id);
+			// self::$team_id = \lib\utility\shortURL::decode(self::$team_id);
 			$team_detail   = \lib\db\teams::get_by_id(self::$team_id);
 		}
 		elseif(self::$shortname)
@@ -140,6 +140,12 @@ class plan
 			'detail'  => null,
 			'contain' =>
 			[
+				'telegram:enter:msg',
+				'telegram:exit:msg',
+
+
+
+
 				'number:of:persons:ultimited',
 				'simple:reports',
 				'telegram:auto:send:report:1',
@@ -174,6 +180,13 @@ class plan
 			'detail'  => null,
 			'contain' =>
 			[
+				'telegram:enter:msg',
+				'telegram:exit:msg',
+
+
+
+
+
 				'number:of:persons:ultimited',
 				'simple:reports',
 				'telegram:auto:send:report:1',
