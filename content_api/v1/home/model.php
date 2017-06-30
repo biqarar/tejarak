@@ -204,7 +204,7 @@ class model extends \mvc\model
 		$user_data = \lib\db\config::public_get('users', $where);
 		if(!$user_data || !isset($user_data['id']))
 		{
-			debug::error(T_("User not found, please register from /enter/hook"), 'tg_id', 'header');
+			debug::error(T_("User not found, please register from /enter/hook"), 'telegramid', 'header');
 			return false;
 		}
 		$this->user_id = (int) $user_data['id'];

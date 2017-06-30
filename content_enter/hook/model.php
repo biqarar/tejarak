@@ -174,7 +174,7 @@ class model extends \mvc\model
 				],
 		];
 
-		if(!$exist_chart_id && !$mobile)
+		if(!$exist_chart_id && !$exist_mobile)
 		{
 			// calc full_name of user
 			$fullName = trim($first_name. ' '. $last_name);
@@ -189,6 +189,7 @@ class model extends \mvc\model
 			$insert_user['user_mobile']      = $mobile;
 			$insert_user['user_displayname'] = $fullName;
 			$insert_user['user_chat_id']     = $telegram_id;
+			$insert_user['user_createdate']  = date("Y-m-d H:i:s");
 			\lib\db\users::insert($insert_user);
 			$this->user_id = \lib\db::insert_id();
 

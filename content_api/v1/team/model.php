@@ -65,8 +65,9 @@ class model extends \content_api\v1\home\model
 
 		$load_team = \lib\db\teams::access_team_code($code,$this->user_id, ['action'=> 'edit']);
 
-		if(!debug::$status || !isset($load_team['team_id']))
+		if(!isset($load_team['team_id']))
 		{
+			debug::error(T_("Can not access to load this team"), 'id', 'arguments');
 			return false;
 		}
 
