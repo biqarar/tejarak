@@ -125,38 +125,12 @@ trait feature
 		switch ($_type)
 		{
 			case 'enter':
-				// if this person is first one in this day send current date
-				// add minus and plus if exist
-
-				// if(\lib\db\staff::enter() <= 1)
-				// {
-				// 	$tg = self::send_telegram($date_now);
-				// 	// create custom message for group
-				// 	$msg_start = $date_now;
-				// 	if(self::$user_id === 11)
-				// 	{
-				// 		$msg_start .= "\n". "🙋‍♂ $name";
-				// 	}
-				// 	else
-				// 	{
-				// 		$msg_start .= "\n". "💪 $name";
-				// 	}
-				// 	$msg_start .= "\n"."🇮🇷 🌖 🌱 👨‍💻 🥇";
-				// 	$msg_start .= "\n". "#سختـکوشـباشیم";
-
-				// 	// send message for group
-				// 	if(\lib\router::get_root_domain('domain') !== 'germile')
-				// 	{
-				// 		$tg_final = self::send_telegram($msg_start, 'group');
-				// 	}
-				// }
 				$msg = "✅ ". self::$name;
 				if(self::$plus)
 				{
 					$msg .= "\n➕ ". human::number(self::$plus, 'fa');
 				}
 				break;
-
 
 			case 'exit':
 				$msg   = "💤 ". self::$name. "\n";
@@ -194,7 +168,37 @@ trait feature
 					$msg .= "\n➖ ". human::number(self::$minus, 'fa');
 				}
 				$msg        .= "\n🕗 ". $pure_human;
+				break;
 
+			case 'first_enter_day':
+				// if this person is first one in this day send current date
+				// add minus and plus if exist
+
+				// if(\lib\db\staff::enter() <= 1)
+				// {
+				// 	$tg = self::send_telegram($date_now);
+				// 	// create custom message for group
+				// 	$msg_start = $date_now;
+				// 	if(self::$user_id === 11)
+				// 	{
+				// 		$msg_start .= "\n". "🙋‍♂ $name";
+				// 	}
+				// 	else
+				// 	{
+				// 		$msg_start .= "\n". "💪 $name";
+				// 	}
+				// 	$msg_start .= "\n"."🇮🇷 🌖 🌱 👨‍💻 🥇";
+				// 	$msg_start .= "\n". "#سختـکوشـباشیم";
+
+				// 	// send message for group
+				// 	if(\lib\router::get_root_domain('domain') !== 'germile')
+				// 	{
+				// 		$tg_final = self::send_telegram($msg_start, 'group');
+				// 	}
+				// }
+				break;
+
+			case 'report_end_day':
 				// if this person is first one in this day send current date
 				// if(\lib\db\staff::live() <= 0)
 				// {
@@ -256,7 +260,6 @@ trait feature
 				// 		}
 				// 	}
 				// }
-
 				break;
 
 			default:
