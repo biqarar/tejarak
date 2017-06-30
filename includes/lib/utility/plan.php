@@ -4,11 +4,15 @@ namespace lib\utility;
 class plan
 {
 
+
 	public static $plans      = [];
 	public static $team_id    = 0;
 	public static $shortname  = null;
 	public static $current    = [];
 	public static $plans_name = [];
+
+	use plan\feature;
+
 
 	/**
 	 * config
@@ -115,7 +119,7 @@ class plan
 				// 'chart:report',
 				// 'picture:report',
 				// 'custom:report',
-				'report:reciever:1'
+				'report:reciever:1',
 				'ssl',
 				// 'custom:report:text',
 				// 'custom:logo',
@@ -149,7 +153,7 @@ class plan
 				// 'chart:report',
 				// 'picture:report',
 				// 'custom:report',
-				'report:reciever:1'
+				'report:reciever:1',
 				'ssl',
 				// 'custom:report:text',
 				// 'custom:logo',
@@ -183,7 +187,7 @@ class plan
 				'chart:report',
 				'picture:report',
 				'custom:report',
-				'report:reciever:3'
+				'report:reciever:3',
 				'ssl',
 				'custom:report:text',
 				'custom:logo',
@@ -216,7 +220,7 @@ class plan
 				'chart:report',
 				'picture:report',
 				'custom:report',
-				'report:reciever:3'
+				'report:reciever:3',
 				'ssl',
 				'custom:report:text',
 				'custom:logo',

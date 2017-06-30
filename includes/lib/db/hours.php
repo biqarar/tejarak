@@ -124,7 +124,16 @@ class hours
 		$insert['start']             = date("H:i");
 		$insert['start_gateway_id']  = $_args['gateway'];
 
-		return self::insert($insert);
+		$inserted                        = self::insert($insert);
+		$plan_feature                    = [];
+		$plan_feature['type']            = 'enter';
+		$plan_feature['inserted_record'] = $insert;
+		$plan_feature['args']            = $_args;
+		$plan_feature['in_use_time']     = $in_use_time;
+
+		\lib\utility\plan::check_feature($plan_feature);
+
+		return $inserted;
 	}
 
 
@@ -202,7 +211,16 @@ class hours
 		$update['end_gateway_id']  = $_args['gateway'];
 		$update['end_userteam_id'] = $_args['userteam_id'];
 
-		return self::update($update, $start['id']);
+		$updated                         = self::update($update, $start['id']);
+		$plan_feature                    = [];
+		$plan_feature['type']            = 'exit';
+		$plan_feature['inserted_record'] = $update;
+		$plan_feature['args']            = $_args;
+		$plan_feature['start']           = $start;
+
+		\lib\utility\plan::check_feature($plan_feature);
+
+		return $updated;
 	}
 
 	/**
