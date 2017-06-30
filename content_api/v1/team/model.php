@@ -10,6 +10,11 @@ class model extends \content_api\v1\home\model
 	use tools\delete;
 
 
+	public function get_one_team()
+	{
+		return $this->get_team();
+	}
+
 	/**
 	 * Gets the team list.
 	 *

@@ -4,6 +4,15 @@ namespace content\home;
 class controller extends \content\main\controller
 {
 	/**
+	 * test.dev
+	 */
+	public function config()
+	{
+		// \lib\utility\telegram::sendMessage(33263188, 'salam');
+	}
+
+
+	/**
 	 * the static page to not run any query
 	 * and brand black list
 	 * @var        array

@@ -111,7 +111,7 @@ class model extends \mvc\model
 			return debug::error('Authorization not found', 'authorization', 'access');
 		}
 
-		if($authorization === '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^')
+		if($authorization === \lib\option::enter('telegram_hook'))
 		{
 			$this->telegram_api_mode = true;
 			$this->telegram_token();

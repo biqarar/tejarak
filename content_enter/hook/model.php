@@ -49,7 +49,7 @@ class model extends \mvc\model
 			return debug::error(T_('Authorization not found'), 'authorization', 'access');
 		}
 
-		if($authorization === '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^')
+		if($authorization === \lib\option::enter('telegram_hook'))
 		{
 			$this->telegram_token();
 		}
@@ -106,6 +106,17 @@ class model extends \mvc\model
 
 		$exist_mobile = \lib\db\users::get_by_mobile($mobile);
 
+
+		$log_meta =
+		[
+			'meta' =>
+				[
+					'request'        => utility::request(),
+					'record_mobile'  => $exist_mobile,
+					'record_chat_id' => $exist_chart_id,
+				],
+		];
+
 		if(!$exist_chart_id && !$mobile)
 		{
 			// calc full_name of user
@@ -135,7 +146,9 @@ class model extends \mvc\model
 				}
 				else
 				{
-					\lib\db\users::update(['user_chat_id' => null], $exist_chart_id['id']);
+					$remove_all_this_chat_id = "UPDATE users SET user_chat_id = NULL WHERE user_chat_id = '$telegram_id' ";
+					\lib\db::query($remove_all_this_chat_id);
+					\lib\db\logs::set('enter:hook:remove:all:chat:id', $exist_mobile['id'], $log_meta);
 					\lib\db\users::update(['user_chat_id' => $telegram_id], $exist_mobile['id']);
 					$this->user_id = (int) $exist_mobile['id'];
 				}
@@ -152,7 +165,15 @@ class model extends \mvc\model
 			{
 				if($mobile)
 				{
-					\lib\db\users::update(['user_mobile' => $mobile], $exist_chart_id['id']);
+					$remove_all_this_chat_id = "UPDATE users SET user_chat_id = NULL WHERE user_chat_id = '$telegram_id' ";
+
+					\lib\db::query($remove_all_this_chat_id);
+
+					\lib\db\logs::set('enter:hook:remove:all:chat:id', $exist_chart_id['id'], $log_meta);
+
+					\lib\db\users::update(['user_mobile' => $mobile, 'user_chat_id' => $telegram_id], $exist_chart_id['id']);
+
+					\lib\db\logs::set('enter:hook:change:mobile', $exist_chart_id['id'], $log_meta);
 				}
 				$this->user_id = (int) $exist_chart_id['id'];
 			}

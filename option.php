@@ -187,4 +187,7 @@ self::$sms['kavenegar']['verification']       = true;
 self::$sms['kavenegar']['recovery']           = true;
 self::$sms['kavenegar']['changepass']         = true;
 
+
+
+self::$enter['telegram_hook'] = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^';
 ?>
