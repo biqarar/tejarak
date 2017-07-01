@@ -24,6 +24,7 @@ trait generate_message
 		{
 			case 'enter':
 				$msg = "✅ ". self::$my_name;
+				$msg .= " | ". self::$my_team_name_hashtag;
 				if(self::$my_plus)
 				{
 					$msg .= "\n➕ ". human::number(self::$my_plus, \lib\define::get_language());
@@ -31,7 +32,8 @@ trait generate_message
 				break;
 
 			case 'exit':
-				$msg   = "💤 ". self::$my_name. "\n";
+				$msg   = "💤 ". self::$my_name;
+				$msg .= " | ". self::$my_team_name_hashtag. "\n";
 				$start = self::$my_start_time;
 				$start = strtotime($start);
 				$total = floor(abs(strtotime('now') - $start) / 60);
@@ -71,8 +73,9 @@ trait generate_message
 
 				// $msg .= "\n". "🙋‍♂ ". self::$my_name;
 				$msg .= "\n". "💪 ". self::$my_name;
+				$msg .= " | ". self::$my_team_name_hashtag;
 
-				$msg .= "\n"."🇮🇷 🌖 🌱 👨‍💻 🥇";
+				$msg .= "\n"."🌖 🌱 👨‍💻 🥇";
 				// $msg .= "\n". "#سختـکوشـباشیم";
 				break;
 
@@ -82,7 +85,9 @@ trait generate_message
 				if(!empty($presence) && is_array($presence))
 				{
 					$msg_admin = '';
-					$msg .= "#". T_('Report'). " ";
+					$msg .= "#". T_('Report'). " \n";
+					$msg .= self::$my_team_name_hashtag . " | ";
+
 					// $msg  .= "#گزارش ";
 					$msg  .= \lib\utility::date("l j F Y", time(), 'current'). "\n\n";
 					$msg_admin  .= $msg;

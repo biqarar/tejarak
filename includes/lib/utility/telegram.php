@@ -27,6 +27,7 @@ class telegram
 			'request_id'     => 0,
 			'text'           => null,
 			'file'           => null,
+			'telegram_group' => null,
 		];
 
 		if(is_array($_args))
@@ -53,7 +54,7 @@ class telegram
 		$content =
 		[
 			'text'    => $_args['text'],
-			'chat_id' => $_args['telegram_id'],
+			'chat_id' => $_args['telegram_group'],
 		];
 
 		$content = json_encode($content, JSON_UNESCAPED_UNICODE);
@@ -101,6 +102,29 @@ class telegram
 		[
 			'request_method' => 'sendMessage',
 			'telegram_id'    => $_chat_id,
+			'telegram_group' => $_chat_id,
+			'text'           => $_text,
+		];
+		return self::tg_curl($args);
+	}
+
+
+
+	/**
+	 * Sends a message via telegram
+	 *
+	 * @param      <type>  $_chat_id  The chat identifier
+	 * @param      <type>  $_text     The text
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function sendMessageGroup($_chat_id, $_text)
+	{
+		$args =
+		[
+			'request_method' => 'sendMessage',
+			'telegram_id'    => 33263188,
+			'telegram_group' => $_chat_id,
 			'text'           => $_text,
 		];
 		return self::tg_curl($args);

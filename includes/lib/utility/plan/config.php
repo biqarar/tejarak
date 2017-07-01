@@ -46,6 +46,11 @@ trait config
 		self::$my_team_id = self::$_args['args']['userteam_details']['team_id'];
 
 		self::$my_team_detail = \lib\db\teams::get_by_id(self::$my_team_id);
+		if(isset(self::$my_team_detail['name']))
+		{
+			self::$my_team_name = self::$my_team_detail['name'];
+			self::$my_team_name_hashtag = "#". str_replace(' ', '_', self::$my_team_name);
+		}
 
 		self::$my_group_id = null;
 		if(isset(self::$my_team_detail['telegram_id']) && self::$my_team_detail['telegram_id'])
