@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
 "POT-Creation-Date: 2017-07-01 06:07+0430\n"
-"PO-Revision-Date: 2017-07-01 06:07+0430\n"
+"PO-Revision-Date: 2017-07-01 06:09+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -5507,7 +5507,7 @@ msgstr "با ما در تماس باشید"
 
 #: tejarak/includes/languages/trans_twig.php:45
 msgid "All of the above, at Enterprise scale"
-msgstr "تمام بالایی‌ها، در مقیاس عظیم"
+msgstr "تمام این‌ها، در مقیاس عظیم"
 
 #: tejarak/includes/languages/trans_twig.php:46
 msgid ""
