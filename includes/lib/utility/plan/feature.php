@@ -9,6 +9,7 @@ trait feature
 {
 	public static $my_name               = null;
 	public static $my_start_time         = null;
+	public static $my_group_id           = null;
 	public static $my_plus               = 0;
 	public static $my_minus              = 0;
 	public static $my_team_id            = null;
@@ -45,9 +46,32 @@ trait feature
 		switch ($_args['type'])
 		{
 			case 'enter':
-				if(\lib\utility\plan::access('telegram:enter:msg', self::$my_team_id))
+				$config_is_run = false;
+				// first msg in day
+				if(\lib\utility\plan::access('telegram:first:of:day:msg', self::$my_team_id))
 				{
 					self::config();
+
+					$config_is_run = true;
+
+					if(\lib\db\hours::enter() <=1)
+					{
+						foreach (self::$my_admins_telegram_id as $key => $chat_id)
+						{
+							\lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('date_now'));
+							// \lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('first_enter'));
+						}
+						\lib\utility\telegram::sendMessage(self::$my_group_id, self::generate_telegram_message('first_enter'));
+					}
+				}
+
+
+				if(\lib\utility\plan::access('telegram:enter:msg', self::$my_team_id))
+				{
+					if(!$config_is_run)
+					{
+						self::config();
+					}
 
 					if(!self::$check_is_true)
 					{

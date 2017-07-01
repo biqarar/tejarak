@@ -47,10 +47,10 @@ trait config
 
 		self::$my_team_detail = \lib\db\teams::get_by_id(self::$my_team_id);
 
-		$group_id = null;
+		self::$my_group_id = null;
 		if(isset(self::$my_team_detail['telegram_id']) && self::$my_team_detail['telegram_id'])
 		{
-			$group_id = self::$my_team_detail['telegram_id'];
+			self::$my_group_id = self::$my_team_detail['telegram_id'];
 		}
 
 		// get admins of team
@@ -79,10 +79,6 @@ trait config
 					self::$my_admins_telegram_id = $chat_id;
 				}
 			}
-		}
-		if($group_id)
-		{
-			array_push(self::$my_admins_telegram_id, $group_id);
 		}
 
 		self::$my_admins_telegram_id = array_filter(self::$my_admins_telegram_id);

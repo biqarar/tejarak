@@ -45,6 +45,23 @@ class hours
 		return db\config::public_update('hours', ...func_get_args());
 	}
 
+
+
+	/**
+	 * get count on online users
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function enter()
+	{
+		$date = date("Y-m-d");
+		$query = "SELECT count(id) as total FROM hours WHERE hours.date = '$date' LIMIT 1";
+		$total = \lib\db::get($query, "total", true);
+		// return result as number of live users
+		return $total;
+	}
+
+
 	/**
 	 * check some data before save hours
 	 *

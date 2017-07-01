@@ -17,6 +17,8 @@ trait generate_message
 	 */
 	public static function generate_telegram_message($_type = null)
 	{
+		// self::$my_name = trim("*". self::$my_name. "*", "*");
+
 		$msg = null;
 		switch ($_type)
 		{
@@ -57,32 +59,21 @@ trait generate_message
 				$msg        .= "\n🕗 ". $pure_human;
 				break;
 
-			case 'first_enter_day':
+			case 'date_now':
+				$msg = \lib\utility::date('l j F Y', time() , 'current');
+				break;
+
+			case 'first_enter':
 				// if this person is first one in this day send current date
 				// add minus and plus if exist
+				// create custom message for group
+				$msg = \lib\utility::date('l j F Y', time() , 'current');
 
-				// if(\lib\db\staff::enter() <= 1)
-				// {
-				// 	$tg = self::send_telegram($date_now);
-				// 	// create custom message for group
-				// 	$msg_start = $date_now;
-				// 	if(self::$user_id === 11)
-				// 	{
-				// 		$msg_start .= "\n". "🙋‍♂ $my_name";
-				// 	}
-				// 	else
-				// 	{
-				// 		$msg_start .= "\n". "💪 $my_name";
-				// 	}
-				// 	$msg_start .= "\n"."🇮🇷 🌖 🌱 👨‍💻 🥇";
-				// 	$msg_start .= "\n". "#سختـکوشـباشیم";
+				// $msg .= "\n". "🙋‍♂ ". self::$my_name;
+				$msg .= "\n". "💪 ". self::$my_name;
 
-				// 	// send message for group
-				// 	if(\lib\router::get_root_domain('domain') !== 'germile')
-				// 	{
-				// 		$tg_final = self::send_telegram($msg_start, 'group');
-				// 	}
-				// }
+				$msg .= "\n"."🇮🇷 🌖 🌱 👨‍💻 🥇";
+				// $msg .= "\n". "#سختـکوشـباشیم";
 				break;
 
 			case 'report_end_day':

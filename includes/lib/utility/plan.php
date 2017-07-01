@@ -145,7 +145,7 @@ class plan
 			[
 				'telegram:enter:msg',
 				'telegram:exit:msg',
-
+				'telegram:first:of:day:msg',
 
 
 
@@ -185,7 +185,7 @@ class plan
 			[
 				'telegram:enter:msg',
 				'telegram:exit:msg',
-
+				'telegram:first:of:day:msg',
 
 
 
