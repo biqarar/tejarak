@@ -105,11 +105,17 @@
 
 
 {%block everyteam%}
- <div class="tile" id='every-team'>
-  <div class="cn">
-   <h2>با هر تیمی کار کنید</h2>
-   <h3>برای تک‌تک کارهایتان تجارک را بکار بگیرید!</h3>
-   <h3>کسب و کارتان، پروژه‌های جانبی و هر جایی که نیاز به کنترل تردد و نظم بخشیدن دارید.</h3>
+ <div class="tile" id='anyTeam'>
+  <div class="cn f fix">
+   <picture class="cauto m12 s12">
+    <source srcset="{{url.static}}images/homepage/preview-ermile.jpg" media="(min-width: 500px)">
+    <img src="{{url.static}}images/homepage/preview-ermile.jpg" alt='{%trans "Ermile Preview"%}'>
+   </picture>
+
+   <div class="c">
+    <h2>{%trans "Work With Any Team"%}</h2>
+    <h3>{%trans "For each work need attendance use Tejarak!"%} {%trans "Your business, a side project and anywhere you need to control traffic and add some organized."%}</h3>
+   </div>
   </div>
  </div>
 {%endblock%}

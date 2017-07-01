@@ -32,10 +32,13 @@ private function transtext()
 	echo T_("Our technology team with flexible time in addition of introduce team members, use Tejarak for register remote and wasted time for working hours and attendance.");// Line 57
 	echo T_("Ermile Preview");                                                        // Line 60
 	echo T_("Wherever You Go.");                                                      // Line 71
-	echo T_("Enjoy your travels and do not be too concerned about control attendance in your business.");// Line 73
-	echo T_("Everything is in sync.");                                                // Line 73
-	echo T_("In addition of website, without need to install app, check real time reports of staffs status from messengers like Telegram, SMS, email in your mobile.");// Line 74
-	echo T_("Anywhere, from sitting on the chair of management to sitting on the beach!");// Line 74
+	echo T_("Enjoy your travels and do not be too concerned about control attendance in your business.");// Line 72
+	echo T_("Everything is in sync.");                                                // Line 72
+	echo T_("In addition of website, without need to install app, check real time reports of staffs status from messengers like Telegram, SMS, email in your mobile.");// Line 73
+	echo T_("Anywhere, from sitting on the chair of management to sitting on the beach!");// Line 73
+	echo T_("Work With Any Team");                                                    // Line 110
+	echo T_("For each work need attendance use Tejarak!");                            // Line 111
+	echo T_("Your business, a side project and anywhere you need to control traffic and add some organized.");// Line 111
 	echo T_("Is your team interested in deploying?");                                 // Line 124
 	echo T_("We can help.");                                                          // Line 124
 	echo T_("Get in Touch");                                                          // Line 205
