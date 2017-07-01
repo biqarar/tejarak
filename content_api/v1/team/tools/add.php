@@ -67,7 +67,7 @@ trait add
 		$privacy = utility::request('privacy');
 		if(!$privacy)
 		{
-			$privacy = 'public';
+			$privacy = 'private';
 		}
 
 		if(!in_array(mb_strtolower($privacy), ['public', 'private', 'team']))
