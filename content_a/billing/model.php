@@ -216,12 +216,12 @@ class model extends \mvc\model
 					{
 						\lib\db\logs::set('user:billing:verify:successful', $this->login('id'), $log_meta);
 
-						$gift = \lib\utility\gift::gift((float) $amount);
-						$check_gift = floatval($gift) - floatval($amount);
-						if($check_gift)
-						{
-							\lib\db\logs::set('user:billing:need:gift', $this->login('id'), $log_meta);
-						}
+						// $gift = \lib\utility\gift::gift((float) $amount);
+						// $check_gift = floatval($gift) - floatval($amount);
+						// if($check_gift)
+						// {
+						// 	\lib\db\logs::set('user:billing:need:gift', $this->login('id'), $log_meta);
+						// }
 
 						\lib\db\transactions::set('real:charge:toman', $this->login('id'), ['plus' => $amount]);
 						debug::true(T_("Payment operation was successfull and :amount :unit added to your cash", ['amount' => $amount, 'unit' => T_('toman')]));
