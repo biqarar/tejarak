@@ -38,7 +38,6 @@ trait feature
 	public static function check_feature($_args)
 	{
 		self::$_args = $_args;
-
 		if(!isset($_args['args']['userteam_details']['team_id'])) return false;
 
 		self::$my_team_id = $_args['args']['userteam_details']['team_id'];
@@ -54,7 +53,7 @@ trait feature
 
 					$config_is_run = true;
 
-					if(\lib\db\hours::enter() <=1)
+					if(\lib\db\hours::enter(self::$my_team_id) <=1)
 					{
 						foreach (self::$my_admins_telegram_id as $key => $chat_id)
 						{
@@ -86,9 +85,31 @@ trait feature
 				break;
 
 			case 'exit':
-				if(\lib\utility\plan::access('telegram:exit:msg', self::$my_team_id))
+
+				$config_is_run = false;
+				if(\lib\utility\plan::access('telegram:end:day:report', self::$my_team_id))
 				{
 					self::config();
+					$config_is_run = true;
+
+					if(\lib\db\hours::live(self::$my_team_id) <= 0 )
+					{
+						foreach (self::$my_admins_telegram_id as $key => $chat_id)
+						{
+							\lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('report_end_day_admin'));
+						}
+
+						\lib\utility\telegram::sendMessage(self::$my_group_id, self::generate_telegram_message('report_end_day'));
+
+					}
+				}
+
+				if(\lib\utility\plan::access('telegram:exit:msg', self::$my_team_id))
+				{
+					if(!$config_is_run)
+					{
+						self::config();
+					}
 
 					if(!self::$check_is_true)
 					{

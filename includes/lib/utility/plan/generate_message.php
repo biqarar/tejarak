@@ -77,67 +77,71 @@ trait generate_message
 				break;
 
 			case 'report_end_day':
-				// if this person is first one in this day send current date
-				// if(\lib\db\staff::live() <= 0)
-				// {
-				// 	$presence = \lib\db\staff::peresence();
-				// 	if(!empty($presence) && is_array($presence))
-				// 	{
-				// 		// $msg_final .= "#". T_('Report'). " ";
-				// 		$msg_final  .= "#گزارش ";
-				// 		$msg_final  .= "$date_now\n\n";
-				// 		$msg_admin  .= $msg_final;
-				// 		$total_time = 0;
-				// 		$i          = 0;
-				// 		foreach ($presence as $my_name => $accepted)
-				// 		{
-				// 			$i += 1;
-				// 			$total_time += $accepted;
-				// 			$accepted = human::time($accepted, 'number', 'fa');
-				// 			switch ($i)
-				// 			{
-				// 				case 1:
-				// 					$msg_final .= "🏆". " ". T_($my_name)."🥇";
-				// 					$msg_admin .= "🏆". " ". T_($my_name)."🥇". " `". $accepted. "`";
-				// 					break;
+			case 'report_end_day_admin':
+				$presence = \lib\db\hours::peresence(self::$my_team_id);
+				if(!empty($presence) && is_array($presence))
+				{
+					$msg_admin = '';
+					$msg .= "#". T_('Report'). " ";
+					// $msg  .= "#گزارش ";
+					$msg  .= \lib\utility::date("l j F Y", time(), 'current'). "\n\n";
+					$msg_admin  .= $msg;
+					$total_time = 0;
+					$i          = 0;
+					foreach ($presence as $name => $accepted)
+					{
+						$i += 1;
+						$total_time += $accepted;
+						$accepted = human::time($accepted, 'number', 'fa');
+						switch ($i)
+						{
+							case 1:
+								$msg .= "🏆". " ". T_($name)."🥇";
+								$msg_admin .= "🏆". " ". T_($name)."🥇". " `". $accepted. "`";
+								break;
 
-				// 				case 2:
-				// 					$msg_final .= "🏆". " ". T_($my_name)."🥈";
-				// 					$msg_admin .= "🏆". " ". T_($my_name)."🥈". " `". $accepted. "`";
-				// 					break;
+							case 2:
+								$msg .= "🏆". " ". T_($name)."🥈";
+								$msg_admin .= "🏆". " ". T_($name)."🥈". " `". $accepted. "`";
+								break;
 
-				// 				case 3:
-				// 					$msg_final .= "🏆". " ". T_($my_name)."🥉";
-				// 					$msg_admin .= "🏆". " ". T_($my_name)."🥉". " `". $accepted. "`";
-				// 					break;
+							case 3:
+								$msg .= "🏆". " ". T_($name)."🥉";
+								$msg_admin .= "🏆". " ". T_($name)."🥉". " `". $accepted. "`";
+								break;
 
-				// 				default:
-				// 					$msg_final .= "🏅". " ". T_($my_name);
-				// 					$msg_admin .= "🏅". " ". T_($my_name). " `". $accepted. "`";
-				// 					break;
-				// 			}
-				// 			$msg_final .= "\n";
-				// 			$msg_admin .= "\n";
-				// 		}
-				// 		$enterExit    = human::number(\lib\db\staff::enter(), 'fa');
-				// 		$countPersons = human::number(count($presence), 'fa');
-				// 		// fill message of group
-				// 		$msg_final  .= "#سختـکوشـباشیم". "\n";
-				// 		$msg_final .= "🎭". $enterExit . "  ";
-				// 		$msg_final .= "👥". $countPersons. "  ";
-				// 		$msg_final .= "🕰". $total_time;
-				// 		// fill message of admin
-				// 		$msg_admin  .= "#سختـکوشـباشیم". "\n";
-				// 		$msg_admin .= "🎭". $enterExit . "  ";
-				// 		$msg_admin .= "👥". $countPersons. "  ";
-				// 		$msg_admin .= "🕰". human::time($total_time, 'number', 'fa');
-				// 		// if we have less than 3person in day, dont send message
-				// 		if(count($presence) < 3)
-				// 		{
-				// 			$send_report = false;
-				// 		}
-				// 	}
-				// }
+							default:
+								$msg .= "🏅". " ". T_($name);
+								$msg_admin .= "🏅". " ". T_($name). " `". $accepted. "`";
+								break;
+						}
+						$msg .= "\n";
+						$msg_admin .= "\n";
+					}
+					$enterExit    = human::number(\lib\db\hours::enter(self::$my_team_id), \lib\define::get_language());
+					$countPersons = human::number(count($presence), \lib\define::get_language());
+					// fill message of group
+					// $msg  .= "#سختـکوشـباشیم". "\n";
+					$msg .= "🎭". $enterExit . "  ";
+					$msg .= "👥". $countPersons. "  ";
+					$msg .= "🕰". $total_time;
+					// fill message of admin
+					// $msg_admin  .= "#سختـکوشـباشیم". "\n";
+					$msg_admin .= "🎭". $enterExit . "  ";
+					$msg_admin .= "👥". $countPersons. "  ";
+					$msg_admin .= "🕰". human::time($total_time, 'number', \lib\define::get_language());
+					// if we have less than 3person in day, dont send message
+					if(count($presence) < 3)
+					{
+						$send_report = false;
+					}
+				}
+
+				if($_type === 'report_end_day_admin')
+				{
+					$msg = $msg_admin;
+				}
+
 				break;
 
 			default:

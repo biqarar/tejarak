@@ -146,7 +146,7 @@ class plan
 				'telegram:enter:msg',
 				'telegram:exit:msg',
 				'telegram:first:of:day:msg',
-
+				'telegram:end:day:report',
 
 
 				'number:of:persons:ultimited',
@@ -186,6 +186,7 @@ class plan
 				'telegram:enter:msg',
 				'telegram:exit:msg',
 				'telegram:first:of:day:msg',
+				'telegram:end:day:report',
 
 
 
@@ -223,6 +224,12 @@ class plan
 			'detail'  => null,
 			'contain' =>
 			[
+				'telegram:enter:msg',
+				'telegram:exit:msg',
+				'telegram:first:of:day:msg',
+				'telegram:end:day:report',
+
+
 				'number:of:persons:ultimited',
 				'simple:reports',
 				'telegram:auto:send:report:1',

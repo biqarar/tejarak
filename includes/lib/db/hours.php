@@ -52,15 +52,95 @@ class hours
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function enter()
+	public static function enter($_team_id)
 	{
-		$date = date("Y-m-d");
-		$query = "SELECT count(id) as total FROM hours WHERE hours.date = '$date' LIMIT 1";
+		if(!$_team_id || !is_numeric($_team_id))
+		{
+			return false;
+		}
+
+		$date  = date("Y-m-d");
+		$query =
+		"
+			SELECT
+				count(hours.id) AS `total`
+			FROM
+				hours
+			INNER JOIN userteams ON userteams.id = hours.userteam_id AND userteams.team_id = $_team_id
+			WHERE
+				hours.date    = '$date'
+			LIMIT 1
+		";
+
 		$total = \lib\db::get($query, "total", true);
 		// return result as number of live users
 		return $total;
 	}
 
+	/**
+	 * get count on online users
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function live($_team_id)
+	{
+		if(!$_team_id || !is_numeric($_team_id))
+		{
+			return false;
+		}
+
+		$date = date("Y-m-d");
+		$query =
+		"
+			SELECT
+				COUNT(hours.id) AS `total`
+			FROM
+				hours
+			INNER JOIN userteams ON userteams.id = hours.userteam_id AND userteams.team_id = $_team_id
+			WHERE
+				hours.date = '$date' AND
+				hours.end IS NULL
+			LIMIT 1
+		";
+		$total = \lib\db::get($query, "total", true);
+		// return result as number of live users
+		return $total;
+	}
+
+
+	/**
+	 * presence on date
+	 */
+	public static function peresence($_team_id, $_date = null)
+	{
+		if(!$_team_id || !is_numeric($_team_id))
+		{
+			return false;
+		}
+
+		if($_date == null)
+		{
+			$_date = strtotime('now');
+			$_date = date("Y-m-d", $_date);
+		}
+
+		$query =
+		"
+			SELECT
+				userteams.displayname AS `name`,
+				sum(hours.accepted) as 'accepted',
+				sum(hours.diff) as 'diff'
+			FROM
+				hours
+			INNER JOIN userteams ON userteams.id = hours.userteam_id AND userteams.team_id = $_team_id
+			WHERE
+				hours.date = '$_date'
+			GROUP BY name
+			ORDER BY accepted DESC
+		";
+		$peresence = \lib\db::get($query, ['name', 'accepted'] );
+		return $peresence;
+	}
 
 	/**
 	 * check some data before save hours

@@ -67,7 +67,7 @@ trait config
 
 		if(empty(self::$my_admins_telegram_id))
 		{
-			self::$my_admins_id = array_column(self::$my_admins, 'id');
+			self::$my_admins_id = array_column(self::$my_admins, 'user_id');
 			if(!empty(self::$my_admins_id))
 			{
 				self::$my_admins_id = implode(',', self::$my_admins_id);
