@@ -359,7 +359,7 @@ function homepageCases()
 {
   var myCases       = $('body[data-page="homepage"] #caseStudy [data-case]');
   var currentSlide  = 0;
-  var slideInterval = setInterval(nextSlide,5000);
+  var slideInterval = setInterval(nextSlide,10000);
 
   function nextSlide()
   {

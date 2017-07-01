@@ -41,21 +41,19 @@
 
 
 {%block tryRegister%}
+ {%if login.id%}
+ {%else%}
  <div class="tile" id='notReady'>
   <div class="cn">
    <h2>{%trans "What are you waiting for?"%}</h2>
    <h3>{%trans "Not sure how to start?"%} {%trans "Tejarak is <span>free</span> to use as long as you want for teams of all sizes."%} {%trans "Not worries."%}</h3>
    <h3>
    <a href="{{url.base}}/enter" data-direct class="btn">{%trans "FREE ticket to Enter to the 21st century!"%}</a>
-
-
    </h3>
    <h4>{%trans "You can easily upgrade to "%} <a href='{{url.base}}/pricing'>{%trans "our paid plans"%}</a>{%trans ", which offer more features and controls."%}</h4>
-
-
   </div>
  </div>
-
+ {%endif%}
 {%endblock%}
 
 
