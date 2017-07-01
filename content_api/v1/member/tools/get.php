@@ -53,10 +53,12 @@ trait get
 
 		if($id)
 		{
+			$inside_method = 'get_member';
 			$team_detail = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'get_member']);
 		}
 		elseif($shortname)
 		{
+			$inside_method = 'view';
 			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'view']);
 		}
 
@@ -102,7 +104,7 @@ trait get
 			{
 				foreach ($result as $key => $value)
 				{
-					$a = $this->ready_member($value);
+					$a = $this->ready_member($value, ['inside_method' => $inside_method]);
 					if($a)
 					{
 						$temp[] = $a;
@@ -232,6 +234,7 @@ trait get
 		$default_options =
 		[
 			'condition_checked' => false,
+			'inside_method'     => null,
 		];
 
 		if(!is_array($_options))
@@ -391,10 +394,15 @@ trait get
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
 				case 'visibility':
-					if($value === 'hidden')
+					$result[$key] = isset($value) ? (string) $value : null;
+					if($_options['inside_method'] === 'view')
 					{
-						return false;
+						if($value === 'hidden')
+						{
+							return false;
+						}
 					}
+
 					break;
 				case 'personnelcode':
 					$result['personnel_code'] = isset($value) ? (string) $value : null;
