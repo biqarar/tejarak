@@ -11,13 +11,16 @@ class plan
 	public static $current    = [];
 	public static $plans_name = [];
 
+	use plan\config;
 	use plan\feature;
+	use plan\generate_message;
+	use plan\telegram_msg;
 
 
 	/**
 	 * config
 	 */
-	private static function config()
+	private static function config_load()
 	{
 		self::list();
 		if(self::$team_id)
@@ -77,7 +80,7 @@ class plan
 
 		if(empty(self::$current))
 		{
-			if(!self::config())
+			if(!self::config_load())
 			{
 				return false;
 			}

@@ -192,6 +192,7 @@ class model extends \mvc\model
 			$insert_user['user_createdate']  = date("Y-m-d H:i:s");
 			\lib\db\users::insert($insert_user);
 			$this->user_id = \lib\db::insert_id();
+			\lib\db\logs::set('enter:hook:signup:new', $exist_mobile['id'], $log_meta);
 
 		}
 		elseif($exist_chart_id && $exist_mobile)
@@ -248,6 +249,7 @@ class model extends \mvc\model
 				if($telegram_id)
 				{
 					\lib\db\users::update(['user_chat_id' => $telegram_id], $exist_mobile['id']);
+					\lib\db\logs::set('enter:hook:change:chat_id', $exist_mobile['id'], $log_meta);
 				}
 				$this->user_id = (int) $exist_mobile['id'];
 			}
