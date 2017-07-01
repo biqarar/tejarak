@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-07-01 05:40+0430\n"
-"PO-Revision-Date: 2017-07-01 05:42+0430\n"
+"POT-Creation-Date: 2017-07-01 06:07+0430\n"
+"PO-Revision-Date: 2017-07-01 06:07+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -5518,8 +5518,8 @@ msgstr ""
 "می‌کند."
 
 #: tejarak/includes/languages/trans_twig.php:47
-msgid "Transfer to Tejarak is Easy"
-msgstr "انتقال به تجارک آسان است"
+msgid "Setting Up Tejarak Is Easy"
+msgstr "راه‌اندازی تجارک آسان است"
 
 #: tejarak/includes/languages/trans_twig.php:48
 msgid "Set up a team in less than a minute!"
