@@ -2,6 +2,7 @@
 $(document).ready(function()
 {
   checkAndRunAttendance();
+  homepageCases();
 });
 
 
@@ -354,7 +355,22 @@ function getDatetime()
 
 
 
+function homepageCases()
+{
+  var myCases       = $('body[data-page="homepage"] #caseStudy [data-case]');
+  var currentSlide  = 0;
+  var slideInterval = setInterval(nextSlide,5000);
 
+  function nextSlide()
+  {
+    $(myCases[currentSlide]).removeClass('showing');
+    // $(myCases[currentSlide]).fadeOut();
+    currentSlide                    = (currentSlide+1)%myCases.length;
+    $(myCases[currentSlide]).addClass('showing');
+    // $(myCases[currentSlide]).fadeIn();
+  }
+
+}
 
 
 
