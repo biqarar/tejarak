@@ -3,7 +3,7 @@ private function transtext()
 {
 
 	//----------------------------------------------------content\contact\display.html
-	echo T_("Contact Us");                                                            // Line 194
+	echo T_("Contact Us");                                                            // Line 229
 	echo T_("Knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 7
 	echo T_("Thank you for choosing us.");                                            // Line 14
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
@@ -30,29 +30,32 @@ private function transtext()
 	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 37
 	echo T_("In not enough?");                                                        // Line 46
 	echo T_("Our technology team with flexible time in addition of introduce team members, use Tejarak for register remote and wasted time for working hours and attendance.");// Line 57
-	echo T_("Ermile Preview");                                                        // Line 58
-	echo T_("Wherever You Go.");                                                      // Line 67
-	echo T_("Everything is in sync.");                                                // Line 67
-	echo T_("Is your team interested in deploying?");                                 // Line 89
-	echo T_("We can help.");                                                          // Line 89
+	echo T_("Ermile Preview");                                                        // Line 60
+	echo T_("Wherever You Go.");                                                      // Line 71
+	echo T_("Enjoy your travels and do not be too concerned about control attendance in your business.");// Line 73
+	echo T_("Everything is in sync.");                                                // Line 73
+	echo T_("In addition of website, without need to install app, check real time reports of staffs status from messengers like Telegram, SMS, email in your mobile.");// Line 74
+	echo T_("Anywhere, from sitting on the chair of management to sitting on the beach!");// Line 74
+	echo T_("Is your team interested in deploying?");                                 // Line 124
+	echo T_("We can help.");                                                          // Line 124
 	echo T_("Get in Touch");                                                          // Line 205
-	echo T_("All of the above, at Enterprise scale");                                 // Line 99
-	echo T_("Enterprise plan brings the power and utility of Tejarak to large, complex organizations.");// Line 100
-	echo T_("Transfer to Tejarak is Easy");                                           // Line 110
-	echo T_("Set up a team in less than a minute!");                                  // Line 112
-	echo T_("It's FREE!");                                                            // Line 112
-	echo T_("Try it.");                                                               // Line 112
+	echo T_("All of the above, at Enterprise scale");                                 // Line 134
+	echo T_("Enterprise plan brings the power and utility of Tejarak to large, complex organizations.");// Line 135
+	echo T_("Transfer to Tejarak is Easy");                                           // Line 145
+	echo T_("Set up a team in less than a minute!");                                  // Line 147
+	echo T_("It's FREE!");                                                            // Line 147
+	echo T_("Try it.");                                                               // Line 147
 	echo T_("FREE");                                                                  // Line 26
-	echo T_("Tomans");                                                                // Line 177
-	echo T_("per user/month");                                                        // Line 180
-	echo T_("For teams that are less than 10 people requiring simple reports.");      // Line 138
+	echo T_("Tomans");                                                                // Line 212
+	echo T_("per user/month");                                                        // Line 215
+	echo T_("For teams that are less than 10 people requiring simple reports.");      // Line 173
 	echo T_("Learn More");                                                            // Line 28
 	echo T_("Pro");                                                                   // Line 31
-	echo T_("For teams with unlimited people requiring <b>professional reports</b>, <b>report via Telegram</b>.");// Line 160
+	echo T_("For teams with unlimited people requiring <b>professional reports</b>, <b>report via Telegram</b>.");// Line 195
 	echo T_("Business");                                                              // Line 36
-	echo T_("For teams with unlimited people requiring <b>report via SMS</b>, <b>visual reports with chart</b>, <b>custom message format</b>, <b>custom brand logo</b>.");// Line 182
+	echo T_("For teams with unlimited people requiring <b>report via SMS</b>, <b>visual reports with chart</b>, <b>custom message format</b>, <b>custom brand logo</b>.");// Line 217
 	echo T_("Enterprise");                                                            // Line 3
-	echo T_("For teams with unlimited people requiring <b>advanced report builder</b>, <b>custom domain</b>.");// Line 196
+	echo T_("For teams with unlimited people requiring <b>advanced report builder</b>, <b>custom domain</b>.");// Line 231
 
 	//------------------------------------------------------content\hours\display.html
 	echo T_("Plus");                                                                  // Line 15

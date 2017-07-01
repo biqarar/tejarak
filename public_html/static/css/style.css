@@ -73,6 +73,7 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .bg-white{background-color:#fff;}
 .bg-gray{background-color:#eee;}
 .bg-gray2{background-color:#ddd;}
+.bg-gray3{background-color:#e0e0e0;}
 .bg-dark{background-color:#333;}
 .bg-khaki{background-color:#e0d7c1;}
 .bg-blue{background-color:#e0d7c1;color:#fff}
@@ -94,12 +95,22 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .rtl .ar{text-align:left;}
 
 /*special parts of homepage*/
+#firstView{background-color: #e0e0e0;}
+#firstView h2.shadow{text-shadow:0px -2px 0 #CFD1D3, 0px -3px 0 #CFD1D3, 0px -4px 0 #CFD1D3, 0px -5px 0 #CFD1D3, 0px -6px 0 #CFD1D3, 0px -7px 0 #CFD1D3, 0px -8px 0 #CFD1D3, 0px -9px 0 #CFD1D3, 0px -10px 0 #CFD1D3, 0px -11px 0 #CFD1D3, 0px -12px 0 #CFD1D3, 0px -13px 0 #CFD1D3, 0px -14px 0 #CFD1D3, 0px -15px 0 #CFD1D3, 0px -16px 0 #CFD1D3, 0px -17px 0 #CFD1D3, 0px -18px 0 #CFD1D3, 0px -19px 0 #CFD1D3, 0px -20px 0 #CFD1D3, 0px -21px 0 #CFD1D3, 0px -22px 0 #CFD1D3, 0px -23px 0 #CFD1D3, 0px -24px 0 #CFD1D3, 0px -25px 0 #CFD1D3, 0px -26px 0 #CFD1D3, 0px -27px 0 #CFD1D3, 0px -28px 0 #CFD1D3, 0px -29px 0 #CFD1D3, 0px -30px 0 #CFD1D3, 0px -31px 0 #CFD1D3, 0px -32px 0 #CFD1D3, 0px -33px 0 #CFD1D3, 0px -34px 0 #CFD1D3, 0px -35px 0 #CFD1D3, 0px -36px 0 #CFD1D3, 0px -37px 0 #CFD1D3, 0px -38px 0 #CFD1D3, 0px -39px 0 #CFD1D3, 0px -40px 0 #CFD1D3, 0px -41px 0 #CFD1D3, 0px -42px 0 #CFD1D3, 0px -43px 0 #CFD1D3, 0px -44px 0 #CFD1D3, 0px -45px 0 #CFD1D3, 0px -46px 0 #CFD1D3, 0px -47px 0 #CFD1D3, 0px -48px 0 #CFD1D3, 0px -49px 0 #CFD1D3, 0px -50px 0 #CFD1D3, 0px -51px 0 #CFD1D3, 0px -52px 0 #CFD1D3, 0px -53px 0 #CFD1D3, 0px -54px 0 #CFD1D3, 0px -55px 0 #CFD1D3, 0px -56px 0 #CFD1D3, 0px -57px 0 #CFD1D3, 0px -58px 0 #CFD1D3, 0px -59px 0 #CFD1D3, 0px -60px 0 #CFD1D3, 0px -61px 0 #CFD1D3, 0px -62px 0 #CFD1D3, 0px -63px 0 #CFD1D3, 0px -64px 0 #CFD1D3, 0px -65px 0 #CFD1D3, 0px -66px 0 #CFD1D3, 0px -67px 0 #CFD1D3, 0px -68px 0 #CFD1D3, 0px -69px 0 #CFD1D3, 0px -70px 0 #CFD1D3, 0px -71px 0 #CFD1D3, 0px -72px 0 #CFD1D3, 0px -73px 0 #CFD1D3, 0px -74px 0 #CFD1D3, 0px -75px 0 #CFD1D3, 0px -76px 0 #CFD1D3, 0px -77px 0 #CFD1D3, 0px -78px 0 #CFD1D3, 0px -79px 0 #CFD1D3, 0px -80px 0 #CFD1D3, 0px -81px 0 #CFD1D3, 0px -82px 0 #CFD1D3, 0px -83px 0 #CFD1D3, 0px -84px 0 #CFD1D3, 0px -85px 0 #CFD1D3, 0px -86px 0 #CFD1D3, 0px -87px 0 #CFD1D3, 0px -88px 0 #CFD1D3, 0px -89px 0 #CFD1D3, 0px -90px 0 #CFD1D3, 0px -91px 0 #CFD1D3, 0px -92px 0 #CFD1D3, 0px -93px 0 #CFD1D3, 0px -94px 0 #CFD1D3, 0px -95px 0 #CFD1D3, 0px -96px 0 #CFD1D3, 0px -97px 0 #CFD1D3, 0px -98px 0 #CFD1D3, 0px -99px 0 #CFD1D3}
 #firstView h3{padding:0;width:60%;margin:0 auto;max-width:700px;min-width:650px;}
 #firstView h3 span{font-weight:700}
 #caseStudy{background-color:#c01541;padding-bottom:0}
 #caseStudy h3{color:#fff;padding:1em 15%;}
 #caseStudy picture{display:block;}
 #caseStudy img{margin:0 auto;display:block;border-top-left-radius:5px;border-top-right-radius:5px;}
+#everythingSync{background-color:#eee; }
+#everythingSync h2{font-size: 5em;text-align:initial;}
+#everythingSync h3{text-align:initial;padding:0 2em;margin-bottom:1em;}
+#everythingSync svg{max-width:350px;}
+
+.spiny{-webkit-animation-name:spinCenter;animation-name:spinCenter;-webkit-animation-duration:5s;animation-duration:5s;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-transform-origin: 50% 50%;-moz-transform-origin: 50% 50%;-o-transform-origin: 50% 50%;transform-origin: 50% 50%;}
+@-webkit-keyframes spinCenter{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(360deg)}}
+@keyframes spinCenter{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)} to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 
 /* getStarted*/
 .getStarted{min-width:300px;max-width:400px;margin:1em auto;font-size:1.5em;}
@@ -483,6 +494,9 @@ body #billing{max-width:800px;margin:0 auto}
 
   #setup-tour h2{font-size:2em;margin-bottom:2rem;}
   #caseStudy h3{padding:0.5em 4%; }
+  #everythingSync h2{font-size:3em;text-align:center;}
+  #everythingSync h3{padding:0 0;margin-bottom:1em;}
+  #everythingSync svg{max-width:250px;}
 
   /* plans */
   #plans .plans-card{min-height:initial;}
