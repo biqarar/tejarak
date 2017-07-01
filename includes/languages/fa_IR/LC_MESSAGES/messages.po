@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-07-01 06:07+0430\n"
-"PO-Revision-Date: 2017-07-01 06:09+0430\n"
+"POT-Creation-Date: 2017-07-01 13:34+0430\n"
+"PO-Revision-Date: 2017-07-01 13:34+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -849,22 +849,22 @@ msgstr "دسته‌بندی فایل‌ها"
 msgid "Permission denide for run upgrade database"
 msgstr "دسترسی برای ارتقا دیتابیس امکان پذیر نیست"
 
-#: saloos/saloos-addons/content_cp/tools/controller.php:109
+#: saloos/saloos-addons/content_cp/tools/controller.php:106
 #: saloos/saloos-addons/content_cp1/tools/controller.php:108
 msgid "First you need to enable COM on windows"
 msgstr "در ابتدا شما باید ویژگی Com را در ویندوز فعال کنید"
 
-#: saloos/saloos-addons/content_cp/tools/controller.php:110
+#: saloos/saloos-addons/content_cp/tools/controller.php:107
 #: saloos/saloos-addons/content_cp1/tools/controller.php:109
 msgid "Read More"
 msgstr "بیشتر بخوانید"
 
-#: saloos/saloos-addons/content_cp/tools/controller.php:173
+#: saloos/saloos-addons/content_cp/tools/controller.php:170
 #: saloos/saloos-addons/content_cp1/tools/controller.php:172
 msgid "Create sitemap Successfully!"
 msgstr "بازسازی نقشه سایت با موفقیت انجام شد!"
 
-#: saloos/saloos-addons/content_cp/tools/controller.php:360
+#: saloos/saloos-addons/content_cp/tools/controller.php:357
 #: saloos/saloos-addons/content_cp1/tools/controller.php:341
 msgid "Do you wanna something here!?"
 msgstr "چیز میخواهید اینجا؟"
@@ -4944,15 +4944,15 @@ msgstr "کد تایید نامعتبر است"
 msgid "Mobile is not set"
 msgstr "تلفن همراه تنظیم نشده است"
 
-#: tejarak/content_enter/hook/model.php:216
+#: tejarak/content_enter/hook/model.php:217
 msgid "System error 1"
 msgstr "خطای سیستمی ۱"
 
-#: tejarak/content_enter/hook/model.php:240
+#: tejarak/content_enter/hook/model.php:241
 msgid "System error 2"
 msgstr "خطای سیستمی ۲"
 
-#: tejarak/content_enter/hook/model.php:256
+#: tejarak/content_enter/hook/model.php:258
 msgid "System error 3"
 msgstr "خطای سیستمی ۳"
 
@@ -5340,7 +5340,7 @@ msgstr "هدر رفته"
 
 #: tejarak/includes/cls/database/tejarak/translation.php:43
 msgid "plus"
-msgstr "دور کاری"
+msgstr "دورکاری"
 
 #: tejarak/includes/cls/database/tejarak/translation.php:45
 msgid "accepted"
@@ -5409,8 +5409,8 @@ msgid "Moallem Sq"
 msgstr "میدان معلم"
 
 #: tejarak/includes/languages/trans_twig.php:26
-msgid "Do attendance easily and enjoy real time reports."
-msgstr "به‌سادگی حضور و غیاب کنید و از گزارش‌های آنلاین لذت ببرید."
+msgid "Do attendance easily and enjoy real time reports"
+msgstr "به‌سادگی حضور و غیاب کنید و از گزارش‌های آنلاین لذت ببرید"
 
 #: tejarak/includes/languages/trans_twig.php:27
 msgid ""
@@ -5442,16 +5442,16 @@ msgid ""
 "Our technology team with flexible time in addition of introduce team members, "
 "use Tejarak for register remote and wasted time for working hours and attendance."
 msgstr ""
-"تیم فناورانه‌ی ما با زمان کاری انعطاف‌پذیر علاوه بر معرفی اعضا، از تجارک برای دور "
-"کاری و هدر رفت در ثبت ساعت کاری و حضور و غیاب‌های خود استفاده می‌کند."
+"تیم فناورانه‌ی ما با زمان کاری انعطاف‌پذیر علاوه بر معرفی اعضا، از تجارک برای "
+"دورکاری و هدررفت در ثبت ساعت کاری و حضور و غیاب‌های خود استفاده می‌کند."
 
 #: tejarak/includes/languages/trans_twig.php:33
 msgid "Ermile Preview"
 msgstr "پیش‌نمایش ارمایل"
 
 #: tejarak/includes/languages/trans_twig.php:34
-msgid "Wherever You Go."
-msgstr "همراه شما در هرجایی."
+msgid "Wherever You Go"
+msgstr "همراه شما در هرجایی"
 
 #: tejarak/includes/languages/trans_twig.php:35
 msgid ""
@@ -5468,11 +5468,12 @@ msgstr "همه چیز در دسترس شماست."
 #: tejarak/includes/languages/trans_twig.php:37
 msgid ""
 "In addition of website, without need to install app, check real time reports of "
-"staffs status from messengers like Telegram, SMS, email in your mobile."
+"staffs status from messengers like <span>Telegram</span>, SMS, email in your "
+"mobile."
 msgstr ""
 "گزارش‌های بی‌درنگ از وضعیت کارکنان‌تان را علاوه بر وب‌سایت، بدون نیاز به نصب هیچ‌گونه "
-"نرم‌افزاری از طریق پیام‌رسان‌هایی نظیر تلگرام، پیامک و ایمیل در تلفن همراه خود "
-"دریافت کنید."
+"نرم‌افزاری از طریق پیام‌رسان‌هایی نظیر <span>تلگرام</span>، پیامک و ایمیل در تلفن "
+"همراه خود دریافت کنید."
 
 #: tejarak/includes/languages/trans_twig.php:38
 msgid "Anywhere, from sitting on the chair of management to sitting on the beach!"
@@ -5592,7 +5593,7 @@ msgstr ""
 
 #: tejarak/includes/languages/trans_twig.php:64
 msgid "Plus"
-msgstr "دور کاری"
+msgstr "دورکاری"
 
 #: tejarak/includes/languages/trans_twig.php:65
 msgid "Enter"
@@ -7327,10 +7328,6 @@ msgstr "نرخ ارز پیدا نشد"
 msgid "Unit id or user unit not found"
 msgstr "شناسه واحد یا واحد کاربر پیدا نشد"
 
-#: tejarak/includes/lib/utility/plan/feature.php:160
-msgid "to"
-msgstr "تا"
-
 #: tejarak/includes/lib/utility/telegram.php:85
 msgid "Please install curl on your system"
 msgstr "لطفا سی‌یوآرال را بر روی سیستم نصب کنید"
@@ -7354,6 +7351,23 @@ msgstr "شما می‌توانید صفحه‌ی مدیریت را ببینید"
 #: tejarak/permission.php:27
 msgid "Can add hourse for all users in admin page"
 msgstr "شما می‌توانید ساعات همه‌ی کاربران را در صفحه مدیریت وارد کنید"
+
+#~ msgid "Do attendance easily and enjoy real time reports."
+#~ msgstr "به‌سادگی حضور و غیاب کنید و از گزارش‌های آنلاین لذت ببرید."
+
+#~ msgid "to"
+#~ msgstr "تا"
+
+#~ msgid "Wherever You Go."
+#~ msgstr "همراه شما در هرجایی."
+
+#~ msgid ""
+#~ "In addition of website, without need to install app, check real time reports "
+#~ "of staffs status from messengers like Telegram, SMS, email in your mobile."
+#~ msgstr ""
+#~ "گزارش‌های بی‌درنگ از وضعیت کارکنان‌تان را علاوه بر وب‌سایت، بدون نیاز به نصب "
+#~ "هیچ‌گونه نرم‌افزاری از طریق پیام‌رسان‌هایی نظیر تلگرام، پیامک و ایمیل در تلفن "
+#~ "همراه خود دریافت کنید."
 
 #~ msgid "Invalid hours brand"
 #~ msgstr "ساعت‌های برند اشتباه است"
