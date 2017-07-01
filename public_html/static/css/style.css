@@ -110,7 +110,7 @@ picture{display:block;}
 #everythingSync h3{text-align:initial;padding:0 2em;margin-bottom:1em;}
 #everythingSync svg{max-width:350px;}
 #anyTeam{background-color:#ccc;padding-bottom:0;}
-#anyTeam h2{font-size:4em;text-align:initial;}
+#anyTeam h2{font-size:4em;text-align:initial;padding:0 0.5em;}
 #anyTeam h3{text-align:initial;padding:0 2em;margin-bottom:1em;max-width:700px;color:#333;}
 #anyTeam img{display:block;max-width:700px;width:700px;margin-left:-200px;border-top-left-radius:5px;border-top-right-radius:5px;}
 .browserBox{max-width:700px;border:3px solid #e5e5e8;border-top-width:30px;border-radius:5px;box-shadow:0 0 10px 1px #e5e5e8;margin:0 auto;position:relative;}
@@ -122,6 +122,16 @@ picture{display:block;}
 .browserBox:hover span{background-color:#777;cursor:not-allowed;}
 .browserBox img{display:block;margin:0 auto;cursor:progress;}
 #setupTour{background-color:#fff}
+#notReady{background-color:#00667a}
+#notReady h2{color:#fff}
+#notReady h3{color:#ddd}
+#notReady h4{color:#bbb}
+#notReady h3 span{font-weight:700;}
+#notReady a{transition:0.3s;}
+#notReady a:hover{color:#eee}
+#notReady .btn{margin:1em;background-color:#c08000;color:#eee;height:auto;}
+#notReady .btn:hover{background-color:#e7a429;}
+#notReady .btn:focus{background-color:#b07000;;color:#eee;}
 
 .spiny{-webkit-animation-name:spinCenter;animation-name:spinCenter;-webkit-animation-duration:5s;animation-duration:5s;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-transform-origin: 50% 50%;-moz-transform-origin: 50% 50%;-o-transform-origin: 50% 50%;transform-origin: 50% 50%;}
 @-webkit-keyframes spinCenter{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(360deg)}}
