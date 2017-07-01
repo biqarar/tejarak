@@ -530,6 +530,7 @@ body #billing{max-width:800px;margin:0 auto}
   #anyTeam h2{font-size:3em;}
   #anyTeam h3{padding:0 0;margin-bottom:1em;}
   #caseStudy{height:400px;}
+  #notReady .btn{font-size:0.8em;}
 
   /* plans */
   #plans .plans-card{min-height:initial;}
