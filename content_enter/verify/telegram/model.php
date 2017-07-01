@@ -25,7 +25,7 @@ class model extends \content_enter\main\model
 			return false;
 		}
 		// check the user have chat id or no
-		if(!self::user_data('user_chat_id') && self::user_data('user_start_tg_bot'))
+		if(!self::user_data('user_chat_id'))
 		{
 			return false;
 		}
