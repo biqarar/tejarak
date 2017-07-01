@@ -111,6 +111,8 @@ picture{display:block;}
 #anyTeam h2{font-size:4em;text-align:initial;}
 #anyTeam h3{text-align:initial;padding:0 2em;margin-bottom:1em;}
 #anyTeam img{display:block;max-width:700px;width:700px;margin-left:-200px;padding:0 3em;border-top-left-radius:5px;border-top-right-radius:5px;}
+#setupTour{background-color:#eee}
+#setupTour img{max-width:700px;}
 
 .spiny{-webkit-animation-name:spinCenter;animation-name:spinCenter;-webkit-animation-duration:5s;animation-duration:5s;-webkit-animation-timing-function:cubic-bezier(.43, .84, .61, .14);animation-timing-function:cubic-bezier(.43, .84, .61, .14);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-transform-origin: 50% 50%;-moz-transform-origin: 50% 50%;-o-transform-origin: 50% 50%;transform-origin: 50% 50%;}
 @-webkit-keyframes spinCenter{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(360deg)}}
@@ -498,7 +500,7 @@ body #billing{max-width:800px;margin:0 auto}
   .tile h4{font-size:1.4em;}
   .tile#firstView h3{min-width:initial;width:100%;}
 
-  #setup-tour h2{font-size:2em;margin-bottom:2rem;}
+  #setupTour h2{font-size:2em;margin-bottom:2rem;}
   #caseStudy h3{padding:0.5em 4%; }
   #everythingSync h2{font-size:3em;text-align:center;}
   #everythingSync h3{padding:0 0;margin-bottom:1em;}
