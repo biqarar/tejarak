@@ -4,6 +4,8 @@ use \lib\utility;
 use \lib\utility\human;
 use \lib\debug;
 use \lib\db;
+use \lib\utility\telegram;
+use \lib\utility\plan;
 
 trait feature
 {
@@ -47,8 +49,9 @@ trait feature
 		switch ($_args['type'])
 		{
 			case 'enter':
+
 				$config_is_run = false;
-				if(\lib\utility\plan::access('telegram:enter:msg', self::$my_team_id))
+				if(plan::access('telegram:enter:msg', self::$my_team_id))
 				{
 					self::config();
 
@@ -61,11 +64,12 @@ trait feature
 
 					foreach (self::$my_admins_telegram_id as $key => $chat_id)
 					{
-						\lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('enter'));
+						telegram::sendMessage($chat_id, self::generate_telegram_message('enter'), ['sort' => 2]);
 					}
 				}
+
 				// first msg in day
-				if(\lib\utility\plan::access('telegram:first:of:day:msg', self::$my_team_id))
+				if(plan::access('telegram:first:of:day:msg', self::$my_team_id))
 				{
 					if(!$config_is_run)
 					{
@@ -74,21 +78,25 @@ trait feature
 
 					if(\lib\db\hours::enter(self::$my_team_id) <=1)
 					{
-						\lib\utility\telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'));
+						telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'), ['sort' => 4]);
 
 						foreach (self::$my_admins_telegram_id as $key => $chat_id)
 						{
-							\lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('date_now'));
-							// \lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('first_enter'));
+							telegram::sendMessage($chat_id, self::generate_telegram_message('date_now'), ['sort' => 1]);
+							telegram::sendMessage($chat_id, self::generate_telegram_message('first_enter'), ['sort' => 3]);
 						}
 					}
 				}
+				// send message by sorting
+				telegram::sort_send();
+				telegram::clean_cash();
+
 				break;
 
 			case 'exit':
 
 				$config_is_run = false;
-				if(\lib\utility\plan::access('telegram:exit:msg', self::$my_team_id))
+				if(plan::access('telegram:exit:msg', self::$my_team_id))
 				{
 					self::config();
 
@@ -101,11 +109,11 @@ trait feature
 
 					foreach (self::$my_admins_telegram_id as $key => $chat_id)
 					{
-						\lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('exit'));
+						telegram::sendMessage($chat_id, self::generate_telegram_message('exit'), ['sort' => 1]);
 					}
 				}
 
-				if(\lib\utility\plan::access('telegram:end:day:report', self::$my_team_id))
+				if(plan::access('telegram:end:day:report', self::$my_team_id))
 				{
 					if(!$config_is_run)
 					{
@@ -114,16 +122,17 @@ trait feature
 
 					if(\lib\db\hours::live(self::$my_team_id) <= 0 )
 					{
-						\lib\utility\telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('report_end_day'));
+						telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('report_end_day'), ['sort' => 3]);
 
 						foreach (self::$my_admins_telegram_id as $key => $chat_id)
 						{
-							\lib\utility\telegram::sendMessage($chat_id, self::generate_telegram_message('report_end_day_admin'));
+							telegram::sendMessage($chat_id, self::generate_telegram_message('report_end_day_admin'), ['sort' => 2]);
 						}
-
-
 					}
 				}
+				// send message by sorting
+				telegram::sort_send();
+				telegram::clean_cash();
 
 				break;
 			default:

@@ -15,6 +15,7 @@ class telegram
 //     "text" : "hi",
 //     "chat_id" : 33263188
 //   }'
+	public static $SORT = [];
 
 	public static function tg_curl($_args = [])
 	{
@@ -33,6 +34,10 @@ class telegram
 		if(is_array($_args))
 		{
 			$_args = array_merge($default_args, $_args);
+		}
+		else
+		{
+			$_args = $default_args;
 		}
 
 		$url = $_args['url'];
@@ -96,8 +101,18 @@ class telegram
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function sendMessage($_chat_id, $_text)
+	public static function sendMessage($_chat_id, $_text, $_option = [])
 	{
+		$default_option =
+		[
+			'sort' => null,
+		];
+
+		if(is_array($_option))
+		{
+			$_option = array_merge($default_option, $_option);
+		}
+
 		$args =
 		[
 			'request_method' => 'sendMessage',
@@ -105,7 +120,15 @@ class telegram
 			'telegram_group' => $_chat_id,
 			'text'           => $_text,
 		];
-		return self::tg_curl($args);
+
+		if($_option['sort'])
+		{
+			self::$SORT[] = ['sort' => $_option['sort'], 'curl' => $args];
+		}
+		else
+		{
+			return self::tg_curl($args);
+		}
 	}
 
 
@@ -118,8 +141,18 @@ class telegram
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function sendMessageGroup($_chat_id, $_text)
+	public static function sendMessageGroup($_chat_id, $_text, $_option = [])
 	{
+		$default_option =
+		[
+			'sort' => null,
+		];
+
+		if(is_array($_option))
+		{
+			$_option = array_merge($default_option, $_option);
+		}
+
 		$args =
 		[
 			'request_method' => 'sendMessage',
@@ -127,7 +160,45 @@ class telegram
 			'telegram_group' => $_chat_id,
 			'text'           => $_text,
 		];
-		return self::tg_curl($args);
+
+		if($_option['sort'])
+		{
+			self::$SORT[] = ['sort' => $_option['sort'], 'curl' => $args];
+		}
+		else
+		{
+			return self::tg_curl($args);
+		}
+
+	}
+
+	/**
+	* send message as sort
+	*/
+	public static function sort_send()
+	{
+
+		if(!empty(self::$SORT))
+		{
+			$sort = array_column(self::$SORT, 'sort');
+			array_multisort($sort,SORT_ASC, self::$SORT);
+
+			foreach (self::$SORT as $key => $value)
+			{
+				if(isset($value['curl']))
+				{
+					self::tg_curl($value['curl']);
+				}
+			}
+		}
+	}
+
+	/**
+	* clear cashed meessage
+	*/
+	public static function clean_cash()
+	{
+		self::$SORT = [];
 	}
 }
 ?>
