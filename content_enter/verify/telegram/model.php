@@ -45,31 +45,34 @@ class model extends \content_enter\main\model
 			'chat_id'      => self::user_data('user_chat_id'),
 		];
 
-		// send telegram msg
-		$result = bot::sendResponse($msg);
-		// ready to save log
-		$log_meta =
-		[
-			'data' => $code,
-			'meta' =>
-			[
-				'telegram_result' => $result,
-				'text'            => str_replace("\n", ' ', $text),
-				'code'            => $code,
-				'session'         => $_SESSION,
-			]
-		];
+		\lib\utility\telegram::sendMessage(self::user_data('user_chat_id'), $text);
 
-		// save log
-		\lib\db\logs::set('enter:send:telegram:resutl', self::user_data('id'), $log_meta);
-		// if result is ok return true
-		if(isset($result['ok']) && $result['ok'] === true)
-		{
+		return true;
+		// // send telegram msg
+		// $result = bot::sendResponse($msg);
+		// // ready to save log
+		// $log_meta =
+		// [
+		// 	'data' => $code,
+		// 	'meta' =>
+		// 	[
+		// 		'telegram_result' => $result,
+		// 		'text'            => str_replace("\n", ' ', $text),
+		// 		'code'            => $code,
+		// 		'session'         => $_SESSION,
+		// 	]
+		// ];
 
-			return true;
-		}
-		// can not send by telegram
-		return false;
+		// // save log
+		// \lib\db\logs::set('enter:send:telegram:resutl', self::user_data('id'), $log_meta);
+		// // if result is ok return true
+		// if(isset($result['ok']) && $result['ok'] === true)
+		// {
+
+		// 	return true;
+		// }
+		// // can not send by telegram
+		// return false;
 	}
 
 

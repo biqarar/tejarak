@@ -14,6 +14,15 @@ class controller extends \content_enter\main\controller
 			return;
 		}
 
+		if(!self::loaded_module('verify/what'))
+		{
+			self::loaded_module('verify/what', true);
+			if(self::get_enter_session('verification_code_id') && is_numeric(self::get_enter_session('verification_code_id')))
+			{
+				\lib\db\logs::update(['log_status' => 'expire'], self::get_enter_session('verification_code_id'));
+			}
+		}
+
 		$this->get()->ALL('verify/what');
 	}
 }
