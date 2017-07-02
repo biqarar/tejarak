@@ -152,6 +152,7 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
+							userteams.team_id  = $team_id AND
 							hours.shamsi_year  = '$year' AND
 							hours.shamsi_month = '$month' AND
 							hours.shamsi_day   = '$day'";
@@ -172,6 +173,7 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
+							userteams.team_id  = $team_id AND
 							hours.shamsi_year  = '$year' AND
 							hours.shamsi_month = '$month' AND
 							hours.shamsi_day   = '$day'
@@ -190,9 +192,10 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
-							hours.year  = '$year' AND
-							hours.month = '$month' AND
-							hours.day   = '$day'";
+							userteams.team_id = $team_id AND
+							hours.year        = '$year' AND
+							hours.month       = '$month' AND
+							hours.day         = '$day'";
 					$query =
 					"
 						SELECT
@@ -210,9 +213,10 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
-							hours.year  = '$year' AND
-							hours.month = '$month' AND
-							hours.day   = '$day'
+							userteams.team_id = $team_id AND
+							hours.year        = '$year' AND
+							hours.month       = '$month' AND
+							hours.day         = '$day'
 						GROUP BY userteams.id
 						LIMIT %d, %d
 					";
@@ -317,6 +321,7 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
+							userteams.team_id = $team_id AND
 							hours.shamsi_year  = '$year' AND
 							hours.shamsi_month = '$month'";
 					$query =
@@ -337,6 +342,7 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
+							userteams.team_id = $team_id AND
 							hours.shamsi_year  = '$year' AND
 							hours.shamsi_month = '$month'
 						GROUP BY userteams.id, hours.shamsi_year, hours.shamsi_month, hours.shamsi_day
@@ -355,6 +361,7 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
+							userteams.team_id = $team_id AND
 							hours.year  = '$year' AND
 							hours.month = '$month'";
 					$query =
@@ -375,6 +382,7 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
+							userteams.team_id = $team_id AND
 							hours.year  = '$year' AND
 							hours.month = '$month'
 						GROUP BY userteams.id, hours.year, hours.month, hours.day
@@ -479,6 +487,7 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
+							userteams.team_id = $team_id AND
 							hours.shamsi_year  = '$year'";
 					$query =
 					"
@@ -499,7 +508,8 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
-							hours.shamsi_year  = '$year'
+							userteams.team_id = $team_id AND
+							hours.shamsi_year = '$year'
 						GROUP BY userteams.id, hours.shamsi_year, hours.shamsi_month
 						LIMIT %d, %d
 
@@ -516,7 +526,8 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
-							hours.year  = '$year'";
+							userteams.team_id = $team_id AND
+							hours.year        = '$year'";
 					$query =
 					"
 						SELECT
@@ -536,7 +547,8 @@ trait sum
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
 						INNER JOIN users ON users.id = userteams.user_id
 						WHERE
-							hours.year  = '$year'
+							userteams.team_id = $team_id AND
+							hours.year        = '$year'
 						GROUP BY userteams.id, hours.year, hours.month
 						LIMIT %d, %d
 					";
