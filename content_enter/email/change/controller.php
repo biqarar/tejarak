@@ -9,6 +9,12 @@ class controller extends \content_enter\main\controller
 	 */
 	function _route()
 	{
+		$url = \lib\router::get_url();
+		if($url === 'email/change/google')
+		{
+			\lib\router::set_controller("\\content_enter\\email\\change\\google\\controller");
+			return;
+		}
 
 		// if the user is login redirect to base
 		parent::if_login_route();

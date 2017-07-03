@@ -30,13 +30,15 @@ class model extends \content_enter\main\model
 			if($check)
 			{
 				// go to what url
-				$go_to_url = null;
+				$go_to_url           = null;
+
+				$no_problem_to_login = false;
 
 				$user_data = google::user_info();
 				// get user email
 				self::$email = google::user_info('email');
-				// load data by email
-				self::load_user_data('email');
+				// load data by email in field user google mail
+				self::load_user_data('email', ['email_field' => 'user_google_mail']);
 				// the user exist in system
 				if(self::user_data('id'))
 				{
@@ -55,20 +57,44 @@ class model extends \content_enter\main\model
 						if(self::user_data('user_mobile'))
 						{
 							// no problem to login this user
+							$no_problem_to_login = true;
 						}
 						else
 						{
-							self::set_enter_session('mobile_request_from', 'google_email_exist');
-							// go to mobile get to enter mobile
-							self::next_step('mobile/request');
-							// get go to url
-							$go_to_url = 'mobile/request';
+							if(self::user_data('user_dont_will_set_mobile'))
+							{
+								if(strtotime(self::user_data('user_dont_will_set_mobile')) > (60*60*24*365))
+								{
+									self::set_enter_session('mobile_request_from', 'google_email_exist');
+
+									self::set_enter_session('logined_by_email', google::user_info('email'));
+									// go to mobile get to enter mobile
+									self::next_step('mobile/request');
+									// get go to url
+									$go_to_url = 'mobile/request';
+								}
+								else
+								{
+									// no problem to login this user
+									$no_problem_to_login = true;
+								}
+							}
+							else
+							{
+								self::set_enter_session('mobile_request_from', 'google_email_exist');
+
+								self::set_enter_session('logined_by_email', google::user_info('email'));
+								// go to mobile get to enter mobile
+								self::next_step('mobile/request');
+								// get go to url
+								$go_to_url = 'mobile/request';
+							}
 						}
 					}
 				}
 				else
 				{
-					// new user signup by email
+					// the email of this user is not exist in system
 					$args = [];
 					if(google::user_info('name'))
 					{
@@ -80,12 +106,13 @@ class model extends \content_enter\main\model
 					}
 
 					$args['user_google_mail'] = google::user_info('email');
-					$args['user_email']       = google::user_info('email');
 					$args['user_createdate']  = date("Y-m-d H:i:s");
 
 					self::set_enter_session('mobile_request_from', 'google_email_not_exist');
 
 					self::set_enter_session('must_signup', $args);
+
+					self::set_enter_session('logined_by_email', google::user_info('email'));
 
 					// $user_id = self::signup($args);
 					// // save user data in socials table
@@ -97,23 +124,30 @@ class model extends \content_enter\main\model
 					$go_to_url = 'mobile/request';
 				}
 
-				// set login session
-				$redirect_url = self::enter_set_login();
-				self::set_enter_session('redirect_url', $redirect_url);
-				// go to url
-				if($go_to_url)
+				if($no_problem_to_login)
 				{
-					self::go_to($go_to_url);
-				}
-				else
-				{
+					// set login session
+					$redirect_url = self::enter_set_login();
+					self::set_enter_session('redirect_url', $redirect_url);
 					// save redirect url in session to get from okay page
 					// set okay as next step
 					self::next_step('okay');
 					// go to okay page
 					self::go_to('okay');
 				}
-
+				else
+				{
+					// go to url
+					if($go_to_url)
+					{
+						self::go_to($go_to_url);
+					}
+					else
+					{
+						self::set_alert(T_("System error! try again"));
+						self::go_to('alert');
+					}
+				}
 			}
 			else
 			{

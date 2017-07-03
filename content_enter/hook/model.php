@@ -161,7 +161,7 @@ class model extends \mvc\model
 
 		$exist_chart_id = \lib\db\config::public_get('users', $where);
 
-		$exist_mobile = \lib\db\users::get_by_mobile($mobile);
+		$exist_mobile = \ilib\db\users::get_by_mobile($mobile);
 
 
 		$log_meta =
@@ -190,7 +190,7 @@ class model extends \mvc\model
 			$insert_user['user_displayname'] = $fullName;
 			$insert_user['user_chat_id']     = $telegram_id;
 			$insert_user['user_createdate']  = date("Y-m-d H:i:s");
-			\lib\db\users::insert($insert_user);
+			\ilib\db\users::insert($insert_user);
 			$this->user_id = \lib\db::insert_id();
 			\lib\db\logs::set('enter:hook:signup:new', $exist_mobile['id'], $log_meta);
 
@@ -208,7 +208,7 @@ class model extends \mvc\model
 					$remove_all_this_chat_id = "UPDATE users SET user_chat_id = NULL WHERE user_chat_id = '$telegram_id' ";
 					\lib\db::query($remove_all_this_chat_id);
 					\lib\db\logs::set('enter:hook:remove:all:chat:id', $exist_mobile['id'], $log_meta);
-					\lib\db\users::update(['user_chat_id' => $telegram_id], $exist_mobile['id']);
+					\ilib\db\users::update(['user_chat_id' => $telegram_id], $exist_mobile['id']);
 					$this->user_id = (int) $exist_mobile['id'];
 				}
 			}
@@ -230,7 +230,7 @@ class model extends \mvc\model
 
 					\lib\db\logs::set('enter:hook:remove:all:chat:id', $exist_chart_id['id'], $log_meta);
 
-					\lib\db\users::update(['user_mobile' => $mobile, 'user_chat_id' => $telegram_id], $exist_chart_id['id']);
+					\ilib\db\users::update(['user_mobile' => $mobile, 'user_chat_id' => $telegram_id], $exist_chart_id['id']);
 
 					\lib\db\logs::set('enter:hook:change:mobile', $exist_chart_id['id'], $log_meta);
 				}
@@ -248,7 +248,7 @@ class model extends \mvc\model
 			{
 				if($telegram_id)
 				{
-					\lib\db\users::update(['user_chat_id' => $telegram_id], $exist_mobile['id']);
+					\ilib\db\users::update(['user_chat_id' => $telegram_id], $exist_mobile['id']);
 					\lib\db\logs::set('enter:hook:change:chat_id', $exist_mobile['id'], $log_meta);
 				}
 				$this->user_id = (int) $exist_mobile['id'];

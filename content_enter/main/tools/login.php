@@ -69,8 +69,8 @@ trait login
 			$user_id = \lib\db\sessions::get_user_id();
 			if($user_id)
 			{
-				$user_data = \lib\db\users::get_user_data($user_id);
-				\lib\db\users::set_login_session($user_data);
+				$user_data = \ilib\db\users::get_user_data($user_id);
+				\ilib\db\users::set_login_session($user_data);
 				\lib\db\sessions::set($user_id);
 			}
 		}
@@ -87,7 +87,7 @@ trait login
 		// 	$this->login_set_guest();
 		// }
 		// set session
-		\lib\db\users::set_login_session(self::user_data());
+		\ilib\db\users::set_login_session(self::user_data());
 		if(self::user_data('id'))
 		{
 			// set remeber and save session
@@ -229,22 +229,30 @@ trait login
 	 *
 	 * @param      <type>  $_user_id  The user identifier
 	 */
-	public static function set_logout($_user_id)
+	public static function set_logout($_user_id, $_auto_redirect = true)
 	{
 		if($_user_id && is_numeric($_user_id))
 		{
 			// set this session as logout
 			\lib\db\sessions::logout($_user_id);
 		}
+
+		$_SESSION['user'] = [];
+
 		// unset and destroy session then regenerate it
-		session_unset();
-		if(session_status() === PHP_SESSION_ACTIVE)
+		// session_unset();
+		// if(session_status() === PHP_SESSION_ACTIVE)
+		// {
+		// 	session_destroy();
+		// 	// session_regenerate_id(true);
+		// }
+
+		if($_auto_redirect)
 		{
-			session_destroy();
-			// session_regenerate_id(true);
+			// go to base
+			self::go_to('main');
 		}
-		// go to base
-		self::go_to('main');
+
 	}
 }
 ?>

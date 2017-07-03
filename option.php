@@ -188,6 +188,16 @@ self::$sms['kavenegar']['recovery']           = true;
 self::$sms['kavenegar']['changepass']         = true;
 
 
+/**
+ * telegram hook
+ */
+self::$enter['telegram_hook']   = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^';
+/**
+ * first signup url
+ * main redirect url . signup redirect url
+ */
+self::$enter['singup_redirect'] = 'a/setup';
 
-self::$enter['telegram_hook'] = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^';
+
+
 ?>

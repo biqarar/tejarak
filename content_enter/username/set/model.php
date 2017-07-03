@@ -31,7 +31,7 @@ class model extends \content_enter\main\model
 			}
 
 			// check username exist
-			$check_exist_user_name = \lib\db\users::get_by_username($username);
+			$check_exist_user_name = \ilib\db\users::get_by_username($username);
 
 			if(!empty($check_exist_user_name))
 			{
@@ -39,7 +39,7 @@ class model extends \content_enter\main\model
 				return false;
 			}
 
-			\lib\db\users::update(['user_username' => $username], $this->login('id'));
+			\ilib\db\users::update(['user_username' => $username], $this->login('id'));
 			// set the alert message
 			self::set_alert(T_("Your username was set"));
 			// open lock of alert page

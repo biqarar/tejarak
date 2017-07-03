@@ -35,9 +35,9 @@ class model extends \content_enter\main\model
 				}
 				else
 				{
+					self::enter_set_login();
 					self::next_step('okay');
 					// set login session
-					self::enter_set_login(self::user_data('id'));
 					self::go_to('okay');
 				}
 			}

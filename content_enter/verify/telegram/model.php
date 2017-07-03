@@ -24,8 +24,19 @@ class model extends \content_enter\main\model
 		{
 			return false;
 		}
-		// check the user have chat id or no
-		if(!self::user_data('user_chat_id'))
+
+		$my_chat_id = null;
+
+		if(self::user_data('user_chat_id'))
+		{
+			$my_chat_id = self::user_data('user_chat_id');
+		}
+		elseif(self::get_enter_session('temp_chat_id'))
+		{
+			$my_chat_id = self::get_enter_session('temp_chat_id');
+		}
+
+		if(!$my_chat_id)
 		{
 			return false;
 		}
@@ -37,42 +48,8 @@ class model extends \content_enter\main\model
 		$text .= "\n\n". T_("This code can be used to log in to your account. Do not give it to anyone!");
 		$text .= "\n" . T_("If you didn't request this code, ignore this message.");
 
-		// ready to send telegram message
-		$msg =
-		[
-			'method'       => 'sendMessage',
-			'text'         => $text,
-			'chat_id'      => self::user_data('user_chat_id'),
-		];
-
-		\lib\utility\telegram::sendMessage(self::user_data('user_chat_id'), $text);
-
+		\lib\utility\telegram::sendMessage($my_chat_id, $text);
 		return true;
-		// // send telegram msg
-		// $result = bot::sendResponse($msg);
-		// // ready to save log
-		// $log_meta =
-		// [
-		// 	'data' => $code,
-		// 	'meta' =>
-		// 	[
-		// 		'telegram_result' => $result,
-		// 		'text'            => str_replace("\n", ' ', $text),
-		// 		'code'            => $code,
-		// 		'session'         => $_SESSION,
-		// 	]
-		// ];
-
-		// // save log
-		// \lib\db\logs::set('enter:send:telegram:resutl', self::user_data('id'), $log_meta);
-		// // if result is ok return true
-		// if(isset($result['ok']) && $result['ok'] === true)
-		// {
-
-		// 	return true;
-		// }
-		// // can not send by telegram
-		// return false;
 	}
 
 

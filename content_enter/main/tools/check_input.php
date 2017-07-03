@@ -19,6 +19,12 @@ trait check_input
 		{
 			return true;
 		}
+
+		if(intval(utility::post('mobile')) === intval(self::get_enter_session('temp_mobile')))
+		{
+			return true;
+		}
+
 		return false;
 	}
 

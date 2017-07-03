@@ -9,8 +9,19 @@ trait user_data
 	/**
 	 * Loads an user data.
 	 */
-	public static function load_user_data($_type = 'mobile')
+	public static function load_user_data($_type = 'mobile', $_option = [])
 	{
+		$default_option =
+		[
+			'email_field' => 'user_google_mail',
+		];
+
+		if(!is_array($_option))
+		{
+			$_option = [];
+		}
+		$_option = array_merge($default_option, $_option);
+
 		$data = [];
 
 		switch ($_type)
@@ -19,7 +30,7 @@ trait user_data
 			case 'mobile':
 				if(self::$mobile)
 				{
-					$data = \lib\db\users::get_by_mobile(self::$mobile);
+					$data = \ilib\db\users::get_by_mobile(self::$mobile);
 				}
 				break;
 
@@ -27,7 +38,7 @@ trait user_data
 			case 'username':
 				if(self::$username)
 				{
-					$data = \lib\db\users::get_by_username(self::$username);
+					$data = \ilib\db\users::get_by_username(self::$username);
 				}
 				break;
 
@@ -35,7 +46,7 @@ trait user_data
 			case 'user_id':
 				if(self::$user_id)
 				{
-					$data = \lib\db\users::get(self::$user_id);
+					$data = \ilib\db\users::get(self::$user_id);
 				}
 				break;
 
@@ -43,7 +54,7 @@ trait user_data
 			case 'email':
 				if(self::$email)
 				{
-					$data = \lib\db\users::get_by_email(self::$email, true);
+					$data = \ilib\db\users::get_by_email(self::$email, $_option['email_field']);
 				}
 				break;
 
@@ -96,11 +107,11 @@ trait user_data
 
 		$default_args =
 		[
-			'mobile'      => null,
-			'displayname' => null,
-			'password'    => null,
-			'email'       => null,
-			'status'      => 'awaiting'
+			'user_mobile'      => null,
+			'user_displayname' => null,
+			'user_pass'        => null,
+			'user_email'       => null,
+			'user_status'      => 'awaiting'
 		];
 
 		if(is_array($_args))
@@ -117,17 +128,17 @@ trait user_data
 				$update_user['user_google_mail'] = $_args['user_google_mail'];
 			}
 			// set mobile to use in other function
-			self::$mobile    = $mobile;
-			$_args['mobile'] = $mobile;
-			$_args['email']  = self::$email;
+			self::$mobile         = $mobile;
+			$_args['user_mobile'] = $mobile;
+			$_args['user_email']  = self::$email;
 
-			$user_id = \lib\db\users::signup($_args);
+			$user_id = \ilib\db\users::signup($_args);
 
 			if($user_id)
 			{
 				if(!empty($update_user))
 				{
-					\lib\db\users::update($update_user, $user_id);
+					\ilib\db\users::update($update_user, $user_id);
 				}
 				self::load_user_data();
 			}
@@ -141,8 +152,20 @@ trait user_data
 	*/
 	public static function signup_email($_args = [])
 	{
+		if(self::get_enter_session('dont_will_set_mobile'))
+		{
+			$_args['user_dont_will_set_mobile'] = date("Y-m-d H:i:s");
+		}
+		else
+		{
+			if(self::get_enter_session('temp_mobile') && !isset($_args['user_mobile']))
+			{
+				$_args['user_mobile'] = self::get_enter_session('temp_mobile');
+			}
+		}
 
-		$user_id = \lib\db\users::insert($_args);
+
+		$user_id = \ilib\db\users::insert($_args);
 
 		if($user_id)
 		{

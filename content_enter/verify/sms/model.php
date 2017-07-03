@@ -19,11 +19,22 @@ class model extends \content_enter\main\model
 	 */
 	public function send_sms_code()
 	{
+		$my_mobile = null;
 
-		if(!self::get_enter_session('mobile'))
+		if(self::get_enter_session('mobile'))
+		{
+			$my_mobile = self::get_enter_session('mobile');
+		}
+		elseif(self::get_enter_session('temp_mobile'))
+		{
+			$my_mobile = self::get_enter_session('temp_mobile');
+		}
+
+		if(!$my_mobile)
 		{
 			return false;
 		}
+
 
 		$code = self::get_enter_session('verification_code');
 
@@ -32,14 +43,14 @@ class model extends \content_enter\main\model
 			'data' => $code,
 			'meta' =>
 			[
-				'mobile'  => self::get_enter_session('mobile'),
+				'mobile'  => $my_mobile,
 				'code'    => $code,
 				'session' => $_SESSION,
 			]
 		];
 
 		$request           = [];
-		$request['mobile'] = self::get_enter_session('mobile');
+		$request['mobile'] = $my_mobile;
 		$request['msg']    = T_("Your verification code is :code \n:service", ['code' => $code, 'service' => \lib\router::get_root_domain()]);
 		$request['args']   = $code;
 
@@ -52,7 +63,7 @@ class model extends \content_enter\main\model
 			$kavenegar_send_result = \lib\utility\sms::send($request);
 		}
 
-		if($kavenegar_send_result === 411 && substr(self::get_enter_session('mobile'), 0, 2) === '98')
+		if($kavenegar_send_result === 411 && substr($my_mobile, 0, 2) === '98')
 		{
 			// invalid user mobil
 			db\logs::set('kavenegar:service:411:sms', self::user_data('id'), $log_meta);

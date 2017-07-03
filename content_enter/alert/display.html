@@ -2,9 +2,8 @@
 
 
 
-{%block contentBody%}
-  <div class="text">
-   <p>{{alert_msg}}</p>
-  </div>
+{%block contentForm%}
+<p>{{alert_msg}}</p>
+<a class="link" href='{{url.base}}/enter'>{% trans "Go back" %}</a>
 {%endblock%}
 

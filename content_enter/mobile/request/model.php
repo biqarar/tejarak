@@ -27,8 +27,6 @@ class model extends \content_enter\main\model
 
 			self::mobile_request_next_step();
 
-			self::next_step('okay');
-			self::go_to('okay');
 			return;
 		}
 
@@ -46,24 +44,10 @@ class model extends \content_enter\main\model
 			return false;
 		}
 
-		$this->mobile_data = \lib\db\users::get_by_mobile($mobile);
-		// if mobile is first mobile
-		if(!$this->mobile_data)
-		{
-			self::set_enter_session('verify_from', 'mobile_request');
-			self::set_enter_session('temp_mobile', $mobile);
-			self::send_code_way();
-			return;
-		}
-		else
-		{
-			self::set_enter_session('request_delete_msg', T_("Duplicate account"));
-			// duplicate account found
-			// need to delete one of them
-			self::next_step('delete/request');
-			self::go_to('delete/request');
-			return;
-		}
+		self::set_enter_session('verify_from', 'mobile_request');
+		self::set_enter_session('temp_mobile', $mobile);
+		self::send_code_way();
+		return;
 	}
 }
 ?>

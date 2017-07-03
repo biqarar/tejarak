@@ -7,10 +7,11 @@ class controller extends \content_enter\main\controller
 	public function _route()
 	{
 		// bug fix two redirect to this page
-		// if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
-		// {
-		// 	return;
-		// }
+		if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
+		{
+			self::go_redirect('verify/call');
+			return;
+		}
 
 		// if this step is locked go to error page and return
 		if(self::lock('verify/call'))
@@ -28,16 +29,20 @@ class controller extends \content_enter\main\controller
 			// else go to nex way
 			if(!self::loaded_module('verify/call'))
 			{
-				self::loaded_module('verify/call', true);
+				if(isset($_SERVER['REQUEST_URI']) && urldecode($_SERVER['REQUEST_URI']) === '/enter/verify/call')
+				{
 
-				if($this->model()->send_call_code())
-				{
-					$this->get()->ALL('verify/call');
-				}
-				else
-				{
-					// send code way
-					self::send_code_way();
+					self::loaded_module('verify/call', true);
+
+					if($this->model()->send_call_code())
+					{
+						$this->get()->ALL('verify/call');
+					}
+					else
+					{
+						// send code way
+						self::send_code_way();
+					}
 				}
 			}
 			else

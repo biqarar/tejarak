@@ -162,6 +162,18 @@ trait verification_code
 
 		if(intval(utility::post('code')) === intval(self::get_enter_session('verification_code')))
 		{
+			// expire code
+			if(self::get_enter_session('verification_code_id'))
+			{
+				// the user enter the code and the code is ok
+				// must expire this code
+				\lib\db\logs::update(['log_status' => 'expire'], self::get_enter_session('verification_code_id'));
+				self::set_enter_session('verification_code', null);
+				self::set_enter_session('verification_code_time', null);
+				self::set_enter_session('verification_code_way', null);
+				self::set_enter_session('verification_code_id', null);
+			}
+
 			/**
 			 ***********************************************************
 			 * VERIFY FROM
@@ -181,7 +193,7 @@ trait verification_code
 			  )
 			{
 				// set temp ramz in use pass
-				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
+				\ilib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
 			}
 
 
@@ -195,7 +207,7 @@ trait verification_code
 			if(self::get_enter_session('verify_from') === 'username_remove' && is_numeric(self::user_data('id')))
 			{
 				// set temp ramz in use pass
-				\lib\db\users::update(['user_username' => null], self::user_data('id'));
+				\ilib\db\users::update(['user_username' => null], self::user_data('id'));
 				// remove usename from sessions
 				unset($_SESSION['user']['username']);
 				// set the alert message
@@ -245,13 +257,13 @@ trait verification_code
 				}
 				$update_user['user_status'] = 'removed';
 
-				\lib\db\users::update($update_user, self::user_data('id'));
+				\ilib\db\users::update($update_user, self::user_data('id'));
 
 				\lib\db\sessions::delete_account(self::user_data('id'));
 
 				//put logout
-				self::set_logout(self::user_data('id'));
-
+				self::set_logout(self::user_data('id'), false);
+				self::next_step('byebye');
 				self::go_to('byebye');
 			}
 
@@ -272,7 +284,7 @@ trait verification_code
 			  )
 			{
 				// set temp ramz in use pass
-				\lib\db\users::update(['user_username' => self::get_enter_session('temp_username')], self::user_data('id'));
+				\ilib\db\users::update(['user_username' => self::get_enter_session('temp_username')], self::user_data('id'));
 				// set the alert message
 				if(self::get_enter_session('verify_from') === 'username_set')
 				{
@@ -298,16 +310,116 @@ trait verification_code
 			/**
 			 ***********************************************************
 			 * VERIFY FROM
-			 * MOBILI /REQUEST
+			 * MOBILI/REQUEST
 			 ***********************************************************
 			 */
-			if(self::get_enter_session('verify_from') === 'mobile_request' && is_numeric(self::user_data('id')))
+			if(self::get_enter_session('verify_from') === 'mobile_request')
 			{
-				if(!self::mobile_request_next_step())
+				// must loaded mobile data
+				if(self::get_enter_session('temp_mobile') && is_numeric(self::get_enter_session('temp_mobile')))
 				{
+					$load_mobile_data = \ilib\db\users::get_by_mobile(self::get_enter_session('temp_mobile'));
+					if($load_mobile_data && isset($load_mobile_data['id']))
+					{
+						if(isset($load_mobile_data['user_status']) && in_array($load_mobile_data['user_status'], self::$block_status))
+						{
+							self::next_step('block');
+							self::go_to('block');
+							return ;
+						}
+						else
+						{
+							if(self::get_enter_session('mobile_request_from') === 'google_email_not_exist')
+							{
+								if(isset($load_mobile_data['user_google_mail']) && $load_mobile_data['user_google_mail'])
+								{
+									if(self::get_enter_session('logined_by_email') === $load_mobile_data['user_google_mail'])
+									{
+										self::$user_id = $load_mobile_data['id'];
+										self::load_user_data('user_id');
+									}
+									else
+									{
+										self::set_enter_session('old_google_mail', $load_mobile_data['user_google_mail']);
+										self::set_enter_session('new_google_mail', self::get_enter_session('logined_by_email'));
+										self::set_enter_session('user_id_must_change_google_mail', $load_mobile_data['id']);
+										// request from user to change email
+										self::next_step('email/change/google');
+										self::go_to('email/change/google');
+										return ;
+									}
+								}
+								else
+								{
+									\ilib\db\users::update(['user_google_mail' => self::get_enter_session('logined_by_email')], $load_mobile_data['id']);
+									self::$user_id = $load_mobile_data['id'];
+									self::load_user_data('user_id');
+								}
+							}
+							else //if(self::get_enter_session('mobile_request_from') === 'google_email_exist') or more
+							{
+								self::set_enter_session('request_delete_msg', T_("Duplicate account"));
+
+								self::next_step('delete/request');
+								self::go_to('delete/request');
+								return ;
+							}
+						}
+					}
+					else
+					{
+						if(self::get_enter_session('mobile_request_from') === 'google_email_not_exist')
+						{
+							if(self::get_enter_session('must_signup') && is_array(self::get_enter_session('must_signup')))
+							{
+								$signup = self::get_enter_session('must_signup');
+								if(self::get_enter_session('temp_mobile'))
+								{
+									$signup['user_mobile'] = self::get_enter_session('temp_mobile');
+								}
+
+								if(self::get_enter_session('logined_by_email'))
+								{
+									$signup['user_google_mail'] = self::get_enter_session('logined_by_email');
+								}
+
+								$signup['user_status'] = 'active';
+								self::set_enter_session('first_signup', true);
+								self::$user_id = \ilib\db\users::signup($signup);
+								self::load_user_data('user_id');
+							}
+							else
+							{
+								\lib\db\logs::set('fuck110000');
+							}
+						}
+						elseif(self::get_enter_session('mobile_request_from') === 'google_email_exist')
+						{
+							if(!self::user_data('user_mobile'))
+							{
+								\ilib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], self::user_data('id'));
+								// login
+							}
+							self::$user_id = self::user_data('id');
+							self::load_user_data('user_id');
+
+						}
+						else
+						{
+							// other way go to here
+							// facebook not exist email and ...
+							\lib\db\logs::set('fuck110');
+							return false;
+						}
+					}
+				}
+				else
+				{
+					// no mobile was found :|
+					// bug. return false;
+					\lib\db\logs::set('fuck11');
 					return false;
 				}
-
 			}
 
 
@@ -328,7 +440,7 @@ trait verification_code
 			  )
 			{
 				// set temp ramz in use pass
-				\lib\db\users::update(['user_email' => self::get_enter_session('temp_email')], self::user_data('id'));
+				\ilib\db\users::update(['user_email' => self::get_enter_session('temp_email')], self::user_data('id'));
 			}
 
 			/**
@@ -352,7 +464,7 @@ trait verification_code
 			if(self::get_enter_session('verify_from') === 'two_step_set' &&	is_numeric(self::user_data('id')))
 			{
 				// set on two_step of this user
-				\lib\db\users::update(['user_two_step' => 1], self::user_data('id'));
+				\ilib\db\users::update(['user_two_step' => 1], self::user_data('id'));
 			}
 
 
@@ -365,7 +477,7 @@ trait verification_code
 			if(self::get_enter_session('verify_from') === 'two_step_unset' &&	is_numeric(self::user_data('id')))
 			{
 				// set off two_step of this user
-				\lib\db\users::update(['user_two_step' => 0], self::user_data('id'));
+				\ilib\db\users::update(['user_two_step' => 0], self::user_data('id'));
 			}
 
 			// set login session
@@ -385,7 +497,7 @@ trait verification_code
 			self::sleep_code();
 
 			// plus count invalid code
-			self::plus_try_session('invalid_code_call');
+			self::plus_try_session('invalid_code');
 
 			debug::error(T_("Invalid code, try again"), 'code');
 			return false;
@@ -430,19 +542,20 @@ trait verification_code
 				if(self::get_enter_session('must_signup'))
 				{
 					// sign up user
-					$user_id = self::signup_email(self::get_enter_session('must_signup'));
-
+					self::set_enter_session('first_signup', true);
+					$user_id = \ilib\db\users::signup(self::get_enter_session('must_signup'));
 					if($user_id)
 					{
-						self::enter_set_login(self::user_data('id'));
-
-						\lib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], $user_id);
-						// the user click on dont will mobile
-						// we save this time to user_dont_will_set_mobile to never show this message again
-						if(self::get_enter_session('dont_will_set_mobile'))
-						{
-							\lib\db\users::update(['user_dont_will_set_mobile' => date("Y-m-d H:i:s")], $user_id);
-						}
+						self::$user_id = $user_id;
+						self::load_user_data('user_id');
+						// auto redirect to redirect url
+						self::enter_set_login(null, true);
+						return;
+					}
+					else
+					{
+						// can not signup
+						return false;
 					}
 				}
 				break;
@@ -460,10 +573,11 @@ trait verification_code
 					}
 					if(!empty($update_user_google))
 					{
-						\lib\db\users::update($update_user_google, self::user_data('id'));
+						\ilib\db\users::update($update_user_google, self::user_data('id'));
 					}
-
-					self::enter_set_login(self::user_data('id'));
+					//auto redirect to redirect url
+					self::enter_set_login(null, true);
+					return ;
 				}
 
 				return false;
