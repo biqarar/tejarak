@@ -1,0 +1,57 @@
+{%extends display.admin%}
+
+
+
+{%block contentCenter%}
+<div id="setup" class="step2">
+ <div class="flex f-column justify-center dbox">
+  <h2>{%trans "Your profile information"%}</h2>
+  <form method="post" class="df f" data-denctype="multipart/form-data">
+   <div class="f">
+    <div class="c s12">
+
+    {%if login.mobile%}
+     <div class="c6 s6">
+       <input type="text" name="mobile" placeholder='{%trans "Your mobile"%}' id="mobile" readonly  value="{{login.mobile}}">
+     </div>
+    {%endif%}
+
+    {%if login.email%}
+     <div class="c6 s6">
+       <input type="text" name="email" placeholder='{%trans "Your email"%}' id="email" readonly  value="{{login.email}}">
+     </div>
+    {%endif%}
+     <div class="f g1">
+
+      <div class="c6 s12">
+       <input type="text" name="name" value="{{login.name}}" placeholder='{%trans "First Name *"%}' id="name" autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
+      </div>
+      <div class="c6 s12">
+       <input type="text" name="family" value="{{login.family}}" placeholder='{%trans "Last Name"%}' id="family" maxlength='50' minlength="3" pattern=".{3,50}" title='{%trans "Enter a valid family from 3 to 50 character"%}'>
+      </div>
+      <div class="c12">
+       <input type="text" name="displayname" value="{{login.displayname}}" placeholder='{%trans "Display name"%}' id="displayname" maxlength='50' minlength="3" pattern=".{3,50}" title='{%trans "Enter a valid team position from 3 to 50 character"%}'>
+      </div>
+     </div>
+    </div>
+    <div class="cauto s12 g1">
+     <div>
+      <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
+      <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
+        {%if login.file_url%}
+         <img src="{{url.root}}/{{login.file_url}}" alt="{{member.displayname}}" id="avatarPreview">
+        {%endif%}
+      </label>
+     </div>
+    </div>
+   </div>
+   <div class="c12 g1 g1">
+    <div>
+      <input class="b1" type="submit" value='{%trans "Update profile"%}'>
+    </div>
+   </div>
+  </form>
+ </div>
+
+</div>
+{%endblock%}
