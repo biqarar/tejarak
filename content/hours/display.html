@@ -24,11 +24,13 @@
       <form method="post" class="enter">
        <div class="top">
         <div class="cbname"> <span class="cfnum">{{(key+1) | fitNumber}}</span><span>{{value.displayname}}</span></div>
-        <div class="f parameter">
-         <div class="c3 decrease bn" data-val='-5' data-connect='plus'>-</div>
-         <div class="c6 input"><input type="number" class="inputPlus" name="plus" placeholder='{%trans "Plus"%}' step="5" min="0" max="1440"></div>
-         <div class="c3 increase bp" data-val='10' data-connect='plus'>+</div>
-        </div>
+        {%if value.allow_plus%}
+          <div class="f parameter">
+           <div class="c3 decrease bn" data-val='-5' data-connect='plus'>-</div>
+           <div class="c6 input"><input type="number" class="inputPlus" name="plus" placeholder='{%trans "Plus"%}' step="5" min="0" max="1440"></div>
+           <div class="c3 increase bp" data-val='10' data-connect='plus'>+</div>
+          </div>
+        {%endif%}
         <input type="hidden" name="user" value="{{value.user_id}}">
         <input type="hidden" name="type" value="enter">
        </div>
@@ -48,12 +50,13 @@
          </div>
          {%if value.plus%}<div class="timePlus" data-val='100'>{{value.plus | fitNumber}}</div>{%else%}{%endif%}
         </div>
-
-        <div class="f parameter">
-         <div class="c3 decrease bn" data-val='-5' data-connect='minus'>-</div>
-         <div class="c6 input"><input type="number" class="inputMinus" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="10000"></div>
-         <div class="c3 increase bp" data-val='10' data-connect='minus'>+</div>
-        </div>
+        {%if value.allow_minus%}
+          <div class="f parameter">
+           <div class="c3 decrease bn" data-val='-5' data-connect='minus'>-</div>
+           <div class="c6 input"><input type="number" class="inputMinus" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="10000"></div>
+           <div class="c3 increase bp" data-val='10' data-connect='minus'>+</div>
+          </div>
+        {%endif%}
         <input type="hidden" name="user" value="{{value.user_id}}">
         <input type="hidden" name="type" value="exit">
 

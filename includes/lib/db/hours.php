@@ -198,10 +198,19 @@ class hours
 		// get last not exit time of this user and this teamd
 		$in_use_time = self::in_use_time($_args);
 
-		if($in_use_time)
+		if($in_use_time && isset($in_use_time['end']) && !$in_use_time['end'])
 		{
 			debug::error(T_("You was already save your enter time"));
 			return false;
+		}
+
+		if(isset($_args['userteam_details']['allowplus']) && $_args['userteam_details']['allowplus'])
+		{
+
+		}
+		else
+		{
+			$_args['plus'] = null;
 		}
 
 		$insert                      = [];
@@ -253,7 +262,7 @@ class hours
 		// get last not exit time of this user and this teamd
 		$start = self::in_use_time($_args);
 
-		if(!$start)
+		if(!$start || ($start && isset($start['end']) && $start['end']))
 		{
 			debug::error(T_("You was not save your enter time"));
 			return ;
@@ -269,6 +278,15 @@ class hours
 		{
 			debug::error(T_("Invalid data"));
 			return false;
+		}
+
+		if(isset($_args['userteam_details']['allowminus']) && $_args['userteam_details']['allowminus'])
+		{
+
+		}
+		else
+		{
+			$_args['minus'] = null;
 		}
 
 		$update = [];
@@ -349,10 +367,12 @@ class hours
 
 		if(!empty($where))
 		{
-			$where[] = " hours.end IS NULL ";
+			// $where[] = " hours.end IS NULL ";
 			$where = implode(' AND ', $where);
 			$query = "SELECT * FROM hours WHERE $where ORDER BY hours.id DESC LIMIT 1";
-			return \lib\db::get($query, null, true);
+
+			$hours_data =  \lib\db::get($query, null, true);
+			return $hours_data;
 		}
 	}
 }
