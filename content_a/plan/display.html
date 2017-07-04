@@ -6,7 +6,7 @@
     <h2>{{page.desc}}</h2>
 
      <div class="f pas">
-      <h3 class="c">{%trans "Current Plan"%} <b>{{current_plan.plan_name |capitalize }}</b></h2>
+      <h3 class="c">{%trans "Current Plan"%} <b>{% set myCurrentPlan = current_plan.plan_name |capitalize %}{%trans myCurrentPlan%}</b></h2>
       <h4 class="cauto os" title="{{current_plan.start|tdate("Y-m-d")}}"><sub>{{current_plan.start|sdate}}</sub></h3>
      </div>
 
