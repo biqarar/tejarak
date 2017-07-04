@@ -23,11 +23,11 @@
 		<div class="c">{{value.date|jdate("Y-m-d")}}</div>
 		<div class="c">{{value.start|fitNumber}}</div>
 		<div class="c">{{value.end|fitNumber}}</div>
-		<div class="c s0">{{value.diff|number_format|fitNumber}}</div>
-		<div class="c s0">{{value.minus|number_format|fitNumber}}</div>
-		<div class="c s0">{{value.plus|number_format|fitNumber}}</div>
+		<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
+		<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
+		<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
 		<div class="c s0">{{value.type|fitNumber}}</div>
-		<div class="c">{{value.accepted|number_format|fitNumber}}</div>
+		<div class="c">{{value.accepted | humantime | fitNumber}}</div>
 	</div>
 	{%endfor%}
 </div>

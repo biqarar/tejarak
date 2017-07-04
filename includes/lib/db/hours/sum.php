@@ -414,7 +414,7 @@ trait sum
 					"
 						SELECT
 							hours.shamsi_month			 			AS `month`,
-							GROUP_CONCAT(DISTINCT hours.shamsi_day)			 			AS `day`,
+							GROUP_CONCAT(DISTINCT hours.shamsi_day)			 			AS `days`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
 							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
@@ -451,7 +451,7 @@ trait sum
 					$query =
 					"
 						SELECT
-							GROUP_CONCAT(DISTINCT hours.day)			 			AS `day`,
+							GROUP_CONCAT(DISTINCT hours.day)			 			AS `days`,
 							hours.month			 			AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
@@ -492,7 +492,7 @@ trait sum
 					$query =
 					"
 						SELECT
-							GROUP_CONCAT(DISTINCT hours.shamsi_day)			 			AS `day`,
+							GROUP_CONCAT(DISTINCT hours.shamsi_day)			 			AS `days`,
 							hours.shamsi_month			 			AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
@@ -531,7 +531,7 @@ trait sum
 					$query =
 					"
 						SELECT
-							GROUP_CONCAT(DISTINCT hours.day) 			AS `day`,
+							GROUP_CONCAT(DISTINCT hours.day) 			AS `days`,
 							hours.month 			AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,

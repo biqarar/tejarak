@@ -20,6 +20,7 @@ trait generate_message
 		// self::$my_name = trim("*". self::$my_name. "*", "*");
 
 		$msg = null;
+		$msg_admin = null;
 		switch ($_type)
 		{
 			case 'enter':
@@ -84,7 +85,7 @@ trait generate_message
 				$presence = \lib\db\hours::peresence(self::$my_team_id);
 				if(!empty($presence) && is_array($presence))
 				{
-					$msg_admin = '';
+
 					$msg .= "#". T_('Report'). " \n";
 					$msg .= self::$my_team_name_hashtag . " ";
 

@@ -213,6 +213,11 @@ class hours
 			$_args['plus'] = null;
 		}
 
+		if(isset($_args['userteam_details']['displayname']))
+		{
+			\lib\storage::set_enter_exit_name($_args['userteam_details']['displayname']);
+		}
+
 		$insert                      = [];
 		$insert['plus']              = $_args['plus'];
 		$insert['user_id']           = $_args['user_id'];
@@ -287,6 +292,11 @@ class hours
 		else
 		{
 			$_args['minus'] = null;
+		}
+
+		if(isset($_args['userteam_details']['displayname']))
+		{
+			\lib\storage::set_enter_exit_name($_args['userteam_details']['displayname']);
 		}
 
 		$update = [];

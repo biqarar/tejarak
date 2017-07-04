@@ -56,6 +56,11 @@ class telegram
 			"telegram-id: $_args[telegram_id]",
 		];
 
+		if(!$_args['text'])
+		{
+			return false;
+		}
+
 		$content =
 		[
 			'text'    => $_args['text'],

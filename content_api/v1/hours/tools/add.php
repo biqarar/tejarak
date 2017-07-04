@@ -29,7 +29,7 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		debug::title(T_("Operation Faild"));
+		// debug::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
@@ -144,14 +144,22 @@ trait add
 
 		if(debug::$status)
 		{
-			debug::title(T_("Operation Complete"));
+			// debug::title();
+			$user_name = null;
+
+			if(\lib\storage::get_enter_exit_name())
+			{
+				$user_name = \lib\storage::get_enter_exit_name();
+			}
 			if($type === 'enter')
 			{
-				debug::true(T_("Hi Dear ;)"));
+				$msg_notify = T_("Dear :name;", ['name'=> $user_name])."<br />". T_('Your enter was registered.').' '. T_("Have a good time.");
+				debug::true($msg_notify);
 			}
 			else
 			{
-				debug::true(T_("ByeBye :("));
+				$msg_notify = T_("Bye Bye :name ;)", ['name'=> $user_name]);
+				debug::true($msg_notify);
 			}
 		}
 	}

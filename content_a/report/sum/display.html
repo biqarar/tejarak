@@ -22,22 +22,59 @@
 	</div>
 </form>
 
+
+
+
+
+
 <div class="dt">
 	<div class="f th">
-		{%for x,y in sum_report[0]%}
-			<div class="c">{{x}}</div>
+		{%for field,val in sum_report[0]%}
+			{% if field == 'mobile' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'count' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'year' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'month' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'day' %}<div class="c">{%trans field %}</div>{%endif%}
+			<!-- {% if field == 'days' %}<div class="c">{%trans field %}</div>{%endif%} -->
+			{% if field == 'start' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'end' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'diff' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'minus' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'plus' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'type' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'accepted' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'total' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'displayname' %}<div class="c">{%trans field %}</div>{%endif%}
+			{% if field == 'name' %}<div class="c">{%trans field %}</div>{%endif%}
 		{%endfor%}
 	</div>
 	{%for key, value in sum_report%}
 	<div class="f">
 		{%for k,v in value%}
-			<div class="c">{{v}}</div>
+			{% if k == 'mobile' %}<div class="c">{{v|fitNumber}}</div>{%endif%}
+			{% if k == 'count' %}<div class="c">{{v|fitNumber}}</div>{%endif%}
+			{% if k == 'year' %}<div class="c">{{v|fitNumber}}</div>{%endif%}
+			{% if k == 'month' %}<div class="c">{{v|fitNumber}}</div>{%endif%}
+			{% if k == 'day' %}<div class="c">{{v|fitNumber}}</div>{%endif%}
+			<!-- {% if k == 'days' %}<div class="c">{{v}}</div>{%endif%} -->
+			{% if k == 'start' %}<div class="c">{{v|fitNumber}}</div>{%endif%}
+			{% if k == 'end' %}<div class="c">{{v|fitNumber}}</div>{%endif%}
+			{% if k == 'diff' %}<div class="c">{{v|humantime|fitNumber}}</div>{%endif%}
+			{% if k == 'minus' %}<div class="c">{{v|humantime|fitNumber}}</div>{%endif%}
+			{% if k == 'plus' %}<div class="c">{{v|humantime|fitNumber}}</div>{%endif%}
+			{% if k == 'type' %}<div class="c">{{v}}</div>{%endif%}
+			{% if k == 'accepted' %}<div class="c">{{v|humantime|fitNumber}}</div>{%endif%}
+			{% if k == 'total' %}<div class="c">{{v|humantime|fitNumber}}</div>{%endif%}
+			{% if k == 'displayname' %}<div class="c">{{v}}</div>{%endif%}
+			{% if k == 'name' %}<div class="c">{{v}}</div>{%endif%}
 		{%endfor%}
 	</div>
 	{%endfor%}
 </div>
+
 <div class="pagination-container">
 	{%include display.pagination%}
 </div>
+
 {%endblock%}
 
