@@ -11,8 +11,8 @@
        <div class="c12">
         <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{gateway.name}}" required autofocus maxlength='30' minlength="3" pattern=".{3,30}" title='{%trans "Enter a valid name from 3 to 30 character"%}'>
        </div>
-       <div class="f g1">
-       <div class="cauto s0 lbl"><label for="username">{%trans "Username"%}</label></div>
+       <div class="f g1 ltr">
+       <div class="cauto s0 lbl ltr"><label for="username" class="ltr">{{current_team.short_name}}-</label></div>
        <div class="c">
          <input type="text" name="username" id="username" placeholder='{%trans "username"%} *'  required value="{{gateway.username}}">
        </div>
