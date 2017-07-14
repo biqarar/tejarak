@@ -73,23 +73,49 @@ trait config
 		if(empty(self::$my_admins_telegram_id))
 		{
 			self::$my_admins_id = array_column(self::$my_admins, 'user_id');
+			$chat_id = null;
 			if(!empty(self::$my_admins_id))
 			{
 				self::$my_admins_id = implode(',', self::$my_admins_id);
 				$ids = self::$my_admins_id;
-				$chat_id = "SELECT users.user_chat_id AS `chat_id` FROM users WHERE users.id IN($ids) ";
-				$chat_id = \lib\db::get($chat_id, 'chat_id');
+				$chat_id = "SELECT users.id AS `id`, users.user_chat_id AS `chat_id` FROM users WHERE users.id IN($ids) ";
+				$chat_id = \lib\db::get($chat_id, ['id', 'chat_id']);
+
 				if(!empty($chat_id))
 				{
 					self::$my_admins_telegram_id = $chat_id;
 				}
 			}
+
+			$admins_access_detail = [];
+			foreach (self::$my_admins as $key => $value)
+			{
+				if(isset($value['user_id']))
+				{
+					if(array_key_exists('reportdaily', $value))
+					{
+						$admins_access_detail[$value['user_id']]['reportdaily'] = $value['reportdaily'];
+					}
+
+					if(array_key_exists('reportenterexit', $value))
+					{
+						$admins_access_detail[$value['user_id']]['reportenterexit'] = $value['reportenterexit'];
+					}
+
+					if(array_key_exists($value['user_id'], $chat_id))
+					{
+						$admins_access_detail[$value['user_id']]['chat_id'] = $chat_id[$value['user_id']];
+					}
+				}
+			}
+
+			self::$admins_access_detail = $admins_access_detail;
 		}
 
 		self::$my_admins_telegram_id = array_filter(self::$my_admins_telegram_id);
 		self::$my_admins_telegram_id = array_unique(self::$my_admins_telegram_id);
 
-		if(empty(self::$my_admins_telegram_id))
+		if(empty(self::$admins_access_detail))
 		{
 			self::$check_is_true = false;
 			return false;

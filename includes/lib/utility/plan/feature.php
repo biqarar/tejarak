@@ -22,6 +22,8 @@ trait feature
 	public static $my_team_detail        = [];
 	public static $my_team_name          = null;
 	public static $my_team_name_hashtag  = null;
+	public static $admins_access_detail  = [];
+
 	/**
 	 * check some date
 	 * when this var is false
@@ -62,9 +64,12 @@ trait feature
 						return false;
 					}
 
-					foreach (self::$my_admins_telegram_id as $key => $chat_id)
+					foreach (self::$admins_access_detail as $key => $value)
 					{
-						telegram::sendMessage($chat_id, self::generate_telegram_message('enter'), ['sort' => 2]);
+						if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
+						{
+							telegram::sendMessage($value['chat_id'], self::generate_telegram_message('enter'), ['sort' => 2]);
+						}
 					}
 				}
 
@@ -80,10 +85,13 @@ trait feature
 					{
 						telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'), ['sort' => 4]);
 
-						foreach (self::$my_admins_telegram_id as $key => $chat_id)
+						foreach (self::$admins_access_detail as $key => $value)
 						{
-							telegram::sendMessage($chat_id, self::generate_telegram_message('date_now'), ['sort' => 1]);
-							telegram::sendMessage($chat_id, self::generate_telegram_message('first_enter'), ['sort' => 3]);
+							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
+							{
+								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('date_now'), ['sort' => 1]);
+								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('first_enter'), ['sort' => 3]);
+							}
 						}
 					}
 				}
@@ -107,9 +115,12 @@ trait feature
 						return false;
 					}
 
-					foreach (self::$my_admins_telegram_id as $key => $chat_id)
+					foreach (self::$admins_access_detail as $key => $value)
 					{
-						telegram::sendMessage($chat_id, self::generate_telegram_message('exit'), ['sort' => 1]);
+						if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
+						{
+							telegram::sendMessage($value['chat_id'], self::generate_telegram_message('exit'), ['sort' => 1]);
+						}
 					}
 				}
 
@@ -124,9 +135,12 @@ trait feature
 					{
 						telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('report_end_day'), ['sort' => 3]);
 
-						foreach (self::$my_admins_telegram_id as $key => $chat_id)
+						foreach (self::$admins_access_detail as $key => $value)
 						{
-							telegram::sendMessage($chat_id, self::generate_telegram_message('report_end_day_admin'), ['sort' => 2]);
+							if(isset($value['chat_id']) && isset($value['reportdaily']) && $value['reportdaily'])
+							{
+								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('report_end_day_admin'), ['sort' => 2]);
+							}
 						}
 					}
 				}

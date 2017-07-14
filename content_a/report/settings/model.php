@@ -62,6 +62,26 @@ class model extends \content_a\main\model
 		}
 
 		$update_user_teams = [];
+		$args              = [];
+		$args['id']        = \lib\router::get_url(0);
+		$admins            = \lib\db\userteams::get_admins($args);
+		$admins = array_map(function($_a)
+		{
+			if(isset($_a['id']))
+			{
+				$_a['id'] = \lib\utility\shortURL::decode($_a['id']);
+			}
+			return $_a;
+		}, $admins);
+
+		foreach ($admins as $key => $value)
+		{
+			if(isset($value['id']))
+			{
+				$update_user_teams[$value['id']]['reportdaily']     = 0;
+				$update_user_teams[$value['id']]['reportenterexit'] = 0;
+			}
+		}
 
 		foreach (utility::post() as $key => $value)
 		{
@@ -70,11 +90,6 @@ class model extends \content_a\main\model
 				$userteam_id = \lib\utility\shortURL::decode($split[2]);
 				if($userteam_id)
 				{
-					if(!isset($update_user_teams[$userteam_id]))
-					{
-						$update_user_teams[$userteam_id]['reportdaily']       = 0;
-						$update_user_teams[$userteam_id]['reportenterexit']   = 0;
-					}
 					$update_user_teams[$userteam_id]['report'. $split[1]] = 1;
 				}
 			}
