@@ -469,6 +469,15 @@ trait add
 		$args['rule']          = $rule;
 		$args['visibility']    = $visibility;
 
+		// in insert new admin of team this admin can see the reports
+		// to cancel this optino go to tejarak report settings to cancel
+		if($rule === 'admin' && $_args['method'] === 'post')
+		{
+			$args['reportdaily']     = 1;
+			$args['reportenterexit'] = 1;
+		}
+
+		// insert new user team
 		if($_args['method'] === 'post')
 		{
 			\lib\db\userteams::insert($args);

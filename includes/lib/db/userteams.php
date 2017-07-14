@@ -6,6 +6,81 @@ class userteams
 {
 
 	/**
+	 * Gets the admins.
+	 *
+	 * @param      <type>   $_args  The arguments
+	 *
+	 * @return     boolean  The admins.
+	 */
+	public static function get_admins($_args)
+	{
+		if(!isset($_args['id']))
+		{
+			return false;
+		}
+		$team_id = \lib\utility\shortURL::decode($_args['id']);
+
+		if(!$team_id || !is_numeric($team_id))
+		{
+			return false;
+		}
+		$query =
+		"
+			SELECT
+				displayname,
+				id,
+				reportdaily AS `daily`,
+				reportenterexit AS `enterexit`
+			FROM
+				userteams
+			WHERE
+				team_id = $team_id AND
+				rule    = 'admin'
+		";
+		$result = \lib\db::get($query);
+		if(is_array($result))
+		{
+			// encode id of userteam
+			$result = array_map(
+			function($_a)
+			{
+				if(isset($_a['id']))
+				{
+					$_a['id'] = \lib\utility\shortURL::encode($_a['id']);
+				}
+				if(array_key_exists('daily', $_a))
+				{
+					if($_a['daily'])
+					{
+						$_a['daily'] = true;
+					}
+					else
+					{
+						$_a['daily'] = false;
+					}
+				}
+
+				if(array_key_exists('enterexit', $_a))
+				{
+					if($_a['enterexit'])
+					{
+						$_a['enterexit'] = true;
+					}
+					else
+					{
+						$_a['enterexit'] = false;
+					}
+				}
+				return $_a;
+
+			}, $result);
+		}
+
+		return $result;
+	}
+
+
+	/**
 	 * get total of userteam
 	 *
 	 * @return     <type>  ( description_of_the_return_value )

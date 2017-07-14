@@ -38,6 +38,7 @@ class controller extends \content_a\main\controller
 							case 'daily':
 							case 'u':
 							case 'sum':
+							case 'settings':
 								\lib\router::set_controller("content_a\\report\\$split[2]\\controller");
 								return;
 								break;

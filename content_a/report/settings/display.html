@@ -1,0 +1,58 @@
+{%extends display.adminTeam%}
+
+{%block contentCenter%}
+  <div class='middle' id="addMember">
+   <div class="dbox">
+    <h2>{{page.desc}}</h2>
+
+    <form method="post" class="df" enctype="multipart/form-data">
+
+
+     <div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="reportHeader">{%trans "Report Header"%}</label></div>
+       <div class="c">
+         <input type="text" name="reportHeader" id="reportHeader" placeholder='{%trans "Report Header"%}' value="{{reportHeader}}" maxlength='30'>
+       </div>
+      </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="reportFooter">{%trans "Report Footer"%}</label></div>
+       <div class="c">
+         <input type="text" name="reportFooter" id="reportFooter" placeholder='{%trans "Report Footer"%}' value="{{reportFooter}}" maxlength='50'>
+       </div>
+      </div>
+
+
+      <div  class="g1 check1">
+       <div class="f">
+       {%for key, value in admins%}
+
+       <div class="cauto s0 lbl"><label>{{value.displayname}}</label></div>
+        <div class="c4 s6">
+         <input type="checkbox" name="daily_{{value.id}}" id="daily_{{value.id}}"  {% if value.daily %} checked {% endif %}>
+         <label for="daily_{{value.id}}">{%trans "Report end day"%}</label>
+        </div>
+        <div class="c4 s6">
+         <input type="checkbox" name="enterexit_{{value.id}}" id="enterexit_{{value.id}}" {% if value.enterexit %} checked {% endif %}>
+         <label for="enterexit_{{value.id}}">{%trans "Enter & Exit report"%}</label>
+        </div>
+        {%endfor%}
+       </div>
+      </div>
+
+
+
+
+     <div class="f g1">
+
+      <div class="c3 os">
+        <input type="submit" value='{%trans "Apply"%}' class="b1">
+      </div>
+     </div>
+
+    </form>
+   </div>
+  </div>
+{%endblock%}
