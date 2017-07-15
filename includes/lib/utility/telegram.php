@@ -4,31 +4,20 @@ namespace lib\utility;
 class telegram
 {
 
-// curl -X POST \
-//   http://178.62.218.8:8081/get_request_hook \
-//   -H 'app-name: tejarak' \
-//   -H 'content-type: application/json' \
-//   -H 'request-id: 0' \
-//   -H 'request-method: sendMessage' \
-//   -H 'telegram-id: 33263188' \
-//   -d '{
-//     "text" : "hi",
-//     "chat_id" : 33263188
-//   }'
 	public static $SORT = [];
 
-	public static function tg_curl($_args = [])
+	/**
+	 * send array messages
+	 *
+	 * @param      array  $_args  The arguments
+	 */
+	public static function tg_curl_group($_args = [])
 	{
 		$default_args =
 		[
-			'url'            => 'http://178.62.218.8:8081',
-			'app_name'       => 'tejarak',
-			'request_method' => 'sendMessage',
-			'telegram_id'    => null,
-			'request_id'     => 0,
-			'text'           => null,
-			'file'           => null,
-			'telegram_group' => null,
+			'url'      => 'http://178.62.218.8:8081',
+			'app_name' => 'tejarak',
+			'content'  => null,
 		];
 
 		if(is_array($_args))
@@ -40,20 +29,65 @@ class telegram
 			$_args = $default_args;
 		}
 
-		$url = "$_args[url]/$_args[app_name]/$_args[request_method]";
-
-		if(!$_args['url'] || !$_args['request_method'] || !$_args['telegram_id'] || !$_args['app_name'])
+		if(!$_args['url'] || !$_args['content'] || !$_args['app_name'])
 		{
 			return false;
 		}
+
+		$url = "$_args[url]/$_args[app_name]/sendArray";
+
+		$headers =
+		[
+			"content-type: application/json",
+		];
+
+		$content = json_encode($_args['content'], JSON_UNESCAPED_UNICODE);
+
+		self::curlExec($url, $headers, $content);
+	}
+
+
+	/**
+	 * tg curl
+	 *
+	 * @param      array    $_args  The arguments
+	 *
+	 * @return     boolean  ( description_of_the_return_value )
+	 */
+	public static function tg_curl($_args = [])
+	{
+		$default_args =
+		[
+			'url'      => 'http://178.62.218.8:8081',
+			'app_name' => 'tejarak',
+			'method'   => 'sendMessage',
+			'text'     => null,
+			'chat_id'  => null,
+		];
+
+		if(is_array($_args))
+		{
+			$_args = array_merge($default_args, $_args);
+		}
+		else
+		{
+			$_args = $default_args;
+		}
+
+		if(!$_args['url'] || !$_args['method'] || !$_args['chat_id'] || !$_args['app_name'])
+		{
+			return false;
+		}
+
+		$url = "$_args[url]/$_args[app_name]/$_args[method]";
 
 		$headers =
 		[
 			// "app-name: $_args[app_name]",
 			"content-type: application/json",
 			// "request-id: $_args[request_id]",
-			// "request-method: $_args[request_method]",
-			// "telegram-id: $_args[telegram_id]",
+			// "request-method: $_args[method]",
+			// "telegram-id: $_args[chat_id]",
 		];
 
 		if(!$_args['text'])
@@ -64,7 +98,7 @@ class telegram
 		$content =
 		[
 			'text'    => $_args['text'],
-			'chat_id' => $_args['telegram_group'],
+			'chat_id' => $_args['chat_id'],
 		];
 
 		if(!$content['chat_id'])
@@ -74,17 +108,29 @@ class telegram
 
 		$content = json_encode($content, JSON_UNESCAPED_UNICODE);
 
+		self::curlExec($url, $headers, $content);
+	}
+
+
+	/**
+	 * curl execut
+	 *
+	 * @param      <type>  $_url      The url
+	 * @param      <type>  $_header   The header
+	 * @param      <type>  $_content  The content
+	 */
+	private static function curlExec($_url, $_headers, $_content, $_option = [])
+	{
 		if(function_exists('curl_init'))
 		{
 			$handle   = curl_init();
-			curl_setopt($handle, CURLOPT_URL, $url);
-			curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($handle, CURLOPT_URL, $_url);
+			curl_setopt($handle, CURLOPT_HTTPHEADER, $_headers);
 			curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
 			curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($handle, CURLOPT_POST, true);
-			curl_setopt($handle, CURLOPT_POSTFIELDS, $content);
-			// add timer to ajax request
+			curl_setopt($handle, CURLOPT_POSTFIELDS, $_content);
 			curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);
 			curl_setopt($handle, CURLOPT_TIMEOUT, 20  );
 
@@ -93,7 +139,7 @@ class telegram
 
 			curl_close ($handle);
 
-			\lib\db\logs::set("telegram:curl:$_args[request_method]", null, ['meta' => ['response' => $response, 'http_code' => $mycode]]);
+			\lib\db\logs::set("telegram:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode]]);
 		}
 		else
 		{
@@ -118,6 +164,11 @@ class telegram
 			'sort' => null,
 		];
 
+		if(!$_chat_id)
+		{
+			return false;
+		}
+
 		if(is_array($_option))
 		{
 			$_option = array_merge($default_option, $_option);
@@ -125,10 +176,9 @@ class telegram
 
 		$args =
 		[
-			'request_method' => 'sendMessage',
-			'telegram_id'    => $_chat_id,
-			'telegram_group' => $_chat_id,
-			'text'           => $_text,
+			'method'  => 'sendMessage',
+			'chat_id' => $_chat_id,
+			'text'    => $_text,
 		];
 
 		if($_option['sort'])
@@ -153,6 +203,11 @@ class telegram
 	 */
 	public static function sendMessageGroup($_chat_id, $_text, $_option = [])
 	{
+		if(!$_chat_id)
+		{
+			return false;
+		}
+
 		$default_option =
 		[
 			'sort' => null,
@@ -165,9 +220,9 @@ class telegram
 
 		$args =
 		[
-			'request_method' => 'sendMessage',
-			'telegram_group' => $_chat_id,
-			'text'           => $_text,
+			'method'  => 'sendMessage',
+			'chat_id' => $_chat_id,
+			'text'    => $_text,
 		];
 
 		if($_option['sort'])
@@ -191,14 +246,18 @@ class telegram
 		{
 			$sort = array_column(self::$SORT, 'sort');
 			array_multisort($sort,SORT_ASC, self::$SORT);
+			self::$SORT = array_filter(self::$SORT);
+			$curl_group = array_column(self::$SORT, 'curl');
 
-			foreach (self::$SORT as $key => $value)
-			{
-				if(isset($value['curl']))
-				{
-					self::tg_curl($value['curl']);
-				}
-			}
+			self::tg_curl_group(['content' => $curl_group]);
+
+			// foreach (self::$SORT as $key => $value)
+			// {
+			// 	if(isset($value['curl']))
+			// 	{
+			// 		self::tg_curl($value['curl']);
+			// 	}
+			// }
 		}
 	}
 
