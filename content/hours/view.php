@@ -28,6 +28,21 @@ class view extends \mvc\view
 			$current_team['logo'] = $this->url->static. 'images/logo.png';
 		}
 
+		if(isset($current_team['logo']) && $current_team['logo'])
+		{
+			if(isset($current_team['id']))
+			{
+				$team_id = \lib\utility\shortURL::decode($current_team['id']);
+				if($team_id)
+				{
+					if(!\lib\utility\plan::access('show:logo', $team_id))
+					{
+						$current_team['logo'] = $this->url->static. 'images/logo.png';
+					}
+				}
+			}
+		}
+
 		$this->data->current_team = $current_team;
 
 		if(isset($current_team['name']))
