@@ -21,7 +21,7 @@ class telegram
 	{
 		$default_args =
 		[
-			'url'            => 'http://178.62.218.8:8081/get_request_hook',
+			'url'            => 'http://178.62.218.8:8081',
 			'app_name'       => 'tejarak',
 			'request_method' => 'sendMessage',
 			'telegram_id'    => null,
@@ -40,7 +40,7 @@ class telegram
 			$_args = $default_args;
 		}
 
-		$url = $_args['url'];
+		$url = "$_args[url]/$_args[app_name]/$_args[request_method]";
 
 		if(!$_args['url'] || !$_args['request_method'] || !$_args['telegram_id'] || !$_args['app_name'])
 		{
@@ -49,11 +49,11 @@ class telegram
 
 		$headers =
 		[
-			"app-name: $_args[app_name]",
+			// "app-name: $_args[app_name]",
 			"content-type: application/json",
-			"request-id: $_args[request_id]",
-			"request-method: $_args[request_method]",
-			"telegram-id: $_args[telegram_id]",
+			// "request-id: $_args[request_id]",
+			// "request-method: $_args[request_method]",
+			// "telegram-id: $_args[telegram_id]",
 		];
 
 		if(!$_args['text'])
@@ -66,6 +66,11 @@ class telegram
 			'text'    => $_args['text'],
 			'chat_id' => $_args['telegram_group'],
 		];
+
+		if(!$content['chat_id'])
+		{
+			return false;
+		}
 
 		$content = json_encode($content, JSON_UNESCAPED_UNICODE);
 
@@ -161,7 +166,6 @@ class telegram
 		$args =
 		[
 			'request_method' => 'sendMessage',
-			'telegram_id'    => 33263188,
 			'telegram_group' => $_chat_id,
 			'text'           => $_text,
 		];
@@ -174,8 +178,8 @@ class telegram
 		{
 			return self::tg_curl($args);
 		}
-
 	}
+
 
 	/**
 	* send message as sort
