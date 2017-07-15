@@ -46,6 +46,17 @@ trait config
 		self::$my_team_id = self::$_args['args']['userteam_details']['team_id'];
 
 		self::$my_team_detail = \lib\db\teams::get_by_id(self::$my_team_id);
+
+		if(isset(self::$my_team_detail['reportheader']))
+		{
+			self::$my_team_report_header = self::$my_team_detail['reportheader'];
+		}
+
+		if(isset(self::$my_team_detail['reportfooter']))
+		{
+			self::$my_team_report_footer = self::$my_team_detail['reportfooter'];
+		}
+
 		if(isset(self::$my_team_detail['name']))
 		{
 			self::$my_team_name = self::$my_team_detail['name'];

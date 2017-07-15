@@ -23,6 +23,8 @@ trait feature
 	public static $my_team_name          = null;
 	public static $my_team_name_hashtag  = null;
 	public static $admins_access_detail  = [];
+	public static $my_team_report_header = null;
+	public static $my_team_report_footer = null;
 
 	/**
 	 * check some date

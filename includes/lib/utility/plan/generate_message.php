@@ -23,6 +23,8 @@ trait generate_message
 		$msg_admin = null;
 		switch ($_type)
 		{
+
+
 			case 'enter':
 				$msg = "✅ ". self::$my_name;
 				$msg .= " ". self::$my_team_name_hashtag;
@@ -153,7 +155,9 @@ trait generate_message
 			default:
 				break;
 		}
-		// $msg = '<html>'. $msg. '</html>';
+
+		$msg = self::$my_team_report_header. "\n".  $msg. "\n". self::$my_team_report_footer;
+
 		return $msg;
 	}
 }
