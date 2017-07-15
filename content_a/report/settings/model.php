@@ -37,6 +37,13 @@ class model extends \content_a\main\model
 			return false;
 		}
 
+		if(utility::post('deleteGroup'))
+		{
+			\lib\db\teams::update(['telegram_id' => null], $team_id);
+			debug::warn(T_("The telegram group was removed"));
+			return;
+		}
+
 		$update_team = [];
 		if(utility::post('reportHeader') && mb_strlen(utility::post('reportHeader')) > 255)
 		{
@@ -55,11 +62,6 @@ class model extends \content_a\main\model
 		$update_team['reportheader'] = utility::post('reportHeader');
 
 		$update_team['reportfooter'] = utility::post('reportFooter');
-
-		if(!empty($update_team))
-		{
-			\lib\db\teams::update($update_team, $team_id);
-		}
 
 		$update_user_teams = [];
 		$args              = [];
@@ -83,6 +85,7 @@ class model extends \content_a\main\model
 			}
 		}
 
+		$update_meta = [];
 		foreach (utility::post() as $key => $value)
 		{
 			if(preg_match("/^(daily|enterexit)\_(.*)$/", $key, $split))
@@ -93,6 +96,17 @@ class model extends \content_a\main\model
 					$update_user_teams[$userteam_id]['report'. $split[1]] = 1;
 				}
 			}
+
+			if(preg_match("/^send(.*)$/", $key, $split))
+			{
+				$update_meta[$split[1]] = $value;
+			}
+		}
+
+		if(!empty($update_team))
+		{
+			$update_team['meta'] = json_encode(['report_settings' => $update_meta], JSON_UNESCAPED_UNICODE);
+			\lib\db\teams::update($update_team, $team_id);
 		}
 
 		if(!empty($update_user_teams))

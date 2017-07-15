@@ -39,6 +39,24 @@ class view extends \content_a\report\view
 			$this->data->reportFooter = $team_details['reportfooter'];
 		}
 
+		$report_settings = [];
+
+		if(isset($team_details['meta']) && is_string($team_details['meta']) && substr($team_details['meta'], 0,1) === '{')
+		{
+			$meta = json_decode($team_details['meta'], true);
+			if(isset($meta['report_settings']))
+			{
+				$report_settings = $meta['report_settings'];
+			}
+		}
+
+		if(isset($team_details['telegram_id']) && $team_details['telegram_id'])
+		{
+			$this->data->telegram_id = $team_details['telegram_id'];
+		}
+
+		$this->data->report_settings = $report_settings;
+
 		if(isset($this->controller->pagnation))
 		{
 			$this->data->pagnation = $this->controller->pagnation_get();

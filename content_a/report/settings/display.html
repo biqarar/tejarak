@@ -8,8 +8,9 @@
     <form method="post" class="df" enctype="multipart/form-data">
 
 
-     <div>
 
+
+     <h4>{%trans "Header & Footer"%}</h4>
       <div class="f g1">
        <div class="cauto s0 lbl"><label for="reportHeader">{%trans "Report Header"%}</label></div>
        <div class="c">
@@ -25,6 +26,7 @@
       </div>
 
 
+      <h4>{%trans "Send Admins"%}</h4>
       <div  class="g1 check1">
        <div class="f">
        {%for key, value in admins%}
@@ -43,10 +45,67 @@
       </div>
 
 
+      <h4>{%trans "Group Setting"%}</h4>
+      {%if telegram_id%}
 
+        <div class="f g1">
+         <div class="cauto s0 lbl"><label for="sendTelegramGroup">{%trans "Telegram Group"%}</label></div>
+         <div class="c">
+           <input type="checkbox" name="sendTelegramGroup" id="sendTelegramGroup" {% if report_settings.TelegramGroup%} checked {%endif%}>
+
+         </div>
+         <div class="c">
+           <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"deleteGroup": true}' class="bn c3">{%trans "Delete Group"%}</a>
+         </div>
+        </div>
+
+        <div data-response='sendTelegramGroup' {% if not report_settings.TelegramGroup%} data-response-hide {%endif%}>
+          <div class="f g1">
+           <div class="cauto s0 lbl"><label for="sendStartTimeFirst">{%trans "Send date at firs of day"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendStartTimeFirst" id="sendStartTimeFirst" {% if report_settings.StartTimeFirst%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1">
+           <div class="cauto s0 lbl"><label for="sendFirsMemberName">{%trans "Send first memeber name"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendFirsMemberName" id="sendFirsMemberName" {% if report_settings.FirsMemberName%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1">
+           <div class="cauto s0 lbl"><label for="sendReportDaily">{%trans "Send report daily at end of day"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendReportDaily" id="sendReportDaily" {% if report_settings.ReportDaily%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1" data-response='sendReportDaily' {% if not report_settings.ReportDaily%} data-response-hide {%endif%}>
+           <div class="cauto s0 lbl"><label for="sendReportDailyTime">{%trans "Send report daily whit time at end of day"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendReportDailyTime" id="sendReportDailyTime" {% if report_settings.ReportDailyTime%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1">
+           <div class="cauto s0 lbl"><label for="sendReportCount">{%trans "Send report daily count"%}</label></div>
+           <div class="c">
+             <input type="number" max="50" min="-1" name="sendReportCount" id="sendReportCount" {% if report_settings.ReportCount%} value="{{report_settings.ReportCount}}" {%else%} value='{%trans "All"%}' {%endif%}>
+           </div>
+          </div>
+        </div>
+
+      {%else%}
+
+        <div class="f g1">
+          <p>{%trans "No Group was set"%}</p>
+          <p>{%trans "You can set telegram group from "%}<a href="https://t.me/tejarakBot" target="_blank">@tejarakBot</a></p>
+        </div>
+
+      {%endif%}
 
      <div class="f g1">
-
       <div class="c3 os">
         <input type="submit" value='{%trans "Apply"%}' class="b1">
       </div>
