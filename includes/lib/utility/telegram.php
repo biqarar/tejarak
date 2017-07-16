@@ -139,7 +139,7 @@ class telegram
 
 			curl_close ($handle);
 
-			\lib\db\logs::set("telegram:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode]]);
+			\lib\db\logs::set("telegram:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode, 'args' => func_get_args()]]);
 		}
 		else
 		{
@@ -176,9 +176,10 @@ class telegram
 
 		$args =
 		[
-			'method'  => 'sendMessage',
-			'chat_id' => $_chat_id,
-			'text'    => $_text,
+			'parse_mode' => 'html',
+			'method'     => 'sendMessage',
+			'chat_id'    => $_chat_id,
+			'text'       => $_text,
 		];
 
 		if($_option['sort'])
@@ -220,9 +221,10 @@ class telegram
 
 		$args =
 		[
-			'method'  => 'sendMessage',
-			'chat_id' => $_chat_id,
-			'text'    => $_text,
+			'parse_mode' => 'html',
+			'method'     => 'sendMessage',
+			'chat_id'    => $_chat_id,
+			'text'       => $_text,
 		];
 
 		if($_option['sort'])

@@ -17,6 +17,7 @@ trait generate_message
 	 */
 	public static function generate_telegram_message($_type = null)
 	{
+		$current_language = \lib\define::get_language();
 		// self::$my_name = trim("*". self::$my_name. "*", "*");
 
 		$msg = null;
@@ -30,7 +31,7 @@ trait generate_message
 				$msg .= " ". self::$my_team_name_hashtag;
 				if(self::$my_plus)
 				{
-					$msg .= "\n➕ ". human::number(self::$my_plus, \lib\define::get_language());
+					$msg .= "\n➕ ". human::number(self::$my_plus, $current_language);
 				}
 				break;
 
@@ -47,7 +48,7 @@ trait generate_message
 					$pure = 0;
 				}
 
-				$pure_human = human::time($pure, 'text', \lib\define::get_language());
+				$pure_human = human::time($pure, 'text', $current_language);
 
 				$time_start = \lib\utility::date('H:i', $start , 'current');
 
@@ -55,11 +56,11 @@ trait generate_message
 
 				if(self::$my_plus || self::$my_minus)
 				{
-					$msg        .= "\n🚩 ". human::number($total, \lib\define::get_language());
+					$msg        .= "\n🚩 ". human::number($total, $current_language);
 				}
 				if(self::$my_minus)
 				{
-					$msg .= "\n➖ ". human::number(self::$my_minus, \lib\define::get_language());
+					$msg .= "\n➖ ". human::number(self::$my_minus, $current_language);
 				}
 				$msg        .= "\n🕗 ". $pure_human;
 				break;
@@ -75,7 +76,18 @@ trait generate_message
 				$msg = \lib\utility::date('l j F Y', time() , 'current');
 
 				// $msg .= "\n". "🙋‍♂ ". self::$my_name;
-				$msg .= "\n". "💪 ". self::$my_name;
+				$msg .= "\n";
+				// check group settings to send first member name
+				if(
+					isset(self::$my_report_settings['telegram_group']) &&
+					isset(self::$my_report_settings['first_member_name']) &&
+					self::$my_report_settings['telegram_group'] &&
+					self::$my_report_settings['first_member_name']
+				  )
+				{
+					$msg .= "💪 ". self::$my_name;
+				}
+
 				$msg .= " ". self::$my_team_name_hashtag;
 
 				$msg .= "\n"."🌖 🌱 👨‍💻 🥇";
@@ -87,62 +99,123 @@ trait generate_message
 				$presence = \lib\db\hours::peresence(self::$my_team_id);
 				if(!empty($presence) && is_array($presence))
 				{
+					$show_time  = false;
+					$show_gold  = false;
+					$show_limit = -1;
+					if(isset(self::$my_report_settings['telegram_group']) && self::$my_report_settings['telegram_group'])
+					{
+						if(isset(self::$my_report_settings['report_daily_time']) && self::$my_report_settings['report_daily_time'])
+						{
+							$show_time = true;
+						}
+
+						if(isset(self::$my_report_settings['report_daily_gold']) && self::$my_report_settings['report_daily_gold'])
+						{
+							$show_gold = true;
+						}
+
+
+						if(isset(self::$my_report_settings['report_count']))
+						{
+							$show_limit = intval(self::$my_report_settings['report_count']);
+						}
+					}
 
 					$msg .= "#". T_('Report'). " \n";
 					$msg .= self::$my_team_name_hashtag . " ";
 
-					// $msg  .= "#گزارش ";
 					$msg  .= \lib\utility::date("l j F Y", time(), 'current'). "\n\n";
 					$msg_admin  .= $msg;
+
 					$total_time = 0;
 					$i          = 0;
+					$count_show = 0;
+
 					foreach ($presence as $name => $accepted)
 					{
+						if($show_limit === -1)
+						{
+							// no thing
+						}
+						elseif($show_limit === 0)
+						{
+							break;
+						}
+						else
+						{
+							if($show_limit <= $count_show)
+							{
+								break;
+							}
+						}
+
+						$count_show++;
+
 						$i += 1;
 						$total_time += $accepted;
-						$accepted = human::time($accepted, 'number', 'fa');
+						$accepted = human::time($accepted, 'time', 'current');
+						$accepted = human::number($accepted, $current_language);
+						$accepted = "<code>$accepted</code>";
+
+						$accepted_group = null;
+						if($show_time)
+						{
+							$accepted_group = $accepted;
+						}
+
+						$gold         = null;
+						$gold1        = null;
+						$gold2        = null;
+						$gold3        = null;
+						$default_gold = null;
+
+						if($show_gold)
+						{
+							$gold         = "🏆 ";
+							$gold1        = "🥇";
+							$gold2        = "🥈";
+							$gold3        = "🥉";
+							$default_gold = "🏅 ";
+						}
+
 						switch ($i)
 						{
 							case 1:
-								$msg .= "🏆". " ". T_($name)."🥇";
-								$msg_admin .= "🏆". " ". T_($name)."🥇". " `". $accepted. "`";
+								$msg .= $gold. T_($name). $gold1. $accepted_group;
+								$msg_admin .= $gold. T_($name). $gold1. $accepted;
 								break;
 
 							case 2:
-								$msg .= "🏆". " ". T_($name)."🥈";
-								$msg_admin .= "🏆". " ". T_($name)."🥈". " `". $accepted. "`";
+								$msg .= $gold. T_($name). $gold2. $accepted_group;
+								$msg_admin .= $gold. T_($name). $gold2. $accepted;
 								break;
 
 							case 3:
-								$msg .= "🏆". " ". T_($name)."🥉";
-								$msg_admin .= "🏆". " ". T_($name)."🥉". " `". $accepted. "`";
+								$msg .= $gold. T_($name). $gold3. $accepted_group;
+								$msg_admin .= $gold. T_($name).$gold3. $accepted;
 								break;
 
 							default:
-								$msg .= "🏅". " ". T_($name);
-								$msg_admin .= "🏅". " ". T_($name). " `". $accepted. "`";
+								$msg .= $default_gold. T_($name). $accepted_group;
+								$msg_admin .= $default_gold. T_($name). $accepted;
 								break;
 						}
 						$msg .= "\n";
 						$msg_admin .= "\n";
 					}
-					$enterExit    = human::number(\lib\db\hours::enter(self::$my_team_id), \lib\define::get_language());
-					$countPersons = human::number(count($presence), \lib\define::get_language());
+					$enterExit    = human::number(\lib\db\hours::enter(self::$my_team_id), $current_language);
+					$countPersons = human::number(count($presence), $current_language);
 					// fill message of group
-					// $msg  .= "#سختـکوشـباشیم". "\n";
-					$msg .= "🎭". $enterExit . "  ";
-					$msg .= "👥". $countPersons. "  ";
-					$msg .= "🕰". $total_time;
+
+					$msg .= "🎭". human::number($enterExit, $current_language) . "  ";
+					$msg .= "👥". human::number($countPersons, $current_language). "  ";
+					$msg .= "🕰". human::number($total_time, $current_language);
 					// fill message of admin
-					// $msg_admin  .= "#سختـکوشـباشیم". "\n";
+
 					$msg_admin .= "🎭". $enterExit . "  ";
 					$msg_admin .= "👥". $countPersons. "  ";
-					$msg_admin .= "🕰". human::time($total_time, 'number', \lib\define::get_language());
-					// if we have less than 3person in day, dont send message
-					if(count($presence) < 3)
-					{
-						$send_report = false;
-					}
+					$msg_admin .= "🕰". human::number(human::time($total_time, 'time', 'current'), $current_language);
+
 				}
 
 				if($_type === 'report_end_day_admin')
