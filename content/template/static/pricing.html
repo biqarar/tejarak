@@ -30,24 +30,24 @@
      </div>
 
      <div class="f price">
-      <div class="c4 s4">{%trans "Price"%} {%if site.currentlang == 'fa'%}{%trans "(Toman)"%}{%endif%}</div>
+      <div class="c4 s4">{%trans "Price"%}</div>
 {%if site.currentlang == 'fa'%}
       <div class="c s2">{{0 | fitNumber}}</div>
-      <div class="c s2">{{"1,000" | fitNumber}}</div>
-      <div class="c s2">{{"10,000" | fitNumber}}</div>
-      <div class="c s2">{{"499,000" | fitNumber}}</div>
+      <div class="c s2">{{"2,000" | fitNumber}}<sup>{%trans "Toman"%}</sup><br/><small>{%trans "per member/month"%}</small></div>
+      <div class="c s2">{{"10,000" | fitNumber}}<sup>{%trans "Toman"%}</sup><br/><small>{%trans "per member/month"%}</small></div>
+      <div class="c s2">{{"499,000" | fitNumber}}<sup>{%trans "Toman"%}</sup><br/><small>{%trans "per month. fix!"%}</small></div>
 {%else%}
       <div class="c">0</div>
       <div class="c">1<sup>$</sup><br/><small>{%trans "per member/month"%}</small></div>
-      <div class="c">10<sup>$</sup><br/><small>{%trans "per member/month"%}</small></div>
-      <div class="c">249<sup>$</sup><br/><small>{%trans "per month"%} <b>fix!</b></small></div>
+      <div class="c">5<sup>$</sup><br/><small>{%trans "per member/month"%}</small></div>
+      <div class="c">250<sup>$</sup><br/><small>{%trans "per month"%} <b>fix!</b></small></div>
 {%endif%}
      </div>
 
 
      <div class="f">
       <div class="c4 s4">{%trans "Max number of team members"%}</div>
-      {{f10}} {{fu}} {{fu}} {{fu}}
+      {{fu}} {{fu}} {{fu}} {{fu}}
      </div>
 
      <div class="f">

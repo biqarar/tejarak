@@ -47,8 +47,11 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 .pricingTable{text-align:center;color:#888}
 .pricingTable .price .c{font-size:1.4em;font-weight:500;color:#333}
 .pricingTable .price:hover .c{color:#fff}
+.pricingTable .price:hover small{color:#eee}
 .ltr .pricingTable .c4, .ltr .pricingTable .c12{text-align:left}
 .rtl .pricingTable .c4, .rtl .pricingTable .c12{text-align:right;}
+.pricingTable sup{font-size:0.6em;padding:0 0.3em;}
+.pricingTable small{color:#777;font-size:0.6em;}
 body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:#ddd;}
 /* faq design*/
 .faq h3{margin:0;}
