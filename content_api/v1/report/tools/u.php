@@ -87,6 +87,9 @@ trait u
 		{
 			switch ($key)
 			{
+				case 'hour_id':
+					$temp['id'] = \lib\utility\shortURL::encode($value);
+					break;
 				case 'date':
 					$temp['date'] = strtotime($value);
 					break;

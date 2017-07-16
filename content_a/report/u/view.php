@@ -16,6 +16,7 @@ class view extends \content_a\report\view
 	{
 		$args                  = [];
 		$args['id']            = \lib\router::get_url(0);
+		$this->data->team_code = $args['id'];
 		$this->data->last_time = $this->model()->get_u_time($args);
 
 		if(isset($this->controller->pagnation))

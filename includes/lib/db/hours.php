@@ -46,6 +46,20 @@ class hours
 	}
 
 
+	/**
+	 * load one hours record details
+	 *
+	 * @param      <type>  $_id       The identifier
+	 * @param      <type>  $_user_id  The user identifier
+	 * @param      array   $_options  The options
+	 */
+	public static function access_hours_id($_id, $_user_id , $_options = [])
+	{
+		return [];
+		if($_id && is_numeric($_id))
+		var_dump(func_get_args());exit();
+	}
+
 
 	/**
 	 * get count on online users

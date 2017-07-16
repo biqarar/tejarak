@@ -101,6 +101,14 @@ class controller extends \content_a\main\controller
 			\lib\router::set_controller("content_a\\report\\controller");
 			return;
 		}
+
+		// route url like this /a/2kf/houredit
+		if(preg_match("/^([a-zA-Z0-9]+)\/houredit(|\=[a-zA-Z0-9]+)$/", $url))
+		{
+			\lib\router::set_controller("content_a\\houredit\\controller");
+			return;
+		}
+
 	}
 }
 ?>

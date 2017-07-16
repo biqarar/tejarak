@@ -8,6 +8,7 @@ trait _use
 
 	// API HOURS
 	use \content_api\v1\hours\tools\add;
+	use \content_api\v1\hours\tools\get;
 
 	// API TEAM
 	use \content_api\v1\team\tools\add;

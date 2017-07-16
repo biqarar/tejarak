@@ -1,0 +1,20 @@
+CREATE TABLE hourrequests (
+`id`					  BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+`date`					  date NULL DEFAULT NULL,
+`date_shamsi`			  varchar(50) NULL DEFAULT NULL,
+`hour_id`				  BIGINT(20) UNSIGNED NULL DEFAULT NULL,
+`start`					  datetime NULL DEFAULT NULL,
+`end`					  datetime NULL DEFAULT NULL,
+`creator`				  int(10) UNSIGNED NOT NULL,
+`changer`				  int(10) UNSIGNED NULL DEFAULT NULL,
+`status`				  enum('awaiting', 'accept', 'reject') NULL DEFAULT 'awaiting',
+`response`				  text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`desc`					  text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+`meta`					  mediumtext  CHARACTER SET utf8mb4 NULL DEFAULT NULL,
+`createdate`			  datetime DEFAULT CURRENT_TIMESTAMP,
+`date_modified`			  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`),
+CONSTRAINT `hourrequests_hour_id` FOREIGN KEY (`hour_id`) REFERENCES `hours` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `hourrequests_creator` FOREIGN KEY (`creator`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `hourrequests_changer` FOREIGN KEY (`changer`) REFERENCES `users` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

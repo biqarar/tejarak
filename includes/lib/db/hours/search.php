@@ -66,7 +66,7 @@ trait search
 		{
 			$limit         = null;
 			$public_fields =
-			" hours.*, userteams.* FROM `hours`
+			" hours.*, userteams.*, hours.id AS `hour_id` FROM `hours`
 			INNER JOIN userteams ON userteams.id = hours.userteam_id
 			";
 
