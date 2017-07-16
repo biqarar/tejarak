@@ -191,7 +191,7 @@ private function transtext()
 	echo T_("Circle");                                                                // Line 114
 
 	//--------------------------------------------content\template\static\pricing.html
-	echo T_("Plans and Pricing");                                                     // Line 3
+	echo T_("Plans and Pricing of Tejarak");                                          // Line 3
 	echo T_("Always know what you'll pay per month.");                                // Line 6
 	echo T_("Simple pricing");                                                        // Line 6
 	echo T_("only team admin");                                                       // Line 15
@@ -200,7 +200,6 @@ private function transtext()
 	echo T_("Standard");                                                              // Line 28
 	echo T_("Full");                                                                  // Line 29
 	echo T_("Price");                                                                 // Line 33
-	echo T_("(Toman)");                                                               // Line 33
 	echo T_("Toman");                                                                 // Line 38
 	echo T_("per member/month");                                                      // Line 42
 	echo T_("per month. fix!");                                                       // Line 38
