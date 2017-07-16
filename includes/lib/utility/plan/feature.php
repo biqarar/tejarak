@@ -98,11 +98,7 @@ trait feature
 					{
 						if(isset(self::$my_report_settings['telegram_group']) && self::$my_report_settings['telegram_group'])
 						{
-							if(isset(self::$my_report_settings['start_time_first']) && self::$my_report_settings['start_time_first'])
-							{
-								telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('date_now'), ['sort' => 4]);
-							}
-							telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'), ['sort' => 5]);
+							telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'), ['sort' => 4]);
 						}
 
 						foreach (self::$admins_access_detail as $key => $value)
@@ -110,14 +106,7 @@ trait feature
 							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							{
 								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('first_enter'), ['sort' => 3]);
-
-								if(isset(self::$my_report_settings['telegram_group']) && self::$my_report_settings['telegram_group'])
-								{
-									if(isset(self::$my_report_settings['start_time_first']) && self::$my_report_settings['start_time_first'])
-									{
-										telegram::sendMessage($value['chat_id'], self::generate_telegram_message('date_now'), ['sort' => 1]);
-									}
-								}
+								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('date_now'), ['sort' => 1]);
 							}
 						}
 					}

@@ -8,6 +8,8 @@ class model extends \content_a\main\model
 {
 	public function post_settings($_args)
 	{
+
+
 		$log_meta =
 		[
 			'meta' =>
@@ -85,7 +87,8 @@ class model extends \content_a\main\model
 			}
 		}
 
-		$update_meta = [];
+		$report_settings = \lib\db\teams::$default_settings;
+
 		foreach (utility::post() as $key => $value)
 		{
 			if(preg_match("/^(daily|enterexit)\_(.*)$/", $key, $split))
@@ -99,13 +102,45 @@ class model extends \content_a\main\model
 
 			if(preg_match("/^send(.*)$/", $key, $split))
 			{
-				$update_meta[$split[1]] = $value;
+				if(is_numeric($value))
+				{
+					$report_settings[$split[1]] = $value;
+				}
+				else
+				{
+					$report_settings[$split[1]] = true;
+				}
 			}
 		}
 
 		if(!empty($update_team))
 		{
-			$update_team['meta'] = json_encode(['report_settings' => $update_meta], JSON_UNESCAPED_UNICODE);
+			// get old meta and merge old meta by new meta
+			$get_old_meta = \lib\db\teams::get_by_id($team_id);
+
+			if(array_key_exists('meta', $get_old_meta))
+			{
+				if(!$get_old_meta['meta'])
+				{
+					$update_team['meta'] = json_encode(['report_settings' => $report_settings], JSON_UNESCAPED_UNICODE);
+				}
+				elseif(is_string($get_old_meta['meta']) && substr($get_old_meta['meta'], 0, 1) === '{')
+				{
+					$temp = json_decode($get_old_meta['meta'], true);
+					$temp = array_merge($temp, ['report_settings' => $report_settings]);
+					$update_team['meta'] = json_encode($temp, JSON_UNESCAPED_UNICODE);
+				}
+				elseif(is_array($get_old_meta['meta']))
+				{
+					$temp = array_merge($get_old_meta['meta'], ['report_settings' => $report_settings]);
+					$update_team['meta'] = json_encode($temp, JSON_UNESCAPED_UNICODE);
+				}
+				else
+				{
+					$update_team['meta'] = json_encode(['report_settings' => $report_settings], JSON_UNESCAPED_UNICODE);
+				}
+			}
+
 			\lib\db\teams::update($update_team, $team_id);
 		}
 

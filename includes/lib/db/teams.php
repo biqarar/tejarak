@@ -4,6 +4,28 @@ use \lib\db;
 
 class teams
 {
+	// default setttings
+	// save in temas.meta
+	public static $default_settings =
+	[
+		'telegram_group'    => false,
+		'first_member_name' => false,
+		'report_daily'      => false,
+		'report_daily_time' => false,
+		'report_daily_gold' => false,
+		'report_count'      => 0,
+	];
+
+	public static $default_settings_true =
+	[
+		'telegram_group'    => true,
+		'first_member_name' => true,
+		'report_daily'      => true,
+		'report_daily_time' => true,
+		'report_daily_gold' => true,
+		'report_count'      => -1,
+	];
+
 	/**
 	 * SAVE OFFLINE RESULT
 	 *

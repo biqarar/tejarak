@@ -60,12 +60,6 @@
         </div>
 
         <div data-response='sendtelegram_group' {% if not report_settings.telegram_group%} data-response-hide {%endif%}>
-          <div class="f g1">
-           <div class="cauto s0 lbl"><label for="sendstart_time_first">{%trans "Send date at firs of day"%}</label></div>
-           <div class="c">
-             <input type="checkbox" name="sendstart_time_first" id="sendstart_time_first" {% if report_settings.start_time_first%} checked {%endif%}>
-           </div>
-          </div>
 
           <div class="f g1">
            <div class="cauto s0 lbl"><label for="sendfirst_member_name">{%trans "Send first memeber name"%}</label></div>
