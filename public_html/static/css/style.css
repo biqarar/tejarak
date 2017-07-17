@@ -44,6 +44,30 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 .pc{font-size:1.2em;background-color:#eee;color:#333;}
 .pc p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
 .rtl .pc p{text-align:justify;}
+.prTable{padding:5em 0;}
+.prBox{background-color:#fff;min-height:450px;max-width:250px;margin:0 auto;font-size:1.2em;text-align:center;color:#999;}
+.prBox h3{border-bottom:3px solid #eee;margin-bottom:0;font-size:2.5em;}
+.prBox .price{padding:2em 0}
+.prBox .price span{display:block;font-size:5em;font-weight:100;}
+.prBox .price sup{font-size:0.3em;vertical-align:super;}
+.prBox .price sub{font-size:0.2em;vertical-align:middle;}
+.prBox .price abbr{display:block;}
+.prBox p{font-size:1em;padding:1em 1.5em;font-weight:100;margin:0;text-align:center!important;}
+.prBox ul{padding:1em 0;font-weight:100;}
+.prBox ul li{padding:0.5em 2em;line-height:1.3em;}
+.bold{font-weight:bold}
+
+.prBox.free .price{color:#777;}
+.prBox.free h3{color:#777;border-color:#777}
+.prBox.simple .price{color:#bfc21d;}
+.prBox.simple h3{color:#bfc21d;border-color:#bfc21d}
+.prBox.standard .price{color:#1da4c2;}
+.prBox.standard h3{color:#1da4c2;border-color:#1da4c2}
+.prBox.full .price{color:#c01541;}
+.prBox.full h3{color:#c01541;border-color:#c01541}
+
+
+
 .pricingTable{text-align:center;color:#888}
 .pricingTable .price .c{font-size:1.4em;font-weight:500;color:#333}
 .pricingTable .price:hover .c{color:#fff}

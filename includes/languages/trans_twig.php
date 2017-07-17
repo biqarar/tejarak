@@ -14,7 +14,7 @@ private function transtext()
 	echo T_("Email");                                                                 // Line 27
 	echo T_("Message");                                                               // Line 32
 	echo T_("Your Message");                                                          // Line 33
-	echo T_("Send");                                                                  // Line 37
+	echo T_("Send");                                                                  // Line 46
 	echo T_("How to contact tejarak");                                                // Line 45
 	echo T_("tejarak");                                                               // Line 51
 	echo T_("#614, Omranieh");                                                        // Line 63
@@ -49,7 +49,7 @@ private function transtext()
 	echo T_("Your business, a side project and anywhere you need to control traffic and add some organized.");// Line 132
 	echo T_("Is your team interested in deploying?");                                 // Line 142
 	echo T_("We can help.");                                                          // Line 142
-	echo T_("Get in Touch");                                                          // Line 205
+	echo T_("Get in Touch");                                                          // Line 271
 	echo T_("All of the above, at Enterprise scale");                                 // Line 152
 	echo T_("Enterprise plan brings the power and utility of Tejarak to large, complex organizations.");// Line 153
 	echo T_("Setting Up Tejarak Is Easy");                                            // Line 163
@@ -69,9 +69,9 @@ private function transtext()
 	echo T_("For teams with unlimited people requiring <b>advanced report builder</b>, <b>custom domain</b>.");// Line 251
 
 	//------------------------------------------------------content\hours\display.html
-	echo T_("Plus");                                                                  // Line 15
+	echo T_("Plus");                                                                  // Line 16
 	echo T_("Enter");                                                                 // Line 26
-	echo T_("Minus");                                                                 // Line 14
+	echo T_("Minus");                                                                 // Line 15
 	echo T_("Exit");                                                                  // Line 66
 	echo T_("In the Name of God");                                                    // Line 84
 
@@ -99,7 +99,7 @@ private function transtext()
 	echo T_("Terms of Service");                                                      // Line 29
 	echo T_("Privacy Policy");                                                        // Line 3
 	echo T_("Changelog");                                                             // Line 31
-	echo T_("Support");                                                               // Line 166
+	echo T_("Support");                                                               // Line 232
 	echo T_("Contact");                                                               // Line 36
 	echo T_("Logo");                                                                  // Line 38
 	echo T_("Proudly Made in IRAN");                                                  // Line 52
@@ -154,29 +154,29 @@ private function transtext()
 
 	//-------------------------------------------content\template\static\help\faq.html
 	echo T_("This FAQ provides answers to basic questions about Tejarak.");           // Line 6
-	echo T_("General questions");                                                     // Line 243
-	echo T_("How does Tejarak work?");                                                // Line 250
-	echo T_("Tejarak is simple. Enter to check it!");                                 // Line 247
-	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 251
-	echo T_("What is your privacy and security policy?");                             // Line 254
-	echo T_("View Tejarak's privacy and security policy at");                         // Line 255
-	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 258
-	echo T_("You can find them at");                                                  // Line 259
-	echo T_("What are your bandwidth fees?");                                         // Line 262
-	echo T_("There are none. All Tejarak plans include unlimited bandwidth for free.");// Line 263
-	echo T_("Do I need a web host?");                                                 // Line 266
-	echo T_("No! Tejarak includes secure, unlimited hosting on all plans with free bandwith.");// Line 267
-	echo T_("Billing & Invoicing");                                                   // Line 215
-	echo T_("Is there a setup fee?");                                                 // Line 218
-	echo T_("No. There are no setup fees on any of our plans!");                      // Line 219
-	echo T_("Can I cancel my account at any time?");                                  // Line 223
-	echo T_("Yes. If you ever decide that Tejarak isn’t the best platform for your business, simply cancel your account.");// Line 224
-	echo T_("How long are your contracts?");                                          // Line 228
-	echo T_("All Tejarak plans are month to month. simple.");                         // Line 229
-	echo T_("Can I change my plan later on?");                                        // Line 232
-	echo T_("Absolutely! You can upgrade or downgrade your plan at any time.");       // Line 233
-	echo T_("When is my billing date?");                                              // Line 236
-	echo T_("The date you first select a paid plan will be the recurring billing date. For example: If you sign up for the first time on July 15, all future charges will be billed on the 15th of every month.");// Line 237
+	echo T_("General questions");                                                     // Line 309
+	echo T_("How does Tejarak work?");                                                // Line 316
+	echo T_("Tejarak is simple. Enter to check it!");                                 // Line 313
+	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 317
+	echo T_("What is your privacy and security policy?");                             // Line 320
+	echo T_("View Tejarak's privacy and security policy at");                         // Line 321
+	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 324
+	echo T_("You can find them at");                                                  // Line 325
+	echo T_("What are your bandwidth fees?");                                         // Line 328
+	echo T_("There are none. All Tejarak plans include unlimited bandwidth for free.");// Line 329
+	echo T_("Do I need a web host?");                                                 // Line 332
+	echo T_("No! Tejarak includes secure, unlimited hosting on all plans with free bandwith.");// Line 333
+	echo T_("Billing & Invoicing");                                                   // Line 281
+	echo T_("Is there a setup fee?");                                                 // Line 284
+	echo T_("No. There are no setup fees on any of our plans!");                      // Line 285
+	echo T_("Can I cancel my account at any time?");                                  // Line 289
+	echo T_("Yes. If you ever decide that Tejarak isn’t the best platform for your business, simply cancel your account.");// Line 290
+	echo T_("How long are your contracts?");                                          // Line 294
+	echo T_("All Tejarak plans are month to month. simple.");                         // Line 295
+	echo T_("Can I change my plan later on?");                                        // Line 298
+	echo T_("Absolutely! You can upgrade or downgrade your plan at any time.");       // Line 299
+	echo T_("When is my billing date?");                                              // Line 302
+	echo T_("The date you first select a paid plan will be the recurring billing date. For example: If you sign up for the first time on July 15, all future charges will be billed on the 15th of every month.");// Line 303
 
 	//------------------------------------------content\template\static\help\home.html
 	echo T_("Help Center");                                                           // Line 3
@@ -196,50 +196,57 @@ private function transtext()
 	echo T_("Simple pricing");                                                        // Line 6
 	echo T_("only team admin");                                                       // Line 15
 	echo T_("Unlimited");                                                             // Line 17
-	echo T_("Simple");                                                                // Line 27
-	echo T_("Standard");                                                              // Line 28
-	echo T_("Full");                                                                  // Line 29
-	echo T_("Price");                                                                 // Line 33
-	echo T_("Toman");                                                                 // Line 38
-	echo T_("per member/month");                                                      // Line 42
-	echo T_("per month. fix!");                                                       // Line 38
-	echo T_("per month");                                                             // Line 43
-	echo T_("Max number of team members");                                            // Line 49
-	echo T_("Max number of gateway");                                                 // Line 54
-	echo T_("Subteam (categorize team)");                                             // Line 59
-	echo T_("Face detection");                                                        // Line 64
-	echo T_("Save image of each atttendance record");                                 // Line 69
-	echo T_("Analytics and reports");                                                 // Line 73
-	echo T_("Simple reports");                                                        // Line 76
-	echo T_("Custom order reports");                                                  // Line 81
-	echo T_("Visual reports with chart");                                             // Line 86
-	echo T_("Automatically email monthly report");                                    // Line 91
-	echo T_("Automatically SMS daily report");                                        // Line 96
-	echo T_("Professional analytic reports");                                         // Line 102
-	echo T_("Professional analysis chart");                                           // Line 107
-	echo T_("Telegram Integration");                                                  // Line 112
-	echo T_("Report via telegram");                                                   // Line 114
-	echo T_("Automatically send each report to admin(s)");                            // Line 118
-	echo T_("Automatically send daily report to group");                              // Line 123
-	echo T_("Request now report");                                                    // Line 128
-	echo T_("Request daily report");                                                  // Line 133
-	echo T_("Send attendance image");                                                 // Line 138
-	echo T_("Branding");                                                              // Line 143
-	echo T_("Number of automatic report reciever");                                   // Line 146
-	echo T_("Customize with your own logo");                                          // Line 151
-	echo T_("Customize the color scheme");                                            // Line 156
-	echo T_("Customize messages");                                                    // Line 161
-	echo T_("Technical Support");                                                     // Line 168
-	echo T_("Email response time");                                                   // Line 173
-	echo T_("(max)");                                                                 // Line 173
-	echo T_("2 work day");                                                            // Line 174
-	echo T_("a work day");                                                            // Line 175
-	echo T_("4 hours");                                                               // Line 176
-	echo T_("1 hour");                                                                // Line 177
-	echo T_("Emergency phone support");                                               // Line 181
-	echo T_("Dedicated Success Manager");                                             // Line 186
-	echo T_("Ready to use Tejarak Enterprise?");                                      // Line 201
-	echo T_("Get started with our Enterprise plan.");                                 // Line 202
+	echo T_("Free");                                                                  // Line 26
+	echo T_("forever");                                                               // Line 33
+	echo T_("All the basics for personal use and anyone who wants to explore Tejarak for an <b>unlimited period of time</b>.");// Line 35
+	echo T_("Simple");                                                                // Line 93
+	echo T_("per active user/month");                                                 // Line 63
+	echo T_("Everything in Free plus automatic report via Telegram for who wants have a <b>real time monitoring</b> from anywhere.");// Line 50
+	echo T_("Standard");                                                              // Line 94
+	echo T_("For teams and businesses ready to use Tejarak as hero. <b>Everything you need</b> for a growing business.");// Line 65
+	echo T_("Full");                                                                  // Line 95
+	echo T_("per month");                                                             // Line 109
+	echo T_("For <b>first class companies</b> who requiring full features! All of them is here.");// Line 80
+	echo T_("Price");                                                                 // Line 99
+	echo T_("Toman");                                                                 // Line 104
+	echo T_("per member/month");                                                      // Line 108
+	echo T_("per month. fix!");                                                       // Line 104
+	echo T_("Max number of team members");                                            // Line 115
+	echo T_("Max number of gateway");                                                 // Line 120
+	echo T_("Subteam (categorize team)");                                             // Line 125
+	echo T_("Face detection");                                                        // Line 130
+	echo T_("Save image of each atttendance record");                                 // Line 135
+	echo T_("Analytics and reports");                                                 // Line 139
+	echo T_("Simple reports");                                                        // Line 142
+	echo T_("Custom order reports");                                                  // Line 147
+	echo T_("Visual reports with chart");                                             // Line 152
+	echo T_("Automatically email monthly report");                                    // Line 157
+	echo T_("Automatically SMS daily report");                                        // Line 162
+	echo T_("Professional analytic reports");                                         // Line 168
+	echo T_("Professional analysis chart");                                           // Line 173
+	echo T_("Telegram Integration");                                                  // Line 178
+	echo T_("Report via telegram");                                                   // Line 180
+	echo T_("Automatically send each report to admin(s)");                            // Line 184
+	echo T_("Automatically send daily report to group");                              // Line 189
+	echo T_("Request now report");                                                    // Line 194
+	echo T_("Request daily report");                                                  // Line 199
+	echo T_("Send attendance image");                                                 // Line 204
+	echo T_("Branding");                                                              // Line 209
+	echo T_("Number of automatic report reciever");                                   // Line 212
+	echo T_("Customize with your own logo");                                          // Line 217
+	echo T_("Customize the color scheme");                                            // Line 222
+	echo T_("Customize messages");                                                    // Line 227
+	echo T_("Technical Support");                                                     // Line 234
+	echo T_("Email response time");                                                   // Line 239
+	echo T_("(max)");                                                                 // Line 239
+	echo T_("2 work day");                                                            // Line 240
+	echo T_("a work day");                                                            // Line 241
+	echo T_("4 hours");                                                               // Line 242
+	echo T_("1 hour");                                                                // Line 243
+	echo T_("Emergency phone support");                                               // Line 247
+	echo T_("Dedicated Success Manager");                                             // Line 252
+	echo T_("Ready to use Tejarak Enterprise?");                                      // Line 267
+	echo T_("Get started with our Enterprise plan.");                                 // Line 268
 
 	//--------------------------------------------content\template\static\privacy.html
 	echo T_("We wish to assure you that our main concern is to secure your privacy and protect your information against impermissible access.");// Line 6
@@ -322,7 +329,7 @@ private function transtext()
 	echo T_("Code");                                                                  // Line 182
 	echo T_("Submit");                                                                // Line 183
 	echo T_("Title");                                                                 // Line 200
-	echo T_("Type");                                                                  // Line 16
+	echo T_("Type");                                                                  // Line 17
 
 	//--------------------------------------------------content_a\gateway\display.html
 	echo T_("Enter a valid name from 3 to 30 character");                             // Line 13
@@ -334,6 +341,17 @@ private function transtext()
 	echo T_("Deactive");                                                              // Line 107
 	echo T_("Edit");                                                                  // Line 114
 	echo T_("Add");                                                                   // Line 123
+
+	//-------------------------------------------------content_a\houredit\display.html
+	echo T_("Request to edit your hours");                                            // Line 6
+	echo T_("You can send change request time");                                      // Line 9
+	echo T_("Start Date");                                                            // Line 13
+	echo T_("Start Time");                                                            // Line 20
+	echo T_("End Date");                                                              // Line 24
+	echo T_("End date");                                                              // Line 12
+	echo T_("End Time");                                                              // Line 31
+	echo T_("End time");                                                              // Line 33
+	echo T_("You can send some description for this problem");                        // Line 37
 
 	//-----------------------------------------------------content_a\main\display.html
 	echo T_("Add team");                                                              // Line 6
@@ -385,7 +403,7 @@ private function transtext()
 	//-----------------------------------------------------content_a\plan\display.html
 	echo T_("Current Plan");                                                          // Line 9
 	echo T_("Choose a new plan of your team");                                        // Line 16
-	echo T_("Apply");                                                                 // Line 110
+	echo T_("Apply");                                                                 // Line 111
 	echo T_("Alert for change team plan");                                            // Line 54
 
 	//--------------------------------------------------content_a\profile\display.html
@@ -403,9 +421,9 @@ private function transtext()
 
 	//----------------------------------------------content_a\report\last\display.html
 	echo T_("Start");                                                                 // Line 12
-	echo T_("End");                                                                   // Line 12
-	echo T_("Diff");                                                                  // Line 13
-	echo T_("Accepted");                                                              // Line 17
+	echo T_("End");                                                                   // Line 13
+	echo T_("Diff");                                                                  // Line 14
+	echo T_("Accepted");                                                              // Line 18
 
 	//------------------------------------------content_a\report\settings\display.html
 	echo T_("Header & Footer");                                                       // Line 13
@@ -417,14 +435,14 @@ private function transtext()
 	echo T_("Group Setting");                                                         // Line 48
 	echo T_("Telegram Group");                                                        // Line 52
 	echo T_("Delete Group");                                                          // Line 58
-	echo T_("Send date at firs of day");                                              // Line 64
-	echo T_("Send first memeber name");                                               // Line 71
-	echo T_("Send report daily at end of day");                                       // Line 78
-	echo T_("Send report daily whit time at end of day");                             // Line 85
-	echo T_("Send report daily count");                                               // Line 92
-	echo T_("All");                                                                   // Line 94
-	echo T_("No Group was set");                                                      // Line 102
-	echo T_("You can set telegram group from ");                                      // Line 103
+	echo T_("Send first memeber name");                                               // Line 65
+	echo T_("Send report daily at end of day");                                       // Line 72
+	echo T_("Send report daily whit time at end of day");                             // Line 79
+	echo T_("Send gold emoji in report daily");                                       // Line 86
+	echo T_("Send report daily count");                                               // Line 93
+	echo T_("All");                                                                   // Line 95
+	echo T_("No Group was set");                                                      // Line 103
+	echo T_("You can set telegram group from ");                                      // Line 104
 
 	//-----------------------------------------------content_a\report\sum\display.html
 	echo T_("Year");                                                                  // Line 8
