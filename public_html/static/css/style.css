@@ -44,15 +44,16 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 .pc{font-size:1.2em;background-color:#eee;color:#333;}
 .pc p{font-size:1.2em;line-height:2em;margin-bottom:2em;}
 .rtl .pc p{text-align:justify;}
-.prTable{padding:5em 0;}
-.prBox{background-color:#fff;min-height:450px;max-width:250px;margin:0 auto;font-size:1.2em;text-align:center;color:#999;}
+.prTable{padding:5em 0;font-size:1.2em;}
+#homepage .prTable{font-size:1.5em;}
+.prBox{background-color:#fff;min-height:450px;max-width:250px;margin:0 auto;text-align:center;color:#999;}
 .prBox h3{border-bottom:3px solid #eee;margin-bottom:0;font-size:2.5em;}
 .prBox .price{padding:2em 0}
 .prBox .price span{display:block;font-size:5em;font-weight:100;}
 .prBox .price sup{font-size:0.3em;vertical-align:super;}
 .prBox .price sub{font-size:0.2em;vertical-align:middle;}
 .prBox .price abbr{display:block;}
-.prBox p{font-size:1em;padding:1em 1.5em;font-weight:100;margin:0;text-align:center!important;}
+.prBox p{font-size:1em;padding:1em 1.5em;font-weight:100;margin:0;text-align:center!important;line-height:2em}
 .prBox ul{padding:1em 0;font-weight:100;}
 .prBox ul li{padding:0.5em 2em;line-height:1.3em;}
 .bold{font-weight:bold}
@@ -184,19 +185,20 @@ picture{display:block;}
 #offer-enterprise-small{background-color:#fff;background-color:#4070c0;text-align:initial;padding:2em}
 #offer-enterprise-small h3, #offer-enterprise-small h4{padding:0 5%;color:#fff}
 #offer-enterprise-small .btn{padding:0 5em;}
+#plans{background-color:#eee}
 
-#plans{
-  background-image:url(../images/pattern/confectionary.png);
+/*#plans{*/
+  /*background-image:url(../images/pattern/confectionary.png);*/
   /*background-image:url(../images/pattern/dark-triangles.png);*/
   /*background-image:url(../images/pattern/pinkdust.png);*/
   /*background-image:url(../images/pattern/Sports.png);*/
   /*background-image:url(../images/pattern/weather.png);*/
   /*background-image:url(../images/pattern/zigzagwool.png);*/
-}
+/*}*/
 
-#plans .cn{width:80%}
+/*#plans .cn{width:80%}*/
 
-#plans .plans-card{background-color:#fff;box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);border-radius:2px;margin:2rem 1rem;padding:2em 1em;border-radius:2px;width:94%;height:100%;max-width:250px;min-height:400px}
+/*#plans .plans-card{background-color:#fff;box-shadow:0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);border-radius:2px;margin:2rem 1rem;padding:2em 1em;border-radius:2px;width:94%;height:100%;max-width:250px;min-height:400px}
 #plans .plans-card h4{padding:0;padding-bottom:1.5rem;margin:0 1rem;font-size:2em;line-height:2em;color:#333;border-bottom:1px solid #ccc}
 #plans .plans-card .plans-card-learn-more{font-size:1.4em;display:block;margin-bottom:2rem;text-align:center;color:#fff}
 #plans .plans-card .btn{font-size:1.618rem;border-radius:2px;color:#fff !important}
@@ -207,7 +209,7 @@ picture{display:block;}
 #plans .plans-card .plans-card-content{font-size:1.25em;line-height:1.85em;padding:0 1rem;text-align:left;color:#333}
 .rtl #plans .plans-card .plans-card-content{text-align:right}
 #plans .plans-card.plan-enterprise .plans-card-price-box{font-size:2.4em}
-
+*/
 
 /* footer*/
 #tfooter{font-size:1.2em;padding:3rem 0 0;background-color:#333;}

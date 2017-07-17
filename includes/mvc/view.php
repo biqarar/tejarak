@@ -23,6 +23,7 @@ class view extends \lib\mvc\view
 		$this->data->display['admin']    = 'content_a/main/layout.html';
 		$this->data->template['social']  = 'content/template/social.html';
 		$this->data->template['share']   = 'content/template/share.html';
+		$this->data->template['price']   = 'content/template/priceTable.html';
 
 
 		if(in_array(\lib\router::get_repository_name(), ['content']))

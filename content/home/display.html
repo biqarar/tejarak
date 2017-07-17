@@ -8,8 +8,8 @@
  {{block('sync')}}
  {{block('everyteam')}}
  {{block('enterprise')}}
+ {{block('pricing')}}
  {{block('setupTour')}}
- {{block('pricing2')}}
  {{block('tryRegister')}}
 
 {%endblock%}
@@ -173,89 +173,7 @@
 {%block pricing%}
  <div class="tile" id='plans'>
   <div class="cn">
-   <div class="flex justify-center wrap">
-
-     <div class="flex f-column justify-between plans-card plan-free">
-      <div>
-       <h4>{%trans "FREE"%}</h4>
-       <div class="flex f-column justify-center align-center plans-card-price">
-        <div class="plans-card-price-box">
-         {%if site.currentlang == 'en'%}
-          <span class="plans-card-price-unit">$</span>
-          <span class="plans-card-price-value">{{0|fitNumber}}</span>
-         {%else%}
-          <span class="plans-card-price-value">{{0|fitNumber}}</span>
-          <span class="plans-card-price-unit">{%trans "Tomans"%}</span>
-         {%endif%}
-        </div>
-        <div class="plans-card-user-month">{%trans "per user/month"%}</div>
-       </div>
-       <div class="plans-card-content">{%trans "For teams that are less than 10 people requiring simple reports."%}</div>
-      </div>
-      <div>
-       <a  class="btn" href="">{%trans "Learn More"%}</a>
-      </div>
-     </div>
-
-     <div class="flex f-column justify-between plans-card plan-pro">
-      <div>
-       <h4>{%trans "Pro"%}</h4>
-       <div class="flex f-column justify-center align-center plans-card-price">
-        <div class="plans-card-price-box">
-         {%if site.currentlang == 'en'%}
-          <span class="plans-card-price-unit">$</span>
-          <span class="plans-card-price-value">1</span>
-         {%else%}
-          <span class="plans-card-price-value">{{1000|number_format|fitNumber}}</span>
-          <span class="plans-card-price-unit">{%trans "Tomans"%}</span>
-         {%endif%}
-        </div>
-        <div class="plans-card-user-month">{%trans "per user/month"%}</div>
-       </div>
-       <div class="plans-card-content">{%trans "For teams with unlimited people requiring <b>professional reports</b>, <b>report via Telegram</b>."%}</div>
-      </div>
-      <div>
-       <a  class="btn" href="">{%trans "Learn More"%}</a>
-      </div>
-     </div>
-
-     <div class="flex f-column justify-between plans-card plan-business">
-      <div>
-       <h4>{%trans "Business"%}</h4>
-       <div class="flex f-column justify-center align-center plans-card-price">
-        <div class="plans-card-price-box">
-         {%if site.currentlang == 'en'%}
-          <span class="plans-card-price-unit">$</span>
-          <span class="plans-card-price-value">10</span>
-         {%else%}
-          <span class="plans-card-price-value">{{10000|number_format|fitNumber}}</span>
-          <span class="plans-card-price-unit">{%trans "Tomans"%}</span>
-         {%endif%}
-        </div>
-        <div class="plans-card-user-month">{%trans "per user/month"%}</div>
-       </div>
-       <div class="plans-card-content">{%trans "For teams with unlimited people requiring <b>report via SMS</b>, <b>visual reports with chart</b>, <b>custom message format</b>, <b>custom brand logo</b>."%}</div>
-      </div>
-
-      <div>
-       <a  class="btn" href="">{%trans "Learn More"%}</a>
-      </div>
-     </div>
-
-     <div class="flex f-column justify-between plans-card plan-enterprise">
-      <div>
-       <h4>{%trans "Enterprise"%}</h4>
-       <div class="flex f-column justify-center align-center plans-card-price">
-        <div class="plans-card-price-box">{%trans "Contact Us"%}</div>
-       </div>
-       <div class="plans-card-content">{%trans "For teams with unlimited people requiring <b>advanced report builder</b>, <b>custom domain</b>."%}</div>
-      </div>
-      <div>
-       <a  class="btn" href="">{%trans "Learn More"%}</a>
-      </div>
-     </div>
-
-   </div>
+{%include template.price%}
   </div>
  </div>
 {%endblock%}
