@@ -64,6 +64,7 @@ trait feature
 		switch ($_args['type'])
 		{
 			case 'enter':
+				$first_msg = false;
 
 				$config_is_run = false;
 				if(plan::access('telegram:enter:msg', self::$my_team_id))
@@ -82,6 +83,7 @@ trait feature
 						if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 						{
 							telegram::sendMessage($value['chat_id'], self::generate_telegram_message('enter'), ['sort' => 3]);
+							$first_msg = true;
 						}
 					}
 				}
@@ -105,7 +107,11 @@ trait feature
 						{
 							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							{
-								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('first_enter'), ['sort' => 3]);
+								if(!$first_msg)
+								{
+									telegram::sendMessage($value['chat_id'], self::generate_telegram_message('first_enter'), ['sort' => 3]);
+								}
+
 								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('date_now'), ['sort' => 1]);
 							}
 						}
