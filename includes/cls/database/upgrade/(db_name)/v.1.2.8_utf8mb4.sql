@@ -1,0 +1,2 @@
+ALTER TABLE `teams` CHANGE `reportheader` `reportheader` VARCHAR(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+ALTER TABLE `teams` CHANGE `reportfooter` `reportfooter` VARCHAR(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
