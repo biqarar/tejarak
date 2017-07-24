@@ -104,6 +104,7 @@ class telegram
 
 		$content =
 		[
+			'method'  => $_args['method'],
 			'text'    => $_args['text'],
 			'chat_id' => $_args['chat_id'],
 		];
