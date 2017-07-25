@@ -1,5 +1,5 @@
 <?php
-namespace content_a\report\last;
+namespace content_a\report\day;
 
 class controller extends \content_a\report\controller
 {
@@ -10,7 +10,8 @@ class controller extends \content_a\report\controller
 	{
 		parent::_route();
 
-		$this->get(false, 'last')->ALL("/^([a-zA-Z0-9]+)\/report\/last$/");
+
+		$this->get(false, 'day')->ALL("/^([a-zA-Z0-9]+)\/report\/day$/");
 	}
 }
 ?>

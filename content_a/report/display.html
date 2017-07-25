@@ -1,21 +1,38 @@
 {%extends display.adminTeam%}
 
 {%block contentCenter%}
+
   <div class='middle' id="reportList">
    <div class='dbox'>
     <h2>{{page.desc}}</h2>
 
     <ul class="list">
      <li><a class="c12" href="{{url.full}}/last">{%trans "Last traffic"%}</a></li>
-     <li><a class="c12" href="{{url.full}}/last">{%trans "Last traffic"%}</a></li>
+     <li><a class="c12" href="{{url.full}}/year">{%trans "Sum times in year"%}</a></li>
+     <!-- <li><a class="c12" href="{{url.full}}/month">{%trans "Sum times in month"%}</a></li> -->
+     <!-- <li><a class="c12" href="{{url.full}}/day">{%trans "Sum times in day"%}</a></li> -->
     </ul>
     <hr>
 
     <ul class="list">
-     	<li><a class="c12" href="{{url.full}}/settings">{%trans "Settings"%}</a></li>
+      <li><a class="c12" href="{{url.full}}/settings">{%trans "Settings"%}</a></li>
     </ul>
 
    </div>
   </div>
 {%endblock%}
 
+{%block userList%}
+{%if all_user_list%}
+  <div class="f">
+    {%for key, value in all_user_list%}
+      <div class="c1">
+        <a href="{{reportUrl}}?user={{value.user_id}}">
+          <img src="{{value.file}}" height="50" width="50" >
+          <span>{{value.displayname}}</span>
+        </a>
+      </div>
+    {%endfor%}
+  </div>
+{%endif%}
+{%endblock%}

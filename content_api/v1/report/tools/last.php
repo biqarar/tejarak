@@ -32,6 +32,7 @@ trait last
 
 		$id = utility::request('id');
 		$id = utility\shortURL::decode($id);
+
 		if(!$id)
 		{
 			logs::set('api:report:team:not:found', $this->user_id, $log_meta);
@@ -39,12 +40,41 @@ trait last
 			return false;
 		}
 
-		if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_last']))
+		$user_id = null;
+		$user    = utility::request('user');
+
+		if($user)
 		{
-			logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
-			return false;
+			$user_id = utility\shortURL::decode($user);
+			if(!$user_id)
+			{
+				logs::set('api:report:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
+				debug::error(T_("Invalid user id"), 'user', 'arguments');
+				return false;
+			}
 		}
+
+		$check_is_my_team = null;
+
+		if($user_id)
+		{
+			if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'report_last_all']))
+			{
+				logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				return false;
+			}
+		}
+		else
+		{
+			if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'report_u']))
+			{
+				logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				return false;
+			}
+		}
+
 
 		if(!isset($check_is_my_team['id']))
 		{
@@ -55,8 +85,19 @@ trait last
 
 		$meta            = [];
 		$meta['team_id'] = $check_is_my_team['id'];
+
+		if($user_id)
+		{
+			$meta['user_id'] = $user_id;
+		}
+		else
+		{
+			$meta['user_id'] = $this->user_id;
+		}
+
 		$meta['order']   = 'DESC';
 		$result          = \lib\db\hours::search(null, $meta);
+
 		$temp = [];
 		foreach ($result as $key => $value)
 		{
@@ -87,9 +128,14 @@ trait last
 		{
 			switch ($key)
 			{
+				case 'hour_id':
+					$temp['id'] = \lib\utility\shortURL::encode($value);
+					break;
+
 				case 'date':
 					$temp['date'] = strtotime($value);
 					break;
+
 				case 'enddate':
 					$temp['end_date'] = strtotime($value);
 					break;

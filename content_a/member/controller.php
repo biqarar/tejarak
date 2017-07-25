@@ -39,9 +39,11 @@ class controller extends \content_a\main\controller
 		{
 			\lib\error::page();
 		}
+
 		/**
 		 * check if user not permission to load data
 		 * redirect to show her report
+		 * the user must be redirect to report page
 		 */
 		if(\lib\utility\shortURL::is($team_code))
 		{
@@ -55,7 +57,7 @@ class controller extends \content_a\main\controller
 
 			if(isset($user_status['rule']) && $user_status['rule'] === 'user')
 			{
-				$this->redirector()->set_domain()->set_url('a/'.$team_code.'/report/u')->redirect();
+				$this->redirector()->set_domain()->set_url('a/'.$team_code.'/report')->redirect();
 				return;
 			}
 		}

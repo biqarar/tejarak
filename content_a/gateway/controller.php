@@ -56,7 +56,7 @@ class controller extends \content_a\main\controller
 
 			if(isset($user_status['rule']) && $user_status['rule'] === 'user')
 			{
-				$this->redirector()->set_domain()->set_url('a/'.$team_code.'/report/u')->redirect();
+				$this->redirector()->set_domain()->set_url('a/'.$team_code.'/report')->redirect();
 				return;
 			}
 		}

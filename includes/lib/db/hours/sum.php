@@ -46,13 +46,13 @@ trait sum
 	 */
 	public static function sum_time($_args = [])
 	{
-		$team_id        = $_args['team_id'];
-		$user_id        = $_args['user_id'];
-		$userteam_id    = $_args['userteam_id'];
-		$year           = $_args['year'];
-		$month          = $_args['month'];
-		$day            = $_args['day'];
-		$date_is_shamsi = $_args['date_is_shamsi'];
+		$team_id        = isset($_args['team_id']) 		  ? $_args['team_id'] 		 : null;
+		$user_id        = isset($_args['user_id']) 		  ? $_args['user_id'] 		 : null;
+		$userteam_id    = isset($_args['userteam_id']) 	  ? $_args['userteam_id'] 	 : null;
+		$year           = isset($_args['year']) 		  ? $_args['year'] 			 : null;
+		$month          = isset($_args['month']) 		  ? $_args['month'] 		 : null;
+		$day            = isset($_args['day']) 			  ? $_args['day'] 			 : null;
+		$date_is_shamsi = isset($_args['date_is_shamsi']) ? $_args['date_is_shamsi'] : null;
 
 		$query            = null;
 		$pagenation_query = null;
@@ -413,6 +413,7 @@ trait sum
 					$query =
 					"
 						SELECT
+							hours.shamsi_year AS `year`,
 							hours.shamsi_month			 			AS `month`,
 							GROUP_CONCAT(DISTINCT hours.shamsi_day)			 			AS `days`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
@@ -453,6 +454,7 @@ trait sum
 						SELECT
 							GROUP_CONCAT(DISTINCT hours.day)			 			AS `days`,
 							hours.month			 			AS `month`,
+							hours.year			 			AS `year`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
 							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
@@ -494,6 +496,7 @@ trait sum
 						SELECT
 							GROUP_CONCAT(DISTINCT hours.shamsi_day)			 			AS `days`,
 							hours.shamsi_month			 			AS `month`,
+							hours.shamsi_year			 			AS `year`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
 							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
@@ -512,7 +515,6 @@ trait sum
 							hours.shamsi_year = '$year'
 						GROUP BY userteams.id, hours.shamsi_year, hours.shamsi_month
 						LIMIT %d, %d
-
 					";
 				}
 				else
@@ -533,6 +535,7 @@ trait sum
 						SELECT
 							GROUP_CONCAT(DISTINCT hours.day) 			AS `days`,
 							hours.month 			AS `month`,
+							hours.year 			AS `year`,
 							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
 							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
@@ -550,6 +553,158 @@ trait sum
 							userteams.team_id = $team_id AND
 							hours.year        = '$year'
 						GROUP BY userteams.id, hours.year, hours.month
+						LIMIT %d, %d
+					";
+				}
+			}
+		}
+		elseif(!$year && !$month && !$day)
+		{
+			// user id is set
+			if($user_id)
+			{
+				// user id is set
+				// date is shamsi
+				if($date_is_shamsi)
+				{
+					$pagenation_query =
+					"SELECT COUNT(*) AS `count` FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE userteams.id       = $userteam_id GROUP BY hours.shamsi_year ";
+					$query =
+					"
+						SELECT
+							hours.shamsi_year			 							AS `year`,
+							GROUP_CONCAT(DISTINCT hours.shamsi_month)			 	AS `months`,
+							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
+							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
+							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
+							COUNT(*) 				AS `count`,
+							SUM(hours.diff) 		AS `diff`,
+							SUM(hours.minus) 		AS `minus`,
+							SUM(hours.plus) 		AS `plus`,
+							SUM(hours.accepted) 	AS `accepted`,
+							SUM(hours.total) 		AS `total`
+						FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE
+							userteams.id       = $userteam_id
+						GROUP BY hours.shamsi_year
+						LIMIT %d, %d
+					";
+				}
+				else
+				{
+					// year
+					// user id is set
+					// date is geregorian
+					$pagenation_query =
+					"SELECT COUNT(*) AS `count` FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE
+							userteams.id = $userteam_id GROUP BY hours.year ";
+					$query =
+					"
+						SELECT
+							hours.year			 			AS `year`,
+							GROUP_CONCAT(DISTINCT hours.month)			 			AS `months`,
+							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
+							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
+							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
+							COUNT(*) 				AS `count`,
+							SUM(hours.diff) 		AS `diff`,
+							SUM(hours.minus) 		AS `minus`,
+							SUM(hours.plus) 		AS `plus`,
+							SUM(hours.accepted) 	AS `accepted`,
+							SUM(hours.total) 		AS `total`
+						FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE
+							userteams.id = $userteam_id
+						GROUP BY hours.year
+						LIMIT %d, %d
+					";
+				}
+			}
+			else
+			{
+				// user id is not set
+				// date is shamsi
+				if($date_is_shamsi)
+				{
+					$pagenation_query =
+					"SELECT COUNT(*) AS `count` FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE
+							userteams.team_id = $team_id  GROUP BY userteams.id, hours.shamsi_year";
+					$query =
+					"
+						SELECT
+							GROUP_CONCAT(DISTINCT hours.shamsi_month)			 			AS `months`,
+							hours.shamsi_year			 			AS `year`,
+							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
+							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
+							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
+							COUNT(*) 				AS `count`,
+							SUM(hours.diff) 		AS `diff`,
+							SUM(hours.minus) 		AS `minus`,
+							SUM(hours.plus) 		AS `plus`,
+							SUM(hours.accepted) 	AS `accepted`,
+							SUM(hours.total) 		AS `total`
+						FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE
+							userteams.team_id = $team_id
+						GROUP BY userteams.id, hours.shamsi_year
+						LIMIT %d, %d
+
+					";
+				}
+				else
+				{
+					// year
+					// user id is not set
+					// date is geregorian
+					$pagenation_query =
+					"SELECT COUNT(*) AS `count` FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE
+							userteams.team_id = $team_id  GROUP BY userteams.id, hours.year";
+					$query =
+					"
+						SELECT
+							GROUP_CONCAT(DISTINCT hours.month) 			AS `months`,
+							hours.year 			AS `year`,
+							GROUP_CONCAT(DISTINCT userteams.displayname) 			AS `displayname`,
+							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ') AS `name`,
+							GROUP_CONCAT(DISTINCT users.user_mobile) 				AS `mobile`,
+							COUNT(*) 				AS `count`,
+							SUM(hours.diff) 		AS `diff`,
+							SUM(hours.minus) 		AS `minus`,
+							SUM(hours.plus) 		AS `plus`,
+							SUM(hours.accepted) 	AS `accepted`,
+							SUM(hours.total) 		AS `total`
+						FROM
+							hours
+						INNER JOIN userteams ON userteams.id = hours.userteam_id
+						INNER JOIN users ON users.id = userteams.user_id
+						WHERE
+							userteams.team_id = $team_id
+						GROUP BY userteams.id, hours.year
 						LIMIT %d, %d
 					";
 				}

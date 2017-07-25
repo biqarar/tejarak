@@ -55,9 +55,24 @@ class hours
 	 */
 	public static function access_hours_id($_id, $_user_id , $_options = [])
 	{
-		return [];
-		if($_id && is_numeric($_id))
-		var_dump(func_get_args());exit();
+		if(!$_id || !is_numeric($_id) || !$_user_id || !is_numeric($_user_id))
+		{
+			return false;
+		}
+
+		$query =
+		"
+			SELECT
+				hours.*
+			FROM hours
+			INNER JOIN userteams ON userteams.id = hours.userteam_id
+			WHERE
+				hours.id = $_id AND
+				userteams.user_id = $_user_id
+			LIMIT 1
+		";
+		$result = \lib\db::get($query, null, true);
+		return $result;
 	}
 
 
@@ -110,8 +125,9 @@ class hours
 				COUNT(hours.id) AS `total`
 			FROM
 				hours
-			INNER JOIN userteams ON userteams.id = hours.userteam_id AND userteams.team_id = $_team_id
+			INNER JOIN userteams ON userteams.id = hours.userteam_id
 			WHERE
+				userteams.team_id = $_team_id AND
 				hours.date = '$date' AND
 				hours.end IS NULL
 			LIMIT 1

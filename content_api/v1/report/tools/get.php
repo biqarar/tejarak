@@ -9,5 +9,8 @@ trait get
 	use last;
 	use sum;
 	use u;
+	use year;
+	use month;
+	use day;
 }
 ?>

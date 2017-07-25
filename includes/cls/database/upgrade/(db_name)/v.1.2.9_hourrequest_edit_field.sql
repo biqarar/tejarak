@@ -1,0 +1,17 @@
+ALTER TABLE `hourrequests` CHANGE `date` `date` VARCHAR(50) NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` CHANGE `start` `start` VARCHAR(50) NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` CHANGE `end` `end` VARCHAR(50) NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `enddate`						date NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `endyear`						smallint(4) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `endmonth`						smallint(2) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `endday`						smallint(2) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `endshamsi_date`				VARCHAR(50) NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `endshamsi_year`				smallint(4) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `endshamsi_month`				smallint(2) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `endshamsi_day`					smallint(2) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `year`						smallint(4) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `month`						smallint(2) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `day`						smallint(2) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `shamsi_year`				smallint(4) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `shamsi_month`				smallint(2) UNSIGNED NULL DEFAULT NULL;
+ALTER TABLE `hourrequests` ADD `shamsi_day`					smallint(2) UNSIGNED NULL DEFAULT NULL;

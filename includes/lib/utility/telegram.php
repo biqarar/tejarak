@@ -3,15 +3,40 @@ namespace lib\utility;
 
 class telegram
 {
+
 	/**
-	* force send message by telegram service
-	* not by hasan service :|
-	*/
+	 * the hasan service url
+	 *
+	 * @var        string
+	 */
 	private static $service_url                 = 'http://178.62.218.8:8081';
-	private static $force_send_telegram_service = true;
+
+
+	/**
+	 * forse send by telegram service
+	 * if this value is false the telegram request sended by hasan service
+	 * if this value is true try to send telegram request by api.telegram.org
+	 *
+	 * @var        boolean
+	 */
+	public static $force_send_telegram_service = true;
+
+
+	/**
+	 * the telegram api url
+	 *
+	 * @var        string
+	 */
 	private static $telegram_api_url            = 'https://api.telegram.org/bot339018788:AAFg-KYxZ8yI-yU74qt1tq0DFNtLfT4Puv8';
 
+
+	/**
+	 * sort telegram message and send
+	 *
+	 * @var        array
+	 */
 	public static $SORT = [];
+
 
 	/**
 	 * send array messages

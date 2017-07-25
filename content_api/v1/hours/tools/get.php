@@ -33,83 +33,52 @@ trait get
 			switch ($key)
 			{
 				case 'id':
+				case 'start_gateway_id':
+				case 'end_gateway_id':
 					$result[$key] = \lib\utility\shortURL::encode($value);
 					break;
 
+				case 'date':
+				case 'year':
+				case 'month':
+				case 'day':
+				case 'shamsi_date':
+				case 'shamsi_year':
+				case 'shamsi_month':
+				case 'shamsi_day':
+				case 'start':
+				case 'end':
+				case 'diff':
+				case 'minus':
+				case 'plus':
+				case 'type':
+				case 'accepted':
+				case 'total':
 				case 'status':
-					// only enable hours can be show
-					switch ($value)
-					{
-						case 'enable':
-							$result[$key] = $value ? (string) $value : null;
-							break;
-						default:
-							return false;
-							break;
-					}
-					break;
-				case 'name':
-				case 'website':
-				case 'desc':
-				case 'alias':
-				case 'privacy':
-					$result[$key] = isset($value) ? (string) $value : null;
-					break;
-				case 'shortname':
-					$result['short_name'] = $value ? (string) $value : null;
-					break;
-				case 'showavatar':
-					$result['show_avatar'] = $value ? true : false;
-					break;
-				case 'allowplus':
-					$result['allow_plus'] = $value ? true : false;
-					break;
-				case 'allowminus':
-					$result['allow_minus'] = $value ? true : false;
-					break;
-				case 'remote':
-					$result['remote_user'] = $value ? true : false;
-					break;
-				case '24h':
-					$result['24h'] = $value ? true : false;
-					break;
+				case 'enddate':
+				case 'endyear':
+				case 'endmonth':
+				case 'endday':
+				case 'endshamsi_date':
+				case 'endshamsi_year':
+				case 'endshamsi_month':
+				case 'endshamsi_day':
 
-				case 'logourl':
 					if($value)
 					{
-						$result['logo'] = $this->host('file'). '/'. $value;
+						$result[$key] = $value;
 					}
 					else
 					{
-						$result['logo'] = null;
+						$result[$key] = null;
 					}
 					break;
 
-				case 'logo':
-					continue;
-					if(isset($this->logo_urls[$value]))
-					{
-						$result['logo'] = $this->host('file'). '/'. $this->logo_urls[$value];
-					}
-					else
-					{
-						$result['logo'] = null;
-					}
-					break;
-
-				case 'fileid':
-				case 'creator':
-				case 'telegram_id':
-				case 'plan':
-				case 'until':
-				case 'createdate':
-				case 'date_modified':
-				case 'meta':
-				case 'value':
 				default:
 					continue;
 					break;
 			}
+
 		}
 		return $result;
 	}

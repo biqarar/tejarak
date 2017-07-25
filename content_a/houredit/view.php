@@ -18,8 +18,9 @@ class view extends \content_a\main\view
 
 		if($hour_code)
 		{
-			$args       = [];
-			$args['id'] = $hour_code;
+			$args            = [];
+			$args['id']      = $hour_code;
+			$args['hour_id'] = $hour_code;
 			$myTime = $this->model()->getMyTime($args);
 			$this->data->myTime = $myTime;
 		}

@@ -304,6 +304,7 @@ class teams
 			 * the user must be admin of team to load this data
 			 */
 			case 'report_last':
+			case 'report_last_all':
 			case 'report_sum':
 			case 'report_last':
 			case 'close':

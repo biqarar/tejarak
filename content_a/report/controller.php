@@ -35,9 +35,10 @@ class controller extends \content_a\main\controller
 						switch ($split[2])
 						{
 							case 'last':
-							case 'daily':
-							case 'u':
-							case 'sum':
+							case 'year':
+							case 'month':
+							case 'day':
+
 							case 'settings':
 								\lib\router::set_controller("content_a\\report\\$split[2]\\controller");
 								return;

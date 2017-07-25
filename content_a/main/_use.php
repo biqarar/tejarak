@@ -1,5 +1,6 @@
 <?php
 namespace content_a\main;
+use \lib\utility;
 
 trait _use
 {
@@ -9,6 +10,10 @@ trait _use
 	// API HOURS
 	use \content_api\v1\hours\tools\add;
 	use \content_api\v1\hours\tools\get;
+
+	// API HOURS EDIT REQUEST
+	use \content_api\v1\houredit\tools\add;
+	use \content_api\v1\houredit\tools\get;
 
 	// API TEAM
 	use \content_api\v1\team\tools\add;
@@ -41,7 +46,7 @@ trait _use
 		$request         = [];
 		$this->user_id   = $this->login('id');
 		$request['id'] = $_team;
-		\lib\utility::set_request_array($request);
+		utility::set_request_array($request);
 		$result = $this->get_team();
 		return $result;
 	}
@@ -57,7 +62,7 @@ trait _use
 		$request             = [];
 		$this->user_id       = $this->login('id');
 		$request['shortname'] = $_shortname;
-		\lib\utility::set_request_array($request);
+		utility::set_request_array($request);
 		$result = $this->get_team();
 		return $result;
 	}
@@ -108,7 +113,7 @@ trait _use
 	 */
 	public function is_exist_team($_unique, $_type = null)
 	{
-		$_unique = \lib\utility\safe::safe($_unique);
+		$_unique = utility\safe::safe($_unique);
 
 		if(!$_unique)
 		{
@@ -120,7 +125,7 @@ trait _use
 		switch ($_type)
 		{
 			case 'code':
-				$_unique = \lib\utility\shortURL::decode($_unique);
+				$_unique = utility\shortURL::decode($_unique);
 			case 'id':
 				$search_team = \lib\db\teams::get(['id' => $_unique, 'limit' => 1]);
 				break;
@@ -132,6 +137,38 @@ trait _use
 				break;
 		}
 		return $search_team;
+	}
+
+
+	/**
+	 * Gets the list.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function listMember($_team_id_or_code, $_type = 'id')
+	{
+		$this->user_id = $this->login('id');
+		$request       = [];
+		if($_type === 'id')
+		{
+			if(!is_numeric($_team_id_or_code))
+			{
+				return false;
+			}
+			$request['id'] = utility\shortURL::encode($_team_id_or_code);
+		}
+		elseif($_type === 'code')
+		{
+			$request['id'] = $_team_id_or_code;
+		}
+		else
+		{
+			return false;
+		}
+
+		utility::set_request_array($request);
+		$result =  $this->get_list_member();
+		return $result;
 	}
 }
 ?>
