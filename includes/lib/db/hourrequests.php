@@ -43,6 +43,17 @@ class hourrequests
 
 
 	/**
+	 * Searches for the first match.
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function search()
+	{
+		return db\config::public_search('hourrequests', ...func_get_args());
+	}
+
+
+	/**
 	 * check access to load hourrequest
 	 *
 	 * @param      <type>  $_id       The identifier

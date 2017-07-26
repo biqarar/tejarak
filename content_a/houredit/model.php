@@ -6,6 +6,36 @@ use \lib\utility;
 class model extends \content_a\main\model
 {
 	/**
+	 * show one hourrequest detail
+	 *
+	 * @param      <type>  $_request  The request
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function request_detail($_request)
+	{
+		$this->user_id = $this->login('id');
+		utility::set_request_array($_request);
+		return $this->get_houredit_detail();
+	}
+
+
+	/**
+	 * show request list
+	 *
+	 * @param      <type>  $_request  The request
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function request_list($_request)
+	{
+		$this->user_id = $this->login('id');
+		utility::set_request_array($_request);
+		return $this->get_houredit_list();
+	}
+
+
+	/**
 	 * Gets my time.
 	 * get the time record
 	 *
