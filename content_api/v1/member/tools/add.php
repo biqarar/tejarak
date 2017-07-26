@@ -200,11 +200,12 @@ trait add
 				return false;
 			}
 
-			if(isset($old_user_id['rule']) && $old_user_id['rule'] === 'admin')
-			{
-				$user_id = $old_user_id['user_id'];
-			}
-			elseif($old_user_id['mobile'])
+			// if(isset($old_user_id['rule']) && $old_user_id['rule'] === 'admin')
+			// {
+			// 	$user_id = $old_user_id['user_id'];
+			// }
+			// else
+			if($old_user_id['mobile'])
 			{
 				if($mobile)
 				{
