@@ -47,6 +47,8 @@ class model extends \content_a\main\model
 		$request['end_date']   = utility::post('end_date');
 		$request['end_time']   = utility::post('end_time');
 		$request['desc']       = utility::post('desc');
+		$request['team']       = \lib\router::get_url(0);
+
 		utility::set_request_array($request);
 		$this->user_id = $this->login('id');
 		$this->add_houredit();

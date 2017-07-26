@@ -21,6 +21,7 @@ class view extends \content_a\main\view
 			$args            = [];
 			$args['id']      = $hour_code;
 			$args['hour_id'] = $hour_code;
+			$args['team']    = \lib\router::get_url(0);
 			$myTime = $this->model()->getMyTime($args);
 			$this->data->myTime = $myTime;
 		}
