@@ -27,6 +27,8 @@ class controller extends \content_a\main\controller
 		{
 			$this->display_name = 'content_a\\houredit\\detail.html';
 		}
+
+		$this->delete('request')->ALL("/^([a-zA-Z0-9]+)\/houredit\/remove\=([a-zA-Z0-9]+)$/");
 	}
 }
 ?>

@@ -5,6 +5,28 @@ use \lib\utility;
 
 class model extends \content_a\main\model
 {
+
+	/**
+	 * delete request
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function delete_request($_args)
+	{
+		$team_id        = isset($_args->match->url[0][1]) ? $_args->match->url[0][1] : null;
+		$hourrequest_id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+		if(!$team_id || !$hourrequest_id)
+		{
+			return false;
+		}
+
+		$this->user_id = $this->login('id');
+		utility::set_request_array(['id' => $hourrequest_id]);
+		$this->hourrequest_delete(['method' => 'delete']);
+		$this->redirector($this->url('baseFull'). "/$team_id/houredit/list")->redirect();
+	}
+
+
 	/**
 	 * show one hourrequest detail
 	 *

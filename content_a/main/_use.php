@@ -14,6 +14,7 @@ trait _use
 	// API HOURS EDIT REQUEST
 	use \content_api\v1\houredit\tools\add;
 	use \content_api\v1\houredit\tools\get;
+	use \content_api\v1\houredit\tools\delete;
 
 	// API TEAM
 	use \content_api\v1\team\tools\add;

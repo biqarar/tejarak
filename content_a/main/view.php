@@ -8,7 +8,7 @@ class view extends \mvc\view
 		$this->data->bodyclass = 'fixed unselectable dash';
 
 		// get part 2 of url and use as team name
-		$this->data->team      = \lib\router::get_url(0);
+		$this->data->team = $this->data->team_code = \lib\router::get_url(0);
 
 		if($this->reservedNames($this->data->team))
 		{

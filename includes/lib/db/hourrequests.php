@@ -82,11 +82,31 @@ class hourrequests
 							hourrequests
 						INNER JOIN hours ON hours.id = hourrequests.hour_id
 						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						WHERE userteams.user_id = $_user_id AND hourrequests.hour_id = $_id LIMIT 1
+						WHERE
+							userteams.user_id    = $_user_id AND
+							hourrequests.hour_id = $_id 	 AND
+							hourrequests.status <> 'deleted'
+						LIMIT 1
 					";
 					$result = \lib\db::get($query, null, true);
 					break;
 
+				// only awaiting request can delete
+				case 'delete':
+					$query =
+					"
+						SELECT
+							hourrequests.*
+						FROM
+							hourrequests
+						WHERE
+							hourrequests.creator = $_user_id AND
+							hourrequests.id      = $_id  	 AND
+							hourrequests.status  = 'awaiting'
+						LIMIT 1
+					";
+					$result = \lib\db::get($query, null, true);
+					break;
 				default:
 					return false;
 					break;
@@ -98,7 +118,7 @@ class hourrequests
 		{
 			return false;
 		}
-		var_dump(func_get_args());exit();
+
 	}
 }
 ?>

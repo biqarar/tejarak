@@ -1,0 +1,1 @@
+ALTER TABLE `hourrequests` CHANGE `status` `status`	 enum('awaiting', 'accept', 'reject', 'deleted') NULL DEFAULT 'awaiting';

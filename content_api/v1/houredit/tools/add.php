@@ -48,12 +48,12 @@ trait add
 			return false;
 		}
 
-		$id         = utility::request('id'); // '3Fh'
-		$start_date = utility\human::number(utility::request('start_date'), 'en'); // '۱۳۹۶-۰۴-۰۷'
-		$start_time = utility\human::number(utility::request('start_time'), 'en'); // '۱۲:۲۸:۰۰'
-		$end_date   = utility\human::number(utility::request('end_date'), 'en'); // ''
-		$end_time   = utility\human::number(utility::request('end_time'), 'en'); // ''
-		$desc       = utility::request('desc'); // ''
+		$id         = utility::request('id');
+		$start_date = utility\human::number(utility::request('start_date'), 'en');
+		$start_time = utility\human::number(utility::request('start_time'), 'en');
+		$end_date   = utility\human::number(utility::request('end_date'), 'en');
+		$end_time   = utility\human::number(utility::request('end_time'), 'en');
+		$desc       = utility::request('desc');
 
 		$id = utility\shortURL::decode($id);
 		if(utility::request('id') && !$id)
@@ -84,7 +84,7 @@ trait add
 			return false;
 		}
 
-		if(\DateTime::createFromFormat('H:i', $start_time) === false)
+		if(\DateTime::createFromFormat('H:i', $start_time) === false && \DateTime::createFromFormat('H:i:s', $start_time) === false)
 		{
 		 	logs::set('api:houredit:start_time:invalid', null, $log_meta);
 			debug::error(T_("Invalid start time"), 'start_time', 'arguments');
@@ -112,7 +112,7 @@ trait add
 			return false;
 		}
 
-		if(\DateTime::createFromFormat('H:i', $end_time) === false)
+		if(\DateTime::createFromFormat('H:i', $end_time) === false && \DateTime::createFromFormat('H:i:s', $end_time) === false)
 		{
 		 	logs::set('api:houredit:end_time:invalid', null, $log_meta);
 			debug::error(T_("Invalid end time"), 'end_time', 'arguments');
@@ -155,22 +155,18 @@ trait add
 		}
 
 		$update_mode = false;
+		// if the hourrequest have hour id
+		// check the user on this hour id hava any awaiting request
+		// if hava awaiting request update it
+		// and if not have insert new
 		if(utility::request('id') && $id && is_numeric($id))
 		{
 			// get this hour id is set old or no
-			$check_exist = \lib\db\hourrequests::get(['hour_id' => $id, 'limit' => 1]);
-			if($check_exist)
+			$check_exist = \lib\db\hourrequests::get(['hour_id' => $id, 'status' => 'awaiting', 'limit' => 1]);
+
+			if(isset($check_exist['id']))
 			{
-				if(isset($check_exist['id']))
-				{
-					$update_mode = true;
-				}
-				else
-				{
-					logs::set('api:houredit:hour:duplicate:insert:hour_id', null, $log_meta);
-					debug::error(T_("You was already set this request"), 'id', 'arguments');
-					return false;
-				}
+				$update_mode = true;
 			}
 		}
 		else
@@ -180,6 +176,7 @@ trait add
 			[
 				'date'        => $start_date,
 				'team_id'     => $team_id,
+				'status'      => 'awaiting',
 				'userteam_id' => "(SELECT id FROM userteams WHERE user_id = ". $this->user_id. " AND team_id = $team_id LIMIT 1)",
 				'limit'       => 1
 			]);
@@ -209,8 +206,6 @@ trait add
 		}
 		elseif($update_mode)
 		{
-			unset($args['hour_id']);
-			unset($args['creator']);
 			$houredit_id = \lib\db\hourrequests::update($args, $check_exist['id']);
 		}
 		else

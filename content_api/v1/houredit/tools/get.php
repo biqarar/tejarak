@@ -89,7 +89,6 @@ trait get
 		}
 
 		$result = \lib\db\hourrequests::access_hourrequest_id($id, $this->user_id, ['action' => 'view']);
-
 		if(!$result)
 		{
 			// logs::set('api:houredit:access:denide', $this->user_id, $log_meta);
@@ -148,6 +147,7 @@ trait get
 		$meta = [];
 		$meta['team_id'] = $team;
 		$meta['creator'] = $user;
+		$meta['status'] = ['<>', "'deleted'"];
 		$result = \lib\db\hourrequests::search(null, $meta);
 
 		debug::title(T_("Operation complete"));
