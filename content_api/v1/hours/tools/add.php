@@ -144,7 +144,7 @@ trait add
 
 		if(debug::$status)
 		{
-			// debug::title();
+			debug::title(null);
 			$user_name = null;
 
 			if(\lib\storage::get_enter_exit_name())
