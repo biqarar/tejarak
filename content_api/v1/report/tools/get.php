@@ -11,6 +11,6 @@ trait get
 	use u;
 	use year;
 	use month;
-	use day;
+	use period;
 }
 ?>

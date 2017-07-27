@@ -11,6 +11,7 @@ class hours
 	use hours\search;
 	use hours\sum;
 	use hours\month;
+	use hours\period;
 
 	/**
 	 * insert new record in hours table

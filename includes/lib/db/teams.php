@@ -306,6 +306,7 @@ class teams
 			case 'report_last':
 			case 'report_last_all':
 			case 'report_month_all':
+			case 'report_period_all':
 			case 'report_sum':
 			case 'report_last':
 			case 'close':
