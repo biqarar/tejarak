@@ -1,5 +1,5 @@
 <?php
-namespace content_a\report\day;
+namespace content_a\report\period;
 
 class view extends \content_a\report\view
 {
@@ -8,11 +8,11 @@ class view extends \content_a\report\view
 		parent::config();
 	}
 
-	public function view_day()
+	public function view_period()
 	{
 		$args           = [];
 		$args['id']   = \lib\router::get_url(0);
-		$this->data->day_time = $this->model()->get_day_time($args);
+		$this->data->period_time = $this->model()->get_period_time($args);
 		if(isset($this->controller->pagnation))
 		{
 			$this->data->pagnation = $this->controller->pagnation_get();

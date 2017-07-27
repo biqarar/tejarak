@@ -70,13 +70,18 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						WHERE
-							hours.shamsi_year  = '$year' AND
-							hours.shamsi_month = '$month' AND
-							hours.shamsi_day   = '$day' AND
-							hours.userteam_id  = $userteam_id";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							WHERE
+								hours.shamsi_year  = '$year' AND
+								hours.shamsi_month = '$month' AND
+								hours.shamsi_day   = '$day' AND
+								hours.userteam_id  = $userteam_id
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -107,13 +112,18 @@ trait sum
 					// user id is set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						WHERE
-							hours.year        = '$year'  AND
-							hours.month       = '$month' AND
-							hours.day         = '$day' 	 AND
-							hours.userteam_id = $userteam_id";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							WHERE
+								hours.year        = '$year'  AND
+								hours.month       = '$month' AND
+								hours.day         = '$day' 	 AND
+								hours.userteam_id = $userteam_id
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -147,15 +157,21 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id  = $team_id AND
-							hours.shamsi_year  = '$year' AND
-							hours.shamsi_month = '$month' AND
-							hours.shamsi_day   = '$day'";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id  = $team_id AND
+								hours.shamsi_year  = '$year' AND
+								hours.shamsi_month = '$month' AND
+								hours.shamsi_day   = '$day'
+							GROUP BY userteams.id
+						) AS `count`
+						";
 					$query =
 					"
 						SELECT
@@ -187,15 +203,21 @@ trait sum
 					// user id is not set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id = $team_id AND
-							hours.year        = '$year' AND
-							hours.month       = '$month' AND
-							hours.day         = '$day'";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id = $team_id AND
+								hours.year        = '$year' AND
+								hours.month       = '$month' AND
+								hours.day         = '$day'
+							GROUP BY userteams.id
+						) AS `count`
+						";
 					$query =
 					"
 						SELECT
@@ -235,14 +257,20 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							hours.shamsi_year  = '$year' AND
-							hours.shamsi_month = '$month' AND
-							userteams.id       = $userteam_id";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								hours.shamsi_year  = '$year' AND
+								hours.shamsi_month = '$month' AND
+								userteams.id       = $userteam_id
+							GROUP BY hours.shamsi_year, hours.shamsi_month, hours.shamsi_day
+						) AS `count`
+						";
 					$query =
 					"
 						SELECT
@@ -274,14 +302,20 @@ trait sum
 					// user id is set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							hours.year   = '$year' AND
-							hours.month  = '$month' AND
-							userteams.id = $userteam_id";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								hours.year   = '$year' AND
+								hours.month  = '$month' AND
+								userteams.id = $userteam_id
+							GROUP BY hours.year, hours.month, hours.day
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -316,14 +350,20 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id = $team_id AND
-							hours.shamsi_year  = '$year' AND
-							hours.shamsi_month = '$month'";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id = $team_id AND
+								hours.shamsi_year  = '$year' AND
+								hours.shamsi_month = '$month'
+							GROUP BY userteams.id, hours.shamsi_year, hours.shamsi_month, hours.shamsi_day
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -356,14 +396,20 @@ trait sum
 					// user id is not set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id = $team_id AND
-							hours.year  = '$year' AND
-							hours.month = '$month'";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id = $team_id AND
+								hours.year  = '$year' AND
+								hours.month = '$month'
+							GROUP BY userteams.id, hours.year, hours.month, hours.day
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -403,13 +449,19 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							hours.shamsi_year  = '$year' AND
-							userteams.id       = $userteam_id";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								hours.shamsi_year  = '$year' AND
+								userteams.id       = $userteam_id
+							GROUP BY hours.shamsi_year, hours.shamsi_month
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -442,13 +494,19 @@ trait sum
 					// user id is set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							hours.year  = '$year' AND
-							userteams.id = $userteam_id";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								hours.year  = '$year' AND
+								userteams.id = $userteam_id
+							GROUP BY hours.year, hours.month
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -484,13 +542,19 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id = $team_id AND
-							hours.shamsi_year  = '$year'";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id = $team_id AND
+								hours.shamsi_year = '$year'
+							GROUP BY userteams.id, hours.shamsi_year, hours.shamsi_month
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -523,13 +587,19 @@ trait sum
 					// user id is not set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id = $team_id AND
-							hours.year        = '$year'";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id = $team_id AND
+								hours.year        = '$year'
+							GROUP BY userteams.id, hours.year, hours.month
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -568,11 +638,18 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE userteams.id       = $userteam_id GROUP BY hours.shamsi_year ";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.id       = $userteam_id
+							GROUP BY hours.shamsi_year
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -603,12 +680,18 @@ trait sum
 					// user id is set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.id = $userteam_id GROUP BY hours.year ";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.id = $userteam_id
+							GROUP BY hours.year
+						) AS `count`
+						";
 					$query =
 					"
 						SELECT
@@ -641,12 +724,18 @@ trait sum
 				if($date_is_shamsi)
 				{
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id = $team_id  GROUP BY userteams.id, hours.shamsi_year";
+					"
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id = $team_id
+							GROUP BY userteams.id, hours.shamsi_year
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT
@@ -678,12 +767,19 @@ trait sum
 					// user id is not set
 					// date is geregorian
 					$pagenation_query =
-					"SELECT COUNT(*) AS `count` FROM
-							hours
-						INNER JOIN userteams ON userteams.id = hours.userteam_id
-						INNER JOIN users ON users.id = userteams.user_id
-						WHERE
-							userteams.team_id = $team_id  GROUP BY userteams.id, hours.year";
+					"
+
+						SELECT COUNT(*) AS `count` FROM
+						(
+							SELECT 1 FROM
+								hours
+							INNER JOIN userteams ON userteams.id = hours.userteam_id
+							INNER JOIN users ON users.id = userteams.user_id
+							WHERE
+								userteams.team_id = $team_id
+							GROUP BY userteams.id, hours.year
+						) AS `count`
+					";
 					$query =
 					"
 						SELECT

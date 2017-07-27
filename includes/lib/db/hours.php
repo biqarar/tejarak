@@ -10,6 +10,7 @@ class hours
 
 	use hours\search;
 	use hours\sum;
+	use hours\month;
 
 	/**
 	 * insert new record in hours table

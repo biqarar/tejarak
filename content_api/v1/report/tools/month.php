@@ -32,36 +32,99 @@ trait month
 
 		$id = utility::request('id');
 		$id = utility\shortURL::decode($id);
+
 		if(!$id)
 		{
-			logs::set('api:report:team:not:found', $this->user_id, $log_meta);
+			logs::set('api:report:month:team:not:found', $this->user_id, $log_meta);
 			debug::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
-		if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_sum']))
+		$user_id = null;
+		$user    = utility::request('user');
+
+		if($user)
 		{
-			logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
-			return false;
+			$user_id = utility\shortURL::decode($user);
+			if(!$user_id)
+			{
+				logs::set('api:report:month:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
+				debug::error(T_("Invalid user id"), 'user', 'arguments');
+				return false;
+			}
+		}
+
+		$check_is_my_team = null;
+		if($user_id)
+		{
+			if($check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_month_all']))
+			{
+				if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $user_id, ['action'=> 'report_u']))
+				{
+					logs::set('api:report:month:user:is:not:in:team', $this->user_id, $log_meta);
+					debug::error(T_("This user is not in this team"), 'user', 'arguments');
+					return false;
+				}
+			}
+			else
+			{
+				logs::set('api:report:month:user:access:load:report', $this->user_id, $log_meta);
+				debug::error(T_("No access to load this report"), 'user', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			if($check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_month_all']))
+			{
+				$user_id = null;
+				// no user was set but the user is admin of this team
+				// can see all user time in year
+			}
+			elseif($check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_u']))
+			{
+				// no user was set
+				// and this user is user of this team
+				// can see just her time
+				$user_id = $this->user_id;
+			}
+			else
+			{
+				logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				return false;
+			}
 		}
 
 		if(!isset($check_is_my_team['id']))
 		{
-			logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
+			logs::set('api:report:month:team:id:not:found', $this->user_id, $log_meta);
 			debug::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
 
 		$year  = utility::request('year');
 		$month = utility::request('month');
-		$day   = utility::request('day');
 
-		if($year && (!is_numeric($year) || mb_strlen($year) !== 4))
+		if($year)
 		{
-			logs::set('api:report:sum:invalid:year', $this->user_id, $log_meta);
-			debug::error(T_("Invalid input year"), 'year', 'arguments');
-			return false;
+			if(!is_numeric($year) || mb_strlen($year) !== 4)
+			{
+				logs::set('api:report:month:invalid:year', $this->user_id, $log_meta);
+				debug::error(T_("Invalid input year"), 'year', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			if(\lib\define::get_language() === 'fa')
+			{
+				$year = \lib\utility\jdate::date("Y", false, false);
+			}
+			else
+			{
+				$year = date("Y");
+			}
 		}
 
 		if($month && intval($month) < 10)
@@ -71,20 +134,8 @@ trait month
 
 		if($month && (!is_numeric($month) || mb_strlen($month) !== 2))
 		{
-			logs::set('api:report:sum:invalid:month', $this->user_id, $log_meta);
+			logs::set('api:report:month:invalid:month', $this->user_id, $log_meta);
 			debug::error(T_("Invalid input month"), 'month', 'arguments');
-			return false;
-		}
-
-		if($day && intval($day) < 10)
-		{
-			$day = '0'. (string) intval($day);
-		}
-
-		if($day && (!is_numeric($day) || mb_strlen($day) !== 2))
-		{
-			logs::set('api:report:sum:invalid:day', $this->user_id, $log_meta);
-			debug::error(T_("Invalid input day"), 'day', 'arguments');
 			return false;
 		}
 
@@ -94,33 +145,16 @@ trait month
 			$date_is_shamsi = true;
 		}
 
-		$user = utility::request('user');
-		$user = utility\shortURL::decode($user);
-		if($user)
-		{
-			$check_user_in_team = \lib\db\userteams::get(['team_id' => $id, 'user_id' => $user, 'limit' => 1, 'rule'=> ['IN', '("user", "admin")']]);
-
-			if(!$check_is_my_team || !isset($check_is_my_team['userteam_id']))
-			{
-				logs::set('api:report:sum:user:is:not:in:team', $this->user_id, $log_meta);
-				debug::error(T_("This user is not in this team"), 'user', 'arguments');
-				return false;
-			}
-		}
-		else
-		{
-			$user = null;
-		}
-
 		$meta                   = [];
-		$meta['team_id']        = $id;
-		$meta['user_id']        = $user;
-		$meta['userteam_id']    = $check_is_my_team['userteam_id'];
+		$meta['team_id']        = $check_is_my_team['id'];
 		$meta['year']           = $year;
 		$meta['month']          = $month;
-		$meta['day']            = $day;
+		$meta['order']          = 'DESC';
+		$meta['user_id']        = $user_id;
+		$meta['userteam_id']    = $check_is_my_team['userteam_id'];
 		$meta['date_is_shamsi'] = $date_is_shamsi;
-		$result                 = \lib\db\hours::sum_time($meta);
+
+		$result  = \lib\db\hours::sum_month_time($meta);
 
 		$temp = [];
 		foreach ($result as $key => $value)
@@ -131,6 +165,7 @@ trait month
 				$temp[] = $check;
 			}
 		}
+
 		return $temp;
 	}
 

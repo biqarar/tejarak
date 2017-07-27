@@ -3,30 +3,55 @@
 
 {%block content%}
 
+
+{%if all_user_list%}
+  <div class="f">
+    {%for key, value in all_user_list%}
+      <div class="c1">
+        <a href="{{reportUrl}}?user={{value.user_id}}">
+          <img src="{{value.file}}" height="50" width="50" >
+          <span>{{value.displayname}}</span>
+        </a>
+      </div>
+    {%endfor%}
+  </div>
+{%endif%}
+
+<form method="get" class="df f" data-action>
+	<div class="c1">
+		<label for="year">{%trans "Year"%}</label>
+		<input type="number" name="year" class="c1" id="year" value='{%if get_year%}{{get_year}}{%else%}{{"now"|jdate("Y", false)}}{%endif%}' placeholder=" - - - - " min="1300" max="3000">
+	</div>
+	<div class="c1">
+		<label for="month">{%trans "Month"%}</label>
+		<input type="number" name="month" class="c1" id="month" value='{{get_month}}' placeholder=" - - " min="1" max="12">
+	</div>
+
+	<div class="c1">
+		<label>‌</label>
+		<input type="submit"  class="c1 b1"  value='{%trans "Go"%}'>
+	</div>
+</form>
+<br>
+
 <div class="dt big">
 	<div class="f th">
 		<div class="c">{%trans "Name"%}</div>
-		<div class="c s0 m0">{%trans "Postion"%}</div>
-		<div class="c2">{%trans "Date"%}</div>
-		<div class="c">{%trans "Start"%}</div>
-		<div class="c">{%trans "End"%}</div>
-		<div class="c s0">{%trans "Diff"%}</div>
-		<div class="c s0">{%trans "Minus"%}</div>
-		<div class="c s0">{%trans "Plus"%}</div>
-		<div class="c s0">{%trans "Type"%}</div>
+		<div class="c">{%trans "Year"%}</div>
+		<div class="c">{%trans "Month"%}</div>
+		<div class="c">{%trans "Diff"%}</div>
+		<div class="c">{%trans "Minus"%}</div>
+		<div class="c">{%trans "Plus"%}</div>
 		<div class="c">{%trans "Accepted"%}</div>
 	</div>
 	{%for key, value in month_time%}
 	<div class="f">
 		<div class="c">{{value.displayname}}</div>
-		<div class="c s0 m0">{{value.postion}}</div>
-		<div class="c">{{value.date|jdate("Y-m-d")}}</div>
-		<div class="c">{{value.start|fitNumber}}</div>
-		<div class="c">{{value.end|fitNumber}}</div>
-		<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.type|fitNumber}}</div>
+		<div class="c">{{value.year|fitNumber}}</div>
+		<div class="c">{{value.month|fitNumber}}</div>
+		<div class="c">{{value.diff | humantime | fitNumber}}</div>
+		<div class="c">{{value.minus | humantime | fitNumber}}</div>
+		<div class="c">{{value.plus | humantime | fitNumber}}</div>
 		<div class="c">{{value.accepted | humantime | fitNumber}}</div>
 	</div>
 	{%endfor%}
