@@ -1,5 +1,6 @@
 <?php
 namespace content_a\houredit;
+use \lib\utility;
 
 class view extends \content_a\main\view
 {
@@ -34,7 +35,7 @@ class view extends \content_a\main\view
 	{
 		$args                     = [];
 		$args['team']             = \lib\router::get_url(0);
-		$args['user']             = \lib\utility\shortURL::encode($this->login('id'));
+		$args['user']             = utility::get('user');
 		$result                   = $this->model()->request_list($args);
 		$this->data->request_list = $result;
 		$this->data->team_code    = \lib\router::get_url(0);

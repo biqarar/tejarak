@@ -12,11 +12,14 @@
      <li><a class="c12" href="{{url.full}}/month">{%trans "Sum times in month"%}</a></li>
      <li><a class="c12" href="{{url.full}}/period">{%trans "Sum times in period"%}</a></li>
     </ul>
-    <hr>
 
-    <ul class="list">
-      <li><a class="c12" href="{{url.full}}/settings">{%trans "Settings"%}</a></li>
-    </ul>
+    {%if show_all_user%}
+      <hr>
+      <ul class="list">
+        <li><a class="c12" href="{{url.baseFull}}/{{team_code}}/houredit/list">{%trans "Hour request edit list"%}</a></li>
+        <li><a class="c12" href="{{url.full}}/settings">{%trans "Settings"%}</a></li>
+      </ul>
+    {%endif%}
 
    </div>
   </div>

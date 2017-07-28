@@ -137,17 +137,52 @@ trait get
 		$user = utility::request("user");
 		$user = \lib\utility\shortURL::decode($user);
 
-		if(!$user)
+		if(utility::request('user') && !$user)
 		{
-			logs::set('api:houredit:user:not:set', $this->user_id, $log_meta);
-			debug::error(T_("houredit user not set"), 'user', 'arguments');
+			logs::set('api:houredit:user:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid user id"), 'user', 'arguments');
 			return false;
+		}
+
+		$check_is_my_team = null;
+
+		if($check_is_my_team = \lib\db\teams::access_team_id($team, $this->user_id, ['action'=> 'view_all_hourrequest']))
+		{
+			if($user)
+			{
+				if(!$check_is_my_team = \lib\db\teams::access_team_id($team, $user, ['action'=> 'in_team']))
+				{
+					logs::set('api:houredit:get:user:is:not:in:team', $this->user_id, $log_meta);
+					debug::error(T_("This user is not in this team"), 'team', 'arguments');
+					return false;
+				}
+			}
+			else
+			{
+				$user = null;
+			}
+		}
+		else
+		{
+			if(!$check_is_my_team = \lib\db\teams::access_team_id($team, $this->user_id, ['action'=> 'in_team']))
+			{
+				logs::set('api:houredit:get:user:is:not:in:team', $this->user_id, $log_meta);
+				debug::error(T_("No access to load this list"), 'team', 'arguments');
+				return false;
+			}
+			$user = $this->user_id;
 		}
 
 		$meta = [];
 		$meta['team_id'] = $team;
-		$meta['creator'] = $user;
+
+		if($user)
+		{
+			$meta['creator'] = $user;
+		}
+
 		$meta['status'] = ['<>', "'deleted'"];
+
 		$result = \lib\db\hourrequests::search(null, $meta);
 
 		debug::title(T_("Operation complete"));

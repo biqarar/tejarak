@@ -282,6 +282,8 @@ class teams
 			 * user or admin or eny thing
 			 */
 			case 'report_u':
+			case 'in_team':
+			case 'my_team':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;
@@ -304,6 +306,7 @@ class teams
 			 * the user must be admin of team to load this data
 			 */
 			case 'report_last':
+			case 'view_all_hourrequest':
 			case 'report_last_all':
 			case 'report_month_all':
 			case 'report_period_all':
