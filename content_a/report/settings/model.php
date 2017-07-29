@@ -61,6 +61,15 @@ class model extends \content_a\main\model
 			return false;
 		}
 
+		$access = \lib\db\teams::access_team_id($team_id, $this->login('id'), ['action' => 'admin']);
+
+		if(!$access)
+		{
+			\lib\db\logs::set('report:settings:no:access:to:change:settings', $this->login('id'));
+			debug::error(T_("No access to change settings"), 'team');
+			return false;
+		}
+
 		$update_team['reportheader'] = utility::post('reportHeader');
 
 		$update_team['reportfooter'] = utility::post('reportFooter');
