@@ -5,6 +5,28 @@ use \lib\utility;
 
 class model extends \content_a\main\model
 {
+	/**
+	 * Posts an accept reject.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_accept_reject($_args)
+	{
+
+		$response = utility::post('response');
+		$id       = utility::post('id');
+		$type     = utility::post('type');
+
+		$this->user_id       = $this->login('id');
+		$request             = [];
+		$request['team']     = \lib\router::get_url(0);
+		$request['id']       = $id;
+		$request['type']     = $type;
+		$request['response'] = $response;
+		utility::set_request_array($request);
+		$this->hourrequest_action();
+	}
+
 
 	/**
 	 * delete request

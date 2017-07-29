@@ -15,6 +15,7 @@ trait _use
 	use \content_api\v1\houredit\tools\add;
 	use \content_api\v1\houredit\tools\get;
 	use \content_api\v1\houredit\tools\delete;
+	use \content_api\v1\houredit\tools\action;
 
 	// API TEAM
 	use \content_api\v1\team\tools\add;

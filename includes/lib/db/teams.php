@@ -320,6 +320,7 @@ class teams
 			case 'edit_gateway':
 			case 'get_gateway':
 			case 'edit':
+			case 'admin':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;

@@ -18,6 +18,7 @@ class controller extends \content_a\main\controller
 		{
 			$this->display_name = 'content_a\\houredit\\list.html';
 		}
+		$this->post('accept_reject')->ALL("/^([a-zA-Z0-9]+)\/houredit\/list$/");
 
 
 		// show detail of one request

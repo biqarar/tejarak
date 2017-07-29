@@ -52,19 +52,21 @@
 		{%if show_all_user%}
 
 			<form method="post" class="c">
-				<div class="c df"><textarea name="desc_{{value.id}}" my_code="{{value.id}}" class="description_main " placeholder='{%trans "Set Response"%}' ></textarea></div>
+				<div class="c df"><textarea name="response" my_code="{{value.id}}" class="description_main " placeholder='{%trans "Set Response"%}' ></textarea></div>
 				<div class="hidden">
-					<input type="hidden" name="accept_{{value.id}}" value="{{value.id}}">
+					<input type="hidden" name="id" value="{{value.id}}">
+					<input type="hidden" name="type" value="accept">
 				</div>
-				<div class="c df"><input type="submit" class="bp" name="accept_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "accept"}' value='{%trans "Accept"%}'></div>
+				<div class="c df"><input type="submit" class="bp" name="accept" data-data='{"id": "{{value.id}}", "type": "accept"}' value='{%trans "Accept"%}'></div>
 			</form>
 
 			<form method="post" class="c">
 				<div class="hidden">
-					<textarea my_code="{{value.id}}" class="description_copy" name="desc_{{value.id}}"  placeholder='{%trans "Set Response"%}'></textarea>
-					<input type="hidden" name="reject_{{value.id}}" value="{{value.id}}">
+					<textarea my_code="{{value.id}}" class="description_copy" name="response"  placeholder='{%trans "Set Response"%}'></textarea>
+					<input type="hidden" name="id" value="{{value.id}}">
+					<input type="hidden" name="type" value="reject">
 				</div>
-				<div class="c df"><input type="submit" class="bn" name="reject_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'></div>
+				<div class="c df"><input type="submit" class="bn" name="reject" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'></div>
 			</form>
 
 		{%endif%}
