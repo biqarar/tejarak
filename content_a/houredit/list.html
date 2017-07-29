@@ -2,7 +2,6 @@
 
 {%block content%}
 
-<form method="post">
 <div class="dt big">
 	<div class="f th">
 		<div class="c">{%trans "Action"%}</div>
@@ -30,9 +29,9 @@
 	<div class="f">
 
 		{%if value.status == 'awaiting' %}
-			<div class="c"><a href="{{url.baseFull}}/{{team_code}}/houredit/remove={{value.id}}">{%trans "Remove"%}</a></div>
+			<div class="c df"><a href="{{url.baseFull}}/{{team_code}}/houredit/remove={{value.id}}">{%trans "Remove"%}</a></div>
 		{%else%}
-			<div class="c"><a href="{{url.baseFull}}/{{team_code}}/houredit/detail={{value.id}}">{%trans "More"%}</a></div>
+			<div class="c df"><a href="{{url.baseFull}}/{{team_code}}/houredit/detail={{value.id}}">{%trans "More"%}</a></div>
 		{%endif%}
 
 		<div class="c">{{value.date}}</div>
@@ -40,32 +39,53 @@
 		<div class="c">{{value.enddate}}</div>
 		<div class="c">{{value.end}}</div>
 		<div class="c">{{value.status}}</div>
-		<div class="c">{{value.desc}}</div>
+		{%if value.desc%}
+			<div class="c">{{value.desc}}</div>
+		{%else%}
+			<div class="c"><i>{%trans "No description"%}</i></div>
+		{%endif%}
 
 		{%if not show_all_user%}
 			<div class="c">{{value.response}}</div>
 		{%endif%}
 
 		{%if show_all_user%}
-			<div class="c">
-				<textarea name="desc_{{value.id}}" class="larg" placeholder='{%trans "Set Response"%}'></textarea>
-			</div>
 
-			<div class="c">
-				<input type="submit" class="b1" name="accept_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "accept"}' value='{%trans "Accept"%}'>
-			</div>
+			<form method="post" class="c">
+				<div class="c df"><textarea name="desc_{{value.id}}" my_code="{{value.id}}" class="description_main " placeholder='{%trans "Set Response"%}' ></textarea></div>
+				<div class="hidden">
+					<input type="hidden" name="accept_{{value.id}}" value="{{value.id}}">
+				</div>
+				<div class="c df"><input type="submit" class="bp" name="accept_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "accept"}' value='{%trans "Accept"%}'></div>
+			</form>
 
-			<div class="c">
-				<input type="submit" class="b2" name="reject_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'>
-			</div>
+			<form method="post" class="c">
+				<div class="hidden">
+					<textarea my_code="{{value.id}}" class="description_copy" name="desc_{{value.id}}"  placeholder='{%trans "Set Response"%}'></textarea>
+					<input type="hidden" name="reject_{{value.id}}" value="{{value.id}}">
+				</div>
+				<div class="c df"><input type="submit" class="bn" name="reject_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'></div>
+			</form>
+
 		{%endif%}
 	</div>
 	{%endfor%}
 </div>
-</form>
 
 <div class="pagination-container">
 	{%include display.pagination%}
 </div>
 
+{%endblock%}
+
+
+{%block foot_js%}
+{{parent()}}
+<script type="text/javascript">
+// creat copy of desctiption on accept and reject
+	$(document).on('change', '.description_main', function(){
+		var myCode = $(this).attr('my_code');
+		$(".description_copy[my_code="+ myCode + "]").val($(this).val());
+	});
+</script>
 {%endblock%}
