@@ -34,6 +34,11 @@ class model extends \content_a\main\model
 	 */
 	public function post_plan()
 	{
+		if(!$this->login())
+		{
+			return false;
+		}
+
 		$plan = utility::post('plan');
 		if(!$plan)
 		{
@@ -69,6 +74,15 @@ class model extends \content_a\main\model
 		{
 			\lib\db\logs::set('plan:invalid:team', $this->login('id'));
 			debug::error(T_("Invalid team!"), 'team');
+			return false;
+		}
+
+		$access = \lib\db\teams::access_team_id($team, $this->login('id'), ['action' => 'admin']);
+
+		if(!$access)
+		{
+			\lib\db\logs::set('plan:no:access:to:change:plan', $this->login('id'));
+			debug::error(T_("No access to change plan"), 'team');
 			return false;
 		}
 
