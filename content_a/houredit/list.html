@@ -2,6 +2,7 @@
 
 {%block content%}
 
+<form method="post">
 <div class="dt big">
 	<div class="f th">
 		<div class="c">{%trans "Action"%}</div>
@@ -11,10 +12,23 @@
 		<div class="c">{%trans "End Time"%}</div>
 		<div class="c">{%trans "Status"%}</div>
 		<div class="c">{%trans "Description"%}</div>
-		<div class="c">{%trans "Response"%}</div>
+
+		{%if not show_all_user%}
+			<div class="c">{%trans "Response"%}</div>
+		{%endif%}
+
+		{%if show_all_user%}
+			<div class="c">{%trans "Set Description"%}</div>
+			<div class="c">{%trans "Accept"%}</div>
+			<div class="c">{%trans "Reject"%}</div>
+		{%endif%}
+
 	</div>
+
 	{%for key, value in request_list%}
+
 	<div class="f">
+
 		{%if value.status == 'awaiting' %}
 			<div class="c"><a href="{{url.baseFull}}/{{team_code}}/houredit/remove={{value.id}}">{%trans "Remove"%}</a></div>
 		{%else%}
@@ -27,11 +41,31 @@
 		<div class="c">{{value.end}}</div>
 		<div class="c">{{value.status}}</div>
 		<div class="c">{{value.desc}}</div>
-		<div class="c">{{value.response}}</div>
+
+		{%if not show_all_user%}
+			<div class="c">{{value.response}}</div>
+		{%endif%}
+
+		{%if show_all_user%}
+			<div class="c">
+				<textarea name="desc_{{value.id}}" class="larg" placeholder='{%trans "Set Response"%}'></textarea>
+			</div>
+
+			<div class="c">
+				<input type="submit" class="b1" name="accept_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "accept"}' value='{%trans "Accept"%}'>
+			</div>
+
+			<div class="c">
+				<input type="submit" class="b2" name="reject_{{value.id}}" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'>
+			</div>
+		{%endif%}
 	</div>
 	{%endfor%}
 </div>
+</form>
+
 <div class="pagination-container">
 	{%include display.pagination%}
 </div>
+
 {%endblock%}
