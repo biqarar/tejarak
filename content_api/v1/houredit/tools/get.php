@@ -37,6 +37,10 @@ trait get
 					$result['id'] = \lib\utility\shortURL::encode(intval($value));
 					break;
 
+				case 'date_shamsi':
+					$result['shamsi_date'] = $value;
+					break;
+
 				default:
 					if(isset($value))
 					{

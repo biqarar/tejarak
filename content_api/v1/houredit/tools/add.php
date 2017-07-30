@@ -201,7 +201,7 @@ trait add
 		{
 			// load hour data
 			$hour_detail = \lib\db\hours::access_hours_id($id, $this->user_id, ['action' => 'view']);
-			// var_dump($hour_detail);exit();
+
 			// check the hour exist
 			if(isset($hour_detail['id']))
 			{
@@ -213,6 +213,22 @@ trait add
 				debug::error(T_("Can not access to set time of this hour"), 'hour', 'permission');
 				return false;
 			}
+
+			// check one of the request was change
+			if(isset($hour_detail['date']) && isset($hour_detail['start']) && isset($hour_detail['end']) && isset($hour_detail['enddate']))
+			{
+				if
+				(
+					strtotime("$hour_detail[date] $hour_detail[start]") === strtotime("$start_date_gregorian $start_time") &&
+					strtotime("$hour_detail[enddate] $hour_detail[end]") === strtotime("$end_date_gregorian $end_time")
+				)
+				{
+					logs::set('api:houredit:hour:no:thing:edit', $this->user_id, $log_meta);
+					debug::error(T_("No thing changed!"), null, 'arguments');
+					return false;
+				}
+			}
+
 		}
 
 		$update_mode = false;
@@ -250,16 +266,37 @@ trait add
 			}
 		}
 
-		$args                = [];
-		$args['hour_id']     = $id ? $id : null;
-		$args['date']        = $start_date;
-		$args['start']       = $start_time;
-		$args['end']         = $end_time;
-		$args['enddate']     = $end_date;
-		$args['desc']        = $desc;
-		$args['creator']     = $this->user_id;
-		$args['team_id']     = $team_id;
-		$args['userteam_id'] = "(SELECT id FROM userteams WHERE user_id = ". $this->user_id. " AND team_id = $team_id LIMIT 1)";
+		$args                    = [];
+		$args['hour_id']         = $id ? $id : null;
+		// start date gregorian
+		$args['date']            = $start_date_gregorian;
+		$args['year']            = date("Y", strtotime($start_date_gregorian));
+		$args['month']           = date("m", strtotime($start_date_gregorian));
+		$args['day']             = date("d", strtotime($start_date_gregorian));
+		// start date shamsi
+		$args['date_shamsi']     = utility\jdate::date("Y-m-d", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_year']     = utility\jdate::date("Y", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_month']    = utility\jdate::date("m", strtotime($start_date_gregorian), false, true);;
+		$args['shamsi_day']      = utility\jdate::date("d", strtotime($start_date_gregorian), false, true);;
+		// start time
+		$args['start']           = $start_time;
+		// end time
+		$args['end']             = $end_time;
+		// end date gregorian
+		$args['enddate']         = $end_date_gregorian;
+		$args['endyear']         = date("Y", strtotime($end_date_gregorian));
+		$args['endmonth']        = date("m", strtotime($end_date_gregorian));
+		$args['endday']          = date("d", strtotime($end_date_gregorian));
+		// enddate shamsi
+		$args['endshamsi_date']  = utility\jdate::date("Y-m-d", strtotime($end_date_gregorian), false, true);
+		$args['endshamsi_year']  = utility\jdate::date("Y", strtotime($end_date_gregorian), false, true);
+		$args['endshamsi_month'] = utility\jdate::date("m", strtotime($end_date_gregorian), false, true);
+		$args['endshamsi_day']   = utility\jdate::date("d", strtotime($end_date_gregorian), false, true);
+		// other field
+		$args['desc']            = $desc;
+		$args['creator']         = $this->user_id;
+		$args['team_id']         = $team_id;
+		$args['userteam_id']     = "(SELECT id FROM userteams WHERE user_id = ". $this->user_id. " AND team_id = $team_id LIMIT 1)";
 
 		if($_args['method'] === 'post' && !$update_mode)
 		{

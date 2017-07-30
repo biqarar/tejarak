@@ -17,7 +17,7 @@
 		{%endif%}
 
 		{%if show_all_user%}
-			<div class="c">{%trans "Set Description"%}</div>
+			<div class="c">{%trans "Set Response"%}</div>
 			<div class="c">{%trans "Accept"%}</div>
 			<div class="c">{%trans "Reject"%}</div>
 		{%endif%}
@@ -34,11 +34,19 @@
 			<div class="c df"><a href="{{url.baseFull}}/{{team_code}}/houredit/detail={{value.id}}">{%trans "More"%}</a></div>
 		{%endif%}
 
-		<div class="c">{{value.date}}</div>
-		<div class="c">{{value.start}}</div>
-		<div class="c">{{value.enddate}}</div>
-		<div class="c">{{value.end}}</div>
-		<div class="c">{{value.status}}</div>
+		{%if site.currentlang == 'fa'%}
+			<div class="c">{{value.shamsi_date|fitNumber}}</div>
+		{%else%}
+			<div class="c">{{value.date|fitNumber}}</div>
+		{%endif%}
+		<div class="c">{{value.start|fitNumber}}</div>
+		{%if site.currentlang == 'fa'%}
+			<div class="c">{{value.endshamsi_date|fitNumber}}</div>
+		{%else%}
+			<div class="c">{{value.enddate|fitNumber}}</div>
+		{%endif%}
+		<div class="c">{{value.end|fitNumber}}</div>
+		<div class="c">{%set myStatus = value.status%}{% trans myStatus %}</div>
 		{%if value.desc%}
 			<div class="c">{{value.desc}}</div>
 		{%else%}

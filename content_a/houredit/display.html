@@ -21,7 +21,8 @@
      <div class="f g1">
        <div class="cauto s0 lbl"><label for="startdate">{%trans "Start Date"%}</label></div>
        <div class="c">
-         <input type="text" name="start_date" id="startdate" placeholder='{%trans "Start Date"%}' value="{{myTime.date|fitNumber}}" maxlength='30'>
+
+         <input type="text" name="start_date" id="startdate" placeholder='{%trans "Start Date"%}' {% if site.currentlang == 'fa' %} value="{{myTime.shamsi_date|fitNumber}}" {%else%} value="{{myTime.date}}" {% endif %}  maxlength='30'>
        </div>
       </div>
 
@@ -34,7 +35,7 @@
      <div class="f g1">
        <div class="cauto s0 lbl"><label for="enddate">{%trans "End Date"%}</label></div>
        <div class="c">
-         <input type="text" name="end_date" id="enddate" placeholder='{%trans "End date"%}' value="{{myTime.enddate|fitNumber}}" maxlength='30'>
+         <input type="text" name="end_date" id="enddate" placeholder='{%trans "End date"%}' {% if site.currentlang == 'fa' %} value="{{myTime.endshamsi_date|fitNumber}}" {%else%} value="{{myTime.enddate}}" {% endif %}  maxlength='30'>
        </div>
       </div>
 
