@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-07-30 15:07+0430\n"
-"PO-Revision-Date: 2017-07-30 15:30+0430\n"
+"POT-Creation-Date: 2017-07-30 15:36+0430\n"
+"PO-Revision-Date: 2017-07-30 15:38+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4713,7 +4713,11 @@ msgstr "شناسه نامعتبر است. رکوردی یافت نشد"
 msgid "Invaid team id"
 msgstr "شناسه تیم نامعتبر است"
 
-#: tejarak/content_api/v1/houredit/tools/action.php:146
+#: tejarak/content_api/v1/houredit/tools/action.php:147
+msgid "Hour id not found!"
+msgstr "شناسه ساعت یافت نشد"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:162
 #: tejarak/content_api/v1/houredit/tools/add.php:318
 #: tejarak/content_api/v1/houredit/tools/delete.php:59
 #: tejarak/content_api/v1/houredit/tools/get.php:103
@@ -4726,11 +4730,11 @@ msgstr "شناسه تیم نامعتبر است"
 msgid "Operation complete"
 msgstr "عملیات کامل شد"
 
-#: tejarak/content_api/v1/houredit/tools/action.php:149
+#: tejarak/content_api/v1/houredit/tools/action.php:165
 msgid "Request accepted"
 msgstr "درخواست پذیرفته شد"
 
-#: tejarak/content_api/v1/houredit/tools/action.php:153
+#: tejarak/content_api/v1/houredit/tools/action.php:169
 msgid "Request rejected"
 msgstr "درخواست رد شد"
 
@@ -4777,8 +4781,8 @@ msgid "On this time you are not in this team!"
 msgstr "کاربر مورد نظر در این تیم نیست!"
 
 #: tejarak/content_api/v1/houredit/tools/add.php:176
-msgid "End date can not larger than date now!"
-msgstr "تاریخ پایان نمی‌تواند در آینده باشد!"
+msgid "End date can not be in the future"
+msgstr "تاریخ پایان نمی‌تواند در آینده باشد"
 
 #: tejarak/content_api/v1/houredit/tools/add.php:184
 msgid "End date can not larger than start date"
@@ -4997,8 +5001,8 @@ msgid "Invalid input month"
 msgstr "ماه وارد‌شده نامعتبر است"
 
 #: tejarak/content_api/v1/report/tools/period.php:160
-msgid "Start date and end date is not mathc"
-msgstr "تاریخ آغاز و تاریخ پایان یکسان نیستند"
+msgid "Start date and end date is not match"
+msgstr "تاریخ آغاز و پایان از یک نوع نیستند"
 
 #: tejarak/content_api/v1/report/tools/sum.php:87
 msgid "Invalid input day"
@@ -7737,23 +7741,23 @@ msgstr "مرکزی"
 msgid "centeral"
 msgstr "مرکزی"
 
-#: tejarak/includes/lib/db/hours.php:196
+#: tejarak/includes/lib/db/hours.php:255
 msgid "User team not found!"
 msgstr "تیم عضو یافت نشد!"
 
-#: tejarak/includes/lib/db/hours.php:202
+#: tejarak/includes/lib/db/hours.php:261
 msgid "User is diactive!"
 msgstr "کاربر غیرفعال است"
 
-#: tejarak/includes/lib/db/hours.php:235
+#: tejarak/includes/lib/db/hours.php:294
 msgid "You was already save your enter time"
 msgstr "شما در حال حاضر زمان ورود خود را ذخیره کرده‌اید"
 
-#: tejarak/includes/lib/db/hours.php:304
+#: tejarak/includes/lib/db/hours.php:363
 msgid "You was not save your enter time"
 msgstr "شما زمان ورود خود را ذخیره نکرده‌اید"
 
-#: tejarak/includes/lib/db/hours.php:316
+#: tejarak/includes/lib/db/hours.php:375
 msgid "Invalid data"
 msgstr "داده‌ی نامعتبر"
 
@@ -7808,6 +7812,9 @@ msgstr "شما می‌توانید صفحه‌ی مدیریت را ببینید"
 #: tejarak/permission.php:27
 msgid "Can add hourse for all users in admin page"
 msgstr "شما می‌توانید ساعات همه‌ی کاربران را در صفحه مدیریت وارد کنید"
+
+#~ msgid "End date can not larger than date now!"
+#~ msgstr "تاریخ پایان نمی‌تواند در آینده باشد!"
 
 #~ msgid "Tomans"
 #~ msgstr "تومان"
