@@ -42,7 +42,7 @@ trait action
 
 		if(!$this->user_id)
 		{
-			logs::set('api:houredit:action:user_id:not:set', null, $log_meta);
+			logs::set('api:houredit:action:user_id:not:set', $this->user_id, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}

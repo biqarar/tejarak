@@ -49,7 +49,7 @@ trait add
 		// check user id is exist
 		if(!$this->user_id)
 		{
-			logs::set('api:gateway:user_id:notfound', null, $log_meta);
+			logs::set('api:gateway:user_id:notfound', $this->user_id, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -59,7 +59,7 @@ trait add
 		$team = utility\shortURL::decode($team);
 		if(!$team)
 		{
-			logs::set('api:gateway:team:not:set', null, $log_meta);
+			logs::set('api:gateway:team:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Team not set"), 'user', 'permission');
 			return false;
 		}
@@ -72,7 +72,7 @@ trait add
 		}
 		else
 		{
-			logs::set('api:gateway:team:notfound:invalid', null, $log_meta);
+			logs::set('api:gateway:team:notfound:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}

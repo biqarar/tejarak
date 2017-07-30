@@ -40,13 +40,13 @@ trait get
 
 		if(!$id && !$shortname)
 		{
-			logs::set('api:member:team:id:not:set', null, $log_meta);
+			logs::set('api:member:team:id:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Id or shortname not set"), 'id', 'arguments');
 			return false;
 		}
 		elseif($id && $shortname)
 		{
-			logs::set('api:member:team:id:and:shortname:together:set', null, $log_meta);
+			logs::set('api:member:team:id:and:shortname:together:set', $this->user_id, $log_meta);
 			debug::error(T_("Can not set id and shortname together"), 'id', 'arguments');
 			return false;
 		}
@@ -65,7 +65,7 @@ trait get
 
 		if(!$team_detail)
 		{
-			logs::set('api:member:team:id:permission:denide', null, $log_meta);
+			logs::set('api:member:team:id:permission:denide', $this->user_id, $log_meta);
 			debug::error(T_("Can not access to load this team"), 'id', 'permission');
 			return false;
 		}
@@ -137,7 +137,7 @@ trait get
 		];
 		if(!$this->user_id)
 		{
-			logs::set('api:member:user_id:notfound', null, $log_meta);
+			logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -203,7 +203,7 @@ trait get
 
 		if(!$this->user_id)
 		{
-			logs::set('api:member:user_id:not:set:userteam_get_details', null, $log_meta);
+			logs::set('api:member:user_id:not:set:userteam_get_details', $this->user_id, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}

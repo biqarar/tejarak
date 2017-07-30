@@ -42,7 +42,7 @@ trait add
 
 		if(!$this->user_id)
 		{
-			logs::set('api:hours:user_id:notfound', null, $log_meta);
+			logs::set('api:hours:user_id:notfound', $this->user_id, $log_meta);
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -62,7 +62,7 @@ trait add
 		$team = utility::request('team');
 		if(!$team)
 		{
-			logs::set('api:hours:team:notfound', null, $log_meta);
+			logs::set('api:hours:team:notfound', $this->user_id, $log_meta);
 			debug::error(T_("Team not found"), 'team', 'permission');
 			return false;
 		}
@@ -76,7 +76,7 @@ trait add
 		}
 		else
 		{
-			logs::set('api:hours:team:notfound:invalid', null, $log_meta);
+			logs::set('api:hours:team:notfound:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Can not access to set time of this team"), 'team', 'permission');
 			return false;
 		}

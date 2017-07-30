@@ -110,7 +110,7 @@ trait period
 		{
 			if(($date_start = \DateTime::createFromFormat('Y-m-d', $start)) === false)
 			{
-			 	logs::set('api:report:period:start:invalid', null, $log_meta);
+			 	logs::set('api:report:period:start:invalid', $this->user_id, $log_meta);
 				debug::error(T_("Invalid start date"), 'start', 'arguments');
 				return false;
 			}
@@ -125,7 +125,7 @@ trait period
 		{
 			if(\DateTime::createFromFormat('Y-m-d', $end) === false)
 			{
-			 	logs::set('api:report:period:end:invalid', null, $log_meta);
+			 	logs::set('api:report:period:end:invalid', $this->user_id, $log_meta);
 				debug::error(T_("Invalid end date"), 'end', 'arguments');
 				return false;
 			}
@@ -156,8 +156,8 @@ trait period
 		}
 		else
 		{
-			logs::set('api:report:period:start:end:date:shamsi:not:mathc', null, $log_meta);
-			debug::error(T_("Start date and end date is not mathc"), null, 'arguments');
+			logs::set('api:report:period:start:end:date:shamsi:not:mathc', $this->user_id, $log_meta);
+			debug::error(T_("Start date and end date is not match"), null, 'arguments');
 			return false;
 		}
 
