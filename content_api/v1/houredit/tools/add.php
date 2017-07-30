@@ -173,7 +173,7 @@ trait add
 		if(strtotime($end_date_gregorian) > time())
 		{
 			logs::set('api:houredit:end:date:larger:than:now', $this->user_id, $log_meta);
-			debug::error(T_("End date can not larger than date now!"), 'end_date', 'arguments');
+			debug::error(T_("End date can not be in the future"), 'end_date', 'arguments');
 			return false;
 		}
 
@@ -274,7 +274,7 @@ trait add
 		$args['month']           = date("m", strtotime($start_date_gregorian));
 		$args['day']             = date("d", strtotime($start_date_gregorian));
 		// start date shamsi
-		$args['date_shamsi']     = utility\jdate::date("Y-m-d", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_date']     = utility\jdate::date("Y-m-d", strtotime($start_date_gregorian), false, true);
 		$args['shamsi_year']     = utility\jdate::date("Y", strtotime($start_date_gregorian), false, true);
 		$args['shamsi_month']    = utility\jdate::date("m", strtotime($start_date_gregorian), false, true);;
 		$args['shamsi_day']      = utility\jdate::date("d", strtotime($start_date_gregorian), false, true);;

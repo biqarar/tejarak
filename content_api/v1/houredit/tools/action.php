@@ -52,7 +52,7 @@ trait action
 		$id = utility\shortURL::decode($id);
 		if(!$id)
 		{
-			logs::set('api:houredit:action:id:not:set', null, $log_meta);
+			logs::set('api:houredit:action:id:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Id not set or invalid id"), 'id', 'arguments');
 			return false;
 		}
@@ -60,14 +60,14 @@ trait action
 		$type = utility::request('type');
 		if(!$type)
 		{
-			logs::set('api:houredit:action:type:not:set', null, $log_meta);
+			logs::set('api:houredit:action:type:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Action type not set"), 'type', 'arguments');
 			return false;
 		}
 
 		if(!in_array($type, ['accept', 'reject']))
 		{
-			logs::set('api:houredit:action:type:inavalid', null, $log_meta);
+			logs::set('api:houredit:action:type:inavalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid action type"), 'type', 'arguments');
 			return false;
 		}
@@ -75,7 +75,7 @@ trait action
 		$response = utility::request('response');
 		if($response && mb_strlen($response) > 500)
 		{
-			logs::set('api:houredit:action:response:max:length', null, $log_meta);
+			logs::set('api:houredit:action:response:max:length', $this->user_id, $log_meta);
 			debug::error(T_("You can set less than 500 character in response"));
 			return false;
 		}
@@ -84,7 +84,7 @@ trait action
 		$team_id = utility\shortURL::decode($team_id);
 		if(!$team_id)
 		{
-			logs::set('api:houredit:action:team:id:not:set', null, $log_meta);
+			logs::set('api:houredit:action:team:id:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
@@ -95,7 +95,7 @@ trait action
 		// check the hour exist
 		if(!isset($access_team['id']))
 		{
-			logs::set('api:houredit:action:access:forbidden', null, $log_meta);
+			logs::set('api:houredit:action:access:forbidden', $this->user_id, $log_meta);
 			debug::error(T_("Can not access to accept or reject hour edit request"), 'team', 'permission');
 			return false;
 		}
@@ -103,7 +103,7 @@ trait action
 		$is_exist_record = \lib\db\hourrequests::get(['id' => $id, 'limit' => 1]);
 		if(!$is_exist_record || !isset($is_exist_record['team_id']) || !isset($is_exist_record['creator']))
 		{
-			logs::set('api:houredit:id:record:not:found', null, $log_meta);
+			logs::set('api:houredit:id:record:not:found', $this->user_id, $log_meta);
 			debug::error(T_("Invaid id. record not found"), 'id', 'arguments');
 			return false;
 		}
@@ -114,7 +114,7 @@ trait action
 		}
 		else
 		{
-			logs::set('api:houredit:team:id:hourrequests:team_id:not:mathc', null, $log_meta);
+			logs::set('api:houredit:team:id:hourrequests:team_id:not:mathc', $this->user_id, $log_meta);
 			debug::error(T_("Invaid team id"), 'team', 'permission');
 			return false;
 		}
@@ -125,7 +125,7 @@ trait action
 		// check the hour exist
 		if(!isset($access_team_user['id']))
 		{
-			logs::set('api:houredit:action:access:forbidden:user:not:in:team', null, $log_meta);
+			logs::set('api:houredit:action:access:forbidden:user:not:in:team', $this->user_id, $log_meta);
 			debug::error(T_("This user is not in this team"), 'team', 'permission');
 			return false;
 		}
@@ -133,10 +133,26 @@ trait action
 		$update             = [];
 		$update['response'] = $response;
 		$update['status']   = $type;
+		$update['changer']  = $this->user_id;
 
 		if($type === 'accept')
 		{
+			$hourrequests_details = $is_exist_record;
+			if(isset($hourrequests_details['hour_id']) && $hourrequests_details['hour_id'] && is_numeric($hourrequests_details['hour_id']))
+			{
+				$hour_detail = \lib\db\hours::get(['id' => $hourrequests_details['hour_id'], 'limit' => 1]);
+				if(!isset($hour_detail['id']))
+				{
+					logs::set('api:houredit:action:hour_id:set:but:not:found', $this->user_id, $log_meta);
+					debug::error(T_("Hour id not found!"), 'id', 'system');
+					return false;
+				}
 
+				$log_meta['meta']['hourrequests_details'] = $hourrequests_details;
+				$log_meta['meta']['hour_detail']          = $hour_detail;
+				\lib\db\hours::update_process($hourrequests_details, $id, ['hour_detail' => $hour_detail]);
+				logs::set('api:hour:edited:request:accepted', $this->user_id, $log_meta);
+			}
 		}
 
 		\lib\db\hourrequests::update($update, $id);

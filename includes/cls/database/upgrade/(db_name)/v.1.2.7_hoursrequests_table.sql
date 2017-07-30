@@ -1,7 +1,7 @@
 CREATE TABLE hourrequests (
 `id`					  BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 `date`					  date NULL DEFAULT NULL,
-`date_shamsi`			  varchar(50) NULL DEFAULT NULL,
+`shamsi_date`			  varchar(50) NULL DEFAULT NULL,
 `hour_id`				  BIGINT(20) UNSIGNED NULL DEFAULT NULL,
 `start`					  datetime NULL DEFAULT NULL,
 `end`					  datetime NULL DEFAULT NULL,
