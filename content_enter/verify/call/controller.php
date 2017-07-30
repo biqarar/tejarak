@@ -29,7 +29,7 @@ class controller extends \content_enter\main\controller
 			// else go to nex way
 			if(!self::loaded_module('verify/call'))
 			{
-				if(isset($_SERVER['REQUEST_URI']) && urldecode($_SERVER['REQUEST_URI']) === '/enter/verify/call')
+				if(isset($_SERVER['REQUEST_URI']) && preg_match("/enter\/verify\/call$/", urldecode($_SERVER['REQUEST_URI'])))
 				{
 
 					self::loaded_module('verify/call', true);

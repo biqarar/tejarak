@@ -29,7 +29,7 @@ class controller extends \content_enter\main\controller
 			// else go to nex way
 			if(!self::loaded_module('verify/sms'))
 			{
-				if(isset($_SERVER['REQUEST_URI']) && urldecode($_SERVER['REQUEST_URI']) === '/enter/verify/sms')
+				if(isset($_SERVER['REQUEST_URI']) && preg_match("/enter\/verify\/sms$/", urldecode($_SERVER['REQUEST_URI'])))
 				{
 					/**
 					 * set this module as loaded to not send code by every refresh
