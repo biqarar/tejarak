@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-07-30 15:36+0430\n"
-"PO-Revision-Date: 2017-07-30 15:38+0430\n"
+"POT-Creation-Date: 2017-07-30 15:41+0430\n"
+"PO-Revision-Date: 2017-07-30 15:42+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4326,7 +4326,7 @@ msgstr "افزودن ورودی جدید"
 
 #: tejarak/content_a/gateway/view.php:72 tejarak/content_a/member/view.php:72
 msgid "Edit :name"
-msgstr "ویرایش تیم :name"
+msgstr "ویرایش :name"
 
 #: tejarak/content_a/gateway/view.php:76
 msgid "Edit gateway!"
