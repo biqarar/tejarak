@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-07-25 15:23+0430\n"
-"PO-Revision-Date: 2017-07-25 15:36+0430\n"
+"POT-Creation-Date: 2017-07-30 15:07+0430\n"
+"PO-Revision-Date: 2017-07-30 15:30+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4340,23 +4340,27 @@ msgstr "افزودن عضو جدید"
 msgid "Edit member!"
 msgstr "ویرایش عضو"
 
-#: tejarak/content_a/plan/model.php:24 tejarak/content_a/plan/model.php:71
+#: tejarak/content_a/plan/model.php:24 tejarak/content_a/plan/model.php:76
 msgid "Invalid team!"
 msgstr "تیم نامعتبر"
 
-#: tejarak/content_a/plan/model.php:41
+#: tejarak/content_a/plan/model.php:46
 msgid "Please select one of plan"
 msgstr "لطفا یکی از پلن‌ها را انتخاب کنید"
 
-#: tejarak/content_a/plan/model.php:61
+#: tejarak/content_a/plan/model.php:66
 msgid "Invalid plan!"
 msgstr "پلن نامعتبر"
 
 #: tejarak/content_a/plan/model.php:85
+msgid "No access to change plan"
+msgstr "شما به تغییر پلن دسترسی ندارید"
+
+#: tejarak/content_a/plan/model.php:99
 msgid "Your team plan was changed"
 msgstr "پلن تیم شما تغییر یافت"
 
-#: tejarak/content_a/plan/model.php:90
+#: tejarak/content_a/plan/model.php:104
 msgid "Can not save this plan of your team"
 msgstr "نمی‌توانید این پلن را ذخیره کنید"
 
@@ -4400,7 +4404,11 @@ msgstr "سربرگ گزارش نمی‌تواند بیش از ۲۵۵ کاراک�
 msgid "Can not set report footer larger than 255 character"
 msgstr "پاورقی گزارش نمی‌تواند بیش از ۲۵۵ کاراکتر باشد"
 
-#: tejarak/content_a/report/settings/model.php:157
+#: tejarak/content_a/report/settings/model.php:69
+msgid "No access to change settings"
+msgstr "عدم دسترسی به تغییر تنظیمات"
+
+#: tejarak/content_a/report/settings/model.php:166
 msgid "Report settings was changed"
 msgstr "تنظیمات گزارش تغییر یافت"
 
@@ -4480,7 +4488,13 @@ msgstr "آپلود فایل کامل شد"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:34
 #: tejarak/content_api/v1/gateway/tools/get.php:104
-#: tejarak/content_api/v1/hours/tools/get.php:127
+#: tejarak/content_api/v1/houredit/tools/action.php:32
+#: tejarak/content_api/v1/houredit/tools/add.php:33
+#: tejarak/content_api/v1/houredit/tools/delete.php:20
+#: tejarak/content_api/v1/houredit/tools/get.php:70
+#: tejarak/content_api/v1/houredit/tools/get.php:115
+#: tejarak/content_api/v1/houredit/tools/get.php:214
+#: tejarak/content_api/v1/hours/tools/get.php:96
 #: tejarak/content_api/v1/member/tools/add.php:34
 #: tejarak/content_api/v1/member/tools/get.php:129
 #: tejarak/content_api/v1/team/tools/add.php:25
@@ -4492,6 +4506,8 @@ msgstr "عملیات با خطا مواجه شد"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:53
 #: tejarak/content_api/v1/gateway/tools/get.php:116
+#: tejarak/content_api/v1/houredit/tools/action.php:46
+#: tejarak/content_api/v1/houredit/tools/add.php:47
 #: tejarak/content_api/v1/hours/tools/add.php:46
 #: tejarak/content_api/v1/member/tools/add.php:53
 #: tejarak/content_api/v1/member/tools/get.php:141
@@ -4555,19 +4571,20 @@ msgid "User id is not a gateway user!"
 msgstr "دسترسی شما به این ورودی امکان‌پذیر نیست"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:205
-#: tejarak/content_api/v1/member/tools/add.php:302
+#: tejarak/content_api/v1/member/tools/add.php:303
 #: tejarak/content_api/v1/team/model.php:46
 msgid "User id not found"
 msgstr "شناسه کاربر یافت نشد"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:216
-#: tejarak/content_api/v1/member/tools/add.php:376
+#: tejarak/content_api/v1/member/tools/add.php:377
 msgid "Invalid parameter status"
 msgstr "پارامتر وضعیت نامعتبر است"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:244
 #: tejarak/content_api/v1/gateway/tools/get.php:133
-#: tejarak/content_api/v1/member/tools/add.php:492
+#: tejarak/content_api/v1/houredit/tools/add.php:62
+#: tejarak/content_api/v1/member/tools/add.php:493
 #: tejarak/content_api/v1/member/tools/get.php:158
 #: tejarak/content_api/v1/team/tools/add.php:224
 #: tejarak/content_api/v1/team/tools/close.php:39
@@ -4577,14 +4594,20 @@ msgstr "شناسه تنظیم نشده است"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:253
 #: tejarak/content_api/v1/gateway/tools/get.php:151
-#: tejarak/content_api/v1/member/tools/add.php:501
+#: tejarak/content_api/v1/houredit/tools/action.php:129
+#: tejarak/content_api/v1/houredit/tools/add.php:143
+#: tejarak/content_api/v1/houredit/tools/get.php:160
+#: tejarak/content_api/v1/member/tools/add.php:502
 #: tejarak/content_api/v1/member/tools/get.php:176
+#: tejarak/content_api/v1/report/tools/month.php:65
+#: tejarak/content_api/v1/report/tools/period.php:65
 #: tejarak/content_api/v1/report/tools/sum.php:106
+#: tejarak/content_api/v1/report/tools/year.php:49
 msgid "This user is not in this team"
 msgstr "کاربر مورد نظر در این تیم نیست"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:292
-#: tejarak/content_api/v1/member/tools/add.php:535
+#: tejarak/content_api/v1/member/tools/add.php:536
 #: tejarak/content_api/v1/team/tools/add.php:285
 #: tejarak/content_api/v1/team/tools/close.php:55
 #: tejarak/content_api/v1/team/tools/delete.php:55
@@ -4651,6 +4674,178 @@ msgstr "کاربر یافت نشد، لطفا به آدرس /enter/hook رفته
 msgid "Invalid parameter temp_token"
 msgstr "پارامتر temp_token نامعتبر است"
 
+#: tejarak/content_api/v1/houredit/tools/action.php:56
+msgid "Id not set or invalid id"
+msgstr "شناسه تنظیم نشده یا نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:64
+msgid "Action type not set"
+msgstr "نوع عملیات تعیین نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:71
+msgid "Invalid action type"
+msgstr "نوع عملیات نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:79
+msgid "You can set less than 500 character in response"
+msgstr "شما می‌توانید پاسخی با کمتر از ۵۰۰ کاراکتر تنظیم کنید"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:88
+#: tejarak/content_api/v1/houredit/tools/add.php:134
+#: tejarak/content_api/v1/report/tools/last.php:39
+#: tejarak/content_api/v1/report/tools/month.php:39
+#: tejarak/content_api/v1/report/tools/period.php:39
+#: tejarak/content_api/v1/report/tools/sum.php:38
+#: tejarak/content_api/v1/report/tools/u.php:38
+#: tejarak/content_api/v1/report/tools/year.php:38
+msgid "Team id not set"
+msgstr "شناسه تیم تنظیم نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:99
+msgid "Can not access to accept or reject hour edit request"
+msgstr "شما به پذیرش یا رد درخواست تغییر ساعت دسترسی ندارید"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:107
+msgid "Invaid id. record not found"
+msgstr "شناسه نامعتبر است. رکوردی یافت نشد"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:118
+msgid "Invaid team id"
+msgstr "شناسه تیم نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:146
+#: tejarak/content_api/v1/houredit/tools/add.php:318
+#: tejarak/content_api/v1/houredit/tools/delete.php:59
+#: tejarak/content_api/v1/houredit/tools/get.php:103
+#: tejarak/content_api/v1/houredit/tools/get.php:192
+#: tejarak/content_api/v1/houredit/tools/get.php:248
+#: tejarak/content_api/v1/hours/tools/get.php:130
+#: tejarak/content_api/v1/team/model.php:87
+#: tejarak/content_api/v1/team/tools/get.php:247
+#: tejarak/content_enter/hook/model.php:61 tejarak/content_enter/hook/model.php:81
+msgid "Operation complete"
+msgstr "عملیات کامل شد"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:149
+msgid "Request accepted"
+msgstr "درخواست پذیرفته شد"
+
+#: tejarak/content_api/v1/houredit/tools/action.php:153
+msgid "Request rejected"
+msgstr "درخواست رد شد"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:69
+msgid "Start date not set"
+msgstr "تاریخ آغاز تنظیم نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:76
+#: tejarak/content_api/v1/report/tools/period.php:114
+msgid "Invalid start date"
+msgstr "تاریخ آغاز نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:83
+msgid "Start time not set"
+msgstr "زمان آغاز تنظیم نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:90
+msgid "Invalid start time"
+msgstr "زمان آغاز نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:97
+msgid "end date not set"
+msgstr "تاریخ پایان تنظیم نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:104
+#: tejarak/content_api/v1/report/tools/period.php:129
+msgid "Invalid end date"
+msgstr "تاریخ پایان نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:111
+msgid "end time not set"
+msgstr "زمان پایان تنظیم نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:118
+msgid "Invalid end time"
+msgstr "زمان پایان نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:125
+msgid "You must be set less than 500 character in description field"
+msgstr "شما باید توضیح را با کمتر از ۵۰۰ کاراکتر تنظیم کنید"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:160
+msgid "On this time you are not in this team!"
+msgstr "کاربر مورد نظر در این تیم نیست!"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:176
+msgid "End date can not larger than date now!"
+msgstr "تاریخ پایان نمی‌تواند در آینده باشد!"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:184
+msgid "End date can not larger than start date"
+msgstr "تاریخ پایان نمی‌تواند قبل از تاریخ آغاز باشد"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:194
+msgid "Can not set end time larger than start time in one date"
+msgstr "در یک تاریخ معین زمان پایان نمی‌تواند پیش از زمان آغاز باشد"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:213
+msgid "Can not access to set time of this hour"
+msgstr "شما به تنظیم زمان دسترسی ندارید"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:227
+msgid "No thing changed!"
+msgstr "هیچ چیز تغییر نکرد!"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:264
+msgid "Duplicate request of this start time"
+msgstr "درخواست تکراری برای این زمان آغاز"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:312
+msgid "Syste error"
+msgstr "خطای سیستمی"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:321
+msgid "Your request updated"
+msgstr "درخواست شما به‌روزرسانی شد"
+
+#: tejarak/content_api/v1/houredit/tools/add.php:325
+msgid "Your request sended"
+msgstr "درخواست شما ارسال شد"
+
+#: tejarak/content_api/v1/houredit/tools/delete.php:41
+#: tejarak/content_api/v1/houredit/tools/get.php:91
+#: tejarak/content_api/v1/houredit/tools/get.php:235
+msgid "houredit id not set"
+msgstr "شناسه houredit تنظیم نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/delete.php:50
+msgid "Can not access to delete this request"
+msgstr "دسترسی لازم برای حذف این درخواست را ندارید"
+
+#: tejarak/content_api/v1/houredit/tools/delete.php:60
+msgid "Your request was deleted"
+msgstr "درخواست شما پاک شد"
+
+#: tejarak/content_api/v1/houredit/tools/get.php:136
+msgid "houredit team not set"
+msgstr "تیم houredit تنظیم نشده است"
+
+#: tejarak/content_api/v1/houredit/tools/get.php:147
+#: tejarak/content_api/v1/member/tools/add.php:192
+#: tejarak/content_api/v1/report/tools/last.php:52
+#: tejarak/content_api/v1/report/tools/month.php:52
+#: tejarak/content_api/v1/report/tools/period.php:52
+msgid "Invalid user id"
+msgstr "شناسه کاربر نامعتبر است"
+
+#: tejarak/content_api/v1/houredit/tools/get.php:174
+msgid "No access to load this list"
+msgstr "شما نمی‌توانید این لیست را بارگذاری کنید"
+
+#: tejarak/content_api/v1/houredit/tools/get.php:244
+msgid "Can not access to load this houredit details"
+msgstr "دسترسی لازم برای بارگذاری جزئیات این houredit را ندارید"
+
 #: tejarak/content_api/v1/hours/tools/add.php:56
 #: tejarak/content_api/v1/hours/tools/add.php:91
 #: tejarak/content_api/v1/hours/tools/add.php:99
@@ -4690,20 +4885,13 @@ msgstr "اوقات خوبی داشته باشید."
 msgid "Bye Bye :name ;)"
 msgstr "خدانگهدار :name جون;)"
 
-#: tejarak/content_api/v1/hours/tools/get.php:148
+#: tejarak/content_api/v1/hours/tools/get.php:117
 msgid "hours id not set"
 msgstr "شناسه ساعات تنظیم نشده است"
 
-#: tejarak/content_api/v1/hours/tools/get.php:157
+#: tejarak/content_api/v1/hours/tools/get.php:126
 msgid "Can not access to load this hours details"
 msgstr "شما به جزئیات ساعات دسترسی ندارید"
-
-#: tejarak/content_api/v1/hours/tools/get.php:161
-#: tejarak/content_api/v1/team/model.php:87
-#: tejarak/content_api/v1/team/tools/get.php:247
-#: tejarak/content_enter/hook/model.php:61 tejarak/content_enter/hook/model.php:81
-msgid "Operation complete"
-msgstr "عملیات کامل شد"
 
 #: tejarak/content_api/v1/member/tools/add.php:86
 msgid "You can set the displayname less than 50 character"
@@ -4721,55 +4909,51 @@ msgstr "شما می‌توانید نام خانوادگی را با حداکث�
 msgid "Invalid mobile number"
 msgstr "شماره‌ی تلفن همراه نامعتبر است"
 
-#: tejarak/content_api/v1/member/tools/add.php:192
-msgid "Invalid user id"
-msgstr "شناسه کاربر نامعتبر است"
-
 #: tejarak/content_api/v1/member/tools/add.php:199
 msgid "User id not set"
 msgstr "شناسه کاربری تعیین نشده است"
 
-#: tejarak/content_api/v1/member/tools/add.php:314
+#: tejarak/content_api/v1/member/tools/add.php:315
 msgid "This user was already added to this team"
 msgstr "این کاربر در حال حاضر عضو این تیم است"
 
-#: tejarak/content_api/v1/member/tools/add.php:324
+#: tejarak/content_api/v1/member/tools/add.php:325
 msgid "You can set the postion less than 100 character"
 msgstr "موقعیت باید کمتر از ۱۰۰ کاراکتر باشد"
 
-#: tejarak/content_api/v1/member/tools/add.php:334
+#: tejarak/content_api/v1/member/tools/add.php:335
 msgid "You can set the personnel_code less than 9 character "
 msgstr "کد شخصی باید کمتر از ۹ کاراکتر باشد"
 
-#: tejarak/content_api/v1/member/tools/add.php:345
+#: tejarak/content_api/v1/member/tools/add.php:346
 msgid "Invalid parameter rule"
 msgstr "پارامتر rule نامعتبر است"
 
-#: tejarak/content_api/v1/member/tools/add.php:360
+#: tejarak/content_api/v1/member/tools/add.php:361
 msgid "Invalid parameter visibility"
 msgstr "پارامتر اشتباه برای نمایانی"
 
-#: tejarak/content_api/v1/member/tools/add.php:393
+#: tejarak/content_api/v1/member/tools/add.php:394
 msgid "Only you are the team admin, You can not delete all admins"
 msgstr "شما تنها مدیر تیم هستید، نمی‌توانید همه‌ی مدیرها را حذف کنید"
 
-#: tejarak/content_api/v1/member/tools/add.php:409
+#: tejarak/content_api/v1/member/tools/add.php:410
 msgid "Invalid date of date enter"
 msgstr "تاریخ ورود نامعتبر است"
 
-#: tejarak/content_api/v1/member/tools/add.php:418
+#: tejarak/content_api/v1/member/tools/add.php:419
 msgid "Invalid date of date exit"
 msgstr "تاریخ خروخ نامعتبر است"
 
-#: tejarak/content_api/v1/member/tools/add.php:539
+#: tejarak/content_api/v1/member/tools/add.php:540
 msgid "Member successfully added"
 msgstr "عضو با موفقیت افزوده شد"
 
-#: tejarak/content_api/v1/member/tools/add.php:543
+#: tejarak/content_api/v1/member/tools/add.php:544
 msgid "Member successfully updated"
 msgstr "عضو با موفقیت به‌روزرسانی شد"
 
-#: tejarak/content_api/v1/member/tools/add.php:547
+#: tejarak/content_api/v1/member/tools/add.php:548
 msgid "Member successfully removed"
 msgstr "عضو با موفقیت حذف شد"
 
@@ -4777,31 +4961,44 @@ msgstr "عضو با موفقیت حذف شد"
 msgid "Invalid team id"
 msgstr "شناسه تیم نامعتبر است"
 
-#: tejarak/content_api/v1/report/tools/last.php:38
-#: tejarak/content_api/v1/report/tools/sum.php:38
-#: tejarak/content_api/v1/report/tools/u.php:38
-msgid "Team id not set"
-msgstr "شناسه تیم تنظیم نشده است"
-
-#: tejarak/content_api/v1/report/tools/last.php:45
+#: tejarak/content_api/v1/report/tools/last.php:64
+#: tejarak/content_api/v1/report/tools/last.php:73
+#: tejarak/content_api/v1/report/tools/month.php:94
+#: tejarak/content_api/v1/report/tools/period.php:94
 #: tejarak/content_api/v1/report/tools/sum.php:45
 #: tejarak/content_api/v1/report/tools/u.php:45
+#: tejarak/content_api/v1/report/tools/year.php:71
 msgid "Can not access to load detail of this team"
 msgstr "جزئیات این تیم قابل دسترسی نیست"
 
-#: tejarak/content_api/v1/report/tools/last.php:52
+#: tejarak/content_api/v1/report/tools/last.php:82
+#: tejarak/content_api/v1/report/tools/month.php:102
+#: tejarak/content_api/v1/report/tools/period.php:102
 #: tejarak/content_api/v1/report/tools/sum.php:52
 #: tejarak/content_api/v1/report/tools/u.php:52
+#: tejarak/content_api/v1/report/tools/year.php:79
 msgid "Invalid team data"
 msgstr "داده‌ی تیم نامعتبر است"
 
+#: tejarak/content_api/v1/report/tools/month.php:72
+#: tejarak/content_api/v1/report/tools/period.php:72
+msgid "No access to load this report"
+msgstr "دسترسی لازم برای بارگذاری این گزارش را ندارید"
+
+#: tejarak/content_api/v1/report/tools/month.php:114
 #: tejarak/content_api/v1/report/tools/sum.php:63
+#: tejarak/content_api/v1/report/tools/year.php:88
 msgid "Invalid input year"
 msgstr "سال وارد شده نامعتبر است"
 
+#: tejarak/content_api/v1/report/tools/month.php:138
 #: tejarak/content_api/v1/report/tools/sum.php:75
 msgid "Invalid input month"
 msgstr "ماه وارد‌شده نامعتبر است"
+
+#: tejarak/content_api/v1/report/tools/period.php:160
+msgid "Start date and end date is not mathc"
+msgstr "تاریخ آغاز و تاریخ پایان یکسان نیستند"
 
 #: tejarak/content_api/v1/report/tools/sum.php:87
 msgid "Invalid input day"
@@ -7540,23 +7737,23 @@ msgstr "مرکزی"
 msgid "centeral"
 msgstr "مرکزی"
 
-#: tejarak/includes/lib/db/hours.php:178
+#: tejarak/includes/lib/db/hours.php:196
 msgid "User team not found!"
 msgstr "تیم عضو یافت نشد!"
 
-#: tejarak/includes/lib/db/hours.php:184
+#: tejarak/includes/lib/db/hours.php:202
 msgid "User is diactive!"
 msgstr "کاربر غیرفعال است"
 
-#: tejarak/includes/lib/db/hours.php:217
+#: tejarak/includes/lib/db/hours.php:235
 msgid "You was already save your enter time"
 msgstr "شما در حال حاضر زمان ورود خود را ذخیره کرده‌اید"
 
-#: tejarak/includes/lib/db/hours.php:286
+#: tejarak/includes/lib/db/hours.php:304
 msgid "You was not save your enter time"
 msgstr "شما زمان ورود خود را ذخیره نکرده‌اید"
 
-#: tejarak/includes/lib/db/hours.php:298
+#: tejarak/includes/lib/db/hours.php:316
 msgid "Invalid data"
 msgstr "داده‌ی نامعتبر"
 
@@ -7588,7 +7785,7 @@ msgstr "شناسه واحد یا واحد کاربر پیدا نشد"
 msgid "to"
 msgstr "تا"
 
-#: tejarak/includes/lib/utility/telegram.php:136
+#: tejarak/includes/lib/utility/telegram.php:161
 msgid "Please install curl on your system"
 msgstr "لطفا سی‌یوآرال را بر روی سیستم نصب کنید"
 
@@ -7748,9 +7945,6 @@ msgstr "شما می‌توانید ساعات همه‌ی کاربران را د
 #~ msgid "Code must be number"
 #~ msgstr "کد باید عدد باشد"
 
-#~ msgid "Invalid status"
-#~ msgstr "وضعیت اشتباه"
-
 #~ msgid "Getway updated"
 #~ msgstr "درگاه به‌روزرسانی شد"
 
@@ -7825,9 +8019,6 @@ msgstr "شما می‌توانید ساعات همه‌ی کاربران را د
 
 #~ msgid "Branch not set"
 #~ msgstr "شعبه تنظیم نشده است"
-
-#~ msgid "Invalid member"
-#~ msgstr "عضو نامعتبر"
 
 #~ msgid "Branch Dashboard"
 #~ msgstr "داشبورد شعبه"
@@ -7940,9 +8131,6 @@ msgstr "شما می‌توانید ساعات همه‌ی کاربران را د
 #~ msgid "You can set the code less than 9 character and must ba integer"
 #~ msgstr "کد باید کمتر از ۹ کاراکتر و عدد صحیح باشد"
 
-#~ msgid "Duplicate user in team"
-#~ msgstr "عضو تکراری در تیم"
-
 #~ msgid "Duplicate user in branch"
 #~ msgstr "عضو تکراری در شعبه"
 
@@ -8050,9 +8238,6 @@ msgstr "شما می‌توانید ساعات همه‌ی کاربران را د
 
 #~ msgid "user id, start time and end time is require"
 #~ msgstr "کد کاربر، تاریخ شروع و پایان الزامی است"
-
-#~ msgid "record id not found"
-#~ msgstr "رکورد یافت نشد"
 
 #~ msgid "Modern Solutions For Your Business"
 #~ msgstr "راه‌حل‌هایی مدرن برای کسب و کار شما"
