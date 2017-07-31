@@ -12,6 +12,17 @@ class model extends \content_a\main\model
 	 */
 	public function post_profile($_args)
 	{
+
+		$log_meta =
+		[
+			'data' => null,
+			'meta' =>
+			[
+				'input'   => utility::post(),
+				'session' => $_SESSION,
+			],
+		];
+
 		// update user details
 		$update_user = [];
 		$user_session = [];
@@ -97,6 +108,28 @@ class model extends \content_a\main\model
 			$update_user['user_displayname'] = utility::post('displayname');
 			$user_session['displayname'] = $update_user['user_displayname'];
 		}
+
+		$new_unit = utility::post('user-unit');
+
+		if($new_unit === '')
+		{
+			\lib\db\logs::set('user:unit:set:empty', $this->login('id'), $log_meta);
+			debug::error(T_("Please select one units"), 'user-unit', 'arguments');
+			return false;
+		}
+
+		if(in_array($new_unit, ['toman','dollar']))
+		{
+			$update_user['unit_id']  = \lib\db\units::get_id($new_unit);
+			$user_session['unit_id'] = $update_user['unit_id'];
+		}
+		else
+		{
+			\lib\db\logs::set('user:unit:set:invalid:unit', $this->login('id'), $log_meta);
+			debug::error(T_("Please select a valid units"), 'user-unit', 'arguments');
+			return false;
+		}
+
 
 		// update user record
 		if(!empty($update_user))

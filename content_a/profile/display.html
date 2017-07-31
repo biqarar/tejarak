@@ -45,13 +45,27 @@
      </div>
     </div>
    </div>
-   <div class="c12 g1 g1">
+   <div class="c10 g1 f">
+    <div class="c1">
+      <label>{%trans "Unit"%}</label>
+    </div>
+    <div class="c9">
+        <select name="user-unit">
+          <option value="">{%trans "Unit"%}</option>
+          <option value="toman" {% if user_unit == 'toman' or user_unit == 'تومان' %} selected="selected" {%endif%}>{%trans "Toman"%}</option>
+          <option value="dollar" {% if user_unit == 'dollar' or user_unit == '$' %} selected="selected" {%endif%}>{%trans "$"%}</option>
+        </select>
+    </div>
+   </div>
+
+   <div class="c12 g1">
     <div>
       <input class="b1" type="submit" value='{%trans "Update profile"%}'>
     </div>
    </div>
+
   </form>
  </div>
-
 </div>
+
 {%endblock%}
