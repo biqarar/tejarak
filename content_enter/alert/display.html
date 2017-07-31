@@ -4,6 +4,6 @@
 
 {%block contentForm%}
 <p>{{alert_msg}}</p>
-<a class="link" href='{{url.base}}/enter'>{% trans "Go back" %}</a>
+<a class="link" href='{{alert_link}}' data-direct>{{alert_button}}</a>
 {%endblock%}
 

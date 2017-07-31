@@ -34,6 +34,32 @@ class model extends \content_enter\pass\model
 		if(utility::post('ramzNew'))
 		{
 			$temp_ramz = utility::post('ramzNew');
+
+			// check new password = old password
+			// needless to change password
+			if(self::user_data('user_pass'))
+			{
+				if(\lib\utility::hasher($temp_ramz, self::user_data('user_pass')))
+				{
+					// old pass = new pass
+					// aletr to user the new pass = old pass
+					// login
+					$url = self::enter_set_login();
+					// set alert text
+					self::set_alert(T_("Your new password is your old password"));
+					// set alert link
+					self::set_alert_link($url);
+					// set alert button caption
+					self::set_alert_button(T_("Enter"));
+					// open lock alert page
+					self::next_step('alert');
+					// go to alert page
+					self::go_to('alert');
+					// done ;)
+					return;
+				}
+			}
+
 			// check min and max of password
 			// if not okay make debug error and return false
 			if(!$this->check_pass_syntax($temp_ramz))
