@@ -67,14 +67,26 @@ trait last
 		}
 		else
 		{
-			if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'report_u']))
+			if($check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_last_all']))
 			{
-				logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				$user_id = null;
+				// no user was set but the user is admin of this team
+				// can see all user time in year
+			}
+			elseif($check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_u']))
+			{
+				// no user was set
+				// and this user is user of this team
+				// can see just her time
+				$user_id = $this->user_id;
+			}
+			else
+			{
+				logs::set('api:report:last:permission:denide', $this->user_id, $log_meta);
 				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
 		}
-
 
 		if(!isset($check_is_my_team['id']))
 		{
@@ -89,10 +101,6 @@ trait last
 		if($user_id)
 		{
 			$meta['user_id'] = $user_id;
-		}
-		else
-		{
-			$meta['user_id'] = $this->user_id;
 		}
 
 		$meta['order']   = 'DESC';
