@@ -15,7 +15,7 @@ class view extends \mvc\view
 			$this->data->team  = null;
 		}
 
-
+		$this->data->is_admin = \lib\storage::get_is_admin();
 
 		$this->data->display['adminTeam'] = 'content_a\main\layoutTeam.html';
 	}

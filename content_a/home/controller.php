@@ -48,11 +48,32 @@ class controller extends \content_a\main\controller
 		// list of all team the user is them
 		$this->get(false, 'dashboard')->ALL();
 
-		// route url like this /a/2kf
-		if(preg_match("/^([a-zA-Z0-9]+)\/edit$/", $url))
+		$team_id = \lib\router::get_url(0);
+		$rule = 'user';
+		if(\lib\utility\shortURL::is($team_id))
 		{
-			\lib\router::set_controller("content_a\\team\\controller");
-			return;
+			$team_id = \lib\utility\shortURL::decode($team_id);
+			if($team_id && $this->login('id'))
+			{
+				$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => $this->login('id'), 'limit' => 1]);
+				if(isset($load_userteam_record['rule']))
+				{
+					$rule = $load_userteam_record['rule'];
+				}
+			}
+		}
+		// set if user is admin to route some module
+		$is_admin = false;
+		switch ($rule)
+		{
+			case 'admin':
+				$is_admin = true;
+				\lib\storage::set_is_admin(true);
+				break;
+
+			default:
+				\lib\storage::set_is_admin(false);
+				break;
 		}
 
 		// route url like this /a/2kf
@@ -62,32 +83,74 @@ class controller extends \content_a\main\controller
 			return;
 		}
 
+		// route url like this /a/2kf
+		if(preg_match("/^([a-zA-Z0-9]+)\/edit$/", $url))
+		{
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_a\\team\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
 		// route url like this /a/2kf/member
 		if(preg_match("/^([a-zA-Z0-9]+)\/member(|\=[a-zA-Z0-9]+)$/", $url))
 		{
-			\lib\router::set_controller("content_a\\member\\controller");
-			return;
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_a\\member\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
 		}
 
 		// route url like this /a/2kf/plan
 		if(preg_match("/^([a-zA-Z0-9]+)\/plan$/", $url))
 		{
-			\lib\router::set_controller("content_a\\plan\\controller");
-			return;
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_a\\plan\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
 		}
 
 		// route url like this /a/2kf/gateway
 		if(preg_match("/^([a-zA-Z0-9]+)\/gateway(|\/list)$/", $url))
 		{
-			\lib\router::set_controller("content_a\\gateway\\controller");
-			return;
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_a\\gateway\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
 		}
 
 		// route url like this /a/2kf/gateway
 		if(preg_match("/^([a-zA-Z0-9]+)\/gateway(|\=[a-zA-Z0-9]+)$/", $url))
 		{
-			\lib\router::set_controller("content_a\\gateway\\controller");
-			return;
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_a\\gateway\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
 		}
 
 		/**

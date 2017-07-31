@@ -45,22 +45,12 @@ class controller extends \content_a\main\controller
 		 * redirect to show her report
 		 * the user must be redirect to report page
 		 */
-		if(\lib\utility\shortURL::is($team_code))
+		if(!\lib\storage::get_is_admin())
 		{
-			$user_status = \lib\db\userteams::get(
-				[
-					'user_id' => $this->login('id'),
-					'team_id' => \lib\utility\shortURL::decode($team_code),
-					'limit'   => 1
-				]
-			);
-
-			if(isset($user_status['rule']) && $user_status['rule'] === 'user')
-			{
-				$this->redirector()->set_domain()->set_url('a/'.$team_code.'/report')->redirect();
-				return;
-			}
+			$this->redirector()->set_domain()->set_url('a/'.$team_code.'/report')->redirect();
+			return;
 		}
+
 	}
 }
 ?>

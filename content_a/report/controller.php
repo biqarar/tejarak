@@ -34,13 +34,17 @@ class controller extends \content_a\main\controller
 					{
 						switch ($split[2])
 						{
+							case 'settings':
+								if(!\lib\storage::get_is_admin())
+								{
+									\lib\error::access();
+								}
 							case 'last':
 							case 'year':
 							case 'month':
 							case 'period':
 							// case 'sum':
 
-							case 'settings':
 								\lib\router::set_controller("content_a\\report\\$split[2]\\controller");
 								return;
 								break;
@@ -52,6 +56,9 @@ class controller extends \content_a\main\controller
 					}
 					else
 					{
+						// the main report page
+						// list of reports link
+						// like this; http://tejarak.com/a/2kf/report
 						$this->get()->ALL($url);
 					}
 					break;
