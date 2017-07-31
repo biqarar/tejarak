@@ -101,10 +101,17 @@ trait action
 		}
 
 		$is_exist_record = \lib\db\hourrequests::get(['id' => $id, 'limit' => 1]);
-		if(!$is_exist_record || !isset($is_exist_record['team_id']) || !isset($is_exist_record['creator']))
+		if(!$is_exist_record || !isset($is_exist_record['team_id']) || !isset($is_exist_record['creator']) || !isset($is_exist_record['status']))
 		{
 			logs::set('api:houredit:id:record:not:found', $this->user_id, $log_meta);
 			debug::error(T_("Invaid id. record not found"), 'id', 'arguments');
+			return false;
+		}
+
+		if($is_exist_record['status'] != 'awaiting')
+		{
+			logs::set('api:houredit:id:record:is:not:awaiting', $this->user_id, $log_meta);
+			debug::error(T_("This request has already been reviewed"), 'id', 'arguments');
 			return false;
 		}
 
@@ -135,8 +142,12 @@ trait action
 		$update['status']   = $type;
 		$update['changer']  = $this->user_id;
 
+		$meta               = [];
+
 		if($type === 'accept')
 		{
+			// the request hava hour id
+			// need to update hour record
 			$hourrequests_details = $is_exist_record;
 			if(isset($hourrequests_details['hour_id']) && $hourrequests_details['hour_id'] && is_numeric($hourrequests_details['hour_id']))
 			{
@@ -150,9 +161,22 @@ trait action
 
 				$log_meta['meta']['hourrequests_details'] = $hourrequests_details;
 				$log_meta['meta']['hour_detail']          = $hour_detail;
-				\lib\db\hours::update_process($hourrequests_details, $id, ['hour_detail' => $hour_detail]);
+				\lib\db\hours::record_process($hourrequests_details, $id, ['hour_detail' => $hour_detail, 'type' => 'update']);
 				logs::set('api:hour:edited:request:accepted', $this->user_id, $log_meta);
 			}
+			else
+			{
+				// hour request have not hour id
+				// need to add new record
+				\lib\db\hours::record_process($hourrequests_details, null, ['type' => 'insert', 'user_id' => $this->user_id]);
+				$meta['inserted_hour_id'] = \lib\db::insert_id();
+				logs::set('api:hour:added:request:accepted', $this->user_id, $log_meta);
+			}
+		}
+
+		if(!empty($meta))
+		{
+			$update['meta'] = json_encode($meta, JSON_UNESCAPED_UNICODE);
 		}
 
 		\lib\db\hourrequests::update($update, $id);

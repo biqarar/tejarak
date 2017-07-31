@@ -10,6 +10,7 @@
 		<div class="c">{%trans "End Date"%}</div>
 		<div class="c">{%trans "End Time"%}</div>
 		<div class="c">{%trans "Status"%}</div>
+		<div class="c">{%trans "Type"%}</div>
 		<div class="c">{%trans "Description"%}</div>
 
 		{%if not show_all_user%}
@@ -47,6 +48,7 @@
 		{%endif%}
 		<div class="c">{{value.end|fitNumber}}</div>
 		<div class="c">{%set myStatus = value.status%}{% trans myStatus %}</div>
+		<div class="c">{%if value.hour_id%}{% trans "Edit" %}{%else%}{% trans "Add" %}{%endif%}</div>
 		{%if value.desc%}
 			<div class="c">{{value.desc}}</div>
 		{%else%}

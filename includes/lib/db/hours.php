@@ -180,9 +180,9 @@ class hours
 	 * @param      <type>  $_args  The arguments
 	 * @param      <type>  $_id    The identifier
 	 */
-	public static function update_process($_args, $_id, $_options = [])
+	public static function record_process($_args, $_id = null, $_options = [])
 	{
-		$update = [];
+		$update_insert = [];
 
 		if(isset($_args['start']) && isset($_args['date']) && isset($_args['end']) && isset($_args['enddate']))
 		{
@@ -204,32 +204,53 @@ class hours
 
 			$total = ((int) $diff + (int) $plus) - (int) $minus;
 
-			$update['diff']            = $diff;
-			$update['accepted']        = $total;
-			$update['total']           = $total;
+			$update_insert['diff']            = $diff;
+			$update_insert['accepted']        = $total;
+			$update_insert['total']           = $total;
 
 		}
 
-		if(isset($_args['date'])) 				$update['date']            = $_args['date'];
-		if(isset($_args['year'])) 				$update['year']            = $_args['year'];
-		if(isset($_args['month'])) 				$update['month']           = $_args['month'];
-		if(isset($_args['day'])) 				$update['day']             = $_args['day'];
-		if(isset($_args['shamsi_date'])) 		$update['shamsi_date']     = $_args['shamsi_date'];
-		if(isset($_args['shamsi_year'])) 		$update['shamsi_year']     = $_args['shamsi_year'];
-		if(isset($_args['shamsi_month'])) 		$update['shamsi_month']    = $_args['shamsi_month'];
-		if(isset($_args['shamsi_day'])) 		$update['shamsi_day']      = $_args['shamsi_day'];
-		if(isset($_args['start'])) 				$update['start']           = $_args['start'];
-		if(isset($_args['end'])) 				$update['end']             = $_args['end'];
-		if(isset($_args['enddate'])) 			$update['enddate']         = $_args['enddate'];
-		if(isset($_args['endyear'])) 			$update['endyear']         = $_args['endyear'];
-		if(isset($_args['endmonth'])) 			$update['endmonth']        = $_args['endmonth'];
-		if(isset($_args['endday'])) 			$update['endday']          = $_args['endday'];
-		if(isset($_args['endshamsi_date'])) 	$update['endshamsi_date']  = $_args['endshamsi_date'];
-		if(isset($_args['endshamsi_year'])) 	$update['endshamsi_year']  = $_args['endshamsi_year'];
-		if(isset($_args['endshamsi_month'])) 	$update['endshamsi_month'] = $_args['endshamsi_month'];
-		if(isset($_args['endshamsi_day'])) 		$update['endshamsi_day']   = $_args['endshamsi_day'];
+		if(isset($_args['date'])) 				$update_insert['date']            = $_args['date'];
+		if(isset($_args['year'])) 				$update_insert['year']            = $_args['year'];
+		if(isset($_args['month'])) 				$update_insert['month']           = $_args['month'];
+		if(isset($_args['day'])) 				$update_insert['day']             = $_args['day'];
+		if(isset($_args['shamsi_date'])) 		$update_insert['shamsi_date']     = $_args['shamsi_date'];
+		if(isset($_args['shamsi_year'])) 		$update_insert['shamsi_year']     = $_args['shamsi_year'];
+		if(isset($_args['shamsi_month'])) 		$update_insert['shamsi_month']    = $_args['shamsi_month'];
+		if(isset($_args['shamsi_day'])) 		$update_insert['shamsi_day']      = $_args['shamsi_day'];
+		if(isset($_args['start'])) 				$update_insert['start']           = $_args['start'];
+		if(isset($_args['end'])) 				$update_insert['end']             = $_args['end'];
+		if(isset($_args['enddate'])) 			$update_insert['enddate']         = $_args['enddate'];
+		if(isset($_args['endyear'])) 			$update_insert['endyear']         = $_args['endyear'];
+		if(isset($_args['endmonth'])) 			$update_insert['endmonth']        = $_args['endmonth'];
+		if(isset($_args['endday'])) 			$update_insert['endday']          = $_args['endday'];
+		if(isset($_args['endshamsi_date'])) 	$update_insert['endshamsi_date']  = $_args['endshamsi_date'];
+		if(isset($_args['endshamsi_year'])) 	$update_insert['endshamsi_year']  = $_args['endshamsi_year'];
+		if(isset($_args['endshamsi_month'])) 	$update_insert['endshamsi_month'] = $_args['endshamsi_month'];
+		if(isset($_args['endshamsi_day'])) 		$update_insert['endshamsi_day']   = $_args['endshamsi_day'];
 
-		return self::update($update, $_id);
+		if(isset($_options['type']) && $_options['type'] === 'update' && $_id && is_numeric($_id))
+		{
+			return self::update($update_insert, $_id);
+		}
+		elseif(isset($_options['type']) && $_options['type'] === 'insert')
+		{
+			if(!isset($_args['team_id']) || !isset($_args['userteam_id']) || !isset($_args['creator']) || !isset($_options['user_id']))
+			{
+				return false;
+			}
+
+			$update_insert['team_id']           = $_args['team_id'];
+			$update_insert['userteam_id']       = $_args['userteam_id'];
+			$update_insert['user_id']           = $_args['creator'];
+			$update_insert['start_userteam_id'] = $_args['userteam_id'];
+			$update_insert['start_gateway_id']  = $_options['user_id'];
+			return self::insert($update_insert);
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 
