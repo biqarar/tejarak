@@ -10,6 +10,8 @@ trait _use
 	// API HOURS
 	use \content_api\v1\hours\tools\add;
 	use \content_api\v1\hours\tools\get;
+	use \content_api\v1\hours\tools\manage;
+
 
 	// API HOURS EDIT REQUEST
 	use \content_api\v1\houredit\tools\add;

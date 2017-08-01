@@ -27,6 +27,9 @@
 		<div class="c s0">{%trans "Plus"%}</div>
 		<div class="c s0">{%trans "Type"%}</div>
 		<div class="c">{%trans "Accepted"%}</div>
+		{%if is_admin%}
+			<div class="c3">{%trans "Action"%}</div>
+		{%endif%}
 	</div>
 	{%for key, value in last_time%}
 	<div class="f">
@@ -40,8 +43,22 @@
 		<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
 		<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
 		<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.type|fitNumber}}</div>
+		<div class="c s0">{%set myType = value.type %}{%trans myType%}</div>
 		<div class="c">{{value.accepted | humantime | fitNumber}}</div>
+		{%if is_admin%}
+			<form method="post" class="c3 df">
+				<input type="hidden" name="hour_id" value="{{value.id}}">
+				<select name="type">
+					<option value="">{%trans "Select actio"%}</option>
+					<option value="all" {% if value.type == 'all' %} selected {%endif%}>{%trans "All"%}</option>
+					<option value="nothing" {% if value.type == 'nothing' %} selected {%endif%}>{%trans "Nothing!"%}</option>
+					<option value="base" {% if value.type == 'base' %} selected {%endif%}>{%trans "Just diff"%}</option>
+					<option value="wplus" {% if value.type == 'wplus' %} selected {%endif%}>{%trans "Diff + Plus"%}</option>
+					<option value="wminus" {% if value.type == 'wminus' %} selected {%endif%}>{%trans "Diff - Minus"%}</option>
+				</select>
+				<input type="submit" class="b1 c" value='{%trans "Apply"%}'>
+			</form>
+		{%endif%}
 	</div>
 	{%endfor%}
 </div>

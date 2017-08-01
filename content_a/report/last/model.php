@@ -17,5 +17,20 @@ class model extends \content_a\main\model
 		utility::set_request_array($_request);
 		return $this->report_last_time();
 	}
+
+
+	/**
+	 * Posts a last.
+	 */
+	public function post_last()
+	{
+		$request            = [];
+		$request['hour_id'] = utility::post('hour_id');
+		$request['type']  = utility::post('type');
+		$this->user_id      = $this->login('id');
+
+		return $this->hour_change_type();
+
+	}
 }
 ?>
