@@ -25,8 +25,8 @@
 		<div class="c s0">{%trans "Diff"%}</div>
 		<div class="c s0">{%trans "Minus"%}</div>
 		<div class="c s0">{%trans "Plus"%}</div>
-		<div class="c s0">{%trans "Type"%}</div>
 		<div class="c">{%trans "Accepted"%}</div>
+		<div class="c s0">{%trans "Type"%}</div>
 		{%if is_admin%}
 			<div class="c3">{%trans "Action"%}</div>
 		{%endif%}
@@ -40,11 +40,18 @@
 		<div class="c">{{value.date|jdate("Y-m-d")}}</div>
 		<div class="c">{{value.start|fitNumber}}</div>
 		<div class="c">{{value.end|fitNumber}}</div>
-		<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
+		{%if time_raw %}
+			<div class="c s0">{{value.diff | fitNumber}}</div>
+			<div class="c s0">{{value.minus | fitNumber}}</div>
+			<div class="c s0">{{value.plus | fitNumber}}</div>
+			<div class="c">{{value.accepted | fitNumber}}</div>
+		{%else%}
+			<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
+			<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
+			<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
+			<div class="c">{{value.accepted | humantime | fitNumber}}</div>
+		{%endif%}
 		<div class="c s0">{%set myType = value.type %}{%trans myType%}</div>
-		<div class="c">{{value.accepted | humantime | fitNumber}}</div>
 		{%if is_admin%}
 			<form method="post" class="c3 df">
 				<input type="hidden" name="hour_id" value="{{value.id}}">

@@ -23,11 +23,19 @@
 		<div class="c">{{value.year|fitNumber}}</div>
 		<div class="c">{{value.month|fitNumber}}</div>
 		<div class="c">{{value.count|fitNumber}}</div>
-		<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
-		<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
-		<div class="c">{{value.accepted | humantime | fitNumber}}</div>
-		<div class="c">{{value.total | humantime | fitNumber}}</div>
+		{%if time_raw%}
+			<div class="c s0">{{value.diff | fitNumber}}</div>
+			<div class="c s0">{{value.minus | fitNumber}}</div>
+			<div class="c s0">{{value.plus | fitNumber}}</div>
+			<div class="c">{{value.accepted | fitNumber}}</div>
+			<div class="c">{{value.total | fitNumber}}</div>
+		{%else%}
+			<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
+			<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
+			<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
+			<div class="c">{{value.accepted | humantime | fitNumber}}</div>
+			<div class="c">{{value.total | humantime | fitNumber}}</div>
+		{%endif%}
 	</div>
 	{%endfor%}
 </div>

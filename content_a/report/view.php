@@ -7,6 +7,19 @@ class view extends \content_a\main\view
 	{
 		parent::config();
 
+		/**
+		* get raw time
+		* skip humantime
+		*/
+		if(\lib\utility::get('time') === 'raw')
+		{
+			$this->data->time_raw = true;
+		}
+		else
+		{
+			$this->data->time_raw = false;
+		}
+
 		$this->data->page['title'] = T_('Reports');
 		$this->data->page['desc']  = $this->data->page['title'];
 

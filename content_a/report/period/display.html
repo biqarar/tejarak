@@ -49,10 +49,17 @@
 		<div class="c">{{value.displayname}}</div>
 		<div class="c">{{value.start|fitNumber}}</div>
 		<div class="c">{{value.end|fitNumber}}</div>
-		<div class="c">{{value.diff | humantime | fitNumber}}</div>
-		<div class="c">{{value.minus | humantime | fitNumber}}</div>
-		<div class="c">{{value.plus | humantime | fitNumber}}</div>
-		<div class="c">{{value.accepted | humantime | fitNumber}}</div>
+		{%if time_raw%}
+			<div class="c">{{value.diff | fitNumber}}</div>
+			<div class="c">{{value.minus | fitNumber}}</div>
+			<div class="c">{{value.plus | fitNumber}}</div>
+			<div class="c">{{value.accepted | fitNumber}}</div>
+		{%else%}
+			<div class="c">{{value.diff | humantime | fitNumber}}</div>
+			<div class="c">{{value.minus | humantime | fitNumber}}</div>
+			<div class="c">{{value.plus | humantime | fitNumber}}</div>
+			<div class="c">{{value.accepted | humantime | fitNumber}}</div>
+		{%endif%}
 	</div>
 	{%endfor%}
 </div>
