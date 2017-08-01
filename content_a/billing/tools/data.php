@@ -1,7 +1,7 @@
 <?php
 namespace content_a\billing\tools;
 
-trait zarinpal
+trait data
 {
 	/**
 	 * zarinpay method
@@ -18,6 +18,21 @@ trait zarinpal
 		'Amount'      => null,
 	];
 
+
+	/**
+	 * parsian payment ID
+	 *
+	 * Pin: n7RcBk5Wn5Qc033W00t3
+	 * payane: 44373422
+	 * @var        array
+	 */
+	private static $parsian =
+	[
+		'LoginAccount' => 'n7RcBk5Wn5Qc033W00t3',
+		'Amount'       => null,
+		'OrderId'      => null,
+		'CallbackUrl'  => 'https://tejarak.com/a/billing/verify/parsian',
+	];
 
 }
 ?>
