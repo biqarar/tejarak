@@ -31,7 +31,7 @@ trait data
 		'LoginAccount' => 'n7RcBk5Wn5Qc033W00t3',
 		'Amount'       => null,
 		'OrderId'      => null,
-		'CallbackUrl'  => 'https://tejarak.com/a/billing/verify/parsian',
+		'CallBackUrl'  => 'https://tejarak.com/a/billing/verify/parsian',
 	];
 
 }

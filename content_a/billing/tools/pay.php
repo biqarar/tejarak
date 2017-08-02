@@ -88,7 +88,7 @@ trait pay
 		elseif(mb_strtolower(utility::post('bank')) == 'parsian')
 		{
 			$host                         .= '/a/billing/verify/parsian';
-			self::$parsian['CallbackUrl'] = $host;
+			self::$parsian['CallBackUrl'] = $host;
 			self::$parsian['Amount']      = $amount;
 			self::$parsian['OrderId']     = time() + intval($this->user_id) + rand(10, 9999);
 			\lib\utility\payment\parsian::$save_log = true;
