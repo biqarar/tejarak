@@ -118,6 +118,17 @@ class model extends \mvc\model
 
 
 	/**
+	 * Posts a verify.
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function post_verify()
+	{
+		return $this->get_verify();
+	}
+
+
+	/**
 	 * Gets the verify.
 	 *
 	 * @return     <type>  The verify.

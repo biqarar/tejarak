@@ -11,6 +11,8 @@ class controller extends  \content_a\main\controller
 		$this->post("billing")->ALL();
 
 		$this->get("verify")->ALL("/billing\/verify\/(zarinpal|parsian)/");
+
+		$this->post("verify")->ALL("/billing\/verify\/(zarinpal|parsian)/");
 	}
 
 }
