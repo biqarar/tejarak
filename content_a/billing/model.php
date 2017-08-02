@@ -145,7 +145,8 @@ class model extends \mvc\model
 		}
 		elseif(preg_match("/parsian/", $url))
 		{
-			return $this->parsian_verify();
+			$this->parsian_verify();
+			$this->redirector($this->url('baseFull'). '/billing')->redirect();
 		}
 	}
 }
