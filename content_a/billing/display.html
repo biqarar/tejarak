@@ -36,14 +36,16 @@
     <form method="post" class='gateways' autocomplete="off">
      <div class="f">
       <label class="cauto">
-       <input type="radio" name="bank" id="ZarinPal" value="ZarinPal">
+       <input type="radio" name="bank" id="ZarinPal" value="ZarinPal" checked="">
        <img alt="ZarrinPal" src="{{url.static}}images/gateway/ZarinPal.svg">
       </label>
 
+      {% if login.id == 4 or login.id == 1%}
       <label class="cauto">
-       <input type="radio" name="bank" id="parsian" value="parsian" checked="">
+       <input type="radio" name="bank" id="parsian" value="parsian" >
        <img alt="ZarrinPal" src="{{url.static}}images/gateway/Parsian.svg">
       </label>
+      {%endif%}
 
      </div>
      <div class="f singleInput">
