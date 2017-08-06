@@ -14,6 +14,9 @@ class teamplans
 		'free'     => 1,
 		'pro'      => 2,
 		'business' => 3,
+		'simple'   => 4,
+		'standard' => 5,
+		'full'     => 6,
 	];
 
 	/**

@@ -23,17 +23,22 @@
       <div class="c12 f ps">
        <div class="c12">
         <input type="radio" name="plan" id="r-free" value="free" {%if current_plan.plan_name =='free'%}checked{%endif%}>
-        <label for="r-free">{%trans "FREE"%}</label>
+        <label for="r-free">{%trans "Free"%}</label>
        </div>
 
        <div class="c12">
-        <input type="radio" name="plan" id="r-pro" value="pro" {%if current_plan.plan_name =='pro'%}checked{%endif%}>
-        <label for="r-pro">{%trans "Pro"%}</label>
+        <input type="radio" name="plan" id="r-simple" value="simple" {%if current_plan.plan_name =='simple'%}checked{%endif%}>
+        <label for="r-simple">{%trans "Simple"%}</label>
+       </div>
+
+        <div class="c12">
+        <input type="radio" name="plan" id="r-standard" value="standard" {%if current_plan.plan_name =='standard'%}checked{%endif%}>
+        <label for="r-standard">{%trans "Standard"%}</label>
        </div>
 
        <div class="c12">
-        <input type="radio" name="plan" id="r-business" value="business" {%if current_plan.plan_name =='business'%}checked{%endif%}>
-        <label for="r-business">{%trans "Business"%}</label>
+        <input type="radio" name="plan" id="r-full" value="full" {%if current_plan.plan_name =='full'%}checked{%endif%}>
+        <label for="r-full">{%trans "Full"%}</label>
        </div>
 
       </div>

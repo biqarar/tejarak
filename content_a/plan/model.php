@@ -55,9 +55,13 @@ class model extends \content_a\main\model
 		 */
 		$all_plan_list =
 		[
+			// 'free',
+			// 'pro',
+			// 'business'
 			'free',
-			'pro',
-			'business'
+			'simple',
+			'standard',
+			'full'
 		];
 
 		if(!in_array($plan, $all_plan_list))

@@ -109,29 +109,7 @@ class plan
 			'detail'  => null,
 			'contain' =>
 			[
-
-				'number:of:persons:10',
-				'simple:reports',
-				// 'telegram:auto:send:report:1',
-				// 'telegram:auto:send:report:2',
-				// 'telegram:auto:send:report:3',
-				// 'telegram:auto:send:report:4',
-				// 'telegram:auto:send:report:5',
-				// 'perfessional:report',
-				// 'telegram:report',
-				// 'sms:report',
-				// 'chart:report',
-				// 'picture:report',
-				// 'custom:report',
-				'report:reciever:1',
-				'ssl',
-				// 'custom:report:text',
-				// 'custom:logo',
-				// 'custom:domain',
-				'support',
-				'answer:email',
-				// 'answer:phone',
-
+				// no thing
 			],
 		];
 
@@ -147,34 +125,10 @@ class plan
 				'telegram:enter:msg',
 				'telegram:exit:msg',
 				'telegram:first:of:day:msg',
+				'telegram:first:of:day:msg:group',
 				'telegram:end:day:report',
+				'telegram:end:day:report:group',
 				'show:logo',
-
-
-
-
-				'number:of:persons:ultimited',
-				'simple:reports',
-				'telegram:auto:send:report:1',
-				'telegram:auto:send:report:2',
-				'telegram:auto:send:report:3',
-				'telegram:auto:send:report:4',
-				'telegram:auto:send:report:5',
-				'perfessional:report',
-				'telegram:report',
-				// 'sms:report',
-				// 'chart:report',
-				// 'picture:report',
-				// 'custom:report',
-				'report:reciever:1',
-				'ssl',
-				// 'custom:report:text',
-				// 'custom:logo',
-				// 'custom:domain',
-				'support',
-				'answer:email',
-				// 'answer:phone',
-
 			],
 		];
 
@@ -190,43 +144,20 @@ class plan
 				'telegram:enter:msg',
 				'telegram:exit:msg',
 				'telegram:first:of:day:msg',
+				'telegram:first:of:day:msg:group',
 				'telegram:end:day:report',
+				'telegram:end:day:report:group',
 				'show:logo',
-
-
-
-
-
-				'number:of:persons:ultimited',
-				'simple:reports',
-				'telegram:auto:send:report:1',
-				'telegram:auto:send:report:2',
-				'telegram:auto:send:report:3',
-				'telegram:auto:send:report:4',
-				'telegram:auto:send:report:5',
-				'perfessional:report',
-				'telegram:report',
-				'sms:report',
-				'chart:report',
-				'picture:report',
-				'custom:report',
-				'report:reciever:3',
-				'ssl',
-				'custom:report:text',
-				'custom:logo',
-				// 'custom:domain',
-				'support',
-				'answer:email',
-				'answer:phone',
 			],
 		];
 
+
 		/**
-		 * plan enterprise
+		 * plan simple
 		 */
 		$plan[4] =
 		[
-			'name'    => 'enterprise',
+			'name'    => 'simple',
 			'detail'  => null,
 			'contain' =>
 			[
@@ -234,33 +165,49 @@ class plan
 				'telegram:exit:msg',
 				'telegram:first:of:day:msg',
 				'telegram:end:day:report',
-
-
-
-
-				'number:of:persons:ultimited',
-				'simple:reports',
-				'telegram:auto:send:report:1',
-				'telegram:auto:send:report:2',
-				'telegram:auto:send:report:3',
-				'telegram:auto:send:report:4',
-				'telegram:auto:send:report:5',
-				'perfessional:report',
-				'telegram:report',
-				'sms:report',
-				'chart:report',
-				'picture:report',
-				'custom:report',
-				'report:reciever:3',
-				'ssl',
-				'custom:report:text',
-				'custom:logo',
-				'custom:domain',
-				'support',
-				'answer:email',
-				'answer:phone',
 			],
 		];
+
+
+
+		/**
+		 * plan standard
+		 */
+		$plan[5] =
+		[
+			'name'    => 'standard',
+			'detail'  => null,
+			'contain' =>
+			[
+				'telegram:enter:msg',
+				'telegram:exit:msg',
+				'telegram:first:of:day:msg',
+				'telegram:first:of:day:msg:group',
+				'telegram:end:day:report',
+				'telegram:end:day:report:group',
+				'show:logo',
+			],
+		];
+
+		/**
+		 * plan full
+		 */
+		$plan[6] =
+		[
+			'name'    => 'full',
+			'detail'  => null,
+			'contain' =>
+			[
+				'telegram:enter:msg',
+				'telegram:exit:msg',
+				'telegram:first:of:day:msg',
+				'telegram:first:of:day:msg:group',
+				'telegram:end:day:report',
+				'telegram:end:day:report:group',
+				'show:logo',
+			],
+		];
+
 
 		self::$plans_name = array_combine(array_keys($plan), array_column($plan, 'name'));
 		self::$plans = $plan;

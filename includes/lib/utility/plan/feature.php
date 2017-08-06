@@ -100,7 +100,10 @@ trait feature
 					{
 						if(isset(self::$my_report_settings['telegram_group']) && self::$my_report_settings['telegram_group'])
 						{
-							telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'), ['sort' => 4]);
+							if(plan::access('telegram:first:of:day:msg:group', self::$my_team_id))
+							{
+								telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'), ['sort' => 4]);
+							}
 						}
 
 						foreach (self::$admins_access_detail as $key => $value)
@@ -159,7 +162,10 @@ trait feature
 						{
 							if(isset(self::$my_report_settings['report_daily']) && self::$my_report_settings['report_daily'])
 							{
-								telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('report_end_day'), ['sort' => 3]);
+								if(plan::access('telegram:end:day:report:group', self::$my_team_id))
+								{
+									telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('report_end_day'), ['sort' => 3]);
+								}
 							}
 						}
 
