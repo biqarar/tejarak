@@ -147,7 +147,6 @@ trait get
 			"order"          => "ASC",
 			"sort"           => null,
 			"unit"           => null,
-			"type"           => null,
 			"mobile"         => null,
 			"admin"          => false,
 		];
@@ -253,7 +252,6 @@ trait get
 		unset($_options['order']);
 		unset($_options['sort']);
 		unset($_options['unit']);
-		unset($_options['type']);
 		unset($_options['admin']);
 		unset($_options['mobile']);
 		unset($_options['user']);

@@ -72,4 +72,27 @@ self::$perm_list[9] =
 ];
 
 
+
+
+
+
+
+
+
+
+//===================================
+self::$perm_list[10] =
+[
+	'title'  => T_("Allow to show transaction list"),
+	'caller' => 'cp:transaction',
+];
+
+self::$perm_list[11] =
+[
+	'title'  => T_("Allow to add new transaction list manualy"),
+	'caller' => 'cp:transaction:add',
+];
+
+
+
 ?>
