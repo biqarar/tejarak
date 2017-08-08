@@ -68,7 +68,7 @@ trait set
 		if(!$user_unit)
 		{
 			\lib\db\logs::set('transaction:user:unit:not:found', $_user_id, $log_meta);
-			$user_unit = 'sarshomar';
+			$user_unit = 'tejarak';
 			// return false;
 		}
 
@@ -195,7 +195,7 @@ trait set
 					$exchange_rate = \lib\db\exchangerates::get_from_to($from, $to);
 				}
 
-				if($exchange_rate || $user_unit === 'sarshomar')
+				if($exchange_rate || $user_unit === 'tejarak')
 				{
 					$rate = 1;
 					if(array_key_exists('rate', $exchange_rate))

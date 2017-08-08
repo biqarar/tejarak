@@ -515,7 +515,7 @@ trait verification_code
 		$code  = self::generate_verification_code();
 		$mail =
 		[
-			'from'    => 'info@sarshomar.com',
+			'from'    => 'info@tejarak.com',
 			'to'      => $email,
 			'subject' => 'contact',
 			'body'    => "salam". $code,

@@ -69,7 +69,7 @@ class controller extends \content\main\controller
 			return;
 		}
 
-		// check url like this /ermile/sarshomar
+		// check url like this /ermile/tejarak
 		if(preg_match("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/", $url, $split))
 		{
 			\lib\router::set_controller('content\\hours\\controller');

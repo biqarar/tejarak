@@ -112,8 +112,8 @@ class model extends \mvc\model
 		{
 			// $mail =
 			// [
-			// 	'from'    => 'info@sarshomar.com',
-			// 	'to'      => 'info@sarshomar.com',
+			// 	'from'    => 'info@tejarak.com',
+			// 	'to'      => 'info@tejarak.com',
 			// 	'subject' => 'contact',
 			// 	'body'    => $content,
 			// 	'debug'   => false,
