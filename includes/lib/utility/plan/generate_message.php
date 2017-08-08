@@ -28,7 +28,7 @@ trait generate_message
 
 			case 'enter':
 				$msg = "✅ ". self::$my_name;
-				$msg .= " | ". self::$my_team_name;
+				// $msg .= " | ". self::$my_team_name;
 				if(self::$my_plus)
 				{
 					$msg .= "\n➕ ". human::number(self::$my_plus, $current_language);
@@ -37,7 +37,7 @@ trait generate_message
 
 			case 'exit':
 				$msg   = "💤 ". self::$my_name;
-				$msg .= " | ". self::$my_team_name. "\n";
+				// $msg .= " | ". self::$my_team_name. "\n";
 				$start = self::$my_start_time;
 				$start = strtotime($start);
 				$total = floor(abs(strtotime('now') - $start) / 60);
@@ -88,7 +88,7 @@ trait generate_message
 					$msg .= "💪 ". self::$my_name;
 				}
 
-				$msg .= " | ". self::$my_team_name;
+				// $msg .= " | ". self::$my_team_name;
 
 				$msg .= "\n"."🌖 🌱 👨‍💻 🥇";
 				// $msg .= "\n". "#سختـکوشـباشیم";
@@ -97,6 +97,7 @@ trait generate_message
 			case 'report_end_day':
 			case 'report_end_day_admin':
 				$presence = \lib\db\hours::peresence(self::$my_team_id);
+
 				if(!empty($presence) && is_array($presence))
 				{
 					$show_time  = false;
@@ -122,9 +123,9 @@ trait generate_message
 					}
 
 					$msg .= "#". T_('Report'). " \n";
-					$msg .=  self::$my_team_name . " ";
+					// $msg .=  self::$my_team_name . " ";
 
-					$msg  .= \lib\utility::date("l j F Y", time(), 'current'). "\n\n";
+					$msg  .= " ". \lib\utility::date("l j F Y", time(), 'current'). "\n\n";
 					$msg_admin  .= $msg;
 
 					$total_time = 0;
