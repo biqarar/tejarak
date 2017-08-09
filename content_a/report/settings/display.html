@@ -44,6 +44,24 @@
        </div>
       </div>
 
+       <h4>{%trans "Auto send report"%}</h4>
+      <div  class="g1 check1">
+
+
+
+
+        <div class="c4 s6">
+         <input type="checkbox" name="timed_auto_report" id="timed_auto_report"  {% if team_details.timed_auto_report %} checked {% endif %}>
+         <label for="timed_auto_report">{%trans "Timed aout report"%}</label>
+        </div>
+        <div class="f">
+          <div class="s6" {%if team_details.timed_auto_report %}{%else%}data-response-hide{%endif%} data-response='timed_auto_report'>
+           <label for="timed_auto_report_time" class="c">{%trans "Sent auto repor at time:"%}</label>
+           <input type="text" name="timed_auto_report_time" class="c2" id="timed_auto_report_time" value="{{team_details.timed_auto_report}}">
+          </div>
+        </div>
+
+      </div>
 
       <h4>{%trans "Group Setting"%}</h4>
       {%if telegram_id%}

@@ -93,6 +93,11 @@ self::$perm_list[11] =
 	'caller' => 'cp:transaction:add',
 ];
 
+self::$perm_list[12] =
+[
+	'title'  => T_("Allow to show system logs"),
+	'caller' => 'cp:transaction:logs',
+];
 
 
 ?>

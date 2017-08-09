@@ -70,6 +70,30 @@ class model extends \content_a\main\model
 			return false;
 		}
 
+		if(utility::post('timed_auto_report'))
+		{
+			if(utility::post('timed_auto_report_time'))
+			{
+				if(!preg_match("/^\d{2}\:\d{2}$/", utility::post('timed_auto_report_time')))
+				{
+					\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', $this->login('id'));
+					debug::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
+					return false;
+				}
+
+				$update_team['timed_auto_report'] = utility::post('timed_auto_report_time');
+			}
+			else
+			{
+				$update_team['timed_auto_report'] = null;
+
+			}
+		}
+		else
+		{
+			$update_team['timed_auto_report'] = null;
+		}
+
 		$update_team['reportheader'] = utility::post('reportHeader');
 
 		$update_team['reportfooter'] = utility::post('reportFooter');

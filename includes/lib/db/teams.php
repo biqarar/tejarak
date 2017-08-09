@@ -4,6 +4,8 @@ use \lib\db;
 
 class teams
 {
+	use teams\report;
+
 	// default setttings
 	// save in temas.meta
 	public static $default_settings =

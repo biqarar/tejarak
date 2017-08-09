@@ -29,10 +29,13 @@ class view extends \content_a\report\view
 		$admins             = \lib\db\userteams::get_admins($args);
 		$this->data->admins = $admins;
 		$team_details = \lib\db\teams::get_by_id($team_id);
+
 		if(isset($team_details['reportheader']))
 		{
 			$this->data->reportHeader = $team_details['reportheader'];
 		}
+
+		$this->data->team_details = $team_details;
 
 		if(isset($team_details['reportfooter']))
 		{

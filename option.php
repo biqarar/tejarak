@@ -198,13 +198,16 @@ self::$enter['telegram_hook']   = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DU
  */
 self::$enter['singup_redirect']     = 'a/setup';
 
+/**
+ * call kavenegar template
+ */
 self::$enter['call']                = true;
-self::$enter['call_template']['fa'] = 'sarshomar-fa';
-self::$enter['call_template']['en'] = 'sarshomar-en';
+self::$enter['call_template']['fa'] = 'tejarak-fa';
+self::$enter['call_template']['en'] = 'tejarak-en';
 
 
 /**
- * { item_description }
+ * cronjob urls and status
  */
 self::$cronjob['status'] = true;
 self::$cronjob['path']   = [] ;

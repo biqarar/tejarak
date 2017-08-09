@@ -1,0 +1,1 @@
+ALTER TABLE `teams` ADD `timed_auto_report` VARCHAR(50) NULL DEFAULT NULL;
