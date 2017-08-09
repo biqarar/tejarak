@@ -7,7 +7,7 @@
 {%if team is not null%}
     <li class="title">{%trans "Team Operation"%}</li>
     {%if is_admin%}
-	    <li><a href="{{url.baseFull}}/{{team}}"><i class="icon-user"></i>{%trans "Team Dashboard"%}</a></li>
+	    <li><a href="{{url.baseFull}}/{{team}}"><i class="icon-users"></i>{%trans "Team Dashboard"%}</a></li>
 	    <li><a href="{{url.baseFull}}/{{team}}/gateway/list"><i class="icon-enter"></i>{%trans "Gateway"%}</a></li>
 	    <li><a href="{{url.baseFull}}/{{team}}/plan"><i class="icon-bolt"></i>{%trans "Change Plan"%}</a></li>
 	    <li><a href="{{url.baseFull}}/{{team}}/edit"><i class="icon-wrench"></i>{%trans "Settings"%}</a></li>
