@@ -37,6 +37,7 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 .pl{padding:7em 0;}
 .px{padding:10em 0;}
 .pa{padding:5em;}
+.pab{padding:1em;}
 .pas{padding:2em;}
 .pal{padding:7em;}
 .pax{padding:10em;}
@@ -261,6 +262,13 @@ picture{display:block;}
 .vcard .adr span{display:inline-block;}
 
 
+.dft{font-size:1.4em;line-height:50px}
+
+.dft input, .dft textarea, .dft select{line-height:5rem;max-width:100%;height:5rem;padding:0 2rem;-webkit-transition:.3s;transition:.3s;border:none;border-radius:3px;background-color:rgba(0,0,0,.05);display:inline-block;width:100%;}
+.dft textarea{min-height:120px;line-height:40px;}
+.dft input:focus, .dft textarea:focus{background-color:rgba(0,0,0,0.10)}
+.dft input:hover, .dft textarea:hover{background-color:rgba(0,0,0,0.15)}
+.dft button{margin:0;}
 
 
 

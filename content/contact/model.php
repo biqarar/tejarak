@@ -94,7 +94,7 @@ class model extends \mvc\model
 		if($content == '')
 		{
 			\lib\db\logs::set('user:send:contact:empty:message', $user_id, $log_meta);
-			debug::error(T_("Please fill in the field"), "content");
+			debug::error(T_("Please try type something!"), "content");
 			return false;
 		}
 		// ready to insert comments
