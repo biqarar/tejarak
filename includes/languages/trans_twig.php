@@ -15,12 +15,13 @@ private function transtext()
 	echo T_("Message");                                                               // Line 32
 	echo T_("Your Message");                                                          // Line 33
 	echo T_("Send");                                                                  // Line 58
-	echo T_("How to contact tejarak");                                                // Line 45
+	echo T_("How to contact us");                                                     // Line 45
 	echo T_("tejarak");                                                               // Line 51
-	echo T_("#614, Omranieh");                                                        // Line 63
-	echo T_("Moallem Sq");                                                            // Line 62
-	echo T_("Qom");                                                                   // Line 61
-	echo T_("Iran");                                                                  // Line 60
+	echo T_("Ermile, Floor2, Yas Building");                                          // Line 54
+	echo T_("1st alley, Haft-e-tir St");                                              // Line 61
+	echo T_("Qom");                                                                   // Line 60
+	echo T_("Iran");                                                                  // Line 59
+	echo T_("Floor2, Yas Building");                                                  // Line 62
 
 	//-------------------------------------------------------content\home\display.html
 	echo T_("Do attendance easily and enjoy real time reports");                      // Line 21
@@ -151,17 +152,16 @@ private function transtext()
 	//-------------------------------------------content\template\static\help\faq.html
 	echo T_("This FAQ provides answers to basic questions about Tejarak.");           // Line 6
 	echo T_("General questions");                                                     // Line 245
-	echo T_("How does Tejarak work?");                                                // Line 252
-	echo T_("Tejarak is simple. Enter to check it!");                                 // Line 249
-	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 253
-	echo T_("What is your privacy and security policy?");                             // Line 256
-	echo T_("View Tejarak's privacy and security policy at");                         // Line 257
-	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 260
-	echo T_("You can find them at");                                                  // Line 261
-	echo T_("What are your bandwidth fees?");                                         // Line 264
-	echo T_("There are none. All Tejarak plans include unlimited bandwidth for free.");// Line 265
-	echo T_("Do I need a web host?");                                                 // Line 268
-	echo T_("No! Tejarak includes secure, unlimited hosting on all plans with free bandwith.");// Line 269
+	echo T_("How does Tejarak work?");                                                // Line 248
+	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 249
+	echo T_("What is your privacy and security policy?");                             // Line 252
+	echo T_("View Tejarak's privacy and security policy at");                         // Line 253
+	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 256
+	echo T_("You can find them at");                                                  // Line 257
+	echo T_("What are your bandwidth fees?");                                         // Line 260
+	echo T_("There are none. All Tejarak plans include unlimited bandwidth for free.");// Line 261
+	echo T_("Do I need a web host?");                                                 // Line 264
+	echo T_("No! Tejarak includes secure, unlimited hosting on all plans with free bandwith.");// Line 265
 	echo T_("Billing & Invoicing");                                                   // Line 217
 	echo T_("Is there a setup fee?");                                                 // Line 220
 	echo T_("No. There are no setup fees on any of our plans!");                      // Line 221

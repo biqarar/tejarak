@@ -84,13 +84,13 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .faq h3{margin:0;}
 .faq ul{margin-bottom:5em;}
 .faq li{transition:0.3s;padding:1em; margin-bottom:1em;border-radius:3px}
-.faq li:hover{background-color:#aabf40}
+.faq li:hover{background-color:#e0d7c1}
 .faq li p{margin:0}
 
 /* list*/
 .pc ul.list{margin:3em 5%;}
 .pc ul.list li{font-size:1.1em;line-height:2em;transition:0.3s}
-.pc ul.list li:hover{background-color:#aabf40;}
+.pc ul.list li:hover{background-color:#e0d7c1;}
 .pc h3{font-size:3em;}
 .pc h4{font-size:1.5em;margin-bottom:0}
 
@@ -117,6 +117,8 @@ body .pc .em{font-weight:bold;text-align:center;padding:1em 5%;background-color:
 .dtc > .th:hover{background-color:#d0c7b1;}
 .dtc > .th.gh:hover{background-color:#c9cdcd;}
 .dtc > div:not(.th):hover{background-color:#c01541;color:#fff!important}
+.dtc > div a{color:#333;transition:0.3s;}
+.dtc > div:hover a{color:#fff;}
 /* align left*/
 .al{text-align:left;}
 .ar{text-align:right;}
@@ -254,7 +256,7 @@ picture{display:block;}
 
 /*vcard*/
 .vcard{font-style:normal}
-.vcard .adr{padding:1em}
+.vcard .adr{padding:1em 0}
 .vcard .adr div, .vcard .adr span, .vcard .email, .vcard .tel{display:block;padding:0.5em}
 .vcard .adr span{display:inline-block;}
 
