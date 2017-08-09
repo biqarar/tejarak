@@ -170,10 +170,10 @@ picture{display:block;}
 @keyframes spinCenter{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)} to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 
 /* getStarted*/
-.getStarted{min-width:300px;max-width:400px;margin:1em auto;font-size:1.5em;}
+.getStarted{min-width:250px;max-width:400px;margin:1em auto;font-size:1.5em;}
 .getStarted form{height:50px;}
 .getStarted input.c{height:100%;background-color:#fff;border:1px solid #4070c0;line-height:50px;padding:0 1em;color:#777}
-.getStarted button.c{height:100%;background-color:#4070c0;border:none;color:#eee;padding:0;line-height:50px;max-width:150px;transition:0.3s}
+.getStarted button.c{height:100%;background-color:#4070c0;border:none;color:#eee;padding:0;line-height:50px;transition:0.3s}
 .getStarted button.c:hover{background-color:#2957a5}
 .getStarted button.c:focus{background-color:#2957a5;color:#fff;}
 .getStarted p{padding:1em 0;color:#888;font-size:0.8em}
@@ -225,7 +225,7 @@ picture{display:block;}
 /* footer-links*/
 #tfooter .middle{font-size:1.2em;border-bottom:1px solid #4070c0;padding:2em 0}
 #tfooter .middle h4{font-weight:500;color:#ccc;margin-bottom:5px;font-size:1.1em}
-#tfooter .middle nav a{display:block;padding:0.5em 0}
+#tfooter .middle nav a{display:inline-block;padding:0.5em}
 #tfooter .middle .enamad{min-width:150px;padding:1em 0}
 #tfooter .middle .enamad a{display:block;max-width:90px;padding:0;position:relative;}
 #tfooter .middle .enamad a:focus{background-color:#ccc}
@@ -559,7 +559,7 @@ body #billing{max-width:800px;margin:0 auto}
   #everythingSync h3{padding:0 0;margin-bottom:1em;}
   #everythingSync svg{max-width:250px;}
   #anyTeam img{margin:0 auto;padding:0}
-  #anyTeam h2{font-size:3em;}
+  #anyTeam h2{font-size:2.7em;}
   #anyTeam h3{padding:0 0;margin-bottom:1em;}
   #caseStudy{height:400px;}
   #notReady .btn{font-size:0.8em;}
@@ -575,7 +575,7 @@ body #billing{max-width:800px;margin:0 auto}
   /* footer */
   #tfooter .top{font-size:1em;}
 
-  #tfooter .middle{padding:2rem 1rem;}
+  #tfooter .middle{padding:1em 0;}
   #tfooter .middle .enamad{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
   #tfooter .middle nav:not(.enamad){margin-bottom:2rem;}
   #tfooter .middle .socialbox a{display:inline-block;vertical-align:middle;}
