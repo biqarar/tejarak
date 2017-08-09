@@ -196,8 +196,18 @@ self::$enter['telegram_hook']   = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DU
  * first signup url
  * main redirect url . signup redirect url
  */
-self::$enter['singup_redirect'] = 'a/setup';
+self::$enter['singup_redirect']     = 'a/setup';
+
+self::$enter['call']                = true;
+self::$enter['call_template']['fa'] = 'sarshomar-fa';
+self::$enter['call_template']['en'] = 'sarshomar-en';
 
 
+/**
+ * { item_description }
+ */
+self::$cronjob['status'] = true;
+self::$cronjob['path']   = [] ;
+self::$cronjob['path'][] = root. 'cronjob.php' ;
 
 ?>
