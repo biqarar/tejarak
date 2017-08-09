@@ -99,7 +99,8 @@ private function transtext()
 	echo T_("Another Session");                                                       // Line 62
 
 	//----------------------------------------------------content\template\header.html
-	echo T_("Sales +98 25 3773 5183");                                                // Line 18
+	echo T_("Sales");                                                                 // Line 18
+	echo T_("+98 25 3650 5460");                                                      // Line 18
 
 	//------------------------------------------------content\template\priceTable.html
 	echo T_("Free");                                                                  // Line 26
@@ -114,19 +115,10 @@ private function transtext()
 	echo T_("per month");                                                             // Line 45
 	echo T_("For <b>first class companies</b> who requiring full features! All of them is here.");// Line 58
 
-	//----------------------------------------------------content\template\social.html
-	echo T_("Twitter");                                                               // Line 3
-	echo T_("RSS");                                                                   // Line 9
-	echo T_("Telegram");                                                              // Line 15
-	echo T_("Google Plus");                                                           // Line 19
-	echo T_("Facebook");                                                              // Line 23
-	echo T_("LinkedIn");                                                              // Line 29
-
 	//----------------------------------------------content\template\static\about.html
 	echo T_("About Tejarak");                                                         // Line 3
-	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware and many other features.");// Line 6
-	echo T_("Advancement of technology and development of Web-based business Cause Need new tools to resolve the daily needs and that’s the goal of making Tejarak.");// Line 13
 	echo T_("Tejarak have a set of simple and practical tools on a regular basis for modern businesses.");// Line 13
+	echo T_("Advancement of technology and development of Web-based business Cause Need new tools to resolve the daily needs and that’s the goal of making Tejarak.");// Line 13
 	echo T_("It’s good to know that in addition to the core services, features such as inventory and invoice will be added.");// Line 15
 	echo T_("Attendance system");                                                     // Line 17
 	echo T_("Attendance is so different in Tejarak. Beautiful and stylish design without requiring any hardware. Notification via social networks, Online reports and difference compared to other systems are the best feature of Tejarak.");// Line 18
