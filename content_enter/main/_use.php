@@ -78,7 +78,7 @@ trait _use
 	public static $wait              = 0;
 
 	// show resende link ofter
-	public static $resend_after      = 60 * 1; // 1 min
+	public static $resend_after      = 30; // 30'
 
 	// life time code to expire
 	public static $life_time_code    = 60 * 5; // 5 min
