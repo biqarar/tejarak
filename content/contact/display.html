@@ -17,7 +17,7 @@
    {%else%}
     <div class="f pab">
      <label class="c2" for="name">{%trans "Name"%}</label>
-     <input class="c" type="text" name="name" id="name" placeholder='{%trans "Full Name"%}'>
+     <input class="c" type="text" name="name" id="name" placeholder='{%trans "Full Name"%}' maxlength='40'>
     </div>
     <div class="f pab">
      <label class="c2" for="mobile">{%trans "Mobile"%}</label>
@@ -25,12 +25,12 @@
     </div>
     <div class="f pab">
      <label class="c2" for="email">{%trans "Email"%}</label>
-     <input class="c en" type="email" name="email" id="email" placeholder='mail@example.com'>
+     <input class="c en" type="email" name="email" id="email" placeholder='mail@example.com' maxlength='40'>
     </div>
    {%endif%}
     <div class="f pab">
      <label class="c2" for="content">{%trans "Message"%} *</label>
-     <textarea class="c textarea" name="content" placeholder='{%trans "Your Message"%}' maxlength="1000" data-resizable></textarea>
+     <textarea class="c textarea" name="content" placeholder='{%trans "Your Message"%}' minlength="5" maxlength="1000" data-resizable></textarea>
     </div>
     <div class="f pab">
      <div class="c2"></div>
