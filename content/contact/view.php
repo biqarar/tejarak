@@ -13,6 +13,8 @@ class view extends \content\main\view
 		{
 			$this->data->page['title'] = $this->data->module;
 		}
+
+		$this->data->bodyclass = 'unselectable vflex';
 	}
 }
 ?>
