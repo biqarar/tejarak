@@ -1,33 +1,14 @@
-<nav class="socialbox sharebox">
- <a class="twitter" href="https://twitter.com/{{social.twitter}}" data-direct>
- 	<span>{%trans "Twitter"%}</span>
-  <span class="icon-twitter"></span>
- </a>
+<nav class="share2">
+  <a data-direct href="https://www.facebook.com/{{social.facebook}}" class="facebook">tejarak facebook</a>
+  <a data-direct href="https://twitter.com/{{social.twitter}}" class="twitter">tejarak twitter</a>
+  <a data-direct href="https://plus.google.com/{{social.googleplus}}" class="googleplus">tejarak google+</a>
+  <a data-direct href="https://t.me/{{social.telegram}}" class="telegram">tejarak telegram</a>
+  <a data-direct href="https://instagram.com/{{social.instagram}}" class="instagram">tejarak instagram</a>
+{%if social.linkedin%}
+  <a data-direct href="https://www.linkedin.com/{{social.linkedin}}" class="linkedin">tejarak linkedin</a>
+{%endif%}
+{%if false%}
+  <a data-direct href="{{url.base}}/rss" class="rss">tejarak rss</a>
+{%endif%}
 
- {%if false%}
- <a class="rss" href="{{url.base}}/rss" target="_blank" data-direct>
-  <span>{%trans "RSS"%}</span>
-  <span class="icon-rss"></span>
- </a>
- {%endif%}
-
- <a class="telegram" href="http://t.me/{{social.telegram}}" data-direct>
-  <span>{%trans "Telegram"%}</span>
-  <span class="icon-send"></span>
- </a>
- <a class="gplus" href="https://plus.google.com/{{social.googleplus}}" data-direct>
-  <span>{%trans "Google Plus"%}</span>
-  <span class="icon-google-plus"></span>
- </a>
- <a class="facebook" href="https://www.facebook.com/{{social.facebook}}" data-direct>
-  <span>{%trans "Facebook"%}</span>
-  <span class="icon-facebook"></span>
- </a>
-
- {%if social.linkedin%}
- <a class="linkedin" href="http://www.linkedin.com/{{social.linkedin}}" data-direct>
-  <span>{%trans "LinkedIn"%}</span>
-  <span class="icon-linkedin2"></span>
- </a>
- {%endif%}
 </nav>
