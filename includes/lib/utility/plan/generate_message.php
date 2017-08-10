@@ -230,7 +230,10 @@ trait generate_message
 				break;
 		}
 
-		$msg = self::$my_team_report_header. "\n".  $msg. "\n". self::$my_team_report_footer;
+		if($msg)
+		{
+			$msg = self::$my_team_report_header. "\n".  $msg. "\n". self::$my_team_report_footer;
+		}
 
 		return $msg;
 	}
