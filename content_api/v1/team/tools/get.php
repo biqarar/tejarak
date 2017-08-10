@@ -41,6 +41,7 @@ trait get
 					switch ($value)
 					{
 						case 'enable':
+						case 'close':
 							$result[$key] = $value ? (string) $value : null;
 							break;
 						default:
@@ -156,7 +157,6 @@ trait get
 		}
 
 		$result = \lib\db\teams::team_list($this->user_id);
-
 		$temp = [];
 		foreach ($result as $key => $value)
 		{
@@ -166,6 +166,7 @@ trait get
 				$temp[] = $check;
 			}
 		}
+
 		return $temp;
 	}
 
