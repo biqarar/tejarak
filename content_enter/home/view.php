@@ -23,7 +23,7 @@ class view extends \content_enter\main\view
 	public function view_enter($_args)
 	{
 		$this->data->page['special'] = true;
-		$this->data->page['title']   = T_('Enter to'). ' '. $this->data->site['title'];
+		$this->data->page['title']   = T_('Enter to :name with mobile', ['name' => $this->data->site['title']]);
 		$this->data->page['desc']    = $this->data->page['title'];
 
 		$mobile = \lib\utility::get('mobile');

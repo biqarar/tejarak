@@ -405,7 +405,7 @@ private function transtext()
 	//-----------------------------------------------------content_a\plan\display.html
 	echo T_("Current Plan");                                                          // Line 9
 	echo T_("Choose a new plan of your team");                                        // Line 16
-	echo T_("Apply");                                                                 // Line 111
+	echo T_("Apply");                                                                 // Line 129
 	echo T_("Alert for change team plan");                                            // Line 59
 
 	//--------------------------------------------------content_a\profile\display.html
@@ -435,7 +435,7 @@ private function transtext()
 
 	//----------------------------------------------content_a\report\last\display.html
 	echo T_("Select actio");                                                          // Line 59
-	echo T_("All");                                                                   // Line 95
+	echo T_("All");                                                                   // Line 113
 	echo T_("Nothing!");                                                              // Line 63 Seperate
 	echo T_("Just diff");                                                             // Line 62
 	echo T_("Diff + Plus");                                                           // Line 63
@@ -455,16 +455,19 @@ private function transtext()
 	echo T_("Send Admins");                                                           // Line 29
 	echo T_("Report end day");                                                        // Line 37
 	echo T_("Enter & Exit report");                                                   // Line 41
-	echo T_("Group Setting");                                                         // Line 48
-	echo T_("Telegram Group");                                                        // Line 52
-	echo T_("Delete Group");                                                          // Line 58
-	echo T_("Send first memeber name");                                               // Line 65
-	echo T_("Send report daily at end of day");                                       // Line 72
-	echo T_("Send report daily whit time at end of day");                             // Line 79
-	echo T_("Send gold emoji in report daily");                                       // Line 86
-	echo T_("Send report daily count");                                               // Line 93
-	echo T_("No Group was set");                                                      // Line 103
-	echo T_("You can set telegram group from ");                                      // Line 104
+	echo T_("Auto send report");                                                      // Line 47
+	echo T_("Timed aout report");                                                     // Line 55
+	echo T_("Sent auto repor at time:");                                              // Line 59
+	echo T_("Group Setting");                                                         // Line 66
+	echo T_("Telegram Group");                                                        // Line 70
+	echo T_("Delete Group");                                                          // Line 76
+	echo T_("Send first memeber name");                                               // Line 83
+	echo T_("Send report daily at end of day");                                       // Line 90
+	echo T_("Send report daily whit time at end of day");                             // Line 97
+	echo T_("Send gold emoji in report daily");                                       // Line 104
+	echo T_("Send report daily count");                                               // Line 111
+	echo T_("No Group was set");                                                      // Line 121
+	echo T_("You can set telegram group from ");                                      // Line 122
 
 	//-----------------------------------------------content_a\report\sum\display.html
 	echo T_("Day");                                                                   // Line 16
