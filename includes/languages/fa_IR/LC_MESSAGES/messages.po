@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-10 16:11+0430\n"
-"PO-Revision-Date: 2017-08-10 16:45+0430\n"
+"POT-Creation-Date: 2017-08-10 19:54+0430\n"
+"PO-Revision-Date: 2017-08-10 19:57+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4076,32 +4076,32 @@ msgid "Log in with another methods"
 msgstr "ورود با سایر روش‌ها"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:621
-#: tejarak/includes/languages/trans_addons.php:518
+#: tejarak/includes/languages/trans_addons.php:521
 msgid "Log in with mobile"
 msgstr "ورود با موبایل"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:622
-#: tejarak/includes/languages/trans_addons.php:520
+#: tejarak/includes/languages/trans_addons.php:523
 msgid "Enter with Google"
 msgstr "ورود با گوگل"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:623
-#: tejarak/includes/languages/trans_addons.php:524
+#: tejarak/includes/languages/trans_addons.php:529
 msgid "New email"
 msgstr "رایانامه‌ی جدید"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:624
-#: tejarak/includes/languages/trans_addons.php:525
+#: tejarak/includes/languages/trans_addons.php:530
 msgid "New username"
 msgstr "نام کاربری جدید"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:625
-#: tejarak/includes/languages/trans_addons.php:526
+#: tejarak/includes/languages/trans_addons.php:531
 msgid "Enter a valid username!"
 msgstr "نام کاربری معتبر وارد کنید!"
 
 #: saloos/saloos-addons/includes/languages/trans_addons.php:628
-#: tejarak/includes/languages/trans_addons.php:529
+#: tejarak/includes/languages/trans_addons.php:534
 #: tejarak/includes/languages/trans_twig.php:19
 msgid "tejarak"
 msgstr "تجارک"
@@ -4368,7 +4368,7 @@ msgstr "عدم دسترسی به تغییر تنظیمات"
 
 #: tejarak/content_a/report/settings/model.php:80
 msgid "Invalid timed auto report time"
-msgstr ""
+msgstr "مقدار اشتباه برای زمان ارسال خودکار گزارش"
 
 #: tejarak/content_a/report/settings/model.php:190
 msgid "Report settings was changed"
@@ -5344,6 +5344,7 @@ msgid "Your new password is your old password"
 msgstr "کلمه‌عبور جدید شما همان قدیمی است"
 
 #: tejarak/content_enter/pass/recovery/model.php:53
+#: tejarak/includes/languages/trans_addons.php:519
 #: tejarak/includes/languages/trans_twig.php:63
 msgid "Enter"
 msgstr "ورود"
@@ -5369,6 +5370,7 @@ msgstr ""
 "اعتبارسنجی، این گذرواژه قابل استفاده خواهد بود."
 
 #: tejarak/content_enter/pass/view.php:42
+#: tejarak/includes/languages/trans_addons.php:517
 msgid "Set Password"
 msgstr "تنظیم گذرواژه"
 
@@ -5751,25 +5753,37 @@ msgstr "قدرت گرفته از دش."
 msgid "Powered by Ermile."
 msgstr "قدرت گرفته از ارمایل."
 
-#: tejarak/includes/languages/trans_addons.php:517
+#: tejarak/includes/languages/trans_addons.php:518
+msgid "Recovery password"
+msgstr "بازیابی گذرواژه"
+
+#: tejarak/includes/languages/trans_addons.php:520
 msgid "Enter with another methods"
 msgstr "ورود با سایر روش‌ها"
 
-#: tejarak/includes/languages/trans_addons.php:519
+#: tejarak/includes/languages/trans_addons.php:522
 msgid "Enter with mobile"
 msgstr "ورود با موبایل"
 
-#: tejarak/includes/languages/trans_addons.php:521
-msgid "Login with email"
+#: tejarak/includes/languages/trans_addons.php:524
+msgid "Enter with email"
 msgstr "ورود با رایانامه"
 
-#: tejarak/includes/languages/trans_addons.php:522
+#: tejarak/includes/languages/trans_addons.php:525
 msgid "Enter with username"
 msgstr "ورود با نام‌کاربری"
 
-#: tejarak/includes/languages/trans_addons.php:523
+#: tejarak/includes/languages/trans_addons.php:526
 msgid "Resend code"
 msgstr "ارسال دوباره‌ی کد"
+
+#: tejarak/includes/languages/trans_addons.php:527
+msgid "After end timer you can request code again"
+msgstr "پس از به‌اتمام رسیدن زمان، شما امکان درخواست مجدد کد را خواهید داشت"
+
+#: tejarak/includes/languages/trans_addons.php:528
+msgid "Restart with new mobile"
+msgstr "شروع دوباره با موبایل جدید"
 
 #: tejarak/includes/languages/trans_twig.php:6
 msgid "Contact Us"
@@ -7458,12 +7472,12 @@ msgid "Auto send report"
 msgstr "ارسال خودکار گزارش"
 
 #: tejarak/includes/languages/trans_twig.php:459
-msgid "Timed aout report"
-msgstr ""
+msgid "Timed auto report"
+msgstr "زمان گزارش خودکار"
 
 #: tejarak/includes/languages/trans_twig.php:460
 msgid "Sent auto repor at time:"
-msgstr ""
+msgstr "ارسال گزارش خودکار در زمان"
 
 #: tejarak/includes/languages/trans_twig.php:461
 msgid "Group Setting"
@@ -8028,6 +8042,9 @@ msgstr "اجازه افزودن دستی تراکنش جدید"
 #: tejarak/permission.php:98
 msgid "Allow to show system logs"
 msgstr "اجازه مشاهده لاگ‌های سیستم"
+
+#~ msgid "Login with email"
+#~ msgstr "ورود با رایانامه"
 
 #~ msgid "Your verification code send to your telegram."
 #~ msgstr "کد اعتبارسنجی شما از طریق تلگرام ارسال شد."

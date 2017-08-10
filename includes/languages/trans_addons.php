@@ -87,7 +87,7 @@ private function transtext()
 	echo T_("Upgrade");                                                               // Line 66
 	echo T_("Backup");                                                                // Line 68
 	echo T_("Backup by dump");                                                        // Line 60
-	echo T_("Submit");                                                                // Line 110
+	echo T_("Submit");                                                                // Line 121
 	echo T_("Project Database");                                                      // Line 68
 	echo T_("Automatically read database and create sql files");                      // Line 67
 	echo T_("Server Logs");                                                           // Line 74
@@ -287,7 +287,7 @@ private function transtext()
 	echo T_("Password");                                                              // Line 13
 	echo T_("between 5-40 character");                                                // Line 171 Seperate
 	echo T_("between 5-40 character. be tricky!");                                    // Line 172 Seperate
-	echo T_("Login");                                                                 // Line 102
+	echo T_("Login");                                                                 // Line 173 Seperate
 	echo T_("Create an account");                                                     // Line 174 Seperate
 	echo T_("Change password");                                                       // Line 175 Seperate
 	echo T_("SMS Delivery");                                                          // Line 176 Seperate
@@ -508,22 +508,27 @@ private function transtext()
 	echo T_("Enter a valid code!");                                                   // Line 40
 	echo T_("Email");                                                                 // Line 47
 	echo T_("email");                                                                 // Line 48
-	echo T_("Enter a valid eamil!");                                                  // Line 210
+	echo T_("Enter a valid eamil!");                                                  // Line 228
 	echo T_("username");                                                              // Line 56
 	echo T_("Enter a valid username from 4 to 50 character");                         // Line 56
 	echo T_("Go");                                                                    // Line 71
 	echo T_("Next");                                                                  // Line 79
 	echo T_("Signup");                                                                // Line 87
-	echo T_("Enter with another methods");                                            // Line 120
-	echo T_("Log in with mobile");                                                    // Line 131
-	echo T_("Enter with mobile");                                                     // Line 133
-	echo T_("Enter with Google");                                                     // Line 143
-	echo T_("Login with email");                                                      // Line 151
-	echo T_("Enter with username");                                                   // Line 160
-	echo T_("Resend code");                                                           // Line 203
-	echo T_("New email");                                                             // Line 210
-	echo T_("New username");                                                          // Line 218
-	echo T_("Enter a valid username!");                                               // Line 218
+	echo T_("Set Password");                                                          // Line 93
+	echo T_("Recovery password");                                                     // Line 99
+	echo T_("Enter");                                                                 // Line 113
+	echo T_("Enter with another methods");                                            // Line 131
+	echo T_("Log in with mobile");                                                    // Line 142
+	echo T_("Enter with mobile");                                                     // Line 144
+	echo T_("Enter with Google");                                                     // Line 154
+	echo T_("Enter with email");                                                      // Line 162
+	echo T_("Enter with username");                                                   // Line 171
+	echo T_("Resend code");                                                           // Line 215
+	echo T_("After end timer you can request code again");                            // Line 215
+	echo T_("Restart with new mobile");                                               // Line 220
+	echo T_("New email");                                                             // Line 228
+	echo T_("New username");                                                          // Line 236
+	echo T_("Enter a valid username!");                                               // Line 236
 
 	//------------------------------------------addons\includes\mvc\display-enter.html
 	echo T_("tejarak");                                                               // Line 32

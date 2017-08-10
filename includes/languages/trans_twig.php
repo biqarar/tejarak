@@ -456,7 +456,7 @@ private function transtext()
 	echo T_("Report end day");                                                        // Line 37
 	echo T_("Enter & Exit report");                                                   // Line 41
 	echo T_("Auto send report");                                                      // Line 47
-	echo T_("Timed aout report");                                                     // Line 55
+	echo T_("Timed auto report");                                                     // Line 55
 	echo T_("Sent auto repor at time:");                                              // Line 59
 	echo T_("Group Setting");                                                         // Line 66
 	echo T_("Telegram Group");                                                        // Line 70
