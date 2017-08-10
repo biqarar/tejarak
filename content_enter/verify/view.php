@@ -30,97 +30,51 @@ class view extends \content_enter\main\view
 
 		// the verify msg
 		$myDesc  = T_('Please verify yourself.'). ' ';
+
+		switch (self::get_enter_session('verification_code_way'))
+		{
+			case 'telegram':
+				$myDesc .= T_("We've sent the code via Telegram. Please enter the code below.");
+				break;
+
+			case 'call':
+				$myDesc .= T_("We trying to call you. be patient...");
+				break;
+
+			case 'sms':
+				$myDesc .= T_("Your verification code sended to your mobile number via sms. be patient...");
+				break;
+
+			default:
+				$myDesc .= T_("What happend?");
+				break;
+		}
+
+
+
 		// swich verify from
 		switch (self::get_enter_session('verify_from'))
 		{
 			// user from signup go to this page
 			case 'signup':
 			case 'set':
-				switch (self::get_enter_session('verification_code_way'))
-				{
-					case 'telegram':
-						$myDesc .= T_("Your verification code send to your telegram.");
-						break;
-
-					case 'call':
-						$myDesc .= T_("We try to call to you. be patient...");
-						break;
-
-					case 'sms':
-						$myDesc .= T_("Your verification code send to you mobile via sms.");
-						break;
-
-					default:
-						$myDesc .= T_("What happend?");
-						break;
-				}
+				// $myDesc .= T_("Your verification code send to your telegram.");
 				break;
 
 			// user from delete go to this page
 			case 'delete':
-				switch (self::get_enter_session('verification_code_way'))
-				{
-					case 'telegram':
-						$myDesc = T_("Your verification code send to your telegram, you try to delete account.");
-						break;
-
-					case 'call':
-						$myDesc = T_("We try to call to you, you try to delete account.");
-						break;
-
-					case 'sms':
-						$myDesc = T_("Your verification code send to mobile number by sms, you try to delete account.");
-						break;
-
-					default:
-						$myDesc = T_("What happend?, dont delete account.");
-						break;
-				}
+				$myDesc .= ' '. T_("This is request of delete account!");
 				break;
 
 			// user from recovery go to this page
 			case 'recovery':
-				switch (self::get_enter_session('verification_code_way'))
-				{
-					case 'telegram':
-						$myDesc = T_("Your verification code send to your telegram, you try to recovery your password.");
-						break;
-
-					case 'call':
-						$myDesc = T_("We try to call to you, you try to recovery your password.");
-						break;
-
-					case 'sms':
-						$myDesc = T_("Your verification code send to mobile number by sms, you try to recovery your password.");
-						break;
-
-					default:
-						$myDesc = T_("What happend?, dont recovery your password.");
-						break;
-				}
+				$myDesc .= ' '. T_("This is request of account recovery.");
 				break;
 
 			// user from change password go to this page
 			case 'change':
 				// swich way
-				switch (self::get_enter_session('verification_code_way'))
-				{
-					case 'telegram':
-						$myDesc = T_("Your verification code send to your telegram, you try to change your password.");
-						break;
-
-					case 'call':
-						$myDesc = T_("We try to call to you, you try to change your password.");
-						break;
-
-					case 'sms':
-						$myDesc = T_("Your verification code send to mobile number by sms, you try to change your password.");
-						break;
-
-					default:
-						$myDesc = T_("What happend?, dont change your password.");
-						break;
-				}
+				$myDesc .= ' '. T_("This is request of change password.");
 				break;
 		}
 

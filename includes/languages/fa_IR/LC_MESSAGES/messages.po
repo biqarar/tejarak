@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-10 14:46+0430\n"
-"PO-Revision-Date: 2017-08-10 15:29+0430\n"
+"POT-Creation-Date: 2017-08-10 16:11+0430\n"
+"PO-Revision-Date: 2017-08-10 16:45+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4227,7 +4227,7 @@ msgid "You must login to load this page"
 msgstr "شما برای داشتن این صفحه باید وارد سیستم شوید"
 
 #: tejarak/content_a/billing/tools/pay.php:148
-#: tejarak/content_enter/verify/view.php:54
+#: tejarak/content_enter/verify/view.php:49
 msgid "What happend?"
 msgstr "اتفاقی افتاده؟"
 
@@ -5473,87 +5473,48 @@ msgstr "اگر شما درخواست کد را نداده‌اید،‌ این �
 msgid "Please verify yourself."
 msgstr "لطفا هویت خود را تایید کنید."
 
-#: tejarak/content_enter/verify/view.php:42
-msgid "Your verification code send to your telegram."
-msgstr "کد اعتبارسنجی شما از طریق تلگرام ارسال شد."
-
-#: tejarak/content_enter/verify/view.php:46
-msgid "We try to call to you. be patient..."
-msgstr "ما در حال تلاش برای تماس با شما هستیم. صبور باشید..."
-
-#: tejarak/content_enter/verify/view.php:50
-msgid "Your verification code send to you mobile via sms."
-msgstr "کد اعتبارسنجی از طریق پیامک به شماره موبایل شما ارسال شد."
-
-#: tejarak/content_enter/verify/view.php:64
-msgid "Your verification code send to your telegram, you try to delete account."
+#: tejarak/content_enter/verify/view.php:37
+msgid "We've sent the code via Telegram. Please enter the code below."
 msgstr ""
-"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید."
+"ما کد اعتبارسنجی را از طریق تلگرام برای شما ارسال کردیم. لطفا کد را در باکس "
+"پایین وارد کنید"
 
-#: tejarak/content_enter/verify/view.php:68
-msgid "We try to call to you, you try to delete account."
+#: tejarak/content_enter/verify/view.php:41
+msgid "We trying to call you. be patient..."
 msgstr ""
+"ما در حال تلاش برای تماس با شما هستیم و تا لحظاتی دیگر با شما تماس می‌گیریم."
 
-#: tejarak/content_enter/verify/view.php:72
-msgid ""
-"Your verification code send to mobile number by sms, you try to delete account."
+#: tejarak/content_enter/verify/view.php:45
+msgid "Your verification code sended to your mobile number via sms. be patient..."
 msgstr ""
+"کد اعتبارسنجی از طریق پیامک به شماره شما ارسال شده است و بزودی به‌دست شما خواهد "
+"رسید. صبور باشید..."
 
-#: tejarak/content_enter/verify/view.php:76
-msgid "What happend?, dont delete account."
-msgstr ""
+#: tejarak/content_enter/verify/view.php:66
+msgid "This is request of delete account!"
+msgstr "این درخواست برای حذف حساب کاربری است!"
 
-#: tejarak/content_enter/verify/view.php:86
-msgid ""
-"Your verification code send to your telegram, you try to recovery your password."
-msgstr ""
+#: tejarak/content_enter/verify/view.php:71
+msgid "This is request of account recovery."
+msgstr "این درخواست برای بازیابی حساب کاربری است."
 
-#: tejarak/content_enter/verify/view.php:90
-msgid "We try to call to you, you try to recovery your password."
-msgstr ""
+#: tejarak/content_enter/verify/view.php:77
+msgid "This is request of change password."
+msgstr "این درخواست برای تغییر گذرواژه است."
 
-#: tejarak/content_enter/verify/view.php:94
-msgid ""
-"Your verification code send to mobile number by sms, you try to recovery your "
-"password."
-msgstr ""
-
-#: tejarak/content_enter/verify/view.php:98
-msgid "What happend?, dont recovery your password."
-msgstr ""
-
-#: tejarak/content_enter/verify/view.php:109
-msgid ""
-"Your verification code send to your telegram, you try to change your password."
-msgstr ""
-
-#: tejarak/content_enter/verify/view.php:113
-msgid "We try to call to you, you try to change your password."
-msgstr ""
-
-#: tejarak/content_enter/verify/view.php:117
-msgid ""
-"Your verification code send to mobile number by sms, you try to change your "
-"password."
-msgstr ""
-
-#: tejarak/content_enter/verify/view.php:121
-msgid "What happend?, dont change your password."
-msgstr ""
-
-#: tejarak/content_enter/verify/view.php:129
+#: tejarak/content_enter/verify/view.php:83
 msgid "Verify"
 msgstr "اعتبارسنجی"
 
-#: tejarak/content_enter/verify/view.php:134
+#: tejarak/content_enter/verify/view.php:88
 msgid "Verify by Call"
 msgstr "اعتبارسنجی با تماس"
 
-#: tejarak/content_enter/verify/view.php:138
+#: tejarak/content_enter/verify/view.php:92
 msgid "Verify via Telegram"
 msgstr "اعتبارسنجی با تلگرام"
 
-#: tejarak/content_enter/verify/view.php:142
+#: tejarak/content_enter/verify/view.php:96
 msgid "verify with SMS"
 msgstr "تایید با پیامک"
 
@@ -8067,6 +8028,19 @@ msgstr "اجازه افزودن دستی تراکنش جدید"
 #: tejarak/permission.php:98
 msgid "Allow to show system logs"
 msgstr "اجازه مشاهده لاگ‌های سیستم"
+
+#~ msgid "Your verification code send to your telegram."
+#~ msgstr "کد اعتبارسنجی شما از طریق تلگرام ارسال شد."
+
+#~ msgid "We try to call to you. be patient..."
+#~ msgstr "ما در حال تلاش برای تماس با شما هستیم. صبور باشید..."
+
+#~ msgid "Your verification code send to you mobile via sms."
+#~ msgstr "کد اعتبارسنجی از طریق پیامک به شماره موبایل شما ارسال شد."
+
+#~ msgid "Your verification code send to your telegram, you try to delete account."
+#~ msgstr ""
+#~ "کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید."
 
 #~ msgid "Please enter password to login"
 #~ msgstr "لطفا گذرواژه را برای ورود وارد کنید"
