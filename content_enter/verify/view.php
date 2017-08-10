@@ -29,29 +29,29 @@ class view extends \content_enter\main\view
 		}
 
 		// the verify msg
-		$myTitle = T_('Verify');
-		$myDesc  = T_('Please verify your account');
+		$myDesc  = T_('Please verify yourself.'). ' ';
 		// swich verify from
 		switch (self::get_enter_session('verify_from'))
 		{
 			// user from signup go to this page
 			case 'signup':
+			case 'set':
 				switch (self::get_enter_session('verification_code_way'))
 				{
 					case 'telegram':
-						$myDesc = T_("Your verifycation code send to your telegram");
+						$myDesc .= T_("Your verification code send to your telegram.");
 						break;
 
 					case 'call':
-						$myDesc = T_("We try to call to you");
+						$myDesc .= T_("We try to call to you. be patient...");
 						break;
 
 					case 'sms':
-						$myDesc = T_("Your verifycation code send to mobile number by sms");
+						$myDesc .= T_("Your verification code send to you mobile via sms.");
 						break;
 
 					default:
-						$myDesc = T_("What happend?");
+						$myDesc .= T_("What happend?");
 						break;
 				}
 				break;
@@ -61,19 +61,19 @@ class view extends \content_enter\main\view
 				switch (self::get_enter_session('verification_code_way'))
 				{
 					case 'telegram':
-						$myDesc = T_("Your verifycation code send to your telegram, you try to delete account");
+						$myDesc = T_("Your verification code send to your telegram, you try to delete account.");
 						break;
 
 					case 'call':
-						$myDesc = T_("We try to call to you, you try to delete account");
+						$myDesc = T_("We try to call to you, you try to delete account.");
 						break;
 
 					case 'sms':
-						$myDesc = T_("Your verifycation code send to mobile number by sms, you try to delete account");
+						$myDesc = T_("Your verification code send to mobile number by sms, you try to delete account.");
 						break;
 
 					default:
-						$myDesc = T_("What happend?, dont delete account");
+						$myDesc = T_("What happend?, dont delete account.");
 						break;
 				}
 				break;
@@ -83,19 +83,19 @@ class view extends \content_enter\main\view
 				switch (self::get_enter_session('verification_code_way'))
 				{
 					case 'telegram':
-						$myDesc = T_("Your verifycation code send to your telegram, you try to recovery your password");
+						$myDesc = T_("Your verification code send to your telegram, you try to recovery your password.");
 						break;
 
 					case 'call':
-						$myDesc = T_("We try to call to you, you try to recovery your password");
+						$myDesc = T_("We try to call to you, you try to recovery your password.");
 						break;
 
 					case 'sms':
-						$myDesc = T_("Your verifycation code send to mobile number by sms, you try to recovery your password");
+						$myDesc = T_("Your verification code send to mobile number by sms, you try to recovery your password.");
 						break;
 
 					default:
-						$myDesc = T_("What happend?, dont recovery your password");
+						$myDesc = T_("What happend?, dont recovery your password.");
 						break;
 				}
 				break;
@@ -106,27 +106,27 @@ class view extends \content_enter\main\view
 				switch (self::get_enter_session('verification_code_way'))
 				{
 					case 'telegram':
-						$myDesc = T_("Your verifycation code send to your telegram, you try to change your password");
+						$myDesc = T_("Your verification code send to your telegram, you try to change your password.");
 						break;
 
 					case 'call':
-						$myDesc = T_("We try to call to you, you try to change your password");
+						$myDesc = T_("We try to call to you, you try to change your password.");
 						break;
 
 					case 'sms':
-						$myDesc = T_("Your verifycation code send to mobile number by sms, you try to change your password");
+						$myDesc = T_("Your verification code send to mobile number by sms, you try to change your password.");
 						break;
 
 					default:
-						$myDesc = T_("What happend?, dont change your password");
+						$myDesc = T_("What happend?, dont change your password.");
 						break;
 				}
 				break;
 		}
 
+		$myDesc                 = trim($myDesc);
 		$this->data->verify_msg = $myDesc;
-
-
+		$myTitle                = T_('Verify');
 		// set title of pages
 		switch (\lib\router::get_url(1))
 		{

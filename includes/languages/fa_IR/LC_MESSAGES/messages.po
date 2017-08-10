@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-10 12:49+0430\n"
-"PO-Revision-Date: 2017-08-10 12:51+0430\n"
+"POT-Creation-Date: 2017-08-10 13:20+0430\n"
+"PO-Revision-Date: 2017-08-10 13:39+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4462,7 +4462,7 @@ msgstr "آپلود فایل کامل شد"
 #: tejarak/content_api/v1/team/tools/add.php:25
 #: tejarak/content_api/v1/team/tools/close.php:24
 #: tejarak/content_api/v1/team/tools/delete.php:24
-#: tejarak/content_api/v1/team/tools/get.php:197
+#: tejarak/content_api/v1/team/tools/get.php:198
 msgid "Operation Faild"
 msgstr "عملیات با خطا مواجه شد"
 
@@ -4547,7 +4547,7 @@ msgstr "پارامتر وضعیت نامعتبر است"
 #: tejarak/content_api/v1/gateway/tools/add.php:244
 #: tejarak/content_api/v1/gateway/tools/get.php:133
 #: tejarak/content_api/v1/houredit/tools/add.php:62
-#: tejarak/content_api/v1/member/tools/add.php:493
+#: tejarak/content_api/v1/member/tools/add.php:495
 #: tejarak/content_api/v1/member/tools/get.php:158
 #: tejarak/content_api/v1/team/tools/add.php:224
 #: tejarak/content_api/v1/team/tools/close.php:39
@@ -4560,7 +4560,7 @@ msgstr "شناسه تنظیم نشده است"
 #: tejarak/content_api/v1/houredit/tools/action.php:136
 #: tejarak/content_api/v1/houredit/tools/add.php:143
 #: tejarak/content_api/v1/houredit/tools/get.php:160
-#: tejarak/content_api/v1/member/tools/add.php:502
+#: tejarak/content_api/v1/member/tools/add.php:504
 #: tejarak/content_api/v1/member/tools/get.php:176
 #: tejarak/content_api/v1/report/tools/month.php:65
 #: tejarak/content_api/v1/report/tools/period.php:65
@@ -4570,7 +4570,7 @@ msgid "This user is not in this team"
 msgstr "کاربر مورد نظر در این تیم نیست"
 
 #: tejarak/content_api/v1/gateway/tools/add.php:292
-#: tejarak/content_api/v1/member/tools/add.php:536
+#: tejarak/content_api/v1/member/tools/add.php:538
 #: tejarak/content_api/v1/team/tools/add.php:285
 #: tejarak/content_api/v1/team/tools/close.php:55
 #: tejarak/content_api/v1/team/tools/delete.php:55
@@ -4692,7 +4692,7 @@ msgstr "شناسه ساعت یافت نشد"
 #: tejarak/content_api/v1/houredit/tools/get.php:248
 #: tejarak/content_api/v1/hours/tools/get.php:130
 #: tejarak/content_api/v1/team/model.php:87
-#: tejarak/content_api/v1/team/tools/get.php:247
+#: tejarak/content_api/v1/team/tools/get.php:248
 #: tejarak/content_enter/hook/model.php:61 tejarak/content_enter/hook/model.php:81
 msgid "Operation complete"
 msgstr "عملیات کامل شد"
@@ -4935,15 +4935,15 @@ msgstr "تاریخ ورود نامعتبر است"
 msgid "Invalid date of date exit"
 msgstr "تاریخ خروخ نامعتبر است"
 
-#: tejarak/content_api/v1/member/tools/add.php:540
+#: tejarak/content_api/v1/member/tools/add.php:542
 msgid "Member successfully added"
 msgstr "عضو با موفقیت افزوده شد"
 
-#: tejarak/content_api/v1/member/tools/add.php:544
+#: tejarak/content_api/v1/member/tools/add.php:546
 msgid "Member successfully updated"
 msgstr "عضو با موفقیت به‌روزرسانی شد"
 
-#: tejarak/content_api/v1/member/tools/add.php:548
+#: tejarak/content_api/v1/member/tools/add.php:550
 msgid "Member successfully removed"
 msgstr "عضو با موفقیت حذف شد"
 
@@ -5067,15 +5067,15 @@ msgstr "تیم بسته شد"
 msgid "The team was deleted"
 msgstr "تیم پاک شد"
 
-#: tejarak/content_api/v1/team/tools/get.php:220
+#: tejarak/content_api/v1/team/tools/get.php:221
 msgid "Team id or shortname not set"
 msgstr "شناسه یا نام کوتاه تیم تنظیم نشده است"
 
-#: tejarak/content_api/v1/team/tools/get.php:227
+#: tejarak/content_api/v1/team/tools/get.php:228
 msgid "Can not set team id and shortname together"
 msgstr "نمی‌توانید شناسه و نام کوتاه تیم را یکجا تغییر دهید"
 
-#: tejarak/content_api/v1/team/tools/get.php:243
+#: tejarak/content_api/v1/team/tools/get.php:244
 msgid "Can not access to load this team details"
 msgstr "شما نمی‌توانید این تیم را بارگذاری کنید"
 
@@ -5364,29 +5364,25 @@ msgstr "بازیابی گذرواژه"
 msgid "Please enter new password!"
 msgstr "لطفا گذرواژه‌ی جدید را وارد کنید"
 
-#: tejarak/content_enter/pass/view.php:41 tejarak/content_enter/pass/view.php:51
+#: tejarak/content_enter/pass/view.php:42
 msgid "Set Password"
 msgstr "تنظیم گذرواژه"
 
-#: tejarak/content_enter/pass/view.php:42
+#: tejarak/content_enter/pass/view.php:43
 msgid "Please set your password to secure signup."
 msgstr "لطفا گذرواژه‌ی خود را برای ورود ایمن تنظیم کنید."
 
-#: tejarak/content_enter/pass/view.php:42
+#: tejarak/content_enter/pass/view.php:43
 msgid "Next time we only need your mobile and this password to enter"
 msgstr "در مراجعه‌ی بعدی ما تنها به موبایل و این رمز برای ورود نیاز داریم."
 
-#: tejarak/content_enter/pass/view.php:46
+#: tejarak/content_enter/pass/view.php:47
 msgid "Change to new Password"
 msgstr "تغییر گذرواژه"
 
-#: tejarak/content_enter/pass/view.php:47
+#: tejarak/content_enter/pass/view.php:48
 msgid "Please set your old and new password to change it"
 msgstr "لطفا گذرواژه‌ی قبلی و جدید خود را برای تغییر وارد کنید"
-
-#: tejarak/content_enter/pass/view.php:52
-msgid "Please set password to secure your account"
-msgstr "لطفا برای افزایش امنیت حساب کاربری خود گذرواژه را تنظیم کنید"
 
 #: tejarak/content_enter/sessions/model.php:42
 msgid "Session terminated"
@@ -5470,29 +5466,25 @@ msgid "If you didn't request this code, ignore this message."
 msgstr "اگر شما درخواست کد را نداده‌اید،‌ این کد را نادیده بگیرید."
 
 #: tejarak/content_enter/verify/view.php:32
-msgid "Verify"
-msgstr "اعتبارسنجی"
-
-#: tejarak/content_enter/verify/view.php:33
-msgid "Please verify your account"
-msgstr "لطفا حساب کاربری خود را تایید کنید"
+msgid "Please verify yourself."
+msgstr "لطفا هویت خود را تایید کنید."
 
 #: tejarak/content_enter/verify/view.php:42
-msgid "Your verifycation code send to your telegram"
-msgstr "کد تایید به تلگرام شما ارسال خواهد شد"
+msgid "Your verification code send to your telegram."
+msgstr "کد اعتبارسنجی شما از طریق تلگرام ارسال شد."
 
 #: tejarak/content_enter/verify/view.php:46
-msgid "We try to call to you"
-msgstr "ما در حال تلاش برای تماس با شما هستیم"
+msgid "We try to call to you. be patient..."
+msgstr "ما در حال تلاش برای تماس با شما هستیم. صبور باشید..."
 
 #: tejarak/content_enter/verify/view.php:50
-msgid "Your verifycation code send to mobile number by sms"
-msgstr "کد تایید شما توسط پیامک ارسال شد"
+msgid "Your verification code send to you mobile via sms."
+msgstr "کد اعتبارسنجی از طریق پیامک به شماره موبایل شما ارسال شد."
 
 #: tejarak/content_enter/verify/view.php:64
-msgid "Your verifycation code send to your telegram, you try to delete account"
+msgid "Your verification code send to your telegram, you try to delete account"
 msgstr ""
-"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید"
+"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید."
 
 #: tejarak/content_enter/verify/view.php:68
 msgid "We try to call to you, you try to delete account"
@@ -5501,9 +5493,9 @@ msgstr ""
 
 #: tejarak/content_enter/verify/view.php:72
 msgid ""
-"Your verifycation code send to mobile number by sms, you try to delete account"
+"Your verification code send to mobile number by sms, you try to delete account"
 msgstr ""
-"کد تایید شما توسط پیامک ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید"
+"کد تایید شما توسط پیامک ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید."
 
 #: tejarak/content_enter/verify/view.php:76
 msgid "What happend?, dont delete account"
@@ -5511,9 +5503,9 @@ msgstr "چه اتفاقی افتاده؟ حساب کاربری خود را پا�
 
 #: tejarak/content_enter/verify/view.php:86
 msgid ""
-"Your verifycation code send to your telegram, you try to recovery your password"
+"Your verification code send to your telegram, you try to recovery your password"
 msgstr ""
-"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید کلمه‌ی عبور خود را بازیابی کنید"
+"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید."
 
 #: tejarak/content_enter/verify/view.php:90
 msgid "We try to call to you, you try to recovery your password"
@@ -5523,10 +5515,10 @@ msgstr ""
 
 #: tejarak/content_enter/verify/view.php:94
 msgid ""
-"Your verifycation code send to mobile number by sms, you try to recovery your "
+"Your verification code send to mobile number by sms, you try to recovery your "
 "password"
 msgstr ""
-"کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود را بازیابی کنید"
+"کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود را بازیابی کنید."
 
 #: tejarak/content_enter/verify/view.php:98
 msgid "What happend?, dont recovery your password"
@@ -5534,8 +5526,9 @@ msgstr "چه اتفاقی افتاده؟ کلمه‌ی عبور خود را با
 
 #: tejarak/content_enter/verify/view.php:109
 msgid ""
-"Your verifycation code send to your telegram, you try to change your password"
-msgstr "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود تغییر دهید"
+"Your verification code send to your telegram, you try to change your password"
+msgstr ""
+"کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید."
 
 #: tejarak/content_enter/verify/view.php:113
 msgid "We try to call to you, you try to change your password"
@@ -5543,13 +5536,17 @@ msgstr "با شما تماس خواهیم گرفت، شما سعی دارید ک
 
 #: tejarak/content_enter/verify/view.php:117
 msgid ""
-"Your verifycation code send to mobile number by sms, you try to change your "
+"Your verification code send to mobile number by sms, you try to change your "
 "password"
-msgstr "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود تغییر دهید"
+msgstr "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود تغییر دهید."
 
 #: tejarak/content_enter/verify/view.php:121
 msgid "What happend?, dont change your password"
 msgstr "چه اتفاقی افتاده؟ کلمه‌ی عبور خود را تغییر ندهید"
+
+#: tejarak/content_enter/verify/view.php:129
+msgid "Verify"
+msgstr "اعتبارسنجی"
 
 #: tejarak/content_enter/verify/view.php:134
 msgid "Verify by Call"
@@ -8073,6 +8070,54 @@ msgstr "اجازه افزودن دستی تراکنش جدید"
 #: tejarak/permission.php:98
 msgid "Allow to show system logs"
 msgstr "اجازه مشاهده لاگ‌های سیستم"
+
+#~ msgid "Please set password to secure your account"
+#~ msgstr "لطفا برای افزایش امنیت حساب کاربری خود گذرواژه را تنظیم کنید"
+
+#~ msgid "Please verify your account"
+#~ msgstr "لطفا حساب کاربری خود را تایید کنید"
+
+#~ msgid "Your verifycation code send to your telegram"
+#~ msgstr "کد تایید به تلگرام شما ارسال خواهد شد"
+
+#~ msgid "We try to call to you"
+#~ msgstr "ما در حال تلاش برای تماس با شما هستیم"
+
+#~ msgid "Your verifycation code send to mobile number by sms"
+#~ msgstr "کد تایید شما توسط پیامک ارسال شد"
+
+#~ msgid "Your verifycation code send to your telegram, you try to delete account"
+#~ msgstr ""
+#~ "کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید"
+
+#~ msgid ""
+#~ "Your verifycation code send to mobile number by sms, you try to delete account"
+#~ msgstr ""
+#~ "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید حساب کاربری خود را پاک کنید"
+
+#~ msgid ""
+#~ "Your verifycation code send to your telegram, you try to recovery your "
+#~ "password"
+#~ msgstr ""
+#~ "کد تایید شما توسط تلگرام ارسال شد، شما سعی دارید کلمه‌ی عبور خود را بازیابی "
+#~ "کنید"
+
+#~ msgid ""
+#~ "Your verifycation code send to mobile number by sms, you try to recovery your "
+#~ "password"
+#~ msgstr ""
+#~ "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود را بازیابی کنید"
+
+#~ msgid ""
+#~ "Your verifycation code send to your telegram, you try to change your password"
+#~ msgstr ""
+#~ "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود تغییر دهید"
+
+#~ msgid ""
+#~ "Your verifycation code send to mobile number by sms, you try to change your "
+#~ "password"
+#~ msgstr ""
+#~ "کد تایید شما توسط پیامک ارسال شد، شما سعی دارید کلمه‌ی عبور خود تغییر دهید"
 
 #~ msgid "Please set your password to secure signup"
 #~ msgstr "لطفا گذرواژه‌ی خود را برای ورود ایمن تنظیم کنید"
