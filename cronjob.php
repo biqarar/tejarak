@@ -26,14 +26,7 @@ class cronjob
 	public function requests()
 	{
 		$requests         = [];
-		$requests[]       =
-		[
-			'url'    => 'http://tejarak.dev/cronjob/report',
-			'header' =>
-			[
-
-			],
-		];
+		$requests[]       = ['url' => 'https://tejarak.com/fa/cronjob/report', 'header' => []];
 		return $requests;
 	}
 

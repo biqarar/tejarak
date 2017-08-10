@@ -8,7 +8,10 @@ class controller extends \content\main\controller
 	 */
 	public function config()
 	{
-		// \lib\utility\telegram::sendMessage(-1001071026501, "تست تجارک در گروه");
+		// $msg = new \lib\utility\message(100036);
+		// 		$msg->message_type('timed_auto_report');
+		// 		$msg->send();
+		// 		var_dump($msg);exit();
 	}
 
 
