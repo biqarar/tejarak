@@ -27,7 +27,7 @@ class telegram
 	 *
 	 * @var        string
 	 */
-	private static $telegram_api_url            = 'https://api.telegram.org/bot339018788:AAFg-KYxZ8yI-yU74qt1tq0DFNtLfT4Puv8';
+	public static $telegram_api_url            = 'https://api.telegram.org/bot339018788:AAFg-KYxZ8yI-yU74qt1tq0DFNtLfT4Puv8';
 
 
 	/**
