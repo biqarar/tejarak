@@ -472,7 +472,9 @@ trait add
 
 		// in insert new admin of team this admin can see the reports
 		// to cancel this optino go to tejarak report settings to cancel
-		if($rule === 'admin')
+		// just in insert new admin set this option
+		// no in update admin
+		if($rule === 'admin' && $_args['method'] === 'post')
 		{
 			$args['reportdaily']     = 1;
 			$args['reportenterexit'] = 1;
