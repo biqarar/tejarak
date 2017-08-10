@@ -12,14 +12,13 @@ class controller extends \content\main\controller
 		{
 			\lib\error::page();
 		}
-
-		if
-		(
-			isset($_SERVER['REMOTE_ADDR']) &&
-			isset($_SERVER['SERVER_ADDR']) &&
-			in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', $_SERVER['SERVER_ADDR']])
-		)
-		{
+		// if
+		// (
+		// 	isset($_SERVER['REMOTE_ADDR']) &&
+		// 	isset($_SERVER['SERVER_ADDR']) &&
+		// 	in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', $_SERVER['SERVER_ADDR']])
+		// )
+		// {
 
 
 			if(\lib\option::cronjob('status'))
@@ -30,11 +29,11 @@ class controller extends \content\main\controller
 				$this->post("cronjob")->ALL("/.*/");
 				$this->display = false;
 			}
-		}
-		else
-		{
-			\lib\error::page();
-		}
+		// }
+		// else
+		// {
+		// 	\lib\error::page();
+		// }
 
 	}
 
@@ -80,6 +79,7 @@ class controller extends \content\main\controller
 		\lib\utility\telegram::$force_send_telegram_service = true;
 		\lib\utility\telegram::$telegram_api_url = $tg_url;
 		\lib\utility\telegram::sendMessage(33263188, $msg);
+		\lib\utility\telegram::sendMessage(33263188, json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
 		\lib\utility\telegram::sendMessage("@tejarak_monitor", $msg);
 
 		if($run)
