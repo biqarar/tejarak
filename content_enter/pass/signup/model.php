@@ -31,9 +31,9 @@ class model extends \content_enter\pass\model
 			return false;
 		}
 
-		if(utility::post('ramz'))
+		if(utility::post('ramzNew'))
 		{
-			$temp_ramz = utility::post('ramz');
+			$temp_ramz = utility::post('ramzNew');
 
 			// check min and max of password and make error
 			if(!$this->check_pass_syntax($temp_ramz))
