@@ -28,13 +28,13 @@ class view extends \content_enter\main\view
 		}
 
 		$this->data->page['title'] = T_('Password');
-		$this->data->page['desc']  = T_('Please enter password to login');
+		$this->data->page['desc']  = T_('Please enter password to enter');
 
 		switch (\lib\router::get_url(1))
 		{
 			case 'recovery':
 				$this->data->page['title'] = T_('Recovery Password');
-				$this->data->page['desc']  = T_('Please enter new password!');
+				$this->data->page['desc']  = T_('If forget your password, Please enter new password. after pass verification your new password is usable.');
 				break;
 
 			case 'signup':
