@@ -42,7 +42,7 @@ class controller extends \content\main\controller
 	 */
 	public function pinger()
 	{
-		$host = 'tejarak.com';
+		$host = 'sarshomar.com';
 
 		$ping = new \lib\utility\ping($host);
 

@@ -5,6 +5,7 @@ desktop.ini
 *tg.json
 *.me.*
 /public_html/files
+/content/cronjob/*.txt
 /public_html/sitemap
 /public_html/sitemap.xml
 /includes/cls/database/backup
