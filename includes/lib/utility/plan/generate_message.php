@@ -36,8 +36,7 @@ trait generate_message
 				break;
 
 			case 'exit':
-				$msg   = "💤 <b>". self::$my_name. "</b> ";
-				// $msg .= " | ". self::$my_team_name. "\n";
+				$msg   = "💤 <b>". self::$my_name. "</b>\n";
 				$start = self::$my_start_time;
 				$start = strtotime($start);
 				$total = floor(abs(strtotime('now') - $start) / 60);
@@ -52,7 +51,21 @@ trait generate_message
 
 				$time_start = \lib\utility::date('H:i', $start , 'current');
 
-				$msg        .= $time_start. ' '. T_('until'). ' '. \lib\utility::date("H:i", time(), 'current'); //$time_now;
+				if(isset(self::$_args['start']['date']) && self::$_args['start']['date'] != date("Y-m-d"))
+				{
+					$start_date = self::$_args['start']['date'];
+					if($current_language == 'fa')
+					{
+						$start_date = \lib\utility\jdate::date("Y-m-d", strtotime($start_date));
+					}
+					$msg .="🙋‍♂ ". $start_date." ".  $time_start. "\n📤 ". \lib\utility::date("Y-m-d H:i", time(), 'current'); //$time_now;
+				}
+				else
+				{
+					$msg .= $time_start. ' '. T_('until'). ' '. \lib\utility::date("H:i", time(), 'current'); //$time_now;
+				}
+
+
 
 				if(self::$my_plus || self::$my_minus)
 				{
