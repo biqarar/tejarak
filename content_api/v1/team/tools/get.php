@@ -196,7 +196,23 @@ trait get
 	 */
 	public function get_team($_options = [])
 	{
-		debug::title(T_("Operation Faild"));
+		$default_options =
+		[
+			'debug' => true,
+		];
+
+		if(!is_array($_options))
+		{
+			$_options = [];
+		}
+
+		$_options = array_merge($default_options, $_options);
+
+		if($_options['debug'])
+		{
+			debug::title(T_("Operation Faild"));
+		}
+
 		$log_meta =
 		[
 			'data' => null,
@@ -218,15 +234,21 @@ trait get
 
 		if(!$id && !$shortname)
 		{
-			logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Team id or shortname not set"), 'id', 'arguments');
+			if($_options['debug'])
+			{
+				logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
+				debug::error(T_("Team id or shortname not set"), 'id', 'arguments');
+			}
 			return false;
 		}
 
 		if($id && $shortname)
 		{
 			logs::set('api:team:id:shortname:together:set', $this->user_id, $log_meta);
-			debug::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
+			if($_options['debug'])
+			{
+				debug::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
+			}
 			return false;
 		}
 
@@ -242,11 +264,17 @@ trait get
 		if(!$result)
 		{
 			logs::set('api:team:access:denide', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to load this team details"), 'team', 'permission');
+			if($_options['debug'])
+			{
+				debug::error(T_("Can not access to load this team details"), 'team', 'permission');
+			}
 			return false;
 		}
 
-		debug::title(T_("Operation complete"));
+		if($_options['debug'])
+		{
+			debug::title(T_("Operation complete"));
+		}
 
 		$result = $this->ready_team($result);
 

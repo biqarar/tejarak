@@ -47,11 +47,12 @@ trait _use
 	 */
 	public function getTeamDetail($_team)
 	{
-		$request         = [];
-		$this->user_id   = $this->login('id');
+		$request       = [];
+		$this->user_id = $this->login('id');
 		$request['id'] = $_team;
 		utility::set_request_array($request);
-		$result = $this->get_team();
+		$result        = $this->get_team(['debug' => false]);
+
 		return $result;
 	}
 
