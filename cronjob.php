@@ -10,9 +10,15 @@ class cronjob
 		curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($handle, CURLOPT_POST, true);
+
 		curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($_requests['header'], JSON_UNESCAPED_UNICODE));
 		curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);
 		curl_setopt($handle, CURLOPT_TIMEOUT, 20  );
+
+		if(defined('CURLOPT_IPRESOLVE') && defined('CURL_IPRESOLVE_V4'))
+		{
+ 			curl_setopt($handle, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+		}
 
 		$response = curl_exec($handle);
 		$mycode   = curl_getinfo($handle, CURLINFO_HTTP_CODE);
