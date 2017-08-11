@@ -458,7 +458,8 @@ class teams
 		$query =
 		"
 			SELECT
-				teams.*
+				teams.*,
+				userteams.rule
 			FROM
 				teams
 			INNER JOIN userteams ON userteams.team_id = teams.id

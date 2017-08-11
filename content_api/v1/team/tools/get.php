@@ -54,6 +54,7 @@ trait get
 				case 'desc':
 				case 'alias':
 				case 'privacy':
+				case 'rule':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
 				case 'shortname':

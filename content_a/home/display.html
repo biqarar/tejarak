@@ -7,9 +7,8 @@
 {%block contentCenter%}
   <div class='middle' id="teamList">
    <div class="f justify-center">
-
 {%for key, value in team_list%}
-    <a class='teams-item' href='{{url.baseFull}}/{{value.id}}' data-admin>
+    <a class='teams-item' href='{{url.baseFull}}/{{value.id}}' {% if value.rule == 'admin' %} data-admin {% endif %}>
      <figure>
       <div class="f align-center">
 {%if value.logo%}

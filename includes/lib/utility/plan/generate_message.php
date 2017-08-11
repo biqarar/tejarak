@@ -36,7 +36,7 @@ trait generate_message
 				break;
 
 			case 'exit':
-				$msg   = "💤 ". self::$my_name;
+				$msg   = "💤 ". self::$my_name. " ";
 				// $msg .= " | ". self::$my_team_name. "\n";
 				$start = self::$my_start_time;
 				$start = strtotime($start);
@@ -52,7 +52,7 @@ trait generate_message
 
 				$time_start = \lib\utility::date('H:i', $start , 'current');
 
-				$msg        .= $time_start. ' '. T_('to'). ' '. \lib\utility::date("H:i", time(), 'current'); //$time_now;
+				$msg        .= $time_start. ' '. T_('until'). ' '. \lib\utility::date("H:i", time(), 'current'); //$time_now;
 
 				if(self::$my_plus || self::$my_minus)
 				{
@@ -88,10 +88,7 @@ trait generate_message
 					$msg .= "💪 ". self::$my_name;
 				}
 
-				// $msg .= " | ". self::$my_team_name;
-
 				$msg .= "\n"."🌖 🌱 👨‍💻 🥇";
-				// $msg .= "\n". "#سختـکوشـباشیم";
 				break;
 
 			case 'report_end_day':
@@ -122,7 +119,7 @@ trait generate_message
 						}
 					}
 
-					$msg .= "#". T_('Report'). " \n";
+					$msg .= "#". T_('Report');
 					// $msg .=  self::$my_team_name . " ";
 
 					$msg  .= " ". \lib\utility::date("l j F Y", time(), 'current'). "\n\n";
@@ -154,14 +151,14 @@ trait generate_message
 
 						$i += 1;
 						$total_time += $accepted;
-						$accepted = human::time($accepted, 'time', 'current');
+						$accepted = human::time($accepted, 'number', 'current');
 						$accepted = human::number($accepted, $current_language);
-						$accepted = "<code>$accepted</code>";
+						$accepted = " <code>$accepted</code>";
 
-						$accepted_group = null;
+						$accepted_time = null;
 						if($show_time)
 						{
-							$accepted_group = $accepted;
+							$accepted_time = $accepted;
 						}
 
 						$gold         = null;
@@ -182,22 +179,22 @@ trait generate_message
 						switch ($i)
 						{
 							case 1:
-								$msg .= $gold. T_($name). $gold1. $accepted_group;
+								$msg .= $gold. T_($name). $gold1. $accepted_time;
 								$msg_admin .= $gold. T_($name). $gold1. $accepted;
 								break;
 
 							case 2:
-								$msg .= $gold. T_($name). $gold2. $accepted_group;
+								$msg .= $gold. T_($name). $gold2. $accepted_time;
 								$msg_admin .= $gold. T_($name). $gold2. $accepted;
 								break;
 
 							case 3:
-								$msg .= $gold. T_($name). $gold3. $accepted_group;
+								$msg .= $gold. T_($name). $gold3. $accepted_time;
 								$msg_admin .= $gold. T_($name).$gold3. $accepted;
 								break;
 
 							default:
-								$msg .= $default_gold. T_($name). $accepted_group;
+								$msg .= $default_gold. T_($name). $accepted_time;
 								$msg_admin .= $default_gold. T_($name). $accepted;
 								break;
 						}
@@ -208,14 +205,24 @@ trait generate_message
 					$countPersons = human::number(count($presence), $current_language);
 					// fill message of group
 
-					$msg .= "🎭". human::number($enterExit, $current_language) . "  ";
-					$msg .= "👥". human::number($countPersons, $current_language). "  ";
-					$msg .= "🕰". human::number($total_time, $current_language);
+					$msg .= "👥 ". human::number($countPersons, $current_language). "  ";
+
+					if($enterExit != $countPersons)
+					{
+						$msg .= "🎭 ". human::number($enterExit, $current_language) . "  ";
+					}
+
+					$msg .= "🕰 ". human::number($total_time, $current_language);
 					// fill message of admin
 
-					$msg_admin .= "🎭". $enterExit . "  ";
-					$msg_admin .= "👥". $countPersons. "  ";
-					$msg_admin .= "🕰". human::number(human::time($total_time, 'time', 'current'), $current_language);
+					$msg_admin .= "👥 ". $countPersons. "  ";
+
+					if($enterExit != $countPersons)
+					{
+						$msg_admin .= "🎭 ". $enterExit . "  ";
+					}
+
+					$msg_admin .= "🕰 ". human::number(human::time($total_time, 'text', 'current'), $current_language);
 
 				}
 
