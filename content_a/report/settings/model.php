@@ -81,7 +81,8 @@ class model extends \content_a\main\model
 					return false;
 				}
 
-				$update_team['timed_auto_report'] = utility::post('timed_auto_report_time');
+				$time_changed = \lib\utility\timezone::change_time('H:i', utility::post('timed_auto_report_time'), "Asia/Tehran");
+				$update_team['timed_auto_report'] = $time_changed;
 			}
 			else
 			{
