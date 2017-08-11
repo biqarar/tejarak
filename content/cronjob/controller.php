@@ -8,10 +8,12 @@ class controller extends \content\main\controller
 	{
 		parent::_route();
 
+
 		if(isset($_SERVER['REQUEST_METHOD']) && mb_strtolower($_SERVER['REQUEST_METHOD']) === 'get')
 		{
 			\lib\error::page();
 		}
+
 
 		if(isset($_SERVER['HTTP_CF_CONNECTING_IP']) && isset($_SERVER['SERVER_ADDR']) && $_SERVER['HTTP_CF_CONNECTING_IP'] === $_SERVER['SERVER_ADDR'])
 		{
@@ -24,6 +26,7 @@ class controller extends \content\main\controller
 		}
 		else
 		{
+			\lib\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
 			\lib\error::page();
 		}
 
