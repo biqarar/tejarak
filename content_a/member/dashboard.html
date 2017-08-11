@@ -9,7 +9,7 @@
     </div>
    </a>
 {%for key, value in list_member%}
-   <div class="tcard" data-status='{{value.status}}'>
+   <div class="tcard" data-status='{{value.status}}' data-admin>
     <div class="cbox">
      <div class="front">
       <a class="top" href="{{url.baseFull}}/{{team}}/member={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
