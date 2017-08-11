@@ -36,7 +36,7 @@ trait generate_message
 				break;
 
 			case 'exit':
-				$msg   = "💤 ". self::$my_name. " ";
+				$msg   = "💤 <b>". self::$my_name. "</b> ";
 				// $msg .= " | ". self::$my_team_name. "\n";
 				$start = self::$my_start_time;
 				$start = strtotime($start);
