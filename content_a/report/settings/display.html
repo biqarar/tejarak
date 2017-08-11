@@ -60,6 +60,11 @@
            <input type="text" name="timed_auto_report_time" class="c2" id="timed_auto_report_time" value="{{team_details.timed_auto_report}}">
           </div>
         </div>
+          {%if server_timezone%}
+          <div class="f">
+            <p>{%trans "Server Timezone"%}: {{server_timezone}}</p>
+          </div>
+          {%endif%}
 
       </div>
 

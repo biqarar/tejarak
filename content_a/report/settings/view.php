@@ -16,6 +16,8 @@ class view extends \content_a\report\view
 	 */
 	public function view_settings()
 	{
+		$this->data->server_timezone = \lib\utility\timezone::current();
+
 		$team_code = \lib\router::get_url(0);
 		$team_id   = \lib\utility\shortURL::decode($team_code);
 
