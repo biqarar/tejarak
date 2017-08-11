@@ -358,7 +358,7 @@ body #billing{max-width:800px;margin:0 auto}
 .tcard .cfinfo .cfname{font-size:1.25em;font-weight:700;margin-top:3px;padding:0 1em;color:#333;}
 .tcard .cfinfo .cfpos{margin-top:5px;padding:0 1em;}
 
-.tcard[data-admin]::after{font-family:"dash"!important;content:"\5c";position:absolute;top:0;right:0;color:#d4b512;margin:0.5em;}
+.tcard[data-admin]::after{font-family:"dash"!important;content:"\5c";position:absolute;top:0;right:0;color:#d4b512;margin:0.5em;text-shadow:0px 0px 1px #333;}
 .rtl .tcard[data-admin]::after{left:0;right:initial;}
 
 .tcard .tinfo{margin:1em;font-size:1.2em;font-weight:100;color:#777;}
