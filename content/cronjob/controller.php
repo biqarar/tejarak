@@ -26,7 +26,7 @@ class controller extends \content\main\controller
 		}
 		else
 		{
-			\lib\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
+			// \lib\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
 			\lib\error::page();
 		}
 
@@ -77,8 +77,6 @@ class controller extends \content\main\controller
 		\lib\utility\telegram::$force_send_telegram_service = true;
 		\lib\utility\telegram::$telegram_api_url = $tg_url;
 
-		\lib\utility\telegram::sendMessage(33263188, $msg);
-		\lib\utility\telegram::sendMessage(33263188, json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
 		\lib\utility\telegram::sendMessage("@tejarak_monitor", $msg);
 
 		\lib\utility\telegram::$force_send_telegram_service = $default_send_service;
