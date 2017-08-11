@@ -249,15 +249,15 @@ class telegram
 	 */
 	public static function sendMessage($_chat_id, $_text, $_option = [])
 	{
+		if(!$_chat_id || !$_text)
+		{
+			return false;
+		}
+
 		$default_option =
 		[
 			'sort' => null,
 		];
-
-		if(!$_chat_id)
-		{
-			return false;
-		}
 
 		if(is_array($_option))
 		{
@@ -294,7 +294,7 @@ class telegram
 	 */
 	public static function sendMessageGroup($_chat_id, $_text, $_option = [])
 	{
-		if(!$_chat_id)
+		if(!$_chat_id || !$_text)
 		{
 			return false;
 		}

@@ -86,9 +86,9 @@ trait generate_message
 				  )
 				{
 					$msg .= "💪 ". self::$my_name;
+					$msg .= "\n"."🌖 🌱 👨‍💻 🥇";
 				}
 
-				$msg .= "\n"."🌖 🌱 👨‍💻 🥇";
 				break;
 
 			case 'report_end_day':
