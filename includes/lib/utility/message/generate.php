@@ -23,7 +23,15 @@ trait generate
 			{
 				if(method_exists($this, $this->message_type))
 				{
-					$this->{$this->message_type}();
+					$msg = $this->{$this->message_type}();
+					if($msg)
+					{
+						if(Tld === 'dev')
+						{
+							$msg .= "\n #Develop";
+						}
+					}
+					$this->message[] = $msg;
 				}
 			}
 			else

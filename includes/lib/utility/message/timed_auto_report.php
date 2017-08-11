@@ -78,7 +78,7 @@ trait timed_auto_report
 			$msg_string = $this->report_header . "\n". $msg_string. "\n". $this->report_footer;
 		}
 
-		$this->message[] = $msg_string;
+		return $msg_string;
 	}
 }
 ?>
