@@ -7,7 +7,7 @@ private function transtext()
 	echo T_("Knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 7
 	echo T_("Thank you for choosing us.");                                            // Line 14
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
-	echo T_("Name");                                                                  // Line 12
+	echo T_("Name");                                                                  // Line 13
 	echo T_("Full Name");                                                             // Line 20
 	echo T_("Mobile");                                                                // Line 34
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
@@ -137,7 +137,7 @@ private function transtext()
 	echo T_("We were born to do Best!");                                              // Line 53
 	echo T_("We are Developers, please wait!");                                       // Line 20
 	echo T_("Date");                                                                  // Line 22
-	echo T_("Description");                                                           // Line 69
+	echo T_("Description");                                                           // Line 70
 	echo T_("Version 1 of Tejarak is comming");                                       // Line 26
 	echo T_("Beta version of Tejarak released");                                      // Line 31
 	echo T_("Finally Tejarak logo is accepted and we started branding");              // Line 38
@@ -194,7 +194,7 @@ private function transtext()
 	echo T_("Unlimited");                                                             // Line 17
 	echo T_("FREE");                                                                  // Line 28
 	echo T_("Price");                                                                 // Line 35
-	echo T_("Toman");                                                                 // Line 55
+	echo T_("Toman");                                                                 // Line 105
 	echo T_("per member/month");                                                      // Line 44
 	echo T_("per month. fix!");                                                       // Line 40
 	echo T_("Max number of team members");                                            // Line 51
@@ -325,13 +325,13 @@ private function transtext()
 	echo T_("Status");                                                                // Line 94
 	echo T_("Active");                                                                // Line 99
 	echo T_("Deactive");                                                              // Line 107
-	echo T_("Edit");                                                                  // Line 114
-	echo T_("Add");                                                                   // Line 123
+	echo T_("Edit");                                                                  // Line 115
+	echo T_("Add");                                                                   // Line 124
 
 	//--------------------------------------------------content_a\houredit\detail.html
 	echo T_("Start date");                                                            // Line 6
 	echo T_("Start time");                                                            // Line 7
-	echo T_("End date");                                                              // Line 12
+	echo T_("End date");                                                              // Line 38
 	echo T_("End time");                                                              // Line 45
 	echo T_("Response");                                                              // Line 17
 
@@ -361,9 +361,8 @@ private function transtext()
 
 	//------------------------------------------------------content_a\main\layout.html
 	echo T_("Dashboard");                                                             // Line 22
-	echo T_("Profile");                                                               // Line 23
-	echo T_("Billing");                                                               // Line 24
-	echo T_("Options");                                                               // Line 25
+	echo T_("Billing");                                                               // Line 23
+	echo T_("Options");                                                               // Line 24
 
 	//--------------------------------------------------content_a\main\layoutTeam.html
 	echo T_("Team Operation");                                                        // Line 8
@@ -382,22 +381,22 @@ private function transtext()
 	echo T_("Enter a valid name from 3 to 40 character");                             // Line 12
 	echo T_("Postion");                                                               // Line 21
 	echo T_("Enter a valid team position from 3 to 50 character");                    // Line 19
-	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 24
+	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 25
 	echo T_("User");                                                                  // Line 38
 	echo T_("Admin");                                                                 // Line 39
 	echo T_("First name");                                                            // Line 49
 	echo T_("Last name");                                                             // Line 56
 	echo T_("Personnel code");                                                        // Line 63
 	echo T_("Extra setting for special use");                                         // Line 70
-	echo T_("Allow plus");                                                            // Line 85
-	echo T_("Allow minus");                                                           // Line 89
-	echo T_("Remote user");                                                           // Line 94
-	echo T_("24 hour");                                                               // Line 98
+	echo T_("Allow plus");                                                            // Line 86
+	echo T_("Allow minus");                                                           // Line 90
+	echo T_("Remote user");                                                           // Line 95
+	echo T_("24 hour");                                                               // Line 99
 	echo T_("Suspended");                                                             // Line 103
 	echo T_("Visibility");                                                            // Line 114
 	echo T_("Visible");                                                               // Line 119
 	echo T_("Hidden");                                                                // Line 123
-	echo T_("Advance");                                                               // Line 120
+	echo T_("Advance");                                                               // Line 121
 
 	//---------------------------------------------------content_a\option\display.html
 	echo T_("Hi");                                                                    // Line 7
@@ -405,26 +404,24 @@ private function transtext()
 	//-----------------------------------------------------content_a\plan\display.html
 	echo T_("Current Plan");                                                          // Line 9
 	echo T_("Choose a new plan of your team");                                        // Line 16
-	echo T_("Apply");                                                                 // Line 129
+	echo T_("Apply");                                                                 // Line 134
 	echo T_("Alert for change team plan");                                            // Line 59
 
 	//--------------------------------------------------content_a\profile\display.html
-	echo T_("Your profile information");                                              // Line 8
-	echo T_("Your mobile");                                                           // Line 15
-	echo T_("Your email");                                                            // Line 21
+	echo T_("Your profile information");                                              // Line 7
 	echo T_("First Name *");                                                          // Line 13
 	echo T_("Last Name");                                                             // Line 16
 	echo T_("Enter a valid family from 3 to 50 character");                           // Line 16
-	echo T_("Display name");                                                          // Line 33
-	echo T_("Unit");                                                                  // Line 54
-	echo T_("$");                                                                     // Line 56
-	echo T_("Update profile");                                                        // Line 63
-
-	//-----------------------------------------------content_a\report\--u\display.html
-	echo T_("Start");                                                                 // Line 12
-	echo T_("End");                                                                   // Line 24
-	echo T_("Diff");                                                                  // Line 14
-	echo T_("Accepted");                                                              // Line 17
+	echo T_("Display name");                                                          // Line 45
+	echo T_("mobile");                                                                // Line 64
+	echo T_("Your mobile");                                                           // Line 66
+	echo T_("email");                                                                 // Line 74
+	echo T_("Your email");                                                            // Line 76
+	echo T_("Money unit");                                                            // Line 84
+	echo T_("Please select one unit for default");                                    // Line 94
+	echo T_("$");                                                                     // Line 96
+	echo T_("Dollar");                                                                // Line 110
+	echo T_("Update profile");                                                        // Line 119
 
 	//---------------------------------------------------content_a\report\display.html
 	echo T_("Last traffic");                                                          // Line 10
@@ -434,8 +431,12 @@ private function transtext()
 	echo T_("Hour request edit list");                                                // Line 19
 
 	//----------------------------------------------content_a\report\last\display.html
+	echo T_("Start");                                                                 // Line 12
+	echo T_("End");                                                                   // Line 24
+	echo T_("Diff");                                                                  // Line 14
+	echo T_("Accepted");                                                              // Line 17
 	echo T_("Select actio");                                                          // Line 59
-	echo T_("All");                                                                   // Line 113
+	echo T_("All");                                                                   // Line 118
 	echo T_("Nothing!");                                                              // Line 63 Seperate
 	echo T_("Just diff");                                                             // Line 62
 	echo T_("Diff + Plus");                                                           // Line 63
@@ -458,16 +459,17 @@ private function transtext()
 	echo T_("Auto send report");                                                      // Line 47
 	echo T_("Timed auto report");                                                     // Line 55
 	echo T_("Sent auto repor at time:");                                              // Line 59
-	echo T_("Group Setting");                                                         // Line 66
-	echo T_("Telegram Group");                                                        // Line 70
-	echo T_("Delete Group");                                                          // Line 76
-	echo T_("Send first memeber name");                                               // Line 83
-	echo T_("Send report daily at end of day");                                       // Line 90
-	echo T_("Send report daily whit time at end of day");                             // Line 97
-	echo T_("Send gold emoji in report daily");                                       // Line 104
-	echo T_("Send report daily count");                                               // Line 111
-	echo T_("No Group was set");                                                      // Line 121
-	echo T_("You can set telegram group from ");                                      // Line 122
+	echo T_("Server Timezone");                                                       // Line 65
+	echo T_("Group Setting");                                                         // Line 71
+	echo T_("Telegram Group");                                                        // Line 75
+	echo T_("Delete Group");                                                          // Line 81
+	echo T_("Send first memeber name");                                               // Line 88
+	echo T_("Send report daily at end of day");                                       // Line 95
+	echo T_("Send report daily whit time at end of day");                             // Line 102
+	echo T_("Send gold emoji in report daily");                                       // Line 109
+	echo T_("Send report daily count");                                               // Line 116
+	echo T_("No Group was set");                                                      // Line 126
+	echo T_("You can set telegram group from ");                                      // Line 127
 
 	//-----------------------------------------------content_a\report\sum\display.html
 	echo T_("Day");                                                                   // Line 16
@@ -491,18 +493,18 @@ private function transtext()
 	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 10
 
 	//-----------------------------------------------------content_a\team\display.html
-	echo T_("Enter a valid name from 5 to 30 character");                             // Line 12
-	echo T_("Website");                                                               // Line 16
-	echo T_("Privacy mode");                                                          // Line 37
-	echo T_("Private");                                                               // Line 43
-	echo T_("Team");                                                                  // Line 48
-	echo T_("Public");                                                                // Line 53
-	echo T_("Short Name");                                                            // Line 61
-	echo T_("English letter like");                                                   // Line 63
-	echo T_("Enter a valid short name from 5 to 50 character");                       // Line 63
-	echo T_("Default setting for new members of team");                               // Line 75
-	echo T_("Show users avatars");                                                    // Line 80
-	echo T_("Close");                                                                 // Line 111
+	echo T_("Enter a valid name from 5 to 30 character");                             // Line 13
+	echo T_("Website");                                                               // Line 17
+	echo T_("Privacy mode");                                                          // Line 38
+	echo T_("Private");                                                               // Line 44
+	echo T_("Team");                                                                  // Line 49
+	echo T_("Public");                                                                // Line 54
+	echo T_("Short Name");                                                            // Line 62
+	echo T_("English letter like");                                                   // Line 64
+	echo T_("Enter a valid short name from 5 to 50 character");                       // Line 64
+	echo T_("Default setting for new members of team");                               // Line 76
+	echo T_("Show users avatars");                                                    // Line 81
+	echo T_("Close");                                                                 // Line 112
 
 	//-------------------------------------------------content_api\v1\doc\display.html
 	echo T_("Tejarak API");                                                           // Line 4
