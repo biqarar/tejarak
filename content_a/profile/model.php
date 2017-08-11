@@ -145,6 +145,7 @@ class model extends \content_a\main\model
 		if(debug::$status)
 		{
 			debug::true(T_("Profile data was updated"));
+			debug::msg('direct', true);
 			$this->redirector()->set_domain()->set_url('a');
 		}
 	}
