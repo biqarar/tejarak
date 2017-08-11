@@ -75,12 +75,19 @@ class controller extends \content\main\controller
 			$msg = $temp_msg;
 		}
 
+		$default_api_url      = \lib\utility\telegram::$telegram_api_url;
+		$default_send_service = \lib\utility\telegram::$force_send_telegram_service;
+
 		$tg_url = 'https://api.telegram.org/bot401647634:AAEUeTV5E7CYxZth-6TOWFHdjzABwVavJS0';
 		\lib\utility\telegram::$force_send_telegram_service = true;
 		\lib\utility\telegram::$telegram_api_url = $tg_url;
+
 		\lib\utility\telegram::sendMessage(33263188, $msg);
 		\lib\utility\telegram::sendMessage(33263188, json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
 		\lib\utility\telegram::sendMessage("@tejarak_monitor", $msg);
+
+		\lib\utility\telegram::$force_send_telegram_service = $default_send_service;
+		\lib\utility\telegram::$telegram_api_url            = $default_api_url;
 
 		if($run)
 		{
