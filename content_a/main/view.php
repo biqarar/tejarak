@@ -18,6 +18,11 @@ class view extends \mvc\view
 		$this->data->is_admin = \lib\storage::get_is_admin();
 
 		$this->data->display['adminTeam'] = 'content_a\main\layoutTeam.html';
+		if($this->data->team)
+		{
+			$this->data->current_team = $this->model()->getTeamDetail($this->data->team);
+		}
+
 	}
 }
 ?>

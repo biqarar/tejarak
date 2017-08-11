@@ -4,14 +4,7 @@ namespace content_a\member;
 class view extends \content_a\main\view
 {
 
-	/**
-	 * load team data
-	 */
-	public function load_current_team($_team)
-	{
-		$current_team = $this->model()->getTeamDetail($_team);
-		return $current_team;
-	}
+
 
 	/**
 	 * { function_description }
@@ -21,8 +14,7 @@ class view extends \content_a\main\view
 	public function view_add($_args)
 	{
 		$team                      = \lib\router::get_url(0);
-		$team_default              = $this->load_current_team($team);
-		$this->data->current_team  = $this->data->team_default  = $team_default;
+		$this->data->team_default  = $team_default = $this->data->current_team ;
 
 		$this->data->page['title'] = T_('Add new member');
 		$this->data->page['desc']  = $this->data->page['title'];
@@ -37,7 +29,6 @@ class view extends \content_a\main\view
 	public function view_list($_args)
 	{
 		$team                     = \lib\router::get_url(0);
-		$this->data->current_team = $this->load_current_team($team);
 		$request                  = [];
 		$request['id']            = $team;
 		$list                     = $this->model()->list_member($request);
@@ -62,7 +53,6 @@ class view extends \content_a\main\view
 		$this->data->edit_mode     = true;
 		$url                       = \lib\router::get_url();
 		$team                      = \lib\router::get_url(0);
-		$this->data->current_team  = $this->load_current_team($team);
 		$member                    = substr($url, strpos($url,'=') + 1);
 		$member                    = $this->model()->edit($team, $member);
 		$this->data->member        = $member;
