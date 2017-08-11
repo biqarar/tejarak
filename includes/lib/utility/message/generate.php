@@ -28,7 +28,7 @@ trait generate
 					{
 						if(Tld === 'dev')
 						{
-							$msg .= "\n #Develop";
+							$msg .= "\n #Dev";
 						}
 					}
 					$this->message[] = $msg;
