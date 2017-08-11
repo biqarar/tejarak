@@ -5,6 +5,7 @@ use \lib\db;
 class teams
 {
 	use teams\report;
+	use teams\active_deactive_member;
 
 	// default setttings
 	// save in temas.meta

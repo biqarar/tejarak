@@ -58,7 +58,7 @@ trait generate_message
 					{
 						$start_date = \lib\utility\jdate::date("Y-m-d", strtotime($start_date));
 					}
-					$msg .="🙋‍♂ ". $start_date." ".  $time_start. "\n📤 ". \lib\utility::date("Y-m-d H:i", time(), 'current'); //$time_now;
+					$msg .="🌖 ". $start_date." ".  $time_start. "\n🌑 ". \lib\utility::date("Y-m-d H:i", time(), 'current'); //$time_now;
 				}
 				else
 				{
@@ -106,6 +106,13 @@ trait generate_message
 
 			case 'report_end_day':
 			case 'report_end_day_admin':
+				// if the team have active member
+				// never make the end report day message
+				if(\lib\db\teams::get_active_member(self::$my_team_id))
+				{
+					break;
+				}
+
 				$presence = \lib\db\hours::peresence(self::$my_team_id);
 
 				if(!empty($presence) && is_array($presence))
