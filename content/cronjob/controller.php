@@ -12,28 +12,20 @@ class controller extends \content\main\controller
 		{
 			\lib\error::page();
 		}
-		// if
-		// (
-		// 	isset($_SERVER['REMOTE_ADDR']) &&
-		// 	isset($_SERVER['SERVER_ADDR']) &&
-		// 	in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', $_SERVER['SERVER_ADDR']])
-		// )
-		// {
 
-
+		if(isset($_SERVER['HTTP_CF_CONNECTING_IP']) && isset($_SERVER['SERVER_ADDR']) && $_SERVER['HTTP_CF_CONNECTING_IP'] === $_SERVER['SERVER_ADDR'])
+		{
 			if(\lib\option::cronjob('status'))
 			{
-
 				$this->pinger();
-
 				$this->post("cronjob")->ALL("/.*/");
 				$this->display = false;
 			}
-		// }
-		// else
-		// {
-		// 	\lib\error::page();
-		// }
+		}
+		else
+		{
+			\lib\error::page();
+		}
 
 	}
 
