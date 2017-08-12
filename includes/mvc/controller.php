@@ -37,7 +37,6 @@ class controller extends \lib\mvc\controller
 
 				if(!$refrer && !$_SESSION)
 				{
-					$_SESSION['user_country_ir_redirect_fa'] = true;
 					$root    = $this->url('root');
 					$full    = $this->url('full');
 					$new_url = str_replace($root, $root. '/fa', $full);
@@ -45,6 +44,7 @@ class controller extends \lib\mvc\controller
 				}
 			}
 		}
+		$_SESSION['user_country_ir_redirect_fa'] = true;
 	}
 }
 ?>
