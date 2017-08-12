@@ -548,17 +548,21 @@ body #billing{max-width:800px;margin:0 auto}
 .share2 .instagram::after{background-position:-245px 0}
 
 
-/* ---------------------------------------------------------------- responsive of site */
-@media all and (min-width: 1400px) {
+/* ---------------------------------------------------------------- personal card */
+.personal-card{width:325px;height:205px;border-radius:15px;background-color:#fff;-webkit-box-shadow:0 0 1px #666;box-shadow:0 0 1px #666;}
+.personal-cards-img{display:block;max-width:1000px;margin:0 auto 5rem;}
+.btn-center{text-align:center;font-size:1.4em;}
+.btn-p{color:#eee;background-color:#70b020;line-height:initial;height:initial;padding:1em 2em;}
+.btn-p:hover{background-color:#60a010;}
 
-}
+
+/* ---------------------------------------------------------------- responsive of site */
+@media all and (min-width: 1400px) {}
 
 
 @media all and (max-width: 959px) {
-
   #anyTeam img{margin:0 auto;padding:0}
   #plans .prBox{min-height:500px;}
-
 }
 
 
