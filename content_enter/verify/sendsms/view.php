@@ -16,7 +16,7 @@ class view extends \content_enter\verify\view
 			$this->data->codeSendMsg = T_('Send ":code" to :num',
 				[
 					'code' => $this->data->codeSend,
-					'num' => '<b>'. $this->data->codeSendNum. '</b>'
+					'num' => '<b><code>'. $this->data->codeSendNum. '</code></b>'
 				]
 				);
 		}
