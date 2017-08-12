@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-12 19:06+0430\n"
-"PO-Revision-Date: 2017-08-12 19:09+0430\n"
+"POT-Creation-Date: 2017-08-12 19:09+0430\n"
+"PO-Revision-Date: 2017-08-12 19:11+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -5873,12 +5873,12 @@ msgid "Send this code to our number!"
 msgstr "این کد را به شماره‌ی ما پیامک کنید"
 
 #: tejarak/includes/languages/trans_addons.php:530
-msgid "numbersss"
-msgstr ""
+msgid "send to this number"
+msgstr "به این شماره پیامک کنید"
 
 #: tejarak/includes/languages/trans_addons.php:531
-msgid "Send this number to our number!"
-msgstr ""
+msgid "Send code to this number!"
+msgstr "کد را به این شماره ارسال کنید!"
 
 #: tejarak/includes/languages/trans_addons.php:538
 msgid "Go and check it"
