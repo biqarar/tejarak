@@ -59,6 +59,7 @@ trait get
 					break;
 				case 'shortname':
 					$result['short_name'] = $value ? (string) $value : null;
+					$result['url'] = $this->host('with_language'). '/'. $value;
 					break;
 				case 'showavatar':
 					$result['show_avatar'] = $value ? true : false;
