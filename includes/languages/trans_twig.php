@@ -544,8 +544,10 @@ private function transtext()
 	echo T_("Update google mail");                                                    // Line 14
 	echo T_("Don't change");                                                          // Line 16
 
-	//-----------------------------------------------content_enter\google\display.html
+	//-----------------------------------------------content_enter\getsms\display.html
 	echo T_("You must not be here!");                                                 // Line 7
+
+	//-----------------------------------------------content_enter\google\display.html
 
 	//---------------------------------------content_enter\mobile\request\display.html
 	echo T_("If you wanna more secure enter your mobile");                            // Line 6
@@ -630,12 +632,13 @@ private function transtext()
 	echo T_("Traveler");                                                              // Line 64 Seperate
 	echo T_("Intern");                                                                // Line 65 Seperate
 	echo T_("name");                                                                  // Line 69 Seperate
-	echo T_("summary");                                                               // Line 70 Seperate
-	echo T_("ganje");                                                                 // Line 71 Seperate
-	echo T_("Ganje");                                                                 // Line 72 Seperate
-	echo T_("Centeral");                                                              // Line 73 Seperate
-	echo T_("centeral");                                                              // Line 74 Seperate
-	echo T_(" ");                                                                     // Line 78 Seperate
+	echo T_("until");                                                                 // Line 70 Seperate
+	echo T_("summary");                                                               // Line 71 Seperate
+	echo T_("ganje");                                                                 // Line 72 Seperate
+	echo T_("Ganje");                                                                 // Line 73 Seperate
+	echo T_("Centeral");                                                              // Line 74 Seperate
+	echo T_("centeral");                                                              // Line 75 Seperate
+	echo T_(" ");                                                                     // Line 79 Seperate
 
 }
 ?>

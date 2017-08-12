@@ -69,30 +69,15 @@ private function transtext()
 	echo T_("If you dont know about this page, leave it!");                           // Line 5
 	echo T_("Special tools");                                                         // Line 9
 	echo T_("Sitemap");                                                               // Line 11
-	echo T_("log");                                                                   // Line 12
-	echo T_("Info");                                                                  // Line 21
-	echo T_("Show server info");                                                      // Line 23
-	echo T_("Show PHP info");                                                         // Line 24
-	echo T_("Translate");                                                             // Line 33
-	echo T_("Extract twig trans func in current project");                            // Line 35
-	echo T_("Extract twig trans func in dash addons");                                // Line 36
-	echo T_("Extract twig trans func in dash addons and update on dash addons");      // Line 37
-	echo T_("Git Repository");                                                        // Line 45
+	echo T_("Server information");                                                    // Line 12
+	echo T_("Log");                                                                   // Line 13
+	echo T_("Translation tools");                                                     // Line 14
 	echo T_("Update");                                                                // Line 153 Seperate
-	echo T_("Dash Repository");                                                       // Line 47
-	echo T_("Ermile Repository");                                                     // Line 48
-	echo T_("Current Project Repository");                                            // Line 49
-	echo T_("All: Dash + current project Repository");                                // Line 50
-	echo T_("Other Tools");                                                           // Line 56
-	echo T_("Regenerate sitemap");                                                    // Line 58
-	echo T_("social networks");                                                       // Line 59
-	echo T_("Database");                                                              // Line 64
-	echo T_("Upgrade");                                                               // Line 79
-	echo T_("Backup");                                                                // Line 81
-	echo T_("Backup by dump");                                                        // Line 73
-	echo T_("Submit");                                                                // Line 121
-	echo T_("Project Database");                                                      // Line 81
-	echo T_("Automatically read database and create sql files");                      // Line 80
+
+	//---------------------------------------addons\content_cp\tools\info\display.html
+	echo T_("Info");                                                                  // Line 7
+	echo T_("Show server info");                                                      // Line 9
+	echo T_("Show PHP info");                                                         // Line 10
 
 	//----------------------------------------addons\content_cp\tools\log\display.html
 	echo T_("Server Logs");                                                           // Line 7
@@ -113,6 +98,26 @@ private function transtext()
 	echo T_("Sitemap Detail");                                                        // Line 9
 	echo T_("Create it Again");                                                       // Line 10
 	echo T_("Create Sitemap Result");                                                 // Line 18
+
+	//--------------------------------addons\content_cp\tools\translation\display.html
+	echo T_("Translate");                                                             // Line 7
+	echo T_("Extract twig trans func in current project");                            // Line 9
+	echo T_("Extract twig trans func in dash addons");                                // Line 11
+	echo T_("Extract twig trans func in dash addons and update on dash addons");      // Line 12
+
+	//-------------------------------------addons\content_cp\tools\update\display.html
+	echo T_("Git Repository");                                                        // Line 7
+	echo T_("Ermile Repository");                                                     // Line 9
+	echo T_("Dash Repository");                                                       // Line 11
+	echo T_("Current Project Repository");                                            // Line 12
+	echo T_("All: Dash + current project Repository");                                // Line 13
+	echo T_("Database");                                                              // Line 20
+	echo T_("Upgrade");                                                               // Line 35
+	echo T_("Backup");                                                                // Line 37
+	echo T_("Backup by dump");                                                        // Line 29
+	echo T_("Submit");                                                                // Line 121
+	echo T_("Project Database");                                                      // Line 37
+	echo T_("Automatically read database and create sql files");                      // Line 36
 
 	//---------------------------------addons\content_cp\transactions\add\display.html
 	echo T_("Saved record");                                                          // Line 5
