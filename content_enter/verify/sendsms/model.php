@@ -50,7 +50,8 @@ class model extends \content_enter\main\model
 		[
 			'meta' =>
 			[
-				'session' => $_SESSION
+				'session' => $_SESSION,
+				'post'    => utility::post(),
 			]
 		];
 
@@ -74,7 +75,16 @@ class model extends \content_enter\main\model
 					case 'deliver':
 						// the user must be login
 						\lib\db\logs::update(['log_status' => 'expire'], $log_id);
-						self::enter_set_login(null, true);
+						// set login session
+						$redirect_url = self::enter_set_login();
+
+						// save redirect url in session to get from okay page
+						self::set_enter_session('redirect_url', $redirect_url);
+						// set okay as next step
+						self::next_step('okay');
+						// go to okay page
+						self::go_to('okay');
+						return;
 						break;
 
 					case 'enable':
