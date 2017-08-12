@@ -2,16 +2,15 @@
 
 
 {%block contentForm%}
-{%if sendsms_code%}
-<p>
-We could not send you a code
-You can send <b><code>{{sendsms_code}}</code></b> to number <b><code>10006660066600</code></b>
-to pass this step
-</p>
-{%endif%}
-<a href="{{url.full}}" class="link" data-ajaxify data-data='{"code": "{{sendsms_code}}"}' data-method='post'>{%trans "I send this code"%}</a>
 
-{{block('eresend')}}
+
+{{block(mobile_username)}}
+{{block('ecodeSend')}}
+{{block('enumberSend')}}
+<p>{{codeSendMsg | raw}}</p>
+
+{{block('egoCheck')}}
+
 
 {%endblock%}
 
@@ -20,7 +19,7 @@ to pass this step
 {%block contentFooter%}
    <footer class='f'>
 {{block('ereset')}}
-{{block('eresend')}}
+{{block('eresend240')}}
    </footer>
 {%endblock%}
 

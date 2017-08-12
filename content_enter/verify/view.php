@@ -45,6 +45,10 @@ class view extends \content_enter\main\view
 				$myDesc .= T_("Your verification code sended to your mobile number via sms. be patient...");
 				break;
 
+			case 'sendsms':
+				$myDesc .= T_("We can't send code to you with our existing methods! For the last chance of verify yourself you can send code to our number.");
+				break;
+
 			default:
 				$myDesc .= T_("What happend?");
 				break;

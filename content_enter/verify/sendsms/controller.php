@@ -6,19 +6,19 @@ class controller extends \content_enter\main\controller
 {
 	public function _route()
 	{
-		// bug fix two redirect to this page
-		if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
-		{
-			self::go_redirect('verify/sendsms');
-			return;
-		}
+		// // bug fix two redirect to this page
+		// if(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === '*/*')
+		// {
+		// 	self::go_redirect('verify/sendsms');
+		// 	return;
+		// }
 
-		// if this step is locked go to error page and return
-		if(self::lock('verify/sendsms'))
-		{
-			self::error_page('verify/sendsms');
-			return;
-		}
+		// // if this step is locked go to error page and return
+		// if(self::lock('verify/sendsms'))
+		// {
+		// 	self::error_page('verify/sendsms');
+		// 	return;
+		// }
 
 		if(self::get_request_method() === 'get')
 		{
@@ -39,7 +39,7 @@ class controller extends \content_enter\main\controller
 					else
 					{
 						// send code way
-						self::send_code_way();
+						// self::send_code_way();
 					}
 				}
 			}

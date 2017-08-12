@@ -525,6 +525,9 @@ private function transtext()
 	echo T_("join us");                                                               // Line 8
 	echo T_("Bye Bye :(");                                                            // Line 9
 
+	//---------------------------------------------content_enter\callback\display.html
+	echo T_("You must not be here!");                                                 // Line 7
+
 	//-----------------------------------------------content_enter\delete\display.html
 	echo T_("Why you want to delete your account!?");                                 // Line 5
 
@@ -543,9 +546,6 @@ private function transtext()
 	echo T_("Change to");                                                             // Line 10
 	echo T_("Update google mail");                                                    // Line 14
 	echo T_("Don't change");                                                          // Line 16
-
-	//-----------------------------------------------content_enter\getsms\display.html
-	echo T_("You must not be here!");                                                 // Line 7
 
 	//-----------------------------------------------content_enter\google\display.html
 
