@@ -19,10 +19,15 @@ trait present
 			{
 				if(isset($value['displayname']))
 				{
-					$msg .= "\n".  $value['displayname'];
+					$msg .= "\n🔷 ".  $value['displayname'];
 				}
-
 			}
+		}
+
+		if($msg)
+		{
+			$msg = "#". T_("Absents"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n\n". $msg;
+			$msg .= "\n👥 ". human::number(count($result), \lib\define::get_language());
 		}
 		return $msg;
 	}

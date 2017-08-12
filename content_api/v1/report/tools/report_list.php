@@ -48,14 +48,14 @@ trait report_list
 
 		$report_list =
 		[
-			[
-				'title' => T_("This month"),
-				'url'   => 'thismonth'
-			],
-			[
-				'title' => T_("Today"),
-				'url'   => 'today'
-			],
+			// [
+			// 	'title' => T_("This month"),
+			// 	'url'   => 'thismonth'
+			// ],
+			// [
+			// 	'title' => T_("Today"),
+			// 	'url'   => 'today'
+			// ],
 			[
 				'title' => T_("Last traffic"),
 				'url'   => 'lasttraffic'
@@ -72,14 +72,14 @@ trait report_list
 				'title' => T_("Members"),
 				'url'   => 'members'
 			],
-			[
-				'title' => T_("Members status"),
-				'url'   => 'memberstatus'
-			],
-			[
-				'title' => T_("Last 24 hour"),
-				'url'   => 'last24hour'
-			],
+			// [
+			// 	'title' => T_("Members status"),
+			// 	'url'   => 'memberstatus'
+			// ],
+			// [
+			// 	'title' => T_("Last 24 hour"),
+			// 	'url'   => 'last24hour'
+			// ],
 		];
 		return $report_list;
 	}
