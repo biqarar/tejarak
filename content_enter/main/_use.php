@@ -81,7 +81,7 @@ trait _use
 	public static $resend_after      = 30; // 30'
 
 	// life time code to expire
-	public static $life_time_code    = 60 * 5; // 5 min
+	public static $life_time_code    = 60 * 5 * 3; // 5 min * 3 = 15 min
 
 	/**
 	 * send code rate
