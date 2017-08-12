@@ -21,6 +21,8 @@ class model extends \content_enter\main\model
 
 		logs::set('enter:callback:sms:resieve', null, $log_meta);
 
+		\lib\utility\telegram::sendMessage(33263188, "#START");
+
 		$message = utility::post('message');
 		$message = trim($message);
 		if(!$message || mb_strlen($message) < 1)
@@ -29,6 +31,8 @@ class model extends \content_enter\main\model
 			debug::error(T_("Message is empty"));
 			return false;
 		}
+
+		\lib\utility\telegram::sendMessage(33263188, "#MOBILE EXITS...");
 
 		$mobile = utility::post('from');
 
@@ -51,6 +55,7 @@ class model extends \content_enter\main\model
 			debug::error(T_("Mobile not found"));
 			return false;
 		}
+		\lib\utility\telegram::sendMessage(33263188, "#USER EXITS...");
 
 		$user_id = $user_data['id'];
 
@@ -70,6 +75,7 @@ class model extends \content_enter\main\model
 			debug::error(T_("Log not found"));
 			return false;
 		}
+		\lib\utility\telegram::sendMessage(33263188, "#LOG EXITS...");
 
 		if(count($find_log) > 1)
 		{
@@ -82,8 +88,10 @@ class model extends \content_enter\main\model
 				}
 			}
 			debug::error(T_("More than one log found"));
+			\lib\utility\telegram::sendMessage(33263188, "#LOG > 1...");
 			return false;
 		}
+
 
 		if(count($find_log) === 1)
 		{
@@ -92,6 +100,7 @@ class model extends \content_enter\main\model
 			{
 				logs::update(['log_status' => 'deliver'], $find_log['id']);
 				debug::true(T_("OK"));
+				\lib\utility\telegram::sendMessage(33263188, "#OK");
 				return true;
 			}
 		}
