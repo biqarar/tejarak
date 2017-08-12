@@ -318,7 +318,7 @@ function setLanguageURL()
   var urlHash     = window.location.hash;
   var indexOfLang = urlPath.indexOf('/' + $('html').attr('lang'));
   var urlBase     = $('base').attr('href');
-  urlBase         = urlBase.substr(0, urlBase.indexOf('/', 7));
+  urlBase         = urlBase.substr(0, urlBase.indexOf('/', 10));
 
   if(indexOfLang === 0)
   {
