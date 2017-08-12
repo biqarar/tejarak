@@ -19,24 +19,21 @@ class model extends \content_api\v1\home\model
 
 
 	/**
-	 * Gets the last trafic.
+	 * Gets the report.
 	 *
-	 * @return     <type>  The last trafic.
+	 * @return     <type>  The report.
 	 */
-	public function get_last_trafic()
+	public function get_report($_args)
 	{
-		return "2-Testing...";
-	}
+		if(isset($_args->match->url[0][1]))
+		{
+			return $this->get_report_result($_args->match->url[0][1]);
+		}
+		else
+		{
+			\lib\error::page(T_("Invalid url"));
+		}
 
-
-	/**
-	 * Gets the enter exit.
-	 *
-	 * @return     <type>  The enter exit.
-	 */
-	public function get_enter_exit()
-	{
-		return "1-Testing... ";
 	}
 }
 ?>

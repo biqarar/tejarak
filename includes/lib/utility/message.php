@@ -23,10 +23,19 @@ class message
 	public $report_header = null;
 	public $report_footer = null;
 	// other function
+
 	use message\ready;
 	use message\generate;
 	use message\send;
-	use message\timed_auto_report;
+	use message\make\timed_auto_report;
+	use message\make\thismonth;
+	use message\make\today;
+	use message\make\lasttrafic;
+	use message\make\present;
+	use message\make\absent;
+	use message\make\members;
+	use message\make\memberstatus;
+	use message\make\last24hour;
 
 	/**
 	 * set the team_id
@@ -86,6 +95,31 @@ class message
 	{
 		$this->message_type = $_type;
 		return $this;
+	}
+
+
+	/**
+	 * Gets the message text.
+	 */
+	public function get_message_text()
+	{
+		// ready data
+		// load admins
+		// load team data
+		$this->ready();
+
+		// generate text message
+		$this->generate_message();
+
+		if(count($this->message) === 1 && isset($this->message[0]))
+		{
+			return $this->message[0];
+		}
+		else
+		{
+			return $this->message;
+		}
+
 	}
 
 }
