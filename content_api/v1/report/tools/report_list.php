@@ -57,8 +57,8 @@ trait report_list
 				'url'   => 'today'
 			],
 			[
-				'title' => T_("Last Trafic"),
-				'url'   => 'lasttrafic'
+				'title' => T_("Last traffic"),
+				'url'   => 'lasttraffic'
 			],
 			[
 				'title' => T_("Present"),

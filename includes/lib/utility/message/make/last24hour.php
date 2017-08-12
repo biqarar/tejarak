@@ -11,8 +11,7 @@ trait last24hour
 
 	public function last24hour()
 	{
-		return __FUNCTION__;
-
+		return $this->timed_auto_report();
 	}
 
 }

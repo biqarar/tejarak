@@ -66,7 +66,7 @@ trait get
 		{
 			case 'thismonth':
 			case 'today':
-			case 'lasttrafic':
+			case 'lasttraffic':
 			case 'present':
 			case 'absent':
 			case 'members':

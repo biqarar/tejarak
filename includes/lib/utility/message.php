@@ -30,7 +30,7 @@ class message
 	use message\make\timed_auto_report;
 	use message\make\thismonth;
 	use message\make\today;
-	use message\make\lasttrafic;
+	use message\make\lasttraffic;
 	use message\make\present;
 	use message\make\absent;
 	use message\make\members;

@@ -11,9 +11,20 @@ trait present
 
 	public function present()
 	{
-		return __FUNCTION__;
+		$result = \lib\db\teams::get_active_member($this->team_id);
+		$msg = null;
+		if($result && is_array($result))
+		{
+			foreach ($result as $key => $value)
+			{
+				if(isset($value['displayname']))
+				{
+					$msg .= "\n".  $value['displayname'];
+				}
 
+			}
+		}
+		return $msg;
 	}
-
 }
 ?>
