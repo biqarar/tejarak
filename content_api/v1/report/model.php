@@ -14,17 +14,7 @@ class model extends \content_api\v1\home\model
 	 */
 	public function get_list()
 	{
-		return
-		[
-			[
-				'title' => T_("Last Trafic"),
-				'url'   => 'last_trafic',
-			],
-			[
-				'title' => T_("Enter Exit"),
-				'url'   => 'enter_exit',
-			]
-		];
+		return $this->report_list();
 	}
 
 

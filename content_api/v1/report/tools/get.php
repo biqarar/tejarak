@@ -12,5 +12,6 @@ trait get
 	use year;
 	use month;
 	use period;
+	use report_list;
 }
 ?>
