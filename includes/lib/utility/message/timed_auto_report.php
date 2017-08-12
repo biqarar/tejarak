@@ -10,12 +10,13 @@ trait timed_auto_report
 	public function timed_auto_report()
 	{
 
-		$tik_emoji = "▪";
-		$zzz_emoji = "▫";
+		$tik_emoji    = "▪";
+		$zzz_emoji    = "▫";
 
-		$date_now = date("Y-m-d");
+		$date_now     = date("Y-m-d");
 		$result_query = \lib\db\teams::timed_auto_report_query($this->team_id);
-		$msg = [];
+
+		$msg          = [];
 		foreach ($result_query as $key => $value)
 		{
 			if(isset($value['userteam_id']))
@@ -50,13 +51,13 @@ trait timed_auto_report
 				$end_date   = $value['enddate'];
 				$end_time   = $value['end'];
 
-				if($start_date == $date_now)
+				if(!$value['end'])
 				{
 					array_push($msg[$value['userteam_id']]['emoji'], $tik_emoji);
 				}
-
-				if($end_date == $date_now)
+				else
 				{
+					array_push($msg[$value['userteam_id']]['emoji'], $tik_emoji);
 					array_push($msg[$value['userteam_id']]['emoji'], $zzz_emoji);
 				}
 			}

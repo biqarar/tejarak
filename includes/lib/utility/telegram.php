@@ -73,6 +73,28 @@ class telegram
 			"content-type: application/json",
 		];
 
+		if(Tld === 'dev')
+		{
+			$temp_content = [];
+			foreach ($_args['content'] as $key => $value)
+			{
+				if(isset($value['chat_id']))
+				{
+					if(in_array($value['chat_id'], [33263188, '33263188', 46898544, '46898544']))
+					{
+						$temp_content[] = $value;
+					}
+				}
+			}
+
+			if(empty($temp_content))
+			{
+				return false;
+			}
+
+			$_args['content'] = $temp_content;
+		}
+
 		$content = json_encode($_args['content'], JSON_UNESCAPED_UNICODE);
 
 		self::curlExec($url, $headers, $content);
@@ -109,6 +131,14 @@ class telegram
 		if(!$_args['url'] || !$_args['method'] || !$_args['chat_id'] || !$_args['app_name'])
 		{
 			return false;
+		}
+
+		if(Tld === 'dev')
+		{
+			if(!in_array($_args['chat_id'], [33263188, '33263188', 46898544, '46898544']))
+			{
+				return false;
+			}
 		}
 
 		$url = "$_args[url]/$_args[app_name]/$_args[method]";
@@ -154,7 +184,6 @@ class telegram
 	 */
 	private static function curlExec($_url, $_headers, $_content, $_option = [])
 	{
-
 		if(!function_exists('curl_init'))
 		{
 			\lib\db\logs::set('telegram:curl:not:install', null, ['meta' =>[]]);

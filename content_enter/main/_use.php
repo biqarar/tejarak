@@ -94,6 +94,7 @@ trait _use
 		'telegram',
 		'sms',
 		'call',
+		'sendsms',
 	];
 
 
@@ -108,6 +109,7 @@ trait _use
 		'telegram',
 		'sms',
 		'call',
+		'sendsms',
 	];
 
 	/**

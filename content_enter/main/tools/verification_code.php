@@ -390,7 +390,7 @@ trait verification_code
 							}
 							else
 							{
-								\lib\db\logs::set('fuck110000');
+								\lib\db\logs::set('error110000');
 							}
 						}
 						elseif(self::get_enter_session('mobile_request_from') === 'google_email_exist')
@@ -408,7 +408,7 @@ trait verification_code
 						{
 							// other way go to here
 							// facebook not exist email and ...
-							\lib\db\logs::set('fuck110');
+							\lib\db\logs::set('error110');
 							return false;
 						}
 					}
@@ -417,7 +417,7 @@ trait verification_code
 				{
 					// no mobile was found :|
 					// bug. return false;
-					\lib\db\logs::set('fuck11');
+					\lib\db\logs::set('error11');
 					return false;
 				}
 			}

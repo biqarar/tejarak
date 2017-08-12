@@ -14,8 +14,20 @@ class controller extends \content\main\controller
 			\lib\error::page();
 		}
 
+		if(Tld === 'dev')
+		{
+			return;
+		}
 
-		if(isset($_SERVER['HTTP_CF_CONNECTING_IP']) && isset($_SERVER['SERVER_ADDR']) && $_SERVER['HTTP_CF_CONNECTING_IP'] === $_SERVER['SERVER_ADDR'])
+		if
+		(
+			preg_match("/^127\\.0\\.0\\.\d+$/", $_SERVER['SERVER_ADDR']) ||
+			(
+				isset($_SERVER['REMOTE_ADDR']) &&
+				isset($_SERVER['SERVER_ADDR']) &&
+				$_SERVER['REMOTE_ADDR'] === $_SERVER['SERVER_ADDR']
+			)
+		)
 		{
 			if(\lib\option::cronjob('status'))
 			{
@@ -26,7 +38,7 @@ class controller extends \content\main\controller
 		}
 		else
 		{
-			// \lib\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
+			\lib\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
 			\lib\error::page();
 		}
 
