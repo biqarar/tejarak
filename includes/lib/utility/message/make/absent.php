@@ -26,7 +26,7 @@ trait absent
 
 		if($msg)
 		{
-			$msg = "#". T_("Absents"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n\n". $msg;
+			$msg = "#". T_("Absents"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n". $msg;
 			$msg .= "\n👥 ". human::number(count($result), \lib\define::get_language());
 		}
 		return $msg;

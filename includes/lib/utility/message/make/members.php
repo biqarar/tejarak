@@ -14,7 +14,7 @@ trait members
 		$active   = \lib\db\teams::get_active_member($this->team_id);
 		$active   = array_map(function($_a){ $_a['active_deactive'] = 'active'; return $_a;}, $active);
 		$deactive = \lib\db\teams::get_deactive_member($this->team_id);
-		$deactive = array_map(function($_a){ $_a['active_deactive'] = 'deactive'; return $_a;}, $active);
+		$deactive = array_map(function($_a){ $_a['active_deactive'] = 'deactive'; return $_a;}, $deactive);
 
 		foreach ($deactive as $key => $value)
 		{
@@ -45,7 +45,7 @@ trait members
 
 		if($msg)
 		{
-			$msg = "#". T_("Members"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n\n". $msg;
+			$msg = "#". T_("Member_status"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n". $msg;
 			$msg .= "\n👥 ". human::number(count($members), \lib\define::get_language());
 		}
 		return $msg;

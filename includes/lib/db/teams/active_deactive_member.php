@@ -118,11 +118,17 @@ trait active_deactive_member
 
 		$result = [];
 
+
 		foreach ($_data as $key => $value)
 		{
 			switch ($key)
 			{
-
+				case 'status':
+					if($value !== 'active')
+					{
+						return false;
+					}
+					break;
 				case '24h':
 					$result['24h'] = $value ? true : false;
 					if(array_key_exists('date', $_data) && array_key_exists('start', $_data) && array_key_exists('end', $_data))

@@ -203,6 +203,9 @@ trait period
 		{
 			switch ($key)
 			{
+				case 'userteam_id':
+					continue;
+					break;
 				default:
 					$temp[$key] = $value;
 					break;

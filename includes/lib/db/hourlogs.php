@@ -116,7 +116,14 @@ class hourlogs
 		{
 			if($_options['sort'])
 			{
-				$order = " ORDER BY hourlogs.$_options[sort] $_options[order] ";
+				if(is_array($_options['sort']))
+				{
+					$order = " ORDER BY ". implode(', ', $_options['sort'])." $_options[order] ";
+				}
+				else
+				{
+					$order = " ORDER BY hourlogs.$_options[sort] $_options[order] ";
+				}
 			}
 			else
 			{

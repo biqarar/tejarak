@@ -77,11 +77,12 @@ trait get
 				$msg = new \lib\utility\message($id);
 				$msg->message_type($_report_type);
 				$result = $msg->get_message_text();
+            	// \lib\utility\telegram::sendMessage(33263188, $result);
 				return $result;
 			}
 			else
 			{
-				\lib\error::page(T_("Invalid url"));
+				\lib\error::page(T_("Invalid url format"));
 			}
 			break;
 
