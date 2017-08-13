@@ -154,7 +154,7 @@ class model extends \content_enter\main\model
 
 		$request           = [];
 		$request['mobile'] = $mobile;
-		$request['msg']    = T_("Your are register to :service", ['service' => \lib\router::get_root_domain()]);
+		$request['msg']    = T_("Your are registered to :service", ['service' => \lib\router::get_root_domain()]);
 		$request['args']   = '';
 		$kavenegar_send_result = \lib\utility\sms::send($request);
 		$log_meta['meta']['register_sms_result'] = $kavenegar_send_result;

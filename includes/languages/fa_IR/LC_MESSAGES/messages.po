@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-13 13:44+0430\n"
-"PO-Revision-Date: 2017-08-13 13:45+0430\n"
+"POT-Creation-Date: 2017-08-13 14:20+0430\n"
+"PO-Revision-Date: 2017-08-13 14:20+0430\n"
 "Last-Translator: Reza <rm.biqarar@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -5163,7 +5163,7 @@ msgid "OK"
 msgstr "تایید"
 
 #: tejarak/content_enter/callback/model.php:157
-msgid "Your are register to :service"
+msgid "Your are registered to :service"
 msgstr "شما در  :service ثبت نام شدید."
 
 #: tejarak/content_enter/callback/model.php:163
@@ -8223,6 +8223,9 @@ msgstr "اجازه افزودن دستی تراکنش جدید"
 #: tejarak/permission.php:98
 msgid "Allow to show system logs"
 msgstr "اجازه مشاهده لاگ‌های سیستم"
+
+#~ msgid "Your are register to :service"
+#~ msgstr "شما در  :service ثبت نام شدید."
 
 #~ msgid "Mobile not found"
 #~ msgstr "موبایل یافت نشد"
