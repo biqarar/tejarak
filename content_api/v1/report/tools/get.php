@@ -72,11 +72,18 @@ trait get
 			case 'members':
 			case 'memberstatus':
 			case 'last24hour':
+			if(utility::request('format') == 'im')
+			{
 				$msg = new \lib\utility\message($id);
 				$msg->message_type($_report_type);
 				$result = $msg->get_message_text();
 				return $result;
-				break;
+			}
+			else
+			{
+				\lib\error::page(T_("Invalid url"));
+			}
+			break;
 
 			default:
 				\lib\error::page(T_("Invalid url"));

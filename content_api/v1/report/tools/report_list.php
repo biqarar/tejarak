@@ -48,10 +48,10 @@ trait report_list
 
 		$report_list =
 		[
-			// [
-			// 	'title' => T_("This month"),
-			// 	'url'   => 'thismonth'
-			// ],
+			[
+				'title' => T_("This month"),
+				'url'   => 'thismonth'
+			],
 			// [
 			// 	'title' => T_("Today"),
 			// 	'url'   => 'today'
