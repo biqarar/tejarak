@@ -8,7 +8,7 @@ class model extends \content_enter\main\model
 {
 	public function kavenegar()
 	{
-
+		\lib\storage::set_api(true);
 		$log_meta =
 		[
 			'data' => null,
@@ -46,11 +46,10 @@ class model extends \content_enter\main\model
 		}
 
 		$user_data = \lib\db\users::get_by_mobile($mobile);
+
 		if(!$user_data || !isset($user_data['id']))
 		{
-			logs::set('enter:callback:mobile:not:found', null, $log_meta);
-			debug::error(T_("Mobile not found"));
-			return false;
+			return $this->first_signup_sms();
 		}
 
 		$user_id = $user_data['id'];
@@ -108,6 +107,62 @@ class model extends \content_enter\main\model
 		// 			"message":"Salamq"
 		// 		}
 		// 	}
+	}
+
+
+	/**
+	 * singup user and send the regirster sms to he
+	 */
+	public function first_signup_sms()
+	{
+		$mobile = utility::post('from');
+
+		if($mobile)
+		{
+			$mobile = \lib\utility\filter::mobile($mobile);
+		}
+
+		if(!$mobile)
+		{
+			debug::error(T_("Mobile not set"));
+			return false;
+		}
+
+		$signup =
+		[
+			'user_mobile'      => $mobile,
+			'user_pass'        => null,
+			'user_displayname' => null,
+			'user_createdate'  => date("Y-m-d H:i:s"),
+		];
+
+		\lib\db\users::insert($signup);
+		$user_id = \lib\db::insert_id();
+
+
+		$log_meta =
+		[
+			'data' => null,
+			'meta' =>
+			[
+				'get'  => utility::get(),
+				'post' => utility::post(),
+			],
+		];
+
+		logs::set('enter:callback:signup:by:sms', $user_id, $log_meta);
+
+		$request           = [];
+		$request['mobile'] = $mobile;
+		$request['msg']    = T_("Your are register to :service", ['service' => \lib\router::get_root_domain()]);
+		$request['args']   = '';
+		$kavenegar_send_result = \lib\utility\sms::send($request);
+		$log_meta['meta']['register_sms_result'] = $kavenegar_send_result;
+		logs::set('enter:callback:sms:registe:reasult', $user_id, $log_meta);
+
+		debug::true(T_("User signup by sms"));
+
+
 	}
 }
 ?>

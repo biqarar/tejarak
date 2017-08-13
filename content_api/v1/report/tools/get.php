@@ -82,7 +82,7 @@ trait get
 			}
 			else
 			{
-				\lib\error::page(T_("Invalid url format"));
+				\lib\error::page(T_("Invalid parameter format"));
 			}
 			break;
 

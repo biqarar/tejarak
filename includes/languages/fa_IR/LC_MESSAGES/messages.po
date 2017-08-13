@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-13 13:07+0430\n"
-"PO-Revision-Date: 2017-08-13 13:07+0430\n"
+"POT-Creation-Date: 2017-08-13 13:44+0430\n"
+"PO-Revision-Date: 2017-08-13 13:45+0430\n"
 "Last-Translator: Reza <rm.biqarar@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4977,8 +4977,8 @@ msgid "Invalid team data"
 msgstr "داده‌ی تیم نامعتبر است"
 
 #: tejarak/content_api/v1/report/tools/get.php:85
-msgid "Invalid url format"
-msgstr ""
+msgid "Invalid parameter format"
+msgstr "پارامتر فرمت اشتباه است"
 
 #: tejarak/content_api/v1/report/tools/last.php:64
 #: tejarak/content_api/v1/report/tools/last.php:86
@@ -5146,24 +5146,29 @@ msgid "Message is empty"
 msgstr "پیام خالی است"
 
 #: tejarak/content_enter/callback/model.php:44
+#: tejarak/content_enter/callback/model.php:127
 msgid "Mobile not set"
 msgstr "موبایل تنظیم نشده است"
 
-#: tejarak/content_enter/callback/model.php:52
-msgid "Mobile not found"
-msgstr "موبایل یافت نشد"
-
-#: tejarak/content_enter/callback/model.php:71
+#: tejarak/content_enter/callback/model.php:70
 msgid "Log not found"
 msgstr "لاگ یافت نشد"
 
-#: tejarak/content_enter/callback/model.php:85
+#: tejarak/content_enter/callback/model.php:84
 msgid "More than one log found"
 msgstr "بیشتر از یک لاگ یافت شد"
 
-#: tejarak/content_enter/callback/model.php:96
+#: tejarak/content_enter/callback/model.php:95
 msgid "OK"
 msgstr "تایید"
+
+#: tejarak/content_enter/callback/model.php:157
+msgid "Your are register to :service"
+msgstr "شما در  :service ثبت نام شدید."
+
+#: tejarak/content_enter/callback/model.php:163
+msgid "User signup by sms"
+msgstr "کاربر با ارسال پیامک ثبت نام شد"
 
 #: tejarak/content_enter/delete/request/view.php:10
 msgid "Request delete account"
@@ -5218,7 +5223,7 @@ msgid "Enter to :name with google"
 msgstr "با استفاده از گوگل وارد :name شوید"
 
 #: tejarak/content_enter/home/model.php:26
-#: tejarak/content_enter/main/tools/verification_code.php:147
+#: tejarak/content_enter/main/tools/verification_code.php:156
 #: tejarak/content_enter/mobile/change/model.php:20
 #: tejarak/content_enter/mobile/set/model.php:30
 #: tejarak/content_enter/pass/change/model.php:20
@@ -5305,32 +5310,46 @@ msgstr "اعتبارسنجی ناموفق بود (کلید API نامعتبر ا
 msgid "Invalid token (tmp login)"
 msgstr "کد اشتباه، دوباره تلاش کنید"
 
-#: tejarak/content_enter/main/tools/verification_code.php:153
+#: tejarak/content_enter/main/tools/verification_code.php:162
 msgid "Please fill the verification code"
 msgstr "لطفا کد اعتبارسنجی را وارد کنید"
 
-#: tejarak/content_enter/main/tools/verification_code.php:159
+#: tejarak/content_enter/main/tools/verification_code.php:168
 msgid "What happend? the code is number. you try to send string!?"
 msgstr "چی شده؟ کد باید عددی باشد. شما چطوری دارین متن وارد میکنید!؟"
 
-#: tejarak/content_enter/main/tools/verification_code.php:214
+#: tejarak/content_enter/main/tools/verification_code.php:189
+msgid "System error, try again"
+msgstr "خطای سیستم، دوباره تلاش کنید"
+
+#: tejarak/content_enter/main/tools/verification_code.php:213
+msgid "Your sms not deliver to us!"
+msgstr "پیامک شما بدست ما نرسیده است!"
+
+#: tejarak/content_enter/main/tools/verification_code.php:221
+#: tejarak/content_enter/main/tools/verification_code.php:232
+#: tejarak/content_enter/main/tools/verification_code.php:239
+msgid "What are you doing?"
+msgstr "اینجا چیکار می‌کنی عزیز جان!؟"
+
+#: tejarak/content_enter/main/tools/verification_code.php:302
 msgid "Your username was removed"
 msgstr "نام کاربری شما حذف شد"
 
-#: tejarak/content_enter/main/tools/verification_code.php:291
+#: tejarak/content_enter/main/tools/verification_code.php:379
 #: tejarak/content_enter/username/set/model.php:44
 msgid "Your username was set"
 msgstr "نام کاربری شما ثبت شد"
 
-#: tejarak/content_enter/main/tools/verification_code.php:295
+#: tejarak/content_enter/main/tools/verification_code.php:383
 msgid "Your username was change"
 msgstr "نام کاربری شما تغییر یافت"
 
-#: tejarak/content_enter/main/tools/verification_code.php:361
+#: tejarak/content_enter/main/tools/verification_code.php:449
 msgid "Duplicate account"
 msgstr "حساب کاربری تکراری"
 
-#: tejarak/content_enter/main/tools/verification_code.php:502
+#: tejarak/content_enter/main/tools/verification_code.php:590
 msgid "Invalid code, try again"
 msgstr "کد اشتباه، دوباره تلاش کنید"
 
@@ -5515,20 +5534,6 @@ msgstr "ثبت نام کاربری"
 #: tejarak/content_enter/username/view.php:12
 msgid "Enter to :name with username"
 msgstr "با نام کاربری وارد :name شوید"
-
-#: tejarak/content_enter/verify/sendsms/model.php:69
-msgid "System error, try again"
-msgstr "خطای سیستم، دوباره تلاش کنید"
-
-#: tejarak/content_enter/verify/sendsms/model.php:93
-msgid "Your sms not deliver to us!"
-msgstr "پیامک شما بدست ما نرسیده است!"
-
-#: tejarak/content_enter/verify/sendsms/model.php:101
-#: tejarak/content_enter/verify/sendsms/model.php:112
-#: tejarak/content_enter/verify/sendsms/model.php:119
-msgid "What are you doing?"
-msgstr "اینجا چیکار می‌کنی عزیز جان!؟"
 
 #: tejarak/content_enter/verify/sendsms/view.php:16
 msgid "Send \":code\" to :num"
@@ -8218,6 +8223,9 @@ msgstr "اجازه افزودن دستی تراکنش جدید"
 #: tejarak/permission.php:98
 msgid "Allow to show system logs"
 msgstr "اجازه مشاهده لاگ‌های سیستم"
+
+#~ msgid "Mobile not found"
+#~ msgstr "موبایل یافت نشد"
 
 #~ msgid "This_month"
 #~ msgstr "ماه_جاری"
