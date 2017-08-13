@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-12 19:09+0430\n"
-"PO-Revision-Date: 2017-08-12 19:11+0430\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2017-08-13 11:43+0430\n"
+"PO-Revision-Date: 2017-08-13 11:44+0430\n"
+"Last-Translator: Reza <rm.biqarar@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -4198,18 +4198,18 @@ msgid "You must login to pay amount"
 msgstr "برای دریافت جایزه، ابتدا باید وارد سیستم شوید"
 
 #: tejarak/content_a/billing/model.php:77
-msgid "This gateway is not supported by Sarshomar"
-msgstr "این درگاه توسط سرشمار پشتیبانی نمی‌شود"
+msgid "This gateway is not supported by tejarak"
+msgstr "این درگاه پرداخت توسط سرویس تجارک پشتیبانی نمی شود"
 
 #: tejarak/content_a/billing/model.php:83
 msgid "Amount not set"
 msgstr "مقدار تعیین نشده است"
 
-#: tejarak/content_a/billing/model.php:107 tejarak/content_a/billing/model.php:115
+#: tejarak/content_a/billing/model.php:119 tejarak/content_a/billing/model.php:127
 msgid "Invalid promo code"
 msgstr "کد اعتبار هدیه نامعتبر است"
 
-#: tejarak/content_a/billing/model.php:111
+#: tejarak/content_a/billing/model.php:123
 msgid "Your account charge :amount"
 msgstr "حساب شما :amount شارژ شد"
 
@@ -4652,6 +4652,7 @@ msgstr "شما می‌توانید پاسخی با کمتر از ۵۰۰ کارا
 
 #: tejarak/content_api/v1/houredit/tools/action.php:88
 #: tejarak/content_api/v1/houredit/tools/add.php:134
+#: tejarak/content_api/v1/report/tools/get.php:45
 #: tejarak/content_api/v1/report/tools/last.php:39
 #: tejarak/content_api/v1/report/tools/month.php:39
 #: tejarak/content_api/v1/report/tools/period.php:39
@@ -4949,16 +4950,20 @@ msgstr "عضو با موفقیت حذف شد"
 msgid "Invalid team id"
 msgstr "شناسه تیم نامعتبر است"
 
-#: tejarak/content_api/v1/report/tools/last.php:64
-#: tejarak/content_api/v1/report/tools/last.php:86
-#: tejarak/content_api/v1/report/tools/month.php:94
-#: tejarak/content_api/v1/report/tools/period.php:94
-#: tejarak/content_api/v1/report/tools/sum.php:45
-#: tejarak/content_api/v1/report/tools/u.php:45
-#: tejarak/content_api/v1/report/tools/year.php:71
-msgid "Can not access to load detail of this team"
-msgstr "جزئیات این تیم قابل دسترسی نیست"
+#: tejarak/content_api/v1/report/model.php:34
+#: tejarak/content_api/v1/report/tools/get.php:84
+#: tejarak/content_api/v1/report/tools/get.php:89
+#: tejarak/content_enter/callback/controller.php:15
+msgid "Invalid url"
+msgstr "آدرس اشتباه"
 
+#: tejarak/content_api/v1/report/tools/get.php:53
+#: tejarak/content_api/v1/report/tools/report_list.php:38
+#: tejarak/content_api/v1/team/tools/get.php:270
+msgid "Can not access to load this team details"
+msgstr "شما نمی‌توانید این تیم را بارگذاری کنید"
+
+#: tejarak/content_api/v1/report/tools/get.php:60
 #: tejarak/content_api/v1/report/tools/last.php:94
 #: tejarak/content_api/v1/report/tools/month.php:102
 #: tejarak/content_api/v1/report/tools/period.php:102
@@ -4968,6 +4973,16 @@ msgstr "جزئیات این تیم قابل دسترسی نیست"
 #: tejarak/content_api/v1/report/tools/year.php:79
 msgid "Invalid team data"
 msgstr "داده‌ی تیم نامعتبر است"
+
+#: tejarak/content_api/v1/report/tools/last.php:64
+#: tejarak/content_api/v1/report/tools/last.php:86
+#: tejarak/content_api/v1/report/tools/month.php:94
+#: tejarak/content_api/v1/report/tools/period.php:94
+#: tejarak/content_api/v1/report/tools/sum.php:45
+#: tejarak/content_api/v1/report/tools/u.php:45
+#: tejarak/content_api/v1/report/tools/year.php:71
+msgid "Can not access to load detail of this team"
+msgstr "جزئیات این تیم قابل دسترسی نیست"
 
 #: tejarak/content_api/v1/report/tools/month.php:72
 #: tejarak/content_api/v1/report/tools/period.php:72
@@ -4989,18 +5004,27 @@ msgstr "ماه وارد‌شده نامعتبر است"
 msgid "Start date and end date is not match"
 msgstr "تاریخ آغاز و پایان از یک نوع نیستند"
 
-#: tejarak/content_api/v1/report/tools/report_list.php:38
-#: tejarak/content_api/v1/team/tools/get.php:270
-msgid "Can not access to load this team details"
-msgstr "شما نمی‌توانید این تیم را بارگذاری کنید"
-
 #: tejarak/content_api/v1/report/tools/report_list.php:52
-msgid "Last Trafic"
-msgstr "آخرین ترددها"
+msgid "This month"
+msgstr "ماه جاری"
 
-#: tejarak/content_api/v1/report/tools/report_list.php:56
-msgid "Enter Exit"
-msgstr "ورود خروج"
+#: tejarak/content_api/v1/report/tools/report_list.php:60
+#: tejarak/includes/languages/trans_twig.php:427
+msgid "Last traffic"
+msgstr "آخرین ورود و خروج‌ها"
+
+#: tejarak/content_api/v1/report/tools/report_list.php:64
+msgid "Present"
+msgstr "حاضرین"
+
+#: tejarak/content_api/v1/report/tools/report_list.php:68
+msgid "Absent"
+msgstr "غایبین"
+
+#: tejarak/content_api/v1/report/tools/report_list.php:72
+#: tejarak/includes/lib/utility/message/make/members.php:48
+msgid "Members"
+msgstr "اعضا"
 
 #: tejarak/content_api/v1/report/tools/sum.php:87
 msgid "Invalid input day"
@@ -5107,10 +5131,6 @@ msgstr "شما بلاک شدید!"
 #: tejarak/content_enter/byebye/view.php:12
 msgid "Come back to us!"
 msgstr "پیش ما برگردید!"
-
-#: tejarak/content_enter/callback/controller.php:15
-msgid "Invalid url"
-msgstr "آدرس اشتباه"
 
 #: tejarak/content_enter/callback/controller.php:25
 msgid "Invalid service"
@@ -7526,10 +7546,6 @@ msgstr "دلار"
 msgid "Update profile"
 msgstr "به‌روزرسانی پروفایل"
 
-#: tejarak/includes/languages/trans_twig.php:427
-msgid "Last traffic"
-msgstr "آخرین ورود و خروج‌ها"
-
 #: tejarak/includes/languages/trans_twig.php:428
 msgid "Sum times in year"
 msgstr "جمع ساعات به تفکیک سال"
@@ -8154,6 +8170,22 @@ msgstr "نرخ ارز پیدا نشد"
 msgid "Unit id or user unit not found"
 msgstr "شناسه واحد یا واحد کاربر پیدا نشد"
 
+#: tejarak/includes/lib/utility/message/make/absent.php:29
+msgid "Absents"
+msgstr "غایبین"
+
+#: tejarak/includes/lib/utility/message/make/lasttraffic.php:48
+msgid "Last_traffic"
+msgstr "آخرین_تراکنش_ها"
+
+#: tejarak/includes/lib/utility/message/make/present.php:29
+msgid "Presents"
+msgstr "حاضرین"
+
+#: tejarak/includes/lib/utility/message/make/thismonth.php:38
+msgid "This_month"
+msgstr "ماه_فعلی"
+
 #: tejarak/includes/lib/utility/telegram.php:190
 msgid "Please install curl on your system"
 msgstr "لطفا سی‌یوآرال را بر روی سیستم نصب کنید"
@@ -8189,6 +8221,15 @@ msgstr "اجازه افزودن دستی تراکنش جدید"
 #: tejarak/permission.php:98
 msgid "Allow to show system logs"
 msgstr "اجازه مشاهده لاگ‌های سیستم"
+
+#~ msgid "This gateway is not supported by Sarshomar"
+#~ msgstr "این درگاه توسط سرشمار پشتیبانی نمی‌شود"
+
+#~ msgid "Last Trafic"
+#~ msgstr "آخرین ترددها"
+
+#~ msgid "Enter Exit"
+#~ msgstr "ورود خروج"
 
 #~ msgid "to"
 #~ msgstr "تا"
@@ -8750,9 +8791,6 @@ msgstr "اجازه مشاهده لاگ‌های سیستم"
 #~ msgid "Tejarak was born to serve small and beautiful service for e-business"
 #~ msgstr ""
 #~ "تجارک برای ارائه سرویس‌های کوچک و زیبا به کسب و کارهای الکترونیکی متولد شد"
-
-#~ msgid "Members"
-#~ msgstr "اعضا"
 
 #~ msgid "Add new branch"
 #~ msgstr "افزودن شعبه جدید"
