@@ -20,7 +20,7 @@
     <div class="box">
      <div class="f align-center">
       <h2 class="c">{%trans "Usage"%}</h2>
-      <h3 class="cauto os"><span>{{user_cash.total|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
+      <h3 class="cauto os"><span>{{0|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
      </div>
      <a href="{{url.baseFull}}/billing/detail" class="btn">{%trans "View Usage Details"%}</a>
     </div>
@@ -66,6 +66,7 @@
 
     <form method="post" class='gateways' autocomplete="off">
      <div class="f singleInput">
+      <input type="hidden" name="type" value="promo">
       <input class="c" id="promo-number" type="text" name="promo" placeholder='{%trans "Promo Code"%}' required spellcheck="false">
       <button class="c" type="submit">{%trans "Apply Code"%}</button>
      </div>
@@ -79,40 +80,36 @@
  </div>
 </div>
 
-
    <div class="box">
     <h3 id="billing-history">{%trans "Billing History"%}</h3>
     <div class="tbl ps dtc">
      <div class="f th">
-      <span class="c">{%trans "Date"%}</span>
-      <span class="c">{%trans "Desc"%}</span>
-      <span class="c">{%trans "Amount"%}</span>
-      <span class="c">{%trans "Invoice"%}</span>
+
+      <span class="c">{%trans "Title" %}</span>
+      <span class="c">{%trans "Type" %}</span>
+      <span class="c">{%trans "Date" %}</span>
+      <span class="c">{%trans "Plus" %}</span>
+      <span class="c">{%trans "Minus" %}</span>
+      <span class="c">{%trans "Budget" %}</span>
+      <span class="c">{%trans "Unit" %}</span>
+
      </div>
 
-{% for key, value in history %}
+    {% for key, value in history %}
      <div class="f">
-       <span class="c1">{{value.date|jdate}}</span>
-       <span class="c1">{%set myTitle = value.title%}{%trans myTitle%}</span>
-       <span class="c1">{%set myType = value.type%}{%trans myType%}</span>
-       <span class="c1">
-{%if value.plus%}
-       <span class="c1">{{value.plus|number_format(2, ".", ",")|fitNumber}}</span>
-       <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
-{%else%}
-        {{0|fitNumber}}
-{%endif%}
-       </span>
-       <span class="c1">
-{%if value.minus%}
-       <span class="c1">{{value.minus|number_format(2, ".", ",")|fitNumber}}</span>
-       <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
-{%else%}
-       {{0|fitNumber}}
-{%endif%}
-       </span>
+      <span class="c">{{value.title}}</span>
+      <span class="c">{%set my_type = value.type%}{%trans my_type%}</span>
+      {%if site.currentlang == 'fa' %}
+        <span class="c">{{value.date|jdate("Y-m-d")}} {{value.time|fitNumber}}</span>
+      {%else%}
+        <span class="c">{{value.date}} {{value.time|fitNumber}}</span>
+      {%endif%}
+      <span class="c">{{value.plus|number_format|fitNumber}}</span>
+      <span class="c">{{value.minus|number_format|fitNumber}}</span>
+      <span class="c">{{value.budget|number_format|fitNumber}}</span>
+      <span class="c">{%set my_unit = value.unit%}{%trans my_unit%}</span>
      </div>
-{%endfor%}
+    {%endfor%}
     </div>
    </div>
    <div class="pagination-container">
@@ -121,124 +118,3 @@
 
 {%endblock%}
 
-
-
-{%block contentOld%}
-
-<div class="main billing" >
-    <div>
-        <div class="in xxlarge">
-            <div class="billing-stats row auto">
-                <div class="billing-info span4">
-                    <div class="icon">
-                        <img alt="Coin" src="{{url.static}}images/gateway/coin.svg" class="flip-rtl" width="60" height="60">
-                    </div>
-                    <div>
-                        <h5 class="title">{%trans "Your Money"%}</h5>
-                        <div class="amount"><span>{{user_cash.real|number_format|fitNumber}}</span> <span>{%trans user_unit%}</span></div>
-                    </div>
-                </div>
-                <div class="billing-info span4">
-                    <div class="icon">
-                        <img alt="Gift" src="{{url.static}}images/gateway/gift.svg" width="60" height="60">
-                    </div>
-                    <div>
-                        <h5 class="title">{%trans "Your Gift"%}</h5>
-                        <div class="amount"><span>{{user_cash.gift|number_format|fitNumber}}</span> <span>{%trans user_unit%}</span></div>
-                    </div>
-                </div>
-                <div class="billing-info span4">
-                    <div class="icon">
-                        <img alt="Money bag" src="{{url.static}}images/gateway/money-bag.svg" width="60" height="60">
-                    </div>
-                    <div>
-                        <h5 class="title">{%trans "Your Credit"%}</h5>
-                        <div class="amount"><strong><span>{{user_cash.total|number_format|fitNumber}}</span> <span>{%trans user_unit%}</span></strong></div>
-                    </div>
-                </div>
-            </div>
-            <div class="billing-info charge-account-box">
-                <div class="row auto">
-                    <h3 class="title" id="charge-account">{%trans "Charge your account"%}</h3>
-                    <div class="charge-amount">{%trans "Choose a gateway and enter an amount to charge your account"%}</div>
-                    <div class="gateways">
-                        <form class="row auto" method="post">
-                            <div class="span6">
-                        <label><span>
-                            <input type="radio" name="bank" id="ZarinPal" value="ZarinPal" checked>
-                            <img alt="ZarrinPal" src="{{url.static}}images/gateway/ZarinPal.svg" width="60" height="60">
-                        </span></label>
-                            </div>
-                        <div class="span3 billing-buttons">
-                            <label for="amount-number" class="currency-label">{%trans user_unit%}</label>
-                            <input id="amount-number" class="amount-number" type="number" name="amount" value="{{amount}}" placeholder="{%trans "Amount"%}">
-                            <button class="billing-btn" type="submit">{%trans "Confirm"%}</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="billing-info promo-info">
-                <div class="row auto promo-box">
-                    <div class="span6">
-                        <h3 class="title" id="promo-code">{%trans "Promo code"%}</h3>
-                        <div class="promo-subtitle">{%trans "If you have a promo code, please enter it below to receive your credit."%}</div>
-                    </div>
-                    <div class="span3 promo-codes">
-                        <form class="row auto" method="post">
-                            <div class="span12 billing-buttons">
-                                <input class="amount-number" type="text" name="promo" value="" placeholder="{%trans "Code"%}">
-                                <button class="billing-btn" type="submit">{%trans "Submit"%}</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- <div class="promo-msg-box">
-                    <h3 class="promo-msg">
-                        {#%trans "Thanks for signing up! You’ve automatically redeemed a referral promo credit of $10.00."%#}
-                    </h3>
-                </div> -->
-            </div>
-
-            <div class="default-tbl billing-history-table">
-                <h3 id="billing-history">{%trans "Billing History"%}</h3>
-                <div class="dt">
-                    <div class="f th">
-                        <span class="c1">{%trans "Date"%}</span>
-                        <span class="c1">{%trans "Title"%}</span>
-                        <span class="c1">{%trans "Type"%}</span>
-                        <span class="c1">{%trans "Plus"%}</span>
-                        <span class="c1">{%trans "Minus"%}</span>
-                    </div>
-                    {% for key, value in history %}
-                    <div class="f">
-                        <span class="c1">{{value.date|jdate}}</span>
-                        <span class="c1">{%set myTitle = value.title%}{%trans myTitle%}</span>
-                        <span class="c1">{%set myType = value.type%}{%trans myType%}</span>
-                        <span class="c1">
-                            {%if value.plus%}
-                                <span class="c1">{{value.plus|number_format(2, ".", ",")|fitNumber}}</span>
-                                <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
-                            {%else%}
-                                {{0|fitNumber}}
-                            {%endif%}
-                        </span>
-                        <span class="c1">
-                            {%if value.minus%}
-                                <span class="c1">{{value.minus|number_format(2, ".", ",")|fitNumber}}</span>
-                                <span class="c1">{%set myUnit = value.unit%}{%trans myUnit%}</span>
-                            {%else%}
-                                {{0|fitNumber}}
-                            {%endif%}
-                        </span>
-                    </div>
-                    {%endfor%}
-                </div>
-            </div>
-            <div class="pagination-container">
-                {%include display.pagination%}
-            </div>
-        </div>
-    </div>
-</div>
-{%endblock%}

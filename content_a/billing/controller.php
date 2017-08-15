@@ -9,10 +9,6 @@ class controller extends  \content_a\main\controller
 		parent::_route();
 		$this->get("billing", "billing")->ALL();
 		$this->post("billing")->ALL();
-
-		$this->get("verify")->ALL("/billing\/verify\/(zarinpal|parsian)/");
-
-		$this->post("verify")->ALL("/billing\/verify\/(zarinpal|parsian)/");
 	}
 
 }

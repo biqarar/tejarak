@@ -16,12 +16,6 @@ class model extends \mvc\model
 		// 'tejarat',
 	];
 
-	/**
-	 * PAYMENT DATA
-	 *
-	 * @var        array
-	 */
-	public static $PAYMENT_DATA = [];
 
 	/**
 	 * the user id
@@ -29,10 +23,6 @@ class model extends \mvc\model
 	 * @var        <type>
 	 */
 	public $user_id = null;
-
-	use tools\data;
-	use tools\pay;
-	use tools\unit;
 
 
 	/**
@@ -47,8 +37,8 @@ class model extends \mvc\model
 		$meta            = [];
 		$this->user_id   = $this->login('id');
 		$meta['user_id'] = $this->user_id;
-		$meta['admin']   = false ;
-
+		// $meta['admin']   = false ;
+		$meta['verify'] = 1;
 		$billing_history = \lib\db\transactions::search(null, $meta);
 		return $billing_history;
 	}
@@ -60,93 +50,74 @@ class model extends \mvc\model
 	{
 		if(!$this->login())
 		{
-			return debug::error(T_("You must login to pay amount"));
+			debug::error(T_("You must login to pay amount"));
+			return false;
 		}
 
 		$this->user_id = $this->login('id');
-
-		if(!$this->user_unit())
-		{
-			return;
-		}
 
 		if(utility::post('bank'))
 		{
 			if(!in_array(mb_strtolower(utility::post('bank')), self::$support_bank))
 			{
-				debug::error(T_("This gateway is not supported by Sarshomar"));
+				debug::error(T_("This gateway is not supported by tejarak"));
 				return false;
 			}
 
-			if(!utility::post('amount'))
+			if(!utility::post('amount') || !is_numeric(utility::post('amount')))
 			{
 				debug::error(T_("Amount not set"), 'amount', 'arguments');
 				return false;
 			}
 
-			return $this->pay();
-		}
-
-		if(utility::post('promo'))
-		{
-			$amount = 0;
-			switch (utility::post('promo'))
+			switch (mb_strtolower(utility::post('bank')))
 			{
-				// case '$1000$':
-				// 	$amount = 1000;
-				// 	break;
+				case 'zarinpal':
+					\lib\utility\payment\pay::zarinpal($this->user_id, utility::post('amount'), ['turn_back' => $this->url('full')]);
+					return;
+					break;
 
-				// case '$2000$':
-				// 	$amount = 2000;
-				// 	break;
+				case 'parsian':
+					\lib\utility\payment\pay::parsian($this->user_id, utility::post('amount'), ['turn_back' => $this->url('full')]);
+					return;
+					break;
 
-				// case '$$':
-				// 	$amount = 100000;
-				// 	break;
 				default:
-					return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
+					return false;
 					break;
 			}
-			$this->save_transaction($amount);
-			return debug::true(T_("Your account charge :amount", ['amount' => $amount]));
 		}
-		else
+
+		if(utility::post('type') === 'promo')
 		{
-			return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
-		}
-	}
+			if(utility::post('promo'))
+			{
 
+				$amount = 0;
+				switch (utility::post('promo'))
+				{
+					// case '$1000$':
+					// 	$amount = 1000;
+					// 	break;
 
-	/**
-	 * Posts a verify.
-	 *
-	 * @return     <type>  ( description_of_the_return_value )
-	 */
-	public function post_verify()
-	{
-		return $this->get_verify();
-	}
+					// case '$2000$':
+					// 	$amount = 2000;
+					// 	break;
 
+					// case '$$':
+					// 	$amount = 100000;
+					// 	break;
+					default:
+						return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
+						break;
+				}
 
-	/**
-	 * Gets the verify.
-	 *
-	 * @return     <type>  The verify.
-	 */
-	public function get_verify()
-	{
-		$url = \lib\router::get_url();
-
-		$this->controller->display = false;
-
-		if(preg_match("/zarinpal/", $url))
-		{
-			return $this->zarinpal_verify();
-		}
-		elseif(preg_match("/parsian/", $url))
-		{
-			$this->parsian_verify();
-			$this->redirector($this->url('baseFull'). '/billing')->redirect();
+				return debug::true(T_("Your account charge :amount", ['amount' => $amount]));
+			}
+			else
+			{
+				return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
+			}
 		}
 	}
 }

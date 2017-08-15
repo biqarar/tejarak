@@ -7,7 +7,7 @@ class view extends \content_a\main\view
 	{
 		if($this->login('unit_id'))
 		{
-			$this->data->user_unit = \lib\db\units::get($this->login('unit_id'), true);
+			$this->data->user_unit = \lib\utility\units::get($this->login('unit_id'), true);
 		}
 	}
 }

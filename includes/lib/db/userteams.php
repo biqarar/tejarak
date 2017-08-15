@@ -410,9 +410,20 @@ class userteams
 	 * @param      <type>  $_string   The string
 	 * @param      array   $_options  The options
 	 */
-	public static function search()
+	public static function search($_string = null, $_options = [])
 	{
-		return \lib\db\config::public_search('userteams', ...func_get_args());
+		if(!is_array($_options))
+		{
+			$_options = [];
+		}
+
+		$default_option =
+		[
+			'search_field' => "( userteams.displayname LIKE '%__string__%' ) ",
+		];
+
+		$_options = array_merge($default_option, $_options);
+		return \lib\db\config::public_search('userteams', $_string, $_options);
 	}
 
 }

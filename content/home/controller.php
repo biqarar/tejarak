@@ -8,10 +8,7 @@ class controller extends \content\main\controller
 	 */
 	public function config()
 	{
-		// $msg = new \lib\utility\message(100036);
-		// 		$msg->message_type('timed_auto_report');
-		// 		$msg->send();
-		// 		var_dump($msg);exit();
+
 	}
 
 

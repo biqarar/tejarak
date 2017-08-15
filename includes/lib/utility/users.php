@@ -271,7 +271,7 @@ class users
 			case 'unit':
 				if(isset(self::$USERS_DETAIL[$_user_id]['unit_id']))
 				{
-					$unit = \lib\db\units::get(self::$USERS_DETAIL[$_user_id]['unit_id']);
+					$unit = \lib\utility\units::get(self::$USERS_DETAIL[$_user_id]['unit_id']);
 					if(isset($unit['title']))
 					{
 						return $unit['title'];
@@ -314,7 +314,7 @@ class users
 				break;
 
 			case 'unit':
-				$unit_id = \lib\db\units::get_id($_value);
+				$unit_id = \lib\utility\units::get_id($_value);
 				if($unit_id)
 				{
 					$update['unit_id'] = $unit_id;
@@ -322,7 +322,7 @@ class users
 				break;
 
 			case 'unit_id':
-				$check = \lib\db\units::get($_value);
+				$check = \lib\utility\units::get($_value);
 				if($check)
 				{
 					$update['unit_id'] = $_value;

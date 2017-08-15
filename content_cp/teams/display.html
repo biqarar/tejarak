@@ -1,0 +1,81 @@
+{%extends display.cpMain%}
+
+{%block sidenav%}
+{{parent()}}
+
+{%endblock%}
+
+{%block content%}
+ <form method="get" class="df f" data-action>
+	<div class="c10">
+		<label for="search">{%trans "Search"%}</label>
+		<input type="text" name="search" class="c1" id="search" value='{{get_search}}' >
+	</div>
+
+	<div class="c1">
+		<label>‌</label>
+		<input type="submit"  class="c1 b1"  value='{%trans "Search"%}'>
+	</div>
+</form>
+<br>
+
+
+
+<div class="dt big">
+	<div class="f th">
+		<div class="c"><a href="{{url.base}}/cp/teams/{{order_url.name}}">{%trans "Name"%}</a></div>
+		<div class="c"><a href="{{url.base}}/cp/teams/{{order_url['24h']}}">{%trans "Setting"%}</a></div>
+		<div class="c"><a href="{{url.base}}/cp/teams/{{order_url.privacy}}">{%trans "privacy"%}</a></div>
+		<div class="c"><a href="{{url.base}}/cp/teams/{{order_url.status}}">{%trans "status"%}</a></div>
+		<div class="c"><a href="{{url.base}}/cp/teams/{{order_url.logourl}}">{%trans "logo"%}</a></div>
+		<div class="c"><a href="{{url.base}}/cp/teams/{{order_url.plan}}">{%trans "plan"%}</a></div>
+		<div class="c"><a href="{{url.base}}/cp/teams/{{order_url.parent}}">{%trans "parent"%}</a></div>
+		<div class="c">{%trans "Description"%}</div>
+		<div class="c1">{%trans "More"%}</div>
+		<div class="c1">{%trans "Members"%}</div>
+		<div class="c1">{%trans "Hours"%}</div>
+	</div>
+	{%for key, value in teams_list%}
+	<div class="f">
+
+		<div class="c">
+		<a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}
+		{% if value.website%}
+			<a href="{{value.website}}" target="_blank">
+				<i class="icon-link"></i>
+			</a>
+		{%endif%}
+		</a>
+		</div>
+
+		<div class="c">
+			{%if value['24h']%} {% trans "24H" %} {%endif%}
+			{%if value.allowminus%} {% trans "Minus" %} {%endif%}
+			{%if value.allowplus%} {% trans "Plus" %} {%endif%}
+			{%if value.showavatar%} {% trans "Avatar" %} {%endif%}
+		</div>
+
+		<div class="c">{{value.privacy}}</div>
+		<div class="c">{{value.status}}</div>
+		{%if value.logourl%}
+			<div class="c"><img src="{{url.root}}/{{value.logourl}}" height="15" width="15"></div>
+		{%else%}
+			<div class="c"><i>{%trans "No logo"%}</i></div>
+		{%endif%}
+		<div class="c">{{value.plan}}</div>
+		<div class="c">{{value.parent}}</div>
+		<div class="c">{{value.desc}}</div>
+		<div class="c1"><a href='{{url.base}}/cp/teams/detail/{{value.id}}'><span class="icon-align-left-1"></span></a></div>
+		<!-- <div class="c1"><a href='{{url.base}}/cp/teams/edit/{{value.id}}'><span class="icon-edit-write"></span></a></div> -->
+		<div class="c1"><a href='{{url.base}}/cp/teams/members/{{value.id}}'><span class="icon-users"></span></a></div>
+		<div class="c1"><a href='{{url.base}}/cp/teams/hours/{{value.id}}'><span class="icon-history"></span></a></div>
+
+	</div>
+	{%endfor%}
+</div>
+<div class="pagination-container">
+	{%include display.pagination%}
+</div>
+
+
+{%endblock%}
