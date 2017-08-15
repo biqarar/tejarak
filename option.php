@@ -257,4 +257,7 @@ self::$config['units'] =
 ];
 // the unit id for default
 self::$config['default_unit'] = 1;
+// force change unit to this unit
+self::$config['force_unit']   = 1;
+
 ?>

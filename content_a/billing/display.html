@@ -35,17 +35,16 @@
 
     <form method="post" class='gateways' autocomplete="off">
      <div class="f">
-      <label class="cauto">
-       <input type="radio" name="bank" id="ZarinPal" value="ZarinPal" checked="">
-       <img alt="ZarrinPal" src="{{url.static}}images/gateway/ZarinPal.svg">
-      </label>
 
-      {% if login.id == 4 or login.id == 1%}
       <label class="cauto">
-       <input type="radio" name="bank" id="parsian" value="parsian" >
+       <input type="radio" name="bank" id="parsian" value="parsian"  checked>
        <img alt="ZarrinPal" src="{{url.static}}images/gateway/Parsian.svg">
       </label>
-      {%endif%}
+
+      <label class="cauto">
+       <input type="radio" name="bank" id="ZarinPal" value="ZarinPal">
+       <img alt="ZarrinPal" src="{{url.static}}images/gateway/ZarinPal.svg">
+      </label>
 
      </div>
      <div class="f singleInput">
@@ -57,7 +56,6 @@
 
    </div>
   </div>
-
 
   <div class="f">
    <div class="box">
