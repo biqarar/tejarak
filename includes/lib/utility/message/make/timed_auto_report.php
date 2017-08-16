@@ -27,17 +27,12 @@ trait timed_auto_report
 					$msg[$value['userteam_id']]['emoji'] = [];
 				}
 
-				if(!array_key_exists('date', $value))
+				if(!array_key_exists('start_time', $value))
 				{
 					continue;
 				}
 
-				if(!array_key_exists('enddate', $value))
-				{
-					continue;
-				}
-
-				if(!array_key_exists('end', $value))
+				if(!array_key_exists('end_time', $value))
 				{
 					continue;
 				}
@@ -47,18 +42,21 @@ trait timed_auto_report
 					$msg[$value['userteam_id']]['displayname'] = $value['displayname'];
 				}
 
-				$start_date = $value['date'];
-				$end_date   = $value['enddate'];
-				$end_time   = $value['end'];
-
-				if(!$value['end'])
+				if(!$value['end_time'])
 				{
 					array_push($msg[$value['userteam_id']]['emoji'], $tik_emoji);
 				}
 				else
 				{
-					array_push($msg[$value['userteam_id']]['emoji'], $tik_emoji);
-					array_push($msg[$value['userteam_id']]['emoji'], $zzz_emoji);
+					if(time() - strtotime($value['start_time']) <= (24 * 60 * 60))
+					{
+						array_push($msg[$value['userteam_id']]['emoji'], $tik_emoji);
+						array_push($msg[$value['userteam_id']]['emoji'], $zzz_emoji);
+					}
+					else
+					{
+						array_push($msg[$value['userteam_id']]['emoji'], $zzz_emoji);
+					}
 				}
 			}
 		}

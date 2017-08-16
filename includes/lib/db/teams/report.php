@@ -14,9 +14,7 @@ trait report
 			return false;
 		}
 
-		$end_date   = date("Y-m-d");
-		$start_date = date('Y-m-d',strtotime("-1 days"));
-		$time       = date("H:i");
+		$now       = date("Y-m-d H:i:s");
 
 		$query =
 		"
@@ -29,21 +27,15 @@ trait report
 			INNER JOIN userteams ON userteams.id = hours.userteam_id
 			WHERE
 				userteams.team_id = $_team_id AND
-				TIME(hours.start) <= TIME('$time') AND
 				(
-					(
-						DATE(hours.date) >= DATE('$start_date') AND
-						DATE(hours.date) <= DATE('$end_date')
-					)
-					OR
-					(
-						DATE(hours.enddate) >= DATE('$start_date') AND
-						DATE(hours.enddate) <= DATE('$end_date')
-					)
+					hours.start_time >= DATE_SUB('$now', INTERVAL 24 HOUR) OR
+					hours.end_time >= DATE_SUB('$now', INTERVAL 24 HOUR)
 				)
 			ORDER BY hours.id ASC
 		";
+
 		$resutl = \lib\db::get($query);
+
 		return $resutl;
 	}
 }

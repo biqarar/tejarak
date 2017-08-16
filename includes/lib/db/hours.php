@@ -228,6 +228,8 @@ class hours
 		if(isset($_args['endshamsi_year'])) 	$update_insert['endshamsi_year']  = $_args['endshamsi_year'];
 		if(isset($_args['endshamsi_month'])) 	$update_insert['endshamsi_month'] = $_args['endshamsi_month'];
 		if(isset($_args['endshamsi_day'])) 		$update_insert['endshamsi_day']   = $_args['endshamsi_day'];
+		if(isset($_args['start_time'])) 		$update_insert['start_time']   	  = $_args['start_time'];
+		if(isset($_args['end_time'])) 			$update_insert['end_time']   	  = $_args['end_time'];
 
 		if(isset($_options['type']) && $_options['type'] === 'update' && $_id && is_numeric($_id))
 		{
@@ -346,6 +348,7 @@ class hours
 		$insert['shamsi_day']        = jdate::date("d", strtotime($date), false, true);
 		$insert['start']             = date("H:i");
 		$insert['start_gateway_id']  = $_args['gateway'];
+		$insert['start_time']        = date("Y-m-d H:i:s");
 
 		$inserted                        = self::insert($insert);
 		$plan_feature                    = [];
@@ -447,6 +450,7 @@ class hours
 		$update['endshamsi_day']   = jdate::date("d", strtotime($date), false, true);
 		$update['end_gateway_id']  = $_args['gateway'];
 		$update['end_userteam_id'] = $_args['userteam_id'];
+		$update['end_time']        = date("Y-m-d H:i:s");
 
 		$updated                         = self::update($update, $start['id']);
 		$plan_feature                    = [];
