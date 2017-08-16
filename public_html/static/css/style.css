@@ -549,8 +549,13 @@ body #billing{max-width:800px;margin:0 auto}
 
 
 /* ---------------------------------------------------------------- personal card */
-#personal-card-intro{background-color:#fff;}
-#personal-card-intro h3{margin-bottom:2em;}
+/*.page-block.white-page-block{background-color:#fff;}*/
+
+#personal-card-intro{background-color:#c01541;position:relative;overflow:hidden;}
+#personal-card-intro h2{color:#fff;}
+#personal-card-intro h3{margin-bottom:3rem;color:#fff;}
+
+#personal-card-intro .personal-card{margin:0 auto 5rem;}
 
 .btn-center{text-align:center;font-size:1.4em;}
 .btn-p{font-size:1.2em;color:#eee;background-color:#70b020;line-height:initial;height:initial;padding:1em 2em;}
@@ -559,7 +564,16 @@ body #billing{max-width:800px;margin:0 auto}
 [data-page="card"] .pc h4{font-size:2em;}
 [data-page="card"] .pc p{font-size:1.4em;}
 
-.personal-card{width:8.5cm;height:5.4cm;border:1px solid #ddd;border-radius:15px;background-color:#fff;}
+[data-page="card"] .pc .personal-card{margin:0 auto;}
+
+[data-page="card"] #logo-and-branding .personal-card{position:relative;overflow:hidden;}
+[data-page="card"] #logo-and-branding .avatar{display:block;max-width:100%;max-height:100%;}
+[data-page="card"] #logo-and-branding .avatar-frame{display:inline-block;width:75px;height:80px;border:1px solid #ddd;padding:5px 0 0;border-radius:3px;background-color:#f1f1f1;margin-top:20px;}
+[data-page="card"] #logo-and-branding .avatar-name{padding:1rem;font-size:1.2em;}
+[data-page="card"] #logo-and-branding .logo{display:block;max-height:150px;}
+
+.personal-card{width:8.5cm;height:5.4cm;border:1px solid #ddd;border-radius:10px;background-color:#fff;}
+
 .barcode{position:relative;}
 .barcode li{height:50px;margin:0 1px;background-color:#333;}
 .barcode li:nth-child(1){width:5px;}
@@ -592,6 +606,34 @@ body #billing{max-width:800px;margin:0 auto}
 @keyframes beam{50%{opacity:0;}}
 @-webkit-keyframes scanning{50%{-webkit-transform:translateY(80px);transform:translateY(80px);}}
 @keyframes scanning{50%{-webkit-transform:translateY(80px);transform:translateY(80px);}}
+
+.animated{animation-duration:5s;animation-fill-mode:both;}
+.animated.infinite{animation-iteration-count:infinite;animation-delay:1s;}
+.animated.hinge{animation-duration: 2s;}
+
+@keyframes fadeInDown{
+  0%{opacity:0;transform:translate3d(0, -100%, 0);}
+  20%{opacity:1;transform:none;}
+  90%{opacity:1;transform:none;}
+  100%{opacity:0;transform:none;}
+}
+.fadeInDown{animation-name:fadeInDown;}
+
+@keyframes fadeInLeft{
+  0%{opacity:0;transform:translate3d(-100%, 0, 0);}
+  20%{opacity:1;transform:none;}
+  90%{opacity:1;transform:none;}
+  100%{opacity:0;transform:none;}
+}
+.fadeInLeft{animation-name:fadeInLeft;}
+
+@keyframes fadeInUp{
+  0%{opacity:0;transform:translate3d(0, 100%, 0);}
+  20%{opacity:1;transform:none;}
+  90%{opacity:1;transform:none;}
+  100%{opacity:0;transform:none;}
+}
+.fadeInUp{animation-name:fadeInUp;}
 
 #personal-card-interested{background-color:#fff;}
 #personal-card-interested h2{font-size:5em;}

@@ -7,7 +7,7 @@
 {%endset%}
 
 {%block content%}
-<div class="page-block">
+<div class="page-block white-page-block">
 	<div class="cn">
 		<div class="tile">
 			<h2>{%trans "Personal Card"%}</h2>
@@ -18,29 +18,34 @@
 
 <div class="tile" id="personal-card-intro">
 	<div class="cn">
-		<h2>Do attendance easily and enjoy real time reports</h2>
-		<h3>Setup your dedicated and beautiful attendance system in less than a minute and have a <span>real time</span> and scrupulously monitoring on your business from anywhere</h3>
+		<div class="personal-card"></div>
+		<h3>{%trans "Setup your dedicated and beautiful attendance system in less than a minute and have a <span>real time</span> and scrupulously monitoring on your business from anywhere"%}</h3>
 		<div class="btn-center">
 			<a href="#" data-direct class="btn btn-p">{%trans "Submit your order"%}</a>
 		</div>
 	</div>
 </div>
 
-<div class="pc" id="">
+<div class="pc" id="logo-and-branding">
 	<div class="cn">
 		<div class="pa">
 			<div class="f">
 				<div class="c8">
 					<h4>{%trans "Logo and branding"%}</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>{%trans "Logo and branding"%}</p>
 				</div>
 				<div class="c4">
-					<div class="personal-card"></div>
+					<div class="f personal-card">
+						<div class="flex f-column justify-center align-center c">
+							<img src="{{url.static}}images/brand/brand-reg.jpg" alt='{%trans "Tejarak logo"%}' class="logo animated infinite fadeInLeft">
+						</div>
+						<div class="flex f-column justify-center align-center c">
+							<div class="avatar-frame animated infinite fadeInDown">
+								<img src="{{url.static}}images/avatar/sample/boy.svg" alt='{%trans "Sample personal card"%}' class="avatar">
+							</div>
+							<div class="avatar-name animated infinite fadeInUp">{%trans "Javad Evazzadeh"%}</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
