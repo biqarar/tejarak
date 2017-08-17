@@ -501,5 +501,35 @@ class hours
 			return $hours_data;
 		}
 	}
+
+
+	/**
+	 * get the active user in period
+	 *
+	 * @param      <type>  $_args  The arguments
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function active_user_period($_args)
+	{
+		$query =
+		"
+			SELECT
+				SUM(hours.diff)   AS `sum_diff`,
+				hours.userteam_id AS `userteam_id`
+			FROM
+				hours
+			INNER JOIN userteams ON userteams.id = hours.userteam_id
+			WHERE
+				userteams.team_id = $_args[team_id] AND
+				hours.start_time  >= '$_args[start]' AND
+				hours.end_time    <= '$_args[end]'
+			GROUP BY hours.userteam_id
+			HAVING sum_diff > $_args[active_time]
+		";
+
+		$result = \lib\db::get($query);
+		return $result;
+	}
 }
 ?>

@@ -260,4 +260,7 @@ self::$config['default_unit'] = 1;
 // force change unit to this unit
 self::$config['force_unit']   = 1;
 
+
+self::$config['transactions_code'][100] = "invoice:team";
+
 ?>

@@ -105,7 +105,7 @@ class model extends \content_a\main\model
 		}
 		else
 		{
-			debug::error(T_("Can not save this plan of your team"));
+			// debug::error(T_("Can not save this plan of your team"));
 			return false;
 		}
 	}

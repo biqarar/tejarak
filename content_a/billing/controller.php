@@ -9,8 +9,13 @@ class controller extends  \content_a\main\controller
 		parent::_route();
 		$this->get("billing", "billing")->ALL();
 		$this->post("billing")->ALL();
+
+		$url = \lib\router::get_url();
+		if(preg_match("/^billing\/invoice\/\d+$/", $url))
+		{
+			\lib\router::set_controller('\\content_a\\billing\\invoice');
+			return;
+		}
 	}
-
 }
-
 ?>

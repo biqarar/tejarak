@@ -90,6 +90,7 @@
       <span class="c">{%trans "Minus" %}</span>
       <span class="c">{%trans "Budget" %}</span>
       <span class="c">{%trans "Unit" %}</span>
+      <span class="c">{%trans "Invoice" %}</span>
 
      </div>
 
@@ -106,6 +107,11 @@
       <span class="c">{{value.minus|number_format|fitNumber}}</span>
       <span class="c">{{value.budget|number_format|fitNumber}}</span>
       <span class="c">{%set my_unit = value.unit%}{%trans my_unit%}</span>
+      {%if value.invoice_id%}
+        <span class="c"><a href="{{url.baseFull}}/billing/invoice/{{value.invoice_id}}"><i class="icon-file-text"></i></a></span>
+      {%else%}
+        <span class="c"><i>{%trans "No invoice"%}</i></span>
+      {%endif%}
      </div>
     {%endfor%}
     </div>

@@ -9,15 +9,20 @@ class teamplans
 	 *
 	 * @var        array
 	 */
-	public static $PLANS =
-	[
-		'free'     => 1,
-		'pro'      => 2,
-		'business' => 3,
-		'simple'   => 4,
-		'standard' => 5,
-		'full'     => 6,
-	];
+	public static $PLANS = [];
+
+
+	/**
+	 * get plan list
+	 */
+	public static function config()
+	{
+		if(empty(self::$PLANS))
+		{
+			self::$PLANS = \lib\utility\plan::list(true, true);
+		}
+	}
+
 
 	/**
 	 * return the plan code
@@ -28,6 +33,8 @@ class teamplans
 	 */
 	public static function plan_code($_name)
 	{
+		self::config();
+
 		if(isset(self::$PLANS[$_name]))
 		{
 			return self::$PLANS[$_name];
@@ -43,6 +50,8 @@ class teamplans
 	 */
 	public static function plan_name($_code)
 	{
+		self::config();
+
 		$temp = array_flip(self::$PLANS);
 		if(isset($temp[$_code]))
 		{
@@ -71,6 +80,7 @@ class teamplans
 		return db\config::public_update('teamplans', ...func_get_args());
 	}
 
+
 	/**
 	 * get current team plan
 	 *
@@ -84,7 +94,19 @@ class teamplans
 		{
 			return false;
 		}
-		$query = "SELECT * FROM teamplans WHERE teamplans.team_id = $_team_id ORDER BY teamplans.id DESC LIMIT 1";
+		$query =
+		"
+			SELECT
+				*
+			FROM
+				teamplans
+			WHERE
+				teamplans.team_id = $_team_id AND
+				teamplans.status = 'enable'
+			ORDER BY
+				teamplans.id DESC
+			LIMIT 1
+		";
 		$result = \lib\db::get($query, null, true);
 		if(isset($result['plan']))
 		{
@@ -92,6 +114,7 @@ class teamplans
 		}
 		return $result;
 	}
+
 
 	/**
 	 * set plan of team
@@ -130,6 +153,31 @@ class teamplans
 			return false;
 		}
 
+		$team_details = \lib\db\teams::get_by_id($_args['team_id']);
+
+		$log_meta['meta']['team_details'] = $team_details;
+
+		if(isset($team_details['creator']))
+		{
+			if(intval($team_details['creator']) === intval($_args['creator']))
+			{
+				// just the creator of team can change
+			}
+			else
+			{
+				\lib\db\logs::set('plan:change:not:creator', $_args['creator'], $log_meta);
+				\lib\debug::error(T_("Just creator of team can change the plan"));
+				return false;
+			}
+		}
+		else
+		{
+			\lib\db\logs::set('plan:change:team:details:not:found', $_args['creator'], $log_meta);
+			return false;
+		}
+
+		$_args['status'] = 'enable';
+
 		$_args['plan'] = self::plan_code($_args['plan']);
 		if(!$_args['plan'])
 		{
@@ -138,10 +186,40 @@ class teamplans
 		}
 
 		$current = self::current($_args['team_id']);
+
+		if(isset($current['plan']) && intval($current['plan']) === intval($_args['plan']))
+		{
+			\lib\debug::error(T_("This plan is already active for you"));
+			return false;
+		}
+
+		$maked_invoice = \lib\utility\invoices::team_plan($_args['team_id'], ['current' => $current, 'new' => $_args]);
+		// in plan full or other plan
+		// if system can not creat invoice
+		// we have an error
+		// never shoud change team plan
+		// for example the full plan need to pay the money before change it!
+		if(!$maked_invoice)
+		{
+			return false;
+		}
+
 		if(isset($current['id']))
 		{
-			self::update(['end' => date("Y-m-d H:i:s")], $current['id']);
+
+			$update_end = ['end'    => date("Y-m-d H:i:s")];
+			if(isset($current['start']) && (time() - strtotime($current['start']) < (60 * 60)))
+			{
+				$update_end['status'] = 'skipped';
+			}
+			else
+			{
+				$update_end['status'] = 'disable';
+			}
+
+			self::update($update_end, $current['id']);
 		}
+
 		$log_meta['meta']['current'] = $current;
 		\lib\db\logs::set('plan:changed', $_args['creator'], $log_meta);
 
@@ -155,5 +233,6 @@ class teamplans
 		\lib\db\teams::update($update_team, $_args['team_id']);
 		return true;
 	}
+
 }
 ?>

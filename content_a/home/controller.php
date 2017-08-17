@@ -55,6 +55,17 @@ class controller extends \content_a\main\controller
 			$team_id = \lib\utility\shortURL::decode($team_id);
 			if($team_id && $this->login('id'))
 			{
+				$team_details = \lib\db\teams::get_by_id($team_id);
+
+				if(isset($team_details['creator']) && intval($team_details['creator']) === intval($this->login('id')))
+				{
+					\lib\storage::set_is_creator(true);
+				}
+				else
+				{
+					\lib\storage::set_is_creator(false);
+				}
+
 				$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => $this->login('id'), 'limit' => 1]);
 				if(isset($load_userteam_record['rule']))
 				{
