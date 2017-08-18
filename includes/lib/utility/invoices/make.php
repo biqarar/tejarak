@@ -23,7 +23,6 @@ trait make
 			]
 		];
 
-
 		$old_plan_detail = \lib\utility\plan::get_detail(self::$old_plan_code);
 		if(isset($old_plan_detail['amount']))
 		{
@@ -40,52 +39,45 @@ trait make
 			return true;
 		}
 
-		if(isset($_args['current']['start']))
+		if(isset($_args['current']['lastcalcdate']))
 		{
-			$start_plan = $_args['current']['start'];
+			$start_plan = $_args['current']['lastcalcdate'];
 		}
 		else
 		{
-			\lib\db\logs::set('invoice:team:current:start:not:found:return:false', null, $log_meta);
+			\lib\db\logs::set('invoice:team:current:lastcalcdate:not:found:return:false', null, $log_meta);
 			return false;
 		}
 
 		$used_time = time() - strtotime($start_plan);
 
-		if(($used_time / 60) <= 60)
+		$used_time = $used_time / ( 60 * 60 );
+
+		if($used_time < 1)
 		{
-			$count_use = round(($used_time / 60));
+			$used_time = 0;
+		}
+
+		$active_per_hour = 10 / 30 / 24;
+
+		$active_time = $active_per_hour * $used_time;
+
+		$count_use = round(($used_time));
+
+		if($active_time < 1)
+		{
+			$count_use = round($used_time * 60);
 			$invoice_unit_title = T_("Minuts");
-			// used less than 1 hour or fix 1 hour
-			$active_time = (( 10 / 30 ) / 24) / 60;
-			$active_time = $active_time * ($used_time / 60);
 		}
-		elseif(($used_time / (60 * 60)) <= 24)
+		elseif($active_time < 24)
 		{
-			$count_use = round(($used_time / (60 * 60)));
-			$invoice_unit_title = T_("Hours");
-			// used less than 1 day or fix 1 day
-			$active_time = ( 10 / 30 ) / 24;
-			$active_time = $active_time * ($used_time / (60 * 60));
-		}
-		elseif(($used_time / (60 * 60)) < (24 * 30))
-		{
-			$count_use = round(($used_time / (60 * 60 )));
-			$invoice_unit_title = T_("Days");
-			// used less than 1 month
-			$active_time = 10 / 30;
-			$active_time = $active_time * ($used_time / (60 * 60));
+			$invoice_unit_title = T_("Hour");
 		}
 		else
 		{
-			$count_use = round(($used_time / (60 * 60 )));
-			$invoice_unit_title = T_("Days");
-			// used 1 month
-			$active_time = 10;
-			$active_time = $active_time * ($used_time / (60 * 60));
+			$count_use = round(($used_time / 24));
+			$invoice_unit_title = T_("Day");
 		}
-
-		$active_time = $active_time * 60;
 
 		$active_user_period =
 		[
@@ -103,7 +95,29 @@ trait make
 			return true;
 		}
 
-		$total_amount = count($count_active_user) * $amount;
+		$log_meta['meta']['active_user'] = $count_active_user;
+
+		$count_active_user = count($count_active_user);
+
+		$count_days_use = time() - strtotime($start_plan);
+
+		$count_days_use = $count_days_use / ( 60 * 60 * 24);
+
+		$new_amount = ($count_active_user * $amount * $count_days_use) / 30;
+
+		$new_amount = floor($new_amount / 100) * 100;
+
+		if($new_amount < 100)
+		{
+			\lib\db\logs::set('invoice:team:amout:<100:return:true', null, $log_meta);
+			$new_amount = 0;
+			return true;
+		}
+
+		if(!$new_amount)
+		{
+			return true;
+		}
 
 		if(!isset(self::$team_details['creator']))
 		{
@@ -115,10 +129,10 @@ trait make
 
 		$title = T_("Using :d :v From plan :p By :c active member",
 		[
-			'd' => \lib\utility\human::number($count_use,'current'),
+			'd' => \lib\utility\human::number($count_use,\lib\define::get_language()),
 			'v' => $invoice_unit_title,
 			'p' => T_(self::$old_plan_name),
-			'c' => \lib\utility\human::number($count_active_user, 'current'),
+			'c' => \lib\utility\human::number($count_active_user, \lib\define::get_language()),
 		]);
 
 		$new_invoice =
@@ -126,54 +140,64 @@ trait make
 			'date'         => date("Y-m-d H:i:s"),
 			'user_id'      => self::$team_details['creator'],
 			'title'        => $invoice_title,
-			'total'        => $amount,
+			'total'        => $new_amount,
 			'count_detail' => 1,
 		];
 
+		$meta                      = [];
+		$meta['count_use']         = $count_use;
+		$meta['unit_use']          = $invoice_unit_title;
+		$meta['plan']              = self::$old_plan_name;
+		$meta['count_active_user'] = $count_active_user;
+
 		$creator_details = \lib\db\users::get(self::$team_details['creator']);
 
-		if(isset($creator_details['displayname']) && isset($creator_details['user_mobile']))
+		if(isset($creator_details['user_displayname']) && isset($creator_details['user_mobile']))
 		{
-			$meta =
-			[
-				'name'   => $creator_details['displayname'],
-				'mobile' => $creator_details['user_mobile'],
-			];
+			$meta['name']   = $creator_details['user_displayname'];
+			$meta['mobile'] = $creator_details['user_mobile'];
+			$meta['args']   = func_get_args();
 
+		}
+
+		if(!empty($meta))
+		{
 			$new_invoice['meta'] = json_encode($meta, JSON_UNESCAPED_UNICODE);
 		}
 
-		if($amount > 499000)
+		if($new_amount > 499000)
 		{
 			\lib\db\logs::set('invoice:team:>499:we:get:499', null, $log_meta);
-			$amount = 499000;
+			$new_amount = 499000;
 		}
-
-		$invoice_id = \lib\db\invoices::insert($new_invoice);
 
 		$new_invoice_detail =
 		[
-			'invoice_id' => $invoice_id,
 			'title'      => $title,
-			'price'      => $amount,
+			'price'      => $new_amount,
 			'count'      => 1,
-			'total'      => $amount,
+			'total'      => $new_amount,
 		];
 
-		\lib\db\invoice_details::insert($new_invoice_detail);
+		$invoice = new \lib\db\invoices;
+
+        $invoice->add($new_invoice);
+
+        $invoice->add_child($new_invoice_detail);
+
+        $invoice_id = $invoice->save();
 
         $transaction_set =
         [
 			'caller'         => 'invoice:team',
-			'title'          => T_("Invoice :team", ['team' => self::$team_name]),
+			'title'          => T_("Invoice :team", ['team' => self::$team_details['name']]),
 			'user_id'        => self::$team_details['creator'],
-			'minus'          => $amount,
+			'minus'          => $new_amount,
 			'payment'        => null,
 			'verify'         => 1,
 			'type'           => 'money',
 			'unit'           => 'toman',
 			'date'           => date("Y-m-d H:i:s"),
-			'amount_request' => $amount,
 			'invoice_id'     => $invoice_id,
         ];
 

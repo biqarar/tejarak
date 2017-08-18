@@ -485,6 +485,8 @@ private function transtext()
 	echo T_("Centeral");                                                              // Line 74 Seperate
 	echo T_("centeral");                                                              // Line 75 Seperate
 	echo T_(" ");                                                                     // Line 79 Seperate
+	echo T_("money");                                                                 // Line 81 Seperate
+	echo T_("toman");                                                                 // Line 82 Seperate
 
 	//--------------------------------------------------content_a/gateway/display.html
 	echo T_("Enter a valid name from 3 to 30 character");                             // Line 35

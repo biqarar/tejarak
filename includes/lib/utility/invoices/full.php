@@ -23,17 +23,18 @@ trait full
 			]
 		];
 
-		if(isset($_args['current']['start']))
+		if(isset($_args['current']['lastcalcdate']))
 		{
-			$start_plan = $_args['current']['start'];
+			$start_plan = $_args['current']['lastcalcdate'];
 		}
 		else
 		{
-			\lib\db\logs::set('invoice:team:full:current:start:not:found:return:false', null, $log_meta);
+			\lib\db\logs::set('invoice:team:full:current:lastcalcdate:not:found:return:false', null, $log_meta);
 			return false;
 		}
 
 		$old_plan_detail = \lib\utility\plan::get_detail(self::$old_plan_code);
+
 		if(isset($old_plan_detail['amount']))
 		{
 			$amount = floatval($old_plan_detail['amount']);
@@ -63,12 +64,41 @@ trait full
 		$price_every_hour = $amount / 30 / 24;
 
 		$new_amount = $price_every_hour * $count_days_left_hour;
-		$new_amount = floor($new_amount);
 
-		if($count_days_left_hour >= (60*60*24*30))
+		$new_amount = $amount - $new_amount;
+
+		$new_amount = floor($new_amount / 100) * 100;
+
+		if($new_amount > 0)
 		{
-			$new_amount = $amount;
+			// plus the new amount to user account
 		}
+		elseif($new_amount === 0)
+		{
+			return true;
+		}
+		elseif($new_amount < 0)
+		{
+			// minus the value from user account
+			// the user use largen than one month of the plan
+			$transaction_set =
+	        [
+				'caller'         => 'invoice:team',
+				'title'          => T_("Repair old invoice"),
+				'user_id'        => self::$team_details['creator'],
+				'minus'          => abs($new_amount),
+				'payment'        => null,
+				'verify'         => 1,
+				'type'           => 'money',
+				'unit'           => 'toman',
+				'date'           => date("Y-m-d H:i:s"),
+	        ];
+
+	        \lib\db\transactions::set($transaction_set);
+
+			return true;
+		}
+
 
 		/**
 		 * the user not use from this plan
@@ -79,10 +109,11 @@ trait full
 			$new_amount = $amount;
 		}
 
-		// force check
-		if($new_amount > $amount)
+
+		if($new_amount < 100)
 		{
-			$new_amount = $amount;
+			\lib\db\logs::set('invoice:team:full:amout:<100:return:true', null, $log_meta);
+			return true;
 		}
 
 		$invoice_title = isset(self::$team_details['name']) ? self::$team_details['name'] : T_("Cancel full plan");
@@ -99,14 +130,16 @@ trait full
 
 		$creator_details = \lib\db\users::get(self::$team_details['creator']);
 
-		if(isset($creator_details['displayname']) && isset($creator_details['user_mobile']))
-		{
-			$meta =
-			[
-				'name'   => $creator_details['displayname'],
-				'mobile' => $creator_details['user_mobile'],
-			];
+		$meta = [];
 
+		if(isset($creator_details['user_displayname']) && isset($creator_details['user_mobile']))
+		{
+			$meta['name']   = $creator_details['user_displayname'];
+			$meta['mobile'] = $creator_details['user_mobile'];
+		}
+
+		if(!empty($meta))
+		{
 			$new_invoice['meta'] = json_encode($meta, JSON_UNESCAPED_UNICODE);
 		}
 
@@ -119,10 +152,12 @@ trait full
 		];
 
         $invoice = new \lib\db\invoices;
-        $invoice->add($new_invoice);
-        $invoice->add_child($new_invoice_detail);
-        $invoice_id = $invoice->save();
 
+        $invoice->add($new_invoice);
+
+        $invoice->add_child($new_invoice_detail);
+
+        $invoice_id = $invoice->save();
 
 		$transaction_set =
         [
@@ -135,7 +170,6 @@ trait full
 			'type'           => 'money',
 			'unit'           => 'toman',
 			'date'           => date("Y-m-d H:i:s"),
-			'amount_request' => $new_amount,
 			'invoice_id'     => $invoice_id,
         ];
 
@@ -209,7 +243,7 @@ trait full
         	$user_budget = array_sum($user_budget);
         }
 
-        if(intval($user_budget) < $amount)
+        if(intval($user_budget) < intval($amount))
         {
 			\lib\db\logs::set('invoice:team:full:money>credit', null, $log_meta);
         	\lib\debug::error(T_("Your credit is less than amount of this plan, please charge your account"));
@@ -234,7 +268,7 @@ trait full
 		{
 			$meta =
 			[
-				'name'   => $creator_details['displayname'],
+				'name'   => $creator_details['user_displayname'],
 				'mobile' => $creator_details['user_mobile'],
 			];
 
@@ -257,7 +291,7 @@ trait full
 		$transaction_set =
         [
 			'caller'          => 'invoice:team',
-			'title'           => T_("Cancel Full paln of :team", ['team' => self::$team_details['name']]),
+			'title'           => T_("Choose Full paln of :team", ['team' => self::$team_details['name']]),
 			'user_id'         => self::$team_details['creator'],
 			'minus'           => $amount,
 			'payment'         => null,
@@ -267,7 +301,6 @@ trait full
 			'type'            => 'money',
 			'unit'            => 'toman',
 			'date'            => date("Y-m-d H:i:s"),
-			'amount_request'  => $amount,
 			'invoice_id'      => $invoice_id,
         ];
 

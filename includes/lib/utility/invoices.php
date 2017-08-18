@@ -4,12 +4,13 @@ use \lib\db;
 
 class invoices
 {
-	public static $old_plan_name = null;
-	public static $new_plan_name = null;
-	public static $old_plan_code = null;
-	public static $new_plan_code = null;
-	public static $team_id       = null;
-	public static $team_details  = [];
+	public static $old_plan_name   = null;
+	public static $new_plan_name   = null;
+	public static $old_plan_code   = null;
+	public static $new_plan_code   = null;
+	public static $team_id         = null;
+	public static $team_details    = [];
+	public static $old_teamplan_id = null;
 
 	use invoices\full;
 	use invoices\make;
@@ -48,7 +49,14 @@ class invoices
 			self::$old_plan_name = \lib\utility\plan::plan_name(self::$old_plan_code);
 		}
 
-		$is_ok = false;
+		if(isset($_args['current']['id']))
+		{
+			self::$old_teamplan_id = $_args['current']['id'];
+		}
+
+		$is_ok                   = false;
+		$make_full_invoice       = false;
+		$make_full_invoice_check = false;
 
 		switch (self::$old_plan_name)
 		{
@@ -61,9 +69,24 @@ class invoices
 			case 'full':
 				$is_ok = self::plan_full_break($_team_id, $_args);
 				break;
+
 			case 'simple':
 			case 'standard':
-				$is_ok = self::make_plan_invoice($_team_id, $_args);
+				if(self::$new_plan_name === 'full')
+				{
+					$make_full_invoice = self::make_full_invoice($_team_id, $_args);
+
+					$make_full_invoice_check = true;
+
+					if($make_full_invoice)
+					{
+						$is_ok = self::make_plan_invoice($_team_id, $_args);
+					}
+				}
+				else
+				{
+					$is_ok = self::make_plan_invoice($_team_id, $_args);
+				}
 				break;
 			default:
 				// for old plan can change to new plan
@@ -80,8 +103,11 @@ class invoices
 					break;
 
 				case 'full':
-					// save new transaction for full plan
-					$is_ok = self::make_full_invoice($_team_id, $_args);
+					if(!$make_full_invoice_check)
+					{
+						// save new transaction for full plan
+						$is_ok = self::make_full_invoice($_team_id, $_args);
+					}
 					break;
 
 				case 'simple':
@@ -97,6 +123,12 @@ class invoices
 					break;
 			}
 		}
+
+		if(self::$old_teamplan_id)
+		{
+			\lib\db\teamplans::update(['lastcalcdate' => date("Y-m-d H:i:s")], self::$old_teamplan_id);
+		}
+
 		return $is_ok;
 	}
 

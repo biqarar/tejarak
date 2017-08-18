@@ -53,6 +53,7 @@ class teamplans
 		self::config();
 
 		$temp = array_flip(self::$PLANS);
+
 		if(isset($temp[$_code]))
 		{
 			return $temp[$_code];
@@ -127,12 +128,13 @@ class teamplans
 	{
 		$default_args =
 		[
-			'team_id' => null,
-			'plan'    => null,
-			'start'   => date("Y-m-d H:i:s"),
-			'end'     => null,
-			'creator' => null,
-			'desc'    => null,
+			'team_id'      => null,
+			'plan'         => null,
+			'start'        => date("Y-m-d H:i:s"),
+			'lastcalcdate' => date("Y-m-d H:i:s"),
+			'end'          => null,
+			'creator'      => null,
+			'desc'         => null,
 		];
 
 		if(is_array($_args))
@@ -193,44 +195,66 @@ class teamplans
 			return false;
 		}
 
-		$maked_invoice = \lib\utility\invoices::team_plan($_args['team_id'], ['current' => $current, 'new' => $_args]);
-		// in plan full or other plan
-		// if system can not creat invoice
-		// we have an error
-		// never shoud change team plan
-		// for example the full plan need to pay the money before change it!
-		if(!$maked_invoice)
+		$update_teamplans        = [];
+		$update_teamplans['end'] = date("Y-m-d H:i:s");
+
+		$need_maked_invoice = true;
+
+		if(isset($current['start']) && (time() - strtotime($current['start']) < (60 * 60)))
 		{
-			return false;
+			$need_maked_invoice = false;
+			$update_teamplans['status'] = 'skipped';
+		}
+		else
+		{
+			$update_teamplans['status'] = 'disable';
+		}
+
+		$prepayment = \lib\utility\plan::get_detail($_args['plan']);
+
+		if(is_array($prepayment) && array_key_exists('prepayment', $prepayment) && $prepayment['prepayment'] === true)
+		{
+			$prepayment = true;
+		}
+		else
+		{
+			$prepayment = false;
+		}
+
+		if($need_maked_invoice || $prepayment)
+		{
+			$maked_invoice = \lib\utility\invoices::team_plan($_args['team_id'], ['current' => $current, 'new' => $_args]);
+			// in plan full or other plan
+			// if system can not creat invoice
+			// we have an error
+			// never shoud change team plan
+			// for example the full plan need to pay the money before change it!
+			if(!$maked_invoice)
+			{
+				return false;
+			}
 		}
 
 		if(isset($current['id']))
 		{
-
-			$update_end = ['end'    => date("Y-m-d H:i:s")];
-			if(isset($current['start']) && (time() - strtotime($current['start']) < (60 * 60)))
-			{
-				$update_end['status'] = 'skipped';
-			}
-			else
-			{
-				$update_end['status'] = 'disable';
-			}
-
-			self::update($update_end, $current['id']);
+			self::update($update_teamplans, $current['id']);
 		}
 
 		$log_meta['meta']['current'] = $current;
-		\lib\db\logs::set('plan:changed', $_args['creator'], $log_meta);
 
+		\lib\db\logs::set('plan:changed', $_args['creator'], $log_meta);
+		// insert new teamplans
 		self::insert($_args);
+
 		$update_team =
 		[
 			'plan'         => self::plan_name($_args['plan']),
 			'startplan'    => date("Y-m-d H:i:s"),
 			'startplanday' => date("d"),
 		];
+
 		\lib\db\teams::update($update_team, $_args['team_id']);
+
 		return true;
 	}
 

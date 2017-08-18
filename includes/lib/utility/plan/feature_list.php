@@ -11,10 +11,11 @@ trait feature_list
 		 */
 		$plan[1] =
 		[
-			'name'    => 'free',
-			'detail'  => null,
-			'amount'  => 0,
-			'contain' =>
+			'name'       => 'free',
+			'detail'     => null,
+			'amount'     => 0,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				// no thing
 			],
@@ -25,10 +26,11 @@ trait feature_list
 		 */
 		$plan[2] =
 		[
-			'name'    => 'pro',
-			'detail'  => null,
-			'amount'  => 0,
-			'contain' =>
+			'name'       => 'pro',
+			'detail'     => null,
+			'amount'     => 0,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
@@ -45,10 +47,11 @@ trait feature_list
 		 */
 		$plan[3] =
 		[
-			'name'    => 'business',
-			'detail'  => null,
-			'amount'  => 0,
-			'contain' =>
+			'name'       => 'business',
+			'detail'     => null,
+			'amount'     => 0,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
@@ -66,10 +69,11 @@ trait feature_list
 		 */
 		$plan[4] =
 		[
-			'name'    => 'simple',
-			'detail'  => null,
-			'amount'  => 2000,
-			'contain' =>
+			'name'       => 'simple',
+			'detail'     => null,
+			'amount'     => 2000,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				'telegram:enter:msg'        => true,
 				'telegram:exit:msg'         => true,
@@ -84,10 +88,11 @@ trait feature_list
 		 */
 		$plan[5] =
 		[
-			'name'    => 'standard',
-			'detail'  => null,
-			'amount'  => 10000,
-			'contain' =>
+			'name'       => 'standard',
+			'detail'     => null,
+			'amount'     => 10000,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
@@ -104,10 +109,11 @@ trait feature_list
 		 */
 		$plan[6] =
 		[
-			'name'    => 'full',
-			'detail'  => null,
-			'amount'  => 499000,
-			'contain' =>
+			'name'       => 'full',
+			'detail'     => null,
+			'amount'     => 499000,
+			'prepayment' => true,
+			'contain'    =>
 			[
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
@@ -124,10 +130,11 @@ trait feature_list
 		 */
 		$plan[7] =
 		[
-			'name'    => 'full_free',
-			'detail'  => null,
-			'amount'  => 0,
-			'contain' =>
+			'name'       => 'full_free',
+			'detail'     => null,
+			'amount'     => 0,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
@@ -144,10 +151,11 @@ trait feature_list
 		 */
 		$plan[8] =
 		[
-			'name'    => 'simple_free',
-			'detail'  => null,
-			'amount'  => 0,
-			'contain' =>
+			'name'       => 'simple_free',
+			'detail'     => null,
+			'amount'     => 0,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				'telegram:enter:msg'        => true,
 				'telegram:exit:msg'         => true,
@@ -162,10 +170,11 @@ trait feature_list
 		 */
 		$plan[9] =
 		[
-			'name'    => 'standard_free',
-			'detail'  => null,
-			'amount'  => 0,
-			'contain' =>
+			'name'       => 'standard_free',
+			'detail'     => null,
+			'amount'     => 0,
+			'prepayment' => false,
+			'contain'    =>
 			[
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
