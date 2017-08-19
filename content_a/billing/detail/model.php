@@ -17,41 +17,41 @@ class model extends \mvc\model
 			return false;
 		}
 
-		return $this->useage();
+		return $this->usage();
 	}
 
 
 
 	/**
-	 * use useage
+	 * use usage
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function useage()
+	public function usage()
 	{
 
-		if(isset($_SESSION['useage_team_detail']) && isset($_SESSION['useage_team_detail_time']))
+		if(isset($_SESSION['usage_team_detail']) && isset($_SESSION['usage_team_detail_time']))
 		{
-			if(time() - strtotime($_SESSION['useage_team_detail_time']) > (60*60))
+			if(time() - strtotime($_SESSION['usage_team_detail_time']) > (60*60))
 			{
-				$_SESSION['useage_team_detail'] = $this->run_useage();
-				$_SESSION['useage_team_detail_time'] = date("Y-m-d H:i:s");
+				$_SESSION['usage_team_detail'] = $this->run_usage();
+				$_SESSION['usage_team_detail_time'] = date("Y-m-d H:i:s");
 			}
 		}
 		else
 		{
-			$_SESSION['useage_team_detail'] = $this->run_useage();
-			$_SESSION['useage_team_detail_time'] = date("Y-m-d H:i:s");
+			$_SESSION['usage_team_detail'] = $this->run_usage();
+			$_SESSION['usage_team_detail_time'] = date("Y-m-d H:i:s");
 		}
 
-		return $_SESSION['useage_team_detail'];
+		return $_SESSION['usage_team_detail'];
 	}
 
 
 	/**
 	 * { function_description }
 	 */
-	public function run_useage()
+	public function run_usage()
 	{
 		if(!$this->login())
 		{
@@ -72,7 +72,7 @@ class model extends \mvc\model
 					$calc->save(false);
 					$calc->notify(false);
 					$calc->type('calc');
-					$all_creator_team[$key]['useage'] = $calc->calc();
+					$all_creator_team[$key]['usage'] = $calc->calc();
 					$all_creator_team[$key]['active_member'] = $calc->get_active_member();
 					$all_creator_team[$key]['active_time'] = $calc->get_active_time();
 				}

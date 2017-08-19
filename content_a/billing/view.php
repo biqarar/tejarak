@@ -26,7 +26,7 @@ class view extends \mvc\view
 			}
 			$this->data->user_cash = $user_cash_all;
 
-			$this->data->useage = $this->model()->useage();
+			$this->data->usage = $this->model()->usage();
 		}
 	}
 

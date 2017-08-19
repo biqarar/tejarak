@@ -3,15 +3,15 @@
 {%block content%}
 
    <div class="box">
-    <h3 id="detail-history">{%trans "Useage Detail"%}</h3>
+    <h3 id="detail-history">{%trans "Usage Detail"%}</h3>
     <div class="tbl ps dtc">
      <div class="f th">
         <div class="c">{%trans "Name"%}</div>
         <div class="c">{%trans ""%}</div>
-        <div class="c">{%trans "Plan"%}</div>
+        <div class="c">{%trans "plan"%}</div>
         <div class="c">{%trans "Start plan"%}</div>
         <div class="c">{%trans "Active member"%}</div>
-        <div class="c">{%trans "Useage"%}</div>
+        <div class="c">{%trans "Usage"%}</div>
      </div>
 
     {% for key, value in detail %}
@@ -28,7 +28,7 @@
           <div class="c">{{value.startplan|date("Y-m-d H:i:s")}}</div>
         {%endif%}
         <div class="c">{{value.active_member | number_format | fitNumber}}</div>
-        <div class="c">{{value.useage | number_format | fitNumber}}</div>
+        <div class="c">{{value.usage | number_format | fitNumber}}</div>
      </div>
     {%endfor%}
     </div>

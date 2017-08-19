@@ -123,35 +123,35 @@ class model extends \mvc\model
 
 
 	/**
-	 * use useage
+	 * use usage
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function useage()
+	public function usage()
 	{
 
-		if(isset($_SESSION['useage_team']) && isset($_SESSION['useage_team_time']))
+		if(isset($_SESSION['usage_team']) && isset($_SESSION['usage_team_time']))
 		{
-			if(time() - strtotime($_SESSION['useage_team_time']) > (60*60))
+			if(time() - strtotime($_SESSION['usage_team_time']) > (60*60))
 			{
-				$_SESSION['useage_team'] = $this->run_useage();
-				$_SESSION['useage_team_time'] = date("Y-m-d H:i:s");
+				$_SESSION['usage_team'] = $this->run_usage();
+				$_SESSION['usage_team_time'] = date("Y-m-d H:i:s");
 			}
 		}
 		else
 		{
-			$_SESSION['useage_team'] = $this->run_useage();
-			$_SESSION['useage_team_time'] = date("Y-m-d H:i:s");
+			$_SESSION['usage_team'] = $this->run_usage();
+			$_SESSION['usage_team_time'] = date("Y-m-d H:i:s");
 		}
 
-		return $_SESSION['useage_team'];
+		return $_SESSION['usage_team'];
 	}
 
 
 	/**
 	 * { function_description }
 	 */
-	public function run_useage()
+	public function run_usage()
 	{
 		if(!$this->login())
 		{
@@ -162,7 +162,7 @@ class model extends \mvc\model
 
 		$all_creator_team = \lib\db\teams::get(['creator' => $user_id]);
 
-		$total_useage = 0;
+		$total_usage = 0;
 		if(is_array($all_creator_team))
 		{
 			foreach ($all_creator_team as $key => $value)
@@ -173,11 +173,11 @@ class model extends \mvc\model
 					$calc->save(false);
 					$calc->notify(false);
 					$calc->type('calc');
-					$total_useage += $calc->calc();
+					$total_usage += $calc->calc();
 				}
 			}
 		}
-		return $total_useage;
+		return $total_usage;
 	}
 }
 ?>

@@ -78,7 +78,7 @@ private function transtext()
 	echo T_("Knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 7
 	echo T_("Thank you for choosing us.");                                            // Line 14
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
-	echo T_("Name");                                                                  // Line 12
+	echo T_("Name");                                                                  // Line 9
 	echo T_("Full Name");                                                             // Line 20
 	echo T_("Mobile");                                                                // Line 34
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
@@ -557,6 +557,35 @@ private function transtext()
 	echo T_("Start Date");                                                            // Line 25
 	echo T_("End Date");                                                              // Line 36
 
+	//------------------------------------------------------content_a/ref/display.html
+	echo T_("Referral Program");                                                      // Line 12
+	echo T_("Nobody can tell the Sarshomar story better than our customers.");        // Line 6
+	echo T_("Nobody can tell the Sarshomar story better than you;)");                 // Line 16
+	echo T_("How it works");                                                          // Line 17
+	echo T_("Tell your friends about the Sarshomar story.");                          // Line 19
+	echo T_("Refer your friends through Social Media or Email.");                     // Line 20
+	echo T_("Share the referral rewards program with friends on Facebook, Twitter, or Email.");// Line 20
+	echo T_("When they click on your post, we’ll know it was you who referred them.");// Line 20
+	echo T_("Your friend enter to Sarshomar and receives credit.");                   // Line 21
+	echo T_("Your friend enter and receives $3 account credit.");                     // Line 22
+	echo T_("Anyone you refer to Sarshomar that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile.");// Line 22
+	echo T_("You all get rewarded");                                                  // Line 23
+	echo T_("Sarshomar rewards are charge in your account after 7 days of active service.");// Line 24
+	echo T_("Share your link");                                                       // Line 29
+	echo T_("Copy your personal referral link and share it with your friends and followers.");// Line 31
+	echo T_("Your Ref code is");                                                      // Line 32
+	echo T_("Short URL");                                                             // Line 35
+	echo T_("Referral stats");                                                        // Line 46
+	echo T_("CLICKS");                                                                // Line 53
+	echo T_("Number of times your link has been clicked.");                           // Line 54
+	echo T_("REFERRALS");                                                             // Line 59
+	echo T_("People who enter to Sarshomar using your link.");                        // Line 60
+	echo T_("Complete Profile");                                                      // Line 65
+	echo T_("People who complete profile after enter");                               // Line 66
+	echo T_("Enter to get a unique referral link.");                                  // Line 71
+	echo T_("Use our logo to help spread the word.");                                 // Line 72
+	echo T_("Enter to Sarshomar");                                                    // Line 74
+
 	//-----------------------------------------------------content_a/team/display.html
 	echo T_("Enter a valid name from 5 to 30 character");                             // Line 13
 	echo T_("Website");                                                               // Line 17
@@ -677,7 +706,7 @@ private function transtext()
 	//--------------------------------------------------content_a/billing/display.html
 	echo T_("Your credit");                                                           // Line 12
 	echo T_("Earn More Credit");                                                      // Line 15
-	echo T_("Usage");                                                                 // Line 22
+	echo T_("Usage");                                                                 // Line 14
 	echo T_("View Usage Details");                                                    // Line 25
 	echo T_("Charge your account");                                                   // Line 33
 	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 34
@@ -692,6 +721,12 @@ private function transtext()
 	echo T_("Unit");                                                                  // Line 92
 	echo T_("Invoice");                                                               // Line 93
 	echo T_("No invoice");                                                            // Line 113
+
+	//-------------------------------------------content_a/billing/detail/display.html
+	echo T_("Usage Detail");                                                          // Line 6
+	echo T_("Plan");                                                                  // Line 11
+	echo T_("Start plan");                                                            // Line 12
+	echo T_("Active member");                                                         // Line 13
 
 }
 ?>
