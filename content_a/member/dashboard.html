@@ -12,7 +12,7 @@
    <div class="tcard" data-status='{{value.status}}' {% if value.rule == 'admin' %} data-admin {% endif %}>
     <div class="cbox">
      <div class="front">
-      <a class="top" href="{{url.baseFull}}/{{team}}/member={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon icon-user"></i>{%endif%}</a>
+      <a class="top" href="{{url.baseFull}}/{{team}}/member={{value.user_id}}">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon sf-user"></i>{%endif%}</a>
       <div class="cfdetail">
        <span class="cfnum">{{key+1}}</span>
       </div>

@@ -108,7 +108,7 @@
       <span class="c">{{value.budget|number_format|fitNumber}}</span>
       <span class="c">{%set my_unit = value.unit%}{%trans my_unit%}</span>
       {%if value.invoice_id%}
-        <span class="c"><a href="{{url.baseFull}}/billing/invoice/{{value.invoice_id}}"><i class="icon-file-text"></i></a></span>
+        <span class="c"><a href="{{url.baseFull}}/billing/invoice/{{value.invoice_id}}"><i class="sf-file-text"></i></a></span>
       {%else%}
         <span class="c"><i>{%trans "No invoice"%}</i></span>
       {%endif%}

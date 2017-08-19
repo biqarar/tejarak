@@ -5,7 +5,7 @@ class view extends \mvc\view
 {
 	public function config()
 	{
-		$this->data->bodyclass = 'fixed unselectable dash';
+		$this->data->bodyclass = 'fixed unselectable siftal';
 
 		// get part 2 of url and use as team name
 		$this->data->team = $this->data->team_code = \lib\router::get_url(0);
