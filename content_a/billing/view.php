@@ -25,8 +25,11 @@ class view extends \mvc\view
 				$user_cash_all['total']    = array_sum($user_cash_all);
 			}
 			$this->data->user_cash = $user_cash_all;
+
+			$this->data->useage = $this->model()->useage();
 		}
 	}
+
 
 
 	/**

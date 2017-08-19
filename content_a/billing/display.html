@@ -20,7 +20,7 @@
     <div class="box">
      <div class="f align-center">
       <h2 class="c">{%trans "Usage"%}</h2>
-      <h3 class="cauto os"><span>{{0|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
+      <h3 class="cauto os"><span>{{useage|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
      </div>
      <a href="{{url.baseFull}}/billing/detail" class="btn">{%trans "View Usage Details"%}</a>
     </div>
@@ -99,9 +99,9 @@
       <span class="c">{{value.title}}</span>
       <span class="c">{%set my_type = value.type%}{%trans my_type%}</span>
       {%if site.currentlang == 'fa' %}
-        <span class="c">{{value.date|jdate("Y-m-d")}} {{value.time|fitNumber}}</span>
+        <span class="c">{{value.date|jdate("Y-m-d H:i:s")}} {{value.time|fitNumber}}</span>
       {%else%}
-        <span class="c">{{value.date}} {{value.time|fitNumber}}</span>
+        <span class="c">{{value.date|date("Y-m-d H:i:s")}} {{value.time|fitNumber}}</span>
       {%endif%}
       <span class="c">{{value.plus|number_format|fitNumber}}</span>
       <span class="c">{{value.minus|number_format|fitNumber}}</span>

@@ -209,9 +209,7 @@ self::$enter['call_template']['en'] = 'tejarak-en';
 /**
  * cronjob urls and status
  */
-self::$cronjob['status'] = true;
-self::$cronjob['path']   = [] ;
-self::$cronjob['path'][] = root. 'cronjob.php' ;
+self::$config['cronjob']['status'] = true;
 
 
 /**

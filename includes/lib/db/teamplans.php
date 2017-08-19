@@ -128,19 +128,23 @@ class teamplans
 	{
 		$default_args =
 		[
-			'team_id'      => null,
-			'plan'         => null,
-			'start'        => date("Y-m-d H:i:s"),
-			'lastcalcdate' => date("Y-m-d H:i:s"),
-			'end'          => null,
-			'creator'      => null,
-			'desc'         => null,
+			'team_id'       => null,
+			'plan'          => null,
+			'start'         => date("Y-m-d H:i:s"),
+			'lastcalcdate'  => date("Y-m-d H:i:s"),
+			'end'           => null,
+			'creator'       => null,
+			'desc'          => null,
+			'maked_invoice' => true,
 		];
 
 		if(is_array($_args))
 		{
 			$_args = array_merge($default_args, $_args);
 		}
+
+		$args_make_invoice = $_args['maked_invoice'];
+		unset($_args['maked_invoice']);
 
 		$log_meta =
 		[
@@ -150,7 +154,7 @@ class teamplans
 			],
 		];
 
-		if(!$_args['team_id'] || !$_args['plan'] || !$_args['creator'] || !$_args['start'])
+		if(!$_args['team_id'] || !$_args['plan'] || !$_args['start'])
 		{
 			return false;
 		}
@@ -221,17 +225,32 @@ class teamplans
 			$prepayment = false;
 		}
 
-		if($need_maked_invoice || $prepayment)
+		if($args_make_invoice)
 		{
-			$maked_invoice = \lib\utility\invoices::team_plan($_args['team_id'], ['current' => $current, 'new' => $_args]);
-			// in plan full or other plan
-			// if system can not creat invoice
-			// we have an error
-			// never shoud change team plan
-			// for example the full plan need to pay the money before change it!
-			if(!$maked_invoice)
+			if($need_maked_invoice || $prepayment)
 			{
-				return false;
+				$old_plan_id = isset($current['plan']) ? $current['plan'] : null;
+				$teamplan_id = isset($current['id']) ? $current['id'] : null;
+
+				$maked_invoice = new \lib\utility\calc($_args['team_id']);
+				$maked_invoice->old_plan(self::plan_name($old_plan_id));
+				$maked_invoice->new_plan(self::plan_name($_args['plan']));
+				$maked_invoice->type('change_plan');
+				$maked_invoice->save(true);
+				$maked_invoice->notify(true);
+				$maked_invoice->old_teamplan_id($teamplan_id);
+				$maked_invoice = $maked_invoice->calc();
+
+				// $maked_invoice = \lib\utility\invoices::team_plan($_args['team_id'], ['current' => $current, 'new' => $_args]);
+				// in plan full or other plan
+				// if system can not creat invoice
+				// we have an error
+				// never shoud change team plan
+				// for example the full plan need to pay the money before change it!
+				if(!$maked_invoice)
+				{
+					return false;
+				}
 			}
 		}
 

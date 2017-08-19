@@ -120,5 +120,64 @@ class model extends \mvc\model
 			}
 		}
 	}
+
+
+	/**
+	 * use useage
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function useage()
+	{
+
+		if(isset($_SESSION['useage_team']) && isset($_SESSION['useage_team_time']))
+		{
+			if(time() - strtotime($_SESSION['useage_team_time']) > (60*60))
+			{
+				$_SESSION['useage_team'] = $this->run_useage();
+				$_SESSION['useage_team_time'] = date("Y-m-d H:i:s");
+			}
+		}
+		else
+		{
+			$_SESSION['useage_team'] = $this->run_useage();
+			$_SESSION['useage_team_time'] = date("Y-m-d H:i:s");
+		}
+
+		return $_SESSION['useage_team'];
+	}
+
+
+	/**
+	 * { function_description }
+	 */
+	public function run_useage()
+	{
+		if(!$this->login())
+		{
+			return false;
+		}
+
+		$user_id = $this->login('id');
+
+		$all_creator_team = \lib\db\teams::get(['creator' => $user_id]);
+
+		$total_useage = 0;
+		if(is_array($all_creator_team))
+		{
+			foreach ($all_creator_team as $key => $value)
+			{
+				if(isset($value['id']))
+				{
+					$calc = new \lib\utility\calc($value['id']);
+					$calc->save(false);
+					$calc->notify(false);
+					$calc->type('calc');
+					$total_useage += $calc->calc();
+				}
+			}
+		}
+		return $total_useage;
+	}
 }
 ?>

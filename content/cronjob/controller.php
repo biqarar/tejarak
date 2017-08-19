@@ -8,7 +8,6 @@ class controller extends \content\main\controller
 	{
 		parent::_route();
 
-
 		if(isset($_SERVER['REQUEST_METHOD']) && mb_strtolower($_SERVER['REQUEST_METHOD']) === 'get')
 		{
 			\lib\error::page();
@@ -29,7 +28,7 @@ class controller extends \content\main\controller
 			)
 		)
 		{
-			if(\lib\option::cronjob('status'))
+			if(\lib\option::config('cronjob','status'))
 			{
 				$this->pinger();
 				$this->post("cronjob")->ALL("/.*/");
