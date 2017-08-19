@@ -3,7 +3,7 @@ private function transtext()
 {
 
 	//-------------------------------------------------content_api/v1/doc/display.html
-	echo T_("Tejarak API");                                                           // Line 4
+	echo T_("Tejarak API");                                                           // Line 6
 
 	//-----------------------------------------------content_enter/google/display.html
 	echo T_("Hi");                                                                    // Line 6
@@ -213,15 +213,15 @@ private function transtext()
 	echo T_("Setup your dedicated and beautiful attendance system in less than a minute and have a <span>real time</span> and scrupulously monitoring on your business from anywhere");// Line 22
 	echo T_("Submit your order");                                                     // Line 24
 	echo T_("Logo and information");                                                  // Line 35
-	echo T_("Tejarak logo");                                                          // Line 122
+	echo T_("Tejarak logo");                                                          // Line 159
 	echo T_("Sample personal card");                                                  // Line 126
 	echo T_("Javad Evazzadeh");                                                       // Line 128
 	echo T_("Barcode");                                                               // Line 129
 	echo T_("Custom design");                                                         // Line 111
-	echo T_("Fast delivery");                                                         // Line 146
-	echo T_("Good cost");                                                             // Line 164
-	echo T_("Interested?");                                                           // Line 182
-	echo T_("Order your personal cards");                                             // Line 184
+	echo T_("Fast delivery");                                                         // Line 173
+	echo T_("Good cost");                                                             // Line 191
+	echo T_("Interested?");                                                           // Line 209
+	echo T_("Order your personal cards");                                             // Line 211
 
 	//-----------------------------------------content/template/static/enterprise.html
 	echo T_("Enterprise");                                                            // Line 3
@@ -378,9 +378,18 @@ private function transtext()
 	echo T_("Exit");                                                                  // Line 66
 	echo T_("In the Name of God");                                                    // Line 84
 
+	//-----------------------------------------------content_cp/teamplans/display.html
+	echo T_("Search");                                                                // Line 14
+	echo T_("Team");                                                                  // Line 49
+	echo T_("Plan");                                                                  // Line 26
+	echo T_("Start");                                                                 // Line 12
+	echo T_("End");                                                                   // Line 24
+	echo T_("status");                                                                // Line 29
+	echo T_("Last Calc Date");                                                        // Line 30
+	echo T_("Renew at");                                                              // Line 31
+
 	//-------------------------------------------content_cp/teams/members/display.html
 	echo T_("Members of teams");                                                      // Line 5
-	echo T_("Search");                                                                // Line 14
 	echo T_("Displayname");                                                           // Line 24
 	echo T_("Postion");                                                               // Line 16
 	echo T_("Rule");                                                                  // Line 25
@@ -401,9 +410,8 @@ private function transtext()
 	//---------------------------------------------------content_cp/teams/display.html
 	echo T_("Setting");                                                               // Line 27
 	echo T_("privacy");                                                               // Line 28
-	echo T_("status");                                                                // Line 29
 	echo T_("logo");                                                                  // Line 30
-	echo T_("plan");                                                                  // Line 31
+	echo T_("plan");                                                                  // Line 11
 	echo T_("parent");                                                                // Line 32
 	echo T_("More");                                                                  // Line 35
 	echo T_("Members");                                                               // Line 35
@@ -500,8 +508,6 @@ private function transtext()
 
 	//----------------------------------------------content_a/report/last/display.html
 	echo T_("Request Edit");                                                          // Line 7
-	echo T_("Start");                                                                 // Line 12
-	echo T_("End");                                                                   // Line 24
 	echo T_("Accepted");                                                              // Line 45
 	echo T_("Action");                                                                // Line 7
 	echo T_("Select actio");                                                          // Line 59
@@ -592,7 +598,6 @@ private function transtext()
 	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 53
 	echo T_("Privacy mode");                                                          // Line 38
 	echo T_("Private");                                                               // Line 44
-	echo T_("Team");                                                                  // Line 49
 	echo T_("Public");                                                                // Line 54
 	echo T_("Short Name");                                                            // Line 62
 	echo T_("English letter like");                                                   // Line 64
@@ -724,7 +729,6 @@ private function transtext()
 
 	//-------------------------------------------content_a/billing/detail/display.html
 	echo T_("Usage Detail");                                                          // Line 6
-	echo T_("Plan");                                                                  // Line 11
 	echo T_("Start plan");                                                            // Line 12
 	echo T_("Active member");                                                         // Line 13
 

@@ -25,7 +25,23 @@ class model extends \mvc\model
 		}
 
 		$result = \lib\db\teamplans::search($search, $meta);
-		// var_dump($result);exit();
+		if(is_array($result))
+		{
+			foreach ($result as $key => $value)
+			{
+				if(isset($value['plan']))
+				{
+					$result[$key]['plan'] = \lib\utility\plan::plan_name($value['plan']);
+				}
+				if(isset($value['lastcalcdate']))
+				{
+					$renew_time = strtotime("+30 day") - strtotime($value['lastcalcdate']);
+					$renew_time = date("d", $renew_time). ' '. T_("Day"). ' '. T_("And"). ' '. date("H", $renew_time). " ". T_("Hour");
+					$result[$key]['renew_time'] = $renew_time;
+				}
+			}
+		}
+
 		return $result;
 	}
 }
