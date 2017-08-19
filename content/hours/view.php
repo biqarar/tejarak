@@ -5,7 +5,7 @@ class view extends \mvc\view
 {
 	function config()
 	{
-		$this->data->bodyclass    = 'unselectable dash attendance';
+		$this->data->bodyclass    = 'unselectable siftal attendance';
 		$this->data->current_time = date("Y-m-d H:i:s");
 	}
 

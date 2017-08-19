@@ -4,7 +4,7 @@ use \lib\utility;
 use \lib\debug;
 use \lib\utility\payment;
 
-class model extends \mvc\model
+class model extends \content_a\main\model
 {
 
 

@@ -1,7 +1,7 @@
 <?php
 namespace content_cp\teams\detail;
 
-class view extends \mvc\view
+class view extends \content_cp\main\view
 {
 	public function view_detail($_args)
 	{

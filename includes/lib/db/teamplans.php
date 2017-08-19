@@ -277,5 +277,35 @@ class teamplans
 		return true;
 	}
 
+
+	public static function search($_string = null, $_options = [])
+	{
+		if(!is_array($_options))
+		{
+			$_options = [];
+		}
+
+		$default_option =
+		[
+			'search_field' =>
+			"
+				(
+					teamps.name LIKE '%__string__%'
+				)
+
+			",
+			'public_show_field' =>
+				"
+					teamplans.*,
+					teams.name, teams.shortname
+				",
+			'master_join'         => " INNER JOIN teams ON teams.id = teamplans.team_id ",
+		];
+
+		$_options = array_merge($default_option, $_options);
+
+		return \lib\db\config::public_search('teamplans', $_string, $_options);
+
+	}
 }
 ?>

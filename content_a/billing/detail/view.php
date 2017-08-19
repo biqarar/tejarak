@@ -1,11 +1,11 @@
 <?php
 namespace content_a\billing\detail;
 
-class view extends \mvc\view
+class view extends \content_a\main\view
 {
 	public function config()
 	{
-
+		parent::config();
 	}
 
 
