@@ -140,11 +140,30 @@ trait feature
 						return false;
 					}
 
+					// check if this user is first login user
+					$is_first_transaction = \lib\db\hours::enter(self::$my_team_id);
+					$is_first_transaction = ($is_first_transaction <= 1) ? true : false;
+
+					if($is_first_transaction)
+					{
+						if(isset(self::$my_report_settings['telegram_group']) && self::$my_report_settings['telegram_group'])
+						{
+							if(plan::access('telegram:first:of:day:msg:group', self::$my_team_id))
+							{
+								telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('date_now'), ['sort' => 1]);
+							}
+						}
+					}
+
 					foreach (self::$admins_access_detail as $key => $value)
 					{
 						if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 						{
-							telegram::sendMessage($value['chat_id'], self::generate_telegram_message('exit'), ['sort' => 1]);
+							if($is_first_transaction)
+							{
+								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('date_now'), ['sort' => 1]);
+							}
+							telegram::sendMessage($value['chat_id'], self::generate_telegram_message('exit'), ['sort' => 2]);
 						}
 					}
 				}
@@ -164,7 +183,7 @@ trait feature
 							{
 								if(plan::access('telegram:end:day:report:group', self::$my_team_id))
 								{
-									telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('report_end_day'), ['sort' => 3]);
+									telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('report_end_day'), ['sort' => 4]);
 								}
 							}
 						}
@@ -173,7 +192,7 @@ trait feature
 						{
 							if(isset($value['chat_id']) && isset($value['reportdaily']) && $value['reportdaily'])
 							{
-								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('report_end_day_admin'), ['sort' => 2]);
+								telegram::sendMessage($value['chat_id'], self::generate_telegram_message('report_end_day_admin'), ['sort' => 3]);
 							}
 						}
 					}

@@ -99,7 +99,8 @@ class hours
 				hours
 			INNER JOIN userteams ON userteams.id = hours.userteam_id AND userteams.team_id = $_team_id
 			WHERE
-				hours.date    = '$date'
+				hours.date    = '$date' OR
+				hours.enddate = '$date'
 			LIMIT 1
 		";
 
