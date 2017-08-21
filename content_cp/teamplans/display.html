@@ -23,6 +23,7 @@
 <div class="dt big">
 	<div class="f th">
 		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.name}}">{%trans "Team"%}</a></div>
+		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.creator}}">{%trans "Creator"%}</a></div>
 		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.plan}}">{%trans "Plan"%}</a></div>
 		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.start}}">{%trans "Start"%}</a></div>
 		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.end}}">{%trans "End"%}</a></div>
@@ -35,6 +36,7 @@
 	<div class="f">
 
 		<div class="c"><a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}</a></div>
+		<div class="c"><a href="{{url.base}}/enter?userid={{value.creator}}" data-direct>{{value.creator}}</a></div>
 		<div class="c">{%set my_plan = value.plan | capitalize  %}{%trans my_plan%}</div>
 		{%if site.currentlang == 'fa'%}
 			<div class="c">{{value.start|jdate("Y-m-d H:i:s")}}</div>

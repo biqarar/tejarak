@@ -8,7 +8,6 @@ class model extends \mvc\model
 	public function teamplans_list($_args, $_fields = [])
 	{
 		$meta   = [];
-		$meta['admin'] = true;
 
 		$search = null;
 		if(utility::get('search'))
@@ -23,6 +22,16 @@ class model extends \mvc\model
 				$meta[$value] = $_args->get($value)[0];
 			}
 		}
+
+		if(empty($meta))
+		{
+			$meta['teamplans.status'] = 'enable';
+			$meta['sort']             = 'teamplans.lastcalcdate';
+			$meta['order']            = 'desc';
+		}
+
+		$meta['admin'] = true;
+
 
 		$result = \lib\db\teamplans::search($search, $meta);
 		if(is_array($result))
