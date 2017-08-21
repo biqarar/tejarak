@@ -10,7 +10,16 @@ class controller extends \content_enter\main\controller
 	function _route()
 	{
 		// if the user login redirect to base
-		parent::if_login_not_route();
+		if(\lib\permission::access('enter:another:session'))
+		{
+			// the admin can login by another session
+			// never redirect to main
+		}
+		else
+		{
+			parent::if_login_not_route();
+		}
+
 		// check remeber me is set
 		// if remeber me is set: login!
 		parent::check_remember_me();

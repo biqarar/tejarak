@@ -6,6 +6,72 @@ use \lib\db;
 
 class model extends \content_enter\main\model
 {
+	public function login_another_session()
+	{
+		// var_dump(\lib\permission::access('enter:another:session'));exit();
+		if(\lib\permission::access('enter:another:session'))
+		{
+			$user_id = null;
+
+			if(utility::post('mobile') !== $this->login('mobile') && !utility::get('userid'))
+			{
+				$user_data = \lib\db\users::get_by_mobile(\lib\utility\filter::mobile(utility::post('mobile')));
+
+				if(isset($user_data['id']))
+				{
+					$user_id = $user_data['id'];
+				}
+				else
+				{
+					debug::error(T_("Mobile not found"));
+					return false;
+				}
+			}
+
+			if(!$user_id && utility::get('userid'))
+			{
+				$user_id = utility::get('userid');
+			}
+
+			if($user_id)
+			{
+
+				$main_account = $this->login('id');
+				$main_mobile  = $this->login('mobile');
+
+				if(!\lib\db\users::get($user_id))
+				{
+					debug::error(T_("User not found"));
+					return false;
+				}
+
+				// clean existing session
+				self::clean_session();
+				unset($_SESSION['user']);
+				unset($_SESSION['permission']);
+
+				self::$user_id = $user_id;
+				self::load_user_data('user_id');
+
+				$_SESSION['main_account'] = $main_account;
+				$_SESSION['main_mobile']  = $main_mobile;
+
+				// set login session
+				$redirect_url = self::enter_set_login();
+				// save redirect url in session to get from okay page
+				self::set_enter_session('redirect_url', $redirect_url);
+				// set okay as next step
+				self::next_step('okay');
+				// go to okay page
+				self::go_to('okay');
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}
+
+
 
 	/**
 	 * Posts an enter.
@@ -14,6 +80,7 @@ class model extends \content_enter\main\model
 	 */
 	public function post_enter($_args)
 	{
+
 		// get saved mobile in session to find count of change mobile
 		$old_mobile = self::get_enter_session('mobile');
 
@@ -25,6 +92,14 @@ class model extends \content_enter\main\model
 		{
 			debug::error(T_("Dont!"));
 			return false;
+		}
+
+		/**
+		 * check login by another session
+		 */
+		if($this->login_another_session())
+		{
+			return;
 		}
 
 		// check syntax of mobile is true

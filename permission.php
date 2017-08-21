@@ -99,5 +99,10 @@ self::$perm_list[12] =
 	'caller' => 'cp:transaction:logs',
 ];
 
+self::$perm_list[13] =
+[
+	'title'  => T_("Allow to login by another session"),
+	'caller' => 'enter:another:session',
+];
 
 ?>

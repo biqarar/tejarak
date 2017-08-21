@@ -26,10 +26,28 @@ class view extends \content_enter\main\view
 		$this->data->page['title']   = T_('Enter to :name with mobile', ['name' => $this->data->site['title']]);
 		$this->data->page['desc']    = $this->data->page['title'];
 
+		if(isset($_SESSION['main_account']))
+		{
+			$this->data->main_account = true;
+		}
+		else
+		{
+			$this->data->main_account = false;
+
+		}
+
 		$mobile = \lib\utility::get('mobile');
 		if($mobile)
 		{
-			$this->data->get_mobile = \lib\utility\filter::mobile($mobile);
+			if($this->data->main_account)
+			{
+				$this->data->get_mobile = $mobile;
+
+			}
+			else
+			{
+				$this->data->get_mobile = \lib\utility\filter::mobile($mobile);
+			}
 		}
 	}
 }

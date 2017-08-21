@@ -71,7 +71,16 @@ trait login
 			{
 				$user_data = \ilib\db\users::get_user_data($user_id);
 				\ilib\db\users::set_login_session($user_data);
-				\lib\db\sessions::set($user_id);
+
+				if(isset($_SESSION['main_account']))
+				{
+					// if the admin user login by this user
+					// not save the session
+				}
+				else
+				{
+					\lib\db\sessions::set($user_id);
+				}
 			}
 		}
 	}
@@ -82,16 +91,25 @@ trait login
 	 */
 	public static function enter_set_login($_url = null, $_auto_redirect = false)
 	{
-		// if($this->is_guest)
-		// {
-		// 	$this->login_set_guest();
-		// }
-		// set session
+
 		\ilib\db\users::set_login_session(self::user_data());
+
 		if(self::user_data('id'))
 		{
-			// set remeber and save session
-			\lib\db\sessions::set(self::user_data('id'));
+			if(isset($_SESSION['main_account']) && isset($_SESSION['main_mobile']))
+			{
+				if(isset($_SESSION['user']['mobile']) && $_SESSION['user']['mobile'] === $_SESSION['main_mobile'])
+				{
+					\lib\db\sessions::set(self::user_data('id'));
+				}
+				// if the admin user login by this user
+				// not save the session
+			}
+			else
+			{
+				// set remeber and save session
+				\lib\db\sessions::set(self::user_data('id'));
+			}
 		}
 
 		$url = self::find_redirect_url($_url);
@@ -233,11 +251,36 @@ trait login
 	{
 		if($_user_id && is_numeric($_user_id))
 		{
-			// set this session as logout
-			\lib\db\sessions::logout($_user_id);
+			if(isset($_SESSION['main_account']) && isset($_SESSION['main_mobile']) && isset($_SESSION['user']['mobile']))
+			{
+				if($_SESSION['user']['mobile'] === $_SESSION['main_mobile'])
+				{
+					\lib\db\sessions::logout($_user_id);
+				}
+				// if the admin user login by this user
+				// not save the session
+			}
+			else
+			{
+				// set this session as logout
+				\lib\db\sessions::logout($_user_id);
+			}
 		}
 
 		$_SESSION['user'] = [];
+
+		if(isset($_SESSION['main_account']) && isset($_SESSION['main_mobile']))
+		{
+			if(isset($_SESSION['user']['mobile']) && $_SESSION['user']['mobile'] !== $_SESSION['main_mobile'])
+			{
+				$host = Protocol."://" . \lib\router::get_root_domain();
+				$host .= \lib\define::get_current_language_string();
+				$host .= '/enter?mobile='. (string) $_SESSION['main_mobile'];
+				$redirect = new \lib\redirector($host);
+				$redirect->redirect();
+				return;
+			}
+		}
 
 		// unset and destroy session then regenerate it
 		// session_unset();

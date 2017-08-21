@@ -44,6 +44,7 @@ class controller extends \content\main\controller
 		'report',
 		'last',
 		'daily',
+		'account',
 
 	];
 
