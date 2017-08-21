@@ -12,7 +12,8 @@ class view extends \content_a\report\view
 	public function view_year()
 	{
 		$args           = [];
-		$args['id']   = \lib\router::get_url(0);
+		$args['id']     = \lib\router::get_url(0);
+		$args['export'] = utility::get('export');
 
 		if(utility::get('user'))
 		{

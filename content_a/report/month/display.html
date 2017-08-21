@@ -3,6 +3,11 @@
 
 {%block content%}
 
+<div>
+	<a href="{{export_url|raw}}">
+		<i class="sf-list fs40 btn"></i>
+	</a>
+</div>
 
 {%if all_user_list%}
   <div class="f">
@@ -33,7 +38,6 @@
 	</div>
 </form>
 <br>
-
 <div class="dt big">
 	<div class="f th">
 		<div class="c">{%trans "Name"%}</div>

@@ -25,11 +25,12 @@ class view extends \content_a\report\view
 			$this->data->get_month = utility::get('month');
 		}
 
-		$args          = [];
-		$args['id']    = \lib\router::get_url(0);
-		$args['year']  = utility::get('year');
-		$args['month'] = utility::get('month');
-		$args['user']  = utility::get('user');
+		$args           = [];
+		$args['id']     = \lib\router::get_url(0);
+		$args['year']   = utility::get('year');
+		$args['month']  = utility::get('month');
+		$args['user']   = utility::get('user');
+		$args['export'] = utility::get('export') ? true : false;
 
 		$this->data->month_time = $this->model()->get_month_time($args);
 

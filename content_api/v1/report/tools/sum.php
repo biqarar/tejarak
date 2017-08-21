@@ -120,6 +120,7 @@ trait sum
 		$meta['month']          = $month;
 		$meta['day']            = $day;
 		$meta['date_is_shamsi'] = $date_is_shamsi;
+		$meta['export']  	    = utility::request('export');
 		$result                 = \lib\db\hours::sum_time($meta);
 
 		$temp = [];
@@ -131,7 +132,14 @@ trait sum
 				$temp[] = $check;
 			}
 		}
-		return $temp;
+		if(utility::request('export'))
+		{
+			\lib\utility\export::csv(['data' => $temp, 'name' => T_("tejarak-sum-report")]);
+		}
+		else
+		{
+			return $temp;
+		}
 	}
 
 

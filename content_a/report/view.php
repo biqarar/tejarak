@@ -1,5 +1,6 @@
 <?php
 namespace content_a\report;
+use \lib\utility;
 
 class view extends \content_a\main\view
 {
@@ -19,6 +20,28 @@ class view extends \content_a\main\view
 		{
 			$this->data->time_raw = false;
 		}
+
+		if(utility::get())
+		{
+			if(!utility::get('export'))
+			{
+				$this->data->export_url = $this->url('full'). '&export=true';
+			}
+			else
+			{
+				$this->data->export_url = $this->url('full');
+			}
+		}
+		else
+		{
+			$this->data->export_url = $this->url('full'). '?export=true';
+		}
+
+		if(utility::get('year') && is_numeric(utility::get('year')) && mb_strlen(utility::get('year')) === 4)
+		{
+			$this->data->get_year = utility::get('year');
+		}
+
 
 		$this->data->page['title'] = T_('Reports');
 		$this->data->page['desc']  = $this->data->page['title'];

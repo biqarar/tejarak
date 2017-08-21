@@ -169,8 +169,8 @@ trait period
 		$meta['user_id']        = $user_id;
 		$meta['userteam_id']    = $check_is_my_team['userteam_id'];
 		$meta['date_is_shamsi'] = $date_is_shamsi;
-
-		$result  = \lib\db\hours::sum_period_time($meta);
+		$meta['export']	        = utility::request('export');
+		$result                 = \lib\db\hours::sum_period_time($meta);
 
 		$temp = [];
 		foreach ($result as $key => $value)
@@ -182,7 +182,15 @@ trait period
 			}
 		}
 
-		return $temp;
+		if(utility::request('export'))
+		{
+			\lib\utility\export::csv(['data' => $temp, 'name' => T_("tejarak-period-report")]);
+		}
+		else
+		{
+			return $temp;
+		}
+
 	}
 
 

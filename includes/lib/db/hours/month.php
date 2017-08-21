@@ -53,6 +53,7 @@ trait month
 		$month          = isset($_args['month']) 		  ? $_args['month'] 		 : null;
 		$date_is_shamsi = isset($_args['date_is_shamsi']) ? $_args['date_is_shamsi'] : null;
 		$order          = isset($_args['order']) 		  ? $_args['order'] 		 : 'DESC';
+		$export  	    = isset($_args['export']) 	 	  ? $_args['export'] 		 : false;
 
 		$query            = null;
 		$pagenation_query = null;
@@ -507,7 +508,13 @@ trait month
 			$count_record              = \lib\db::get($pagenation_query, 'count', true);
 			list($limit_start, $limit) = \lib\db::pagnation((int) $count_record, 10);
 			$query                     = sprintf($query, $limit_start, $limit);
-			$result                    = \lib\db::get($query);
+
+			if($export)
+			{
+				$query  = preg_replace("/LIMIT \d+\, \d+/", '', $query);
+			}
+
+			$result = \lib\db::get($query);
 		}
 		return $result;
 	}

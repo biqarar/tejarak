@@ -21,12 +21,12 @@ class view extends \content_a\report\view
 			$this->data->get_end_date = utility::get('end');
 		}
 
-		$args          = [];
-		$args['id']    = \lib\router::get_url(0);
-		$args['start'] = utility::get('start');
-		$args['end']   = utility::get('end');
-		$args['user']  = utility::get('user');
-
+		$args           = [];
+		$args['id']     = \lib\router::get_url(0);
+		$args['start']  = utility::get('start');
+		$args['end']    = utility::get('end');
+		$args['user']   = utility::get('user');
+		$args['export'] = utility::get('export');
 		$this->data->period_time = $this->model()->get_period_time($args);
 
 		if(isset($this->controller->pagnation))

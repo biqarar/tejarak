@@ -103,7 +103,14 @@ trait last
 			$meta['user_id'] = $user_id;
 		}
 
-		$meta['order']   = 'DESC';
+		$meta['order']      = 'DESC';
+		$meta['pagenation'] = utility::request('export') ? false : true;
+
+		if(!$meta['pagenation'])
+		{
+			$meta['limit'] = null;
+		}
+
 		$result          = \lib\db\hours::search(null, $meta);
 
 		$temp = [];
@@ -115,7 +122,15 @@ trait last
 				$temp[] = $check;
 			}
 		}
-		return $temp;
+
+		if(utility::request('export'))
+		{
+			\lib\utility\export::csv(['data'=> $temp, 'name' => T_('tejarak-last-report')]);
+		}
+		else
+		{
+			return $temp;
+		}
 	}
 
 
@@ -142,10 +157,20 @@ trait last
 
 				case 'date':
 					$temp['date'] = strtotime($value);
+					$temp['date_string'] = $value;
 					break;
 
 				case 'enddate':
 					$temp['end_date'] = strtotime($value);
+					$temp['end_date_string'] = $value;
+					break;
+
+				case 'shamsi_date':
+					$temp['shamsi_date'] = $value;
+					break;
+
+				case 'endshamsi_date':
+					$temp['end_shamsi_date'] = $value;
 					break;
 
 				case 'start':

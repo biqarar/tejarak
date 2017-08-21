@@ -2,6 +2,13 @@
 
 
 {%block content%}
+
+<div>
+	<a href="{{export_url|raw}}">
+		<i class="sf-list fs40 btn"></i>
+	</a>
+</div>
+
 {%if all_user_list%}
   <div class="f">
     {%for key, value in all_user_list%}
