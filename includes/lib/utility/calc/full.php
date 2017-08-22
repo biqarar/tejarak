@@ -267,6 +267,26 @@ trait full
         $invoice->add_child($new_invoice_detail);
         $invoice_id = $invoice->save();
 
+        if($this->notify)
+        {
+	        $notify_text = T_("You have new invoice for :team by amount :amount :unit",
+			[
+				'team'   => $this->team_details['name'],
+				'amount' => \lib\utility\human::number(number_format($amount), \lib\define::get_language()),
+				'unit'   => T_("toman"),
+			]);
+
+			// save notification to send to user
+			$notify_set =
+	        [
+				'to'      => $this->team_details['creator'],
+				'content' => $notify_text,
+				'cat'     => 'invoice',
+	        ];
+
+	        \lib\db\notifications::set($notify_set);
+        }
+
 		$transaction_set =
         [
 			'caller'          => 'invoice:team',

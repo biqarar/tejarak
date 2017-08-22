@@ -29,9 +29,9 @@ trait login
 		{
 			$host .= \lib\define::get_current_language_string();
 			// if first signup
-			if(\lib\option::enter('singup_redirect'))
+			if(\lib\option::config('enter', 'singup_redirect'))
 			{
-				$host .= '/'. \lib\option::enter('singup_redirect');
+				$host .= '/'. \lib\option::config('enter', 'singup_redirect');
 			}
 			else
 			{

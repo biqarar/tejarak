@@ -8,9 +8,10 @@ self::$language =
 	'default' => 'en',
 	'list'    => ['fa','en',],
 ];
-
+/**
+ * system default lanuage
+ */
 self::$config['default_language']             = 'en';
-
 self::$config['redirect_url']                 = 'http://tejarak.dev';
 self::$config['multi_domain']                 = true;
 self::$config['redirect_to_main']             = true;
@@ -90,16 +91,6 @@ self::$social['facebook']['client_token']     = 'df0047eb1af1e2acba2a3645bcb4f47
 /**
 * GOOGLE
 */
-// self::$social['google']['status']                      = true;
-// self::$social['google']['client_id']                   = '395232553225-140n5eq7ha34thagrbcnns125ocmqk96.apps.googleusercontent.com';
-// self::$social['google']['project_id']                  = 'ermile-tejarak';
-// self::$social['google']['auth_uri']                    = 'https://accounts.google.com/o/oauth2/auth';
-// self::$social['google']['token_uri']                   = 'https://accounts.google.com/o/oauth2/token';
-// self::$social['google']['auth_provider_x509_cert_url'] = 'https://www.googleapis.com/oauth2/v1/certs';
-// self::$social['google']['client_secret']               = 'h3q_yNJFqbqO5SV-PK2cXMmc';
-
-
-
 self::$social['google']['status']                      = true;
 self::$social['google']['client_id']                   = '395232553225-5filcn07d2rdjl2fld57mf8e50ac146j.apps.googleusercontent.com';
 self::$social['google']['project_id']                  = 'ermile-tejarak';
@@ -107,24 +98,6 @@ self::$social['google']['auth_uri']                    = 'https://accounts.googl
 self::$social['google']['token_uri']                   = 'https://accounts.google.com/o/oauth2/token';
 self::$social['google']['auth_provider_x509_cert_url'] = 'https://www.googleapis.com/oauth2/v1/certs';
 self::$social['google']['client_secret']               = 'oo6LPHZXJA6JWkgPgPb7uJ0U';
-
-
-
-// {
-//   "web": {
-//     "client_id": "395232553225-5filcn07d2rdjl2fld57mf8e50ac146j.apps.googleusercontent.com",
-//     "project_id": "ermile-tejarak",
-//     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-//     "token_uri": "https://accounts.google.com/o/oauth2/token",
-//     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-//     "client_secret": "oo6LPHZXJA6JWkgPgPb7uJ0U",
-//     "redirect_uris": [
-//       "https://tejarak.com/enter/google"
-//     ]
-//   }
-// }
-
-
 
 /**
 * TWITTER
@@ -172,8 +145,8 @@ self::$social['aparat']['key']                = null;
 /**
 * sms kavenegar config
 */
-self::$sms['kavenegar']['value']              = 'kavenegar_api';
 self::$sms['kavenegar']['status']             = true;
+self::$sms['kavenegar']['value']              = 'kavenegar_api';
 self::$sms['kavenegar']['apikey']             = '783067644A597A41716F3734755A683152736F6673773D3D';
 self::$sms['kavenegar']['debug']              = null;
 self::$sms['kavenegar']['line1']              = '10006660066600';
@@ -188,22 +161,23 @@ self::$sms['kavenegar']['recovery']           = true;
 self::$sms['kavenegar']['changepass']         = true;
 
 
-/**
- * telegram hook
- */
-self::$enter['telegram_hook']   = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^';
-/**
- * first signup url
- * main redirect url . signup redirect url
- */
-self::$enter['singup_redirect']     = 'a/setup';
 
 /**
  * call kavenegar template
  */
-self::$enter['call']                = true;
-self::$enter['call_template']['fa'] = 'tejarak-fa';
-self::$enter['call_template']['en'] = 'tejarak-en';
+self::$config['enter']['call']                = true;
+self::$config['enter']['call_template_fa'] = 'tejarak-fa';
+self::$config['enter']['call_template_en'] = 'tejarak-en';
+
+/**
+ * telegram hook
+ */
+self::$config['enter']['telegram_hook']   = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^';
+/**
+ * first signup url
+ * main redirect url . signup redirect url
+ */
+self::$config['enter']['singup_redirect']     = 'a/setup';
 
 
 /**
@@ -258,7 +232,81 @@ self::$config['default_unit'] = 1;
 // force change unit to this unit
 self::$config['force_unit']   = 1;
 
-
+/**
+ * transaction code
+ */
 self::$config['transactions_code'][100] = "invoice:team";
+
+/**
+ * send notification status
+ */
+self::$config['notification']['status'] = true;
+self::$config['notification']['sort'] =
+[
+	'telegram',
+	'email',
+	'sms',
+];
+
+/**
+ * the notification cats
+ */
+self::$config['notification']['cat'] = [];
+// news
+self::$config['notification']['cat'][1] =
+[
+	'title'   => 'news',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+];
+// invoice
+self::$config['notification']['cat'][2] =
+[
+	'title'   => 'invoice',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+];
+
+/**
+ * notification
+ * by verify
+ */
+// parent
+self::$config['notification']['cat'][3] =
+[
+	'title'   => 'accept_parent',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+	'btn'     =>
+	[
+		'accept_parent' => 'Accept', // T_("Accept")
+		'reject_parent' => 'Reject', // T_("Reject")
+	],
+];
+//  owner
+self::$config['notification']['cat'][4] =
+[
+	'title'   => 'accept_owner',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+	'btn'     =>
+	[
+		'accept_owner' => 'Accept', // T_("Accept")
+		'reject_owner' => 'Reject', // T_("Reject")
+	],
+];
+
 
 ?>

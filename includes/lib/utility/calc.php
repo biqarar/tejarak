@@ -45,8 +45,6 @@ class calc
 
 	private $log_meta            = [];
 	private $user_id             = null;
-	private $notify_type         = 'single';
-	private static $notify_list  = [];
 	private $count_active_user   = null;
 	private $active_time         = null;
 
@@ -113,26 +111,6 @@ class calc
 		{
 			// $this->user_id = $this->creator;
 		}
-	}
-
-
-	/**
-	 * Notifies a type.
-	 *
-	 * @param      <type>  $_notify_type  The notify type
-	 */
-	public function notify_type($_notify_type)
-	{
-		$this->notify_type = $_notify_type;
-	}
-
-
-	/**
-	 * Notifies a send.
-	 */
-	public static function notify_send()
-	{
-		// send all nofity
 	}
 
 

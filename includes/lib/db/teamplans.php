@@ -214,20 +214,36 @@ class teamplans
 			$update_teamplans['status'] = 'disable';
 		}
 
-		$prepayment = \lib\utility\plan::get_detail($_args['plan']);
+		$prepayment_new  = \lib\utility\plan::get_detail($_args['plan']);
 
-		if(is_array($prepayment) && array_key_exists('prepayment', $prepayment) && $prepayment['prepayment'] === true)
+		if(is_array($prepayment_new ) && array_key_exists('prepayment', $prepayment_new ) && $prepayment_new ['prepayment'] === true)
 		{
-			$prepayment = true;
+			$prepayment_new  = true;
 		}
 		else
 		{
-			$prepayment = false;
+			$prepayment_new  = false;
+		}
+
+		$prepayment_old = false;
+		if(isset($current['plan']))
+		{
+			$prepayment_old  = \lib\utility\plan::get_detail($current['plan']);
+
+			if(is_array($prepayment_old ) && array_key_exists('prepayment', $prepayment_old ) && $prepayment_old['prepayment'] === true)
+			{
+				$prepayment_old  = true;
+			}
+			else
+			{
+				$prepayment_old  = false;
+			}
+
 		}
 
 		if($args_make_invoice)
 		{
-			if($need_maked_invoice || $prepayment)
+			if($need_maked_invoice || $prepayment_new || $prepayment_old)
 			{
 				$old_plan_id = isset($current['plan']) ? $current['plan'] : null;
 				$teamplan_id = isset($current['id']) ? $current['id'] : null;

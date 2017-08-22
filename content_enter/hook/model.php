@@ -105,7 +105,7 @@ class model extends \mvc\model
 			return false;
 		}
 
-		if($authorization === \lib\option::enter('telegram_hook'))
+		if($authorization === \lib\option::config('enter', 'telegram_hook'))
 		{
 			$this->authorization = $authorization;
 			return true;

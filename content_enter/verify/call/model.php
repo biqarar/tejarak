@@ -34,16 +34,16 @@ class model extends \content_enter\main\model
 			return false;
 		}
 
-		if(!\lib\option::enter('call'))
+		if(!\lib\option::config('enter', 'call'))
 		{
 			return false;
 		}
 
 		$language     = \lib\define::get_language();
 		// find template to call by it
-		if(\lib\option::enter('call_template', $language))
+		if(\lib\option::config('enter', "call_template_$language"))
 		{
-			$template   = \lib\option::enter('call_template', $language);
+			$template   = \lib\option::config('enter', "call_template_$language");
 		}
 		else
 		{
