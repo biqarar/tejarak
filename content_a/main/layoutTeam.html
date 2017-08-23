@@ -9,6 +9,7 @@
     {%if is_admin%}
 	    <li><a href="{{url.baseFull}}/{{team}}"><i class="sf-home"></i>{%trans "Team Dashboard"%}</a></li>
 	    <li><a href="{{url.baseFull}}/{{team}}/gateway/list"><i class="sf-enter"></i>{%trans "Gateway"%}</a></li>
+	    <li><a href="{{url.baseFull}}/{{team}}/sendnotify"><i class="sf-bell"></i>{%trans "Send notify"%}</a></li>
 	    {%if is_creator%}
 	    	<li><a href="{{url.baseFull}}/{{team}}/plan"><i class="sf-bolt"></i>{%trans "Change Plan"%}</a></li>
 		{%endif%}
