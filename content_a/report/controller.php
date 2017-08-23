@@ -43,7 +43,6 @@ class controller extends \content_a\main\controller
 							case 'year':
 							case 'month':
 							case 'period':
-							// case 'sum':
 
 								\lib\router::set_controller("content_a\\report\\$split[2]\\controller");
 								return;

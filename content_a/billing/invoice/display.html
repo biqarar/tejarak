@@ -1,47 +1,42 @@
 {%extends display.admin%}
 
+
+
 {%block content%}
 
+<div class="mB25 msg">
+  <h4>{%trans "Invoice Detail"%}</h4>
+  <div class="msg">{%trans "Title"%}: {{invoice.invoice.title}}</div>
 
+  {%if site.currentlang == 'fa'%}
+    <div class="msg">{%trans "Date"%}: {{invoice.invoice.date|jdate("Y-m-d H:i:s")}}</div>
+  {%else%}
+    <div class="msg">{%trans "Date"%}: {{invoice.invoice.date}}</div>
+  {%endif%}
+  <div class="msg">{%trans "Total"%}: {{invoice.invoice.total|number_format|fitNumber}}</div>
 
-   <div class="box">
-    <div class="f">
-    <h4>{%trans "Invoice Detail"%}</h4>
-      <div class="c">{%trans "Title"%}: {{invoice.invoice.title}}</div>
-      {%if site.currentlang == 'fa'%}
-        <div class="c">{%trans "Date"%}: {{invoice.invoice.date|jdate("Y-m-d H:i:s")}}</div>
-      {%else%}
-        <div class="c">{%trans "Date"%}: {{invoice.invoice.date}}</div>
-      {%endif%}
-        <div class="c">{%trans "Total"%}: {{invoice.invoice.total|number_format|fitNumber}}</div>
-    </div>
-    </div>
-
-   <div class="box">
-    <h3 id="invoice-history">{%trans "invoice History"%}</h3>
-    <div class="tbl ps dtc">
-     <div class="f th">
-
-      <span class="c">{%trans "Title" %}</span>
-      <span class="c">{%trans "Price" %}</span>
-      <span class="c">{%trans "Count" %}</span>
-      <span class="c">{%trans "Total" %}</span>
-
-     </div>
+  <table class="tbl">
+    <thead class="primary">
+      <th>{%trans "Title" %}</th>
+      <th>{%trans "Price" %}</th>
+      <th>{%trans "Count" %}</th>
+      <th>{%trans "Total" %}</th>
+    </thead>
+    <tbody>
 
     {% for key, value in invoice.invoice_detail %}
-     <div class="f">
-      <span class="c">{{value.title}}</span>
-      <span class="c">{{value.price|number_format|fitNumber}}</span>
-      <span class="c">{{value.count|number_format|fitNumber}}</span>
-      <span class="c">{{value.total|number_format|fitNumber}}</span>
-
-     </div>
+     <tr>
+      <td>{{value.title}}</td>
+      <td>{{value.price|number_format|fitNumber}}</td>
+      <td>{{value.count|number_format|fitNumber}}</td>
+      <td>{{value.total|number_format|fitNumber}}</td>
+     </tr>
     {%endfor%}
-    </div>
-   </div>
 
+    </tbody>
 
+  </table>
+</div>
 
 {%endblock%}
 

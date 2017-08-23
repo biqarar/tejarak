@@ -5,47 +5,53 @@
 
 <div>
 	<a href="{{export_url|raw}}">
-		<i class="sf-list fs40 btn"></i>
+		<i title='{%trans "Export as CSV file"%}' class="sf-list btn"></i>
 	</a>
 </div>
 
 {{block('userList')}}
+<div class="mB25 pA25">
 
-<div class="dt big">
-	<div class="f th">
-		<div class="c">{%trans "Name"%}</div>
-		<div class="c2">{%trans "Year"%}</div>
-		<div class="c2">{%trans "Month"%}</div>
-		<div class="c">{%trans "Count"%}</div>
-		<div class="c s0">{%trans "Diff"%}</div>
-		<div class="c s0">{%trans "Minus"%}</div>
-		<div class="c s0">{%trans "Plus"%}</div>
-		<div class="c">{%trans "Accepted"%}</div>
-		<div class="c">{%trans "Total"%}</div>
-	</div>
+<table class="tbl ">
+	<thead class="primary">
+		<th>{%trans "Name"%}</th>
+		<th>{%trans "Year"%}</th>
+		<th>{%trans "Month"%}</th>
+		<th>{%trans "Count"%}</th>
+		<th>{%trans "Diff"%}</th>
+		<th>{%trans "Minus"%}</th>
+		<th>{%trans "Plus"%}</th>
+		<th>{%trans "Accepted"%}</th>
+		<th>{%trans "Total"%}</th>
+	</thead>
+	<tbody>
 	{%for key, value in year_time%}
-	<div class="f">
-		<div class="c">{{value.displayname}}</div>
-		<div class="c">{{value.year|fitNumber}}</div>
-		<div class="c">{{value.month|fitNumber}}</div>
-		<div class="c">{{value.count|fitNumber}}</div>
+	<tr>
+		<td >{{value.displayname}}</td>
+		<td >{{value.year|fitNumber}}</td>
+		<td >{{value.month|fitNumber}}</td>
+		<td >{{value.count|fitNumber}}</td>
 		{%if time_raw%}
-			<div class="c s0">{{value.diff | fitNumber}}</div>
-			<div class="c s0">{{value.minus | fitNumber}}</div>
-			<div class="c s0">{{value.plus | fitNumber}}</div>
-			<div class="c">{{value.accepted | fitNumber}}</div>
-			<div class="c">{{value.total | fitNumber}}</div>
+			<td >{{value.diff | fitNumber}}</td>
+			<td >{{value.minus | fitNumber}}</td>
+			<td >{{value.plus | fitNumber}}</td>
+			<td >{{value.accepted | fitNumber}}</td>
+			<td >{{value.total | fitNumber}}</td>
 		{%else%}
-			<div class="c s0">{{value.diff | humantime | fitNumber}}</div>
-			<div class="c s0">{{value.minus | humantime | fitNumber}}</div>
-			<div class="c s0">{{value.plus | humantime | fitNumber}}</div>
-			<div class="c">{{value.accepted | humantime | fitNumber}}</div>
-			<div class="c">{{value.total | humantime | fitNumber}}</div>
+			<td >{{value.diff | humantime | fitNumber}}</td>
+			<td >{{value.minus | humantime | fitNumber}}</td>
+			<td >{{value.plus | humantime | fitNumber}}</td>
+			<td >{{value.accepted | humantime | fitNumber}}</td>
+			<td >{{value.total | humantime | fitNumber}}</td>
 		{%endif%}
-	</div>
+	</tr>
 	{%endfor%}
+	</tbody>
+
+</table>
 </div>
-<div class="pagination-container">
+
+
 	{%include display.pagination%}
-</div>
+
 {%endblock%}

@@ -2,39 +2,42 @@
 
 {%block content%}
 
-   <div class="box">
-    <h3 id="detail-history">{%trans "Usage Detail"%}</h3>
-    <div class="tbl ps dtc">
-     <div class="f th">
-        <div class="c">{%trans "Name"%}</div>
-        <div class="c">{%trans ""%}</div>
-        <div class="c">{%trans "plan"%}</div>
-        <div class="c">{%trans "Start plan"%}</div>
-        <div class="c">{%trans "Active member"%}</div>
-        <div class="c">{%trans "Usage"%}</div>
-     </div>
+<div class="mB25 msg">
+<h3 id="detail-history">{%trans "Usage Detail"%}</h3>
 
-    {% for key, value in detail %}
-     <div class="f">
-        <div class="c">
-          <a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}</a>
-        </div>
-        <div class="c">
-        <img src="{{value.logourl}}" height="15" width="15"></div>
-        <div class="c">{%set my_plan = value.plan | capitalize %}{%trans my_plan%}</div>
-        {%if site.currentlang == 'fa'%}
-          <div class="c">{{value.startplan|jdate("Y-m-d H:i:s")}}</div>
-        {%else%}
-          <div class="c">{{value.startplan|date("Y-m-d H:i:s")}}</div>
-        {%endif%}
-        <div class="c">{{value.active_member | number_format | fitNumber}}</div>
-        <div class="c">{{value.usage | number_format | fitNumber}}</div>
-     </div>
-    {%endfor%}
-    </div>
-   </div>
+<table class="tbl">
+    <thead class="primary">
+      <th>{%trans "Name"%}</th>
+      <th>{%trans ""%}</th>
+      <th>{%trans "plan"%}</th>
+      <th>{%trans "Start plan"%}</th>
+      <th>{%trans "Active member"%}</th>
+      <th>{%trans "Usage"%}</th>
+    </thead>
+    <tbody>
 
+  {% for key, value in detail %}
+   <tr >
+      <td >
+        <a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}</a>
+      </td>
+      <td >
+      <img src="{{value.logourl}}" height="15" width="15"></td>
+      <td >{%set my_plan = value.plan | capitalize %}{%trans my_plan%}</td>
+      {%if site.currentlang == 'fa'%}
+        <td >{{value.startplan|jdate("Y-m-d H:i:s")}}</td>
+      {%else%}
+        <td >{{value.startplan|date("Y-m-d H:i:s")}}</td>
+      {%endif%}
+      <td >{{value.active_member | number_format | fitNumber}}</td>
+      <td >{{value.usage | number_format | fitNumber}}</td>
+   </tr>
+  {%endfor%}
 
+    </tbody>
+</table>
+
+</div>
 
 {%endblock%}
 

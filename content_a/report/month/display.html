@@ -1,26 +1,15 @@
-{%extends display.adminTeam%}
-
+{%extends 'content_a/report/display.html'%}
 
 {%block content%}
 
 <div>
 	<a href="{{export_url|raw}}">
-		<i class="sf-list fs40 btn"></i>
+		<i class="sf-list btn"></i>
 	</a>
 </div>
 
-{%if all_user_list%}
-  <div class="f">
-    {%for key, value in all_user_list%}
-      <div class="c1">
-        <a href="{{reportUrl}}?user={{value.user_id}}">
-          <img src="{{value.file}}" height="50" width="50" >
-          <span>{{value.displayname}}</span>
-        </a>
-      </div>
-    {%endfor%}
-  </div>
-{%endif%}
+
+{{block('userList')}}
 
 <form method="get" class="df f" data-action>
 	<div class="c1">
@@ -38,35 +27,39 @@
 	</div>
 </form>
 <br>
-<div class="dt big">
-	<div class="f th">
-		<div class="c">{%trans "Name"%}</div>
-		<div class="c">{%trans "Year"%}</div>
-		<div class="c">{%trans "Month"%}</div>
-		<div class="c">{%trans "Diff"%}</div>
-		<div class="c">{%trans "Minus"%}</div>
-		<div class="c">{%trans "Plus"%}</div>
-		<div class="c">{%trans "Accepted"%}</div>
-	</div>
+
+<table class="tbl">
+	<thead class="primary">
+		<th>{%trans "Name"%}</th>
+		<th>{%trans "Year"%}</th>
+		<th>{%trans "Month"%}</th>
+		<th>{%trans "Diff"%}</th>
+		<th>{%trans "Minus"%}</th>
+		<th>{%trans "Plus"%}</th>
+		<th>{%trans "Accepted"%}</th>
+	</thead>
+	<tbody>
 	{%for key, value in month_time%}
-	<div class="f">
-		<div class="c">{{value.displayname}}</div>
-		<div class="c">{{value.year|fitNumber}}</div>
-		<div class="c">{{value.month|fitNumber}}</div>
+	<tr>
+		<td>{{value.displayname}}</td>
+		<td>{{value.year|fitNumber}}</td>
+		<td>{{value.month|fitNumber}}</td>
 		{%if time_raw%}
-			<div class="c">{{value.diff | fitNumber}}</div>
-			<div class="c">{{value.minus | fitNumber}}</div>
-			<div class="c">{{value.plus | fitNumber}}</div>
-			<div class="c">{{value.accepted | fitNumber}}</div>
+			<td>{{value.diff | fitNumber}}</td>
+			<td>{{value.minus | fitNumber}}</td>
+			<td>{{value.plus | fitNumber}}</td>
+			<td>{{value.accepted | fitNumber}}</td>
 		{%else%}
-			<div class="c">{{value.diff | humantime | fitNumber}}</div>
-			<div class="c">{{value.minus | humantime | fitNumber}}</div>
-			<div class="c">{{value.plus | humantime | fitNumber}}</div>
-			<div class="c">{{value.accepted | humantime | fitNumber}}</div>
+			<td>{{value.diff | humantime | fitNumber}}</td>
+			<td>{{value.minus | humantime | fitNumber}}</td>
+			<td>{{value.plus | humantime | fitNumber}}</td>
+			<td>{{value.accepted | humantime | fitNumber}}</td>
 		{%endif%}
-	</div>
+	</tr>
 	{%endfor%}
-</div>
+	</tbody>
+</table>
+
 <div class="pagination-container">
 	{%include display.pagination%}
 </div>

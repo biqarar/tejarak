@@ -2,66 +2,68 @@
 
 {%block content%}
 
-<div class="dt big">
-	<div class="f th">
-		<div class="c">{%trans "Action"%}</div>
-		<div class="c">{%trans "Start Date"%}</div>
-		<div class="c">{%trans "Start Time"%}</div>
-		<div class="c">{%trans "End Date"%}</div>
-		<div class="c">{%trans "End Time"%}</div>
-		<div class="c">{%trans "Status"%}</div>
-		<div class="c">{%trans "Type"%}</div>
-		<div class="c">{%trans "Description"%}</div>
+<div class="mB25 msg">
+	<table class="tbl">
+		<thead class="primary">
+			<th>{%trans "Action"%}</th>
+			<th>{%trans "Start Date"%}</th>
+			<th>{%trans "Start Time"%}</th>
+			<th>{%trans "End Date"%}</th>
+			<th>{%trans "End Time"%}</th>
+			<th>{%trans "Status"%}</th>
+			<th>{%trans "Type"%}</th>
+			<th>{%trans "Description"%}</th>
 
-		{%if not show_all_user%}
-			<div class="c">{%trans "Response"%}</div>
-		{%endif%}
+			{%if not show_all_user%}
+				<th>{%trans "Response"%}</th>
+			{%endif%}
+<!--
+			{%if show_all_user%}
+				<th>{%trans "Set Response"%}</th>
+				<th>{%trans "Accept"%}</th>
+				<th>{%trans "Reject"%}</th>
+			{%endif%} -->
 
-		{%if show_all_user%}
-			<div class="c">{%trans "Set Response"%}</div>
-			<div class="c">{%trans "Accept"%}</div>
-			<div class="c">{%trans "Reject"%}</div>
-		{%endif%}
-
-	</div>
+		</thead>
+		<tbody>
 
 	{%for key, value in request_list%}
 
-	<div class="f">
+	<tr >
 
 		{%if value.status == 'awaiting' %}
-			<div class="c df"><a href="{{url.baseFull}}/{{team_code}}/houredit/remove={{value.id}}">{%trans "Remove"%}</a></div>
+			<td><a href="{{url.baseFull}}/{{team_code}}/houredit/remove={{value.id}}">{%trans "Remove"%}</a></td>
 		{%else%}
-			<div class="c df"><a href="{{url.baseFull}}/{{team_code}}/houredit/detail={{value.id}}">{%trans "More"%}</a></div>
+			<td><a href="{{url.baseFull}}/{{team_code}}/houredit/detail={{value.id}}">{%trans "More"%}</a></td>
 		{%endif%}
 
 		{%if site.currentlang == 'fa'%}
-			<div class="c">{{value.shamsi_date|fitNumber}}</div>
+			<td>{{value.shamsi_date|fitNumber}}</td>
 		{%else%}
-			<div class="c">{{value.date|fitNumber}}</div>
+			<td>{{value.date|fitNumber}}</td>
 		{%endif%}
-		<div class="c">{{value.start|fitNumber}}</div>
+		<td>{{value.start|fitNumber}}</td>
 		{%if site.currentlang == 'fa'%}
-			<div class="c">{{value.endshamsi_date|fitNumber}}</div>
+			<td>{{value.endshamsi_date|fitNumber}}</td>
 		{%else%}
-			<div class="c">{{value.enddate|fitNumber}}</div>
+			<td>{{value.enddate|fitNumber}}</td>
 		{%endif%}
-		<div class="c">{{value.end|fitNumber}}</div>
-		<div class="c">{%set myStatus = value.status%}{% trans myStatus %}</div>
-		<div class="c">{%if value.hour_id%}{% trans "Edit" %}{%else%}{% trans "Add" %}{%endif%}</div>
+		<td>{{value.end|fitNumber}}</td>
+		<td>{%set myStatus = value.status%}{% trans myStatus %}</td>
+		<td>{%if value.hour_id%}{% trans "Edit" %}{%else%}{% trans "Add" %}{%endif%}</td>
 		{%if value.desc%}
-			<div class="c">{{value.desc}}</div>
+			<td>{{value.desc}}</td>
 		{%else%}
-			<div class="c"><i>{%trans "No description"%}</i></div>
+			<td><i>{%trans "No description"%}</i></td>
 		{%endif%}
 
 		{%if not show_all_user%}
-			<div class="c">{{value.response}}</div>
+			<td>{{value.response}}</td>
 		{%endif%}
 
 		{%if show_all_user%}
-
-			<form method="post" class="c">
+<!--
+			<form method="post">
 				<div class="c df"><textarea name="response" my_code="{{value.id}}" class="description_main " placeholder='{%trans "Set Response"%}' ></textarea></div>
 				<div class="hidden">
 					<input type="hidden" name="id" value="{{value.id}}">
@@ -78,11 +80,14 @@
 				</div>
 				<div class="c df"><input type="submit" class="bn" name="reject" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'></div>
 			</form>
-
+ -->
 		{%endif%}
-	</div>
+	</tr>
 	{%endfor%}
+		</tbody>
+	</table>
 </div>
+
 
 <div class="pagination-container">
 	{%include display.pagination%}
