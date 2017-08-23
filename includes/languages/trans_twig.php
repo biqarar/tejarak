@@ -607,7 +607,10 @@ private function transtext()
 	echo T_("Allow minus");                                                           // Line 78
 	echo T_("Remote user");                                                           // Line 83
 	echo T_("24 hour");                                                               // Line 87
-	echo T_("Close");                                                                 // Line 112
+	echo T_("Team parent");                                                           // Line 105
+	echo T_("Parent of this team");                                                   // Line 109
+	echo T_("Please select one team");                                                // Line 111
+	echo T_("Close");                                                                 // Line 131
 	echo T_("Advance");                                                               // Line 134
 
 	//---------------------------------------------------content_a/member/display.html

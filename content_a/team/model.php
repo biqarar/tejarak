@@ -26,6 +26,7 @@ class model extends \content_a\main\model
 			'allow_minus' => utility::post('allowMinus'),
 			'remote_user' => utility::post('remoteUser'),
 			'24h'         => utility::post('24h'),
+			'parent'      => utility::post('the-parent'),
 		];
 
 		if(utility::files('logo'))
@@ -33,6 +34,20 @@ class model extends \content_a\main\model
 			$args['logo'] = $this->upload_logo();
 		}
 
+		/**
+		 * if the user not check parent check box
+		 * not save the parent
+		 */
+		if(!utility::post('parent'))
+		{
+			$args['parent'] = null;
+		}
+
+		if(utility::post('parent') && !utility::post('the-parent'))
+		{
+			debug::error(T_("Please select the parent team"), 'the-parent');
+			return false;
+		}
 		return $args;
 	}
 
@@ -66,6 +81,10 @@ class model extends \content_a\main\model
 	public function post_add($_args)
 	{
 		$request          = $this->getPost();
+		if($request === false)
+		{
+			return false;
+		}
 		$this->user_id    = $this->login('id');
 		utility::set_request_array($request);
 		$this->add_team();
@@ -117,6 +136,12 @@ class model extends \content_a\main\model
 		}
 
 		$request       = $this->getPost();
+
+		if($request === false)
+		{
+			return false;
+		}
+
 		$this->user_id = $this->login('id');
 		$request['id'] = $code;
 

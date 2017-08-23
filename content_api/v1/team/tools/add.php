@@ -156,6 +156,33 @@ trait add
 			}
 		}
 
+
+		$parent = utility::request('parent');
+		if($parent)
+		{
+			$parent = \lib\utility\shortURL::decode($parent);
+		}
+
+		if($parent)
+		{
+			// check this team and the parent team have one owner
+			$check_owner = \lib\db\teams::get(['id' => $parent, 'creator' => $this->user_id, 'limit' => 1]);
+			if(!array_key_exists('parent', $check_owner))
+			{
+				logs::set('api:team:parent:owner:not:match', $this->user_id, $log_meta);
+				debug::error(T_("The parent is not in your team"), 'parent', 'arguments');
+				return false;
+			}
+
+			if($check_owner['parent'])
+			{
+				logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
+				debug::error(T_("This parent is a child of another team"), 'parent', 'arguments');
+				return false;
+			}
+		}
+
+
 		$args               = [];
 		$args['creator']    = $this->user_id;
 		$args['name']       = $name;
@@ -170,6 +197,7 @@ trait add
 		$args['logo']       = $logo_id;
 		$args['logourl']    = $logo_url;
 		$args['privacy']    = $privacy;
+		$args['parent']     = $parent ? $parent : null;
 
 		\lib\storage::set_last_team_added($shortname);
 
@@ -246,6 +274,14 @@ trait add
 			if(!utility::isset_request('24h')) 				unset($args['24h']);
 			if(!utility::isset_request('logo')) 			unset($args['logo'], $args['logourl']);
 			if(!utility::isset_request('privacy')) 			unset($args['privacy']);
+			if(!utility::isset_request('parent')) 			unset($args['parent']);
+
+			if(isset($args['parent']) && intval($args['parent']) === intval($id))
+			{
+				logs::set('api:team:parent:is:the:team', $this->user_id, $log_meta);
+				debug::error(T_("A team can not be the parent himself"), 'parent', 'arguments');
+				return false;
+			}
 
 			if(!empty($args))
 			{

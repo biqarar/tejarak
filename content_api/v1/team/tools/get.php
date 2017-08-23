@@ -33,7 +33,16 @@ trait get
 			switch ($key)
 			{
 				case 'id':
-					$result[$key] = \lib\utility\shortURL::encode($value);
+				case 'creator':
+				case 'parent':
+					if(isset($value))
+					{
+						$result[$key] = \lib\utility\shortURL::encode($value);
+					}
+					else
+					{
+						$result[$key] = null;
+					}
 					break;
 
 				case 'status':
@@ -101,7 +110,6 @@ trait get
 					break;
 
 				case 'fileid':
-				case 'creator':
 				case 'telegram_id':
 				case 'plan':
 				case 'until':

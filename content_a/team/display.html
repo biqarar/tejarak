@@ -99,6 +99,25 @@
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
+
+        <div class="c4 s6">
+         <input type="checkbox" name="parent" id="parent" {%if team_detail.parent%}checked{%endif%}>
+         <label for="parent">{%trans "Team parent"%}</label>
+        </div>
+
+        <div class="f s6" data-response="parent" {%if team_detail.parent%}{%else%}data-response-hide{%endif%}>
+         <label for="the-parent" class="c4">{%trans "Parent of this team"%}</label>
+         <select name="the-parent" class="c8">
+           <option value="">{%trans "Please select one team"%}</option>
+           {%for key, value in owner_team%}
+            <option value="{{key}}" {%if team_detail.parent == key %} selected {%endif%}>{{value}}</option>
+           {%endfor%}
+         </select>
+        </div>
+
+
+
+
        </div>
       </div>
 
