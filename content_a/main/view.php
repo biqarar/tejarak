@@ -24,6 +24,12 @@ class view extends \mvc\view
 			$this->data->current_team = $this->model()->getTeamDetail($this->data->team);
 		}
 
+		if($this->login('id'))
+		{
+			// get count unread notifiation
+			$this->data->notification_count = \lib\db\notifications::unread($this->login('id'), true);
+		}
+
 	}
 }
 ?>
