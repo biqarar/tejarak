@@ -150,7 +150,7 @@ trait _use
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function listMember($_team_id_or_code, $_type = 'id')
+	public function listMember($_team_id_or_code, $_type = 'id', $_args = [])
 	{
 		$this->user_id = $this->login('id');
 		$request       = [];
@@ -172,7 +172,7 @@ trait _use
 		}
 
 		utility::set_request_array($request);
-		$result =  $this->get_list_member();
+		$result =  $this->get_list_member($_args);
 		return $result;
 	}
 }

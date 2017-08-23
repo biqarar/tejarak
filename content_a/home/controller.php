@@ -182,6 +182,13 @@ class controller extends \content_a\main\controller
 			return;
 		}
 
+		// route url like this /a/2kf/houredit
+		if(preg_match("/^([a-zA-Z0-9]+)\/sendnotify/", $url))
+		{
+			\lib\router::set_controller("content_a\\sendnotify\\controller");
+			return;
+		}
+
 	}
 }
 ?>

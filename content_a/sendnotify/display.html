@@ -1,0 +1,16 @@
+{%extends display.admin%}
+
+{%block content%}
+<div class="mB25 fs16 msg">
+  <h2 class="mB0">{%trans "Send message to user"%}</h2>
+  <p>{%trans "You can send every message to your team member"%}</p>
+  <form method="post">
+    <label for="message-text">{%trans "Message text"%}</label>
+    <textarea id="message-text" name="message-text" placeholder='{%trans "Type your message here..."%}'></textarea>
+    <input type="submit" value='{%trans "Send"%}' class="btn primary">
+  </form>
+</div>
+
+
+{%endblock%}
+

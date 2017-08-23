@@ -20,6 +20,18 @@ trait get
 	 */
 	public function get_list_member($_args = [])
 	{
+		$default_args =
+		[
+			'pagenation' => true,
+		];
+
+		if(!is_array($_args))
+		{
+			$_args = [];
+		}
+
+		$_args = array_merge($default_args, $_args);
+
 		$log_meta =
 		[
 			'data' => null,
@@ -92,13 +104,14 @@ trait get
 
 		if(isset($team_detail['id']))
 		{
-			$where              = [];
-			$where['team_id']   = $team_detail['id'];
-			$where['get_hours'] = $get_hours;
-			$where['status']    = ['IN', "('active', 'deactive')"];
-			$where['rule']      = ['IN', "('user', 'admin')"];
-			$result             = \lib\db\userteams::get_list($where);
-			$temp               = [];
+			$where               = [];
+			$where['team_id']    = $team_detail['id'];
+			$where['get_hours']  = $get_hours;
+			$where['status']     = ['IN', "('active', 'deactive')"];
+			$where['rule']       = ['IN', "('user', 'admin')"];
+			$where['pagenation'] = $_args['pagenation'];
+			$result              = \lib\db\userteams::get_list($where);
+			$temp                = [];
 
 			if(is_array($result))
 			{

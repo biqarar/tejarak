@@ -273,6 +273,7 @@ self::$config['notification']['cat'][2] =
 	],
 ];
 
+
 /**
  * notification
  * by verify
@@ -307,6 +308,19 @@ self::$config['notification']['cat'][4] =
 		'reject_owner' => 'Reject', // T_("Reject")
 	],
 ];
+
+
+// invoice
+self::$config['notification']['cat'][5] =
+[
+	'title'   => 'public',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+];
+
 
 
 ?>
