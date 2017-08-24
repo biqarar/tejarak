@@ -236,6 +236,8 @@ self::$config['force_unit']   = 1;
  * transaction code
  */
 self::$config['transactions_code'][100] = "invoice:team";
+self::$config['transactions_code'][150] = "promo:ref";
+
 
 /**
  * send notification status

@@ -34,7 +34,7 @@ trait get
 			{
 				case 'id':
 				case 'creator':
-				case 'parent':
+				// case 'parent':
 					if(isset($value))
 					{
 						$result[$key] = \lib\utility\shortURL::encode($value);

@@ -92,33 +92,90 @@ class model extends \mvc\model
 		{
 			if(utility::post('promo'))
 			{
-
-				$amount = 0;
-				switch (utility::post('promo'))
-				{
-					// case '$1000$':
-					// 	$amount = 1000;
-					// 	break;
-
-					// case '$2000$':
-					// 	$amount = 2000;
-					// 	break;
-
-					// case '$$':
-					// 	$amount = 100000;
-					// 	break;
-					default:
-						return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
-						break;
-				}
-
-				return debug::true(T_("Your account charge :amount", ['amount' => $amount]));
+				$this->check_promo();
 			}
 			else
 			{
-				return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
+				debug::error(T_("Invalid promo code"), 'promo', 'arguments');
+				return false;
 			}
 		}
+	}
+
+
+
+	public function check_promo()
+	{
+		$promo     = utility::post('promo');
+		$amount    = 0;
+		$user_code = null;
+		$user_ref  = null;
+		if(!preg_match("/^ref\_([A-Za-z0-9]+)$/", $promo, $split))
+		{
+			debug::error(T_("Invalid promo code"), 'promo', 'arguments');
+			return false;
+		}
+		if(isset($split[1]))
+		{
+			$user_code = $split[1];
+			$user_ref = \lib\utility\shortURL::decode($user_code);
+			if(!$user_ref)
+			{
+				debug::error(T_("Invalid promo code"), 'promo', 'arguments');
+				return false;
+			}
+		}
+
+		if(intval($this->login('id')) === intval($user_ref))
+		{
+			debug::error(T_("You try to referal yourself!"), 'promo', 'arguments');
+			return false;
+		}
+
+		if($this->login('ref'))
+		{
+			debug::error(T_("You have ref. can not set another ref"), 'promo', 'arguments');
+			return false;
+		}
+
+		\lib\db\users::update(['user_ref' => $user_ref], $this->login('id'));
+		$_SESSION['user']['ref'] = $user_ref;
+
+		$transaction_set =
+        [
+			'caller'          => 'promo:ref',
+			'title'           => T_("Promo for using ref"),
+			'user_id'         => $this->login('id'),
+			'plus'            => 10 * 1000,
+			'payment'         => null,
+			'related_foreign' => 'users',
+			'related_id'      => $user_ref,
+			'verify'          => 1,
+			'type'            => 'money',
+			'unit'            => 'toman',
+			'date'            => date("Y-m-d H:i:s"),
+        ];
+
+        \lib\db\transactions::set($transaction_set);
+
+        $log_meta =
+        [
+        	'data' => null,
+        	'meta' =>
+        	[
+				'user'    => $this->login('id'),
+				'ref'     => $user_ref,
+				'post'    => utility::post(),
+				'session' => $_SESSION,
+        	],
+        ];
+
+        if(debug::$status)
+        {
+        	\lib\db\logs::set('user:use:ref', $this->login('id'), $log_meta);
+        	\lib\db\logs::set('user:was:ref', $user_ref, $log_meta);
+        	debug::true(T_("Your ref was set and your account was charged"));
+        }
 	}
 
 

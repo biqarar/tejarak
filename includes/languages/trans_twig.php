@@ -564,32 +564,33 @@ private function transtext()
 
 	//------------------------------------------------------content_a/ref/display.html
 	echo T_("Referral Program");                                                      // Line 12
-	echo T_("Nobody can tell the Sarshomar story better than our customers.");        // Line 6
-	echo T_("Nobody can tell the Sarshomar story better than you;)");                 // Line 16
+	echo T_("Nobody can tell the Tejarak story better than our customers.");          // Line 6
+	echo T_("Nobody can tell the Tejarak story better than you;)");                   // Line 16
 	echo T_("How it works");                                                          // Line 17
-	echo T_("Tell your friends about the Sarshomar story.");                          // Line 19
+	echo T_("Tell your friends about the Tejarak story.");                            // Line 19
 	echo T_("Refer your friends through Social Media or Email.");                     // Line 20
 	echo T_("Share the referral rewards program with friends on Facebook, Twitter, or Email.");// Line 20
 	echo T_("When they click on your post, we’ll know it was you who referred them.");// Line 20
-	echo T_("Your friend enter to Sarshomar and receives credit.");                   // Line 21
+	echo T_("Your friend enter to Tejarak and receives credit.");                     // Line 21
 	echo T_("Your friend enter and receives $3 account credit.");                     // Line 22
-	echo T_("Anyone you refer to Sarshomar that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile.");// Line 22
+	echo T_("Anyone you refer to Tejarak that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile.");// Line 22
 	echo T_("You all get rewarded");                                                  // Line 23
-	echo T_("Sarshomar rewards are charge in your account after 7 days of active service.");// Line 24
+	echo T_("Tejarak rewards are charge in your account after 7 days of active service.");// Line 24
 	echo T_("Share your link");                                                       // Line 29
 	echo T_("Copy your personal referral link and share it with your friends and followers.");// Line 31
 	echo T_("Your Ref code is");                                                      // Line 32
-	echo T_("Short URL");                                                             // Line 35
-	echo T_("Referral stats");                                                        // Line 46
-	echo T_("CLICKS");                                                                // Line 53
-	echo T_("Number of times your link has been clicked.");                           // Line 54
-	echo T_("REFERRALS");                                                             // Line 59
-	echo T_("People who enter to Sarshomar using your link.");                        // Line 60
-	echo T_("Complete Profile");                                                      // Line 65
-	echo T_("People who complete profile after enter");                               // Line 66
-	echo T_("Enter to get a unique referral link.");                                  // Line 71
-	echo T_("Use our logo to help spread the word.");                                 // Line 72
-	echo T_("Enter to Sarshomar");                                                    // Line 74
+	echo T_("Set this code on promo of everyone you referral to us");                 // Line 34
+	echo T_("Short URL");                                                             // Line 38
+	echo T_("Referral stats");                                                        // Line 49
+	echo T_("CLICKS");                                                                // Line 56
+	echo T_("Number of times your link has been clicked.");                           // Line 57
+	echo T_("REFERRALS");                                                             // Line 62
+	echo T_("People who enter to Tejarak using your link.");                          // Line 63
+	echo T_("Complete Profile");                                                      // Line 68
+	echo T_("People who complete profile after enter");                               // Line 69
+	echo T_("Enter to get a unique referral link.");                                  // Line 74
+	echo T_("Use our logo to help spread the word.");                                 // Line 75
+	echo T_("Enter to Tejarak");                                                      // Line 77
 
 	//-----------------------------------------------------content_a/team/display.html
 	echo T_("Enter a valid name from 5 to 30 character");                             // Line 13
@@ -607,10 +608,7 @@ private function transtext()
 	echo T_("Allow minus");                                                           // Line 78
 	echo T_("Remote user");                                                           // Line 83
 	echo T_("24 hour");                                                               // Line 87
-	echo T_("Team parent");                                                           // Line 105
-	echo T_("Parent of this team");                                                   // Line 109
-	echo T_("Please select one team");                                                // Line 111
-	echo T_("Close");                                                                 // Line 131
+	echo T_("Close");                                                                 // Line 114
 	echo T_("Advance");                                                               // Line 134
 
 	//---------------------------------------------------content_a/member/display.html

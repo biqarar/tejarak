@@ -3,7 +3,7 @@
 {%set pageTitle%}{%trans "Referral Program"%}{%endset%}
 
 {%set pageDesc%}
-{%trans "Nobody can tell the Sarshomar story better than our customers."%}
+{%trans "Nobody can tell the Tejarak story better than our customers."%}
 {%endset%}
 
 {%block content%}
@@ -13,15 +13,15 @@
     <div class="in">
 
 
-      <p class="em">{%trans "Nobody can tell the Sarshomar story better than you;)"%}</p>
+      <p class="em">{%trans "Nobody can tell the Tejarak story better than you;)"%}</p>
       <h2>{%trans "How it works"%}</h2>
       <div class="l1">
-       <h4>{%trans "Tell your friends about the Sarshomar story."%}</h4>
+       <h4>{%trans "Tell your friends about the Tejarak story."%}</h4>
        <p>{%trans "Refer your friends through Social Media or Email."%} {%trans "Share the referral rewards program with friends on Facebook, Twitter, or Email."%} {%trans "When they click on your post, we’ll know it was you who referred them."%}</p>
-       <h4>{%trans "Your friend enter to Sarshomar and receives credit."%}</h4>
-       <p>{%trans "Your friend enter and receives $3 account credit."%} {%trans "Anyone you refer to Sarshomar that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile."%}</p>
+       <h4>{%trans "Your friend enter to Tejarak and receives credit."%}</h4>
+       <p>{%trans "Your friend enter and receives $3 account credit."%} {%trans "Anyone you refer to Tejarak that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile."%}</p>
        <h4>{%trans "You all get rewarded"%}</h4>
-       <p>{%trans "Sarshomar rewards are charge in your account after 7 days of active service."%}</p>
+       <p>{%trans "Tejarak rewards are charge in your account after 7 days of active service."%}</p>
       </div>
 
 
@@ -30,7 +30,10 @@
       <div class="l1">
         <p>{%trans "Copy your personal referral link and share it with your friends and followers."%}</p>
         <h2>{%trans "Your Ref code is" %}: {{login.id | shortURL("encode")}}</h2>
-
+        <br>
+        <h2>{%trans "Set this code on promo of everyone you referral to us" %}</h2>
+        <br>
+        <h2>ref_{{login.id | shortURL("encode")}}</h2>
         <div class="element no-pad ltr-element">
          <label class="title large" for="referral_link">{%trans "Short URL"%}</label>
          <div class="element-in">
@@ -57,7 +60,7 @@
 
       <div class="f">
         <span class="c3 s12">{%trans "REFERRALS"%}</span>
-        <span class="c8 s12">{%trans "People who enter to Sarshomar using your link."%}</span>
+        <span class="c8 s12">{%trans "People who enter to Tejarak using your link."%}</span>
         <span class="c1 s12">{{ signup | number_format | fitNumber}}</span>
       </div>
 
@@ -71,7 +74,7 @@
      <p class="em">{%trans "Enter to get a unique referral link."%}</a><br/>
       <a href='{{url.base}}/logo'>{%trans "Use our logo to help spread the word."%}</a><br/><br/>
 
-      <a href="{{url.base}}/enter" class="special-btn" data-direct>{%trans "Enter to Sarshomar"%}</a>
+      <a href="{{url.base}}/enter" class="special-btn" data-direct>{%trans "Enter to Tejarak"%}</a>
      </p>
 {%endif%}
 

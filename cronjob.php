@@ -13,7 +13,7 @@ class cronjob
 
 		curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($_requests['header'], JSON_UNESCAPED_UNICODE));
 		curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);
-		curl_setopt($handle, CURLOPT_TIMEOUT, 20  );
+		curl_setopt($handle, CURLOPT_TIMEOUT, 3);
 
 		if(defined('CURLOPT_IPRESOLVE') && defined('CURL_IPRESOLVE_V4'))
 		{
