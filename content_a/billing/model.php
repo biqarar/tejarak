@@ -110,8 +110,22 @@ class model extends \mvc\model
 		$amount    = 0;
 		$user_code = null;
 		$user_ref  = null;
+
+		$log_meta =
+        [
+        	'data' => null,
+        	'meta' =>
+        	[
+				'user'    => $this->login('id'),
+				'ref'     => $user_ref,
+				'post'    => utility::post(),
+				'session' => $_SESSION,
+        	],
+        ];
+
 		if(!preg_match("/^ref\_([A-Za-z0-9]+)$/", $promo, $split))
 		{
+			\lib\db\logs::set('ref:reqular:invalid', $this->login('id'), $log_meta);
 			debug::error(T_("Invalid promo code"), 'promo', 'arguments');
 			return false;
 		}
@@ -121,6 +135,7 @@ class model extends \mvc\model
 			$user_ref = \lib\utility\shortURL::decode($user_code);
 			if(!$user_ref)
 			{
+				\lib\db\logs::set('ref:shortURL:invalid', $this->login('id'), $log_meta);
 				debug::error(T_("Invalid promo code"), 'promo', 'arguments');
 				return false;
 			}
@@ -128,13 +143,24 @@ class model extends \mvc\model
 
 		if(intval($this->login('id')) === intval($user_ref))
 		{
+			\lib\db\logs::set('ref:yourself', $this->login('id'), $log_meta);
 			debug::error(T_("You try to referal yourself!"), 'promo', 'arguments');
 			return false;
 		}
 
 		if($this->login('ref'))
 		{
+			\lib\db\logs::set('ref:full', $this->login('id'), $log_meta);
 			debug::error(T_("You have ref. can not set another ref"), 'promo', 'arguments');
+			return false;
+		}
+
+		$check_user_ref = \lib\db\users::get($user_ref);
+
+		if(!isset($check_user_ref['id']))
+		{
+			\lib\db\logs::set('ref:user:not:found', $this->login('id'), $log_meta);
+			debug::error(T_("Ref not found"), 'promo', 'arguments');
 			return false;
 		}
 
@@ -157,18 +183,6 @@ class model extends \mvc\model
         ];
 
         \lib\db\transactions::set($transaction_set);
-
-        $log_meta =
-        [
-        	'data' => null,
-        	'meta' =>
-        	[
-				'user'    => $this->login('id'),
-				'ref'     => $user_ref,
-				'post'    => utility::post(),
-				'session' => $_SESSION,
-        	],
-        ];
 
         if(debug::$status)
         {

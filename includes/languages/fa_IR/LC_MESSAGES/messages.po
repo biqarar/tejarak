@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-24 10:32+0430\n"
-"PO-Revision-Date: 2017-08-24 10:40+0430\n"
+"POT-Creation-Date: 2017-08-24 10:49+0430\n"
+"PO-Revision-Date: 2017-08-24 10:49+0430\n"
 "Last-Translator: Reza <rm.biqarar@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4208,26 +4208,30 @@ msgstr "این درگاه پرداخت توسط سرویس تجارک پشتیب
 msgid "Amount not set"
 msgstr "مقدار تعیین نشده است"
 
-#: tejarak/content_a/billing/model.php:99 tejarak/content_a/billing/model.php:115
-#: tejarak/content_a/billing/model.php:124
+#: tejarak/content_a/billing/model.php:99 tejarak/content_a/billing/model.php:129
+#: tejarak/content_a/billing/model.php:139
 #: tejarak/content_a/notifications/model.php:119
 #: tejarak/content_a/notifications/model.php:127
 msgid "Invalid promo code"
 msgstr "کد اعتبار هدیه نامعتبر است"
 
-#: tejarak/content_a/billing/model.php:131
+#: tejarak/content_a/billing/model.php:147
 msgid "You try to referal yourself!"
 msgstr "شما نمی توانید معرف خودتان باشید"
 
-#: tejarak/content_a/billing/model.php:137
+#: tejarak/content_a/billing/model.php:154
 msgid "You have ref. can not set another ref"
 msgstr "شما معرف دارید. نمی توانید معرف دیگری را برای خود ثبت کنید"
 
-#: tejarak/content_a/billing/model.php:147
+#: tejarak/content_a/billing/model.php:163
+msgid "Ref not found"
+msgstr "معرف پیدا نشد"
+
+#: tejarak/content_a/billing/model.php:173
 msgid "Promo for using ref"
 msgstr "هدیه استفاده از برنامه معرفی"
 
-#: tejarak/content_a/billing/model.php:177
+#: tejarak/content_a/billing/model.php:191
 msgid "Your ref was set and your account was charged"
 msgstr "معرف شما ثبت شد و هدیه برنامه معرفی به شما تعلق گرفت"
 
