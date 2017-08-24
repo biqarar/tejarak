@@ -312,7 +312,6 @@ self::$config['notification']['cat'][4] =
 ];
 
 
-// invoice
 self::$config['notification']['cat'][5] =
 [
 	'title'   => 'public',
@@ -324,5 +323,25 @@ self::$config['notification']['cat'][5] =
 ];
 
 
+
+self::$config['notification']['cat'][6] =
+[
+	'title'   => 'useref',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+];
+
+self::$config['notification']['cat'][7] =
+[
+	'title'   => 'ref',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+];
 
 ?>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-24 10:49+0430\n"
-"PO-Revision-Date: 2017-08-24 10:49+0430\n"
+"POT-Creation-Date: 2017-08-24 11:11+0430\n"
+"PO-Revision-Date: 2017-08-24 11:13+0430\n"
 "Last-Translator: Reza <rm.biqarar@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4216,8 +4216,8 @@ msgid "Invalid promo code"
 msgstr "کد اعتبار هدیه نامعتبر است"
 
 #: tejarak/content_a/billing/model.php:147
-msgid "You try to referal yourself!"
-msgstr "شما نمی توانید معرف خودتان باشید"
+msgid "You try to referral yourself!"
+msgstr "شما نمی‌توانید معرف خودتان باشید\t"
 
 #: tejarak/content_a/billing/model.php:154
 msgid "You have ref. can not set another ref"
@@ -4231,9 +4231,17 @@ msgstr "معرف پیدا نشد"
 msgid "Promo for using ref"
 msgstr "هدیه استفاده از برنامه معرفی"
 
-#: tejarak/content_a/billing/model.php:191
-msgid "Your ref was set and your account was charged"
-msgstr "معرف شما ثبت شد و هدیه برنامه معرفی به شما تعلق گرفت"
+#: tejarak/content_a/billing/model.php:192
+msgid "Someone used your ref link in her referral"
+msgstr "شخصی از لینک معرفی شما استفاده کرد"
+
+#: tejarak/content_a/billing/model.php:201
+msgid "Your are using referral program and your account was charged"
+msgstr "شما از برنامه معرفی استفاده کردید و حساب کاربری شما شارژ شد"
+
+#: tejarak/content_a/billing/model.php:210
+msgid "Your ref was set and your account was charge"
+msgstr "معرف شما ثبت شد و حساب کاربری شما شارژ شد"
 
 #: tejarak/content_a/billing/view.php:11
 #: tejarak/includes/languages/trans_twig.php:702
@@ -8661,6 +8669,12 @@ msgstr "اجازه مشاهده لاگ‌های سیستم"
 #: tejarak/permission.php:104
 msgid "Allow to login by another session"
 msgstr "اجازه ورود با کاربر دیگر"
+
+#~ msgid "You try to referal yourself!"
+#~ msgstr "شما نمی توانید معرف خودتان باشید"
+
+#~ msgid "Your ref was set and your account was charged"
+#~ msgstr "معرف شما ثبت شد و هدیه برنامه معرفی به شما تعلق گرفت"
 
 #~ msgid "Please select the parent team"
 #~ msgstr "لطفا تیم والد را انتخاب کنید"

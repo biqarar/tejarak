@@ -144,7 +144,7 @@ class model extends \mvc\model
 		if(intval($this->login('id')) === intval($user_ref))
 		{
 			\lib\db\logs::set('ref:yourself', $this->login('id'), $log_meta);
-			debug::error(T_("You try to referal yourself!"), 'promo', 'arguments');
+			debug::error(T_("You try to referral yourself!"), 'promo', 'arguments');
 			return false;
 		}
 
@@ -184,11 +184,30 @@ class model extends \mvc\model
 
         \lib\db\transactions::set($transaction_set);
 
+
+        $notify_ref =
+        [
+			'to'      => $user_ref,
+			'cat'     => 'ref',
+			'content' => T_("Someone used your ref link in her referral"),
+        ];
+        \lib\db\notifications::set($notify_ref);
+
+
+        $notify_ref =
+        [
+			'to'      => $this->login('id'),
+			'cat'     => 'useref',
+			'content' => T_("Your are using referral program and your account was charged"),
+        ];
+        \lib\db\notifications::set($notify_ref);
+
+
         if(debug::$status)
         {
         	\lib\db\logs::set('user:use:ref', $this->login('id'), $log_meta);
         	\lib\db\logs::set('user:was:ref', $user_ref, $log_meta);
-        	debug::true(T_("Your ref was set and your account was charged"));
+        	debug::true(T_("Your ref was set and your account was charge"));
         }
 	}
 
