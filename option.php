@@ -283,7 +283,7 @@ self::$config['notification']['cat'][2] =
 // parent
 self::$config['notification']['cat'][3] =
 [
-	'title'   => 'accept_parent',
+	'title'   => 'change_parent',
 	'send_by' =>
 	[
 		'telegram',
@@ -298,7 +298,7 @@ self::$config['notification']['cat'][3] =
 //  owner
 self::$config['notification']['cat'][4] =
 [
-	'title'   => 'accept_owner',
+	'title'   => 'change_owner',
 	'send_by' =>
 	[
 		'telegram',
@@ -343,5 +343,17 @@ self::$config['notification']['cat'][7] =
 		'email',
 	],
 ];
+
+
+self::$config['notification']['cat'][8] =
+[
+	'title'   => 'change_owner_action',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+];
+
 
 ?>

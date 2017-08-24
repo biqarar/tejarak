@@ -50,6 +50,7 @@ class controller extends \content_a\main\controller
 
 		$team_id = \lib\router::get_url(0);
 		$rule = 'user';
+		$is_creator = false;
 		if(\lib\utility\shortURL::is($team_id))
 		{
 			$team_id = \lib\utility\shortURL::decode($team_id);
@@ -60,6 +61,7 @@ class controller extends \content_a\main\controller
 				if(isset($team_details['creator']) && intval($team_details['creator']) === intval($this->login('id')))
 				{
 					\lib\storage::set_is_creator(true);
+					$is_creator = true;
 				}
 				else
 				{
@@ -195,6 +197,36 @@ class controller extends \content_a\main\controller
 				\lib\error::access();
 			}
 		}
+
+
+		// route url like this /a/2kf/houredit
+		if(preg_match("/^([a-zA-Z0-9]+)\/option\/owner/", $url))
+		{
+			if($is_creator)
+			{
+				\lib\router::set_controller("content_a\\option\\owner\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
+		// route url like this /a/2kf/houredit
+		if(preg_match("/^([a-zA-Z0-9]+)\/option/", $url))
+		{
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_a\\option\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
 
 	}
 }

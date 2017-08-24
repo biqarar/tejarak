@@ -19,10 +19,11 @@ class model extends \content_a\main\model
 		$meta            = [];
 		$this->user_id   = $this->login('id');
 		$meta['user_id'] = $this->user_id;
+		$meta['status']  = ["IN", "('enable')"];
 		$meta['sort']    = 'id';
 		$meta['order']   = 'desc';
-		$notify = \lib\db\notifications::search(null, $meta);
-		$cat_list = \lib\option::config('notification', 'cat');
+		$notify          = \lib\db\notifications::search(null, $meta);
+		$cat_list        = \lib\option::config('notification', 'cat');
 
 		if(is_array($notify))
 		{
@@ -35,12 +36,26 @@ class model extends \content_a\main\model
 						$notify[$key]['cat_title'] =  $cat_list[$value['category']]['title'];
 					}
 
-					if(isset($cat_list[$value['category']]['btn']) && is_array($cat_list[$value['category']]['btn']))
+					if(array_key_exists('answer', $value))
 					{
-						$notify[$key]['btn'] = [];
-						foreach ($cat_list[$value['category']]['btn'] as $k => $v)
+						if($value['answer'] === null)
 						{
-							$notify[$key]['btn'][$k] = T_($v);
+
+							if(isset($cat_list[$value['category']]['btn']) && is_array($cat_list[$value['category']]['btn']))
+							{
+								$notify[$key]['btn'] = [];
+								foreach ($cat_list[$value['category']]['btn'] as $k => $v)
+								{
+									$notify[$key]['btn'][$k] = T_($v);
+								}
+							}
+							if($notify[$key]['cat_title'] === 'change_owner')
+							{
+								if(isset($notify[$key]['meta']['team_id']))
+								{
+									$notify[$key]['meta']['team_calc'] = (new \lib\utility\calc($notify[$key]['meta']['team_id']))->type('calc')->calc();
+								}
+							}
 						}
 					}
 				}
@@ -55,7 +70,6 @@ class model extends \content_a\main\model
 	 */
 	public function post_notifications()
 	{
-		var_dump(utility::post());exit();
 		if(!$this->login())
 		{
 			debug::error(T_("You must login to pay amount"));
@@ -64,128 +78,143 @@ class model extends \content_a\main\model
 
 		$this->user_id = $this->login('id');
 
-		if(utility::post('bank'))
+		if(utility::post('notify_type') === 'owner')
 		{
-			if(!in_array(mb_strtolower(utility::post('bank')), self::$support_bank))
-			{
-				debug::error(T_("This gateway is not supported by tejarak"));
-				return false;
-			}
-
-			if(!utility::post('amount') || !is_numeric(utility::post('amount')))
-			{
-				debug::error(T_("Amount not set"), 'amount', 'arguments');
-				return false;
-			}
-
-			switch (mb_strtolower(utility::post('bank')))
-			{
-				case 'zarinpal':
-					\lib\utility\payment\pay::zarinpal($this->user_id, utility::post('amount'), ['turn_back' => $this->url('full')]);
-					return;
-					break;
-
-				case 'parsian':
-					\lib\utility\payment\pay::parsian($this->user_id, utility::post('amount'), ['turn_back' => $this->url('full')]);
-					return;
-					break;
-
-				default:
-					return false;
-					break;
-			}
+			$this->change_owner();
 		}
-
-		if(utility::post('type') === 'promo')
-		{
-			if(utility::post('promo'))
-			{
-
-				$amount = 0;
-				switch (utility::post('promo'))
-				{
-					// case '$1000$':
-					// 	$amount = 1000;
-					// 	break;
-
-					// case '$2000$':
-					// 	$amount = 2000;
-					// 	break;
-
-					// case '$$':
-					// 	$amount = 100000;
-					// 	break;
-					default:
-						return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
-						break;
-				}
-
-				return debug::true(T_("Your account charge :amount", ['amount' => $amount]));
-			}
-			else
-			{
-				return debug::error(T_("Invalid promo code"), 'promo', 'arguments');
-			}
-		}
+		$this->redirector($this->url('full'));
 	}
 
 
-	/**
-	 * use usage
-	 *
-	 * @return     <type>  ( description_of_the_return_value )
-	 */
-	public function usage()
+	public function change_owner()
 	{
+		// 'answer' => string 'reject' (length=6)
+		//  'type' => string 'owner' (length=5)
+		//  'notify' => string 'q' (length=1)
 
-		if(isset($_SESSION['usage_team']) && isset($_SESSION['usage_team_time']))
+		if(!in_array(utility::post('answer'), ['accept', 'reject']))
 		{
-			if(time() - strtotime($_SESSION['usage_team_time']) > (60*60))
-			{
-				$_SESSION['usage_team'] = $this->run_usage();
-				$_SESSION['usage_team_time'] = date("Y-m-d H:i:s");
-			}
-		}
-		else
-		{
-			$_SESSION['usage_team'] = $this->run_usage();
-			$_SESSION['usage_team_time'] = date("Y-m-d H:i:s");
-		}
-
-		return $_SESSION['usage_team'];
-	}
-
-
-	/**
-	 * { function_description }
-	 */
-	public function run_usage()
-	{
-		if(!$this->login())
-		{
+			debug::error(T_("Invalid answer!"));
 			return false;
 		}
 
-		$user_id = $this->login('id');
+		$notify = utility::post('notify');
+		$notify = utility\shortURL::decode($notify);
 
-		$all_creator_team = \lib\db\teams::get(['creator' => $user_id]);
-
-		$total_usage = 0;
-		if(is_array($all_creator_team))
+		if(!$notify)
 		{
-			foreach ($all_creator_team as $key => $value)
-			{
-				if(isset($value['id']))
-				{
-					$calc = new \lib\utility\calc($value['id']);
-					$calc->save(false);
-					$calc->notify(false);
-					$calc->type('calc');
-					$total_usage += $calc->calc();
-				}
-			}
+			debug::error(T_("Invalid notify!"));
+			return false;
 		}
-		return $total_usage;
+
+		$team_id = utility::post('team_code');
+		$team_id = utility\shortURL::decode($team_id);
+
+		if(!$team_id)
+		{
+			debug::error(T_("Invalid team id!"));
+			return false;
+		}
+
+		$get =
+		[
+			'user_id'         => $this->login('id'),
+			'category'        => 4,
+			'read'            => null,
+			'id'              => $notify,
+			'status'          => 'enable',
+			'needanswer'      => 1,
+			'answer'          => null,
+			'related_foreign' => 'teams',
+			'related_id'      => $team_id,
+			'limit'           => 1,
+		];
+
+		$log_meta =
+		[
+			'meta' =>
+			[
+				'get' => $get,
+			],
+		];
+
+		$check = \lib\db\notifications::get($get);
+		if(isset($check['id']))
+		{
+			$update_notify =
+			[
+				'read'     => 1,
+				'readdate' => date("Y-m-d H:i:s"),
+			];
+
+			$action = utility::post('answer');
+
+			$team_name = isset($check['meta']['team_name']) ? $check['meta']['team_name'] : null;
+
+			$notify_set =
+			[
+				'cat'     => 'change_owner_action',
+				'to'      => $check['user_idsender'],
+				'content' => T_("Your request to change owner of team :team was :action", ['action' => T_($action), 'team' => $team_name]),
+			];
+			\lib\db\notifications::set($notify_set);
+
+			if(utility::post('answer') === 'accept')
+			{
+				// ACCEPT
+				// the accept in index 0 of array answer in options
+				$update_notify['answer'] = 0;
+				\lib\db\logs::set('notify:change:owner:accept', $this->login('id'), $log_meta);
+				\lib\db\teams::update(['creator' => $this->login('id')], $team_id);
+				$check_exist_team_user =
+				[
+					'team_id' => $team_id,
+					'user_id' => $this->login('id'),
+					'limit'   => 1,
+				];
+				$check_exist_team_user = \lib\db\userteams::get($check_exist_team_user);
+				if(isset($check_exist_team_user['id']))
+				{
+					$update_user_team =
+					[
+						'rule'        => 'admin',
+						'status'      => 'active',
+						'displayname' => $this->login('displayname'),
+					];
+					\lib\db\userteams::update($update_user_team, $check_exist_team_user['id']);
+				}
+				else
+				{
+					$insert_user_team =
+					[
+						'team_id'     => $team_id,
+						'user_id'     => $this->login('id'),
+						'rule'        => 'admin',
+						'status'      => 'active',
+						'displayname' => $this->login('displayname'),
+					];
+					\lib\db\userteams::insert($insert_user_team);
+				}
+
+			}
+			else
+			{
+				// REJECT
+				// the accept in index 0 of array answer in options
+				$update_notify['answer'] = 1;
+				\lib\db\logs::set('notify:change:owner:reject', $this->login('id'), $log_meta);
+			}
+
+			\lib\db\notifications::update($update_notify, $check['id']);
+		}
+		else
+		{
+			debug::error(T_("Invalid notify detail"));
+			return false;
+		}
+
 	}
+
+
 }
 ?>
