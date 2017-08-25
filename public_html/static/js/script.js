@@ -25,12 +25,89 @@ function checkAndRunAttendance()
 {
   if($('body').hasClass('attendance'))
   {
+    checkResolution();
+    checkResize();
     startClock();
     bindExtraInput();
     runLoadCard();
     changeCardStatusOnResult();
   }
 }
+
+
+function checkResize()
+{
+  $( window ).resize(function() {
+    if($('body').hasClass('attendance'))
+    {
+      checkResolution();
+    }
+  });
+}
+
+function checkResolution()
+{
+  var myBox       = $('#content');
+  var myBoxHeight = Math.floor(myBox.height() * 0.8);
+  var myBoxWidth  = Math.floor(myBox.width() * 0.9);
+  var myBoxDim    = myBoxHeight * myBoxWidth;
+  console.log(myBoxDim);
+
+  var myBoard  = $('#showMember');
+  var personCount = $('#showMember a').length;
+  var bestChoice  = '';
+
+  var sizes =
+  {
+    mini:     35 * 150,
+    tiny:     40 * 180,
+    small:    50 * 200,
+    normal:   240 * 200,
+    large:    270 * 220,
+    big:      300 * 250,
+    huge:     360 * 300,
+    massive:  470 * 400,
+  };
+
+  $.each(sizes, function(_cls, _val)
+  {
+    var canShow = Math.floor( (myBoxDim/_val)*0.7 );
+    // if work not good can uncomment below code
+    // canShow = canShow -1;
+    // console.log(myBoxDim/_val);
+    // console.log((myBoxDim/_val)*0.7);
+    // console.log(Math.floor( (myBoxDim/_val)*0.7 ));
+
+    if(canShow > personCount)
+    {
+      // console.log(_cls);
+      bestChoice = _cls;
+    }
+  });
+  // set default size if not exist
+  if(!bestChoice)
+  {
+    bestChoice = 'mini';
+  }
+
+  $.each(sizes, function(_cls, _val)
+  {
+    if(bestChoice == _cls)
+    {
+    // set best choice
+      myBoard.addClass(bestChoice);
+    }
+    else
+    {
+      myBoard.removeClass(_cls);
+    }
+
+  });
+  console.log(bestChoice);
+  // console.log(personCount);
+  // console.log(sizes);
+}
+
 
 
 function refreshAttendance()

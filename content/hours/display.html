@@ -4,75 +4,31 @@
 
 
 {%block contentCenter%}
-  <div class='middle{% if list_member|length>10 %} small{%endif%}' id="showMember">
+  <div class='middle mini f justify-center' id="showMember">
 
 {%for key, value in list_member%}
-   <div class="tcard small" data-status='{{value.status}}' data-live='{%if value.last_time%}on{%else%}off{%endif%}'>
-    <div class="cbox">
-     <div class="front">
-      <div class="top">{%if value.file%}<img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="icon sf-user"></i>{%endif%}</div>
-      <div class="cfdetail">
-       <span class="cfnum">{{(key+1) | fitNumber}}</span>
-      </div>
-      <div class="cfinfo">
-       <div class="cfname">{{value.displayname}}</div>
-       {%if value.postion%}<div class="cfpos">{{value.postion}}</div>{%endif%}
-      </div>
-     </div>
+   <a href='{{url.full}}{{url.class}}#{{(key+1)}}'
+  class="vcard shadow mA10"
+  data-status='{{value.status}}'
+  data-live='{%if value.last_time%}on{%else%}off{%endif%}'
+  data-user={{value.user_id}}
 {%if value.card_action%}
-     <div class="back">
-      <form method="post" class="enter">
-       <div class="top">
-        <div class="cbname"> <span class="cfnum">{{(key+1) | fitNumber}}</span><span>{{value.displayname}}</span></div>
-        {%if value.allow_plus%}
-          <div class="f parameter">
-           <div class="c3 decrease bn" data-val='-5' data-connect='plus'>-</div>
-           <div class="c6 input"><input type="number" class="inputPlus" name="plus" placeholder='{%trans "Plus"%}' step="5" min="0" max="1440"></div>
-           <div class="c3 increase bp" data-val='10' data-connect='plus'>+</div>
-          </div>
-        {%endif%}
-        <input type="hidden" name="user" value="{{value.user_id}}">
-        <input type="hidden" name="type" value="enter">
-       </div>
-       <div class="bottom">
-        <button class="btn b1">{%trans "Enter"%}</button>
-       </div>
-      </form>
+  {%if value.allow_plus%}data-allowPlus{%endif%}
+  {%if value.allow_minus%}data-allowMinus{%endif%}
+  {%if value.last_time%}data-enter='{{value.last_time| date("Y-m-d H:i:s") }}'{%endif%}
+  {%if value.plus%}data-plus='{{value.plus}}'{%endif%}
+{%endif%}>
 
-      <form method="post" class="exit">
-       <div class="top">
-        <div class="cbname"> <span class="cfnum">{{(key+1) | fitNumber}}</span><span>{{value.displayname}}</span></div>
-        <div class="tinfo">
-         <div class="inOut">
-          <span data-val='{{value.last_time| date("Y-m-d H:i:s") }}' class='timeEnter'>{{value.last_time | tdate('H:i')}}</span>
-          <span data-val='400' class='timeDiff'></span>
-          <span class='timeNow'></span>
-         </div>
-         {%if value.plus%}<div class="timePlus" data-val='100'>{{value.plus | fitNumber}}</div>{%else%}{%endif%}
-        </div>
-        {%if value.allow_minus%}
-          <div class="f parameter">
-           <div class="c3 decrease bn" data-val='-5' data-connect='minus'>-</div>
-           <div class="c6 input"><input type="number" class="inputMinus" name="minus" placeholder='{%trans "Minus"%}' step="5" min="0" max="10000"></div>
-           <div class="c3 increase bp" data-val='10' data-connect='minus'>+</div>
-          </div>
-        {%endif%}
-        <input type="hidden" name="user" value="{{value.user_id}}">
-        <input type="hidden" name="type" value="exit">
+{%if value.file%}    <img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="sf-user"></i>{%endif%}
 
-        <div class="timePure" data-val='700'>{{"700" | fitNumber}}</div>
-       </div>
-       <div class="bottom">
-        <button class="btn b2">{%trans "Exit"%}</button>
-       </div>
-      </form>
-     </div>
-{%endif%}
+    <div class="content">
+     <div class="header">{{value.displayname}}</div>
+{%if value.postion%}     <div class="meta"><span>{{value.postion}}</span></div>{%endif%}
+
     </div>
-   </div>
-
-
+   </a>
 {%endfor%}
+
   </div>
 {%endblock%}
 
