@@ -51,7 +51,7 @@ function checkResolution()
   var myBoxHeight = Math.floor(myBox.height() * 0.8);
   var myBoxWidth  = Math.floor(myBox.width() * 0.9);
   var myBoxDim    = myBoxHeight * myBoxWidth;
-  console.log(myBoxDim);
+  // console.log(myBoxDim);
 
   var myBoard  = $('#showMember');
   var personCount = $('#showMember a').length;
@@ -89,20 +89,32 @@ function checkResolution()
   {
     bestChoice = 'mini';
   }
-
-  $.each(sizes, function(_cls, _val)
+  // class not changed!
+  if(myBoard.hasClass(bestChoice))
   {
-    if(bestChoice == _cls)
-    {
-    // set best choice
-      myBoard.addClass(bestChoice);
-    }
-    else
-    {
-      myBoard.removeClass(_cls);
-    }
 
-  });
+  }
+  else
+  {
+    myBox.addClass('lock');
+    $.each(sizes, function(_cls, _val)
+    {
+      if(bestChoice == _cls)
+      {
+      // set best choice
+        myBoard.addClass(bestChoice);
+        // remove opacity and show it
+        setTimeout(function() {
+          myBoard.removeClass("op0");
+          myBox.removeClass('lock');
+        }, 500);
+      }
+      else
+      {
+        myBoard.removeClass(_cls);
+      }
+    });
+  }
   console.log(bestChoice);
   // console.log(personCount);
   // console.log(sizes);
