@@ -356,4 +356,31 @@ self::$config['notification']['cat'][8] =
 ];
 
 
+self::$config['notification']['cat'][9] =
+[
+	'title'   => 'set_parent',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+	'btn'     =>
+	[
+		'accept_parent' => 'Accept', // T_("Accept")
+		'reject_parent' => 'Reject', // T_("Reject")
+	],
+];
+
+
+self::$config['notification']['cat'][10] =
+[
+	'title'   => 'change_parent_action',
+	'send_by' =>
+	[
+		'telegram',
+		'email',
+	],
+];
+
+
 ?>

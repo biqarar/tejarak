@@ -16,7 +16,37 @@
         <b><h6>{{value.title}}</h6></b>
       {%endif%}
       <p>{{value.content}}</p>
-      {%if value.btn%}
+      {%if value.cat_title == 'set_parent'%}
+        {{block('notify_parent')}}
+      {%else%}
+        {{block('notify_change_owner')}}
+      {%endif%}
+    </div>
+    <div class="c pA5">
+       {%if value.telegramdate and value.telegram%}
+          <i title='{%trans "Sended by telegram"%}' class="sf-paper-plane"></i>
+        {%endif%}
+
+        {%if value.smsdate and value.sms%}
+          <i title='{%trans "Sended by mobile"%}' class="sf-mobile"></i>
+        {%endif%}
+
+        {%if value.emaildate and value.email%}
+          <i title='{%trans "Sended by email"%}' class="sf-at"></i>
+        {%endif%}
+    </div>
+  </div>
+  {%endfor%}
+</div>
+
+{%include display.pagination%}
+
+{%endblock%}
+
+
+{%block notify_change_owner%}
+
+{%if value.btn%}
         <div class="f">
         <div class="c6 pA10 s12">
             <div class="vcard w400">
@@ -60,25 +90,52 @@
           </div>
       </div>
       {%endif%}
-    </div>
-    <div class="c pA5">
-       {%if value.telegramdate and value.telegram%}
-          <i title='{%trans "Sended by telegram"%}' class="sf-paper-plane"></i>
-        {%endif%}
-
-        {%if value.smsdate and value.sms%}
-          <i title='{%trans "Sended by mobile"%}' class="sf-mobile"></i>
-        {%endif%}
-
-        {%if value.emaildate and value.email%}
-          <i title='{%trans "Sended by email"%}' class="sf-at"></i>
-        {%endif%}
-    </div>
-  </div>
-  {%endfor%}
-</div>
-
-{%include display.pagination%}
 
 {%endblock%}
 
+{%block notify_parent%}
+
+{%if value.btn%}
+        <div class="f">
+        <div class="c6 pA10 s12">
+            <div class="vcard w400">
+              <div class="content f">
+                <div class="c">
+                  <a class="header">{%if value.meta.user_displayname%}{{value.meta.user_displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
+                  <div class="meta"><span>{{value.meta.user_mobile|fitNumber}}</span></div>
+                </div>
+                <div class="cauto">
+                  {%if value.meta.user_file_url%}
+                    <img src="{{url.root}}/{{value.meta.user_file_url}}" class="mini">
+                  {%else%}
+                    <img src="http://code.ermile.com/siftal/images/avatar/1.png" class="mini">
+                  {%endif%}
+                </div>
+
+                <div class="desc c12">{%trans "Are you accept?"%}</div>
+
+              </div>
+              <div class="footer f">
+                <form method="post">
+                  <input type="hidden" name="answer", value="accept">
+                  <input type="hidden" name="notify_type", value="parent">
+                  <input type="hidden" name="notify", value='{{value.id|shortURL("encode")}}'>
+                  <input type="hidden" name="child", value='{{value.user_idsender|shortURL("encode")}}'>
+
+                  <div class="c6 pA5 s12"><button class="btn success outline block">{%trans "Accept"%}</button></div>
+                </form>
+                <form method="post">
+                  <input type="hidden" name="answer", value="reject">
+                  <input type="hidden" name="notify_type", value="parent">
+                  <input type="hidden" name="notify", value='{{value.id|shortURL("encode")}}'>
+                  <input type="hidden" name="child", value='{{value.user_idsender|shortURL("encode")}}'>
+
+                    <div class="c6 pA5 s12"><button class="btn danger outline block">{%trans "Reject"%}</button></div>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+      {%endif%}
+
+{%endblock%}
