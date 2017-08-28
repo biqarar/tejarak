@@ -80,7 +80,7 @@ private function transtext()
 	echo T_("We do our best to improve tejarak's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
 	echo T_("Name");                                                                  // Line 10
 	echo T_("Full Name");                                                             // Line 20
-	echo T_("Mobile");                                                                // Line 34
+	echo T_("Mobile");                                                                // Line 19
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
 	echo T_("Email");                                                                 // Line 27
 	echo T_("Message");                                                               // Line 32
@@ -104,7 +104,7 @@ private function transtext()
 	echo T_("Sales");                                                                 // Line 18
 	echo T_("+98 25 3650 5460");                                                      // Line 18
 	echo T_("Admin Panel");                                                           // Line 60
-	echo T_("Enter");                                                                 // Line 38
+	echo T_("Enter");                                                                 // Line 26
 
 	//------------------------------------------------content/template/priceTable.html
 	echo T_("Free");                                                                  // Line 26
@@ -236,7 +236,7 @@ private function transtext()
 	echo T_("Unlimited");                                                             // Line 17
 	echo T_("FREE");                                                                  // Line 28
 	echo T_("Price");                                                                 // Line 21
-	echo T_("Toman");                                                                 // Line 105
+	echo T_("Toman");                                                                 // Line 68
 	echo T_("per member/month");                                                      // Line 44
 	echo T_("per month. fix!");                                                       // Line 40
 	echo T_("Max number of team members");                                            // Line 51
@@ -373,10 +373,7 @@ private function transtext()
 	echo T_("Try it.");                                                               // Line 167
 
 	//------------------------------------------------------content/hours/display.html
-	echo T_("Plus");                                                                  // Line 88
-	echo T_("Minus");                                                                 // Line 89
-	echo T_("Exit");                                                                  // Line 66
-	echo T_("In the Name of God");                                                    // Line 84
+	echo T_("In the Name of God");                                                    // Line 40
 
 	//-----------------------------------------------content_cp/teamplans/display.html
 	echo T_("Search");                                                                // Line 14
@@ -418,6 +415,8 @@ private function transtext()
 	echo T_("Members");                                                               // Line 35
 	echo T_("Hours");                                                                 // Line 36
 	echo T_("24H");                                                                   // Line 52
+	echo T_("Minus");                                                                 // Line 89
+	echo T_("Plus");                                                                  // Line 88
 	echo T_("No logo");                                                               // Line 63
 
 	//--------------------------------------------content_cp/teams/detail/display.html
@@ -645,6 +644,37 @@ private function transtext()
 	echo T_("Enter a valid team name from 3 to 30 character");                        // Line 10
 	echo T_("Next");                                                                  // Line 12
 
+	//-------------------------------------------content_a/profile/parent/display.html
+	echo T_("Parents manager");                                                       // Line 6
+	echo T_("No name");                                                               // Line 104
+	echo T_("Cancel");                                                                // Line 54
+	echo T_("Remove");                                                                // Line 35
+	echo T_("Add new parent");                                                        // Line 58
+	echo T_("Please select one items");                                               // Line 66
+	echo T_("Father");                                                                // Line 67
+	echo T_("Mother");                                                                // Line 68
+	echo T_("Sister");                                                                // Line 69
+	echo T_("Brother");                                                               // Line 70
+	echo T_("Grandfather");                                                           // Line 71
+	echo T_("Grandmother");                                                           // Line 72
+	echo T_("Aunt");                                                                  // Line 73
+	echo T_("Husband of the aunt");                                                   // Line 74
+	echo T_("Uncle");                                                                 // Line 75
+	echo T_("Boy");                                                                   // Line 76
+	echo T_("Girl");                                                                  // Line 77
+	echo T_("Spouse");                                                                // Line 78
+	echo T_("Stepmother");                                                            // Line 79
+	echo T_("Stepfather");                                                            // Line 80
+	echo T_("Neighbor");                                                              // Line 81
+	echo T_("Teacher");                                                               // Line 82
+	echo T_("Friend");                                                                // Line 83
+	echo T_("Boss");                                                                  // Line 84
+	echo T_("Supervisor");                                                            // Line 85
+	echo T_("Child");                                                                 // Line 86
+	echo T_("Grandson");                                                              // Line 87
+	echo T_("Custom");                                                                // Line 88
+	echo T_("Other title");                                                           // Line 92
+
 	//--------------------------------------------------content_a/profile/display.html
 	echo T_("Your profile information");                                              // Line 7
 	echo T_("Display name");                                                          // Line 45
@@ -663,9 +693,8 @@ private function transtext()
 	echo T_("End Time");                                                              // Line 43
 	echo T_("Response");                                                              // Line 12
 	echo T_("Set Response");                                                          // Line 77
-	echo T_("Accept");                                                                // Line 72
-	echo T_("Reject");                                                                // Line 81
-	echo T_("Remove");                                                                // Line 35
+	echo T_("Accept");                                                                // Line 125
+	echo T_("Reject");                                                                // Line 133
 	echo T_("No description");                                                        // Line 57
 
 	//--------------------------------------------------content_a/houredit/detail.html
@@ -701,6 +730,20 @@ private function transtext()
 	echo T_("Dashboard");                                                             // Line 22
 	echo T_("Billing");                                                               // Line 23
 	echo T_("Options");                                                               // Line 24
+
+	//---------------------------------------------content_a/option/owner/display.html
+	echo T_("Change team owner");                                                     // Line 8
+	echo T_("You can give over your team to another people.");                        // Line 12
+	echo T_("If you are not sure, leave this page!");                                 // Line 14
+	echo T_("New owner mobile");                                                      // Line 18
+	echo T_("Send request");                                                          // Line 20
+	echo T_("Your ownership transfer request will be sent to the following person. Are you sure?");// Line 28
+	echo T_("Are you sure?");                                                         // Line 44
+	echo T_("OK, Send");                                                              // Line 50
+	echo T_("Your ownership transfer request sended to the following person.");       // Line 66
+	echo T_("Waiting for the user accept or reject this request");                    // Line 82
+	echo T_("You can <b>cancel</b> the request now");                                 // Line 86
+	echo T_("Cancel request");                                                        // Line 89
 
 	//---------------------------------------------------content_a/option/display.html
 
@@ -739,11 +782,14 @@ private function transtext()
 	echo T_("Active member");                                                         // Line 14
 
 	//--------------------------------------------content_a/notifications/display.html
-	echo T_("Your notifications");                                                    // Line 6
-	echo T_("Please select one items");                                               // Line 25
-	echo T_("Sended by telegram");                                                    // Line 39
-	echo T_("Sended by mobile");                                                      // Line 43
-	echo T_("Sended by email");                                                       // Line 47
+	echo T_("Your notifications");                                                    // Line 8
+	echo T_("Sended by telegram");                                                    // Line 27
+	echo T_("Sended by mobile");                                                      // Line 31
+	echo T_("Sended by email");                                                       // Line 35
+	echo T_("Team name:");                                                            // Line 66
+	echo T_("Be sure to take control of individuals and managers after transferring ownership of the team");// Line 67
+	echo T_("Usage of this team now:");                                               // Line 68
+	echo T_("Are you accept?");                                                       // Line 115
 
 }
 ?>

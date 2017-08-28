@@ -39,6 +39,10 @@ trait _use
 	// API REPORT
 	use \content_api\v1\report\tools\get;
 
+	// API PARENT
+	use \content_api\v1\parent\tools\add;
+	use \content_api\v1\parent\tools\get;
+	use \content_api\v1\parent\tools\delete;
 
 	/**
 	 * Gets the addmember.

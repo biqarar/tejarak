@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="c2 pT15">
-          <p>{%set my_title = value.title%}{%trans my_title%}</p>
+          <p>{%set my_title = value.title | capitalize %}{%trans my_title%}</p>
         </div>
         <div class="c pT10">
         {%if value.file_url%}
@@ -92,7 +92,7 @@
             <input type="text" name="othertitle" placeholder='{%trans "Other title"%}' class="mA5">
           </div>
 
-          <button class="mA5 btn primary outline " type="submit" >{%trans "Add parent request"%}</button>
+          <button class="mA5 btn primary outline " type="submit" >{%trans "Add"%}</button>
 
         </form>
         </div>
