@@ -12,6 +12,14 @@ class controller extends \content_a\main\controller
 
 		$url = \lib\router::get_url();
 
+		if($this->login())
+		{
+			if(\lib\db\userteams::get(['user_id' => $this->login('id'), 'limit' => 1]))
+			{
+				\lib\error::bad(T_("You have a team and can not start the installation process again!"));
+			}
+		}
+
 		// redirect setup to setup/1
 		if($url === 'setup')
 		{
