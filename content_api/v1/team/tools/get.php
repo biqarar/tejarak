@@ -70,6 +70,31 @@ trait get
 					$result['short_name'] = $value ? (string) $value : null;
 					$result['url'] = $this->host('with_language'). '/'. $value;
 					break;
+
+				case 'lang':
+					$result['language'] = isset($value) ? (string) $value : null;
+					break;
+
+				case 'manualtimeenter':
+					$result['manual_time_enter'] = $value ? true : false;
+					break;
+
+				case 'manualtimeexit':
+					$result['manual_time_exit'] = $value ? true : false;
+					break;
+
+				case 'sendphoto':
+					$result['send_photo'] = $value ? true : false;
+					break;
+
+				case 'eventtitle':
+					$result['event_title'] = isset($value) ? $value : null;
+					break;
+
+				case 'eventdate':
+					$result['event_date'] = $value ? $value : null;
+					break;
+
 				case 'showavatar':
 					$result['show_avatar'] = $value ? true : false;
 					break;

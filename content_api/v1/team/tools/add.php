@@ -184,17 +184,57 @@ trait add
 		// }
 
 
-		$args               = [];
-		$args['creator']    = $this->user_id;
-		$args['name']       = $name;
-		$args['shortname']  = $shortname;
-		$args['website']    = $website;
-		$args['desc']       = $desc;
-		$args['showavatar'] = utility::isset_request('show_avatar') ? utility::request('show_avatar')   ? 1 : 0 : null;
-		$args['allowplus']  = utility::isset_request('allow_plus')  ? utility::request('allow_plus')    ? 1 : 0 : null;
-		$args['allowminus'] = utility::isset_request('allow_minus') ? utility::request('allow_minus')   ? 1 : 0 : null;
-		$args['remote']     = utility::isset_request('remote_user') ? utility::request('remote_user') 	? 1 : 0 : null;
-		$args['24h']        = utility::isset_request('24h')         ? utility::request('24h')			? 1 : 0 : null;
+		$lang = utility::request('language');
+		if($lang && (mb_strlen($lang) !== 2 || !utility\location\languages::check($lang)))
+		{
+			logs::set('api:team:invalid:lang', $this->user_id, $log_meta);
+			debug::error(T_("Invalid language field"), 'language', 'arguments');
+			return false;
+		}
+
+
+		$eventtitle = utility::request('event_title');
+		if($eventtitle && mb_strlen($eventtitle) > 100)
+		{
+			logs::set('api:team:eventtitle:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set the evert title less than 100 character"), 'event_title', 'arguments');
+			return false;
+		}
+
+		$eventdate  = utility::request('event_date');
+		if($eventdate && strtotime($eventdate) === false)
+		{
+			logs::set('api:team:eventdate:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid event date"), 'event_date', 'arguments');
+			return false;
+		}
+
+		if($eventdate)
+		{
+			$eventdate = date("Y-m-d H:i:s", strtotime($eventdate));
+		}
+
+		$args                    = [];
+		$args['creator']         = $this->user_id;
+		$args['name']            = $name;
+		$args['shortname']       = $shortname;
+		$args['website']         = $website;
+		$args['desc']            = $desc;
+		$args['showavatar']      = utility::isset_request('show_avatar') ? utility::request('show_avatar')   ? 1 : 0 : null;
+		$args['allowplus']       = utility::isset_request('allow_plus')  ? utility::request('allow_plus')    ? 1 : 0 : null;
+		$args['allowminus']      = utility::isset_request('allow_minus') ? utility::request('allow_minus')   ? 1 : 0 : null;
+		$args['remote']          = utility::isset_request('remote_user') ? utility::request('remote_user') 	? 1 : 0 : null;
+		$args['24h']             = utility::isset_request('24h')         ? utility::request('24h')			? 1 : 0 : null;
+
+
+		$args['lang']            = $lang;
+		$args['eventtitle']      = $eventtitle;
+		$args['eventdate']       = $eventdate;
+		$args['manualtimeexit']  = utility::isset_request('manual_time_exit')   ? utility::request('manual_time_exit')		? 1 : 0 : null;
+		$args['manualtimeenter'] = utility::isset_request('manual_time_enter')  ? utility::request('manual_time_enter')		? 1 : 0 : null;
+		$args['sendphoto']       = utility::isset_request('send_photo')         ? utility::request('send_photo')			? 1 : 0 : null;
+
+
 		$args['logo']       = $logo_id;
 		$args['logourl']    = $logo_url;
 		$args['privacy']    = $privacy;
@@ -264,17 +304,25 @@ trait add
 			}
 
 			unset($args['creator']);
-			if(!utility::isset_request('name')) 			unset($args['name']);
-			if(!utility::isset_request('short_name')) 		unset($args['shortname']);
-			if(!utility::isset_request('website')) 			unset($args['website']);
-			if(!utility::isset_request('desc')) 			unset($args['desc']);
-			if(!utility::isset_request('show_avatar')) 		unset($args['showavatar']);
-			if(!utility::isset_request('allow_plus')) 		unset($args['allowplus']);
-			if(!utility::isset_request('allow_minus')) 		unset($args['allowminus']);
-			if(!utility::isset_request('remote_user')) 		unset($args['remote']);
-			if(!utility::isset_request('24h')) 				unset($args['24h']);
-			if(!utility::isset_request('logo')) 			unset($args['logo'], $args['logourl']);
-			if(!utility::isset_request('privacy')) 			unset($args['privacy']);
+			if(!utility::isset_request('name')) 				unset($args['name']);
+			if(!utility::isset_request('short_name')) 			unset($args['shortname']);
+			if(!utility::isset_request('website')) 				unset($args['website']);
+			if(!utility::isset_request('desc')) 				unset($args['desc']);
+			if(!utility::isset_request('show_avatar')) 			unset($args['showavatar']);
+			if(!utility::isset_request('allow_plus')) 			unset($args['allowplus']);
+			if(!utility::isset_request('allow_minus')) 			unset($args['allowminus']);
+			if(!utility::isset_request('remote_user')) 			unset($args['remote']);
+			if(!utility::isset_request('24h')) 					unset($args['24h']);
+			if(!utility::isset_request('logo')) 				unset($args['logo'], $args['logourl']);
+			if(!utility::isset_request('privacy')) 				unset($args['privacy']);
+
+			if(!utility::isset_request('language')) 			unset($args['lang']);
+			if(!utility::isset_request('event_title')) 			unset($args['eventtitle']);
+			if(!utility::isset_request('event_date')) 			unset($args['eventdate']);
+			if(!utility::isset_request('manual_time_exit')) 	unset($args['manualtimeexit']);
+			if(!utility::isset_request('manual_time_enter')) 	unset($args['manualtimeenter']);
+			if(!utility::isset_request('send_photo')) 			unset($args['sendphoto']);
+
 			// if(!utility::isset_request('parent')) 			unset($args['parent']);
 
 			// if(isset($args['parent']) && intval($args['parent']) === intval($id))

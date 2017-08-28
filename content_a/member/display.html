@@ -21,9 +21,9 @@
        <div>
         <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
         <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-{%if edit_mode and member.file%}
+        {%if edit_mode and member.file%}
          <img src="{{member.file}}" alt="{{member.displayname}}" id="avatarPreview">
-{%endif%}
+        {%endif%}
         </label>
        </div>
       </div>
@@ -64,8 +64,6 @@
        </div>
       </div>
 
-
-
       <div  class="g1 check1">
        <h4>{%trans "Extra setting for special use"%}</h4>
        <div class="f">
@@ -88,7 +86,6 @@
         </div>
        </div>
       </div>
-
 
       <div class="f g1">
         <div class="cauto s0 lbl"><span>{%trans "Status"%}</span></div>
@@ -130,19 +127,19 @@
       {%if member.parent%}
         <div class="cauto s0 lbl"><span>{%trans "Parent"%}</span></div>
         <div class="c">
-         <div class="f">
           {%for k, v in member.parent%}
-          <div class="c">
-            <img src="{{url.root}}/{{v.file_url}}" class="mini">
-          </div>
-          <div class="c">
-            <p>{{v.mobile|fitNumber}}</p>
-          </div>
-          <div class="c">
-            <p>{%set my_title = v.title | capitalize %}{%trans my_title%}</p>
-          </div>
+           <div class="f">
+            <div class="c">
+              <img src="{{url.root}}/{{v.file_url}}" class="mini">
+            </div>
+            <div class="c">
+              <p>{{v.mobile|fitNumber}}</p>
+            </div>
+            <div class="c">
+              <p>{%set my_title = v.title | capitalize %}{%trans my_title%}</p>
+            </div>
+           </div>
           {%endfor%}
-         </div>
         </div>
       {%endif%}
 

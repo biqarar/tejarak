@@ -99,7 +99,35 @@
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
+       <!--   <div class="c4 s6">
+         <input type="checkbox" name="manual_time_enter" id="manual_time_enter" {%if team_detail.manual_time_enter %}checked{%endif%}>
+         <label for="manual_time_enter">{%trans "Manual time enter"%}</label>
+        </div>
 
+        <div class="c4 s6">
+         <input type="checkbox" name="manual_time_exit" id="manual_time_exit" {%if team_detail.manual_time_exit %}checked{%endif%}>
+         <label for="manual_time_exit">{%trans "Manual time exit"%}</label>
+        </div> -->
+
+         <div class="f c12 s12 mA5">
+         <label class="c2" for="language">{%trans "Language"%}</label>
+         <select class="c" name="language">
+           <option value="">{%trans "Please select one language"%}</option>
+           <option value="fa" {%if team_detail.language == 'fa'%} selected {%endif%}>{%trans "Persian"%}</option>
+           <option value="en" {%if team_detail.language == 'en'%} selected {%endif%}>{%trans "English"%}</option>
+         </select>
+
+        </div>
+
+        <div class="c12 s12 f mA5">
+         <label class="c2" for="event_title">{%trans "Event title"%}</label>
+          <input class="c" type="text" name="event_title" id="event_title" value="{{team_detail.event_title}}">
+        </div>
+
+        <div class="c12 s12 f mA5">
+         <label class="c2" for="event_date">{%trans "Event date"%}</label>
+          <input class="c" type="text" name="event_date" id="event_date" value="{{team_detail.event_date}}">
+        </div>
 
        </div>
       </div>

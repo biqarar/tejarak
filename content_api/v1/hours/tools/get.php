@@ -74,6 +74,14 @@ trait get
 					}
 					break;
 
+				case 'desc':
+					$result['desc_enter'] = isset($value) ? $value : null;
+					break;
+
+				case 'desc2':
+					$result['desc_exit'] = isset($value) ? $value : null;
+					break;
+
 				default:
 					continue;
 					break;

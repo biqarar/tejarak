@@ -3,6 +3,8 @@ namespace content\hours;
 
 class view extends \mvc\view
 {
+	use \content_a\main\_use;
+
 	function config()
 	{
 		$this->data->bodyclass    = 'unselectable siftal attendance';
@@ -27,6 +29,12 @@ class view extends \mvc\view
 		{
 			$current_team['logo'] = $this->url->static. 'images/logo.png';
 		}
+		/**
+		 * check team language and redirect if is set
+		 * the 'data' mean the arguments of this function is data of team
+		 * you can set the id or shortname of team and change the data to 'id' or 'shortname'
+		 */
+		$this->checkout_team_lanuage_force($current_team, 'data');
 
 		if(isset($current_team['logo']) && $current_team['logo'])
 		{

@@ -132,17 +132,16 @@ class model extends \content_a\main\model
 	 */
 	public function edit($_team, $_member)
 	{
-		$this->user_id   = $this->login('id');
-		$request         = [];
-		$request['team'] = $_team;
-		$request['id']   = $_member;
+		$this->user_id    = $this->login('id');
+		$request          = [];
+		$request['team']  = $_team;
+		$request['id']    = $_member;
 		utility::set_request_array($request);
-		$result          =  $this->get_member();
-		$member_id       = \lib\utility\shortURL::decode($_member);
-		$this->user_id   = $member_id;
-		$parent          = $this->get_list_parent();
+		$result           =  $this->get_member();
+		$member_id        = \lib\utility\shortURL::decode($_member);
+		$this->user_id    = $member_id;
+		$parent           = $this->get_list_parent();
 		$result['parent'] = $parent;
-
 		return $result;
 	}
 
