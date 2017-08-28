@@ -399,7 +399,7 @@ private function transtext()
 	echo T_("Date enter");                                                            // Line 30
 	echo T_("Avatar");                                                                // Line 55
 	echo T_("Status");                                                                // Line 10
-	echo T_("Visibility");                                                            // Line 114
+	echo T_("Visibility");                                                            // Line 111
 	echo T_("Report daily");                                                          // Line 34
 	echo T_("Report ente&rexit");                                                     // Line 35
 	echo T_("Sort");                                                                  // Line 36
@@ -501,8 +501,8 @@ private function transtext()
 	echo T_("username");                                                              // Line 17
 	echo T_("Password");                                                              // Line 21
 	echo T_("Enter a valid password from 6 to 40 character");                         // Line 21
-	echo T_("Active");                                                                // Line 99
-	echo T_("Deactive");                                                              // Line 107
+	echo T_("Active");                                                                // Line 96
+	echo T_("Deactive");                                                              // Line 104
 	echo T_("Edit");                                                                  // Line 53
 	echo T_("Add");                                                                   // Line 53
 
@@ -603,12 +603,20 @@ private function transtext()
 	echo T_("Enter a valid short name from 5 to 50 character");                       // Line 64
 	echo T_("Default setting for new members of team");                               // Line 76
 	echo T_("Show users avatars");                                                    // Line 81
-	echo T_("Allow plus");                                                            // Line 74
-	echo T_("Allow minus");                                                           // Line 78
-	echo T_("Remote user");                                                           // Line 83
-	echo T_("24 hour");                                                               // Line 87
-	echo T_("Close");                                                                 // Line 114
-	echo T_("Advance");                                                               // Line 199
+	echo T_("Allow plus");                                                            // Line 72
+	echo T_("Allow minus");                                                           // Line 76
+	echo T_("Remote user");                                                           // Line 81
+	echo T_("24 hour");                                                               // Line 85
+	echo T_("Manual time enter");                                                     // Line 104
+	echo T_("Manual time exit");                                                      // Line 109
+	echo T_("Language");                                                              // Line 113
+	echo T_("Please select one language");                                            // Line 115
+	echo T_("Persian");                                                               // Line 116
+	echo T_("English");                                                               // Line 117
+	echo T_("Event title");                                                           // Line 123
+	echo T_("Event date");                                                            // Line 128
+	echo T_("Close");                                                                 // Line 142
+	echo T_("Advance");                                                               // Line 196
 
 	//---------------------------------------------------content_a/member/display.html
 	echo T_("Enter a valid name from 3 to 40 character");                             // Line 12
@@ -617,13 +625,13 @@ private function transtext()
 	echo T_("Admin");                                                                 // Line 39
 	echo T_("First name");                                                            // Line 49
 	echo T_("Last name");                                                             // Line 56
-	echo T_("Extra setting for special use");                                         // Line 70
-	echo T_("Suspended");                                                             // Line 103
-	echo T_("Visible");                                                               // Line 119
-	echo T_("Hidden");                                                                // Line 123
-	echo T_("Parent");                                                                // Line 131
+	echo T_("Extra setting for special use");                                         // Line 68
+	echo T_("Suspended");                                                             // Line 100
+	echo T_("Visible");                                                               // Line 116
+	echo T_("Hidden");                                                                // Line 120
+	echo T_("Parent");                                                                // Line 128
 	echo T_("Add new parent");                                                        // Line 58
-	echo T_("Parent mobile");                                                         // Line 155
+	echo T_("Parent mobile");                                                         // Line 152
 	echo T_("Please select one items");                                               // Line 66
 	echo T_("Father");                                                                // Line 67
 	echo T_("Mother");                                                                // Line 68
