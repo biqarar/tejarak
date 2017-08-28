@@ -5,8 +5,6 @@ use \lib\debug;
 use \lib\db\logs;
 trait add
 {
-
-	public $get_data;
 	public $parent_id;
 
 	/**
@@ -72,15 +70,15 @@ trait add
 			return false;
 		}
 
-		$this->get_data = $get_data = \lib\db\users::get_by_mobile($mobile);
+		$get_parent_data = \lib\db\users::get_by_mobile($mobile);
 
-		if(!isset($get_data['id']))
+		if(!isset($get_parent_data['id']))
 		{
 			$parent_id = \lib\db\users::signup_quice(['user_mobile' => $mobile]);
 		}
 		else
 		{
-			$parent_id = $get_data['id'];
+			$parent_id = $get_parent_data['id'];
 		}
 
 		$this->parent_id = $parent_id;
@@ -146,15 +144,17 @@ trait add
 			return ;
 		}
 
+		$get_user_data = \lib\db\users::get($this->user_id);
+
 		$meta                       = [];
 		$meta['user_id']            = $this->user_id;
-		$meta['user_displayname']   = utility::request('displayname');
-		$meta['user_file_url']      = utility::request('file_url');
+		$meta['user_displayname']   = isset($get_user_data['user_displayname']) ? $get_user_data['user_displayname'] : null;
+		$meta['user_file_url']      = isset($get_user_data['user_file_url']) ? $get_user_data['user_file_url'] : null;;
 
-		$meta['parent_id']          = isset($get_data['id']) ? $get_data['id'] : null;
-		$meta['parent_mobile']      = isset($get_data['user_mobile']) ? $get_data['user_mobile'] : null;
-		$meta['parent_displayname'] = isset($get_data['user_displayname']) ? $get_data['user_displayname'] : null;
-		$meta['parent_file_url']    = isset($get_data['user_file_url']) ? $get_data['user_file_url'] : null;
+		$meta['parent_id']          = isset($get_parent_data['id']) ? $get_parent_data['id'] : null;
+		$meta['parent_mobile']      = isset($get_parent_data['user_mobile']) ? $get_parent_data['user_mobile'] : null;
+		$meta['parent_displayname'] = isset($get_parent_data['user_displayname']) ? $get_parent_data['user_displayname'] : null;
+		$meta['parent_file_url']    = isset($get_parent_data['user_file_url']) ? $get_parent_data['user_file_url'] : null;
 		$meta['title']              = utility::request('title');
 		$meta['othertitle']         = utility::request('othertitle');
 

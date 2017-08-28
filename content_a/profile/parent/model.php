@@ -69,8 +69,6 @@ class model extends \content_a\main\model
 	{
 		$request = [];
 
-		$request['displayname'] = $this->login('displayname');
-		$request['file_url']    = $this->login('file_url');
 		$request['othertitle']  = utility::post('othertitle');
 		$request['title']       = utility::post('title');
 		$request['mobile']      = utility::post('mobile');

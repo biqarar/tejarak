@@ -137,7 +137,12 @@ class model extends \content_a\main\model
 		$request['team'] = $_team;
 		$request['id']   = $_member;
 		utility::set_request_array($request);
-		$result =  $this->get_member();
+		$result          =  $this->get_member();
+		$member_id       = \lib\utility\shortURL::decode($_member);
+		$this->user_id   = $member_id;
+		$parent          = $this->get_list_parent();
+		$result['parent'] = $parent;
+
 		return $result;
 	}
 
@@ -178,6 +183,20 @@ class model extends \content_a\main\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
+
+		if(debug::$status)
+		{
+			if(utility::post('parent_mobile'))
+			{
+				$parent_request               = [];
+				$parent_request['othertitle'] = utility::post('othertitle');
+				$parent_request['title']      = utility::post('title');
+				$parent_request['mobile']     = utility::post('parent_mobile');
+				utility::set_request_array($parent_request);
+				$this->add_parent();
+			}
+		}
+
 		if(debug::$status)
 		{
 			$this->redirector()->set_domain()->set_url("a/$team");

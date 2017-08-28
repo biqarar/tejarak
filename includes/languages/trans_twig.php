@@ -608,7 +608,7 @@ private function transtext()
 	echo T_("Remote user");                                                           // Line 83
 	echo T_("24 hour");                                                               // Line 87
 	echo T_("Close");                                                                 // Line 114
-	echo T_("Advance");                                                               // Line 134
+	echo T_("Advance");                                                               // Line 199
 
 	//---------------------------------------------------content_a/member/display.html
 	echo T_("Enter a valid name from 3 to 40 character");                             // Line 12
@@ -621,6 +621,33 @@ private function transtext()
 	echo T_("Suspended");                                                             // Line 103
 	echo T_("Visible");                                                               // Line 119
 	echo T_("Hidden");                                                                // Line 123
+	echo T_("Parent");                                                                // Line 131
+	echo T_("Add new parent");                                                        // Line 58
+	echo T_("Parent mobile");                                                         // Line 155
+	echo T_("Please select one items");                                               // Line 66
+	echo T_("Father");                                                                // Line 67
+	echo T_("Mother");                                                                // Line 68
+	echo T_("Sister");                                                                // Line 69
+	echo T_("Brother");                                                               // Line 70
+	echo T_("Grandfather");                                                           // Line 71
+	echo T_("Grandmother");                                                           // Line 72
+	echo T_("Aunt");                                                                  // Line 73
+	echo T_("Husband of the aunt");                                                   // Line 74
+	echo T_("Uncle");                                                                 // Line 75
+	echo T_("Boy");                                                                   // Line 76
+	echo T_("Girl");                                                                  // Line 77
+	echo T_("Spouse");                                                                // Line 78
+	echo T_("Stepmother");                                                            // Line 79
+	echo T_("Stepfather");                                                            // Line 80
+	echo T_("Neighbor");                                                              // Line 81
+	echo T_("Teacher");                                                               // Line 82
+	echo T_("Friend");                                                                // Line 83
+	echo T_("Boss");                                                                  // Line 84
+	echo T_("Supervisor");                                                            // Line 85
+	echo T_("Child");                                                                 // Line 86
+	echo T_("Grandson");                                                              // Line 87
+	echo T_("Custom");                                                                // Line 88
+	echo T_("Other title");                                                           // Line 92
 
 	//-----------------------------------------------------content_a/plan/display.html
 	echo T_("Current Plan");                                                          // Line 9
@@ -649,31 +676,6 @@ private function transtext()
 	echo T_("No name");                                                               // Line 104
 	echo T_("Cancel");                                                                // Line 54
 	echo T_("Remove");                                                                // Line 35
-	echo T_("Add new parent");                                                        // Line 58
-	echo T_("Please select one items");                                               // Line 66
-	echo T_("Father");                                                                // Line 67
-	echo T_("Mother");                                                                // Line 68
-	echo T_("Sister");                                                                // Line 69
-	echo T_("Brother");                                                               // Line 70
-	echo T_("Grandfather");                                                           // Line 71
-	echo T_("Grandmother");                                                           // Line 72
-	echo T_("Aunt");                                                                  // Line 73
-	echo T_("Husband of the aunt");                                                   // Line 74
-	echo T_("Uncle");                                                                 // Line 75
-	echo T_("Boy");                                                                   // Line 76
-	echo T_("Girl");                                                                  // Line 77
-	echo T_("Spouse");                                                                // Line 78
-	echo T_("Stepmother");                                                            // Line 79
-	echo T_("Stepfather");                                                            // Line 80
-	echo T_("Neighbor");                                                              // Line 81
-	echo T_("Teacher");                                                               // Line 82
-	echo T_("Friend");                                                                // Line 83
-	echo T_("Boss");                                                                  // Line 84
-	echo T_("Supervisor");                                                            // Line 85
-	echo T_("Child");                                                                 // Line 86
-	echo T_("Grandson");                                                              // Line 87
-	echo T_("Custom");                                                                // Line 88
-	echo T_("Other title");                                                           // Line 92
 
 	//--------------------------------------------------content_a/profile/display.html
 	echo T_("Your profile information");                                              // Line 7
