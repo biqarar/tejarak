@@ -47,10 +47,11 @@
       </label>
 
      </div>
-     <div class="f singleInput">
-      <label class="cauto" for="amount-number">{%trans user_unit%}</label>
-      <input class="c" id="amount-number" type="number" name="amount" value="{{amount}}" placeholder='{%trans "Amount"%}' required>
-      <button class="c" type="submit">{%trans "Checkout"%}</button>
+
+     <div class="input pA5">
+      <label class="addon" for="amount-number">{%trans user_unit%}</label>
+      <input id="amount-number" type="number" name="amount" value="{{amount}}" placeholder='{%trans "Amount"%}' required min=0>
+      <button class="addon btn primary">{%trans "Checkout"%}</button>
      </div>
     </form>
 
@@ -63,10 +64,10 @@
     <p>{%trans "If you have a promo code, please enter it below to receive your credit."%}</p>
 
     <form method="post" class='gateways' autocomplete="off">
-     <div class="f singleInput">
-      <input type="hidden" name="type" value="promo">
-      <input class="c" id="promo-number" type="text" name="promo" placeholder='{%trans "Promo Code"%}' required spellcheck="false">
-      <button class="c" type="submit">{%trans "Apply Code"%}</button>
+     <input type="hidden" name="type" value="promo">
+     <div class="input pA5 w300">
+      <input id="promo-number" type="text" name="promo" placeholder='{%trans "Promo Code"%}' required spellcheck="false">
+      <button class="addon btn primary">{%trans "Apply Code"%}</button>
      </div>
     </form>
 
