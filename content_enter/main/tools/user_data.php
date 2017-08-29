@@ -30,7 +30,7 @@ trait user_data
 			case 'mobile':
 				if(self::$mobile)
 				{
-					$data = \ilib\db\users::get_by_mobile(self::$mobile);
+					$data = \lib\db\users::get_by_mobile(self::$mobile);
 				}
 				break;
 
@@ -38,7 +38,7 @@ trait user_data
 			case 'username':
 				if(self::$username)
 				{
-					$data = \ilib\db\users::get_by_username(self::$username);
+					$data = \lib\db\users::get_by_username(self::$username);
 				}
 				break;
 
@@ -46,7 +46,7 @@ trait user_data
 			case 'user_id':
 				if(self::$user_id)
 				{
-					$data = \ilib\db\users::get(self::$user_id);
+					$data = \lib\db\users::get_by_id(self::$user_id);
 				}
 				break;
 
@@ -54,7 +54,7 @@ trait user_data
 			case 'email':
 				if(self::$email)
 				{
-					$data = \ilib\db\users::get_by_email(self::$email, $_option['email_field']);
+					$data = \lib\db\users::get_by_email(self::$email, $_option['email_field']);
 				}
 				break;
 
@@ -132,13 +132,13 @@ trait user_data
 			$_args['user_mobile'] = $mobile;
 			$_args['user_email']  = self::$email;
 
-			$user_id = \ilib\db\users::signup($_args);
+			$user_id = \lib\db\users::signup_quick($_args);
 
 			if($user_id)
 			{
 				if(!empty($update_user))
 				{
-					\ilib\db\users::update($update_user, $user_id);
+					\lib\db\users::update($update_user, $user_id);
 				}
 				self::load_user_data();
 			}
@@ -165,7 +165,7 @@ trait user_data
 		}
 
 
-		$user_id = \ilib\db\users::insert($_args);
+		$user_id = \lib\db\users::insert($_args);
 
 		if($user_id)
 		{

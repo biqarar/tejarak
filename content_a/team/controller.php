@@ -25,6 +25,8 @@ class controller extends \content_a\main\controller
 			$this->get(false, 'edit')->ALL("$code/edit");
 			$this->post('edit')->ALL("$code/edit");
 		}
+
+		unset($_SESSION['first_go_to_setup']);
 	}
 }
 ?>

@@ -14,6 +14,8 @@ class controller extends \content_a\main\controller
 
 		$team_code = \lib\router::get_url(0);
 
+		unset($_SESSION['first_go_to_setup']);
+
 		/**
 		 * check team is exist
 		 */

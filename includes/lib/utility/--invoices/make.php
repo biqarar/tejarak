@@ -150,7 +150,7 @@ trait make
 		$meta['plan']              = self::$old_plan_name;
 		$meta['count_active_user'] = $count_active_user;
 
-		$creator_details = \lib\db\users::get(self::$team_details['creator']);
+		$creator_details = \lib\db\users::get_by_id(self::$team_details['creator']);
 
 		if(isset($creator_details['user_displayname']) && isset($creator_details['user_mobile']))
 		{

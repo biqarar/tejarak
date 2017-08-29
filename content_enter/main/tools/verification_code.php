@@ -281,7 +281,7 @@ trait verification_code
 			  )
 			{
 				// set temp ramz in use pass
-				\ilib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
+				\lib\db\users::update(['user_pass' => self::get_enter_session('temp_ramz_hash')], self::user_data('id'));
 			}
 
 
@@ -295,7 +295,7 @@ trait verification_code
 			if(self::get_enter_session('verify_from') === 'username_remove' && is_numeric(self::user_data('id')))
 			{
 				// set temp ramz in use pass
-				\ilib\db\users::update(['user_username' => null], self::user_data('id'));
+				\lib\db\users::update(['user_username' => null], self::user_data('id'));
 				// remove usename from sessions
 				unset($_SESSION['user']['username']);
 				// set the alert message
@@ -345,7 +345,7 @@ trait verification_code
 				}
 				$update_user['user_status'] = 'removed';
 
-				\ilib\db\users::update($update_user, self::user_data('id'));
+				\lib\db\users::update($update_user, self::user_data('id'));
 
 				\lib\db\sessions::delete_account(self::user_data('id'));
 
@@ -372,7 +372,7 @@ trait verification_code
 			  )
 			{
 				// set temp ramz in use pass
-				\ilib\db\users::update(['user_username' => self::get_enter_session('temp_username')], self::user_data('id'));
+				\lib\db\users::update(['user_username' => self::get_enter_session('temp_username')], self::user_data('id'));
 				// set the alert message
 				if(self::get_enter_session('verify_from') === 'username_set')
 				{
@@ -406,7 +406,7 @@ trait verification_code
 				// must loaded mobile data
 				if(self::get_enter_session('temp_mobile') && is_numeric(self::get_enter_session('temp_mobile')))
 				{
-					$load_mobile_data = \ilib\db\users::get_by_mobile(self::get_enter_session('temp_mobile'));
+					$load_mobile_data = \lib\db\users::get_by_mobile(self::get_enter_session('temp_mobile'));
 					if($load_mobile_data && isset($load_mobile_data['id']))
 					{
 						if(isset($load_mobile_data['user_status']) && in_array($load_mobile_data['user_status'], self::$block_status))
@@ -439,7 +439,7 @@ trait verification_code
 								}
 								else
 								{
-									\ilib\db\users::update(['user_google_mail' => self::get_enter_session('logined_by_email')], $load_mobile_data['id']);
+									\lib\db\users::update(['user_google_mail' => self::get_enter_session('logined_by_email')], $load_mobile_data['id']);
 									self::$user_id = $load_mobile_data['id'];
 									self::load_user_data('user_id');
 								}
@@ -473,7 +473,7 @@ trait verification_code
 
 								$signup['user_status'] = 'active';
 								self::set_enter_session('first_signup', true);
-								self::$user_id = \ilib\db\users::signup($signup);
+								self::$user_id = \lib\db\users::signup($signup);
 								self::load_user_data('user_id');
 							}
 							else
@@ -485,7 +485,7 @@ trait verification_code
 						{
 							if(!self::user_data('user_mobile'))
 							{
-								\ilib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], self::user_data('id'));
+								\lib\db\users::update(['user_mobile' => self::get_enter_session('temp_mobile')], self::user_data('id'));
 								// login
 							}
 							self::$user_id = self::user_data('id');
@@ -528,7 +528,7 @@ trait verification_code
 			  )
 			{
 				// set temp ramz in use pass
-				\ilib\db\users::update(['user_email' => self::get_enter_session('temp_email')], self::user_data('id'));
+				\lib\db\users::update(['user_email' => self::get_enter_session('temp_email')], self::user_data('id'));
 			}
 
 			/**
@@ -552,7 +552,7 @@ trait verification_code
 			if(self::get_enter_session('verify_from') === 'two_step_set' &&	is_numeric(self::user_data('id')))
 			{
 				// set on two_step of this user
-				\ilib\db\users::update(['user_two_step' => 1], self::user_data('id'));
+				\lib\db\users::update(['user_two_step' => 1], self::user_data('id'));
 			}
 
 
@@ -565,7 +565,7 @@ trait verification_code
 			if(self::get_enter_session('verify_from') === 'two_step_unset' &&	is_numeric(self::user_data('id')))
 			{
 				// set off two_step of this user
-				\ilib\db\users::update(['user_two_step' => 0], self::user_data('id'));
+				\lib\db\users::update(['user_two_step' => 0], self::user_data('id'));
 			}
 
 			// set login session
@@ -631,7 +631,7 @@ trait verification_code
 				{
 					// sign up user
 					self::set_enter_session('first_signup', true);
-					$user_id = \ilib\db\users::signup(self::get_enter_session('must_signup'));
+					$user_id = \lib\db\users::signup(self::get_enter_session('must_signup'));
 					if($user_id)
 					{
 						self::$user_id = $user_id;
@@ -661,7 +661,7 @@ trait verification_code
 					}
 					if(!empty($update_user_google))
 					{
-						\ilib\db\users::update($update_user_google, self::user_data('id'));
+						\lib\db\users::update($update_user_google, self::user_data('id'));
 					}
 					//auto redirect to redirect url
 					self::enter_set_login(null, true);

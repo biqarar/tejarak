@@ -122,7 +122,7 @@ trait full
 			'total'   => $new_amount,
 		];
 
-		$creator_details = \lib\db\users::get($this->team_details['creator']);
+		$creator_details = \lib\db\users::get_by_id($this->team_details['creator']);
 
 		$meta = [];
 

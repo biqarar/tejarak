@@ -190,7 +190,7 @@ class users
 				{
 					if(!isset(self::$USERS_DETAIL[$_args[0]]))
 					{
-						self::$USERS_DETAIL[$_args[0]] = \lib\db\users::get($_args[0]);
+						self::$USERS_DETAIL[$_args[0]] = \lib\db\users::get_by_id($_args[0]);
 					}
 				}
 				if($split[1] === 'get')

@@ -69,8 +69,8 @@ trait login
 			$user_id = \lib\db\sessions::get_user_id();
 			if($user_id)
 			{
-				$user_data = \ilib\db\users::get_user_data($user_id);
-				\ilib\db\users::set_login_session($user_data);
+				$user_data = \lib\db\users::get_by_id($user_id);
+				\lib\db\users::set_login_session($user_data);
 
 				if(isset($_SESSION['main_account']))
 				{
@@ -92,7 +92,7 @@ trait login
 	public static function enter_set_login($_url = null, $_auto_redirect = false)
 	{
 
-		\ilib\db\users::set_login_session(self::user_data());
+		\lib\db\users::set_login_session(self::user_data());
 
 		if(self::user_data('id'))
 		{

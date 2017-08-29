@@ -39,7 +39,7 @@ class model extends \content_enter\main\model
 				$main_account = $this->login('id');
 				$main_mobile  = $this->login('mobile');
 
-				if(!\lib\db\users::get($user_id))
+				if(!\lib\db\users::get_by_id($user_id))
 				{
 					debug::error(T_("User not found"));
 					return false;

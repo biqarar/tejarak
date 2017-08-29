@@ -53,7 +53,7 @@ class model extends \content_enter\main\model
 
 
 		// check username exist
-		$check_exist_user_name = \ilib\db\users::get_by_username(utility::post('usernameNew'));
+		$check_exist_user_name = \lib\db\users::get_by_username(utility::post('usernameNew'));
 
 		if(!empty($check_exist_user_name))
 		{

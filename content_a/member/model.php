@@ -28,6 +28,9 @@ class model extends \content_a\main\model
 			'24h'            => utility::post('24h'),
 			'status'         => utility::post('status'),
 			'visibility'     => utility::post('visibility'),
+			'barcode1'       => utility::post('barcode'),
+			'rfid1'          => utility::post('rfid'),
+			'qrcode1'        => utility::post('qrcode'),
 		];
 
 		return $args;

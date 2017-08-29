@@ -128,7 +128,7 @@ trait full
 			'total'   => $new_amount,
 		];
 
-		$creator_details = \lib\db\users::get(self::$team_details['creator']);
+		$creator_details = \lib\db\users::get_by_id(self::$team_details['creator']);
 
 		$meta = [];
 
@@ -262,7 +262,7 @@ trait full
 			'total'   => $amount,
 		];
 
-		$creator_details = \lib\db\users::get(self::$team_details['creator']);
+		$creator_details = \lib\db\users::get_by_id(self::$team_details['creator']);
 
 		if(isset($creator_details['displayname']) && isset($creator_details['user_mobile']))
 		{

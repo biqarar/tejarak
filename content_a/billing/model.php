@@ -155,7 +155,7 @@ class model extends \mvc\model
 			return false;
 		}
 
-		$check_user_ref = \lib\db\users::get($user_ref);
+		$check_user_ref = \lib\db\users::get_by_id($user_ref);
 
 		if(!isset($check_user_ref['id']))
 		{

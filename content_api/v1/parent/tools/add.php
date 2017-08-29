@@ -74,7 +74,7 @@ trait add
 
 		if(!isset($get_parent_data['id']))
 		{
-			$parent_id = \lib\db\users::signup_quice(['user_mobile' => $mobile]);
+			$parent_id = \lib\db\users::signup_quick(['user_mobile' => $mobile]);
 			$get_parent_data['user_mobile'] = $mobile;
 		}
 		else
@@ -145,7 +145,7 @@ trait add
 			return ;
 		}
 
-		$get_user_data = \lib\db\users::get($this->user_id);
+		$get_user_data = \lib\db\users::get_by_id($this->user_id);
 
 		$meta                       = [];
 		$meta['user_id']            = $this->user_id;

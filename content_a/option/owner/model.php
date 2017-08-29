@@ -22,7 +22,7 @@ class model extends \content_a\main\model
 		$load_last_request = $this->check_sended_request($team_id);
 		if(isset($load_last_request['user_id']))
 		{
-			$user_data             = \lib\db\users::get($load_last_request['user_id']);
+			$user_data             = \lib\db\users::get_by_id($load_last_request['user_id']);
 			$result                = [];
 			$result['mobile']      = (isset($user_data['user_mobile'])) ? $user_data['user_mobile'] : null;
 			$result['displayname'] = (isset($user_data['user_displayname'])) ? $user_data['user_displayname'] : null;

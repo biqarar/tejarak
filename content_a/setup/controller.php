@@ -14,9 +14,20 @@ class controller extends \content_a\main\controller
 
 		if($this->login())
 		{
-			if(\lib\db\userteams::get(['user_id' => $this->login('id'), 'limit' => 1]))
+			if(isset($_SESSION['first_go_to_setup']) && $_SESSION['first_go_to_setup'] === true)
 			{
-				\lib\error::bad(T_("You have a team and can not start the installation process again!"));
+				// no problem to continue
+			}
+			else
+			{
+				if(\lib\db\userteams::get(['user_id' => $this->login('id'), 'limit' => 1]))
+				{
+					\lib\error::bad(T_("You have a team and can not start the installation process again!"));
+				}
+				else
+				{
+					$_SESSION['first_go_to_setup'] = true;
+				}
 			}
 		}
 
