@@ -6,6 +6,8 @@ use \lib\db\logs;
 
 trait get
 {
+	use get_barcodes;
+
 	public $remote_user         = false;
 	public $rule                = null;
 	public $show_another_status = false;
@@ -124,7 +126,7 @@ trait get
 					}
 				}
 			}
-
+			$this->get_barcodes($temp);
 			return $temp;
 		}
 	}
@@ -191,6 +193,8 @@ trait get
 		}
 
 		$result = $this->ready_member($check_user_in_team, ['condition_checked' => true]);
+
+		$this->get_barcodes($result);
 
 		return $result;
 	}
@@ -265,6 +269,7 @@ trait get
 			switch ($key)
 			{
 				case 'user_id':
+
 					if(!$_options['condition_checked'])
 					{
 						if($this->team_privacy === 'public')
@@ -459,6 +464,9 @@ trait get
 
 						}
 					}
+					break;
+				case 'id':
+					$result['id'] = \lib\utility\shortURL::encode($value);
 					break;
 				default:
 					continue;

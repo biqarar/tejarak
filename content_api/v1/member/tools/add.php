@@ -445,6 +445,8 @@ trait add
 			}
 		}
 
+
+
 		// ready to insert userteam or userbranch record
 		$args                  = [];
 		$args['team_id']       = $team_id;
@@ -523,6 +525,17 @@ trait add
 			if(!utility::isset_request('rule')) 			unset($args['rule']);
 			if(!utility::isset_request('visibility')) 		unset($args['visibility']);
 
+			// check barcode, qrcode and rfid,
+			// update it if changed
+			// get from utility::request()
+			// check from $args
+			$this->check_barcode($check_user_in_team['id']);
+			// if have error in checking barcode
+			if(!debug::$status)
+			{
+				return;
+			}
+
 			if(!empty($args))
 			{
 				\lib\db\userteams::update($args, $check_user_in_team['id']);
@@ -551,6 +564,101 @@ trait add
 			}
 		}
 
+	}
+
+
+
+	/**
+	 * check barcode, qrcode and rfid,
+	 * update it if changed
+	 * get from utility::request()
+	 * check from $args
+	 *
+	 * @param      array  $_args  The arguments
+	 */
+	public function check_barcode($_id)
+	{
+			// set the log meta
+		$log_meta =
+		[
+			'data' => null,
+			'meta' =>
+			[
+				'input' => utility::request(),
+			]
+		];
+
+		$barcode1 = utility::request("barcode1");
+		if($barcode1 && mb_strlen($barcode1) > 100)
+		{
+			logs::set('api:member:barcode:max:limit:barcode1', $this->user_id, $log_meta);
+			debug::error(T_("You must set barcode less than 100 character"), 'barcode', 'arguments');
+			return false;
+		}
+
+		$qrcode1 = utility::request("qrcode1");
+		if($qrcode1 && mb_strlen($qrcode1) > 100)
+		{
+			logs::set('api:member:qrcode:max:limit:qrcode1', $this->user_id, $log_meta);
+			debug::error(T_("You must set qrcode less than 100 character"), 'qrcode', 'arguments');
+			return false;
+		}
+
+		$rfid1 = utility::request("rfid1");
+		if($rfid1 && mb_strlen($rfid1) > 100)
+		{
+			logs::set('api:member:rfid:max:limit:rfid1', $this->user_id, $log_meta);
+			debug::error(T_("You must set rfid less than 100 character"), 'rfid', 'arguments');
+			return false;
+		}
+
+		$this->check_barcode_update($barcode1, $_id, 'barcode1');
+		$this->check_barcode_update($qrcode1, $_id, 'qrcode1');
+		$this->check_barcode_update($rfid1, $_id, 'rfid1');
+
+	}
+
+
+	/**
+	 * check barcode exist and
+	 * if not exist insert
+	 * if exist update
+	 * if no change return
+	 *
+	 * @param      <type>  $_barcode      The barcode
+	 * @param      <type>  $_get_barcode  The get barcode
+	 */
+	public function check_barcode_update($_barcode, $_id, $_title)
+	{
+		$check_exist_code =
+		[
+			'type'    => $_title,
+			'id'      => $_id,
+			'related' => 'userteams',
+		];
+
+		$check_exist_code = \lib\db\codes::get($check_exist_code);
+
+		if($_barcode)
+		{
+			// the code is not exist
+			$insert =
+			[
+				'code'    => $_barcode,
+				'type'    => $_title,
+				'related' => 'userteams',
+				'id'      => $_id,
+				'creator' => $this->user_id,
+			];
+			\lib\db\codes::set($insert);
+		}
+		else
+		{
+			if($check_exist_code)
+			{
+				\lib\db\codes::remove($check_exist_code);
+			}
+		}
 	}
 }
 ?>
