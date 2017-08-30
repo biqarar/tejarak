@@ -67,7 +67,7 @@
 
 {%block submitModal%}
   <div class='modal fs14' id='setTraffic'>
-   <form class='modal-dialog' method='post'>
+   <div class='modal-dialog'>
     <h3 class='modal-title'>{%trans "Enter"%}</h3>
     <div class='modal-body f'>
       <div class='cauto s8'>
@@ -80,11 +80,14 @@
         </div>
       </div>
       <div class='c w300 pLa20'>
-       <div class="enter f">
+
+       <form class="enter f"  method="post">
+        <input type="hidden" name="type" value="enter">
+        <input type="hidden" name="user" value="#">
         <div class="c12 pB5 f">
          <div class="input lg">
           <span class="addon btn danger" data-val='-5' data-connect='plus'>+</span>
-          <input type="number" placeholder="Time.." class="txtc" name="plus" step="5" min="0" max="1440">
+          <input type="number" name="plus" placeholder="Time.." class="txtc" step="5" min="0" max="1440">
           <span class="addon btn success" data-val='10' data-connect='plus'>-</span>
          </div>
         </div>
@@ -94,16 +97,40 @@
         <div class="c12 pTB5">
          <textarea class="txt" name='desc' rows="2" maxlength="100"></textarea>
         </div>
-        <div class="c12 pT25">
-         <button class="btn info block">{%trans "Enter"%}</button>
+        <div class="c12 pT20">
+         <button class="btn info block" data-ok>{%trans "Enter"%}</button>
         </div>
-       </div>
+       </form>
 
-       <div class="exit f">
-       </div>
+       <form class="exit f"  method="post">
+        <div class="tinfo">
+         <div class="inOut">
+          <span data-val='{{value.last_time| date("Y-m-d H:i:s") }}' class='timeEnter'>{{value.last_time | tdate('H:i')}}</span>
+          <span data-val='400' class='timeDiff'>-</span>
+          <span class='timeNow'>Now</span>
+         </div>
+         {%if value.plus%}<div class="timePlus" data-val='100'>{{value.plus | fitNumber}}</div>{%else%}{%endif%}
+        </div>
+
+        <input type="hidden" name="type" value="exit">
+        <input type="hidden" name="user" value="#">
+        <div class="c12 pB5 f">
+         <div class="input lg">
+          <span class="addon btn danger" data-val='-5' data-connect='minus'>+</span>
+          <input type="number" name="minus" placeholder="Time.." class="txtc" step="5" min="0" max="1440">
+          <span class="addon btn success" data-val='10' data-connect='minus'>-</span>
+         </div>
+        </div>
+        <div class="c12 pTB5">
+         <textarea class="txt" name='desc' rows="2" maxlength="100"></textarea>
+        </div>
+        <div class="c12 pT20">
+         <button class="btn info block" data-ok>{%trans "Exit"%}</button>
+        </div>
+       </form>
+
       </div>
-
     </div>
-  </form>
+  </div>
  </div>
 {%endblock%}
