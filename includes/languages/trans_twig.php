@@ -104,7 +104,7 @@ private function transtext()
 	echo T_("Sales");                                                                 // Line 18
 	echo T_("+98 25 3650 5460");                                                      // Line 18
 	echo T_("Admin Panel");                                                           // Line 60
-	echo T_("Enter");                                                                 // Line 26
+	echo T_("Enter");                                                                 // Line 101
 
 	//------------------------------------------------content/template/priceTable.html
 	echo T_("Free");                                                                  // Line 26
@@ -123,7 +123,7 @@ private function transtext()
 	echo T_("Change log of Tejarak");                                                 // Line 3
 	echo T_("We were born to do Best!");                                              // Line 53
 	echo T_("We are Developers, please wait!");                                       // Line 20
-	echo T_("Date");                                                                  // Line 87
+	echo T_("Date");                                                                  // Line 88
 	echo T_("Description");                                                           // Line 53
 	echo T_("Version 1 of Tejarak is comming");                                       // Line 26
 	echo T_("Beta version of Tejarak released");                                      // Line 31
@@ -216,7 +216,7 @@ private function transtext()
 	echo T_("Tejarak logo");                                                          // Line 159
 	echo T_("Sample personal card");                                                  // Line 126
 	echo T_("Javad Evazzadeh");                                                       // Line 128
-	echo T_("Barcode");                                                               // Line 129
+	echo T_("Barcode");                                                               // Line 198
 	echo T_("Custom design");                                                         // Line 111
 	echo T_("Fast delivery");                                                         // Line 173
 	echo T_("Good cost");                                                             // Line 191
@@ -334,10 +334,10 @@ private function transtext()
 	echo T_("Another Session");                                                       // Line 62
 
 	//--------------------------------------------------------content/main/layout.html
-	echo T_("Next →");                                                                // Line 38
-	echo T_("← Back");                                                                // Line 38
-	echo T_("Skip");                                                                  // Line 38
-	echo T_("Done");                                                                  // Line 38
+	echo T_("Next →");                                                                // Line 39
+	echo T_("← Back");                                                                // Line 39
+	echo T_("Skip");                                                                  // Line 39
+	echo T_("Done");                                                                  // Line 39
 
 	//-------------------------------------------------------content/home/display.html
 	echo T_("Do attendance easily and enjoy real time reports");                      // Line 21
@@ -373,7 +373,9 @@ private function transtext()
 	echo T_("Try it.");                                                               // Line 167
 
 	//------------------------------------------------------content/hours/display.html
-	echo T_("In the Name of God");                                                    // Line 40
+	echo T_("In the Name of God");                                                    // Line 43
+	echo T_("I was on the mission");                                                  // Line 95
+	echo T_("Exit");                                                                  // Line 128
 
 	//-----------------------------------------------content_cp/teamplans/display.html
 	echo T_("Search");                                                                // Line 14
@@ -415,8 +417,8 @@ private function transtext()
 	echo T_("Members");                                                               // Line 35
 	echo T_("Hours");                                                                 // Line 36
 	echo T_("24H");                                                                   // Line 52
-	echo T_("Minus");                                                                 // Line 89
-	echo T_("Plus");                                                                  // Line 88
+	echo T_("Minus");                                                                 // Line 90
+	echo T_("Plus");                                                                  // Line 89
 	echo T_("No logo");                                                               // Line 63
 
 	//--------------------------------------------content_cp/teams/detail/display.html
@@ -426,7 +428,7 @@ private function transtext()
 	echo T_("hours of teams");                                                        // Line 5
 	echo T_("Shamsi date");                                                           // Line 27
 	echo T_("Time");                                                                  // Line 28
-	echo T_("Type");                                                                  // Line 86
+	echo T_("Type");                                                                  // Line 87
 	echo T_("Diff");                                                                  // Line 37
 
 	//--------------------------------------------includes/languages/trans_static.html
@@ -613,10 +615,10 @@ private function transtext()
 	echo T_("Please select one language");                                            // Line 115
 	echo T_("Persian");                                                               // Line 116
 	echo T_("English");                                                               // Line 117
-	echo T_("Event title");                                                           // Line 123
-	echo T_("Event date");                                                            // Line 128
+	echo T_("Event title");                                                           // Line 124
+	echo T_("Event date");                                                            // Line 129
 	echo T_("Close");                                                                 // Line 142
-	echo T_("Advance");                                                               // Line 196
+	echo T_("Advance");                                                               // Line 228
 
 	//---------------------------------------------------content_a/member/display.html
 	echo T_("Enter a valid name from 3 to 40 character");                             // Line 12
@@ -656,6 +658,11 @@ private function transtext()
 	echo T_("Grandson");                                                              // Line 87
 	echo T_("Custom");                                                                // Line 88
 	echo T_("Other title");                                                           // Line 92
+	echo T_("Scan Barcode here...");                                                  // Line 200
+	echo T_("Rfid");                                                                  // Line 205
+	echo T_("Scan Rfid here...");                                                     // Line 207
+	echo T_("Qrcode");                                                                // Line 212
+	echo T_("Scan Qrcode here...");                                                   // Line 214
 
 	//-----------------------------------------------------content_a/plan/display.html
 	echo T_("Current Plan");                                                          // Line 9
@@ -765,7 +772,7 @@ private function transtext()
 
 	//------------------------------------------content_a/billing/invoice/display.html
 	echo T_("Invoice Detail");                                                        // Line 8
-	echo T_("Title");                                                                 // Line 85
+	echo T_("Title");                                                                 // Line 86
 
 	//--------------------------------------------------content_a/billing/display.html
 	echo T_("Your credit");                                                           // Line 12
@@ -774,17 +781,17 @@ private function transtext()
 	echo T_("View Usage Details");                                                    // Line 25
 	echo T_("Charge your account");                                                   // Line 33
 	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 34
-	echo T_("Amount");                                                                // Line 52
-	echo T_("Checkout");                                                              // Line 53
-	echo T_("Promo code");                                                            // Line 62
-	echo T_("If you have a promo code, please enter it below to receive your credit.");// Line 63
-	echo T_("Promo Code");                                                            // Line 68
-	echo T_("Apply Code");                                                            // Line 69
-	echo T_("Billing History");                                                       // Line 82
-	echo T_("Budget");                                                                // Line 90
-	echo T_("Unit");                                                                  // Line 91
-	echo T_("Invoice");                                                               // Line 92
-	echo T_("-");                                                                     // Line 113
+	echo T_("Amount");                                                                // Line 53
+	echo T_("Checkout");                                                              // Line 54
+	echo T_("Promo code");                                                            // Line 63
+	echo T_("If you have a promo code, please enter it below to receive your credit.");// Line 64
+	echo T_("Promo Code");                                                            // Line 69
+	echo T_("Apply Code");                                                            // Line 70
+	echo T_("Billing History");                                                       // Line 83
+	echo T_("Budget");                                                                // Line 91
+	echo T_("Unit");                                                                  // Line 92
+	echo T_("Invoice");                                                               // Line 93
+	echo T_("-");                                                                     // Line 114
 
 	//-------------------------------------------content_a/billing/detail/display.html
 	echo T_("Usage Detail");                                                          // Line 6
@@ -800,6 +807,8 @@ private function transtext()
 	echo T_("Be sure to take control of individuals and managers after transferring ownership of the team");// Line 67
 	echo T_("Usage of this team now:");                                               // Line 68
 	echo T_("Are you accept?");                                                       // Line 115
+
+	//---------------------public_html/static/siftal/fonts/siftal/icons-reference.html
 
 }
 ?>
