@@ -9,7 +9,7 @@
 
 
 {%block contentCenter%}
-  <div class='middle f justify-center op0' id="showMember">
+  <div class='middle f justify-center op0 live' id="showMember">
 
 {%for key, value in list_member%}
    <a
@@ -17,7 +17,7 @@
   class="vcard shadow mA10"
   data-overwrite=true
   data-status='{{value.status}}'
-  data-live='{%if value.last_time%}on{%else%}off{%endif%}'
+  data-live='{{value.live}}'
   data-user={{value.user_id}}
 {%if value.card_action%}
   data-modal='setTraffic'
@@ -131,7 +131,7 @@
          <textarea class="txt" name='desc' rows="2" maxlength="100"></textarea>
         </div>
         <div class="c12 pT20">
-         <button class="btn info block" data-ok>{%trans "Exit"%}</button>
+         <button class="btn secondary block" data-ok>{%trans "Exit"%}</button>
         </div>
        </form>
 
