@@ -34,13 +34,14 @@ trait get_barcodes
 
 		$get_multi_codes = \lib\db\my_codes::get_multi_codes($get_multi_codes);
 
+
 		$codes = [];
 		foreach ($get_multi_codes as $key => $value)
 		{
-			if(isset($value['related_id']) && isset($value['title']) && isset($value['slug']))
+			if(isset($value['related_id']) && isset($value['termusage_type']) && isset($value['slug']))
 			{
 				$related_encode = \lib\utility\shortURL::encode($value['related_id']);
-				$codes[$related_encode][$value['title']] = $value['slug'];
+				$codes[$related_encode][$value['termusage_type']] = $value['slug'];
 			}
 		}
 
