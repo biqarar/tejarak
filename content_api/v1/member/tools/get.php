@@ -475,6 +475,7 @@ trait get
 		}
 		krsort($result);
 
+		$result['present'] = false;
 		if($result['visibility'] === 'hidden')
 		{
 			$result['live'] = 'hidden';
@@ -492,6 +493,7 @@ trait get
 					if($result['last_time'])
 					{
 						$result['live'] = 'on';
+						$result['present'] = true;
 					}
 					else
 					{
