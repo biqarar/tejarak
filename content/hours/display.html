@@ -2,6 +2,11 @@
 
 {%use 'content/main/header-social.html'%}
 
+{%block foot_js%}
+
+ <script src='{{url.static}}js/board.js'></script>
+{%endblock%}
+
 
 {%block contentCenter%}
   <div class='middle f justify-center op0' id="showMember">
@@ -10,6 +15,7 @@
    <a
   href='{{url.full}}{{url.class}}#{{(key+1)}}'
   class="vcard shadow mA10"
+  data-overwrite=true
   data-status='{{value.status}}'
   data-live='{%if value.last_time%}on{%else%}off{%endif%}'
   data-user={{value.user_id}}
@@ -32,7 +38,7 @@
 {%endfor%}
 
   </div>
-  {{block('submitModal')}}
+  {{block('myModal')}}
 {%endblock%}
 
 
@@ -65,7 +71,7 @@
 
 
 
-{%block submitModal%}
+{%block myModal%}
   <div class='modal fs14' id='setTraffic'>
    <div class='modal-dialog'>
     <h3 class='modal-title'>{%trans "Enter"%}</h3>
@@ -84,17 +90,17 @@
        <form class="enter f"  method="post">
         <input type="hidden" name="type" value="enter">
         <input type="hidden" name="user" value="#">
-        <div class="c12 pB5 f">
+        <div class="c12 pB5 f" data-allowplus>
          <div class="input lg">
           <span class="addon btn danger" data-val='-5' data-connect='plus'>+</span>
           <input type="number" name="plus" placeholder="Time.." class="txtc" step="5" min="0" max="1440">
           <span class="addon btn success" data-val='10' data-connect='plus'>-</span>
          </div>
         </div>
-        <div class="c12 pTB5">
+        <div class="c12 pTB5" data-onTheMission>
          <a class="btn secondary block" data-val='1300' data-connect='plus'>{%trans "I was on the mission"%}</a>
         </div>
-        <div class="c12 pTB5">
+        <div class="c12 pTB5" data-enterdesc>
          <textarea class="txt" name='desc' rows="2" maxlength="100"></textarea>
         </div>
         <div class="c12 pT20">
@@ -113,15 +119,15 @@
         </div>
 
         <input type="hidden" name="type" value="exit">
-        <input type="hidden" name="user" value="#">
-        <div class="c12 pB5 f">
+        <input type="hidden" name="user" value="#" data-user>
+        <div class="c12 pB5 f" data-allowminus>
          <div class="input lg">
           <span class="addon btn danger" data-val='-5' data-connect='minus'>+</span>
           <input type="number" name="minus" placeholder="Time.." class="txtc" step="5" min="0" max="1440">
           <span class="addon btn success" data-val='10' data-connect='minus'>-</span>
          </div>
         </div>
-        <div class="c12 pTB5">
+        <div class="c12 pTB5" data-exitdesc>
          <textarea class="txt" name='desc' rows="2" maxlength="100"></textarea>
         </div>
         <div class="c12 pT20">

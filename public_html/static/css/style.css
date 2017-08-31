@@ -1,3 +1,18 @@
+/* new style based on siftal*/
+.modal[data-live="off"] .exit{display: none;}
+/*on enter*/
+.modal:not([data-allowplus]) [data-allowplus]{display:none;}
+.modal:not([data-allowplus]) [data-onTheMission]{display:none;}
+.modal[data-allowplus]:not([data-enter]) [data-onTheMission]{display:none;}
+.modal:not([data-enterdesc]) [data-enterdesc]{display: none;}
+/* on exit*/
+.modal[data-live="on"] .enter{display: none;}
+.modal:not([data-allowminus]) [data-allowminus]{display:none;}
+.modal:not([data-exitdesc]) [data-exitdesc]{display: none;}
+
+
+
+
 #content.lock .vcard{
 	opacity: 0.3;
 }
