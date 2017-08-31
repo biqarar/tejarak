@@ -19,6 +19,9 @@
   data-status='{{value.status}}'
   data-live='{{value.live}}'
   data-user={{value.user_id}}
+  data-rfid="{{value.codes.rfid1}}"
+  data-barcode="{{value.codes.barcode1}}"
+  data-qrcode="{{value.codes.qrcode1}}"
 {%if value.card_action%}
   data-modal='setTraffic'
   {%if value.allow_plus%}data-allowPlus{%endif%}
