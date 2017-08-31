@@ -4,6 +4,7 @@ $(document).ready(function()
   detectBarcode();
   scheduleCheck();
   changeCardStatusOnResult();
+  bindExtraInput();
 
 });
 
@@ -140,6 +141,107 @@ function changeCardStatusOnResult()
       console.log('has error!');
     }
   });
+}
+
+
+
+function bindExtraInput()
+{
+  $('#setTraffic form [data-connect]').on('click', function()
+  {
+    if($('body').hasClass('loading-form'))
+    {
+      return false;
+    }
+    var myInput = $(this).parent().find('input');
+    var extra   = parseInt($(this).attr('data-val')) || 0;
+    // add this value to target
+    setExtra(myInput, extra);
+  });
+
+
+  // up and down minus with scrool
+  $('#setTraffic form [data-allowminus], #setTraffic form [data-allowplus]').bind('mousewheel', function(e)
+  {
+    if($('body').hasClass('loading-form'))
+    {
+      return false;
+    }
+    var myInput = $(this).find('input[type="number"]');
+    if(e.originalEvent.wheelDelta /120 > 0)
+    {
+      setExtra(myInput, true);
+    }
+    else{
+      setExtra(myInput, false);
+    }
+  });
+}
+
+
+/**
+ * [setExtra description]
+ * @param {[type]} _target [description]
+ * @param {[type]} _extra  [description]
+ * @param {[type]} _exact  [description]
+ */
+function setExtra(_target, _extra, _exact)
+{
+  var newVal  = parseInt(_target.val()) || 0;
+  if(_extra === true)
+  {
+    _extra = 5;
+  }
+  else if(_extra === false)
+  {
+    _extra = -5;
+  }
+  else if(_extra === null)
+  {
+    _extra = 0;
+    _exact = true;
+  }
+  //  if exact copy value else plus it
+  if(_exact)
+  {
+    newVal = parseInt(_extra);
+  }
+  else
+  {
+    newVal += parseInt(_extra);
+  }
+  if(_target.attr('min') && newVal < parseInt(_target.attr('min')))
+  {
+    // do nothing
+    setExtraInvalid(_target);
+  }
+  else if(_target.attr('max') && newVal > parseInt(_target.attr('max')))
+  {
+    // do nothing
+    setExtraInvalid(_target);
+  }
+  else
+  {
+    _target.val(newVal);
+    var setResult = calcTotalExit(_target.parents('#setTraffic'));
+    if(setResult === 0 && _target.hasClass('inputMinus'))
+    {
+      setExtraInvalid(_target);
+    }
+  }
+
+  /**
+   * [setExtraInvalid description]
+   * @param {[type]} _target [description]
+   */
+  function setExtraInvalid(_target)
+  {
+    $(_target).addClass('error');
+    setTimeout(function()
+    {
+      $(_target).removeClass('error');
+    }, 300);
+  }
 }
 
 
