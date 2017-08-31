@@ -115,31 +115,22 @@ trait add
 			return false;
 		}
 
-		$desc_enter = utility::request('desc_enter');
-		if($desc_enter && mb_strlen($desc_enter) > 500)
+		$desc = utility::request('desc');
+		if($desc && mb_strlen($desc) > 500)
 		{
-			logs::set('api:hours:desc_enter:max:limit', $this->user_id, $log_meta);
+			logs::set('api:hours:desc:max:limit', $this->user_id, $log_meta);
 			debug::error(T_("Your text is too large"), 'text_enter', 'arguments');
 			return false;
 		}
 
-		$desc_exit = utility::request('desc_exit');
-		if($desc_exit && mb_strlen($desc_exit) > 500)
-		{
-			logs::set('api:hours:desc_exit:max:limit', $this->user_id, $log_meta);
-			debug::error(T_("Your text is too large"), 'text_exit', 'arguments');
-			return false;
-		}
-
-		$args               = [];
-		$args['user_id']    = $user;
-		$args['team_id']    = $team_id;
-		$args['minus']      = $minus;
-		$args['plus']       = $plus;
-		$args['type']       = $type;
-		$args['gateway']    = $this->user_id;
-		$args['desc_enter'] = $desc_enter;
-		$args['desc_exit']  = $desc_exit;
+		$args            = [];
+		$args['user_id'] = $user;
+		$args['team_id'] = $team_id;
+		$args['minus']   = $minus;
+		$args['plus']    = $plus;
+		$args['type']    = $type;
+		$args['gateway'] = $this->user_id;
+		$args['desc']    = $desc;
 
 		if($_args['method'] === 'post')
 		{

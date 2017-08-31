@@ -12,22 +12,28 @@
   <div class='middle f justify-center op0 live' id="showMember">
 
 {%for key, value in list_member%}
-   <a
-  href='{{url.full}}{{url.class}}#{{(key+1)}}'
-  class="vcard shadow mA10"
-  data-overwrite=true
-  data-status='{{value.status}}'
-  data-live='{{value.live}}'
-  data-user={{value.user_id}}
-  data-rfid="{{value.codes.rfid1}}"
-  data-barcode="{{value.codes.barcode1}}"
-  data-qrcode="{{value.codes.qrcode1}}"
+<a
+  href           ='{{url.full}}{{url.class}}#{{(key+1)}}'
+  class          ="vcard shadow mA10"
+  data-overwrite =true
+  data-status    ='{{value.status}}'
+  data-live      ='{{value.live}}'
+  data-user      ={{value.user_id}}
+  data-rfid      ="{{value.codes.rfid1}}"
+  data-barcode   ="{{value.codes.barcode1}}"
+  data-qrcode    ="{{value.codes.qrcode1}}"
+
 {%if value.card_action%}
+
   data-modal='setTraffic'
-  {%if value.allow_plus%}data-allowPlus{%endif%}
-  {%if value.allow_minus%}data-allowMinus{%endif%}
+  {%if value.allow_plus%}       data-allowPlus="true" {%else%}  data-allowPlus="false"  {%endif%}
+  {%if value.allow_minus%}      data-allowMinus="true"{%else%}  data-allowMinus="false" {%endif%}
+  {%if value.allow_desc_enter%} data-enterdesc="true" {%else%}  data-enterdesc="false"  {%endif%}
+  {%if value.allow_desc_exit%}  data-exitdesc="true"  {%else%}  data-exitdesc="false"   {%endif%}
+
   {%if value.last_time%}data-enter='{{value.last_time| date("Y-m-d H:i:s") }}'{%endif%}
   {%if value.plus%}data-plus='{{value.plus}}'{%endif%}
+
 {%endif%}>
 
 {%if value.file%}    <img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="sf-user"></i>{%endif%}

@@ -75,6 +75,7 @@ class model extends \content\main\model
 		$request['plus']   = utility::post('plus');
 		$request['minus']  = utility::post('minus');
 		$request['type']   = utility::post('type');
+		$request['desc']   = utility::post('desc');
 
 		utility::set_request_array($request);
 

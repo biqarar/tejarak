@@ -350,7 +350,7 @@ class hours
 		$insert['start']             = date("H:i");
 		$insert['start_gateway_id']  = $_args['gateway'];
 		$insert['start_time']        = date("Y-m-d H:i:s");
-		$insert['desc']              = $_args['desc_enter'];
+		$insert['desc']              = $_args['desc'];
 
 		$inserted                        = self::insert($insert);
 		$plan_feature                    = [];
@@ -453,7 +453,7 @@ class hours
 		$update['end_gateway_id']  = $_args['gateway'];
 		$update['end_userteam_id'] = $_args['userteam_id'];
 		$update['end_time']        = date("Y-m-d H:i:s");
-		$update['desc2']           = $_args['desc_exit'];
+		$update['desc2']           = $_args['desc'];
 
 		$updated                         = self::update($update, $start['id']);
 		$plan_feature                    = [];
