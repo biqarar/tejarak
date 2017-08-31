@@ -703,8 +703,9 @@ body #billing{max-width:800px;margin:0 auto}
 #fast-delivery-example{position:relative;overflow:hidden;}
 #fast-delivery-example:before{content:"";position:absolute;width:100%;top:0;left:0;right:0;height:120px;background-color:#57c9ff;border-radius:10px 10px 0 0;}
 
-#personal-card-interested{background-color:#fff;}
-#personal-card-interested h2{font-size:5em;}
+#personnel-card-interested{background-color:#4070c0;}
+#personnel-card-interested h2{font-size:5em;color:#fff;}
+#personnel-card-interested .btn{font-size:2em;}
 
 
 /* ---------------------------------------------------------------- responsive of site */
