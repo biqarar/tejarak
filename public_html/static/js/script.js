@@ -30,7 +30,7 @@ function checkAndRunAttendance()
     startClock();
     bindExtraInput();
     runLoadCard();
-    changeCardStatusOnResult();
+
   }
 }
 
@@ -132,36 +132,7 @@ function refreshAttendance()
 }
 
 
-function changeCardStatusOnResult()
-{
-  $('.attendance form').on('ajaxify:success', function(_e, _result)
-  {
-    // our request is done successfully
-    if(_result.status === 1)
-    {
-      var myCard = $(this).parents('.tcard');
-      // if this request is enter, enable card
-      if($(this).hasClass('enter'))
-      {
-        myCard.attr('data-live', 'on');
-        if(_result.msg.now_val)
-        {
-          myCard.find('.timeEnter').attr('data-val', _result.msg.now_val).text(fitNumber(_result.msg.now, false));
-        }
-      }
-      else if($(this).hasClass('exit'))
-      {
-        myCard.attr('data-live', 'off');
-      }
 
-      unflipAllCards();
-    }
-    else
-    {
-      console.log('has error!');
-    }
-  });
-}
 
 
 /**

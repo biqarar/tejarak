@@ -2,6 +2,9 @@ $(document).ready(function()
 {
   onOpenModal();
   detectBarcode();
+  scheduleCheck();
+  changeCardStatusOnResult();
+
 });
 
 
@@ -11,7 +14,7 @@ function onOpenModal()
   $('#setTraffic').on('open', function()
   {
     var $myModal  = $(this);
-    var myUser     = $myModal.attr('data-user');
+    var myUser    = $myModal.attr('data-user');
     var $userCard = $('#showMember .vcard[data-user='+ myUser +']');
 
     // set user id
@@ -56,6 +59,8 @@ function detectBarcode()
   });
 }
 
+
+// open card if needed and some other things!
 function openCard(_id)
 {
   var $userCard = $('#showMember .vcard[data-user='+ _id +']');
@@ -90,4 +95,52 @@ function openCard(_id)
     $userCard.click();
   }
 }
+
+
+function scheduleCheck()
+{
+  var slideInterval = setInterval(nextSlide,10000);
+  function nextSlide()
+  {
+
+  }
+
+}
+
+
+function changeCardStatusOnResult()
+{
+  $('.attendance form').on('ajaxify:success', function(_e, _result)
+  {
+    // our request is done successfully
+    if(_result.status === 1)
+    {
+      var myUser    = $(this).find('input[name="user"]').val();
+      var $userCard = $('#showMember .vcard[data-user='+ myUser +']');
+
+
+      // if this request is enter, enable card
+      if($(this).hasClass('enter'))
+      {
+        $userCard.attr('data-live', 'on');
+        $userCard.data('live', 'on');
+        if(_result.msg.now_val)
+        {
+          $userCard.attr('data-enter', _result.msg.now_val);
+        }
+      }
+      else if($(this).hasClass('exit'))
+      {
+        $userCard.attr('data-live', 'off');
+        $userCard.data('live', 'off');
+      }
+    }
+    else
+    {
+      console.log('has error!');
+    }
+  });
+}
+
+
 
