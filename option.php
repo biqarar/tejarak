@@ -1,5 +1,13 @@
 <?php
 /**
+ * save logs in other database
+ */
+if(!defined('db_log_name'))
+{
+	define('db_log_name', 'tejarak_log');
+}
+
+/**
 @ In the name Of Allah
 * The base configurations of the tejarak.
 */

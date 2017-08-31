@@ -140,11 +140,13 @@ class model extends \mvc\model
 		$tg_url = 'https://api.telegram.org/bot401647634:AAEUeTV5E7CYxZth-6TOWFHdjzABwVavJS0';
 		\lib\utility\telegram::$force_send_telegram_service = true;
 		\lib\utility\telegram::$telegram_api_url = $tg_url;
+		\lib\utility\telegram::$save_log = false;
 
 		\lib\utility\telegram::sendMessage("@tejarak_monitor", $msg);
 
 		\lib\utility\telegram::$force_send_telegram_service = $default_send_service;
 		\lib\utility\telegram::$telegram_api_url            = $default_api_url;
+		\lib\utility\telegram::$save_log = true;
 
 		if($run)
 		{

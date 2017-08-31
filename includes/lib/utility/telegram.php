@@ -11,6 +11,12 @@ class telegram
 	 */
 	private static $service_url                 = 'http://178.62.218.8:8081';
 
+	/**
+	 * save log if need
+	 *
+	 * @var        boolean
+	 */
+	public static $save_log = true;
 
 	/**
 	 * forse send by telegram service
@@ -186,7 +192,10 @@ class telegram
 	{
 		if(!function_exists('curl_init'))
 		{
-			\lib\db\logs::set('telegram:curl:not:install', null, ['meta' =>[]]);
+			if(self::$save_log)
+			{
+				\lib\db\logs::set('telegram:curl:not:install', null, ['meta' =>[]]);
+			}
 			\lib\debug::warn(T_("Please install curl on your system"));
 		}
 
@@ -216,7 +225,10 @@ class telegram
 
 						curl_close ($handle);
 
-						\lib\db\logs::set("telegram:service:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode, 'args' => func_get_args()]]);
+						if(self::$save_log)
+						{
+							\lib\db\logs::set("telegram:service:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode, 'args' => func_get_args()]]);
+						}
 					}
 				}
 			}
@@ -241,7 +253,10 @@ class telegram
 
 					curl_close ($handle);
 
-					\lib\db\logs::set("telegram:service:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode, 'args' => func_get_args()]]);
+					if(self::$save_log)
+					{
+						\lib\db\logs::set("telegram:service:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode, 'args' => func_get_args()]]);
+					}
 				}
 			}
 		}
@@ -263,7 +278,10 @@ class telegram
 
 			curl_close ($handle);
 
-			\lib\db\logs::set("telegram:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode, 'args' => func_get_args()]]);
+			if(self::$save_log)
+			{
+				\lib\db\logs::set("telegram:curl", null, ['meta' => ['response' => $response, 'http_code' => $mycode, 'args' => func_get_args()]]);
+			}
 		}
 	}
 
