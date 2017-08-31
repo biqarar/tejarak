@@ -552,31 +552,29 @@ body #billing{max-width:800px;margin:0 auto}
 .share2 .instagram::after{background-position:-245px 0}
 
 
-/* ---------------------------------------------------------------- personal card */
-/*.page-block.white-page-block{background-color:#fff;}*/
+/* ---------------------------------------------------------------- personnel card */
+/* general design for personnel card */
+.personnel-card{position:relative;overflow:hidden;width:8.5cm;height:5.4cm;border:1px solid #ddd;border-radius:10px;background-color:#fff;}
 
-#personal-card-intro{background-color:#c01541;position:relative;overflow:hidden;}
-#personal-card-intro h2{color:#fff;}
-#personal-card-intro h3{margin-bottom:3rem;color:#fff;}
+/* positive button */
+.btn.btn-positive{font-size:1.2em;line-height:initial;height:initial;padding:1rem 2rem;-webkit-transition:.3s;-o-transition:.3s;transition:.3s;color:#eee;border-radius:3px;background-color:#70b020;}
+.btn.btn-positive:hover{background-color:#60a010;}
 
-#personal-card-intro .personal-card{margin:0 auto 5rem;}
+/* personnel card intro */
+#personnel-card-intro{background-color:#c01541;}
+#personnel-card-intro .personnel-card{margin-bottom:5rem;}
+#personnel-card-intro h3{margin-bottom:3rem;color:#fff;}
+#personnel-card-intro .btn{font-size:2em;}
 
-.btn-center{text-align:center;font-size:1.4em;}
-.btn-p{font-size:1.2em;color:#eee;background-color:#70b020;line-height:initial;height:initial;padding:1em 2em;}
-.btn-p:hover{background-color:#60a010;}
-
+/* general style for all p and h4 */
+[data-page="card"] .pc p{margin:0;font-size:1.4em;}
 [data-page="card"] .pc h4{font-size:2em;}
-[data-page="card"] .pc p{font-size:1.4em;}
 
-[data-page="card"] .pc .personal-card{margin:0 auto;}
-
-[data-page="card"] #logo-and-info .personal-card{position:relative;overflow:hidden;}
-[data-page="card"] .id-card .avatar{display:block;max-width:100%;max-height:100%;}
-[data-page="card"] .id-card .avatar-frame{display:inline-block;width:75px;height:80px;border:1px solid #ddd;padding:5px 0 0;border-radius:3px;background-color:#f1f1f1;margin-top:20px;}
-[data-page="card"] .id-card .avatar-name{padding:1rem;font-size:1.2em;}
-[data-page="card"] .id-card .logo{display:block;max-height:150px;}
-
-.personal-card{width:8.5cm;height:5.4cm;border:1px solid #ddd;border-radius:10px;background-color:#fff;}
+/* id card */
+.personnel-card.id-card .avatar-frame{display:inline-block;width:75px;height:80px;border:1px solid #ddd;padding:5px 0 0;border-radius:3px;background-color:#f1f1f1;margin-top:20px;}
+.personnel-card.id-card .avatar-frame .avatar{display:block;max-width:100%;max-height:100%;}
+.personnel-card.id-card .avatar-name{padding:1rem;font-size:1.2em;}
+.personnel-card.id-card .logo{display:block;max-height:150px;}
 
 .barcode{position:relative;}
 .barcode li{height:50px;margin:0 1px;background-color:#333;}
@@ -613,7 +611,7 @@ body #billing{max-width:800px;margin:0 auto}
 
 .animated{animation-duration:5s;animation-fill-mode:both;}
 .animated.infinite{animation-iteration-count:infinite;animation-delay:1s;}
-.animated.hinge{animation-duration: 2s;}
+.animated.hinge{animation-duration:2s;}
 
 @keyframes fadeInDown{
   0%{opacity:0;transform:translate3d(0, -100%, 0);}
@@ -639,377 +637,78 @@ body #billing{max-width:800px;margin:0 auto}
 }
 .fadeInUp{animation-name:fadeInUp;}
 
-@keyframes scale {
-	0% {
-		transform: scale(1.0);
-	}
-	10% {
-		transform: scale(1.0);
-	}
-	50% {
-		transform: scale(0.75);
-	}
-	90% {
-		transform: scale(0.9);
-	}
-	100% {
-		transform: scale(1.0);
-	}
+@keyframes scale{
+	0%{transform:scale(1.0);}
+	10%{transform:scale(1.0);}
+	50%{transform:scale(0.75);}
+	90%{transform:scale(0.9);}
+	100%{transform:scale(1.0);}
 }
-
-#customization-example{overflow:hidden;}
-
-.scale {
-	animation-name: scale;
-}
+.scale{animation-name: scale;}
 
 .id-card-barcode{max-height:50px;}
 
-.car-outer {
-	width: 100%;
-	    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-    position: relative;
-    animation: carDrive 5s 1s cubic-bezier(0.88, 0.08, 0.16, 1.1) infinite;
-}
+.car-outer{width:100%;-webkit-transform:translateX(-100%);transform:translateX(-100%);position:relative;animation:carDrive 5s 1s cubic-bezier(0.88, 0.08, 0.16, 1.1) infinite;}
 
 @keyframes carDrive {
-  0% {
-    transform: translateX(-100%);
-  }
-  25% {
-    transform: translateX(0%);
-  }
-  70% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  0% {transform:translateX(-100%);}
+  25%{transform:translateX(0%);}
+  70%{transform:translateX(0%);}
+  100%{transform:translateX(100%);}
 }
 
 #fast-delivery-example{overflow:hidden;background-color:#ffc253;}
 
-.car {
-	width: 200px;
-	margin: 0 auto;
-	animation: carMove 0.3s infinite;
+@keyframes carMove{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-1px);}
+  100%{transform:translateY(0px);}
+}
+.car{width:200px;margin:0 auto;animation:carMove 0.3s infinite;}
+
+.car-body{width:160px;height:100px;background-color:#fff;position:relative;border-radius:10px 10px 10px 10px;}
+.car-body:before{position:absolute;top:0;height:5px;width:100%;left:0;content:'';border-radius:10px 10px 0 0;background-color:#3190dd;z-index:2;}
+.car-body div{width:120%;height:40%;background-color:#fff;position:absolute;bottom:0;left:0;border-radius:10px;}
+.car-body div:before{content:"";background:#fff;position:absolute;top:-10px;right:0px;width:40px;height:25px;z-index:1;border-radius:0 15px 0 0;-webkit-transform:rotate(17deg);-moz-transform:rotate(17deg);-ms-transform:rotate(17deg);-o-transform:rotate(17deg);transform:rotate(17deg);}
+.car-body div:after{content:"";background:#fff;position:absolute;top:-40px;right:7px;width:60px;height:25px;z-index:1;border-radius:10px 0 0 0;transform:rotate(80deg);}
+
+.car .extra .bottom-line{left:1px;position:absolute;bottom:5px;height:2px;width:190px;background:#e1e8ef;border-radius:3px;}
+.car .extra .door{position:absolute;left:90px;bottom:1px;width:35px;height:80px;border-radius:5px 5px 0 0;border:3px solid #e1e8ef;border-bottom:0;background:#fff;}
+.car .extra .door:before{position:absolute;content:"";width:23px;height:18px;left:0;background-color:#5bc2ef;top:3px;right:0;margin:auto;border-radius:3px;}
+.car .extra .door .handle{width:8px;height:3px;background-color:#e1e8ef;position:absolute;right:2px;top:35px;}
+.car .extra .window{position:absolute;top:10px;right:45px;width:15px;background:#5bc2ef;height:40px;border-radius:10px 10px 0 10px;z-index:2;}
+.car .extra .window:before{content:"";width:100%;height:15px;background:#5bc2ef;position:absolute;bottom:0;left:0;width:21px;border-radius:0 10px 10px 10px;}
+.car .extra .window:after{content:"";height:10px;background:#5bc2ef;position:absolute;top:12px;left:-10px;width:38px;transform-origin:bottom;transform:rotate(75deg);border-radius:10px 10px 10px 10px;}
+.car .extra .light{position:absolute;width:7px;height:7px;background:#ff8c40;right:45px;bottom:30px;border-radius:3px;z-index:1;}
+.car .extra .light-front{position:absolute;width:7px;height:7px;background:#ff8c40;right:5px;bottom:30px;border-radius:3px;z-index:1;}
+.car .extra .light-front:after{content:"";position:absolute;top:0;left:0;width:100%;background:#ff8c40;top:100%;height:10px;border-radius:3px;margin-top:2px;}
+.car .extra [class^="wheel"]{width:40px;height:40px;background-color:#000;border-radius:100%;position:absolute;bottom:-20px;}
+.car .extra .wheel1{left:20px;}
+.car .extra .wheel2{right:30px;}
+.car .extra [class^="wheel"]:before{content:"";width:20px;height:20px;position:absolute;left:10px;top:10px;background-color:#fff;border-radius:100%;}
+.car .extra .car-logo{position:absolute;width:50px;left:20px;top:20px;}
+.car .wind{position:absolute;z-index:-1;right:100%;height:100%;margin-right:-1.25em;top:0;}
+.car .wind .wind-p{position:absolute;background:#fff;border-radius:0.625em;height:0.625em;z-index:1;}
+.car .wind .wind-p1{width:40px;position:absolute;right:0;top:10px;animation:wind 1s -1s linear infinite;}
+.car .wind .wind-p2{width:30px;right:25px;top:35px;animation:wind 1s -2s linear infinite;}
+.car .wind .wind-p3{width:30px;right:0;top:65px;animation:wind 1s -1s linear infinite;}
+.car .wind .wind-p4{width:45px;right:65px;top:84px;animation:wind 1s 1s linear infinite;}
+.car .wind .wind-p5{width:45px;right:20px;top:90px;animation:wind 1s -1.5s linear infinite;}
+
+@keyframes wind{
+  0%{transform:translateX(100%);opacity:1;}
+  100%{transform:translateX(-400%);opacity:0;}
 }
 
-.car-body {
-	width: 160px;
-	height: 100px;
-	background-color: #fff;
-	position: relative;
-	border-radius: 10px 10px 10px 10px;
-}
-
-.car-body:before {
-	position: absolute;
-	top: 0;
-	height: 5px;
-	width: 100%;
-	left: 0;
-	content: '';
-	border-radius: 10px 10px 0 0;
-	background-color: #3190dd;
-	z-index: 2;
-}
-
-.car-body div {
-	width: 120%;
-	height: 40%;
-	background-color: #fff;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	border-radius: 10px;
-}
-
-.car-body div:before {
-	    content: "";
-    background: #fff;
-    position: absolute;
-    top: -10px;
-    right: 0px;
-    width: 40px;
-    height: 25px;
-    z-index: 1;
-    border-radius: 0 15px 0 0;
-    -webkit-transform: rotate(17deg);
-    -moz-transform: rotate(17deg);
-    -ms-transform: rotate(17deg);
-    -o-transform: rotate(17deg);
-    transform: rotate(17deg);
-    /* visibility: hidden; */
-}
-
-.car-body div:after {
-	content: "";
-    background: #fff;
-    position: absolute;
-    top: -40px;
-    right: 7px;
-    width: 60px;
-    height: 25px;
-    z-index: 1;
-    border-radius: 10px 0 0 0;
-    transform: rotate(80deg);
-}
-
-@keyframes carMove {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-1px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-.car .extra {
-}
-
-.car .extra .bottom-line{
-	left: 1px;
-    position: absolute;
-    bottom: 5px;
-    height: 2px;
-    width: 190px;
-    background: #e1e8ef;
-    border-radius: 3px;
-}
-
-.car .extra .door {
-	position: absolute;
-    left: 90px;
-    bottom: 1px;
-    width: 35px;
-    height: 80px;
-    border-radius: 5px 5px 0 0;
-    border: 3px solid #e1e8ef;
-    border-bottom: 0;
-    background: #fff;
-}
-
-.car .extra .door:before {
-	    position: absolute;
-    content: "";
-    width: 23px;
-    height: 18px;
-    left: 0;
-    background-color: #5bc2ef;
-    top: 3px;
-    right: 0;
-    margin: auto;
-    border-radius: 3px;
-}
-
-.car .extra .door .handle {
-	    width: 8px;
-    height: 3px;
-    background-color: #e1e8ef;
-    position: absolute;
-    right: 2px;
-    top: 35px;
-}
-
-.car .extra .window {
-	    position: absolute;
-    top: 10px;
-    right: 45px;
-    width: 15px;
-    background: #5bc2ef;
-    height: 40px;
-    border-radius: 10px 10px 0 10px;
-    z-index: 2;
-}
-
-.car .extra .window:before {
-    content: "";
-    width: 100%;
-    height: 15px;
-    background: #5bc2ef;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 21px;
-    border-radius: 0 10px 10px 10px;
-}
-
-.car .extra .window:after {
-	    content: "";
-    height: 10px;
-    background: #5bc2ef;
-    position: absolute;
-    top: 12px;
-    left: -10px;
-    width: 38px;
-    transform-origin: bottom;
-    transform: rotate(75deg);
-    border-radius: 10px 10px 10px 10px;
-}
-
-.car .extra .light {
-	    position: absolute;
-    width: 7px;
-    height: 7px;
-    background: #ff8c40;
-    right: 45px;
-    bottom: 30px;
-    border-radius: 3px;
-    z-index: 1;
-}
-
-.car .extra .light-front {
-	position: absolute;
-    width: 7px;
-    height: 7px;
-    background: #ff8c40;
-    right: 5px;
-    bottom: 30px;
-    /* top: 0; */
-    border-radius: 3px;
-    z-index: 1;
-}
-
-.car .extra .light-front:after {
-	    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #ff8c40;
-    top: 100%;
-    height: 10px;
-    border-radius: 3px;
-    margin-top: 2px;
-}
-
-.car .extra [class^="wheel"] {
-	width: 40px;
-	height: 40px;
-	background-color: #000;
-	border-radius: 100%;
-	position: absolute;
-	bottom: -20px;
-}
-
-.car .extra .wheel1 {
-	left: 20px;
-}
-
-.car .extra .wheel2 {
-	right: 30px;
-}
-
-.car .extra [class^="wheel"]:before {
-	content: "";
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	background-color: #fff;
-	border-radius: 100%;
-}
-
-.car .extra .car-logo {
-	position: absolute;
-	width: 50px;
-	left: 20px;
-	top: 20px;
-}
-
-.car .wind {
-	position: absolute;
-    z-index: -1;
-    right: 100%;
-    height: 100%;
-    margin-right: -1.25em;
-    top: 0;
-}
-
-.car .wind .wind-p {
-	position: absolute;
-    background: #fff;
-    border-radius: 0.625em;
-    height: 0.625em;
-    z-index: 1;
-}
-
-.car .wind .wind-p1 {
-	width: 40px;
-    position: absolute;
-    right: 0;
-    top: 10px;
-    animation: wind 1s -1s linear infinite;
-}
-
-.car .wind .wind-p2 {
-	width: 30px;
-    right: 25px;
-    top: 35px;
-    animation: wind 1s -2s linear infinite;
-}
-
-.car .wind .wind-p3 {
-	width: 30px;
-    right: 0;
-    top: 65px;
-    animation: wind 1s -1s linear infinite;
-}
-
-.car .wind .wind-p4 {
-	width: 45px;
-    right: 65px;
-    top: 84px;
-    animation: wind 1s 1s linear infinite;
-}
-
-.car .wind .wind-p5 {
-    width: 45px;
-    right: 20px;
-    top: 90px;
-    animation: wind 1s -1.5s linear infinite;
-}
-
-@keyframes wind {
-  0% {
-    transform: translateX(100%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-400%);
-    opacity: 0;
-  }
-}
-
-
-#fast-delivery-example {
-	position: relative;
-	overflow: hidden;
-}
-#fast-delivery-example:before {
-	content: "";
-	position: absolute;
-	width: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 120px;
-	background-color: #57c9ff;
-	border-radius: 10px 10px 0 0;
-}
+#fast-delivery-example{position:relative;overflow:hidden;}
+#fast-delivery-example:before{content:"";position:absolute;width:100%;top:0;left:0;right:0;height:120px;background-color:#57c9ff;border-radius:10px 10px 0 0;}
 
 #personal-card-interested{background-color:#fff;}
 #personal-card-interested h2{font-size:5em;}
-#personal-card-interested .btn-p{}
 
 
 /* ---------------------------------------------------------------- responsive of site */
-@media all and (min-width: 1400px) {}
+@media all and (min-width: 1400px){}
 
 
 @media all and (max-width: 959px) {

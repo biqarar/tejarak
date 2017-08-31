@@ -1,28 +1,26 @@
 {%extends display.main%}
 
-{%set pageTitle%}{%trans "Personal Card"%}{%endset%}
+{%set pageTitle%}{%trans "Personnel Card"%}{%endset%}
 
 {%set pageDesc%}
-{%trans "A beautiful and quick way to attendance"%}
+{%trans "A beautiful and quick way for attendance"%}
 {%endset%}
 
 {%block content%}
-<div class="page-block white-page-block">
+<div class="page-block">
 	<div class="cn">
 		<div class="tile">
-			<h2>{%trans "Personal Card"%}</h2>
-			<h3>{%trans "A beautiful and quick way to attendance"%}</h3>
+			<h2>{%trans "Personnel Card"%}</h2>
+			<h3>{%trans "A beautiful and quick way for attendance"%}</h3>
 		</div>
 	</div>
 </div>
 
-<div class="tile" id="personal-card-intro">
-	<div class="cn">
-		<div class="personal-card"></div>
+<div class="tile" id="personnel-card-intro">
+	<div class="flex f-column align-center cn">
+		<div class="personnel-card"></div>
 		<h3>{%trans "Setup your dedicated and beautiful attendance system in less than a minute and have a <span>real time</span> and scrupulously monitoring on your business from anywhere"%}</h3>
-		<div class="btn-center">
-			<a href="#" data-direct class="btn btn-p">{%trans "Submit your order"%}</a>
-		</div>
+		<a href="#" class="btn btn-positive" data-direct>{%trans "Order Now"%}</a>
 	</div>
 </div>
 
@@ -30,18 +28,19 @@
 	<div class="cn">
 		<div class="pa">
 			<div class="f">
-				<div class="c8">
-					<h4>{%trans "Logo and information"%}</h4>
-					<p>{%trans "Logo and information"%}</p>
+				<div class="c1"></div>
+				<div class="flex f-column justify-center c6">
+					<h4>{%trans "Logo and personal information"%}</h4>
+					<p>{%trans "Try the logo of your organization or your company on one of existing designs and after choosing the right card, enter personal information of your employees, such as a photo, first name and last name and job position. Tejarak eye-catching personnel cards are a great way to showcase the logo and expand your brand, in addition to facilitating the attendance process."%}</p>
 				</div>
-				<div class="c4">
-					<div class="f personal-card id-card">
+				<div class="c4 flex justify-center align-center">
+					<div class="f personnel-card id-card">
 						<div class="flex f-column justify-center align-center c">
-							<img src="{{url.static}}images/brand/brand-reg.jpg" alt='{%trans "Tejarak logo"%}' class="logo animated infinite fadeInLeft">
+							<img src="{{url.static}}images/brand/brand-reg.jpg" alt='' class="logo animated infinite fadeInLeft">
 						</div>
 						<div class="flex f-column justify-center align-center c">
 							<div class="avatar-frame animated infinite fadeInDown">
-								<img src="{{url.static}}images/avatar/sample/boy.svg" alt='{%trans "Sample personal card"%}' class="avatar">
+								<img src="{{url.static}}images/avatar/sample/boy.svg" alt='' class="avatar">
 							</div>
 							<div class="avatar-name animated infinite fadeInUp">{%trans "Javad Evazzadeh"%}</div>
 						</div>
@@ -52,72 +51,39 @@
 	</div>
 </div>
 
-<div class="pc" id="">
+<div class="pc" id="barcode">
 	<div class="cn">
 		<div class="pa">
 			<div class="f">
-				<div class="c4">
-					<div class="flex justify-center align-center personal-card">
+				<div class="c1"></div>
+				<div class="flex justify-center align-center c4">
+					<div class="flex justify-center align-center personnel-card">
 						<ul class="flex barcode">
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<div class="diode">
-								<div class="laser"></div>
-							</div>
+							<li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+							<div class="diode"><div class="laser"></div></div>
 						</ul>
 					</div>
 				</div>
-				<div class="c8">
+				<div class="flex f-column justify-center c6">
 					<h4>{%trans "Barcode"%}</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>{%trans "Always have a plan B! By printing the staffing numbers in barcode format behind the personnel cards, you can register employee attendance at the time of the problem or equipment change with a barcode scanner or using an application installed on your smart phone. Additionally, the barcode printing adds to the beauty of the staff card."%}</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="pc" id="">
+<div class="pc">
 	<div class="cn">
 		<div class="pa">
 			<div class="f">
-				<div class="c8">
+				<div class="c1"></div>
+				<div class="flex f-column justify-center c6">
 					<h4>{%trans "Custom design"%}</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>{%trans "Did not any of Tejarak designs for staff card satisfy your satisfaction? Would you like to get started and print your design on your cards? No problem! Instead of using Tejarak designs, send us your design and get your cards as soon as possible with the highest possible quality."%}</p>
 				</div>
-				<div class="c4">
-					<div class="f personal-card id-card" id="customization-example">
+				<div class="flex justify-center align-center c4">
+					<div class="f personnel-card id-card">
 						<div class="flex f-column justify-center align-center c">
 							<img src="{{url.static}}images/brand/brand-reg.jpg" alt='{%trans "Tejarak logo"%}' class="logo animated infinite scale">
 						</div>
@@ -135,17 +101,16 @@
 	</div>
 </div>
 
-<div class="pc" id="">
+<div class="pc">
 	<div class="cn">
 		<div class="pa">
 			<div class="f">
-				<div class="c4">
-					<div class="flex align-center personal-card" id="fast-delivery-example">
+				<div class="c1"></div>
+				<div class="flex justify-center align-center c4">
+					<div class="flex align-center personnel-card" id="fast-delivery-example">
 						<div class="car-outer">
 							<div class="car">
-								<div class="car-body">
-									<div></div>
-								</div>
+								<div class="car-body"><div></div></div>
 								<div class="extra">
 									<div class="bottom-line"></div>
 									<div class="door">
@@ -169,47 +134,36 @@
 						</div>
 					</div>
 				</div>
-				<div class="c8">
+				<div class="flex f-column justify-center c6">
 					<h4>{%trans "Fast delivery"%}</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>{%trans "Time is gold and Tejarak is a gold mining machine! We have made every effort at Tejarak to begin the process of approval and printing of personnel cards from the very early stages of order registration, so that you can get your order delivered as soon as possible and keep your attendance process more professional."%}</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="pc" id="">
+<div class="pc">
 	<div class="cn">
 		<div class="pa">
 			<div class="f">
-				<div class="c8">
+				<div class="c1"></div>
+				<div class="flex f-column justify-center c6">
 					<h4>{%trans "Good cost"%}</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>{%trans "Getting information on the types of personnel cards and the cost of printing is easy and you can complete the registration process with full details. We take all the power of Tejarak to take into account all the technical aspects of the issuance of personnel cards, so that we can give our customers and users the best possible service with the highest possible quality."%}</p>
 				</div>
-				<div class="c4">
-					<div class="personal-card"></div>
+				<div class="flex justify-center align-center c4">
+					<div class="personnel-card"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="tile" id="personal-card-interested">
-	<div class="cn">
+<div class="tile" id="personnel-card-interested">
+	<div class="flex f-column justify-center align-center cn">
 		<h2>{%trans "Interested?"%}</h2>
-		<div class="btn-center">
-			<a href="#" data-direct class="btn btn-p">{%trans "Order your personal cards"%}</a>
-		</div>
+		<a href="#" data-direct class="btn btn-positive">{%trans "Order your personal cards"%}</a>
 	</div>
 </div>
 {%endblock%}
