@@ -146,6 +146,7 @@ trait add
 				if(isset($check_user_exist['id']))
 				{
 					$user_id = $check_user_exist['id'];
+					$check_not_duplicate_userteam = true;
 				}
 				else
 				{
@@ -471,6 +472,22 @@ trait add
 		$args['displayname']   = $displayname;
 		$args['rule']          = $rule;
 		$args['visibility']    = $visibility;
+
+		// check file is set or no
+		// if file is not set and the user have a file load the default file
+		if(!$args['fileid'] && !$args['fileurl'] && $_args['method'] === 'post')
+		{
+			$user_detail = \lib\db\users::get(['id' => $args['user_id'], 'limit' => 1]);
+			if(isset($user_detail['user_file_id']))
+			{
+				$args['fileid'] = $user_detail['user_file_id'];
+			}
+
+			if(isset($user_detail['user_file_url']))
+			{
+				$args['fileurl'] = $user_detail['user_file_url'];
+			}
+		}
 
 		// in insert new admin of team this admin can see the reports
 		// to cancel this optino go to tejarak report settings to cancel
