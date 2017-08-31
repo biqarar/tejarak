@@ -13,15 +13,16 @@
 
 {%for key, value in list_member%}
 <a
-  href           ='{{url.full}}{{url.class}}#{{(key+1)}}'
-  class          ="vcard shadow mA10"
-  data-overwrite =true
-  data-status    ='{{value.status}}'
-  data-live      ='{{value.live}}'
-  data-user      ={{value.user_id}}
-  data-rfid      ="{{value.codes.rfid1}}"
-  data-barcode   ="{{value.codes.barcode1}}"
-  data-qrcode    ="{{value.codes.qrcode1}}"
+  href             ='{{url.full}}{{url.class}}#{{(key+1)}}'
+  class            ="vcard shadow mA10"
+  data-overwrite   =true
+  data-status      ='{{value.status}}'
+  data-live        ='{{value.live}}'
+  data-user        ={{value.user_id}}
+  data-rfid        ="{{value.codes.rfid1}}"
+  data-barcode     ="{{value.codes.barcode1}}"
+  data-qrcode      ="{{value.codes.qrcode1}}"
+  data-lasttimeend = "{{value.last_time_end}}"
 
 {%if value.card_action%}
 
