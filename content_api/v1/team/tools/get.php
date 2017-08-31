@@ -133,6 +133,17 @@ trait get
 						$result['logo'] = null;
 					}
 					break;
+				case 'cardsize':
+					$result['cardsize'] = $value ? intval($value) : null;
+					break;
+
+				case 'allowdescenter':
+					$result['allow_desc_enter'] = $value ? true : false;
+					break;
+
+				case 'allowdescexit':
+					$result['allow_desc_exit'] = $value ? true : false;
+					break;
 
 				case 'fileid':
 				case 'telegram_id':
@@ -147,6 +158,7 @@ trait get
 					break;
 			}
 		}
+
 		return $result;
 	}
 

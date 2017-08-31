@@ -31,6 +31,9 @@ class model extends \content_a\main\model
 			'language'          => utility::post('language'),
 			'event_title'       => utility::post('event_title'),
 			'event_date'        => utility::post('event_date'),
+			'cardsize'          => utility::post('cardsize'),
+			'allow_desc_enter'  => utility::post('allowDescEnter'),
+			'allow_desc_exit'   => utility::post('allowDescExit'),
 			// 'parent'      => utility::post('the-parent'),
 		];
 

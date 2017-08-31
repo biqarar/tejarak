@@ -214,31 +214,41 @@ trait add
 			$eventdate = date("Y-m-d H:i:s", strtotime($eventdate));
 		}
 
-		$args                    = [];
-		$args['creator']         = $this->user_id;
-		$args['name']            = $name;
-		$args['shortname']       = $shortname;
-		$args['website']         = $website;
-		$args['desc']            = $desc;
-		$args['showavatar']      = utility::isset_request('show_avatar') ? utility::request('show_avatar')   ? 1 : 0 : null;
-		$args['allowplus']       = utility::isset_request('allow_plus')  ? utility::request('allow_plus')    ? 1 : 0 : null;
-		$args['allowminus']      = utility::isset_request('allow_minus') ? utility::request('allow_minus')   ? 1 : 0 : null;
-		$args['remote']          = utility::isset_request('remote_user') ? utility::request('remote_user') 	? 1 : 0 : null;
-		$args['24h']             = utility::isset_request('24h')         ? utility::request('24h')			? 1 : 0 : null;
+		$cardsize = utility::request('cardsize');
+		if($cardsize && !is_numeric($cardsize))
+		{
+			logs::set('api:team:cardsize:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid card size"), 'cardsize', 'arguments');
+			return false;
+		}
 
+		$args                     = [];
+		$args['creator']          = $this->user_id;
+		$args['name']             = $name;
+		$args['shortname']        = $shortname;
+		$args['website']          = $website;
+		$args['desc']             = $desc;
+		$args['showavatar']       = utility::isset_request('show_avatar') ? utility::request('show_avatar')   ? 1 : 0 : null;
+		$args['allowplus']        = utility::isset_request('allow_plus')  ? utility::request('allow_plus')    ? 1 : 0 : null;
+		$args['allowminus']       = utility::isset_request('allow_minus') ? utility::request('allow_minus')   ? 1 : 0 : null;
+		$args['remote']           = utility::isset_request('remote_user') ? utility::request('remote_user') 	? 1 : 0 : null;
+		$args['24h']              = utility::isset_request('24h')         ? utility::request('24h')			? 1 : 0 : null;
 
-		$args['lang']            = $lang;
-		$args['eventtitle']      = $eventtitle;
-		$args['eventdate']       = $eventdate;
-		$args['manualtimeexit']  = utility::isset_request('manual_time_exit')   ? utility::request('manual_time_exit')		? 1 : 0 : null;
-		$args['manualtimeenter'] = utility::isset_request('manual_time_enter')  ? utility::request('manual_time_enter')		? 1 : 0 : null;
-		$args['sendphoto']       = utility::isset_request('send_photo')         ? utility::request('send_photo')			? 1 : 0 : null;
+		$args['allowdescenter'] = utility::isset_request('allow_desc_enter') ? utility::request('allow_desc_enter')   ? 1 : 0 : null;
+		$args['allowdescexit']  = utility::isset_request('allow_desc_exit') ? utility::request('allow_desc_exit')   ? 1 : 0 : null;
 
+		$args['lang']             = $lang;
+		$args['eventtitle']       = $eventtitle;
+		$args['eventdate']        = $eventdate;
+		$args['manualtimeexit']   = utility::isset_request('manual_time_exit')   ? utility::request('manual_time_exit')		? 1 : 0 : null;
+		$args['manualtimeenter']  = utility::isset_request('manual_time_enter')  ? utility::request('manual_time_enter')		? 1 : 0 : null;
+		$args['sendphoto']        = utility::isset_request('send_photo')         ? utility::request('send_photo')			? 1 : 0 : null;
 
-		$args['logo']       = $logo_id;
-		$args['logourl']    = $logo_url;
-		$args['privacy']    = $privacy;
-		$args['parent']     = $parent ? $parent : null;
+		$args['logo']             = $logo_id;
+		$args['logourl']          = $logo_url;
+		$args['privacy']          = $privacy;
+		$args['parent']           = $parent ? $parent : null;
+		$args['cardsize']         = $cardsize ? $cardsize : null;
 
 		\lib\storage::set_last_team_added($shortname);
 
@@ -322,6 +332,9 @@ trait add
 			if(!utility::isset_request('manual_time_exit')) 	unset($args['manualtimeexit']);
 			if(!utility::isset_request('manual_time_enter')) 	unset($args['manualtimeenter']);
 			if(!utility::isset_request('send_photo')) 			unset($args['sendphoto']);
+			if(!utility::isset_request('cardsize')) 			unset($args['cardsize']);
+			if(!utility::isset_request('allow_desc_enter')) 	unset($args['allowdescenter']);
+			if(!utility::isset_request('allow_desc_exit')) 	    unset($args['allowdescexit']);
 
 			// if(!utility::isset_request('parent')) 			unset($args['parent']);
 

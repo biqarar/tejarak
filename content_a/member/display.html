@@ -80,10 +80,27 @@
          <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
          <label for="remoteUser">{%trans "Remote user"%}</label>
         </div>
+
         <div class="c4 s6">
          <input type="checkbox" name="24h" id="24h" {%if member['24h'] or team_default['24h'] %}checked{%endif%}>
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
+
+        <div class="c4 s6">
+         <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
+         <label for="remoteUser">{%trans "Remote user"%}</label>
+        </div>
+
+        <div class="c6 s6">
+         <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if member.allow_desc_enter or team_default.allow_desc_enter %}checked{%endif%}>
+         <label for="allowDescEnter">{%trans "Allow set desc in enter"%}</label>
+        </div>
+
+        <div class="c6 s6">
+         <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if member.allow_desc_exit or team_default.allow_desc_exit %}checked{%endif%}>
+         <label for="allowDescExit">{%trans "Allow set desc in exit"%}</label>
+        </div>
+
        </div>
       </div>
 
@@ -96,12 +113,12 @@
            <label for="r-active">{%trans "Active"%}</label>
           </div>
           <div class="c4">
-           <input type="radio" id="r-suspended" name="status" value="suspended" {%if member.status == 'suspended' %}checked{%endif%}>
-           <label for="r-suspended">{%trans "Suspended"%}</label>
-          </div>
-          <div class="c4">
            <input type="radio" id="r-deactive" name="status" value="deactive" {%if member.status == 'deactive' %}checked{%endif%}>
            <label for="r-deactive">{%trans "Deactive"%}</label>
+          </div>
+          <div class="c4">
+           <input type="radio" id="r-suspended" name="status" value="suspended" {%if member.status == 'suspended' %}checked{%endif%}>
+           <label for="r-suspended">{%trans "Suspended"%}</label>
           </div>
          </div>
         </div>

@@ -468,6 +468,15 @@ trait get
 				case 'id':
 					$result['id'] = \lib\utility\shortURL::encode($value);
 					break;
+
+				case 'allowdescenter':
+					$result['allow_desc_enter'] = $value ? true : false;
+					break;
+
+				case 'allowdescexit':
+					$result['allow_desc_exit'] = $value ? true : false;
+					break;
+
 				default:
 					continue;
 					break;

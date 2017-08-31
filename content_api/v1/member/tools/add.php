@@ -397,11 +397,13 @@ trait add
 			}
 		}
 
-		$allowplus  = utility::isset_request('allow_plus') 	? utility::request('allow_plus') 	? 1 : 0 : null;
-		$allowminus = utility::isset_request('allow_minus')	? utility::request('allow_minus') 	? 1 : 0 : null;
-		$is24h      = utility::isset_request('24h') 		? utility::request('24h') 			? 1 : 0 : null;
-		$remote     = utility::isset_request('remote_user')		? utility::request('remote_user') 	? 1 : 0 : null;
-		$isdefault  = utility::isset_request('is_default') 	? utility::request('is_default')	? 1 : 0 : null;
+		$allowplus      = utility::isset_request('allow_plus') 		? utility::request('allow_plus') 		? 1 : 0 : null;
+		$allowminus     = utility::isset_request('allow_minus')		? utility::request('allow_minus') 		? 1 : 0 : null;
+		$is24h          = utility::isset_request('24h') 			? utility::request('24h') 				? 1 : 0 : null;
+		$remote         = utility::isset_request('remote_user')		? utility::request('remote_user') 		? 1 : 0 : null;
+		$isdefault      = utility::isset_request('is_default') 		? utility::request('is_default')		? 1 : 0 : null;
+		$allowdescenter = utility::isset_request('allow_desc_enter')? utility::request('allow_desc_enter')	? 1 : 0 : null;
+		$allowdescexit  = utility::isset_request('allow_desc_exit') ? utility::request('allow_desc_exit')	? 1 : 0 : null;
 
 		// get date enter
 		$date_enter  = utility::request('date_enter');
@@ -461,17 +463,19 @@ trait add
 		{
 			$args['dateenter']     = $date_enter;
 		}
-		$args['dateexit']      = $date_exit;
-		$args['firstname']     = $firstname;
-		$args['lastname']      = $lastname;
-		$args['fileid']        = $file_id;
-		$args['fileurl']       = $file_url;
-		$args['allowplus']     = $allowplus;
-		$args['allowminus']    = $allowminus;
-		$args['status']        = $status;
-		$args['displayname']   = $displayname;
-		$args['rule']          = $rule;
-		$args['visibility']    = $visibility;
+		$args['dateexit']       = $date_exit;
+		$args['firstname']      = $firstname;
+		$args['lastname']       = $lastname;
+		$args['fileid']         = $file_id;
+		$args['fileurl']        = $file_url;
+		$args['allowplus']      = $allowplus;
+		$args['allowminus']     = $allowminus;
+		$args['status']         = $status;
+		$args['displayname']    = $displayname;
+		$args['rule']           = $rule;
+		$args['visibility']     = $visibility;
+		$args['allowdescenter'] = $allowdescenter;
+		$args['allowdescexit']  = $allowdescexit;
 
 		// check file is set or no
 		// if file is not set and the user have a file load the default file
@@ -541,6 +545,8 @@ trait add
 			if(!utility::isset_request('displayname')) 		unset($args['displayname']);
 			if(!utility::isset_request('rule')) 			unset($args['rule']);
 			if(!utility::isset_request('visibility')) 		unset($args['visibility']);
+			if(!utility::isset_request('allow_desc_enter')) unset($args['allowdescenter']);
+			if(!utility::isset_request('allow_desc_exit')) 	unset($args['allowdescexit']);
 
 			// check barcode, qrcode and rfid,
 			// update it if changed

@@ -99,6 +99,17 @@
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
+        <div class="c6 s12">
+         <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if team_detail.allow_desc_enter %}checked{%endif%}>
+         <label for="allowDescEnter">{%trans "Allow set enter desc"%}</label>
+        </div>
+
+        <div class="c6 s12">
+         <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if team_detail.allow_desc_exit %}checked{%endif%}>
+         <label for="allowDescExit">{%trans "Allow set Exit desc"%}</label>
+        </div>
+
+
        <!--   <div class="c4 s6">
          <input type="checkbox" name="manual_time_enter" id="manual_time_enter" {%if team_detail.manual_time_enter %}checked{%endif%}>
          <label for="manual_time_enter">{%trans "Manual time enter"%}</label>
@@ -108,6 +119,19 @@
          <input type="checkbox" name="manual_time_exit" id="manual_time_exit" {%if team_detail.manual_time_exit %}checked{%endif%}>
          <label for="manual_time_exit">{%trans "Manual time exit"%}</label>
         </div> -->
+
+
+        <div class="f c12 s12 mA5">
+         <label class="c2" for="cardsize">{%trans "Card size"%}</label>
+         <select class="c" name="cardsize">
+           <option value=""   {%if not team_detail.cardsize %} selected {%endif%}>{%trans "Auto size"%}</option>
+           <option value="10" {%if team_detail.cardsize == '10'%} selected {%endif%}>{%trans "Small"%}</option>
+           <option value="20" {%if team_detail.cardsize == '20'%} selected {%endif%}>{%trans "Medium"%}</option>
+           <option value="30" {%if team_detail.cardsize == '30'%} selected {%endif%}>{%trans "Large"%}</option>
+         </select>
+
+        </div>
+
 
          <div class="f c12 s12 mA5">
          <label class="c2" for="language">{%trans "Language"%}</label>
