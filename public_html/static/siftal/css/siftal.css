@@ -3716,12 +3716,18 @@ img.mini {
   max-width: 200px;
   text-align: center; }
 
+.normal .vcard img {
+  max-height: 200px; }
+
 .large .vcard {
   width: 220px;
   min-width: 220px;
   max-width: 220px;
   text-align: center;
   font-size: 1.1em; }
+
+.large .vcard img {
+  max-height: 220px; }
 
 .big .vcard {
   width: 250px;
@@ -3730,6 +3736,9 @@ img.mini {
   font-size: 1.3em;
   text-align: center; }
 
+.big .vcard img {
+  max-height: 250px; }
+
 .huge .vcard {
   width: 300px;
   min-width: 300px;
@@ -3737,12 +3746,35 @@ img.mini {
   font-size: 1.4em;
   text-align: center; }
 
+.huge .vcard img {
+  max-height: 300px; }
+
 .massive .vcard {
   width: 400px;
   min-width: 400px;
   max-width: 400px;
   font-size: 1.6em;
   text-align: center; }
+
+.massive .vcard img {
+  max-height: 400px; }
+
+.live .vcard {
+  opacity: 0.5; }
+
+.live .vcard[data-live="hidden"] {
+  opacity: 0.1;
+  display: none; }
+
+.live .vcard[data-live="deactive"] {
+  opacity: 0.3;
+  cursor: not-allowed; }
+
+.live .vcard[data-live="off"] {
+  opacity: 0.6; }
+
+.live .vcard[data-live="on"] {
+  opacity: 1; }
 
 /* Modals - v2*/
 .modal {
