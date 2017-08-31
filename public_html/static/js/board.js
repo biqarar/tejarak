@@ -24,6 +24,9 @@ function onOpenModal()
     $myModal.find('.vcard img').attr('src', $userCard.find('img').attr('src'));
     $myModal.find('.vcard .header').text($userCard.find('.header').text());
     $myModal.find('.vcard .meta').text($userCard.find('.meta').text());
+    // on exit
+    $myModal.find('.timeEnter').text($userCard.attr('data-enter'));
+
 
 
   });
