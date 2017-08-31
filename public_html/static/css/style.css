@@ -569,7 +569,7 @@ body #billing{max-width:800px;margin:0 auto}
 
 /* ---------------------------------------------------------------- personnel card */
 /* general design for personnel card */
-.personnel-card{position:relative;overflow:hidden;width:8.5cm;height:5.4cm;border:1px solid #ddd;border-radius:10px;background-color:#fff;}
+.personnel-card{position:relative;overflow:hidden;width:8.5cm;height:5.4cm;border:1px solid #ddd;border-radius:10px;background-color:#fff;direction:ltr;}
 
 /* positive button */
 .btn.btn-positive{font-size:1.2em;line-height:initial;height:initial;padding:1rem 2rem;-webkit-transition:.3s;-o-transition:.3s;transition:.3s;color:#eee;border-radius:3px;background-color:#70b020;}
