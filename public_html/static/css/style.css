@@ -11,6 +11,43 @@
 .modal:not([data-exitdesc]) [data-exitdesc]{display: none;}
 
 
+/* tejarak logo on sidebar footer*/
+/*attendance design*/
+.attendance #sidebar{background-color:rgba(255,255,255,0.4);height: 100vh;padding-top:2em;background-color:rgba(255,255,255,0.2);font-size:1.6em;display:flex;flex-direction:column;flex:1;max-width:250px;}
+.attendance #sidebar #god {font-size:0.8em;font-weight:700;text-align:center;margin-bottom:5vh;}
+.attendance #sidebar .time {text-align:center;font-size:3em;text-shadow:0 0 1px #000;direction:ltr;}
+.attendance #sidebar .time span{display:inline-block;}
+.attendance #sidebar .time .hour {font-weight:500;}
+.attendance #sidebar .time .minute, #sidebar .time .second {font-weight:200;}
+.attendance #sidebar #date {text-align:center;margin-bottom:7vh;}
+.attendance #sidebar #logo{text-align:center;flex: 1}
+.attendance #sidebar #logo img{height:200px;}
+.attendance #sidebar #logo h1 {font-weight:bold;line-height:2em;text-shadow:0 0 1px #000;}
+.attendance #sidebar #poem {position:absolute;bottom:1em;width:100%;font-size:0.8em;font-weight:500;text-align:center;display:none;}
+/* tejarak logo*/
+.attendance #sidebar .footer.tejarak{height: 40px;overflow: hidden;width: 100%;line-height: 40px;}
+.attendance #sidebar .footer.tejarak a{display: flex;transition: 0.3s;}
+.attendance #sidebar .footer.tejarak img{height: 40px;width: 40px;margin: 0 20px;}
+.attendance #sidebar .footer.tejarak a span{font-weight:700;}
+
+.rtl.attendance #sidebar .time .second{min-width:1.3em}
+.rtl.attendance #sidebar{font-size:1.8em;}
+
+.deadline{text-align:center;width:50%;display: block;overflow: hidden;border-radius: 0.5em;margin: 1em auto;font-size: 0.8em;color:#fff;position:absolute;border-bottom:0;right:0;left:0;bottom:0;}
+.deadline .title{display: block;background-color:#0fa1a6;font-size: 1em;padding:0.1em 0.5em;font-weight: 100;}
+.deadline .info{display: block;background-color:#1a8083;transition:0.2s;}
+.deadline .info time{display: block;font-size: 5em;font-weight:700;line-height:1;padding-top:0.2em;}
+.deadline.yellow .title{background-color:#a5890e;}
+.deadline.yellow .info{background-color:#bda926;}
+.deadline.orange .title{background-color:#940606;}
+.deadline.orange .info{background-color:#b32626;}
+.deadline.red .title{background-color:#b32626;}
+.deadline.red .info{background-color:#ec0707;}
+.deadline.black .title{background-color:#333;}
+.deadline.black .info{background-color:#000;color:#fff}
+
+
+
 
 
 #content.lock .vcard{
@@ -428,35 +465,6 @@ body #billing{max-width:800px;margin:0 auto}
 
 @keyframes pulseOn {to {box-shadow: 0 0 0 1em rgba(232, 76, 61, 0);}}
 @keyframes pulseOff{0%{box-shadow:0 0 0 0 rgba(204,169,44,0.4)}70%{box-shadow:0 0 0 10px rgba(204,169,44,0)}100%{box-shadow:0 0 0 0 rgba(204,169,44,0)}}
-
-/*attendance design*/
-.attendance #sidebar{background-color:rgba(255,255,255,0.4);}
-.attendance #sidebar {height: 100vh;padding-top:2em;background-color:rgba(255,255,255,0.2);font-size:1.6em;}
-.attendance #sidebar #god {font-size:0.8em;font-weight:700;text-align:center;margin-bottom:5vh;}
-.attendance #sidebar .time {text-align:center;font-size:3em;text-shadow:0 0 1px #000;direction:ltr;}
-.attendance #sidebar .time span{display:inline-block;}
-.attendance #sidebar .time .hour {font-weight:500;}
-.attendance #sidebar .time .minute, #sidebar .time .second {font-weight:200;}
-.attendance #sidebar #date {text-align:center;margin-bottom:7vh;}
-.attendance #sidebar #logo{text-align:center;}
-.attendance #sidebar #logo img{height:200px;}
-.attendance #sidebar #logo h1 {font-weight:bold;line-height:2em;text-shadow:0 0 1px #000;}
-.attendance #sidebar #poem {position:absolute;bottom:1em;width:100%;font-size:0.8em;font-weight:500;text-align:center;display:none;}
-.rtl.attendance #sidebar .time .second{min-width:1.3em}
-.rtl.attendance #sidebar{font-size:1.8em;}
-
-.deadline{text-align:center;width:50%;display: block;overflow: hidden;border-radius: 0.5em;margin: 1em auto;font-size: 0.8em;color:#fff;position:absolute;border-bottom:0;right:0;left:0;bottom:0;}
-.deadline .title{display: block;background-color:#0fa1a6;font-size: 1em;padding:0.1em 0.5em;font-weight: 100;}
-.deadline .info{display: block;background-color:#1a8083;transition:0.2s;}
-.deadline .info time{display: block;font-size: 5em;font-weight:700;line-height:1;padding-top:0.2em;}
-.deadline.yellow .title{background-color:#a5890e;}
-.deadline.yellow .info{background-color:#bda926;}
-.deadline.orange .title{background-color:#940606;}
-.deadline.orange .info{background-color:#b32626;}
-.deadline.red .title{background-color:#b32626;}
-.deadline.red .info{background-color:#ec0707;}
-.deadline.black .title{background-color:#333;}
-.deadline.black .info{background-color:#000;color:#fff}
 
 
 
