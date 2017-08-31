@@ -32,7 +32,7 @@ trait get_barcodes
 			'status'  => 'enable',
 		];
 
-		$get_multi_codes = \lib\db\codes::get_multi_codes($get_multi_codes);
+		$get_multi_codes = \lib\db\my_codes::get_multi_codes($get_multi_codes);
 
 		$codes = [];
 		foreach ($get_multi_codes as $key => $value)

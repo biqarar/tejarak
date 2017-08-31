@@ -630,19 +630,19 @@ trait add
 	 */
 	public function check_barcode_update($_barcode, $_id, $_title)
 	{
-		$check_exist_code =
+		$get_code =
 		[
 			'type'    => $_title,
 			'id'      => $_id,
 			'related' => 'userteams',
 		];
 
-		$check_exist_code = \lib\db\codes::get($check_exist_code);
+		$check_exist_code = \lib\db\my_codes::get($get_code);
 
 		if($_barcode)
 		{
 			// the code is not exist
-			$insert =
+			$set =
 			[
 				'code'    => $_barcode,
 				'type'    => $_title,
@@ -650,13 +650,13 @@ trait add
 				'id'      => $_id,
 				'creator' => $this->user_id,
 			];
-			\lib\db\codes::set($insert);
+			\lib\db\my_codes::set($set);
 		}
 		else
 		{
 			if($check_exist_code)
 			{
-				\lib\db\codes::remove($check_exist_code);
+				\lib\db\my_codes::remove($get_code);
 			}
 		}
 	}
