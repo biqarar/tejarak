@@ -13,13 +13,20 @@ trait options
 	 */
 	public static function host($_type = null)
 	{
+
 		$host = Protocol."://" . \lib\router::get_root_domain();
+
+		if(defined('simulation_com') && simulation_com)
+		{
+			$host = simulation_com;
+		}
+
 		$lang = \lib\define::get_current_language_string();
 
 		switch ($_type)
 		{
 			case 'file':
-				return Protocol."://" . \lib\router::get_root_domain();
+				return $host;
 				break;
 
 			case 'without_language':

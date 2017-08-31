@@ -89,6 +89,16 @@ trait get
 				array_push($result, $value);
 			}
 		}
+		if(is_array($result))
+		{
+			foreach ($result as $key => $value)
+			{
+				if(isset($value['file_url']))
+				{
+					$result[$key]['file_url'] = self::host('file'). '/'. $value['file_url'];
+				}
+			}
+		}
 
 		return $result;
 	}
