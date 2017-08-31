@@ -474,6 +474,37 @@ trait get
 			}
 		}
 		krsort($result);
+
+		if($result['visibility'] === 'hidden')
+		{
+			$result['live'] = 'hidden';
+		}
+		else
+		{
+			if($result['status'] === 'deactive')
+			{
+				$result['live'] = 'deactive';
+			}
+			else
+			{
+				if(isset($result['last_time']))
+				{
+					if($result['last_time'])
+					{
+						$result['live'] = 'on';
+					}
+					else
+					{
+						$result['live'] = 'off';
+					}
+				}
+				else
+				{
+					$result['live'] = 'off';
+				}
+			}
+		}
+
 		return $result;
 	}
 }
