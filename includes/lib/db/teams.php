@@ -457,11 +457,32 @@ class teams
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	public static function team_list($_user_id)
+	public static function team_list($_user_id, $_options = [])
 	{
 		if(!$_user_id || !is_numeric($_user_id))
 		{
 			return false;
+		}
+
+		$default_options =
+		[
+			'type' => null,
+		];
+
+		if(!is_array($_options))
+		{
+			$_options = [];
+		}
+
+		$_options = array_merge($default_options, $_options);
+
+		if($_options['type'])
+		{
+			$type_query = " AND teams.type = '$_options[type]' ";
+		}
+		else
+		{
+			$type_query = " AND teams.type IS NULL ";
 		}
 
 		$query =
@@ -474,6 +495,7 @@ class teams
 			INNER JOIN userteams ON userteams.team_id = teams.id
 			WHERE
 				userteams.user_id = $_user_id
+				$type_query
 		";
 
 		$result =  \lib\db::get($query);

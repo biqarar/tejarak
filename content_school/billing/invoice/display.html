@@ -1,0 +1,42 @@
+{%extends display.admin%}
+
+
+
+{%block content%}
+
+<div class="mB25 msg">
+  <h4>{%trans "Invoice Detail"%}</h4>
+  <div class="msg">{%trans "Title"%}: {{invoice.invoice.title}}</div>
+
+  {%if site.currentlang == 'fa'%}
+    <div class="msg">{%trans "Date"%}: {{invoice.invoice.date|jdate("Y-m-d H:i:s")}}</div>
+  {%else%}
+    <div class="msg">{%trans "Date"%}: {{invoice.invoice.date}}</div>
+  {%endif%}
+  <div class="msg">{%trans "Total"%}: {{invoice.invoice.total|number_format|fitNumber}}</div>
+
+  <table class="tbl">
+    <thead class="primary">
+      <th>{%trans "Title" %}</th>
+      <th>{%trans "Price" %}</th>
+      <th>{%trans "Count" %}</th>
+      <th>{%trans "Total" %}</th>
+    </thead>
+    <tbody>
+
+    {% for key, value in invoice.invoice_detail %}
+     <tr>
+      <td>{{value.title}}</td>
+      <td>{{value.price|number_format|fitNumber}}</td>
+      <td>{{value.count|number_format|fitNumber}}</td>
+      <td>{{value.total|number_format|fitNumber}}</td>
+     </tr>
+    {%endfor%}
+
+    </tbody>
+
+  </table>
+</div>
+
+{%endblock%}
+

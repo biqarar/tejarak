@@ -1,0 +1,57 @@
+{%extends display.adminTeam%}
+
+{%block content%}
+  <div class='middle small' id="showMember">
+
+<a href="{{url.baseFull}}/{{school_code}}/classroom/add" class="mA3 btn success">{%trans "Add new classroom"%}</a>
+
+<form method="get" class="" data-action>
+ <div class="input pTB10">
+      <label class="addon" for="search">{%trans "Search"%}</label>
+      <input type="text" placeholder='{%trans "Search"%}' id="search">
+      <button class="addon btn success">{%trans "Search" %}</button>
+    </div>
+</form>
+<br>
+
+<table class="tbl">
+  <thead class="primary">
+    <th>{%trans "Name"%}</th>
+    <th>{%trans "Year"%}</th>
+    <th>{%trans "Month"%}</th>
+    <th>{%trans "Diff"%}</th>
+    <th>{%trans "Minus"%}</th>
+    <th>{%trans "Plus"%}</th>
+    <th>{%trans "Accepted"%}</th>
+  </thead>
+  <tbody>
+  {%for key, value in list_member%}
+  <tr>
+    <td>{{value.displayname}}</td>
+    <td>{{value.year|fitNumber}}</td>
+    <td>{{value.month|fitNumber}}</td>
+    {%if time_raw%}
+      <td>{{value.diff | fitNumber}}</td>
+      <td>{{value.minus | fitNumber}}</td>
+      <td>{{value.plus | fitNumber}}</td>
+      <td>{{value.accepted | fitNumber}}</td>
+    {%else%}
+      <td>{{value.diff | humantime | fitNumber}}</td>
+      <td>{{value.minus | humantime | fitNumber}}</td>
+      <td>{{value.plus | humantime | fitNumber}}</td>
+      <td>{{value.accepted | humantime | fitNumber}}</td>
+    {%endif%}
+  </tr>
+  {%endfor%}
+  </tbody>
+</table>
+
+
+
+  </div>
+<div class="pagination-container">
+  {%include display.pagination%}
+</div>
+
+{%endblock%}
+

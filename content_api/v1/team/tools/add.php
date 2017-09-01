@@ -222,6 +222,15 @@ trait add
 			return false;
 		}
 
+		$type = utility::request('type');
+		if($type && !is_string($type))
+		{
+			logs::set('api:team:add:type:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid team type"), 'type', 'arguments');
+			return false;
+		}
+
+
 		$args                     = [];
 		$args['creator']          = $this->user_id;
 		$args['name']             = $name;
@@ -249,6 +258,7 @@ trait add
 		$args['privacy']          = $privacy;
 		$args['parent']           = $parent ? $parent : null;
 		$args['cardsize']         = $cardsize ? $cardsize : null;
+		$args['type']         	  = $type ? $type : null;
 
 		\lib\storage::set_last_team_added($shortname);
 
@@ -335,6 +345,7 @@ trait add
 			if(!utility::isset_request('cardsize')) 			unset($args['cardsize']);
 			if(!utility::isset_request('allow_desc_enter')) 	unset($args['allowdescenter']);
 			if(!utility::isset_request('allow_desc_exit')) 	    unset($args['allowdescexit']);
+			if(!utility::isset_request('type')) 				unset($args['type']);
 
 			// if(!utility::isset_request('parent')) 			unset($args['parent']);
 

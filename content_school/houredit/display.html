@@ -1,0 +1,65 @@
+{%extends display.adminTeam%}
+
+
+
+{%block sidenav%}
+{{parent()}}
+    <li class="title">{%trans "Request Edit"%}</li>
+    <li><a href="{{url.baseFull}}/{{team_code}}/houredit/list"><i class="sf-bolt"></i>{%trans "Request list"%}</a></li>
+{%endblock%}
+
+
+{%block contentCenter%}
+  <div class='middle' id="addMember">
+   <div class="dbox">
+
+
+   <h2>{%trans "Request to edit your hours"%}</h2>
+    <form method="post" class="df" enctype="multipart/form-data">
+
+     <h4>{%trans "You can send change request time"%}</h4>
+     <div class="f g1">
+       <div class="cauto s0 lbl"><label for="startdate">{%trans "Start Date"%}</label></div>
+       <div class="c">
+
+         <input type="text" name="start_date" id="startdate" placeholder='{%trans "Start Date"%}' {% if site.currentlang == 'fa' %} value="{{myTime.shamsi_date|fitNumber}}" {%else%} value="{{myTime.date}}" {% endif %}  maxlength='30'>
+       </div>
+      </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="starttime">{%trans "Start Time"%}</label></div>
+       <div class="c">
+         <input type="text" name="start_time" id="starttime" placeholder='{%trans "Start Time"%}' value="{{myTime.start|fitNumber}}" maxlength='30'>
+       </div>
+      </div>
+     <div class="f g1">
+       <div class="cauto s0 lbl"><label for="enddate">{%trans "End Date"%}</label></div>
+       <div class="c">
+         <input type="text" name="end_date" id="enddate" placeholder='{%trans "End date"%}' {% if site.currentlang == 'fa' %} value="{{myTime.endshamsi_date|fitNumber}}" {%else%} value="{{myTime.enddate}}" {% endif %}  maxlength='30'>
+       </div>
+      </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="endtime">{%trans "End Time"%}</label></div>
+       <div class="c">
+         <input type="text" name="end_time" id="endtime" placeholder='{%trans "End time"%}' value="{{myTime.end|fitNumber}}" maxlength='30'>
+       </div>
+      </div>
+
+	<h4>{%trans "You can send some description for this problem"%}</h4>
+     <div class="f g1">
+       <div class="cauto s0 lbl"><label for="desc">{%trans "Description"%}</label></div>
+       <div class="c">
+         <textarea  name="desc" id="desc" placeholder='{%trans "Description"%}'  maxlength='3000'>{{myTime.desc}}</textarea>
+       </div>
+      </div>
+     <div class="f g1">
+      <div class="c3 os">
+        <input type="submit" value='{%trans "Send"%}' class="b1">
+      </div>
+     </div>
+
+    </form>
+   </div>
+  </div>
+{%endblock%}

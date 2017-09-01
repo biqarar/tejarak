@@ -203,7 +203,19 @@ trait get
 			return false;
 		}
 
-		$result = \lib\db\teams::team_list($this->user_id);
+		$meta = [];
+
+		$type = utility::request('type');
+		if($type && !is_string($type))
+		{
+			logs::set('api:team:get:list:type:invalid', $this->user_id);
+			debug::error(T_("Invalid team type"), 'type', 'arguments');
+			return false;
+		}
+
+		$meta['type'] = $type;
+
+		$result = \lib\db\teams::team_list($this->user_id, $meta);
 		$temp = [];
 		foreach ($result as $key => $value)
 		{

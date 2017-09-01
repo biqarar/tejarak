@@ -1,0 +1,59 @@
+{%extends display.adminTeam%}
+
+{%block sidenav%}
+{{parent()}}
+{%endblock%}
+
+{%block contentCenter%}
+
+  <div class='middle' id="teamList">
+
+    <h2>{{page.title}}</h2>
+
+   <div class="f justify-center">
+    <a class='teams-item' href='{{url.baseFull}}/{{school_code}}/teacher'>
+     <figure>
+      <div class="f align-center">
+       <img src="{{url.static}}images/school/teacher.png" alt='{%trans "Teachers"%}'>
+      </div>
+      <figcaption>{%trans "Teachers"%}</figcaption>
+     </figure>
+    </a>
+
+
+
+    <a class='teams-item' href='{{url.baseFull}}/{{school_code}}/student'>
+     <figure>
+      <div class="f align-center">
+       <img src="{{url.static}}images/school/student.png" alt='{%trans "Students"%}'>
+      </div>
+      <figcaption>{%trans "Students"%}</figcaption>
+     </figure>
+    </a>
+
+
+    <a class='teams-item' href='{{url.baseFull}}/{{school_code}}/classroom'>
+     <figure>
+      <div class="f align-center">
+       <img src="{{url.static}}images/school/class.png" alt='{%trans "Classroom"%}'>
+      </div>
+      <figcaption>{%trans "Classroom"%}</figcaption>
+     </figure>
+    </a>
+
+
+    <a class='teams-item' href='{{url.baseFull}}/{{school_code}}/lesson'>
+     <figure>
+      <div class="f align-center">
+       <img src="{{url.static}}images/school/book.png" alt='{%trans "Lessons"%}'>
+      </div>
+      <figcaption>{%trans "Lessons"%}</figcaption>
+     </figure>
+    </a>
+
+
+
+   </div>
+  </div>
+{%endblock%}
+

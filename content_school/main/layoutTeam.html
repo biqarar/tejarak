@@ -1,0 +1,34 @@
+{%extends display.admin%}
+
+
+{%block sidenav%}
+{{parent()}}
+
+{%if team is not null%}
+    <li class="title">{%trans "School Operation"%}</li>
+
+
+
+href='{{url.baseFull}}/{{school_code}}/lesson'
+    {%if is_admin%}
+	    <li><a href="{{url.baseFull}}/{{team}}"><i class="sf-home"></i>{%trans "Team Dashboard"%}</a></li>
+
+	    <li><a href='{{url.baseFull}}/{{school_code}}/teacher'><i class="sf-graduation-cap"></i>{%trans "Teachers"%}</a></li>
+	    <li><a href='{{url.baseFull}}/{{school_code}}/student'><i class="sf-user"></i>{%trans "Students"%}</a></li>
+	    <li><a href='{{url.baseFull}}/{{school_code}}/classroom'><i class="sf-building"></i>{%trans "Classroom"%}</a></li>
+	    <li><a href='{{url.baseFull}}/{{school_code}}/lesson'><i class="sf-book"></i>{%trans "Lesson"%}</a></li>
+
+	    {%if is_creator%}
+
+		{%endif%}
+	    <li><a href="{{url.baseFull}}/{{team}}/edit"><i class="sf-cogs"></i>{%trans "Settings"%}</a></li>
+	{%endif%}
+    <li><a href="{{url.baseFull}}/{{team}}/report"><i class="sf-line-chart"></i>{%trans "Report"%}</a></li>
+{%if current_team.short_name%}
+    <!-- <li><a href="{{url.base}}/{{current_team.short_name}}" data-direct target="_blank"><i class="sf-heart-o"></i>{%trans "Board"%}</a></li> -->
+{%endif%}
+
+{%endif%}
+{%endblock%}
+
+
