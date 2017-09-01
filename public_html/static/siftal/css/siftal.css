@@ -3451,7 +3451,7 @@ progress.xl, meter.xl {
 .vcard[class^="sf-"]:before {
   vertical-align: top; }
 
-.vcard img {
+.vcard img, .vcard .img {
   position: relative;
   display: block;
   padding: 0;
@@ -3601,7 +3601,7 @@ img.mini {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  padding: 5px 5px 0;
+  padding: 5px 5px 5px;
   height: 35px; }
 
 .mini .vcard .content .header {
@@ -3609,6 +3609,13 @@ img.mini {
   line-height: 20px;
   overflow: hidden;
   text-overflow: ellipsis; }
+
+.mini .vcard .content .btn {
+  height: 25px;
+  min-height: 25px;
+  line-height: 21px;
+  padding-top: 2px;
+  padding-bottom: 2px; }
 
 .tiny .vcard {
   width: 180px;
@@ -3660,6 +3667,13 @@ img.mini {
   overflow: hidden;
   text-overflow: ellipsis; }
 
+.tiny .vcard .content .btn {
+  height: 30px;
+  min-height: 30px;
+  line-height: 24px;
+  padding-top: 3px;
+  padding-bottom: 3px; }
+
 .small .vcard {
   width: 200px;
   min-width: 200px;
@@ -3709,6 +3723,13 @@ img.mini {
   line-height: 30px;
   overflow: hidden;
   text-overflow: ellipsis; }
+
+.small .vcard .content .btn {
+  height: 40px;
+  min-height: 40px;
+  line-height: 34px;
+  padding-top: 3px;
+  padding-bottom: 3px; }
 
 .normal .vcard {
   width: 200px;
