@@ -37,7 +37,8 @@
 
 {%endif%}>
 
-{%if value.file%}    <img src='{{value.file}}' alt='{{value.displayname}}'>{%else%}<i class="sf-user"></i>{%endif%}
+    <img src='{%if value.file%}{{value.file}}{%else%}{{url.static}}siftal/images/useful/user1.png{%endif%}' alt='{{value.displayname}}'>
+
 
     <div class="content">
      <div class="header">{{value.displayname}}</div>

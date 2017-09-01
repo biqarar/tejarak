@@ -4,7 +4,7 @@
   <div class='middle small' id="showMember">
 
   <div class="vcard">
-    <img src="{{url.static}}siftal/images/avatar/adduser.png" alt='{%trans "Add new member"%}'>
+    <img src="{{url.static}}siftal/images/useful/adduser.png" alt='{%trans "Add new member"%}'>
     <div class="content">
       <a class="btn block primary" href="{{url.baseFull}}/{{team}}/member">{%trans "Add new member"%}</a>
     </div>
@@ -12,7 +12,7 @@
 
 {%for key, value in list_member%}
   <div class="vcard shadow" data-status='{{value.status}}' {% if value.rule == 'admin' %} data-admin{% endif %}>
-    <img src="{%if value.file%}{{value.file}}{%else%}{{url.static}}siftal/images/avatar/user1.png{%endif%}" alt="{{value.displayname}}">
+    <img src="{%if value.file%}{{value.file}}{%else%}{{url.static}}siftal/images/useful/user1.png{%endif%}" alt="{{value.displayname}}">
     <a class="content" href="{{url.baseFull}}/{{team}}/member={{value.user_id}}">
      <div class="header">{{value.displayname}}</div>
      {%if value.postion%}<div class="meta">{{value.postion}}</div>{%endif%}
