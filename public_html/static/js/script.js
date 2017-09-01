@@ -71,7 +71,7 @@ function checkResolution()
 
   $.each(sizes, function(_cls, _val)
   {
-    var canShow = Math.floor( (myBoxDim/_val)*0.7 );
+    var canShow = Math.floor( (myBoxDim/_val)*0.8 );
     // if work not good can uncomment below code
     // canShow = canShow -1;
     // console.log(myBoxDim/_val);

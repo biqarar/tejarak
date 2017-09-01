@@ -103,7 +103,7 @@ function openCard(_id)
 
 function scheduleCheck()
 {
-  var slideInterval = setInterval(nextSlide,10000);
+  // var slideInterval = setInterval(nextSlide,10000);
   function nextSlide()
   {
 
