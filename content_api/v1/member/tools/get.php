@@ -428,7 +428,7 @@ trait get
 
 				case '24h':
 					$result['24h'] = $value ? true : false;
-					if(array_key_exists('date', $_data) && array_key_exists('start', $_data) && array_key_exists('end', $_data))
+					if(array_key_exists('date', $_data) && array_key_exists('start', $_data) && array_key_exists('end', $_data) && array_key_exists('enddate', $_data))
 					{
 						// the user is 24h
 						if($value)
@@ -447,7 +447,7 @@ trait get
 						{
 							if($_data['end'])
 							{
-								$result['last_time_end'] = $_data['end'];
+								$result['last_time_end'] = $_data['enddate']. ' '. $_data['end'];
 								$result['last_time'] = null;
 							}
 							else

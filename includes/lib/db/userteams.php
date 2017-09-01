@@ -295,7 +295,8 @@ class userteams
 						hours.start,
 						hours.end,
 						hours.minus,
-						hours.plus
+						hours.plus,
+						hours.enddate
 					FROM
 						userteams
 					LEFT JOIN hours ON hours.id = (SELECT hours.id FROM hours WHERE hours.userteam_id = userteams.id ORDER BY hours.id DESC LIMIT 1)
