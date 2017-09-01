@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-08-31 20:11+0430\n"
-"PO-Revision-Date: 2017-08-31 20:13+0430\n"
+"POT-Creation-Date: 2017-09-01 11:09+0430\n"
+"PO-Revision-Date: 2017-09-01 11:11+0430\n"
 "Last-Translator: Reza <rm.biqarar@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -4896,29 +4896,28 @@ msgid "Invalid arguments type"
 msgstr "نوع آرگومان‌ها نامعتبر است"
 
 #: tejarak/content_api/v1/hours/tools/add.php:122
-#: tejarak/content_api/v1/hours/tools/add.php:130
 msgid "Your text is too large"
 msgstr "متن شما بسیار بزرگ است"
 
-#: tejarak/content_api/v1/hours/tools/add.php:159
+#: tejarak/content_api/v1/hours/tools/add.php:150
 #: tejarak/content_api/v1/hours/tools/manage.php:160
 #: tejarak/content_api/v1/team/tools/add.php:377
 msgid "Invalid method of api"
 msgstr "متد API نامعتبر"
 
-#: tejarak/content_api/v1/hours/tools/add.php:174
+#: tejarak/content_api/v1/hours/tools/add.php:165
 msgid "Dear :name;"
 msgstr ":name عزیز؛"
 
-#: tejarak/content_api/v1/hours/tools/add.php:174
+#: tejarak/content_api/v1/hours/tools/add.php:165
 msgid "Your enter was registered."
 msgstr "ورود شما ثبت شد."
 
-#: tejarak/content_api/v1/hours/tools/add.php:174
+#: tejarak/content_api/v1/hours/tools/add.php:165
 msgid "Have a good time."
 msgstr "اوقات خوبی داشته باشید."
 
-#: tejarak/content_api/v1/hours/tools/add.php:179
+#: tejarak/content_api/v1/hours/tools/add.php:170
 msgid "Bye Bye :name ;)"
 msgstr "خدانگهدار :name جون;)"
 
@@ -5010,13 +5009,25 @@ msgstr "عضو با موفقیت حذف شد"
 msgid "You must set barcode less than 100 character"
 msgstr "طول رشته بارکد باید کمتر از ۱۰۰ کاراکتر باشد"
 
-#: tejarak/content_api/v1/member/tools/add.php:626
+#: tejarak/content_api/v1/member/tools/add.php:625
+msgid "You must set barcode larger than 3 character"
+msgstr "طول رشته بارکد باید بزرگتر از ۳ باشد"
+
+#: tejarak/content_api/v1/member/tools/add.php:633
 msgid "You must set qrcode less than 100 character"
 msgstr "طول رشته کیوآر کد باید کمتر از ۱۰۰ کاراکتر باشد"
 
-#: tejarak/content_api/v1/member/tools/add.php:634
+#: tejarak/content_api/v1/member/tools/add.php:640
+msgid "You must set qrcode larger than 3 character"
+msgstr "طول رشته کیوآر کد باید بزرگتر از ۳ باشد"
+
+#: tejarak/content_api/v1/member/tools/add.php:648
 msgid "You must set rfid less than 100 character"
 msgstr "طول رشته کارت مغناطیسی باید کمتر از ۱۰۰ کاراکتر باشد"
+
+#: tejarak/content_api/v1/member/tools/add.php:655
+msgid "You must set rfid larger than 3 character"
+msgstr "طول رشته کد مغناطیسی باید بزرگتر از ۳ باشد"
 
 #: tejarak/content_api/v1/member/tools/get.php:231
 msgid "Invalid team id"

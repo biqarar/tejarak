@@ -104,7 +104,7 @@ private function transtext()
 	echo T_("Sales");                                                                 // Line 18
 	echo T_("+98 25 3650 5460");                                                      // Line 18
 	echo T_("Admin Panel");                                                           // Line 60
-	echo T_("Enter");                                                                 // Line 107
+	echo T_("Enter");                                                                 // Line 124
 
 	//------------------------------------------------content/template/priceTable.html
 	echo T_("Free");                                                                  // Line 26
@@ -378,9 +378,9 @@ private function transtext()
 	echo T_("Try it.");                                                               // Line 167
 
 	//------------------------------------------------------content/hours/display.html
-	echo T_("In the Name of God");                                                    // Line 49
-	echo T_("I was on the mission");                                                  // Line 101
-	echo T_("Exit");                                                                  // Line 134
+	echo T_("In the Name of God");                                                    // Line 59
+	echo T_("I was on the mission");                                                  // Line 118
+	echo T_("Exit");                                                                  // Line 151
 
 	//-----------------------------------------------content_cp/teamplans/display.html
 	echo T_("Search");                                                                // Line 14
@@ -758,9 +758,9 @@ private function transtext()
 	echo T_("Send notify");                                                           // Line 12
 
 	//------------------------------------------------------content_a/main/layout.html
-	echo T_("Dashboard");                                                             // Line 22
-	echo T_("Billing");                                                               // Line 23
-	echo T_("Options");                                                               // Line 24
+	echo T_("Dashboard");                                                             // Line 23
+	echo T_("Billing");                                                               // Line 24
+	echo T_("Options");                                                               // Line 25
 
 	//---------------------------------------------content_a/option/owner/display.html
 	echo T_("Change team owner");                                                     // Line 8
