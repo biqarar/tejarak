@@ -45,9 +45,13 @@ trait _use
 	use \content_api\v1\parent\tools\delete;
 
 
-	// API gateway
+	// API subject
 	use \content_api\v1\subject\tools\get;
 	use \content_api\v1\subject\tools\add;
+
+	// API schoolterm
+	use \content_api\v1\schoolterm\tools\get;
+	use \content_api\v1\schoolterm\tools\add;
 
 
 	/**

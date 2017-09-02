@@ -335,6 +335,7 @@ class teams
 			case 'edit':
 			case 'admin':
 			case 'add_school_subject':
+			case 'add_school_schoolterm':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;

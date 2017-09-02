@@ -116,7 +116,26 @@ class controller extends \content_s\main\controller
 			}
 		}
 
-			// route url like this /a/2kf
+		// route url like this /a/2kf
+		if
+		(
+			preg_match("/^([a-zA-Z0-9]+)\/terms$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/terms\/add$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/terms\=([a-zA-Z0-9]+)$/", $url)
+		)
+		{
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_s\\terms\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
+		// route url like this /a/2kf
 		if
 		(
 			preg_match("/^([a-zA-Z0-9]+)\/lesson$/", $url) ||
