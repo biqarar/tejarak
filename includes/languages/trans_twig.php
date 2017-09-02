@@ -526,31 +526,45 @@ private function transtext()
 	echo T_("Referral Program");                                                      // Line 12
 	echo T_("Nobody can tell the Tejarak story better than our customers.");          // Line 6
 	echo T_("Nobody can tell the Tejarak story better than you;)");                   // Line 16
-	echo T_("How it works?");                                                         // Line 15
+	echo T_("How it works?");                                                         // Line 16
 	echo T_("Tell your friends about the Tejarak story.");                            // Line 19
 	echo T_("Refer your friends through Social Media or Email.");                     // Line 20
 	echo T_("Share the referral rewards program with friends on Facebook, Twitter, or Email.");// Line 20
 	echo T_("When they click on your post, we’ll know it was you who referred them.");// Line 20
-	echo T_("If someone forget to use your link, we allow to set your ref code as promo code in billing page!");// Line 19
+	echo T_("If someone forget to use your link, we allow to set your ref code as promo code in billing page!");// Line 20
 	echo T_("Your friend enter to Tejarak and receives credit.");                     // Line 21
-	echo T_("Your friend enter and receives $5 account credit.");                     // Line 23
-	echo T_("Anyone you refer to Tejarak that enter using your unique referral link or your promo code will receive $5 in credit.");// Line 23
-	echo T_("You all get rewarded.");                                                 // Line 26
-	echo T_("Tejarak rewards are charge in your account after 7 work days of confirmation.");// Line 27
-	echo T_("Amount of charge is depended on your friend total pay and after automatic calculation, system set your gift.");// Line 27
-	echo T_("We calculate your percentage until 6 month of your friend registration. Because of that it was your chance to convinced your friend to charge more!");// Line 27
+	echo T_("Your friend enter and receives $5 account credit.");                     // Line 24
+	echo T_("Anyone you refer to Tejarak that enter using your unique referral link or your promo code will receive $5 in credit.");// Line 24
+	echo T_("You all get rewarded.");                                                 // Line 27
+	echo T_("Tejarak rewards are charge in your account after 7 work days of confirmation.");// Line 28
+	echo T_("Amount of charge is depended on your friend total pay and after automatic calculation, system set your gift.");// Line 28
+	echo T_("We calculate your percentage until 6 month of your friend registration. Because of that it was your chance to convinced your friend to charge more!");// Line 28
 	echo T_("Share your link");                                                       // Line 29
 	echo T_("Copy your personal referral link and share it with your friends and followers.");// Line 31
-	echo T_("Your Ref code is");                                                      // Line 32
-	echo T_("Set this code on promo of everyone you referral to us");                 // Line 34
-	echo T_("Short URL");                                                             // Line 38
+	echo T_("Link");                                                                  // Line 38
 	echo T_("Referral stats");                                                        // Line 49
 	echo T_("CLICKS");                                                                // Line 56
-	echo T_("Number of times your link has been clicked.");                           // Line 57
+	echo T_("Number of times your link has been opened.");                            // Line 56
 	echo T_("REFERRALS");                                                             // Line 62
 	echo T_("People who enter to Tejarak using your link.");                          // Line 63
-	echo T_("Complete Profile");                                                      // Line 68
-	echo T_("People who complete profile after enter");                               // Line 69
+	echo T_("People who connected to you with promo code.");                          // Line 66
+	echo T_("Total you refed");                                                       // Line 71
+	echo T_("Sum of people referred from you.");                                      // Line 72
+	echo T_("Active users");                                                          // Line 77
+	echo T_("People who work with their account.");                                   // Line 78
+	echo T_("You earned");                                                            // Line 120
+	echo T_("Percentage");                                                            // Line 90
+	echo T_("Level 1");                                                               // Line 96
+	echo T_("People who pay more than 25$.");                                         // Line 97
+	echo T_("Level 2");                                                               // Line 102
+	echo T_("People who pay more than 50$.");                                         // Line 103
+	echo T_("Level 3");                                                               // Line 108
+	echo T_("People who pay more than 500$.");                                        // Line 109
+	echo T_("Level 4");                                                               // Line 114
+	echo T_("People who pay more than 5000$.");                                       // Line 115
+	echo T_("Sum of your credit earned from refs.");                                  // Line 121
+	echo T_("Confirm earned");                                                        // Line 126
+	echo T_("Sum of confirmed credit earned from refs.");                             // Line 127
 	echo T_("Enter to get a unique referral link.");                                  // Line 74
 	echo T_("Use our logo to help spread the word.");                                 // Line 75
 	echo T_("Enter to Tejarak");                                                      // Line 77
@@ -768,94 +782,100 @@ private function transtext()
 	//------------------------------------------content_enter\verify\what\display.html
 	echo T_("Go back");                                                               // Line 7
 
-	//--------------------------------------content_school\billing\detail\display.html
+	//-------------------------------------------content_s\billing\detail\display.html
 
-	//---------------------------------------------content_school\billing\display.html
+	//--------------------------------------------------content_s\billing\display.html
 	echo T_("Budget");                                                                // Line 91
 	echo T_("Unit");                                                                  // Line 92
 	echo T_("-");                                                                     // Line 114
 
-	//-------------------------------------content_school\billing\invoice\display.html
+	//------------------------------------------content_s\billing\invoice\display.html
 
-	//-------------------------------------------content_school\dashboard\display.html
+	//------------------------------------------------content_s\dashboard\display.html
 	echo T_("Teachers");                                                              // Line 16
 	echo T_("Students");                                                              // Line 17
 	echo T_("Classroom");                                                             // Line 18
 	echo T_("Lessons");                                                               // Line 50
 
-	//-------------------------------------------content_school\gateway\dashboard.html
+	//------------------------------------------------content_s\gateway\dashboard.html
 
-	//---------------------------------------------content_school\gateway\display.html
+	//--------------------------------------------------content_s\gateway\display.html
 
-	//---------------------------------------------content_school\houredit\detail.html
+	//--------------------------------------------------content_s\houredit\detail.html
 
-	//--------------------------------------------content_school\houredit\display.html
+	//-------------------------------------------------content_s\houredit\display.html
 
-	//-----------------------------------------------content_school\houredit\list.html
+	//----------------------------------------------------content_s\houredit\list.html
 
-	//----------------------------------------------content_school\lesson\display.html
+	//---------------------------------------------------content_s\lesson\display.html
 
-	//-------------------------------------------------content_school\lesson\list.html
+	//------------------------------------------------------content_s\lesson\list.html
 	echo T_("Add new lesson");                                                        // Line 6
 
-	//------------------------------------------------content_school\main\display.html
+	//-----------------------------------------------------content_s\main\display.html
 
-	//-------------------------------------------------content_school\main\layout.html
+	//------------------------------------------------------content_s\main\layout.html
 
-	//---------------------------------------------content_school\main\layoutTeam.html
+	//--------------------------------------------------content_s\main\layoutTeam.html
 	echo T_("School Operation");                                                      // Line 8
 	echo T_("Lesson");                                                                // Line 19
 
-	//-----------------------------------------------content_school\main\teamLink.html
+	//----------------------------------------------------content_s\main\teamLink.html
 
-	//--------------------------------------------content_school\member\dashboard.html
+	//-------------------------------------------------content_s\member\dashboard.html
 	echo T_("Add new");                                                               // Line 6
 
-	//----------------------------------------------content_school\member\display.html
+	//---------------------------------------------------content_s\member\display.html
 
-	//---------------------------------------content_school\notifications\display.html
+	//--------------------------------------------content_s\notifications\display.html
 
-	//----------------------------------------------content_school\option\display.html
+	//---------------------------------------------------content_s\option\display.html
 
-	//----------------------------------------content_school\option\owner\display.html
+	//---------------------------------------------content_s\option\owner\display.html
 
-	//------------------------------------------------content_school\plan\display.html
+	//-----------------------------------------------------content_s\plan\display.html
 
-	//---------------------------------------------content_school\profile\display.html
+	//--------------------------------------------------content_s\profile\display.html
 
-	//--------------------------------------content_school\profile\parent\display.html
+	//-------------------------------------------content_s\profile\parent\display.html
 
-	//-------------------------------------------------content_school\ref\display.html
+	//------------------------------------------------------content_s\ref\display.html
 	echo T_("How it works");                                                          // Line 17
 	echo T_("Your friend enter and receives $3 account credit.");                     // Line 22
 	echo T_("Anyone you refer to Tejarak that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile.");// Line 22
 	echo T_("You all get rewarded");                                                  // Line 23
 	echo T_("Tejarak rewards are charge in your account after 7 days of active service.");// Line 24
+	echo T_("Your Ref code is");                                                      // Line 32
+	echo T_("Set this code on promo of everyone you referral to us");                 // Line 34
+	echo T_("Short URL");                                                             // Line 38
+	echo T_("Number of times your link has been clicked.");                           // Line 57
+	echo T_("Complete Profile");                                                      // Line 68
+	echo T_("People who complete profile after enter");                               // Line 69
 
-	//----------------------------------------------content_school\report\display.html
+	//---------------------------------------------------content_s\report\display.html
 
-	//-----------------------------------------content_school\report\last\display.html
+	//----------------------------------------------content_s\report\last\display.html
 
-	//----------------------------------------content_school\report\month\display.html
+	//---------------------------------------------content_s\report\month\display.html
 
-	//---------------------------------------content_school\report\period\display.html
+	//--------------------------------------------content_s\report\period\display.html
 
-	//-------------------------------------content_school\report\settings\display.html
+	//------------------------------------------content_s\report\settings\display.html
 
-	//-----------------------------------------content_school\report\year\display.html
+	//----------------------------------------------content_s\report\year\display.html
 
-	//----------------------------------------------content_school\school\display.html
+	//---------------------------------------------------content_s\school\display.html
 
-	//-------------------------------------------------content_school\school\list.html
+	//------------------------------------------------------content_s\school\list.html
 	echo T_("Add new classroom");                                                     // Line 6
 
-	//------------------------------------------content_school\sendnotify\display.html
+	//-----------------------------------------------content_s\sendnotify\display.html
 
-	//------------------------------------------------content_school\setup\setup1.html
+	//-----------------------------------------------------content_s\setup\setup1.html
 
-	//------------------------------------------------content_school\setup\setup2.html
+	//-----------------------------------------------------content_s\setup\setup2.html
 
-	//------------------------------------------------content_school\setup\setup3.html
+	//-----------------------------------------------------content_s\setup\setup3.html
 
 	//--------------------------------------------includes\languages\trans_static.html
 	echo T_("Saloos");                                                                // Line 7 Seperate

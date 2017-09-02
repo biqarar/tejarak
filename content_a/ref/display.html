@@ -35,13 +35,13 @@
     <p>{%trans "Copy your personal referral link and share it with your friends and followers."%}</p>
 
     <div class="input pTB10 w400">
-      <label class="addon" for="youRef">{%trans "Link"%}</label>
-      <input type="text" id="youRef" readonly value="tejarak.com?ref={{login.id | shortURL('encode')}}">
-      <button class="addon btn primary" data-copy='#youRef'>Copy <span class="sf-link"></span></button>
+      <label class="addon" for="youRefLink">{%trans "Link"%}</label>
+      <input type="text" id="youRefLink" readonly value="tejarak.com?ref={{login.id | shortURL('encode')}}" class="ltr">
+      <button class="addon btn primary" data-copy='#youRefLink'>Copy <span class="sf-link"></span></button>
     </div>
     <div class="input pTB10 w400">
       <label class="addon" for="youRefPromo">{%trans "Promo code"%}</label>
-      <input type="text" id="youRefPromo" readonly value="ref={{login.id | shortURL('encode')}}">
+      <input type="text" id="youRefPromo" readonly value="ref={{login.id | shortURL('encode')}}" class="ltr">
       <button class="addon btn primary" data-copy='#youRefPromo'>Copy <span class="sf-link"></span></button>
     </div>
   </div>
@@ -53,7 +53,7 @@
     <tbody>
     <tr>
       <th>{%trans "CLICKS"%}</th>
-      <td>{%trans "Number of times your link has been clicked."%}</td>
+      <td>{%trans "Number of times your link has been opened."%}</td>
       <td>{{ click | number_format | fitNumber}}</td>
     </tr>
     <tr>
@@ -62,10 +62,74 @@
       <td>{{ signup | number_format | fitNumber}}</td>
     </tr>
     <tr>
-      <th>{%trans "Complete Profile"%}</th>
-      <td>{%trans "People who complete profile after enter"%}</td>
+      <th>{%trans "Promo Code"%}</th>
+      <td>{%trans "People who connected to you with promo code."%}</td>
+      <td>{{ signup | number_format | fitNumber}}</td>
+    </tr>
+
+    <tr>
+      <th>{%trans "Total you refed"%}</th>
+      <td>{%trans "Sum of people referred from you."%}</td>
       <td>{{ profile | fitNumber}}</td>
     </tr>
+
+    <tr class="hide">
+      <th>{%trans "Active users"%}</th>
+      <td>{%trans "People who work with their account."%}</td>
+      <td>{{ profile | fitNumber}}</td>
+    </tr>
+   </tbody>
+  </table>
+
+  <h4>{%trans "You earned"%}</h4>
+  <table class="tbl">
+    <thead>
+     <tr>
+      <th>{%trans "Title"%}</th>
+      <th>{%trans "Description"%}</th>
+      <th>{%trans "Percentage"%}</th>
+      <th>{%trans "Count"%}</th>
+     </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th>{%trans "Level 1"%}</th>
+      <td>{%trans "People who pay more than 25$."%}</td>
+      <td>{{30 | fitNumber}} %</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>{%trans "Level 2"%}</th>
+      <td>{%trans "People who pay more than 50$."%}</td>
+      <td>{{45 | fitNumber}} %</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>{%trans "Level 3"%}</th>
+      <td>{%trans "People who pay more than 500$."%}</td>
+      <td>{{34.5 | fitNumber}} %</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>{%trans "Level 4"%}</th>
+      <td>{%trans "People who pay more than 5000$."%}</td>
+      <td>{{33.45 | fitNumber}} %</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>{%trans "You earned"%}</th>
+      <td>{%trans "Sum of your credit earned from refs."%}</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>{%trans "Confirm earned"%}</th>
+      <td>{%trans "Sum of confirmed credit earned from refs."%}</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+
+
     </tbody>
   </table>
  </div>
