@@ -3,6 +3,7 @@ namespace content_s\school;
 
 class view extends \content_s\main\view
 {
+	use classroom\view_classroom;
 	/**
 	 * { function_description }
 	 */
@@ -60,19 +61,6 @@ class view extends \content_s\main\view
 		}
 	}
 
-	/**
-	 * add new classroom
-	 */
-	public function view_classroom()
-	{
 
-	}
-
-	public function view_classroom_add()
-	{
-		$this->data->page['title'] = T_('Add new classroom');
-		$this->data->page['desc']  = $this->data->page['title'];
-
-	}
 }
 ?>

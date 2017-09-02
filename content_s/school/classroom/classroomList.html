@@ -1,0 +1,40 @@
+{%extends display.adminTeam%}
+
+{%block content%}
+  <div class='middle small' id="showMember">
+
+<a href="{{url.baseFull}}/{{school_code}}/classroom/add" class="mA3 btn success">{%trans "Add new classroom"%}</a>
+
+<form method="get" class="" data-action>
+ <div class="input pTB10">
+      <label class="addon" for="search">{%trans "Search"%}</label>
+      <input type="text" name="search" value="{{utilityGET.search}}" placeholder='{%trans "Search"%}' id="search">
+      <button class="addon btn success">{%trans "Search" %}</button>
+    </div>
+</form>
+<br>
+
+<table class="tbl">
+  <thead class="primary">
+    <th>{%trans "Name"%}</th>
+    <th>{%trans "Edit"%}</th>
+  </thead>
+  <tbody>
+  {%for key, value in classroom_list%}
+  <tr>
+    <td>{{value.name}}</td>
+    <td><a href='{{url.baseFull}}/{{school_code}}/classroom={{value.id|shortURL("encode")}}'><i class="sf-edit"></i></a></td>
+  </tr>
+  {%endfor%}
+  </tbody>
+</table>
+
+
+
+  </div>
+<div class="pagination-container">
+  {%include display.pagination%}
+</div>
+
+{%endblock%}
+

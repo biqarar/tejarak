@@ -101,7 +101,8 @@ class controller extends \content_s\main\controller
 		(
 			preg_match("/^([a-zA-Z0-9]+)\/edit$/", $url) ||
 			preg_match("/^([a-zA-Z0-9]+)\/classroom$/", $url) ||
-			preg_match("/^([a-zA-Z0-9]+)\/classroom\/add$/", $url)
+			preg_match("/^([a-zA-Z0-9]+)\/classroom\/add$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/classroom\=([a-zA-Z0-9]+)$/", $url)
 		)
 		{
 			if($is_admin)

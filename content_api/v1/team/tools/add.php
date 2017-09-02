@@ -158,30 +158,30 @@ trait add
 
 		$parent = null;
 
-		// $parent = utility::request('parent');
-		// if($parent)
-		// {
-		// 	$parent = \lib\utility\shortURL::decode($parent);
-		// }
+		$parent = utility::request('parent');
+		if($parent)
+		{
+			$parent = \lib\utility\shortURL::decode($parent);
+		}
 
-		// if($parent)
-		// {
-		// 	// check this team and the parent team have one owner
-		// 	$check_owner = \lib\db\teams::get(['id' => $parent, 'creator' => $this->user_id, 'limit' => 1]);
-		// 	if(!array_key_exists('parent', $check_owner))
-		// 	{
-		// 		logs::set('api:team:parent:owner:not:match', $this->user_id, $log_meta);
-		// 		debug::error(T_("The parent is not in your team"), 'parent', 'arguments');
-		// 		return false;
-		// 	}
+		if($parent)
+		{
+			// check this team and the parent team have one owner
+			$check_owner = \lib\db\teams::get(['id' => $parent, 'creator' => $this->user_id, 'limit' => 1]);
+			if(!array_key_exists('parent', $check_owner))
+			{
+				logs::set('api:team:parent:owner:not:match', $this->user_id, $log_meta);
+				debug::error(T_("The parent is not in your team"), 'parent', 'arguments');
+				return false;
+			}
 
-		// 	if($check_owner['parent'])
-		// 	{
-		// 		logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
-		// 		debug::error(T_("This parent is a child of another team"), 'parent', 'arguments');
-		// 		return false;
-		// 	}
-		// }
+			if($check_owner['parent'])
+			{
+				logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
+				debug::error(T_("This parent is a child of another team"), 'parent', 'arguments');
+				return false;
+			}
+		}
 
 
 		$lang = utility::request('language');
@@ -231,34 +231,34 @@ trait add
 		}
 
 
-		$args                     = [];
-		$args['creator']          = $this->user_id;
-		$args['name']             = $name;
-		$args['shortname']        = $shortname;
-		$args['website']          = $website;
-		$args['desc']             = $desc;
-		$args['showavatar']       = utility::isset_request('show_avatar') ? utility::request('show_avatar')   ? 1 : 0 : null;
-		$args['allowplus']        = utility::isset_request('allow_plus')  ? utility::request('allow_plus')    ? 1 : 0 : null;
-		$args['allowminus']       = utility::isset_request('allow_minus') ? utility::request('allow_minus')   ? 1 : 0 : null;
-		$args['remote']           = utility::isset_request('remote_user') ? utility::request('remote_user') 	? 1 : 0 : null;
-		$args['24h']              = utility::isset_request('24h')         ? utility::request('24h')			? 1 : 0 : null;
+		$args                    = [];
+		$args['creator']         = $this->user_id;
+		$args['name']            = $name;
+		$args['shortname']       = $shortname;
+		$args['website']         = $website;
+		$args['desc']            = $desc;
+		$args['showavatar']      = utility::isset_request('show_avatar') ? utility::request('show_avatar')   ? 1 : 0 : null;
+		$args['allowplus']       = utility::isset_request('allow_plus')  ? utility::request('allow_plus')    ? 1 : 0 : null;
+		$args['allowminus']      = utility::isset_request('allow_minus') ? utility::request('allow_minus')   ? 1 : 0 : null;
+		$args['remote']          = utility::isset_request('remote_user') ? utility::request('remote_user')   ? 1 : 0 : null;
+		$args['24h']             = utility::isset_request('24h')         ? utility::request('24h')			 ? 1 : 0 : null;
 
-		$args['allowdescenter'] = utility::isset_request('allow_desc_enter') ? utility::request('allow_desc_enter')   ? 1 : 0 : null;
-		$args['allowdescexit']  = utility::isset_request('allow_desc_exit') ? utility::request('allow_desc_exit')   ? 1 : 0 : null;
+		$args['allowdescenter']  = utility::isset_request('allow_desc_enter') ? utility::request('allow_desc_enter')     ? 1 : 0 : null;
+		$args['allowdescexit']   = utility::isset_request('allow_desc_exit') ? utility::request('allow_desc_exit')  	 ? 1 : 0 : null;
 
-		$args['lang']             = $lang;
-		$args['eventtitle']       = $eventtitle;
-		$args['eventdate']        = $eventdate;
-		$args['manualtimeexit']   = utility::isset_request('manual_time_exit')   ? utility::request('manual_time_exit')		? 1 : 0 : null;
-		$args['manualtimeenter']  = utility::isset_request('manual_time_enter')  ? utility::request('manual_time_enter')		? 1 : 0 : null;
-		$args['sendphoto']        = utility::isset_request('send_photo')         ? utility::request('send_photo')			? 1 : 0 : null;
+		$args['lang']            = $lang;
+		$args['eventtitle']      = $eventtitle;
+		$args['eventdate']       = $eventdate;
+		$args['manualtimeexit']  = utility::isset_request('manual_time_exit')   ? utility::request('manual_time_exit')		? 1 : 0 : null;
+		$args['manualtimeenter'] = utility::isset_request('manual_time_enter')  ? utility::request('manual_time_enter')		? 1 : 0 : null;
+		$args['sendphoto']       = utility::isset_request('send_photo')         ? utility::request('send_photo')			? 1 : 0 : null;
 
-		$args['logo']             = $logo_id;
-		$args['logourl']          = $logo_url;
-		$args['privacy']          = $privacy;
-		$args['parent']           = $parent ? $parent : null;
-		$args['cardsize']         = $cardsize ? $cardsize : null;
-		$args['type']         	  = $type ? $type : null;
+		$args['logo']            = $logo_id;
+		$args['logourl']         = $logo_url;
+		$args['privacy']         = $privacy;
+		$args['parent']          = $parent ? $parent : null;
+		$args['cardsize']        = $cardsize ? $cardsize : null;
+		$args['type']            = $type ? $type : null;
 
 		\lib\storage::set_last_team_added($shortname);
 
@@ -347,14 +347,15 @@ trait add
 			if(!utility::isset_request('allow_desc_exit')) 	    unset($args['allowdescexit']);
 			if(!utility::isset_request('type')) 				unset($args['type']);
 
-			// if(!utility::isset_request('parent')) 			unset($args['parent']);
+			if(!utility::isset_request('parent')) 				unset($args['parent']);
 
-			// if(isset($args['parent']) && intval($args['parent']) === intval($id))
-			// {
-			// 	logs::set('api:team:parent:is:the:team', $this->user_id, $log_meta);
-			// 	debug::error(T_("A team can not be the parent himself"), 'parent', 'arguments');
-			// 	return false;
-			// }
+			if(isset($args['parent']) && intval($args['parent']) === intval($id))
+			{
+				logs::set('api:team:parent:is:the:team', $this->user_id, $log_meta);
+				debug::error(T_("A team can not be the parent himself"), 'parent', 'arguments');
+				return false;
+			}
+
 
 			if(!empty($args))
 			{

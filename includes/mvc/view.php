@@ -25,6 +25,7 @@ class view extends \lib\mvc\view
 		$this->data->template['share']   = 'content/template/share.html';
 		$this->data->template['price']   = 'content/template/priceTable.html';
 
+		$this->data->utilityGET = \lib\utility::get(null, 'raw');
 
 		if(in_array(\lib\router::get_repository_name(), ['content']))
 		{
