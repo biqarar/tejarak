@@ -65,6 +65,7 @@ trait get
 			return false;
 		}
 
+
 		if($id)
 		{
 			$inside_method = 'get_member';
@@ -76,6 +77,17 @@ trait get
 			$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'view']);
 		}
 
+		if(\lib\permission::access('load:all:team', null, $this->user_id) && !$team_detail)
+		{
+			if($id)
+			{
+				$team_detail = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'supervisor:get_member']);
+			}
+			elseif($shortname)
+			{
+				$team_detail = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'supervisor:view']);
+			}
+		}
 
 		if(!$team_detail)
 		{

@@ -356,6 +356,21 @@ class teams
 				";
 				break;
 
+			case 'supervisor:get_member':
+			case 'supervisor:view':
+				$query =
+				"
+					SELECT
+						$field
+					FROM
+						teams
+					INNER JOIN userteams ON userteams.team_id = teams.id
+						WHERE
+						teams.$_options[type] = '$_team'
+					LIMIT 1
+				";
+				break;
+
 			case 'save_hours':
 				if(!$_user_id || !is_numeric($_user_id) || !$_options['change_hour_user'] || !is_numeric($_options['change_hour_user']))
 				{

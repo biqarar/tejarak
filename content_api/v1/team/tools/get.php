@@ -319,6 +319,18 @@ trait get
 			$result = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'view']);
 		}
 
+		if(\lib\permission::access('load:all:team', null, $this->user_id) && !$result)
+		{
+			if($id)
+			{
+				$result = \lib\db\teams::get(['id' => $id, 'limit' => 1]);
+			}
+			elseif($shortname)
+			{
+				$result = \lib\db\teams::get(['shortname' => $shortname, 'limit' => 1]);
+			}
+		}
+
 		if(!$result)
 		{
 			logs::set('api:team:access:denide', $this->user_id, $log_meta);
