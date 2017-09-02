@@ -12,73 +12,42 @@ class model extends \content_s\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public function getPostLesson()
 	{
 		$args =
 		[
-			'name'              => utility::post('name'),
-			'type' 				=> 'school',
-			'website'           => utility::post('website'),
-			'privacy'           => utility::post('privacy'),
-			'short_name'        => utility::post('shortName'),
-			'desc'              => utility::post('desc'),
-			'show_avatar'       => utility::post('showAvatar'),
-			'allow_plus'        => utility::post('allowPlus'),
-			'allow_minus'       => utility::post('allowMinus'),
-			'remote_user'       => utility::post('remoteUser'),
-			'24h'               => utility::post('24h'),
-			'manual_time_enter' => utility::post('manual_time_enter'),
-			'manual_time_exit'  => utility::post('manual_time_exit'),
-			'language'          => utility::post('language'),
-			'event_title'       => utility::post('event_title'),
-			'event_date'        => utility::post('event_date'),
-			'cardsize'          => utility::post('cardsize'),
-			'allow_desc_enter'  => utility::post('allowDescEnter'),
-			'allow_desc_exit'   => utility::post('allowDescExit'),
-			// 'parent'      => utility::post('the-parent'),
+			'title' => utility::post('title'),
+			'desc'  => utility::post('desc'),
 		];
-
-		if(utility::files('logo'))
-		{
-			$args['logo'] = $this->upload_logo();
-		}
-
-		/**
-		 * if the user not check parent check box
-		 * not save the parent
-		 */
-		// if(!utility::post('parent'))
-		// {
-		// 	$args['parent'] = null;
-		// }
-
-		// if(utility::post('parent') && !utility::post('the-parent'))
-		// {
-		// 	debug::error(T_("Please select the parent team"), 'the-parent');
-		// 	return false;
-		// }
 		return $args;
 	}
 
 
+
 	/**
-	 * Uploads a logo.
+	 * Posts an add.
 	 *
-	 * @return     boolean  ( description_of_the_return_value )
+	 * @param      <type>  $_args  The arguments
 	 */
-	public function upload_logo()
+	public function post_lesson_add($_args)
 	{
-		if(utility::files('logo'))
+		$request          = $this->getPostLesson();
+		if($request === false)
 		{
-			$this->user_id = $this->login('id');
-			utility::set_request_array(['upload_name' => 'logo']);
-			$uploaded_file = $this->upload_file(['debug' => false]);
-			if(isset($uploaded_file['code']))
-			{
-				return $uploaded_file['code'];
-			}
+			return false;
 		}
-		return null;
+		$this->user_id    = $this->login('id');
+		$request['school'] = \lib\router::get_url(0);
+
+		utility::set_request_array($request);
+		$this->add_subject();
+
+		if(debug::$status)
+		{
+			$code = \lib\router::get_url(0);
+			debug::msg('direct', true);
+			$this->redirector()->set_domain()->set_url("s/$code/lesson");
+		}
 	}
 
 
@@ -87,29 +56,53 @@ class model extends \content_s\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_add($_args)
+	public function post_lesson_edit($_args)
 	{
-		$request          = $this->getPost();
+		$id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
+
+		if(!$id)
+		{
+			return false;
+		}
+
+		$request          = $this->getPostLesson();
+
 		if($request === false)
 		{
 			return false;
 		}
-		$this->user_id    = $this->login('id');
+
+		$this->user_id     = $this->login('id');
+		$request['id']     = $id;
+		$request['school'] = \lib\router::get_url(0);
+
 		utility::set_request_array($request);
-		$this->add_team();
+		$this->add_subject(['method' => 'patch']);
 
 		if(debug::$status)
 		{
-			$new_team_code = \lib\storage::get_last_team_code_added();
-
-			if($new_team_code)
-			{
-				debug::msg('direct', true);
-				$this->redirector()->set_domain()->set_url("school/$new_team_code");
-			}
+			$code = \lib\router::get_url(0);
+			debug::msg('direct', true);
+			$this->redirector()->set_domain()->set_url("s/$code/lesson");
 		}
-
 	}
+
+
+
+	/**
+	 * Gets the list lesson.
+	 */
+	public function getListLesson()
+	{
+		$this->user_id = $this->login('id');
+		$request = [];
+		$request['school'] = \lib\router::get_url(0);
+		$request['search'] = utility::get('search');
+		utility::set_request_array($request);
+		$result = $this->get_list_subject();
+		return $result;
+	}
+
 
 
 	/**
@@ -119,12 +112,12 @@ class model extends \content_s\main\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function edit($_code)
+	public function lessonEdit($_lesson_id)
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => $_code]);
-		$result = $this->get_team();
-		// var_dump($result);exit();
+		utility::set_request_array(['id' => $_lesson_id]);
+		$result = $this->get_subject();
+
 		return $result;
 	}
 
@@ -163,7 +156,7 @@ class model extends \content_s\main\model
 		if(debug::$status)
 		{
 			debug::msg('direct', true);
-			$this->redirector()->set_domain()->set_url("school/$code");
+			$this->redirector()->set_domain()->set_url("s/$code");
 		}
 	}
 
@@ -185,7 +178,7 @@ class model extends \content_s\main\model
 		if(debug::$status)
 		{
 			debug::msg('direct', true);
-			$this->redirector()->set_domain()->set_url('school');
+			$this->redirector()->set_domain()->set_url('s');
 		}
 	}
 }

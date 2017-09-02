@@ -120,7 +120,8 @@ class controller extends \content_s\main\controller
 		if
 		(
 			preg_match("/^([a-zA-Z0-9]+)\/lesson$/", $url) ||
-			preg_match("/^([a-zA-Z0-9]+)\/lesson\/add$/", $url)
+			preg_match("/^([a-zA-Z0-9]+)\/lesson\/add$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/lesson\=([a-zA-Z0-9]+)$/", $url)
 		)
 		{
 			if($is_admin)

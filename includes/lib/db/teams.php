@@ -334,6 +334,7 @@ class teams
 			case 'get_gateway':
 			case 'edit':
 			case 'admin':
+			case 'add_school_subject':
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;

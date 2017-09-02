@@ -45,6 +45,11 @@ trait _use
 	use \content_api\v1\parent\tools\delete;
 
 
+	// API gateway
+	use \content_api\v1\subject\tools\get;
+	use \content_api\v1\subject\tools\add;
+
+
 	/**
 	 * check team language and redirect if is set
 	 * the 'data' mean the arguments of this function is data of team
