@@ -1,5 +1,105 @@
 {%extends display.admin%}
 
 {%block contentCenter%}
-<h1>{%trans "Personnel Card"%}</h1>
+<div class="middle" id="cardsList">
+	<div class="dbox">
+		<h2>{%trans "Personnel Card"%}</h2>
+
+		<div class="label-step" data-step='{{1|fitNumber}}'>{%trans "Select people you want to order personnel card for"%}</div>
+		<table class="tbl">
+			<thead>
+				<tr>
+					<th>
+						<span>
+							<input type="checkbox" name="" id="checkAll">
+							<label for="checkAll"></label>
+						</span>
+					</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Position</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>
+						<span>
+							<input type="checkbox" name="" id="">
+							<label for=""></label>
+						</span>
+					</th>
+					<td>Javad</td>
+					<td>Evazzadeh</td>
+					<td>CEO</td>
+				</tr>
+
+				<tr>
+					<th>
+						<span>
+							<input type="checkbox" name="" id="">
+							<label for=""></label>
+						</span>
+					</th>
+					<td>Hasan</td>
+					<td>Salehi</td>
+					<td>Full-Stack Developer</td>
+				</tr>
+
+				<tr>
+					<th>
+						<span>
+							<input type="checkbox" name="" id="">
+							<label for=""></label>
+						</span>
+					</th>
+					<td>Reza</td>
+					<td>Mohiti</td>
+					<td>Backend Developer</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th><span>{%trans "Total"%}</span> <span>140</span></th>
+					<th colspan="3">Footer</th>
+				</tr>
+			</tfoot>
+		</table>
+
+		<div class="label-step" data-step='{{2|fitNumber}}'>{%trans "Choose your preferred design"%}</div>
+		<div class="flex align-center justify-center wrap sample-card-container">
+			<div class="sample-card">
+				<input type="radio" name="sc" id="sc1" checked="checked">
+				<label for="sc1">
+					<img src='{{url.static}}images/card/sample-card1.jpg' alt=''>
+				</label>
+			</div>
+			<div class="sample-card">
+				<input type="radio" name="sc" id="sc2">
+				<label for="sc2">
+					<img src='{{url.static}}images/card/sample-card2.jpg' alt=''>
+				</label>
+			</div>
+			<div class="sample-card">
+				<input type="radio" name="sc" id="sc3">
+				<label for="sc3">
+					<img src='{{url.static}}images/card/sample-card3.jpg' alt=''>
+				</label>
+			</div>
+			<div class="sample-card">
+				<input type="radio" name="sc" id="sc4">
+				<label for="sc4">
+					<img src='{{url.static}}images/card/sample-card4.jpg' alt=''>
+				</label>
+			</div>
+			<div class="sample-card">
+				<input type="radio" name="sc" id="sc5">
+				<label for="sc5">
+					<img src='{{url.static}}images/card/sample-card5.jpg' alt=''>
+				</label>
+			</div>
+		</div>
+
+		<div class="label-step" data-step='{{3|fitNumber}}'>{%trans "Finalize your order"%}</div>
+	</div>
+</div>
 {%endblock%}
