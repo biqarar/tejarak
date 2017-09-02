@@ -7,80 +7,79 @@
 {%endset%}
 
 {%block content%}
-  <div class="main text-based">
-   <div class="box">
-    <h2 class="special-heading">{%trans "Referral Program"%}</h2>
-    <div class="in">
+  <div class="tbox">
+    <h2>{%trans "Referral Program"%}</h2>
+    <p>{%trans "Nobody can tell the Tejarak story better than you;)"%}</p>
+  </div>
 
-
-      <p class="em">{%trans "Nobody can tell the Tejarak story better than you;)"%}</p>
-      <h2>{%trans "How it works"%}</h2>
-      <div class="l1">
+  <div class="cbox">
+    <h2>{%trans "How it works?"%}</h2>
+    <ul>
+      <li>
        <h4>{%trans "Tell your friends about the Tejarak story."%}</h4>
-       <p>{%trans "Refer your friends through Social Media or Email."%} {%trans "Share the referral rewards program with friends on Facebook, Twitter, or Email."%} {%trans "When they click on your post, we’ll know it was you who referred them."%}</p>
+       <p>{%trans "Refer your friends through Social Media or Email."%} {%trans "Share the referral rewards program with friends on Facebook, Twitter, or Email."%} {%trans "When they click on your post, we’ll know it was you who referred them."%} {%trans "If someone forget to use your link, we allow to set your ref code as promo code in billing page!"%}</p>
+      </li>
+      <li>
        <h4>{%trans "Your friend enter to Tejarak and receives credit."%}</h4>
-       <p>{%trans "Your friend enter and receives $3 account credit."%} {%trans "Anyone you refer to Tejarak that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile."%}</p>
-       <h4>{%trans "You all get rewarded"%}</h4>
-       <p>{%trans "Tejarak rewards are charge in your account after 7 days of active service."%}</p>
-      </div>
+       <p>{%trans "Your friend enter and receives $5 account credit."%} {%trans "Anyone you refer to Tejarak that enter using your unique referral link or your promo code will receive $5 in credit."%}</p>
+      </li>
+      <li>
+       <h4>{%trans "You all get rewarded."%}</h4>
+       <p>{%trans "Tejarak rewards are charge in your account after 7 work days of confirmation."%} {%trans "Amount of charge is depended on your friend total pay and after automatic calculation, system set your gift."%} {%trans "We calculate your percentage until 6 month of your friend registration. Because of that it was your chance to convinced your friend to charge more!"%}</p>
+      </li>
+    </ul>
+  </div>
 
+  <div class="cbox">
+    <h3>{%trans "Share your link"%}</h3>
+    <p>{%trans "Copy your personal referral link and share it with your friends and followers."%}</p>
+
+    <div class="input pTB10 w400">
+      <label class="addon" for="youRef">{%trans "Link"%}</label>
+      <input type="text" id="youRef" readonly value="tejarak.com?ref={{login.id | shortURL('encode')}}">
+      <button class="addon btn primary" data-copy='#youRef'>Copy <span class="sf-link"></span></button>
+    </div>
+    <div class="input pTB10 w400">
+      <label class="addon" for="youRefPromo">{%trans "Promo code"%}</label>
+      <input type="text" id="youRefPromo" readonly value="ref={{login.id | shortURL('encode')}}">
+      <button class="addon btn primary" data-copy='#youRefPromo'>Copy <span class="sf-link"></span></button>
+    </div>
+  </div>
 
 {%if login.id%}
-      <h3 class="bh">{%trans "Share your link"%}</h3>
-      <div class="l1">
-        <p>{%trans "Copy your personal referral link and share it with your friends and followers."%}</p>
-        <h2>{%trans "Your Ref code is" %}: {{login.id | shortURL("encode")}}</h2>
-        <br>
-        <h2>{%trans "Set this code on promo of everyone you referral to us" %}</h2>
-        <br>
-        <h2>ref_{{login.id | shortURL("encode")}}</h2>
-        <div class="element no-pad ltr-element">
-         <label class="title large" for="referral_link">{%trans "Short URL"%}</label>
-         <div class="element-in">
-          <input class="input" type="text" id="referral_link" value='{{url.base}}?ref={{login.id | shortURL("encode")}}' readonly maxlength="50">
-          <button class="btn" data-copy='#referral_link'><span class="icon-link"></span></button>
-         </div>
-        </div>
+ <div class="cbox">
+  <h3 class="bh">{%trans "Referral stats"%}</h3>
+  <table class="tbl">
+    <tbody>
+    <tr>
+      <th>{%trans "CLICKS"%}</th>
+      <td>{%trans "Number of times your link has been clicked."%}</td>
+      <td>{{ click | number_format | fitNumber}}</td>
+    </tr>
+    <tr>
+      <th>{%trans "REFERRALS"%}</th>
+      <td>{%trans "People who enter to Tejarak using your link."%}</td>
+      <td>{{ signup | number_format | fitNumber}}</td>
+    </tr>
+    <tr>
+      <th>{%trans "Complete Profile"%}</th>
+      <td>{%trans "People who complete profile after enter"%}</td>
+      <td>{{ profile | fitNumber}}</td>
+    </tr>
+    </tbody>
+  </table>
+ </div>
 
-      </div>
-
-
-
-      <h3 class="bh">{%trans "Referral stats"%}</h3>
-      <div>
-
-      </div>
-
-     <div class="ref-tbl">
-      <div class="f">
-        <span class="c3 s12">{%trans "CLICKS"%}</span>
-        <span class="c8 s12">{%trans "Number of times your link has been clicked."%}</span>
-        <span class="c1 s12">{{ click | number_format | fitNumber}}</span>
-      </div>
-
-      <div class="f">
-        <span class="c3 s12">{%trans "REFERRALS"%}</span>
-        <span class="c8 s12">{%trans "People who enter to Tejarak using your link."%}</span>
-        <span class="c1 s12">{{ signup | number_format | fitNumber}}</span>
-      </div>
-
-      <div class="f">
-        <span class="c3 s12">{%trans "Complete Profile"%}</span>
-        <span class="c8 s12">{%trans "People who complete profile after enter"%}</span>
-        <span class="c1 s12">{{ profile | fitNumber}}</span>
-      </div>
-     </div>
 {%else%}
-     <p class="em">{%trans "Enter to get a unique referral link."%}</a><br/>
-      <a href='{{url.base}}/logo'>{%trans "Use our logo to help spread the word."%}</a><br/><br/>
-
-      <a href="{{url.base}}/enter" class="special-btn" data-direct>{%trans "Enter to Tejarak"%}</a>
-     </p>
+  <div class="tbox">
+    <h3>{%trans "Enter to get a unique referral link."%}</h3>
+    <p>
+      <a href='{{url.base}}/logo' class="btn">{%trans "Use our logo to help spread the word."%}</a>
+    </p>
+    <p>
+      <a href="{{url.base}}/enter" class="btn primary" data-direct>{%trans "Enter to Tejarak"%}</a>
+    </p>
+  </div>
 {%endif%}
 
-
-
-    </div>
-   </div>
-  </div>
 {%endblock%}

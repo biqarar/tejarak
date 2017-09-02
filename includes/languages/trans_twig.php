@@ -323,6 +323,7 @@ private function transtext()
 	echo T_("Check your balance, charge your account, and bill your invoices!");      // Line 6
 	echo T_("Your credit");                                                           // Line 12
 	echo T_("Earn More Credit");                                                      // Line 15
+	echo T_("Check teams");                                                           // Line 21
 	echo T_("View Usage Details");                                                    // Line 25
 	echo T_("Charge your account");                                                   // Line 33
 	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 34
@@ -334,8 +335,8 @@ private function transtext()
 	echo T_("Apply Code");                                                            // Line 70
 	echo T_("Billing History");                                                       // Line 83
 	echo T_("Title");                                                                 // Line 20
-	echo T_("Value");                                                                 // Line 93
-	echo T_("Budget After");                                                          // Line 94
+	echo T_("Value");                                                                 // Line 94
+	echo T_("Budget After");                                                          // Line 95
 	echo T_("Invoice");                                                               // Line 93
 
 	//------------------------------------------content_a\billing\invoice\display.html
@@ -525,16 +526,19 @@ private function transtext()
 	echo T_("Referral Program");                                                      // Line 12
 	echo T_("Nobody can tell the Tejarak story better than our customers.");          // Line 6
 	echo T_("Nobody can tell the Tejarak story better than you;)");                   // Line 16
-	echo T_("How it works");                                                          // Line 17
+	echo T_("How it works?");                                                         // Line 15
 	echo T_("Tell your friends about the Tejarak story.");                            // Line 19
 	echo T_("Refer your friends through Social Media or Email.");                     // Line 20
 	echo T_("Share the referral rewards program with friends on Facebook, Twitter, or Email.");// Line 20
 	echo T_("When they click on your post, we’ll know it was you who referred them.");// Line 20
+	echo T_("If someone forget to use your link, we allow to set your ref code as promo code in billing page!");// Line 19
 	echo T_("Your friend enter to Tejarak and receives credit.");                     // Line 21
-	echo T_("Your friend enter and receives $3 account credit.");                     // Line 22
-	echo T_("Anyone you refer to Tejarak that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile.");// Line 22
-	echo T_("You all get rewarded");                                                  // Line 23
-	echo T_("Tejarak rewards are charge in your account after 7 days of active service.");// Line 24
+	echo T_("Your friend enter and receives $5 account credit.");                     // Line 23
+	echo T_("Anyone you refer to Tejarak that enter using your unique referral link or your promo code will receive $5 in credit.");// Line 23
+	echo T_("You all get rewarded.");                                                 // Line 26
+	echo T_("Tejarak rewards are charge in your account after 7 work days of confirmation.");// Line 27
+	echo T_("Amount of charge is depended on your friend total pay and after automatic calculation, system set your gift.");// Line 27
+	echo T_("We calculate your percentage until 6 month of your friend registration. Because of that it was your chance to convinced your friend to charge more!");// Line 27
 	echo T_("Share your link");                                                       // Line 29
 	echo T_("Copy your personal referral link and share it with your friends and followers.");// Line 31
 	echo T_("Your Ref code is");                                                      // Line 32
@@ -822,6 +826,11 @@ private function transtext()
 	//--------------------------------------content_school\profile\parent\display.html
 
 	//-------------------------------------------------content_school\ref\display.html
+	echo T_("How it works");                                                          // Line 17
+	echo T_("Your friend enter and receives $3 account credit.");                     // Line 22
+	echo T_("Anyone you refer to Tejarak that enter using your unique referral link will receive $3 in credit immediately after unlocking their account by complete profile.");// Line 22
+	echo T_("You all get rewarded");                                                  // Line 23
+	echo T_("Tejarak rewards are charge in your account after 7 days of active service.");// Line 24
 
 	//----------------------------------------------content_school\report\display.html
 
