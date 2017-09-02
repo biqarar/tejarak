@@ -14,9 +14,14 @@ trait get_barcodes
 			$multi = true;
 		}
 
+		$userteam_ids = [];
+
 		if(!$multi)
 		{
-			$userteam_ids = [$_data['id']];
+			if(isset($_data['id']))
+			{
+				$userteam_ids = [$_data['id']];
+			}
 		}
 		else
 		{
@@ -34,14 +39,16 @@ trait get_barcodes
 
 		$get_multi_codes = \lib\db\my_codes::get_multi_codes($get_multi_codes);
 
-
 		$codes = [];
-		foreach ($get_multi_codes as $key => $value)
+		if(is_array($get_multi_codes))
 		{
-			if(isset($value['related_id']) && isset($value['termusage_type']) && isset($value['slug']))
+			foreach ($get_multi_codes as $key => $value)
 			{
-				$related_encode = \lib\utility\shortURL::encode($value['related_id']);
-				$codes[$related_encode][$value['termusage_type']] = $value['slug'];
+				if(isset($value['related_id']) && isset($value['termusage_type']) && isset($value['slug']))
+				{
+					$related_encode = \lib\utility\shortURL::encode($value['related_id']);
+					$codes[$related_encode][$value['termusage_type']] = $value['slug'];
+				}
 			}
 		}
 
@@ -62,7 +69,10 @@ trait get_barcodes
 			}
 			else
 			{
-				$_data['codes'] = $codes[$_data['id']];
+				if(isset($_data['id']) && isset($codes[$_data['id']]))
+				{
+					$_data['codes'] = $codes[$_data['id']];
+				}
 			}
 		}
 	}

@@ -1,0 +1,54 @@
+{%extends display.adminTeam%}
+
+{%block content%}
+  <div class='middle small' id="showMember">
+
+<a href="{{url.baseFull}}/{{school_code}}/teacher/add" class="mA3 btn primary">{%trans "Add new teacher"%}</a>
+
+<form method="get" class="" data-action>
+ <div class="input pTB10">
+      <label class="addon" for="search">{%trans "Search"%}</label>
+      <input type="text" name="search" placeholder='{%trans "Search in teachers list"%}' id="search" value="{{get_search}}">
+      <button class="addon btn ">{%trans "Search" %}</button>
+    </div>
+</form>
+<br>
+
+<table class="tbl">
+  <thead class="primary">
+    <th>{%trans "Mobile"%}</th>
+    <th>{%trans "Name"%}</th>
+    <th>{%trans "Family"%}</th>
+    <th>{%trans "Father"%}</th>
+    <th>{%trans "Gender"%}</th>
+    <th>{%trans "Birthday"%}</th>
+    <th>{%trans "National code"%}</th>
+    <th>{%trans "Edit"%}</th>
+
+  </thead>
+  <tbody>
+  {%for key, value in teacher_list%}
+  <tr>
+    <td>{{value.mobile|fitNumber}}</td>
+    <td>{{value.firstname}}</td>
+    <td>{{value.lastname}}</td>
+    <td>{{value.father}}</td>
+    <td>{%set myGender = value.gender%}{%trans myGender%}</td>
+    <td>{{value.birthday|fitNumber}}</td>
+    <td>{{value.national_code|fitNumber}}</td>
+    <td><a href="{{url.baseFull}}/{{school_code}}/teacher={{value.user_id}}"><i class="sf-edit"></i></a></td>
+
+  </tr>
+  {%endfor%}
+  </tbody>
+</table>
+
+
+
+  </div>
+<div class="pagination-container">
+  {%include display.pagination%}
+</div>
+
+{%endblock%}
+

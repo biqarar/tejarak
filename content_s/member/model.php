@@ -5,6 +5,8 @@ use \lib\debug;
 
 class model extends \content_s\main\model
 {
+	use teacher\model_teacher;
+	use student\model_student;
 
 	/**
 	 * Gets the post.

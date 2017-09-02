@@ -449,13 +449,53 @@ trait add
 		}
 
 
+		$national_code = utility::request('national_code');
+		if($national_code && mb_strlen($national_code) > 50)
+		{
+			logs::set('api:member:national_code:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
+			return false;
+		}
+
+		$father = utility::request('father');
+		if($father && mb_strlen($father) > 50)
+		{
+			logs::set('api:member:father:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
+			return false;
+		}
+
+		$birthday      = utility::request('birthday');
+		if($birthday && mb_strlen($birthday) > 50)
+		{
+			logs::set('api:member:birthday:max:length', $this->user_id, $log_meta);
+			debug::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
+			return false;
+		}
+
+		$gender        = utility::request('gender');
+		if($gender && !in_array($gender, ['male', 'female']))
+		{
+			logs::set('api:member:gender:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid gender field"), 'gender', 'arguments');
+			return false;
+		}
+
+		$type  = utility::request('type');
+		if($type && !in_array($type, ['teacher','student', 'manager', 'deputy', 'janitor', 'organizer', 'sponsor']))
+		{
+			logs::set('api:member:type:max:length', $this->user_id, $log_meta);
+			debug::error(T_("Invalid type of member"), 'type', 'arguments');
+			return false;
+		}
+
 
 		// ready to insert userteam or userbranch record
 		$args                  = [];
 		$args['team_id']       = $team_id;
 		$args['user_id']       = $user_id;
-		$args['postion']       = $postion;
-		$args['personnelcode'] = $personnelcode;
+		$args['postion']       = trim($postion);
+		$args['personnelcode'] = trim($personnelcode);
 		$args['24h']           = $is24h;
 		$args['remote']        = $remote;
 		$args['isdefault']     = $isdefault;
@@ -463,19 +503,34 @@ trait add
 		{
 			$args['dateenter']     = $date_enter;
 		}
-		$args['dateexit']       = $date_exit;
-		$args['firstname']      = $firstname;
-		$args['lastname']       = $lastname;
+		$args['dateexit']       = trim($date_exit);
+		$args['firstname']      = trim($firstname);
+		$args['lastname']       = trim($lastname);
 		$args['fileid']         = $file_id;
 		$args['fileurl']        = $file_url;
 		$args['allowplus']      = $allowplus;
 		$args['allowminus']     = $allowminus;
 		$args['status']         = $status;
-		$args['displayname']    = $displayname;
+
+		if($displayname)
+		{
+			$args['displayname']    = trim($displayname);
+		}
+		elseif($firstname || $lastname)
+		{
+			$args['displayname']    = trim($firstname. ' '. $lastname);
+		}
+
 		$args['rule']           = $rule;
 		$args['visibility']     = $visibility;
 		$args['allowdescenter'] = $allowdescenter;
 		$args['allowdescexit']  = $allowdescexit;
+
+		$args['nationalcode']   = trim($national_code);
+		$args['father']         = trim($father);
+		$args['birthday']       = trim($birthday);
+		$args['gender']         = trim($gender);
+		$args['type']           = trim($type);
 
 		// check file is set or no
 		// if file is not set and the user have a file load the default file
@@ -547,6 +602,12 @@ trait add
 			if(!utility::isset_request('visibility')) 		unset($args['visibility']);
 			if(!utility::isset_request('allow_desc_enter')) unset($args['allowdescenter']);
 			if(!utility::isset_request('allow_desc_exit')) 	unset($args['allowdescexit']);
+
+			if(!utility::isset_request('national_code')) 	unset($args['nationalcode']);
+			if(!utility::isset_request('father')) 			unset($args['father']);
+			if(!utility::isset_request('birthday')) 		unset($args['birthday']);
+			if(!utility::isset_request('gender')) 			unset($args['gender']);
+			if(!utility::isset_request('type')) 			unset($args['type']);
 
 			// check barcode, qrcode and rfid,
 			// update it if changed

@@ -234,6 +234,22 @@ class userteams
 
 			$only_one_value = false;
 			$limit          = null;
+			$search_query = null;
+
+			if(isset($_args['search']))
+			{
+				$search_query =
+				"
+				 	AND
+				 	(
+				 		userteams.displayname LIKE '%$_args[search]%' OR
+				 		userteams.nationalcode LIKE '%$_args[search]%' OR
+				 		users.user_mobile LIKE '%$_args[search]%'
+				 	)
+				";
+			}
+
+			unset($_args['search']);
 
 			if(isset($_args['limit']))
 			{
@@ -287,6 +303,7 @@ class userteams
 				// 	ORDER BY userteams.sort, userteams.id ASC
 				// 	$limit
 				// ";
+
 				$query =
 				"
 					SELECT
@@ -300,8 +317,10 @@ class userteams
 					FROM
 						userteams
 					LEFT JOIN hours ON hours.id = (SELECT hours.id FROM hours WHERE hours.userteam_id = userteams.id ORDER BY hours.id DESC LIMIT 1)
+					LEFT JOIN users ON users.id = userteams.user_id
 					WHERE
 						$where
+						$search_query
 					ORDER BY userteams.sort, userteams.id ASC
 					$limit
 				";
@@ -320,6 +339,7 @@ class userteams
 					LEFT JOIN users ON users.id = userteams.user_id
 					WHERE
 						$where
+						$search_query
 					ORDER BY userteams.sort, userteams.id ASC
 					$limit
 				";

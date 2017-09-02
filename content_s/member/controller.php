@@ -20,24 +20,52 @@ class controller extends \content_s\main\controller
 		{
 			\lib\error::page();
 		}
+		/**
+		 * TEACHERS
+		 */
+		// LIST
+		$this->get(false, 'teacher')->ALL("/^([a-zA-Z0-9]+)\/teacher$/");
+		$this->post('teacher')->ALL("/^([a-zA-Z0-9]+)\/teacher$/");
+		// ADD NEW
+		$this->get(false, 'teacher_add')->ALL("/^([a-zA-Z0-9]+)\/teacher\/add$/");
+		$this->post('teacher_add')->ALL("/^([a-zA-Z0-9]+)\/teacher\/add$/");
+		// EDIT
+		$this->get(false, 'teacher_edit')->ALL("/^([a-zA-Z0-9]+)\/teacher\=([a-zA-Z0-9]+)$/");
+		$this->post('teacher_edit')->ALL("/^([a-zA-Z0-9]+)\/teacher\=([a-zA-Z0-9]+)$/");
 
-		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)\/teacher$/");
-		$this->post('list')->ALL("/^([a-zA-Z0-9]+)\/teacher$/");
+		/**
+		 * STUDENT
+		 */
+		// LIST
+		$this->get(false, 'student')->ALL("/^([a-zA-Z0-9]+)\/student$/");
+		$this->post('student')->ALL("/^([a-zA-Z0-9]+)\/student$/");
+		// ADD NEW
+		$this->get(false, 'student_add')->ALL("/^([a-zA-Z0-9]+)\/student\/add$/");
+		$this->post('student_add')->ALL("/^([a-zA-Z0-9]+)\/student\/add$/");
+		// EDIT
+		$this->get(false, 'student_edit')->ALL("/^([a-zA-Z0-9]+)\/student\=([a-zA-Z0-9]+)$/");
+		$this->post('student_edit')->ALL("/^([a-zA-Z0-9]+)\/student\=([a-zA-Z0-9]+)$/");
 
-		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)\/student$/");
-		$this->post('list')->ALL("/^([a-zA-Z0-9]+)\/student$/");
 
-
-		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/teacher\/add$/");
-		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/teacher\/add$/");
-
-
-		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/student\/add$/");
-		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/student\/add$/");
-
-		if(preg_match("/^([a-zA-Z0-9]+)\/student$/", $url) || preg_match("/^([a-zA-Z0-9]+)\/teacher$/", $url))
+		// student list
+		if(preg_match("/^([a-zA-Z0-9]+)\/student$/", $url))
 		{
-			$this->display_name = 'content_s\member\dashboard.html';
+			$this->display_name = 'content_s\member\student\student.html';
+		}
+		// teahcer list
+		if(preg_match("/^([a-zA-Z0-9]+)\/teacher$/", $url))
+		{
+			$this->display_name = 'content_s\member\teacher\teacher.html';
+		}
+		// add new student
+		if(preg_match("/^([a-zA-Z0-9]+)\/teacher\/add$/", $url) || preg_match("/^([a-zA-Z0-9]+)\/teacher\=([a-zA-Z0-9]+)$/", $url))
+		{
+			$this->display_name = 'content_s\member\teacher\teacher_add.html';
+		}
+		// student add
+		if(preg_match("/^([a-zA-Z0-9]+)\/student\/add$/", $url) || preg_match("/^([a-zA-Z0-9]+)\/student\=([a-zA-Z0-9]+)$/", $url))
+		{
+			$this->display_name = 'content_s\member\student\student_add.html';
 		}
 
 		// unroute url /a/member
@@ -53,7 +81,7 @@ class controller extends \content_s\main\controller
 		 */
 		if(!\lib\storage::get_is_admin())
 		{
-			$this->redirector()->set_domain()->set_url('school/'.$team_code.'/report')->redirect();
+			$this->redirector()->set_domain()->set_url('s/'.$team_code.'/report')->redirect();
 			return;
 		}
 

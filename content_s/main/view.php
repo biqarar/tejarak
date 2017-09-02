@@ -26,7 +26,7 @@ class view extends \mvc\view
 		$this->data->display['adminTeam'] = 'content_s\main\layoutTeam.html';
 		if($this->data->team)
 		{
-			$this->data->current_team = $this->model()->getTeamDetail($this->data->team);
+			$this->data->team_default = $this->data->current_team = $this->data->current_school = $this->model()->getTeamDetail($this->data->team);
 		}
 
 		if($this->login('id'))

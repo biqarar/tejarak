@@ -104,6 +104,22 @@ trait get
 
 		$this->show_another_status = true;
 
+		$type = utility::request('type');
+		if($type && !is_string($type))
+		{
+			logs::set('api:member:team:type:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid type of user"), 'type', 'arguments');
+			return false;
+		}
+
+		$search = utility::request('search');
+		if($search && !is_string($search))
+		{
+			logs::set('api:member:team:search:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid search of user"), 'search', 'arguments');
+			return false;
+		}
+
 		if(isset($team_detail['id']))
 		{
 			$where               = [];
@@ -112,6 +128,8 @@ trait get
 			$where['status']     = ['IN', "('active', 'deactive')"];
 			$where['rule']       = ['IN', "('user', 'admin')"];
 			$where['pagenation'] = $_args['pagenation'];
+			$where['type']       = $type ? $type : null;
+			$where['search']	 = $search ? $search : null;
 			$result              = \lib\db\userteams::get_list($where);
 			$temp                = [];
 
@@ -156,7 +174,6 @@ trait get
 			debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
-
 		$team = utility::request('team');
 		if(!$team)
 		{
@@ -401,6 +418,9 @@ trait get
 				case 'plus':
 					$result[$key] = isset($value) ? (int) $value : null;
 					break;
+				case 'nationalcode':
+					$result['national_code'] = isset($value) ? (string) $value : null;
+					break;
 				case 'postion':
 				case 'displayname':
 				case 'firstname':
@@ -409,6 +429,10 @@ trait get
 				case 'telegram_id':
 				case 'mobile':
 				case 'status':
+				case 'father':
+				case 'birthday':
+				case 'gender':
+				case 'type':
 					$result[$key] = isset($value) ? (string) $value : null;
 					break;
 				case 'visibility':
