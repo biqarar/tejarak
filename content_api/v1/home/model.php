@@ -3,7 +3,7 @@ namespace content_api\v1\home;
 use \lib\utility\permission;
 use \lib\utility;
 use \lib\debug;
-use \content_enter\main\tools\token;
+use \addons\content_enter\main\tools\token;
 
 class model extends \mvc\model
 {
@@ -113,7 +113,7 @@ class model extends \mvc\model
 			return debug::error('Authorization not found', 'authorization', 'access');
 		}
 
-		if($authorization === \lib\option::enter('telegram_hook'))
+		if($authorization === \lib\option::config('enter','telegram_hook'))
 		{
 			$this->telegram_api_mode = true;
 			$this->telegram_token();

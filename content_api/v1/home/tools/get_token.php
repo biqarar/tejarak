@@ -2,7 +2,7 @@
 namespace content_api\v1\home\tools;
 use \lib\utility;
 use \lib\debug;
-use \content_enter\main\tools\token;
+use \addons\content_enter\main\tools\token;
 
 trait get_token
 {
