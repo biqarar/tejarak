@@ -6,7 +6,7 @@ use \lib\db\logs;
 
 trait add
 {
-
+	use class_time;
 
 	/**
 	 * Adds a lesson.
@@ -116,9 +116,6 @@ trait add
 
 		$desc      = utility::request('desc');
 
-		$start     = utility::request('start');
-		$end       = utility::request('end');
-
 
 		// ready to insert userschool or userbranch record
 		$args                  = [];
@@ -129,6 +126,13 @@ trait add
 		$args['teacher']       = $teacher;
 		$args['desc']          = $desc;
 		$args['creator']       = $this->user_id;
+
+		$this->class_time_check($args);
+
+		if(!debug::$status)
+		{
+			return false;
+		}
 
 		if($_args['method'] === 'post')
 		{

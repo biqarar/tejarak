@@ -14,6 +14,17 @@ class model extends \content_s\main\model
 	 */
 	public function getPostLesson()
 	{
+		$times = [];
+		for ($i = 1; $i <= 7 ; $i++)
+		{
+			$times[] =
+			[
+				'week'  => utility::post('week-'. $i),
+				'start' => utility::post('start-'. $i),
+				'end'   => utility::post('end-'. $i),
+			];
+		}
+
 		$args =
 		[
 			'terms'     => utility::post('terms'),
@@ -23,6 +34,7 @@ class model extends \content_s\main\model
 			'desc'      => utility::post('desc'),
 			'start'     => utility::post('start'),
 			'end'       => utility::post('end'),
+			'times'     => $times,
 		];
 
 		return $args;
