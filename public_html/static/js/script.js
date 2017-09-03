@@ -49,7 +49,7 @@ function checkResolution()
 {
   var myBox       = $('#content');
   var myBoxHeight = Math.floor(myBox.height() * 0.9);
-  var myBoxWidth  = Math.floor(myBox.width() * 0.9);
+  var myBoxWidth  = Math.floor(myBox.width() * 0.85);
   var myBoxDim    = myBoxHeight * myBoxWidth;
   // console.log(myBoxDim);
 
