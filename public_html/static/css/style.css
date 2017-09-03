@@ -105,6 +105,8 @@ body.loading-page #theader .logo img{padding:10px;-webkit-animation-name:spin;an
 .prTable{padding:1em 0;font-size:1.2em;}
 [data-page="homepage"] .prTable{font-size:1.5em;}
 .prBox{background-color:#fff;min-height:450px;max-width:250px;margin:1em auto;text-align:center;color:#999;border-radius:3px;transition:0.3s}
+
+[data-page="for_school"] .prBox{min-height: 220px;}
 .prBox:hover{box-shadow:0 0 5px 0 #aaa}
 .prBox h3{border-bottom:3px solid #eee;margin-bottom:0;font-size:2.5em;}
 .prBox .price{padding:2em 0}

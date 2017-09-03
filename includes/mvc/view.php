@@ -7,23 +7,24 @@ class view extends \lib\mvc\view
 	{
 		// define default value for global
 
-		$this->data->site['title']       = T_("Tejarak");
-		$this->data->site['desc']        = T_("Tejarak provides beautiful solutions for your business;"). ' '.  T_("Do attendance easily and enjoy realtime reports.");
-		$this->data->site['slogan']      = T_("Modern Approach");
+		$this->data->site['title']           = T_("Tejarak");
+		$this->data->site['desc']            = T_("Tejarak provides beautiful solutions for your business;"). ' '.  T_("Do attendance easily and enjoy realtime reports.");
+		$this->data->site['slogan']          = T_("Modern Approach");
 
-		$this->data->page['desc']        = $this->data->site['desc']. ' | '. $this->data->site['slogan'];
-		$this->data->display['ganje']    = "content_ganje/home/layout.html";
+		$this->data->page['desc']            = $this->data->site['desc']. ' | '. $this->data->site['slogan'];
+		$this->data->display['ganje']        = "content_ganje/home/layout.html";
 
-		$this->data->display['ganje_et'] = "content_ganje/home/et.html";
-		$this->data->bodyclass           = 'unselectable';
+		$this->data->display['ganje_et']     = "content_ganje/home/et.html";
+		$this->data->bodyclass               = 'unselectable';
 
 		// for pushstate of main page
-		$this->data->template['xhr']     = 'content/main/layout-xhr.html';
+		$this->data->template['xhr']         = 'content/main/layout-xhr.html';
 
-		$this->data->display['admin']    = 'content_a/main/layout.html';
-		$this->data->template['social']  = 'content/template/social.html';
-		$this->data->template['share']   = 'content/template/share.html';
-		$this->data->template['price']   = 'content/template/priceTable.html';
+		$this->data->display['admin']        = 'content_a/main/layout.html';
+		$this->data->template['social']      = 'content/template/social.html';
+		$this->data->template['share']       = 'content/template/share.html';
+		$this->data->template['price']       = 'content/template/priceTable.html';
+		$this->data->template['priceSchool'] = 'content/template/priceSchoolTable.html';
 
 		$this->data->utilityGET = \lib\utility::get(null, 'raw');
 

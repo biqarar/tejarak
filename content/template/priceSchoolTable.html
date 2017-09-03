@@ -1,0 +1,58 @@
+    <div class="prTable f">
+     <div class="c3 s12">
+      <div class="prBox free">
+       <h3>{%trans "Free"%}</h3>
+       <div class="price">
+{%if site.currentlang == 'fa'%}
+        <span>{{0 | fitNumber}}<sub>تومان</sub></span>
+{%else%}
+        <span><sup>$</sup>{{0 | fitNumber}}</span>
+{%endif%}
+        <abbr>{%trans "forever"%}</abbr>
+       </div>
+      </div>
+     </div>
+
+     <div class="c3 s12">
+      <div class="prBox simple">
+       <h3>{%trans "Simple"%}</h3>
+       <div class="price">
+{%if site.currentlang == 'fa'%}
+        <span>{{99 | fitNumber}}<sub>هزار تومان</sub></span>
+{%else%}
+        <span><sup>$</sup>{{50 | fitNumber}}</span>
+{%endif%}
+        <abbr>{%trans "per month"%}</abbr>
+       </div>
+      </div>
+     </div>
+
+     <div class="c3 s12">
+      <div class="prBox standard">
+       <h3>{%trans "Standard"%}</h3>
+       <div class="price">
+{%if site.currentlang == 'fa'%}
+        <span>{{499 | fitNumber}}<sub>هزار تومان</sub></span>
+{%else%}
+        <span><sup>$</sup>{{250 | fitNumber}}</span>
+{%endif%}
+        <abbr>{%trans "per month"%}</abbr>
+       </div>
+      </div>
+     </div>
+
+     <div class="c3 s12">
+      <div class="prBox full">
+       <h3>{%trans "Full"%}</h3>
+       <div class="price">
+{%if site.currentlang == 'fa'%}
+        <span>{{999 | fitNumber}}<sub>هزار تومان</sub></span>
+{%else%}
+        <span><sup>$</sup>{{500 | fitNumber}}</span>
+{%endif%}
+        <abbr>{%trans "per month"%}</abbr>
+       </div>
+      </div>
+     </div>
+
+    </div>
