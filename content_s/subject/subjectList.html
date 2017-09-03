@@ -3,7 +3,7 @@
 {%block content%}
   <div class='middle small' id="showMember">
 
-<a href="{{url.baseFull}}/{{school_code}}/lesson/add" class="mA3 btn primary">{%trans "Add new lesson"%}</a>
+<a href="{{url.baseFull}}/{{school_code}}/subject/add" class="mA3 btn primary">{%trans "Add new subject"%}</a>
 
 <form method="get" class="" data-action>
  <div class="input pTB10">
@@ -21,11 +21,11 @@
     <th>{%trans "Edit"%}</th>
   </thead>
   <tbody>
-  {%for key, value in lesson_list%}
+  {%for key, value in subject_list%}
   <tr>
     <td>{{value.title}}</td>
     <td>{{value.desc}}</td>
-    <td><a href='{{url.baseFull}}/{{school_code}}/lesson={{value.id}}'><i class="sf-edit"></i></a></td>
+    <td><a href='{{url.baseFull}}/{{school_code}}/subject={{value.id}}'><i class="sf-edit"></i></a></td>
   </tr>
   {%endfor%}
   </tbody>

@@ -9,7 +9,7 @@ class view extends \content_s\main\view
 	 */
 	public function view_lesson()
 	{
-		$this->data->lesson_list   = $this->model()->getListLesson();
+		$this->data->lesson_list   = $this->model()->getListlesson();
 		$this->data->page['title'] = T_('Add new lesson');
 		$this->data->page['desc']  = $this->data->page['title'];
 	}

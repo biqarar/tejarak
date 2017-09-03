@@ -1,0 +1,48 @@
+{%extends display.adminTeam%}
+
+
+{%block contentCenter%}
+  <div class='middle' id="addTeam">
+   <div class='dbox'>
+    <h2>{{page.desc}}</h2>
+
+    <form method="post" class="df" enctype="multipart/form-data">
+     <div class="f">
+      <div class="f c s12 g1">
+      <label class="c2">{%trans "Title"%}</label>
+       <div class="c">
+        <input type="text" name="title" placeholder='{%trans "Title"%} *' value="{{subject.title}}" required autofocus maxlength='30' minlength="2" pattern=".{2,30}" title='{%trans "Enter a valid title from 3 to 30 character"%}'>
+       </div>
+       </div>
+
+       <div class="f c12">
+        <label class="c2">{%trans "Description"%}</label>
+        <input type="text" name="desc" placeholder='{%trans "Description"%}' value="{{subject.desc}}" maxlength='30' minlength="3" class="c">
+      </div>
+     </div>
+
+
+
+     <div class="f g1 mt1">
+
+{%if edit_mode%}
+      <div class="c3 s12">
+       <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="b2" data-ajaxify>{%trans "Close"%}</a>
+      </div>
+      <div class="c3 os s12">
+       <input type="submit" value='{%trans "Edit"%}' class='b1'>
+      </div>
+{%else%}
+
+      <div class="c3 os s12">
+       <input type="submit" value='{%trans "Add"%}' class="bp">
+      </div>
+{%endif%}
+
+     </div>
+    </form>
+
+   </div>
+  </div>
+{%endblock%}
+

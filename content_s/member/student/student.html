@@ -33,7 +33,7 @@
     <td>{{value.firstname}}</td>
     <td>{{value.lastname}}</td>
     <td>{{value.father}}</td>
-    <td>{%set myGender = value.gender%}{%trans myGender%}</td>
+    <td>{%set myGender = value.gender | capitalize%}{%trans myGender%}</td>
     <td>{{value.birthday|fitNumber}}</td>
     <td>{{value.national_code|fitNumber}}</td>
     <td><a href="{{url.baseFull}}/{{school_code}}/student={{value.user_id}}"><i class="sf-edit"></i></a></td>

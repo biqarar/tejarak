@@ -154,6 +154,26 @@ class controller extends \content_s\main\controller
 			}
 		}
 
+
+		// route url like this /a/2kf
+		if
+		(
+			preg_match("/^([a-zA-Z0-9]+)\/subject$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/subject\/add$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/subject\=([a-zA-Z0-9]+)$/", $url)
+		)
+		{
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_s\\subject\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
 		// route url like this /a/2kf/member
 		if
 		(

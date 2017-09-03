@@ -53,7 +53,9 @@ trait _use
 	use \content_api\v1\schoolterm\tools\get;
 	use \content_api\v1\schoolterm\tools\add;
 
-
+	// API lesson
+	use \content_api\v1\lesson\tools\get;
+	use \content_api\v1\lesson\tools\add;
 	/**
 	 * check team language and redirect if is set
 	 * the 'data' mean the arguments of this function is data of team

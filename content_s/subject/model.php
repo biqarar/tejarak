@@ -1,5 +1,5 @@
 <?php
-namespace content_s\lesson;
+namespace content_s\subject;
 use \lib\utility;
 use \lib\debug;
 
@@ -12,7 +12,7 @@ class model extends \content_s\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPostlesson()
+	public function getPostsubject()
 	{
 		$args =
 		[
@@ -29,9 +29,9 @@ class model extends \content_s\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_lesson_add($_args)
+	public function post_subject_add($_args)
 	{
-		$request          = $this->getPostlesson();
+		$request          = $this->getPostsubject();
 		if($request === false)
 		{
 			return false;
@@ -40,13 +40,13 @@ class model extends \content_s\main\model
 		$request['school'] = \lib\router::get_url(0);
 
 		utility::set_request_array($request);
-		$this->add_lesson();
+		$this->add_subject();
 
 		if(debug::$status)
 		{
 			$code = \lib\router::get_url(0);
 			debug::msg('direct', true);
-			$this->redirector()->set_domain()->set_url("s/$code/lesson");
+			$this->redirector()->set_domain()->set_url("s/$code/subject");
 		}
 	}
 
@@ -56,7 +56,7 @@ class model extends \content_s\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_lesson_edit($_args)
+	public function post_subject_edit($_args)
 	{
 		$id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 
@@ -65,7 +65,7 @@ class model extends \content_s\main\model
 			return false;
 		}
 
-		$request          = $this->getPostlesson();
+		$request          = $this->getPostsubject();
 
 		if($request === false)
 		{
@@ -77,29 +77,29 @@ class model extends \content_s\main\model
 		$request['school'] = \lib\router::get_url(0);
 
 		utility::set_request_array($request);
-		$this->add_lesson(['method' => 'patch']);
+		$this->add_subject(['method' => 'patch']);
 
 		if(debug::$status)
 		{
 			$code = \lib\router::get_url(0);
 			debug::msg('direct', true);
-			$this->redirector()->set_domain()->set_url("s/$code/lesson");
+			$this->redirector()->set_domain()->set_url("s/$code/subject");
 		}
 	}
 
 
 
 	/**
-	 * Gets the list lesson.
+	 * Gets the list subject.
 	 */
-	public function getListlesson()
+	public function getListsubject()
 	{
 		$this->user_id = $this->login('id');
 		$request = [];
 		$request['school'] = \lib\router::get_url(0);
 		$request['search'] = utility::get('search');
 		utility::set_request_array($request);
-		$result = $this->get_list_lesson();
+		$result = $this->get_list_subject();
 		return $result;
 	}
 
@@ -112,11 +112,11 @@ class model extends \content_s\main\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function lessonEdit($_lesson_id)
+	public function subjectEdit($_subject_id)
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => $_lesson_id]);
-		$result = $this->get_lesson();
+		utility::set_request_array(['id' => $_subject_id]);
+		$result = $this->get_subject();
 
 		return $result;
 	}
