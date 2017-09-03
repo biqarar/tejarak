@@ -290,6 +290,74 @@ private function transtext()
 	echo T_("Avatar");                                                                // Line 28
 	echo T_("Edit");                                                                  // Line 151 Seperate
 
+	//-------------------------------------------addons\content_enter\ban\display.html
+	echo T_("What are you doing!");                                                   // Line 7
+	echo T_("If you are bot, be easy and call your mom");                             // Line 8
+	echo T_("If you are human being, what are you doing here! be personable...");     // Line 9
+
+	//-----------------------------------------addons\content_enter\block\display.html
+	echo T_("You are blocked becauese of some reason!");                              // Line 7
+	echo T_("If have problem");                                                       // Line 8
+	echo T_("Contact us");                                                            // Line 8
+
+	//----------------------------------------addons\content_enter\byebye\display.html
+	echo T_("We are so sorry for losing you!");                                       // Line 7
+	echo T_("if you want you can come back to");                                      // Line 8
+	echo T_("join us");                                                               // Line 8
+	echo T_("Bye Bye :(");                                                            // Line 9
+
+	//--------------------------------------addons\content_enter\callback\display.html
+	echo T_("Hi");                                                                    // Line 7
+	echo T_("You must not be here!");                                                 // Line 7
+
+	//----------------------------------------addons\content_enter\delete\display.html
+	echo T_("Why you want to delete your account!?");                                 // Line 5
+
+	//--------------------------------addons\content_enter\delete\request\display.html
+	echo T_("We detected two accout for you");                                        // Line 8
+	echo T_("Please remove one of them and");                                         // Line 9
+	echo T_("if you want to delete this account");                                    // Line 9
+	echo T_("click here");                                                            // Line 10
+
+	//----------------------------------addons\content_enter\email\change\display.html
+	echo T_("Remove my email address");                                               // Line 12
+
+	//---------------------------addons\content_enter\email\change\google\display.html
+	echo T_("We found your Google Mail that is different from your current google mail");// Line 6
+	echo T_("Would you like to change your old google mail?");                        // Line 7
+	echo T_("Change to");                                                             // Line 10
+	echo T_("Update google mail");                                                    // Line 14
+	echo T_("Don't change");                                                          // Line 16
+
+	//----------------------------------------addons\content_enter\google\display.html
+
+	//--------------------------------addons\content_enter\mobile\request\display.html
+	echo T_("If you wanna more secure enter your mobile");                            // Line 6
+	echo T_("I dont want use mobile");                                                // Line 11
+
+	//------------------------------------------addons\content_enter\okay\display.html
+	echo T_("You are logined ;)");                                                    // Line 8
+	echo T_("Be patient or");                                                         // Line 9
+	echo T_("click here!");                                                           // Line 9
+
+	//------------------------------------------addons\content_enter\pass\display.html
+	echo T_("Can't access your account?");                                            // Line 12
+
+	//---------------------------------addons\content_enter\pass\recovery\display.html
+	echo T_("Remembered your password?");                                             // Line 11
+
+	//--------------------------------------addons\content_enter\sessions\display.html
+	echo T_("Terminate");                                                             // Line 11
+
+	//-------------------------------addons\content_enter\username\change\display.html
+	echo T_("Remove username");                                                       // Line 12
+
+	//----------------------------------addons\content_enter\verify\email\display.html
+	echo T_("We can not find eny way to send verification code to you!");             // Line 6
+
+	//-----------------------------------addons\content_enter\verify\what\display.html
+	echo T_("Go back");                                                               // Line 7
+
 	//-------------------------------------addons\includes\languages\trans_static.html
 	echo T_("Saloos");                                                                // Line 7 Seperate
 	echo T_("saloos");                                                                // Line 8 Seperate
