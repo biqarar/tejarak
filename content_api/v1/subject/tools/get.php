@@ -33,7 +33,14 @@ trait get
 			switch ($key)
 			{
 				case 'id':
+				case 'school_id':
 					$result[$key] = utility\shortURL::encode($value);
+					break;
+				case 'creator':
+				case 'createdate':
+				case 'date_modified':
+				case 'meta':
+					continue;
 					break;
 				default:
 					$result[$key] = $value;

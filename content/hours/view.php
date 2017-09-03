@@ -22,7 +22,15 @@ class view extends \mvc\view
 		$team = \lib\router::get_url();
 		$request            = [];
 		$this->data->team   = $request['shortname']         = $team;
-		$this->data->list_member = $this->model()->list_member($request);
+		if(\lib\storage::get_list_member())
+		{
+			$this->data->list_member = \lib\storage::get_list_member();
+
+		}
+		else
+		{
+			$this->data->list_member = $this->model()->list_member($request);
+		}
 
 		$current_team = $this->model()->getTeamDetailShortname($team);
 		if(!isset($current_team['logo']) || (isset($current_team['logo']) && !$current_team['logo']))

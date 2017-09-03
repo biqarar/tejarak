@@ -20,10 +20,10 @@ class model extends \content\main\model
 		// to get last hours. what i want to do?
 		utility::set_request_array($request);
 		$result =  $this->get_list_member();
-		if($result === false)
-		{
-			\lib\error::access(T_("Can not access to show this team"));
-		}
+		// if($result === false)
+		// {
+		// 	\lib\error::access(T_("Can not access to show this team"));
+		// }
 
 		return $result;
 	}

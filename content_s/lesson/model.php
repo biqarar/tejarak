@@ -12,13 +12,19 @@ class model extends \content_s\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPostlesson()
+	public function getPostLesson()
 	{
 		$args =
 		[
-			'title' => utility::post('title'),
-			'desc'  => utility::post('desc'),
+			'terms'     => utility::post('terms'),
+			'classroom' => utility::post('classroom'),
+			'subject'   => utility::post('subject'),
+			'teacher'   => utility::post('teacher'),
+			'desc'      => utility::post('desc'),
+			'start'     => utility::post('start'),
+			'end'       => utility::post('end'),
 		];
+
 		return $args;
 	}
 
@@ -31,7 +37,7 @@ class model extends \content_s\main\model
 	 */
 	public function post_lesson_add($_args)
 	{
-		$request          = $this->getPostlesson();
+		$request          = $this->getPostLesson();
 		if($request === false)
 		{
 			return false;
@@ -65,7 +71,7 @@ class model extends \content_s\main\model
 			return false;
 		}
 
-		$request          = $this->getPostlesson();
+		$request          = $this->getPostLesson();
 
 		if($request === false)
 		{
@@ -87,6 +93,20 @@ class model extends \content_s\main\model
 		}
 	}
 
+
+	/**
+	 * Gets the list lesson.
+	 */
+	public function getReadyLesson()
+	{
+		$this->user_id = $this->login('id');
+		$request = [];
+		$request['school'] = \lib\router::get_url(0);
+		$request['search'] = utility::get('search');
+		utility::set_request_array($request);
+		$result = $this->get_to_insert();
+		return $result;
+	}
 
 
 	/**

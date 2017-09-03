@@ -77,38 +77,58 @@ trait add
 			return false;
 		}
 
-		// get firsttitle
-		$title = utility::request("title");
-		$title = trim($title);
-		if($title && mb_strlen($title) > 50)
+
+		$terms = utility::request('terms');
+		$terms = utility\shortURL::decode($terms);
+		if(!$terms)
 		{
-			logs::set('api:lesson:title:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the title less than 50 character"), 'title', 'arguments');
+			logs::set('api:lesson:terms:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid terms id"));
 			return false;
 		}
 
-		if(!$title)
+		$classroom = utility::request('classroom');
+		$classroom = utility\shortURL::decode($classroom);
+		if(!$terms)
 		{
-			logs::set('api:lesson:title:empty', $this->user_id, $log_meta);
-			debug::error(T_("Title of lesson can not be null"), 'title', 'arguments');
+			logs::set('api:lesson:classroom:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid classroom id"));
 			return false;
 		}
 
-		$desc = utility::request("desc");
-		$desc = trim($desc);
-		if($desc && mb_strlen($desc) > 1000)
+		$subject = utility::request('subject');
+		$subject = utility\shortURL::decode($subject);
+		if(!$terms)
 		{
-			logs::set('api:lesson:desc:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the desc less than 1000 character"), 'desc', 'arguments');
+			logs::set('api:lesson:subject:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid subject id"));
 			return false;
 		}
+
+		$teacher = utility::request('teacher');
+		$teacher = utility\shortURL::decode($teacher);
+		if(!$terms)
+		{
+			logs::set('api:lesson:teacher:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid teacher id"));
+			return false;
+		}
+
+		$desc      = utility::request('desc');
+
+		$start     = utility::request('start');
+		$end       = utility::request('end');
+
 
 		// ready to insert userschool or userbranch record
-		$args              = [];
-		$args['school_id'] = $school_id;
-		$args['title']     = $title;
-		$args['desc']      = $desc;
-
+		$args                  = [];
+		$args['school_id']     = $school_id;
+		$args['schoolterm_id'] = $terms;
+		$args['subject_id']    = $subject;
+		$args['place_id']      = $classroom;
+		$args['teacher']       = $teacher;
+		$args['desc']          = $desc;
+		$args['creator']       = $this->user_id;
 
 		if($_args['method'] === 'post')
 		{

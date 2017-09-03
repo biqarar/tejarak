@@ -319,7 +319,7 @@ trait get
 			$result = \lib\db\teams::access_team($shortname, $this->user_id, ['action' => 'view']);
 		}
 
-		if(\lib\permission::access('load:all:team', null, $this->user_id) && !$result)
+		if(!$result)
 		{
 			if($id)
 			{
@@ -328,6 +328,20 @@ trait get
 			elseif($shortname)
 			{
 				$result = \lib\db\teams::get(['shortname' => $shortname, 'limit' => 1]);
+			}
+
+			if($result)
+			{
+				if(\lib\permission::access('load:all:team', null, $this->user_id))
+				{
+					$result = $result;
+				}
+				else
+				{
+					\lib\storage::set_team_access_denied(true);
+					\lib\storage::set_team_exist(true);
+					$result = false;
+				}
 			}
 		}
 

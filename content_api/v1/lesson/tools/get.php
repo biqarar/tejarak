@@ -32,9 +32,32 @@ trait get
 		{
 			switch ($key)
 			{
+
 				case 'id':
+				case 'school_id':
+				case 'place_id':
+				case 'schoolterm_id':
+				case 'teacher':
+				case 'subject_id':
+				case 'creator':
 					$result[$key] = utility\shortURL::encode($value);
 					break;
+
+				case 'desc':
+				case 'meta':
+				case 'createdate':
+				case 'date_modified':
+					continue;
+					break;
+
+				case 'status':
+				case 'schoolterm_start':
+				case 'schoolterm_end':
+				case 'schoolterm_title':
+				case 'classroom':
+				case 'teacher_name':
+				case 'teacher_family':
+				case 'subject_title':
 				default:
 					$result[$key] = $value;
 					break;
@@ -72,7 +95,7 @@ trait get
 			debug::error(T_("Invalid school id"), 'school', 'arguments');
 			return false;
 		}
-		$meta['school_id'] = $school_id;
+		$meta['lessons.school_id'] = $school_id;
 
 		$search = utility::request('search');
 		if($search &&  !is_string($search))
@@ -155,7 +178,7 @@ trait get
 			return false;
 		}
 
-		$result = \lib\db\lessons::get(['id' => $id, 'limit' => 1]);
+		$result = \lib\db\lessons::get_lesson(['id' => $id, 'limit' => 1]);
 
 		if(!$result)
 		{
@@ -187,7 +210,7 @@ trait get
 	 *
 	 * @return     boolean  To insert.
 	 */
-	public function get_to_insert()
+	public function get_to_insert($_options = [])
 	{
 		$default_options =
 		[
@@ -234,20 +257,56 @@ trait get
 			return false;
 		}
 
-		$result              = [];
-		$result['classroom'] = $classroom = [];
-		$result['terms']     = $terms = [];
-		$result['teacher']   = $teacher = [];
-		$result['subject']   = $subject = [];
+		$classroom           = [];
+		$terms               = [];
+		$teacher             = [];
+		$subject             = [];
 
-
-
-		if($_options['debug'])
+		$temp_classroom = \lib\db\teams::get(['parent' => $school_id, 'type' => 'classroom', 'status' => 'enable']);
+		foreach ($temp_classroom as $key => $value)
 		{
-			debug::title(T_("Operation complete"));
+			$temp = $this->ready_team($value);
+			if($temp)
+			{
+				$classroom[] = $temp;
+			}
 		}
 
-		$result = $this->ready_lesson($result);
+		$temp_terms = \lib\db\schoolterms::get(['school_id' => $school_id,  'status' => 'enable']);
+		foreach ($temp_terms as $key => $value)
+		{
+			$temp = $this->ready_schoolterm($value);
+			if($temp)
+			{
+				$terms[] = $temp;
+			}
+		}
+
+		$temp_teacher = \lib\db\userteams::get(['team_id' => $school_id,  'status' => 'active', 'type' => 'teacher']);
+		foreach ($temp_teacher as $key => $value)
+		{
+			$temp = $this->ready_member($value, ['condition_checked' => true]);
+			if($temp)
+			{
+				$teacher[] = $temp;
+			}
+		}
+
+		$temp_subjects = \lib\db\subjects::get(['school_id' => $school_id,  'status' => 'enable']);
+		foreach ($temp_subjects as $key => $value)
+		{
+			$temp = $this->ready_subject($value);
+			if($temp)
+			{
+				$subject[] = $temp;
+			}
+		}
+
+		$result              = [];
+		$result['classroom'] = $classroom;
+		$result['terms']     = $terms;
+		$result['teacher']   = $teacher;
+		$result['subject']   = $subject;
 
 		return $result;
 	}

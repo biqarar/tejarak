@@ -4,6 +4,30 @@ namespace lib\db;
 /** lessons managing **/
 class lessons
 {
+	public static $public_show_field =
+	"
+		lessons.*,
+
+		schoolterms.start AS `schoolterm_start`,
+		schoolterms.end   AS `schoolterm_end`,
+		schoolterms.title AS `schoolterm_title`,
+
+		teams.name    AS `classroom`,
+
+		userteams.firstname AS `teacher_name`,
+		userteams.lastname  AS `teacher_family`,
+
+		subjects.title  AS `subject_title`
+	";
+
+	public static $master_join =
+	"
+		INNER JOIN schoolterms ON schoolterms.id = lessons.schoolterm_id
+		INNER JOIN teams ON teams.id = lessons.place_id
+		INNER JOIN userteams ON userteams.id = lessons.teacher
+		INNER JOIN subjects ON subjects.id = lessons.subject_id
+	";
+
 	/**
 	 * insert new lesson
 	 *
@@ -49,6 +73,19 @@ class lessons
 
 
 	/**
+	 * Gets the lesson.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 *
+	 * @return     <type>  The lesson.
+	 */
+	public static function get_lesson($_args)
+	{
+		return self::get($_args, ['public_show_field' => self::$public_show_field, 'master_join' => self::$master_join, 'table_name' => 'lessons']);
+	}
+
+
+	/**
 	 * Searches for the first match.
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
@@ -61,7 +98,18 @@ class lessons
 		}
 		$default_option =
 		[
-			'search_field' => " lessons.title LIKE '%__string__%' "
+			'public_show_field' => self::$public_show_field,
+
+			'search_field' =>
+			"
+				(
+					subjects.title LIKE '%__string__%'  OR
+					userteams.lastname LIKE '%__string__%'
+
+				)
+			",
+
+			'master_join' => self::$master_join,
 		];
 		$_option = array_merge($default_option, $_option);
 		$result = \lib\db\config::public_search('lessons', $_search, $_option);
