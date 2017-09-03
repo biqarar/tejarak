@@ -40,6 +40,7 @@ trait get
 				case 'teacher':
 				case 'subject_id':
 				case 'creator':
+				case 'lesson_id':
 					$result[$key] = utility\shortURL::encode($value);
 					break;
 
@@ -196,6 +197,8 @@ trait get
 		}
 
 		$result = $this->ready_lesson($result);
+
+		$this->get_lesson_times($result);
 
 		return $result;
 	}

@@ -6,6 +6,9 @@ use \lib\db\logs;
 
 trait add
 {
+	// the classed time id
+	public $classes_time_id = [];
+
 	use class_time;
 
 	/**
@@ -136,7 +139,27 @@ trait add
 
 		if($_args['method'] === 'post')
 		{
+
 			\lib\db\lessons::insert($args);
+			$lesson_id = \lib\db::insert_id();
+			if(!empty($this->classes_time_id) && is_array($this->classes_time_id))
+			{
+				$insert_lesson_time = [];
+				foreach ($this->classes_time_id as $key => $value)
+				{
+					$insert_lesson_time[] =
+					[
+						'lesson_id'    => $lesson_id,
+						'classtime_id' => $value,
+						'creator'      => $this->user_id,
+					];
+				}
+				if(!empty($insert_lesson_time))
+				{
+					\lib\db\lessontimes::multi_insert($insert_lesson_time);
+				}
+			}
+
 		}
 		elseif($_args['method'] === 'patch')
 		{

@@ -7,6 +7,7 @@ class lessons
 	public static $public_show_field =
 	"
 		lessons.*,
+		lessons.id AS `lesson_id`,
 
 		schoolterms.start AS `schoolterm_start`,
 		schoolterms.end   AS `schoolterm_end`,

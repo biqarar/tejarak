@@ -6,9 +6,13 @@ use \lib\db\logs;
 
 trait class_time
 {
+
 	public function class_time_check($_args = [])
 	{
 		$this->class_time_insert($_args);
+		$this->classes_time_id = array_filter($this->classes_time_id);
+		$this->classes_time_id = array_unique($this->classes_time_id);
+
 	}
 
 
@@ -70,6 +74,12 @@ trait class_time
 			\lib\db\classtimes::multi_insert($insert);
 		}
 
+		// get the id of calasses time
+		foreach ($insert as $key => $value)
+		{
+			$this->class_time_exist($value);
+		}
+
 	}
 
 
@@ -84,11 +94,29 @@ trait class_time
 	{
 		unset($_where['creator']);
 		$_where['limit'] = 1;
-		if(\lib\db\classtimes::get($_where))
+		$check = \lib\db\classtimes::get($_where);
+		if(isset($check['id']))
 		{
+			$this->classes_time_id[] = $check['id'];
 			return true;
 		}
 		return false;
+	}
+
+
+	public function get_lesson_times(&$_data)
+	{
+		if(isset($_data['lesson_id']) && \lib\utility\shortURL::is($_data['lesson_id']))
+		{
+			$lesson_id = $_data['lesson_id'];
+			$lesson_id = \lib\utility\shortURL::decode($lesson_id);
+
+			$times = \lib\db\lessontimes::get_lessontime(['lesson_id' => $lesson_id]);
+
+			// var_dump($times);
+
+		}
+		// var_dump($_data);exit();
 	}
 
 }
