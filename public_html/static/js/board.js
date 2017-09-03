@@ -20,6 +20,8 @@ function onOpenModal()
 
     // set user id
     $myModal.find('[name=user]').val(myUser);
+    $myModal.find('input[type=number]').val(null);
+    $myModal.find('textarea').val(null);
     // set user photo and name from main card detail
     $myModal.find('.vcard img').attr('src', $userCard.find('img').attr('src'));
     $myModal.find('.vcard .header').text($userCard.find('.header').text());
