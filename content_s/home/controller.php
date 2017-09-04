@@ -154,6 +154,40 @@ class controller extends \content_s\main\controller
 			}
 		}
 
+		// route url like this /a/2kf
+		if
+		(
+			preg_match("/^([a-zA-Z0-9]+)\/student\/takenunit\=([a-zA-Z0-9]+)$/", $url)
+		)
+		{
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_s\\takenunit\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
+		// route url like this /a/2kf
+		if
+		(
+			preg_match("/^([a-zA-Z0-9]+)\/student\/panel\=([a-zA-Z0-9]+)$/", $url)
+		)
+		{
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_s\\studentpanel\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
 
 		// route url like this /a/2kf
 		if
@@ -183,6 +217,7 @@ class controller extends \content_s\main\controller
 
 			preg_match("/^([a-zA-Z0-9]+)\/student$/", $url) ||
 			preg_match("/^([a-zA-Z0-9]+)\/student\=([a-zA-Z0-9]+)$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/student\/edit\=([a-zA-Z0-9]+)$/", $url) ||
 			preg_match("/^([a-zA-Z0-9]+)\/student\/add$/", $url)
 		)
 		{

@@ -35,15 +35,16 @@ trait get
 
 				case 'id':
 				case 'school_id':
-				case 'classroom':
 				case 'schoolterm_id':
 				case 'teacher':
 				case 'subject_id':
 				case 'creator':
 				case 'lesson_id':
+				case 'classroom_id':
 					$result[$key] = utility\shortURL::encode($value);
 					break;
 
+				case 'classroom':
 				case 'desc':
 				case 'meta':
 				case 'createdate':
@@ -119,6 +120,7 @@ trait get
 				$temp[] = $check;
 			}
 		}
+		$this->get_lesson_times($temp);
 
 		return $temp;
 	}

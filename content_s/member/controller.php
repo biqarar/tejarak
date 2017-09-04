@@ -43,8 +43,8 @@ class controller extends \content_s\main\controller
 		$this->get(false, 'student_add')->ALL("/^([a-zA-Z0-9]+)\/student\/add$/");
 		$this->post('student_add')->ALL("/^([a-zA-Z0-9]+)\/student\/add$/");
 		// EDIT
-		$this->get(false, 'student_edit')->ALL("/^([a-zA-Z0-9]+)\/student\=([a-zA-Z0-9]+)$/");
-		$this->post('student_edit')->ALL("/^([a-zA-Z0-9]+)\/student\=([a-zA-Z0-9]+)$/");
+		$this->get(false, 'student_edit')->ALL("/^([a-zA-Z0-9]+)\/student\/edit\=([a-zA-Z0-9]+)$/");
+		$this->post('student_edit')->ALL("/^([a-zA-Z0-9]+)\/student\/edit\=([a-zA-Z0-9]+)$/");
 
 
 		// student list
@@ -63,7 +63,7 @@ class controller extends \content_s\main\controller
 			$this->display_name = 'content_s\member\teacher\teacher_add.html';
 		}
 		// student add
-		if(preg_match("/^([a-zA-Z0-9]+)\/student\/add$/", $url) || preg_match("/^([a-zA-Z0-9]+)\/student\=([a-zA-Z0-9]+)$/", $url))
+		if(preg_match("/^([a-zA-Z0-9]+)\/student\/add$/", $url) || preg_match("/^([a-zA-Z0-9]+)\/student\/edit\=([a-zA-Z0-9]+)$/", $url))
 		{
 			$this->display_name = 'content_s\member\student\student_add.html';
 		}

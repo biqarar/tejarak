@@ -8,7 +8,8 @@ class school_lessontimes
 	public static $public_show_field =
 	"
 		school_classtimes.*,
-		school_lessontimes.status AS `lessontime_status`
+		school_lessontimes.status AS `lessontime_status`,
+		school_lessontimes.lesson_id AS `lesson_id`
 	";
 
 	public static $master_join =
@@ -80,6 +81,31 @@ class school_lessontimes
 		];
 
 		return self::get($_args, $option);
+	}
+
+
+	/**
+	 * Gets the lesson.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 *
+	 * @return     <type>  The lesson.
+	 */
+	public static function get_lessontime_multi($_lesson_ids)
+	{
+		$field = self::$public_show_field;
+		$master_join = self::$master_join;
+
+		if(!is_array($_lesson_ids) || empty($_lesson_ids))
+		{
+			return false;
+		}
+
+		$_lesson_ids = implode(',', $_lesson_ids);
+
+		$query = " SELECT $field FROM school_lessontimes $master_join WHERE school_lessontimes.lesson_id IN ($_lesson_ids)	";
+
+		return \lib\db::get($query);
 	}
 
 

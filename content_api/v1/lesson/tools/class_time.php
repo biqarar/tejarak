@@ -112,31 +112,78 @@ trait class_time
 	 */
 	public function get_lesson_times(&$_data)
 	{
-		if(isset($_data['lesson_id']) && \lib\utility\shortURL::is($_data['lesson_id']))
+		$multi = false;
+		if(array_key_exists(0, $_data))
 		{
-			$lesson_id = $_data['lesson_id'];
-			$lesson_id = \lib\utility\shortURL::decode($lesson_id);
+			$multi = true;
+		}
 
-			$times = \lib\db\school_lessontimes::get_lessontime(['lesson_id' => $lesson_id]);
+		if($multi)
+		{
+			$lesson_id = $encode_key = array_column($_data, 'lesson_id');
 
-			$temp = [];
-
-			if($times && is_array($times))
+			$lesson_id = array_map(function($_a){return \lib\utility\shortURL::decode($_a);}, $lesson_id);
+			$lesson_id = array_combine($encode_key, $lesson_id);
+		}
+		else
+		{
+			if(isset($_data['lesson_id']) && \lib\utility\shortURL::is($_data['lesson_id']))
 			{
-				foreach ($times as $key => $value)
+				$lesson_id = $_data['lesson_id'];
+				$lesson_id = \lib\utility\shortURL::decode($lesson_id);
+				$lesson_id = [$_data['lesson_id'] => $lesson_id];
+			}
+		}
+
+
+		$times = \lib\db\school_lessontimes::get_lessontime_multi($lesson_id);
+		$temp = [];
+		foreach ($times as $key => $value)
+		{
+			if(isset($value['lesson_id']) && isset($value['lessontime_status']) && $value['lessontime_status'] === 'enable')
+			{
+				$dkey = \lib\utility\shortURL::encode($value['lesson_id']);
+
+				if(!isset($temp[$dkey]))
 				{
-					if(isset($value['weekday']) && isset($value['start']) && isset($value['end']) && isset($value['lessontime_status']) && $value['lessontime_status'] === 'enable')
+					$temp[$dkey] = [];
+				}
+
+				if(isset($value['weekday']) && isset($value['start']) && isset($value['end']))
+				{
+					$temp[$dkey][] =
+					[
+						'week'  => $value['weekday'],
+						'start' => $value['start'],
+						'end'   => $value['end'],
+					];
+				}
+			}
+		}
+
+		$times = $temp;
+
+		if($multi)
+		{
+			foreach ($_data as $key => $value)
+			{
+				$_data[$key]['times'] = [];
+
+				if(isset($value['id']))
+				{
+					if(array_key_exists($value['id'], $times))
 					{
-						$temp[] =
-						[
-							'week'  => $value['weekday'],
-							'start' => $value['start'],
-							'end'   => $value['end'],
-						];
+						$_data[$key]['times'] = $times[$value['id']];
 					}
 				}
 			}
-			$_data['times'] = $temp;
+		}
+		else
+		{
+			if(isset($_data['id']) && array_key_exists($_data['id'], $times))
+			{
+				$_data['times'] = $times[$_data['id']];
+			}
 		}
 
 	}

@@ -1,0 +1,22 @@
+{%extends display.adminTeam%}
+
+{%block sidenav%}
+{{parent()}}
+{%endblock%}
+
+{%block contentCenter%}
+  <div class='middle' id="teamList">
+    <h2>{{student.firstname}} {{student.lastname}}</h2>
+   <div class="f justify-center">
+    <a class='teams-item' href='{{url.baseFull}}/{{school_code}}/student/takenunit={{student.user_id}}'>
+     <figure>
+      <div class="f align-center">
+       <img src="{{url.static}}images/school/book.png" alt='{%trans "Taken Unit"%}'>
+      </div>
+      <figcaption>{%trans "Taken Unit"%}</figcaption>
+     </figure>
+    </a>
+   </div>
+  </div>
+{%endblock%}
+

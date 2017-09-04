@@ -1,0 +1,43 @@
+{%extends display.adminTeam%}
+
+{%block sidenav%}
+{{parent()}}
+{%endblock%}
+
+{%block content%}
+
+<h2>{{student.firstname}} {{student.lastname}}</h2>
+
+<table class="tbl">
+  <thead class="primary">
+    <th>{%trans "schoolterm_start"%}</th>
+    <th>{%trans "schoolterm_end"%}</th>
+    <th>{%trans "schoolterm_title"%}</th>
+    <th>{%trans "classroom"%}</th>
+    <th>{%trans "teacher_name"%}</th>
+    <th>{%trans "teacher_family"%}</th>
+    <th>{%trans "subject_title"%}</th>
+    <th>{%trans "Taken unit"%}</th>
+    <th>{%trans "Remove"%}</th>
+  </thead>
+  <tbody>
+  {%for key, value in lesson%}
+    <tr>
+
+      <td>{{value.schoolterm_start}}</td>
+      <td>{{value.schoolterm_end}}</td>
+      <td>{{value.schoolterm_title}}</td>
+      <td>{{value.classroom_name}}</td>
+      <td>{{value.teacher_name}}</td>
+      <td>{{value.teacher_family}}</td>
+      <td>{{value.subject_title}}</td>
+      <td><a href='{{url.full}}' data-data='{"id" : "{{value.id}}", "type": "takenunit" }'  data-method="post" data-ajaxify><i class="sf-plus"></i></a></td>
+      <td><a href='{{url.full}}' data-data='{"id" : "{{value.id}}", "type": "removeunit" }'  data-method="post" data-ajaxify><i class="sf-trash"></i></a></td>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+
+
+{%endblock%}
+

@@ -35,7 +35,7 @@
         <select  name="classroom" placeholder='{%trans "classroom"%}'>
           <option value="">{%trans "Please select one classroom"%}</option>
          {%for key, value in lesson_data.classroom%}
-          <option value="{{value.id}}" {%if lesson.classroom == value.id %} selected {% endif %}>{{value.name}}</option>
+          <option value="{{value.id}}" {%if lesson.classroom_id == value.id %} selected {% endif %}>{{value.name}}</option>
          {%endfor%}
         </select>
        </div>

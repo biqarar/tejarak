@@ -13,7 +13,8 @@ class school_lessons
 		school_terms.end   AS `schoolterm_end`,
 		school_terms.title AS `schoolterm_title`,
 
-		teams.name    AS `classroom`,
+		teams.id    AS `classroom_id`,
+		teams.name    AS `classroom_name`,
 
 		userteams.firstname AS `teacher_name`,
 		userteams.lastname  AS `teacher_family`,
@@ -82,7 +83,8 @@ class school_lessons
 	 */
 	public static function get_lesson($_args)
 	{
-		return self::get($_args, ['public_show_field' => self::$public_show_field, 'master_join' => self::$master_join, 'table_name' => 'school_lessons']);
+		$result = self::get($_args, ['public_show_field' => self::$public_show_field, 'master_join' => self::$master_join, 'table_name' => 'school_lessons']);
+		return $result;
 	}
 
 
