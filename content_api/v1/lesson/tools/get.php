@@ -35,7 +35,7 @@ trait get
 
 				case 'id':
 				case 'school_id':
-				case 'place_id':
+				case 'classroom':
 				case 'schoolterm_id':
 				case 'teacher':
 				case 'subject_id':
@@ -96,7 +96,7 @@ trait get
 			debug::error(T_("Invalid school id"), 'school', 'arguments');
 			return false;
 		}
-		$meta['lessons.school_id'] = $school_id;
+		$meta['school_lessons.school_id'] = $school_id;
 
 		$search = utility::request('search');
 		if($search &&  !is_string($search))
@@ -108,7 +108,7 @@ trait get
 
 		$search = trim($search);
 
-		$result = \lib\db\lessons::search($search, $meta);
+		$result = \lib\db\school_lessons::search($search, $meta);
 
 		$temp = [];
 		foreach ($result as $key => $value)
@@ -179,7 +179,7 @@ trait get
 			return false;
 		}
 
-		$result = \lib\db\lessons::get_lesson(['id' => $id, 'limit' => 1]);
+		$result = \lib\db\school_lessons::get_lesson(['id' => $id, 'limit' => 1]);
 
 		if(!$result)
 		{
@@ -275,7 +275,7 @@ trait get
 			}
 		}
 
-		$temp_terms = \lib\db\schoolterms::get(['school_id' => $school_id,  'status' => 'enable']);
+		$temp_terms = \lib\db\school_terms::get(['school_id' => $school_id,  'status' => 'enable']);
 		foreach ($temp_terms as $key => $value)
 		{
 			$temp = $this->ready_schoolterm($value);
@@ -295,8 +295,8 @@ trait get
 			}
 		}
 
-		$temp_subjects = \lib\db\subjects::get(['school_id' => $school_id,  'status' => 'enable']);
-		foreach ($temp_subjects as $key => $value)
+		$temp_school_subjects = \lib\db\school_subjects::get(['school_id' => $school_id,  'status' => 'enable']);
+		foreach ($temp_school_subjects as $key => $value)
 		{
 			$temp = $this->ready_subject($value);
 			if($temp)

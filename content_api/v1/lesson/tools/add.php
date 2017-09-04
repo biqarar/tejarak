@@ -125,7 +125,7 @@ trait add
 		$args['school_id']     = $school_id;
 		$args['schoolterm_id'] = $terms;
 		$args['subject_id']    = $subject;
-		$args['place_id']      = $classroom;
+		$args['classroom']      = $classroom;
 		$args['teacher']       = $teacher;
 		$args['desc']          = $desc;
 		$args['creator']       = $this->user_id;
@@ -140,7 +140,7 @@ trait add
 		if($_args['method'] === 'post')
 		{
 
-			\lib\db\lessons::insert($args);
+			\lib\db\school_lessons::insert($args);
 			$lesson_id = \lib\db::insert_id();
 			if(!empty($this->classes_time_id) && is_array($this->classes_time_id))
 			{
@@ -156,7 +156,7 @@ trait add
 				}
 				if(!empty($insert_lesson_time))
 				{
-					\lib\db\lessontimes::multi_insert($insert_lesson_time);
+					\lib\db\school_lessontimes::multi_insert($insert_lesson_time);
 				}
 			}
 
@@ -172,7 +172,7 @@ trait add
 				return false;
 			}
 
-			$check_user_in_school = \lib\db\lessons::get(['id' => $id, 'school_id' => $school_id, 'limit' => 1]);
+			$check_user_in_school = \lib\db\school_lessons::get(['id' => $id, 'school_id' => $school_id, 'limit' => 1]);
 
 			if(!$check_user_in_school || !isset($check_user_in_school['id']))
 			{
@@ -187,7 +187,7 @@ trait add
 			if(!utility::isset_request('desc')) 		 unset($args['desc']);
 			if(!utility::isset_request('terms')) 		 unset($args['schoolterm_id']);
 			if(!utility::isset_request('subject')) 	 	 unset($args['subject_id']);
-			if(!utility::isset_request('classroom')) 	 unset($args['place_id']);
+			if(!utility::isset_request('classroom')) 	 unset($args['classroom']);
 			if(!utility::isset_request('teacher')) 		 unset($args['teacher']);
 			if(!utility::isset_request('desc')) 		 unset($args['desc']);
 
@@ -195,14 +195,14 @@ trait add
 
 			if(!empty($args))
 			{
-				\lib\db\lessons::update($args, $check_user_in_school['id']);
+				\lib\db\school_lessons::update($args, $check_user_in_school['id']);
 			}
 
 
 		}
 		elseif ($_args['method'] === 'delete')
 		{
-			// \lib\db\lessons::remove($args);
+			// \lib\db\school_lessons::remove($args);
 		}
 
 		if(debug::$status)

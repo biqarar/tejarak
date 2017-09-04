@@ -1,32 +1,32 @@
 <?php
 namespace lib\db;
 
-/** lessons managing **/
-class lessons
+/** school_lessons managing **/
+class school_lessons
 {
 	public static $public_show_field =
 	"
-		lessons.*,
-		lessons.id AS `lesson_id`,
+		school_lessons.*,
+		school_lessons.id AS `lesson_id`,
 
-		schoolterms.start AS `schoolterm_start`,
-		schoolterms.end   AS `schoolterm_end`,
-		schoolterms.title AS `schoolterm_title`,
+		school_terms.start AS `schoolterm_start`,
+		school_terms.end   AS `schoolterm_end`,
+		school_terms.title AS `schoolterm_title`,
 
 		teams.name    AS `classroom`,
 
 		userteams.firstname AS `teacher_name`,
 		userteams.lastname  AS `teacher_family`,
 
-		subjects.title  AS `subject_title`
+		school_subjects.title  AS `subject_title`
 	";
 
 	public static $master_join =
 	"
-		INNER JOIN schoolterms ON schoolterms.id = lessons.schoolterm_id
-		INNER JOIN teams ON teams.id = lessons.place_id
-		INNER JOIN userteams ON userteams.id = lessons.teacher
-		INNER JOIN subjects ON subjects.id = lessons.subject_id
+		INNER JOIN school_terms ON school_terms.id = school_lessons.schoolterm_id
+		INNER JOIN teams ON teams.id = school_lessons.classroom
+		INNER JOIN userteams ON userteams.id = school_lessons.teacher
+		INNER JOIN school_subjects ON school_subjects.id = school_lessons.subject_id
 	";
 
 	/**
@@ -36,7 +36,7 @@ class lessons
 	 */
 	public static function insert()
 	{
-		return \lib\db\config::public_insert('lessons', ...func_get_args());
+		return \lib\db\config::public_insert('school_lessons', ...func_get_args());
 	}
 
 
@@ -47,7 +47,7 @@ class lessons
 	 */
 	public static function multi_insert()
 	{
-		return \lib\db\config::public_multi_insert('lessons', ...func_get_args());
+		return \lib\db\config::public_multi_insert('school_lessons', ...func_get_args());
 	}
 
 
@@ -58,7 +58,7 @@ class lessons
 	 */
 	public static function update()
 	{
-		return \lib\db\config::public_update('lessons', ...func_get_args());
+		return \lib\db\config::public_update('school_lessons', ...func_get_args());
 	}
 
 
@@ -69,7 +69,7 @@ class lessons
 	 */
 	public static function get()
 	{
-		return \lib\db\config::public_get('lessons', ...func_get_args());
+		return \lib\db\config::public_get('school_lessons', ...func_get_args());
 	}
 
 
@@ -82,7 +82,7 @@ class lessons
 	 */
 	public static function get_lesson($_args)
 	{
-		return self::get($_args, ['public_show_field' => self::$public_show_field, 'master_join' => self::$master_join, 'table_name' => 'lessons']);
+		return self::get($_args, ['public_show_field' => self::$public_show_field, 'master_join' => self::$master_join, 'table_name' => 'school_lessons']);
 	}
 
 
@@ -104,7 +104,7 @@ class lessons
 			'search_field' =>
 			"
 				(
-					subjects.title LIKE '%__string__%'  OR
+					school_subjects.title LIKE '%__string__%'  OR
 					userteams.lastname LIKE '%__string__%'
 
 				)
@@ -113,7 +113,7 @@ class lessons
 			'master_join' => self::$master_join,
 		];
 		$_option = array_merge($default_option, $_option);
-		$result = \lib\db\config::public_search('lessons', $_search, $_option);
+		$result = \lib\db\config::public_search('school_lessons', $_search, $_option);
 		return $result;
 	}
 

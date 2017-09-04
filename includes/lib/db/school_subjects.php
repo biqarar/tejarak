@@ -1,17 +1,17 @@
 <?php
 namespace lib\db;
 
-/** classtimes managing **/
-class classtimes
+/** school_subjects managing **/
+class school_subjects
 {
 	/**
-	 * insert new classtime
+	 * insert new subject
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
 	public static function insert()
 	{
-		return \lib\db\config::public_insert('classtimes', ...func_get_args());
+		return \lib\db\config::public_insert('school_subjects', ...func_get_args());
 	}
 
 
@@ -22,29 +22,29 @@ class classtimes
 	 */
 	public static function multi_insert()
 	{
-		return \lib\db\config::public_multi_insert('classtimes', ...func_get_args());
+		return \lib\db\config::public_multi_insert('school_subjects', ...func_get_args());
 	}
 
 
 	/**
-	 * update the classtime
+	 * update the subject
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
 	public static function update()
 	{
-		return \lib\db\config::public_update('classtimes', ...func_get_args());
+		return \lib\db\config::public_update('school_subjects', ...func_get_args());
 	}
 
 
 	/**
-	 * get the classtime
+	 * get the subject
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
 	public static function get()
 	{
-		return \lib\db\config::public_get('classtimes', ...func_get_args());
+		return \lib\db\config::public_get('school_subjects', ...func_get_args());
 	}
 
 
@@ -61,10 +61,10 @@ class classtimes
 		}
 		$default_option =
 		[
-			'search_field' => " classtimes.title LIKE '%__string__%' "
+			'search_field' => " school_subjects.title LIKE '%__string__%' "
 		];
 		$_option = array_merge($default_option, $_option);
-		$result = \lib\db\config::public_search('classtimes', $_search, $_option);
+		$result = \lib\db\config::public_search('school_subjects', $_search, $_option);
 		return $result;
 	}
 

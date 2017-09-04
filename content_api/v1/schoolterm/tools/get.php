@@ -90,7 +90,7 @@ trait get
 
 		$search = trim($search);
 
-		$result = \lib\db\schoolterms::search($search, $meta);
+		$result = \lib\db\school_terms::search($search, $meta);
 
 		$temp = [];
 		foreach ($result as $key => $value)
@@ -161,7 +161,7 @@ trait get
 			return false;
 		}
 
-		$result = \lib\db\schoolterms::get(['id' => $id, 'limit' => 1]);
+		$result = \lib\db\school_terms::get(['id' => $id, 'limit' => 1]);
 
 		if(!$result)
 		{

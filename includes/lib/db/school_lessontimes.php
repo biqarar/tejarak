@@ -1,20 +1,20 @@
 <?php
 namespace lib\db;
 
-/** lessontimes managing **/
-class lessontimes
+/** school_lessontimes managing **/
+class school_lessontimes
 {
 
 	public static $public_show_field =
 	"
-		classtimes.*,
-		lessontimes.status AS `lessontime_status`
+		school_classtimes.*,
+		school_lessontimes.status AS `lessontime_status`
 	";
 
 	public static $master_join =
 	"
-		INNER JOIN lessons ON lessons.id = lessontimes.lesson_id
-		INNER JOIN classtimes ON classtimes.id = lessontimes.classtime_id
+		INNER JOIN school_lessons ON school_lessons.id = school_lessontimes.lesson_id
+		INNER JOIN school_classtimes ON school_classtimes.id = school_lessontimes.classtime_id
 
 	";
 
@@ -26,7 +26,7 @@ class lessontimes
 	 */
 	public static function insert()
 	{
-		return \lib\db\config::public_insert('lessontimes', ...func_get_args());
+		return \lib\db\config::public_insert('school_lessontimes', ...func_get_args());
 	}
 
 
@@ -37,7 +37,7 @@ class lessontimes
 	 */
 	public static function multi_insert()
 	{
-		return \lib\db\config::public_multi_insert('lessontimes', ...func_get_args());
+		return \lib\db\config::public_multi_insert('school_lessontimes', ...func_get_args());
 	}
 
 
@@ -48,7 +48,7 @@ class lessontimes
 	 */
 	public static function update()
 	{
-		return \lib\db\config::public_update('lessontimes', ...func_get_args());
+		return \lib\db\config::public_update('school_lessontimes', ...func_get_args());
 	}
 
 
@@ -59,7 +59,7 @@ class lessontimes
 	 */
 	public static function get()
 	{
-		return \lib\db\config::public_get('lessontimes', ...func_get_args());
+		return \lib\db\config::public_get('school_lessontimes', ...func_get_args());
 	}
 
 
@@ -76,7 +76,7 @@ class lessontimes
 		[
 			'public_show_field' => self::$public_show_field,
 			'master_join'       => self::$master_join,
-			'table_name'        => 'lessontimes'
+			'table_name'        => 'school_lessontimes'
 		];
 
 		return self::get($_args, $option);
@@ -96,10 +96,10 @@ class lessontimes
 		}
 		$default_option =
 		[
-			'search_field' => " lessontimes.title LIKE '%__string__%' "
+			'search_field' => " school_lessontimes.title LIKE '%__string__%' "
 		];
 		$_option = array_merge($default_option, $_option);
-		$result = \lib\db\config::public_search('lessontimes', $_search, $_option);
+		$result = \lib\db\config::public_search('school_lessontimes', $_search, $_option);
 		return $result;
 	}
 
@@ -109,7 +109,7 @@ class lessontimes
 		$_where = \lib\db\config::make_where($_where);
 		if($_where)
 		{
-			$query = " UPDATE lessontimes SET status = 'disable' WHERE $_where ";
+			$query = " UPDATE school_lessontimes SET status = 'disable' WHERE $_where ";
 			return \lib\db::query($query);
 		}
 	}

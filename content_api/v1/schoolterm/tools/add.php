@@ -144,7 +144,7 @@ trait add
 
 		if($_args['method'] === 'post')
 		{
-			\lib\db\schoolterms::insert($args);
+			\lib\db\school_terms::insert($args);
 		}
 		elseif($_args['method'] === 'patch')
 		{
@@ -157,7 +157,7 @@ trait add
 				return false;
 			}
 
-			$check_user_in_school = \lib\db\schoolterms::get(['id' => $id, 'school_id' => $school_id, 'limit' => 1]);
+			$check_user_in_school = \lib\db\school_terms::get(['id' => $id, 'school_id' => $school_id, 'limit' => 1]);
 
 			if(!$check_user_in_school || !isset($check_user_in_school['id']))
 			{
@@ -175,14 +175,14 @@ trait add
 
 			if(!empty($args))
 			{
-				\lib\db\schoolterms::update($args, $check_user_in_school['id']);
+				\lib\db\school_terms::update($args, $check_user_in_school['id']);
 			}
 
 
 		}
 		elseif ($_args['method'] === 'delete')
 		{
-			// \lib\db\schoolterms::remove($args);
+			// \lib\db\school_terms::remove($args);
 		}
 
 		if(debug::$status)

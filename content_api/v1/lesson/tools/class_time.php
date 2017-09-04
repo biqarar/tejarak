@@ -53,7 +53,7 @@ trait class_time
 			$temp =
 			[
 				'school_id'     => $_args['school_id'],
-				'place_id'      => $_args['place_id'],
+				'classroom'      => $_args['classroom'],
 				'schoolterm_id' => $_args['schoolterm_id'],
 				'creator'       => $this->user_id,
 				'weekday'       => $value['week'],
@@ -71,7 +71,7 @@ trait class_time
 
 		if(!empty($insert))
 		{
-			\lib\db\classtimes::multi_insert($insert);
+			\lib\db\school_classtimes::multi_insert($insert);
 		}
 
 		// get the id of calasses time
@@ -94,7 +94,7 @@ trait class_time
 	{
 		unset($_where['creator']);
 		$_where['limit'] = 1;
-		$check = \lib\db\classtimes::get($_where);
+		$check = \lib\db\school_classtimes::get($_where);
 		if(isset($check['id']))
 		{
 			$this->classes_time_id[] = $check['id'];
@@ -117,7 +117,7 @@ trait class_time
 			$lesson_id = $_data['lesson_id'];
 			$lesson_id = \lib\utility\shortURL::decode($lesson_id);
 
-			$times = \lib\db\lessontimes::get_lessontime(['lesson_id' => $lesson_id]);
+			$times = \lib\db\school_lessontimes::get_lessontime(['lesson_id' => $lesson_id]);
 
 			$temp = [];
 
@@ -150,7 +150,7 @@ trait class_time
 	 */
 	public function class_time_update($_args, $_lesson_data)
 	{
-		$times = \lib\db\lessontimes::get_lessontime(['lesson_id' => $_lesson_data['id']]);
+		$times = \lib\db\school_lessontimes::get_lessontime(['lesson_id' => $_lesson_data['id']]);
 		if(is_array($times))
 		{
 			$old_times = array_column($times, 'id');
@@ -192,7 +192,7 @@ trait class_time
 
 			if(!empty($insert_lesson_time))
 			{
-				\lib\db\lessontimes::multi_insert($insert_lesson_time);
+				\lib\db\school_lessontimes::multi_insert($insert_lesson_time);
 			}
 		}
 
@@ -205,7 +205,7 @@ trait class_time
 					'lesson_id'    => $_lesson_data['id'],
 					'classtime_id' => $value,
 				];
-				\lib\db\lessontimes::remove($temp);
+				\lib\db\school_lessontimes::remove($temp);
 			}
 		}
 

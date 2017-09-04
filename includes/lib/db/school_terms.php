@@ -1,8 +1,8 @@
 <?php
 namespace lib\db;
 
-/** schoolterms managing **/
-class schoolterms
+/** school_terms managing **/
+class school_terms
 {
 	/**
 	 * insert new schoolterm
@@ -11,7 +11,7 @@ class schoolterms
 	 */
 	public static function insert()
 	{
-		return \lib\db\config::public_insert('schoolterms', ...func_get_args());
+		return \lib\db\config::public_insert('school_terms', ...func_get_args());
 	}
 
 
@@ -22,7 +22,7 @@ class schoolterms
 	 */
 	public static function multi_insert()
 	{
-		return \lib\db\config::public_multi_insert('schoolterms', ...func_get_args());
+		return \lib\db\config::public_multi_insert('school_terms', ...func_get_args());
 	}
 
 
@@ -33,7 +33,7 @@ class schoolterms
 	 */
 	public static function update()
 	{
-		return \lib\db\config::public_update('schoolterms', ...func_get_args());
+		return \lib\db\config::public_update('school_terms', ...func_get_args());
 	}
 
 
@@ -44,7 +44,7 @@ class schoolterms
 	 */
 	public static function get()
 	{
-		return \lib\db\config::public_get('schoolterms', ...func_get_args());
+		return \lib\db\config::public_get('school_terms', ...func_get_args());
 	}
 
 
@@ -61,10 +61,10 @@ class schoolterms
 		}
 		$default_option =
 		[
-			'search_field' => " schoolterms.title LIKE '%__string__%' "
+			'search_field' => " school_terms.title LIKE '%__string__%' "
 		];
 		$_option = array_merge($default_option, $_option);
-		$result = \lib\db\config::public_search('schoolterms', $_search, $_option);
+		$result = \lib\db\config::public_search('school_terms', $_search, $_option);
 		return $result;
 	}
 
