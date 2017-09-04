@@ -65,7 +65,6 @@ trait get
 			return false;
 		}
 
-
 		if($id)
 		{
 			$inside_method = 'get_member';

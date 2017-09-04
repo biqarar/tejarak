@@ -1,5 +1,5 @@
 <?php
-namespace content_api\v1\takenunit\tools;
+namespace content_api\v1\score\tools;
 use \lib\utility;
 use \lib\debug;
 use \lib\db\logs;
@@ -11,7 +11,7 @@ trait lesson_team
 		// request
 		// 'school'        = 'RHd' ;
 		// 'user_id'       = 'bwQH' ;
-		// 'type'          = 'takenunit' ;
+		// 'type'          = 'score' ;
 		// 'lesson_id'     = 'b' ;
 
 		// args
@@ -37,9 +37,9 @@ trait lesson_team
 			$lesson_team_name                  = \lib\db\school_lessons::make_team_lesson_name($lesson_id);
 
 			$insert_team_request['name']       = $lesson_team_name;
-			$insert_team_request['short_name'] = md5($lesson_id);
+			$insert_team_request['short_name'] = md5((string) $lesson_id. (string) time());;
 			$insert_team_request['type']       = 'lesson';
-			$insert_team_request['parent']     =  isset($classroom_detail['id']) ? utility\shortURL::encode($classroom_detail['id']) : null;
+			$insert_team_request['parent']     =  isset($classroom_detail['id']) ? utility\shortURL::encode($classroom_detail['id']) : null;;
 
 			// $insert_team_request['website']           = null;
 			// $insert_team_request['desc']              = null;
@@ -83,7 +83,7 @@ trait lesson_team
 					$userteam_request_teacher['firstname']   = isset($teacher_user_id['firstname']) ? $teacher_user_id['firstname'] : null;
 					$userteam_request_teacher['lastname']    = isset($teacher_user_id['lastname']) ? $teacher_user_id['lastname'] : null;
 					$userteam_request_teacher['rule']        = 'admin';
-					$userteam_request_teacher['type']        = 'takenunit_student';
+					$userteam_request_teacher['type']        = 'score_student';
 
 					utility::set_request_array($userteam_request_teacher);
 
@@ -132,7 +132,7 @@ trait lesson_team
 			$userteam_request_student['firstname']   = isset($student_user_id['firstname']) ? $student_user_id['firstname'] : null;
 			$userteam_request_student['lastname']    = isset($student_user_id['lastname']) ? $student_user_id['lastname'] : null;
 			$userteam_request_student['rule']        = 'user';
-			$userteam_request_student['type']        = 'takenunit_student';
+			$userteam_request_student['type']        = 'score_student';
 
 			utility::set_request_array($userteam_request_student);
 

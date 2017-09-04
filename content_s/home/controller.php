@@ -135,6 +135,26 @@ class controller extends \content_s\main\controller
 			}
 		}
 
+
+		// route url like this /a/2kf
+		if
+		(
+			preg_match("/^([a-zA-Z0-9]+)\/score$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/score\/add$/", $url) ||
+			preg_match("/^([a-zA-Z0-9]+)\/score\=([a-zA-Z0-9]+)$/", $url)
+		)
+		{
+			if($is_admin)
+			{
+				\lib\router::set_controller("content_s\\score\\controller");
+				return;
+			}
+			else
+			{
+				\lib\error::access();
+			}
+		}
+
 		// route url like this /a/2kf
 		if
 		(

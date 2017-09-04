@@ -61,6 +61,10 @@ trait _use
 	use \content_api\v1\takenunit\tools\get;
 	use \content_api\v1\takenunit\tools\add;
 
+	// API score
+	use \content_api\v1\score\tools\get;
+	use \content_api\v1\score\tools\add;
+
 
 	/**
 	 * check team language and redirect if is set

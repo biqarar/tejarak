@@ -24,6 +24,7 @@
     <th>{%trans "teacher_name"%}</th>
     <th>{%trans "teacher_family"%}</th>
     <th>{%trans "subject_title"%}</th>
+    <th>{%trans "Score"%}</th>
     <th>{%trans "Edit"%}</th>
   </thead>
   <tbody>
@@ -37,6 +38,7 @@
     <td>{{value.teacher_name}}</td>
     <td>{{value.teacher_family}}</td>
     <td>{{value.subject_title}}</td>
+    <td><a href='{{url.baseFull}}/{{school_code}}/score={{value.id}}'><i class="sf-pencil-square-o"></i></a></td>
     <td><a href='{{url.baseFull}}/{{school_code}}/lesson={{value.id}}'><i class="sf-edit"></i></a></td>
   </tr>
   {%endfor%}
