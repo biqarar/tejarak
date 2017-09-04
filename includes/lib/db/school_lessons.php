@@ -119,5 +119,39 @@ class school_lessons
 		return $result;
 	}
 
+
+	/**
+	 * Makes a team lesson.
+	 *
+	 * @param      <type>  $_lesson_id  The lesson identifier
+	 */
+	public static function make_team_lesson_name($_lesson_id)
+	{
+		if(!is_numeric($_lesson_id))
+		{
+			return false;
+		}
+
+		$query =
+		"
+			SELECT
+				CONCAT(
+					(
+						SELECT school_subjects.title FROM school_lessons INNER JOIN school_subjects ON school_lessons.subject_id = school_subjects.id WHERE school_lessons.id = $_lesson_id LIMIT 1
+					)
+					,' ',
+					(
+						SELECT teams.name FROM school_lessons INNER JOIN teams ON school_lessons.classroom = teams.id WHERE school_lessons.id = $_lesson_id LIMIT 1
+					)
+					,' ',
+					(
+						SELECT school_terms.title FROM school_lessons INNER JOIN school_terms ON school_lessons.schoolterm_id = school_terms.id WHERE school_lessons.id = $_lesson_id LIMIT 1
+					)
+				) AS `name`
+		";
+		$lesson_name = \lib\db::get($query, 'name', true);
+		return $lesson_name;
+	}
+
 }
 ?>

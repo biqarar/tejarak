@@ -14,6 +14,12 @@ class view extends \content_s\main\view
 		if($id)
 		{
 			$this->data->student = $this->model()->loadPanel($id);
+			$takenunit = $this->model()->loadTakenUnit($id);
+			if(is_array($takenunit))
+			{
+				$this->data->lesson_ids = array_column($takenunit, 'lesson_id');
+			}
+			$this->data->takenunit = $takenunit;
 		}
 
 		$school_id = \lib\router::get_url(0);

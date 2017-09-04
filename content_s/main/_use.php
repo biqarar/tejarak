@@ -56,6 +56,12 @@ trait _use
 	// API lesson
 	use \content_api\v1\lesson\tools\get;
 	use \content_api\v1\lesson\tools\add;
+
+	// API takenunit
+	use \content_api\v1\takenunit\tools\get;
+	use \content_api\v1\takenunit\tools\add;
+
+
 	/**
 	 * check team language and redirect if is set
 	 * the 'data' mean the arguments of this function is data of team

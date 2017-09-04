@@ -29,6 +29,23 @@ class model extends \content_s\main\model
 	}
 
 
+	/**
+	 * Loads a taken unit.
+	 *
+	 * @param      <type>  $_member  The member
+	 */
+	public function loadTakenUnit($_member)
+	{
+		$this->user_id      = $this->login('id');
+		$request            = [];
+		$request['school']  = \lib\router::get_url(0);
+		$request['student'] = $_member;
+		$request['term']    = null;
+		utility::set_request_array($request);
+		$result           =  $this->get_list_takenunit();
+		return $result;
+	}
+
 
 	/**
 	 * laod all lesson active in thie school
@@ -55,14 +72,14 @@ class model extends \content_s\main\model
 	{
 		$request = [];
 
-		$request['school_id'] = \lib\router::get_url(0);
+		$request['school']    = \lib\router::get_url(0);
 		$request['user_id']   = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		$request['type']      = utility::post('type');
 		$request['lesson_id'] = utility::post('id');
-
+		utility::set_request_array($request);
 		$this->user_id        = $this->login('id');
 
-		// $this->add_takenunit();
+		$this->takenunit();
 
 		if(debug::$status)
 		{

@@ -135,28 +135,35 @@ trait class_time
 			}
 		}
 
-
-		$times = \lib\db\school_lessontimes::get_lessontime_multi($lesson_id);
-		$temp = [];
-		foreach ($times as $key => $value)
+		$times = [];
+		if(isset($lesson_id))
 		{
-			if(isset($value['lesson_id']) && isset($value['lessontime_status']) && $value['lessontime_status'] === 'enable')
+			$times = \lib\db\school_lessontimes::get_lessontime_multi($lesson_id);
+		}
+
+		$temp = [];
+		if(is_array($times))
+		{
+			foreach ($times as $key => $value)
 			{
-				$dkey = \lib\utility\shortURL::encode($value['lesson_id']);
-
-				if(!isset($temp[$dkey]))
+				if(isset($value['lesson_id']) && isset($value['lessontime_status']) && $value['lessontime_status'] === 'enable')
 				{
-					$temp[$dkey] = [];
-				}
+					$dkey = \lib\utility\shortURL::encode($value['lesson_id']);
 
-				if(isset($value['weekday']) && isset($value['start']) && isset($value['end']))
-				{
-					$temp[$dkey][] =
-					[
-						'week'  => $value['weekday'],
-						'start' => $value['start'],
-						'end'   => $value['end'],
-					];
+					if(!isset($temp[$dkey]))
+					{
+						$temp[$dkey] = [];
+					}
+
+					if(isset($value['weekday']) && isset($value['start']) && isset($value['end']))
+					{
+						$temp[$dkey][] =
+						[
+							'week'  => $value['weekday'],
+							'start' => $value['start'],
+							'end'   => $value['end'],
+						];
+					}
 				}
 			}
 		}

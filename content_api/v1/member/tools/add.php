@@ -20,7 +20,11 @@ trait add
 		// default args
 		$default_args =
 		[
-			'method' => 'post'
+			'method'             => 'post',
+			'have_user_id'       => null,
+			'update_all_user_id' => false,
+			'debug'              => true,
+			'save_log'           => true,
 		];
 
 		if(!is_array($_args))
@@ -31,7 +35,7 @@ trait add
 		$_args = array_merge($default_args, $_args);
 
 		// set default title of debug
-		debug::title(T_("Operation Faild"));
+		if($_args['debug']) debug::title(T_("Operation Faild"));
 
 		// delete member mode
 		$delete_mode = false;
@@ -49,8 +53,8 @@ trait add
 		// check user id is exist
 		if(!$this->user_id)
 		{
-			logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
-			debug::error(T_("User not found"), 'user', 'permission');
+			if($_args['save_log']) logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
@@ -59,22 +63,30 @@ trait add
 		$team = utility\shortURL::decode($team);
 		if(!$team)
 		{
-			logs::set('api:member:team:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Team not set"), 'user', 'permission');
+			if($_args['save_log']) logs::set('api:member:team:not:set', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("Team not set"), 'user', 'permission');
 			return false;
 		}
-		// load team data
-		$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, ['action' => 'add_member']);
-		// check the team exist
-		if(isset($team_detail['id']))
+
+		if(!$_args['have_user_id'])
 		{
-			$team_id = $team_detail['id'];
+			// load team data
+			$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, ['action' => 'add_member']);
+			// check the team exist
+			if(isset($team_detail['id']))
+			{
+				$team_id = $team_detail['id'];
+			}
+			else
+			{
+				if($_args['save_log']) logs::set('api:member:team:notfound:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Team not found"), 'user', 'permission');
+				return false;
+			}
 		}
 		else
 		{
-			logs::set('api:member:team:notfound:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Team not found"), 'user', 'permission');
-			return false;
+			$team_id = $team;
 		}
 
 		// get firstname
@@ -82,8 +94,8 @@ trait add
 		$displayname = trim($displayname);
 		if($displayname && mb_strlen($displayname) > 50)
 		{
-			logs::set('api:member:displayname:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
+			if($_args['save_log']) logs::set('api:member:displayname:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
 		}
 
@@ -92,8 +104,8 @@ trait add
 		$firstname = trim($firstname);
 		if($firstname && mb_strlen($firstname) > 50)
 		{
-			logs::set('api:member:firstname:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
+			if($_args['save_log']) logs::set('api:member:firstname:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
 			return false;
 		}
 
@@ -102,167 +114,61 @@ trait add
 		$lastname = trim($lastname);
 		if($lastname && mb_strlen($lastname) > 50)
 		{
-			logs::set('api:member:lastname:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
+			if($_args['save_log']) logs::set('api:member:lastname:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
 			return false;
 		}
 
-		// get mobile of user
-		$mobile           = utility::request("mobile");
-		$mobile_syntax    = \lib\utility\filter::mobile($mobile);
+		$mobile           = null;
+		$mobile_syntax    = null;
 		$check_user_exist = null;
-		if($mobile && !$mobile_syntax)
+
+
+		if(!$_args['have_user_id'])
 		{
-			logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Invalid mobile number"), 'mobile', 'arguments');
-			return false;
-		}
-		elseif($mobile && $mobile_syntax && ctype_digit($mobile))
-		{
-			$mobile = $mobile_syntax;
-		}
-		else
-		{
-			$mobile_syntax = $mobile = null;
+
+			// get mobile of user
+			$mobile           = utility::request("mobile");
+			$mobile_syntax    = \lib\utility\filter::mobile($mobile);
+			$check_user_exist = null;
+			if($mobile && !$mobile_syntax)
+			{
+				if($_args['save_log']) logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid mobile number"), 'mobile', 'arguments');
+				return false;
+			}
+			elseif($mobile && $mobile_syntax && ctype_digit($mobile))
+			{
+				$mobile = $mobile_syntax;
+			}
+			else
+			{
+				$mobile_syntax = $mobile = null;
+			}
 		}
 
-		/**
-		 ****************************************************************************
-		 * find user id
-		 *
-		 * @var        <type>
-		 */
 		$user_id = null;
 		// check userid exist in userteam by this team
 		$check_not_duplicate_userteam = false;
-		// post to add new member
-		if($_args['method'] === 'post')
+
+		if($_args['have_user_id'])
 		{
-			// mobile is set
-			if($mobile)
-			{
-				$check_user_exist = \lib\db\users::get_by_mobile($mobile);
-				// the mobile was exist
-				if(isset($check_user_exist['id']))
-				{
-					$user_id = $check_user_exist['id'];
-					$check_not_duplicate_userteam = true;
-				}
-				else
-				{
-					// we need to get user id to insert new record of userteams
-					// signup empty to get user id
-					$signup =
-					[
-						'user_mobile'      => $mobile,
-						'user_pass'        => null,
-						'user_displayname' => null,
-						'user_createdate'  => date("Y-m-d H:i:s"),
-					];
-
-					\lib\db\users::insert($signup);
-					$user_id = \lib\db::insert_id();
-				}
-			}
-			else
-			{
-				// we need to get user id to insert new record of userteams
-				// signup empty to get user id
-				$signup =
-				[
-					'user_mobile'      => null,
-					'user_pass'        => null,
-					'user_displayname' => null,
-					'user_createdate'  => date("Y-m-d H:i:s"),
-				];
-
-				\lib\db\users::insert($signup);
-				$user_id = \lib\db::insert_id();
-			}
+			$user_id = $_args['have_user_id'];
 		}
-		elseif($_args['method'] === 'patch')
+		else
 		{
-			$request_user_id = utility::request('id');
-			if($request_user_id && $request_user_id = utility\shortURL::decode($request_user_id))
+			/**
+			 ****************************************************************************
+			 * find user id
+			 *
+			 * @var        <type>
+			 */
+			// post to add new member
+			if($_args['method'] === 'post')
 			{
-				$old_user_id = \lib\db\userteams::get_list(['user_id' => $request_user_id,'team_id' => $team_id, 'limit' => 1]);
-
-				if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
-				{
-					logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
-					debug::error(T_("Invalid user id"), 'user', 'system');
-					return false;
-				}
-			}
-			else
-			{
-				logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
-				debug::error(T_("User id not set"), 'user', 'system');
-				return false;
-			}
-
-			// if(isset($old_user_id['rule']) && $old_user_id['rule'] === 'admin')
-			// {
-			// 	$user_id = $old_user_id['user_id'];
-			// }
-			// else
-			if($old_user_id['mobile'])
-			{
+				// mobile is set
 				if($mobile)
 				{
-					if($mobile == $old_user_id['mobile'])
-					{
-						$user_id = $old_user_id['user_id'];
-					}
-					else
-					{
-						$check_user_exist = \lib\db\users::get_by_mobile($mobile);
-						// the mobile was exist
-						if(isset($check_user_exist['id']))
-						{
-							$user_id = $check_user_exist['id'];
-							$check_not_duplicate_userteam = true;
-						}
-						else
-						{
-							// we need to get user id to insert new record of userteams
-							// signup empty to get user id
-							$signup =
-							[
-								'user_mobile'      => $mobile,
-								'user_pass'        => null,
-								'user_displayname' => null,
-								'user_createdate'  => date("Y-m-d H:i:s"),
-							];
-
-							\lib\db\users::insert($signup);
-							$user_id = \lib\db::insert_id();
-						}
-					}
-				}
-				else
-				{
-					// the user remove mobile
-					// signup empty to get user id
-					$signup =
-					[
-						'user_mobile'      => null,
-						'user_pass'        => null,
-						'user_displayname' => null,
-						'user_createdate'  => date("Y-m-d H:i:s"),
-					];
-
-					\lib\db\users::insert($signup);
-					$user_id = \lib\db::insert_id();
-				}
-			}
-			else
-			{
-				if($mobile)
-				{
-					// unreachable old user id
-					\lib\db\users::update(['user_status' => 'unreachable'], $old_user_id['user_id']);
-
 					$check_user_exist = \lib\db\users::get_by_mobile($mobile);
 					// the mobile was exist
 					if(isset($check_user_exist['id']))
@@ -288,20 +194,143 @@ trait add
 				}
 				else
 				{
-					$user_id = $old_user_id['user_id'];
+					// we need to get user id to insert new record of userteams
+					// signup empty to get user id
+					$signup =
+					[
+						'user_mobile'      => null,
+						'user_pass'        => null,
+						'user_displayname' => null,
+						'user_createdate'  => date("Y-m-d H:i:s"),
+					];
+
+					\lib\db\users::insert($signup);
+					$user_id = \lib\db::insert_id();
 				}
 			}
-		}
+			elseif($_args['method'] === 'patch')
+			{
+				$request_user_id = utility::request('id');
+				if($request_user_id && $request_user_id = utility\shortURL::decode($request_user_id))
+				{
+					$old_user_id = \lib\db\userteams::get_list(['user_id' => $request_user_id,'team_id' => $team_id, 'limit' => 1]);
 
-		/**
-		 * end find userid
-		 ****************************************************************************
-		 */
+					if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
+					{
+						if($_args['save_log']) logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
+						if($_args['debug']) debug::error(T_("Invalid user id"), 'user', 'system');
+						return false;
+					}
+				}
+				else
+				{
+					if($_args['save_log']) logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
+					if($_args['debug']) debug::error(T_("User id not set"), 'user', 'system');
+					return false;
+				}
+
+				// if(isset($old_user_id['rule']) && $old_user_id['rule'] === 'admin')
+				// {
+				// 	$user_id = $old_user_id['user_id'];
+				// }
+				// else
+				if($old_user_id['mobile'])
+				{
+					if($mobile)
+					{
+						if($mobile == $old_user_id['mobile'])
+						{
+							$user_id = $old_user_id['user_id'];
+						}
+						else
+						{
+							$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+							// the mobile was exist
+							if(isset($check_user_exist['id']))
+							{
+								$user_id = $check_user_exist['id'];
+								$check_not_duplicate_userteam = true;
+							}
+							else
+							{
+								// we need to get user id to insert new record of userteams
+								// signup empty to get user id
+								$signup =
+								[
+									'user_mobile'      => $mobile,
+									'user_pass'        => null,
+									'user_displayname' => null,
+									'user_createdate'  => date("Y-m-d H:i:s"),
+								];
+
+								\lib\db\users::insert($signup);
+								$user_id = \lib\db::insert_id();
+							}
+						}
+					}
+					else
+					{
+						// the user remove mobile
+						// signup empty to get user id
+						$signup =
+						[
+							'user_mobile'      => null,
+							'user_pass'        => null,
+							'user_displayname' => null,
+							'user_createdate'  => date("Y-m-d H:i:s"),
+						];
+
+						\lib\db\users::insert($signup);
+						$user_id = \lib\db::insert_id();
+					}
+				}
+				else
+				{
+					if($mobile)
+					{
+						// unreachable old user id
+						\lib\db\users::update(['user_status' => 'unreachable'], $old_user_id['user_id']);
+
+						$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+						// the mobile was exist
+						if(isset($check_user_exist['id']))
+						{
+							$user_id = $check_user_exist['id'];
+							$check_not_duplicate_userteam = true;
+						}
+						else
+						{
+							// we need to get user id to insert new record of userteams
+							// signup empty to get user id
+							$signup =
+							[
+								'user_mobile'      => $mobile,
+								'user_pass'        => null,
+								'user_displayname' => null,
+								'user_createdate'  => date("Y-m-d H:i:s"),
+							];
+
+							\lib\db\users::insert($signup);
+							$user_id = \lib\db::insert_id();
+						}
+					}
+					else
+					{
+						$user_id = $old_user_id['user_id'];
+					}
+				}
+			}
+
+			/**
+			 * end find userid
+			 ****************************************************************************
+			 */
+		}
 
 		if(!$user_id)
 		{
-			logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
-			debug::error(T_("User id not found"), 'user', 'system');
+			if($_args['save_log']) logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
 		// to redirect site in new url
@@ -312,8 +341,8 @@ trait add
 			$userteam_record = \lib\db\userteams::get(['user_id' => $user_id, 'team_id' => $team_id, 'limit' => 1]);
 			if($userteam_record)
 			{
-				logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
-				debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
+				if($_args['save_log']) logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
 				return false;
 			}
 		}
@@ -322,8 +351,8 @@ trait add
 		$postion     = utility::request('postion');
 		if($postion && mb_strlen($postion) > 100)
 		{
-			logs::set('api:member:postion:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
+			if($_args['save_log']) logs::set('api:member:postion:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
 			return false;
 		}
 
@@ -332,8 +361,8 @@ trait add
 		$personnelcode = trim($personnelcode);
 		if($personnelcode && mb_strlen($personnelcode) > 9)
 		{
-			logs::set('api:member:code:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
+			if($_args['save_log']) logs::set('api:member:code:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
 			return false;
 		}
 
@@ -343,8 +372,8 @@ trait add
 		{
 			if(!in_array($rule, ['user', 'admin', 'gateway']))
 			{
-				logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
-				debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
+				if($_args['save_log']) logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
 				return false;
 			}
 		}
@@ -358,8 +387,8 @@ trait add
 		{
 			if(!in_array($visibility, ['visible', 'hidden']))
 			{
-				logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
-				debug::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
+				if($_args['save_log']) logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
 				return false;
 			}
 		}
@@ -374,8 +403,8 @@ trait add
 		{
 			if(!in_array($status, ['active', 'deactive', 'suspended']))
 			{
-				logs::set('api:member:status:invalid', $this->user_id, $log_meta);
-				debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				if($_args['save_log']) logs::set('api:member:status:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
 		}
@@ -391,8 +420,8 @@ trait add
 
 			if(count($another_admin) === 1)
 			{
-				logs::set('api:member:no:admin:in:team', $this->user_id, $log_meta);
-				debug::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
+				if($_args['save_log']) logs::set('api:member:no:admin:in:team', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
 				return false;
 			}
 		}
@@ -409,8 +438,8 @@ trait add
 		$date_enter  = utility::request('date_enter');
 		if($date_enter && \DateTime::createFromFormat('Y-m-d', $date_enter) === false)
 		{
-			logs::set('api:member:date_enter:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
+			if($_args['save_log']) logs::set('api:member:date_enter:invalid', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
 			return false;
 		}
 
@@ -418,8 +447,8 @@ trait add
 		$date_exit   = utility::request('date_exit');
 		if($date_exit && \DateTime::createFromFormat('Y-m-d', $date_exit) === false)
 		{
-			logs::set('api:member:date_exit:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
+			if($_args['save_log']) logs::set('api:member:date_exit:invalid', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
 			return false;
 		}
 
@@ -452,40 +481,40 @@ trait add
 		$national_code = utility::request('national_code');
 		if($national_code && mb_strlen($national_code) > 50)
 		{
-			logs::set('api:member:national_code:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
+			if($_args['save_log']) logs::set('api:member:national_code:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
 			return false;
 		}
 
 		$father = utility::request('father');
 		if($father && mb_strlen($father) > 50)
 		{
-			logs::set('api:member:father:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
+			if($_args['save_log']) logs::set('api:member:father:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
 			return false;
 		}
 
 		$birthday      = utility::request('birthday');
 		if($birthday && mb_strlen($birthday) > 50)
 		{
-			logs::set('api:member:birthday:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
+			if($_args['save_log']) logs::set('api:member:birthday:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
 			return false;
 		}
 
 		$gender        = utility::request('gender');
 		if($gender && !in_array($gender, ['male', 'female']))
 		{
-			logs::set('api:member:gender:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid gender field"), 'gender', 'arguments');
+			if($_args['save_log']) logs::set('api:member:gender:invalid', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("Invalid gender field"), 'gender', 'arguments');
 			return false;
 		}
 
 		$type  = utility::request('type');
-		if($type && !in_array($type, ['teacher','student', 'manager', 'deputy', 'janitor', 'organizer', 'sponsor']))
+		if($type && !in_array($type, ['teacher','student','manager','deputy','janitor','organizer','sponsor', 'takenunit_teacher', 'takenunit_student']))
 		{
-			logs::set('api:member:type:max:length', $this->user_id, $log_meta);
-			debug::error(T_("Invalid type of member"), 'type', 'arguments');
+			if($_args['save_log']) logs::set('api:member:type:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("Invalid type of member"), 'type', 'arguments');
 			return false;
 		}
 
@@ -569,8 +598,8 @@ trait add
 			$id = utility\shortURL::decode($id);
 			if(!$id)
 			{
-				logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
-				debug::error(T_("Id not set"), 'id', 'arguments');
+				if($_args['save_log']) logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Id not set"), 'id', 'arguments');
 				return false;
 			}
 
@@ -578,8 +607,8 @@ trait add
 
 			if(!$check_user_in_team || !isset($check_user_in_team['id']))
 			{
-				logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
-				debug::error(T_("This user is not in this team"), 'id', 'arguments');
+				if($_args['save_log']) logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("This user is not in this team"), 'id', 'arguments');
 				return false;
 			}
 
@@ -632,19 +661,19 @@ trait add
 
 		if(debug::$status)
 		{
-			debug::title(T_("Operation Complete"));
+			if($_args['debug']) debug::title(T_("Operation Complete"));
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("Member successfully added"));
+				if($_args['debug']) debug::true(T_("Member successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("Member successfully updated"));
+				if($_args['debug']) debug::true(T_("Member successfully updated"));
 			}
 			else
 			{
-				debug::true(T_("Member successfully removed"));
+				if($_args['debug']) debug::true(T_("Member successfully removed"));
 			}
 		}
 
@@ -675,45 +704,45 @@ trait add
 		$barcode1 = utility::request("barcode1");
 		if($barcode1 && mb_strlen($barcode1) > 100)
 		{
-			logs::set('api:member:barcode:max:limit:barcode1', $this->user_id, $log_meta);
-			debug::error(T_("You must set barcode less than 100 character"), 'barcode', 'arguments');
+			if($_args['save_log']) logs::set('api:member:barcode:max:limit:barcode1', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set barcode less than 100 character"), 'barcode', 'arguments');
 			return false;
 		}
 
 		if($barcode1 && mb_strlen($barcode1) < 3)
 		{
-			logs::set('api:member:barcode:min:limit:barcode1', $this->user_id, $log_meta);
-			debug::error(T_("You must set barcode larger than 3 character"), 'barcode', 'arguments');
+			if($_args['save_log']) logs::set('api:member:barcode:min:limit:barcode1', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set barcode larger than 3 character"), 'barcode', 'arguments');
 			return false;
 		}
 
 		$qrcode1 = utility::request("qrcode1");
 		if($qrcode1 && mb_strlen($qrcode1) > 100)
 		{
-			logs::set('api:member:qrcode:max:limit:qrcode1', $this->user_id, $log_meta);
-			debug::error(T_("You must set qrcode less than 100 character"), 'qrcode', 'arguments');
+			if($_args['save_log']) logs::set('api:member:qrcode:max:limit:qrcode1', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set qrcode less than 100 character"), 'qrcode', 'arguments');
 			return false;
 		}
 
 		if($qrcode1 && mb_strlen($qrcode1) < 3)
 		{
-			logs::set('api:member:qrcode:min:limit:qrcode1', $this->user_id, $log_meta);
-			debug::error(T_("You must set qrcode larger than 3 character"), 'qrcode', 'arguments');
+			if($_args['save_log']) logs::set('api:member:qrcode:min:limit:qrcode1', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set qrcode larger than 3 character"), 'qrcode', 'arguments');
 			return false;
 		}
 
 		$rfid1 = utility::request("rfid1");
 		if($rfid1 && mb_strlen($rfid1) > 100)
 		{
-			logs::set('api:member:rfid:max:limit:rfid1', $this->user_id, $log_meta);
-			debug::error(T_("You must set rfid less than 100 character"), 'rfid', 'arguments');
+			if($_args['save_log']) logs::set('api:member:rfid:max:limit:rfid1', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set rfid less than 100 character"), 'rfid', 'arguments');
 			return false;
 		}
 
 		if($rfid1 && mb_strlen($rfid1) < 3)
 		{
-			logs::set('api:member:rfid:min:limit:rfid1', $this->user_id, $log_meta);
-			debug::error(T_("You must set rfid larger than 3 character"), 'rfid', 'arguments');
+			if($_args['save_log']) logs::set('api:member:rfid:min:limit:rfid1', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set rfid larger than 3 character"), 'rfid', 'arguments');
 			return false;
 		}
 

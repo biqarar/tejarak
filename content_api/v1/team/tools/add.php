@@ -12,7 +12,10 @@ trait add
 		$edit_mode = false;
 		$default_args =
 		[
-			'method' => 'post'
+			'method'               => 'post',
+			'related'              => null,
+			'related_id'           => null,
+			'auto_insert_userteam' => true,
 		];
 
 		if(!is_array($_args))
@@ -175,12 +178,12 @@ trait add
 				return false;
 			}
 
-			if($check_owner['parent'])
-			{
-				logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
-				debug::error(T_("This parent is a child of another team"), 'parent', 'arguments');
-				return false;
-			}
+			// if($check_owner['parent'])
+			// {
+			// 	logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
+			// 	debug::error(T_("This parent is a child of another team"), 'parent', 'arguments');
+			// 	return false;
+			// }
 		}
 
 
@@ -230,7 +233,6 @@ trait add
 			return false;
 		}
 
-
 		$args                    = [];
 		$args['creator']         = $this->user_id;
 		$args['name']            = $name;
@@ -259,6 +261,8 @@ trait add
 		$args['parent']          = $parent ? $parent : null;
 		$args['cardsize']        = $cardsize ? $cardsize : null;
 		$args['type']            = $type ? $type : null;
+		$args['related']         = $_args['related'];
+		$args['related_id']      = $_args['related_id'];
 
 		\lib\storage::set_last_team_added($shortname);
 
@@ -284,14 +288,18 @@ trait add
 				return false;
 			}
 
+			\lib\storage::set_last_team_id_added($team_id);
 			\lib\storage::set_last_team_code_added(\lib\utility\shortURL::encode($team_id));
 
-			$userteam_args                = [];
-			$userteam_args['user_id']     = $this->user_id;
-			$userteam_args['team_id']     = $team_id;
-			$userteam_args['rule']        = 'admin';
-			$userteam_args['displayname'] = 'You';
-			\lib\db\userteams::insert($userteam_args);
+			if($_args['auto_insert_userteam'])
+			{
+				$userteam_args                = [];
+				$userteam_args['user_id']     = $this->user_id;
+				$userteam_args['team_id']     = $team_id;
+				$userteam_args['rule']        = 'admin';
+				$userteam_args['displayname'] = 'You';
+				\lib\db\userteams::insert($userteam_args);
+			}
 
 			$insert_team_plan =
 			[
