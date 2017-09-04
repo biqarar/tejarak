@@ -7,7 +7,8 @@ class lessontimes
 
 	public static $public_show_field =
 	"
-		classtimes.*
+		classtimes.*,
+		lessontimes.status AS `lessontime_status`
 	";
 
 	public static $master_join =
@@ -100,6 +101,17 @@ class lessontimes
 		$_option = array_merge($default_option, $_option);
 		$result = \lib\db\config::public_search('lessontimes', $_search, $_option);
 		return $result;
+	}
+
+
+	public static function remove($_where)
+	{
+		$_where = \lib\db\config::make_where($_where);
+		if($_where)
+		{
+			$query = " UPDATE lessontimes SET status = 'disable' WHERE $_where ";
+			return \lib\db::query($query);
+		}
 	}
 
 }

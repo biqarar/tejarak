@@ -68,6 +68,36 @@
 
       <label class="c">{%trans "Class times"%}</label>
 
+      {%if lesson.times%}
+        {% for key, value in lesson.times%}
+        <div class="f c12 g1 mA5">
+        <div class="c f">
+          <select class="c" name="week-{{key + 1}}">
+            <option value="">{%trans "Select week day"%}</option>
+            <option value="saturday" {%if value.week == 'saturday' %}selected{%endif%}>{%trans "Saturday"%}</option>
+            <option value="sunday" {%if value.week == 'sunday' %}selected{%endif%}>{%trans "Sunday"%}</option>
+            <option value="monday" {%if value.week == 'monday' %}selected{%endif%}>{%trans "Monday"%}</option>
+            <option value="tuesday" {%if value.week == 'tuesday' %}selected{%endif%}>{%trans "Tuesday"%}</option>
+            <option value="wednesday" {%if value.week == 'wednesday' %}selected{%endif%}>{%trans "Wednesday"%}</option>
+            <option value="thursday" {%if value.week == 'thursday' %}selected{%endif%}>{%trans "Thursday"%}</option>
+            <option value="friday" {%if value.week == 'friday' %}selected{%endif%}>{%trans "Friday"%}</option>
+          </select>
+        </div>
+
+        <div class="c f">
+          <!-- <label class="c">{%trans "Start time"%}</label> -->
+          <input type="text" name="start-{{key + 1}}" placeholder='{%trans "Start time"%}' value="{{value.start}}" maxlength='30' minlength="3" class="c">
+        </div>
+
+        <div class="c f">
+          <!-- <label class="c">{%trans "End time"%}</label> -->
+          <input type="text" name="end-{{key + 1}}" placeholder='{%trans "End time"%}' value="{{value.end}}" maxlength='30' minlength="3" class="c">
+        </div>
+      </div>
+      {%endfor%}
+
+      {%else%}
+
       <div class="f c12 g1 mA5">
         <div class="c f">
           <select class="c" name="week-1">
@@ -146,6 +176,7 @@
         </div>
       </div>
 
+      {%endif%}
 
      <div class="f c12 g1 mA5">
       </div>

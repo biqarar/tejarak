@@ -104,6 +104,12 @@ trait class_time
 	}
 
 
+
+	/**
+	 * Gets the lesson times.
+	 *
+	 * @param      <type>  $_data  The data
+	 */
 	public function get_lesson_times(&$_data)
 	{
 		if(isset($_data['lesson_id']) && \lib\utility\shortURL::is($_data['lesson_id']))
@@ -113,10 +119,96 @@ trait class_time
 
 			$times = \lib\db\lessontimes::get_lessontime(['lesson_id' => $lesson_id]);
 
-			// var_dump($times);
+			$temp = [];
 
+			if($times && is_array($times))
+			{
+				foreach ($times as $key => $value)
+				{
+					if(isset($value['weekday']) && isset($value['start']) && isset($value['end']) && isset($value['lessontime_status']) && $value['lessontime_status'] === 'enable')
+					{
+						$temp[] =
+						[
+							'week'  => $value['weekday'],
+							'start' => $value['start'],
+							'end'   => $value['end'],
+						];
+					}
+				}
+			}
+			$_data['times'] = $temp;
 		}
-		// var_dump($_data);exit();
+
+	}
+
+
+	/**
+	 * update
+	 *
+	 * @param      <type>  $_args         The arguments
+	 * @param      <type>  $_lesson_data  The lesson data
+	 */
+	public function class_time_update($_args, $_lesson_data)
+	{
+		$times = \lib\db\lessontimes::get_lessontime(['lesson_id' => $_lesson_data['id']]);
+		if(is_array($times))
+		{
+			$old_times = array_column($times, 'id');
+		}
+
+		$new_times = $this->classes_time_id;
+
+		$must_insert = [];
+		$must_remove = [];
+
+		foreach ($new_times as $key => $value)
+		{
+			if(!in_array($value, $old_times))
+			{
+				$must_insert[] = $value;
+			}
+		}
+
+		foreach ($old_times as $key => $value)
+		{
+			if(!in_array($value, $new_times))
+			{
+				$must_remove[] = $value;
+			}
+		}
+
+		if(!empty($must_insert))
+		{
+			$insert_lesson_time = [];
+			foreach ($must_insert as $key => $value)
+			{
+				$insert_lesson_time[] =
+				[
+					'lesson_id'    => $_lesson_data['id'],
+					'classtime_id' => $value,
+					'creator'      => $this->user_id,
+				];
+			}
+
+			if(!empty($insert_lesson_time))
+			{
+				\lib\db\lessontimes::multi_insert($insert_lesson_time);
+			}
+		}
+
+		if(!empty($must_remove))
+		{
+			foreach ($must_remove as $key => $value)
+			{
+				$temp =
+				[
+					'lesson_id'    => $_lesson_data['id'],
+					'classtime_id' => $value,
+				];
+				\lib\db\lessontimes::remove($temp);
+			}
+		}
+
 	}
 
 }

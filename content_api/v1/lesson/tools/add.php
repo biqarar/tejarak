@@ -92,7 +92,7 @@ trait add
 
 		$classroom = utility::request('classroom');
 		$classroom = utility\shortURL::decode($classroom);
-		if(!$terms)
+		if(!$classroom)
 		{
 			logs::set('api:lesson:classroom:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid classroom id"));
@@ -101,7 +101,7 @@ trait add
 
 		$subject = utility::request('subject');
 		$subject = utility\shortURL::decode($subject);
-		if(!$terms)
+		if(!$subject)
 		{
 			logs::set('api:lesson:subject:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid subject id"));
@@ -110,7 +110,7 @@ trait add
 
 		$teacher = utility::request('teacher');
 		$teacher = utility\shortURL::decode($teacher);
-		if(!$terms)
+		if(!$teacher)
 		{
 			logs::set('api:lesson:teacher:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid teacher id"));
@@ -183,8 +183,15 @@ trait add
 
 			unset($args['school_id']);
 
-			if(!utility::isset_request('title')) 		unset($args['title']);
-			if(!utility::isset_request('desc')) 		unset($args['desc']);
+			if(!utility::isset_request('title')) 		 unset($args['title']);
+			if(!utility::isset_request('desc')) 		 unset($args['desc']);
+			if(!utility::isset_request('terms')) 		 unset($args['schoolterm_id']);
+			if(!utility::isset_request('subject')) 	 	 unset($args['subject_id']);
+			if(!utility::isset_request('classroom')) 	 unset($args['place_id']);
+			if(!utility::isset_request('teacher')) 		 unset($args['teacher']);
+			if(!utility::isset_request('desc')) 		 unset($args['desc']);
+
+			$this->class_time_update($args, $check_user_in_school);
 
 			if(!empty($args))
 			{
