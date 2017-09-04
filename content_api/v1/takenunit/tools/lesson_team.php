@@ -161,5 +161,59 @@ trait lesson_team
 			// $userteam_request_student['gender']           = null;
 		}
 	}
+
+
+	public function check_teams_of_lesson_update($_args, $_update_type)
+	{
+		$lesson_id = utility\shortURL::decode(utility::request('lesson_id'));
+		$get_lesson_team = \lib\db\teams::get(['related' => 'school_lessons', 'related_id' => $lesson_id, 'type' => 'lesson', 'limit' => 1]);
+		if(isset($get_lesson_team['id']))
+		{
+			$lesson_team_id = $get_lesson_team['id'];
+			$lesson_team_code = \lib\utility\shortURL::encode($lesson_team_id);
+		}
+		else
+		{
+			return false;
+		}
+
+		$old_request = utility::request();
+
+		$student = $_args['student'];
+		$student_user_id = \lib\db\userteams::get(['id' => $student, 'limit' => 1]);
+		if(isset($student_user_id['user_id']))
+		{
+
+			$userteam_request_student['team']   = $lesson_team_code;
+			$userteam_request_student['status'] = $_update_type;
+
+			utility::set_request_array($userteam_request_student);
+
+			$this->add_member(['have_user_id' => $student_user_id['user_id'], 'debug' => false, 'method' => 'patch']);
+
+			utility::set_request_array($old_request);
+			// $userteam_request_student['mobile']           = null;
+			// $userteam_request_student['id']               = null;
+			// $userteam_request_student['visibility']       = null;
+			// $userteam_request_student['postion']          = null;
+			// $userteam_request_student['personnel_code']   = null;
+			// $userteam_request_student['status']           = null;
+			// $userteam_request_student['allow_plus']       = null;
+			// $userteam_request_student['allow_minus']      = null;
+			// $userteam_request_student['24h']              = null;
+			// $userteam_request_student['remote_user']      = null;
+			// $userteam_request_student['is_default']       = null;
+			// $userteam_request_student['allow_desc_enter'] = null;
+			// $userteam_request_student['allow_desc_exit']  = null;
+			// $userteam_request_student['date_enter']       = null;
+			// $userteam_request_student['date_exit']        = null;
+			// $userteam_request_student['file']             = null;
+			// $userteam_request_student['national_code']    = null;
+			// $userteam_request_student['father']           = null;
+			// $userteam_request_student['birthday']         = null;
+			// $userteam_request_student['gender']           = null;
+		}
+
+	}
 }
 ?>

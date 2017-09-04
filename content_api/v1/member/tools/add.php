@@ -594,13 +594,20 @@ trait add
 		}
 		elseif($_args['method'] === 'patch')
 		{
-			$id = utility::request('id');
-			$id = utility\shortURL::decode($id);
-			if(!$id)
+			if(!$_args['have_user_id'])
 			{
-				if($_args['save_log']) logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
-				if($_args['debug']) debug::error(T_("Id not set"), 'id', 'arguments');
-				return false;
+				$id = utility::request('id');
+				$id = utility\shortURL::decode($id);
+				if(!$id)
+				{
+					if($_args['save_log']) logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
+					if($_args['debug']) debug::error(T_("Id not set"), 'id', 'arguments');
+					return false;
+				}
+			}
+			else
+			{
+				$id = $_args['have_user_id'];
 			}
 
 			$check_user_in_team = \lib\db\userteams::get(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);

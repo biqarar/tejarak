@@ -148,6 +148,7 @@ trait get
 
 		$meta              = [];
 		$meta['school_userlessons.school_id'] = $school_id;
+		$meta['school_userlessons.status']    = 'enable';
 		$meta['school_userlessons.student']   = $user_in_school;
 		if($term)
 		{

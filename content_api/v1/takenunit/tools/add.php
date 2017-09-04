@@ -168,11 +168,22 @@ trait add
 
 		$check_takedunit = \lib\db\school_userlessons::get($check_takedunit);
 
-		if(isset($check_takedunit['id']) && $type === 'takenunit')
+		$must_insert_school_userlesson_record = true;
+		$must_update_school_userlesson_record = false;
+
+		if(isset($check_takedunit['id']) && isset($check_takedunit['status']) && $type === 'takenunit')
 		{
-			logs::set('api:takenunit:lesson_detail:from:another:school', $this->user_id, $log_meta);
-			debug::error(T_("This lesson added to this user before"), 'lesson_id', 'permission');
-			return false;
+			if($check_takedunit['status'] === 'enable')
+			{
+				logs::set('api:takenunit:lesson_detail:from:another:school', $this->user_id, $log_meta);
+				debug::error(T_("This lesson added to this user before"), 'lesson_id', 'permission');
+				return false;
+			}
+			else
+			{
+				$must_insert_school_userlesson_record = false;
+				$must_update_school_userlesson_record = true;
+			}
 		}
 
 		// ready to insert userschool or userbranch record
@@ -190,74 +201,44 @@ trait add
 
 		if($_args['method'] === 'post' && $type === 'takenunit')
 		{
-			\lib\db\school_userlessons::insert($args);
-
-			if(!debug::$status)
+			if($must_insert_school_userlesson_record)
 			{
-				return false;
+				\lib\db\school_userlessons::insert($args);
+				$this->check_teams_of_lesson($args);
 			}
 
-			$this->check_teams_of_lesson($args);
-		}
-		elseif($_args['method'] === 'patch')
-		{
-			$id = utility::request('id');
-			$id = utility\shortURL::decode($id);
-			if(!$id)
+			if($must_update_school_userlesson_record)
 			{
-				logs::set('api:takenunit:pathc:id:not:set', $this->user_id, $log_meta);
-				debug::error(T_("Id not set"), 'id', 'arguments');
-				return false;
+				$this->check_teams_of_lesson_update($args, 'active');
+				\lib\db\school_userlessons::update(['status' => 'enable'], $check_takedunit['id']);
 			}
-
-			$check_user_in_school = \lib\db\school_userlessons::get(['id' => $id, 'school_id' => $school_id, 'limit' => 1]);
-
-			if(!$check_user_in_school || !isset($check_user_in_school['id']))
-			{
-				logs::set('api:takenunit:user:not:in:school', $this->user_id, $log_meta);
-				debug::error(T_("This user is not in this school"), 'id', 'arguments');
-				return false;
-			}
-
-			unset($args['school_id']);
-
-			if(!utility::isset_request('title')) 		 unset($args['title']);
-			if(!utility::isset_request('desc')) 		 unset($args['desc']);
-			if(!utility::isset_request('terms')) 		 unset($args['schoolterm_id']);
-			if(!utility::isset_request('subject')) 	 	 unset($args['subject_id']);
-			if(!utility::isset_request('classroom')) 	 unset($args['classroom']);
-			if(!utility::isset_request('teacher')) 		 unset($args['teacher']);
-			if(!utility::isset_request('desc')) 		 unset($args['desc']);
-
-			$this->check_teams_of_lesson_remove($args, $check_user_in_school);
-
-			if(!empty($args))
-			{
-				\lib\db\school_lessons::update($args, $check_user_in_school['id']);
-			}
-
 
 		}
-		elseif ($_args['method'] === 'delete')
+		elseif($_args['method'] === 'post' && $type === 'removeunit')
 		{
-			// \lib\db\school_lessons::remove($args);
+			$this->check_teams_of_lesson_update($args, 'deactive');
+
+			if(isset($check_takedunit['id']))
+			{
+				\lib\db\school_userlessons::update(['status' => 'disable'], $check_takedunit['id']);
+			}
 		}
 
 		if(debug::$status)
 		{
 			debug::title(T_("Operation Complete"));
 
-			if($_args['method'] === 'post')
+			if($type === 'takenunit')
 			{
 				debug::true(T_("lesson successfully added"));
 			}
-			elseif($_args['method'] === 'patch')
+			elseif($type === 'removeunit')
 			{
-				debug::true(T_("lesson successfully updated"));
+				debug::true(T_("lesson successfully removed"));
 			}
 			else
 			{
-				debug::true(T_("lesson successfully removed"));
+				debug::true(T_("lesson successfully updated"));
 			}
 		}
 
