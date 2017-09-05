@@ -450,6 +450,49 @@ trait get
 				case 'nationalcode':
 					$result['national_code'] = isset($value) ? (string) $value : null;
 					break;
+				case 'marital':
+					$result['marital'] = isset($value) ? $value : null;
+					break;
+
+				case 'childcount':
+					$result['child'] = isset($value) ? $value : null;
+					break;
+
+				case 'brithplace':
+					$result['brithcity'] = isset($value) ? $value : null;
+					break;
+
+				case 'from':
+					$result['shfrom'] = isset($value) ? $value : null;
+					break;
+
+				case 'shcode':
+					$result['shcode'] = isset($value) ? $value : null;
+					break;
+
+				case 'education':
+					$result['education'] = isset($value) ? $value : null;
+					break;
+
+				case 'job':
+					$result['job'] = isset($value) ? $value : null;
+					break;
+
+				case 'pasportcode':
+					$result['passport_code'] = isset($value) ? $value : null;
+					break;
+
+
+				case 'cardnumber':
+					$result['payment_account_number'] = isset($value) ? $value : null;
+					break;
+
+				case 'shaba':
+					$result['shaba'] = isset($value) ? $value : null;
+					break;
+
+
+
 				case 'postion':
 				case 'displayname':
 				case 'firstname':

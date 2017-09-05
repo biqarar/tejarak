@@ -30,7 +30,7 @@ ALTER TABLE `userteams` ADD `brithplace` varchar(100) CHARACTER SET utf8mb4 COLL
 ALTER TABLE `userteams` ADD `region` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
 
 ALTER TABLE `userteams` ADD `gender` enum('male','female') NULL DEFAULT NULL;
-ALTER TABLE `userteams` ADD `marital` enum('single','marride') NULL DEFAULT NULL;
+ALTER TABLE `userteams` ADD `marital` enum('single','married') NULL DEFAULT NULL;
 
 ALTER TABLE `userteams` ADD `childcount` smallint(2) NULL DEFAULT NULL;
 ALTER TABLE `userteams` ADD `education` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;

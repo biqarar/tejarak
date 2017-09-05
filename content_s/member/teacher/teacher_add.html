@@ -57,7 +57,8 @@
       <div class="f g1">
        <div class="cauto s0 lbl"><label for="birthday">{%trans "Birthday"%}</label></div>
        <div class="c">
-         <input type="text" name="birthday" id="birthday" placeholder='{%trans "Birthday"%}' value="{{teacher.birthday}}" maxlength='50'>
+         <!-- <input class="input w200 datepicker pwt-datepicker-input-element" data-format="YYYY/MM/DD" data-view="year" name="birthday" id="birthday" placeholder='{%trans "Birthday"%}' value="{{teacher.birthday}}"> -->
+         <input class="" type="text" name="birthday" id="birthday" placeholder='{%trans "Birthday"%}' value="{{teacher.birthday}}" maxlength='50'>
        </div>
       </div>
 
@@ -76,6 +77,102 @@
          </div>
         </div>
       </div>
+
+    {%if edit_mode%}
+       <div class="f g1">
+       <div class="cauto s0 lbl"><label for="marital">{%trans "Marital"%}</label></div>
+       <div class="c">
+         <div class="f radio1">
+          <div class="c6">
+           <input type="radio" id="r-single" name="marital" value="single" {%if teacher.marital == 'single' or  not teacher.marital%}checked{%endif%} >
+           <label for="r-single">{%trans "Single"%}</label>
+          </div>
+          <div class="c6">
+           <input type="radio" id="r-married" name="marital" value="married" {%if teacher.marital == 'married' %}checked{%endif%}>
+           <label for="r-married">{%trans "Married"%}</label>
+          </div>
+         </div>
+        </div>
+      </div>
+
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="child">{%trans "Child count"%}</label></div>
+       <div class="c">
+         <input type="text" name="child" id="child" placeholder='{%trans "Child count"%}' value="{{teacher.child}}" maxlength='50'>
+       </div>
+      </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="brithcity">{%trans "Birth city"%}</label></div>
+       <div class="c">
+         <input type="text" name="brithcity" id="brithcity" placeholder='{%trans "Birth city"%}' value="{{teacher.brithcity}}" maxlength='50'>
+       </div>
+      </div>
+
+      {%if site.currentlang == 'fa'%}
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="shfrom">{%trans "Sh from"%}</label></div>
+       <div class="c">
+         <input type="text" name="shfrom" id="shfrom" placeholder='{%trans "Sh from"%}' value="{{teacher.shfrom}}" maxlength='50'>
+       </div>
+      </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="shcode">{%trans "Sh code"%}</label></div>
+       <div class="c">
+         <input type="text" name="shcode" id="shcode" placeholder='{%trans "Sh code"%}' value="{{teacher.shcode}}" maxlength='50'>
+       </div>
+      </div>
+      {%endif%}
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="education">{%trans "Last education"%}</label></div>
+       <div class="c">
+         <input type="text" name="education" id="education" placeholder='{%trans "Last education"%}' value="{{teacher.education}}" maxlength='50'>
+       </div>
+      </div>
+
+       <div class="f g1">
+       <div class="cauto s0 lbl"><label for="job">{%trans "Job"%}</label></div>
+       <div class="c">
+         <input type="text" name="job" id="job" placeholder='{%trans "Job"%}' value="{{teacher.job}}" maxlength='50'>
+       </div>
+      </div>
+
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="passport_code">{%trans "Pasport code"%}</label></div>
+       <div class="c">
+         <input type="text" name="passport_code" id="passport_code" placeholder='{%trans "Pasport code"%}' value="{{teacher.passport_code}}" maxlength='50'>
+       </div>
+      </div>
+
+
+ <!--      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="passport_expire">{%trans "Pasport expire"%}</label></div>
+       <div class="c">
+         <input type="text" name="passport_expire" id="passport_expire" placeholder='{%trans "Pasport expire"%}' value="{{teacher.passport_expire}}" maxlength='50'>
+       </div>
+      </div> -->
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="payment_account_number">{%trans "Bank account number"%}</label></div>
+       <div class="c">
+         <input type="text" name="payment_account_number" id="payment_account_number" placeholder='{%trans "Bank account number"%}' value="{{teacher.payment_account_number}}" maxlength='50'>
+       </div>
+      </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="shaba">{%trans "Shaba number"%}</label></div>
+       <div class="c">
+         <input type="text" name="shaba" id="shaba" placeholder='{%trans "Last education degree"%}' value="{{teacher.shaba}}" maxlength='50'>
+       </div>
+      </div>
+
+
+    {%endif%}
 
 
      <div class="f g1">

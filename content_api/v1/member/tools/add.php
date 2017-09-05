@@ -7,7 +7,7 @@ use \lib\db\logs;
 trait add
 {
 
-
+	use check_args;
 	/**
 	 * Adds a member.
 	 *
@@ -17,6 +17,10 @@ trait add
 	 */
 	public function add_member($_args = [])
 	{
+
+		// ready to insert userteam or userbranch record
+		$args                  = [];
+
 		// default args
 		$default_args =
 		[
@@ -477,57 +481,19 @@ trait add
 			}
 		}
 
-
-		$national_code = utility::request('national_code');
-		if($national_code && mb_strlen($national_code) > 50)
+		/**
+		 * check and set the args
+		 */
+		$return_function = $this->check_args($_args, $args, $log_meta);
+		if(!debug::$status || $return_function === false)
 		{
-			if($_args['save_log']) logs::set('api:member:national_code:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
 			return false;
 		}
 
-		$father = utility::request('father');
-		if($father && mb_strlen($father) > 50)
-		{
-			if($_args['save_log']) logs::set('api:member:father:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
-			return false;
-		}
-
-		$birthday      = utility::request('birthday');
-		if($birthday && mb_strlen($birthday) > 50)
-		{
-			if($_args['save_log']) logs::set('api:member:birthday:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
-			return false;
-		}
-
-		$gender        = utility::request('gender');
-		if($gender && !in_array($gender, ['male', 'female']))
-		{
-			if($_args['save_log']) logs::set('api:member:gender:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("Invalid gender field"), 'gender', 'arguments');
-			return false;
-		}
-
-		$type  = utility::request('type');
-		if($type && !in_array($type, ['teacher','student','manager','deputy','janitor','organizer','sponsor', 'takenunit_teacher', 'takenunit_student']))
-		{
-			if($_args['save_log']) logs::set('api:member:type:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("Invalid type of member"), 'type', 'arguments');
-			return false;
-		}
-
-
-		// ready to insert userteam or userbranch record
-		$args                  = [];
 		$args['team_id']       = $team_id;
 		$args['user_id']       = $user_id;
 		$args['postion']       = trim($postion);
 		$args['personnelcode'] = trim($personnelcode);
-		$args['24h']           = $is24h;
-		$args['remote']        = $remote;
-		$args['isdefault']     = $isdefault;
 		if($date_enter)
 		{
 			$args['dateenter']     = $date_enter;
@@ -537,8 +503,9 @@ trait add
 		$args['lastname']       = trim($lastname);
 		$args['fileid']         = $file_id;
 		$args['fileurl']        = $file_url;
-		$args['allowplus']      = $allowplus;
-		$args['allowminus']     = $allowminus;
+
+
+
 		$args['status']         = $status;
 
 		if($displayname)
@@ -552,14 +519,8 @@ trait add
 
 		$args['rule']           = $rule;
 		$args['visibility']     = $visibility;
-		$args['allowdescenter'] = $allowdescenter;
-		$args['allowdescexit']  = $allowdescexit;
 
-		$args['nationalcode']   = trim($national_code);
-		$args['father']         = trim($father);
-		$args['birthday']       = trim($birthday);
-		$args['gender']         = trim($gender);
-		$args['type']           = trim($type);
+
 
 		// check file is set or no
 		// if file is not set and the user have a file load the default file
@@ -620,30 +581,42 @@ trait add
 			}
 
 			unset($args['team_id']);
-			if(!utility::isset_request('postion')) 			unset($args['postion']);
-			if(!utility::isset_request('personnel_code'))	unset($args['personnelcode']);
-			if(!utility::isset_request('24h')) 				unset($args['24h']);
-			if(!utility::isset_request('remote_user')) 		unset($args['remote']);
-			if(!utility::isset_request('is_default')) 		unset($args['isdefault']);
-			if(!utility::isset_request('date_enter')) 		unset($args['dateenter']);
-			if(!utility::isset_request('date_exit')) 		unset($args['dateexit']);
-			if(!utility::isset_request('firstname')) 		unset($args['firstname']);
-			if(!utility::isset_request('lastname')) 		unset($args['lastname']);
-			if(!utility::isset_request('file')) 			unset($args['fileid'], $args['fileurl']);
-			if(!utility::isset_request('allow_plus')) 		unset($args['allowplus']);
-			if(!utility::isset_request('allow_minus')) 		unset($args['allowminus']);
-			if(!utility::isset_request('status')) 			unset($args['status']);
-			if(!utility::isset_request('displayname')) 		unset($args['displayname']);
-			if(!utility::isset_request('rule')) 			unset($args['rule']);
-			if(!utility::isset_request('visibility')) 		unset($args['visibility']);
-			if(!utility::isset_request('allow_desc_enter')) unset($args['allowdescenter']);
-			if(!utility::isset_request('allow_desc_exit')) 	unset($args['allowdescexit']);
+			if(!utility::isset_request('postion'))               unset($args['postion']);
+			if(!utility::isset_request('personnel_code'))        unset($args['personnelcode']);
+			if(!utility::isset_request('24h'))                   unset($args['24h']);
+			if(!utility::isset_request('remote_user'))           unset($args['remote']);
+			if(!utility::isset_request('is_default'))            unset($args['isdefault']);
+			if(!utility::isset_request('date_enter'))            unset($args['dateenter']);
+			if(!utility::isset_request('date_exit'))             unset($args['dateexit']);
+			if(!utility::isset_request('firstname'))             unset($args['firstname']);
+			if(!utility::isset_request('lastname'))              unset($args['lastname']);
+			if(!utility::isset_request('file'))                  unset($args['fileid'], $args['fileurl']);
+			if(!utility::isset_request('allow_plus'))            unset($args['allowplus']);
+			if(!utility::isset_request('allow_minus'))           unset($args['allowminus']);
+			if(!utility::isset_request('status'))                unset($args['status']);
+			if(!utility::isset_request('displayname'))           unset($args['displayname']);
+			if(!utility::isset_request('rule'))                  unset($args['rule']);
+			if(!utility::isset_request('visibility'))            unset($args['visibility']);
+			if(!utility::isset_request('allow_desc_enter'))      unset($args['allowdescenter']);
+			if(!utility::isset_request('allow_desc_exit'))       unset($args['allowdescexit']);
 
-			if(!utility::isset_request('national_code')) 	unset($args['nationalcode']);
-			if(!utility::isset_request('father')) 			unset($args['father']);
-			if(!utility::isset_request('birthday')) 		unset($args['birthday']);
-			if(!utility::isset_request('gender')) 			unset($args['gender']);
-			if(!utility::isset_request('type')) 			unset($args['type']);
+			if(!utility::isset_request('national_code'))         unset($args['nationalcode']);
+			if(!utility::isset_request('father'))                unset($args['father']);
+			if(!utility::isset_request('birthday'))              unset($args['birthday']);
+			if(!utility::isset_request('gender'))                unset($args['gender']);
+			if(!utility::isset_request('type'))                  unset($args['type']);
+			if(!utility::isset_request('marital'))               unset($args['marital']);
+			if(!utility::isset_request('child'))                 unset($args['childcount']);
+			if(!utility::isset_request('brithcity'))             unset($args['brithplace']);
+			if(!utility::isset_request('shfrom'))                unset($args['from']);
+			if(!utility::isset_request('shcode'))                unset($args['shcode']);
+			if(!utility::isset_request('education'))             unset($args['education']);
+			if(!utility::isset_request('job'))                   unset($args['job']);
+			if(!utility::isset_request('passport_code'))         unset($args['pasportcode']);
+
+			if(!utility::isset_request('payment_account_number'))unset($args['cardnumber']);
+			if(!utility::isset_request('shaba'))                 unset($args['shaba']);
+
 
 			// check barcode, qrcode and rfid,
 			// update it if changed

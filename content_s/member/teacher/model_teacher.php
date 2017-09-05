@@ -15,13 +15,26 @@ trait model_teacher
 	{
 		$post =
 		[
-			'firstname'     => utility::post('name'),
-			'lastname'      => utility::post('lastName'),
-			'mobile'        => utility::post('mobile'),
-			'national_code' => utility::post('national-code'),
-			'father'        => utility::post('father'),
-			'birthday'      => utility::post('birthday'),
-			'gender'        => utility::post('gender'),
+			'firstname'              => utility::post('name'),
+			'lastname'               => utility::post('lastName'),
+			'mobile'                 => utility::post('mobile'),
+			'national_code'          => utility::post('national-code'),
+			'father'                 => utility::post('father'),
+			'birthday'               => utility::post('birthday'),
+			'gender'                 => utility::post('gender'),
+
+
+			'marital'                => utility::post('marital'),
+			'child'                  => utility::post('child'),
+			'brithcity'              => utility::post('brithcity'),
+			'shfrom'                 => utility::post('shfrom'),
+			'shcode'                 => utility::post('shcode'),
+			'education'              => utility::post('education'),
+			'job'       => utility::post('job'),
+			'passport_code'          => utility::post('passport_code'),
+			// 'passport_expire'        => utility::post('passport_expire'),
+			'payment_account_number' => utility::post('payment_account_number'),
+			'shaba'                  => utility::post('shaba'),
 		];
 
 		return $post;
