@@ -17,7 +17,8 @@ class model extends \content_s\main\model
 		$args =
 		[
 			'name'              => utility::post('name'),
-			'type' 				=> 'school',
+			'gender'            => utility::post('gender'),
+			'type'              => 'school',
 			'website'           => utility::post('website'),
 			'privacy'           => utility::post('privacy'),
 			'short_name'        => utility::post('shortName'),

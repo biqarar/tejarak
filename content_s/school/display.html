@@ -10,14 +10,25 @@
      <div class="f">
       <div class="f c s12 g1">
        <div class="c12">
-        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{team_detail.name}}" required autofocus maxlength='30' minlength="5" pattern=".{5,30}" title='{%trans "Enter a valid name from 5 to 30 character"%}'>
+        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{team_detail.name}}" required autofocus maxlength='50' minlength="5" pattern=".{5,50}" title='{%trans "Enter a valid name from 5 to 50 character"%}'>
        </div>
 
-       <div class="c12">
-        <input type="url" name="website" placeholder='{%trans "Website"%}' value="{{team_detail.website}}" maxlength='30' minlength="3" class="ltr">
-       </div>
+         <div class="f">
+         <div class="cauto s0 lbl"><label for="gender">{%trans "Default Gender"%}</label></div>
+         <div class="c">
+           <div class="f radio1">
+            <div class="c">
+             <input type="radio" id="r-male" name="gender" value="male" {%if team_detail.gender == 'male' or  default_school.gender == 'male' or not team_detail.gender%}checked{%endif%} >
+             <label for="r-male">{%trans "Male"%}</label>
+            </div>
+            <div class="c">
+             <input type="radio" id="r-female" name="gender" value="female" {%if team_detail.gender == 'female' or default_school.gender == 'female'%}checked{%endif%}>
+             <label for="r-female">{%trans "Female"%}</label>
+            </div>
+           </div>
+          </div>
+        </div>
       </div>
-
 
       <div class="cauto s12 g1">
        <div>
@@ -32,130 +43,6 @@
      </div>
 
 
-<!--      <div data-response='advance' data-response-effect='slide' {%if not edit_mode%}data-response-hide{%endif%}>
-
-      <div class="f g1">
-        <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
-        <div class="c">
-         <div class="f radio1">
-
-          <div class="c4">
-           <input type="radio" id="r-private" name="privacy" value="private" {%if team_detail.privacy == 'private' or not team_detail.prvacy%}checked{%endif%} >
-           <label for="r-private">{%trans "Private"%}</label>
-          </div>
-
-          <div class="c4">
-           <input type="radio" id="r-team" name="privacy" value="team" {%if team_detail.privacy == 'team' %}checked{%endif%}>
-           <label for="r-team">{%trans "Team"%}</label>
-          </div>
-
-          <div class="c4">
-           <input type="radio" id="r-public" name="privacy" value="public" {%if team_detail.privacy == 'public' %}checked{%endif%}>
-           <label for="r-public">{%trans "Public"%}</label>
-          </div>
-
-         </div>
-        </div>
-      </div>
-
-      <div class="f g1">
-        <div class="cauto s0 lbl"><label for='shortName'>{%trans "Short Name"%}</label></div>
-        <div class="c s12">
-         <input type="text" name="shortName" id='shortName' placeholder='{%trans "English letter like"%} "Ermile"' value="{{team_detail.short_name}}" maxlength='30' minlength="5" pattern=".{5,30}" title='{%trans "Enter a valid short name from 5 to 50 character"%}' class="ltr">
-        </div>
-      </div>
-
-      <div class="f g1">
-       <div class="c12">
-        <textarea name="desc" placeholder='{%trans "Description"%}' maxlength='200'>{{team_detail.desc}}</textarea>
-       </div>
-      </div>
-
-
-      <div  class="g1">
-       <h4>{%trans "Default setting for new members of team"%}</h4>
-       <div class="f check1">
-
-        <div class="c4 s12">
-         <input type="checkbox" name="showAvatar" id="showAvatar" {%if team_detail.show_avatar or not team%}checked{%endif%} >
-         <label for="showAvatar">{%trans "Show users avatars"%}</label>
-        </div>
-
-        <div class="c4 s6">
-         <input type="checkbox" name="allowPlus" id="allowPlus" {%if team_detail.allow_plus or not team%}checked{%endif%}>
-         <label for="allowPlus">{%trans "Allow plus"%}</label>
-        </div>
-        <div class="c4 s6">
-         <input type="checkbox" name="allowMinus" id="allowMinus" {%if team_detail.allow_minus or not team%}checked{%endif%}>
-         <label for="allowMinus">{%trans "Allow minus"%}</label>
-        </div>
-
-        <div class="c4 s6">
-         <input type="checkbox" name="remoteUser" id="remoteUser" {%if team_detail.remote_user %}checked{%endif%}>
-         <label for="remoteUser">{%trans "Remote user"%}</label>
-        </div>
-        <div class="c4 s6">
-         <input type="checkbox" name="24h" id="24h" {%if team_detail['24h']%}checked{%endif%}>
-         <label for="24h">{%trans "24 hour"%}</label>
-        </div>
-
-        <div class="c6 s12">
-         <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if team_detail.allow_desc_enter %}checked{%endif%}>
-         <label for="allowDescEnter">{%trans "Allow set enter desc"%}</label>
-        </div>
-
-        <div class="c6 s12">
-         <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if team_detail.allow_desc_exit %}checked{%endif%}>
-         <label for="allowDescExit">{%trans "Allow set Exit desc"%}</label>
-        </div>
-
-
-         <div class="c4 s6">
-         <input type="checkbox" name="manual_time_enter" id="manual_time_enter" {%if team_detail.manual_time_enter %}checked{%endif%}>
-         <label for="manual_time_enter">{%trans "Manual time enter"%}</label>
-        </div>
-
-        <div class="c4 s6">
-         <input type="checkbox" name="manual_time_exit" id="manual_time_exit" {%if team_detail.manual_time_exit %}checked{%endif%}>
-         <label for="manual_time_exit">{%trans "Manual time exit"%}</label>
-        </div>
-
-        <div class="f c12 s12 mA5">
-         <label class="c2" for="cardsize">{%trans "Card size"%}</label>
-         <select class="c" name="cardsize">
-           <option value=""   {%if not team_detail.cardsize %} selected {%endif%}>{%trans "Auto size"%}</option>
-           <option value="10" {%if team_detail.cardsize == '10'%} selected {%endif%}>{%trans "Small"%}</option>
-           <option value="20" {%if team_detail.cardsize == '20'%} selected {%endif%}>{%trans "Medium"%}</option>
-           <option value="30" {%if team_detail.cardsize == '30'%} selected {%endif%}>{%trans "Large"%}</option>
-         </select>
-
-        </div>
-
-
-         <div class="f c12 s12 mA5">
-         <label class="c2" for="language">{%trans "Language"%}</label>
-         <select class="c" name="language">
-           <option value="">{%trans "Please select one language"%}</option>
-           <option value="fa" {%if team_detail.language == 'fa'%} selected {%endif%}>{%trans "Persian"%}</option>
-           <option value="en" {%if team_detail.language == 'en'%} selected {%endif%}>{%trans "English"%}</option>
-         </select>
-
-        </div>
-
-        <div class="c12 s12 f mA5">
-         <label class="c2" for="event_title">{%trans "Event title"%}</label>
-          <input class="c" type="text" name="event_title" id="event_title" value="{{team_detail.event_title}}" placeholder='{%trans "Event title"%}'>
-        </div>
-
-        <div class="c12 s12 f mA5">
-         <label class="c2" for="event_date">{%trans "Event date"%}</label>
-          <input class="c" type="text" name="event_date" id="event_date" value="{{team_detail.event_date}}" placeholder='{%trans "Event date"%}'>
-        </div>
-
-       </div>
-      </div>
-
-     </div> -->
 
 
      <div class="f g1 mt1">

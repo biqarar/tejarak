@@ -61,6 +61,8 @@ class teams
 		teams.manualtimeexit     	AS `manualtimeexit`,
 		teams.allowdescenter     	AS `allowdescenter`,
 		teams.allowdescexit      	AS `allowdescexit`,
+		teams.gender      			AS `gender`,
+		userteams.gender 			AS `userteams_gender`,
 		userteams.allowdescenter 	AS `userteams_allowdescenter`,
 		userteams.allowdescexit  	AS `userteams_allowdescexit`,
 		userteams.manualtimeenter	AS `userteam_manualtimeenter`,

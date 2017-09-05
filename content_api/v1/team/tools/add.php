@@ -233,6 +233,15 @@ trait add
 			return false;
 		}
 
+
+		$gender = utility::request('gender');
+		if($gender && !in_array($gender, ['male', 'female']))
+		{
+			logs::set('api:team:add:gender:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid team gender"), 'gender', 'arguments');
+			return false;
+		}
+
 		$args                    = [];
 		$args['creator']         = $this->user_id;
 		$args['name']            = $name;
@@ -263,6 +272,7 @@ trait add
 		$args['type']            = $type ? $type : null;
 		$args['related']         = $_args['related'];
 		$args['related_id']      = $_args['related_id'];
+		$args['gender']          = $gender;
 
 		\lib\storage::set_last_team_added($shortname);
 
@@ -355,6 +365,7 @@ trait add
 			if(!utility::isset_request('allow_desc_enter')) 	unset($args['allowdescenter']);
 			if(!utility::isset_request('allow_desc_exit')) 	    unset($args['allowdescexit']);
 			if(!utility::isset_request('type')) 				unset($args['type']);
+			if(!utility::isset_request('gender')) 				unset($args['gender']);
 
 			if(!utility::isset_request('parent')) 				unset($args['parent']);
 
