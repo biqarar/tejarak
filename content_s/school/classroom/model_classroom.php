@@ -14,26 +14,17 @@ trait model_classroom
 	{
 		$args =
 		[
-			'name'              => utility::post('name'),
-			'type' 				=> 'classroom',
-			'website'           => utility::post('website'),
-			'privacy'           => utility::post('privacy'),
-			'short_name'        => utility::post('shortName'),
-			'desc'              => utility::post('desc'),
-			'show_avatar'       => utility::post('showAvatar'),
-			'allow_plus'        => utility::post('allowPlus'),
-			'allow_minus'       => utility::post('allowMinus'),
-			'remote_user'       => utility::post('remoteUser'),
-			'24h'               => utility::post('24h'),
-			'manual_time_enter' => utility::post('manual_time_enter'),
-			'manual_time_exit'  => utility::post('manual_time_exit'),
-			'language'          => utility::post('language'),
-			'event_title'       => utility::post('event_title'),
-			'event_date'        => utility::post('event_date'),
-			'cardsize'          => utility::post('cardsize'),
-			'allow_desc_enter'  => utility::post('allowDescEnter'),
-			'allow_desc_exit'   => utility::post('allowDescExit'),
-			// 'parent'      => utility::post('the-parent'),
+			'name'            => utility::post('name'),
+			'gender'          => utility::post('gender'),
+			'type'            => 'classroom',
+			'website'         => utility::post('website'),
+			'privacy'         => utility::post('privacy'),
+			'short_name'      => utility::post('shortName'),
+			'desc'            => utility::post('desc'),
+			'classroom_size'  => utility::post('classroom_size'),
+			'status'          => utility::post('status'),
+			'multi_classroom' => utility::post('multi_classroom'),
+			'address'         => utility::post('address'),
 		];
 
 		if(utility::files('logo'))
@@ -41,20 +32,6 @@ trait model_classroom
 			$args['logo'] = $this->upload_logo();
 		}
 
-		/**
-		 * if the user not check parent check box
-		 * not save the parent
-		 */
-		// if(!utility::post('parent'))
-		// {
-		// 	$args['parent'] = null;
-		// }
-
-		// if(utility::post('parent') && !utility::post('the-parent'))
-		// {
-		// 	debug::error(T_("Please select the parent team"), 'the-parent');
-		// 	return false;
-		// }
 		return $args;
 	}
 
@@ -73,6 +50,7 @@ trait model_classroom
 		$parent            = \lib\router::get_url(0);
 		$request['parent'] = $parent;
 		$request['type']   = 'classroom';
+
 		utility::set_request_array($request);
 
 		$this->add_team();
@@ -90,20 +68,40 @@ trait model_classroom
 	}
 
 
+	/**
+	 * { function_description }
+	 *
+	 * @param      array   $_meta  The meta
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public function classroomList($_meta = [])
 	{
 		$parent         = \lib\router::get_url(0);
 		$meta           = [];
 		$meta['parent'] = \lib\utility\shortURL::decode($parent);
 		$meta['type']   = 'classroom';
-		$meta['status'] = 'enable';
+		// $meta['status'] = 'enable';
 		$search         = null;
 		if(isset($_meta['search']))
 		{
 			$search = $_meta['search'];
 		}
 		$resutl = \lib\db\teams::search($search, $meta);
-		return $resutl;
+		$temp = [];
+		if(is_array($resutl))
+		{
+			foreach ($resutl as $key => $value)
+			{
+				$check = $this->ready_team($value);
+				if($check)
+				{
+					$temp[] = $check;
+				}
+			}
+		}
+
+		return $temp;
 	}
 
 

@@ -315,6 +315,34 @@ trait add
 			return false;
 		}
 
+		$address             = utility::request('address');
+		if($address && mb_strlen($address) > 5000)
+		{
+			logs::set('api:team:add:address:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set address less than 5000 character", 'address', 'arguments'));
+			return false;
+		}
+
+		$classroom_size = utility::request('classroom_size');
+		if($classroom_size && !is_numeric($classroom_size))
+		{
+			logs::set('api:team:add:classroom_size:invalid', $this->user_id, $log_meta);
+			debug::error(T_("You must set classroom size as a number", 'classroom_size', 'arguments'));
+			return false;
+		}
+
+		$status = utility::request('status');
+		if($status && !in_array($status, ['enable', 'disable']))
+		{
+			logs::set('api:team:add:status:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid status of teams", 'status', 'arguments'));
+			return false;
+		}
+
+		$multi_classroom = utility::request('multi_classroom');
+		$multi_classroom = $multi_classroom ? true : false;
+
+
 		$args                    = [];
 		$args['creator']         = $this->user_id;
 		$args['name']            = $name;
@@ -353,10 +381,25 @@ trait add
 		$args['phone1']          = $tel;
 		$args['phone2']          = $fax;
 		$args['zipcode']         = $zipcode;
-		$args['desc']            = $desc;
-		$args['desc2']           = $awards;
-		$args['desc3']           = $about;
+		$args['desc2']           = $address;
 
+		if($status)
+		{
+			$args['status'] = $status;
+		}
+
+		if($type === 'classroom')
+		{
+			$args['desc3'] = $multi_classroom;
+			$args['desc4'] = $classroom_size;
+		}
+		else
+		{
+			$args['desc3'] = $awards;
+			$args['desc4'] = $about;
+		}
+
+		// var_dump(utility::request(), $args );exit();
 		\lib\storage::set_last_team_added($shortname);
 
 		if($_args['method'] === 'post')
@@ -459,8 +502,19 @@ trait add
 			if(!utility::isset_request('fax'))              unset($args['phone2']);
 			if(!utility::isset_request('zipcode'))          unset($args['zipcode']);
 			if(!utility::isset_request('desc'))             unset($args['desc']);
-			if(!utility::isset_request('awards'))           unset($args['desc2']);
-			if(!utility::isset_request('about'))            unset($args['desc3']);
+			if(!utility::isset_request('address'))          unset($args['desc2']);
+			if(!utility::isset_request('status'))           unset($args['status']);
+
+			if($type  === 'classroom')
+			{
+				if(!utility::isset_request('multi_classroom'))  unset($args['desc3']);
+				if(!utility::isset_request('classroom_size'))   unset($args['desc4']);
+			}
+			else
+			{
+				if(!utility::isset_request('awards'))           unset($args['desc3']);
+				if(!utility::isset_request('about'))            unset($args['desc4']);
+			}
 
 			if(isset($args['parent']) && intval($args['parent']) === intval($id))
 			{

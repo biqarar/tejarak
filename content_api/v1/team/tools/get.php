@@ -30,6 +30,7 @@ trait get
 		$result = [];
 		foreach ($_data as $key => $value)
 		{
+
 			switch ($key)
 			{
 				case 'id':
@@ -45,6 +46,36 @@ trait get
 					}
 					break;
 
+				case 'desc2':
+					$result['address'] = $value ? (string) $value : null;
+					break;
+
+				case 'type':
+
+					if($value === 'classroom')
+					{
+						if(isset($_data['desc3']))
+						{
+							$result['multi_classroom'] = $_data['desc3'] ? true : false;
+						}
+						if(isset($_data['desc4']))
+						{
+							$result['classroom_size'] = isset($_data['desc4']) ? $_data['desc4'] : null;
+						}
+					}
+					else
+					{
+						if(isset($_data['desc3']))
+						{
+							$result['awards'] = isset($_data['desc3']) ? $_data['desc3'] : null;
+						}
+
+						if(isset($_data['desc4']))
+						{
+							$result['about'] = isset($_data['desc4']) ? $_data['desc4'] : null;
+						}
+					}
+					break;
 
 				case 'phone1':
 					$result['tel'] = $value ? (string) $value : null;
@@ -52,26 +83,20 @@ trait get
 				case 'phone2':
 					$result['fax'] = $value ? (string) $value : null;
 					break;
-				case 'desc2':
-					$result['awards'] = $value ? (string) $value : null;
-					break;
-				case 'desc3':
-					$result['about'] = $value ? (string) $value : null;
-					break;
 
-				case 'status':
+				// case 'status':
 					// only enable team can be show
-					switch ($value)
-					{
-						case 'enable':
-						case 'close':
-							$result[$key] = $value ? (string) $value : null;
-							break;
-						default:
-							return false;
-							break;
-					}
-					break;
+					// switch ($value)
+					// {
+					// 	case 'enable':
+					// 	case 'close':
+					// 		$result[$key] = $value ? (string) $value : null;
+					// 		break;
+					// 	default:
+					// 		return false;
+					// 		break;
+					// }
+					// break;
 
 				case 'country':
 				case 'city':
@@ -81,6 +106,7 @@ trait get
 				case 'website':
 				case 'desc':
 				case 'alias':
+				case 'status':
 				case 'privacy':
 				case 'rule':
 				case 'gender':
