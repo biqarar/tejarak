@@ -100,6 +100,26 @@
 		</div>
 
 		<div class="label-step" data-step='{{3|fitNumber}}'>{%trans "Finalize your order"%}</div>
+		<table class="tbl">
+			<thead>
+				<tr>
+					<th>{%trans "Title"%}</th>
+					<th>{%trans "Count"%}</th>
+					<th>{%trans "Unit price"%}</th>
+					<th>{%trans "Total price"%}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{%trans "Card type A"%}</td>
+					<td>{{5|fitNumber}}</td>
+					<td>{{5000|fitNumber}} {%trans "Toman"%}</td>
+					<td>{{25000|fitNumber}} {%trans "Toman"%}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a class="btn btn-positive" href="#">{%trans "Confirm and Pay"%}</a>
 	</div>
 </div>
 {%endblock%}
