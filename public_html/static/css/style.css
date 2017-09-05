@@ -744,6 +744,7 @@ body #billing{max-width:800px;margin:0 auto}
 #cardsList{max-width:100rem;}
 .label-step{font-size:1.4em;font-weight:700;margin-bottom:1em;}
 .label-step::before{content:attr(data-step);background-color:#3580f3;border-radius:100%;width:3.5rem;height:3.5rem;line-height:3.5rem;text-align:center;display:inline-block;margin-right:1rem;color:#fff;}
+.rtl .label-step::before{margin-right:0;margin-left:1rem;}
 .label-step:not(:first-of-type){margin-top:5rem;}
 
 .sample-card-container{}
