@@ -203,8 +203,10 @@ trait add
 		{
 			if($must_insert_school_userlesson_record)
 			{
-				\lib\db\school_userlessons::insert($args);
 				$this->check_teams_of_lesson($args);
+				$team_shortname = \lib\storage::get_last_team_shortname_added();
+				// $args['shortname'] = $team_shortname;
+				\lib\db\school_userlessons::insert($args);
 			}
 
 			if($must_update_school_userlesson_record)

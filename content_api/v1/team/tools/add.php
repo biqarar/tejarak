@@ -288,6 +288,7 @@ trait add
 				return false;
 			}
 
+			\lib\storage::set_last_team_shortname_added($args['shortname']);
 			\lib\storage::set_last_team_id_added($team_id);
 			\lib\storage::set_last_team_code_added(\lib\utility\shortURL::encode($team_id));
 

@@ -58,45 +58,66 @@ trait add
 			return false;
 		}
 
+
 		// get school and check it
-		$school = utility::request('school');
-		$school = utility\shortURL::decode($school);
-		if(!$school)
+		$lesson_id = utility::request('lesson_id');
+		$lesson_id = utility\shortURL::decode($lesson_id);
+		if(!$lesson_id)
 		{
-			logs::set('api:score:school:not:set', $this->user_id, $log_meta);
-			debug::error(T_("School not set"), 'user', 'permission');
+			logs::set('api:score:lesson_id:not:set', $this->user_id, $log_meta);
+			debug::error(T_("lesson_id not set"), 'user', 'permission');
 			return false;
 		}
-		// load school data
-		$school_detail = \lib\db\teams::access_team_id($school, $this->user_id, ['action' => 'admin']);
+		// // load lesson_id data
+		// $lesson_id_detail = \lib\db\teams::access_team_id($lesson_id, $this->user_id, ['action' => 'admin']);
 
-		// check the school exist
-		if(isset($school_detail['id']))
+		// // check the school exist
+		// if(isset($school_detail['id']))
+		// {
+		// 	$school_id = $school_detail['id'];
+		// }
+		// else
+		// {
+		// 	logs::set('api:score:school:notfound:invalid', $this->user_id, $log_meta);
+		// 	debug::error(T_("School not found"), 'user', 'permission');
+		// 	return false;
+		// }
+
+		$student = utility::request('student');
+		$student = utility\shortURL::decode($student);
+		if(!$student)
 		{
-			$school_id = $school_detail['id'];
+			logs::set('api:score:student:not:set', $this->user_id, $log_meta);
+			debug::error(T_("Studnet id not set"), 'user', 'permission');
+			return false;
+		}
+
+		$student_user_id = \lib\db\userteams::get(['id' => $student, 'limit' => 1]);
+		if(isset($student_user_id['user_id']))
+		{
+			$student_user_id = $student_user_id['user_id'];
 		}
 		else
 		{
-			logs::set('api:score:school:notfound:invalid', $this->user_id, $log_meta);
-			debug::error(T_("School not found"), 'user', 'permission');
-			return false;
+			$student_user_id = null;
 		}
 
-		$user_id = utility::request('user_id');
-		$user_id = utility\shortURL::decode($user_id);
-		if(!$user_id)
+		$lesson_team_detail = \lib\db\teams::get(['related' => 'school_lessons', 'related_id' => $lesson_id, 'limit' => 1]);
+		if(isset($lesson_team_detail['id']))
 		{
-			logs::set('api:score:user_id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("User id not set"), 'user', 'permission');
-			return false;
+			$tema_id = $lesson_team_detail['id'];
+		}
+		else
+		{
+			$tema_id = null;
 		}
 
-		$check_user_in_school = \lib\db\teams::access_team_id($school, $user_id, ['action' => 'in_team']);
+		$check_user_in_lesson = \lib\db\teams::access_team_id($tema_id, $student_user_id, ['action' => 'in_team']);
 
 		// check the school exist
-		if(isset($check_user_in_school['userteam_id']))
+		if(isset($check_user_in_lesson['userteam_id']))
 		{
-			$user_in_school = $check_user_in_school['userteam_id'];
+			$user_in_school = $check_user_in_lesson['userteam_id'];
 		}
 		else
 		{
@@ -106,19 +127,40 @@ trait add
 		}
 
 		$type = utility::request('type');
-		if(!in_array($type, ['score', 'removeunit']))
+		if(!in_array($type, ['default','classroom','endterm']))
 		{
 			logs::set('api:score:type:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid type"), 'type', 'permission');
 			return false;
 		}
 
-		$lesson_id = utility::request('lesson_id');
-		$lesson_id = utility\shortURL::decode($lesson_id);
-		if(!$lesson_id)
+		$date = utility::request('date');
+		if(!$date)
 		{
-			logs::set('api:score:lesson_id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Lesson id not set"), 'user', 'permission');
+			logs::set('api:score:date:not:set:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Date not set"), 'date', 'permission');
+			return false;
+		}
+		if(strtotime($date) === false)
+		{
+			logs::set('api:score:date:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid date"), 'date', 'permission');
+			return false;
+		}
+		$date = date("Y-m-d H:i:s", strtotime($date));
+
+		$score = utility::request('score');
+		if(!$score)
+		{
+			logs::set('api:score:score:not:set:invalid', $this->user_id, $log_meta);
+			debug::error(T_("score not set"), 'score', 'permission');
+			return false;
+		}
+
+		if(!is_numeric($score))
+		{
+			logs::set('api:score:score:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid score"), 'score', 'permission');
 			return false;
 		}
 
@@ -140,20 +182,6 @@ trait add
 			return false;
 		}
 
-		if($lesson_detail['status'] !== 'enable')
-		{
-			logs::set('api:score:lesson_detail:status:is:not:enable', $this->user_id, $log_meta);
-			debug::error(T_("The lesson is not enable"), 'lesson_id', 'permission');
-			return false;
-		}
-
-		if(intval($lesson_detail['school_id']) !== intval($school))
-		{
-			logs::set('api:score:lesson_detail:from:another:school', $this->user_id, $log_meta);
-			debug::error(T_("This lesson is not enable in your school"), 'lesson_id', 'permission');
-			return false;
-		}
-
 		$check_takedunit =
 		[
 			'school_id'     => $lesson_detail['school_id'],
@@ -162,28 +190,18 @@ trait add
 			'teacher'       => $lesson_detail['teacher'],
 			'subject_id'    => $lesson_detail['subject_id'],
 			'lesson_id'     => $lesson_id,
-			'student'       => $user_in_school,
+			'date'          => $date,
+			'student'       => $student,
 			'limit'         => 1,
 		];
 
-		$check_takedunit = \lib\db\school_userlessons::get($check_takedunit);
+		$check_takedunit = \lib\db\school_scores::get($check_takedunit);
 
-		$must_insert_school_userlesson_record = true;
-		$must_update_school_userlesson_record = false;
-
-		if(isset($check_takedunit['id']) && isset($check_takedunit['status']) && $type === 'score')
+		if(isset($check_takedunit['id']))
 		{
-			if($check_takedunit['status'] === 'enable')
-			{
-				logs::set('api:score:lesson_detail:from:another:school', $this->user_id, $log_meta);
-				debug::error(T_("This lesson added to this user before"), 'lesson_id', 'permission');
-				return false;
-			}
-			else
-			{
-				$must_insert_school_userlesson_record = false;
-				$must_update_school_userlesson_record = true;
-			}
+			logs::set('api:score:lesson_detail:from:another:school', $this->user_id, $log_meta);
+			debug::error(T_("This score added to this user before"), 'lesson_id', 'permission');
+			return false;
 		}
 
 		// ready to insert userschool or userbranch record
@@ -194,25 +212,15 @@ trait add
 		$args['teacher']       = $lesson_detail['teacher'];
 		$args['subject_id']    = $lesson_detail['subject_id'];
 		$args['lesson_id']     = $lesson_id;
-		$args['student']       = $user_in_school;
-		$args['start']         = date("Y-m-d H:i:s");
+		$args['student']       = $student;
+		$args['date']          = $date;
+		$args['score']         = $score;
 		$args['creator']       = $this->user_id;
 
 
-		if($_args['method'] === 'post' && $type === 'score')
+		if($_args['method'] === 'post')
 		{
-			if($must_insert_school_userlesson_record)
-			{
-				\lib\db\school_userlessons::insert($args);
-				$this->check_teams_of_lesson($args);
-			}
-
-			if($must_update_school_userlesson_record)
-			{
-				$this->check_teams_of_lesson_update($args, 'active');
-				\lib\db\school_userlessons::update(['status' => 'enable'], $check_takedunit['id']);
-			}
-
+			\lib\db\school_scores::insert($args);
 		}
 		elseif($_args['method'] === 'post' && $type === 'removeunit')
 		{
@@ -220,7 +228,7 @@ trait add
 
 			if(isset($check_takedunit['id']))
 			{
-				\lib\db\school_userlessons::update(['status' => 'disable'], $check_takedunit['id']);
+				\lib\db\school_scores::update(['status' => 'disable'], $check_takedunit['id']);
 			}
 		}
 

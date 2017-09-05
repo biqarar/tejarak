@@ -25,6 +25,7 @@ trait get
 		$default_args =
 		[
 			'pagenation' => true,
+			'admin'  	 => false,
 		];
 
 		if(!is_array($_args))
@@ -89,7 +90,7 @@ trait get
 
 			if($team_detail)
 			{
-				if(\lib\permission::access('load:all:team', null, $this->user_id))
+				if(\lib\permission::access('load:all:team', null, $this->user_id) || $_args['admin'])
 				{
 					$team_detail = $team_detail;
 				}
@@ -153,7 +154,10 @@ trait get
 			$where['status']     = ['IN', "('active', 'deactive')"];
 			$where['rule']       = ['IN', "('user', 'admin')"];
 			$where['pagenation'] = $_args['pagenation'];
-			$where['type']       = $type ? $type : null;
+			if($type)
+			{
+				$where['type']       = $type ? $type : null;
+			}
 			$where['search']	 = $search ? $search : null;
 			$result              = \lib\db\userteams::get_list($where);
 			$temp                = [];

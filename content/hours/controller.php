@@ -8,6 +8,7 @@ class controller extends \content\main\controller
 	 */
 	public function _route()
 	{
+
 		parent::_route();
 
 		$url = \lib\router::get_url();
@@ -18,6 +19,7 @@ class controller extends \content\main\controller
 			\lib\error::page();
 		}
 		$list_member = $this->model()->list_member(['shortname' => $url]);
+
 		if($list_member)
 		{
 			\lib\storage::set_list_member($list_member);

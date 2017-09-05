@@ -37,7 +37,7 @@ trait lesson_team
 			$lesson_team_name                  = \lib\db\school_lessons::make_team_lesson_name($lesson_id);
 
 			$insert_team_request['name']       = $lesson_team_name;
-			$insert_team_request['short_name'] = md5($lesson_id);
+			// $insert_team_request['short_name'] = md5($lesson_id);
 			$insert_team_request['type']       = 'lesson';
 			$insert_team_request['parent']     =  isset($classroom_detail['id']) ? utility\shortURL::encode($classroom_detail['id']) : null;
 
@@ -68,6 +68,8 @@ trait lesson_team
 			$lesson_team_id = \lib\storage::get_last_team_id_added();
 
 			$lesson_team_code = \lib\utility\shortURL::encode($lesson_team_id);
+
+			$team_shortname = \lib\storage::get_last_team_shortname_added();
 
 			utility::set_request_array($old_request);
 

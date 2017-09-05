@@ -20,15 +20,16 @@ class model extends \content_s\main\model
 	{
 		$this->user_id   = $this->login('id');
 		$request         = [];
-		$team_short_name = utility\shortURL::decode($_lessonid);
-		$team_short_name = md5($team_short_name);
-		$request['shortname'] = $team_short_name;
+		$lesson_id       = utility\shortURL::decode($_lessonid);
+		$get_team_lesson = \lib\db\teams::get(['related' => 'school_lessons', 'related_id' => $lesson_id, 'limit' => 1]);
 
-		// to get last hours. what i want to do?
-		utility::set_request_array($request);
-		$result =  $this->get_list_member(['admin' => true]);
-
-		return $result;
+		if(isset($get_team_lesson['shortname']))
+		{
+			$request['shortname'] = $get_team_lesson['shortname'];
+			utility::set_request_array($request);
+			$result =  $this->get_list_member(['admin' => true]);
+			return $result;
+		}
 	}
 
 
@@ -73,16 +74,18 @@ class model extends \content_s\main\model
 	 */
 	public function post_score($_args)
 	{
-		$request = [];
-
-		$request['school']    = \lib\router::get_url(0);
-		$request['user_id']   = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
-		$request['type']      = utility::post('type');
-		$request['lesson_id'] = utility::post('id');
-		utility::set_request_array($request);
 		$this->user_id        = $this->login('id');
+		$request              = [];
+		$request['student']   = utility::post('id');
+		$request['date']      = utility\human::number(utility::post('date'), 'en');
+		$request['type']      = utility::post('type');
+		$request['score']     = utility::post('score');
+		$request['school']    = \lib\router::get_url(0);
+		$request['lesson_id'] = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 
-		$this->score();
+		utility::set_request_array($request);
+
+		$this->add_score();
 
 		if(debug::$status)
 		{
