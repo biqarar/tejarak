@@ -36,6 +36,15 @@ class model extends \content_s\main\model
 			'cardsize'          => utility::post('cardsize'),
 			'allow_desc_enter'  => utility::post('allowDescEnter'),
 			'allow_desc_exit'   => utility::post('allowDescExit'),
+			'country'           => utility::post('country'),
+			'province'          => utility::post('province'),
+			'city'              => utility::post('city'),
+			'tel'               => utility::post('tel'),
+			'fax'               => utility::post('fax'),
+			'zipcode'           => utility::post('zipcode'),
+			'awards'            => utility::post('awards'),
+			'desc'              => utility::post('desc'),
+			'about'             => utility::post('about'),
 			// 'parent'      => utility::post('the-parent'),
 		];
 

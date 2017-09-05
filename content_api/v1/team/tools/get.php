@@ -45,6 +45,20 @@ trait get
 					}
 					break;
 
+
+				case 'phone1':
+					$result['tel'] = $value ? (string) $value : null;
+					break;
+				case 'phone2':
+					$result['fax'] = $value ? (string) $value : null;
+					break;
+				case 'desc2':
+					$result['awards'] = $value ? (string) $value : null;
+					break;
+				case 'desc3':
+					$result['about'] = $value ? (string) $value : null;
+					break;
+
 				case 'status':
 					// only enable team can be show
 					switch ($value)
@@ -58,6 +72,11 @@ trait get
 							break;
 					}
 					break;
+
+				case 'country':
+				case 'city':
+				case 'province':
+				case 'zipcode':
 				case 'name':
 				case 'website':
 				case 'desc':

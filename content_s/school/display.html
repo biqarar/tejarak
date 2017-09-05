@@ -42,15 +42,108 @@
       </div>
      </div>
 
+{%if edit_mode%}
+        <div class="f g1">
+        <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
+        <div class="c">
+         <div class="f radio1">
 
+          <div class="c4">
+           <input type="radio" id="r-private" name="privacy" value="private" {%if team_detail.privacy == 'private' or not team_detail.prvacy%}checked{%endif%} >
+           <label for="r-private">{%trans "Private"%}</label>
+          </div>
+
+          <div class="c4">
+           <input type="radio" id="r-team" name="privacy" value="team" {%if team_detail.privacy == 'team' %}checked{%endif%}>
+           <label for="r-team">{%trans "Team"%}</label>
+          </div>
+
+          <div class="c4">
+           <input type="radio" id="r-public" name="privacy" value="public" {%if team_detail.privacy == 'public' %}checked{%endif%}>
+           <label for="r-public">{%trans "Public"%}</label>
+          </div>
+
+         </div>
+        </div>
+      </div>
+
+      <div class="f g1">
+        <div class="cauto s0 lbl"><label for='shortName'>{%trans "Short Name"%}</label></div>
+        <div class="c s12">
+         <input type="text" name="shortName" id='shortName' placeholder='{%trans "English letter like"%} "Ermile"' value="{{team_detail.short_name}}" maxlength='30' minlength="5" pattern=".{5,30}" title='{%trans "Enter a valid short name from 5 to 50 character"%}' class="ltr">
+        </div>
+      </div>
+
+
+        <div class="f mA5">
+         <div class="c2 s0 lbl"><label for="country">{%trans "Country"%}</label></div>
+         <div class="c">
+           <input id="country" type="text" name="country" value="{{team_detail.country}}" placeholder='{%trans "Country"%}'>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s0 lbl"><label for="province">{%trans "Province"%}</label></div>
+         <div class="c">
+           <input id="province" type="text" name="province" value="{{team_detail.province}}" placeholder='{%trans "Province"%}'>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s0 lbl"><label for="city">{%trans "city"%}</label></div>
+         <div class="c">
+           <input id="city" type="text" name="city" value="{{team_detail.city}}" placeholder='{%trans "city"%}'>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s12 lbl"><label for="tel">{%trans "tel"%}</label></div>
+         <div class="c">
+           <input id="tel" type="tel" name="tel" value="{{team_detail.tel}}" placeholder='{%trans "tel"%}'>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s12 lbl"><label for="fax">{%trans "fax"%}</label></div>
+         <div class="c">
+           <input id="fax" type="text" name="fax" value="{{team_detail.fax}}" placeholder='{%trans "fax"%}'>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s12 lbl"><label for="zipcode">{%trans "zipcode"%}</label></div>
+         <div class="c">
+           <input id="zipcode" type="text" name="zipcode" value="{{team_detail.zipcode}}" placeholder='{%trans "zipcode"%}'>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s12 lbl"><label for="awards">{%trans "Awards"%}</label></div>
+         <div class="c">
+           <textarea id="awards"  name="awards"  placeholder='{%trans "Awards"%}'>{{team_detail.awards}}</textarea>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s12 lbl"><label for="desc">{%trans "Description"%}</label></div>
+         <div class="c">
+           <textarea id="desc"  name="desc"  placeholder='{%trans "Description"%}'>{{team_detail.desc}}</textarea>
+          </div>
+        </div>
+
+        <div class="f mA5">
+         <div class="c2 s12 lbl"><label for="about">{%trans "About"%}</label></div>
+         <div class="c">
+           <textarea id="about"  name="about"  placeholder='{%trans "About"%}'>{{team_detail.about}}</textarea>
+          </div>
+        </div>
+
+
+{%endif%}
 
 
      <div class="f g1 mt1">
-
 {%if edit_mode%}
-      <div class="c3 s12">
-       <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="b2" data-ajaxify>{%trans "Close"%}</a>
-      </div>
       <div class="c3 os s12">
        <input type="submit" value='{%trans "Edit"%}' class='b1'>
       </div>

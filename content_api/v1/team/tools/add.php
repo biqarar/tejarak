@@ -242,6 +242,79 @@ trait add
 			return false;
 		}
 
+
+		$country           = utility::request('country');
+		if($country && mb_strlen($country) > 50)
+		{
+			logs::set('api:team:add:country:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set country less than 50 character", 'country', 'arguments'));
+			return false;
+		}
+
+		$province          = utility::request('province');
+		if($province && mb_strlen($province) > 50)
+		{
+			logs::set('api:team:add:province:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set province less than 50 character", 'province', 'arguments'));
+			return false;
+		}
+
+		$city              = utility::request('city');
+		if($city && mb_strlen($city) > 50)
+		{
+			logs::set('api:team:add:city:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set city less than 50 character", 'city', 'arguments'));
+			return false;
+		}
+
+		$tel               = utility::request('tel');
+		if($tel && mb_strlen($tel) > 50)
+		{
+			logs::set('api:team:add:tel:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set tel less than 50 character", 'tel', 'arguments'));
+			return false;
+		}
+
+		$fax               = utility::request('fax');
+		if($fax && mb_strlen($fax) > 50)
+		{
+			logs::set('api:team:add:fax:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set fax less than 50 character", 'fax', 'arguments'));
+			return false;
+		}
+
+		$zipcode           = utility::request('zipcode');
+		if($zipcode && mb_strlen($zipcode) > 50)
+		{
+			logs::set('api:team:add:zipcode:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set zipcode less than 50 character", 'zipcode', 'arguments'));
+			return false;
+		}
+
+		$awards            = utility::request('awards');
+		if($awards && mb_strlen($awards) > 5000)
+		{
+			logs::set('api:team:add:awards:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set awards less than 5000 character", 'awards', 'arguments'));
+			return false;
+		}
+
+		$desc              = utility::request('desc');
+		if($desc && mb_strlen($desc) > 5000)
+		{
+			logs::set('api:team:add:desc:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set desc less than 5000 character", 'desc', 'arguments'));
+			return false;
+		}
+
+		$about             = utility::request('about');
+		if($about && mb_strlen($about) > 5000)
+		{
+			logs::set('api:team:add:about:max:lenght', $this->user_id, $log_meta);
+			debug::error(T_("You must set about less than 5000 character", 'about', 'arguments'));
+			return false;
+		}
+
 		$args                    = [];
 		$args['creator']         = $this->user_id;
 		$args['name']            = $name;
@@ -273,6 +346,16 @@ trait add
 		$args['related']         = $_args['related'];
 		$args['related_id']      = $_args['related_id'];
 		$args['gender']          = $gender;
+
+		$args['country']         = $country;
+		$args['province']        = $province;
+		$args['city']            = $city;
+		$args['phone1']          = $tel;
+		$args['phone2']          = $fax;
+		$args['zipcode']         = $zipcode;
+		$args['desc']            = $desc;
+		$args['desc2']           = $awards;
+		$args['desc3']           = $about;
 
 		\lib\storage::set_last_team_added($shortname);
 
@@ -343,31 +426,41 @@ trait add
 			}
 
 			unset($args['creator']);
-			if(!utility::isset_request('name')) 				unset($args['name']);
-			if(!utility::isset_request('short_name')) 			unset($args['shortname']);
-			if(!utility::isset_request('website')) 				unset($args['website']);
-			if(!utility::isset_request('desc')) 				unset($args['desc']);
-			if(!utility::isset_request('show_avatar')) 			unset($args['showavatar']);
-			if(!utility::isset_request('allow_plus')) 			unset($args['allowplus']);
-			if(!utility::isset_request('allow_minus')) 			unset($args['allowminus']);
-			if(!utility::isset_request('remote_user')) 			unset($args['remote']);
-			if(!utility::isset_request('24h')) 					unset($args['24h']);
-			if(!utility::isset_request('logo')) 				unset($args['logo'], $args['logourl']);
-			if(!utility::isset_request('privacy')) 				unset($args['privacy']);
+			if(!utility::isset_request('name'))             unset($args['name']);
+			if(!utility::isset_request('short_name'))       unset($args['shortname']);
+			if(!utility::isset_request('website'))          unset($args['website']);
+			if(!utility::isset_request('desc'))             unset($args['desc']);
+			if(!utility::isset_request('show_avatar'))      unset($args['showavatar']);
+			if(!utility::isset_request('allow_plus'))       unset($args['allowplus']);
+			if(!utility::isset_request('allow_minus'))      unset($args['allowminus']);
+			if(!utility::isset_request('remote_user'))      unset($args['remote']);
+			if(!utility::isset_request('24h'))              unset($args['24h']);
+			if(!utility::isset_request('logo'))             unset($args['logo'], $args['logourl']);
+			if(!utility::isset_request('privacy'))          unset($args['privacy']);
 
-			if(!utility::isset_request('language')) 			unset($args['lang']);
-			if(!utility::isset_request('event_title')) 			unset($args['eventtitle']);
-			if(!utility::isset_request('event_date')) 			unset($args['eventdate']);
-			if(!utility::isset_request('manual_time_exit')) 	unset($args['manualtimeexit']);
-			if(!utility::isset_request('manual_time_enter')) 	unset($args['manualtimeenter']);
-			if(!utility::isset_request('send_photo')) 			unset($args['sendphoto']);
-			if(!utility::isset_request('cardsize')) 			unset($args['cardsize']);
-			if(!utility::isset_request('allow_desc_enter')) 	unset($args['allowdescenter']);
-			if(!utility::isset_request('allow_desc_exit')) 	    unset($args['allowdescexit']);
-			if(!utility::isset_request('type')) 				unset($args['type']);
-			if(!utility::isset_request('gender')) 				unset($args['gender']);
+			if(!utility::isset_request('language'))         unset($args['lang']);
+			if(!utility::isset_request('event_title'))      unset($args['eventtitle']);
+			if(!utility::isset_request('event_date'))       unset($args['eventdate']);
+			if(!utility::isset_request('manual_time_exit')) unset($args['manualtimeexit']);
+			if(!utility::isset_request('manual_time_enter'))unset($args['manualtimeenter']);
+			if(!utility::isset_request('send_photo'))       unset($args['sendphoto']);
+			if(!utility::isset_request('cardsize'))         unset($args['cardsize']);
+			if(!utility::isset_request('allow_desc_enter')) unset($args['allowdescenter']);
+			if(!utility::isset_request('allow_desc_exit'))  unset($args['allowdescexit']);
+			if(!utility::isset_request('type'))             unset($args['type']);
+			if(!utility::isset_request('gender'))           unset($args['gender']);
 
-			if(!utility::isset_request('parent')) 				unset($args['parent']);
+			if(!utility::isset_request('parent'))           unset($args['parent']);
+
+			if(!utility::isset_request('country'))          unset($args['country']);
+			if(!utility::isset_request('province'))         unset($args['province']);
+			if(!utility::isset_request('city'))             unset($args['city']);
+			if(!utility::isset_request('tel'))              unset($args['phone1']);
+			if(!utility::isset_request('fax'))              unset($args['phone2']);
+			if(!utility::isset_request('zipcode'))          unset($args['zipcode']);
+			if(!utility::isset_request('desc'))             unset($args['desc']);
+			if(!utility::isset_request('awards'))           unset($args['desc2']);
+			if(!utility::isset_request('about'))            unset($args['desc3']);
 
 			if(isset($args['parent']) && intval($args['parent']) === intval($id))
 			{
