@@ -67,11 +67,11 @@
        <div class="c">
          <div class="f radio1">
           <div class="c6">
-           <input type="radio" id="r-male" name="gender" value="male" {%if student.gender == 'male' or  default_school.gender == 'male' or not student.gender%}checked{%endif%} >
+           <input type="radio" id="r-male" name="gender" value="male" {%if student.gender == 'male' or  current_team.gender == 'male' or not student.gender%}checked{%endif%} >
            <label for="r-male">{%trans "Male"%}</label>
           </div>
           <div class="c6">
-           <input type="radio" id="r-female" name="gender" value="female" {%if student.gender == 'female' or default_school.gender == 'female'%}checked{%endif%}>
+           <input type="radio" id="r-female" name="gender" value="female" {%if student.gender == 'female' or current_team.gender == 'female'%}checked{%endif%}>
            <label for="r-female">{%trans "Female"%}</label>
           </div>
          </div>

@@ -21,6 +21,9 @@ trait add
 		// ready to insert userteam or userbranch record
 		$args                  = [];
 
+		$OLD_USER_ID = null;
+		$NEW_USER_ID = null;
+
 		// default args
 		$default_args =
 		[
@@ -50,7 +53,8 @@ trait add
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'user_id' => $this->user_id,
+				'input'   => utility::request(),
 			]
 		];
 
@@ -217,6 +221,11 @@ trait add
 				$request_user_id = utility::request('id');
 				if($request_user_id && $request_user_id = utility\shortURL::decode($request_user_id))
 				{
+					// save old user id to check if change
+					// change all the this user id
+					// in all team
+					$OLD_USER_ID = $request_user_id;
+
 					$old_user_id = \lib\db\userteams::get_list(['user_id' => $request_user_id,'team_id' => $team_id, 'limit' => 1]);
 
 					if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
@@ -337,6 +346,10 @@ trait add
 			if($_args['debug']) debug::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
+
+		$NEW_USER_ID = $user_id;
+
+
 		// to redirect site in new url
 		\lib\storage::set_new_user_code(utility\shortURL::encode($user_id));
 
@@ -417,7 +430,7 @@ trait add
 			$status = 'active';
 		}
 
-		$current_rule = (isset($old_user_id['rule'])) ? $old_user_id['rule'] : null;;
+		$current_rule = (isset($old_user_id['rule'])) ? $old_user_id['rule'] : null;
 		if(($rule === 'user' && $current_rule === 'admin'))
 		{
 			$another_admin = \lib\db\teams::get_all_admins($team_id);
@@ -578,6 +591,17 @@ trait add
 				if($_args['save_log']) logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
 				if($_args['debug']) debug::error(T_("This user is not in this team"), 'id', 'arguments');
 				return false;
+			}
+
+			if($OLD_USER_ID && $NEW_USER_ID && intval($OLD_USER_ID) !== intval($NEW_USER_ID))
+			{
+				// old user id and new user id is set but different
+				// we must update all user id in main parent of this team
+				\lib\db\userteams::update_all_user_id($OLD_USER_ID, $NEW_USER_ID, $team_id, $log_meta);
+				if(!debug::$status)
+				{
+					return false;
+				}
 			}
 
 			unset($args['team_id']);

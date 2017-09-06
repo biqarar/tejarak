@@ -4,6 +4,108 @@ use \lib\db;
 
 class userteams
 {
+	/**
+	 * update all user id in parent and child of this team
+	 * if the team is school
+	 * update all user id in lesson of this team
+	 * if the team is lesson
+	 * update all user id in school
+	 *
+	 * @param      <type>  $_old_user_id  The old user identifier
+	 * @param      <type>  $_new_user_id  The new user identifier
+	 * @param      <type>  $_team_id      The team identifier
+	 * @param      <type>  $_log_meta     The log meta
+	 */
+	public static function update_all_user_id($_old_user_id, $_new_user_id, $_team_id, $_log_meta = [])
+	{
+		$log_meta                 = $_log_meta;
+		$log_meta['meta']['func'] = func_get_args();
+
+		if(!is_numeric($_old_user_id) || !is_numeric($_new_user_id) || !$_old_user_id || !$_new_user_id)
+		{
+			return false;
+		}
+
+		$ids   = [];
+		$ids[] = $_team_id;
+
+		$parent = self::get_parent($_team_id);
+		$ids[]  = $parent;
+		while ($parent)
+		{
+			$parent = self::get_parent($parent);
+			$ids[]  = $parent;
+		}
+
+		$child = self::get_child($_team_id);
+		$ids[] = $child;
+		while ($child)
+		{
+			$child = self::get_child($child);
+			$ids[] = $child;
+		}
+
+		$ids = array_filter($ids);
+		$ids = array_unique($ids);
+
+		$ids = array_map(function($_a){return intval($_a);}, $ids);
+
+		if(!empty($ids))
+		{
+			$all_team_id = implode(',', $ids);
+			$check_duplicate =  "SELECT userteams.id, userteams.type FROM userteams WHERE userteams.user_id = $_new_user_id AND userteams.team_id IN ($all_team_id) ";
+			$check_duplicate = \lib\db::get($check_duplicate);
+			if($check_duplicate)
+			{
+				\lib\db\logs::set('change:all:user:id:team:duplicate', null, $log_meta);
+				\lib\debug::error(T_("This already exist in this team, can not add again"));
+				return false;
+			}
+			$query = "UPDATE userteams SET userteams.user_id = $_new_user_id WHERE userteams.user_id = $_old_user_id AND userteams.team_id IN ($all_team_id) ";
+			\lib\db::query($query);
+		}
+	}
+
+
+	/**
+	 * Gets the parent of team
+	 *
+	 * @param      <type>   $_team_id  The team identifier
+	 *
+	 * @return     boolean  The parent.
+	 */
+	public static function get_parent($_team_id)
+	{
+		if(!is_numeric($_team_id) || !$_team_id)
+		{
+			return false;
+		}
+
+		$query = "SELECT teams.parent AS `parent` FROM teams WHERE teams.id = $_team_id LIMIT 1";
+		$result = \lib\db::get($query, 'parent', true);
+		return $result;
+	}
+
+
+	/**
+	 * Gets the child of team
+	 *
+	 * @param      <type>   $_team_id  The team identifier
+	 *
+	 * @return     boolean  The child.
+	 */
+	public static function get_child($_team_id)
+	{
+		if(!is_numeric($_team_id) || !$_team_id)
+		{
+			return false;
+		}
+
+		$query = "SELECT teams.id AS `id` FROM teams WHERE teams.parent = $_team_id LIMIT 1";
+		$result = \lib\db::get($query, 'id', true);
+		return $result;
+	}
+
 
 	/**
 	 * Gets the admins.
