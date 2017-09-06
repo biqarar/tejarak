@@ -97,6 +97,8 @@ class teams
 	 */
 	public static function insert($_args)
 	{
+		\lib\db\cache::clean('teams');
+
 		$set = \lib\db\config::make_set($_args);
 		if($set)
 		{
@@ -147,19 +149,25 @@ class teams
 	 */
 	public static function get_by_id($_id)
 	{
-		if(!isset(self::$TEAMS_ID[$_id]))
+		if(!is_numeric($_id))
 		{
-			if($_id)
-			{
-				$query = "SELECT * FROM teams WHERE teams.id = '$_id' LIMIT 1";
-				self::$TEAMS_ID[$_id] = \lib\db::get($query, null, true);
-			}
+			return false;
 		}
 
-		if(isset(self::$TEAMS_ID[$_id]))
+		$cash = \lib\db\cache::get_cache('teams', ['id' => $_id] );
+		if($cash)
 		{
-			return self::$TEAMS_ID[$_id];
+			return $cash;
 		}
+
+		if($_id)
+		{
+			$query = "SELECT * FROM teams WHERE teams.id = '$_id' LIMIT 1";
+			$result = \lib\db::get($query, null, true);
+			\lib\db\cache::set_cache('teams', ['id' => $_id] , $result);
+			return $result;
+		}
+
 		return null;
 	}
 
@@ -172,20 +180,21 @@ class teams
 	 */
 	public static function get_by_shortname($_shortname)
 	{
-		if(!isset(self::$TEAMS_SHORT_NAME[$_shortname]))
+		if(!$_shortname)
 		{
-			if($_shortname)
-			{
-				$query = "SELECT * FROM teams WHERE teams.shortname = '$_shortname' LIMIT 1";
-				self::$TEAMS_SHORT_NAME[$_shortname] = \lib\db::get($query, null, true);
-			}
+			return false;
 		}
 
-		if(isset(self::$TEAMS_SHORT_NAME[$_shortname]))
+		$cash = \lib\db\cache::get_cache('teams', ['shortname' => $_shortname]);
+		if($cash)
 		{
-			return self::$TEAMS_SHORT_NAME[$_shortname];
+			return $cash;
 		}
-		return null;
+
+		$query = "SELECT * FROM teams WHERE teams.shortname = '$_shortname' LIMIT 1";
+		$result = \lib\db::get($query, null, true);
+		\lib\db\cache::set_cache('teams', ['shortname' => $_shortname], $result);
+		return $result;
 	}
 
 
@@ -210,9 +219,6 @@ class teams
 	 */
 	public static function update()
 	{
-		// clear cash
-		self::$TEAMS_SHORT_NAME = [];
-
 		return \lib\db\config::public_update('teams', ...func_get_args());
 	}
 
@@ -225,7 +231,6 @@ class teams
 	 */
 	public static function access_team($_team, $_user_id, $_options = [])
 	{
-
 		if(!$_team)
 		{
 			return false;
@@ -255,6 +260,9 @@ class teams
 			 */
 			case 'view':
 			case 'get_member':
+
+				$cash_key = [$_team, $_user_id, 'access_team' => 'get_member'];
+
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					$_user_id = 0;
@@ -306,6 +314,7 @@ class teams
 			case 'report_u':
 			case 'in_team':
 			case 'my_team':
+				$cash_key = [$_team, $_user_id, 'access_team' => 'in_team'];
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;
@@ -346,6 +355,7 @@ class teams
 			case 'add_school_subject':
 			case 'add_school_schoolterm':
 			case 'add_school_lesson':
+				$cash_key = [$_team, $_user_id, 'access_team' => 'view'];
 				if(!$_user_id || !is_numeric($_user_id))
 				{
 					return false;
@@ -368,6 +378,7 @@ class teams
 
 			case 'supervisor:get_member':
 			case 'supervisor:view':
+				$cash_key = [$_team, $_user_id, 'access_team' => 'supervisor'];
 				$query =
 				"
 					SELECT
@@ -382,6 +393,7 @@ class teams
 				break;
 
 			case 'save_hours':
+				$cash_key = [$_team, $_user_id, 'access_team' => 'save_hours'];
 				if(!$_user_id || !is_numeric($_user_id) || !$_options['change_hour_user'] || !is_numeric($_options['change_hour_user']))
 				{
 					return false;
@@ -428,7 +440,22 @@ class teams
 			return false;
 		}
 
-		$result =  \lib\db::get($query, null, true);
+		if(!isset($cash_key))
+		{
+			$cash_key = func_get_args();
+		}
+
+		$cash     = \lib\db\cache::get_cache('teams', $cash_key, 60);
+
+		if($cash)
+		{
+			return $cash;
+		}
+		else
+		{
+			$result =  \lib\db::get($query, null, true);
+			\lib\db\cache::set_cache('teams', $cash_key, $result);
+		}
 
 		return $result;
 	}
@@ -525,7 +552,17 @@ class teams
 				$type_query
 		";
 
-		$result =  \lib\db::get($query);
+		$cash = \lib\db\cache::get_cache('teams', ['team_list' => $_user_id, $_options], 60);
+		if($cash)
+		{
+			$result = $cash;
+		}
+		else
+		{
+			$result =  \lib\db::get($query);
+			\lib\db\cache::set_cache('teams', ['team_list' => $_user_id, $_options], $result);
+
+		}
 		return $result;
 	}
 
