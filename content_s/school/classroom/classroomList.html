@@ -31,7 +31,7 @@
     <td>{%if value.classroom_size%}{{value.classroom_size|fitNumber}}{%else%}<i>-</i>{%endif%}</td>
     <td>{%set my_status = value.status |capitalize%}{%trans my_status%}</td>
     <td>{{value.desc}}</td>
-    <td><a href='{{url.baseFull}}/{{school_code}}/classroom={{value.id|shortURL("encode")}}'><i class="sf-edit"></i></a></td>
+    <td><a href='{{url.baseFull}}/{{school_code}}/classroom={{value.id}}'><i class="sf-edit"></i></a></td>
   </tr>
   {%endfor%}
   </tbody>
