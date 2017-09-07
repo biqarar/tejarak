@@ -19,6 +19,7 @@
     <th>{%trans "Title"%}</th>
     <th>{%trans "Start"%}</th>
     <th>{%trans "End"%}</th>
+    <th>{%trans "Status"%}</th>
     <th>{%trans "Description"%}</th>
     <th>{%trans "Edit"%}</th>
   </thead>
@@ -28,6 +29,7 @@
     <td>{{value.title}}</td>
     <td>{{value.start|fitNumber}}</td>
     <td>{{value.end|fitNumber}}</td>
+    <td>{%set myStatus = value.status | capitalize%}{%trans myStatus %}</td>
     <td>{{value.desc}}</td>
     <td><a href='{{url.baseFull}}/{{school_code}}/terms={{value.id}}'><i class="sf-edit"></i></a></td>
   </tr>

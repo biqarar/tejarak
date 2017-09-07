@@ -61,7 +61,14 @@ class school_terms
 		}
 		$default_option =
 		[
-			'search_field' => " school_terms.title LIKE '%__string__%' "
+			'search_field' =>
+			"
+			(
+				 school_terms.title LIKE '%__string__%'  OR
+				 school_terms.start LIKE '%__string__%' OR
+				 school_terms.end LIKE '%__string__%'
+			)
+			"
 		];
 		$_option = array_merge($default_option, $_option);
 		$result = \lib\db\config::public_search('school_terms', $_search, $_option);

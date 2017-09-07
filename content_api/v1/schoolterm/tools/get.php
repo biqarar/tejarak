@@ -36,6 +36,25 @@ trait get
 				case 'school_id':
 					$result[$key] = utility\shortURL::encode($value);
 					break;
+
+				case 'start':
+				case 'end':
+					if($value)
+					{
+						$time         = strtotime($value);
+						$result[$key] = date("Y-m-d", $time);
+						$toGregorian  = \lib\utility\jdate::toGregorian(date("Y", $time), date("m", $time), date("d", $time));
+						if(is_array($toGregorian))
+						{
+							$result[$key. '_gregorian'] = implode('-', $toGregorian);
+						}
+					}
+					else
+					{
+						$result[$key] = null;
+					}
+
+					break;
 				case 'creator':
 				case 'createdate':
 				case 'date_modified':

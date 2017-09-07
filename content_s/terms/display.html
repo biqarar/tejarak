@@ -17,13 +17,30 @@
 
       <div class="f c12 mA5">
         <label class="c2">{%trans "Start"%}</label>
-        <input type="text" name="start" placeholder='{%trans "Start"%} *'  required value="{{terms.start}}" maxlength='30' minlength="3" class="c">
+        <input class="c input datepicker pwt-datepicker-input-element" value="{{terms.start_gregorian}}" data-format="YYYY/MM/DD" type="text" name="start" placeholder='{%trans "Start"%} *' required >
       </div>
 
       <div class="f c12 mA5">
         <label class="c2">{%trans "End"%}</label>
-        <input type="text" name="end" placeholder='{%trans "End"%} *' required value="{{terms.end}}" maxlength='30' minlength="3" class="c">
+        <input class="c input datepicker pwt-datepicker-input-element" value="{{terms.end_gregorian}}" data-format="YYYY/MM/DD" type="text" name="end" placeholder='{%trans "End"%} *' required >
       </div>
+
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="status">{%trans "Status"%}</label></div>
+       <div class="c">
+         <div class="f radio1">
+          <div class="c6">
+           <input type="radio" id="r-enable" name="status" value="enable" {%if terms.status == 'enable'  or not terms.status%}checked{%endif%} >
+           <label for="r-enable">{%trans "Enable"%}</label>
+          </div>
+          <div class="c6">
+           <input type="radio" id="r-disable" name="status" value="disable" {%if terms.status == 'disable' %}checked{%endif%}>
+           <label for="r-disable">{%trans "Disable"%}</label>
+          </div>
+         </div>
+        </div>
+      </div>
+
 
        <div class="f c12 mA5">
         <label class="c2">{%trans "Description"%}</label>
@@ -36,9 +53,7 @@
      <div class="f g1 mt1">
 
 {%if edit_mode%}
-      <div class="c3 s12">
-       <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="b2" data-ajaxify>{%trans "Close"%}</a>
-      </div>
+
       <div class="c3 os s12">
        <input type="submit" value='{%trans "Edit"%}' class='b1'>
       </div>

@@ -16,10 +16,11 @@ class model extends \content_s\main\model
 	{
 		$args =
 		[
-			'title' => utility::post('title'),
-			'start' => utility::post('start'),
-			'end'   => utility::post('end'),
-			'desc'  => utility::post('desc'),
+			'title'  => utility::post('title'),
+			'start'  => utility\human::number(utility::post('start'), 'en'),
+			'end'    => utility\human::number(utility::post('end'), 'en'),
+			'desc'   => utility::post('desc'),
+			'status' => utility::post('status'),
 		];
 		return $args;
 	}
