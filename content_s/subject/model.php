@@ -16,8 +16,10 @@ class model extends \content_s\main\model
 	{
 		$args =
 		[
-			'title' => utility::post('title'),
-			'desc'  => utility::post('desc'),
+			'title'    => utility::post('title'),
+			'desc'     => utility::post('desc'),
+			'category' => utility::post('category'),
+			'status'   => utility::post('status'),
 		];
 		return $args;
 	}
@@ -179,6 +181,20 @@ class model extends \content_s\main\model
 		{
 			debug::msg('direct', true);
 			$this->redirector()->set_domain()->set_url('s');
+		}
+	}
+
+
+	/**
+	 * get category of lessons in this school
+	 */
+	public function lesson_category()
+	{
+		$school_id = \lib\router::get_url(0);
+		$school_id = \lib\utility\shortURL::decode($school_id);
+		if($school_id)
+		{
+			return \lib\db\school_subjects::get_category($school_id);
 		}
 	}
 }

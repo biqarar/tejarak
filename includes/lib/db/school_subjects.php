@@ -61,12 +61,31 @@ class school_subjects
 		}
 		$default_option =
 		[
-			'search_field' => " school_subjects.title LIKE '%__string__%' "
+			'search_field' =>
+			"
+				(
+					school_subjects.title LIKE '%__string__%' OR
+					school_subjects.category LIKE '%__string__%'
+				)
+			"
 		];
 		$_option = array_merge($default_option, $_option);
 		$result = \lib\db\config::public_search('school_subjects', $_search, $_option);
 		return $result;
 	}
+
+
+	public static function get_category($_school_id)
+	{
+		if(!is_numeric($_school_id) || !$_school_id)
+		{
+			return false;
+		}
+
+		$query = "SELECT DISTINCT school_subjects.category AS `cat` FROM school_subjects WHERE school_subjects.school_id = $_school_id";
+		return \lib\db::get($query, 'cat');
+	}
+
 
 }
 ?>

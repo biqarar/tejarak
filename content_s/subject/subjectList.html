@@ -17,14 +17,18 @@
 <table class="tbl">
   <thead class="primary">
     <th>{%trans "Title"%}</th>
+    <th>{%trans "Category"%}</th>
     <th>{%trans "Description"%}</th>
+    <th>{%trans "Status"%}</th>
     <th>{%trans "Edit"%}</th>
   </thead>
   <tbody>
   {%for key, value in subject_list%}
   <tr>
     <td>{{value.title}}</td>
+    <td>{{value.category}}</td>
     <td>{{value.desc}}</td>
+    <td>{%set myStatus = value.status | capitalize%}{%trans myStatus %}</td>
     <td><a href='{{url.baseFull}}/{{school_code}}/subject={{value.id}}'><i class="sf-edit"></i></a></td>
   </tr>
   {%endfor%}

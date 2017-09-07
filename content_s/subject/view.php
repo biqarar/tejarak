@@ -3,6 +3,11 @@ namespace content_s\subject;
 
 class view extends \content_s\main\view
 {
+	public function lesson_category()
+	{
+		$this->data->category = $this->model()->lesson_category();
+	}
+
 
 	/**
 	 * { function_description }
@@ -20,6 +25,8 @@ class view extends \content_s\main\view
 	 */
 	public function view_subject_add()
 	{
+		$this->lesson_category();
+
 		$this->data->page['title'] = T_('Add new subject');
 		$this->data->page['desc']  = $this->data->page['title'];
 	}
@@ -32,6 +39,8 @@ class view extends \content_s\main\view
 	 */
 	public function view_subject_edit($_args)
 	{
+		$this->lesson_category();
+
 		$subject_id = isset($_args->match->url[0][2]) ? $_args->match->url[0][2] : null;
 		$this->data->subject = $this->model()->subjectEdit($subject_id);
 

@@ -15,20 +15,44 @@
        </div>
        </div>
 
+       <div class="f c12 mA5">
+        <label class="c2">{%trans "Category"%}</label>
+        <input type="text" list="Category" name="category" placeholder='{%trans "Category"%}' value="{{subject.category}}" maxlength='30' minlength="3" class="c">
+        <datalist id="Category" class="c0 s0">
+         {%for key, value in category%}
+          <option value="{{value}}">{{value}}</option>
+         {%endfor%}
+        </datalist>
+      </div>
+
        <div class="f c12">
         <label class="c2">{%trans "Description"%}</label>
         <input type="text" name="desc" placeholder='{%trans "Description"%}' value="{{subject.desc}}" maxlength='30' minlength="3" class="c">
       </div>
      </div>
 
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="status">{%trans "Status"%}</label></div>
+       <div class="c">
+         <div class="f radio1">
+          <div class="c6">
+           <input type="radio" id="r-enable" name="status" value="enable" {%if subject.status == 'enable'  or not subject.status%}checked{%endif%} >
+           <label for="r-enable">{%trans "Enable"%}</label>
+          </div>
+          <div class="c6">
+           <input type="radio" id="r-disable" name="status" value="disable" {%if subject.status == 'disable' %}checked{%endif%}>
+           <label for="r-disable">{%trans "Disable"%}</label>
+          </div>
+         </div>
+        </div>
+      </div>
+
 
 
      <div class="f g1 mt1">
 
 {%if edit_mode%}
-      <div class="c3 s12">
-       <a href="{{url.full}}" data-data='{"delete":true}' data-method="post" class="b2" data-ajaxify>{%trans "Close"%}</a>
-      </div>
+
       <div class="c3 os s12">
        <input type="submit" value='{%trans "Edit"%}' class='b1'>
       </div>

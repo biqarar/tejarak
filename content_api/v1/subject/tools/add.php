@@ -6,7 +6,7 @@ use \lib\db\logs;
 
 trait add
 {
-
+	use check_args;
 
 	/**
 	 * Adds a subject.
@@ -33,8 +33,6 @@ trait add
 		// set default title of debug
 		debug::title(T_("Operation Faild"));
 
-		// delete subject mode
-		$delete_mode = false;
 
 		// set the log meta
 		$log_meta =
@@ -73,41 +71,24 @@ trait add
 		else
 		{
 			logs::set('api:subject:school:notfound:invalid', $this->user_id, $log_meta);
-			debug::error(T_("school not found"), 'user', 'permission');
+			debug::error(T_("School not found"), 'user', 'permission');
 			return false;
 		}
 
-		// get firsttitle
-		$title = utility::request("title");
-		$title = trim($title);
-		if($title && mb_strlen($title) > 50)
-		{
-			logs::set('api:subject:title:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the title less than 50 character"), 'title', 'arguments');
-			return false;
-		}
-
-		if(!$title)
-		{
-			logs::set('api:subject:title:empty', $this->user_id, $log_meta);
-			debug::error(T_("Title of lesson can not be null"), 'title', 'arguments');
-			return false;
-		}
-
-		$desc = utility::request("desc");
-		$desc = trim($desc);
-		if($desc && mb_strlen($desc) > 1000)
-		{
-			logs::set('api:subject:desc:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the desc less than 1000 character"), 'desc', 'arguments');
-			return false;
-		}
-
-		// ready to insert userschool or userbranch record
 		$args              = [];
 		$args['school_id'] = $school_id;
-		$args['title']     = $title;
-		$args['desc']      = $desc;
+		/**
+		 * check valid argument
+		 * check lenght of args
+		 *
+		 * @var        <type>
+		 */
+		$check_args = $this->subject_check_args($_args, $args, $log_meta);
+
+		if(!debug::$status || $check_args === false)
+		{
+			return false;
+		}
 
 
 		if($_args['method'] === 'post')
@@ -130,14 +111,16 @@ trait add
 			if(!$check_user_in_school || !isset($check_user_in_school['id']))
 			{
 				logs::set('api:subject:user:not:in:school', $this->user_id, $log_meta);
-				debug::error(T_("This user is not in this school"), 'id', 'arguments');
+				debug::error(T_("This subject is not in this school"), 'id', 'arguments');
 				return false;
 			}
 
 			unset($args['school_id']);
 
-			if(!utility::isset_request('title')) 		unset($args['title']);
-			if(!utility::isset_request('desc')) 		unset($args['desc']);
+			if(!utility::isset_request('title'))   unset($args['title']);
+			if(!utility::isset_request('desc'))    unset($args['desc']);
+			if(!utility::isset_request('status'))  unset($args['status']);
+			if(!utility::isset_request('category'))unset($args['category']);
 
 			if(!empty($args))
 			{

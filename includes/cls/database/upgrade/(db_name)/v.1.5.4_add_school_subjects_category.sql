@@ -1,0 +1,1 @@
+ALTER TABLE `school_subjects` ADD `category` varchar(100) NULL DEFAULT NULL;
