@@ -66,7 +66,7 @@ trait check_args
 		if($status && !in_array($status, ['enable', 'disable']))
 		{
 			logs::set('api:schoolterm:status:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid status time of terms"), 'status', 'arguments');
+			debug::error(T_("Invalid status of terms"), 'status', 'arguments');
 			return false;
 		}
 
