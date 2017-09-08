@@ -4,7 +4,7 @@ route('*', function ()
 
 }).once(function()
 {
-  setLanguageURL();
+
 
 });
 
@@ -266,61 +266,6 @@ function calcTotalExit(_card, _recalc)
     timePure.fadeIn();
   }
   return finalTime;
-}
-
-
-/**
- * set link of language on each page
- */
-function setLanguageURL()
-{
-  var urlPath     = window.location.pathname;
-  var urlHash     = window.location.hash;
-  var indexOfLang = urlPath.indexOf('/' + $('html').attr('lang'));
-  var urlBase     = $('base').attr('href');
-  urlBase         = urlBase.substr(0, urlBase.indexOf('/', 10));
-
-  if(indexOfLang === 0)
-  {
-    urlPath = urlPath.substr(4);
-  }
-  else
-  {
-    urlPath = urlPath.substr(1);
-  }
-
-  $('.langlist a').each(function(key, index)
-  {
-    var lang = $(index).attr('hreflang');
-    // if we are in this language
-    if(lang == $('html').attr('lang'))
-    {
-      $(index).attr('class', 'isActive');
-    }
-    if(lang == 'fa')
-    {
-      lang = '';
-    }
-    else if(lang == $('html').attr('lang'))
-    {
-      // lang = '/' + lang;
-    }
-    var myUrl = urlPath;
-    if(lang)
-    {
-      myUrl = lang + '/' + myUrl;
-    }
-    // add hash if exist
-    if(urlHash)
-    {
-      myUrl += urlHash;
-    }
-    myUrl = urlBase + '/' + myUrl;
-    myUrl = myUrl.trim('/');
-    myUrl = myUrl.replace(/\/$/, '');
-
-    $(index).attr('href', myUrl);
-  })
 }
 
 
