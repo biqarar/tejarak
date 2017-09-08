@@ -5,7 +5,7 @@ use \lib\utility;
 trait _use
 {
 	// API OPTIONS
-	use \content_api\v1\home\tools\options;
+	use \addons\content_api\v1\home\tools\_use;
 
 	// API HOURS
 	use \content_api\v1\hours\tools\add;
@@ -31,10 +31,6 @@ trait _use
 	// API gateway
 	use \content_api\v1\gateway\tools\get;
 	use \content_api\v1\gateway\tools\add;
-
-	// API FILE
-	use \content_api\v1\file\tools\get;
-	use \content_api\v1\file\tools\link;
 
 	// API REPORT
 	use \content_api\v1\report\tools\get;
