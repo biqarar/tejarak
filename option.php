@@ -13,13 +13,13 @@ if(!defined('db_log_name'))
 */
 self::$language =
 [
-	'default' => 'en',
+	'default' => 'fa',
 	'list'    => ['fa','en',],
 ];
 /**
  * system default lanuage
  */
-self::$config['default_language']             = 'en';
+self::$config['default_language']             = 'fa';
 self::$config['redirect_url']                 = 'http://tejarak.dev';
 self::$config['multi_domain']                 = true;
 self::$config['redirect_to_main']             = true;

@@ -297,7 +297,7 @@ function setLanguageURL()
     {
       $(index).attr('class', 'isActive');
     }
-    if(lang == 'en')
+    if(lang == 'fa')
     {
       lang = '';
     }
