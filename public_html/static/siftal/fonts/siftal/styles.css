@@ -1463,9 +1463,6 @@
 .sf-sun:before {
   content: "\e17c";
 }
-.sf-linkedin-alt:before {
-  content: "\e17d";
-}
 .sf-card:before {
   content: "\e17e";
 }
@@ -1486,4 +1483,64 @@
 }
 .sf-sell-sign:before {
   content: "\e184";
+}
+.sf-load-a:before {
+  content: "\e185";
+}
+.sf-load-d:before {
+  content: "\e186";
+}
+.sf-load-b:before {
+  content: "\e187";
+}
+.sf-spin-alt:before {
+  content: "\e188";
+}
+.sf-pull-request:before {
+  content: "\e189";
+}
+.sf-network-1:before {
+  content: "\e18a";
+}
+.sf-merge:before {
+  content: "\e18b";
+}
+.sf-fork-repo:before {
+  content: "\e18c";
+}
+.sf-publish:before {
+  content: "\e18d";
+}
+.sf-facebook-square:before {
+  content: "\e18e";
+}
+.sf-facebook-official:before {
+  content: "\e18f";
+}
+.sf-pinterest-square:before {
+  content: "\e17d";
+}
+.sf-pinterest-p:before {
+  content: "\e190";
+}
+.sf-skype-1:before {
+  content: "\e191";
+}
+.sf-model-s:before {
+  content: "\e192";
+}
+.sf-vcard:before {
+  content: "\e193";
+}
+.sf-clock-o:before {
+  content: "\e194";
+}
+.sf-calendar-o:before {
+  content: "\e195";
+}
+.sf-arrow-vertical:before {
+  content: "\e196";
+}
+.sf-arrow-horizontal:before {
+  content: "\e197";
 }
