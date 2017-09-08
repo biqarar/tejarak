@@ -15,9 +15,9 @@ class posts
 	public $post_order       = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'order'           ,'type'=>'int@10'];
 	public $post_status      = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'status'          ,'type'=>'enum@publish,draft,schedule,deleted,expire!draft'];
 	public $post_parent      = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'parent'          ,'type'=>'bigint@20'                       ,'foreign'=>'posts@id!post_title'];
-	public $user_id          = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!user_displayname'];
+	public $user_id          = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!displayname'];
 	public $post_publishdate = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'publishdate'     ,'type'=>'datetime@'];
-	public $date_modified    = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
+	public $datemodified    = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
 
 	//--------------------------------------------------------------------------------id
 	public function id(){}
@@ -93,6 +93,6 @@ class posts
 		$this->form()->type('text')->name('publishdate');
 	}
 
-	public function date_modified(){}
+	public function datemodified(){}
 }
 ?>

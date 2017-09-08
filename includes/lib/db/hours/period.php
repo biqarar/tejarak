@@ -28,7 +28,7 @@ trait period
 // accepted
 // total
 // createdate
-// date_modified
+// datemodified
 // status
 // enddate
 // endyear
@@ -90,7 +90,7 @@ trait period
 						'$end'                                                                       	AS `end`,
 						GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 						GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-						GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+						GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 						COUNT(*)                                                                    	AS `count`,
 						SUM(hours.diff)                                                             	AS `diff`,
 						SUM(hours.minus)                                                            	AS `minus`,
@@ -137,7 +137,7 @@ trait period
 						'$end'                                                                       	AS `end`,
 						GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 						GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-						GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+						GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 						COUNT(*)                                                                    	AS `count`,
 						SUM(hours.diff)                                                             	AS `diff`,
 						SUM(hours.minus)                                                            	AS `minus`,
@@ -189,7 +189,7 @@ trait period
 						'$end'                                                                       	AS `end`,
 						GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 						GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-						GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+						GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 						COUNT(*)                                                                    	AS `count`,
 						SUM(hours.diff)                                                             	AS `diff`,
 						SUM(hours.minus)                                                            	AS `minus`,
@@ -236,7 +236,7 @@ trait period
 						'$end'                                                                       	AS `end`,
 						GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 						GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-						GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+						GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 						COUNT(*)                                                                    	AS `count`,
 						SUM(hours.diff)                                                             	AS `diff`,
 						SUM(hours.minus)                                                            	AS `minus`,

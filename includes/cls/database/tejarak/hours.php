@@ -3,7 +3,7 @@ namespace database\tejarak;
 class hours
 {
 	public $id            = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'id'              ,'type'=>'int@10'];
-	public $user_id       = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!user_displayname'];
+	public $user_id       = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!displayname'];
 	public $hour_date     = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'date'            ,'type'=>'date@'];
 	public $hour_start    = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'start'           ,'type'=>'time@'];
 	public $hour_end      = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'end'             ,'type'=>'time@'];
@@ -13,7 +13,7 @@ class hours
 	public $hour_type     = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'type'            ,'type'=>'enum@nothing,base,wplus,wminus,all!all'];
 	public $hour_accepted = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'accepted'        ,'type'=>'smallint@5'];
 	public $hour_status   = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'status'          ,'type'=>'enum@active,awaiting,deactive,removed,filter!awaiting'];
-	public $date_modified = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
+	public $datemodified = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
 
 	//--------------------------------------------------------------------------------id
 	public function id(){}
@@ -71,6 +71,6 @@ class hours
 		$this->setChild();
 	}
 
-	public function date_modified(){}
+	public function datemodified(){}
 }
 ?>

@@ -17,7 +17,7 @@ class users
 	 *
 	 * @var        array
 	 */
-	public static $user_status = ['active','awaiting','deactive','removed','filter'];
+	public static $status = ['active','awaiting','deactive','removed','filter'];
 
 
 	/**
@@ -102,7 +102,7 @@ class users
 
 		if($_args['type'] === 'inspection')
 		{
-			$user_update['user_status'] = 'deactive';
+			$user_update['status'] = 'deactive';
 		}
 
 		if(!empty($user_update))
@@ -163,7 +163,7 @@ class users
 
 		if(self::get_status($_args['user_id']) === 'awaiting')
 		{
-			$user_update['user_status'] = 'active';
+			$user_update['status'] = 'active';
 		}
 
 		if(!empty($user_update))
@@ -223,41 +223,41 @@ class users
 		switch ($_field)
 		{
 			case 'id':
-			case 'user_mobile':
-			case 'user_email':
-			case 'user_pass':
-			case 'user_displayname':
-			case 'user_meta':
-			case 'user_status':
-			case 'user_parent':
-			case 'user_permission':
-			case 'user_createdate':
-			case 'date_modified':
-			case 'user_username':
-			case 'user_group':
-			case 'user_file_id':
-			case 'user_chat_id':
-			case 'user_setup':
-			case 'user_name':
-			case 'user_family':
-			case 'user_father':
-			case 'user_birthday':
-			case 'user_code':
-			case 'user_nationalcode':
-			case 'user_from':
-			case 'user_nationality':
-			case 'user_brithplace':
-			case 'user_region':
-			case 'user_pasportcode':
-			case 'user_marital':
-			case 'user_childcount':
-			case 'user_education':
-			case 'user_insurancetype':
-			case 'user_insurancecode':
-			case 'user_dependantscount':
-			case 'user_postion':
+			case 'mobile':
+			case 'email':
+			case 'pass':
+			case 'displayname':
+			case 'meta':
+			case 'status':
+			case 'parent':
+			case 'permission':
+			case 'datecreated':
+			case 'datemodified':
+			case 'username':
+			case 'group':
+			case 'fileid':
+			case 'chatid':
+			case 'setup':
+			case 'name':
+			case 'lastname':
+			case 'father':
+			case 'birthday':
+			case 'shcode':
+			case 'nationalcode':
+			case 'shfrom':
+			case 'nationality':
+			case 'brithplace':
+			case 'region':
+			case 'pasportcode':
+			case 'marital':
+			case 'childcount':
+			case 'education':
+			case 'insurancetype':
+			case 'insurancecode':
+			case 'dependantscount':
+			case 'postion':
 			case 'unit_id':
-			case 'user_language':
+			case 'language':
 				if(isset(self::$USERS_DETAIL[$_user_id][$_field]))
 				{
 					return self::$USERS_DETAIL[$_user_id][$_field];
@@ -309,7 +309,7 @@ class users
 			case 'language':
 				if(\lib\utility\location\languages::check($_value))
 				{
-					$update['user_language'] = $_value;
+					$update['language'] = $_value;
 				}
 				break;
 
@@ -329,41 +329,41 @@ class users
 				}
 				break;
 
-			case 'user_mobile':
-			case 'user_email':
-			case 'user_pass':
-			case 'user_displayname':
-			case 'user_meta':
-			case 'user_status':
-			case 'user_parent':
-			case 'user_permission':
-			case 'user_createdate':
-			case 'date_modified':
-			case 'user_username':
-			case 'user_group':
-			case 'user_file_id':
-			case 'user_chat_id':
-			case 'user_setup':
-			case 'user_name':
-			case 'user_family':
-			case 'user_father':
-			case 'user_birthday':
-			case 'user_code':
-			case 'user_nationalcode':
-			case 'user_from':
-			case 'user_nationality':
-			case 'user_brithplace':
-			case 'user_region':
-			case 'user_pasportcode':
-			case 'user_marital':
-			case 'user_childcount':
-			case 'user_education':
-			case 'user_insurancetype':
-			case 'user_insurancecode':
-			case 'user_dependantscount':
-			case 'user_postion':
+			case 'mobile':
+			case 'email':
+			case 'pass':
+			case 'displayname':
+			case 'meta':
+			case 'status':
+			case 'parent':
+			case 'permission':
+			case 'datecreated':
+			case 'datemodified':
+			case 'username':
+			case 'group':
+			case 'fileid':
+			case 'chatid':
+			case 'setup':
+			case 'name':
+			case 'lastname':
+			case 'father':
+			case 'birthday':
+			case 'shcode':
+			case 'nationalcode':
+			case 'shfrom':
+			case 'nationality':
+			case 'brithplace':
+			case 'region':
+			case 'pasportcode':
+			case 'marital':
+			case 'childcount':
+			case 'education':
+			case 'insurancetype':
+			case 'insurancecode':
+			case 'dependantscount':
+			case 'postion':
 			case 'unit_id':
-			case 'user_language':
+			case 'language':
 				$update[$_field] = $_value;
 				break;
 			default:
@@ -482,7 +482,7 @@ class users
 			case 'spam':
 			case 'block':
 			case 'delete':
-				if(isset(self::$USERS_DETAIL[$_user_id]['user_status']) && self::$USERS_DETAIL[$_user_id]['user_status'] === $_field)
+				if(isset(self::$USERS_DETAIL[$_user_id]['status']) && self::$USERS_DETAIL[$_user_id]['status'] === $_field)
 				{
 					return true;
 				}

@@ -86,10 +86,6 @@
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
-        <div class="c4 s6">
-         <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
-         <label for="remoteUser">{%trans "Remote user"%}</label>
-        </div>
 
         <div class="c6 s6">
          <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if member.allow_desc_enter or team_default.allow_desc_enter %}checked{%endif%}>
@@ -118,7 +114,7 @@
           </div>
           <div class="c4">
            <input type="radio" id="r-suspended" name="status" value="suspended" {%if member.status == 'suspended' %}checked{%endif%}>
-           <label for="r-suspended">{%trans "Suspended"%}</label>
+           <label for="r-suspended">{%trans "Remove"%}</label>
           </div>
          </div>
         </div>
@@ -147,7 +143,7 @@
           {%for k, v in member.parent%}
            <div class="f">
             <div class="c">
-              <img src="{{v.file_url}}" class="mini">
+              <img src="{{v.fileurl}}" class="mini">
             </div>
             <div class="c">
               <p>{{v.mobile|fitNumber}}</p>

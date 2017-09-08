@@ -147,6 +147,7 @@ class model extends \content_a\main\model
 		$this->user_id    = $member_id;
 		$parent           = $this->get_list_parent();
 		$result['parent'] = $parent;
+
 		return $result;
 	}
 

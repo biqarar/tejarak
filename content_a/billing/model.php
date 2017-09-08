@@ -108,8 +108,8 @@ class model extends \mvc\model
 	{
 		$promo     = utility::post('promo');
 		$amount    = 0;
-		$user_code = null;
-		$user_ref  = null;
+		$shcode = null;
+		$ref  = null;
 
 		$log_meta =
         [
@@ -117,7 +117,7 @@ class model extends \mvc\model
         	'meta' =>
         	[
 				'user'    => $this->login('id'),
-				'ref'     => $user_ref,
+				'ref'     => $ref,
 				'post'    => utility::post(),
 				'session' => $_SESSION,
         	],
@@ -131,9 +131,9 @@ class model extends \mvc\model
 		}
 		if(isset($split[1]))
 		{
-			$user_code = $split[1];
-			$user_ref = \lib\utility\shortURL::decode($user_code);
-			if(!$user_ref)
+			$shcode = $split[1];
+			$ref = \lib\utility\shortURL::decode($shcode);
+			if(!$ref)
 			{
 				\lib\db\logs::set('ref:shortURL:invalid', $this->login('id'), $log_meta);
 				debug::error(T_("Invalid promo code"), 'promo', 'arguments');
@@ -141,7 +141,7 @@ class model extends \mvc\model
 			}
 		}
 
-		if(intval($this->login('id')) === intval($user_ref))
+		if(intval($this->login('id')) === intval($ref))
 		{
 			\lib\db\logs::set('ref:yourself', $this->login('id'), $log_meta);
 			debug::error(T_("You try to referral yourself!"), 'promo', 'arguments');
@@ -155,17 +155,17 @@ class model extends \mvc\model
 			return false;
 		}
 
-		$check_user_ref = \lib\db\users::get_by_id($user_ref);
+		$check_ref = \lib\db\users::get_by_id($ref);
 
-		if(!isset($check_user_ref['id']))
+		if(!isset($check_ref['id']))
 		{
 			\lib\db\logs::set('ref:user:not:found', $this->login('id'), $log_meta);
 			debug::error(T_("Ref not found"), 'promo', 'arguments');
 			return false;
 		}
 
-		\lib\db\users::update(['user_ref' => $user_ref], $this->login('id'));
-		$_SESSION['user']['ref'] = $user_ref;
+		\lib\db\users::update(['ref' => $ref], $this->login('id'));
+		$_SESSION['user']['ref'] = $ref;
 
 		$transaction_set =
         [
@@ -175,7 +175,7 @@ class model extends \mvc\model
 			'plus'            => 10 * 1000,
 			'payment'         => null,
 			'related_foreign' => 'users',
-			'related_id'      => $user_ref,
+			'related_id'      => $ref,
 			'verify'          => 1,
 			'type'            => 'money',
 			'unit'            => 'toman',
@@ -187,7 +187,7 @@ class model extends \mvc\model
 
         $notify_ref =
         [
-			'to'      => $user_ref,
+			'to'      => $ref,
 			'cat'     => 'ref',
 			'content' => T_("Someone used your ref link in her referral"),
         ];
@@ -206,7 +206,7 @@ class model extends \mvc\model
         if(debug::$status)
         {
         	\lib\db\logs::set('user:use:ref', $this->login('id'), $log_meta);
-        	\lib\db\logs::set('user:was:ref', $user_ref, $log_meta);
+        	\lib\db\logs::set('user:was:ref', $ref, $log_meta);
         	debug::true(T_("Your ref was set and your account was charge"));
         }
 	}

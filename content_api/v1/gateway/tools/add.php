@@ -158,11 +158,11 @@ trait add
 
 			$insert_users =
 			[
-				'user_parent'      => $this->user_id,
-				'user_createdate'  => date("Y-m-d H:i:s"),
-				'user_displayname' => $displayname,
-				'user_username'    => $username,
-				'user_pass'        => $password,
+				'parent'      => $this->user_id,
+				'datecreated' => date("Y-m-d H:i:s"),
+				'displayname' => $displayname,
+				'username'    => $username,
+				'password'    => $password,
 			];
 			\lib\db\users::insert($insert_users);
 			$user_id = \lib\db::insert_id();
@@ -208,9 +208,10 @@ trait add
 
 		// get status
 		$status = utility::request('status');
+
 		if($status)
 		{
-			if(!in_array($status, ['active', 'diactive']))
+			if(!in_array($status, ['active', 'deactive']))
 			{
 				logs::set('api:gateway:status:invalid', $this->user_id, $log_meta);
 				debug::error(T_("Invalid parameter status"), 'status', 'arguments');
@@ -268,12 +269,12 @@ trait add
 
 			if($password)
 			{
-				$update_user['user_pass'] = $password;
+				$update_user['password'] = $password;
 			}
 
 			if(utility::isset_request('username'))
 			{
-				$update_user['user_username'] = $username;
+				$update_user['username'] = $username;
 			}
 
 			if(!empty($update_user))

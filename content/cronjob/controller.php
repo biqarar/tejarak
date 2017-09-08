@@ -13,10 +13,10 @@ class controller extends \content\main\controller
 			\lib\error::page();
 		}
 
-		if(Tld === 'dev')
-		{
-			return;
-		}
+		// if(Tld === 'dev')
+		// {
+		// 	return;
+		// }
 
 		if
 		(

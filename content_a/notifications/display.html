@@ -101,12 +101,12 @@
             <div class="vcard w400">
               <div class="content f">
                 <div class="c">
-                  <a class="header">{%if value.meta.user_displayname%}{{value.meta.user_displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-                  <div class="meta"><span>{{value.meta.user_mobile|fitNumber}}</span></div>
+                  <a class="header">{%if value.meta.displayname%}{{value.meta.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
+                  <div class="meta"><span>{{value.meta.mobile|fitNumber}}</span></div>
                 </div>
                 <div class="cauto">
-                  {%if value.meta.user_file_url%}
-                    <img src="{{url.root}}/{{value.meta.user_file_url}}" class="mini">
+                  {%if value.meta.fileurl%}
+                    <img src="{{url.root}}/{{value.meta.fileurl}}" class="mini">
                   {%else%}
                     <img src="http://code.ermile.com/siftal/images/avatar/1.png" class="mini">
                   {%endif%}

@@ -190,10 +190,10 @@ trait add
 						// signup empty to get user id
 						$signup =
 						[
-							'user_mobile'      => $mobile,
-							'user_pass'        => null,
-							'user_displayname' => null,
-							'user_createdate'  => date("Y-m-d H:i:s"),
+							'mobile'      => $mobile,
+							'password'        => null,
+							'displayname' => null,
+							'datecreated'  => date("Y-m-d H:i:s"),
 						];
 
 						\lib\db\users::insert($signup);
@@ -206,10 +206,10 @@ trait add
 					// signup empty to get user id
 					$signup =
 					[
-						'user_mobile'      => null,
-						'user_pass'        => null,
-						'user_displayname' => null,
-						'user_createdate'  => date("Y-m-d H:i:s"),
+						'mobile'      => null,
+						'password'        => null,
+						'displayname' => null,
+						'datecreated'  => date("Y-m-d H:i:s"),
 					];
 
 					\lib\db\users::insert($signup);
@@ -270,10 +270,10 @@ trait add
 								// signup empty to get user id
 								$signup =
 								[
-									'user_mobile'      => $mobile,
-									'user_pass'        => null,
-									'user_displayname' => null,
-									'user_createdate'  => date("Y-m-d H:i:s"),
+									'mobile'      => $mobile,
+									'password'        => null,
+									'displayname' => null,
+									'datecreated'  => date("Y-m-d H:i:s"),
 								];
 
 								\lib\db\users::insert($signup);
@@ -287,10 +287,10 @@ trait add
 						// signup empty to get user id
 						$signup =
 						[
-							'user_mobile'      => null,
-							'user_pass'        => null,
-							'user_displayname' => null,
-							'user_createdate'  => date("Y-m-d H:i:s"),
+							'mobile'      => null,
+							'password'        => null,
+							'displayname' => null,
+							'datecreated'  => date("Y-m-d H:i:s"),
 						];
 
 						\lib\db\users::insert($signup);
@@ -302,7 +302,7 @@ trait add
 					if($mobile)
 					{
 						// unreachable old user id
-						\lib\db\users::update(['user_status' => 'unreachable'], $old_user_id['user_id']);
+						\lib\db\users::update(['status' => 'unreachable'], $old_user_id['user_id']);
 
 						$check_user_exist = \lib\db\users::get_by_mobile($mobile);
 						// the mobile was exist
@@ -317,10 +317,10 @@ trait add
 							// signup empty to get user id
 							$signup =
 							[
-								'user_mobile'      => $mobile,
-								'user_pass'        => null,
-								'user_displayname' => null,
-								'user_createdate'  => date("Y-m-d H:i:s"),
+								'mobile'      => $mobile,
+								'password'        => null,
+								'displayname' => null,
+								'datecreated'  => date("Y-m-d H:i:s"),
 							];
 
 							\lib\db\users::insert($signup);
@@ -351,7 +351,7 @@ trait add
 
 
 		// to redirect site in new url
-		\lib\storage::set_new_user_code(utility\shortURL::encode($user_id));
+		\lib\storage::set_new_shcode(utility\shortURL::encode($user_id));
 
 		if($check_not_duplicate_userteam)
 		{
@@ -472,7 +472,7 @@ trait add
 		// get file code
 		$file_code = utility::request('file');
 		$file_id   = null;
-		$file_url  = null;
+		$fileurl  = null;
 		if($file_code)
 		{
 			$file_id = \lib\utility\shortURL::decode($file_code);
@@ -485,7 +485,7 @@ trait add
 				}
 				elseif(isset($logo_record['post_meta']['url']))
 				{
-					$file_url = $logo_record['post_meta']['url'];
+					$fileurl = $logo_record['post_meta']['url'];
 				}
 			}
 			else
@@ -515,7 +515,7 @@ trait add
 		$args['firstname']      = trim($firstname);
 		$args['lastname']       = trim($lastname);
 		$args['fileid']         = $file_id;
-		$args['fileurl']        = $file_url;
+		$args['fileurl']        = $fileurl;
 
 
 
@@ -540,14 +540,14 @@ trait add
 		if(!$args['fileid'] && !$args['fileurl'] && $_args['method'] === 'post')
 		{
 			$user_detail = \lib\db\users::get(['id' => $args['user_id'], 'limit' => 1]);
-			if(isset($user_detail['user_file_id']))
+			if(isset($user_detail['fileid']))
 			{
-				$args['fileid'] = $user_detail['user_file_id'];
+				$args['fileid'] = $user_detail['fileid'];
 			}
 
-			if(isset($user_detail['user_file_url']))
+			if(isset($user_detail['fileurl']))
 			{
-				$args['fileurl'] = $user_detail['user_file_url'];
+				$args['fileurl'] = $user_detail['fileurl'];
 			}
 		}
 

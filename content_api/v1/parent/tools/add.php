@@ -74,8 +74,8 @@ trait add
 
 		if(!isset($get_parent_data['id']))
 		{
-			$parent_id = \lib\db\users::signup_quick(['user_mobile' => $mobile]);
-			$get_parent_data['user_mobile'] = $mobile;
+			$parent_id = \lib\db\users::signup_quick(['mobile' => $mobile]);
+			$get_parent_data['mobile'] = $mobile;
 		}
 		else
 		{
@@ -149,12 +149,12 @@ trait add
 
 		$meta                       = [];
 		$meta['user_id']            = $this->user_id;
-		$meta['user_displayname']   = isset($get_user_data['user_displayname']) ? $get_user_data['user_displayname'] : null;
-		$meta['user_file_url']      = isset($get_user_data['user_file_url']) ? $get_user_data['user_file_url'] : null;;
+		$meta['displayname']   = isset($get_user_data['displayname']) ? $get_user_data['displayname'] : null;
+		$meta['fileurl']      = isset($get_user_data['fileurl']) ? $get_user_data['fileurl'] : null;;
 		$meta['parent_id']          = isset($get_parent_data['id']) ? $get_parent_data['id'] : null;
-		$meta['parent_mobile']      = isset($get_parent_data['user_mobile']) ? $get_parent_data['user_mobile'] : null;
-		$meta['parent_displayname'] = isset($get_parent_data['user_displayname']) ? $get_parent_data['user_displayname'] : null;
-		$meta['parent_file_url']    = isset($get_parent_data['user_file_url']) ? $get_parent_data['user_file_url'] : null;
+		$meta['parent_mobile']      = isset($get_parent_data['mobile']) ? $get_parent_data['mobile'] : null;
+		$meta['parent_displayname'] = isset($get_parent_data['displayname']) ? $get_parent_data['displayname'] : null;
+		$meta['parent_fileurl']    = isset($get_parent_data['fileurl']) ? $get_parent_data['fileurl'] : null;
 		$meta['title']              = utility::request('title');
 		$meta['othertitle']         = utility::request('othertitle');
 

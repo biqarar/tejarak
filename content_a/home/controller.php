@@ -11,7 +11,7 @@ class controller extends \content_a\main\controller
 		parent::_route();
 
 		$url = \lib\router::get_url();
-		// if user_setup is null redirect to setup page
+		// if setup is null redirect to setup page
 		// The user is the first time he uses the system,
 		// so we will transfer him to the installation file
 		// But before that we check that this user is not registered in any team.
@@ -20,7 +20,7 @@ class controller extends \content_a\main\controller
 			// if  the user is login and first login
 			// we set the setup field of user on 1
 			$_SESSION['user']['setup'] = '1';
-			\lib\db\users::update(['user_setup' => 1], $this->login('id'));
+			\lib\db\users::update(['setup' => 1], $this->login('id'));
 
 			if(!\lib\db\userteams::get(['user_id' => $this->login('id'), 'status' => 'active', 'limit' => 1]))
 			{

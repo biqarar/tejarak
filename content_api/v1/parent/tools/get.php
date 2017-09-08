@@ -65,7 +65,7 @@ trait get
 
 				$temp['id']          = isset($value['id'])? $value['id'] : null;
 
-				$temp['file_url']    = isset($value['meta']['parent_file_url'])? $value['meta']['parent_file_url'] : null;
+				$temp['fileurl']    = isset($value['meta']['parent_fileurl'])? $value['meta']['parent_fileurl'] : null;
 				$temp['mobile']      = isset($value['meta']['parent_mobile'])? $value['meta']['parent_mobile'] : null;
 				$temp['displayname'] = isset($value['meta']['parent_displayname'])? $value['meta']['parent_displayname'] : null;
 				$temp['title']       = isset($value['meta']['title'])? $value['meta']['title'] : null;
@@ -81,10 +81,10 @@ trait get
 			}
 		}
 
-		$user_parent_resutl = \lib\db\userparents::load_parent(['user_id' => $this->user_id, 'status' => 'enable']);
-		if(is_array($user_parent_resutl))
+		$parent_resutl = \lib\db\userparents::load_parent(['user_id' => $this->user_id, 'status' => 'enable']);
+		if(is_array($parent_resutl))
 		{
-			foreach ($user_parent_resutl as $key => $value)
+			foreach ($parent_resutl as $key => $value)
 			{
 				array_push($result, $value);
 			}
@@ -93,9 +93,9 @@ trait get
 		{
 			foreach ($result as $key => $value)
 			{
-				if(isset($value['file_url']))
+				if(isset($value['fileurl']))
 				{
-					$result[$key]['file_url'] = self::host('file'). '/'. $value['file_url'];
+					$result[$key]['fileurl'] = self::host('file'). '/'. $value['fileurl'];
 				}
 			}
 		}

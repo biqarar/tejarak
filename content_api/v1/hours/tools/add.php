@@ -154,20 +154,20 @@ trait add
 		if(debug::$status)
 		{
 			debug::title(null);
-			$user_name = null;
+			$name = null;
 
 			if(\lib\storage::get_enter_exit_name())
 			{
-				$user_name = \lib\storage::get_enter_exit_name();
+				$name = \lib\storage::get_enter_exit_name();
 			}
 			if($type === 'enter')
 			{
-				$msg_notify = T_("Dear :name;", ['name'=> $user_name])."<br />". T_('Your enter was registered.').' '. T_("Have a good time.");
+				$msg_notify = T_("Dear :name;", ['name'=> $name])."<br />". T_('Your enter was registered.').' '. T_("Have a good time.");
 				debug::true($msg_notify);
 			}
 			else
 			{
-				$msg_notify = T_("Bye Bye :name ;)", ['name'=> $user_name]);
+				$msg_notify = T_("Bye Bye :name ;)", ['name'=> $name]);
 				debug::true($msg_notify);
 			}
 		}

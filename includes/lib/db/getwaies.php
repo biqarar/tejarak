@@ -68,9 +68,9 @@ class getwaies
 			"
 				SELECT
 					getwaies.*,
-					users.user_mobile AS `mobile`,
-					users.user_displayname AS `displayname`,
-					users.user_email AS `email`
+					users.mobile AS `mobile`,
+					users.displayname AS `displayname`,
+					users.email AS `email`
 				FROM
 					getwaies
 				INNER JOIN users ON users.id = getwaies.user_id

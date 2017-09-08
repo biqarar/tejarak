@@ -199,7 +199,7 @@ class model extends \mvc\model
 
 		$where =
 		[
-			'user_chat_id' => $telegramid,
+			'chatid' => $telegramid,
 			'limit'        => 1
 		];
 

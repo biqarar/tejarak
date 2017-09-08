@@ -106,7 +106,7 @@ trait config
 			{
 				self::$my_admins_id = implode(',', self::$my_admins_id);
 				$ids = self::$my_admins_id;
-				$chat_id = "SELECT users.id AS `id`, users.user_chat_id AS `chat_id` FROM users WHERE users.id IN($ids) ";
+				$chat_id = "SELECT users.id AS `id`, users.chatid AS `chat_id` FROM users WHERE users.id IN($ids) ";
 				$chat_id = \lib\db::get($chat_id, ['id', 'chat_id']);
 
 				if(!empty($chat_id))

@@ -24,9 +24,9 @@ class model extends \content_a\main\model
 		{
 			$user_data             = \lib\db\users::get_by_id($load_last_request['user_id']);
 			$result                = [];
-			$result['mobile']      = (isset($user_data['user_mobile'])) ? $user_data['user_mobile'] : null;
-			$result['displayname'] = (isset($user_data['user_displayname'])) ? $user_data['user_displayname'] : null;
-			$result['file_url']    = (isset($user_data['user_file_url'])) ? $user_data['user_file_url'] : null;
+			$result['mobile']      = (isset($user_data['mobile'])) ? $user_data['mobile'] : null;
+			$result['displayname'] = (isset($user_data['displayname'])) ? $user_data['displayname'] : null;
+			$result['fileurl']    = (isset($user_data['fileurl'])) ? $user_data['fileurl'] : null;
 			$result['status']      = (isset($load_last_request['status'])) ? $load_last_request['status'] : null;
 			$result['id']          = (isset($load_last_request['id'])) ? $load_last_request['id'] : null;
 			return $result;
@@ -178,7 +178,7 @@ class model extends \content_a\main\model
 		$meta['team_name']         = $this->team_detail['name'];
 		$meta['sender_name']       = $this->login('displayname');
 		$meta['sender_mobile']     = $this->login('mobile');
-		$meta['sender_logo']       = $this->login('file_url');
+		$meta['sender_logo']       = $this->login('fileurl');
 
 		if(intval($this->login('id')) === intval($this->user_data['id']))
 		{

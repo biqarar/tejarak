@@ -305,7 +305,7 @@ class userteams
 			UPDATE
 				users
 			SET
-				users.user_username = REPLACE(users.user_username, '$_args[old_shortname]', '$_args[new_shortname]')
+				users.username = REPLACE(users.username, '$_args[old_shortname]', '$_args[new_shortname]')
 			WHERE
 				users.id IN
 				(
@@ -346,7 +346,7 @@ class userteams
 				 	(
 				 		userteams.displayname LIKE '%$_args[search]%' OR
 				 		userteams.nationalcode LIKE '%$_args[search]%' OR
-				 		users.user_mobile LIKE '%$_args[search]%'
+				 		users.mobile LIKE '%$_args[search]%'
 				 	)
 				";
 			}
@@ -381,8 +381,8 @@ class userteams
 				// "
 				// 	SELECT
 				// 		userteams.*,
-				// 		users.user_mobile AS `mobile`,
-				// 		users.user_username AS `username`,
+				// 		users.mobile AS `mobile`,
+				// 		users.username AS `username`,
 				// 		(
 				// 			SELECT
 				// 				CONCAT(hours.date, ' ', hours.start)
@@ -434,8 +434,8 @@ class userteams
 				"
 					SELECT
 						userteams.*,
-						users.user_username AS `username`,
-						users.user_mobile AS `mobile`
+						users.username AS `username`,
+						users.mobile AS `mobile`
 					FROM
 						userteams
 					LEFT JOIN users ON users.id = userteams.user_id
@@ -470,9 +470,9 @@ class userteams
 			"
 				SELECT
 					userteams.*,
-					users.user_mobile AS `mobile`,
-					users.user_displayname AS `displayname`,
-					users.user_email AS `email`
+					users.mobile AS `mobile`,
+					users.displayname AS `displayname`,
+					users.email AS `email`
 				FROM
 					userteams
 				INNER JOIN users ON users.id = userteams.user_id

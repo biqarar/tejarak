@@ -4,12 +4,12 @@ class logs
 {
 	public $id             = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'id'              ,'type'=>'bigint@20'];
 	public $logitem_id     = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'logitem'         ,'type'=>'smallint@5'                      ,'foreign'=>'logitems@id!logitem_title'];
-	public $user_id        = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!user_displayname'];
+	public $user_id        = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'user'            ,'type'=>'int@10'                          ,'foreign'=>'users@id!displayname'];
 	public $log_data       = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'data'            ,'type'=>'varchar@200'];
 	public $log_meta       = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'meta'            ,'type'=>'mediumtext@'];
 	public $log_status     = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'status'          ,'type'=>'enum@enable,disable,expire,deliver'];
 	public $log_createdate = ['null'=>'NO'  ,'show'=>'YES'     ,'label'=>'createdate'      ,'type'=>'datetime@'];
-	public $date_modified  = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
+	public $datemodified  = ['null'=>'YES' ,'show'=>'YES'     ,'label'=>'modified'        ,'type'=>'timestamp@'];
 
 	//--------------------------------------------------------------------------------id
 	public function id(){}
@@ -41,6 +41,6 @@ class logs
 
 	public function log_createdate(){}
 
-	public function date_modified(){}
+	public function datemodified(){}
 }
 ?>

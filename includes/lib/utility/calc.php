@@ -88,8 +88,8 @@ class calc
 		if($this->creator)
 		{
 			$user_data            = \lib\db\users::get_by_id($this->creator);
-			$this->creator_name   = isset($user_data['user_displayname']) ? $user_data['user_displayname'] : null;
-			$this->creator_mobile = isset($user_data['user_mobile']) ? $user_data['user_mobile'] : null;
+			$this->creator_name   = isset($user_data['displayname']) ? $user_data['displayname'] : null;
+			$this->creator_mobile = isset($user_data['mobile']) ? $user_data['mobile'] : null;
 		}
 
 		$this->log_meta =

@@ -68,18 +68,18 @@ class model extends \content_a\main\model
 
 			if(isset($uploaded_file['code']))
 			{
-				$file_code                   = $uploaded_file['code'];
-				$file_id                     = utility\shortURL::decode($uploaded_file['code']);
-				$update_user['user_file_id'] = $file_id;
-				$user_session['file_id']     = $update_user['user_file_id'];
+				$file_code              = $uploaded_file['code'];
+				$file_id                = utility\shortURL::decode($uploaded_file['code']);
+				$update_user['fileid']  = $file_id;
+				$user_session['fileid'] = $update_user['fileid'];
 			}
 			if(isset($uploaded_file['url']))
 			{
-				$temp_url                     = $uploaded_file['url'];
-				$host                         = Protocol."://" . \lib\router::get_root_domain(). '/';
-				$temp_url                     = str_replace($host, '', $temp_url);
-				$update_user['user_file_url'] = $temp_url;
-				$user_session['file_url']     = $temp_url;
+				$temp_url                = $uploaded_file['url'];
+				$host                    = Protocol."://" . \lib\router::get_root_domain(). '/';
+				$temp_url                = str_replace($host, '', $temp_url);
+				$update_user['fileurl']  = $temp_url;
+				$user_session['fileurl'] = $temp_url;
 			}
 			// if in upload have error return
 			if(!debug::$status)
@@ -91,22 +91,22 @@ class model extends \content_a\main\model
 		// if the name exist update user display name
 		if(utility::post('name') != $this->login('name'))
 		{
-			$update_user['user_name'] = utility::post('name');
-			$user_session['name'] = $update_user['user_name'];
+			$update_user['name'] = utility::post('name');
+			$user_session['name'] = $update_user['name'];
 		}
 
 		// if the family exist update user display family
 		if(utility::post('family') != $this->login('family'))
 		{
-			$update_user['user_family'] = utility::post('family');
-			$user_session['family'] = $update_user['user_family'];
+			$update_user['lastname'] = utility::post('family');
+			$user_session['family'] = $update_user['lastname'];
 		}
 
 		// if the postion exist update user display postion
 		if(utility::post('displayname') != $this->login('displayname'))
 		{
-			$update_user['user_displayname'] = utility::post('displayname');
-			$user_session['displayname'] = $update_user['user_displayname'];
+			$update_user['displayname'] = utility::post('displayname');
+			$user_session['displayname'] = $update_user['displayname'];
 		}
 
 		// $new_unit = utility::post('user-unit');

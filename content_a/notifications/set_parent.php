@@ -109,7 +109,7 @@ trait set_parent
 				}
 				else
 				{
-					$insert_user_parent =
+					$insert_parent =
 					[
 						'user_id' => $user_id,
 						'parent'  => $parent_id,
@@ -118,7 +118,7 @@ trait set_parent
 						'status'  => 'enable',
 						'creator' => $this->login('id'),
 					];
-					\lib\db\userparents::insert($insert_user_parent);
+					\lib\db\userparents::insert($insert_parent);
 				}
 
 			}

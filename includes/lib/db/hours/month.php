@@ -28,7 +28,7 @@ trait month
 // accepted
 // total
 // createdate
-// date_modified
+// datemodified
 // status
 // enddate
 // endyear
@@ -99,7 +99,7 @@ trait month
 							hours.shamsi_month                                                          	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
@@ -150,7 +150,7 @@ trait month
 							hours.month                                                                 	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
@@ -207,7 +207,7 @@ trait month
 							hours.shamsi_month                                                          	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
@@ -257,7 +257,7 @@ trait month
 							hours.month                                                                 	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
@@ -320,7 +320,7 @@ trait month
 							hours.shamsi_month                                                          	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
@@ -373,7 +373,7 @@ trait month
 							hours.month                                                                 	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
@@ -429,7 +429,7 @@ trait month
 							hours.shamsi_month                                                          	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
@@ -479,7 +479,7 @@ trait month
 							hours.month                                                                 	AS `month`,
 							GROUP_CONCAT(DISTINCT userteams.displayname)                                	AS `displayname`,
 							GROUP_CONCAT(DISTINCT userteams.firstname, userteams.lastname SEPARATOR ' ')	AS `name`,
-							GROUP_CONCAT(DISTINCT users.user_mobile)                                    	AS `mobile`,
+							GROUP_CONCAT(DISTINCT users.mobile)                                    	AS `mobile`,
 							COUNT(*)                                                                    	AS `count`,
 							userteams.id 																	AS `userteam_id`,
 							SUM(hours.diff)                                                             	AS `diff`,
