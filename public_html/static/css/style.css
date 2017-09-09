@@ -1,5 +1,7 @@
 /* new style based on siftal*/
 .modal[data-live="off"] .exit{display: none;}
+.modal[data-live="deactive"] .exit{display: none;}
+.modal[data-live="deactive"] .enter{display: none;}
 /*on enter*/
 .modal:not([data-allowplus]) [data-allowplus]{display:none;}
 .modal:not([data-allowplus]) [data-onTheMission]{display:none;}
