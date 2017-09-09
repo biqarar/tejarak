@@ -1,7 +1,7 @@
 <?php
 namespace content_api\v1\report;
 
-class controller extends \mvc\controller
+class controller extends \addons\content_api\home\controller
 {
 	public function _route()
 	{
