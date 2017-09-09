@@ -225,7 +225,7 @@ class users
 			case 'id':
 			case 'mobile':
 			case 'email':
-			case 'pass':
+			case 'password':
 			case 'displayname':
 			case 'meta':
 			case 'status':
@@ -331,7 +331,7 @@ class users
 
 			case 'mobile':
 			case 'email':
-			case 'pass':
+			case 'password':
 			case 'displayname':
 			case 'meta':
 			case 'status':
