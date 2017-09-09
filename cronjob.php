@@ -37,10 +37,10 @@ class cronjob
 		$requests[] = ['url' => 'https://tejarak.com/cronjob/notification', 'header' => []];
 		$requests[] = ['url' => 'https://tejarak.com/cronjob/calc', 'header' => []];
 
-		// $requests[] = ['url' => 'http://tejarak.dev/fa/cronjob/report', 'header' => []];
-		// $requests[] = ['url' => 'http://tejarak.dev/fa/cronjob/calc', 'header' => []];
-		// $requests[] = ['url' => 'http://tejarak.dev/fa/cronjob/notification', 'header' => []];
-		// $requests[] = ['url' => 'http://tejarak.dev/fa/cronjob/pinger', 'header' => []];
+		// $requests[] = ['url' => 'http://tejarak.dev/cronjob/report', 'header' => []];
+		// $requests[] = ['url' => 'http://tejarak.dev/cronjob/calc', 'header' => []];
+		// $requests[] = ['url' => 'http://tejarak.dev/cronjob/notification', 'header' => []];
+		// $requests[] = ['url' => 'http://tejarak.dev/cronjob/pinger', 'header' => []];
 
 		return $requests;
 	}
