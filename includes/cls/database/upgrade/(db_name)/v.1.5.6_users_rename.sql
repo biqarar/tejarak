@@ -44,3 +44,8 @@ ALTER TABLE `users` CHANGE `user_insurancecode` `insurancecode` varchar(100) DEF
 ALTER TABLE `users` CHANGE `user_dependantscount` `dependantscount` smallint(4) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_postion` `postion` varchar(100) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_language` `language` char(2) DEFAULT NULL;
+
+
+ALTER TABLE `users` CHANGE `marital` `marital` enum('single','married', 'marride') DEFAULT NULL;
+UPDATE users SET users.marital = 'married' WHERE users.marital = 'marride';
+ALTER TABLE `users` CHANGE `marital` `marital` enum('single','married') DEFAULT NULL;

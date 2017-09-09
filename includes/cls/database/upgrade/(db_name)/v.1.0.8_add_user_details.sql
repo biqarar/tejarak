@@ -9,7 +9,7 @@ ALTER TABLE `users` ADD `user_nationality` 		varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_brithplace` 		varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_region` 			varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_pasportcode` 		varchar(100) NULL DEFAULT NULL;
-ALTER TABLE `users` ADD `user_marital` 			enum('single', 'marride') NULL DEFAULT NULL;
+ALTER TABLE `users` ADD `user_marital` 			enum('single', 'married') NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_childcount` 		smallint(2) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_education` 		varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_insurancetype` 	varchar(100) NULL DEFAULT NULL;

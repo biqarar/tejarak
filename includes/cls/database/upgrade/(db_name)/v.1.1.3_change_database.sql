@@ -76,7 +76,7 @@ CREATE TABLE userteamdetails (
 `nationality`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
 `brithplace`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
 `religion`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-`marital`				enum('single','marride') NULL DEFAULT NULL,
+`marital`				enum('single','married') NULL DEFAULT NULL,
 `childcount`			smallint(2) NULL DEFAULT NULL,
 `education`				varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
 `insurancetype`			varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
