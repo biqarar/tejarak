@@ -4639,8 +4639,7 @@ img.mini {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
-  max-height: 400px; }
+  user-select: none; }
 
 .cropper-container img {
   /* Avoid margin top issue (Occur only when margin-top <= -height) */
@@ -4957,6 +4956,15 @@ span.input {
 .input.ok input {
   border-color: rgba(39, 128, 39, 0.5); }
 
+.input.preview.error label {
+  border-color: rgba(255, 0, 0, 0.5); }
+
+.input.preview.warning label {
+  border-color: rgba(255, 145, 0, 0.5); }
+
+.input.preview.ok label {
+  border-color: rgba(39, 128, 39, 0.5); }
+
 .input .addon {
   padding: 0.6em 1em;
   text-align: center;
@@ -5077,7 +5085,8 @@ input.input.ok {
   -webkit-transition: .3s;
   transition: .3s;
   border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.05); }
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent; }
 
 .input.preview label:after {
   font-family: "siftal";
@@ -5109,8 +5118,8 @@ input.input.ok {
   right: 0;
   left: 0;
   margin: 0 auto;
-  max-width: 110px;
-  max-height: 110px;
+  max-width: 108px;
+  max-height: 108px;
   width: auto;
   height: auto;
   padding: 0;
