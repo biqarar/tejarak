@@ -3,7 +3,7 @@ namespace content_api\v1\team;
 use \lib\debug;
 use \lib\utility;
 use \lib\db\logs;
-class model extends \content_api\v1\home\model
+class model extends \addons\content_api\v1\home\model
 {
 	use tools\add;
 	use tools\get;
