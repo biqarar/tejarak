@@ -46,7 +46,7 @@ class view extends \content_a\main\view
 		$this->data->page['title'] = T_('Reports');
 		$this->data->page['desc']  = $this->data->page['title'];
 
-		if($team_code = \lib\storage::get_team_code_url())
+		if($team_code = \lib\temp::get('team_code_url'))
 		{
 			$this->data->reportUrl = $this->url('baseFull'). '/'. \lib\router::get_url();
 			// var_dump($this->data->reportUrl);exit();

@@ -351,7 +351,7 @@ trait add
 
 
 		// to redirect site in new url
-		\lib\storage::set_new_shcode(utility\shortURL::encode($user_id));
+		\lib\temp::set('new_shcode', utility\shortURL::encode($user_id));
 
 		if($check_not_duplicate_userteam)
 		{

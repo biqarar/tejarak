@@ -47,7 +47,7 @@ class controller extends \content_a\main\controller
 		 * redirect to show her report
 		 * the user must be redirect to report page
 		 */
-		if(!\lib\storage::get_is_admin())
+		if(!\lib\temp::get('is_admin'))
 		{
 			$this->redirector()->set_domain()->set_url('a/'.$team_code.'/report')->redirect();
 			return;

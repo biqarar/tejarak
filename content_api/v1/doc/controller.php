@@ -6,7 +6,7 @@ class controller extends  \mvc\controller
 	public function __construct()
 	{
 		parent::__construct();
-		\lib\storage::set_api(false);
+		\lib\temp::set('api', false);
 	}
 
 	public function _route()

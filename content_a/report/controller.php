@@ -15,9 +15,9 @@ class controller extends \content_a\main\controller
 		 * we set this on the contetn_a/home/controller
 		 * and set on the url manually!!!
 		 */
-		if(\lib\storage::get_team_code_url() && \lib\storage::get_team_code_url() !== \lib\router::get_url(0))
+		if(\lib\temp::get('team_code_url') && \lib\temp::get('team_code_url') !== \lib\router::get_url(0))
 		{
-			\lib\router::set_url(\lib\storage::get_team_code_url(). '/'. \lib\router::get_url());
+			\lib\router::set_url(\lib\temp::get('team_code_url'). '/'. \lib\router::get_url());
 		}
 
 		$url = \lib\router::get_url();
@@ -35,7 +35,7 @@ class controller extends \content_a\main\controller
 						switch ($split[2])
 						{
 							case 'settings':
-								if(!\lib\storage::get_is_admin())
+								if(!\lib\temp::get('is_admin'))
 								{
 									\lib\error::access();
 								}

@@ -384,8 +384,8 @@ trait get
 				}
 				else
 				{
-					\lib\storage::set_team_access_denied(true);
-					\lib\storage::set_team_exist(true);
+					\lib\temp::set('team_access_denied', true);
+					\lib\temp::set('team_exist', true);
 					$result = false;
 				}
 			}

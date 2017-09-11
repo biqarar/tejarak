@@ -22,9 +22,9 @@ class view extends \mvc\view
 		$team = \lib\router::get_url();
 		$request            = [];
 		$this->data->team   = $request['shortname']         = $team;
-		if(\lib\storage::get_list_member())
+		if(\lib\temp::get('list_member'))
 		{
-			$this->data->list_member = \lib\storage::get_list_member();
+			$this->data->list_member = \lib\temp::get('list_member');
 
 		}
 		else

@@ -64,8 +64,8 @@ class model extends \content_a\main\model
 		// API ADD TEAM FUNCTION
 		$this->add_team();
 		// save last team added to session to get in step 3
-		$_SESSION['last_team_added']      = \lib\storage::get_last_team_added();
-		$_SESSION['last_team_added_code'] = \lib\storage::get_last_team_code_added();
+		$_SESSION['last_team_added']      = \lib\temp::get('last_team_added');
+		$_SESSION['last_team_added_code'] = \lib\temp::get('last_team_code_added');
 
 		// change param team to load again true
 		if(isset($_SESSION['param']['team']))

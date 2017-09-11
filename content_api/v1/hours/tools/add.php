@@ -156,9 +156,9 @@ trait add
 			debug::title(null);
 			$name = null;
 
-			if(\lib\storage::get_enter_exit_name())
+			if(\lib\temp::get('enter_exit_name'))
 			{
-				$name = \lib\storage::get_enter_exit_name();
+				$name = \lib\temp::get('enter_exit_name');
 			}
 			if($type === 'enter')
 			{

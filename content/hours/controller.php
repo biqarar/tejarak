@@ -22,12 +22,12 @@ class controller extends \content\main\controller
 
 		if($list_member)
 		{
-			\lib\storage::set_list_member($list_member);
+			\lib\temp::set('list_member', $list_member);
 			//check valid url and exits team
 			$this->get(false, 'show')->ALL($url);
 			$this->post('hours')->ALL($url);
 		}
-		elseif(\lib\storage::get_team_exist())
+		elseif(\lib\temp::get('team_exist'))
 		{
 			\lib\error::access(T_("Access denied to load this team data"));
 		}

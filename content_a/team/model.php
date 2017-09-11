@@ -99,7 +99,7 @@ class model extends \content_a\main\model
 
 		if(debug::$status)
 		{
-			$new_team_code = \lib\storage::get_last_team_code_added();
+			$new_team_code = \lib\temp::get('last_team_code_added');
 
 			if($new_team_code)
 			{

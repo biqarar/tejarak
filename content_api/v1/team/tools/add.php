@@ -400,7 +400,7 @@ trait add
 		}
 
 		// var_dump(utility::request(), $args );exit();
-		\lib\storage::set_last_team_added($shortname);
+		\lib\temp::set('last_team_added', $shortname);
 
 		if($_args['method'] === 'post')
 		{
@@ -424,9 +424,9 @@ trait add
 				return false;
 			}
 
-			\lib\storage::set_last_team_shortname_added($args['shortname']);
-			\lib\storage::set_last_team_id_added($team_id);
-			\lib\storage::set_last_team_code_added(\lib\utility\shortURL::encode($team_id));
+			\lib\temp::set('last_team_shortname_added', $args['shortname']);
+			\lib\temp::set('last_team_id_added', $team_id);
+			\lib\temp::set('last_team_code_added', \lib\utility\shortURL::encode($team_id));
 
 			if($_args['auto_insert_userteam'])
 			{
@@ -595,7 +595,7 @@ trait add
 			$new_short_name    = (string) $_args['shortname']. (string) ((int) $count +  (int) $i);
 		}
 
-		\lib\storage::set_last_team_added($new_short_name);
+		\lib\temp::set('last_team_added', $new_short_name);
 		return $new_short_name;
 	}
 }

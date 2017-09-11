@@ -330,7 +330,7 @@ class hours
 
 		if(isset($_args['userteam_details']['displayname']))
 		{
-			\lib\storage::set_enter_exit_name($_args['userteam_details']['displayname']);
+			\lib\temp::set('enter_exit_name', $_args['userteam_details']['displayname']);
 		}
 
 		$insert                      = [];
@@ -413,7 +413,7 @@ class hours
 
 		if(isset($_args['userteam_details']['displayname']))
 		{
-			\lib\storage::set_enter_exit_name($_args['userteam_details']['displayname']);
+			\lib\temp::set('enter_exit_name', $_args['userteam_details']['displayname']);
 		}
 
 		$update = [];

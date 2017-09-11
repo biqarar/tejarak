@@ -60,12 +60,12 @@ class controller extends \content_a\main\controller
 
 				if(isset($team_details['creator']) && intval($team_details['creator']) === intval($this->login('id')))
 				{
-					\lib\storage::set_is_creator(true);
+					\lib\temp::set('is_creator', true);
 					$is_creator = true;
 				}
 				else
 				{
-					\lib\storage::set_is_creator(false);
+					\lib\temp::set('is_creator', false);
 				}
 
 				$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => $this->login('id'), 'limit' => 1]);
@@ -81,11 +81,11 @@ class controller extends \content_a\main\controller
 		{
 			case 'admin':
 				$is_admin = true;
-				\lib\storage::set_is_admin(true);
+				\lib\temp::set('is_admin', true);
 				break;
 
 			default:
-				\lib\storage::set_is_admin(false);
+				\lib\temp::set('is_admin', false);
 				break;
 		}
 
@@ -172,7 +172,7 @@ class controller extends \content_a\main\controller
 		 */
 		if(preg_match("/(\/report\/)|(\/report$)/", $url))
 		{
-			\lib\storage::set_team_code_url(\lib\router::get_url(0));
+			\lib\temp::set('team_code_url', \lib\router::get_url(0));
 			\lib\router::set_controller("content_a\\report\\controller");
 			return;
 		}
