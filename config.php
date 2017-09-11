@@ -10,9 +10,11 @@ if(!defined('db_name'))
  define("db_name", 'tejarak');
 
  /** MySQL database username */
+if(!defined('db_user'))
  define("db_user", 'ermile');
 
  /** MySQL database password */
+if(!defined('db_pass'))
  define("db_pass", 'Ermile@#$1233');
 
 ?>
