@@ -142,7 +142,7 @@ private function transtext()
 	echo T_("Logo and personal information");                                         // Line 33
 	echo T_("Try the logo of your organization or your company on one of existing designs and after choosing the right card, enter personal information of your employees, such as a photo, first name and last name and job position. Tejarak eye-catching personnel cards are a great way to showcase the logo and expand your brand, in addition to facilitating the attendance process.");// Line 34
 	echo T_("Javad Evazzadeh");                                                       // Line 94
-	echo T_("Barcode");                                                               // Line 205
+	echo T_("Barcode");                                                               // Line 206
 	echo T_("Always have a plan B! By printing the staffing numbers in barcode format behind the personnel cards, you can register employee attendance at the time of the problem or equipment change with a barcode scanner or using an application installed on your smart phone. Additionally, the barcode printing adds to the beauty of the staff card.");// Line 69
 	echo T_("Custom design");                                                         // Line 82
 	echo T_("Did not any of Tejarak designs for staff card satisfy your satisfaction? Would you like to get started and print your design on your cards? No problem! Instead of using Tejarak designs, send us your design and get your cards as soon as possible with the highest possible quality.");// Line 83
@@ -435,17 +435,19 @@ private function transtext()
 	//-------------------------------------------------content_a\member\dashboard.html
 	echo T_("Add new member");                                                        // Line 9
 
-	//---------------------------------------------------content_a\member\display.html
+	//-----------------------------------------------content_a\member\display-new.html
+	echo T_("You can set detail of team member and assign some extra data to use later");// Line 6
 	echo T_("Enter a valid name from 3 to 40 character");                             // Line 12
 	echo T_("Postion");                                                               // Line 23
 	echo T_("Enter a valid team position from 3 to 50 character");                    // Line 19
 	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 24
+	echo T_("Role of this member");                                                   // Line 44
 	echo T_("User");                                                                  // Line 38
 	echo T_("Admin");                                                                 // Line 39
+	echo T_("Extra setting for special use");                                         // Line 68
 	echo T_("First name");                                                            // Line 49
 	echo T_("Last name");                                                             // Line 56
 	echo T_("Personnel code");                                                        // Line 25
-	echo T_("Extra setting for special use");                                         // Line 68
 	echo T_("Allow plus");                                                            // Line 85
 	echo T_("Allow minus");                                                           // Line 89
 	echo T_("Remote user");                                                           // Line 94
@@ -455,6 +457,13 @@ private function transtext()
 	echo T_("Visibility");                                                            // Line 33
 	echo T_("Visible");                                                               // Line 129
 	echo T_("Hidden");                                                                // Line 133
+	echo T_("Extra gadget to use for enter and exit");                                // Line 143
+	echo T_("Scan Barcode here...");                                                  // Line 208
+	echo T_("Rfid");                                                                  // Line 213
+	echo T_("Scan Rfid here...");                                                     // Line 215
+	echo T_("Qrcode");                                                                // Line 220
+	echo T_("Scan Qrcode here...");                                                   // Line 222
+	echo T_("Advance");                                                               // Line 174
 	echo T_("Parent");                                                                // Line 141
 	echo T_("Add new parent");                                                        // Line 58
 	echo T_("Parent mobile");                                                         // Line 165
@@ -482,12 +491,11 @@ private function transtext()
 	echo T_("Grandson");                                                              // Line 87
 	echo T_("Custom");                                                                // Line 88
 	echo T_("Other title");                                                           // Line 92
-	echo T_("Scan Barcode here...");                                                  // Line 207
-	echo T_("Rfid");                                                                  // Line 212
-	echo T_("Scan Rfid here...");                                                     // Line 214
-	echo T_("Qrcode");                                                                // Line 219
-	echo T_("Scan Qrcode here...");                                                   // Line 221
-	echo T_("Advance");                                                               // Line 174
+
+	//---------------------------------------------------content_a\member\display.html
+	echo T_("Allow register mission");                                                // Line 72
+	echo T_("Allow register personal work");                                          // Line 76
+	echo T_("Extra setting for special tools to enter and exit");                     // Line 204
 
 	//--------------------------------------------content_a\notifications\display.html
 	echo T_("Your notifications");                                                    // Line 8

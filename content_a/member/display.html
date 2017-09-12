@@ -64,35 +64,35 @@
        </div>
       </div>
 
-      <div  class="g1 check1">
+      <div class="g1 check1">
        <h4>{%trans "Extra setting for special use"%}</h4>
        <div class="f">
-        <div class="c4 s6">
+        <div class="c6 s6">
          <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or team_default.allow_plus or ( not member and not team_default) %}checked{%endif%}>
-         <label for="allowPlus">{%trans "Allow plus"%}</label>
+         <label for="allowPlus">{%trans "Allow register mission"%}</label>
         </div>
-        <div class="c4 s6">
+        <div class="c6 s6">
          <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or team_default.allow_minus or ( not member and not team_default)%}checked{%endif%}>
-         <label for="allowMinus">{%trans "Allow minus"%}</label>
+         <label for="allowMinus">{%trans "Allow register personal work"%}</label>
         </div>
 
-        <div class="c4 s6">
+        <div class="c6 s6">
          <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
-         <label for="remoteUser">{%trans "Remote user"%}</label>
+         <label for="remoteUser">{%trans "Register hour permission"%}</label>
         </div>
 
-        <div class="c4 s6">
+        <div class="c6 s6">
          <input type="checkbox" name="24h" id="24h" {%if member['24h'] or team_default['24h'] %}checked{%endif%}>
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
 
-        <div class="c6 s6">
+        <div class="c6 s6 hide">
          <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if member.allow_desc_enter or team_default.allow_desc_enter %}checked{%endif%}>
          <label for="allowDescEnter">{%trans "Allow set desc in enter"%}</label>
         </div>
 
-        <div class="c6 s6">
+        <div class="c6 s6 hide">
          <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if member.allow_desc_exit or team_default.allow_desc_exit %}checked{%endif%}>
          <label for="allowDescExit">{%trans "Allow set desc in exit"%}</label>
         </div>
@@ -136,7 +136,7 @@
         </div>
       </div>
 
-      <div class="f g1">
+      <div class="f g1 hide">
       {%if member.parent%}
         <div class="cauto s0 lbl"><span>{%trans "Parent"%}</span></div>
         <div class="c">
@@ -156,7 +156,7 @@
         </div>
       {%endif%}
 
-        <div class="c12">
+        <div class="c12 hide">
             <div class="c">
               <p>{%trans "Add new parent"%}</p>
               <div class="f">
@@ -201,6 +201,7 @@
       </div>
 
 
+        <h4>{%trans "Extra setting for special tools to enter and exit"%}</h4>
         <div class="f g1">
          <div class="cauto s0 lbl"><label for="barcode">{%trans "Barcode"%}</label></div>
          <div class="c">
