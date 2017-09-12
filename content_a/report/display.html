@@ -30,11 +30,7 @@
 <div class="tiny">
     {%for key, value in all_user_list%}
     <a href="{{reportUrl}}?user={{value.user_id}}" class="vcard shadow">
-      {%if value.file%}
-        <img src="{{value.file}}">
-      {%else%}
-        <i class="sf-user fs30"></i>
-      {%endif%}
+    <img src="{%if value.file%}{{value.file}}{%else%}{{url.static}}siftal/images/useful/user1.png{%endif%}" alt="{{value.displayname}}">
       <div class="content">
         <div class="header">{{value.displayname}}</div>
         <div class="meta"><span>{{value.postion}}</span></div>
