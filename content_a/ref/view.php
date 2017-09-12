@@ -30,7 +30,7 @@ class view extends \content_a\main\view
 		$meta =
 		[
 			'get_count' => true,
-			'log_data'  => $this->login('id'),
+			'data'  => $this->login('id'),
 		];
 		$result = [];
 

@@ -100,10 +100,10 @@ class model extends \mvc\model
 		// ready to insert comments
 		$args =
 		[
-			'comment_author'  => $displayname,
-			'comment_email'   => $email,
-			'comment_type'    => 'comment',
-			'comment_content' => $content,
+			'author'  => $displayname,
+			'email'   => $email,
+			'type'    => 'comment',
+			'content' => $content,
 			'user_id'         => $user_id
 		];
 		// insert comments

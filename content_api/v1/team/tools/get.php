@@ -227,8 +227,8 @@ trait get
 				if(!empty($get_post_record))
 				{
 					$id              = array_column($get_post_record, 'id');
-					$post_meta       = array_column($get_post_record, 'post_meta');
-					$url             = array_column($post_meta, 'url');
+					$meta       = array_column($get_post_record, 'meta');
+					$url             = array_column($meta, 'url');
 					$this->logo_urls = array_combine($id, $url);
 				}
 			}

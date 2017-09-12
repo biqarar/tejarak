@@ -148,9 +148,9 @@ trait add
 				{
 					$logo_id = null;
 				}
-				elseif(isset($logo_record['post_meta']['url']))
+				elseif(isset($logo_record['meta']['url']))
 				{
-					$logo_url = $logo_record['post_meta']['url'];
+					$logo_url = $logo_record['meta']['url'];
 				}
 			}
 			else

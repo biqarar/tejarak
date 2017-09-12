@@ -483,9 +483,9 @@ trait add
 				{
 					$file_id = null;
 				}
-				elseif(isset($logo_record['post_meta']['url']))
+				elseif(isset($logo_record['meta']['url']))
 				{
-					$fileurl = $logo_record['post_meta']['url'];
+					$fileurl = $logo_record['meta']['url'];
 				}
 			}
 			else
