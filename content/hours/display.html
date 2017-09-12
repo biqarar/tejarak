@@ -4,7 +4,7 @@
 
 {%block foot_js%}
 
- <script src='{{url.static}}js/board.js'></script>
+ <script src="{{url.static}}{{'js/board.js' | filemtime(true)}}"></script>
 {%endblock%}
 
 
@@ -92,7 +92,7 @@
 {%block myModal%}
   <div class='modal fs14' id='setTraffic'>
    <div class='modal-dialog'>
-    <h3 class='modal-title'>{%trans "Enter"%}</h3>
+    <h3 class='modal-title hide'>{%trans "Enter"%}</h3>
     <div class='modal-body f'>
       <div class='cauto s12'>
         <div class="vcard w200 mB10 mLRa">
@@ -119,7 +119,7 @@
          <a class="btn secondary block" data-val='1300' data-connect='plus'>{%trans "I was on the mission"%}</a>
         </div>
         <div class="c12 pTB5" data-enterdesc>
-         <textarea class="txt" name='desc' rows="2" maxlength="100" placeholder='{%trans "Description"%}'></textarea>
+         <textarea class="txt" name='desc' rows="2" maxlength="100" placeholder='{%trans "Description"%}' data-enterdesc></textarea>
         </div>
         <div class="c12 pT20">
          <button class="btn info block" data-ok>{%trans "Enter"%}</button>
@@ -146,7 +146,7 @@
          </div>
         </div>
         <div class="c12 pTB5" data-exitdesc>
-         <textarea class="txt" name='desc' rows="2" maxlength="100"></textarea>
+         <textarea class="txt" name='desc' rows="2" maxlength="100" placeholder='{%trans "Description"%}' data-exitdesc></textarea>
         </div>
         <div class="c12 pT20">
          <button class="btn secondary block" data-ok>{%trans "Exit"%}</button>
