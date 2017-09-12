@@ -75,35 +75,35 @@
        <h4>{%trans "Default setting for new members of team"%}</h4>
        <div class="f check1">
 
-        <div class="c4 s12">
+        <div class="c6 s12">
          <input type="checkbox" name="showAvatar" id="showAvatar" {%if team_detail.show_avatar or not team%}checked{%endif%} >
          <label for="showAvatar">{%trans "Show users avatars"%}</label>
         </div>
 
-        <div class="c4 s6">
+        <div class="c6 s12">
          <input type="checkbox" name="allowPlus" id="allowPlus" {%if team_detail.allow_plus or not team%}checked{%endif%}>
-         <label for="allowPlus">{%trans "Allow plus"%}</label>
+         <label for="allowPlus">{%trans "Allow register mission"%}</label>
         </div>
-        <div class="c4 s6">
+        <div class="c6 s12">
          <input type="checkbox" name="allowMinus" id="allowMinus" {%if team_detail.allow_minus or not team%}checked{%endif%}>
-         <label for="allowMinus">{%trans "Allow minus"%}</label>
+         <label for="allowMinus">{%trans "Allow register personal work"%}</label>
         </div>
 
-        <div class="c4 s6">
+        <div class="c6 s12">
          <input type="checkbox" name="remoteUser" id="remoteUser" {%if team_detail.remote_user %}checked{%endif%}>
          <label for="remoteUser">{%trans "Remote user"%}</label>
         </div>
-        <div class="c4 s6">
+        <div class="c6 s12">
          <input type="checkbox" name="24h" id="24h" {%if team_detail['24h']%}checked{%endif%}>
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
-        <div class="c6 s12">
+        <div class="c6 s12 hide">
          <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if team_detail.allow_desc_enter %}checked{%endif%}>
          <label for="allowDescEnter">{%trans "Allow set enter desc"%}</label>
         </div>
 
-        <div class="c6 s12">
+        <div class="c6 s12 hide">
          <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if team_detail.allow_desc_exit %}checked{%endif%}>
          <label for="allowDescExit">{%trans "Allow set Exit desc"%}</label>
         </div>
@@ -121,7 +121,7 @@
 
 
         <div class="f c12 s12 mA5">
-         <label class="c2" for="cardsize">{%trans "Card size"%}</label>
+         <label class="c2 s12" for="cardsize">{%trans "Card size"%}</label>
          <select class="c" name="cardsize">
            <option value=""   {%if not team_detail.cardsize %} selected {%endif%}>{%trans "Auto size"%}</option>
            <option value="10" {%if team_detail.cardsize == '10'%} selected {%endif%}>{%trans "Small"%}</option>
@@ -133,7 +133,7 @@
 
 
          <div class="f c12 s12 mA5">
-         <label class="c2" for="language">{%trans "Language"%}</label>
+         <label class="c2 s12" for="language">{%trans "Language"%}</label>
          <select class="c" name="language">
            <option value="">{%trans "Please select one language"%}</option>
            <option value="fa" {%if team_detail.language == 'fa'%} selected {%endif%}>{%trans "Persian"%}</option>
@@ -143,12 +143,12 @@
         </div>
 
         <div class="c12 s12 f mA5">
-         <label class="c2" for="event_title">{%trans "Event title"%}</label>
+         <label class="c2 s12" for="event_title">{%trans "Event title"%}</label>
           <input class="c" type="text" name="event_title" id="event_title" value="{{team_detail.event_title}}" placeholder='{%trans "Event title"%}'>
         </div>
 
         <div class="c12 s12 f mA5">
-         <label class="c2" for="event_date">{%trans "Event date"%}</label>
+         <label class="c2 s12" for="event_date">{%trans "Event date"%}</label>
           <input class="c" type="text" name="event_date" id="event_date" value="{{team_detail.event_date}}" placeholder='{%trans "Event date"%}'>
         </div>
 
