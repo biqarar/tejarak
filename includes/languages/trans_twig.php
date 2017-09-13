@@ -62,8 +62,10 @@ private function transtext()
 	//------------------------------------------------------content\hours\display.html
 	echo T_("In the Name of God");                                                    // Line 60
 	echo T_("Enter");                                                                 // Line 26
+	echo T_("Mission Time");                                                          // Line 114
 	echo T_("I was on the mission");                                                  // Line 119
 	echo T_("Description");                                                           // Line 33
+	echo T_("Personal work");                                                         // Line 144
 	echo T_("Exit");                                                                  // Line 152
 
 	//--------------------------------------------------------content\main\layout.html
@@ -448,8 +450,8 @@ private function transtext()
 	echo T_("First name");                                                            // Line 49
 	echo T_("Last name");                                                             // Line 56
 	echo T_("Personnel code");                                                        // Line 25
-	echo T_("Allow plus");                                                            // Line 85
-	echo T_("Allow minus");                                                           // Line 89
+	echo T_("Allow plus");                                                            // Line 250
+	echo T_("Allow minus");                                                           // Line 254
 	echo T_("Remote user");                                                           // Line 94
 	echo T_("24 hour");                                                               // Line 98
 	echo T_("Allow set desc in enter");                                               // Line 92
@@ -493,8 +495,8 @@ private function transtext()
 	echo T_("Other title");                                                           // Line 92
 
 	//---------------------------------------------------content_a\member\display.html
-	echo T_("Allow register mission");                                                // Line 72
-	echo T_("Allow register personal work");                                          // Line 76
+	echo T_("Allow register mission");                                                // Line 85
+	echo T_("Allow register personal work");                                          // Line 89
 	echo T_("Extra setting for special tools to enter and exit");                     // Line 204
 
 	//--------------------------------------------content_a\notifications\display.html
