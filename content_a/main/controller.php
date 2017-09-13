@@ -13,7 +13,7 @@ class controller extends \mvc\controller
 
 		if(!$this->login())
 		{
-			$this->redirector($this->view()->url->base)->redirect();
+			$this->redirector($this->url('base'). '/enter')->redirect();
 			return;
 		}
 	}
