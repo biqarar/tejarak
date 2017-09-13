@@ -30,7 +30,7 @@ class controller extends \content_a\main\controller
 		}
 
 		// check if the user is gateway redirect to hours page
-		if(!$this->login('mobile') && $this->login('parent') && $this->login('username') && $this->login('pass'))
+		if(!$this->login('mobile') && $this->login('parent') && $this->login('username') && $this->login('password'))
 		{
 			$check_is_gateway = \lib\db\userteams::get(['user_id' => $this->login('id'), 'rule' => 'gateway', 'limit'=> 1]);
 			if(isset($check_is_gateway['team_id']))
