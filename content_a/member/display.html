@@ -19,7 +19,7 @@
 
       <div class="cauto s12 g1">
        <div>
-        <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
+        <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview data-size="500">
         <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
         {%if edit_mode and member.file%}
          <img src="{{member.file}}" alt="{{member.displayname}}" id="avatarPreview">
