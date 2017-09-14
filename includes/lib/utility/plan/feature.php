@@ -26,6 +26,7 @@ trait feature
 	public static $my_team_report_header = null;
 	public static $my_team_report_footer = null;
 	public static $my_report_settings    = [];
+	public static $yourself_chat_id      = null;
 
 
 	// 'telegram_group'    => string 'on' (length=2)
@@ -46,6 +47,31 @@ trait feature
 	 * @var        boolean
 	 */
 	public static $check_is_true = true;
+
+
+	/**
+	 * Sets the yourself message.
+	 *
+	 * @param      <type>  $_admins   The admins
+	 * @param      <type>  $_message  The message
+	 * @param      <type>  $_sort     The sort
+	 */
+	public static function set_yourself_message($_admins, $_message, $_sort)
+	{
+		if(!self::$yourself_chat_id)
+		{
+			return;
+		}
+
+		$admin_chat_id = array_column($_admins, 'chat_id');
+		if(in_array(self::$yourself_chat_id, $admin_chat_id))
+		{
+			return;
+		}
+
+		telegram::sendMessage(self::$yourself_chat_id, self::generate_telegram_message($_message), $_sort);
+
+	}
 
 	/**
 	 * check feacher
@@ -78,6 +104,8 @@ trait feature
 						return false;
 					}
 
+					self::set_yourself_message(self::$admins_access_detail, 'enter', ['sort' => 3]);
+
 					foreach (self::$admins_access_detail as $key => $value)
 					{
 						if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
@@ -105,6 +133,8 @@ trait feature
 								telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('first_enter'), ['sort' => 4]);
 							}
 						}
+
+						self::set_yourself_message(self::$admins_access_detail, 'date_now', ['sort' => 3]);
 
 						foreach (self::$admins_access_detail as $key => $value)
 						{
@@ -151,9 +181,16 @@ trait feature
 							if(plan::access('telegram:first:of:day:msg:group', self::$my_team_id))
 							{
 								telegram::sendMessageGroup(self::$my_group_id, self::generate_telegram_message('date_now'), ['sort' => 1]);
+								// send the message to her youser id
+								if(self::$yourself_chat_id)
+								{
+									telegram::sendMessage(self::$yourself_chat_id, self::generate_telegram_message('date_now'), ['sort' => 3]);
+								}
 							}
 						}
 					}
+
+					self::set_yourself_message(self::$admins_access_detail, 'exit', ['sort' => 3]);
 
 					foreach (self::$admins_access_detail as $key => $value)
 					{

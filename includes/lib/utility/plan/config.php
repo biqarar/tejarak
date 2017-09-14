@@ -18,6 +18,19 @@ trait config
 			self::$check_is_true = false;
 			return false;
 		}
+
+		if(isset(self::$_args['args']['user_id']) && is_numeric(self::$_args['args']['user_id']))
+		{
+			$yourself_user_id = self::$_args['args']['user_id'];
+			$yourself_user_detail = \lib\db\users::get(['id' => $yourself_user_id, 'limit' => 1]);
+
+			if(isset($yourself_user_detail['chatid']))
+			{
+				self::$yourself_chat_id = $yourself_user_detail['chatid'];
+			}
+		}
+
+
 		// get the user plus time he save
 		if(isset(self::$_args['inserted_record']['plus']))
 		{
