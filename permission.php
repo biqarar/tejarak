@@ -13,7 +13,7 @@
 // ];
 
 /*admin:view*/
-self::$perm_list[1] =
+self::$perm_list[201] =
 [
 	'caller' => 'admin:view',
 	'title'  => T_("Can view the admin page"),
@@ -21,7 +21,7 @@ self::$perm_list[1] =
 ];
 
 /*admin:add*/
-self::$perm_list[2] =
+self::$perm_list[202] =
 [
 	'caller' => 'admin:add',
 	'title'  => T_("Can add hourse for all users in admin page"),
@@ -30,43 +30,43 @@ self::$perm_list[2] =
 ];
 
 /*admin:edit*/
-self::$perm_list[3] =
+self::$perm_list[203] =
 [
 	'caller' => 'admin:edit',
 ];
 
 /*admin:admin*/
-self::$perm_list[4] =
+self::$perm_list[204] =
 [
 	'caller' => 'admin:admin',
 ];
 
 /*home:view*/
-self::$perm_list[5] =
+self::$perm_list[205] =
 [
 	'caller' => 'home:view',
 ];
 
 /*home:admin*/
-self::$perm_list[6] =
+self::$perm_list[206] =
 [
 	'caller' => 'home:admin',
 ];
 
 /*home:add*/
-self::$perm_list[7] =
+self::$perm_list[207] =
 [
 	'caller' => 'home:add',
 ];
 
 /*remote:view*/
-self::$perm_list[8] =
+self::$perm_list[208] =
 [
 	'caller' => 'remote:view',
 ];
 
 /*secret:view*/
-self::$perm_list[9] =
+self::$perm_list[209] =
 [
 	'caller' => 'secret:view',
 ];
@@ -81,25 +81,25 @@ self::$perm_list[9] =
 
 
 //===================================
-self::$perm_list[10] =
+self::$perm_list[210] =
 [
 	'title'  => T_("Allow to show transaction list"),
 	'caller' => 'cp:transaction',
 ];
 
-self::$perm_list[11] =
+self::$perm_list[211] =
 [
 	'title'  => T_("Allow to add new transaction list manualy"),
 	'caller' => 'cp:transaction:add',
 ];
 
-self::$perm_list[12] =
+self::$perm_list[212] =
 [
 	'title'  => T_("Allow to show system logs"),
 	'caller' => 'cp:transaction:logs',
 ];
 
-self::$perm_list[13] =
+self::$perm_list[213] =
 [
 	'title'  => T_("Allow to login by another session"),
 	'caller' => 'enter:another:session',
