@@ -70,32 +70,32 @@
 
 
 
-             <div class="check1">
+             <div class="check1t">
               <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or team_default.allow_plus or ( not member and not team_default) %}checked{%endif%}>
               <label for="allowPlus">{%trans "Allow plus"%}</label>
              </div>
 
-             <div class="check1">
+             <div class="check1t">
               <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or team_default.allow_minus or ( not member and not team_default)%}checked{%endif%}>
               <label for="allowMinus">{%trans "Allow minus"%}</label>
              </div>
 
-             <div class="check1">
+             <div class="check1t">
               <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
               <label for="remoteUser">{%trans "Remote user"%}</label>
              </div>
 
-             <div class="check1">
+             <div class="check1t">
               <input type="checkbox" name="24h" id="24h" {%if member['24h'] or team_default['24h'] %}checked{%endif%}>
               <label for="24h">{%trans "24 hour"%}</label>
              </div>
 
-             <div class="check1 hide">
+             <div class="check1t hide">
               <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if member.allow_desc_enter or team_default.allow_desc_enter %}checked{%endif%}>
               <label for="allowDescEnter">{%trans "Allow set desc in enter"%}</label>
              </div>
 
-             <div class="check1 hide">
+             <div class="check1t hide">
               <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if member.allow_desc_exit or team_default.allow_desc_exit %}checked{%endif%}>
               <label for="allowDescExit">{%trans "Allow set desc in exit"%}</label>
              </div>
@@ -104,7 +104,7 @@
             <div class="f g1">
               <div class="cauto s0 lbl"><span>{%trans "Status"%}</span></div>
               <div class="c">
-               <div class="f radio1">
+               <div class="f radio1t">
                 <div class="c4">
                  <input type="radio" id="r-active" name="status" value="active" {%if member.status == 'active' or not member.status%}checked{%endif%} >
                  <label for="r-active">{%trans "Active"%}</label>
@@ -124,7 +124,7 @@
              <div class="f g1">
               <div class="cauto s0 lbl"><span>{%trans "Visibility"%}</span></div>
               <div class="c">
-               <div class="f radio1">
+               <div class="f radio1t">
                 <div class="c6">
                  <input type="radio" id="r-visible" name="visibility" value="visible" {%if member.visibility == 'visible' or not member.visibility%}checked{%endif%} >
                  <label for="r-visible">{%trans "Visible"%}</label>
@@ -159,7 +159,7 @@
 
 
 
-       <div class="c9 s12 check1">
+       <div class="c9 s12 check1t">
         <input type="checkbox" name="advance" id="advance" {%if edit_mode%} checked="checked" {%endif%}>
         <label for="advance">{%trans "Advance"%}</label>
        </div>
@@ -242,7 +242,7 @@
        </div>
       </div>
 
-      <div  class="g1 check1">
+      <div  class="g1 check1t">
        <h4>{%trans "Extra setting for special use"%}</h4>
        <div class="f">
         <div class="c4 s6">
@@ -281,7 +281,7 @@
       <div class="f g1">
         <div class="cauto s0 lbl"><span>{%trans "Status"%}</span></div>
         <div class="c">
-         <div class="f radio1">
+         <div class="f radio1t">
           <div class="c4">
            <input type="radio" id="r-active" name="status" value="active" {%if member.status == 'active' or not member.status%}checked{%endif%} >
            <label for="r-active">{%trans "Active"%}</label>
@@ -301,7 +301,7 @@
        <div class="f g1">
         <div class="cauto s0 lbl"><span>{%trans "Visibility"%}</span></div>
         <div class="c">
-         <div class="f radio1">
+         <div class="f radio1t">
           <div class="c6">
            <input type="radio" id="r-visible" name="visibility" value="visible" {%if member.visibility == 'visible' or not member.visibility%}checked{%endif%} >
            <label for="r-visible">{%trans "Visible"%}</label>
@@ -405,7 +405,7 @@
 
 
      <div class="f g1">
-       <div class="c9 s12 check1">
+       <div class="c9 s12 check1t">
         <input type="checkbox" name="advance" id="advance" {%if edit_mode%} checked="checked" {%endif%}>
         <label for="advance">{%trans "Advance"%}</label>
        </div>

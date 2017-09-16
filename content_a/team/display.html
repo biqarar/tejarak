@@ -36,7 +36,7 @@
       <div class="f g1">
         <div class="cauto s0 lbl"><span>{%trans "Privacy mode"%}</span></div>
         <div class="c">
-         <div class="f radio1">
+         <div class="f radio1t">
 
           <div class="c4">
            <input type="radio" id="r-private" name="privacy" value="private" {%if team_detail.privacy == 'private' or not team_detail.prvacy%}checked{%endif%} >
@@ -73,7 +73,7 @@
 
       <div  class="g1">
        <h4>{%trans "Default setting for new members of team"%}</h4>
-       <div class="f check1">
+       <div class="f check1t">
 
         <div class="c6 s12">
          <input type="checkbox" name="showAvatar" id="showAvatar" {%if team_detail.show_avatar or not team%}checked{%endif%} >
@@ -169,7 +169,7 @@
       </div>
 {%else%}
 
-      <div class="c9 s12 check1">
+      <div class="c9 s12 check1t">
        <input type="checkbox" name="advance" id="advance">
        <label for="advance">{%trans "Advance"%}</label>
       </div>

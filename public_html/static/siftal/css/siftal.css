@@ -5610,6 +5610,118 @@ html[lang=fa] .switch1 input:checked + label:first-of-type:before {
 .radio1.black input:checked + label::before {
   background-color: #333; }
 
+/* radio type 2*/
+.radio2 {
+  background-color: #eee;
+  border-radius: 3px; }
+
+.radio2 input[type="radio"] {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  opacity: 0; }
+
+.radio2 input[type="radio"] + label {
+  position: relative;
+  height: 50px;
+  display: block;
+  color: #777;
+  font-size: 1rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0 20px;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 35px; }
+
+.radio2 input[type="radio"] + label::before {
+  -webkit-transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
+  transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #999;
+  border: 0 solid #999;
+  font-size: 0;
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%); }
+
+.radio2 input[type="radio"] + label::after {
+  -webkit-transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
+  transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
+  content: "";
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #999;
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%); }
+
+.radio2 input[type="radio"] + label:hover::before {
+  background-color: #4090d0; }
+
+.radio2 input[type="radio"]:checked + label::before {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  border-width: 2px; }
+
+.radio2 input[type="radio"]:checked + label::after {
+  width: 20px;
+  height: 20px;
+  background-color: #4090d0; }
+
+.radio2 input[type="radio"]:checked + label:hover::before {
+  border-color: #4090d0; }
+
+.radio2 input[type="radio"]:focus + label::before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); }
+
+/* radio type 1 - vertical*/
+.radio2.v input[type="radio"] + label {
+  padding: 0 20px;
+  line-height: 50px;
+  padding-left: 40px;
+  text-align: left; }
+
+.radio2.v input[type="radio"] + label::before {
+  bottom: 25px;
+  left: 20px; }
+
+.radio2.v input[type="radio"] + label::after {
+  bottom: 25px;
+  left: 20px; }
+
+.rtl .radio2.v input[type="radio"] + label {
+  padding-left: 20px;
+  padding-right: 40px;
+  text-align: right; }
+
+.rtl .radio2.v input[type="radio"] + label::before {
+  left: initial;
+  right: 20px;
+  -webkit-transform: translate(50%, 50%);
+  transform: translate(50%, 50%); }
+
+.rtl .radio2.v input[type="radio"] + label::after {
+  left: initial;
+  right: 20px;
+  -webkit-transform: translate(50%, 50%);
+  transform: translate(50%, 50%); }
+
 .txt {
   display: block;
   margin: 0;
@@ -8368,11 +8480,11 @@ body.siftal.loading-page #sidebar .avatar:before {
   cursor: pointer; }
 
 /* radio type 1*/
-.df .radio1 {
+.df .radio1t {
   background-color: #eee;
   border-radius: 3px; }
 
-.df .radio1 input[type="radio"] {
+.df .radio1t input[type="radio"] {
   padding: 0;
   margin: 0;
   position: absolute;
@@ -8381,7 +8493,7 @@ body.siftal.loading-page #sidebar .avatar:before {
   height: 0;
   opacity: 0; }
 
-.df .radio1 input[type="radio"] + label {
+.df .radio1t input[type="radio"] + label {
   position: relative;
   height: 50px;
   display: block;
@@ -8397,7 +8509,7 @@ body.siftal.loading-page #sidebar .avatar:before {
   text-align: center;
   padding-top: 35px; }
 
-.df .radio1 input[type="radio"] + label::before {
+.df .radio1t input[type="radio"] + label::before {
   -webkit-transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
   transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
   content: "";
@@ -8413,7 +8525,7 @@ body.siftal.loading-page #sidebar .avatar:before {
   -webkit-transform: translate(-50%, 50%);
   transform: translate(-50%, 50%); }
 
-.df .radio1 input[type="radio"] + label::after {
+.df .radio1t input[type="radio"] + label::after {
   -webkit-transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
   transition: all 250ms cubic-bezier(0.4, 0.25, 0.3, 1);
   content: "";
@@ -8427,60 +8539,60 @@ body.siftal.loading-page #sidebar .avatar:before {
   -webkit-transform: translate(-50%, 50%);
   transform: translate(-50%, 50%); }
 
-.df .radio1 input[type="radio"] + label:hover::before {
+.df .radio1t input[type="radio"] + label:hover::before {
   background-color: #4090d0; }
 
-.df .radio1 input[type="radio"]:checked + label::before {
+.df .radio1t input[type="radio"]:checked + label::before {
   background-color: transparent;
   width: 30px;
   height: 30px;
   border-width: 2px; }
 
-.df .radio1 input[type="radio"]:checked + label::after {
+.df .radio1t input[type="radio"]:checked + label::after {
   width: 20px;
   height: 20px;
   background-color: #4090d0; }
 
-.df .radio1 input[type="radio"]:checked + label:hover::before {
+.df .radio1t input[type="radio"]:checked + label:hover::before {
   border-color: #4090d0; }
 
-.df .radio1 input[type="radio"]:focus + label::before {
+.df .radio1t input[type="radio"]:focus + label::before {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); }
 
 /* radio type 1 - vertical*/
-.df .radio1.v input[type="radio"] + label {
+.df .radio1t.v input[type="radio"] + label {
   padding: 0 20px;
   line-height: 50px;
   padding-left: 40px;
   text-align: left; }
 
-.df .radio1.v input[type="radio"] + label::before {
+.df .radio1t.v input[type="radio"] + label::before {
   bottom: 25px;
   left: 20px; }
 
-.df .radio1.v input[type="radio"] + label::after {
+.df .radio1t.v input[type="radio"] + label::after {
   bottom: 25px;
   left: 20px; }
 
-.rtl .df .radio1.v input[type="radio"] + label {
+.rtl .df .radio1t.v input[type="radio"] + label {
   padding-left: 20px;
   padding-right: 40px;
   text-align: right; }
 
-.rtl .df .radio1.v input[type="radio"] + label::before {
+.rtl .df .radio1t.v input[type="radio"] + label::before {
   left: initial;
   right: 20px;
   -webkit-transform: translate(50%, 50%);
   transform: translate(50%, 50%); }
 
-.rtl .df .radio1.v input[type="radio"] + label::after {
+.rtl .df .radio1t.v input[type="radio"] + label::after {
   left: initial;
   right: 20px;
   -webkit-transform: translate(50%, 50%);
   transform: translate(50%, 50%); }
 
 /* checkbox type 1*/
-.df .check1 input[type='checkbox'] {
+.df .check1t input[type='checkbox'] {
   padding: 0;
   margin: 0;
   position: absolute;
@@ -8489,12 +8601,12 @@ body.siftal.loading-page #sidebar .avatar:before {
   height: 0;
   opacity: 0; }
 
-.df .check1 input[type='checkbox'] + label {
+.df .check1t input[type='checkbox'] + label {
   position: relative;
   cursor: pointer;
   padding: 0; }
 
-.df .check1 input[type='checkbox'] + label:before {
+.df .check1t input[type='checkbox'] + label:before {
   content: '';
   margin-right: 10px;
   display: inline-block;
@@ -8505,24 +8617,24 @@ body.siftal.loading-page #sidebar .avatar:before {
   transition: 0.3s;
   border-radius: 3px; }
 
-.df .check1 input[type='checkbox']:hover + label:before {
+.df .check1t input[type='checkbox']:hover + label:before {
   background-color: #4090d0; }
 
-.df .check1 input[type='checkbox']:checked + label:before {
+.df .check1t input[type='checkbox']:checked + label:before {
   background-color: #4090d0; }
 
-.df .check1 input[type='checkbox']:focus + label:before {
+.df .check1t input[type='checkbox']:focus + label:before {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); }
 
-.df .check1 input[type='checkbox']:disabled + label {
+.df .check1t input[type='checkbox']:disabled + label {
   color: #bbb;
   cursor: auto; }
 
-.df .check1 input[type='checkbox']:disabled + label:before {
+.df .check1t input[type='checkbox']:disabled + label:before {
   box-shadow: none;
   background-color: #ddd; }
 
-.df .check1 input[type='checkbox'] + label:after {
+.df .check1t input[type='checkbox'] + label:after {
   content: '';
   position: absolute;
   left: 5px;
@@ -8536,14 +8648,14 @@ body.siftal.loading-page #sidebar .avatar:before {
   opacity: 0;
   transition: 0.1s; }
 
-.df .check1 input[type='checkbox']:checked + label:after {
+.df .check1t input[type='checkbox']:checked + label:after {
   opacity: 1; }
 
-.rtl .df .check1 input[type='checkbox'] + label:before {
+.rtl .df .check1t input[type='checkbox'] + label:before {
   margin-right: 0;
   margin-left: 10px; }
 
-.rtl .df .check1 input[type='checkbox'] + label:after {
+.rtl .df .check1t input[type='checkbox'] + label:after {
   left: 0;
   right: 13px; }
 

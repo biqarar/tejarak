@@ -64,7 +64,7 @@
        </div>
       </div>
 
-      <div class="g1 check1">
+      <div class="g1 check1t">
        <h4>{%trans "Extra setting for special use"%}</h4>
        <div class="f">
         <div class="c6 s12">
@@ -103,7 +103,7 @@
       <div class="f g1">
         <div class="cauto s0 lbl"><span>{%trans "Status"%}</span></div>
         <div class="c">
-         <div class="f radio1">
+         <div class="f radio1t">
           <div class="c4">
            <input type="radio" id="r-active" name="status" value="active" {%if member.status == 'active' or not member.status%}checked{%endif%} >
            <label for="r-active">{%trans "Active"%}</label>
@@ -123,7 +123,7 @@
        <div class="f g1">
         <div class="cauto s0 lbl"><span>{%trans "Visibility"%}</span></div>
         <div class="c">
-         <div class="f radio1">
+         <div class="f radio1t">
           <div class="c6">
            <input type="radio" id="r-visible" name="visibility" value="visible" {%if member.visibility == 'visible' or not member.visibility%}checked{%endif%} >
            <label for="r-visible">{%trans "Visible"%}</label>
@@ -228,7 +228,7 @@
 
 
      <div class="f g1">
-       <div class="c9 s12 check1">
+       <div class="c9 s12 check1t">
         <input type="checkbox" name="advance" id="advance" {%if edit_mode%} checked="checked" {%endif%}>
         <label for="advance">{%trans "Advance"%}</label>
        </div>
