@@ -74,7 +74,7 @@ self::$social['list']['aparat']               = 'tejarak';
 self::$social['telegram']['status']           = true;
 self::$social['telegram']['name']             = null;
 self::$social['telegram']['key']              = null;
-self::$social['telegram']['bot']              = null;
+self::$social['telegram']['bot']              = '339018788:AAFg-KYxZ8yI-yU74qt1tq0DFNtLfT4Puv8';
 self::$social['telegram']['hookFolder']       = null;
 self::$social['telegram']['hook']             = null;
 self::$social['telegram']['debug']            = true;
@@ -388,6 +388,13 @@ self::$config['notification']['cat'][10] =
 		'telegram',
 		'email',
 	],
+];
+
+
+self::$config['notification']['cat'][1000] =
+[
+	'title'   => 'supervisor',
+
 ];
 
 
