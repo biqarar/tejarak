@@ -61,12 +61,13 @@ private function transtext()
 
 	//------------------------------------------------------content\hours\display.html
 	echo T_("In the Name of God");                                                    // Line 60
+	echo T_("days left");                                                             // Line 77
 	echo T_("Enter");                                                                 // Line 26
-	echo T_("Mission Time");                                                          // Line 114
-	echo T_("I was on the mission");                                                  // Line 119
+	echo T_("Mission Time");                                                          // Line 125
+	echo T_("I was on the mission");                                                  // Line 130
 	echo T_("Description");                                                           // Line 33
-	echo T_("Personal work");                                                         // Line 144
-	echo T_("Exit");                                                                  // Line 152
+	echo T_("Personal work");                                                         // Line 155
+	echo T_("Exit");                                                                  // Line 163
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 39
