@@ -40,20 +40,6 @@
 .rtl.attendance #sidebar .time .second{min-width:1.3em}
 .rtl.attendance #sidebar{font-size:1.8em;}
 
-.deadline{text-align:center;width:50%;display: block;overflow: hidden;border-radius: 0.5em;margin: 1em auto;font-size: 0.8em;color:#fff;position:absolute;border-bottom:0;right:0;left:0;bottom:0;}
-.deadline .title{display: block;background-color:#0fa1a6;font-size: 1em;padding:0.1em 0.5em;font-weight: 100;}
-.deadline .info{display: block;background-color:#1a8083;transition:0.2s;}
-.deadline .info time{display: block;font-size: 5em;font-weight:700;line-height:1;padding-top:0.2em;}
-.deadline.yellow .title{background-color:#a5890e;}
-.deadline.yellow .info{background-color:#bda926;}
-.deadline.orange .title{background-color:#940606;}
-.deadline.orange .info{background-color:#b32626;}
-.deadline.red .title{background-color:#b32626;}
-.deadline.red .info{background-color:#ec0707;}
-.deadline.black .title{background-color:#333;}
-.deadline.black .info{background-color:#000;color:#fff}
-
-
 
 
 

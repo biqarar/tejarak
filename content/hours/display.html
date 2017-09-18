@@ -67,6 +67,17 @@
     <h1>{{current_team.name}}</h1>
   </div>
 
+{%if current_team.event_date%}
+  <div class="deadline {{current_team.event_class}}"  title='{{current_team.event_date | jdate("d/m/Y")}}'>
+{%if current_team.event_title%}
+   <div class="title">{{current_team.event_title}}</div>
+{%endif%}
+   <div class="info">
+    <time datetime="P{{current_team.event_date}}D">{{current_team.event_remain | fitNumber}}</time>
+    <span>{%trans "days left"%}</span>
+   </div>
+  </div>
+{%endif%}
 
     <h3 class="footer tejarak">
      <a href='{{url.base}}' tabindex='-1'><img src='{{url.static}}images/logo/svg/tejarak-logo.svg' alt='{{site.title}} | {{site.desc}}'><span>{{site.title}}</span></a>
