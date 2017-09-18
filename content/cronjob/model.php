@@ -137,6 +137,10 @@ class model extends \mvc\model
 
 		$default_send_service = \lib\utility\telegram::$force_send_telegram_service;
 
+		if($run)
+		{
+			$this->set_last_pinged_time();
+		}
 
 		\lib\utility\telegram::$force_send_telegram_service = true;
 		\lib\utility\telegram::$bot_key                     = '401647634:AAEUeTV5E7CYxZth-6TOWFHdjzABwVavJS0';
@@ -148,10 +152,6 @@ class model extends \mvc\model
 		\lib\utility\telegram::$bot_key                     = null;
 		\lib\utility\telegram::$save_log                    = true;
 
-		if($run)
-		{
-			$this->set_last_pinged_time();
-		}
 
 	}
 
