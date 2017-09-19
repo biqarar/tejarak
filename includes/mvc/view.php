@@ -12,9 +12,7 @@ class view extends \lib\mvc\view
 		$this->data->site['slogan']          = T_("Modern Approach");
 
 		$this->data->page['desc']            = $this->data->site['desc']. ' | '. $this->data->site['slogan'];
-		$this->data->display['ganje']        = "content_ganje/home/layout.html";
 
-		$this->data->display['ganje_et']     = "content_ganje/home/et.html";
 		$this->data->bodyclass               = 'unselectable';
 
 		// for pushstate of main page
@@ -25,8 +23,6 @@ class view extends \lib\mvc\view
 		$this->data->template['share']       = 'content/template/share.html';
 		$this->data->template['price']       = 'content/template/priceTable.html';
 		$this->data->template['priceSchool'] = 'content/template/priceSchoolTable.html';
-
-		$this->data->utilityGET = \lib\utility::get(null, 'raw');
 
 		if(in_array(\lib\router::get_repository_name(), ['content']))
 		{
@@ -58,10 +54,7 @@ class view extends \lib\mvc\view
 	 */
 	function pushState()
 	{
-		if($this->url('sub') === 'ganje')
-		{
-			$this->data->display['ganje']     = "content_ganje/home/layout-xhr.html";
-		}
+
 	}
 }
 ?>
