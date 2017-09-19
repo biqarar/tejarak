@@ -6,67 +6,74 @@
 {%endblock%}
 
 {%block content%}
- <form method="get" class="df f" data-action>
-	<div class="c10">
-		<label for="search">{%trans "Search"%}</label>
-		<input type="text" name="search" class="c1" id="search" value='{{get_search}}' >
-	</div>
+ <div class="tbox">
+	{%trans "Teams plan"%}
+</div>
 
-	<div class="c1">
-		<label>‌</label>
-		<input type="submit"  class="c1 b1"  value='{%trans "Search"%}'>
+ <form method="get" class="" data-action>
+	<div class="input">
+		<label for="search" class="addon">{%trans "Search"%}</label>
+		<input type="text" name="search" class="" id="search" value='{{utilityGET.search}}' >
+		<button class="btn primary addon" >{%trans "Search"%}</button>
 	</div>
 </form>
-<br>
 
+<table class="tbl mT15">
+	<thead>
+		<th><a href="{{url.base}}/cp/teamplans/{{order_url.name}}">{%trans "Team"%}</a></th>
+		<th><a href="{{url.base}}/cp/teamplans/{{order_url.creator}}">{%trans "Creator"%}</a></th>
+		<th><a href="{{url.base}}/cp/teamplans/{{order_url.plan}}">{%trans "Plan"%}</a></th>
+		<th><a href="{{url.base}}/cp/teamplans/{{order_url.start}}">{%trans "Start"%}</a></th>
+		<th><a href="{{url.base}}/cp/teamplans/{{order_url.end}}">{%trans "End"%}</a></th>
+		<th><a href="{{url.base}}/cp/teamplans/{{order_url.status}}">{%trans "status"%}</a></th>
+		<th><a href="{{url.base}}/cp/teamplans/{{order_url.lastcalcdate}}">{%trans "Last Calc Date"%}</a></th>
+		<th>{%trans "Renew at"%}</th>
 
-<div class="dt big">
-	<div class="f th">
-		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.name}}">{%trans "Team"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.creator}}">{%trans "Creator"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.plan}}">{%trans "Plan"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.start}}">{%trans "Start"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.end}}">{%trans "End"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.status}}">{%trans "status"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teamplans/{{order_url.lastcalcdate}}">{%trans "Last Calc Date"%}</a></div>
-		<div class="c">{%trans "Renew at"%}</div>
+	</thead>
+	<tbody>
+		{%for key, value in teamplans_list%}
+		<tr>
 
-	</div>
-	{%for key, value in teamplans_list%}
-	<div class="f">
-
-		<div class="c"><a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}</a></div>
-		<div class="c"><a href="{{url.base}}/enter?userid={{value.creator}}" data-direct>{{value.creator}}</a></div>
-		<div class="c">{%set my_plan = value.plan | capitalize  %}{%trans my_plan%}</div>
-		{%if site.currentlang == 'fa'%}
-			<div class="c">{{value.start|jdate("Y-m-d H:i:s")}}</div>
-			{%if value.end%}
-				<div class="c">{{value.end|jdate("Y-m-d H:i:s")}}</div>
+			<td><a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}</a></td>
+			<td><a href="{{url.base}}/enter?userid={{value.creator}}" data-direct>{{value.creator|fitNumber}}</a></td>
+			<td>{%set my_plan = value.plan | capitalize  %}{%trans my_plan%}</td>
+			{%if site.currentlang == 'fa'%}
+				<td>{{value.start|jdate("Y-m-d H:i:s")}}</td>
+				{%if value.end%}
+					<td>{{value.end|jdate("Y-m-d H:i:s")}}</td>
+				{%else%}
+					<td><i>-</i></td>
+				{%endif%}
 			{%else%}
-				<div class="c"><i>-</i></div>
+				<td>{{value.start|date("Y-m-d H:i:s")}}</td>
+				{%if value.end%}
+					<td>{{value.end|date("Y-m-d H:i:s")}}</td>
+				{%else%}
+					<td><i>-</i></td>
+				{%endif%}
 			{%endif%}
-		{%else%}
-			<div class="c">{{value.start|date("Y-m-d H:i:s")}}</div>
-			{%if value.end%}
-				<div class="c">{{value.end|date("Y-m-d H:i:s")}}</div>
-			{%else%}
-				<div class="c"><i>-</i></div>
-			{%endif%}
-		{%endif%}
-		<div class="c">{%set my_status = value.status  %}{%trans my_status%}</div>
+			<td>{%set my_status = value.status  %}{%trans my_status%}</td>
 
-		{%if site.currentlang == 'fa'%}
-			<div class="c">{{value.lastcalcdate|jdate("Y-m-d H:i:s")}}</div>
-		{%else%}
-			<div class="c">{{value.lastcalcdate|date("Y-m-d H:i:s")}}</div>
-		{%endif%}
-			<div class="c">{{value.renew_time | fitNumber}}</div>
-	</div>
-	{%endfor%}
-</div>
-<div class="pagination-container">
-	{%include display.pagination%}
-</div>
+			{%if site.currentlang == 'fa'%}
+				<td>{{value.lastcalcdate|jdate("Y-m-d H:i:s")}}</td>
+			{%else%}
+				<td>{{value.lastcalcdate|date("Y-m-d H:i:s")}}</td>
+			{%endif%}
+				<td>{{value.renew_time | fitNumber}}</td>
+		</tr>
+		{%endfor%}
+
+	</tbody>
+</table>
+
+
+
+
+
+
+
+{%include display.pagination%}
+
 
 
 {%endblock%}

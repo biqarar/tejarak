@@ -306,7 +306,7 @@ class teamplans
 			'search_field' =>
 			"
 				(
-					teamps.name LIKE '%__string__%'
+					teams.name LIKE '%__string__%'
 				)
 
 			",
