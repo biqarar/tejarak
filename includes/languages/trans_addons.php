@@ -2,43 +2,43 @@
 private function transtext()
 {
 
-	//------------------------------------------addons\--addons\attachments\panel.html
+	//------------------------------------------addons\-addons-\attachments\panel.html
 	echo T_("Write your tag and press enter to add new keyword to content");          // Line 1
 	echo T_("attachments");                                                           // Line 2
 	echo T_("Search");                                                                // Line 112 Seperate
 
 	//-----------------------------------addons\content_cp\invoicedetails\display.html
-	echo T_("id");                                                                    // Line 22
-	echo T_("invoice_id");                                                            // Line 23
+	echo T_("id");                                                                    // Line 16
+	echo T_("invoice_id");                                                            // Line 17
 	echo T_("title");                                                                 // Line 230 Seperate
-	echo T_("price");                                                                 // Line 25
-	echo T_("count");                                                                 // Line 26
-	echo T_("total");                                                                 // Line 27
-	echo T_("discount");                                                              // Line 28
-	echo T_("desc");                                                                  // Line 40
+	echo T_("price");                                                                 // Line 19
+	echo T_("count");                                                                 // Line 20
+	echo T_("total");                                                                 // Line 21
+	echo T_("discount");                                                              // Line 22
+	echo T_("desc");                                                                  // Line 34
 
 	//-----------------------------------------addons\content_cp\invoices\display.html
 	echo T_("ID");                                                                    // Line 21
 	echo T_("Date");                                                                  // Line 201 Seperate
-	echo T_("User id");                                                               // Line 23
-	echo T_("Is Temp?");                                                              // Line 24
+	echo T_("User id");                                                               // Line 18
+	echo T_("Is Temp?");                                                              // Line 19
 	echo T_("Title");                                                                 // Line 200 Seperate
-	echo T_("Total");                                                                 // Line 26
-	echo T_("Total Discount");                                                        // Line 27
+	echo T_("Total");                                                                 // Line 21
+	echo T_("Total Discount");                                                        // Line 22
 	echo T_("Status");                                                                // Line 25
-	echo T_("Count Detail");                                                          // Line 29
-	echo T_("Detail");                                                                // Line 31
-	echo T_("Yes");                                                                   // Line 43
-	echo T_("No");                                                                    // Line 45
+	echo T_("Count Detail");                                                          // Line 24
+	echo T_("Detail");                                                                // Line 26
+	echo T_("Yes");                                                                   // Line 39
+	echo T_("No");                                                                    // Line 41
 
 	//---------------------------------------------addons\content_cp\logs\display.html
-	echo T_("Log item id");                                                           // Line 21
-	echo T_("Type");                                                                  // Line 34
-	echo T_("Caller");                                                                // Line 23
-	echo T_("Priority");                                                              // Line 25
-	echo T_("User_id");                                                               // Line 26
-	echo T_("Data");                                                                  // Line 27
-	echo T_("createdate");                                                            // Line 32
+	echo T_("Log item id");                                                           // Line 20
+	echo T_("Type");                                                                  // Line 28
+	echo T_("Caller");                                                                // Line 22
+	echo T_("Priority");                                                              // Line 24
+	echo T_("User_id");                                                               // Line 25
+	echo T_("Data");                                                                  // Line 26
+	echo T_("createdate");                                                            // Line 26
 	echo T_("Meta");                                                                  // Line 30
 
 	//----------------------------------------------addons\content_cp\main\layout.html
@@ -57,21 +57,21 @@ private function transtext()
 	echo T_("Version");                                                               // Line 108 Seperate
 
 	//------------------------------------addons\content_cp\notifications\display.html
-	echo T_("user_id");                                                               // Line 23
-	echo T_("user_idsender");                                                         // Line 24
-	echo T_("content");                                                               // Line 26
-	echo T_("url");                                                                   // Line 27
-	echo T_("read");                                                                  // Line 28
-	echo T_("star");                                                                  // Line 29
-	echo T_("status");                                                                // Line 30
+	echo T_("user_id");                                                               // Line 17
+	echo T_("user_idsender");                                                         // Line 18
+	echo T_("content");                                                               // Line 20
+	echo T_("url");                                                                   // Line 21
+	echo T_("read");                                                                  // Line 22
+	echo T_("star");                                                                  // Line 23
+	echo T_("status");                                                                // Line 24
 	echo T_("category");                                                              // Line 139 Seperate
-	echo T_("senddate");                                                              // Line 33
-	echo T_("deliverdate");                                                           // Line 34
-	echo T_("expiredate");                                                            // Line 35
-	echo T_("readdate");                                                              // Line 36
-	echo T_("gateway");                                                               // Line 37
-	echo T_("auto");                                                                  // Line 38
-	echo T_("datemodified");                                                          // Line 39
+	echo T_("senddate");                                                              // Line 27
+	echo T_("deliverdate");                                                           // Line 28
+	echo T_("expiredate");                                                            // Line 29
+	echo T_("readdate");                                                              // Line 30
+	echo T_("gateway");                                                               // Line 31
+	echo T_("auto");                                                                  // Line 32
+	echo T_("datemodified");                                                          // Line 33
 
 	//---------------------------------------addons\content_cp\permission\display.html
 	echo T_("Change permission of user");                                             // Line 6
@@ -81,10 +81,10 @@ private function transtext()
 	//---------------------------------addons\content_cp\transactions\add\display.html
 	echo T_("Saved record");                                                          // Line 6
 	echo T_("Code");                                                                  // Line 48
-	echo T_("Plus");                                                                  // Line 38
-	echo T_("Minus");                                                                 // Line 39
-	echo T_("Condition");                                                             // Line 44
-	echo T_("Verify");                                                                // Line 45
+	echo T_("Plus");                                                                  // Line 32
+	echo T_("Minus");                                                                 // Line 33
+	echo T_("Condition");                                                             // Line 38
+	echo T_("Verify");                                                                // Line 39
 	echo T_("Description");                                                           // Line 199 Seperate
 	echo T_("Repair to");                                                             // Line 38
 	echo T_("type");                                                                  // Line 47
@@ -93,7 +93,7 @@ private function transtext()
 	echo T_("Gift");                                                                  // Line 51
 	echo T_("Transfer");                                                              // Line 52
 	echo T_("Prize");                                                                 // Line 53
-	echo T_("Unit");                                                                  // Line 40
+	echo T_("Unit");                                                                  // Line 34
 	echo T_("Toman");                                                                 // Line 60
 	echo T_("$");                                                                     // Line 61
 	echo T_("Mobile");                                                                // Line 4
@@ -101,15 +101,15 @@ private function transtext()
 
 	//-------------------------------------addons\content_cp\transactions\display.html
 	echo T_("Add New Transaction");                                                   // Line 7
-	echo T_("Displayname");                                                           // Line 31
-	echo T_("Amount request");                                                        // Line 36
-	echo T_("Amount end");                                                            // Line 37
-	echo T_("Budget before");                                                         // Line 41
-	echo T_("Budget");                                                                // Line 42
-	echo T_("Payment");                                                               // Line 46
+	echo T_("Displayname");                                                           // Line 25
+	echo T_("Amount request");                                                        // Line 30
+	echo T_("Amount end");                                                            // Line 31
+	echo T_("Budget before");                                                         // Line 35
+	echo T_("Budget");                                                                // Line 36
+	echo T_("Payment");                                                               // Line 40
 	echo T_("Parent");                                                                // Line 26
 	echo T_("More");                                                                  // Line 29
-	echo T_("Repait");                                                                // Line 49
+	echo T_("Repait");                                                                // Line 43
 	echo T_("Add new");                                                               // Line 6
 	echo T_("Revers");                                                                // Line 51
 
@@ -233,7 +233,12 @@ private function transtext()
 
 	//-----------------------------------------addons\content_su\invoices\display.html
 
+	//--------------------------------------addons\content_su\logs\detail\display.html
+	echo T_("Logs Detail");                                                           // Line 6
+
 	//---------------------------------------------addons\content_su\logs\display.html
+	echo T_("Logs List");                                                             // Line 6
+	echo T_("Desc");                                                                  // Line 27
 
 	//----------------------------------------------addons\content_su\main\layout.html
 	echo T_("ShortURL");                                                              // Line 12

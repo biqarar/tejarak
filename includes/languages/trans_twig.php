@@ -609,8 +609,8 @@ private function transtext()
 	echo T_("Hour request edit list");                                                // Line 19
 
 	//----------------------------------------------content_a\report\last\display.html
-	echo T_("Start");                                                                 // Line 28
-	echo T_("End");                                                                   // Line 29
+	echo T_("Start");                                                                 // Line 26
+	echo T_("End");                                                                   // Line 27
 	echo T_("Diff");                                                                  // Line 33
 	echo T_("Minus");                                                                 // Line 30
 	echo T_("Plus");                                                                  // Line 31
@@ -678,7 +678,7 @@ private function transtext()
 	echo T_("Website");                                                               // Line 16
 	echo T_("Privacy mode");                                                          // Line 37
 	echo T_("Private");                                                               // Line 43
-	echo T_("Team");                                                                  // Line 25
+	echo T_("Team");                                                                  // Line 23
 	echo T_("Public");                                                                // Line 53
 	echo T_("Short Name");                                                            // Line 61
 	echo T_("English letter like");                                                   // Line 63
@@ -706,12 +706,13 @@ private function transtext()
 	echo T_("Tejarak API");                                                           // Line 6
 
 	//-----------------------------------------------content_cp\teamplans\display.html
+	echo T_("Teams plan");                                                            // Line 10
 	echo T_("Search");                                                                // Line 14
-	echo T_("Creator");                                                               // Line 26
-	echo T_("Plan");                                                                  // Line 27
+	echo T_("Creator");                                                               // Line 24
+	echo T_("Plan");                                                                  // Line 25
 	echo T_("status");                                                                // Line 29
-	echo T_("Last Calc Date");                                                        // Line 31
-	echo T_("Renew at");                                                              // Line 32
+	echo T_("Last Calc Date");                                                        // Line 29
+	echo T_("Renew at");                                                              // Line 30
 
 	//--------------------------------------------content_cp\teams\detail\display.html
 	echo T_("Detail of user");                                                        // Line 5
