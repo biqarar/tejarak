@@ -11,6 +11,7 @@ class controller extends \addons\content_api\home\controller
 	{
 		// get team list
 		$this->get('teamList')->ALL('v1/team/list');
+		$this->get('teamList')->ALL('v1/teamlist');
 		// get 1 team detail
 		$this->get('one_team')->ALL('v1/team');
 		// set team group
