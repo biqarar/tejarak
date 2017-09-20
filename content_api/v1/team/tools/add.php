@@ -399,7 +399,8 @@ trait add
 			$args['desc4'] = $about;
 		}
 
-		// var_dump(utility::request(), $args );exit();
+		$return = [];
+
 		\lib\temp::set('last_team_added', $shortname);
 
 		if($_args['method'] === 'post')
@@ -442,9 +443,11 @@ trait add
 			[
 				'team_id' => $team_id,
 				'plan'    => 'free',
-				'creator' => $this->login('id'),
+				'creator' => $this->user_id,
 			];
 			\lib\db\teamplans::set($insert_team_plan);
+
+			$return['team_id'] = \lib\utility\shortURL::encode($team_id);
 
 		}
 		elseif ($_args['method'] === 'patch')
@@ -557,6 +560,7 @@ trait add
 			return false;
 		}
 
+
 		if(debug::$status)
 		{
 			debug::title(T_("Operation Complete"));
@@ -569,6 +573,8 @@ trait add
 				debug::true(T_("Team successfuly added"));
 			}
 		}
+
+		return $return;
 	}
 
 

@@ -181,6 +181,10 @@ self::$config['enter']['call_template_en'] = 'tejarak-en';
  * telegram hook
  */
 self::$config['enter']['telegram_hook']   = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^';
+// static token
+// get the user id by mobile in api header
+self::$config['enter']['static_token'][]  = '**Ermile**Azvir^^Tejarak--Token__Static++6mPf0DUbXZ7kth43MwBH7o6mPk8';
+
 /**
  * first signup url
  * main redirect url . signup redirect url

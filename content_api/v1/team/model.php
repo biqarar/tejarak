@@ -10,10 +10,39 @@ class model extends \addons\content_api\v1\home\model
 	use tools\delete;
 
 
+	/**
+	 * Posts a team.
+	 * insert new team
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function post_team()
+	{
+		return $this->add_team();
+	}
+
+
+	/**
+	 * patch the ream
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function patch_team()
+	{
+		return $this->add_team(['method' => 'patch']);
+	}
+
+
+	/**
+	 * Gets one team.
+	 *
+	 * @return     <type>  One team.
+	 */
 	public function get_one_team()
 	{
 		return $this->get_team();
 	}
+
 
 	/**
 	 * Gets the team list.
