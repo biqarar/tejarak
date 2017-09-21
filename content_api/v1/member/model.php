@@ -56,9 +56,32 @@ class model extends \addons\content_api\v1\home\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
+	public function member_multi($_method)
+	{
+		$all_request = \lib\utility::request();
+		$result = [];
+		if(is_array($all_request))
+		{
+			foreach ($all_request as $key => $value)
+			{
+				\lib\utility::set_request_array($value);
+				$result[] = $this->add_member(['method' => $_method]);
+				\lib\debug::$status = 1;
+			}
+		}
+		return $result;
+	}
+
+
+
+	/**
+	 * add multi record
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public function post_member_multi()
 	{
-		return $this->add_member(['mulit_record' => true]);
+		return $this->member_multi('post');
 	}
 
 
@@ -70,7 +93,7 @@ class model extends \addons\content_api\v1\home\model
 	 */
 	public function patch_member_multi()
 	{
-		return $this->add_member(['method' => 'patch', 'mulit_record' => true]);
+		return $this->member_multi('patch');
 	}
 }
 ?>

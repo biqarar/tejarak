@@ -71,5 +71,60 @@
 }
 
 
-
-
+// METHOD  PATCH
+// METHOD  POST
+// URL     /membermulti
+[
+{
+    "team" : null,
+    "displayname" : null,
+    "firstname" : null,
+    "lastname" : null,
+    "mobile" : null,
+    "postion" : null,
+    "personnel_code" : null,
+    "rule" : null,
+    "visibility" : null,
+    "status" : null,
+    "allow_plus" : null,
+    "allow_minus" : null,
+    "24h" : null,
+    "remote_user" : null,
+    "is_default" : null,
+    "allow_desc_enter" : null,
+    "allow_desc_exit" : null,
+    "date_enter" : null,
+    "date_exit" : null,
+    "file" : null,
+    "id" : null,
+    "barcode1" : null,
+    "qrcode1" : null,
+    "rfid1" : null
+},
+{
+    "team" : null,
+    "displayname" : null,
+    "firstname" : null,
+    "lastname" : null,
+    "mobile" : null,
+    "postion" : null,
+    "personnel_code" : null,
+    "rule" : null,
+    "visibility" : null,
+    "status" : null,
+    "allow_plus" : null,
+    "allow_minus" : null,
+    "24h" : null,
+    "remote_user" : null,
+    "is_default" : null,
+    "allow_desc_enter" : null,
+    "allow_desc_exit" : null,
+    "date_enter" : null,
+    "date_exit" : null,
+    "file" : null,
+    "id" : null,
+    "barcode1" : null,
+    "qrcode1" : null,
+    "rfid1" : null
+}
+]

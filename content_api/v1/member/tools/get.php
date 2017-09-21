@@ -50,6 +50,15 @@ trait get
 
 		$id = utility::request('id');
 		$id = \lib\utility\shortURL::decode($id);
+		// in this api must be get the team
+		// but i get the id
+		// this is incurrect
+		$team = utility::request('team');
+		$team = \lib\utility\shortURL::decode($team);
+		if($team && !$id)
+		{
+			$id = $team;
+		}
 
 		$shortname =  utility::request('shortname');
 
@@ -562,7 +571,8 @@ trait get
 					}
 					break;
 				case 'id':
-					$result['id'] = \lib\utility\shortURL::encode($value);
+				case 'team_id':
+					$result[$key] = \lib\utility\shortURL::encode($value);
 					break;
 
 				case 'allowdescenter':

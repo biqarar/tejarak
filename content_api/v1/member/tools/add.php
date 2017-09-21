@@ -35,7 +35,6 @@ trait add
 			'update_all_user_id' => false,
 			'debug'              => true,
 			'save_log'           => true,
-			'multi_record'       => false,
 		];
 
 		if(!is_array($_args))
@@ -110,7 +109,7 @@ trait add
 		/**
 		 * check and set the args
 		 */
-		$return_function = $this->check_args($_args, $args, $log_meta);
+		$return_function = $this->check_args($_args, $args, $log_meta, $team_id);
 		if(!debug::$status || $return_function === false)
 		{
 			return false;
@@ -141,9 +140,9 @@ trait add
 		// insert new user team
 		if($_args['method'] === 'post')
 		{
-			$user_team_id = \lib\db\userteams::insert($args);
+			$user_team_id          = \lib\db\userteams::insert($args);
 			$return['userteam_id'] = utility\shortURL::encode($user_team_id);
-			$return['user_id'] = utility\shortURL::encode($this->master_user_id);
+			$return['user_id']     = utility\shortURL::encode($this->master_user_id);
 		}
 		elseif($_args['method'] === 'patch')
 		{
@@ -235,6 +234,11 @@ trait add
 			if(!empty($args))
 			{
 				\lib\db\userteams::update($args, $check_user_in_team['id']);
+			}
+
+			if(debug::$status)
+			{
+				$return = true;
 			}
 		}
 		elseif ($_args['method'] === 'delete')

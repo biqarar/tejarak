@@ -6,7 +6,7 @@ use \lib\db\logs;
 
 trait check_args
 {
-	public function check_args($_args, &$args, $_log_meta)
+	public function check_args($_args, &$args, $_log_meta, $_team_id)
 	{
 		$log_meta = $_log_meta;
 
@@ -289,7 +289,7 @@ trait check_args
 		$current_rule = (isset($this->old_user_id['rule'])) ? $this->old_user_id['rule'] : null;
 		if(($rule === 'user' && $current_rule === 'admin'))
 		{
-			$another_admin = \lib\db\teams::get_all_admins($team_id);
+			$another_admin = \lib\db\teams::get_all_admins($_team_id);
 
 			if(count($another_admin) === 1)
 			{
