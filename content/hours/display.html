@@ -50,6 +50,10 @@
 
   </div>
   {{block('myModal')}}
+  {%if not login%}
+   <a class="line primary pA15 fs16" href='{{url.base}}/enter' data-direct>{%trans "Login to enjoy!"%}</a>
+  {%endif%}
+
 {%endblock%}
 
 

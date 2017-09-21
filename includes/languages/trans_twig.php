@@ -60,14 +60,15 @@ private function transtext()
 	echo T_("Try it.");                                                               // Line 189
 
 	//------------------------------------------------------content\hours\display.html
-	echo T_("In the Name of God");                                                    // Line 60
-	echo T_("days left");                                                             // Line 77
+	echo T_("Login to enjoy!");                                                       // Line 54
+	echo T_("In the Name of God");                                                    // Line 64
+	echo T_("days left");                                                             // Line 81
 	echo T_("Enter");                                                                 // Line 26
-	echo T_("Mission Time");                                                          // Line 125
-	echo T_("I was on the mission");                                                  // Line 130
+	echo T_("Mission Time");                                                          // Line 129
+	echo T_("I was on the mission");                                                  // Line 134
 	echo T_("Description");                                                           // Line 33
-	echo T_("Personal work");                                                         // Line 155
-	echo T_("Exit");                                                                  // Line 163
+	echo T_("Personal work");                                                         // Line 159
+	echo T_("Exit");                                                                  // Line 167
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 39

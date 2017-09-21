@@ -509,6 +509,13 @@ private function transtext()
 	echo T_("Simple avatar selector with simple preview");                            // Line 230
 	echo T_("Simple file input with min 100kb and max 200kb size!");                  // Line 249
 
+	//-------------------------------------addons\content_su\sample\template\line.html
+	echo T_("Line");                                                                  // Line 7
+	echo T_("Add fix simple line to bottom of page");                                 // Line 8
+	echo T_("How are you?");                                                          // Line 16
+	echo T_("Ermile is intelligent");                                                 // Line 19
+	echo T_("goodbye");                                                               // Line 20
+
 	//--------------------------------------addons\content_su\sample\template\msg.html
 	echo T_("Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.");// Line 8
 	echo T_("This is a primary message or alert. check it out!");                     // Line 16
