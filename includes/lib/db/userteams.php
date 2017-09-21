@@ -31,16 +31,23 @@ class userteams
 
 		$parent = self::get_parent($_team_id);
 		$ids[]  = $parent;
+		$i      = 0;
 		while ($parent)
 		{
+			$i++;
+			if($i >= 10) break;
+
 			$parent = self::get_parent($parent);
 			$ids[]  = $parent;
 		}
 
 		$child = self::get_child($_team_id);
 		$ids[] = $child;
+		$i     = 0;
 		while ($child)
 		{
+			$i++;
+			if($i >= 10) break;
 			$child = self::get_child($child);
 			$ids[] = $child;
 		}

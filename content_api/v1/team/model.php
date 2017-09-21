@@ -8,6 +8,7 @@ class model extends \addons\content_api\v1\home\model
 	use tools\add;
 	use tools\get;
 	use tools\delete;
+	use tools\close;
 
 
 	/**

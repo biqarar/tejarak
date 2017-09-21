@@ -1,0 +1,84 @@
+// METHOD  POST
+// URL     /team
+{
+	"name" : null,
+	"website" : null,
+	"privacy" : null,
+	"short_name" : null,
+	"logo" : null,
+	"parent" : null,
+	"language" : null,
+	"event_title" : null,
+	"event_date" : null,
+	"cardsize" : null,
+	"type" : null,
+	"gender" : null,
+	"country" : null,
+	"province" : null,
+	"city" : null,
+	"tel" : null,
+	"fax" : null,
+	"zipcode" : null,
+	"awards" : null,
+	"desc" : null,
+	"about" : null,
+	"address" : null,
+	"status" : null,
+	"show_avatar" : null,
+	"allow_plus" : null,
+	"allow_minus" : null,
+	"remote_user" : null,
+	"24h" : null,
+	"allow_desc_enter" : null,
+	"allow_desc_exit" : null,
+	"manual_time_exit" : null,
+	"manual_time_enter" : null,
+	"send_photo" : null
+}
+// RESULT
+{
+    "status": 1,
+    "title": "عملیات کامل شد",
+    "msg": {
+        "callback": {
+            "team_id": "RHC"
+        }
+    },
+    "result": {
+        "team_id": "RHC"
+    },
+    "messages": {
+        "true": [
+            {
+                "title": "تیم با موفقیت افزوده شد",
+                "element": false,
+                "group": "public"
+            }
+        ]
+    }
+}
+
+
+
+// METHOD  PATCH
+// URL     /team
+// POST PARAMETER AND
+{ "id" : "2kf" }
+
+{
+    "status": 1,
+    "title": "عملیات کامل شد",
+    "msg": {
+        "callback": []
+    },
+    "result": [],
+    "messages": {
+        "true": [
+            {
+                "title": "تیم با موفقیت ویرایش شد",
+                "element": false,
+                "group": "public"
+            }
+        ]
+    }
+}

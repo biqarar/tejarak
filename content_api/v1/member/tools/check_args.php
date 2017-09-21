@@ -10,6 +10,145 @@ trait check_args
 	{
 		$log_meta = $_log_meta;
 
+		// get firstname
+		$displayname = utility::request("displayname");
+		$displayname = trim($displayname);
+		if($displayname && mb_strlen($displayname) > 50)
+		{
+			if($_args['save_log']) logs::set('api:member:displayname:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
+			return false;
+		}
+
+		// get firstname
+		$firstname = utility::request("firstname");
+		$firstname = trim($firstname);
+		if($firstname && mb_strlen($firstname) > 50)
+		{
+			if($_args['save_log']) logs::set('api:member:firstname:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
+			return false;
+		}
+
+		// get lastname
+		$lastname = utility::request("lastname");
+		$lastname = trim($lastname);
+		if($lastname && mb_strlen($lastname) > 50)
+		{
+			if($_args['save_log']) logs::set('api:member:lastname:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
+			return false;
+		}
+
+		$postion     = utility::request('postion');
+		if($postion && mb_strlen($postion) > 100)
+		{
+			if($_args['save_log']) logs::set('api:member:postion:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
+			return false;
+		}
+
+		// get the code
+		$personnelcode = utility::request('personnel_code');
+		$personnelcode = trim($personnelcode);
+		if($personnelcode && mb_strlen($personnelcode) > 9)
+		{
+			if($_args['save_log']) logs::set('api:member:code:max:length', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
+			return false;
+		}
+
+		// get rule
+		$rule = utility::request('rule');
+		if($rule)
+		{
+			if(!in_array($rule, ['user', 'admin', 'gateway']))
+			{
+				if($_args['save_log']) logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$rule = 'user';
+		}
+
+		$visibility = utility::request('visibility');
+		if($visibility)
+		{
+			if(!in_array($visibility, ['visible', 'hidden']))
+			{
+				if($_args['save_log']) logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$visibility = 'visible';
+		}
+
+		// get status
+		$status = utility::request('status');
+		if($status)
+		{
+			if(!in_array($status, ['active', 'deactive', 'suspended']))
+			{
+				if($_args['save_log']) logs::set('api:member:status:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				return false;
+			}
+		}
+		else
+		{
+			$status = 'active';
+		}
+
+		// get date enter
+		$date_enter  = utility::request('date_enter');
+		if($date_enter && \DateTime::createFromFormat('Y-m-d', $date_enter) === false)
+		{
+			if($_args['save_log']) logs::set('api:member:date_enter:invalid', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
+			return false;
+		}
+
+		// get date exit
+		$date_exit   = utility::request('date_exit');
+		if($date_exit && \DateTime::createFromFormat('Y-m-d', $date_exit) === false)
+		{
+			if($_args['save_log']) logs::set('api:member:date_exit:invalid', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
+			return false;
+		}
+
+		// get file code
+		$file_code = utility::request('file');
+		$file_id   = null;
+		$fileurl  = null;
+		if($file_code)
+		{
+			$file_id = \lib\utility\shortURL::decode($file_code);
+			if($file_id)
+			{
+				$logo_record = \lib\db\posts::is_attachment($file_id);
+				if(!$logo_record)
+				{
+					$file_id = null;
+				}
+				elseif(isset($logo_record['meta']['url']))
+				{
+					$fileurl = $logo_record['meta']['url'];
+				}
+			}
+			else
+			{
+				$file_id = null;
+			}
+		}
+
+
 		$allowplus      = utility::isset_request('allow_plus') 		? utility::request('allow_plus') 		? 1 : 0 : null;
 		$allowminus     = utility::isset_request('allow_minus')		? utility::request('allow_minus') 		? 1 : 0 : null;
 		$is24h          = utility::isset_request('24h') 			? utility::request('24h') 				? 1 : 0 : null;
@@ -147,6 +286,30 @@ trait check_args
 			return false;
 		}
 
+		$current_rule = (isset($this->old_user_id['rule'])) ? $this->old_user_id['rule'] : null;
+		if(($rule === 'user' && $current_rule === 'admin'))
+		{
+			$another_admin = \lib\db\teams::get_all_admins($team_id);
+
+			if(count($another_admin) === 1)
+			{
+				if($_args['save_log']) logs::set('api:member:no:admin:in:team', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
+				return false;
+			}
+		}
+
+		// in insert new admin of team this admin can see the reports
+		// to cancel this optino go to tejarak report settings to cancel
+		// just in insert new admin set this option
+		// no in update admin
+		if($rule === 'admin' && $_args['method'] === 'post')
+		{
+			$args['reportdaily']     = 1;
+			$args['reportenterexit'] = 1;
+		}
+
+
 		$args['marital']        = $marital;
 		$args['childcount']     = $child;
 		$args['brithplace']     = $brithcity;
@@ -173,6 +336,31 @@ trait check_args
 		$args['allowdescenter'] = $allowdescenter;
 		$args['allowdescexit']  = $allowdescexit;
 
+		$args['postion']       = trim($postion);
+		$args['personnelcode'] = trim($personnelcode);
+		if($date_enter)
+		{
+			$args['dateenter']     = $date_enter;
+		}
+		$args['dateexit']       = trim($date_exit);
+		$args['firstname']      = trim($firstname);
+		$args['lastname']       = trim($lastname);
+		$args['fileid']         = $file_id;
+		$args['fileurl']        = $fileurl;
+
+		$args['status']         = $status;
+
+		if($displayname)
+		{
+			$args['displayname']    = trim($displayname);
+		}
+		elseif($firstname || $lastname)
+		{
+			$args['displayname']    = trim($firstname. ' '. $lastname);
+		}
+
+		$args['rule']           = $rule;
+		$args['visibility']     = $visibility;
 	}
 }
 ?>
