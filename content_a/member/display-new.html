@@ -16,7 +16,7 @@
             <div class="c s12">
               <label for='fname'>{%trans "Name"%} *</label>
               <div class="input">
-                <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.displayname}}" required autofocus maxlength='40' minlength="3" pattern=".{3,40}" title='{%trans "Enter a valid name from 3 to 40 character"%}' id='fname'>
+                <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{member.displayname}}" required autofocus maxlength='40' minlength="1" pattern=".{1,40}" title='{%trans "Enter a valid name from 3 to 40 character"%}' id='fname'>
               </div>
               <label for="position">{%trans "Postion"%}</label>
               <div class="input">
