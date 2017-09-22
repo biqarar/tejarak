@@ -5,9 +5,6 @@
 
  {{block('topHomepage')}}
 
-{%if site.currentlang == 'fa'%}
- {{block('school')}}
-{%endif%}
 
  {{block('preview')}}
  {{block('sync')}}
@@ -30,22 +27,6 @@
  </div>
 {%endblock%}
 
-
-{%block school%}
- <div class="tile" id='schoolInterview'>
-  <div class="cn f fix">
-   <div class='x4 c5 m12 s12'>
-    <img src="{{url.static}}images/school/student-database.svg" alt='تجارک برای مدارس'>
-   </div>
-   <div class="c m12 s12">
-    <h2>تجارک برای مدارس آماده است...</h2>
-    <h3>تجارک راه‌حل کاملی برای کنترل و مدیریت و نظارت بر مدرسه و دانش‌آموزان را به مدیران مدرسه پیشنهاد می‌کند. با مزایای کنترلی ارائه شده در تجارک، مدرسه و کلاس درس را جذاب‌تر و منسجم‌تر مدیریت کنید. از تکنولوژی به شکل صحیح استفاده کنید!</h3>
-    <h3>دفتر نمره الکترونیکی، حضور و غیاب، بانک اطلاعات اساتید و دانش‌آموزان و ... را با تجارک مدرن‌تر و ساده‌تر تجربه کنید. با راه‌اندازی سریع می‌توانید به سرعت از این سیستم جدید استفاده کنید.</h3>
-    <h3><a href="{{url.base}}/for/school">{%trans "با تجارک برای مدارس بیشتر آشنا شوید"%}</a></h3>
-   </div>
-  </div>
- </div>
-{%endblock%}
 
 
 {%block getStarted%}
