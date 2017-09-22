@@ -1,6 +1,8 @@
 <?php
-private function transtext()
+class twigTransTerms
 {
+ private function transtext()
+ {
 
 	//----------------------------------------------------content\contact\display.html
 	echo T_("Contact Us");                                                            // Line 3
@@ -24,40 +26,39 @@ private function transtext()
 	echo T_("Floor2, Yas Building");                                                  // Line 62
 
 	//-------------------------------------------------------content\home\display.html
-	echo T_("Do attendance easily and enjoy real time reports");                      // Line 26
+	echo T_("Do attendance easily and enjoy real time reports");                      // Line 23
 	echo T_("Setup your dedicated and beautiful attendance system in less than a minute and have a <span>real time</span> and scrupulously monitoring on your business from anywhere");// Line 22
-	echo T_("با تجارک برای مدارس بیشتر آشنا شوید");                                   // Line 44
-	echo T_("Enter your team name");                                                  // Line 56
-	echo T_("Get Started");                                                           // Line 57
-	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 59
-	echo T_("What are you waiting for?");                                             // Line 70
-	echo T_("Not sure how to start?");                                                // Line 71
-	echo T_("Tejarak is <span>free</span> to use as long as you want for teams of all sizes.");// Line 71
-	echo T_("Not worries.");                                                          // Line 71
-	echo T_("FREE ticket to Enter to the 21st century!");                             // Line 73
-	echo T_("You can easily upgrade to ");                                            // Line 75
-	echo T_("our paid plans");                                                        // Line 75
-	echo T_(", which offer more features and controls.");                             // Line 75
-	echo T_("Our technology team with flexible time in addition of introduce team members, use Tejarak for register remote and wasted time for working hours and attendance.");// Line 85
-	echo T_("Ermile Preview");                                                        // Line 149
-	echo T_("Since use Tejrak for control rooms status, we have a completly real time monitoring and we reach mpre success on room sales planning with analysis reports.");// Line 93
-	echo T_("Wherever You Go");                                                       // Line 108
-	echo T_("Enjoy your travels and do not be too concerned about control attendance in your business.");// Line 109
-	echo T_("Everything is in sync.");                                                // Line 109
-	echo T_("In addition of website, without need to install app, check real time reports of staffs status from messengers like <span>Telegram</span>, SMS, email in your mobile.");// Line 110
-	echo T_("Anywhere, from sitting on the chair of management to sitting on the beach!");// Line 110
-	echo T_("Work With Any Team");                                                    // Line 153
-	echo T_("For each work need attendance use Tejarak!");                            // Line 154
-	echo T_("Your business, a side project and anywhere you need to control traffic and add some organized.");// Line 154
-	echo T_("Is your team interested in deploying?");                                 // Line 164
-	echo T_("We can help.");                                                          // Line 164
+	echo T_("Enter your team name");                                                  // Line 37
+	echo T_("Get Started");                                                           // Line 38
+	echo T_("Try Tejarak FREE;) no credit, no risk!");                                // Line 40
+	echo T_("What are you waiting for?");                                             // Line 51
+	echo T_("Not sure how to start?");                                                // Line 52
+	echo T_("Tejarak is <span>free</span> to use as long as you want for teams of all sizes.");// Line 52
+	echo T_("Not worries.");                                                          // Line 52
+	echo T_("FREE ticket to Enter to the 21st century!");                             // Line 54
+	echo T_("You can easily upgrade to ");                                            // Line 56
+	echo T_("our paid plans");                                                        // Line 56
+	echo T_(", which offer more features and controls.");                             // Line 56
+	echo T_("Our technology team with flexible time in addition of introduce team members, use Tejarak for register remote and wasted time for working hours and attendance.");// Line 66
+	echo T_("Ermile Preview");                                                        // Line 130
+	echo T_("Since use Tejrak for control rooms status, we have a completly real time monitoring and we reach mpre success on room sales planning with analysis reports.");// Line 74
+	echo T_("Wherever You Go");                                                       // Line 89
+	echo T_("Enjoy your travels and do not be too concerned about control attendance in your business.");// Line 90
+	echo T_("Everything is in sync.");                                                // Line 90
+	echo T_("In addition of website, without need to install app, check real time reports of staffs status from messengers like <span>Telegram</span>, SMS, email in your mobile.");// Line 91
+	echo T_("Anywhere, from sitting on the chair of management to sitting on the beach!");// Line 91
+	echo T_("Work With Any Team");                                                    // Line 134
+	echo T_("For each work need attendance use Tejarak!");                            // Line 135
+	echo T_("Your business, a side project and anywhere you need to control traffic and add some organized.");// Line 135
+	echo T_("Is your team interested in deploying?");                                 // Line 145
+	echo T_("We can help.");                                                          // Line 145
 	echo T_("Get in Touch");                                                          // Line 207
-	echo T_("All of the above, at Enterprise scale");                                 // Line 174
-	echo T_("Enterprise plan brings the power and utility of Tejarak to large, complex organizations.");// Line 175
-	echo T_("Setting Up Tejarak Is Easy");                                            // Line 185
-	echo T_("Set up a team in less than a minute!");                                  // Line 189
-	echo T_("It's FREE!");                                                            // Line 189
-	echo T_("Try it.");                                                               // Line 189
+	echo T_("All of the above, at Enterprise scale");                                 // Line 155
+	echo T_("Enterprise plan brings the power and utility of Tejarak to large, complex organizations.");// Line 156
+	echo T_("Setting Up Tejarak Is Easy");                                            // Line 166
+	echo T_("Set up a team in less than a minute!");                                  // Line 170
+	echo T_("It's FREE!");                                                            // Line 170
+	echo T_("Try it.");                                                               // Line 170
 
 	//------------------------------------------------------content\hours\display.html
 	echo T_("Login to enjoy!");                                                       // Line 54
@@ -818,5 +819,6 @@ private function transtext()
 
 	//---------------------public_html\static\siftal\fonts\siftal\icons-reference.html
 
+ }
 }
 ?>

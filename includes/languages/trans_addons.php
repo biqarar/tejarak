@@ -1,13 +1,11 @@
 <?php
-private function transtext()
+class twigTransTerms
 {
-
-	//------------------------------------------addons\-addons-\attachments\panel.html
-	echo T_("Write your tag and press enter to add new keyword to content");          // Line 1
-	echo T_("attachments");                                                           // Line 2
-	echo T_("Search");                                                                // Line 112 Seperate
+ private function transtext()
+ {
 
 	//-----------------------------------addons\content_cp\invoicedetails\display.html
+	echo T_("Search");                                                                // Line 112 Seperate
 	echo T_("id");                                                                    // Line 16
 	echo T_("invoice_id");                                                            // Line 17
 	echo T_("title");                                                                 // Line 230 Seperate
@@ -173,7 +171,7 @@ private function transtext()
 	echo T_("Bye Bye :(");                                                            // Line 9
 
 	//--------------------------------------addons\content_enter\callback\display.html
-	echo T_("Hi");                                                                    // Line 7
+	echo T_("Hi");                                                                    // Line 71
 	echo T_("You must not be here!");                                                 // Line 7
 
 	//----------------------------------------addons\content_enter\delete\display.html
@@ -265,12 +263,16 @@ private function transtext()
 	echo T_("Check our FAQ");                                                         // Line 76
 	echo T_("Icons");                                                                 // Line 85
 	echo T_("Badge");                                                                 // Line 110
+	echo T_("Posts");                                                                 // Line 94 Seperate
 	echo T_("Add New");                                                               // Line 111
+	echo T_("Notification");                                                          // Line 28
 	echo T_("125");                                                                   // Line 113
 	echo T_("64");                                                                    // Line 114
 	echo T_("7");                                                                     // Line 27
+	echo T_(" Home");                                                                 // Line 63
 	echo T_("Control Panel");                                                         // Line 151 Seperate
 	echo T_("Sample");                                                                // Line 65
+	echo T_("Breadcrumb");                                                            // Line 7
 	echo T_("Pagination");                                                            // Line 7
 	echo T_("Previous");                                                              // Line 89
 	echo T_("6");                                                                     // Line 138
@@ -296,6 +298,7 @@ private function transtext()
 	echo T_("Vcard");                                                                 // Line 214
 	echo T_("Joined in 2018");                                                        // Line 378
 	echo T_("Ermile is our company in Qom!");                                         // Line 379
+	echo T_("123 Friends");                                                           // Line 381
 	echo T_("Ermile requested permission to transfer <b>Tejarak</b> team to you");    // Line 135
 	echo T_("Approve");                                                               // Line 122
 	echo T_("Decline");                                                               // Line 139
@@ -330,14 +333,13 @@ private function transtext()
 	echo T_("Example heading");                                                       // Line 21
 	echo T_("New");                                                                   // Line 21
 	echo T_("Badges can be used as part of links or buttons to provide a counter.");  // Line 24
-	echo T_("Notification");                                                          // Line 28
 	echo T_("5");                                                                     // Line 28
 	echo T_("Contextual variations");                                                 // Line 34
 	echo T_("Add any of the below mentioned modifier classes to change the appearance of a badge.");// Line 35
 	echo T_("Secondary");                                                             // Line 78
-	echo T_("Success");                                                               // Line 129
+	echo T_("Success");                                                               // Line 29
 	echo T_("Danger");                                                                // Line 130
-	echo T_("Warning");                                                               // Line 98
+	echo T_("Warning");                                                               // Line 30
 	echo T_("Light");                                                                 // Line 79
 	echo T_("Dark");                                                                  // Line 80
 	echo T_("Rounded badge");                                                         // Line 62
@@ -352,12 +354,10 @@ private function transtext()
 	echo T_("Salam");                                                                 // Line 18
 
 	//-------------------------------addons\content_su\sample\template\breadcrumb.html
-	echo T_("Breadcrumb");                                                            // Line 7
 	echo T_("Indicate the current page's location within a navigational hierarchy that automatically adds separators via CSS.");// Line 8
 	echo T_("Separators are automatically added in CSS through ::before and content.");// Line 13
 	echo T_("Sizes");                                                                 // Line 291
 	echo T_("A breadcrumb can vary in size");                                         // Line 29
-	echo T_(" Home");                                                                 // Line 63
 
 	//-----------------------------------addons\content_su\sample\template\button.html
 	echo T_("Use Siftal's custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.");// Line 8
@@ -408,10 +408,10 @@ private function transtext()
 	echo T_("ClockPicker");                                                           // Line 7
 	echo T_("Easily add time picker to your project");                                // Line 8
 	echo T_("Read more info and example about clockpicker");                          // Line 16
-	echo T_("Simple");                                                                // Line 18
+	echo T_("Simple");                                                                // Line 37
 	echo T_("Simple with addon");                                                     // Line 23
 	echo T_("Place at right, align the arrow to top, without auto close");            // Line 30
-	echo T_("Ok");                                                                    // Line 31
+	echo T_("Ok");                                                                    // Line 23
 	echo T_("Place at right, align the arrow to bottom");                             // Line 45
 	echo T_("Place at left, align the arrow to top");                                 // Line 40
 	echo T_("Place at top, alighn the arrow to right");                               // Line 50
@@ -496,23 +496,29 @@ private function transtext()
 	echo T_("Disabled");                                                              // Line 66
 	echo T_("All type of input conditions");                                          // Line 74
 	echo T_("Extra Examples with input class and multiple part");                     // Line 43
-	echo T_("Simple input with label");                                               // Line 90
-	echo T_("Family");                                                                // Line 96
-	echo T_("Extra features");                                                        // Line 109
-	echo T_("Sizing");                                                                // Line 150
-	echo T_("Button addons");                                                         // Line 177
-	echo T_("Search...");                                                             // Line 181
-	echo T_("Go!");                                                                   // Line 188
-	echo T_("Ding Ding!");                                                            // Line 198
-	echo T_("Simple file input");                                                     // Line 216
-	echo T_("Simple file input only accept images");                                  // Line 223
-	echo T_("Simple avatar selector with simple preview");                            // Line 230
-	echo T_("Simple file input with min 100kb and max 200kb size!");                  // Line 249
+	echo T_("Add conditions class to input el");                                      // Line 87
+	echo T_("Simple input with label");                                               // Line 104
+	echo T_("Family");                                                                // Line 110
+	echo T_("Extra features");                                                        // Line 123
+	echo T_("Sizing");                                                                // Line 164
+	echo T_("Button addons");                                                         // Line 191
+	echo T_("Search...");                                                             // Line 195
+	echo T_("Go!");                                                                   // Line 202
+	echo T_("Ding Ding!");                                                            // Line 212
+	echo T_("Simple file input");                                                     // Line 230
+	echo T_("Simple file input only accept images");                                  // Line 237
+	echo T_("Simple avatar selector with simple preview");                            // Line 244
+	echo T_("Simple file input with min 100kb and max 200kb size!");                  // Line 263
+
+	//-------------------------------------addons\content_su\sample\template\life.html
+	echo T_("Life");                                                                  // Line 7
+	echo T_("Add life to page, after end life hard refresh page");                    // Line 8
+	echo T_("Control from body[data-life=123]");                                      // Line 12
 
 	//-------------------------------------addons\content_su\sample\template\line.html
 	echo T_("Line");                                                                  // Line 7
 	echo T_("Add fix simple line to bottom of page");                                 // Line 8
-	echo T_("How are you?");                                                          // Line 16
+	echo T_("How are you?");                                                          // Line 38
 	echo T_("Ermile is intelligent");                                                 // Line 19
 	echo T_("goodbye");                                                               // Line 20
 
@@ -566,6 +572,26 @@ private function transtext()
 	echo T_("Just one second");                                                       // Line 107
 	echo T_("We're fetching that content for you. What content!?");                   // Line 108
 
+	//------------------------------------addons\content_su\sample\template\notif.html
+	echo T_("Notif");                                                                 // Line 7
+	echo T_("Show simple and powerful notificaion via js and html attr");             // Line 8
+	echo T_("Complete Example with autorun");                                         // Line 16
+	echo T_("Hello World!");                                                          // Line 17
+	echo T_("On page route run this");                                                // Line 17
+	echo T_("Simple Notification");                                                   // Line 22
+	echo T_("With title");                                                            // Line 23
+	echo T_("Sticky Notif");                                                          // Line 24
+	echo T_("Colored");                                                               // Line 250
+	echo T_("Error");                                                                 // Line 188 Seperate
+	echo T_("Notif in special target");                                               // Line 36
+	echo T_("Sticky");                                                                // Line 38
+	echo T_("Notif in all position");                                                 // Line 44
+	echo T_("Top");                                                                   // Line 53
+	echo T_("Left");                                                                  // Line 65
+	echo T_("Center");                                                                // Line 68
+	echo T_("Right");                                                                 // Line 71
+	echo T_("Bottom");                                                                // Line 71
+
 	//--------------------------------------addons\content_su\sample\template\old.html
 	echo T_("Sample Page of admin");                                                  // Line 27
 	echo T_("Template Form");                                                         // Line 36
@@ -609,7 +635,6 @@ private function transtext()
 	echo T_("Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.");// Line 8
 	echo T_("Overview");                                                              // Line 12
 	echo T_("We use a large block of connected links for our pagination, making links hard to miss and easily scalable—all while providing large hit areas. Pagination is built with list HTML elements so screen readers can announce the number of available links. Use a wrapping <nav> element to identify it as a navigation section to screen readers and other assistive technologies.");// Line 13
-	echo T_("Colored");                                                               // Line 250
 	echo T_("A pagination can use in many colors");                                   // Line 24
 	echo T_("A pagination can vary in size");                                         // Line 56
 
@@ -683,7 +708,7 @@ private function transtext()
 	echo T_("should not have spaces between cells");                                  // Line 396
 
 	//-----------------------------------addons\content_su\sample\template\select.html
-	echo T_("Select");                                                                // Line 81
+	echo T_("Select");                                                                // Line 7
 	echo T_("Easily change default select style to simple and clean Siftal design");  // Line 8
 	echo T_("Sarshomar");                                                             // Line 27
 	echo T_("Tejarak");                                                               // Line 28
@@ -726,7 +751,6 @@ private function transtext()
 	echo T_("Siftal's cards provide a flexible and extensible content container with multiple variants and options.");// Line 8
 	echo T_("A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.");// Line 13
 	echo T_("Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other  components.");// Line 14
-	echo T_("123 Friends");                                                           // Line 381
 	echo T_("10h");                                                                   // Line 75
 	echo T_("5 Comments");                                                            // Line 80
 	echo T_("1k likes");                                                              // Line 81
@@ -782,7 +806,7 @@ private function transtext()
 	echo T_("Sitemap");                                                               // Line 11
 	echo T_("Server information");                                                    // Line 12
 	echo T_("Log");                                                                   // Line 13
-	echo T_("Translation tools");                                                     // Line 14
+	echo T_("Translation tools");                                                     // Line 15
 	echo T_("Update");                                                                // Line 152 Seperate
 
 	//---------------------------------------addons\content_su\tools\info\display.html
@@ -911,7 +935,6 @@ private function transtext()
 	echo T_("seriously, are you sure? There's no coming back.");                      // Line 89 Seperate
 	echo T_("or");                                                                    // Line 91 Seperate
 	echo T_("Delete");                                                                // Line 92 Seperate
-	echo T_("Posts");                                                                 // Line 94 Seperate
 	echo T_("Pages");                                                                 // Line 95 Seperate
 	echo T_("Terms");                                                                 // Line 96 Seperate
 	echo T_("Attachments");                                                           // Line 97 Seperate
@@ -984,7 +1007,6 @@ private function transtext()
 	echo T_("Use book to define important parts to use in posts");                    // Line 185 Seperate
 	echo T_("Duplicate - File exist");                                                // Line 186 Seperate
 	echo T_("Fail on tranfering file");                                               // Line 187 Seperate
-	echo T_("Error");                                                                 // Line 188 Seperate
 	echo T_("Invalid parameters");                                                    // Line 189 Seperate
 	echo T_("No file sent");                                                          // Line 190 Seperate
 	echo T_("Exceeded filesize limit");                                               // Line 191 Seperate
@@ -1172,8 +1194,6 @@ private function transtext()
 	echo T_("hamedan");                                                               // Line 431 Seperate
 	echo T_("yazd");                                                                  // Line 432 Seperate
 
-	//------------------------------------------------addons\includes\macro\forms.html
-
 	//-------------------------------------------addons\includes\mvc\display-dash.html
 	echo T_("Edit your profile");                                                     // Line 27
 	echo T_("Avatar of you");                                                         // Line 31
@@ -1220,5 +1240,6 @@ private function transtext()
 
 	//--------------------------------------------addons\includes\mvc\display-mvc.html
 
+ }
 }
 ?>
