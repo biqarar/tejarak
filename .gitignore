@@ -11,6 +11,7 @@ desktop.ini
 /includes/cls/database/backup
 /includes/cls/database/log
 includes/cls/database/log
+includes/database/log
 /database/*
 *sftp-config.json
 *.me.php
