@@ -4167,16 +4167,6 @@ img.mini {
 .sf-arrow-horizontal:before {
   content: "\e197"; }
 
-/*!
- * ClockPicker v0.0.7 for jQuery (http://weareoutman.github.io/clockpicker/)
- * Copyright 2014 Wang Shenwei.
- * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
- *
- * Bootstrap v3.1.1 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-/* Picked from bootstrap: .popover, .text-primary */
 .popover {
   position: absolute;
   top: 0;
@@ -4322,11 +4312,6 @@ img.mini {
 .text-primary {
   color: #428bca; }
 
-/*!
- * ClockPicker v{package.version} for Bootstrap (http://weareoutman.github.io/clockpicker/)
- * Copyright 2014 Wang Shenwei.
- * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
- */
 .clockpicker {
   position: relative; }
 
@@ -4848,15 +4833,6 @@ img.mini {
   display: block;
   overflow: hidden; }
 
-/*!
- * Cropper.js v1.0.0
- * https://github.com/fengyuanchen/cropperjs
- *
- * Copyright (c) 2017 Fengyuan Chen
- * Released under the MIT license
- *
- * Date: 2017-09-03T12:52:44.102Z
- */
 .cropper-container {
   direction: ltr;
   font-size: 0;
