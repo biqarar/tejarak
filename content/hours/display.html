@@ -62,10 +62,12 @@
 {%block sideBox%}
  <aside id='sidebar' class="scr">
   <h3 id="god">{% trans "In the Name of God" %}</h3>
-  <div class="dateTime" data-val-start='{{ "now"| date("Y-m-d H:i:s") }}'>
-   <div class="time"><span class="hour">{{ "now"|date("H") |fitNumber }}</span>:<span class="minute">{{ "now"|date("i") |fitNumber }}</span>:<span class="second">{{ "now"|date("s") |fitNumber}}</span></div>
-   <div id="date">{% if site.currentlang == "fa" %} {{"now"|jdate("l j F Y") |fitNumber}} {% else %} {{"now"|date("l j F Y")}} {% endif %}</div>
+
+  <div class="clock">
+   <div class="time">-</div>
+   <div class="date">{% if site.currentlang == "fa" %} {{"now"|jdate("l j F Y") |fitNumber}} {% else %} {{"now"|date("j F Y")}} {% endif %}</div>
   </div>
+
   <div id="logo">
    <img src="{{current_team.logo}}" alt='{{current_team.name}}'>
     <h1>{{current_team.name}}</h1>

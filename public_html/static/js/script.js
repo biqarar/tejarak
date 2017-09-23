@@ -27,7 +27,6 @@ function checkAndRunAttendance()
   {
     checkResolution();
     checkResize();
-    startClock();
 
     runLoadCard();
 
@@ -269,50 +268,6 @@ function calcTotalExit(_card, _recalc)
 }
 
 
-
-/**
- * [startClock description]
- * @return {[type]} [description]
- */
-function startClock()
-{
-  var myDateTime    = $('#sidebar .dateTime');
-  var myDateTimeVal = myDateTime.data('data-val');
-  if(!myDateTimeVal)
-  {
-    myDateTimeVal   = myDateTime.attr('data-val-start');
-  }
-  var myNow         = new Date(myDateTimeVal);
-  myNow             = new Date(myNow.getTime() + 1000);
-  myDateTime.data('data-val', myNow);
-
-  // change time
-  // var today = new Date();
-  changetime(addZero(myNow.getSeconds()), 'second');
-  changetime(addZero(myNow.getMinutes()), 'minute');
-  changetime(myNow.getHours(), 'hour');
-  var t = setTimeout(startClock,1000);
-
-  function addZero(i)
-  {
-    if (i < 10)
-    {
-      i = "0" + i
-    };
-    return i;
-  }
-
-  function changetime(_value, _class)
-  {
-    // if time is not changed, return false
-    if($('.time .'+ _class).attr('data-time') == _value)
-    {
-      return false;
-    }
-    // set new value with effect
-    $('.time .'+ _class).html(fitNumber(_value, false)).attr('data-time', _value);
-  }
-}
 
 
 function getDatetime()
