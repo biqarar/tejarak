@@ -8,10 +8,9 @@ desktop.ini
 /content/cronjob/*.txt
 /public_html/sitemap
 /public_html/sitemap.xml
-/includes/cls/database/backup
-/includes/cls/database/log
-includes/cls/database/log
-includes/database/log
-/database/*
+
+/includes/database/backup
+/includes/database/log
+
 *sftp-config.json
 *.me.php
