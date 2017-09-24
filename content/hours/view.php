@@ -7,7 +7,7 @@ class view extends \mvc\view
 
 	function config()
 	{
-		$this->data->bodyclass    = 'unselectable siftal attendance';
+		$this->data->bodyclass    = 'unselectable attendance two-column';
 		$this->data->current_time = date("Y-m-d H:i:s");
 
 		// add life to page to refresh automatically after end this time
