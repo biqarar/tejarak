@@ -77,38 +77,39 @@ class view extends \mvc\view
 			{
 				$current_team['event_remain'] = $interval->days * (-1);
 			}
+
+			// get deadline datetime
+			$deadline  = strtotime($current_team['event_date_gregorian']);
+			$startDate = 20;
+			// calc deadline ramain date
+			$current_team['event_remain'] = floor(($deadline - time()) / (60 * 60 * 24));
+			if($current_team['event_remain'] <= 0)
+			{
+				$current_team['event_remain'] = 0;
+			}
+			$current_team['event_percent'] = (int) round(($current_team['event_remain'] * 100) / $startDate, 0);
+
+			// add warn class to show best color
+			if($current_team['event_percent'] <= 1)
+			{
+				$current_team['event_class']  = 'black';
+				$current_team['event_ramian'] = '?';
+			}
+			elseif($current_team['event_percent'] <= 10)
+			{
+				$current_team['event_class'] = 'red';
+			}
+			elseif($current_team['event_percent'] <= 30)
+			{
+				$current_team['event_class'] = 'orange';
+			}
+			elseif($current_team['event_percent'] <= 50)
+			{
+				$current_team['event_class'] = 'yellow';
+			}
+			// var_dump($current_team);
 		}
 
-		// get deadline datetime
-		$deadline  = strtotime($current_team['event_date_gregorian']);
-		$startDate = 20;
-		// calc deadline ramain date
-		$current_team['event_remain'] = floor(($deadline - time()) / (60 * 60 * 24));
-		if($current_team['event_remain'] <= 0)
-		{
-			$current_team['event_remain'] = 0;
-		}
-		$current_team['event_percent'] = (int) round(($current_team['event_remain'] * 100) / $startDate, 0);
-
-		// add warn class to show best color
-		if($current_team['event_percent'] <= 1)
-		{
-			$current_team['event_class']  = 'black';
-			$current_team['event_ramian'] = '?';
-		}
-		elseif($current_team['event_percent'] <= 10)
-		{
-			$current_team['event_class'] = 'red';
-		}
-		elseif($current_team['event_percent'] <= 30)
-		{
-			$current_team['event_class'] = 'orange';
-		}
-		elseif($current_team['event_percent'] <= 50)
-		{
-			$current_team['event_class'] = 'yellow';
-		}
-		// var_dump($current_team);
 
 
 
