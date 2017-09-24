@@ -71,6 +71,22 @@
       </div>
 
 
+
+      <div class="g1">
+
+       <h4>{%trans "Special event day counter"%}</h4>
+        <div class="c12 s12 f mA5">
+         <label class="c2 s12" for="event_title">{%trans "Event title"%}</label>
+          <input class="c" type="text" name="event_title" id="event_title" value="{{team_detail.event_title}}" placeholder='{%trans "Event title"%}'>
+        </div>
+
+        <div class="c12 s12 f mA5">
+         <label class="c2 s12" for="event_date">{%trans "Event date"%}</label>
+          <input class="c datepicker" type="text" name="event_date" id="event_date" value="{{team_detail.event_date}}" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='top'>
+        </div>
+      </div>
+
+
       <div  class="g1">
        <h4>{%trans "Default setting for new members of team"%}</h4>
        <div class="f check1t">
@@ -128,9 +144,7 @@
            <option value="20" {%if team_detail.cardsize == '20'%} selected {%endif%}>{%trans "Medium"%}</option>
            <option value="30" {%if team_detail.cardsize == '30'%} selected {%endif%}>{%trans "Large"%}</option>
          </select>
-
         </div>
-
 
          <div class="f c12 s12 mA5">
          <label class="c2 s12" for="language">{%trans "Language"%}</label>
@@ -140,16 +154,6 @@
            <option value="en" {%if team_detail.language == 'en'%} selected {%endif%}>{%trans "English"%}</option>
          </select>
 
-        </div>
-
-        <div class="c12 s12 f mA5">
-         <label class="c2 s12" for="event_title">{%trans "Event title"%}</label>
-          <input class="c" type="text" name="event_title" id="event_title" value="{{team_detail.event_title}}" placeholder='{%trans "Event title"%}'>
-        </div>
-
-        <div class="c12 s12 f mA5">
-         <label class="c2 s12" for="event_date">{%trans "Event date"%}</label>
-          <input class="c" type="text" name="event_date" id="event_date" value="{{team_detail.event_date}}" placeholder='{%trans "Event date"%}'>
         </div>
 
        </div>
