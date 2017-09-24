@@ -138,7 +138,20 @@ trait get
 					break;
 
 				case 'eventdate':
-					$result['event_date'] = $value ? $value : null;
+					if($value)
+					{
+						$strtotime            = strtotime($value);
+						$result['event_date'] = date("Y-m-d", $strtotime);
+						$toGregorian          = \lib\utility\jdate::toGregorian(date("Y", $strtotime), date("m", $strtotime), date("d", $strtotime));
+					 	if(is_array($toGregorian))
+					 	{
+							$result['event_date_gregorian'] = implode('-', $toGregorian);
+					 	}
+					}
+					else
+					{
+						$result['event_date'] = null;
+					}
 					break;
 
 				case 'showavatar':

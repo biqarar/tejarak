@@ -214,7 +214,7 @@ trait add
 
 		if($eventdate)
 		{
-			$eventdate = date("Y-m-d H:i:s", strtotime($eventdate));
+			$eventdate = date("Y-m-d", strtotime($eventdate));
 		}
 
 		$cardsize = utility::request('cardsize');

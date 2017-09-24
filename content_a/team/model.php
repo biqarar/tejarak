@@ -30,7 +30,7 @@ class model extends \content_a\main\model
 			'manual_time_exit'  => utility::post('manual_time_exit'),
 			'language'          => utility::post('language'),
 			'event_title'       => utility::post('event_title'),
-			'event_date'        => utility::post('event_date'),
+			'event_date'        => utility\human::number(utility::post('event_date'), 'en'),
 			'cardsize'          => utility::post('cardsize'),
 			'allow_desc_enter'  => utility::post('allowDescEnter'),
 			'allow_desc_exit'   => utility::post('allowDescExit'),
