@@ -44,7 +44,7 @@
 .two-column #sidebar #date{margin-bottom:4rem}
 .two-column #sidebar #logo img{height:175px}
 .two-column #sidebar #logo h1{font-size:1.4em}
-.two-column #sidebar .footer.tejarak{font-size:1em;line-height:normal;height:auto;padding:.5em 0}
+.two-column #sidebar .footer.tejarak{font-size:1em;line-height:normal;height:auto;padding:.5em 0;min-height:50px;}
 .two-column #sidebar .footer.tejarak a{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .two-column #sidebar .footer.tejarak img{margin:0 10px}
 .two-column #main,body.two-column #main #content{-webkit-box-flex:1;-ms-flex:1;flex:1}
