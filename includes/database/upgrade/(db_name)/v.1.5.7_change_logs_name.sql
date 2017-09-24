@@ -15,4 +15,3 @@ ALTER TABLE `tejarak_log`.`logs` CHANGE `log_createdate` `createdate` datetime N
 ALTER TABLE `tejarak_log`.`logs` CHANGE `date_modified` `datemodified` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP;
 ALTER TABLE `tejarak_log`.`logs` ADD `datecreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE `tejarak_log`.`logs` CHANGE `log_desc` `desc` varchar(250) DEFAULT NULL;
-

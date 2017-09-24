@@ -103,7 +103,7 @@ class model extends \content_a\main\model
 
 			if($new_team_code)
 			{
-				debug::msg('direct', true);
+				// debug::msg('direct', true);
 				$this->redirector()->set_domain()->set_url("a/$new_team_code");
 			}
 		}
@@ -161,7 +161,7 @@ class model extends \content_a\main\model
 		$this->add_team(['method' => 'patch']);
 		if(debug::$status)
 		{
-			debug::msg('direct', true);
+			// debug::msg('direct', true);
 			$this->redirector()->set_domain()->set_url("a/$code");
 		}
 	}
@@ -183,7 +183,7 @@ class model extends \content_a\main\model
 		$this->close_team();
 		if(debug::$status)
 		{
-			debug::msg('direct', true);
+			// debug::msg('direct', true);
 			$this->redirector()->set_domain()->set_url('a');
 		}
 	}

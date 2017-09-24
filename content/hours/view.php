@@ -63,11 +63,11 @@ class view extends \mvc\view
 		}
 
 		// check event title and set date
-		if(isset($current_team['event_date']))
+		if(isset($current_team['event_date_gregorian']))
 		{
 			// get 2date
 			$datenow   = new \DateTime("now");
-			$dateevent = new \DateTime($current_team['event_date']);
+			$dateevent = new \DateTime($current_team['event_date_gregorian']);
 			$interval  = $dateevent->diff($datenow);
 			if($datenow < $dateevent)
 			{
@@ -80,7 +80,7 @@ class view extends \mvc\view
 		}
 
 		// get deadline datetime
-		$deadline  = strtotime($current_team['event_date']);
+		$deadline  = strtotime($current_team['event_date_gregorian']);
 		$startDate = 20;
 		// calc deadline ramain date
 		$current_team['event_remain'] = floor(($deadline - time()) / (60 * 60 * 24));
