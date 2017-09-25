@@ -313,9 +313,9 @@ class hours
 		// get last not exit time of this user and this teamd
 		$in_use_time = self::in_use_time($_args);
 
-		if($in_use_time && isset($in_use_time['end']) && !$in_use_time['end'])
+		if($in_use_time && array_key_exists('end', $in_use_time) && !$in_use_time['end'])
 		{
-			debug::error(T_("You was already save your enter time"));
+			debug::error(T_("You was already entered once before this request"));
 			return false;
 		}
 
@@ -386,7 +386,7 @@ class hours
 
 		if(!$start || ($start && isset($start['end']) && $start['end']))
 		{
-			debug::error(T_("You was not save your enter time"));
+			debug::error(T_("You was already exited before this request or not entered"));
 			return ;
 		}
 
