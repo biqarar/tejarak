@@ -6,7 +6,7 @@ ALTER TABLE `users` ADD `user_code` 			varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_nationalcode` 	varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_from` 			varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_nationality` 		varchar(100) NULL DEFAULT NULL;
-ALTER TABLE `users` ADD `user_brithplace` 		varchar(100) NULL DEFAULT NULL;
+ALTER TABLE `users` ADD `user_birthplace` 		varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_region` 			varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_pasportcode` 		varchar(100) NULL DEFAULT NULL;
 ALTER TABLE `users` ADD `user_marital` 			enum('single', 'married') NULL DEFAULT NULL;

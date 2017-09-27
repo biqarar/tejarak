@@ -1,0 +1,2 @@
+ALTER TABLE `userteams` CHANGE `brithplace` `birthplace` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+ALTER TABLE `users` CHANGE `brithplace` `birthplace` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;

@@ -467,8 +467,8 @@ trait get
 					$result['child'] = isset($value) ? $value : null;
 					break;
 
-				case 'brithplace':
-					$result['brithcity'] = isset($value) ? $value : null;
+				case 'birthplace':
+					$result['birthcity'] = isset($value) ? $value : null;
 					break;
 
 				case 'from':

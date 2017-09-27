@@ -214,11 +214,11 @@ trait check_args
 			return false;
 		}
 
-		$brithcity              = utility::request('brithcity');
-		if($brithcity && mb_strlen($brithcity) > 50)
+		$birthcity              = utility::request('birthcity');
+		if($birthcity && mb_strlen($birthcity) > 50)
 		{
-			if($_args['save_log']) logs::set('api:userteam:brithcity:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("You must set the brithcity less than 50 character"), 'brithcity', 'arguments');
+			if($_args['save_log']) logs::set('api:userteam:birthcity:max:lenght', $this->user_id, $log_meta);
+			if($_args['debug']) debug::error(T_("You must set the birthcity less than 50 character"), 'birthcity', 'arguments');
 			return false;
 		}
 
@@ -312,7 +312,7 @@ trait check_args
 
 		$args['marital']        = $marital;
 		$args['childcount']     = $child;
-		$args['brithplace']     = $brithcity;
+		$args['birthplace']     = $birthcity;
 		$args['from']           = $shfrom;
 		$args['shcode']         = $shcode;
 		$args['education']      = $education;

@@ -32,7 +32,7 @@ ALTER TABLE `users` CHANGE `user_code` `shcode` varchar(100) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_nationalcode` `nationalcode` varchar(100) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_from` `shfrom` varchar(100) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_nationality` `nationality` varchar(100) DEFAULT NULL;
-ALTER TABLE `users` CHANGE `user_brithplace` `brithplace` varchar(100) DEFAULT NULL;
+ALTER TABLE `users` CHANGE `user_birthplace` `birthplace` varchar(100) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_region` `region` varchar(100) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_pasportcode` `pasportcode` varchar(100) DEFAULT NULL;
 ALTER TABLE `users` CHANGE `user_marital` `marital` enum('single','marride') DEFAULT NULL;
