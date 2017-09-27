@@ -195,6 +195,7 @@ class model extends \content_a\main\model
 			{
 				$parent_request               = [];
 				$parent_request['othertitle'] = utility::post('othertitle');
+				$parent_request['user_id']    = $member;
 				$parent_request['title']      = utility::post('title');
 				$parent_request['mobile']     = utility::post('parent_mobile');
 				utility::set_request_array($parent_request);
