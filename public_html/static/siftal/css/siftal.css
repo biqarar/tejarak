@@ -2053,7 +2053,7 @@ progress.xl, meter.xl {
 
 .tbox {
   margin: 0.5em 0 1.5em;
-  font-size: 1.6em;
+  font-size: 1.2em;
   position: relative;
   padding: 1em 1.5em;
   border: 1px solid transparent;
@@ -2061,7 +2061,7 @@ progress.xl, meter.xl {
   line-height: 1.25;
   opacity: 0.7;
   background-color: #f7f7f7;
-  color: #333;
+  color: #444;
   transition: 0.3s; }
 
 .tbox p {
@@ -2070,6 +2070,10 @@ progress.xl, meter.xl {
 
 .tbox:hover {
   opacity: 0.9; }
+
+.tbox h2 {
+  font-weight: 700;
+  font-size: 1.5em; }
 
 .cbox {
   font-size: 1.4em;
@@ -2514,6 +2518,85 @@ img.mini {
     box-shadow: 0 0 0 0.5em rgba(204, 169, 44, 0); }
   100% {
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0); } }
+.icard {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -o-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 2px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08); }
+
+.icard:hover {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 0px 0px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 0px 0px rgba(0, 0, 0, 0.22); }
+
+.icard > *:not(.icard-avatar) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+  padding: 0 5px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  flex: 1;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  -moz-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -moz-box-align: center;
+  align-items: center; }
+
+.icard .icard-avatar {
+  max-width: 50px;
+  padding: 2px; }
+
+.icard .icard-avatar img {
+  display: block;
+  width: 4.5rem;
+  min-width: 4.5rem;
+  max-width: 100%;
+  height: 4.5rem;
+  min-height: 4.5rem;
+  max-height: 100%; }
+
+.icard .icard-owner {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: column !important;
+  -ms-flex-direction: column !important;
+  -moz-box-orient: vertical !important;
+  -moz-box-direction: normal !important;
+  flex-direction: column !important;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  -moz-box-align: start;
+  align-items: flex-start; }
+
+.icard .icard-owner a {
+  color: inherit; }
+
+.icard .icard-owner span {
+  font-size: .8em;
+  display: block;
+  margin-top: 5px;
+  color: #888; }
+
 /* Modals - v2*/
 .modal {
   position: fixed;
@@ -3360,7 +3443,12 @@ img.mini {
   speak: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle; }
+
+.rtl [class^="sf-"]:before,
+.rtl [class*=" sf-"]:before {
+  vertical-align: top; }
 
 .sf-angle-down:before {
   content: "\61"; }
@@ -5187,6 +5275,9 @@ img.mini {
 ** http://babakhani.github.io/PersianWebToolkit/docs/datepicker
 ** Under WTFPL license
 */
+.datepicker {
+  direction: ltr; }
+
 .datepicker-plot-area {
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -7575,7 +7666,8 @@ label {
   font-weight: bold;
   padding: 5px 0;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+  font-size: 80%; }
 
 label + .input {
   margin-bottom: 10px; }
@@ -7583,6 +7675,9 @@ label + .input {
 .input label {
   width: 100%;
   margin-top: 10px; }
+
+input[type="tel"], input[type="email"], input[type="date"], input[type="number"] {
+  direction: ltr; }
 
 /* checkbox type 1*/
 .check1 {
@@ -9870,7 +9965,7 @@ body.siftal .full .middle {
 
 .siftal header i:before {
   font-size: 1.5em;
-  vertical-align: -webkit-baseline-middle; }
+  vertical-align: -webkit-baseline-middle !important; }
 
 .siftal header .hm a, .siftal header .hm div {
   transition: 0.3s;
@@ -11882,7 +11977,13 @@ body.enter.bg15 {
   .x-align-content-stretch {
     -webkit-align-content: stretch !important;
     -ms-flex-line-pack: stretch !important;
-    align-content: stretch !important; } }
+    align-content: stretch !important; }
+
+  .xp0 {
+    padding: 0; }
+
+  .xm0 {
+    padding: 0; } }
 @media all and (min-width: 768px) and (max-width: 959px) {
   html {
     font-size: 60%; }
@@ -12227,7 +12328,13 @@ body.enter.bg15 {
     padding: 1.2em 2em; }
 
   .siftal #sidebar h2 {
-    display: none; } }
+    display: none; }
+
+  .mp0 {
+    padding: 0; }
+
+  .mm0 {
+    padding: 0; } }
 @media (max-width: 767px) {
   html {
     font-size: 50%; }
@@ -12640,7 +12747,13 @@ body.enter.bg15 {
     display: none; }
 
   .pagination a:not([href]):not(.active) {
-    display: none; } }
+    display: none; }
+
+  .sp0 {
+    padding: 0; }
+
+  .sm0 {
+    padding: 0; } }
 @media all and (max-width: 280px) {
   html:before {
     font-size: 100vw;
