@@ -323,7 +323,7 @@ picture{display:block;}
 
 
 /*vcard*/
-.vcard{font-style:normal}
+.vcard{font-style:normal;}
 .vcard .adr{padding:1em 0}
 .vcard .adr div, .vcard .adr span, .vcard .email, .vcard .tel{display:block;padding:0.5em}
 .vcard .adr span{display:inline-block;}
@@ -398,7 +398,7 @@ body #billing{max-width:800px;margin:0 auto}
 
 
 /* tejarak member cards */
-#showMember{width:auto;text-align:center;transition:0.3s;}
+#showMember{width:auto;text-align:center;}
 
 .loading-form .tcard{cursor:not-allowed;}
 

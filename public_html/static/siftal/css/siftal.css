@@ -2093,7 +2093,8 @@ progress.xl, meter.xl {
   background-color: #fff;
   padding: 1em 1.5em;
   opacity: 0.8;
-  transition: 0.3s; }
+  transition: 0.3s;
+  display: flex; }
 
 .dcard:hover {
   opacity: 1; }
@@ -2103,6 +2104,9 @@ progress.xl, meter.xl {
 
 .dcard .fc-mute {
   font-weight: 100; }
+
+.dcard [class^="sf-"]:before, .dcard [class*=" sf-"]:before {
+  vertical-align: baseline; }
 
 .vcard {
   position: relative;
@@ -2124,7 +2128,6 @@ progress.xl, meter.xl {
   border-radius: 0.4rem;
   overflow: hidden;
   line-height: 1.25;
-  transition: 0.3s;
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   background-color: rgba(255, 255, 255, 0.7);
   margin: 0 auto; }
