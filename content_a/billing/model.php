@@ -6,16 +6,6 @@ use \lib\utility\payment;
 
 class model extends \mvc\model
 {
-	public static $support_bank =
-	[
-		'zarinpal',
-		// 'melli',
-		'parsian',
-		// 'mellat',
-		// 'saman',
-		// 'tejarat',
-	];
-
 
 	/**
 	 * the user id
@@ -54,45 +44,12 @@ class model extends \mvc\model
 			return false;
 		}
 
-		$this->user_id = $this->login('id');
-
-		if(utility::post('bank'))
-		{
-			if(!in_array(mb_strtolower(utility::post('bank')), self::$support_bank))
-			{
-				debug::error(T_("This gateway is not supported by tejarak"));
-				return false;
-			}
-
-			if(!utility::post('amount') || !is_numeric(utility::post('amount')))
-			{
-				debug::error(T_("Amount not set"), 'amount', 'arguments');
-				return false;
-			}
-
-			switch (mb_strtolower(utility::post('bank')))
-			{
-				case 'zarinpal':
-					\lib\utility\payment\pay::zarinpal($this->user_id, utility::post('amount'), ['turn_back' => $this->url('full')]);
-					return;
-					break;
-
-				case 'parsian':
-					\lib\utility\payment\pay::parsian($this->user_id, utility::post('amount'), ['turn_back' => $this->url('full')]);
-					return;
-					break;
-
-				default:
-					return false;
-					break;
-			}
-		}
-
 		if(utility::post('type') === 'promo')
 		{
 			if(utility::post('promo'))
 			{
 				$this->check_promo();
+				return;
 			}
 			else
 			{
@@ -100,6 +57,10 @@ class model extends \mvc\model
 				return false;
 			}
 		}
+
+		$meta = ['turn_back' => $this->url('full')];
+
+		\lib\utility\payment\pay::start($this->login('id'), utility::post('bank'), utility::post('amount'), $meta);
 	}
 
 
