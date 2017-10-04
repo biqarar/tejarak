@@ -1,11 +1,12 @@
 {%extends display.adminTeam%}
 
 {%block contentCenter%}
-  <div class='middle normal f' id="showMember">
+  <div class='middle normal f justify-center fs12'>
 
   <div class="vcard mA10">
     <img src="{{url.static}}siftal/images/useful/plus1.png" alt='{%trans "Add new Gateway"%}'>
-    <div class="content">
+    <div class="content"></div>
+    <div class="footer pAn">
       <a class="btn block primary" href="{{url.baseFull}}/{{team}}/gateway">{%trans "Add new Gateway"%}</a>
     </div>
   </div>
@@ -15,9 +16,12 @@
     <img src="{{url.static}}siftal/images/useful/gate.png" alt='{%trans "Add new Gateway"%}'>
     <div class="content">
        <div class="header">{{value.name}}</div>
-       {%if value.username%}<div class="meta">{{current_team.short_name}}-{{value.username}}</div>{%endif%}
     </div>
+    <div class="footer"><i class="icon sf-user"></i> {{current_team.short_name}}-{{value.username}}</div>
   </a>
+
+
+
 {%endfor%}
 
   </div>
