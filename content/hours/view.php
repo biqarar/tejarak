@@ -93,7 +93,7 @@ class view extends \mvc\view
 			if($current_team['event_percent'] <= 1)
 			{
 				$current_team['event_class']  = 'black';
-				$current_team['event_ramian'] = '?';
+				$current_team['event_remain'] = '?';
 			}
 			elseif($current_team['event_percent'] <= 10)
 			{
