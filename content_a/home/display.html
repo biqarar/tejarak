@@ -18,9 +18,9 @@
       <div class="meta"><span>{%trans "Last traffic"%} {{"now" |sdate}}</span></div>
     </div>
     <div class="footer">
-    <i class="sf-users"></i>{{"123" | fitNumber}} {%trans "member"%}
-    <i class="sf-refresh"></i><span>{{"236" | fitNumber}}</span> {%trans "traffic"%}
-    {%if value.rule=='admin'%} <i class="sf-star fc-gold"></i>{%trans "Owner"%} {%endif%}
+    <i class="sf-users"></i>{{"123" | fitNumber}}{%trans "member"%}
+    <i class="sf-refresh"></i><span>{{"236" | fitNumber}}</span>{%trans "traffic"%}
+    {%if value.rule=='admin'%} <i class="sf-star fc-gold"></i>{%endif%}
     </div>
   </a>
 {%endfor%}
@@ -33,29 +33,5 @@
   </div>
 
 </div>
-
-  <div class='middle hide' id="teamList">
-   <div class="f justify-center">
-{%for key, value in team_list%}
-    <a class='teams-item' href='{{url.baseFull}}/{{value.id}}' {% if value.rule == 'admin' %} data-admin {% endif %}>
-     <figure>
-      <div class="f align-center">
-{%if value.logo%}
-       <img src="{{value.logo}}" alt="{{value.name}}">
-{%else%}
-       <img src="{{url.static}}images/a/without-brand-logo.png" alt="{{value.name}}">
-{%endif%}
-      </div>
-      <figcaption>{{value.name}}</figcaption>
-     </figure>
-    </a>
-
-{%endfor%}
-
-    <a class='teams-item f align-center' href="{{url.baseFull}}/team">
-     <span class="addNew">+</span>
-    </a>
-   </div>
-  </div>
 {%endblock%}
 
