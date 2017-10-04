@@ -11,7 +11,7 @@
 {%set cardColor%}
 {%if value.status == 'close'%}red{%elseif value.rule == 'admin'%}blue{%else%}{%endif%}
 {%endset%}
-  <a class="vcard mA10 {{cardColor}}" href='{{url.baseFull}}/{{value.id}}'>
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.baseFull}}/{{value.id}}'>
     <img src="{{value.logo}}" alt="{{value.name}}" class="pA10-f">
     <div class="content">
       <div class="header">{{value.name}}</div>
@@ -19,6 +19,7 @@
     </div>
     <div class="footer">
     <i class="sf-users"></i>{{"123" | fitNumber}} {%trans "member"%}
+    <i class="sf-refresh"></i><span>{{"236" | fitNumber}}</span> {%trans "traffic"%}
     {%if value.rule=='admin'%} <i class="sf-star fc-gold"></i>{%trans "Owner"%} {%endif%}
     </div>
   </a>

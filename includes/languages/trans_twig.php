@@ -63,13 +63,13 @@ class twigTransTerms
 	//------------------------------------------------------content\hours\display.html
 	echo T_("Login to enjoy!");                                                       // Line 54
 	echo T_("In the Name of God");                                                    // Line 64
-	echo T_("days left");                                                             // Line 83
+	echo T_("days left");                                                             // Line 87
 	echo T_("Enter");                                                                 // Line 26
-	echo T_("Mission Time");                                                          // Line 131
-	echo T_("I was on the mission");                                                  // Line 136
+	echo T_("Mission Time");                                                          // Line 135
+	echo T_("I was on the mission");                                                  // Line 140
 	echo T_("Description");                                                           // Line 33
-	echo T_("Personal work");                                                         // Line 161
-	echo T_("Exit");                                                                  // Line 169
+	echo T_("Personal work");                                                         // Line 165
+	echo T_("Exit");                                                                  // Line 173
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 39
@@ -382,8 +382,15 @@ class twigTransTerms
 	echo T_("Status");                                                                // Line 32
 	echo T_("Active");                                                                // Line 109
 	echo T_("Deactive");                                                              // Line 113
-	echo T_("Edit");                                                                  // Line 172
-	echo T_("Add");                                                                   // Line 181
+	echo T_("Edit");                                                                  // Line 177
+	echo T_("Add");                                                                   // Line 186
+
+	//-----------------------------------------------------content_a\home\display.html
+	echo T_("Last traffic");                                                          // Line 10
+	echo T_("member");                                                                // Line 21
+	echo T_("traffic");                                                               // Line 22
+	echo T_("Owner");                                                                 // Line 23
+	echo T_("Add new team");                                                          // Line 31
 
 	//--------------------------------------------------content_a\houredit\detail.html
 	echo T_("Start date");                                                            // Line 6
@@ -468,7 +475,7 @@ class twigTransTerms
 	echo T_("Scan Rfid here...");                                                     // Line 215
 	echo T_("Qrcode");                                                                // Line 220
 	echo T_("Scan Qrcode here...");                                                   // Line 222
-	echo T_("Advance");                                                               // Line 178
+	echo T_("Advance");                                                               // Line 183
 	echo T_("Parent");                                                                // Line 141
 	echo T_("Add new parent");                                                        // Line 58
 	echo T_("Parent mobile");                                                         // Line 165
@@ -604,7 +611,6 @@ class twigTransTerms
 	echo T_("Enter to Tejarak");                                                      // Line 144
 
 	//---------------------------------------------------content_a\report\display.html
-	echo T_("Last traffic");                                                          // Line 10
 	echo T_("Sum times in year");                                                     // Line 11
 	echo T_("Sum times in month");                                                    // Line 12
 	echo T_("Sum times in period");                                                   // Line 13
@@ -690,20 +696,21 @@ class twigTransTerms
 	echo T_("Event date");                                                            // Line 85
 	echo T_("Default setting for new members of team");                               // Line 91
 	echo T_("Show users avatars");                                                    // Line 96
-	echo T_("Allow set enter desc");                                                  // Line 119
-	echo T_("Allow set Exit desc");                                                   // Line 124
-	echo T_("Manual time enter");                                                     // Line 130
-	echo T_("Manual time exit");                                                      // Line 135
-	echo T_("Card size");                                                             // Line 140
-	echo T_("Auto size");                                                             // Line 142
-	echo T_("Small");                                                                 // Line 143
-	echo T_("Medium");                                                                // Line 144
-	echo T_("Large");                                                                 // Line 145
-	echo T_("Language");                                                              // Line 150
-	echo T_("Please select one language");                                            // Line 152
-	echo T_("Persian");                                                               // Line 153
-	echo T_("English");                                                               // Line 154
-	echo T_("Close");                                                                 // Line 169
+	echo T_("Quick Traffic");                                                         // Line 119
+	echo T_("Allow set enter desc");                                                  // Line 124
+	echo T_("Allow set Exit desc");                                                   // Line 129
+	echo T_("Manual time enter");                                                     // Line 135
+	echo T_("Manual time exit");                                                      // Line 140
+	echo T_("Card size");                                                             // Line 145
+	echo T_("Auto size");                                                             // Line 147
+	echo T_("Small");                                                                 // Line 148
+	echo T_("Medium");                                                                // Line 149
+	echo T_("Large");                                                                 // Line 150
+	echo T_("Language");                                                              // Line 155
+	echo T_("Please select one language");                                            // Line 157
+	echo T_("Persian");                                                               // Line 158
+	echo T_("English");                                                               // Line 159
+	echo T_("Close");                                                                 // Line 174
 
 	//-------------------------------------------------content_api\v1\doc\display.html
 	echo T_("Tejarak API");                                                           // Line 6
