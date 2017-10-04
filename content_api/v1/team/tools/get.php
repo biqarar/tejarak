@@ -160,6 +160,11 @@ trait get
 				case 'allowplus':
 					$result['allow_plus'] = $value ? true : false;
 					break;
+
+				case 'quick':
+					$result['quick_traffic'] = $value ? true : false;
+					break;
+
 				case 'allowminus':
 					$result['allow_minus'] = $value ? true : false;
 					break;

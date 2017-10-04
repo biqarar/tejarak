@@ -114,6 +114,11 @@
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
+        <div class="c6 s12">
+         <input type="checkbox" name="quickTraffic" id="quickTraffic" {%if team_detail.quick_traffic%}checked{%endif%}>
+         <label for="quickTraffic">{%trans "Quick Traffic"%}</label>
+        </div>
+
         <div class="c6 s12 hide">
          <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if team_detail.allow_desc_enter %}checked{%endif%}>
          <label for="allowDescEnter">{%trans "Allow set enter desc"%}</label>

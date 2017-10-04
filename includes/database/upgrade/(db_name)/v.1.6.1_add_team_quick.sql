@@ -1,0 +1,1 @@
+ALTER TABLE `teams` ADD `quick` BIT(1) NULL DEFAULT NULL;

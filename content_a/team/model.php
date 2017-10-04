@@ -22,6 +22,7 @@ class model extends \content_a\main\model
 			'short_name'        => utility::post('shortName'),
 			'desc'              => utility::post('desc'),
 			'show_avatar'       => utility::post('showAvatar'),
+			'quick_traffic'     => utility::post('quickTraffic'),
 			'allow_plus'        => utility::post('allowPlus'),
 			'allow_minus'       => utility::post('allowMinus'),
 			'remote_user'       => utility::post('remoteUser'),

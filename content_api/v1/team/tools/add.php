@@ -355,6 +355,8 @@ trait add
 		$args['remote']          = utility::isset_request('remote_user') ? utility::request('remote_user')   ? 1 : 0 : null;
 		$args['24h']             = utility::isset_request('24h')         ? utility::request('24h')			 ? 1 : 0 : null;
 
+		$args['quick']           = utility::isset_request('quick_traffic')  ? utility::request('quick_traffic')    ? 1 : 0 : null;
+
 		$args['allowdescenter']  = utility::isset_request('allow_desc_enter') ? utility::request('allow_desc_enter')     ? 1 : 0 : null;
 		$args['allowdescexit']   = utility::isset_request('allow_desc_exit') ? utility::request('allow_desc_exit')  	 ? 1 : 0 : null;
 
@@ -495,6 +497,7 @@ trait add
 			if(!utility::isset_request('allow_desc_exit'))  unset($args['allowdescexit']);
 			if(!utility::isset_request('type'))             unset($args['type']);
 			if(!utility::isset_request('gender'))           unset($args['gender']);
+			if(!utility::isset_request('quick_traffic'))    unset($args['quick']);
 
 			if(!utility::isset_request('parent'))           unset($args['parent']);
 
