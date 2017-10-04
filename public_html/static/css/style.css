@@ -347,7 +347,7 @@ picture{display:block;}
 
 
 /* admin custom styles*/
-body{background-image:url(../images/bg1.png);background-repeat:repeat;background-color:#eee;}
+body{background-color:#ddd;}
 
 /*billing*/
 .box{background-color:#eee;padding:4em;margin:1em;font-size:1.2em;border-radius:3px;}

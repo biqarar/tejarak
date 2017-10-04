@@ -47,10 +47,7 @@
 
        </div>
       </div>
-
     </div>
-
-
 
     <div class="c4 s12 pA10">
       <div class="cbox">
@@ -62,7 +59,6 @@
         <div class="label">{%trans "Your credit"%} <small>{%trans user_unit%}</small></div>
        </div>
       </div>
-
       <a class="cbox" href="{{url.baseFull}}/billing/detail" title='{%trans "Click to check detail"%}'>
        <div class="statistic brown">
         <div class="value">
@@ -82,7 +78,7 @@
     <h3 id="billing-history" class="pA10">{%trans "Billing History"%}</h3>
     <table class="tbl">
       <thead class="primary">
-        <th>{%trans "Title" %}</th>
+        <th class="s0">{%trans "Title" %}</th>
         <th>{%trans "Date" %}</th>
         <th>{%trans "Value" %}</th>
         <th>{%trans "Budget After" %}</th>
@@ -90,10 +86,12 @@
       </thead>
       <tbody>
 
-      </tbody>
-        {% for key, value in history %}
-         <tr>{%set my_unit = value.unit%}
-          <td>{%set my_title = value.title%}{%trans my_title%}</td>
+{% for key, value in history %}
+{%set my_unit = value.unit%}
+{%set my_title = value.title%}
+
+         <tr>
+          <td class="s0">{%trans my_title%}</td>
 
 {%if site.currentlang == 'fa' %}
   <td title='{{value.date|tdate("Y-m-d H:i:s")}}'>{{value.date|sdate}}</td>
@@ -118,8 +116,9 @@
 {%endif%}
           </td>
          </tr>
-        {%endfor%}
+{%endfor%}
 
+      </tbody>
     </table>
     {%include display.pagination%}
 </div>
