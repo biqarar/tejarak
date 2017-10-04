@@ -6,87 +6,80 @@
   <p>{%trans "Check your balance, charge your account, and bill your invoices!"%}</p>
   </div>
 
-  <div class='middle' id="billing">
-   <div class='dbox'>
-
-
   <div class="f">
-   <div class="c6 s12">
-    <div class="box">
-     <div class="f align-center">
-      <h2 class="c">{%trans "Your credit"%}</h2>
-      <h3 class="cauto os"><span>{{user_cash.total|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
-     </div>
-     <a href="{{url.baseFull}}/ref" class="btn block hide">{%trans "Earn More Credit"%}</a>
-     <a href="{{url.baseFull}}" class="btn block">{%trans "Check teams"%}</a>
+
+    <div class="c s12 pA10">
+      <div class="cbox">
+        <h2>{%trans "Charge your account"%}</h2>
+        <p>{%trans "Choose a gateway and enter an amount to charge your account"%}</p>
+
+        <form method="post" autocomplete="off">
+          <div class="radioGateway">
+           <input type="radio" name="bank" value="parsian" id="parsian" checked>
+           <label for='parsian'><img alt="parsian" src="{{url.static}}images/gateway/Parsian.svg"></label>
+          </div>
+
+          <div class="radioGateway">
+           <input type="radio" name="bank" value="ZarinPal" id="ZarinPal">
+           <label for='ZarinPal'><img alt="ZarinPal" src="{{url.static}}images/gateway/ZarinPal.svg"></label>
+          </div>
+
+         <div class="input pA5">
+          <label class="addon" for="amount-number">{%trans user_unit%}</label>
+          <input id="amount-number" type="number" name="amount" value="{{amount}}" placeholder='{%trans "Amount"%}' required min=0>
+          <button class="addon btn primary">{%trans "Checkout"%}</button>
+         </div>
+        </form>
+      </div>
+
+      <div>
+       <div class="cbox">
+        <h2>{%trans "Promo code"%}</h2>
+        <p>{%trans "If you have a promo code, please enter it below to receive your credit."%}</p>
+
+        <form method="post" autocomplete="off">
+         <input type="hidden" name="type" value="promo">
+         <div class="input pA5">
+          <input id="promo-number" type="text" name="promo" placeholder='{%trans "Promo Code"%}' required spellcheck="false">
+          <button class="addon btn primary">{%trans "Apply Code"%}</button>
+         </div>
+        </form>
+
+       </div>
+      </div>
+
     </div>
-   </div>
 
-   <div class="c6 s12">
-    <div class="box">
-     <div class="f align-center">
-      <h2 class="c">{%trans "Usage"%}</h2>
-      <h3 class="cauto os"><span>{{usage|number_format|fitNumber}}</span> <sup>{%trans user_unit%}</sup></h3>
-     </div>
-     <a href="{{url.baseFull}}/billing/detail" class="btn block">{%trans "View Usage Details"%}</a>
+
+
+    <div class="c4 s12 pA10">
+      <div class="cbox">
+       <div class="statistic blue">
+        <div class="value">
+          <i class="sf-credit-card"></i>
+          <span>{{user_cash.total|number_format| fitNumber}}</span>
+        </div>
+        <div class="label">{%trans "Your credit"%} <small>{%trans user_unit%}</small></div>
+       </div>
+      </div>
+
+      <a class="cbox" href="{{url.baseFull}}/billing/detail" title='{%trans "Click to check detail"%}'>
+       <div class="statistic brown">
+        <div class="value">
+          <i class="sf-bag"></i>
+          <span class="counter">{{usage|number_format}}</span>
+        </div>
+        <div class="label">{%trans "Usage"%} <small>{%trans user_unit%}</small></div>
+       </div>
+      </a>
     </div>
-   </div>
+
   </div>
 
 
-  <div class="f">
-   <div class="box">
-    <h2>{%trans "Charge your account"%}</h2>
-    <p>{%trans "Choose a gateway and enter an amount to charge your account"%}</p>
-
-    <form method="post" class='gateways' autocomplete="off">
-     <div class="f">
-
-      <label class="cauto">
-       <input type="radio" name="bank" id="parsian" value="parsian"  checked>
-       <img alt="ZarrinPal" src="{{url.static}}images/gateway/Parsian.svg">
-      </label>
-
-      <label class="cauto">
-       <input type="radio" name="bank" id="ZarinPal" value="ZarinPal">
-       <img alt="ZarrinPal" src="{{url.static}}images/gateway/ZarinPal.svg">
-      </label>
-
-     </div>
-
-     <div class="input pA5">
-      <label class="addon" for="amount-number">{%trans user_unit%}</label>
-      <input id="amount-number" type="number" name="amount" value="{{amount}}" placeholder='{%trans "Amount"%}' required min=0>
-      <button class="addon btn primary">{%trans "Checkout"%}</button>
-     </div>
-    </form>
-
-   </div>
-  </div>
-
-  <div class="f">
-   <div class="box">
-    <h2>{%trans "Promo code"%}</h2>
-    <p>{%trans "If you have a promo code, please enter it below to receive your credit."%}</p>
-
-    <form method="post" class='gateways' autocomplete="off">
-     <input type="hidden" name="type" value="promo">
-     <div class="input pA5 w300">
-      <input id="promo-number" type="text" name="promo" placeholder='{%trans "Promo Code"%}' required spellcheck="false">
-      <button class="addon btn primary">{%trans "Apply Code"%}</button>
-     </div>
-    </form>
-
-   </div>
-  </div>
-
-
-
- </div>
-</div>
 
 <div class="cbox">
-    <h3 id="billing-history">{%trans "Billing History"%}</h3>
+    <h3 id="billing-history" class="pA10">{%trans "Billing History"%}</h3>
     <table class="tbl">
       <thead class="primary">
         <th>{%trans "Title" %}</th>

@@ -357,12 +357,6 @@ body{background-image:url(../images/bg1.png);background-repeat:repeat;background
 .box h3{display:inline-block;margin:0}
 .box h4{display:inline-block;margin:0}
 .box h3 sup{color:#999}
-.box .gateways label{padding:1em;position:relative;cursor:pointer;}
-.box .gateways label img{width:74px;height:74px;padding:1em;border:2px solid transparent;transition:0.3s;background-color:rgba(255,255,255,0.3)}
-.box .gateways label input{position:absolute;width:0;height:0;overflow:hidden;z-index:-1;}
-.box .gateways label input:checked+img{border-color:#37aaa7;background-color:rgba(255,255,255,0.6)}
-.box .gateways label input:hover+img{opacity:0.8}
-.box .gateways label input:focus+img{background-color:#fff;}
 .box p{margin-bottom:1em;}
 .box .singleInput{border:1px solid #4070c0;margin:1em;font-size:1.2em;border-radius:3px;}
 .box .singleInput label{cursor:default;padding:1em 1em;line-height:30px;}
