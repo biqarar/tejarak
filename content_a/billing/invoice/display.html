@@ -3,17 +3,21 @@
 
 
 {%block content%}
+<div class="tbox">
+  <h2>{%trans "Invoice Detail"%}</h2>
+  <p>{%trans "Check invoice and detail of it"%}</p>
+</div>
 
-<div class="mB25 msg">
-  <h4>{%trans "Invoice Detail"%}</h4>
-  <div class="msg">{%trans "Title"%}: {{invoice.invoice.title}}</div>
 
+<div class="cbox">
+  <div class="msg">{%trans "Factor of team"%} <b>{{invoice.invoice.title}}</b> |
+    {%trans "Date"%}
   {%if site.currentlang == 'fa'%}
-    <div class="msg">{%trans "Date"%}: {{invoice.invoice.date|jdate("Y-m-d H:i:s")}}</div>
+     {{invoice.invoice.date|jdate("Y-m-d H:i:s")}}
   {%else%}
-    <div class="msg">{%trans "Date"%}: {{invoice.invoice.date}}</div>
+    {{invoice.invoice.date}}
   {%endif%}
-  <div class="msg">{%trans "Total"%}: {{invoice.invoice.total|number_format|fitNumber}}</div>
+  | {%trans "Total"%} {{invoice.invoice.total|number_format|fitNumber}}</div>
 
   <table class="tbl">
     <thead class="primary">
@@ -36,7 +40,9 @@
     </tbody>
 
   </table>
+
 </div>
+
 
 {%endblock%}
 
