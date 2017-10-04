@@ -182,8 +182,9 @@ trait get
 					}
 					else
 					{
-						$result['logo'] = null;
+						$result['logo'] = $this->host('siftal_image');
 					}
+
 					break;
 
 				case 'logo':

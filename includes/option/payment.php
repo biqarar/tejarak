@@ -24,5 +24,17 @@ self::$config['parsian']['CallBackUrl']  = null;
 self::$config['parsian']['exchange']     = 10;
 
 
+/**
+* config of irkish payment
+*/
+self::$config['irkish']['status']      = true;
+self::$config['irkish']['merchantId']  = 'C3FC'; // tejarak
+// set the call back is null to redirecto to default dash callback payment
+self::$config['irkish']['revertURL']   = null;
+self::$config['irkish']['description'] = 'tejarak.com';
+self::$config['irkish']['paymentId']   = null;
+self::$config['irkish']['sha1']        = '22338240992352910814917221751200141041845518824222260'; // main
+
+
 
 ?>
