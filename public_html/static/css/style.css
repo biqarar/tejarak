@@ -491,17 +491,6 @@ body #billing{max-width:800px;margin:0 auto}
 
 
 
-/* dashboard home (teams list) */
-.teams-item{overflow:hidden;width:200px;height:240px;margin:20px;border-radius:3px;transition:.3s;background-color:#fff;font-size:1.4em}
-.teams-item figure{margin:0;padding:0;}
-.teams-item figure div{position:relative;overflow:hidden;width:100%;height:200px;padding:20px;margin:0}
-.teams-item figure div img{max-height:100%;display:block;margin:0 auto;width:auto;}
-.teams-item figure figcaption{line-height:4rem;padding:0 20px;text-align:center;color:#333;background-color:rgba(0,0,0,.1);font-weight:500;overflow:hidden;max-width:100%;margin:0;white-space:nowrap;text-overflow:ellipsis;}
-.teams-item:hover{background-color:rgba(255,255,255,.5)}
-.teams-item:focus{box-shadow:0 0 0 3px rgba(0,0,0,0.2)}
-.teams-item .addNew{font-size:10em;display:block;text-align:center;color:#777;}
-.teams-item[data-admin] figure::after{font-family:"siftal"!important;content:"\5c";position:absolute;top:0;left:0;color:#d4b512;margin:0.5em;}
-
 
 #addTeam,#addMember,#reportList{max-width:50rem}
 
@@ -833,8 +822,6 @@ body #billing{max-width:800px;margin:0 auto}
   #setup .cauto.s12{order:-1}
   #addTeam .cauto.s12{order:-1}
   #addMember .cauto.s12{order:-1}
-  .teams-item{margin:1rem 0.5rem ;width:140px;height:180px;}
-  .teams-item figure div{padding:5px;height:140px;}
 
   .box{padding:2em;margin:0.5em;}
 

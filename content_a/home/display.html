@@ -5,7 +5,35 @@
 {%endblock%}
 
 {%block contentCenter%}
-  <div class='middle' id="teamList">
+<div class='middle normal f justify-center'>
+{%for key, value in team_list%}
+
+{%set cardColor%}
+{%if value.status == 'close'%}red{%elseif value.rule == 'admin'%}blue{%else%}{%endif%}
+{%endset%}
+  <a class="vcard mA10 {{cardColor}}" href='{{url.baseFull}}/{{value.id}}'>
+    <img src="{{value.logo}}" alt="{{value.name}}" class="pA10-f">
+    <div class="content">
+      <div class="header">{{value.name}}</div>
+      <div class="meta"><span>{%trans "Last traffic"%} {{"now" |sdate}}</span></div>
+    </div>
+    <div class="footer">
+    <i class="sf-users"></i>{{"123" | fitNumber}} {%trans "member"%}
+    {%if value.rule=='admin'%} <i class="sf-star fc-gold"></i>{%trans "Owner"%} {%endif%}
+    </div>
+  </a>
+{%endfor%}
+  <div class="vcard mA10">
+    <img src="{{url.static}}siftal/images/useful/plus1.png" alt="add new team">
+    <div class="content"></div>
+    <div class="footer pAn">
+     <a class="btn block primary" href="{{url.baseFull}}/team">{%trans "Add new team"%}</a>
+    </div>
+  </div>
+
+</div>
+
+  <div class='middle hide' id="teamList">
    <div class="f justify-center">
 {%for key, value in team_list%}
     <a class='teams-item' href='{{url.baseFull}}/{{value.id}}' {% if value.rule == 'admin' %} data-admin {% endif %}>

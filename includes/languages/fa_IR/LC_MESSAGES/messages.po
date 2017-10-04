@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
 "POT-Creation-Date: 2017-09-27 15:58+0330\n"
-"PO-Revision-Date: 2017-09-27 15:58+0330\n"
-"Last-Translator: Reza <rm.biqarar@gmail.com>\n"
+"PO-Revision-Date: 2017-10-04 09:33+0330\n"
+"Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: Ermile <J.Evazzadeh@gmail.com>\n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
@@ -308,8 +308,7 @@ msgstr "عنوان دلخواه نمی‌تواند بیشتر از ۵۰ کار�
 #: dash/addons/content_api/v1/parent/tools/add.php:165
 msgid "Your request was sended to user, wait for answer user"
 msgstr ""
-"درخواست شما به کاربر ارسال شده است. منتظر بمانید تا جواب کاربر به درخواست شما مشخص "
-"شود"
+"درخواست شما به کاربر ارسال شده است. منتظر بمانید تا جواب کاربر به درخواست شما مشخص شود"
 
 #: dash/addons/content_api/v1/parent/tools/add.php:192
 msgid "Are you :title of this user?"
@@ -843,32 +842,27 @@ msgstr "موبایل نامعتبر"
 msgid "Enter to :name with mobile"
 msgstr "ورود به :name با موبایل"
 
-#: dash/addons/content_enter/hook/model.php:25
-#: dash/addons/content_enter/hook/model.php:146
+#: dash/addons/content_enter/hook/model.php:25 dash/addons/content_enter/hook/model.php:146
 msgid "Telegram id not found"
 msgstr "آی‌دی تلگرام یافت نشد"
 
-#: dash/addons/content_enter/hook/model.php:31
-#: dash/addons/content_enter/hook/model.php:152
+#: dash/addons/content_enter/hook/model.php:31 dash/addons/content_enter/hook/model.php:152
 msgid "Invalid telegram id"
 msgstr "آی‌دی تلگرام نامعتبر است"
 
-#: dash/addons/content_enter/hook/model.php:61
-#: dash/addons/content_enter/hook/model.php:81
+#: dash/addons/content_enter/hook/model.php:61 dash/addons/content_enter/hook/model.php:81
 #: tejarak/content_api/v1/houredit/tools/action.php:186
 #: tejarak/content_api/v1/houredit/tools/add.php:318
 #: tejarak/content_api/v1/houredit/tools/delete.php:59
 #: tejarak/content_api/v1/houredit/tools/get.php:103
 #: tejarak/content_api/v1/houredit/tools/get.php:192
 #: tejarak/content_api/v1/houredit/tools/get.php:248
-#: tejarak/content_api/v1/hours/tools/get.php:138
-#: tejarak/content_api/v1/team/model.php:117
+#: tejarak/content_api/v1/hours/tools/get.php:138 tejarak/content_api/v1/team/model.php:117
 #: tejarak/content_api/v1/team/tools/get.php:419
 msgid "Operation complete"
 msgstr "عملیات کامل شد"
 
-#: dash/addons/content_enter/hook/model.php:65
-#: dash/addons/content_enter/hook/model.php:85
+#: dash/addons/content_enter/hook/model.php:65 dash/addons/content_enter/hook/model.php:85
 msgid "Operation faild"
 msgstr "عملیات با خطا مواجه شد"
 
@@ -1073,11 +1067,11 @@ msgstr "بازیابی گذرواژه"
 
 #: dash/addons/content_enter/pass/view.php:37
 msgid ""
-"If forget your password, Please enter new password. after pass verification your "
-"new password is usable."
+"If forget your password, Please enter new password. after pass verification your new "
+"password is usable."
 msgstr ""
-"اگر گذرواژه‌ی خود را فراموش کرده‌اید، مقدار جدیدی را وارد کنید. پس از تکمیل "
-"اعتبارسنجی، این گذرواژه قابل استفاده خواهد بود."
+"اگر گذرواژه‌ی خود را فراموش کرده‌اید، مقدار جدیدی را وارد کنید. پس از تکمیل اعتبارسنجی، "
+"این گذرواژه قابل استفاده خواهد بود."
 
 #: dash/addons/content_enter/pass/view.php:42
 #: dash/addons/includes/languages/trans_addons.php:957
@@ -1213,8 +1207,8 @@ msgstr "لطفا هویت خود را تایید کنید."
 #: dash/addons/content_enter/verify/view.php:37
 msgid "We've sent the code via Telegram. Please enter the code below."
 msgstr ""
-"ما کد اعتبارسنجی را از طریق تلگرام برای شما ارسال کردیم. لطفا کد را در باکس پایین "
-"وارد کنید"
+"ما کد اعتبارسنجی را از طریق تلگرام برای شما ارسال کردیم. لطفا کد را در باکس پایین وارد "
+"کنید"
 
 #: dash/addons/content_enter/verify/view.php:41
 msgid "We trying to call you. be patient..."
@@ -1223,8 +1217,8 @@ msgstr "ما در حال تلاش برای تماس با شما هستیم و ت
 #: dash/addons/content_enter/verify/view.php:45
 msgid "Your verification code sended to your mobile number via sms. be patient..."
 msgstr ""
-"کد اعتبارسنجی از طریق پیامک به شماره شما ارسال شده است و بزودی به‌دست شما خواهد "
-"رسید. صبور باشید..."
+"کد اعتبارسنجی از طریق پیامک به شماره شما ارسال شده است و بزودی به‌دست شما خواهد رسید. "
+"صبور باشید..."
 
 #: dash/addons/content_enter/verify/view.php:49
 msgid ""
@@ -1897,8 +1891,7 @@ msgstr "نام‌خانوادگی"
 #: tejarak/includes/languages/trans_addons.php:136
 #: tejarak/includes/languages/trans_twig.php:448
 msgid "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"
-msgstr ""
-"پسوندهای مجاز jpg و png هستند‌(‌gif برای پلن‌های تجاری). حداکثر حجم مجاز ۵۰۰ کیلوبایت"
+msgstr "پسوندهای مجاز jpg و png هستند‌(‌gif برای پلن‌های تجاری). حداکثر حجم مجاز ۵۰۰ کیلوبایت"
 
 #: dash/addons/includes/languages/trans_addons.php:137
 #: tejarak/includes/languages/trans_addons.php:137
@@ -2288,24 +2281,24 @@ msgstr "استایلی باورنکردنی!"
 #: dash/addons/includes/languages/trans_addons.php:270
 #: tejarak/includes/languages/trans_addons.php:270
 msgid ""
-"Definitions aren't limited to just buttons on a page. Siftal's components allow "
-"several distinct types of definitions: elements, collections, views, modules and "
-"behaviors which cover the gamut of interface design."
+"Definitions aren't limited to just buttons on a page. Siftal's components allow several "
+"distinct types of definitions: elements, collections, views, modules and behaviors which "
+"cover the gamut of interface design."
 msgstr ""
-"تعاریف فقط به دکمه‌های یک صفحه محدود نمی‌شوند. اجزای سیفتال اجازه میدهد تا چندین نوع "
-"از تعاریف مختلفی از جمله عناصر، مجموعه‌ها، نمایش‌ها، ماژول‌ها و رفتارها در محدوده "
-"طراحی رابط قرار گیرند."
+"تعاریف فقط به دکمه‌های یک صفحه محدود نمی‌شوند. اجزای سیفتال اجازه میدهد تا چندین نوع از "
+"تعاریف مختلفی از جمله عناصر، مجموعه‌ها، نمایش‌ها، ماژول‌ها و رفتارها در محدوده طراحی رابط "
+"قرار گیرند."
 
 #: dash/addons/includes/languages/trans_addons.php:271
 #: tejarak/includes/languages/trans_addons.php:271
 msgid ""
-"For improved cross-browser rendering, we use <a href='sample/reset'>special reset</"
-"a> to correct inconsistencies across browsers and devices while providing slightly "
-"more opinionated resets to common HTML elements."
+"For improved cross-browser rendering, we use <a href='sample/reset'>special reset</a> to "
+"correct inconsistencies across browsers and devices while providing slightly more "
+"opinionated resets to common HTML elements."
 msgstr ""
-"برای بهبود رندر متقابل مرورگر‌ها، ما از <a href='sample/reset'> تنظیم مجدد ویژه </"
-"a> برای اصلاح ناسازگاری بین مرورگرها و دستگاه‌ها استفاده می‌کنیم و در عین حال تنظیم "
-"مجدد تنظیمات نسبت به عناصر HTML معمول را بیشتر میکند."
+"برای بهبود رندر متقابل مرورگر‌ها، ما از <a href='sample/reset'> تنظیم مجدد ویژه </a> برای "
+"اصلاح ناسازگاری بین مرورگرها و دستگاه‌ها استفاده می‌کنیم و در عین حال تنظیم مجدد تنظیمات "
+"نسبت به عناصر HTML معمول را بیشتر میکند."
 
 #: dash/addons/includes/languages/trans_addons.php:272
 #: tejarak/includes/languages/trans_addons.php:272
@@ -2689,8 +2682,7 @@ msgstr "نشان"
 
 #: dash/addons/includes/languages/trans_addons.php:349
 #: tejarak/includes/languages/trans_addons.php:349
-msgid ""
-"Documentation and examples for badges, our small count and labeling component."
+msgid "Documentation and examples for badges, our small count and labeling component."
 msgstr "مستندات و نمونه‌های برای نشان‌ها‌، شمار کوچک ما و اجزاء برچسب زده‌شده‌‌. "
 
 #: dash/addons/includes/languages/trans_addons.php:350
@@ -2701,11 +2693,11 @@ msgstr "مثال‌ها"
 #: dash/addons/includes/languages/trans_addons.php:351
 #: tejarak/includes/languages/trans_addons.php:351
 msgid ""
-"Badges scale to match the size of the immediate parent element by using relative "
-"font sizing and <code class='code1'>em</code> units."
+"Badges scale to match the size of the immediate parent element by using relative font "
+"sizing and <code class='code1'>em</code> units."
 msgstr ""
-"مقیاس مدال‌ها برای مطابقت با اندازه اصلی عنصر با استفاده از اندازه فونت نسبی و واحد "
-"<code class='code1'>em</code> صورت می‌گیرد."
+"مقیاس مدال‌ها برای مطابقت با اندازه اصلی عنصر با استفاده از اندازه فونت نسبی و واحد <code "
+"class='code1'>em</code> صورت می‌گیرد."
 
 #: dash/addons/includes/languages/trans_addons.php:352
 #: tejarak/includes/languages/trans_addons.php:352
@@ -2720,8 +2712,7 @@ msgstr "جدید"
 #: dash/addons/includes/languages/trans_addons.php:354
 #: tejarak/includes/languages/trans_addons.php:354
 msgid "Badges can be used as part of links or buttons to provide a counter."
-msgstr ""
-"مدال‌ها را می‌توان بعنوان بخشی از پیوندها یا دکمه‌ها برای ارائه شمارنده استفاده کرد."
+msgstr "مدال‌ها را می‌توان بعنوان بخشی از پیوندها یا دکمه‌ها برای ارائه شمارنده استفاده کرد."
 
 #: dash/addons/includes/languages/trans_addons.php:355
 #: tejarak/includes/languages/trans_addons.php:355
@@ -2736,10 +2727,8 @@ msgstr "متغیرهای متنی"
 #: dash/addons/includes/languages/trans_addons.php:357
 #: tejarak/includes/languages/trans_addons.php:357
 msgid ""
-"Add any of the below mentioned modifier classes to change the appearance of a "
-"badge."
-msgstr ""
-"هر یک از کلاس‌های اصلاح کننده زیر را اضافه کنید تا ظاهر یک نشان را تغییر دهید."
+"Add any of the below mentioned modifier classes to change the appearance of a badge."
+msgstr "هر یک از کلاس‌های اصلاح کننده زیر را اضافه کنید تا ظاهر یک نشان را تغییر دهید."
 
 #: dash/addons/includes/languages/trans_addons.php:358
 #: tejarak/includes/languages/trans_addons.php:358
@@ -2779,11 +2768,11 @@ msgstr "علامت گرد"
 #: dash/addons/includes/languages/trans_addons.php:365
 #: tejarak/includes/languages/trans_addons.php:365
 msgid ""
-"Use the <code class='code1'>.rounded</code> modifier class to make badges more "
-"rounded (with a larger border-radius and additional horizontal padding)."
+"Use the <code class='code1'>.rounded</code> modifier class to make badges more rounded "
+"(with a larger border-radius and additional horizontal padding)."
 msgstr ""
-"استفاده از‌این کلاس : <code class='code1'>.rounded</code> اشیاء را به منظور‌ ایجاد "
-"مدال گرد می‌کند ‌(‌با شعاع گردی بالاتر (border-radius) و فاصله داخلی افقی بیشتر‌)."
+"استفاده از‌این کلاس : <code class='code1'>.rounded</code> اشیاء را به منظور‌ ایجاد مدال "
+"گرد می‌کند ‌(‌با شعاع گردی بالاتر (border-radius) و فاصله داخلی افقی بیشتر‌)."
 
 #: dash/addons/includes/languages/trans_addons.php:366
 #: tejarak/includes/languages/trans_addons.php:366
@@ -2793,12 +2782,11 @@ msgstr "لینک‌ها"
 #: dash/addons/includes/languages/trans_addons.php:367
 #: tejarak/includes/languages/trans_addons.php:367
 msgid ""
-"Using the <code class='code1'>.badge</code> classes with the <code "
-"class='code1'>&lt;a&gt;</code> element quickly provide actionable badges with "
-"hover and focus states."
+"Using the <code class='code1'>.badge</code> classes with the <code class='code1'>&lt;"
+"a&gt;</code> element quickly provide actionable badges with hover and focus states."
 msgstr ""
-"استفاده از : <code class='code1'>.badge</code> کلاس با اسم : <code "
-"class='code1'>&lt;a&gt;</code> به سرعت حالت‌های شناور و متمرکز را تنظیم می‌کند."
+"استفاده از : <code class='code1'>.badge</code> کلاس با اسم : <code class='code1'>&lt;"
+"a&gt;</code> به سرعت حالت‌های شناور و متمرکز را تنظیم می‌کند."
 
 #: dash/addons/includes/languages/trans_addons.php:370
 #: tejarak/includes/languages/trans_addons.php:370
@@ -2839,19 +2827,16 @@ msgstr "باکس"
 #: dash/addons/includes/languages/trans_addons.php:379
 #: tejarak/includes/languages/trans_addons.php:379
 msgid ""
-"Siftal's box provide a flexible and extensible content container for title and "
-"contents."
-msgstr ""
-"جعبه‌ها (box) در سیفتال انعطاف و گسترش بذیری برای عنوان و محتوا را ارائه می‌دهند."
+"Siftal's box provide a flexible and extensible content container for title and contents."
+msgstr "جعبه‌ها (box) در سیفتال انعطاف و گسترش بذیری برای عنوان و محتوا را ارائه می‌دهند."
 
 #: dash/addons/includes/languages/trans_addons.php:380
 #: tejarak/includes/languages/trans_addons.php:380
 msgid ""
-"You can use elements of this page in all part of site and mix them with another "
-"elements."
+"You can use elements of this page in all part of site and mix them with another elements."
 msgstr ""
-"می‌توانید از عناصر‌این صفحه در تمام قسمت‌های سایت استفاده کنید و آنها را با عناصر "
-"دیگر‌ترکیب کنید."
+"می‌توانید از عناصر‌این صفحه در تمام قسمت‌های سایت استفاده کنید و آنها را با عناصر دیگر‌ترکیب "
+"کنید."
 
 #: dash/addons/includes/languages/trans_addons.php:381
 #: tejarak/includes/languages/trans_addons.php:381
@@ -2861,11 +2846,11 @@ msgstr "سلام"
 #: dash/addons/includes/languages/trans_addons.php:384
 #: tejarak/includes/languages/trans_addons.php:384
 msgid ""
-"Indicate the current page's location within a navigational hierarchy that "
-"automatically adds separators via CSS."
+"Indicate the current page's location within a navigational hierarchy that automatically "
+"adds separators via CSS."
 msgstr ""
-"محل مکان فعلی را در سلسله مراتب ناوبری نشان می‌دهد که به طور خودکار جدا کننده‌هایی "
-"از طریق سی‌اس‌اس اضافه میکند."
+"محل مکان فعلی را در سلسله مراتب ناوبری نشان می‌دهد که به طور خودکار جدا کننده‌هایی از طریق "
+"سی‌اس‌اس اضافه میکند."
 
 #: dash/addons/includes/languages/trans_addons.php:385
 #: tejarak/includes/languages/trans_addons.php:385
@@ -2885,11 +2870,11 @@ msgstr "نوارهای‌ناوبری می‌توانند در اندازه مت
 #: dash/addons/includes/languages/trans_addons.php:390
 #: tejarak/includes/languages/trans_addons.php:390
 msgid ""
-"Use Siftal's custom button styles for actions in forms, dialogs, and more with "
-"support for multiple sizes, states, and more."
+"Use Siftal's custom button styles for actions in forms, dialogs, and more with support "
+"for multiple sizes, states, and more."
 msgstr ""
-"استایل‌های سفارشی سیفتال برای اقدامات در فرم‌ها و گفتگوها و‌‌.‌.. با پشتیبانی از سایز‌ها "
-"و حالت‌های مختلف و... استفاده کنید."
+"استایل‌های سفارشی سیفتال برای اقدامات در فرم‌ها و گفتگوها و‌‌.‌.. با پشتیبانی از سایز‌ها و "
+"حالت‌های مختلف و... استفاده کنید."
 
 #: dash/addons/includes/languages/trans_addons.php:391
 #: tejarak/includes/languages/trans_addons.php:391
@@ -2899,11 +2884,11 @@ msgstr "مثال ساده"
 #: dash/addons/includes/languages/trans_addons.php:392
 #: tejarak/includes/languages/trans_addons.php:392
 msgid ""
-"Siftal includes several predefined button styles, each serving its own semantic "
-"purpose, with a few extras thrown in for more control."
+"Siftal includes several predefined button styles, each serving its own semantic purpose, "
+"with a few extras thrown in for more control."
 msgstr ""
-"سیفتال عبارت است از : دکمه‌های با استایل‌های از پیش تعریف‌شده‌، هر سرویس برای انجام "
-"کار خواصی تعیین‌شده به همراه جزئیات اضافه‌تر."
+"سیفتال عبارت است از : دکمه‌های با استایل‌های از پیش تعریف‌شده‌، هر سرویس برای انجام کار "
+"خواصی تعیین‌شده به همراه جزئیات اضافه‌تر."
 
 #: dash/addons/includes/languages/trans_addons.php:393
 #: tejarak/includes/languages/trans_addons.php:393
@@ -2924,31 +2909,28 @@ msgstr "تگ‌های دکمه"
 #: tejarak/includes/languages/trans_addons.php:396
 msgid ""
 "The <code class='code1'>.btn</code> classes are designed to be used with the <code "
-"class='code1'>&lt;button&gt;</code> element. However, you can also use these "
-"classes on <code class='code1'>&lt;a&gt;</code> or <code class='code1'>&lt;"
-"input&gt;</code> elements (though some browsers may apply a slightly different "
-"rendering)."
+"class='code1'>&lt;button&gt;</code> element. However, you can also use these classes on "
+"<code class='code1'>&lt;a&gt;</code> or <code class='code1'>&lt;input&gt;</code> "
+"elements (though some browsers may apply a slightly different rendering)."
 msgstr ""
-"کلاس‌های <code class='code1'>.btn</code> برای استفاده با عنصر <code "
-"class='code1'>&lt;button&gt;</code> طراحی‌شده اند. با‌این حال، شما می‌توانید از‌این "
-"کلاس‌ها در عناصر <code class='code1'>&lt;input&gt;</code> یا <code "
-"class='code1'>&lt;a&gt;</code> استفاده کنید (اگر چه در برخی از مرورگرها رندر "
-"کمی‌متفاوت است)."
+"کلاس‌های <code class='code1'>.btn</code> برای استفاده با عنصر <code class='code1'>&lt;"
+"button&gt;</code> طراحی‌شده اند. با‌این حال، شما می‌توانید از‌این کلاس‌ها در عناصر <code "
+"class='code1'>&lt;input&gt;</code> یا <code class='code1'>&lt;a&gt;</code> استفاده کنید "
+"(اگر چه در برخی از مرورگرها رندر کمی‌متفاوت است)."
 
 #: dash/addons/includes/languages/trans_addons.php:397
 #: tejarak/includes/languages/trans_addons.php:397
 msgid ""
-"When using button classes on <code class='code1'>&lt;a&gt;</code> elements that "
-"are used to trigger in-page functionality (like collapsing content), rather than "
-"linking to new pages or sections within the current page, these links should be "
-"given a <code class='code1'>role='button'</code> to appropriately convey their "
-"purpose to assistive technologies such as screen readers."
+"When using button classes on <code class='code1'>&lt;a&gt;</code> elements that are used "
+"to trigger in-page functionality (like collapsing content), rather than linking to new "
+"pages or sections within the current page, these links should be given a <code "
+"class='code1'>role='button'</code> to appropriately convey their purpose to assistive "
+"technologies such as screen readers."
 msgstr ""
 "هنگام استفاده از کلاسهای دکمه در عناصر<code class='code1'>&lt;a&gt;</code> که برای "
-"فعال‌کردن قابلیت صفحه در صفحه (مانند محو شدن محتوا) استفاده می‌شود، به جای پیوند "
-"دادن به صفحات یا بخش‌های جدید در صفحه فعلی،‌این پیوندها باید کد <code "
-"class='code1'>role='button'</code> را به درستی با منظور خود و به فن آوری‌های جانبی "
-"مانند خوانندگان صفحه نمایش منتقل‌کند."
+"فعال‌کردن قابلیت صفحه در صفحه (مانند محو شدن محتوا) استفاده می‌شود، به جای پیوند دادن به "
+"صفحات یا بخش‌های جدید در صفحه فعلی،‌این پیوندها باید کد <code class='code1'>role='button'</"
+"code> را به درستی با منظور خود و به فن آوری‌های جانبی مانند خوانندگان صفحه نمایش منتقل‌کند."
 
 #: dash/addons/includes/languages/trans_addons.php:398
 #: tejarak/includes/languages/trans_addons.php:398
@@ -2969,13 +2951,13 @@ msgstr "دکمه‌های خارجی"
 #: dash/addons/includes/languages/trans_addons.php:401
 #: tejarak/includes/languages/trans_addons.php:401
 msgid ""
-"In need of a button, but not the hefty background colors they bring? Replace the "
-"default modifier classes with the <code class='code1'>.outline</code> ones to "
-"remove all background images and colors on any button."
+"In need of a button, but not the hefty background colors they bring? Replace the default "
+"modifier classes with the <code class='code1'>.outline</code> ones to remove all "
+"background images and colors on any button."
 msgstr ""
-"به یک دکمه نیاز دارید اما رنگ پس زمینه کثیفی را به ارمغان میاورد‌؟  کلاس‌های اصلاح "
-"کننده پیش فرض را با کد‌های <code class='code1'>.outline</code>  جایگزین کنید تا "
-"تمام تصاویر و رنگ‌های پس‌زمینه بر روی هر دکمه حذف شوند."
+"به یک دکمه نیاز دارید اما رنگ پس زمینه کثیفی را به ارمغان میاورد‌؟  کلاس‌های اصلاح کننده "
+"پیش فرض را با کد‌های <code class='code1'>.outline</code>  جایگزین کنید تا تمام تصاویر و "
+"رنگ‌های پس‌زمینه بر روی هر دکمه حذف شوند."
 
 #: dash/addons/includes/languages/trans_addons.php:402
 #: tejarak/includes/languages/trans_addons.php:402
@@ -2990,8 +2972,7 @@ msgstr "یک دکمه می‌تواند تغییر کنید تا در زمینه
 #: dash/addons/includes/languages/trans_addons.php:404
 #: tejarak/includes/languages/trans_addons.php:404
 msgid "Fancy larger or smaller buttons? Add .btn-lg or .btn-sm for additional sizes."
-msgstr ""
-"دکمه‌های بزرگتر یا کوچکتر با اضافه‌کردن .btn-lg or .btn-sm برای‌ اندازه‌های اضافی"
+msgstr "دکمه‌های بزرگتر یا کوچکتر با اضافه‌کردن .btn-lg or .btn-sm برای‌ اندازه‌های اضافی"
 
 #: dash/addons/includes/languages/trans_addons.php:405
 #: tejarak/includes/languages/trans_addons.php:405
@@ -3036,15 +3017,15 @@ msgstr "حالت فعال"
 #: dash/addons/includes/languages/trans_addons.php:413
 #: tejarak/includes/languages/trans_addons.php:413
 msgid ""
-"Buttons will appear pressed (with a darker background) when active. There’s no "
-"need to add a class to <code class='code1'>&lt;button&gt;</code>s as they use a "
-"pseudo-class. However, you can still force the same active appearance with .active "
-"should you need to replicate the state programmatically."
+"Buttons will appear pressed (with a darker background) when active. There’s no need to "
+"add a class to <code class='code1'>&lt;button&gt;</code>s as they use a pseudo-class. "
+"However, you can still force the same active appearance with .active should you need to "
+"replicate the state programmatically."
 msgstr ""
-"هنگامی‌که دکمه فشرده‌ می‌شود (درپس‌زمینه سیاه) در حالت فعال. شما نیاز‌ندارید که کلاسی "
-"را به <code class='code1'>&lt;button&gt;</code>‌ها اضافه کنید چون از یک کلاس "
-"<code>pseudo</code> استفاده می‌کند.با این حال شما می‌توانید همان ظاهر‌ را با <code>."
-"active</code> فعال‌تر کنید نیازی نیست حالت را دوباره برنامه‌نویسی کنید."
+"هنگامی‌که دکمه فشرده‌ می‌شود (درپس‌زمینه سیاه) در حالت فعال. شما نیاز‌ندارید که کلاسی را به "
+"<code class='code1'>&lt;button&gt;</code>‌ها اضافه کنید چون از یک کلاس <code>pseudo</"
+"code> استفاده می‌کند.با این حال شما می‌توانید همان ظاهر‌ را با <code>.active</code> فعال‌تر "
+"کنید نیازی نیست حالت را دوباره برنامه‌نویسی کنید."
 
 #: dash/addons/includes/languages/trans_addons.php:414
 #: tejarak/includes/languages/trans_addons.php:414
@@ -3057,21 +3038,21 @@ msgid ""
 "Make buttons look inactive by adding the disabled boolean attribute to any <code "
 "class='code1'>&lt;button&gt;</code> element."
 msgstr ""
-"با اضافه‌کردن خاصیبت boolean false به هر یک از عناصر <code class='code1'>&lt;"
-"button&gt;</code> غیرفعال می‌شوند."
+"با اضافه‌کردن خاصیبت boolean false به هر یک از عناصر <code class='code1'>&lt;button&gt;</"
+"code> غیرفعال می‌شوند."
 
 #: dash/addons/includes/languages/trans_addons.php:416
 #: tejarak/includes/languages/trans_addons.php:416
 msgid ""
-"Disabled buttons using the <code class='code1'>&lt;a&gt;</code> element behave a "
-"bit different because <code class='code1'>&lt;a&gt;</code>s don’t support the "
-"<code class='code1'>disabled</code> attribute, so you must add the <code "
-"class='code1'>.disabled</code> class to make it visually appear disabled."
+"Disabled buttons using the <code class='code1'>&lt;a&gt;</code> element behave a bit "
+"different because <code class='code1'>&lt;a&gt;</code>s don’t support the <code "
+"class='code1'>disabled</code> attribute, so you must add the <code class='code1'>."
+"disabled</code> class to make it visually appear disabled."
 msgstr ""
-"دکمه‌های غیرفعال با استفاده از عناصر <code class='code1'>&lt;a&gt;</code> کمی‌متفاوت "
-"عمل می‌کنند زیرا  <code class='code1'>&lt;a&gt;</code>ها از صفت <code "
-"class='code1'>disabled</code> پشتیبانی نمی‌کنند، پس شما باید کلاس <code "
-"class='code1'>.disabled</code> را اضافه کنید تا به‌صورت کامل غیرفعال‌شود."
+"دکمه‌های غیرفعال با استفاده از عناصر <code class='code1'>&lt;a&gt;</code> کمی‌متفاوت عمل "
+"می‌کنند زیرا  <code class='code1'>&lt;a&gt;</code>ها از صفت <code class='code1'>disabled</"
+"code> پشتیبانی نمی‌کنند، پس شما باید کلاس <code class='code1'>.disabled</code> را اضافه "
+"کنید تا به‌صورت کامل غیرفعال‌شود."
 
 #: dash/addons/includes/languages/trans_addons.php:417
 #: tejarak/includes/languages/trans_addons.php:417
@@ -3096,33 +3077,32 @@ msgstr "لینک هشدار عملکرد"
 #: dash/addons/includes/languages/trans_addons.php:421
 #: tejarak/includes/languages/trans_addons.php:421
 msgid ""
-"The <code class='code1'>.disabled</code> class uses <code class='code1'>pointer-"
-"events: none</code> to try to disable the link functionality of <code "
-"class='code1'>&lt;a&gt;</code>s, but that CSS property is not yet standardized. In "
-"addition, even in browsers that do support <code class='code1'>pointer-events: "
-"none</code>, keyboard navigation remains unaffected, meaning that sighted keyboard "
-"users and users of assistive technologies will still be able to activate these "
-"links. So to be safe, add a <code class='code1'>tabindex='-1'</code> attribute on "
-"these links (to prevent them from receiving keyboard focus) and use custom "
-"JavaScript to disable their functionality."
+"The <code class='code1'>.disabled</code> class uses <code class='code1'>pointer-events: "
+"none</code> to try to disable the link functionality of <code class='code1'>&lt;a&gt;</"
+"code>s, but that CSS property is not yet standardized. In addition, even in browsers "
+"that do support <code class='code1'>pointer-events: none</code>, keyboard navigation "
+"remains unaffected, meaning that sighted keyboard users and users of assistive "
+"technologies will still be able to activate these links. So to be safe, add a <code "
+"class='code1'>tabindex='-1'</code> attribute on these links (to prevent them from "
+"receiving keyboard focus) and use custom JavaScript to disable their functionality."
 msgstr ""
-"کلاس : <code class='code1'>.disabled</code> از <code class='code1'>pointer-events: "
-"none</code> استفاده می‌کند تا توابع لینک را در  <code class='code1'> &lt;a&gt; </"
-"code>  غیرفعال‌کند اما آن ویژگی‌های سی‌اس‌اس استاندارد نیستند. هر زمان در مرورگر "
-"از<code class='code1'>pointer-events: none</code> پشتیبانی‌کند، مکان‌نمای صفحه‌کلید "
-"باقی می‌ماند، به این معنی که کاربران با صفحه‌کلید می‌توانند این لینک‌ها را فعال کنند. "
-"پس مطمئن باشید با اضافه‌کردن صفت <code class='code1'>tabindex='-1'</code>  بر روی "
-"لینک‌های خود(برای جلوگیری از دریافت فوکوس صفحه کلید) و همچنین از یکسری قابلیت‌های "
-"جاوا‌اسکریپت برای غیرفعال‌کردن این رویداد‌ها استفاده می‌کند."
+"کلاس : <code class='code1'>.disabled</code> از <code class='code1'>pointer-events: none</"
+"code> استفاده می‌کند تا توابع لینک را در  <code class='code1'> &lt;a&gt; </code>  "
+"غیرفعال‌کند اما آن ویژگی‌های سی‌اس‌اس استاندارد نیستند. هر زمان در مرورگر از<code "
+"class='code1'>pointer-events: none</code> پشتیبانی‌کند، مکان‌نمای صفحه‌کلید باقی می‌ماند، به "
+"این معنی که کاربران با صفحه‌کلید می‌توانند این لینک‌ها را فعال کنند. پس مطمئن باشید با "
+"اضافه‌کردن صفت <code class='code1'>tabindex='-1'</code>  بر روی لینک‌های خود(برای جلوگیری "
+"از دریافت فوکوس صفحه کلید) و همچنین از یکسری قابلیت‌های جاوا‌اسکریپت برای غیرفعال‌کردن این "
+"رویداد‌ها استفاده می‌کند."
 
 #: dash/addons/includes/languages/trans_addons.php:424
 #: tejarak/includes/languages/trans_addons.php:424
 msgid ""
-"Easily extend form controls by adding text, buttons, or button groups on either "
-"side of textual inputs."
+"Easily extend form controls by adding text, buttons, or button groups on either side of "
+"textual inputs."
 msgstr ""
-"به راحتی کنترلر‌های فرم را با اضافه‌کردن متن‌، دکمه‌ها یا گروه‌های دکمه‌ای در هر دو طرف "
-"از ورودی‌های متنی گسترش دهید "
+"به راحتی کنترلر‌های فرم را با اضافه‌کردن متن‌، دکمه‌ها یا گروه‌های دکمه‌ای در هر دو طرف از "
+"ورودی‌های متنی گسترش دهید "
 
 #: dash/addons/includes/languages/trans_addons.php:425
 #: tejarak/includes/languages/trans_addons.php:425
@@ -3333,8 +3313,7 @@ msgstr "بریدن"
 
 #: dash/addons/includes/languages/trans_addons.php:472
 #: tejarak/includes/languages/trans_addons.php:472
-msgid ""
-"complete example of crop in modal and show preview after that with default image"
+msgid "complete example of crop in modal and show preview after that with default image"
 msgstr "نمونه‌های کاملی از برش در مدل و پیشنمایش بعد از آن به همراه تصویر پیشفرض."
 
 #: dash/addons/includes/languages/trans_addons.php:475
@@ -3503,15 +3482,14 @@ msgstr "تقسیم بندی صفحه"
 #: tejarak/includes/languages/trans_addons.php:513
 msgid "one row will divide to the number of parts, if you just set class='c'"
 msgstr ""
-"یک ردیف به تعداد قطعات تقسیم می‌شود، اگر شما فقط <code>class = 'c'</code> را تنظیم "
-"کنید"
+"یک ردیف به تعداد قطعات تقسیم می‌شود، اگر شما فقط <code>class = 'c'</code> را تنظیم کنید"
 
 #: dash/addons/includes/languages/trans_addons.php:514
 #: tejarak/includes/languages/trans_addons.php:514
 msgid "on large screens if you just set class='x', it will take the x class ratio"
 msgstr ""
-"در صفحه نمایش‌های بزرگ اگر ست کنید : <code>class='x',</code> کلاس‌ها را نسبت به کلاس "
-"x خواهد گرفت"
+"در صفحه نمایش‌های بزرگ اگر ست کنید : <code>class='x',</code> کلاس‌ها را نسبت به کلاس x "
+"خواهد گرفت"
 
 #: dash/addons/includes/languages/trans_addons.php:515
 #: tejarak/includes/languages/trans_addons.php:515
@@ -3710,8 +3688,8 @@ msgid ""
 "Provide contextual feedback messages for typical user actions with the handful of "
 "available and flexible alert messages."
 msgstr ""
-"فراهم کننده متنی بازخورد متن برای اقدامات معمولی کاربر به همراه تعداد انگشت شماری "
-"از دسترسی و پیغام‌های هشدار انعطاف پذیر‌‌. "
+"فراهم کننده متنی بازخورد متن برای اقدامات معمولی کاربر به همراه تعداد انگشت شماری از "
+"دسترسی و پیغام‌های هشدار انعطاف پذیر‌‌. "
 
 #: dash/addons/includes/languages/trans_addons.php:564
 #: tejarak/includes/languages/trans_addons.php:564
@@ -3809,8 +3787,8 @@ msgid ""
 "Use the <code class='code1'>.link</code> utility class to quickly provide matching "
 "colored links within any alert."
 msgstr ""
-"با استفاده از کلاس : <code class='code1'>.link</code> به سرعت لینک‌های رنگی را در "
-"هر هشدار استفاده کنید "
+"با استفاده از کلاس : <code class='code1'>.link</code> به سرعت لینک‌های رنگی را در هر "
+"هشدار استفاده کنید "
 
 #: dash/addons/includes/languages/trans_addons.php:583
 #: tejarak/includes/languages/trans_addons.php:583
@@ -3870,11 +3848,10 @@ msgstr "محتوای اضافی"
 #: dash/addons/includes/languages/trans_addons.php:594
 #: tejarak/includes/languages/trans_addons.php:594
 msgid ""
-"Alerts can also contain additional HTML elements like headings, paragraphs and "
-"dividers."
+"Alerts can also contain additional HTML elements like headings, paragraphs and dividers."
 msgstr ""
-"همچنین هشدار‌ها می‌توانند شامل عناصر اچ‌تی‌ام‌ال اضافی مانند پاراگراف‌ها، عنوان‌ها و "
-"جداکننده‌ها باشند."
+"همچنین هشدار‌ها می‌توانند شامل عناصر اچ‌تی‌ام‌ال اضافی مانند پاراگراف‌ها، عنوان‌ها و جداکننده‌ها "
+"باشند."
 
 #: dash/addons/includes/languages/trans_addons.php:595
 #: tejarak/includes/languages/trans_addons.php:595
@@ -3884,20 +3861,19 @@ msgstr "آفرین!"
 #: dash/addons/includes/languages/trans_addons.php:596
 #: tejarak/includes/languages/trans_addons.php:596
 msgid ""
-"Aww yeah, you successfully read this important alert message. This example text is "
-"going to run a bit longer so that you can see how spacing within an alert works "
-"with this kind of content."
+"Aww yeah, you successfully read this important alert message. This example text is going "
+"to run a bit longer so that you can see how spacing within an alert works with this kind "
+"of content."
 msgstr ""
-"اوه بله شما موفق به خواندن‌این پیام مهم شدید.این یک متن مثال است تا بتوانید ببینید "
-"فاصله در یک هشدار با‌این محتوا چگونه کار می‌کند."
+"اوه بله شما موفق به خواندن‌این پیام مهم شدید.این یک متن مثال است تا بتوانید ببینید فاصله "
+"در یک هشدار با‌این محتوا چگونه کار می‌کند."
 
 #: dash/addons/includes/languages/trans_addons.php:597
 #: tejarak/includes/languages/trans_addons.php:597
-msgid ""
-"Whenever you need to, be sure to use margin utilities to keep things nice and tidy."
+msgid "Whenever you need to, be sure to use margin utilities to keep things nice and tidy."
 msgstr ""
-"هر زمان که نیاز دارید مطمئن از ابزار‌های حاشیه‌ای (margin) استفاده کنیدتا چیزها را "
-"زیباتر و منظم‌تر نگه‌دارید"
+"هر زمان که نیاز دارید مطمئن از ابزار‌های حاشیه‌ای (margin) استفاده کنیدتا چیزها را زیباتر "
+"و منظم‌تر نگه‌دارید"
 
 #: dash/addons/includes/languages/trans_addons.php:598
 #: tejarak/includes/languages/trans_addons.php:598
@@ -4256,8 +4232,8 @@ msgid ""
 "Documentation and examples for showing pagination to indicate a series of related "
 "content exists across multiple pages."
 msgstr ""
-"مستندات و نمونه‌هایی برای نشان دادن صفحه بندی برای نمایش یک سری از محتوای مرتبط که "
-"در چند صفحه وجود دارد."
+"مستندات و نمونه‌هایی برای نشان دادن صفحه بندی برای نمایش یک سری از محتوای مرتبط که در چند "
+"صفحه وجود دارد."
 
 #: dash/addons/includes/languages/trans_addons.php:673
 #: tejarak/includes/languages/trans_addons.php:673
@@ -4267,17 +4243,17 @@ msgstr "بررسی اجمالی"
 #: dash/addons/includes/languages/trans_addons.php:674
 #: tejarak/includes/languages/trans_addons.php:674
 msgid ""
-"We use a large block of connected links for our pagination, making links hard to "
-"miss and easily scalable—all while providing large hit areas. Pagination is built "
-"with list HTML elements so screen readers can announce the number of available "
-"links. Use a wrapping <nav> element to identify it as a navigation section to "
-"screen readers and other assistive technologies."
+"We use a large block of connected links for our pagination, making links hard to miss "
+"and easily scalable—all while providing large hit areas. Pagination is built with list "
+"HTML elements so screen readers can announce the number of available links. Use a "
+"wrapping <nav> element to identify it as a navigation section to screen readers and "
+"other assistive technologies."
 msgstr ""
 "ما از یک بلوک بزرگ از لینک‌های متصل برای صفحه بندی ما استفاده می‌کنیم، که باعث میشود "
-"لینک‌ها به راحتی قابل دسترسی است و به راحتی مقیاس پذیر باشند - در حالی که اماده یک "
-"کلیک هستند.صفحه بندی با عناصر لیست در اچ‌تی‌ام‌ال‌5 ساخته‌شده اند‌، بنابر‌این خوانندگان "
-"میتوانند تعداد لینک‌های موجود دار اعلام کنند‌‌. از یک عنصر<nav> استفاده کنید تا آنرا "
-"به عنوان بخش ناوبری برای نمایش به خوانندگان و سایر تکنیک‌ها شناسایی کنید‌‌. "
+"لینک‌ها به راحتی قابل دسترسی است و به راحتی مقیاس پذیر باشند - در حالی که اماده یک کلیک "
+"هستند.صفحه بندی با عناصر لیست در اچ‌تی‌ام‌ال‌5 ساخته‌شده اند‌، بنابر‌این خوانندگان میتوانند "
+"تعداد لینک‌های موجود دار اعلام کنند‌‌. از یک عنصر<nav> استفاده کنید تا آنرا به عنوان بخش "
+"ناوبری برای نمایش به خوانندگان و سایر تکنیک‌ها شناسایی کنید‌‌. "
 
 #: dash/addons/includes/languages/trans_addons.php:675
 #: tejarak/includes/languages/trans_addons.php:675
@@ -4297,11 +4273,11 @@ msgstr "مستندات و نمونه‌هایی برای استفاده از ن�
 #: dash/addons/includes/languages/trans_addons.php:680
 #: tejarak/includes/languages/trans_addons.php:680
 msgid ""
-"Siftal use html progress and meter and have some styles on them, each serving its "
-"own semantic purpose"
+"Siftal use html progress and meter and have some styles on them, each serving its own "
+"semantic purpose"
 msgstr ""
-"سیفتال از نوار پیشرفت اچ‌تی‌ام‌ال و متر و برخی استایل‌های همراه استفاده می‌کند‌، هر "
-"سرویس برای منظور خواصی استفاده میشد‌‌"
+"سیفتال از نوار پیشرفت اچ‌تی‌ام‌ال و متر و برخی استایل‌های همراه استفاده می‌کند‌، هر سرویس برای "
+"منظور خواصی استفاده میشد‌‌"
 
 #: dash/addons/includes/languages/trans_addons.php:681
 #: tejarak/includes/languages/trans_addons.php:681
@@ -4356,11 +4332,11 @@ msgstr "سی‌اس‌اس ریست"
 #: dash/addons/includes/languages/trans_addons.php:695
 #: tejarak/includes/languages/trans_addons.php:695
 msgid ""
-"Reset, a collection of element-specific CSS changes in a single file, kickstart "
-"Siftal to provide an elegant, consistent, and simple baseline to build upon."
+"Reset, a collection of element-specific CSS changes in a single file, kickstart Siftal "
+"to provide an elegant, consistent, and simple baseline to build upon."
 msgstr ""
-"بازنشانی، مجموعه‌ای از ‌سی‌اس‌اس‌‌های خاص را در یک فایل واحد تغییر می‌دهد‌، kickstart "
-"سیفتال برای ارائه‌ای زیبا‌، استوار و پایه‌ای ساده بر ساختن."
+"بازنشانی، مجموعه‌ای از ‌سی‌اس‌اس‌‌های خاص را در یک فایل واحد تغییر می‌دهد‌، kickstart سیفتال "
+"برای ارائه‌ای زیبا‌، استوار و پایه‌ای ساده بر ساختن."
 
 #: dash/addons/includes/languages/trans_addons.php:696
 #: tejarak/includes/languages/trans_addons.php:696
@@ -4515,19 +4491,18 @@ msgstr "باید اسکرول را هنگامیکه محتوا برای ابعا
 #: dash/addons/includes/languages/trans_addons.php:726
 #: tejarak/includes/languages/trans_addons.php:726
 msgid ""
-" Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula "
-"eget dolor. Aenean massa. Cum sociis natoque penatibus et me."
+" Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget "
+"dolor. Aenean massa. Cum sociis natoque penatibus et me."
 msgstr ""
-"لورم‌ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان "
-"گرافیک است. چاپگرها و متون بلکه روزنامه و مجله"
+"لورم‌ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک "
+"است. چاپگرها و متون بلکه روزنامه و مجله"
 
 #: dash/addons/includes/languages/trans_addons.php:727
 #: tejarak/includes/languages/trans_addons.php:727
 msgid ""
-"should render <code>em</code>-unit preformatted text at the same absolute size as "
-"normal text"
-msgstr ""
-"باید متن <code> em </ code> با همان اندازه مطلق به عنوان متن معمولی قالب بندی شود"
+"should render <code>em</code>-unit preformatted text at the same absolute size as normal "
+"text"
+msgstr "باید متن <code> em </ code> با همان اندازه مطلق به عنوان متن معمولی قالب بندی شود"
 
 #: dash/addons/includes/languages/trans_addons.php:728
 #: tejarak/includes/languages/trans_addons.php:728
@@ -4591,8 +4566,7 @@ msgstr "نباید فاصله درونی(padding) داشته باشد"
 
 #: dash/addons/includes/languages/trans_addons.php:740
 #: tejarak/includes/languages/trans_addons.php:740
-msgid ""
-"should display a default cursor for the decrement button's click target in Chrome"
+msgid "should display a default cursor for the decrement button's click target in Chrome"
 msgstr "باید یک مکان‌نمای پیشفرض برای کاهش دکمه‌های "
 
 #: dash/addons/includes/languages/trans_addons.php:741
@@ -4790,24 +4764,20 @@ msgstr "رنگ جداول می‌تواند تغییر‌کند"
 
 #: dash/addons/includes/languages/trans_addons.php:789
 #: tejarak/includes/languages/trans_addons.php:789
-msgid ""
-"Similar to colored tables, use one of modifier classes to make rows appear colored."
-msgstr ""
-"مانند جداول رنگی‌، از یکی از کلاس‌های تعیین کننده استفاده کنید تا سطر‌ها رنگی باشد."
+msgid "Similar to colored tables, use one of modifier classes to make rows appear colored."
+msgstr "مانند جداول رنگی‌، از یکی از کلاس‌های تعیین کننده استفاده کنید تا سطر‌ها رنگی باشد."
 
 #: dash/addons/includes/languages/trans_addons.php:790
 #: tejarak/includes/languages/trans_addons.php:790
 msgid ""
-"Add <code class='code1'>.bordered</code> for borders on all sides of the table and "
-"cells."
+"Add <code class='code1'>.bordered</code> for borders on all sides of the table and cells."
 msgstr ""
-"کلاس : <code class='code1'>.bordered</code> را برای اضافه‌کردن حاشیه به تمام جداول "
-"و سلول‌ها اضافه کنید."
+"کلاس : <code class='code1'>.bordered</code> را برای اضافه‌کردن حاشیه به تمام جداول و "
+"سلول‌ها اضافه کنید."
 
 #: dash/addons/includes/languages/trans_addons.php:791
 #: tejarak/includes/languages/trans_addons.php:791
-msgid ""
-"A table may sometimes need to be more compact to make more rows visible at a time"
+msgid "A table may sometimes need to be more compact to make more rows visible at a time"
 msgstr "گاهی اوقات ممکن است یک جدول برای جمع‌کردن ردیف‌های بیشتر در یک زمان باشد"
 
 #: dash/addons/includes/languages/trans_addons.php:792
@@ -4828,11 +4798,10 @@ msgstr "گاهی ممکن است یک جدول بزرگ باشد"
 #: dash/addons/includes/languages/trans_addons.php:795
 #: tejarak/includes/languages/trans_addons.php:795
 msgid ""
-"Add <code class='code1'>data-sort=desc|asc</code> to table header for add icon of "
-"sorting"
+"Add <code class='code1'>data-sort=desc|asc</code> to table header for add icon of sorting"
 msgstr ""
-"کد : <code class='code1'>data-sort=desc|asc</code> را برای اضافه‌کردن‌ایکن مرتب سازی "
-"به عنوان جدول اضافه کنید."
+"کد : <code class='code1'>data-sort=desc|asc</code> را برای اضافه‌کردن‌ایکن مرتب سازی به "
+"عنوان جدول اضافه کنید."
 
 #: dash/addons/includes/languages/trans_addons.php:796
 #: tejarak/includes/languages/trans_addons.php:796
@@ -4892,8 +4861,7 @@ msgstr "Gruntfile.js"
 #: dash/addons/includes/languages/trans_addons.php:809
 #: tejarak/includes/languages/trans_addons.php:809
 msgid "A textarea can be used to allow for extended user input."
-msgstr ""
-"برای اجازه دادن به ورودی بیشتر از سمت کاربر می‌توان از یک ‌مکان‌متن‌ استفاده کرد‌‌."
+msgstr "برای اجازه دادن به ورودی بیشتر از سمت کاربر می‌توان از یک ‌مکان‌متن‌ استفاده کرد‌‌."
 
 #: dash/addons/includes/languages/trans_addons.php:810
 #: tejarak/includes/languages/trans_addons.php:810
@@ -4911,15 +4879,14 @@ msgid ""
 "Siftal's cards provide a flexible and extensible content container with multiple "
 "variants and options."
 msgstr ""
-"کارت‌های سیفتال انعطاف و گسترش پذیری محتوا به همراه گزینه‌ها و تنظیمات را ارائه "
-"می‌دهند."
+"کارت‌های سیفتال انعطاف و گسترش پذیری محتوا به همراه گزینه‌ها و تنظیمات را ارائه می‌دهند."
 
 #: dash/addons/includes/languages/trans_addons.php:815
 #: tejarak/includes/languages/trans_addons.php:815
 msgid ""
-"A card is a flexible and extensible content container. It includes options for "
-"headers and footers, a wide variety of content, contextual background colors, and "
-"powerful display options."
+"A card is a flexible and extensible content container. It includes options for headers "
+"and footers, a wide variety of content, contextual background colors, and powerful "
+"display options."
 msgstr "کارت یک مخزن با محتوای قابل انعطاف و توسعه پذیر است."
 
 #: dash/addons/includes/languages/trans_addons.php:816
@@ -4929,9 +4896,8 @@ msgid ""
 "deliver a ton of control and customization. Built with flexbox, they offer easy "
 "alignment and mix well with other  components."
 msgstr ""
-"card‌هابا امکان نشانه گذاری و استایل‌های کوچک ساخته‌شده اند اما هنوز امکان کنترل و "
-"سفارشی سازی راه دارد‌‌.  ساخته‌شده با flexbox‌، اغلب هماهنگی و‌ترکیب خوبی با اجزای دیگر "
-"دارند‌‌. "
+"card‌هابا امکان نشانه گذاری و استایل‌های کوچک ساخته‌شده اند اما هنوز امکان کنترل و سفارشی "
+"سازی راه دارد‌‌.  ساخته‌شده با flexbox‌، اغلب هماهنگی و‌ترکیب خوبی با اجزای دیگر دارند‌‌. "
 
 #: dash/addons/includes/languages/trans_addons.php:817
 #: tejarak/includes/languages/trans_addons.php:817
@@ -4951,11 +4917,11 @@ msgstr "۱هزار لایک"
 #: dash/addons/includes/languages/trans_addons.php:820
 #: tejarak/includes/languages/trans_addons.php:820
 msgid ""
-"Cards are designed to be flexible to your content. content blocks can include any "
-"custom elements related to your content."
+"Cards are designed to be flexible to your content. content blocks can include any custom "
+"elements related to your content."
 msgstr ""
-"کارت‌ها طراحی‌شده اند تا محتوای شما انعطاف پذیر باشند. بلوک‌های محتوا می‌تواند شامل هر "
-"عنصر سفارشی مربوط به محتوای شما باشند."
+"کارت‌ها طراحی‌شده اند تا محتوای شما انعطاف پذیر باشند. بلوک‌های محتوا می‌تواند شامل هر عنصر "
+"سفارشی مربوط به محتوای شما باشند."
 
 #: dash/addons/includes/languages/trans_addons.php:821
 #: tejarak/includes/languages/trans_addons.php:821
@@ -4977,8 +4943,8 @@ msgstr "دوست"
 #: dash/addons/includes/languages/trans_addons.php:824
 #: tejarak/includes/languages/trans_addons.php:824
 msgid ""
-"Javad is a CEO and founder of Ermile and start developing Siftal from 2017 and "
-"hope to write documentaion for it!"
+"Javad is a CEO and founder of Ermile and start developing Siftal from 2017 and hope to "
+"write documentaion for it!"
 msgstr ""
 "جواد مدیرعامل و بنیان گذار ارمایل است و از سال 2017 شروع به توسعه سیفتال کرده و "
 "امیدواریم برای آن مستندسازی کنیم!"
@@ -5000,11 +4966,9 @@ msgstr "حسن صالحی"
 
 #: dash/addons/includes/languages/trans_addons.php:828
 #: tejarak/includes/languages/trans_addons.php:828
-msgid ""
-"Hasan is a full-stack developer of Ermile and always trying to be in classrooms!"
+msgid "Hasan is a full-stack developer of Ermile and always trying to be in classrooms!"
 msgstr ""
-"حسن صالحی یک توسعه دهنده کامل در ارمایل است که همیشه سعی می‌کند در کلاس درس آموزش "
-"دهد!"
+"حسن صالحی یک توسعه دهنده کامل در ارمایل است که همیشه سعی می‌کند در کلاس درس آموزش دهد!"
 
 #: dash/addons/includes/languages/trans_addons.php:829
 #: tejarak/includes/languages/trans_addons.php:829
@@ -5039,8 +5003,8 @@ msgstr "مدرسه"
 #: dash/addons/includes/languages/trans_addons.php:835
 #: tejarak/includes/languages/trans_addons.php:835
 msgid ""
-"A card can be formatted so that the entire contents link to another page. Also a "
-"card can contain contain links as images, headers, or inside content."
+"A card can be formatted so that the entire contents link to another page. Also a card "
+"can contain contain links as images, headers, or inside content."
 msgstr ""
 "کارت را می‌توان تغییر داد تا تمام محتوا به صفحه دیگری منتقل شود.همچنین یک کارت "
 "می‌تواندشامل لینک‌ها به عنوان عکس،عنوان،ویا محتوای درونی باشد."
@@ -5707,8 +5671,8 @@ msgstr " "
 msgid "A few seconds ago"
 msgstr "چندثانیه پیش"
 
-#: dash/addons/includes/languages/trans_addons.php:1008
-#: dash/lib/utility/upload.php:113 tejarak/includes/languages/trans_addons.php:1008
+#: dash/addons/includes/languages/trans_addons.php:1008 dash/lib/utility/upload.php:113
+#: tejarak/includes/languages/trans_addons.php:1008
 msgid "item"
 msgstr "آیتم"
 
@@ -5717,38 +5681,38 @@ msgstr "آیتم"
 msgid "empty"
 msgstr "خالی"
 
-#: dash/addons/includes/languages/trans_addons.php:1010
-#: dash/lib/utility/upload.php:118 tejarak/includes/languages/trans_addons.php:1010
+#: dash/addons/includes/languages/trans_addons.php:1010 dash/lib/utility/upload.php:118
+#: tejarak/includes/languages/trans_addons.php:1010
 msgid "NaN"
 msgstr "-"
 
-#: dash/addons/includes/languages/trans_addons.php:1011
-#: dash/lib/utility/upload.php:92 tejarak/includes/languages/trans_addons.php:1011
+#: dash/addons/includes/languages/trans_addons.php:1011 dash/lib/utility/upload.php:92
+#: tejarak/includes/languages/trans_addons.php:1011
 msgid "Byte"
 msgstr "بایت"
 
-#: dash/addons/includes/languages/trans_addons.php:1012
-#: dash/lib/utility/upload.php:92 tejarak/includes/languages/trans_addons.php:1012
+#: dash/addons/includes/languages/trans_addons.php:1012 dash/lib/utility/upload.php:92
+#: tejarak/includes/languages/trans_addons.php:1012
 msgid "KB"
 msgstr "کیلوبایت"
 
-#: dash/addons/includes/languages/trans_addons.php:1013
-#: dash/lib/utility/upload.php:92 tejarak/includes/languages/trans_addons.php:1013
+#: dash/addons/includes/languages/trans_addons.php:1013 dash/lib/utility/upload.php:92
+#: tejarak/includes/languages/trans_addons.php:1013
 msgid "MB"
 msgstr "مگابایت"
 
-#: dash/addons/includes/languages/trans_addons.php:1014
-#: dash/lib/utility/upload.php:92 tejarak/includes/languages/trans_addons.php:1014
+#: dash/addons/includes/languages/trans_addons.php:1014 dash/lib/utility/upload.php:92
+#: tejarak/includes/languages/trans_addons.php:1014
 msgid "GB"
 msgstr "گیگابایت"
 
-#: dash/addons/includes/languages/trans_addons.php:1015
-#: dash/lib/utility/upload.php:92 tejarak/includes/languages/trans_addons.php:1015
+#: dash/addons/includes/languages/trans_addons.php:1015 dash/lib/utility/upload.php:92
+#: tejarak/includes/languages/trans_addons.php:1015
 msgid "TB"
 msgstr "ترابایت"
 
-#: dash/addons/includes/languages/trans_addons.php:1016
-#: dash/lib/utility/upload.php:92 tejarak/includes/languages/trans_addons.php:1016
+#: dash/addons/includes/languages/trans_addons.php:1016 dash/lib/utility/upload.php:92
+#: tejarak/includes/languages/trans_addons.php:1016
 msgid "PB"
 msgstr "پترابایت"
 
@@ -5838,8 +5802,8 @@ msgstr "ثبت نام"
 msgid "home"
 msgstr "خانه"
 
-#: dash/addons/includes/languages/trans_addons.php:1034
-#: dash/lib/view/twigAddons.php:350 tejarak/includes/languages/trans_addons.php:1034
+#: dash/addons/includes/languages/trans_addons.php:1034 dash/lib/view/twigAddons.php:350
+#: tejarak/includes/languages/trans_addons.php:1034
 #: tejarak/includes/languages/trans_twig.php:85
 msgid "Home"
 msgstr "صفحه نخست"
@@ -5849,8 +5813,8 @@ msgstr "صفحه نخست"
 msgid "homepage"
 msgstr "صفحه نخست"
 
-#: dash/addons/includes/languages/trans_addons.php:1036
-#: dash/lib/view/twigAddons.php:335 tejarak/includes/languages/trans_addons.php:1036
+#: dash/addons/includes/languages/trans_addons.php:1036 dash/lib/view/twigAddons.php:335
+#: tejarak/includes/languages/trans_addons.php:1036
 msgid "Homepage"
 msgstr "صفحه نخست"
 
@@ -6066,8 +6030,7 @@ msgstr "صفحه"
 #: tejarak/includes/languages/trans_addons.php:1078
 msgid "If you want to change password enter it, else leave it blank"
 msgstr ""
-"در صورت تمایل به تغییر گذرواژه آن را وارد کنید،‌ در غیر این ‌صورت این فیلد را خالی "
-"بگذارید"
+"در صورت تمایل به تغییر گذرواژه آن را وارد کنید،‌ در غیر این ‌صورت این فیلد را خالی بگذارید"
 
 #: dash/addons/includes/languages/trans_addons.php:1079
 #: tejarak/includes/languages/trans_addons.php:1079
@@ -6274,20 +6237,18 @@ msgstr "کتاب‌های خود را در این بخش وارد کنید"
 msgid "Duplicate - File exist"
 msgstr "تکراری - فایل وجود دارد"
 
-#: dash/addons/includes/languages/trans_addons.php:1119
-#: dash/lib/utility/upload.php:485 tejarak/includes/languages/trans_addons.php:1119
+#: dash/addons/includes/languages/trans_addons.php:1119 dash/lib/utility/upload.php:485
+#: tejarak/includes/languages/trans_addons.php:1119
 msgid "Fail on tranfering file"
 msgstr "خطا در انتقال فایل"
 
 #: dash/addons/includes/languages/trans_addons.php:1120
-#: dash/lib/utility/upload/check.php:20
-#: tejarak/includes/languages/trans_addons.php:1120
+#: dash/lib/utility/upload/check.php:20 tejarak/includes/languages/trans_addons.php:1120
 msgid "Invalid parameters"
 msgstr "پارامتر اشتباه"
 
 #: dash/addons/includes/languages/trans_addons.php:1121
-#: dash/lib/utility/upload/check.php:32
-#: tejarak/includes/languages/trans_addons.php:1121
+#: dash/lib/utility/upload/check.php:32 tejarak/includes/languages/trans_addons.php:1121
 msgid "No file sent"
 msgstr "فایلی ارسال نشده"
 
@@ -6298,14 +6259,12 @@ msgid "Exceeded filesize limit"
 msgstr "ظرفیت فایل بیش از حد مجاز"
 
 #: dash/addons/includes/languages/trans_addons.php:1123
-#: dash/lib/utility/upload/check.php:43
-#: tejarak/includes/languages/trans_addons.php:1123
+#: dash/lib/utility/upload/check.php:43 tejarak/includes/languages/trans_addons.php:1123
 msgid "Unknown errors"
 msgstr "خطای نامشخص"
 
 #: dash/addons/includes/languages/trans_addons.php:1124
-#: dash/lib/utility/upload/check.php:101
-#: tejarak/includes/languages/trans_addons.php:1124
+#: dash/lib/utility/upload/check.php:101 tejarak/includes/languages/trans_addons.php:1124
 msgid "We don't support this type of file"
 msgstr "ما این نوع فایل را پشتیبانی نمیکنیم"
 
@@ -6395,8 +6354,7 @@ msgid "You can't view this part of system"
 msgstr "شما نمی‌توانید این بخش از سیستم را مشاهده کنید"
 
 #: dash/addons/includes/languages/trans_addons.php:1142
-#: dash/lib/utility/permission--.php:162
-#: tejarak/includes/languages/trans_addons.php:1142
+#: dash/lib/utility/permission--.php:162 tejarak/includes/languages/trans_addons.php:1142
 msgid "You can't add new"
 msgstr "شما نمی‌توانید اضافه کنید"
 
@@ -6406,8 +6364,7 @@ msgid "you can't edit"
 msgstr "شما نمی‌توانید ویرایش کنید"
 
 #: dash/addons/includes/languages/trans_addons.php:1144
-#: dash/lib/utility/permission--.php:170
-#: tejarak/includes/languages/trans_addons.php:1144
+#: dash/lib/utility/permission--.php:170 tejarak/includes/languages/trans_addons.php:1144
 msgid "You can't delete"
 msgstr "شما نمی‌توانید حذف کنید"
 
@@ -6417,14 +6374,12 @@ msgid "You can't access to this part of system"
 msgstr "شما نمی‌توانید به این بخش از سیستم دسترسی داشته باشید"
 
 #: dash/addons/includes/languages/trans_addons.php:1146
-#: dash/lib/utility/permission--.php:177
-#: tejarak/includes/languages/trans_addons.php:1146
+#: dash/lib/utility/permission--.php:177 tejarak/includes/languages/trans_addons.php:1146
 msgid "Because of your permission"
 msgstr "به‌دلیل سطح‌دسترسی‌ شما"
 
 #: dash/addons/includes/languages/trans_addons.php:1147
-#: dash/lib/utility/permission--.php:184
-#: tejarak/includes/languages/trans_addons.php:1147
+#: dash/lib/utility/permission--.php:184 tejarak/includes/languages/trans_addons.php:1147
 msgid "You can't access to this page!"
 msgstr "شما نمی‌توانید به این صفحه دسترسی داشته باشید!"
 
@@ -6437,8 +6392,8 @@ msgstr "سایت"
 #: tejarak/includes/languages/trans_addons.php:1149
 msgid "For multilanguage sites enter title in English and translate it"
 msgstr ""
-"برای سایت‌های چندزبانه، این بخش را به انگلیسی وارد نموده و توسط برنامه مترجم آن را "
-"به سایر زبان‌ها ترجمه کنید"
+"برای سایت‌های چندزبانه، این بخش را به انگلیسی وارد نموده و توسط برنامه مترجم آن را به "
+"سایر زبان‌ها ترجمه کنید"
 
 #: dash/addons/includes/languages/trans_addons.php:1150
 #: tejarak/includes/languages/trans_addons.php:1150
@@ -7062,14 +7017,12 @@ msgid "Your phone number registered successfully;)"
 msgstr "شماره موبایل شما با موفقیت ثبت شد;)"
 
 #: dash/addons/includes/languages/trans_addons.php:1272
-#: dash/addons/lib/telegram/log.php:418
-#: tejarak/includes/languages/trans_addons.php:1272
+#: dash/addons/lib/telegram/log.php:418 tejarak/includes/languages/trans_addons.php:1272
 msgid "We dont need another users contact:?)"
 msgstr "ما به مخاطب سایر کاربران نیاز نداریم:؟)"
 
 #: dash/addons/includes/languages/trans_addons.php:1273
-#: dash/addons/lib/telegram/log.php:426
-#: tejarak/includes/languages/trans_addons.php:1273
+#: dash/addons/lib/telegram/log.php:426 tejarak/includes/languages/trans_addons.php:1273
 msgid "We need mobile number!"
 msgstr "ما به شماره موبایل نیاز داریم!"
 
@@ -7418,8 +7371,7 @@ msgstr "خطا در سیستم پیامک"
 msgid "Mailer Error :error"
 msgstr "خطا در ارسال‌کننده ایمیل :error"
 
-#: dash/lib/utility/payment/pay/parsian.php:45
-#: dash/lib/utility/payment/pay/zarinpal.php:45
+#: dash/lib/utility/payment/pay/parsian.php:45 dash/lib/utility/payment/pay/zarinpal.php:45
 msgid "Invalid amount"
 msgstr "مقدار نامعتبر"
 
@@ -7545,8 +7497,8 @@ msgstr "عملیات با موفقیت انجام شد"
 
 #: dash/lib/utility/payment/payment/zarinpal.php:145
 msgid ""
-"Payment operation was successfull and PatmentVerification of the transaction has "
-"already done"
+"Payment operation was successfull and PatmentVerification of the transaction has already "
+"done"
 msgstr "عملیات پرداخت با موفقیت انجام شد و تایید پرداخت تراکنش با موفقیت انجام شد"
 
 #: dash/lib/utility/payment/verify/parsian.php:67
@@ -7601,10 +7553,8 @@ msgid "user id not set"
 msgstr "کدکاربر ثبت نشد است"
 
 #: dash/lib/utility/upload.php:418
-msgid ""
-"The size of file is larger than the upload space you have, your space is :space"
-msgstr ""
-"اندازه فایل شما بزرگتر از سایر در اختیار گرفته برای شماست. فضای شما :space است"
+msgid "The size of file is larger than the upload space you have, your space is :space"
+msgstr "اندازه فایل شما بزرگتر از سایر در اختیار گرفته برای شماست. فضای شما :space است"
 
 #: dash/lib/utility/upload.php:462
 msgid "File successful uploaded"
@@ -7650,8 +7600,7 @@ msgstr "شما دسترسی لازم را برای نمایش اطلاعات ا�
 msgid "Tejarak provides beautiful solutions for your business;"
 msgstr "تجارک، ارائه دهنده‌ی راه‌کارهای زیبا برای کسب و کار شما؛"
 
-#: tejarak/content_a/billing/model.php:53
-#: tejarak/content_a/notifications/model.php:79
+#: tejarak/content_a/billing/model.php:53 tejarak/content_a/notifications/model.php:79
 msgid "You must login to pay amount"
 msgstr "برای دریافت جایزه، ابتدا باید وارد سیستم شوید"
 
@@ -7692,8 +7641,7 @@ msgstr "شما از برنامه معرفی استفاده کردید و حسا�
 msgid "Your ref was set and your account was charge"
 msgstr "معرف شما ثبت شد و حساب کاربری شما شارژ شد"
 
-#: tejarak/content_a/billing/view.php:11
-#: tejarak/includes/languages/trans_twig.php:422
+#: tejarak/content_a/billing/view.php:11 tejarak/includes/languages/trans_twig.php:422
 msgid "Billing"
 msgstr "مالی"
 
@@ -7768,11 +7716,10 @@ msgstr "شما میخواهید تیم را به خودتان منتقل کنی�
 
 #: tejarak/content_a/option/owner/model.php:199
 msgid ""
-"The :alpha team has filed your ownership transfer request, Do you accept this "
-"request?"
+"The :alpha team has filed your ownership transfer request, Do you accept this request?"
 msgstr ""
-"تیم :alpha درخواست تغییر مالکیت خود را برای شما ارسال کرده است. آیا شما این "
-"درخواست را می پذیرید؟"
+"تیم :alpha درخواست تغییر مالکیت خود را برای شما ارسال کرده است. آیا شما این درخواست را "
+"می پذیرید؟"
 
 #: tejarak/content_a/plan/model.php:24 tejarak/content_a/plan/model.php:80
 msgid "Invalid team!"
@@ -8416,7 +8363,7 @@ msgstr "ماه جاری"
 #: tejarak/content_api/v1/report/tools/report_list.php:60
 #: tejarak/includes/languages/trans_twig.php:607
 msgid "Last traffic"
-msgstr "آخرین ورود و خروج‌ها"
+msgstr "آخرین تردد"
 
 #: tejarak/content_api/v1/report/tools/report_list.php:64
 msgid "Present"
@@ -8600,8 +8547,7 @@ msgstr "شناسه یا نام کوتاه تیم تنظیم نشده است"
 msgid "Can not set team id and shortname together"
 msgstr "نمی‌توانید شناسه و نام کوتاه تیم را یکجا تغییر دهید"
 
-#: tejarak/content_cp/teamplans/model.php:48
-#: tejarak/includes/lib/utility/calc/make.php:73
+#: tejarak/content_cp/teamplans/model.php:48 tejarak/includes/lib/utility/calc/make.php:73
 msgid "Day"
 msgstr "روز"
 
@@ -8609,8 +8555,7 @@ msgstr "روز"
 msgid "And"
 msgstr "و"
 
-#: tejarak/content_cp/teamplans/model.php:48
-#: tejarak/includes/lib/utility/calc/make.php:68
+#: tejarak/content_cp/teamplans/model.php:48 tejarak/includes/lib/utility/calc/make.php:68
 msgid "Hour"
 msgstr "ساعت"
 
@@ -8936,8 +8881,8 @@ msgid ""
 "Knowing your valuable comments about bugs and problems and more importantly your "
 "precious offers will help us in this way."
 msgstr ""
-"دانستن نظرات ارزشمند شما درباره‌ی مشکلات و نواقص و صدالبته پیشنهادات گرانبهایتان از "
-"طریق فرم زیر سبب کمک به ما برای این مهم خواهد شد."
+"دانستن نظرات ارزشمند شما درباره‌ی مشکلات و نواقص و صدالبته پیشنهادات گرانبهایتان از طریق "
+"فرم زیر سبب کمک به ما برای این مهم خواهد شد."
 
 #: tejarak/includes/languages/trans_twig.php:10
 msgid "Thank you for choosing us."
@@ -8945,13 +8890,11 @@ msgstr "از اینکه ما را انتخاب کردید، متشکریم."
 
 #: tejarak/includes/languages/trans_twig.php:11
 msgid ""
-"We do our best to improve tejarak's quality. So, knowing your valuable comments "
-"about bugs and problems and more importantly your precious offers will help us in "
-"this way."
+"We do our best to improve tejarak's quality. So, knowing your valuable comments about "
+"bugs and problems and more importantly your precious offers will help us in this way."
 msgstr ""
-"تمام تلاش ما بر افزایش کیفیت تجارک است. دانستن نظرات ارزشمند شما درباره‌ی مشکلات و "
-"نواقص و صدالبته پیشنهادات گرانبهایتان از طریق فرم زیر سبب کمک به ما برای این مهم "
-"خواهد شد."
+"تمام تلاش ما بر افزایش کیفیت تجارک است. دانستن نظرات ارزشمند شما درباره‌ی مشکلات و نواقص "
+"و صدالبته پیشنهادات گرانبهایتان از طریق فرم زیر سبب کمک به ما برای این مهم خواهد شد."
 
 #: tejarak/includes/languages/trans_twig.php:13
 msgid "Full Name"
@@ -8991,12 +8934,11 @@ msgstr "به‌سادگی حضور و غیاب کنید و از گزارش‌ه�
 
 #: tejarak/includes/languages/trans_twig.php:30
 msgid ""
-"Setup your dedicated and beautiful attendance system in less than a minute and "
-"have a <span>real time</span> and scrupulously monitoring on your business from "
-"anywhere"
+"Setup your dedicated and beautiful attendance system in less than a minute and have a "
+"<span>real time</span> and scrupulously monitoring on your business from anywhere"
 msgstr ""
-"سامانه‌ی حضور و غیاب اختصاصی و چشم‌نواز خودتان را در چند دقیقه راه‌اندازی کرده و از "
-"هرجایی بر کسب و کارتان نظارت <span>لحظه‌ای</span> و موشکافانه داشته باشید."
+"سامانه‌ی حضور و غیاب اختصاصی و چشم‌نواز خودتان را در چند دقیقه راه‌اندازی کرده و از هرجایی "
+"بر کسب و کارتان نظارت <span>لحظه‌ای</span> و موشکافانه داشته باشید."
 
 #: tejarak/includes/languages/trans_twig.php:31
 msgid "Enter your team name"
@@ -9019,8 +8961,7 @@ msgid "Not sure how to start?"
 msgstr "مطمئن نیستید چطور شروع کنید؟"
 
 #: tejarak/includes/languages/trans_twig.php:36
-msgid ""
-"Tejarak is <span>free</span> to use as long as you want for teams of all sizes."
+msgid "Tejarak is <span>free</span> to use as long as you want for teams of all sizes."
 msgstr ""
 "استفاده از تجارک برای هر مدتی که بخواهید و برای تیم‌های با هر تعداد عضوی که دارید "
 "<span>رایگان</span> است."
@@ -9050,8 +8991,8 @@ msgid ""
 "Our technology team with flexible time in addition of introduce team members, use "
 "Tejarak for register remote and wasted time for working hours and attendance."
 msgstr ""
-"تیم فناورانه‌ی ما با زمان کاری انعطاف‌پذیر علاوه بر معرفی اعضا، از تجارک برای "
-"دورکاری و هدررفت در ثبت ساعت کاری و حضور و غیاب‌های خود استفاده می‌کند."
+"تیم فناورانه‌ی ما با زمان کاری انعطاف‌پذیر علاوه بر معرفی اعضا، از تجارک برای دورکاری و "
+"هدررفت در ثبت ساعت کاری و حضور و غیاب‌های خود استفاده می‌کند."
 
 #: tejarak/includes/languages/trans_twig.php:43
 msgid "Ermile Preview"
@@ -9059,12 +9000,11 @@ msgstr "پیش‌نمایش ارمایل"
 
 #: tejarak/includes/languages/trans_twig.php:44
 msgid ""
-"Since use Tejrak for control rooms status, we have a completly real time "
-"monitoring and we reach mpre success on room sales planning with analysis reports."
+"Since use Tejrak for control rooms status, we have a completly real time monitoring and "
+"we reach mpre success on room sales planning with analysis reports."
 msgstr ""
-"از زمانی که اطلاع‌رسانی وضعیت اتاق‌های هتل را به تجارک سپردیم، در مدیریت هتل نظارت "
-"دقیق و لحظه‌ای داریم و با گزارشات تحلیلی آن، در برنامه‌ریزی فروش اتاق‌ها موفقیت "
-"بیشتری بدست آوردیم."
+"از زمانی که اطلاع‌رسانی وضعیت اتاق‌های هتل را به تجارک سپردیم، در مدیریت هتل نظارت دقیق و "
+"لحظه‌ای داریم و با گزارشات تحلیلی آن، در برنامه‌ریزی فروش اتاق‌ها موفقیت بیشتری بدست آوردیم."
 
 #: tejarak/includes/languages/trans_twig.php:45
 msgid "Wherever You Go"
@@ -9072,11 +9012,9 @@ msgstr "همراه شما در هرجایی"
 
 #: tejarak/includes/languages/trans_twig.php:46
 msgid ""
-"Enjoy your travels and do not be too concerned about control attendance in your "
-"business."
+"Enjoy your travels and do not be too concerned about control attendance in your business."
 msgstr ""
-"از سفرهای کاری خود لذت ببرید و دغدغه‌ی کنترل حضور و غیاب در کسب و کار خود را نداشته "
-"باشید."
+"از سفرهای کاری خود لذت ببرید و دغدغه‌ی کنترل حضور و غیاب در کسب و کار خود را نداشته باشید."
 
 #: tejarak/includes/languages/trans_twig.php:47
 msgid "Everything is in sync."
@@ -9084,13 +9022,12 @@ msgstr "همه چیز در دسترس شماست."
 
 #: tejarak/includes/languages/trans_twig.php:48
 msgid ""
-"In addition of website, without need to install app, check real time reports of "
-"staffs status from messengers like <span>Telegram</span>, SMS, email in your "
-"mobile."
+"In addition of website, without need to install app, check real time reports of staffs "
+"status from messengers like <span>Telegram</span>, SMS, email in your mobile."
 msgstr ""
 "گزارش‌های بی‌درنگ از وضعیت کارکنان‌تان را علاوه بر وب‌سایت، بدون نیاز به نصب هیچ‌گونه "
-"نرم‌افزاری از طریق پیام‌رسان‌هایی نظیر <span>تلگرام</span>، پیامک و ایمیل در تلفن "
-"همراه خود دریافت کنید."
+"نرم‌افزاری از طریق پیام‌رسان‌هایی نظیر <span>تلگرام</span>، پیامک و ایمیل در تلفن همراه خود "
+"دریافت کنید."
 
 #: tejarak/includes/languages/trans_twig.php:49
 msgid "Anywhere, from sitting on the chair of management to sitting on the beach!"
@@ -9106,10 +9043,9 @@ msgstr "برای تک‌تک کارهایی که نیاز به حضور و غی�
 
 #: tejarak/includes/languages/trans_twig.php:52
 msgid ""
-"Your business, a side project and anywhere you need to control traffic and add "
-"some organized."
-msgstr ""
-"کسب و کارتان، پروژه‌های جانبی و هرجایی که نیاز به کنترل تردد و نظم بخشیدن دارید."
+"Your business, a side project and anywhere you need to control traffic and add some "
+"organized."
+msgstr "کسب و کارتان، پروژه‌های جانبی و هرجایی که نیاز به کنترل تردد و نظم بخشیدن دارید."
 
 #: tejarak/includes/languages/trans_twig.php:53
 msgid "Is your team interested in deploying?"
@@ -9129,11 +9065,9 @@ msgstr "تمام این‌ها، در مقیاس عظیم"
 
 #: tejarak/includes/languages/trans_twig.php:57
 msgid ""
-"Enterprise plan brings the power and utility of Tejarak to large, complex "
-"organizations."
+"Enterprise plan brings the power and utility of Tejarak to large, complex organizations."
 msgstr ""
-"پلن سازمانی ما قدرت و کاربرد تجارک را در مقیاس سازمان‌های بزرگ و پیچیده امکان‌پذیر "
-"می‌کند."
+"پلن سازمانی ما قدرت و کاربرد تجارک را در مقیاس سازمان‌های بزرگ و پیچیده امکان‌پذیر می‌کند."
 
 #: tejarak/includes/languages/trans_twig.php:58
 msgid "Setting Up Tejarak Is Easy"
@@ -9304,8 +9238,8 @@ msgid ""
 "All the basics for personal use and anyone who wants to explore Tejarak for an "
 "<b>unlimited period of time</b>."
 msgstr ""
-"تمام نیازهای اولیه برای استفاده شخصی و یا کسانی که می‌خواهند <b>بصورت نامحدود</b> "
-"در تجارک کنکاش کنند."
+"تمام نیازهای اولیه برای استفاده شخصی و یا کسانی که می‌خواهند <b>بصورت نامحدود</b> در "
+"تجارک کنکاش کنند."
 
 #: tejarak/includes/languages/trans_twig.php:122
 msgid "per active user/month"
@@ -9313,25 +9247,23 @@ msgstr "به‌ازای هر عضو فعال در ماه"
 
 #: tejarak/includes/languages/trans_twig.php:123
 msgid ""
-"Everything in Free plus automatic report via Telegram for who wants have a <b>real "
-"time monitoring</b> from anywhere."
+"Everything in Free plus automatic report via Telegram for who wants have a <b>real time "
+"monitoring</b> from anywhere."
 msgstr ""
 "تمام داشته‌های پلن رایگان به‌اضافه‌ی گزارش خودکار از طریق تلگرام برای کسانی که "
 "<b>مانیتورینگ لحظه‌ای</b> را از هرجایی می‌خواهند."
 
 #: tejarak/includes/languages/trans_twig.php:124
 msgid ""
-"For teams and businesses ready to use Tejarak as hero. <b>Everything you need</b> "
-"for a growing business."
+"For teams and businesses ready to use Tejarak as hero. <b>Everything you need</b> for a "
+"growing business."
 msgstr ""
-"برای تیم‌ها و کسب و کارهایی که آماده‌ی استفاده از قدرت تجارک هستند. <b>تمام نیازهای "
-"شما</b> برای یک کسب و کار درحال توسعه."
+"برای تیم‌ها و کسب و کارهایی که آماده‌ی استفاده از قدرت تجارک هستند. <b>تمام نیازهای شما</"
+"b> برای یک کسب و کار درحال توسعه."
 
 #: tejarak/includes/languages/trans_twig.php:125
-msgid ""
-"For <b>first class companies</b> who requiring full features! All of them is here."
-msgstr ""
-"برای <b>شرکت‌های فرست کلاس</b> که همه امکانات را یکجا می‌خواهند! تمام آن‌ها اینجاست."
+msgid "For <b>first class companies</b> who requiring full features! All of them is here."
+msgstr "برای <b>شرکت‌های فرست کلاس</b> که همه امکانات را یکجا می‌خواهند! تمام آن‌ها اینجاست."
 
 #: tejarak/includes/languages/trans_twig.php:128
 msgid "About Tejarak"
@@ -9342,24 +9274,24 @@ msgid ""
 "Tejarak have a set of simple and practical tools on a regular basis for modern "
 "businesses."
 msgstr ""
-"تجارک مجموعه ابزارهایی ساده و کاربردی را به‌صورت یکپارچه در اختیار کسب و کارهای "
-"مدرن و همینطور تجارت‌های سنتی مایل به حرکت به‌سوی تکنولوژی قرار می‌دهد."
+"تجارک مجموعه ابزارهایی ساده و کاربردی را به‌صورت یکپارچه در اختیار کسب و کارهای مدرن و "
+"همینطور تجارت‌های سنتی مایل به حرکت به‌سوی تکنولوژی قرار می‌دهد."
 
 #: tejarak/includes/languages/trans_twig.php:130
 msgid ""
-"Advancement of technology and development of Web-based business Cause Need new "
-"tools to resolve the daily needs and that’s the goal of making Tejarak."
+"Advancement of technology and development of Web-based business Cause Need new tools to "
+"resolve the daily needs and that’s the goal of making Tejarak."
 msgstr ""
-"با پیشرفت روزافزون تکنولوژی و گسترش کسب و کارهای مدرن مبتنی بر وب، احتیاج به "
-"ابزارهایی مدرن برای رفع نیازهای روزمره، جرقه‌ای برای تولد تجارک بود."
+"با پیشرفت روزافزون تکنولوژی و گسترش کسب و کارهای مدرن مبتنی بر وب، احتیاج به ابزارهایی "
+"مدرن برای رفع نیازهای روزمره، جرقه‌ای برای تولد تجارک بود."
 
 #: tejarak/includes/languages/trans_twig.php:131
 msgid ""
-"It’s good to know that in addition to the core services, features such as "
-"inventory and invoice will be added."
+"It’s good to know that in addition to the core services, features such as inventory and "
+"invoice will be added."
 msgstr ""
-"قابل توجه اینکه علاوه‌بر توسعه‌ی خدمات اصلی، بخش‌های کوچک‌تر و کاربردی در روند توسعه "
-"ازویر به آن افزوده خواهند شد."
+"قابل توجه اینکه علاوه‌بر توسعه‌ی خدمات اصلی، بخش‌های کوچک‌تر و کاربردی در روند توسعه ازویر "
+"به آن افزوده خواهند شد."
 
 #: tejarak/includes/languages/trans_twig.php:132
 msgid "Attendance system"
@@ -9367,14 +9299,13 @@ msgstr "سرویس حضور و غیاب"
 
 #: tejarak/includes/languages/trans_twig.php:133
 msgid ""
-"Attendance is so different in Tejarak. Beautiful and stylish design without "
-"requiring any hardware. Notification via social networks, Online reports and "
-"difference compared to other systems are the best feature of Tejarak."
+"Attendance is so different in Tejarak. Beautiful and stylish design without requiring "
+"any hardware. Notification via social networks, Online reports and difference compared "
+"to other systems are the best feature of Tejarak."
 msgstr ""
-"هسته‌ی اصلی تجارک، سامانه حضور و غیاب متفاوت آن نسبت به نمونه‌های موجود است. طراحی "
-"مدرن و چشم‌نواز، بی‌نیاز به تهیه سخت‌افزار، اطلاع‌رسانی از طریق شبکه‌های اجتماعی، "
-"آنلاین و لحظه‌ای بودن گزارشات و مهم‌تر از همه تفاوت آن، از بارزترین مزایای سرویس "
-"حضور و غیاب تجارک است."
+"هسته‌ی اصلی تجارک، سامانه حضور و غیاب متفاوت آن نسبت به نمونه‌های موجود است. طراحی مدرن و "
+"چشم‌نواز، بی‌نیاز به تهیه سخت‌افزار، اطلاع‌رسانی از طریق شبکه‌های اجتماعی، آنلاین و لحظه‌ای "
+"بودن گزارشات و مهم‌تر از همه تفاوت آن، از بارزترین مزایای سرویس حضور و غیاب تجارک است."
 
 #: tejarak/includes/languages/trans_twig.php:134
 msgid "Daily report"
@@ -9382,16 +9313,14 @@ msgstr "گزارش روزانه"
 
 #: tejarak/includes/languages/trans_twig.php:135
 msgid ""
-"In many collections received daily reports of the employees is very important. On "
-"the other hands Employees reluctant to do that. In addition to the classical "
-"method, using social networks on Twitter and Daily Telegram reported in Tejarak "
-"possible to get there."
+"In many collections received daily reports of the employees is very important. On the "
+"other hands Employees reluctant to do that. In addition to the classical method, using "
+"social networks on Twitter and Daily Telegram reported in Tejarak possible to get there."
 msgstr ""
-"در اغلب مجموعه‌ها دریافت گزارش روزانه از کارکنان به‌عنوان بخشی مهم از برنامه‌ریزی "
-"سازمانی است. از طرفی به دلایل گوناگون کارکنان تمایل چندانی به این عمل ندارند. با "
-"به‌خدمت گرفتن شبکه‌های اجتماعی علاوه‌بر روش‌های کلاسیک ثبت گزارش روزانه، تجارک امکان "
-"دریافت گزارش کار را از طریق توییتر و تلگرام نیز امکان‌پذیر کرده و عملکردهای جدیدی "
-"را نیز ارائه می‌دهد."
+"در اغلب مجموعه‌ها دریافت گزارش روزانه از کارکنان به‌عنوان بخشی مهم از برنامه‌ریزی سازمانی "
+"است. از طرفی به دلایل گوناگون کارکنان تمایل چندانی به این عمل ندارند. با به‌خدمت گرفتن "
+"شبکه‌های اجتماعی علاوه‌بر روش‌های کلاسیک ثبت گزارش روزانه، تجارک امکان دریافت گزارش کار را "
+"از طریق توییتر و تلگرام نیز امکان‌پذیر کرده و عملکردهای جدیدی را نیز ارائه می‌دهد."
 
 #: tejarak/includes/languages/trans_twig.php:136
 msgid "Salary calculator"
@@ -9399,16 +9328,14 @@ msgstr "محاسبه حقوق و دستمزد"
 
 #: tejarak/includes/languages/trans_twig.php:137
 msgid ""
-"For many small business is very complex method of calculating monthly salary and "
-"they Need to have simpler method. In addition to supporting traditional methods, "
-"Tejarak provide monthly salary simple solutions to employees have modern and "
-"beautiful Payroll."
+"For many small business is very complex method of calculating monthly salary and they "
+"Need to have simpler method. In addition to supporting traditional methods, Tejarak "
+"provide monthly salary simple solutions to employees have modern and beautiful Payroll."
 msgstr ""
-"پیچیدگی‌های روش محاسبه حقوق و دستمزد ماهیانه در ایران، برای بسیاری از کسب و کارهای "
-"خرد دست و پاگیر بوده و نیاز به روش‌های ساده‌تری برای محاسبه سال‌هاست که نیاز بسیاری "
-"از کسب و کارهاست. تجارک علاوه بر پشتیبانی از روش‌های سنتی ولی سخت، راه‌حل‌هایی ساده "
-"برای حقوق ماهیانه کارکنان ارائه می‌دهد تا کارکنان امروزی، فیش‌های حقوقی مدرن و زیبا "
-"را هم تجربه کنند."
+"پیچیدگی‌های روش محاسبه حقوق و دستمزد ماهیانه در ایران، برای بسیاری از کسب و کارهای خرد "
+"دست و پاگیر بوده و نیاز به روش‌های ساده‌تری برای محاسبه سال‌هاست که نیاز بسیاری از کسب و "
+"کارهاست. تجارک علاوه بر پشتیبانی از روش‌های سنتی ولی سخت، راه‌حل‌هایی ساده برای حقوق "
+"ماهیانه کارکنان ارائه می‌دهد تا کارکنان امروزی، فیش‌های حقوقی مدرن و زیبا را هم تجربه کنند."
 
 #: tejarak/includes/languages/trans_twig.php:140
 msgid "Tejarak benefits"
@@ -9436,29 +9363,28 @@ msgstr "لوگو و اطلاعات شخصی"
 
 #: tejarak/includes/languages/trans_twig.php:148
 msgid ""
-"Try the logo of your organization or your company on one of existing designs and "
-"after choosing the right card, enter personal information of your employees, such "
-"as a photo, first name and last name and job position. Tejarak eye-catching "
-"personnel cards are a great way to showcase the logo and expand your brand, in "
-"addition to facilitating the attendance process."
+"Try the logo of your organization or your company on one of existing designs and after "
+"choosing the right card, enter personal information of your employees, such as a photo, "
+"first name and last name and job position. Tejarak eye-catching personnel cards are a "
+"great way to showcase the logo and expand your brand, in addition to facilitating the "
+"attendance process."
 msgstr ""
-"نشان‌واره‌ی سازمان یا شرکت خود را روی طرح‌های موجود در تجارک امتحان کنید و پس از "
-"انتخاب کارت مناسب، به ورود اطلاعات و مشخصات فردی کارکنان خود مانند عکس، نام و نام "
-"خانوادگی و موقعیت شغلی بپردازید. کارت‌های پرسنلی چشم‌نواز تجارک علاوه بر تسهیل "
-"فرآیند حضور و غیاب، روش مناسبی برای نمایش نشان‌واره و گسترش نام تجاری شما هستند."
+"نشان‌واره‌ی سازمان یا شرکت خود را روی طرح‌های موجود در تجارک امتحان کنید و پس از انتخاب "
+"کارت مناسب، به ورود اطلاعات و مشخصات فردی کارکنان خود مانند عکس، نام و نام خانوادگی و "
+"موقعیت شغلی بپردازید. کارت‌های پرسنلی چشم‌نواز تجارک علاوه بر تسهیل فرآیند حضور و غیاب، "
+"روش مناسبی برای نمایش نشان‌واره و گسترش نام تجاری شما هستند."
 
 #: tejarak/includes/languages/trans_twig.php:151
 msgid ""
-"Always have a plan B! By printing the staffing numbers in barcode format behind "
-"the personnel cards, you can register employee attendance at the time of the "
-"problem or equipment change with a barcode scanner or using an application "
-"installed on your smart phone. Additionally, the barcode printing adds to the "
-"beauty of the staff card."
+"Always have a plan B! By printing the staffing numbers in barcode format behind the "
+"personnel cards, you can register employee attendance at the time of the problem or "
+"equipment change with a barcode scanner or using an application installed on your smart "
+"phone. Additionally, the barcode printing adds to the beauty of the staff card."
 msgstr ""
-"همیشه یک راه جایگزین داشته باشید! با چاپ کردن شماره پرسنلی افراد در قالب بارکد و "
-"QRCode در پشت کارت‌های پرسنلی می‌توانید در زمان بروز مشکل یا تغییر تجهیزات با یک عدد "
-"اسکنر یا با استفاده از گوشی تلفن همراه خود حضور و غیاب کارکنان را ثبت کنید. "
-"علاوه‌براین چاپ بارکد در پشت کارت پرسنلی به زیبایی آن می‌افزاید."
+"همیشه یک راه جایگزین داشته باشید! با چاپ کردن شماره پرسنلی افراد در قالب بارکد و QRCode "
+"در پشت کارت‌های پرسنلی می‌توانید در زمان بروز مشکل یا تغییر تجهیزات با یک عدد اسکنر یا با "
+"استفاده از گوشی تلفن همراه خود حضور و غیاب کارکنان را ثبت کنید. علاوه‌براین چاپ بارکد در "
+"پشت کارت پرسنلی به زیبایی آن می‌افزاید."
 
 #: tejarak/includes/languages/trans_twig.php:152
 msgid "Custom design"
@@ -9466,15 +9392,15 @@ msgstr "طرح سفارشی"
 
 #: tejarak/includes/languages/trans_twig.php:153
 msgid ""
-"Did not any of Tejarak designs for staff card satisfy your satisfaction? Would you "
-"like to get started and print your design on your cards? No problem! Instead of "
-"using Tejarak designs, send us your design and get your cards as soon as possible "
-"with the highest possible quality."
+"Did not any of Tejarak designs for staff card satisfy your satisfaction? Would you like "
+"to get started and print your design on your cards? No problem! Instead of using Tejarak "
+"designs, send us your design and get your cards as soon as possible with the highest "
+"possible quality."
 msgstr ""
-"هیچ‌کدام از طرح‌های تجارک برای کارت‌های پرسنلی نظر شما را جلب نکردند؟ دوست دارید "
-"خودتان دست به کار شده و طرح مورد نظرتان را روی کارت‌هایتان چاپ کنید؟ هیچ مشکلی "
-"نیست! به‌جای استفاده از طرح‌های تجارک، طرح مورد نظر خودتان را برای ما ارسال کنید و "
-"کارت‌هایتان را در اسرع وقت با بالاترین کیفیت ممکن تحویل بگیرید."
+"هیچ‌کدام از طرح‌های تجارک برای کارت‌های پرسنلی نظر شما را جلب نکردند؟ دوست دارید خودتان دست "
+"به کار شده و طرح مورد نظرتان را روی کارت‌هایتان چاپ کنید؟ هیچ مشکلی نیست! به‌جای استفاده "
+"از طرح‌های تجارک، طرح مورد نظر خودتان را برای ما ارسال کنید و کارت‌هایتان را در اسرع وقت "
+"با بالاترین کیفیت ممکن تحویل بگیرید."
 
 #: tejarak/includes/languages/trans_twig.php:154
 msgid "Tejarak logo"
@@ -9490,15 +9416,15 @@ msgstr "تحویل سریع"
 
 #: tejarak/includes/languages/trans_twig.php:157
 msgid ""
-"Time is gold and Tejarak is a gold mining machine! We have made every effort at "
-"Tejarak to begin the process of approval and printing of personnel cards from the "
-"very early stages of order registration, so that you can get your order delivered "
-"as soon as possible and keep your attendance process more professional."
+"Time is gold and Tejarak is a gold mining machine! We have made every effort at Tejarak "
+"to begin the process of approval and printing of personnel cards from the very early "
+"stages of order registration, so that you can get your order delivered as soon as "
+"possible and keep your attendance process more professional."
 msgstr ""
-"وقت طلاست و تجارک یک ماشین استخراج طلا! ما در تجارک همه‌ی تلاش خود را به کار "
-"بسته‌ایم که فرآیند تایید و چاپ کارت‌های پرسنلی از همان لحظات ابتدایی ثبت سفارش آغاز "
-"شود تا شما بتوانید در کوتاه‌ترین زمان ممکن سفارش خود را تحویل گرفته روند حضور و "
-"غیاب خود را حرفه‌ای‌تر انجام بدهید."
+"وقت طلاست و تجارک یک ماشین استخراج طلا! ما در تجارک همه‌ی تلاش خود را به کار بسته‌ایم که "
+"فرآیند تایید و چاپ کارت‌های پرسنلی از همان لحظات ابتدایی ثبت سفارش آغاز شود تا شما "
+"بتوانید در کوتاه‌ترین زمان ممکن سفارش خود را تحویل گرفته روند حضور و غیاب خود را حرفه‌ای‌تر "
+"انجام بدهید."
 
 #: tejarak/includes/languages/trans_twig.php:158
 msgid "Good cost"
@@ -9506,16 +9432,16 @@ msgstr "هزینه مناسب"
 
 #: tejarak/includes/languages/trans_twig.php:159
 msgid ""
-"Getting information on the types of personnel cards and the cost of printing is "
-"easy and you can complete the registration process with full details. We take all "
-"the power of Tejarak to take into account all the technical aspects of the "
-"issuance of personnel cards, so that we can give our customers and users the best "
-"possible service with the highest possible quality."
+"Getting information on the types of personnel cards and the cost of printing is easy and "
+"you can complete the registration process with full details. We take all the power of "
+"Tejarak to take into account all the technical aspects of the issuance of personnel "
+"cards, so that we can give our customers and users the best possible service with the "
+"highest possible quality."
 msgstr ""
-"کسب اطلاع از انواع کارت‌های پرسنلی و هزینه‌ی چاپ آن‌ها کار ساده‌ایست و شما می‌توانید با "
-"آگاهی کامل به ثبت سفارش بپردازید. ما در تجارک با در نظر گرفتن همه‌ی ابعاد فنی صدور "
-"کارت‌های پرسنلی، همه‌ی توان خود را به‌کار گرفته‌ایم تا با مناسب‌ترین هزینه و بالاترین "
-"کیفیت ممکن خدمات خود را به شما مشتریان و کاربران گرامی برسانیم."
+"کسب اطلاع از انواع کارت‌های پرسنلی و هزینه‌ی چاپ آن‌ها کار ساده‌ایست و شما می‌توانید با آگاهی "
+"کامل به ثبت سفارش بپردازید. ما در تجارک با در نظر گرفتن همه‌ی ابعاد فنی صدور کارت‌های "
+"پرسنلی، همه‌ی توان خود را به‌کار گرفته‌ایم تا با مناسب‌ترین هزینه و بالاترین کیفیت ممکن "
+"خدمات خود را به شما مشتریان و کاربران گرامی برسانیم."
 
 #: tejarak/includes/languages/trans_twig.php:160
 msgid "Interested?"
@@ -9555,11 +9481,11 @@ msgstr "نسخه آلفای تجارک منتشر شد"
 
 #: tejarak/includes/languages/trans_twig.php:172
 msgid ""
-"The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak."
-"ir</a> domains registered."
+"The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> "
+"domains registered."
 msgstr ""
-"نام تجارک برای این پروژه برگزیده شده و دامنه‌ی <a href='http://Tejarak.ir'>Tejarak."
-"ir</a> ثبت شد."
+"نام تجارک برای این پروژه برگزیده شده و دامنه‌ی <a href='http://Tejarak.ir'>Tejarak.ir</a> "
+"ثبت شد."
 
 #: tejarak/includes/languages/trans_twig.php:175
 msgid "Enterprise"
@@ -9571,8 +9497,8 @@ msgstr "سردرد دارید؟ ما راه‌حل‌هایی برای شما د
 
 #: tejarak/includes/languages/trans_twig.php:177
 msgid ""
-"Big companies simply don’t work like small companies, and they don’t use Tejarak "
-"the same way either. That’s why there’s Enterprise."
+"Big companies simply don’t work like small companies, and they don’t use Tejarak the "
+"same way either. That’s why there’s Enterprise."
 msgstr ""
 "شرکت‌های بزرگ به آسانی شرکت‌های کوچک کار نمی‌کنند و از تجارک نیز به همان شکل استفاده "
 "نمی‌کنند. این دلیل راه‌اندازی بخش سازمانی ماست."
@@ -9618,8 +9544,8 @@ msgid ""
 "The easiest way to learn how to use Tejark is enter to it, which takes less than 3 "
 "minutes to setup your team."
 msgstr ""
-"آسان‌ترین راه برای یادگیری نحوه‌ی کارکرد ازویر ورود به آن است که کمتر از ۳ دقیقه از "
-"زمان شما را برای راه‌اندازی اولیه و شروع به‌کار می‌گیرد."
+"آسان‌ترین راه برای یادگیری نحوه‌ی کارکرد ازویر ورود به آن است که کمتر از ۳ دقیقه از زمان "
+"شما را برای راه‌اندازی اولیه و شروع به‌کار می‌گیرد."
 
 #: tejarak/includes/languages/trans_twig.php:194
 msgid "What is your privacy and security policy?"
@@ -9644,19 +9570,18 @@ msgstr "تعرفه‌ی پهنای باند شما چقدر است؟"
 #: tejarak/includes/languages/trans_twig.php:199
 msgid "There are none. All Tejarak plans include unlimited bandwidth for free."
 msgstr ""
-"هیچ! تمامی پلن‌های تجارک شامل پهنای‌باند نامحدود رایگان هستند و شما هزینه‌ای برای "
-"پهنای‌باند پرداخت نمی‌کنید."
+"هیچ! تمامی پلن‌های تجارک شامل پهنای‌باند نامحدود رایگان هستند و شما هزینه‌ای برای پهنای‌باند "
+"پرداخت نمی‌کنید."
 
 #: tejarak/includes/languages/trans_twig.php:200
 msgid "Do I need a web host?"
 msgstr "آیا برای استفاده از ازویر نیاز به هاست دارم؟"
 
 #: tejarak/includes/languages/trans_twig.php:201
-msgid ""
-"No! Tejarak includes secure, unlimited hosting on all plans with free bandwith."
+msgid "No! Tejarak includes secure, unlimited hosting on all plans with free bandwith."
 msgstr ""
-"خیر! تجارک به‌همراه هاست نامحدود و امن شده بر روی تمامی پلن‌ها به همراه پهنای باند "
-"نامحدود برای شما قابل استفاده است."
+"خیر! تجارک به‌همراه هاست نامحدود و امن شده بر روی تمامی پلن‌ها به همراه پهنای باند نامحدود "
+"برای شما قابل استفاده است."
 
 #: tejarak/includes/languages/trans_twig.php:202
 msgid "Billing & Invoicing"
@@ -9676,11 +9601,11 @@ msgstr "آیا می‌توانم حساب‌کاربری خودم را هر زم
 
 #: tejarak/includes/languages/trans_twig.php:206
 msgid ""
-"Yes. If you ever decide that Tejarak isn’t the best platform for your business, "
-"simply cancel your account."
+"Yes. If you ever decide that Tejarak isn’t the best platform for your business, simply "
+"cancel your account."
 msgstr ""
-"بله. اگر هر زمانی تصمیم گرفتید که تجارک بهترین خدمات موجود را به کسب و کار شما "
-"ارائه نمی‌دهد، به‌راحتی اکانت خود را لغو کنید."
+"بله. اگر هر زمانی تصمیم گرفتید که تجارک بهترین خدمات موجود را به کسب و کار شما ارائه "
+"نمی‌دهد، به‌راحتی اکانت خود را لغو کنید."
 
 #: tejarak/includes/languages/trans_twig.php:207
 msgid "How long are your contracts?"
@@ -9697,8 +9622,8 @@ msgstr "آیا در آینده می‌توانم پلن انتخابی را تغ
 #: tejarak/includes/languages/trans_twig.php:210
 msgid "Absolutely! You can upgrade or downgrade your plan at any time."
 msgstr ""
-"قطعا! شما هر زمانی لازم دیدید می‌توانید پلن خود را ارتقا داده و یا به پلن‌های "
-"پایین‌تر جابجا شوید."
+"قطعا! شما هر زمانی لازم دیدید می‌توانید پلن خود را ارتقا داده و یا به پلن‌های پایین‌تر "
+"جابجا شوید."
 
 #: tejarak/includes/languages/trans_twig.php:211
 msgid "When is my billing date?"
@@ -9706,14 +9631,13 @@ msgstr "موعد پرداخت هزینه‌های مالی من چه‌زمان�
 
 #: tejarak/includes/languages/trans_twig.php:212
 msgid ""
-"The date you first select a paid plan will be the recurring billing date. For "
-"example: If you sign up for the first time on July 15, all future charges will be "
-"billed on the 15th of every month."
+"The date you first select a paid plan will be the recurring billing date. For example: "
+"If you sign up for the first time on July 15, all future charges will be billed on the "
+"15th of every month."
 msgstr ""
-"اولین روزی که پلن مالی را انتخاب کردید به‌عنوان روز شروع تعیین شده و در دوره‌های "
-"زمانی تکرار می‌شود. به‌طور مثال اگر شما اولین بار در تاریخ ۱۷ خرداد پلن خود را "
-"انتخاب کردید، تمامی فاکتورهای بعدی در تاریخ ۱۷‌ ام ماه‌های آینده صادر و کسر خواهند "
-"شد."
+"اولین روزی که پلن مالی را انتخاب کردید به‌عنوان روز شروع تعیین شده و در دوره‌های زمانی "
+"تکرار می‌شود. به‌طور مثال اگر شما اولین بار در تاریخ ۱۷ خرداد پلن خود را انتخاب کردید، "
+"تمامی فاکتورهای بعدی در تاریخ ۱۷‌ ام ماه‌های آینده صادر و کسر خواهند شد."
 
 #: tejarak/includes/languages/trans_twig.php:215
 msgid "Help Center"
@@ -9929,11 +9853,11 @@ msgstr "با پلن سازمانی ما شروع کنید."
 
 #: tejarak/includes/languages/trans_twig.php:275
 msgid ""
-"We wish to assure you that our main concern is to secure your privacy and protect "
-"your information against impermissible access."
+"We wish to assure you that our main concern is to secure your privacy and protect your "
+"information against impermissible access."
 msgstr ""
-"ما این اطمینان را به شما می‌دهیم که دغدغه‌ی ما، حفظ حریم‌خصوصی و محافظت از اطلاعات "
-"شما در برابر دسترسی‌های غیرمجاز هست."
+"ما این اطمینان را به شما می‌دهیم که دغدغه‌ی ما، حفظ حریم‌خصوصی و محافظت از اطلاعات شما در "
+"برابر دسترسی‌های غیرمجاز هست."
 
 #: tejarak/includes/languages/trans_twig.php:276
 msgid "What is Privacy?"
@@ -9941,19 +9865,19 @@ msgstr "حریم‌خصوصی چیست؟"
 
 #: tejarak/includes/languages/trans_twig.php:277
 msgid ""
-"Privacy means that any individual is entitled to choose the information related to "
-"them, and selectively, share it with others."
+"Privacy means that any individual is entitled to choose the information related to them, "
+"and selectively, share it with others."
 msgstr ""
-"حریم‌خصوصی یعنی شخص بتواند اطلاعات مربوط به خود را مجزا کرده و به انتخاب خویش، در "
-"برابر دیگران آشکار کند."
+"حریم‌خصوصی یعنی شخص بتواند اطلاعات مربوط به خود را مجزا کرده و به انتخاب خویش، در برابر "
+"دیگران آشکار کند."
 
 #: tejarak/includes/languages/trans_twig.php:278
 msgid ""
-"privacy is so important for mental peace as well as a peaceful personality that "
-"some experts have considered invasion of privacy disrespectful to human dignity."
+"privacy is so important for mental peace as well as a peaceful personality that some "
+"experts have considered invasion of privacy disrespectful to human dignity."
 msgstr ""
-"حریم‌خصوصی برای آرامش روانی و شخصیتی، بسیار مهم است تا جایی‌که بعضی از صاحب‌نظران نقض "
-"آن را به عنوان یک اقدام توهین‌آمیز نسبت به شرافت بشری قلمداد کرده‌اند."
+"حریم‌خصوصی برای آرامش روانی و شخصیتی، بسیار مهم است تا جایی‌که بعضی از صاحب‌نظران نقض آن را "
+"به عنوان یک اقدام توهین‌آمیز نسبت به شرافت بشری قلمداد کرده‌اند."
 
 #: tejarak/includes/languages/trans_twig.php:279
 msgid "Controversies over the Invasion of Privacy"
@@ -9961,28 +9885,27 @@ msgstr "جنجال‌های نقض حریم‌خصوصی"
 
 #: tejarak/includes/languages/trans_twig.php:280
 msgid ""
-"Within e-commerce, privacy has always been from among the most controversial "
-"topics and continues to be."
-msgstr ""
-"حریم‌خصوصی در کسب‌و‌کارهای الکترونیکی همیشه یکی از بحث‌برانگیزترین موضوعات بوده و هست؛"
+"Within e-commerce, privacy has always been from among the most controversial topics and "
+"continues to be."
+msgstr "حریم‌خصوصی در کسب‌و‌کارهای الکترونیکی همیشه یکی از بحث‌برانگیزترین موضوعات بوده و هست؛"
 
 #: tejarak/includes/languages/trans_twig.php:281
 msgid ""
-"Accordingly, formulating privacy policies is regarded as one of the crucial "
-"concerns of technology companies."
+"Accordingly, formulating privacy policies is regarded as one of the crucial concerns of "
+"technology companies."
 msgstr ""
-"به همین دلیل، تعیین سیاست‌های حریم‌خصوصی جزء دغدغه‌های بسیار مهم شرکت‌های فناورانه "
-"محسوب می‌شود."
+"به همین دلیل، تعیین سیاست‌های حریم‌خصوصی جزء دغدغه‌های بسیار مهم شرکت‌های فناورانه محسوب "
+"می‌شود."
 
 #: tejarak/includes/languages/trans_twig.php:282
 msgid ""
-"Meanwhile, widespread controversies have been provoked over invasion of privacy in "
-"e-commerce so that, occasionally, the regulations have to be revised to eliminate "
-"the existing weaknesses."
+"Meanwhile, widespread controversies have been provoked over invasion of privacy in e-"
+"commerce so that, occasionally, the regulations have to be revised to eliminate the "
+"existing weaknesses."
 msgstr ""
-"در این میان جنجال‌هایی گسترده به‌خاطر نقض حریم‌خصوصی از کسب‌وکارهای الکترونیکی صورت "
-"گرفته است؛ به‌گونه‌ای که هرچند وقت یک‌بار مجبور هستند قوانین را بازبینی نموده تا "
-"حفره‌های موجود را رفع نمایند."
+"در این میان جنجال‌هایی گسترده به‌خاطر نقض حریم‌خصوصی از کسب‌وکارهای الکترونیکی صورت گرفته "
+"است؛ به‌گونه‌ای که هرچند وقت یک‌بار مجبور هستند قوانین را بازبینی نموده تا حفره‌های موجود را "
+"رفع نمایند."
 
 #: tejarak/includes/languages/trans_twig.php:283
 msgid "Privacy from Our Point of View"
@@ -9990,75 +9913,72 @@ msgstr "حریم‌خصوصی از دیدگاه ما"
 
 #: tejarak/includes/languages/trans_twig.php:284
 msgid ""
-"Let us be straightforward! Cyberspace is not a safe location for personal "
-"information."
+"Let us be straightforward! Cyberspace is not a safe location for personal information."
 msgstr "رو راست باشیم، فضای مجازی محل امنی برای اطلاعات خصوصی نیست."
 
 #: tejarak/includes/languages/trans_twig.php:285
 msgid ""
-"For that reason, Tejarak makes no request for important information of yours and "
-"allow to save some general information including age, gender, education, "
-"interests, etc  is only for private use of your team or company."
+"For that reason, Tejarak makes no request for important information of yours and allow "
+"to save some general information including age, gender, education, interests, etc  is "
+"only for private use of your team or company."
 msgstr ""
-"به‌همین دلیل، تجارک درخواستی برای ثبت اطلاعات مهم شده نداشته و تنها اجازه ثبت برخی "
-"از اطلاعات عمومی شامل سن، جنسیت، مدرک تحصیلی، علاقمندی‌ها و ... را برای استفاده "
-"خصوصی در تیم یا شرکت شما می‌دهد."
+"به‌همین دلیل، تجارک درخواستی برای ثبت اطلاعات مهم شده نداشته و تنها اجازه ثبت برخی از "
+"اطلاعات عمومی شامل سن، جنسیت، مدرک تحصیلی، علاقمندی‌ها و ... را برای استفاده خصوصی در تیم "
+"یا شرکت شما می‌دهد."
 
 #: tejarak/includes/languages/trans_twig.php:286
 msgid ""
-"It is worth mentioning that recording the aforementioned points is totally "
-"voluntary."
+"It is worth mentioning that recording the aforementioned points is totally voluntary."
 msgstr "لازم به توضیح است که ثبت موارد ذکرشده نیز به‌صورت کاملا اختیاری است."
 
 #: tejarak/includes/languages/trans_twig.php:287
 msgid ""
-"However, taking the nature of cyberspace into account, we should remember that "
-"offering an absolute assurance might not be possible."
+"However, taking the nature of cyberspace into account, we should remember that offering "
+"an absolute assurance might not be possible."
 msgstr ""
-"این را در نظر داشته باشید که با توجه به ماهیت فضای مجازی، ارائه تضمین صددرصدی "
-"به‌طور کل ممکن نیست."
+"این را در نظر داشته باشید که با توجه به ماهیت فضای مجازی، ارائه تضمین صددرصدی به‌طور کل "
+"ممکن نیست."
 
 #: tejarak/includes/languages/trans_twig.php:288
 msgid ""
-"Assuring privacy and security, with that ideal concept we bear in mind, does not "
-"exist; and if somebody gives you an assurance of securing your privacy, he has "
-"certainly abused your trust."
+"Assuring privacy and security, with that ideal concept we bear in mind, does not exist; "
+"and if somebody gives you an assurance of securing your privacy, he has certainly abused "
+"your trust."
 msgstr ""
-"تضمین امنیت و حریم خصوصی به آن معنای آرمانی که ما در ذهن خود داریم وجود ندارد، و "
-"اگر کسی در دنیای مجازی، تضمین امنیت حریم‌خصوصی شما را بدهد قطعا از اعتماد شما "
-"سوءاستفاده کرده است."
+"تضمین امنیت و حریم خصوصی به آن معنای آرمانی که ما در ذهن خود داریم وجود ندارد، و اگر کسی "
+"در دنیای مجازی، تضمین امنیت حریم‌خصوصی شما را بدهد قطعا از اعتماد شما سوءاستفاده کرده است."
 
 #: tejarak/includes/languages/trans_twig.php:289
 msgid ""
-"Upon buying any digital or the so-called smart device, you have invaded your own "
-"privacy yourself."
+"Upon buying any digital or the so-called smart device, you have invaded your own privacy "
+"yourself."
 msgstr ""
 "شما با خرید هر دستگاه دیجیتالی یا به اصطلاح هوشمند، با دست خود حریم‌خصوصی‌تان را نقض "
 "کرده‌اید."
 
 #: tejarak/includes/languages/trans_twig.php:290
 msgid ""
-"If you want your privacy not to be invaded, you should depart from technology and "
-"say goodbye to any digital and smart device."
+"If you want your privacy not to be invaded, you should depart from technology and say "
+"goodbye to any digital and smart device."
 msgstr ""
-"اگر می‌خواهید این حریم‌خصوصی نقض نشود باید به‌طور کل از دنیای تکنولوژی فاصله بگیرید و "
-"با هر دستگاه دیجیتالی و هوشمندی خداحافظی کنید."
+"اگر می‌خواهید این حریم‌خصوصی نقض نشود باید به‌طور کل از دنیای تکنولوژی فاصله بگیرید و با هر "
+"دستگاه دیجیتالی و هوشمندی خداحافظی کنید."
 
 #: tejarak/includes/languages/trans_twig.php:291
 msgid ""
-"In fact, we have employed all updated technologies of the world to provide you "
-"with the maximum security."
+"In fact, we have employed all updated technologies of the world to provide you with the "
+"maximum security."
 msgstr ""
-"ما به‌لحاظ فنی تمام تکنولوژی‌های روز دنیا را به‌کار برده‌ایم تا امنیت حداکثری را برای "
-"شما به ارمغان بیاوریم."
+"ما به‌لحاظ فنی تمام تکنولوژی‌های روز دنیا را به‌کار برده‌ایم تا امنیت حداکثری را برای شما به "
+"ارمغان بیاوریم."
 
 #: tejarak/includes/languages/trans_twig.php:292
 msgid ""
 "As the final remark, we wish to assure you that our main concern is to secure your "
 "privacy and protect your information against impermissible access."
 msgstr ""
-"در پایان، این اطمینان را به شما می‌دهیم که دغدغه‌ی ما، حفظ حریم‌خصوصی و محافظت از "
-"اطلاعات شما در برابر دسترسی‌های غیرمجاز هست."
+"در پایان، این اطمینان را به شما می‌دهیم که دغدغه‌ی ما، حفظ حریم‌خصوصی و محافظت از اطلاعات "
+"شما در برابر دسترسی‌های غیرمجاز هست."
 
 #: tejarak/includes/languages/trans_twig.php:295
 msgid "Tejarak Social Responsibility"
@@ -10066,30 +9986,29 @@ msgstr "مسئولیت اجتماعی تجارک"
 
 #: tejarak/includes/languages/trans_twig.php:296
 msgid ""
-"Social responsibility refers to our role in maintaining, caring about and helping "
-"our society, while having set as its goal a responsibility-centered enterprise "
-"along with wealth production."
+"Social responsibility refers to our role in maintaining, caring about and helping our "
+"society, while having set as its goal a responsibility-centered enterprise along with "
+"wealth production."
 msgstr ""
-"مسئولیت اجتماعی به نقش ما در جهت حفظ، مراقبت و کمک به جامعه‌ای که در آن هستیم اشاره "
-"می‌کند و هدف آن کسب‌وکار مسئولانه‌ی همراه با تولید ثروت است."
+"مسئولیت اجتماعی به نقش ما در جهت حفظ، مراقبت و کمک به جامعه‌ای که در آن هستیم اشاره می‌کند "
+"و هدف آن کسب‌وکار مسئولانه‌ی همراه با تولید ثروت است."
 
 #: tejarak/includes/languages/trans_twig.php:297
 msgid ""
-"The issue of the social responsibility of organizations and corporations towards "
-"the society is from among the important issues being focused on in recent years."
+"The issue of the social responsibility of organizations and corporations towards the "
+"society is from among the important issues being focused on in recent years."
 msgstr ""
-"موضوع مسئولیت اجتماعی سازمان‌ها و شرکت‌ها نسبت به جامعه از جمله موضوعات مهمی است که "
-"در سال‌های اخیر مورد اهمیت قرار گرفته است."
+"موضوع مسئولیت اجتماعی سازمان‌ها و شرکت‌ها نسبت به جامعه از جمله موضوعات مهمی است که در "
+"سال‌های اخیر مورد اهمیت قرار گرفته است."
 
 #: tejarak/includes/languages/trans_twig.php:298
 msgid ""
-"The social responsibility of organizations relates to the organization's "
-"responsibility towards society, human beings and the environment in which they are "
-"active."
+"The social responsibility of organizations relates to the organization's responsibility "
+"towards society, human beings and the environment in which they are active."
 msgstr ""
-"مسئولیت اجتماعی سازمان‌ها مرتبط با مسئولیت سازمان در برابر جامعه، انسان‌ها و محیطی "
-"است که در آن فعالیت می‌کند. این مسئولیت فراتر از قوانین مرسوم و منافع مالی سازمان "
-"بوده و پیشرفت منافع اجتماعی را دنبال می‌کند."
+"مسئولیت اجتماعی سازمان‌ها مرتبط با مسئولیت سازمان در برابر جامعه، انسان‌ها و محیطی است که "
+"در آن فعالیت می‌کند. این مسئولیت فراتر از قوانین مرسوم و منافع مالی سازمان بوده و پیشرفت "
+"منافع اجتماعی را دنبال می‌کند."
 
 #: tejarak/includes/languages/trans_twig.php:299
 msgid "Tejarak's Social Responsibilities"
@@ -10097,14 +10016,14 @@ msgstr "مسئولیت‌های اجتماعی تجارک"
 
 #: tejarak/includes/languages/trans_twig.php:300
 msgid ""
-"Based on the mentioned definitions of social responsibility, Tejarak considers "
-"itself committed to society. Accordingly, besides attempting to offer creative and "
-"effective services, Tejarak has invariably had social responsibility as one of its "
-"most important missions and, God willing, will continue to do so."
+"Based on the mentioned definitions of social responsibility, Tejarak considers itself "
+"committed to society. Accordingly, besides attempting to offer creative and effective "
+"services, Tejarak has invariably had social responsibility as one of its most important "
+"missions and, God willing, will continue to do so."
 msgstr ""
-"براساس تعاریفی که از مسئولیت اجتماعی شد، تجارک نیز خود را در قبال جامعه متعهد "
-"دانسته و در کنار تلاش جهت ارائه خدمات خلاقانه و اثربخش، همواره مسئولیت اجتماعی از "
-"مهم‌ترین ماموریت‌های تجارک بوده و به‌امیدخدا خواهد بود."
+"براساس تعاریفی که از مسئولیت اجتماعی شد، تجارک نیز خود را در قبال جامعه متعهد دانسته و "
+"در کنار تلاش جهت ارائه خدمات خلاقانه و اثربخش، همواره مسئولیت اجتماعی از مهم‌ترین "
+"ماموریت‌های تجارک بوده و به‌امیدخدا خواهد بود."
 
 #: tejarak/includes/languages/trans_twig.php:301
 msgid "Environmentalist"
@@ -10112,24 +10031,22 @@ msgstr "دوست‌دار محیط‌زیست"
 
 #: tejarak/includes/languages/trans_twig.php:302
 msgid ""
-"In spite of technological advancements, paper usage is unfortunately preferred to "
-"modern ways. One of Tejarak's objectives is trying to change this habit and "
-"contribute to the elimination of paper from the routine life and, therefore, to "
-"save the environment."
+"In spite of technological advancements, paper usage is unfortunately preferred to modern "
+"ways. One of Tejarak's objectives is trying to change this habit and contribute to the "
+"elimination of paper from the routine life and, therefore, to save the environment."
 msgstr ""
-"با وجود پیشرفت تکنولوژی، متاسفانه همچنان علاقه به استفاده از کاغذ قابل پذیرش‌تر از "
-"روش‌های مدرن است؛ یکی از اهداف تجارک تلاش برای تغییر این عادت و کمک به حذف کاغذ از "
-"زندگی روزمره و درنتیجه حفظ محیط‌زیست است."
+"با وجود پیشرفت تکنولوژی، متاسفانه همچنان علاقه به استفاده از کاغذ قابل پذیرش‌تر از روش‌های "
+"مدرن است؛ یکی از اهداف تجارک تلاش برای تغییر این عادت و کمک به حذف کاغذ از زندگی روزمره "
+"و درنتیجه حفظ محیط‌زیست است."
 
 #: tejarak/includes/languages/trans_twig.php:303
 msgid ""
 "Accordingly, with the aim of total elimination of paper use as well as electronic "
-"presentation of services, Tejarak has taken significant steps towards "
-"environmentalism. Be informed about Tejarak's paper-saving quantity."
+"presentation of services, Tejarak has taken significant steps towards environmentalism. "
+"Be informed about Tejarak's paper-saving quantity."
 msgstr ""
-"تجارک با حذف صددرصدی استفاده از کاغذ و ارائه خدمات به صورت الکترونیکی توانسته "
-"اقدامی مهم در زمینه حفظ محیط‌زیست داشته باشد. از میزان صرفه‌جویی تجارک در مصرف کاغذ "
-"آگاه شوید."
+"تجارک با حذف صددرصدی استفاده از کاغذ و ارائه خدمات به صورت الکترونیکی توانسته اقدامی مهم "
+"در زمینه حفظ محیط‌زیست داشته باشد. از میزان صرفه‌جویی تجارک در مصرف کاغذ آگاه شوید."
 
 #: tejarak/includes/languages/trans_twig.php:304
 msgid "Philanthropist Activities"
@@ -10137,23 +10054,22 @@ msgstr "فعالیت‌های خیرخواهانه"
 
 #: tejarak/includes/languages/trans_twig.php:305
 msgid ""
-"One of the most valuable resources of charity organizations is the voluntary and "
-"active participation of the individuals who, without any expectations, provide "
-"them with their skillfulness and capital."
+"One of the most valuable resources of charity organizations is the voluntary and active "
+"participation of the individuals who, without any expectations, provide them with their "
+"skillfulness and capital."
 msgstr ""
-"یکی از ارزشمندترین سرمایه‌‌ی سازمان‌های خیریه، فعالیت و مشارکت داوطلبانه افرادی است "
-"که مهارت و سرمایه خود را بدون هیچ چشم‌داشتی در اختیار آن‌ها قرار می‌دهند."
+"یکی از ارزشمندترین سرمایه‌‌ی سازمان‌های خیریه، فعالیت و مشارکت داوطلبانه افرادی است که "
+"مهارت و سرمایه خود را بدون هیچ چشم‌داشتی در اختیار آن‌ها قرار می‌دهند."
 
 #: tejarak/includes/languages/trans_twig.php:306
 msgid ""
-"Tejarak as well, with regard to its contribution to philanthropist activities, "
-"will honorably provide them with its services free of charge. To make use of these "
-"services, send your identity documents along with your request to Tejarak's "
-"support center."
+"Tejarak as well, with regard to its contribution to philanthropist activities, will "
+"honorably provide them with its services free of charge. To make use of these services, "
+"send your identity documents along with your request to Tejarak's support center."
 msgstr ""
-"تجارک نیز با توجه به ماموریت خود در راستای کمک به فعالیت‌های خیرخواهانه، خدمات خود "
-"را با افتخار و به‌صورت رایگان دراختیار آنان قرار می‌دهد. برای استفاده از این خدمات، "
-"درخواست خود را همراه با مدارک احراز هویت به مرکز پشتیبانی تجارک ارسال نمایید."
+"تجارک نیز با توجه به ماموریت خود در راستای کمک به فعالیت‌های خیرخواهانه، خدمات خود را با "
+"افتخار و به‌صورت رایگان دراختیار آنان قرار می‌دهد. برای استفاده از این خدمات، درخواست خود "
+"را همراه با مدارک احراز هویت به مرکز پشتیبانی تجارک ارسال نمایید."
 
 #: tejarak/includes/languages/trans_twig.php:307
 msgid "Recruiting Motivated Staff"
@@ -10164,16 +10080,16 @@ msgid ""
 "An outstanding characteristic of any organization is its specialized and highly "
 "motivated staff, playing a vital role in growth and development."
 msgstr ""
-"ویژگی چشم‌گیر و بارز هر سازمانی وجود نیروی‌ انسانی باانگیزه و متخصص است که نقشی "
-"بنیادین در رشد و توسعه دارند."
+"ویژگی چشم‌گیر و بارز هر سازمانی وجود نیروی‌ انسانی باانگیزه و متخصص است که نقشی بنیادین در "
+"رشد و توسعه دارند."
 
 #: tejarak/includes/languages/trans_twig.php:309
 msgid ""
-"By the same token, we are always looking for creative and motivated Iranian youths "
-"in order to make the best and be effective in cooperation with them."
+"By the same token, we are always looking for creative and motivated Iranian youths in "
+"order to make the best and be effective in cooperation with them."
 msgstr ""
-"ما هم در این راستا و برای خدمت به سرزمین‌مان، به دنبال جوانان ایرانی خلاق و "
-"باانگیزه هستیم تا با کمک هم برترین‌ها را بسازیم و اثرگذار باشیم."
+"ما هم در این راستا و برای خدمت به سرزمین‌مان، به دنبال جوانان ایرانی خلاق و باانگیزه "
+"هستیم تا با کمک هم برترین‌ها را بسازیم و اثرگذار باشیم."
 
 #: tejarak/includes/languages/trans_twig.php:310
 msgid "Join us and grow in a different location."
@@ -10185,20 +10101,20 @@ msgstr "مشتری‌مداری و کسب رضایت کامل"
 
 #: tejarak/includes/languages/trans_twig.php:312
 msgid ""
-"Attracting people's participation as well as having their valuable presence has "
-"always been a great honor for Tejarak and to appreciate your support, in return, "
-"Tejarak presents services to promote customer satisfaction."
+"Attracting people's participation as well as having their valuable presence has always "
+"been a great honor for Tejarak and to appreciate your support, in return, Tejarak "
+"presents services to promote customer satisfaction."
 msgstr ""
-"جلب مشارکت مردم و حضور ارزشمند آنان در تجارک باعث افتخار ما بوده و به‌منظور قدردانی "
-"از این حمایت، تجارک نیز خدمات متقابلی را برای افزایش رضایت مشتریان خود ارائه می‌کند."
+"جلب مشارکت مردم و حضور ارزشمند آنان در تجارک باعث افتخار ما بوده و به‌منظور قدردانی از "
+"این حمایت، تجارک نیز خدمات متقابلی را برای افزایش رضایت مشتریان خود ارائه می‌کند."
 
 #: tejarak/includes/languages/trans_twig.php:313
 msgid ""
-"These services are presented in different time intervals and are aimed at costomer "
-"care mission and appreciation of your valuable presence."
+"These services are presented in different time intervals and are aimed at costomer care "
+"mission and appreciation of your valuable presence."
 msgstr ""
-"این خدمات در بازه‌های زمانی متفاوت ارائه‌شده و در راستای ماموریت مشتری‌مداری و ارج "
-"نهادن به این حضور گرانبها می‌باشد."
+"این خدمات در بازه‌های زمانی متفاوت ارائه‌شده و در راستای ماموریت مشتری‌مداری و ارج نهادن به "
+"این حضور گرانبها می‌باشد."
 
 #: tejarak/includes/languages/trans_twig.php:316
 msgid "Terms of Service Agreement"
@@ -10206,129 +10122,126 @@ msgstr "توافق‌نامه استفاده از سرویس"
 
 #: tejarak/includes/languages/trans_twig.php:317
 msgid ""
-"Tejarak acts upon international rules, depends on the countries receiving its "
-"services and renders its activities within this framework."
+"Tejarak acts upon international rules, depends on the countries receiving its services "
+"and renders its activities within this framework."
 msgstr ""
-"تجارک مطابق قوانین بین‌الملل و وابسته به کشورهای دریافت‌کننده خدمات بوده و در این "
-"چارچوب فعالیت می‌نماید."
+"تجارک مطابق قوانین بین‌الملل و وابسته به کشورهای دریافت‌کننده خدمات بوده و در این چارچوب "
+"فعالیت می‌نماید."
 
 #: tejarak/includes/languages/trans_twig.php:318
 msgid ""
-"Utilizing Tejarak's services means the acceptance of and commitment to observing "
-"all the tenors of this agreement."
+"Utilizing Tejarak's services means the acceptance of and commitment to observing all the "
+"tenors of this agreement."
 msgstr ""
-"استفاده از خدمات تجارک به منزله‌ پذیرش و تعهد به رعایت تمام مفاد مندرج در این "
-"توافق‌نامه است."
+"استفاده از خدمات تجارک به منزله‌ پذیرش و تعهد به رعایت تمام مفاد مندرج در این توافق‌نامه "
+"است."
 
 #: tejarak/includes/languages/trans_twig.php:319
 msgid ""
-"It is worth mentioning that due to the insecurity of cyberspace, you should never "
-"post your vital information on either Tejarak or any other services!"
+"It is worth mentioning that due to the insecurity of cyberspace, you should never post "
+"your vital information on either Tejarak or any other services!"
 msgstr ""
-"لازم به یادآوری‌ست که با توجه به ناامن بودن فضای ‌مجازی، نه تنها در تجارک بلکه در "
-"هیچ سرویس دیگری، اطلاعات حیاتی خود را منتشر نکنید!"
+"لازم به یادآوری‌ست که با توجه به ناامن بودن فضای ‌مجازی، نه تنها در تجارک بلکه در هیچ "
+"سرویس دیگری، اطلاعات حیاتی خود را منتشر نکنید!"
 
 #: tejarak/includes/languages/trans_twig.php:320
 msgid ""
-"User's personal information is strictly confidential in our service. Tejarak "
-"preserves the information as encoded and will not under any conditions transfer it "
-"to another person."
+"User's personal information is strictly confidential in our service. Tejarak preserves "
+"the information as encoded and will not under any conditions transfer it to another "
+"person."
 msgstr ""
-"اطلاعات شخصی کاربران در این سرویس به‌صورت کاملا محرمانه می‌باشد و تجارک این اطلاعات "
-"را به صورت کدشده نگه‌داری کرده و تحت هیچ شرایطی آن‌را به غیر واگذار نخواهد کرد."
+"اطلاعات شخصی کاربران در این سرویس به‌صورت کاملا محرمانه می‌باشد و تجارک این اطلاعات را به "
+"صورت کدشده نگه‌داری کرده و تحت هیچ شرایطی آن‌را به غیر واگذار نخواهد کرد."
 
 #: tejarak/includes/languages/trans_twig.php:321
 msgid ""
 "In case there is a request for receiving user's information by the competent "
-"authorities, according to the country the user lives in, Tejarak will cooperate "
-"with them only upon receiving the judicial order issued by the country submitting "
-"the request."
+"authorities, according to the country the user lives in, Tejarak will cooperate with "
+"them only upon receiving the judicial order issued by the country submitting the request."
 msgstr ""
 "با توجه به کشور محل سکونت کاربر، درصورت درخواست مراجع دارای صلاحیت به دریافت "
-"اطلاعات‌کاربری، تجارک تنها پس از دریافت حکم قضایی کشور درخواست کننده، توانایی "
-"همکاری با آنان را خواهد داشت."
+"اطلاعات‌کاربری، تجارک تنها پس از دریافت حکم قضایی کشور درخواست کننده، توانایی همکاری با "
+"آنان را خواهد داشت."
 
 #: tejarak/includes/languages/trans_twig.php:322
 msgid ""
 "Tejarak will not offer any guarantee as to the quality of the products or services "
 "presented by the teams and will not accept any responsibility in this regard!"
 msgstr ""
-"تجارک هیچگونه ضمانتی در مورد کیفیت محصولات یا خدمات ارائه شده توسط تیم‌ها را "
-"نمی‌پذیرد و مسئولیتی در قبال آن ندارد!"
+"تجارک هیچگونه ضمانتی در مورد کیفیت محصولات یا خدمات ارائه شده توسط تیم‌ها را نمی‌پذیرد و "
+"مسئولیتی در قبال آن ندارد!"
 
 #: tejarak/includes/languages/trans_twig.php:323
 msgid ""
-"Users should assume responsibility for any harm, both material and immaterial, "
-"caused by direct, indirect or penal factors and due to their utilization of this "
-"service; and, Tejarak bears no responsibility accordingly."
+"Users should assume responsibility for any harm, both material and immaterial, caused by "
+"direct, indirect or penal factors and due to their utilization of this service; and, "
+"Tejarak bears no responsibility accordingly."
 msgstr ""
-"خسارت‌های‌ مادی و معنوی ناشی از عوامل مستقیم، غیرمستقیم و کیفری، در قبال استفاده از "
-"این سرویس برعهده کاربران بوده و تجارک هیچ‌گونه مسئولیتی دراین‌باره ندارد."
+"خسارت‌های‌ مادی و معنوی ناشی از عوامل مستقیم، غیرمستقیم و کیفری، در قبال استفاده از این "
+"سرویس برعهده کاربران بوده و تجارک هیچ‌گونه مسئولیتی دراین‌باره ندارد."
 
 #: tejarak/includes/languages/trans_twig.php:324
 msgid ""
-"Tejarak accepts no responsibility, under any conditions, for the harms caused by "
-"users' mutual trust in each other or by the disclosure of information by users."
+"Tejarak accepts no responsibility, under any conditions, for the harms caused by users' "
+"mutual trust in each other or by the disclosure of information by users."
 msgstr ""
-"تحت هیچ شرایطی تجارک مسئولیت خسارت‌های وارده در اثر اعتماد و اتکاء اعضاء به یکدیگر "
-"و فاش‌شدن اطلاعات توسط کاربر را نمی‌پذیرد."
+"تحت هیچ شرایطی تجارک مسئولیت خسارت‌های وارده در اثر اعتماد و اتکاء اعضاء به یکدیگر و "
+"فاش‌شدن اطلاعات توسط کاربر را نمی‌پذیرد."
 
 #: tejarak/includes/languages/trans_twig.php:325
 msgid ""
 "Tejarak will do its best to protect both the users' information and the service; "
-"however, regarding the lack of certainty within the cyberspace, it will not assume "
-"any responsibility for the loss of the information entered on the service."
+"however, regarding the lack of certainty within the cyberspace, it will not assume any "
+"responsibility for the loss of the information entered on the service."
 msgstr ""
-"تجارک تمام تلاش خود را برای محافظت از اطلاعات کاربران و سرویس می‌نماید؛ ولی با توجه "
-"به عدم قطعیت در فضای مجازی، مسئولیتی در مورد از بين رفتن اطلاعات قرارگرفته بر روی "
-"سرویس نخواهد پذیرفت."
+"تجارک تمام تلاش خود را برای محافظت از اطلاعات کاربران و سرویس می‌نماید؛ ولی با توجه به "
+"عدم قطعیت در فضای مجازی، مسئولیتی در مورد از بين رفتن اطلاعات قرارگرفته بر روی سرویس "
+"نخواهد پذیرفت."
 
 #: tejarak/includes/languages/trans_twig.php:326
 msgid ""
 "We will publicize our information and news only via Tejarak's formal website. "
-"Accordingly, those who publicize any attributed news and claims, within social "
-"media and networks, must assume the responsibility and Tejarak will not assume any "
-"responsibility."
+"Accordingly, those who publicize any attributed news and claims, within social media and "
+"networks, must assume the responsibility and Tejarak will not assume any responsibility."
 msgstr ""
-"اخبار و اطلاعات ما تنها از طریق وب‌سایت رسمی تجارک منتشر می‌شود. مسئولیت هرگونه خبر "
-"و ادعای نسبت‌داده‌شده در رسانه‌ها و شبکه‌های اجتماعی به عهده منتشرکننده آن بوده و "
-"تجارک مسئولیتی در قبال آن ندارد."
+"اخبار و اطلاعات ما تنها از طریق وب‌سایت رسمی تجارک منتشر می‌شود. مسئولیت هرگونه خبر و "
+"ادعای نسبت‌داده‌شده در رسانه‌ها و شبکه‌های اجتماعی به عهده منتشرکننده آن بوده و تجارک "
+"مسئولیتی در قبال آن ندارد."
 
 #: tejarak/includes/languages/trans_twig.php:327
 msgid ""
-"Tejarak will bear no responsibility for whatsoever messages sent to users, "
-"including those indicating winning a lottery, and all our information "
-"dissemination will be through the ways of Tejarak's contact with users."
+"Tejarak will bear no responsibility for whatsoever messages sent to users, including "
+"those indicating winning a lottery, and all our information dissemination will be "
+"through the ways of Tejarak's contact with users."
 msgstr ""
-"تجارک هیچ مسئولیتی در مقابل پیام‌های ارسالی مبنی بر برنده‌شدن در قرعه‌کشی یا هر پیام "
-"دیگری نداشته و تمام اطلاع‌رسانی‌های ما از طریق روش‌های برقراری ارتباط کاربر با تجارک "
-"خواهد بود."
+"تجارک هیچ مسئولیتی در مقابل پیام‌های ارسالی مبنی بر برنده‌شدن در قرعه‌کشی یا هر پیام دیگری "
+"نداشته و تمام اطلاع‌رسانی‌های ما از طریق روش‌های برقراری ارتباط کاربر با تجارک خواهد بود."
 
 #: tejarak/includes/languages/trans_twig.php:328
 msgid ""
 "Any misuse of Tejarak's trade name is prohibited and will be suable by making a "
 "complaint to the legal competent authorities."
 msgstr ""
-"هرگونه سوءاستفاده از نام تجاری تجارک ممنوع بوده و از طریق شکایت به مراجع قانونی "
-"دارای صلاحیت، قابل پیگرد خواهد بود."
+"هرگونه سوءاستفاده از نام تجاری تجارک ممنوع بوده و از طریق شکایت به مراجع قانونی دارای "
+"صلاحیت، قابل پیگرد خواهد بود."
 
 #: tejarak/includes/languages/trans_twig.php:329
 msgid ""
-"Furthermore, this agreement, under the name Terms and Conditions, will be "
-"available and observable, in all pages of the website. Users will be responsible "
-"for a lack of information on the most recent changes."
+"Furthermore, this agreement, under the name Terms and Conditions, will be available and "
+"observable, in all pages of the website. Users will be responsible for a lack of "
+"information on the most recent changes."
 msgstr ""
-"هم‌چنین این توافق‌نامه در تمام صفحات وب‌سایت با عنوان شرایط و قوانین موجود و قابل "
-"مشاهده است. مسئولیت عدم کسب اطلاع از آخرین تغییرات برعهده کاربر خواهد بود."
+"هم‌چنین این توافق‌نامه در تمام صفحات وب‌سایت با عنوان شرایط و قوانین موجود و قابل مشاهده "
+"است. مسئولیت عدم کسب اطلاع از آخرین تغییرات برعهده کاربر خواهد بود."
 
 #: tejarak/includes/languages/trans_twig.php:330
 msgid ""
 "It should be mentioned that in case there would be any modifications in the above-"
-"mentioned tenors, an updated version will be available for the public, and as "
-"well, all the users will be informed."
+"mentioned tenors, an updated version will be available for the public, and as well, all "
+"the users will be informed."
 msgstr ""
-"لازم به ذکر است که درصورت هرگونه تغییر در مفاد ذکر شده، نسخه به‌روزشده آن در دسترس "
-"عموم قرار خواهد گرفت و به اطلاع تمام کاربران خواهد رسید."
+"لازم به ذکر است که درصورت هرگونه تغییر در مفاد ذکر شده، نسخه به‌روزشده آن در دسترس عموم "
+"قرار خواهد گرفت و به اطلاع تمام کاربران خواهد رسید."
 
 #: tejarak/includes/languages/trans_twig.php:333
 msgid "Usage Detail"
@@ -10357,8 +10270,7 @@ msgstr "اطلاعات مالی"
 #: tejarak/includes/languages/trans_twig.php:341
 msgid "Check your balance, charge your account, and bill your invoices!"
 msgstr ""
-"موجودی حساب خود را چک کنید، حساب‌کاربری را شارژ کنید و فاکتورهای صادرشده را پرداخت "
-"کنید!"
+"موجودی حساب خود را چک کنید، حساب‌کاربری را شارژ کنید و فاکتورهای صادرشده را پرداخت کنید!"
 
 #: tejarak/includes/languages/trans_twig.php:342
 msgid "Your credit"
@@ -10592,8 +10504,8 @@ msgstr "سرویس حضور و غیاب"
 #: tejarak/includes/languages/trans_twig.php:444
 msgid "You can set detail of team member and assign some extra data to use later"
 msgstr ""
-"شما می‌توانید جزئیات اعضای تیم را تنظیم کرده و داده‌های اضافی آنان را برای استفاده "
-"در آينده تنظیم کنید."
+"شما می‌توانید جزئیات اعضای تیم را تنظیم کرده و داده‌های اضافی آنان را برای استفاده در "
+"آينده تنظیم کنید."
 
 #: tejarak/includes/languages/trans_twig.php:446
 msgid "Postion"
@@ -10801,8 +10713,8 @@ msgstr "نام تیم:"
 
 #: tejarak/includes/languages/trans_twig.php:512
 msgid ""
-"Be sure to take control of individuals and managers after transferring ownership "
-"of the team"
+"Be sure to take control of individuals and managers after transferring ownership of the "
+"team"
 msgstr "پس از انتقال مالکیت تیم حتما وضعیت مدیران و اعضاء تیم را کنترل کنید"
 
 #: tejarak/includes/languages/trans_twig.php:513
@@ -10834,8 +10746,7 @@ msgid "Send request"
 msgstr "ارسال درخواست"
 
 #: tejarak/includes/languages/trans_twig.php:525
-msgid ""
-"Your ownership transfer request will be sent to the following person. Are you sure?"
+msgid "Your ownership transfer request will be sent to the following person. Are you sure?"
 msgstr "درخواست تغییر مالکیت تیم شما به کاربر زیر ارسال خواهد شد. آیا مطمئن هستید؟"
 
 #: tejarak/includes/languages/trans_twig.php:526
@@ -10943,25 +10854,23 @@ msgid "Refer your friends through Social Media or Email."
 msgstr "دوستان خود را از طریق شبکه‌های اجتماعی و ایمیل ارجاع دهید."
 
 #: tejarak/includes/languages/trans_twig.php:566
-msgid ""
-"Share the referral rewards program with friends on Facebook, Twitter, or Email."
+msgid "Share the referral rewards program with friends on Facebook, Twitter, or Email."
 msgstr ""
-"برنامه معرفی را با دوستان خود در توئیتر، فیس‌بوک، تلگرام یا سایر شبکه‌های اجتماعی و "
-"ایمیل به اشتراک بگذارید."
+"برنامه معرفی را با دوستان خود در توئیتر، فیس‌بوک، تلگرام یا سایر شبکه‌های اجتماعی و ایمیل "
+"به اشتراک بگذارید."
 
 #: tejarak/includes/languages/trans_twig.php:567
 msgid "When they click on your post, we’ll know it was you who referred them."
 msgstr ""
-"زمانی که آن‌ها روی مطلب شما کلیک کردند، ما متوجه می‌شویم که شما آن‌ها را معرفی "
-"کرده‌اید."
+"زمانی که آن‌ها روی مطلب شما کلیک کردند، ما متوجه می‌شویم که شما آن‌ها را معرفی کرده‌اید."
 
 #: tejarak/includes/languages/trans_twig.php:568
 msgid ""
 "If someone forget to use your link, we allow to set your ref code as promo code in "
 "billing page!"
 msgstr ""
-"اگر هنگام ورود به سایت کسی فراموش کرد که از لینک شما استفاده کند، ما اجازه‌ی تنظیم "
-"کد شما را به عنوان کدتخفیف در صفحه مالی می‌دهیم!"
+"اگر هنگام ورود به سایت کسی فراموش کرد که از لینک شما استفاده کند، ما اجازه‌ی تنظیم کد شما "
+"را به عنوان کدتخفیف در صفحه مالی می‌دهیم!"
 
 #: tejarak/includes/languages/trans_twig.php:569
 msgid "Your friend enter to Tejarak and receives credit."
@@ -10973,12 +10882,11 @@ msgstr "دوستان شما وارد تجارک شده و ۱۰.۰۰۰  توما�
 
 #: tejarak/includes/languages/trans_twig.php:571
 msgid ""
-"Anyone you refer to Tejarak that enter using your unique referral link or your "
-"promo code will receive $5 in credit."
+"Anyone you refer to Tejarak that enter using your unique referral link or your promo "
+"code will receive $5 in credit."
 msgstr ""
-"هرکسی که با کد منحصربفرد شما سایت را مشاده کرده و وارد تجارک شود و یا کسانی که از "
-"کد تخفیف شما استفاده کنند، ۱۰.۰۰۰ تومان اعتبار هدیه برای کار با تجارک دریافت "
-"خواهند کرد."
+"هرکسی که با کد منحصربفرد شما سایت را مشاده کرده و وارد تجارک شود و یا کسانی که از کد "
+"تخفیف شما استفاده کنند، ۱۰.۰۰۰ تومان اعتبار هدیه برای کار با تجارک دریافت خواهند کرد."
 
 #: tejarak/includes/languages/trans_twig.php:572
 msgid "You all get rewarded."
@@ -10990,31 +10898,29 @@ msgstr "جوایز تجارک حداکثر ۷ روز کاری پس از تایی
 
 #: tejarak/includes/languages/trans_twig.php:574
 msgid ""
-"Amount of charge is depended on your friend total pay and after automatic "
-"calculation, system set your gift."
+"Amount of charge is depended on your friend total pay and after automatic calculation, "
+"system set your gift."
 msgstr ""
-"میزان شارژ بسته به مجموع پرداختی دوستان شما متفاوت بوده و پس از محاسبه خودکار، "
-"سیستم هدیه شما را منظور خواهد کرد."
+"میزان شارژ بسته به مجموع پرداختی دوستان شما متفاوت بوده و پس از محاسبه خودکار، سیستم "
+"هدیه شما را منظور خواهد کرد."
 
 #: tejarak/includes/languages/trans_twig.php:575
 msgid ""
-"We calculate your percentage until 6 month of your friend registration. Because of "
-"that it was your chance to convinced your friend to charge more!"
+"We calculate your percentage until 6 month of your friend registration. Because of that "
+"it was your chance to convinced your friend to charge more!"
 msgstr ""
-"شما ۶ ماه فرصت دارید تا مجموع پرداختی هر دوست معرفی شده را افزایش دهید. به‌همین "
-"دلیل، شما این زمان را خواهید داشت تا  پس از اطمینان دوستان از کیفیت سیستم، آنان را "
-"برای شارژ بیشتر متقاعد کنید!"
+"شما ۶ ماه فرصت دارید تا مجموع پرداختی هر دوست معرفی شده را افزایش دهید. به‌همین دلیل، شما "
+"این زمان را خواهید داشت تا  پس از اطمینان دوستان از کیفیت سیستم، آنان را برای شارژ بیشتر "
+"متقاعد کنید!"
 
 #: tejarak/includes/languages/trans_twig.php:576
 msgid "Share your link"
 msgstr "لینک خود را به اشتراک بگذارید"
 
 #: tejarak/includes/languages/trans_twig.php:577
-msgid ""
-"Copy your personal referral link and share it with your friends and followers."
+msgid "Copy your personal referral link and share it with your friends and followers."
 msgstr ""
-"لینک معرفی شخصی خود را کپی کنید و آن را با دوستان و دنبال‌کنندگان خود به اشتراک "
-"بگذارید."
+"لینک معرفی شخصی خود را کپی کنید و آن را با دوستان و دنبال‌کنندگان خود به اشتراک بگذارید."
 
 #: tejarak/includes/languages/trans_twig.php:579
 msgid "Referral stats"
