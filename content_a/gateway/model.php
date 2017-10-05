@@ -18,7 +18,7 @@ class model extends \content_a\main\model
 			'name'     => utility::post('name'),
 			'username' => utility::post('username'),
 			'password' => utility::post('ramz'),
-			'status'   => utility::post('status'),
+			'status'   => (utility::post('status') !== null)? 'active': 'deactive',
 		];
 
 		return $args;

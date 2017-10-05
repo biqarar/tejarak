@@ -15,7 +15,7 @@ class view extends \content_a\main\view
 		$this->data->team_default  = $team_default = $this->data->current_team;
 
 		$this->data->page['title'] = T_('Add new gateway');
-		$this->data->page['desc']  = T_('Allow to add specefic type of user that only allow to set enter and exit without more permission');
+		$this->data->page['desc']  = T_('Allow to add specefic type of user that only allow to set enter and exit without more permission.');
 	}
 
 
@@ -39,7 +39,7 @@ class view extends \content_a\main\view
 		}
 
 		$this->data->page['title'] = T_('gateway');
-		$this->data->page['desc']  = T_('See list of gateway and add or edit gateway. Also you can change password of existing gateway.');
+		$this->data->page['desc']  = T_('Gateway is a simple user that allow to see Tejarak board and set enter and exit of members.'). ' '. T_('This is useful when you dont want to login with your admin account and only want to register attendance data.');
 
 	}
 
