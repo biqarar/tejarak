@@ -6,6 +6,8 @@ class view extends \content_a\main\view
 	public function config()
 	{
 		parent::config();
+		$this->data->page['title'] = T_("Send message to user");
+		$this->data->page['desc']  = T_("You can send every message to your team member");
 	}
 
 

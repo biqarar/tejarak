@@ -15,7 +15,7 @@ class view extends \content_a\main\view
 		$this->data->team_default  = $team_default = $this->data->current_team;
 
 		$this->data->page['title'] = T_('Add new gateway');
-		$this->data->page['desc']  = $this->data->page['title'];
+		$this->data->page['desc']  = T_('Allow to add specefic type of user that only allow to set enter and exit without more permission');
 	}
 
 
@@ -37,6 +37,10 @@ class view extends \content_a\main\view
 			$this->data->page['title'] = $this->data->current_team['name'];
 			$this->data->page['desc']  = $this->data->page['title'];
 		}
+
+		$this->data->page['title'] = T_('gateway');
+		$this->data->page['desc']  = T_('See list of gateway and add or edit gateway. Also you can change password of existing gateway.');
+
 	}
 
 
@@ -63,7 +67,7 @@ class view extends \content_a\main\view
 		{
 			$this->data->page['title'] = T_('Edit gateway!');
 		}
-		$this->data->page['desc']  = $this->data->page['title'];
+		$this->data->page['desc']  = T_('change user and password of gateway or disable it.');
 
 	}
 

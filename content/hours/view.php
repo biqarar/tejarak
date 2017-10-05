@@ -11,7 +11,8 @@ class view extends \mvc\view
 		$this->data->current_time = date("Y-m-d H:i:s");
 
 		// add life to page to refresh automatically after end this time
-		$this->data->bodyel = 'data-life=20000';
+		// $this->data->bodyel = 'data-life=20000';
+		$this->include->css    = true;
 	}
 
 

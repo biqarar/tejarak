@@ -7,8 +7,10 @@ class view extends \content_a\main\view
 	{
 		parent::config();
 
-		$this->data->amount = \lib\utility::get('amount');
-		$this->data->page['title'] = T_("Billing");
+		$this->data->amount        = \lib\utility::get('amount');
+		$this->data->page['title'] = T_("Billing information");
+		$this->data->page['desc']  = T_("Check your balance, charge your account, and bill your invoices!");
+
 		if($this->login())
 		{
 			$user_unit             = \lib\utility\units::find_user_unit($this->login('id'), true);

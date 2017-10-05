@@ -8,7 +8,8 @@
 {%endblock%}
 
 
-{%block contentCenter%}
+{%block content%}
+<div class="full flex justify-center align-center wrap">
   <div class='middle f justify-center live normal' id="showMember">
 
 {%for key, value in list_member%}
@@ -49,6 +50,7 @@
 {%endfor%}
 
   </div>
+</div>
   {{block('myModal')}}
   {%if not login%}
    <a class="line primary pA15 fs16" href='{{url.base}}/enter' data-direct>{%trans "Login to enjoy!"%}</a>
