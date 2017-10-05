@@ -147,7 +147,7 @@ class twigTransTerms
 	echo T_("Logo and personal information");                                         // Line 33
 	echo T_("Try the logo of your organization or your company on one of existing designs and after choosing the right card, enter personal information of your employees, such as a photo, first name and last name and job position. Tejarak eye-catching personnel cards are a great way to showcase the logo and expand your brand, in addition to facilitating the attendance process.");// Line 34
 	echo T_("Javad Evazzadeh");                                                       // Line 94
-	echo T_("Barcode");                                                               // Line 206
+	echo T_("Barcode");                                                               // Line 378
 	echo T_("Always have a plan B! By printing the staffing numbers in barcode format behind the personnel cards, you can register employee attendance at the time of the problem or equipment change with a barcode scanner or using an application installed on your smart phone. Additionally, the barcode printing adds to the beauty of the staff card.");// Line 69
 	echo T_("Custom design");                                                         // Line 82
 	echo T_("Did not any of Tejarak designs for staff card satisfy your satisfaction? Would you like to get started and print your design on your cards? No problem! Instead of using Tejarak designs, send us your design and get your cards as soon as possible with the highest possible quality.");// Line 83
@@ -368,13 +368,13 @@ class twigTransTerms
 
 	//------------------------------------------------content_a\dashboard\display.html
 	echo T_("Client");                                                                // Line 47
-	echo T_("User");                                                                  // Line 38
-	echo T_("Flights");                                                               // Line 98
-	echo T_("Views");                                                                 // Line 108
-	echo T_("Favs");                                                                  // Line 118
-	echo T_("Downloads");                                                             // Line 128
-	echo T_("Top Members");                                                           // Line 151
-	echo T_("Last traffic");                                                          // Line 7
+	echo T_("User");                                                                  // Line 211
+	echo T_("Member");                                                                // Line 98
+	echo T_("Traffic Record");                                                        // Line 108
+	echo T_("Total Hour Work");                                                       // Line 118
+	echo T_("Day Used");                                                              // Line 128
+	echo T_("Top Members");                                                           // Line 155
+	echo T_("Last traffics");                                                         // Line 161
 
 	//------------------------------------------------content_a\gateway\dashboard.html
 	echo T_("Add new Gateway");                                                       // Line 17
@@ -395,10 +395,12 @@ class twigTransTerms
 	echo T_("Save");                                                                  // Line 44
 
 	//-----------------------------------------------------content_a\home\display.html
-	echo T_("Without traffic");                                                       // Line 22
-	echo T_("member");                                                                // Line 29
-	echo T_("traffic");                                                               // Line 31
-	echo T_("Add new team");                                                          // Line 41
+	echo T_("Add new team");                                                          // Line 14
+	echo T_("Without traffic");                                                       // Line 34
+	echo T_("Last traffic");                                                          // Line 7
+	echo T_("member");                                                                // Line 31
+	echo T_("traffic");                                                               // Line 32
+	echo T_("Owner of team");                                                         // Line 42
 
 	//--------------------------------------------------content_a\houredit\detail.html
 	echo T_("Start date");                                                            // Line 13
@@ -454,41 +456,33 @@ class twigTransTerms
 	echo T_("Attendance");                                                            // Line 6
 
 	//-------------------------------------------------content_a\member\dashboard.html
-	echo T_("Add new member");                                                        // Line 9
+	echo T_("Add new member");                                                        // Line 11
+	echo T_("Admin of team");                                                         // Line 36
 
-	//-----------------------------------------------content_a\member\display-new.html
-	echo T_("You can set detail of team member and assign some extra data to use later");// Line 6
-	echo T_("Enter a valid name from 3 to 40 character");                             // Line 12
+	//-----------------------------------------------content_a\member\display-old.html
+	echo T_("Enter a valid name from 3 to 40 character");                             // Line 185
 	echo T_("Postion");                                                               // Line 23
 	echo T_("Enter a valid team position from 3 to 50 character");                    // Line 19
 	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 24
-	echo T_("Role of this member");                                                   // Line 44
-	echo T_("Admin");                                                                 // Line 39
-	echo T_("Extra setting for special use");                                         // Line 68
-	echo T_("First name");                                                            // Line 49
-	echo T_("Last name");                                                             // Line 56
+	echo T_("Admin");                                                                 // Line 212
+	echo T_("First name");                                                            // Line 222
+	echo T_("Last name");                                                             // Line 229
 	echo T_("Personnel code");                                                        // Line 25
-	echo T_("Allow plus");                                                            // Line 250
-	echo T_("Allow minus");                                                           // Line 254
+	echo T_("Extra setting for special use");                                         // Line 241
+	echo T_("Allow register mission");                                                // Line 101
+	echo T_("Allow register personal work");                                          // Line 105
 	echo T_("Remote user");                                                           // Line 110
 	echo T_("24 hour");                                                               // Line 114
-	echo T_("Allow set desc in enter");                                               // Line 92
-	echo T_("Allow set desc in exit");                                                // Line 97
-	echo T_("Active");                                                                // Line 109
-	echo T_("Deactive");                                                              // Line 113
+	echo T_("Allow set desc in enter");                                               // Line 265
+	echo T_("Allow set desc in exit");                                                // Line 270
+	echo T_("Active");                                                                // Line 282
+	echo T_("Deactive");                                                              // Line 286
 	echo T_("Visibility");                                                            // Line 33
-	echo T_("Visible");                                                               // Line 129
-	echo T_("Hidden");                                                                // Line 133
-	echo T_("Extra gadget to use for enter and exit");                                // Line 143
-	echo T_("Scan Barcode here...");                                                  // Line 208
-	echo T_("Rfid");                                                                  // Line 213
-	echo T_("Scan Rfid here...");                                                     // Line 215
-	echo T_("Qrcode");                                                                // Line 220
-	echo T_("Scan Qrcode here...");                                                   // Line 222
-	echo T_("Advance");                                                               // Line 183
-	echo T_("Parent");                                                                // Line 141
+	echo T_("Visible");                                                               // Line 302
+	echo T_("Hidden");                                                                // Line 306
+	echo T_("Parent");                                                                // Line 314
 	echo T_("Add new parent");                                                        // Line 58
-	echo T_("Parent mobile");                                                         // Line 165
+	echo T_("Parent mobile");                                                         // Line 338
 	echo T_("Please select one items");                                               // Line 66
 	echo T_("Father");                                                                // Line 67
 	echo T_("Mother");                                                                // Line 68
@@ -513,11 +507,19 @@ class twigTransTerms
 	echo T_("Grandson");                                                              // Line 87
 	echo T_("Custom");                                                                // Line 88
 	echo T_("Other title");                                                           // Line 92
+	echo T_("Extra setting for special tools to enter and exit");                     // Line 204
+	echo T_("Scan Barcode here...");                                                  // Line 380
+	echo T_("Rfid");                                                                  // Line 385
+	echo T_("Scan Rfid here...");                                                     // Line 387
+	echo T_("Qrcode");                                                                // Line 392
+	echo T_("Scan Qrcode here...");                                                   // Line 394
+	echo T_("Advance");                                                               // Line 183
 
 	//---------------------------------------------------content_a\member\display.html
-	echo T_("Allow register mission");                                                // Line 101
-	echo T_("Allow register personal work");                                          // Line 105
-	echo T_("Extra setting for special tools to enter and exit");                     // Line 204
+	echo T_("Role of this member");                                                   // Line 39
+	echo T_("Allow plus");                                                            // Line 245
+	echo T_("Allow minus");                                                           // Line 249
+	echo T_("Extra gadget to use for enter and exit");                                // Line 138
 
 	//--------------------------------------------content_a\notifications\display.html
 	echo T_("Your notifications");                                                    // Line 8
