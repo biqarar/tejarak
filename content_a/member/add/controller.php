@@ -1,5 +1,5 @@
 <?php
-namespace content_a\member;
+namespace content_a\member\add;
 
 class controller extends \content_a\main\controller
 {
@@ -16,7 +16,8 @@ class controller extends \content_a\main\controller
 
 		unset($_SESSION['first_go_to_setup']);
 
-		$this->get(false, 'list')->ALL("/.*/");
+		$this->get(false, 'add')->ALL("/.*/");
+		$this->post('add')->ALL("/.*/");
 	}
 }
 ?>

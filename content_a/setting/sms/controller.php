@@ -1,16 +1,21 @@
 <?php
-namespace content_a\card;
+namespace content_a\setting\sms;
 
 class controller extends \content_a\main\controller
 {
 	/**
-	 * route
+	 * rout
 	 */
 	function _route()
 	{
+
 		parent::_route();
-		$url = \lib\router::get_url();
-		$this->get()->ALL("/.*/");
+
+		if(\lib\utility::post())
+		{
+			$this->model()->sms();
+		}
+
 	}
 }
 ?>

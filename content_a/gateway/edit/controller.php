@@ -1,5 +1,5 @@
 <?php
-namespace content_a\gateway;
+namespace content_a\gateway\edit;
 
 class controller extends \content_a\main\controller
 {
@@ -10,7 +10,9 @@ class controller extends \content_a\main\controller
 	{
 		parent::_route();
 
-		$this->get(false, 'list')->ALL("/.*/");
+		$this->get(false, 'edit')->ALL("/.*/");
+		$this->post('edit')->ALL("/.*/");
+
 	}
 }
 ?>

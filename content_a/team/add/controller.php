@@ -1,10 +1,10 @@
 <?php
-namespace content_a\member;
+namespace content_a\team\add;
 
 class controller extends \content_a\main\controller
 {
 	/**
-	 * rout
+	 * route
 	 */
 	public function _route()
 	{
@@ -12,11 +12,11 @@ class controller extends \content_a\main\controller
 
 		$url = \lib\router::get_url();
 
-		$team_code = \lib\router::get_url(0);
+		// add team
+		$this->get(false, 'add')->ALL();
+		$this->post('add')->ALL();
 
 		unset($_SESSION['first_go_to_setup']);
-
-		$this->get(false, 'list')->ALL("/.*/");
 	}
 }
 ?>

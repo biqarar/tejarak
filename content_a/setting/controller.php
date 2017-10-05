@@ -1,16 +1,24 @@
 <?php
-namespace content_a\card;
+namespace content_a\setting;
 
 class controller extends \content_a\main\controller
 {
 	/**
-	 * route
+	 * rout
 	 */
 	function _route()
 	{
+
 		parent::_route();
+
 		$url = \lib\router::get_url();
-		$this->get()->ALL("/.*/");
+
+		if($url === 'setting')
+		{
+			\lib\error::page();
+		}
+
+		$this->get()->ALL("/^([A-Za-z0-9]+)\/setting$/");
 	}
 }
 ?>
