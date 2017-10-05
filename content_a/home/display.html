@@ -6,6 +6,15 @@
 
 {%block pageContent%}
 <div class='middle normal f justify-center'>
+
+  <div class="vcard mA10">
+    <img src="{{url.static}}siftal/images/useful/plus1.png" alt="add new team">
+    <div class="content"></div>
+    <div class="footer pAn">
+     <a class="btn block primary" href="{{url.baseFull}}/team">{%trans "Add new team"%}</a>
+    </div>
+  </div>
+
 {%for key, value in team_list%}
 
 {%set cardColor%}
@@ -30,17 +39,11 @@
     {%if value.stats.traffic_count%}
       <i class="sf-refresh"></i><span>{{value.stats.traffic_count | number_format | fitNumber}}</span> {%trans "traffic"%}
     {%endif%}
-    {%if value.rule=='admin'%} <i class="sf-star fc-gold"></i>{%endif%}
+    {%if value.rule=='admin'%} <i class="sf-star fc-gold" title='{%trans "Owner of team"%}'></i>{%endif%}
     </div>
   </a>
 {%endfor%}
-  <div class="vcard mA10">
-    <img src="{{url.static}}siftal/images/useful/plus1.png" alt="add new team">
-    <div class="content"></div>
-    <div class="footer pAn">
-     <a class="btn block primary" href="{{url.baseFull}}/team">{%trans "Add new team"%}</a>
-    </div>
-  </div>
+
 
 </div>
 {%endblock%}
