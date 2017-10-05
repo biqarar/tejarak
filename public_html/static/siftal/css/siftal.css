@@ -7448,6 +7448,14 @@ li.sortable-placeholder {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
 
+.rtl .input.fix {
+  -webkit-box-direction: reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row-reverse;
+  -moz-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse; }
+
 span.input {
   display: inline-flex;
   width: auto; }
@@ -7539,11 +7547,11 @@ span.input {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0; }
 
-.rtl .input > :first-child {
+.rtl .input:not(.fix) > :first-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0; }
 
-.rtl .input > :not(div):last-child {
+.rtl .input:not(.fix) > :not(div):last-child {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0; }
 
@@ -7556,20 +7564,20 @@ span.input {
 .ltr .input > .addon:not(:first-child):not(:last-child) {
   border-left-width: 0; }
 
-.rtl .input > .addon:first-child {
+.rtl .input:not(.fix) > .addon:first-child {
   border-left-width: 0; }
 
-.rtl .input > .addon:last-child {
+.rtl .input:not(.fix) > .addon:last-child {
   border-right-width: 0; }
 
-.rtl .input > .addon:not(:first-child):not(:last-child) {
+.rtl .input:not(.fix) > .addon:not(:first-child):not(:last-child) {
   border-right-width: 0; }
 
 .ltr .input > :not(:first-child):not(:last-child) {
   border-radius: 0;
   border-right-width: 0; }
 
-.rtl .input > :not(:first-child):not(:last-child) {
+.rtl .input:not(.fix) > :not(:first-child):not(:last-child) {
   border-radius: 0;
   border-left-width: 0; }
 
@@ -10902,30 +10910,6 @@ body.siftal.loading-page #sidebar .avatar:before {
     opacity: 1; }
   25%, 75% {
     opacity: 0.5; } }
-/* header */
-.siftal #sidebar h2 {
-  margin: 0;
-  text-align: center;
-  color: #fff;
-  background-color: #201f1f;
-  height: 60px;
-  line-height: 60px;
-  margin-bottom: 1em;
-  transition: 0.3s; }
-
-.siftal #sidebar h2:hover {
-  background-color: #000; }
-
-.siftal #sidebar h2 a {
-  display: block;
-  max-width: 300px;
-  margin: 0 auto;
-  transition: 0.3s;
-  border: 1px solid transparent; }
-
-.siftal #sidebar h2 a:focus {
-  background-color: #111; }
-
 /* sidenav menu */
 .siftal #sidebar ul.sidenav {
   font-size: 1.4em; }
