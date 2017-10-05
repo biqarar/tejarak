@@ -23,6 +23,16 @@ class model extends \content_a\main\model
 			return false;
 		}
 
+		// add sign to footer
+		$my_team = $this->getTeamDetail(\lib\router::get_url(0));
+		$sign    = 'Sended by admin of team';
+		if(isset($my_team['name']))
+		{
+			$sign = T_('Sended by admin of :name', ['name'=> $my_team['name']]);
+		}
+		$text .= "\n". $sign;
+
+
 		$team_code = \lib\router::get_url(0);
 
 		$list = $this->listMember($team_code, 'code', ['pagenation' => false]);

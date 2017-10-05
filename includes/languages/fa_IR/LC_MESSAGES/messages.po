@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-10-05 13:23+0330\n"
-"PO-Revision-Date: 2017-10-05 13:30+0330\n"
+"POT-Creation-Date: 2017-10-05 13:48+0330\n"
+"PO-Revision-Date: 2017-10-05 13:51+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: Ermile <J.Evazzadeh@gmail.com>\n"
 "Language: fa_IR\n"
@@ -1472,7 +1472,7 @@ msgstr "نمی‌خواهم از تلفن همراه استفاده کنم"
 
 #: dash/addons/includes/languages/trans_addons.php:76
 #: tejarak/includes/languages/trans_addons.php:8
-#: tejarak/includes/languages/trans_twig.php:720
+#: tejarak/includes/languages/trans_twig.php:721
 msgid "Search"
 msgstr "جستجو"
 
@@ -1712,7 +1712,7 @@ msgstr "افزودن تراکنش جدید"
 
 #: dash/addons/includes/languages/trans_addons.php:129
 #: tejarak/includes/languages/trans_addons.php:102
-#: tejarak/includes/languages/trans_twig.php:743
+#: tejarak/includes/languages/trans_twig.php:744
 msgid "Displayname"
 msgstr "نام برای نمایش عمومی"
 
@@ -2035,7 +2035,7 @@ msgstr "نام‌کاربری"
 
 #: dash/addons/includes/languages/trans_addons.php:200
 #: tejarak/includes/languages/trans_addons.php:127
-#: tejarak/includes/languages/trans_twig.php:738
+#: tejarak/includes/languages/trans_twig.php:739
 msgid "Avatar"
 msgstr "آواتار"
 
@@ -2107,7 +2107,7 @@ msgstr "ستاره"
 #: tejarak/includes/database/tejarak/translation.php:112
 #: tejarak/includes/database/tejarak/translation.php:149
 #: tejarak/includes/languages/trans_addons.php:64
-#: tejarak/includes/languages/trans_twig.php:723
+#: tejarak/includes/languages/trans_twig.php:724
 msgid "status"
 msgstr "وضعیت"
 
@@ -2220,7 +2220,7 @@ msgstr "زیاد"
 
 #: dash/addons/includes/languages/trans_addons.php:253
 #: tejarak/includes/languages/trans_addons.php:248
-#: tejarak/includes/languages/trans_twig.php:707
+#: tejarak/includes/languages/trans_twig.php:708
 msgid "Medium"
 msgstr "متوسط"
 
@@ -3383,13 +3383,13 @@ msgstr "کوچک"
 
 #: dash/addons/includes/languages/trans_addons.php:474
 #: tejarak/includes/languages/trans_addons.php:844
-#: tejarak/includes/languages/trans_twig.php:706
+#: tejarak/includes/languages/trans_twig.php:707
 msgid "Small"
 msgstr "کوچک"
 
 #: dash/addons/includes/languages/trans_addons.php:475
 #: tejarak/includes/languages/trans_addons.php:845
-#: tejarak/includes/languages/trans_twig.php:708
+#: tejarak/includes/languages/trans_twig.php:709
 msgid "Large"
 msgstr "بزرگ"
 
@@ -3792,7 +3792,7 @@ msgstr "علاقمندی‌ها"
 #: dash/addons/includes/languages/trans_addons.php:566
 #: tejarak/content_api/v1/report/tools/report_list.php:72
 #: tejarak/includes/languages/trans_addons.php:768
-#: tejarak/includes/languages/trans_twig.php:735
+#: tejarak/includes/languages/trans_twig.php:736
 msgid "Members"
 msgstr "اعضا"
 
@@ -4199,7 +4199,7 @@ msgstr "قبلی"
 
 #: dash/addons/includes/languages/trans_addons.php:655
 #: tejarak/includes/languages/trans_addons.php:299
-#: tejarak/includes/languages/trans_twig.php:674
+#: tejarak/includes/languages/trans_twig.php:675
 msgid "Next"
 msgstr "بعدی"
 
@@ -4497,25 +4497,25 @@ msgstr "پیام‌عظیم(.msg .massive)"
 
 #: dash/addons/includes/languages/trans_addons.php:721
 #: tejarak/includes/languages/trans_addons.php:648
-#: tejarak/includes/languages/trans_twig.php:687
+#: tejarak/includes/languages/trans_twig.php:688
 msgid "Privacy mode"
 msgstr "وضعیت حریم‌خصوصی"
 
 #: dash/addons/includes/languages/trans_addons.php:722
 #: tejarak/includes/languages/trans_addons.php:649
-#: tejarak/includes/languages/trans_twig.php:688
+#: tejarak/includes/languages/trans_twig.php:689
 msgid "Private"
 msgstr "خصوصی"
 
 #: dash/addons/includes/languages/trans_addons.php:723
 #: tejarak/includes/languages/trans_addons.php:650
-#: tejarak/includes/languages/trans_twig.php:690
+#: tejarak/includes/languages/trans_twig.php:691
 msgid "Public"
 msgstr "عمومی"
 
 #: dash/addons/includes/languages/trans_addons.php:724
 #: tejarak/includes/languages/trans_addons.php:651
-#: tejarak/includes/languages/trans_twig.php:691
+#: tejarak/includes/languages/trans_twig.php:692
 msgid "Short Name"
 msgstr "نام کوتاه"
 
@@ -4531,13 +4531,13 @@ msgstr "نام مستعار"
 
 #: dash/addons/includes/languages/trans_addons.php:727
 #: tejarak/includes/languages/trans_addons.php:654
-#: tejarak/includes/languages/trans_twig.php:697
+#: tejarak/includes/languages/trans_twig.php:698
 msgid "Default setting for new members of team"
 msgstr "تنظیمات پیش‌فرض برای اعضای جدید تیم"
 
 #: dash/addons/includes/languages/trans_addons.php:728
 #: tejarak/includes/languages/trans_addons.php:655
-#: tejarak/includes/languages/trans_twig.php:698
+#: tejarak/includes/languages/trans_twig.php:699
 msgid "Show users avatars"
 msgstr "نمایش عکس کاربران"
 
@@ -6658,7 +6658,7 @@ msgstr " به "
 
 #: dash/addons/includes/languages/trans_addons.php:1196
 #: tejarak/includes/languages/trans_addons.php:1198
-#: tejarak/includes/languages/trans_twig.php:816
+#: tejarak/includes/languages/trans_twig.php:817
 #: tejarak/includes/lib/utility/plan/generate_message.php:65
 msgid "until"
 msgstr "تا"
@@ -7061,7 +7061,7 @@ msgstr "ما به شماره موبایل نیاز داریم!"
 
 #: dash/addons/includes/languages/trans_addons.php:1274
 #: tejarak/includes/languages/trans_addons.php:1276
-#: tejarak/includes/languages/trans_twig.php:824
+#: tejarak/includes/languages/trans_twig.php:825
 msgid " "
 msgstr " "
 
@@ -7443,7 +7443,7 @@ msgid "The parsian payment LoginAccount not set"
 msgstr "حساب کاربری لاگین برای پرداخت با پارسیان تنظیم نشده است"
 
 #: dash/lib/utility/payment/pay/parsian.php:83
-#: tejarak/includes/languages/trans_twig.php:823
+#: tejarak/includes/languages/trans_twig.php:824
 msgid "Pay by parsian payment"
 msgstr "پرداخت با پارسیان"
 
@@ -7463,7 +7463,7 @@ msgid "The zarinpal payment MerchantID not set"
 msgstr "کد مرچنت برای پرداخت با زرین پال تنظیم نشده است"
 
 #: dash/lib/utility/payment/pay/zarinpal.php:96
-#: tejarak/includes/languages/trans_twig.php:822
+#: tejarak/includes/languages/trans_twig.php:823
 msgid "Pay by zarinpal payment"
 msgstr "پرداخت با زرین‌پال"
 
@@ -7927,17 +7927,28 @@ msgstr "لطفا متن پیام را وارد کنید"
 msgid "Ops! your text is very large"
 msgstr "متن پیام بیشتر از حد مجاز است"
 
-#: tejarak/content_a/sendnotify/model.php:61
+#: tejarak/content_a/sendnotify/model.php:31
+msgid "Sended by admin of :name"
+msgstr "ارسال شده توسط مدیر :name"
+
+#: tejarak/content_a/sendnotify/model.php:71
 msgid "The notification was sended"
 msgstr "اطلاع رسانی انجام شد"
 
 #: tejarak/content_a/sendnotify/view.php:9
-msgid "Send message to user"
-msgstr "ارسال پیام به کاربر"
+msgid "Send message as notify to team members"
+msgstr "ارسال پیام به‌عنوان اطلاع‌رسانی به اعضای تیم"
 
 #: tejarak/content_a/sendnotify/view.php:10
-msgid "You can send every message to your team member"
-msgstr "شما می توانید پیام دلخواه خود را به اعضاء تیم خود بفرستید"
+msgid ""
+"You can send message to your team members and all of them if give this message as "
+"notification and if they are synced their telegram, they can give message in "
+"telegram"
+msgstr ""
+"از طریق این بخش می‌توانید به تمام اعضای تیم پیام فرستاده و تمام آن‌ها این پیام را "
+"به‌عنوان اطلاع‌رسانی دریافت خواهند کرد. هم‌چنین اگر اعضای تیم شما از طریق تلگرام "
+"همگام‌سازی و ورود را انجام داده باشند، آن‌ها پیام را از طریق تلگرام نیز دریافت "
+"می‌کنند."
 
 #: tejarak/content_a/setup/controller.php:25
 msgid "You have a team and can not start the installation process again!"
@@ -7951,7 +7962,7 @@ msgstr "لطفا عنوان تیم را وارد کنید"
 msgid "Please enter your name"
 msgstr "لطفا نام خود را وارد کنید"
 
-#: tejarak/content_a/setup/view.php:18 tejarak/includes/languages/trans_twig.php:689
+#: tejarak/content_a/setup/view.php:18 tejarak/includes/languages/trans_twig.php:690
 msgid "Team"
 msgstr "تیم"
 
@@ -7967,7 +7978,7 @@ msgstr "شما"
 msgid "Set your personal information"
 msgstr "لطفا اطلاعات شخصی خود را وارد کنید"
 
-#: tejarak/content_a/setup/view.php:28 tejarak/includes/languages/trans_twig.php:679
+#: tejarak/content_a/setup/view.php:28 tejarak/includes/languages/trans_twig.php:680
 msgid "Finish"
 msgstr "تمام"
 
@@ -8731,7 +8742,7 @@ msgstr "متا"
 #: tejarak/includes/database/tejarak/translation.php:20
 #: tejarak/includes/database/tejarak/translation.php:113
 #: tejarak/includes/database/tejarak/translation.php:126
-#: tejarak/includes/languages/trans_twig.php:734
+#: tejarak/includes/languages/trans_twig.php:735
 msgid "parent"
 msgstr "والد"
 
@@ -11387,459 +11398,463 @@ msgstr "خروجی با فرمت csv"
 msgid "Type your message here..."
 msgstr "متن پیام را وارد کنید..."
 
-#: tejarak/includes/languages/trans_twig.php:671
+#: tejarak/includes/languages/trans_twig.php:669
+msgid "Send to all members"
+msgstr "ارسال به تمام اعضا"
+
+#: tejarak/includes/languages/trans_twig.php:672
 msgid "Welcome to Tejarak initialization process!"
 msgstr "به فرآیند راه‌اندازی تجارک خوش آمدید"
 
-#: tejarak/includes/languages/trans_twig.php:672
+#: tejarak/includes/languages/trans_twig.php:673
 msgid "Please enter team name *"
 msgstr "لطفا نام تیم را وارد کنید *"
 
-#: tejarak/includes/languages/trans_twig.php:673
+#: tejarak/includes/languages/trans_twig.php:674
 msgid "Enter a valid team name from 3 to 30 character"
 msgstr "نام تیم معتبری بین ۳ تا ۳۰ کاراکتر وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:677
+#: tejarak/includes/languages/trans_twig.php:678
 msgid "Please enter your information"
 msgstr "لطفا اطلاعات خود را وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:678
+#: tejarak/includes/languages/trans_twig.php:679
 msgid "Job position"
 msgstr "موقعیت شغلی"
 
-#: tejarak/includes/languages/trans_twig.php:682
+#: tejarak/includes/languages/trans_twig.php:683
 msgid "Congratulations! Now you can use Tejarak."
 msgstr "تبریک! الان می‌توانید از تجارک استفاده کنید."
 
-#: tejarak/includes/languages/trans_twig.php:685
+#: tejarak/includes/languages/trans_twig.php:686
 msgid "Enter a valid name from 5 to 50 character"
 msgstr "نام مناسبی بین ۵ تا ۵۰ کاراکتر وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:686
+#: tejarak/includes/languages/trans_twig.php:687
 msgid "Website"
 msgstr "وب‌سایت"
 
-#: tejarak/includes/languages/trans_twig.php:692
+#: tejarak/includes/languages/trans_twig.php:693
 msgid "English letter like"
 msgstr "حروف انگلیسی مثل"
 
-#: tejarak/includes/languages/trans_twig.php:693
+#: tejarak/includes/languages/trans_twig.php:694
 msgid "Enter a valid short name from 5 to 50 character"
 msgstr "نام کوتاه مناسبی بین ۵ تا ۵۰ کاراکتر وارد کنید"
 
-#: tejarak/includes/languages/trans_twig.php:694
+#: tejarak/includes/languages/trans_twig.php:695
 msgid "Special event day counter"
 msgstr "ثبت رویداد روزشمار"
 
-#: tejarak/includes/languages/trans_twig.php:695
+#: tejarak/includes/languages/trans_twig.php:696
 msgid "Event title"
 msgstr "عنوان رویداد"
 
-#: tejarak/includes/languages/trans_twig.php:696
+#: tejarak/includes/languages/trans_twig.php:697
 msgid "Event date"
 msgstr "زمان رویداد"
 
-#: tejarak/includes/languages/trans_twig.php:699
+#: tejarak/includes/languages/trans_twig.php:700
 msgid "Quick Traffic"
 msgstr "تردد سریع"
 
-#: tejarak/includes/languages/trans_twig.php:700
+#: tejarak/includes/languages/trans_twig.php:701
 msgid "Allow set enter desc"
 msgstr "اجازه ثبت توضیحات در ورود"
 
-#: tejarak/includes/languages/trans_twig.php:701
+#: tejarak/includes/languages/trans_twig.php:702
 msgid "Allow set Exit desc"
 msgstr "اجازه ثبت توضیحات در خروج"
 
-#: tejarak/includes/languages/trans_twig.php:702
+#: tejarak/includes/languages/trans_twig.php:703
 msgid "Manual time enter"
 msgstr "ثبت دستی زمان ورود"
 
-#: tejarak/includes/languages/trans_twig.php:703
+#: tejarak/includes/languages/trans_twig.php:704
 msgid "Manual time exit"
 msgstr "ثبت دستی زمان خروج"
 
-#: tejarak/includes/languages/trans_twig.php:704
+#: tejarak/includes/languages/trans_twig.php:705
 msgid "Card size"
 msgstr "اندازه کارت"
 
-#: tejarak/includes/languages/trans_twig.php:705
+#: tejarak/includes/languages/trans_twig.php:706
 msgid "Auto size"
 msgstr "خودکار"
 
-#: tejarak/includes/languages/trans_twig.php:709
+#: tejarak/includes/languages/trans_twig.php:710
 msgid "Language"
 msgstr "زبان"
 
-#: tejarak/includes/languages/trans_twig.php:710
+#: tejarak/includes/languages/trans_twig.php:711
 msgid "Please select one language"
 msgstr "لطفا یکی از زبانها را انتخاب کنید"
 
-#: tejarak/includes/languages/trans_twig.php:711
+#: tejarak/includes/languages/trans_twig.php:712
 msgid "Persian"
 msgstr "فارسی"
 
-#: tejarak/includes/languages/trans_twig.php:712
+#: tejarak/includes/languages/trans_twig.php:713
 msgid "English"
 msgstr "انگلیسی"
 
-#: tejarak/includes/languages/trans_twig.php:713
+#: tejarak/includes/languages/trans_twig.php:714
 msgid "Close"
 msgstr "بستن"
 
-#: tejarak/includes/languages/trans_twig.php:716
+#: tejarak/includes/languages/trans_twig.php:717
 msgid "Tejarak API"
 msgstr "رابط برنامه‌نویسی تجارک"
 
-#: tejarak/includes/languages/trans_twig.php:719
+#: tejarak/includes/languages/trans_twig.php:720
 msgid "Teams plan"
 msgstr "پلن تیم‌ها"
 
-#: tejarak/includes/languages/trans_twig.php:721
+#: tejarak/includes/languages/trans_twig.php:722
 msgid "Creator"
 msgstr "ایجاد کننده"
 
-#: tejarak/includes/languages/trans_twig.php:722
+#: tejarak/includes/languages/trans_twig.php:723
 msgid "Plan"
 msgstr "پلن"
 
-#: tejarak/includes/languages/trans_twig.php:724
+#: tejarak/includes/languages/trans_twig.php:725
 msgid "Last Calc Date"
 msgstr "تاریخ آخرین فاکتور"
 
-#: tejarak/includes/languages/trans_twig.php:725
+#: tejarak/includes/languages/trans_twig.php:726
 msgid "Renew at"
 msgstr "تمدید در"
 
-#: tejarak/includes/languages/trans_twig.php:728
+#: tejarak/includes/languages/trans_twig.php:729
 msgid "Detail of user"
 msgstr "جزئیات اطلاعات کاربر"
 
-#: tejarak/includes/languages/trans_twig.php:731
+#: tejarak/includes/languages/trans_twig.php:732
 msgid "Setting"
 msgstr "تنظیمات"
 
-#: tejarak/includes/languages/trans_twig.php:732
+#: tejarak/includes/languages/trans_twig.php:733
 msgid "privacy"
 msgstr "خصوصی"
 
-#: tejarak/includes/languages/trans_twig.php:733
+#: tejarak/includes/languages/trans_twig.php:734
 msgid "logo"
 msgstr "لوگو"
 
-#: tejarak/includes/languages/trans_twig.php:736
+#: tejarak/includes/languages/trans_twig.php:737
 msgid "Hours"
 msgstr "ساعات"
 
-#: tejarak/includes/languages/trans_twig.php:737
+#: tejarak/includes/languages/trans_twig.php:738
 msgid "24H"
 msgstr "۲۴ ساعته"
 
-#: tejarak/includes/languages/trans_twig.php:739
+#: tejarak/includes/languages/trans_twig.php:740
 msgid "No logo"
 msgstr "لوگو ندارد"
 
-#: tejarak/includes/languages/trans_twig.php:742
+#: tejarak/includes/languages/trans_twig.php:743
 msgid "hours of teams"
 msgstr "ساعات تیم"
 
-#: tejarak/includes/languages/trans_twig.php:744
+#: tejarak/includes/languages/trans_twig.php:745
 msgid "Rule"
 msgstr "قانون"
 
-#: tejarak/includes/languages/trans_twig.php:745
+#: tejarak/includes/languages/trans_twig.php:746
 msgid "Shamsi date"
 msgstr "تاریخ شمسی"
 
-#: tejarak/includes/languages/trans_twig.php:746
+#: tejarak/includes/languages/trans_twig.php:747
 msgid "Time"
 msgstr "زمان"
 
-#: tejarak/includes/languages/trans_twig.php:749
+#: tejarak/includes/languages/trans_twig.php:750
 msgid "Members of teams"
 msgstr "اعضاء تیم"
 
-#: tejarak/includes/languages/trans_twig.php:750
+#: tejarak/includes/languages/trans_twig.php:751
 msgid "allowplus"
 msgstr "اجازه دورکاری"
 
-#: tejarak/includes/languages/trans_twig.php:751
+#: tejarak/includes/languages/trans_twig.php:752
 msgid "allowminus"
 msgstr "اجازه هدررفت"
 
-#: tejarak/includes/languages/trans_twig.php:752
+#: tejarak/includes/languages/trans_twig.php:753
 msgid "24h"
 msgstr "۲۴ ساعته"
 
-#: tejarak/includes/languages/trans_twig.php:753
+#: tejarak/includes/languages/trans_twig.php:754
 msgid "remote"
 msgstr "ریموت"
 
-#: tejarak/includes/languages/trans_twig.php:754
+#: tejarak/includes/languages/trans_twig.php:755
 msgid "Date enter"
 msgstr "تاریخ ورود"
 
-#: tejarak/includes/languages/trans_twig.php:755
+#: tejarak/includes/languages/trans_twig.php:756
 msgid "Report daily"
 msgstr "گزارش روزانه"
 
-#: tejarak/includes/languages/trans_twig.php:756
+#: tejarak/includes/languages/trans_twig.php:757
 msgid "Report ente&rexit"
 msgstr "گزارش ورود و خروج"
 
-#: tejarak/includes/languages/trans_twig.php:757
+#: tejarak/includes/languages/trans_twig.php:758
 msgid "Sort"
 msgstr "ترتیب"
 
-#: tejarak/includes/languages/trans_twig.php:758
+#: tejarak/includes/languages/trans_twig.php:759
 msgid "Not set"
 msgstr "تعیین نشده"
 
-#: tejarak/includes/languages/trans_twig.php:761
+#: tejarak/includes/languages/trans_twig.php:762
 msgid "Saloos"
 msgstr "سالوس"
 
-#: tejarak/includes/languages/trans_twig.php:762
+#: tejarak/includes/languages/trans_twig.php:763
 msgid "2013"
 msgstr "۱۳۹۲"
 
-#: tejarak/includes/languages/trans_twig.php:763
+#: tejarak/includes/languages/trans_twig.php:764
 msgid "2014"
 msgstr "۱۳۹۳"
 
-#: tejarak/includes/languages/trans_twig.php:764
+#: tejarak/includes/languages/trans_twig.php:765
 msgid "2015"
 msgstr "۱۳۹۴"
 
-#: tejarak/includes/languages/trans_twig.php:765
+#: tejarak/includes/languages/trans_twig.php:766
 msgid "2016"
 msgstr "۱۳۹۵"
 
-#: tejarak/includes/languages/trans_twig.php:766
+#: tejarak/includes/languages/trans_twig.php:767
 msgid "2017"
 msgstr "۱۳۹۶"
 
-#: tejarak/includes/languages/trans_twig.php:767
+#: tejarak/includes/languages/trans_twig.php:768
 msgid "2018"
 msgstr "۱۳۹۷"
 
-#: tejarak/includes/languages/trans_twig.php:768
+#: tejarak/includes/languages/trans_twig.php:769
 msgid "2019"
 msgstr "۱۳۹۸"
 
-#: tejarak/includes/languages/trans_twig.php:769
+#: tejarak/includes/languages/trans_twig.php:770
 msgid "Sadegh Salehi"
 msgstr "صادق صالحی"
 
-#: tejarak/includes/languages/trans_twig.php:770
+#: tejarak/includes/languages/trans_twig.php:771
 msgid "Ali Modabber"
 msgstr "علی مدبر"
 
-#: tejarak/includes/languages/trans_twig.php:771
+#: tejarak/includes/languages/trans_twig.php:772
 msgid "SeyedMahdi Hoseini"
 msgstr "سیدمهدی حسینی"
 
-#: tejarak/includes/languages/trans_twig.php:772
+#: tejarak/includes/languages/trans_twig.php:773
 msgid "Ali Kharidar"
 msgstr "علی خریدار"
 
-#: tejarak/includes/languages/trans_twig.php:773
+#: tejarak/includes/languages/trans_twig.php:774
 msgid "MohamadAli Salehi"
 msgstr "محمدعلی صالحی"
 
-#: tejarak/includes/languages/trans_twig.php:774
+#: tejarak/includes/languages/trans_twig.php:775
 msgid "Sara Torkamani"
 msgstr "سارا ترکمنی"
 
-#: tejarak/includes/languages/trans_twig.php:775
+#: tejarak/includes/languages/trans_twig.php:776
 msgid "Saeed Bodaghi"
 msgstr "سعید بوداقی"
 
-#: tejarak/includes/languages/trans_twig.php:776
+#: tejarak/includes/languages/trans_twig.php:777
 msgid "SeyedMohsen Mortazavi"
 msgstr "سیدمحسن مرتضوی"
 
-#: tejarak/includes/languages/trans_twig.php:777
+#: tejarak/includes/languages/trans_twig.php:778
 msgid "SeyedMohsen Mortazavi Hoseini"
 msgstr "سیدمحسن مرتضوی حسینی"
 
-#: tejarak/includes/languages/trans_twig.php:778
+#: tejarak/includes/languages/trans_twig.php:779
 msgid "Arash Shakery"
 msgstr "آرش شاکری"
 
-#: tejarak/includes/languages/trans_twig.php:779
+#: tejarak/includes/languages/trans_twig.php:780
 msgid "Majid Hamidian"
 msgstr "مجید حمیدیان"
 
-#: tejarak/includes/languages/trans_twig.php:780
+#: tejarak/includes/languages/trans_twig.php:781
 msgid "Moslem Hamzehnejadi"
 msgstr "مسلم حمزه‌نژادی"
 
-#: tejarak/includes/languages/trans_twig.php:781
+#: tejarak/includes/languages/trans_twig.php:782
 msgid "MohamadHosein Hamzehnejadi"
 msgstr "محمدحسین حمزه‌نژادی"
 
-#: tejarak/includes/languages/trans_twig.php:782
+#: tejarak/includes/languages/trans_twig.php:783
 msgid "Saman Soltani"
 msgstr "سامان سلطانی"
 
-#: tejarak/includes/languages/trans_twig.php:783
+#: tejarak/includes/languages/trans_twig.php:784
 msgid "Mohamad Aboutalebi"
 msgstr "محمد ابوطالبی"
 
-#: tejarak/includes/languages/trans_twig.php:784
+#: tejarak/includes/languages/trans_twig.php:785
 msgid "Mojtaba Sadeghi"
 msgstr "مجتبی صادقی"
 
-#: tejarak/includes/languages/trans_twig.php:785
+#: tejarak/includes/languages/trans_twig.php:786
 msgid "Mahdi Karimi"
 msgstr "مهدی کریمی"
 
-#: tejarak/includes/languages/trans_twig.php:786
+#: tejarak/includes/languages/trans_twig.php:787
 msgid "hours in this week"
 msgstr "ساعت در این هفته"
 
-#: tejarak/includes/languages/trans_twig.php:787
+#: tejarak/includes/languages/trans_twig.php:788
 msgid "hours in this month"
 msgstr "ساعت در این ماه"
 
-#: tejarak/includes/languages/trans_twig.php:788
+#: tejarak/includes/languages/trans_twig.php:789
 msgid "hours remote in this month"
 msgstr "ساعت ریموت در این ماه"
 
-#: tejarak/includes/languages/trans_twig.php:789
+#: tejarak/includes/languages/trans_twig.php:790
 msgid "hours in idle this month"
 msgstr "ساعت هدر داده در این ماه"
 
-#: tejarak/includes/languages/trans_twig.php:790
+#: tejarak/includes/languages/trans_twig.php:791
 msgid "Founder & CEO"
 msgstr "موسس و مدیرعامل"
 
-#: tejarak/includes/languages/trans_twig.php:791
+#: tejarak/includes/languages/trans_twig.php:792
 msgid "Founder and CEO"
 msgstr "موسس و مدیرعامل"
 
-#: tejarak/includes/languages/trans_twig.php:792
+#: tejarak/includes/languages/trans_twig.php:793
 msgid "CEO & Solution Designer"
 msgstr "مدیرعامل و طراح راه‌کار"
 
-#: tejarak/includes/languages/trans_twig.php:793
+#: tejarak/includes/languages/trans_twig.php:794
 msgid "CEO and Solution Designer"
 msgstr "مدیرعامل و طراح راه‌کار"
 
-#: tejarak/includes/languages/trans_twig.php:794
+#: tejarak/includes/languages/trans_twig.php:795
 msgid "CEO"
 msgstr "مدیرعامل"
 
-#: tejarak/includes/languages/trans_twig.php:795
+#: tejarak/includes/languages/trans_twig.php:796
 msgid "Solution Designer"
 msgstr "طراح راهکار"
 
-#: tejarak/includes/languages/trans_twig.php:796
+#: tejarak/includes/languages/trans_twig.php:797
 msgid "Full Stack Developer"
 msgstr "برنامه‌نویس تمام‌عیار"
 
-#: tejarak/includes/languages/trans_twig.php:797
+#: tejarak/includes/languages/trans_twig.php:798
 msgid "Backend Developer"
 msgstr "برنامه‌نویس سمت سرور"
 
-#: tejarak/includes/languages/trans_twig.php:798
+#: tejarak/includes/languages/trans_twig.php:799
 msgid "Frontend Designer"
 msgstr "طراح رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:799
+#: tejarak/includes/languages/trans_twig.php:800
 msgid "UI Designer"
 msgstr "طراح رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:800
+#: tejarak/includes/languages/trans_twig.php:801
 msgid "Graphic Designer"
 msgstr "طراح گرافیک"
 
-#: tejarak/includes/languages/trans_twig.php:801
+#: tejarak/includes/languages/trans_twig.php:802
 msgid "Shareholder"
 msgstr "سهام‌دار"
 
-#: tejarak/includes/languages/trans_twig.php:802
+#: tejarak/includes/languages/trans_twig.php:803
 msgid "Chrikt"
 msgstr "چریکت"
 
-#: tejarak/includes/languages/trans_twig.php:803
+#: tejarak/includes/languages/trans_twig.php:804
 msgid "Content Expert"
 msgstr "کارشناس محتوا"
 
-#: tejarak/includes/languages/trans_twig.php:804
+#: tejarak/includes/languages/trans_twig.php:805
 msgid "Service"
 msgstr "مسئول خدمات"
 
-#: tejarak/includes/languages/trans_twig.php:805
+#: tejarak/includes/languages/trans_twig.php:806
 msgid "UI Developer"
 msgstr "برنامه‌نویس رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:806
+#: tejarak/includes/languages/trans_twig.php:807
 msgid "Frontend Developer"
 msgstr "برنامه‌نویس سمت کاربر"
 
-#: tejarak/includes/languages/trans_twig.php:807
+#: tejarak/includes/languages/trans_twig.php:808
 msgid "Research & Develepment"
 msgstr "تحقیق و توسعه"
 
-#: tejarak/includes/languages/trans_twig.php:808
+#: tejarak/includes/languages/trans_twig.php:809
 msgid "Research &amp; Develepment"
 msgstr "تحقیق و توسعه"
 
-#: tejarak/includes/languages/trans_twig.php:809
+#: tejarak/includes/languages/trans_twig.php:810
 msgid "UI Expert"
 msgstr "متخصص رابط‌کاربری"
 
-#: tejarak/includes/languages/trans_twig.php:810
+#: tejarak/includes/languages/trans_twig.php:811
 msgid "Android Developer"
 msgstr "توسعه‌دهنده اندروید"
 
-#: tejarak/includes/languages/trans_twig.php:811
+#: tejarak/includes/languages/trans_twig.php:812
 msgid "IOS Developer"
 msgstr "توسعه‌دهنده آی‌اواس"
 
-#: tejarak/includes/languages/trans_twig.php:812
+#: tejarak/includes/languages/trans_twig.php:813
 msgid "WP Developer"
 msgstr "توسعه‌دهنده ویندوزفون"
 
-#: tejarak/includes/languages/trans_twig.php:813
+#: tejarak/includes/languages/trans_twig.php:814
 msgid "Traveler"
 msgstr "مسافر"
 
-#: tejarak/includes/languages/trans_twig.php:814
+#: tejarak/includes/languages/trans_twig.php:815
 msgid "Intern"
 msgstr "کارآموز"
 
-#: tejarak/includes/languages/trans_twig.php:815
+#: tejarak/includes/languages/trans_twig.php:816
 msgid "name"
 msgstr "نام"
 
-#: tejarak/includes/languages/trans_twig.php:817
+#: tejarak/includes/languages/trans_twig.php:818
 msgid "summary"
 msgstr "خلاصه"
 
-#: tejarak/includes/languages/trans_twig.php:818
+#: tejarak/includes/languages/trans_twig.php:819
 msgid "ganje"
 msgstr "گنجه"
 
-#: tejarak/includes/languages/trans_twig.php:819
+#: tejarak/includes/languages/trans_twig.php:820
 msgid "Ganje"
 msgstr "گنجه"
 
-#: tejarak/includes/languages/trans_twig.php:820
+#: tejarak/includes/languages/trans_twig.php:821
 msgid "Centeral"
 msgstr "مرکزی"
 
-#: tejarak/includes/languages/trans_twig.php:821
+#: tejarak/includes/languages/trans_twig.php:822
 msgid "centeral"
 msgstr "مرکزی"
 
-#: tejarak/includes/languages/trans_twig.php:825
+#: tejarak/includes/languages/trans_twig.php:826
 msgid "money"
 msgstr "پول"
 
-#: tejarak/includes/languages/trans_twig.php:826
+#: tejarak/includes/languages/trans_twig.php:827
 #: tejarak/includes/lib/utility/calc/full.php:276
 #: tejarak/includes/lib/utility/calc/make.php:217
 msgid "toman"
@@ -11987,6 +12002,12 @@ msgstr "اجازه مشاهده لاگ‌های سیستم"
 #: tejarak/includes/permission/permission.php:104
 msgid "Allow to login by another session"
 msgstr "اجازه ورود با کاربر دیگر"
+
+#~ msgid "Send message to user"
+#~ msgstr "ارسال پیام به کاربر"
+
+#~ msgid "You can send every message to your team member"
+#~ msgstr "شما می توانید پیام دلخواه خود را به اعضاء تیم خود بفرستید"
 
 #~ msgid "Usage Detail"
 #~ msgstr "جزئیات میزان استفاده"

@@ -16,7 +16,7 @@ class twigTransTerms
 	echo T_("Email");                                                                 // Line 27
 	echo T_("Message");                                                               // Line 32
 	echo T_("Your Message");                                                          // Line 33
-	echo T_("Send");                                                                  // Line 9
+	echo T_("Send");                                                                  // Line 58
 	echo T_("How to contact us");                                                     // Line 45
 	echo T_("tejarak");                                                               // Line 51
 	echo T_("Ermile, Floor2, Yas Building");                                          // Line 54
@@ -665,7 +665,8 @@ class twigTransTerms
 	echo T_("Export as CSV file");                                                    // Line 8
 
 	//-----------------------------------------------content_a\sendnotify\display.html
-	echo T_("Type your message here...");                                             // Line 8
+	echo T_("Type your message here...");                                             // Line 7
+	echo T_("Send to all members");                                                   // Line 9
 
 	//-----------------------------------------------------content_a\setup\setup1.html
 	echo T_("Welcome to Tejarak initialization process!");                            // Line 7

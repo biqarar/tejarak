@@ -1,15 +1,14 @@
 {%extends display.adminTeam%}
 
-{%block pageContent%}
 
+{%block pageCenter%}
+<div class="cbox c8 s12">
+  <form method="post">
+    <textarea class="txt" rows="4" maxlength="500" id="message-text" name="message-text" placeholder='{%trans "Type your message here..."%}'></textarea>
 
-  <div class="cbox">
-	<form method="post">
-	<textarea class="txt" rows="4" maxlength="500" id="message-text" name="message-text" placeholder='{%trans "Type your message here..."%}'></textarea>
-	<input type="submit" value='{%trans "Send"%}' class="btn primary mA10">
-	</form>
-  </div>
+    <button class="btn primary block mT20">{%trans "Send to all members"%}</button>
 
-
+  </form>
+</div>
 {%endblock%}
 

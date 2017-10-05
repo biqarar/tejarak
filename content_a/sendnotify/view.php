@@ -6,8 +6,8 @@ class view extends \content_a\main\view
 	public function config()
 	{
 		parent::config();
-		$this->data->page['title'] = T_("Send message to user");
-		$this->data->page['desc']  = T_("You can send every message to your team member");
+		$this->data->page['title'] = T_("Send message as notify to team members");
+		$this->data->page['desc']  = T_("You can send message to your team members and all of them if give this message as notification and if they are synced their telegram, they can give message in telegram");
 	}
 
 
