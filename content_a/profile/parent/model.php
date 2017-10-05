@@ -16,7 +16,7 @@ class model extends \content_a\main\model
 	public function list_parent()
 	{
 		$this->user_id = $this->login('id');
-
+		utility::set_request_array(['id' => utility\shortURL::encode($this->user_id)]);
 		$result = $this->get_list_parent();
 		return $result;
 	}
@@ -67,15 +67,17 @@ class model extends \content_a\main\model
 	 */
 	public function post_parent($_args)
 	{
-		$request = [];
 
-		$request['othertitle']  = utility::post('othertitle');
-		$request['title']       = utility::post('title');
-		$request['mobile']      = utility::post('mobile');
-
-		utility::set_request_array($request);
 		$this->user_id = $this->login('id');
 
+		$request               = [];
+
+		$request['othertitle'] = utility::post('othertitle');
+		$request['title']      = utility::post('title');
+		$request['mobile']     = utility::post('mobile');
+		$request['id']         = utility\shortURL::encode($this->user_id);
+
+		utility::set_request_array($request);
 
 		if(utility::post('cancel') && \lib\utility\shortURL::is(utility::post('cancel')))
 		{

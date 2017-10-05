@@ -143,8 +143,8 @@ class model extends \content_a\main\model
 		$request['id']    = $_member;
 		utility::set_request_array($request);
 		$result           =  $this->get_member();
-		$member_id        = \lib\utility\shortURL::decode($_member);
-		$this->user_id    = $member_id;
+		// $member_id        = \lib\utility\shortURL::decode($_member);
+		utility::set_request_array(['id' => $_member]);
 		$parent           = $this->get_list_parent();
 		$result['parent'] = $parent;
 
@@ -195,7 +195,7 @@ class model extends \content_a\main\model
 			{
 				$parent_request               = [];
 				$parent_request['othertitle'] = utility::post('othertitle');
-				$parent_request['user_id']    = $member;
+				$parent_request['id']    = $member;
 				$parent_request['title']      = utility::post('title');
 				$parent_request['mobile']     = utility::post('parent_mobile');
 				utility::set_request_array($parent_request);
