@@ -7,6 +7,8 @@ class view extends \content_a\report\view
 	public function config()
 	{
 		parent::config();
+		$this->data->page['title'] = T_('Report group by month');
+		$this->data->page['desc']  = T_('check last attendace data and filter it based on member and see it for specefic member and exprort data of them.');
 	}
 
 

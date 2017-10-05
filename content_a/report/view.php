@@ -44,7 +44,7 @@ class view extends \content_a\main\view
 
 
 		$this->data->page['title'] = T_('Reports');
-		$this->data->page['desc']  = $this->data->page['title'];
+		$this->data->page['desc']  = T_('You can see reports and compare data of members and give export from report to use in another programs.');
 
 		if($team_code = \lib\temp::get('team_code_url'))
 		{

@@ -3,11 +3,6 @@
 
 {%block pageContent%}
 
-<div>
-	<a href="{{export_url|raw}}">
-		<i title='{%trans "Export as CSV file"%}' class="sf-list btn"></i>
-	</a>
-</div>
 
 {{block('userList')}}
 <div class="mB25 pA25">
@@ -51,7 +46,12 @@
 </table>
 </div>
 
+{%include display.pagination%}
 
-	{%include display.pagination%}
+<div>
+	<a href="{{export_url|raw}}"> {%trans "Export"%}
+		<i title='{%trans "Export as CSV file"%}' class="sf-list btn"></i>
+	</a>
+</div>
 
 {%endblock%}

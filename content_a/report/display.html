@@ -1,10 +1,7 @@
 {%extends display.adminTeam%}
 
-{%block pageContent%}
-
-  <div class='middle' id="reportList">
-   <div class='dbox'>
-    <h2>{{page.desc}}</h2>
+{%block pageCenter%}
+   <div class='cbox c5 s12' id="reportList">
 
     <ul class="list">
      <li><a class="c12" href="{{url.full}}/last">{%trans "Last traffic"%}</a></li>
@@ -20,23 +17,26 @@
         <li><a class="c12" href="{{url.full}}/settings">{%trans "Settings"%}</a></li>
       </ul>
     {%endif%}
-
    </div>
-  </div>
 {%endblock%}
+
+
+
 
 {%block userList%}
 {%if all_user_list%}
-<div class="tiny">
-    {%for key, value in all_user_list%}
-    <a href="{{reportUrl}}?user={{value.user_id}}" class="vcard shadow">
-    <img src="{%if value.file%}{{value.file}}{%else%}{{url.static}}siftal/images/useful/user1.png{%endif%}" alt="{{value.displayname}}">
-      <div class="content">
-        <div class="header">{{value.displayname}}</div>
-        <div class="meta"><span>{{value.postion}}</span></div>
-      </div>
-    </a>
-    {%endfor%}
- </div>
+<div class="tiny f justify-center">
+  {%for key, value in all_user_list%}
+  <a href="{{reportUrl}}?user={{value.user_id}}" class="vcard shadow">
+  <img src="{%if value.file%}{{value.file}}{%else%}{{url.static}}siftal/images/useful/user1.png{%endif%}" alt="{{value.displayname}}">
+    <div class="content">
+      <div class="header">{{value.displayname}}</div>
+      <div class="meta"><span>{{value.postion}}</span></div>
+    </div>
+  </a>
+  {%endfor%}
+</div>
+<br/>
 {%endif%}
 {%endblock%}
+
