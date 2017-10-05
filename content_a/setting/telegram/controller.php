@@ -17,8 +17,8 @@ class controller extends \content_a\main\controller
 		{
 			\lib\error::page();
 		}
-		$this->get(false, 'telegram')->ALL("/^([A-Za-z0-9]+)\/setting\/telegram$/");
-		$this->post('telegram')->ALL("/^([A-Za-z0-9]+)\/setting\/telegram$/");
+		$this->get(false, 'telegram')->ALL("/.*/");
+		$this->post('telegram')->ALL("/.*/");
 
 	}
 }

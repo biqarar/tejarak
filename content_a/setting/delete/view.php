@@ -11,7 +11,7 @@ class view extends \content_a\main\view
 	 */
 	public function view_delete($_args)
 	{
-		$request_data = $this->model()->load_last_request();
+		$request_data = [];
 		$this->data->sended_data = $request_data;
 	}
 }

@@ -18,7 +18,7 @@ class controller extends \content_a\main\controller
 			\lib\error::page();
 		}
 
-		$this->get()->ALL("/^([A-Za-z0-9]+)\/setting$/");
+		$this->get()->ALL("/.*/");
 	}
 }
 ?>

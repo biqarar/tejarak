@@ -17,8 +17,8 @@ class controller extends \content_a\main\controller
 		{
 			\lib\error::page();
 		}
-		$this->get(false, 'delete')->ALL("/^([A-Za-z0-9]+)\/setting\/delete$/");
-		$this->post('delete')->ALL("/^([A-Za-z0-9]+)\/setting\/delete$/");
+		$this->get(false, 'delete')->ALL("/.*/");
+		$this->post('delete')->ALL("/.*/");
 
 	}
 }
