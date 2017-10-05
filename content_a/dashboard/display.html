@@ -17,7 +17,7 @@
   </div>
   <div class="c3 s12">
 
-{{block ("topMembers")}}
+{{block ("lastTraffics")}}
   </div>
 </div>
 
@@ -124,7 +124,7 @@
 {%block st4%}
   <div class="dcard">
    <div class="statistic blue">
-    <div class="value"><i class="sf-analytics-chart-graph"></i><span class="counter">{{370 | number_format}}</span></div>
+    <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{370 | number_format}}</span></div>
     <div class="label">{%trans "Day Used"%}</div>
    </div>
   </div>
@@ -134,7 +134,7 @@
 {%block chart_primary%}
 <div class="dcard x3">
  <div class="chart">
-
+  Chart of work group by date limit 10
  </div>
 </div>
 {%endblock%}
@@ -144,6 +144,7 @@
 <div class="dcard x3">
  <div class="chart">
 
+  Chart
  </div>
 </div>
 {%endblock%}
@@ -155,9 +156,9 @@
 </div>
 {%endblock%}
 
-{%block lastTraffic%}
+{%block lastTraffics%}
 <div class="dcard x3">
- <h3>{%trans "Last traffic"%}</h3>
+ <h3>{%trans "Last traffics"%}</h3>
 
 </div>
 {%endblock%}
