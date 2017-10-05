@@ -13,7 +13,7 @@
 
 <div class="f">
   <div class="c9 s12">
-    <div class="dcard">{{block ("chart_primary")}}</div>
+    {{block ("chart_primary")}}
   </div>
   <div class="c3 s12">
 
@@ -22,7 +22,7 @@
 </div>
 
 
-<div class="dcard">{{block ("chart_secondary")}}</div>
+{{block ("chart_secondary")}}
 
 <div class="f">
  <div class="c4 s12">{{block ("pr1")}}</div>
@@ -132,33 +132,33 @@
 
 
 {%block chart_primary%}
-<div class="chart" style="height:300px">
+<div class="dcard x3">
+ <div class="chart">
 
+ </div>
 </div>
 {%endblock%}
 
 
 {%block chart_secondary%}
-<div class="chart" style="height:300px">
+<div class="dcard x3">
+ <div class="chart">
 
+ </div>
 </div>
 {%endblock%}
 
 
 {%block topMembers%}
-<div class="dcard">
-  <div style="height:300px">
-    <h3>{%trans "Top Members"%}</h3>
-  </div>
+<div class="dcard x3">
+ <h3>{%trans "Top Members"%}</h3>
 </div>
 {%endblock%}
 
 {%block lastTraffic%}
-<div class="dcard">
-  <div style="height:300px">
-    <h3>{%trans "Last traffic"%}</h3>
+<div class="dcard x3">
+ <h3>{%trans "Last traffic"%}</h3>
 
-  </div>
 </div>
 {%endblock%}
 
