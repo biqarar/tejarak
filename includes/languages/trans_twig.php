@@ -68,7 +68,7 @@ class twigTransTerms
 	echo T_("Mission Time");                                                          // Line 137
 	echo T_("I was on the mission");                                                  // Line 142
 	echo T_("Description");                                                           // Line 33
-	echo T_("Personal work");                                                         // Line 167
+	echo T_("Personal work");                                                         // Line 17
 	echo T_("Exit");                                                                  // Line 175
 
 	//--------------------------------------------------------content\main\layout.html
@@ -350,12 +350,12 @@ class twigTransTerms
 	echo T_("Title");                                                                 // Line 88
 	echo T_("Value");                                                                 // Line 80
 	echo T_("Budget After");                                                          // Line 81
-	echo T_("Invoice");                                                               // Line 82
+	echo T_("Invoice");                                                               // Line 81
 
 	//------------------------------------------content_a\billing\invoice\display.html
 	echo T_("Factor of team");                                                        // Line 8
-	echo T_("Total");                                                                 // Line 25
-	echo T_("Count");                                                                 // Line 20
+	echo T_("Total");                                                                 // Line 20
+	echo T_("Count");                                                                 // Line 15
 
 	//-----------------------------------------------------content_a\card\display.html
 	echo T_("Select people you want to order personnel card for");                    // Line 8
@@ -365,6 +365,16 @@ class twigTransTerms
 	echo T_("Total price");                                                           // Line 109
 	echo T_("Card type A");                                                           // Line 114
 	echo T_("Confirm and Pay");                                                       // Line 122
+
+	//------------------------------------------------content_a\dashboard\display.html
+	echo T_("Client");                                                                // Line 47
+	echo T_("User");                                                                  // Line 38
+	echo T_("Flights");                                                               // Line 98
+	echo T_("Views");                                                                 // Line 108
+	echo T_("Favs");                                                                  // Line 118
+	echo T_("Downloads");                                                             // Line 128
+	echo T_("Top Members");                                                           // Line 151
+	echo T_("Last traffic");                                                          // Line 7
 
 	//------------------------------------------------content_a\gateway\dashboard.html
 	echo T_("Add new Gateway");                                                       // Line 17
@@ -386,31 +396,30 @@ class twigTransTerms
 
 	//-----------------------------------------------------content_a\home\display.html
 	echo T_("Without traffic");                                                       // Line 22
-	echo T_("Last traffic");                                                          // Line 10
 	echo T_("member");                                                                // Line 29
 	echo T_("traffic");                                                               // Line 31
 	echo T_("Add new team");                                                          // Line 41
 
 	//--------------------------------------------------content_a\houredit\detail.html
-	echo T_("Start date");                                                            // Line 6
+	echo T_("Start date");                                                            // Line 13
 	echo T_("Start time");                                                            // Line 7
-	echo T_("End date");                                                              // Line 38
+	echo T_("End date");                                                              // Line 14
 	echo T_("End time");                                                              // Line 45
 	echo T_("Response");                                                              // Line 18
 
 	//-------------------------------------------------content_a\houredit\display.html
-	echo T_("Request Edit");                                                          // Line 34
+	echo T_("Request Edit");                                                          // Line 44
 	echo T_("Request list");                                                          // Line 8
 	echo T_("Request to edit your hours");                                            // Line 17
 	echo T_("You can send change request time");                                      // Line 20
-	echo T_("Start Date");                                                            // Line 35
+	echo T_("Start Date");                                                            // Line 26
 	echo T_("Start Time");                                                            // Line 10
-	echo T_("End Date");                                                              // Line 36
+	echo T_("End Date");                                                              // Line 27
 	echo T_("End Time");                                                              // Line 12
 	echo T_("You can send some description for this problem");                        // Line 49
 
 	//----------------------------------------------------content_a\houredit\list.html
-	echo T_("Action");                                                                // Line 28
+	echo T_("Action");                                                                // Line 8
 	echo T_("Type");                                                                  // Line 29
 	echo T_("Set Response");                                                          // Line 77
 	echo T_("Accept");                                                                // Line 125
@@ -435,7 +444,7 @@ class twigTransTerms
 	echo T_("Gateway");                                                               // Line 11
 	echo T_("Send notify");                                                           // Line 12
 	echo T_("Change Plan");                                                           // Line 3
-	echo T_("Settings");                                                              // Line 20
+	echo T_("Settings");                                                              // Line 17
 	echo T_("Report");                                                                // Line 4
 	echo T_("Board");                                                                 // Line 23
 
@@ -454,7 +463,6 @@ class twigTransTerms
 	echo T_("Enter a valid team position from 3 to 50 character");                    // Line 19
 	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 24
 	echo T_("Role of this member");                                                   // Line 44
-	echo T_("User");                                                                  // Line 38
 	echo T_("Admin");                                                                 // Line 39
 	echo T_("Extra setting for special use");                                         // Line 68
 	echo T_("First name");                                                            // Line 49
@@ -613,31 +621,29 @@ class twigTransTerms
 	echo T_("Enter to Tejarak");                                                      // Line 144
 
 	//---------------------------------------------------content_a\report\display.html
-	echo T_("Sum times in year");                                                     // Line 11
-	echo T_("Sum times in month");                                                    // Line 12
-	echo T_("Sum times in period");                                                   // Line 13
-	echo T_("Hour request edit list");                                                // Line 19
+	echo T_("Sum times in year");                                                     // Line 8
+	echo T_("Sum times in month");                                                    // Line 9
+	echo T_("Sum times in period");                                                   // Line 10
+	echo T_("Hour request edit list");                                                // Line 16
 
 	//----------------------------------------------content_a\report\last\display.html
 	echo T_("Start");                                                                 // Line 26
 	echo T_("End");                                                                   // Line 27
 	echo T_("Diff");                                                                  // Line 33
-	echo T_("Minus");                                                                 // Line 30
-	echo T_("Plus");                                                                  // Line 31
-	echo T_("Accepted");                                                              // Line 24
-	echo T_("Select actio");                                                          // Line 57
-	echo T_("All");                                                                   // Line 118
-	echo T_("Nothing!");                                                              // Line 63 Seperate
-	echo T_("Just diff");                                                             // Line 60
-	echo T_("Diff + Plus");                                                           // Line 61
-	echo T_("Diff - Minus");                                                          // Line 62
+	echo T_("Mission");                                                               // Line 18
+	echo T_("Accepted");                                                              // Line 19
+	echo T_("Export");                                                                // Line 52
 
 	//---------------------------------------------content_a\report\month\display.html
-	echo T_("Year");                                                                  // Line 18
-	echo T_("Month");                                                                 // Line 19
-	echo T_("Go");                                                                    // Line 27
+	echo T_("Filter by specefic month of specefic year");                             // Line 10
+	echo T_("Go");                                                                    // Line 15
+	echo T_("Year");                                                                  // Line 13
+	echo T_("Month");                                                                 // Line 14
+	echo T_("Minus");                                                                 // Line 30
+	echo T_("Plus");                                                                  // Line 31
 
 	//--------------------------------------------content_a\report\period\display.html
+	echo T_("Filter by get data of specefic time");                                   // Line 11
 
 	//------------------------------------------content_a\report\settings\display.html
 	echo T_("Header & Footer");                                                       // Line 13
@@ -658,11 +664,12 @@ class twigTransTerms
 	echo T_("Send report daily whit time at end of day");                             // Line 102
 	echo T_("Send gold emoji in report daily");                                       // Line 109
 	echo T_("Send report daily count");                                               // Line 116
+	echo T_("All");                                                                   // Line 118
 	echo T_("No Group was set");                                                      // Line 126
 	echo T_("You can set telegram group from ");                                      // Line 127
 
 	//----------------------------------------------content_a\report\year\display.html
-	echo T_("Export as CSV file");                                                    // Line 8
+	echo T_("Export as CSV file");                                                    // Line 53
 
 	//-----------------------------------------------content_a\sendnotify\display.html
 	echo T_("Type your message here...");                                             // Line 7
@@ -811,6 +818,7 @@ class twigTransTerms
 	echo T_("Android Developer");                                                     // Line 60 Seperate
 	echo T_("IOS Developer");                                                         // Line 61 Seperate
 	echo T_("WP Developer");                                                          // Line 62 Seperate
+	echo T_("Nothing!");                                                              // Line 63 Seperate
 	echo T_("Traveler");                                                              // Line 64 Seperate
 	echo T_("Intern");                                                                // Line 65 Seperate
 	echo T_("name");                                                                  // Line 69 Seperate
