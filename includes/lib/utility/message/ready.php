@@ -31,10 +31,6 @@ trait ready
 			$this->team_details = \lib\db\teams::get_by_id($this->team_id);
 
 			$this->report_setting();
-
-			$this->get_admins();
-
-			$this->get_admin_bridge();
 		}
 	}
 
@@ -108,23 +104,10 @@ trait ready
 	{
 		if($this->status && $this->team_id && $this->send_by)
 		{
-			switch ($this->send_by)
+			if(in_array('telegram', $this->send_by))
 			{
-				case 'telegram':
-					// find admins chat id
-					$this->admin_telegram_chat_id();
-					break;
-
-				case 'call':
-				case 'sms':
-					// find mobile
-					break;
-				case 'email':
-					// find email
-					break;
-				default:
-					$this->status = false;
-					break;
+				// find admins chat id
+				$this->admin_telegram_chat_id();
 			}
 		}
 	}
@@ -154,8 +137,16 @@ trait ready
 		{
 			$this->admins_detail_id = array_column($this->admins_detail, 'user_id');
 			$chat_id = null;
-			if(!empty($this->admins_detail_id))
+
+			if($this->admins_detail_id && is_array($this->admins_detail_id))
 			{
+				if($this->member_id)
+				{
+					$this->admins_detail_id[] = $this->member_id;
+				}
+
+				$this->admins_detail_id = array_unique($this->admins_detail_id);
+
 				$this->admins_detail_id = implode(',', $this->admins_detail_id);
 				$ids = $this->admins_detail_id;
 				$chat_id = "SELECT users.id AS `id`, users.chatid AS `chat_id` FROM users WHERE users.id IN($ids) ";
@@ -163,7 +154,7 @@ trait ready
 
 				if(!empty($chat_id))
 				{
-					$this->admins_detail_telegram_id = $chat_id;
+					$this->admins_detail_telegram_id = array_unique($chat_id);
 				}
 			}
 
@@ -182,9 +173,18 @@ trait ready
 						$admins_access_detail[$value['user_id']]['reportenterexit'] = $value['reportenterexit'];
 					}
 
-					if(array_key_exists($value['user_id'], $chat_id))
+					if(is_array($chat_id))
 					{
-						$admins_access_detail[$value['user_id']]['chat_id'] = $chat_id[$value['user_id']];
+						if(array_key_exists($value['user_id'], $chat_id))
+						{
+							if(intval($this->member_id) === intval($value['user_id']))
+							{
+								$admins_access_detail[$value['user_id']]['reportdaily']     = 1;
+								$admins_access_detail[$value['user_id']]['reportenterexit'] = 1;
+							}
+
+							$admins_access_detail[$value['user_id']]['chat_id'] = $chat_id[$value['user_id']];
+						}
 					}
 				}
 			}
@@ -195,8 +195,7 @@ trait ready
 		$this->admins_detail_telegram_id = array_filter($this->admins_detail_telegram_id);
 		$this->admins_detail_telegram_id = array_unique($this->admins_detail_telegram_id);
 
-
-		if(empty($this->admins_access_detail))
+		if(!$this->admins_access_detail)
 		{
 			$this->status = false;
 		}

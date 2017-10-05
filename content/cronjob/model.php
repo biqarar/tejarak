@@ -53,7 +53,8 @@ class model extends \mvc\model
 			foreach ($check_exist as $key => $value)
 			{
 				$msg = new \lib\utility\message($value);
-				$msg->message_type('timed_auto_report');
+				$msg->send_by('telegram');
+				$msg->type('timed_auto_report');
 				$msg->send();
 			}
 		}

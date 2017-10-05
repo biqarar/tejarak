@@ -1,11 +1,7 @@
 <?php
 namespace lib\utility\message;
-use \lib\utility;
-use \lib\utility\human;
-use \lib\debug;
-use \lib\db;
 
-trait generate
+trait check_plan
 {
 	/**
 	 * generate message by message type
@@ -15,15 +11,15 @@ trait generate
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	private function generate_message()
+	private function check_plan()
 	{
 		if($this->status)
 		{
-			if($this->message_type)
+			if($this->type)
 			{
-				if(method_exists($this, $this->message_type))
+				if(method_exists($this, $this->type))
 				{
-					$msg = $this->{$this->message_type}();
+					$msg = $this->{$this->type}();
 					if($msg)
 					{
 						if(Tld === 'dev')

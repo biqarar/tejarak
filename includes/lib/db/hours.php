@@ -359,7 +359,19 @@ class hours
 		$plan_feature['args']            = $_args;
 		$plan_feature['in_use_time']     = $in_use_time;
 
-		\lib\utility\plan::check_feature($plan_feature);
+
+		// send message
+		$msg = new \lib\utility\message($_args['team_id']);
+		$msg->type('first_enter');
+		$msg->type('enter');
+		$msg->send_by('telegram');
+		$msg->send_by('sms');
+		// detail to use in message
+		$msg->displayname = \lib\temp::get('enter_exit_name');
+		$msg->plus        = $_args['plus'];
+		$msg->member_id   = $_args['user_id'];
+
+		$msg->send();
 
 		return $inserted;
 	}
@@ -416,6 +428,11 @@ class hours
 			\lib\temp::set('enter_exit_name', $_args['userteam_details']['displayname']);
 		}
 
+		if(isset($_args['userteam_details']['user_id']))
+		{
+			\lib\temp::set('enter_exit_id', $_args['userteam_details']['user_id']);
+		}
+
 		$update = [];
 
 		$start_time = $start['date'] . ' '. $start['start'];
@@ -462,7 +479,24 @@ class hours
 		$plan_feature['args']            = $_args;
 		$plan_feature['start']           = $start;
 
-		\lib\utility\plan::check_feature($plan_feature);
+
+		// send message
+		$msg = new \lib\utility\message($_args['team_id']);
+		$msg->type('exit_message');
+		$msg->type('end_day');
+		// meta need to create message
+		$msg->displayname = \lib\temp::get('enter_exit_name');
+		$msg->member_id   = \lib\temp::get('enter_exit_id');
+		$msg->minus       = $_args['minus'];
+		$msg->plus        = $plus;
+		$msg->start_time  = $start['date'] . ' '. $start['start'];
+
+
+		$msg->send_by('telegram');
+		$msg->send_by('sms');
+		$msg->send();
+
+		// \lib\utility\plan::check_feature($plan_feature);
 
 		return $updated;
 	}
