@@ -3,6 +3,157 @@
 
 
 {%block pageContent%}
-<h1>{%trans "Hi" %} {%set myName = login.displayname%} {% trans myName  %}</h1>
-<H2>THE DASHBOARD PAGE</H2>
+
+<div class="f">
+ <div class="c3 s12">{{block ("st1")}}</div>
+ <div class="c3 s12">{{block ("st2")}}</div>
+ <div class="c3 s12">{{block ("st3")}}</div>
+ <div class="c3 s12">{{block ("st4")}}</div>
+</div>
+
+<div class="f">
+  <div class="c9">
+    <div class="cbox mA5">{{block ("chart_primary")}}</div>
+  </div>
+  <div class="c3">
+
+{{block ("topMembers")}}
+  </div>
+</div>
+
+
+<div class="cbox mA5">{{block ("chart_secondary")}}</div>
+
+<div class="f mT15">
+ <div class="c4 s12">{{block ("pr1")}}</div>
+ <div class="c4 s12">{{block ("pr2")}}</div>
+ <div class="c4 s12">{{block ("pr3")}}</div>
+</div>
+
+
+
 {%endblock%}
+
+
+
+
+
+
+
+{%block pr1%}
+<div class="dcard">
+ <div class="f">
+  <h5 class="c fc-mute">{%trans "Client"%}</h5>
+  <h4 class="cauto fc-danger fs30 txtra counter">{{80 | number_format}}</h4>
+ </div>
+ <div class="f">
+ <div class="progress" data-percent='45'>
+  <div class="bar"></div>
+ </div>
+ </div>
+</div>
+{%endblock%}
+
+
+{%block pr2%}
+<div class="dcard">
+ <div class="f">
+  <h5 class="c fc-mute">{%trans "User"%}</h5>
+  <h4 class="cauto fc-warn fs30 txtra counter">{{1530 | number_format}}</h4>
+ </div>
+ <div class="f">
+ <div class="progress" data-percent='85'>
+  <div class="bar"></div>
+ </div>
+ </div>
+</div>
+{%endblock%}
+
+
+{%block pr3%}
+<div class="dcard">
+ <div class="f">
+  <h5 class="c fc-mute">{%trans "Invoice"%}</h5>
+  <h4 class="cauto fc-info fs30 txtra counter">{{26 | number_format}}</h4>
+ </div>
+ <div class="f">
+ <div class="progress" data-percent='15'>
+  <div class="bar"></div>
+ </div>
+ </div>
+</div>
+{%endblock%}
+
+
+{%block st1%}
+<div class="dcard">
+ <div class="statistic gray">
+  <div class="value"><i class="sf-plane"></i><span class="counter">{{520 | number_format}}</span></div>
+  <div class="label">{%trans "Flights"%}</div>
+ </div>
+</div>
+{%endblock%}
+
+
+{%block st2%}
+<div class="dcard">
+ <div class="statistic teal">
+  <div class="value"><i class="sf-chart-bar"></i><span class="counter">{{800 | number_format}}</span></div>
+  <div class="label">{%trans "Views"%}</div>
+ </div>
+</div>
+{%endblock%}
+
+
+{%block st3%}
+  <div class="dcard">
+   <div class="statistic orange">
+    <div class="value"><i class="sf-star"></i><span class="counter">{{60 | number_format}}</span></div>
+    <div class="label">{%trans "Favs"%}</div>
+   </div>
+  </div>
+{%endblock%}
+
+
+{%block st4%}
+  <div class="dcard">
+   <div class="statistic blue">
+    <div class="value"><i class="sf-cloud-download"></i><span class="counter">{{370 | number_format}}</span></div>
+    <div class="label">{%trans "Downloads"%}</div>
+   </div>
+  </div>
+{%endblock%}
+
+
+{%block chart_primary%}
+<div class="chart" style="height:300px">
+
+</div>
+{%endblock%}
+
+
+{%block chart_secondary%}
+<div class="chart" style="height:300px">
+
+</div>
+{%endblock%}
+
+
+{%block topMembers%}
+<div class="cbox mA5">
+  <div style="height:300px">
+    <h3>{%trans "Top Members"%}</h3>
+  </div>
+</div>
+{%endblock%}
+
+{%block lastTraffic%}
+<div class="cbox mA5">
+  <div style="height:300px">
+    <h3>{%trans "Last traffic"%}</h3>
+
+  </div>
+</div>
+{%endblock%}
+
+
