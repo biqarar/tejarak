@@ -17,7 +17,7 @@ class view extends \content_a\main\view
 		$this->data->team_default  = $team_default = $this->data->current_team ;
 
 		$this->data->page['title'] = T_('Add new member');
-		$this->data->page['desc']  = $this->data->page['title'];
+		$this->data->page['desc']  = T_('You can set detail of team member and assign some extra data to use later');
 	}
 
 
