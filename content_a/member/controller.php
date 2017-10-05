@@ -24,14 +24,14 @@ class controller extends \content_a\main\controller
 			\lib\error::page();
 		}
 
-		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/member$/");
-		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/member$/");
+		$this->get(false, 'add')->ALL("/^([a-zA-Z0-9]+)\/member\/add$/");
+		$this->post('add')->ALL("/^([a-zA-Z0-9]+)\/member\/add$/");
 
 		$this->get(false, 'edit')->ALL("/^([a-zA-Z0-9]+)\/member\=([a-zA-Z0-9]+)$/");
 		$this->post('edit')->ALL("/^([a-zA-Z0-9]+)\/member\=([a-zA-Z0-9]+)$/");
 
-		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/");
-		if(preg_match("/^([a-zA-Z0-9]+)(|\/(^member)([a-zA-Z0-9]+))$/", $url))
+		$this->get(false, 'list')->ALL("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))\/member$/");
+		if(preg_match("/^([a-zA-Z0-9]+)(|\/(^member)([a-zA-Z0-9]+))\/member$/", $url))
 		{
 			$this->display_name = 'content_a\member\dashboard.html';
 		}

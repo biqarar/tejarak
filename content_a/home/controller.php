@@ -92,7 +92,7 @@ class controller extends \content_a\main\controller
 		// route url like this /a/2kf
 		if(preg_match("/^([a-zA-Z0-9]+)$/", $url))
 		{
-			\lib\router::set_controller("content_a\\member\\controller");
+			\lib\router::set_controller("content_a\\dashboard\\controller");
 			return;
 		}
 
@@ -111,7 +111,7 @@ class controller extends \content_a\main\controller
 		}
 
 		// route url like this /a/2kf/member
-		if(preg_match("/^([a-zA-Z0-9]+)\/member(|\=[a-zA-Z0-9]+)$/", $url))
+		if(preg_match("/^([a-zA-Z0-9]+)\/member(|\/add|\=[a-zA-Z0-9]+)$/", $url))
 		{
 			if($is_admin)
 			{
