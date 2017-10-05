@@ -29,7 +29,7 @@
     <div class="footer">
     {%if value.stats.traffic_count%}
       <i class="sf-hourglass-end"></i>{{value.stats.member_count | number_format | fitNumber}} {%trans "member"%}
-      <i class="sf-refresh"></i><span>{{value.stats.traffic_count | number_format | fitNumber}}</span> {%trans "traffic"%}
+      <i class="sf-retweet"></i><span>{{value.stats.traffic_count | number_format | fitNumber}}</span> {%trans "traffic"%}
     {%else%}
       {%trans "Without traffic"%}
     {%endif%}

@@ -92,20 +92,20 @@
 
 
 {%block st1%}
-<div class="dcard">
+<a class="dcard" href='{{url.baseFull}}/{{team}}/member'>
  <div class="statistic gray">
-  <div class="value"><i class="sf-plane"></i><span class="counter">{{520 | number_format}}</span></div>
-  <div class="label">{%trans "Flights"%}</div>
+  <div class="value"><i class="sf-users"></i><span class="counter">{{25 | number_format}}</span></div>
+  <div class="label">{%trans "Member"%}</div>
  </div>
-</div>
+</a>
 {%endblock%}
 
 
 {%block st2%}
 <div class="dcard">
  <div class="statistic teal">
-  <div class="value"><i class="sf-chart-bar"></i><span class="counter">{{800 | number_format}}</span></div>
-  <div class="label">{%trans "Views"%}</div>
+  <div class="value"><i class="sf-retweet"></i><span class="counter">{{16500 | number_format}}</span></div>
+  <div class="label">{%trans "Traffic Record"%}</div>
  </div>
 </div>
 {%endblock%}
@@ -114,8 +114,8 @@
 {%block st3%}
   <div class="dcard">
    <div class="statistic orange">
-    <div class="value"><i class="sf-star"></i><span class="counter">{{60 | number_format}}</span></div>
-    <div class="label">{%trans "Favs"%}</div>
+    <div class="value"><i class="sf-hourglass-end"></i><span class="counter">{{60 | number_format}}</span></div>
+    <div class="label">{%trans "Hour Work"%}</div>
    </div>
   </div>
 {%endblock%}
@@ -124,8 +124,8 @@
 {%block st4%}
   <div class="dcard">
    <div class="statistic blue">
-    <div class="value"><i class="sf-cloud-download"></i><span class="counter">{{370 | number_format}}</span></div>
-    <div class="label">{%trans "Downloads"%}</div>
+    <div class="value"><i class="sf-analytics-chart-graph"></i><span class="counter">{{370 | number_format}}</span></div>
+    <div class="label">{%trans "Day Used"%}</div>
    </div>
   </div>
 {%endblock%}

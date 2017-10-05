@@ -36,8 +36,8 @@ class view extends \content_a\main\view
 
 		if(isset($this->data->current_team['name']))
 		{
-			$this->data->page['title'] = $this->data->current_team['name'];
-			$this->data->page['desc']  = $this->data->page['title'];
+			$this->data->page['title'] = T_('Member of :name', ['name'=> $this->data->current_team['name']]);
+			$this->data->page['desc']  = T_('Quick view to team members and add or edit detail of members');
 		}
 	}
 
