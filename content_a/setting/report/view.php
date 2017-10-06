@@ -7,8 +7,8 @@ class view extends \content_a\setting\view
 	public function config()
 	{
 		parent::config();
-		$this->data->page['title'] = T_('Report settings');
-		$this->data->page['desc']  = $this->data->page['title'];
+		$this->data->page['title']  = T_('Setting'). ' | '. T_('Reports');
+		$this->data->page['desc']  = T_('Manage report, set header and footer, set automatic report and manage telegram group and syncing.');
 	}
 
 	/**
