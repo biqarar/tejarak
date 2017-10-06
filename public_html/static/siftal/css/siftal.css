@@ -2151,6 +2151,18 @@ progress.xl, meter.xl {
 .dcard.x4 {
   min-height: 390px; }
 
+.dcard .chart {
+  height: 90px; }
+
+.dcard.x2 .chart {
+  height: 190px; }
+
+.dcard.x3 .chart {
+  height: 290px; }
+
+.dcard.x4 .chart {
+  height: 390px; }
+
 .vcard {
   position: relative;
   max-width: 100%;
@@ -7456,6 +7468,20 @@ li.sortable-placeholder {
 
 .rtl .iziToast-wrapper-topRight {
   text-align: left; }
+
+.chart {
+  direction: ltr;
+  height: 290px;
+  width: 100%; }
+
+.chart * {
+  font-family: IRANSans, Tahoma, sans-serif !important; }
+
+.chart .amcharts-chart-div > a {
+  display: none !important; }
+
+.rtl .chart {
+  text-align: right; }
 
 .transparent {
   border-color: transparent !important;
