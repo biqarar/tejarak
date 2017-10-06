@@ -1,5 +1,5 @@
 <?php
-namespace content_a\setting\owner;
+namespace content_a\setting\security;
 use \lib\debug;
 use \lib\utility;
 
@@ -38,11 +38,11 @@ class model extends \content_a\main\model
 
 
 	/**
-	 * Posts an owner.
+	 * Posts an security.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_owner($_args)
+	public function post_security($_args)
 	{
 		if(!$this->login())
 		{

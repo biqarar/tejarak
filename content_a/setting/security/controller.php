@@ -1,5 +1,5 @@
 <?php
-namespace content_a\setting\owner;
+namespace content_a\setting\security;
 
 class controller extends \content_a\main\controller
 {
@@ -13,12 +13,12 @@ class controller extends \content_a\main\controller
 
 		$url = \lib\router::get_url();
 
-		if($url === 'setting/owner')
+		if($url === 'setting/security')
 		{
 			\lib\error::page();
 		}
-		$this->get(false, 'owner')->ALL("/.*/");
-		$this->post('owner')->ALL("/.*/");
+		$this->get(false, 'security')->ALL("/.*/");
+		$this->post('security')->ALL("/.*/");
 
 	}
 }
