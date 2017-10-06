@@ -7,6 +7,7 @@ class model extends \content_a\main\model
 {
 
 
+
 	/**
 	 * Gets the post.
 	 *
@@ -109,6 +110,43 @@ class model extends \content_a\main\model
 			}
 		}
 
+	}
+
+
+	/**
+	 * load team data to load for edit
+	 *
+	 * @param      <type>  $_code  The team
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public function edit($_code)
+	{
+		$this->user_id = $this->login('id');
+		utility::set_request_array(['id' => $_code]);
+		$result = $this->get_team();
+		// var_dump($result);exit();
+		return $result;
+	}
+
+
+	/**
+	 * Posts an add.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public function post_edit($_args)
+	{
+		$code = \lib\router::get_url(0);
+
+		$request       = $this->getPost();
+		$this->user_id = $this->login('id');
+		$request['id'] = $code;
+
+		utility::set_request_array($request);
+
+		// THE API ADD TEAM FUNCTION BY METHOD PATHC
+		$this->add_team(['method' => 'patch']);
 	}
 }
 ?>

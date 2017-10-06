@@ -10,7 +10,7 @@ class model extends \content_a\main\model
 	public $user_id;
 	public $team_id;
 	public $team_code;
-	public $team_detail;
+	public $current_team;
 
 
 	/**
@@ -97,7 +97,7 @@ class model extends \content_a\main\model
 
 		$this->team_code = \lib\router::get_url(0);
 		$this->team_id = \lib\utility\shortURL::decode($this->team_code);
-		$this->team_detail = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
+		$this->current_team = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
 
 		if($this->check_sended_request() === false)
 		{
@@ -173,9 +173,9 @@ class model extends \content_a\main\model
 		$meta['new_owner']         = $this->user_data['id'];
 		// $meta['new_owner_data'] = $this->user_data;
 		$meta['new_owner_mobile']  = $this->mobile;
-		// $meta['team']           = $this->team_detail;
-		$meta['team_logo']         = $this->team_detail['logourl'];
-		$meta['team_name']         = $this->team_detail['name'];
+		// $meta['team']           = $this->current_team;
+		$meta['team_logo']         = $this->current_team['logourl'];
+		$meta['team_name']         = $this->current_team['name'];
 		$meta['sender_name']       = $this->login('displayname');
 		$meta['sender_mobile']     = $this->login('mobile');
 		$meta['sender_logo']       = $this->login('fileurl');
@@ -196,7 +196,7 @@ class model extends \content_a\main\model
 			'related_id'      => $meta['team_id'],
 			'meta'            => json_encode(\lib\utility\safe::safe($meta), JSON_UNESCAPED_UNICODE),
 			'needanswer'      => 1,
-			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->team_detail['name']]),
+			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->current_team['name']]),
 		];
 
 		$a = \lib\db\notifications::set($send_notify);

@@ -11,51 +11,51 @@
 
 
         <div class="c6 s12">
-         <input type="checkbox" name="showAvatar" id="showAvatar" {%if team_detail.show_avatar or not team%}checked{%endif%} >
+         <input type="checkbox" name="showAvatar" id="showAvatar" {%if current_team.show_avatar or not team%}checked{%endif%} >
          <label for="showAvatar">{%trans "Show users avatars"%}</label>
         </div>
 
         <div class="c6 s12">
-         <input type="checkbox" name="allowPlus" id="allowPlus" {%if team_detail.allow_plus or not team%}checked{%endif%}>
+         <input type="checkbox" name="allowPlus" id="allowPlus" {%if current_team.allow_plus or not team%}checked{%endif%}>
          <label for="allowPlus">{%trans "Allow register mission"%}</label>
         </div>
         <div class="c6 s12">
-         <input type="checkbox" name="allowMinus" id="allowMinus" {%if team_detail.allow_minus or not team%}checked{%endif%}>
+         <input type="checkbox" name="allowMinus" id="allowMinus" {%if current_team.allow_minus or not team%}checked{%endif%}>
          <label for="allowMinus">{%trans "Allow register personal work"%}</label>
         </div>
 
         <div class="c6 s12">
-         <input type="checkbox" name="remoteUser" id="remoteUser" {%if team_detail.remote_user %}checked{%endif%}>
+         <input type="checkbox" name="remoteUser" id="remoteUser" {%if current_team.remote_user %}checked{%endif%}>
          <label for="remoteUser">{%trans "Remote user"%}</label>
         </div>
         <div class="c6 s12">
-         <input type="checkbox" name="24h" id="24h" {%if team_detail['24h']%}checked{%endif%}>
+         <input type="checkbox" name="24h" id="24h" {%if current_team['24h']%}checked{%endif%}>
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
         <div class="c6 s12">
-         <input type="checkbox" name="quickTraffic" id="quickTraffic" {%if team_detail.quick_traffic%}checked{%endif%}>
+         <input type="checkbox" name="quickTraffic" id="quickTraffic" {%if current_team.quick_traffic%}checked{%endif%}>
          <label for="quickTraffic">{%trans "Quick Traffic"%}</label>
         </div>
 
         <div class="c6 s12 hide">
-         <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if team_detail.allow_desc_enter %}checked{%endif%}>
+         <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if current_team.allow_desc_enter %}checked{%endif%}>
          <label for="allowDescEnter">{%trans "Allow set enter desc"%}</label>
         </div>
 
         <div class="c6 s12 hide">
-         <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if team_detail.allow_desc_exit %}checked{%endif%}>
+         <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if current_team.allow_desc_exit %}checked{%endif%}>
          <label for="allowDescExit">{%trans "Allow set Exit desc"%}</label>
         </div>
 
 
        <!--   <div class="c4 s6">
-         <input type="checkbox" name="manual_time_enter" id="manual_time_enter" {%if team_detail.manual_time_enter %}checked{%endif%}>
+         <input type="checkbox" name="manual_time_enter" id="manual_time_enter" {%if current_team.manual_time_enter %}checked{%endif%}>
          <label for="manual_time_enter">{%trans "Manual time enter"%}</label>
         </div>
 
         <div class="c4 s6">
-         <input type="checkbox" name="manual_time_exit" id="manual_time_exit" {%if team_detail.manual_time_exit %}checked{%endif%}>
+         <input type="checkbox" name="manual_time_exit" id="manual_time_exit" {%if current_team.manual_time_exit %}checked{%endif%}>
          <label for="manual_time_exit">{%trans "Manual time exit"%}</label>
         </div> -->
 

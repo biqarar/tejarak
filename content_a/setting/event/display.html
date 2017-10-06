@@ -8,12 +8,12 @@
   <h4>{%trans "Special event day counter"%}</h4>
         <div class="c12 s12 f mA5">
          <label class="c2 s12" for="event_title">{%trans "Event title"%}</label>
-          <input class="c" type="text" name="event_title" id="event_title" value="{{team_detail.event_title}}" placeholder='{%trans "Event title"%}'>
+          <input class="c" type="text" name="event_title" id="event_title" value="{{current_team.event_title}}" placeholder='{%trans "Event title"%}'>
         </div>
 
         <div class="c12 s12 f mA5">
          <label class="c2 s12" for="event_date">{%trans "Event date"%}</label>
-          <input class="c datepicker" type="text" name="event_date" id="event_date" value="{{team_detail.event_date_gregorian}}" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='top'>
+          <input class="c datepicker" type="text" name="event_date" id="event_date" value="{{current_team.event_date_gregorian}}" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='top'>
         </div>
 
        <div class="c3 os s12">

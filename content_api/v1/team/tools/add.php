@@ -44,7 +44,7 @@ trait add
 
 		$name = utility::request('name');
 		$name = trim($name);
-		if(!$name)
+		if(!$name && $_args['method'] === 'post')
 		{
 			logs::set('api:team:name:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Team name of team can not be null"), 'name', 'arguments');
@@ -68,23 +68,24 @@ trait add
 		}
 
 		$privacy = utility::request('privacy');
-		if(!$privacy)
+		if(!$privacy && $_args['method'] === 'post')
 		{
 			$privacy = 'private';
 		}
 
-		if(!in_array(mb_strtolower($privacy), ['public', 'private', 'team']))
+		$privacy = mb_strtolower($privacy);
+		if($privacy && !in_array($privacy, ['public', 'private', 'team']))
 		{
 			logs::set('api:team:privacy:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid privacy field"), 'privacy', 'arguments');
 			return false;
 		}
-		$privacy = mb_strtolower($privacy);
+
 
 		$shortname = utility::request('short_name');
 		$shortname = trim($shortname);
 
-		if(!$shortname && !$name)
+		if(!$shortname && !$name && $_args['method'] === 'post')
 		{
 			logs::set('api:team:shortname:not:sert', $this->user_id, $log_meta);
 			debug::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
@@ -104,14 +105,14 @@ trait add
 		// in the slug we have some '-' in return
 		$shortname = str_replace('-', '', $shortname);
 
-		if(mb_strlen($shortname) < 5)
+		if($shortname && mb_strlen($shortname) < 5)
 		{
 			logs::set('api:team:minlength:shortname', $this->user_id, $log_meta);
 			debug::error(T_("Team shortname must be larger than 5 character"), 'shortname', 'arguments');
 			return false;
 		}
 
-		if(!preg_match("/^[A-Za-z0-9]+$/", $shortname))
+		if($shortname && !preg_match("/^[A-Za-z0-9]+$/", $shortname))
 		{
 			logs::set('api:team:invalid:shortname', $this->user_id, $log_meta);
 			debug::error(T_("Only [A-Za-z0-9] can use in team shortname"), 'shortname', 'arguments');
@@ -119,7 +120,7 @@ trait add
 		}
 
 		// check shortname
-		if(mb_strlen($shortname) > 100)
+		if($shortname && mb_strlen($shortname) > 100)
 		{
 			logs::set('api:team:maxlength:shortname', $this->user_id, $log_meta);
 			debug::error(T_("Team shortname must be less than 500 character"), 'shortname', 'arguments');
@@ -373,8 +374,17 @@ trait add
 		$args['parent']          = $parent ? $parent : null;
 		$args['cardsize']        = $cardsize ? $cardsize : null;
 		$args['type']            = $type ? $type : null;
-		$args['related']         = $_args['related'];
-		$args['related_id']      = $_args['related_id'];
+
+		if($_args['related'])
+		{
+			$args['related']     = $_args['related'];
+		}
+
+		if($_args['related_id'])
+		{
+			$args['related_id']  = $_args['related_id'];
+		}
+
 		$args['gender']          = $gender;
 
 		$args['country']         = $country;
@@ -529,30 +539,52 @@ trait add
 				return false;
 			}
 
+			if(array_key_exists('name', $args) && !$args['name'])
+			{
+				logs::set('api:team:name:not:set:edit', $this->user_id, $log_meta);
+				debug::error(T_("Team name of team can not be null"), 'name', 'arguments');
+				return false;
+			}
+
+			if(array_key_exists('shortname', $args) && !$args['shortname'])
+			{
+				logs::set('api:team:shortname:not:set:edit', $this->user_id, $log_meta);
+				debug::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
+				return false;
+			}
+
+			if(array_key_exists('privacy', $args) && !in_array($privacy, ['public', 'private', 'team']))
+			{
+				logs::set('api:team:privacy:invalid:edit', $this->user_id, $log_meta);
+				debug::error(T_("Invalid privacy field"), 'privacy', 'arguments');
+				return false;
+			}
 
 			if(!empty($args))
 			{
-				\lib\db::$debug_error = false;
 				$update = \lib\db\teams::update($args, $admin_of_team['id']);
-				\lib\db::$debug_error = true;
-				if(!$update)
+
+				if(isset($args['shortname']))
 				{
-					$args['shortname'] = $this->shortname_fix($args);
-					$update = \lib\db\teams::update($args, $admin_of_team['id']);
-				}
-				// user change shortname
-				if($admin_of_team['shortname'] != $args['shortname'])
-				{
-					logs::set('api:team:change:shortname', $this->user_id, $log_meta);
-					// must be update all gateway username user old shortname at the first of herusername
-					// to new shortname
-					$update_gateway =
-					[
-						'old_shortname' => $admin_of_team['shortname'],
-						'new_shortname' => $args['shortname'],
-						'team_id'       => $admin_of_team['id'],
-					];
-					\lib\db\userteams::gateway_username_fix($update_gateway);
+					if(!$update)
+					{
+						$args['shortname'] = $this->shortname_fix($args);
+						$update = \lib\db\teams::update($args, $admin_of_team['id']);
+					}
+					// user change shortname
+					if($admin_of_team['shortname'] != $args['shortname'])
+					{
+						logs::set('api:team:change:shortname', $this->user_id, $log_meta);
+						// must be update all gateway username user old shortname at the first of herusername
+						// to new shortname
+						$update_gateway =
+						[
+							'old_shortname' => $admin_of_team['shortname'],
+							'new_shortname' => $args['shortname'],
+							'team_id'       => $admin_of_team['id'],
+						];
+						\lib\db\userteams::gateway_username_fix($update_gateway);
+					}
 				}
 			}
 		}
