@@ -5,10 +5,10 @@
 {%block pageContent%}
 
 <div class="f">
- <div class="c3 s6">{{block ("st1")}}</div>
- <div class="c3 s6">{{block ("st2")}}</div>
- <div class="c3 s6">{{block ("st3")}}</div>
- <div class="c3 s6">{{block ("st4")}}</div>
+ <div class="c3 s6">{{block ("stMembers")}}</div>
+ <div class="c3 s6">{{block ("stTraffics")}}</div>
+ <div class="c3 s6">{{block ("stTotalHour")}}</div>
+ <div class="c3 s6">{{block ("stDayUsed")}}</div>
 </div>
 
 <div class="f">
@@ -17,19 +17,20 @@
   </div>
   <div class="c3 s12">
 
+
 {{block ("lastTraffics")}}
   </div>
 </div>
 
 
-{{block ("chart_secondary")}}
 
 <div class="f">
- <div class="c4 s12">{{block ("pr1")}}</div>
- <div class="c4 s12">{{block ("pr2")}}</div>
- <div class="c4 s12">{{block ("pr3")}}</div>
+ <div class="c4 s12">{{block ("prDeadline")}}</div>
+ <div class="c5 s12">{{block ("prPresentCount")}}</div>
+ <div class="c3 s12">{{block ("prDate")}}</div>
 </div>
 
+{{block ("chart_secondary")}}
 
 
 {%endblock%}
@@ -40,11 +41,11 @@
 
 
 
-{%block pr1%}
+{%block prDeadline%}
 <div class="dcard">
  <div class="block">
   <div class="f">
-   <h5 class="c fc-mute">{%trans "Client"%}</h5>
+   <h5 class="c fc-mute">{%trans "Deadline"%}</h5>
    <h4 class="cauto fc-danger fs30 txtra counter">{{80 | number_format}}</h4>
   </div>
   <div class="f">
@@ -57,11 +58,11 @@
 {%endblock%}
 
 
-{%block pr2%}
+{%block prPresentCount%}
 <div class="dcard">
  <div class="block">
   <div class="f">
-   <h5 class="c fc-mute">{%trans "User"%}</h5>
+   <h5 class="c fc-mute">{%trans "Present Members"%}</h5>
    <h4 class="cauto fc-warn fs30 txtra counter">{{1530 | number_format}}</h4>
   </div>
   <div class="f">
@@ -74,12 +75,12 @@
 {%endblock%}
 
 
-{%block pr3%}
+{%block prDate%}
 <div class="dcard">
  <div class="block">
   <div class="f">
-   <h5 class="c fc-mute">{%trans "Invoice"%}</h5>
-   <h4 class="cauto fc-info fs30 txtra counter">{{26 | number_format}}</h4>
+   <h5 class="c fc-mute">{{"now" | jdate('M')}}</h5>
+   <h4 class="cauto fc-info fs30 txtra">{{"now" | jdate('d')}}</h4>
   </div>
   <div class="f">
    <div class="progress" data-percent='15'>
@@ -91,37 +92,37 @@
 {%endblock%}
 
 
-{%block st1%}
-<a class="dcard" href='{{url.baseFull}}/{{team}}/member'>
+{%block stMembers%}
+<a class="dcard" href='{{url.baseFull}}/{{team}}/m5ember'>
  <div class="statistic gray">
-  <div class="value"><i class="sf-users"></i><span class="counter">{{25 | number_format}}</span></div>
+  <div class="value"><i class="sf-users"></i><span>{{25 |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Member"%}</div>
  </div>
 </a>
 {%endblock%}
 
 
-{%block st2%}
+{%block stTraffics%}
 <div class="dcard">
  <div class="statistic teal">
-  <div class="value"><i class="sf-retweet"></i><span class="counter">{{16500 | number_format}}</span></div>
+  <div class="value"><i class="sf-retweet"></i><span class="fs08">{{16500 |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Traffic Record"%}</div>
  </div>
 </div>
 {%endblock%}
 
 
-{%block st3%}
+{%block stTotalHour%}
   <div class="dcard">
    <div class="statistic orange">
-    <div class="value"><i class="sf-hourglass-end"></i><span class="counter">{{60 | number_format}}</span></div>
+    <div class="value"><i class="sf-hourglass-end"></i><span>{{60 |number_format |fitNumber}}</span></div>
     <div class="label">{%trans "Total Hour Work"%}</div>
    </div>
   </div>
 {%endblock%}
 
 
-{%block st4%}
+{%block stDayUsed%}
   <div class="dcard">
    <div class="statistic blue">
     <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{370 | number_format}}</span></div>
@@ -132,9 +133,8 @@
 
 
 {%block chart_primary%}
-<div class="dcard x3">
- <div class="chart">
-  Chart of work group by date limit 10
+<div class="dcard x3 pA0">
+ <div class="chart" data-vals='[{"key":"کاردانی","value":442},{"key":"کارشناسی 234","value":1050},{"key":"کارشناسی‌ارشد","value":408},{"key":"دکتری","value":96}]'>
  </div>
 </div>
 {%endblock%}
@@ -142,7 +142,7 @@
 
 {%block chart_secondary%}
 <div class="dcard x3">
- <div class="chart">
+ <div class="chart" data-type='line' data-vals='[{"key":"کاردانی","value":442},{"key":"کارشناسی 234","value":1050},{"key":"کارشناسی‌ارشد","value":408},{"key":"دکتری","value":96}]'>
 
   Chart
  </div>

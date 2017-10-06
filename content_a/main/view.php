@@ -12,6 +12,7 @@ class view extends \mvc\view
 	{
 		$this->data->bodyclass = 'fixed unselectable siftal';
 		$this->include->css    = true;
+		$this->include->chart  = true;
 
 
 		// get part 2 of url and use as team name
