@@ -17,7 +17,7 @@ class controller extends \content_a\main\controller
 		{
 			\lib\error::page();
 		}
-		$this->get(false, 'logo')->ALL("/.*/");
+		$this->get()->ALL("/.*/");
 		$this->post('logo')->ALL("/.*/");
 
 	}

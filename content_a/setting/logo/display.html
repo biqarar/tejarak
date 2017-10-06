@@ -1,24 +1,13 @@
-{%extends display.adminTeam%}
+{%extends "content_a/setting/layout.html"%}
 
 
+{%block data%}
+<form class="cbox" method="post" enctype="multipart/form-data">
 
-{%block pageContent%}
+{{block("iLogo")}}
 
- <form method="post" class="df" enctype="multipart/form-data">
+{{block("isave")}}
 
-      <div class="cauto s12 g1">
-       <div>
-        <input type="file" name="logo" id="logo" accept="image/gif, image/jpeg, image/png" data-preview data-size="500">
-        <label for="logo" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-{%if current_team.logo%}
-         <img src="{{current_team.logo}}" alt="{{current_team.name}}" id="logoPreview">
-{%endif%}
-        </label>
-       </div>
-      </div>
-
-       <div class="c3 os s12">
-       <input type="submit" value='{%trans "Edit"%}' class='b1'>
-      </div>
-   </form>
+</form>
 {%endblock%}
+
