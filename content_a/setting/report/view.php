@@ -1,5 +1,5 @@
 <?php
-namespace content_a\setting\telegram;
+namespace content_a\setting\report;
 
 class view extends \content_a\setting\view
 {
@@ -14,7 +14,7 @@ class view extends \content_a\setting\view
 	/**
 	 * { function_description }
 	 */
-	public function view_telegram()
+	public function view_report()
 	{
 		$this->data->server_timezone = \lib\utility\timezone::current();
 
