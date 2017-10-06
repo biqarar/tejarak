@@ -5,6 +5,9 @@ use \lib\utility;
 
 class model extends \content_a\main\model
 {
+	public function post_board()
+	{
 
+	}
 }
 ?>

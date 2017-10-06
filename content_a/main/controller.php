@@ -38,9 +38,9 @@ class controller extends \mvc\controller
 		// route the home controller to show list of team
 		if($url_0 === '' || $url_0 === null)
 		{
-			\lib\router::set_controller("\\content_a\\home\\controller");
 			return;
 		}
+
 		// if !the url 0 is a short url
 		if(!\lib\utility\shortURL::is($url_0))
 		{
@@ -49,8 +49,6 @@ class controller extends \mvc\controller
 
 		$team_id    = $url_0;
 		$rule       = 'user';
-		$is_creator = false;
-		$is_admin   = false;
 
 		$team_id = \lib\utility\shortURL::decode($team_id);
 
@@ -61,7 +59,6 @@ class controller extends \mvc\controller
 			if(isset($team_details['creator']) && intval($team_details['creator']) === intval($this->login('id')))
 			{
 				\lib\temp::set('is_creator', true);
-				$is_creator = true;
 			}
 			else
 			{
@@ -83,7 +80,7 @@ class controller extends \mvc\controller
 				$rule = $load_userteam_record['rule'];
 				if($rule === 'admin')
 				{
-					$is_admin = true;
+
 					\lib\temp::set('is_admin', true);
 				}
 				else
@@ -116,17 +113,20 @@ class controller extends \mvc\controller
 		}
 
 		$url_2 = \lib\router::get_url(2);
-		$check_controller = '\\content_a\\'. $url_1 . '\\';
+
+		$raw_url = $url_1;
 
 		if($url_2)
 		{
-			$check_controller .= $url_2 . '\\';
+			$raw_url .= '\\'. $url_2;
 		}
 
-		$check_controller .= 'controller';
+		$check_controller = '\\content_a\\'. $raw_url .'\\controller';
 
 		if(class_exists($check_controller))
 		{
+			$this->have_permission($raw_url);
+
 			\lib\router::set_controller($check_controller);
 			return;
 		}
@@ -149,6 +149,7 @@ class controller extends \mvc\controller
 			case 'home':
 			case 'team':
 			case 'billing':
+			case 'profile':
 				$result = true;
 				break;
 
@@ -157,6 +158,35 @@ class controller extends \mvc\controller
 				break;
 		}
 		return $result;
+	}
+
+
+	/**
+	 * check permission
+	 *
+	 * @param      <type>  $_controller  The controller
+	 */
+	public function have_permission($_controller)
+	{
+		switch ($_controller)
+		{
+			case 'setting\plan':
+				if(!\lib\temp::get('is_creator'))
+				{
+					\lib\error::access(T_("Can not access to load this page"));
+				}
+				break;
+
+			case 'setting':
+			case 'member':
+			default:
+				if(!\lib\temp::get('is_admin'))
+				{
+					\lib\error::access(T_("Can not access to load this page"));
+				}
+				break;
+		}
+
 	}
 
 }
