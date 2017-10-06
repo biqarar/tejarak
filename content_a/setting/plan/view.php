@@ -26,8 +26,8 @@ class view extends \content_a\setting\view
 				$myTeam = $current_team['name'];
 			}
 		}
-		$this->data->page['title'] = T_('Change Plan of :name', ['name'=>$myTeam]);
-		$this->data->page['desc']  = $this->data->page['title'];
+		$this->data->page['title'] = T_('Setting | '). T_('Change Plan of :name', ['name'=>$myTeam]);
+		$this->data->page['desc']  = T_('By choose new plan, we generate your invoice until now and next invoice is created one month later exactly at this time and you can pay it from billing.');
 	}
 }
 ?>

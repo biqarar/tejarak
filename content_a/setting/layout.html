@@ -23,7 +23,7 @@
     <img src="{{current_team.logo}}" alt="{{current_team.name}}" class="pA10-f">
     <div class="content">
       <div class="header">{{current_team.name}}</div>
-      {%if current_team.rule != 'admin' and current_team.privacy == 'private' %}
+      {%if current_team.rule != 'admin' and current_team.privacy == 'private' or true%}
       {%else%}
         {%if not current_team.stats.last_traffic_string%}
           <div class="meta"><span>{%trans "Without traffic"%}</span></div>

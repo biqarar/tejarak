@@ -1,9 +1,9 @@
-{%extends display.adminTeam%}
+{%extends "content_a/setting/layout.html"%}
 
-{%block pageContent%}
-  <div class='middle' id="addTeam">
+
+{%block data%}
+  <div class='cbox'>
    <div class='dbox'>
-    <h2>{{page.desc}}</h2>
 
      <div class="f pas">
       <h3 class="c">{%trans "Current Plan"%} <b>{% set myCurrentPlan = current_plan.plan_name |capitalize %}{%trans myCurrentPlan%}</b></h2>
