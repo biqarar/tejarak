@@ -1,7 +1,7 @@
 <?php
 namespace content_a\setting\plan;
 
-class view extends \content_a\main\view
+class view extends \content_a\setting\view
 {
 
 

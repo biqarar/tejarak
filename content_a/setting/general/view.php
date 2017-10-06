@@ -1,18 +1,8 @@
 <?php
 namespace content_a\setting\general;
 
-class view extends \content_a\main\view
+class view extends \content_a\setting\view
 {
 
-	/**
-	 * { function_description }
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function view_general($_args)
-	{
-		$request_data = [];
-		$this->data->sended_data = $request_data;
-	}
 }
 ?>
