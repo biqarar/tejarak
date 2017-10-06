@@ -1,97 +1,67 @@
 {%extends display.adminTeam%}
 
-
-
 {%block pageContent%}
+  <div class='middle' id="addTeam">
+   <div class='dbox'>
+    <h2>{{page.desc}}</h2>
 
-<div class="tbox">
-	<h4>{%trans "Change team plan"%}</h4>
-</div>
-
-<div class="cbox">
-	<p>{%trans "You can give over your team to another people." %}</p>
-	{%if not sended_data.mobile%}
-		<p class="msg danger2">{%trans "If you are not sure, leave this page!" %}</p>
-	{%endif%}
-	<form method="post">
-		<div class="f " >
-			<label class="cauto pT25" for="plan" >{%trans "New plan mobile"%}</label>
-			<input class="c2 mA10 s12" type="number" name="plan" placeholder='{%trans "Mobile"%}' value="{{sended_data.mobile|fitNumber}}" {%if sended_data.mobile%} disabled {%endif%}>
-			<input class="cauto btn primary mA10 s12" type="submit" value='{%trans "Send request"%}' {%if sended_data.mobile%} disabled {%endif%}>
-		</div>
-	</form>
-</div>
+     <div class="f pas">
+      <h3 class="c">{%trans "Current Plan"%} <b>{% set myCurrentPlan = current_plan.plan_name |capitalize %}{%trans myCurrentPlan%}</b></h2>
+      <h4 class="cauto os" title="{{current_plan.start|tdate("Y-m-d")}}"><sub>{{current_plan.start|sdate}}</sub></h3>
+     </div>
 
 
-{%if sended_data.status == 'awaiting'%}
-<div class="cbox">
-	<p>{%trans "Your planship transfer request will be sent to the following person. Are you sure?" %}</p>
-	<div class="f">
-		<div class="c6 pA10 s12">
-	      <div class="vcard w300">
-	        <div class="content f">
-	          <div class="c">
-	            <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-	            <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
-	          </div>
-	          <div class="cauto">
-	          	{%if sended_data.fileurl%}
-	            	<img src="{{url.root}}/{{sended_data.fileurl}}" class="mini">
-	            {%else%}
-	            	<img src="http://code.ermile.dev/siftal/images/avatar/1.png" class="mini">
-	            {%endif%}
-	          </div>
-	          <div class="desc c12">{%trans "Are you sure?"%}</div>
+  <div class="f pas">
+   <div class="bg-gray pas">
+    <h2>{%trans "Choose a new plan of your team"%}</h2>
 
-	        </div>
-	        <div class="footer f">
-	        	<form method="post">
-	        		<input type="hidden" name="send", value="ok">
-	         		<div class="c6 pA5 s12"><button class="btn success outline block">{%trans "OK, Send"%}</button></div>
-	        	</form>
-	        	<form method="post">
-	        		<input type="hidden" name="send", value="cancel">
-	          		<div class="c6 pA5 s12"><button class="btn danger outline block">{%trans "Cancel"%}</button></div>
-	        	</form>
-	        </div>
-	      </div>
-	    </div>
-	</div>
-</div>
+
+
+    <form method="post" class='df'>
+     <div class="f radio1t v">
+
+      <div class="c12 f ps">
+       <div class="c12">
+        <input type="radio" name="plan" id="r-free" value="free" {%if current_plan.plan_name =='free'%}checked{%endif%}>
+        <label for="r-free">{%trans "Free"%}</label>
+       </div>
+
+       <div class="c12">
+        <input type="radio" name="plan" id="r-simple" value="simple" {%if current_plan.plan_name =='simple'%}checked{%endif%}>
+        <label for="r-simple">{%trans "Simple"%}</label>
+       </div>
+
+        <div class="c12">
+        <input type="radio" name="plan" id="r-standard" value="standard" {%if current_plan.plan_name =='standard'%}checked{%endif%}>
+        <label for="r-standard">{%trans "Standard"%}</label>
+       </div>
+
+       <div class="c12">
+        <input type="radio" name="plan" id="r-full" value="full" {%if current_plan.plan_name =='full'%}checked{%endif%}>
+        <label for="r-full">{%trans "Full"%}</label>
+       </div>
+
+      </div>
+
+      <div class="c12">
+       <button class="b1" type="submit">{%trans "Apply"%}</button>
+      </div>
+
+     </div>
+    </form>
+
+   </div>
+  </div>
+
+{%if false%}
+  <div class="f">
+   <div class="box msg">
+    <h2>{%trans "Alert for change team plan"%}</h2>
+   </div>
+  </div>
 {%endif%}
 
 
-{%if sended_data.status == 'enable'%}
-<div class="cbox">
-	<p>{%trans "Your planship transfer request sended to the following person." %}</p>
-	<div class="f">
-		<div class="c6 pA10 s12">
-	      <div class="vcard w300">
-	        <div class="content f">
-	          <div class="c">
-	            <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-	            <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
-	          </div>
-	          <div class="cauto">
-	          	{%if sended_data.fileurl%}
-	            	<img src="{{url.root}}/{{sended_data.fileurl}}" class="mini">
-	            {%else%}
-	            	<img src="http://code.ermile.com/siftal/images/avatar/1.png" class="mini">
-	            {%endif%}
-	          </div>
-	          <div class="desc c12">{%trans "Waiting for the user accept or reject this request"%}</div>
-
-	        </div>
-	        <div class="footer f">
-	          <div class="desc c12">{%trans "You can <b>cancel</b> the request now"%}</div>
-	          <form method="post">
-	        		<input type="hidden" name="request", value="cancel">
-	          		<div class="c12 pA5 s12"><button class="btn danger outline block">{%trans "Cancel request"%}</button></div>
-	          </form>
-	        </div>
-	      </div>
-	    </div>
-	</div>
-</div>
-{%endif%}
+   </div>
+  </div>
 {%endblock%}

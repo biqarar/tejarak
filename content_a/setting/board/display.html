@@ -4,94 +4,31 @@
 
 {%block pageContent%}
 
-<div class="tbox">
-	<h4>{%trans "Change team board"%}</h4>
-</div>
+ <form method="post" class="df">
 
-<div class="cbox">
-	<p>{%trans "You can give over your team to another people." %}</p>
-	{%if not sended_data.mobile%}
-		<p class="msg danger2">{%trans "If you are not sure, leave this page!" %}</p>
-	{%endif%}
-	<form method="post">
-		<div class="f " >
-			<label class="cauto pT25" for="board" >{%trans "New board mobile"%}</label>
-			<input class="c2 mA10 s12" type="number" name="board" placeholder='{%trans "Mobile"%}' value="{{sended_data.mobile|fitNumber}}" {%if sended_data.mobile%} disabled {%endif%}>
-			<input class="cauto btn primary mA10 s12" type="submit" value='{%trans "Send request"%}' {%if sended_data.mobile%} disabled {%endif%}>
-		</div>
-	</form>
-</div>
+        <div class="f c12 s12 mA5">
+         <label class="c2 s12" for="cardsize">{%trans "Card size"%}</label>
+         <select class="c" name="cardsize">
+           <option value=""   {%if not team_detail.cardsize %} selected {%endif%}>{%trans "Auto size"%}</option>
+           <option value="10" {%if team_detail.cardsize == '10'%} selected {%endif%}>{%trans "Small"%}</option>
+           <option value="20" {%if team_detail.cardsize == '20'%} selected {%endif%}>{%trans "Medium"%}</option>
+           <option value="30" {%if team_detail.cardsize == '30'%} selected {%endif%}>{%trans "Large"%}</option>
+         </select>
+        </div>
 
+         <div class="f c12 s12 mA5">
+         <label class="c2 s12" for="language">{%trans "Language"%}</label>
+         <select class="c" name="language">
+           <option value="">{%trans "Please select one language"%}</option>
+           <option value="fa" {%if team_detail.language == 'fa'%} selected {%endif%}>{%trans "Persian"%}</option>
+           <option value="en" {%if team_detail.language == 'en'%} selected {%endif%}>{%trans "English"%}</option>
+         </select>
 
-{%if sended_data.status == 'awaiting'%}
-<div class="cbox">
-	<p>{%trans "Your boardship transfer request will be sent to the following person. Are you sure?" %}</p>
-	<div class="f">
-		<div class="c6 pA10 s12">
-	      <div class="vcard w300">
-	        <div class="content f">
-	          <div class="c">
-	            <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-	            <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
-	          </div>
-	          <div class="cauto">
-	          	{%if sended_data.fileurl%}
-	            	<img src="{{url.root}}/{{sended_data.fileurl}}" class="mini">
-	            {%else%}
-	            	<img src="http://code.ermile.dev/siftal/images/avatar/1.png" class="mini">
-	            {%endif%}
-	          </div>
-	          <div class="desc c12">{%trans "Are you sure?"%}</div>
-
-	        </div>
-	        <div class="footer f">
-	        	<form method="post">
-	        		<input type="hidden" name="send", value="ok">
-	         		<div class="c6 pA5 s12"><button class="btn success outline block">{%trans "OK, Send"%}</button></div>
-	        	</form>
-	        	<form method="post">
-	        		<input type="hidden" name="send", value="cancel">
-	          		<div class="c6 pA5 s12"><button class="btn danger outline block">{%trans "Cancel"%}</button></div>
-	        	</form>
-	        </div>
-	      </div>
-	    </div>
-	</div>
-</div>
-{%endif%}
+        </div>
 
 
-{%if sended_data.status == 'enable'%}
-<div class="cbox">
-	<p>{%trans "Your boardship transfer request sended to the following person." %}</p>
-	<div class="f">
-		<div class="c6 pA10 s12">
-	      <div class="vcard w300">
-	        <div class="content f">
-	          <div class="c">
-	            <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-	            <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
-	          </div>
-	          <div class="cauto">
-	          	{%if sended_data.fileurl%}
-	            	<img src="{{url.root}}/{{sended_data.fileurl}}" class="mini">
-	            {%else%}
-	            	<img src="http://code.ermile.com/siftal/images/avatar/1.png" class="mini">
-	            {%endif%}
-	          </div>
-	          <div class="desc c12">{%trans "Waiting for the user accept or reject this request"%}</div>
-
-	        </div>
-	        <div class="footer f">
-	          <div class="desc c12">{%trans "You can <b>cancel</b> the request now"%}</div>
-	          <form method="post">
-	        		<input type="hidden" name="request", value="cancel">
-	          		<div class="c12 pA5 s12"><button class="btn danger outline block">{%trans "Cancel request"%}</button></div>
-	          </form>
-	        </div>
-	      </div>
-	    </div>
-	</div>
-</div>
-{%endif%}
+       <div class="c3 os s12">
+       <input type="submit" value='{%trans "Edit"%}' class='b1'>
+      </div>
+   </form>
 {%endblock%}

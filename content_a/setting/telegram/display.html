@@ -1,97 +1,141 @@
 {%extends display.adminTeam%}
 
-
-
 {%block pageContent%}
+  <div class='middle' id="addMember">
+   <div class="dbox">
+    <h2>{{page.desc}}</h2>
 
-<div class="tbox">
-	<h4>{%trans "Change team telegram"%}</h4>
-</div>
-
-<div class="cbox">
-	<p>{%trans "You can give over your team to another people." %}</p>
-	{%if not sended_data.mobile%}
-		<p class="msg danger2">{%trans "If you are not sure, leave this page!" %}</p>
-	{%endif%}
-	<form method="post">
-		<div class="f " >
-			<label class="cauto pT25" for="telegram" >{%trans "New telegram mobile"%}</label>
-			<input class="c2 mA10 s12" type="number" name="telegram" placeholder='{%trans "Mobile"%}' value="{{sended_data.mobile|fitNumber}}" {%if sended_data.mobile%} disabled {%endif%}>
-			<input class="cauto btn primary mA10 s12" type="submit" value='{%trans "Send request"%}' {%if sended_data.mobile%} disabled {%endif%}>
-		</div>
-	</form>
-</div>
+    <form method="post" class="df" enctype="multipart/form-data">
 
 
-{%if sended_data.status == 'awaiting'%}
-<div class="cbox">
-	<p>{%trans "Your telegramship transfer request will be sent to the following person. Are you sure?" %}</p>
-	<div class="f">
-		<div class="c6 pA10 s12">
-	      <div class="vcard w300">
-	        <div class="content f">
-	          <div class="c">
-	            <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-	            <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
-	          </div>
-	          <div class="cauto">
-	          	{%if sended_data.fileurl%}
-	            	<img src="{{url.root}}/{{sended_data.fileurl}}" class="mini">
-	            {%else%}
-	            	<img src="http://code.ermile.dev/siftal/images/avatar/1.png" class="mini">
-	            {%endif%}
-	          </div>
-	          <div class="desc c12">{%trans "Are you sure?"%}</div>
-
-	        </div>
-	        <div class="footer f">
-	        	<form method="post">
-	        		<input type="hidden" name="send", value="ok">
-	         		<div class="c6 pA5 s12"><button class="btn success outline block">{%trans "OK, Send"%}</button></div>
-	        	</form>
-	        	<form method="post">
-	        		<input type="hidden" name="send", value="cancel">
-	          		<div class="c6 pA5 s12"><button class="btn danger outline block">{%trans "Cancel"%}</button></div>
-	        	</form>
-	        </div>
-	      </div>
-	    </div>
-	</div>
-</div>
-{%endif%}
 
 
-{%if sended_data.status == 'enable'%}
-<div class="cbox">
-	<p>{%trans "Your telegramship transfer request sended to the following person." %}</p>
-	<div class="f">
-		<div class="c6 pA10 s12">
-	      <div class="vcard w300">
-	        <div class="content f">
-	          <div class="c">
-	            <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-	            <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
-	          </div>
-	          <div class="cauto">
-	          	{%if sended_data.fileurl%}
-	            	<img src="{{url.root}}/{{sended_data.fileurl}}" class="mini">
-	            {%else%}
-	            	<img src="http://code.ermile.com/siftal/images/avatar/1.png" class="mini">
-	            {%endif%}
-	          </div>
-	          <div class="desc c12">{%trans "Waiting for the user accept or reject this request"%}</div>
+     <h4>{%trans "Header & Footer"%}</h4>
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="reportHeader">{%trans "Report Header"%}</label></div>
+       <div class="c">
+         <input type="text" name="reportHeader" id="reportHeader" placeholder='{%trans "Report Header"%}' value="{{reportHeader}}" maxlength='30'>
+       </div>
+      </div>
 
-	        </div>
-	        <div class="footer f">
-	          <div class="desc c12">{%trans "You can <b>cancel</b> the request now"%}</div>
-	          <form method="post">
-	        		<input type="hidden" name="request", value="cancel">
-	          		<div class="c12 pA5 s12"><button class="btn danger outline block">{%trans "Cancel request"%}</button></div>
-	          </form>
-	        </div>
-	      </div>
-	    </div>
-	</div>
-</div>
-{%endif%}
+      <div class="f g1">
+       <div class="cauto s0 lbl"><label for="reportFooter">{%trans "Report Footer"%}</label></div>
+       <div class="c">
+         <input type="text" name="reportFooter" id="reportFooter" placeholder='{%trans "Report Footer"%}' value="{{reportFooter}}" maxlength='50'>
+       </div>
+      </div>
+
+
+      <h4>{%trans "Send Admins"%}</h4>
+      <div  class="g1 check1t">
+       <div class="f">
+       {%for key, value in admins%}
+
+       <div class="cauto s0 lbl"><label>{{value.displayname}}</label></div>
+        <div class="c4 s6">
+         <input type="checkbox" name="daily_{{value.id}}" id="daily_{{value.id}}"  {% if value.daily %} checked {% endif %}>
+         <label for="daily_{{value.id}}">{%trans "Report end day"%}</label>
+        </div>
+        <div class="c4 s6">
+         <input type="checkbox" name="enterexit_{{value.id}}" id="enterexit_{{value.id}}" {% if value.enterexit %} checked {% endif %}>
+         <label for="enterexit_{{value.id}}">{%trans "Enter & Exit report"%}</label>
+        </div>
+        {%endfor%}
+       </div>
+      </div>
+
+       <h4>{%trans "Auto send report"%}</h4>
+      <div  class="g1 check1t">
+
+
+
+
+        <div class="c4 s6">
+         <input type="checkbox" name="timed_auto_report" id="timed_auto_report"  {% if team_details.timed_auto_report %} checked {% endif %}>
+         <label for="timed_auto_report">{%trans "Timed auto report"%}</label>
+        </div>
+        <div class="f">
+          <div class="s6" {%if team_details.timed_auto_report %}{%else%}data-response-hide{%endif%} data-response='timed_auto_report'>
+           <label for="timed_auto_report_time" class="c">{%trans "Sent auto repor at time:"%}</label>
+           <input type="text" name="timed_auto_report_time" class="c2" id="timed_auto_report_time" value="{{team_details.timed_auto_report}}">
+          </div>
+        </div>
+          {%if server_timezone%}
+          <div class="f">
+            <p>{%trans "Server Timezone"%}: {{server_timezone}}</p>
+          </div>
+          {%endif%}
+
+      </div>
+
+      <h4>{%trans "Group Setting"%}</h4>
+      {%if telegram_id%}
+
+        <div class="f g1">
+         <div class="cauto s0 lbl"><label for="sendtelegram_group">{%trans "Telegram Group"%}</label></div>
+         <div class="c">
+           <input type="checkbox" name="sendtelegram_group" id="sendtelegram_group" {% if report_settings.telegram_group%} checked {%endif%}>
+
+         </div>
+         <div class="c">
+           <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"deleteGroup": true}' class="bn c3">{%trans "Delete Group"%}</a>
+         </div>
+        </div>
+
+        <div data-response='sendtelegram_group' {% if not report_settings.telegram_group%} data-response-hide {%endif%}>
+
+          <div class="f g1">
+           <div class="cauto s0 lbl"><label for="sendfirst_member_name">{%trans "Send first memeber name"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendfirst_member_name" id="sendfirst_member_name" {% if report_settings.first_member_name%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1">
+           <div class="cauto s0 lbl"><label for="sendreport_daily">{%trans "Send report daily at end of day"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendreport_daily" id="sendreport_daily" {% if report_settings.report_daily%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1" data-response='sendreport_daily' {% if not report_settings.report_daily%} data-response-hide {%endif%}>
+           <div class="cauto s0 lbl"><label for="sendreport_daily_time">{%trans "Send report daily whit time at end of day"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendreport_daily_time" id="sendreport_daily_time" {% if report_settings.report_daily_time%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1" data-response='sendreport_daily' {% if not report_settings.report_daily%} data-response-hide {%endif%}>
+           <div class="cauto s0 lbl"><label for="sendreport_daily_gold">{%trans "Send gold emoji in report daily"%}</label></div>
+           <div class="c">
+             <input type="checkbox" name="sendreport_daily_gold" id="sendreport_daily_gold" {% if report_settings.report_daily_gold%} checked {%endif%}>
+           </div>
+          </div>
+
+          <div class="f g1">
+           <div class="cauto s0 lbl"><label for="sendreport_count">{%trans "Send report daily count"%}</label></div>
+           <div class="c">
+             <input type="number" max="50" min="-1" name="sendreport_count" id="sendreport_count" {% if report_settings.report_count%} value="{{report_settings.report_count}}" {%else%} value='{%trans "All"%}' {%endif%}>
+           </div>
+          </div>
+        </div>
+
+      {%else%}
+
+        <div class="f g1">
+          <p>{%trans "No Group was set"%}</p>
+          <p>{%trans "You can set telegram group from "%}<a href="https://t.me/tejarakBot" target="_blank">@tejarakBot</a></p>
+        </div>
+
+      {%endif%}
+
+     <div class="f g1">
+      <div class="c3 os">
+        <input type="submit" value='{%trans "Apply"%}' class="b1">
+      </div>
+     </div>
+
+    </form>
+   </div>
+  </div>
 {%endblock%}
