@@ -18,31 +18,27 @@
 {%block psidebar%}
 <div class="cbox normal">
 
- <div class="vcard">
-  <a href='{{url.baseFull}}/student/edit={{edit_id}}/avatar'>
-  {%if student.fileurl%}
-    <img src="{{student.fileurl}}">
-  {%else%}
-    <img src="{{url.static}}siftal/images/useful/user1.png">
-  {%endif%}
-  </a>
-  <div class="content">
-    <div class="header">{{student.name}} <b>{{student.lastname}}</b></div>
-    <div class="meta"><span>{{student.grade_title}}</span></div>
-    {%if student.mobile%}
-    <div class="desc"><i class="sf-mobile fs2"></i>{{student.mobile|fitNumber}}</div>
-    {%endif%}
-  </div>
-  {%if student.nationalcode%}
-  <div class="footer">{{student.nationalcode|fitNumber}}</div>
-  {%endif%}
- </div>
 
- <a class="btn block mTB10" href='{{url.baseFull}}/student/edit={{edit_id}}'>{%trans "General Detail"%}</a>
- <a class="btn block mTB10" href='{{url.baseFull}}/student/edit={{edit_id}}/avatar'>{%trans "Profile Photo"%}</a>
- <a class="btn block mTB10" href='{{url.baseFull}}/student/edit={{edit_id}}/contact'>{%trans "Contact information"%}</a>
- <a class="btn block mTB10" href='{{url.baseFull}}/student/edit={{edit_id}}/identification'>{%trans "Identification detail"%}</a>
- <a class="btn block mTB10" href='{{url.baseFull}}/student/edit={{edit_id}}/address'>{%trans "Location and address"%}</a>
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.baseFull}}/{{current_team.id}}/setting/logo'>
+    <img src="{{current_team.logo}}" alt="{{current_team.name}}" class="pA10-f">
+    <div class="content">
+      <div class="header">{{current_team.name}}</div>
+      {%if current_team.rule != 'admin' and current_team.privacy == 'private' %}
+      {%else%}
+        {%if not current_team.stats.last_traffic_string%}
+          <div class="meta"><span>{%trans "Without traffic"%}</span></div>
+        {%else%}
+          <div class="meta"><span>{%trans "Last traffic"%} {{current_team.stats.last_traffic_string| fitNumber}}</span></div>
+        {%endif%}
+      {%endif%}
+    </div>
+  </a>
+
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/general'>{%trans "General Detail"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/plan'>{%trans "Team Plan"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/security'>{%trans "Security and privacy"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/report'>{%trans "Report Settings"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/board'>{%trans "Board Settings"%}</a>
 </div>
 {%endblock%}
 
