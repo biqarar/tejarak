@@ -8,8 +8,9 @@ class view extends \content_a\setting\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_board($_args)
+	public function config()
 	{
+		parent::config();
 		$this->data->page['desc'] = T_('Manage some options of board and force language and some other options.');
 	}
 }

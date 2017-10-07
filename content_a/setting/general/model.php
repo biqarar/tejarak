@@ -14,10 +14,11 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'name'              => utility::post('name'),
-			'website'           => utility::post('website'),
-			'privacy'           => utility::post('privacy'),
-			'desc'              => utility::post('desc'),
+			'name'       => utility::post('name'),
+			'short_name' => utility::post('short_name'),
+			'website'    => utility::post('website'),
+			'desc'       => utility::post('desc'),
+			'privacy'    => utility::post('privacy'),
 		];
 
 		return $args;

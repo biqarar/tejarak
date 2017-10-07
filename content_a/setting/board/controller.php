@@ -11,7 +11,7 @@ class controller extends \content_a\main\controller
 
 		parent::_route();
 
-		$this->get(false, 'board')->ALL("/.*/");
+		$this->get()->ALL("/.*/");
 		$this->post('board')->ALL("/.*/");
 
 	}

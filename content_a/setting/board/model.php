@@ -15,8 +15,11 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'language' => utility::post('language'),
-			'cardsize' => utility::post('cardsize'),
+			'event_title' => utility::post('event_title'),
+			'event_date'  => utility\human::number(utility::post('event_date'), 'en'),
+
+			'language'    => utility::post('language'),
+			'cardsize'    => utility::post('cardsize'),
 		];
 		return $args;
 	}
@@ -29,7 +32,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_board()
 	{
-		$code = \lib\router::get_url(0);
+		$code          = \lib\router::get_url(0);
 		$request       = $this->getPost();
 
 		$this->user_id = $this->login('id');

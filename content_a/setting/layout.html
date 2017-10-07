@@ -92,9 +92,9 @@
 
 
 {%block iwebsite%}
-<label for="website">{%trans "Website"%}</label>
+<label for="website">{%trans "Website"%} <small>{%trans "Link your logo on board for visitors"%}</small></label>
 <div class="input">
-  <input type="url" website="website" id="website" placeholder='{%trans "Website"%}' value="{{current_team.website}}" maxlength='30'>
+  <input type="url" name="website" id="website" placeholder='{%trans "Website"%}' value="{{current_team.website}}" maxlength='30'>
 </div>
 {%endblock%}
 
@@ -270,6 +270,35 @@
   <input type="number" max="50" min="-1" name="sendreport_count" id="sendreport_count" {% if report_settings.report_count%} value="{{report_settings.report_count}}" {%else%} value='-1' {%endif%}>
 </div>
 {%endblock%}
+
+
+
+
+{%block iEventTitle%}
+<label for="event_title">{%trans "Event title"%}</label>
+<div class="input">
+  <input type="text" name="event_title" id="event_title" placeholder='{%trans "Event title"%}' value="{{current_team.event_title}}" maxlength='30'>
+</div>
+{%endblock%}
+
+
+{%block iEventDateStart%}
+<label for="event_date_start">{%trans "Event date start"%} <small>{%trans "Need to calc remain percentage of deadline. Today as default"%}</small></label>
+<div class="input">
+  <input type="text" name="event_date_start" id="event_date_start" placeholder='{%trans "Event date start"%}' class="datepicker" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.event_date_start_gregorian%} value="{{current_team.event_date_start_gregorian}}" {%else%}{%endif%}>
+</div>
+{%endblock%}
+
+
+{%block iEventDate%}
+<label for="event_date">{%trans "Event date"%}</label>
+<div class="input">
+  <input type="text" name="event_date" id="event_date" placeholder='{%trans "Event date"%}' class="datepicker" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.event_date_gregorian%} value="{{current_team.event_date_gregorian}}" {%else%} data-initialValue='false'{%endif%}>
+</div>
+{%endblock%}
+
+
+
 
 
 
