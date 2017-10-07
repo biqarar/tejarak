@@ -41,6 +41,10 @@ class model extends \content_a\main\model
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
+		if(debug::$status)
+		{
+			$this->redirector($this->url('full'));
+		}
 	}
 }
 ?>

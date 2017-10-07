@@ -2,32 +2,10 @@
 
 
 {%block data%}
+<form method="post" class="cbox">
+  {{block("iCardSize")}}
+  {{block("iLanguage")}}
 
- <form method="post" class="df cbox">
-
-        <div class="f c12 s12 mA5">
-         <label class="c2 s12" for="cardsize">{%trans "Card size"%}</label>
-         <select class="c" name="cardsize">
-           <option value=""   {%if not current_team.cardsize %} selected {%endif%}>{%trans "Auto size"%}</option>
-           <option value="10" {%if current_team.cardsize == '10'%} selected {%endif%}>{%trans "Small"%}</option>
-           <option value="20" {%if current_team.cardsize == '20'%} selected {%endif%}>{%trans "Medium"%}</option>
-           <option value="30" {%if current_team.cardsize == '30'%} selected {%endif%}>{%trans "Large"%}</option>
-         </select>
-        </div>
-
-         <div class="f c12 s12 mA5">
-         <label class="c2 s12" for="language">{%trans "Language"%}</label>
-         <select class="c" name="language">
-           <option value="">{%trans "Please select one language"%}</option>
-           <option value="fa" {%if current_team.language == 'fa'%} selected {%endif%}>{%trans "Persian"%}</option>
-           <option value="en" {%if current_team.language == 'en'%} selected {%endif%}>{%trans "English"%}</option>
-         </select>
-
-        </div>
-
-
-       <div class="c3 os s12">
-       <input type="submit" value='{%trans "Edit"%}' class='b1'>
-      </div>
-   </form>
+  {{block("isave")}}
+</form>
 {%endblock%}
