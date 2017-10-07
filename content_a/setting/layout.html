@@ -52,9 +52,11 @@
 <button class="btn primary block mT20">{%trans "Add"%}</button>
 {%endblock%}
 
+
 {%block isave%}
 <button class="btn primary block mT20">{%trans "Save"%}</button>
 {%endblock%}
+
 
 {%block iLogo%}
 <div class="input preview">
@@ -69,39 +71,70 @@
 {%endblock%}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {%block iname%}
 <label for="name">{%trans "Name"%} <span class="fc-red">*</span></label>
 <div class="input">
-  <input type="text" name="name" id="name" placeholder='{%trans "Name"%}' value="{{current_team.name}}" autofocus maxlength='40' minlength="1" pattern=".{1,40}" title='{%trans "Enter a valid name from 3 to 40 character"%}'>
+  <input type="text" name="name" id="name" placeholder='{%trans "Name"%}' value="{{current_team.name}}" autofocus maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid name from 3 to 40 character"%}' required>
 </div>
 {%endblock%}
+
+
+{%block iwebsite%}
+<label for="website">{%trans "Website"%}</label>
+<div class="input">
+  <input type="url" website="website" id="website" placeholder='{%trans "Website"%}' value="{{current_team.website}}" maxlength='30'>
+</div>
+{%endblock%}
+
+
+{%block idesc%}
+<label for="name">{%trans "Description"%}</label>
+<textarea class="txt mB10" name="desc" placeholder='{%trans "Description"%}' maxlength='300' rows="3">{{current_team.desc}}</textarea>
+{%endblock%}
+
+
+{%block iprivacy%}
+<label for="name">{%trans "Board privacy mode"%}</label>
+
+  <div class="radio1">
+   <input type="radio" id="r-private" name="privacy" value="private" {%if current_team.privacy == 'private' or not current_team.prvacy%}checked{%endif%} >
+   <label for="r-private">{%trans "Private"%} <small>{%trans "Only admin of team can see board"%}</small></label>
+  </div>
+
+  <div class="radio1">
+   <input type="radio" id="r-team" name="privacy" value="team" {%if current_team.privacy == 'team' %}checked{%endif%}>
+   <label for="r-team">{%trans "Team"%} <small>{%trans "Admin and all member of team can see board"%}</small></label>
+  </div>
+
+  <div class="radio1">
+   <input type="radio" id="r-public" name="privacy" value="public" {%if current_team.privacy == 'public' %}checked{%endif%}>
+   <label for="r-public">{%trans "Public"%} <small>{%trans "Anyone can access to link of board can see team board"%}</small></label>
+  </div>
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {%block ifamily%}
