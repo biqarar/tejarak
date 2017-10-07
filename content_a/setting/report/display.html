@@ -13,7 +13,7 @@
 
  <div class="cbox">
   <h3>{%trans "Admin Reports"%}</h3>
-  <p>{%trans "You can customize setting of report sending to admins."%} {%trans "For example some admin need to know about all traffic on your team, but some others only need to know about enterence traffic or someone dont need reports!"%}</p>
+  <p>{%trans "You can customize setting of report sending to admins."%} {%trans "For example some admin need to know about all traffic on your team, but some others only need to know about entrance traffic or someone dont need reports!"%}</p>
 
   <div class="f">
     <div class="c"></div>
@@ -50,95 +50,29 @@
   <p class="msg info2">{%trans "Enjoy using telegram free messages on our paid plans, not on FREE!"%}</p>
 {{block("iAutoTrafficReportHour")}}
 
+
+{{block("iTgGroup")}}
+  <div data-response='sendtelegram_group' {% if not report_settings.telegram_group%} data-response-hide {%endif%}>
+    <div class="example">
+      <h5>{%trans "First entrance"%}</h5>
+{{block("iTgGroupFirstPerson")}}
+    </div>
+    <div class="example">
+      <h5>{%trans "Last entrance"%}</h5>
+{{block("iTgGroupDayReport")}}
+{{block("iTgGroupDayReportTime")}}
+{{block("iTgGroupDayReportMedal")}}
+{{block("iTgGroupDayReportLimit")}}
+    </div>
+{{block("iTgGroupDisconnect")}}
+  </div>
 {{block("iSaveAll")}}
 
   {%else%}
   <p class="msg info2"><a href="https://t.me/tejarakBot" target="_blank">{%trans "Group not connected!"%}</a> {%trans "connect via @tejarakBot to your Telegram group and enjoy our reports."%}</p>
   {%endif%}
-
-
-
  </div>
 
 </form>
 
-
-
-
-  <div class='cbox'>
-   <div class="">
-
-    <form method="post" class="df" enctype="multipart/form-data">
-
-
-      <h4>{%trans "Group Setting"%}</h4>
-      {%if telegram_id or 1%}
-
-        <div class="f g1">
-         <div class="cauto s0 lbl"><label for="sendtelegram_group">{%trans "Telegram Group"%}</label></div>
-         <div class="c">
-           <input type="checkbox" name="sendtelegram_group" id="sendtelegram_group" {% if report_settings.telegram_group%} checked {%endif%}>
-
-         </div>
-         <div class="c">
-           <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"deleteGroup": true}' class="bn c3">{%trans "Delete Group"%}</a>
-         </div>
-        </div>
-
-        <div data-response='sendtelegram_group' {% if not report_settings.telegram_group%} data-response-hide {%endif%}>
-
-          <div class="f g1">
-           <div class="cauto s0 lbl"><label for="sendfirst_member_name">{%trans "Send first memeber name"%}</label></div>
-           <div class="c">
-             <input type="checkbox" name="sendfirst_member_name" id="sendfirst_member_name" {% if report_settings.first_member_name%} checked {%endif%}>
-           </div>
-          </div>
-
-          <div class="f g1">
-           <div class="cauto s0 lbl"><label for="sendreport_daily">{%trans "Send report daily at end of day"%}</label></div>
-           <div class="c">
-             <input type="checkbox" name="sendreport_daily" id="sendreport_daily" {% if report_settings.report_daily%} checked {%endif%}>
-           </div>
-          </div>
-
-          <div class="f g1" data-response='sendreport_daily' {% if not report_settings.report_daily%} data-response-hide {%endif%}>
-           <div class="cauto s0 lbl"><label for="sendreport_daily_time">{%trans "Send report daily whit time at end of day"%}</label></div>
-           <div class="c">
-             <input type="checkbox" name="sendreport_daily_time" id="sendreport_daily_time" {% if report_settings.report_daily_time%} checked {%endif%}>
-           </div>
-          </div>
-
-          <div class="f g1" data-response='sendreport_daily' {% if not report_settings.report_daily%} data-response-hide {%endif%}>
-           <div class="cauto s0 lbl"><label for="sendreport_daily_gold">{%trans "Send gold emoji in report daily"%}</label></div>
-           <div class="c">
-             <input type="checkbox" name="sendreport_daily_gold" id="sendreport_daily_gold" {% if report_settings.report_daily_gold%} checked {%endif%}>
-           </div>
-          </div>
-
-          <div class="f g1">
-           <div class="cauto s0 lbl"><label for="sendreport_count">{%trans "Send report daily count"%}</label></div>
-           <div class="c">
-             <input type="number" max="50" min="-1" name="sendreport_count" id="sendreport_count" {% if report_settings.report_count%} value="{{report_settings.report_count}}" {%else%} value='{%trans "All"%}' {%endif%}>
-           </div>
-          </div>
-        </div>
-
-      {%else%}
-
-        <div class="f g1">
-          <p>{%trans "No Group was set"%}</p>
-          <p>{%trans "You can set telegram group from "%}<a href="https://t.me/tejarakBot" target="_blank">@tejarakBot</a></p>
-        </div>
-
-      {%endif%}
-
-     <div class="f g1">
-      <div class="c3 os">
-        <input type="submit" value='{%trans "Apply"%}' class="b1">
-      </div>
-     </div>
-
-    </form>
-   </div>
-  </div>
 {%endblock%}

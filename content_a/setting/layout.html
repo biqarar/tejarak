@@ -203,7 +203,64 @@
 {%endblock%}
 
 
+{%block iTgGroup%}
+<div class="switch1">
+ <input type="checkbox" name="sendtelegram_group" id="sendtelegram_group" {% if report_settings.telegram_group%} checked{%endif%}>
+ <label for="sendtelegram_group"></label>
+ <label for="sendtelegram_group">{%trans "Status of connected group"%} <small>{%trans "Can disable group activity"%}</small></label>
+</div>
+{%endblock%}
 
+
+{%block iTgGroupDisconnect%}
+<div class="f">
+ <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"deleteGroup": true}' class="btn danger outline cauto os">{%trans "Remove Group Connection"%}</a>
+</div>
+{%endblock%}
+
+
+{%block iTgGroupFirstPerson%}
+<div class="switch1">
+ <input type="checkbox" name="sendfirst_member_name" id="sendfirst_member_name" {% if report_settings.first_member_name%} checked{%endif%}>
+ <label for="sendfirst_member_name"></label>
+ <label for="sendfirst_member_name">{%trans "Show name of first person in day first message"%} <small>{%trans "Make a motivation to be first one of the day"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block iTgGroupDayReport%}
+<div class="switch1">
+ <input type="checkbox" name="sendreport_daily" id="sendreport_daily" {% if report_settings.report_daily%} checked{%endif%}>
+ <label for="sendreport_daily"></label>
+ <label for="sendreport_daily">{%trans "Send daily report after exit last person on the day"%} <small>{%trans "List of person present in day"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block iTgGroupDayReportTime%}
+<div class="switch1">
+ <input type="checkbox" name="sendreport_daily_time" id="sendreport_daily_time" {% if report_settings.report_daily_time%} checked{%endif%}>
+ <label for="sendreport_daily_time"></label>
+ <label for="sendreport_daily_time">{%trans "Show work time of each member in daily report"%} <small>{%trans "Useful on open mind companies"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block iTgGroupDayReportMedal%}
+<div class="switch1">
+ <input type="checkbox" name="sendreport_daily_gold" id="sendreport_daily_gold" {% if report_settings.report_daily_gold%} checked{%endif%}>
+ <label for="sendreport_daily_gold"></label>
+ <label for="sendreport_daily_gold">{%trans "Give a medal to top 3 person of the day"%} <small>{%trans "Gold, silver and bronze medal added to member list"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block iTgGroupDayReportLimit%}
+<label for="owner">{%trans "Limit count of person list in daily report."%} {%trans "-1 means have no limit"%} <small>{%trans "Used for large companies"%}</small></label>
+<div class="input">
+  <input type="number" max="50" min="-1" name="sendreport_count" id="sendreport_count" {% if report_settings.report_count%} value="{{report_settings.report_count}}" {%else%} value='-1' {%endif%}>
+</div>
+{%endblock%}
 
 
 
