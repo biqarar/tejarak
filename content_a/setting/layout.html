@@ -88,13 +88,13 @@
 
 
 {%block idesc%}
-<label for="name">{%trans "Description"%}</label>
+<label for="desc">{%trans "Description"%}</label>
 <textarea class="txt mB10" name="desc" placeholder='{%trans "Description"%}' maxlength='300' rows="3">{{current_team.desc}}</textarea>
 {%endblock%}
 
 
 {%block iprivacy%}
-<label for="name">{%trans "Board privacy mode"%}</label>
+<label>{%trans "Board privacy mode"%}</label>
 
   <div class="radio1">
    <input type="radio" id="r-private" name="privacy" value="private" {%if current_team.privacy == 'private' or not current_team.prvacy%}checked{%endif%} >
@@ -112,6 +112,30 @@
   </div>
 {%endblock%}
 
+
+{%block iplan%}
+<label>{%trans "Choose your plan"%}</label>
+
+<div class="radio1">
+  <input type="radio" name="plan" id="r-free" value="free" {%if current_plan.plan_name =='free'%}checked{%endif%}>
+  <label for="r-free">{%trans "Free"%} <small>{%trans "All the basics for personal use."%}</small></label>
+</div>
+
+<div class="radio1">
+  <input type="radio" name="plan" id="r-simple" value="simple" {%if current_plan.plan_name =='simple'%}checked{%endif%}>
+  <label for="r-simple">{%trans "Simple"%} <small>{%trans "Everything in Free plus automatic report via Telegram."%}</small></label>
+</div>
+
+<div class="radio1">
+  <input type="radio" name="plan" id="r-standard" value="standard" {%if current_plan.plan_name =='standard'%}checked{%endif%}>
+  <label for="r-standard">{%trans "Standard"%} <small>{%trans "Everything you need for a growing business."%}</small></label>
+</div>
+
+<div class="radio1">
+  <input type="radio" name="plan" id="r-full" value="full" {%if current_plan.plan_name =='full'%}checked{%endif%}>
+  <label for="r-full">{%trans "Full"%} <small>{%trans "For big companies that need fix price per month."%}</small></label>
+</div>
+{%endblock%}
 
 
 
