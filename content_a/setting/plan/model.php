@@ -101,7 +101,10 @@ class model extends \content_a\main\model
 		if($result)
 		{
 			debug::true(T_("Your team plan was changed"));
-			return true;
+			if(debug::$status)
+			{
+				$this->redirector($this->url('full'));
+			}
 		}
 		else
 		{
