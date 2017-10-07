@@ -9,7 +9,18 @@
   {{block ("idesc")}}
   {{block ("iprivacy")}}
 
+  {{block ("isave")}}
+</form>
 
+
+<form method="post" class="cbox">
+ <h4>{%trans "Team default setting for new members"%}</h4>
+ <p>{%trans "This settings is only used for new member and you can customize this setting for each member after add them to team."%}</p>
+  {{block ("iDefaultMemberRemote")}}
+  {{block ("iDefaultMember24")}}
+  {{block ("iDefaultMemberMission")}}
+  {{block ("iDefaultMemberPersonalwork")}}
+  {{block ("iDefaultMemberAvatar")}}
   {{block ("isave")}}
 </form>
 {%endblock%}
