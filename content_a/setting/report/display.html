@@ -15,6 +15,11 @@
   <h3>{%trans "Admin Reports"%}</h3>
   <p>{%trans "You can customize setting of report sending to admins."%} {%trans "For example some admin need to know about all traffic on your team, but some others only need to know about enterence traffic or someone dont need reports!"%}</p>
 
+  <div class="f">
+    <div class="c"></div>
+    <div class="cauto pLR10">{%trans "End day report"%}</div>
+    <div class="cauto pLR10">{%trans "Every traffic"%}</div>
+  </div>
 {%for key, value in admins%}
   <div class="f">
     <div class="c f align-center">{{value.displayname}}</div>
@@ -40,11 +45,19 @@
  <div class="cbox">
   <h3>{%trans "Telegram Group Reports"%}</h3>
   <p>{%trans "You can connect your team to one group."%} {%trans "Use our @tejarakBot menu and connect your team to your team telegram group."%} {%trans "After that we can send some summary message to your group."%} {%trans "You can customize these settings and create your favorite message."%}</p>
-  <p class="msg info2">{%trans "Enjoy from telegram free messages on our paid plans, not on FREE!"%}</p>
 
+  {%if telegram_id or 1%}
+  <p class="msg info2">{%trans "Enjoy using telegram free messages on our paid plans, not on FREE!"%}</p>
 {{block("iAutoTrafficReportHour")}}
 
 {{block("iSaveAll")}}
+
+  {%else%}
+  <p class="msg info2"><a href="https://t.me/tejarakBot" target="_blank">{%trans "Group not connected!"%}</a> {%trans "connect via @tejarakBot to your Telegram group and enjoy our reports."%}</p>
+  {%endif%}
+
+
+
  </div>
 
 </form>
@@ -59,7 +72,7 @@
 
 
       <h4>{%trans "Group Setting"%}</h4>
-      {%if telegram_id%}
+      {%if telegram_id or 1%}
 
         <div class="f g1">
          <div class="cauto s0 lbl"><label for="sendtelegram_group">{%trans "Telegram Group"%}</label></div>
