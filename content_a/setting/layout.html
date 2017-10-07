@@ -194,10 +194,13 @@
 {%endblock%}
 
 
-
-
-
-
+{%block iAutoTrafficReportHour%}
+<label for="timed_auto_report_time">{%trans "Automatic daily traffic count report"%} <small>{%trans "We automatically send report in Telegram on this time"%}</small></label>
+<div class="input clockpicker">
+  <label class="addon">{%trans server_timezone%}</label>
+  <input type="text" name="timed_auto_report_time" id="timed_auto_report_time" placeholder='{%trans "Time of send automatic daily report"%}' value="{{current_teams.timed_auto_report}}">
+</div>
+{%endblock%}
 
 
 

@@ -66,30 +66,25 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		if(utility::post('timed_auto_report'))
+
+		if(utility::post('timed_auto_report_time'))
 		{
-			if(utility::post('timed_auto_report_time'))
+			if(!preg_match("/^\d{2}\:\d{2}$/", utility::post('timed_auto_report_time')))
 			{
-				if(!preg_match("/^\d{2}\:\d{2}$/", utility::post('timed_auto_report_time')))
-				{
-					\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', $this->login('id'));
-					debug::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
-					return false;
-				}
-
-				$time_changed = \lib\utility\timezone::change_time('H:i', utility::post('timed_auto_report_time'), "Asia/Tehran");
-				$update_team['timed_auto_report'] = $time_changed;
+				\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', $this->login('id'));
+				debug::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
+				return false;
 			}
-			else
-			{
-				$update_team['timed_auto_report'] = null;
 
-			}
+			$time_changed = \lib\utility\timezone::change_time('H:i', utility::post('timed_auto_report_time'), "Asia/Tehran");
+			$update_team['timed_auto_report'] = $time_changed;
 		}
 		else
 		{
 			$update_team['timed_auto_report'] = null;
+
 		}
+
 
 		$update_team['reportheader'] = utility::post('reportHeader');
 
