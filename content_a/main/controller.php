@@ -108,7 +108,7 @@ class controller extends \mvc\controller
 
 		if(is_null($url_1))
 		{
-			\lib\router::set_controller("content_a\\dashboard\\controller");
+			\lib\router::set_controller("content_a\\teamdashboard\\controller");
 			return;
 		}
 

@@ -1,5 +1,5 @@
 <?php
-namespace content_a\dashboard;
+namespace content_a\teamdashboard;
 use \lib\debug;
 use \lib\utility;
 

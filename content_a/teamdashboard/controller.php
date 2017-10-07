@@ -1,5 +1,5 @@
 <?php
-namespace content_a\dashboard;
+namespace content_a\teamdashboard;
 
 class controller extends \content_a\main\controller
 {
@@ -13,7 +13,7 @@ class controller extends \content_a\main\controller
 
 		$url = \lib\router::get_url();
 
-		if($url === 'dashboard')
+		if($url === 'teamdashboard')
 		{
 			\lib\error::page();
 		}
