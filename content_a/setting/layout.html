@@ -82,6 +82,15 @@
 {%endblock%}
 
 
+{%block islug%}
+<label for="slug">{%trans "Team short name"%} <small>{%trans "Used for url of board"%}</small></label>
+<div class="input fix">
+  <label class="addon ltr" for="slug">Tejarak.com/</label>
+  <input type="text" name="slug" id="slug" placeholder='{%trans "Slug of team for board url"%}' value="{{current_team.short_name}}" maxlength='30' class="ltr">
+</div>
+{%endblock%}
+
+
 {%block iwebsite%}
 <label for="website">{%trans "Website"%}</label>
 <div class="input">
@@ -91,27 +100,27 @@
 
 
 {%block idesc%}
-<label for="desc">{%trans "Description"%}</label>
+<label for="desc">{%trans "Description"%} <small>{%trans "Used for description of board and show in social media links"%}</small></label>
 <textarea class="txt mB10" name="desc" placeholder='{%trans "Description"%}' maxlength='300' rows="3">{{current_team.desc}}</textarea>
 {%endblock%}
 
 
 {%block iprivacy%}
-<label>{%trans "Board privacy mode"%}</label>
-  <div class="radio1">
-   <input type="radio" id="r-private" name="privacy" value="private" {%if current_team.privacy == 'private' or not current_team.prvacy%}checked{%endif%} >
-   <label for="r-private">{%trans "Private"%} <small>{%trans "Only admin of team can see board"%}</small></label>
-  </div>
+<label class="mT25">{%trans "Board privacy mode"%}</label>
+<div class="radio1">
+ <input type="radio" id="r-private" name="privacy" value="private" {%if current_team.privacy == 'private' or not current_team.prvacy%}checked{%endif%} >
+ <label for="r-private">{%trans "Private"%} <small>{%trans "Only admin of team can see board"%}</small></label>
+</div>
 
-  <div class="radio1">
-   <input type="radio" id="r-team" name="privacy" value="team" {%if current_team.privacy == 'team' %}checked{%endif%}>
-   <label for="r-team">{%trans "Team"%} <small>{%trans "Admin and all member of team can see board"%}</small></label>
-  </div>
+<div class="radio1">
+ <input type="radio" id="r-team" name="privacy" value="team" {%if current_team.privacy == 'team' %}checked{%endif%}>
+ <label for="r-team">{%trans "Team"%} <small>{%trans "Admin and all member of team can see board"%}</small></label>
+</div>
 
-  <div class="radio1">
-   <input type="radio" id="r-public" name="privacy" value="public" {%if current_team.privacy == 'public' %}checked{%endif%}>
-   <label for="r-public">{%trans "Public"%} <small>{%trans "Anyone can access to link of board can see team board"%}</small></label>
-  </div>
+<div class="radio1">
+ <input type="radio" id="r-public" name="privacy" value="public" {%if current_team.privacy == 'public' %}checked{%endif%}>
+ <label for="r-public">{%trans "Public"%} <small>{%trans "Anyone can access to link of board can see team board"%}</small></label>
+</div>
 {%endblock%}
 
 
