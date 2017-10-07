@@ -63,10 +63,10 @@
  <div class="block">
   <div class="f">
    <h5 class="c fc-mute">{%trans "Present Members"%}</h5>
-   <h4 class="cauto fc-warn fs30 txtra counter">{{1530 | number_format}}</h4>
+   <h4 class="cauto fc-warn fs30 txtra counter">{{dashboard_detail.member_present | number_format}}</h4>
   </div>
   <div class="f">
-   <div class="progress" data-percent='85'>
+   <div class="progress" data-percent='{{(dashboard_detail.member_present * 100)/ dashboard_detail.member_count}}'>
     <div class="bar"></div>
    </div>
   </div>
@@ -83,7 +83,7 @@
    <h4 class="cauto fc-info fs30 txtra">{{"now" | jdate('d')}}</h4>
   </div>
   <div class="f">
-   <div class="progress" data-percent='15'>
+   <div class="progress" data-percent='{{"now" | jdate("d")}}'>
     <div class="bar"></div>
    </div>
   </div>
@@ -95,7 +95,7 @@
 {%block stMembers%}
 <a class="dcard" href='{{url.baseFull}}/{{team}}/member'>
  <div class="statistic gray">
-  <div class="value"><i class="sf-users"></i><span>{{25 |number_format |fitNumber}}</span></div>
+  <div class="value"><i class="sf-users"></i><span>{{dashboard_detail.member_count |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Member"%}</div>
  </div>
 </a>
@@ -105,7 +105,7 @@
 {%block stTraffics%}
 <div class="dcard">
  <div class="statistic teal">
-  <div class="value"><i class="sf-retweet"></i><span class="fs08">{{16500 |number_format |fitNumber}}</span></div>
+  <div class="value"><i class="sf-retweet"></i><span class="fs08">{{dashboard_detail.traffic_count |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Traffic Record"%}</div>
  </div>
 </div>
@@ -115,7 +115,7 @@
 {%block stTotalHour%}
   <div class="dcard">
    <div class="statistic orange">
-    <div class="value"><i class="sf-hourglass-end"></i><span>{{60 |number_format |fitNumber}}</span></div>
+    <div class="value"><i class="sf-hourglass-end"></i><span>{{dashboard_detail.hour_count |humantime('number') |fitNumber}}</span></div>
     <div class="label">{%trans "Total Hour Work"%}</div>
    </div>
   </div>
@@ -125,7 +125,7 @@
 {%block stDayUsed%}
   <div class="dcard">
    <div class="statistic blue">
-    <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{370 | number_format}}</span></div>
+    <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{dashboard_detail.count_day_work | number_format}}</span></div>
     <div class="label">{%trans "Day Used"%}</div>
    </div>
   </div>
@@ -134,7 +134,7 @@
 
 {%block chart_primary%}
 <div class="dcard x3 pA0">
- <div class="chart" data-vals='[{"key":"کاردانی","value":442},{"key":"کارشناسی 234","value":1050},{"key":"کارشناسی‌ارشد","value":408},{"key":"دکتری","value":96}]'>
+ <div class="chart" data-vals='{{dashboard_detail.last_time_chart|raw}}'>
  </div>
 </div>
 {%endblock%}

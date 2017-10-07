@@ -7,6 +7,7 @@ class teams
 	use teams\report;
 	use teams\count_detail;
 	use teams\active_deactive_member;
+	use teams\dashboard;
 
 	// default setttings
 	// save in temas.meta
