@@ -139,7 +139,17 @@
 
 
 
+{%block iNewOwnerMobile%}
+<label for="owner">{%trans "New Owner Mobile"%}</label>
+<div class="input">
+  <input type="number" name="owner" id="owner" placeholder='{%trans "Mobile"%}' value="{{sended_data.mobile|fitNumber}}" required {%if sended_data.mobile%} disabled {%endif%}>
+</div>
+{%endblock%}
 
+
+{%block iSendRequest%}
+<button class="btn primary block mT20" {%if sended_data.mobile%} disabled{%endif%}>{%trans "Send Request"%}</button>
+{%endblock%}
 
 
 
