@@ -13,6 +13,7 @@ trait add
 
 	use check_args;
 	use member_id;
+	use security;
 
 	/**
 	 * Adds a member.
@@ -69,38 +70,26 @@ trait add
 			return false;
 		}
 
+
 		// get team and check it
-		$team = utility::request('team');
-		$team = utility\shortURL::decode($team);
-		if(!$team)
+		$team_id = utility::request('team');
+		$team_id = utility\shortURL::decode($team_id);
+		if(!$team_id)
 		{
 			if($_args['save_log']) logs::set('api:member:team:not:set', $this->user_id, $log_meta);
 			if($_args['debug']) debug::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
 
-		if(!$_args['have_user_id'])
+		$check_security = $this->check_security($team_id, $_args, $args, $log_meta);
+
+		if($check_security === false || !debug::$status)
 		{
-			// load team data
-			$team_detail = \lib\db\teams::access_team_id($team, $this->user_id, ['action' => 'add_member']);
-			// check the team exist
-			if(isset($team_detail['id']))
-			{
-				$team_id = $team_detail['id'];
-			}
-			else
-			{
-				if($_args['save_log']) logs::set('api:member:team:notfound:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) debug::error(T_("Team not found"), 'user', 'permission');
-				return false;
-			}
-		}
-		else
-		{
-			$team_id = $team;
+			return false;
 		}
 
 		$res = $this->find_member_id($_args, $log_meta, $team_id);
+
 		if(!debug::$status || $res === false)
 		{
 			return false;
@@ -110,13 +99,17 @@ trait add
 		 * check and set the args
 		 */
 		$return_function = $this->check_args($_args, $args, $log_meta, $team_id);
+
 		if(!debug::$status || $return_function === false)
 		{
 			return false;
 		}
 
-		$args['team_id']       = $team_id;
-		$args['user_id']       = $this->master_user_id;
+		// $args['team_id']       = $team_id;
+		if($this->master_user_id)
+		{
+			$args['user_id']       = $this->master_user_id;
+		}
 
 		// check file is set or no
 		// if file is not set and the user have a file load the default file
@@ -146,28 +139,12 @@ trait add
 		}
 		elseif($_args['method'] === 'patch')
 		{
-			if(!$_args['have_user_id'])
+			$id = utility::request('id');
+			$id = utility\shortURL::decode($id);
+			if(!$id)
 			{
-				$id = utility::request('id');
-				$id = utility\shortURL::decode($id);
-				if(!$id)
-				{
-					if($_args['save_log']) logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
-					if($_args['debug']) debug::error(T_("Id not set"), 'id', 'arguments');
-					return false;
-				}
-			}
-			else
-			{
-				$id = $_args['have_user_id'];
-			}
-
-			$check_user_in_team = \lib\db\userteams::get(['user_id' => $id, 'team_id' => $team_id, 'limit' => 1]);
-
-			if(!$check_user_in_team || !isset($check_user_in_team['id']))
-			{
-				if($_args['save_log']) logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
-				if($_args['debug']) debug::error(T_("This user is not in this team"), 'id', 'arguments');
+				if($_args['save_log']) logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Id not set"), 'id', 'arguments');
 				return false;
 			}
 
@@ -219,12 +196,31 @@ trait add
 			if(!utility::isset_request('payment_account_number'))unset($args['cardnumber']);
 			if(!utility::isset_request('shaba'))                 unset($args['shaba']);
 
+			if(array_key_exists('rule', $args) && !in_array($args['rule'], ['user', 'admin', 'gateway']))
+			{
+				if($_args['save_log']) logs::set('api:member:rule:invalid:edit', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
+				return false;
+			}
 
+			if(array_key_exists('status', $args) && !in_array($args['status'], ['active', 'deactive', 'suspended']))
+			{
+				if($_args['save_log']) logs::set('api:member:status:invalid:edit', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				return false;
+			}
+
+			if(array_key_exists('visibility', $args) && !in_array($args['visibility'], ['visible', 'hidden']))
+			{
+				if($_args['save_log']) logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
+				return false;
+			}
 			// check barcode, qrcode and rfid,
 			// update it if changed
 			// get from utility::request()
 			// check from $args
-			$this->check_barcode($check_user_in_team['id']);
+			$this->check_barcode($id);
 			// if have error in checking barcode
 			if(!debug::$status)
 			{
@@ -233,7 +229,7 @@ trait add
 
 			if(!empty($args))
 			{
-				\lib\db\userteams::update($args, $check_user_in_team['id']);
+				\lib\db\userteams::update($args, $id);
 			}
 
 			if(debug::$status)

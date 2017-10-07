@@ -19,7 +19,7 @@
 {%if value.status == 'remove'%}red{%elseif value.status == 'deactive'%}yellow{%elseif value.traffic%}black{%else%}green{%endif%}
 {%endset%}
 
-  <a class="vcard mA10 shadow {{cardColor}}" href="{{url.baseFull}}/{{team}}/member/edit/{{value.user_id}}">
+  <a class="vcard mA10 shadow {{cardColor}}" href="{{url.baseFull}}/{{team}}/member/general/{{value.id}}">
     <img src="{{value.file}}" alt="{{value.displayname}}">
     <div class="content">
       <div class="header">{{value.displayname}}</div>

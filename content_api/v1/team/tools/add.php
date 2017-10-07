@@ -553,7 +553,7 @@ trait add
 				return false;
 			}
 
-			if(array_key_exists('privacy', $args) && !in_array($privacy, ['public', 'private', 'team']))
+			if(array_key_exists('privacy', $args) && !in_array($args['privacy'], ['public', 'private', 'team']))
 			{
 				logs::set('api:team:privacy:invalid:edit', $this->user_id, $log_meta);
 				debug::error(T_("Invalid privacy field"), 'privacy', 'arguments');

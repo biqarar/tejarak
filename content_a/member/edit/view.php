@@ -1,7 +1,7 @@
 <?php
 namespace content_a\member\edit;
 
-class view extends \content_a\main\view
+class view extends \content_a\member\view
 {
 
 	/**

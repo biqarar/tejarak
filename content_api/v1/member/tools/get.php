@@ -238,7 +238,7 @@ trait get
 
 		$team_id = $team_detail['id'];
 
-		$check_user_in_team = \lib\db\userteams::get_list(['user_id' => $id, 'team_id' => $team_id,'rule' => ['IN', "('user', 'admin')"], 'limit' => 1]);
+		$check_user_in_team = \lib\db\userteams::get_list(['id' => $id, 'team_id' => $team_id,'rule' => ['IN', "('user', 'admin')"], 'limit' => 1]);
 
 		if(!$check_user_in_team)
 		{
@@ -438,8 +438,9 @@ trait get
 					}
 					else
 					{
-						$result['file'] = null;
+						$result['file'] = $this->host('siftal_user');
 					}
+
 					break;
 
 				case 'allowplus':

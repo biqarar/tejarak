@@ -69,7 +69,7 @@ trait check_args
 				return false;
 			}
 		}
-		else
+		elseif($_args['method'] === 'post')
 		{
 			$rule = 'user';
 		}
@@ -84,7 +84,7 @@ trait check_args
 				return false;
 			}
 		}
-		else
+		elseif($_args['method'] === 'post')
 		{
 			$visibility = 'visible';
 		}
@@ -100,7 +100,7 @@ trait check_args
 				return false;
 			}
 		}
-		else
+		elseif($_args['method'] === 'post')
 		{
 			$status = 'active';
 		}

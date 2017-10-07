@@ -1,0 +1,40 @@
+{%extends display.adminTeam%}
+
+{%block pageContent%}
+  <div class="f justify-center">
+    <div class="c8 s12">
+      <div class="cbox">
+
+        <form method="post" enctype="multipart/form-data">
+
+
+            <p>{%trans "Extra setting for special use"%}</p>
+
+             <label for="firstName">{%trans "First name"%}</label>
+             <div class="input">
+               <input type="text" name="firstName" id="firstName" placeholder='{%trans "First name"%}' value="{{member.firstname}}" maxlength='30'>
+             </div>
+
+             <label for="lastName">{%trans "Last name"%}</label>
+             <div class="input">
+               <input type="text" name="lastName" id="lastName" placeholder='{%trans "Last name"%}' value="{{member.lastname}}" maxlength='50'>
+             </div>
+
+             <label for="personnelcode">{%trans "Personnel code"%}</label>
+             <div class="input">
+               <input type="text" name="personnelcode" id="personnelcode" placeholder='{%trans "Personnel code"%}' value="{{member.personnel_code}}" maxlength='30'>
+             </div>
+
+
+
+          <button class="btn primary block mT25">{%if personal_mode%}{%trans "personal"%}{%else%}{%trans "Add"%}{%endif%}</button>
+
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+{%endblock%}
+
+

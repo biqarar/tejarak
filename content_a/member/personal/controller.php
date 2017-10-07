@@ -1,5 +1,5 @@
 <?php
-namespace content_a\member;
+namespace content_a\member\personal;
 
 class controller extends \content_a\main\controller
 {
@@ -10,9 +10,8 @@ class controller extends \content_a\main\controller
 	{
 		parent::_route();
 
-		unset($_SESSION['first_go_to_setup']);
-
-		$this->get(false, 'list')->ALL("/.*/");
+		$this->get(false, 'personal')->ALL("/.*/");
+		$this->post('personal')->ALL("/.*/");
 	}
 }
 ?>
