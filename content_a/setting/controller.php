@@ -11,14 +11,10 @@ class controller extends \content_a\main\controller
 
 		parent::_route();
 
-		$url = \lib\router::get_url();
+		$new_url = $this->url('baseFull'). '/'. \lib\router::get_url(0). '/setting/general';
 
-		if($url === 'setting')
-		{
-			\lib\error::page();
-		}
+		$this->redirector($new_url)->redirect();
 
-		$this->get()->ALL("/.*/");
 	}
 }
 ?>
