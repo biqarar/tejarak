@@ -2,48 +2,48 @@
 
 
 {%block data%}
+<form method="post">
+ <div class="cbox">
+  <h3>{%trans "Header and Footer"%}</h3>
+  <p>{%trans "bind to all reports created by tejarak and you can set special header and footer for this team."%} {%trans "This is useful when you have more than one team and want to detect them."%} {%trans "For example add #Ermile to footer."%}</p>
+{{block("iHeader")}}
+{{block("iFooter")}}
+{{block("iSaveAll")}}
+ </div>
+
+ <div class="cbox">
+  <h3>{%trans "Admin Reports"%}</h3>
+  <p>{%trans "You can customize setting of report sending to admins."%} {%trans "For example some admin need to know about all traffic on your team, but some others only need to know about enterence traffic or someone dont need reports!"%}</p>
+
+{%for key, value in admins%}
+  <div class="f">
+    <div class="c f align-center">{{value.displayname}}</div>
+    <div class="cauto">
+     <div class="switch1 pLR10">
+      <input type="checkbox" name="daily_{{value.id}}" id="daily_{{value.id}}" {% if value.daily %} checked{% endif %}>
+      <label for="daily_{{value.id}}"></label>
+     </div>
+    </div>
+    <div class="cauto">
+     <div class="switch1 pLR10">
+      <input type="checkbox" name="enterexit_{{value.id}}" id="enterexit_{{value.id}}" {% if value.daily %} checked{% endif %}>
+      <label for="enterexit_{{value.id}}"></label>
+     </div>
+    </div>
+  </div>
+{%endfor%}
+
+{{block("iSaveAll")}}
+ </div>
+</form>
+
+
+
 
   <div class='cbox'>
    <div class="">
 
     <form method="post" class="df" enctype="multipart/form-data">
-
-
-
-
-     <h4>{%trans "Header & Footer"%}</h4>
-      <div class="f g1">
-       <div class="cauto s0 lbl"><label for="reportHeader">{%trans "Report Header"%}</label></div>
-       <div class="c">
-         <input type="text" name="reportHeader" id="reportHeader" placeholder='{%trans "Report Header"%}' value="{{reportHeader}}" maxlength='30'>
-       </div>
-      </div>
-
-      <div class="f g1">
-       <div class="cauto s0 lbl"><label for="reportFooter">{%trans "Report Footer"%}</label></div>
-       <div class="c">
-         <input type="text" name="reportFooter" id="reportFooter" placeholder='{%trans "Report Footer"%}' value="{{reportFooter}}" maxlength='50'>
-       </div>
-      </div>
-
-
-      <h4>{%trans "Send Admins"%}</h4>
-      <div  class="g1 check1t">
-       <div class="f">
-       {%for key, value in admins%}
-
-       <div class="cauto s0 lbl"><label>{{value.displayname}}</label></div>
-        <div class="c4 s6">
-         <input type="checkbox" name="daily_{{value.id}}" id="daily_{{value.id}}"  {% if value.daily %} checked {% endif %}>
-         <label for="daily_{{value.id}}">{%trans "Report end day"%}</label>
-        </div>
-        <div class="c4 s6">
-         <input type="checkbox" name="enterexit_{{value.id}}" id="enterexit_{{value.id}}" {% if value.enterexit %} checked {% endif %}>
-         <label for="enterexit_{{value.id}}">{%trans "Enter & Exit report"%}</label>
-        </div>
-        {%endfor%}
-       </div>
-      </div>
 
        <h4>{%trans "Auto send report"%}</h4>
       <div  class="g1 check1t">
