@@ -1023,7 +1023,7 @@ class twigTransTerms
 	echo T_("Made in IRAN");                                                          // Line 60 Seperate
 	echo T_("Iran");                                                                  // Line 61 Seperate
 	echo T_("iran");                                                                  // Line 62 Seperate
-	echo T_("qom");                                                                   // Line 420 Seperate
+	echo T_("qom");                                                                   // Line 421 Seperate
 	echo T_("submit");                                                                // Line 65 Seperate
 	echo T_("save");                                                                  // Line 66 Seperate
 	echo T_("add new");                                                               // Line 67 Seperate
@@ -1282,28 +1282,29 @@ class twigTransTerms
 	echo T_("eilam");                                                                 // Line 407 Seperate
 	echo T_("bushehr");                                                               // Line 408 Seperate
 	echo T_("tehran");                                                                // Line 409 Seperate
-	echo T_("chaharmahal and bakhtiari");                                             // Line 410 Seperate
-	echo T_("south khorasan");                                                        // Line 411 Seperate
-	echo T_("razavi khorasan");                                                       // Line 412 Seperate
-	echo T_("north khorasan");                                                        // Line 413 Seperate
-	echo T_("khuzestan");                                                             // Line 414 Seperate
-	echo T_("zanjan");                                                                // Line 415 Seperate
-	echo T_("semnan");                                                                // Line 416 Seperate
-	echo T_("sistan and baluchestan");                                                // Line 417 Seperate
-	echo T_("fars");                                                                  // Line 418 Seperate
-	echo T_("qazvin");                                                                // Line 419 Seperate
-	echo T_("kordestan");                                                             // Line 421 Seperate
-	echo T_("kerman");                                                                // Line 422 Seperate
-	echo T_("kermanshah");                                                            // Line 423 Seperate
-	echo T_("kohgiluyeh and boyerahmad");                                             // Line 424 Seperate
-	echo T_("golestan");                                                              // Line 425 Seperate
-	echo T_("gilan");                                                                 // Line 426 Seperate
-	echo T_("lorestan");                                                              // Line 427 Seperate
-	echo T_("mazandaran");                                                            // Line 428 Seperate
-	echo T_("markazi");                                                               // Line 429 Seperate
-	echo T_("hormozgan");                                                             // Line 430 Seperate
-	echo T_("hamedan");                                                               // Line 431 Seperate
-	echo T_("yazd");                                                                  // Line 432 Seperate
+	echo T_("Asia/Tehran");                                                           // Line 410 Seperate
+	echo T_("chaharmahal and bakhtiari");                                             // Line 411 Seperate
+	echo T_("south khorasan");                                                        // Line 412 Seperate
+	echo T_("razavi khorasan");                                                       // Line 413 Seperate
+	echo T_("north khorasan");                                                        // Line 414 Seperate
+	echo T_("khuzestan");                                                             // Line 415 Seperate
+	echo T_("zanjan");                                                                // Line 416 Seperate
+	echo T_("semnan");                                                                // Line 417 Seperate
+	echo T_("sistan and baluchestan");                                                // Line 418 Seperate
+	echo T_("fars");                                                                  // Line 419 Seperate
+	echo T_("qazvin");                                                                // Line 420 Seperate
+	echo T_("kordestan");                                                             // Line 422 Seperate
+	echo T_("kerman");                                                                // Line 423 Seperate
+	echo T_("kermanshah");                                                            // Line 424 Seperate
+	echo T_("kohgiluyeh and boyerahmad");                                             // Line 425 Seperate
+	echo T_("golestan");                                                              // Line 426 Seperate
+	echo T_("gilan");                                                                 // Line 427 Seperate
+	echo T_("lorestan");                                                              // Line 428 Seperate
+	echo T_("mazandaran");                                                            // Line 429 Seperate
+	echo T_("markazi");                                                               // Line 430 Seperate
+	echo T_("hormozgan");                                                             // Line 431 Seperate
+	echo T_("hamedan");                                                               // Line 432 Seperate
+	echo T_("yazd");                                                                  // Line 433 Seperate
 
  }
 }
