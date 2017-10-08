@@ -228,29 +228,45 @@ trait get
 
 		if(isset($result['event_date_start_gregorian']) && isset($result['event_date_gregorian']))
 		{
-			$now                        = date("Y-m-d");
-			$start                      = $result['event_date_start_gregorian'];
-			$end                        = $result['event_date_gregorian'];
+			$result['event']         = [];
 
-			$datenow                    = new \DateTime("now");
-			$dateevent                  = new \DateTime($end);
-			$dateend                    = new \DateTime($start);
-			$interval                   = $dateevent->diff($datenow);
-			$diff                       = $dateevent->diff($dateend)->days;
-			$result['event']            = [];
-			$result['event']['days']    = $diff;
-			$result['event']['left']    = $interval->days;
+			$now                     = $result['event']['now'] = date("Y-m-d");
+			$start                   = $result['event']['start'] = $result['event_date_start_gregorian'];
+			$end                     = $result['event']['end'] = $result['event_date_gregorian'];
 
+			$date_now                = new \DateTime("now");
+			$date_start              = new \DateTime($end);
+			$date_end                = new \DateTime($start);
 
-			if($datenow < $dateevent)
+			$left                    = $date_end->diff($date_now)->days;
+			$remain                  = $date_start->diff($date_now)->days;
+			$diff                    = $date_start->diff($date_end)->days;
+
+			$result['event']['days'] = $diff;
+
+			$myDivision = $diff;
+			if(intval($diff) <= 0)
 			{
-				$result['event']['remain'] = $interval->days;
+				$myDivision = 1;
+			}
+
+			$result['event']['left']  = $left;
+
+			if($date_now < $date_start)
+			{
+				$result['event']['remain'] = $remain;
+				$result['event']['remain_percent'] = round((intval($remain) * 100) / $myDivision);
+				$result['event']['left_percent']   = round((intval($left) * 100) / $myDivision);
 			}
 			else
 			{
-				$result['event']['remain'] = $interval->days * (-1);
+				$result['event']['remain']         = 0;
+				$result['event']['remain_percent'] = 0;
+				$result['event']['left_percent']   = 100;
 			}
+
 		}
+		// var_dump($result);exit();
 		return $result;
 	}
 

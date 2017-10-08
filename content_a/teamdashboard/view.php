@@ -17,15 +17,15 @@ class view extends \content_a\main\view
 
 		$team_id = \lib\utility\shortURL::decode(\lib\router::get_url(0));
 
-		if(time() - intval(\lib\session::get('last_time_chart_time')) > 60)
+		if(time() - intval(\lib\session::get('last_time_chart_time_'. (string) $team_id )) > 60)
 		{
 			$dashboard_detail = \lib\db\teams::dashboard_detail($team_id, $this->login('id'));
-			\lib\session::set('last_time_chart', $dashboard_detail);
-			\lib\session::set('last_time_chart_time', time());
+			\lib\session::set('last_time_chart'. (string) $team_id , $dashboard_detail);
+			\lib\session::set('last_time_chart_time_'. (string) $team_id , time());
 		}
 		else
 		{
-			$dashboard_detail = \lib\session::get('last_time_chart');
+			$dashboard_detail = \lib\session::get('last_time_chart'. (string) $team_id );
 		}
 
 		if(isset($dashboard_detail['last_time_chart']) && is_array($dashboard_detail['last_time_chart']))

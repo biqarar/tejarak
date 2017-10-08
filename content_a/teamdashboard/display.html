@@ -48,15 +48,16 @@
    <h5 class="c fc-mute">{%trans "Deadline"%}</h5>
    <h4 class="cauto fc-danger fs30 txtra counter">{{current_team.event.left | number_format}}</h4>
   </div>
+<!-- left_percent
+remain_percent -->
   <div class="f">
-   <div class="progress" data-percent='{{(current_team.event.left * 100) / current_team.event.days }}'>
+   <div class="progress" data-percent='{{current_team.event.left_percent}}'>
     <div class="bar"></div>
    </div>
   </div>
  </div>
 </div>
 {%endblock%}
-
 
 {%block prPresentCount%}
 <div class="dcard">
@@ -66,7 +67,7 @@
    <h4 class="cauto fc-warn fs30 txtra counter">{{dashboard_detail.member_present | number_format}}</h4>
   </div>
   <div class="f">
-   <div class="progress" data-percent='{{(dashboard_detail.member_present * 100)/ dashboard_detail.member_count}}'>
+   <div class="progress" data-percent='{{dashboard_detail.member_percent}}'>
     <div class="bar"></div>
    </div>
   </div>
@@ -115,7 +116,7 @@
 {%block stTotalHour%}
   <div class="dcard">
    <div class="statistic orange">
-    <div class="value"><i class="sf-hourglass-end"></i><span>{{dashboard_detail.hour_count |humantime('number') |fitNumber}}</span></div>
+    <div class="value"><i class="sf-hourglass-end"></i><span>{{(dashboard_detail.hour_count/60) |round | number_format  |fitNumber}}</span></div>
     <div class="label">{%trans "Total Hour Work"%}</div>
    </div>
   </div>

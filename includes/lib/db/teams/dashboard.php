@@ -44,6 +44,17 @@ trait dashboard
 		$result['member_present']  = count(self::get_active_member($_team_id));
 		$result['last_time_chart'] = self::last_time_chart($_team_id, $is_admin ? null : $_user_id);
 
+		if(isset($result['member_count']))
+		{
+			$myDivision = intval($result['member_count']);
+		}
+		else
+		{
+			$myDivision = 1;
+		}
+
+		$result['member_percent']  = (intval($result['member_present']) * 100) / $myDivision;
+
 		return $result;
 	}
 
