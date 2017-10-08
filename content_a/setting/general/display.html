@@ -2,28 +2,32 @@
 
 
 {%block data%}
-<form method="post">
   <div class="cbox">
-{{block ("iname")}}
-{{block ("islug")}}
-{{block ("iwebsite")}}
-{{block ("idesc")}}
-{{block ("iprivacy")}}
+	<form method="post">
+		<input type="hidden" name="formType" value="public">
+		{{block ("iname")}}
+		{{block ("islug")}}
+		{{block ("iwebsite")}}
+		{{block ("idesc")}}
+		{{block ("iprivacy")}}
 
-{{block ("iSaveAll")}}
+		{{block ("iSaveAll")}}
+	</form>
 </div>
 
 
 <div class="cbox">
- <h4>{%trans "Team default setting for new members"%}</h4>
- <p>{%trans "This settings is only used for new member and you can customize this setting for each member after add them to team."%}</p>
-{{block ("iDefaultMemberRemote")}}
-{{block ("iDefaultMember24")}}
-{{block ("iDefaultMemberMission")}}
-{{block ("iDefaultMemberPersonalwork")}}
-{{block ("iDefaultMemberAvatar")}}
-{{block ("iSaveAll")}}
+	<form method="post">
+		<input type="hidden" name="formType" value="member">
+		 <h4>{%trans "Team default setting for new members"%}</h4>
+		 <p>{%trans "This settings is only used for new member and you can customize this setting for each member after add them to team."%}</p>
+		{{block ("iDefaultMemberRemote")}}
+		{{block ("iDefaultMember24")}}
+		{{block ("iDefaultMemberMission")}}
+		{{block ("iDefaultMemberPersonalwork")}}
+		{{block ("iDefaultMemberAvatar")}}
+		{{block ("iSaveAll")}}
+	</form>
 </div>
 
-</form>
 {%endblock%}

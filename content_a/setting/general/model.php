@@ -12,21 +12,31 @@ class model extends \content_a\main\model
 	 */
 	public function getPost()
 	{
-		$args =
-		[
-			'name'          => utility::post('name'),
-			'short_name'    => utility::post('short_name'),
-			'website'       => utility::post('website'),
-			'desc'          => utility::post('desc'),
-			'privacy'       => utility::post('privacy'),
+		if(utility::post('formType') === 'public')
+		{
+			$args =
+			[
+				'name'          => utility::post('name'),
+				'short_name'    => utility::post('slug'),
+				'website'       => utility::post('website'),
+				'desc'          => utility::post('desc'),
+				'privacy'       => utility::post('privacy'),
+			];
 
-			'show_avatar'   => utility::post('showAvatar'),
-			'quick_traffic' => utility::post('quickTraffic'),
-			'allow_plus'    => utility::post('allowPlus'),
-			'allow_minus'   => utility::post('allowMinus'),
-			'remote_user'   => utility::post('remoteUser'),
-			'24h'           => utility::post('24h'),
-		];
+		}
+
+		if(utility::post('formType') === 'member')
+		{
+			$args =
+			[
+				'show_avatar'   => utility::post('showAvatar'),
+				// 'quick_traffic' => utility::post('quickTraffic'),
+				'allow_plus'    => utility::post('allowPlus'),
+				'allow_minus'   => utility::post('allowMinus'),
+				'remote_user'   => utility::post('remoteUser'),
+				'24h'           => utility::post('24h'),
+			];
+		}
 
 		return $args;
 	}
