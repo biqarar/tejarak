@@ -226,6 +226,31 @@ trait get
 			}
 		}
 
+		if(isset($result['event_date_start_gregorian']) && isset($result['event_date_gregorian']))
+		{
+			$now                        = date("Y-m-d");
+			$start                      = $result['event_date_start_gregorian'];
+			$end                        = $result['event_date_gregorian'];
+
+			$datenow                    = new \DateTime("now");
+			$dateevent                  = new \DateTime($end);
+			$dateend                    = new \DateTime($start);
+			$interval                   = $dateevent->diff($datenow);
+			$diff                       = $dateevent->diff($dateend)->days;
+			$result['event']            = [];
+			$result['event']['days']    = $diff;
+			$result['event']['left']    = $interval->days;
+
+
+			if($datenow < $dateevent)
+			{
+				$result['event']['remain'] = $interval->days;
+			}
+			else
+			{
+				$result['event']['remain'] = $interval->days * (-1);
+			}
+		}
 		return $result;
 	}
 
