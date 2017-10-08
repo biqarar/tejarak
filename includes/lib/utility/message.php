@@ -9,6 +9,8 @@ class message
 	public $send_by       = []; // as default
 	// the message must be send
 	public $message       = [];
+	// send notify to parent
+	public $send_parent   = false;
 	// the team details
 	public $team_details  = [];
 	// the team admins details
@@ -140,6 +142,20 @@ class message
 	public function format($_foramt)
 	{
 		$this->format = $_foramt;
+		return $this;
+	}
+
+
+	/**
+	 * Sends to parent.
+	 *
+	 * @param      <type>  $_foramt  The foramt
+	 *
+	 * @return     self    ( description_of_the_return_value )
+	 */
+	public function send_parent($_send = false)
+	{
+		$this->send_parent = $_send;
 		return $this;
 	}
 

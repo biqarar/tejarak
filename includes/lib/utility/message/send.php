@@ -18,7 +18,7 @@ trait send
 	{
 		if($this->status)
 		{
-			$this->get_admins();
+			$this->must_send_to();
 
 			$this->get_admin_bridge();
 
@@ -30,6 +30,42 @@ trait send
 			if(in_array('telegram', $this->send_by))
 			{
 				$this->send_by_telegram();
+			}
+		}
+	}
+
+
+	/**
+	 * Sends to yourself and parent.
+	 *
+	 * @param      <type>  $_message  The message
+	 * @param      array   $_sort     The sort
+	 */
+	public function send_to_yourself_parent($_message, $_sort = [])
+	{
+		$must_send_to = $this->must_send_to_user_data;
+		if(is_array($must_send_to))
+		{
+			$must_send_to_user_id = array_column($must_send_to, 'id');
+			$all_admin_user_id = $this->all_admin_user_id;
+
+			$not_admin = array_diff($must_send_to_user_id, $all_admin_user_id);
+			$not_admin = array_unique($not_admin);
+
+			foreach ($not_admin as $key => $user_id)
+			{
+				if(array_key_exists($user_id, $must_send_to))
+				{
+					if(intval($this->member_id) === intval($user_id))
+					{
+
+					}
+
+					if(isset($must_send_to[$user_id]['chatid']))
+					{
+						telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
+					}
+				}
 			}
 		}
 	}
@@ -86,6 +122,7 @@ trait send
 								$first_msg = true;
 							}
 						}
+						$this->send_to_yourself_parent($message);
 					}
 					break;
 
@@ -116,6 +153,9 @@ trait send
 									telegram::sendMessage($value['chat_id'], $this->date_now(), ['sort' => 1]);
 								}
 							}
+							$this->send_to_yourself_parent($this->date_now());
+							$this->send_to_yourself_parent($message);
+
 						}
 					}
 					break;
@@ -149,6 +189,8 @@ trait send
 								telegram::sendMessage($value['chat_id'], $message, ['sort' => 2]);
 							}
 						}
+						$this->send_to_yourself_parent($this->date_now());
+						$this->send_to_yourself_parent($message);
 					}
 					break;
 
@@ -175,6 +217,8 @@ trait send
 									telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								}
 							}
+							$this->send_to_yourself_parent($message);
+
 						}
 					}
 					break;

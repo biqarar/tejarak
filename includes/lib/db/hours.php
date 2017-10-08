@@ -366,6 +366,7 @@ class hours
 		$msg->type('enter');
 		$msg->send_by('telegram');
 		$msg->send_by('sms');
+		$msg->send_parent(true);
 		// detail to use in message
 		$msg->displayname = \lib\temp::get('enter_exit_name');
 		$msg->plus        = $_args['plus'];
@@ -494,6 +495,8 @@ class hours
 
 		$msg->send_by('telegram');
 		$msg->send_by('sms');
+		$msg->send_parent(true);
+
 		$msg->send();
 
 		// \lib\utility\plan::check_feature($plan_feature);
