@@ -172,7 +172,16 @@ class model extends \content_a\main\model
 		$request['rule']        = 'admin';
 		$request['file']        = $file_code;
 		$request['team']        = isset($_SESSION['last_team_added_code']) ? $_SESSION['last_team_added_code'] : null;
-		$request['id']          = \lib\utility\shortURL::encode($this->login('id'));
+
+		$team_id = \lib\utility\shortURL::decode($request['team']);
+		if($team_id)
+		{
+			$userteam_id = \lib\db\userteams::get(['user_id' => $this->login('id'), 'team_id' => $team_id, 'limit' => 1]);
+		}
+
+	 	$userteam_id =  isset($userteam_id['id']) ? $userteam_id = $userteam_id['id'] : null;
+
+		$request['id']          = \lib\utility\shortURL::encode($userteam_id);
 
 		utility::set_request_array($request);
 		$this->user_id      = $this->login('id');

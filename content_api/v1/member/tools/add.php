@@ -105,7 +105,11 @@ trait add
 			return false;
 		}
 
-		// $args['team_id']       = $team_id;
+		if($_args['method'] === 'post')
+		{
+			$args['team_id']       = $team_id;
+		}
+
 		if($this->master_user_id)
 		{
 			$args['user_id']       = $this->master_user_id;
@@ -113,7 +117,7 @@ trait add
 
 		// check file is set or no
 		// if file is not set and the user have a file load the default file
-		if(!$args['fileid'] && !$args['fileurl'] && $_args['method'] === 'post')
+		if($_args['method'] === 'post' && (!$args['fileid'] && !$args['fileurl']) || (!$args['firstname'] || !$args['lastname']))
 		{
 			$user_detail = \lib\db\users::get(['id' => $args['user_id'], 'limit' => 1]);
 			if(isset($user_detail['fileid']))
@@ -125,7 +129,18 @@ trait add
 			{
 				$args['fileurl'] = $user_detail['fileurl'];
 			}
+
+			if(isset($user_detail['name']) && !$args['firstname'])
+			{
+				$args['firstname'] = $user_detail['name'];
+			}
+
+			if(isset($user_detail['lastname']) && !$args['lastname'])
+			{
+				$args['lastname'] = $user_detail['lastname'];
+			}
 		}
+
 
 
 		$return = [];

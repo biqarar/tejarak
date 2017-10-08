@@ -41,6 +41,11 @@ class controller extends \mvc\controller
 			return;
 		}
 
+		if($url_0 === 'setup')
+		{
+			return;
+		}
+
 		// if !the url 0 is a short url
 		if(!\lib\utility\shortURL::is($url_0))
 		{

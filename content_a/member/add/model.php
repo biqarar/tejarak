@@ -79,7 +79,7 @@ class model extends \content_a\main\model
 		$this->add_member();
 		if(debug::$status)
 		{
-			$this->redirector()->set_domain()->set_url("a/$team");
+			$this->redirector()->set_domain()->set_url("a/$team/member");
 		}
 
 	}
