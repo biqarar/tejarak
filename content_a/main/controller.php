@@ -181,6 +181,13 @@ class controller extends \mvc\controller
 					\lib\error::access(T_("Can not access to load this page"));
 				}
 				break;
+			case 'report':
+			case 'report\last':
+			case 'report\year':
+			case 'report\month':
+			case 'report\period':
+				return true;
+				break;
 
 			case 'setting':
 			case 'member':

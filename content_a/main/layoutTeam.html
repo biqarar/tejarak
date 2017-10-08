@@ -10,7 +10,9 @@
 <li><a href="{{url.baseFull}}/{{team}}"><i class="sf-home"></i>{%trans "Team Dashboard"%}</a></li>
 <li><a href="{{url.baseFull}}/{{team}}/member"><i class="sf-users"></i>{%trans "Team Members"%}</a></li>
 <li><a href="{{url.baseFull}}/{{team}}/gateway"><i class="sf-enter"></i>{%trans "Gateway"%}</a></li>
+{%endif%}
 <li><a href="{{url.baseFull}}/{{team}}/report"><i class="sf-analytics-chart-graph"></i>{%trans "Reports"%}</a></li>
+{%if is_admin%}
 <li><a href="{{url.baseFull}}/{{team}}/setting/general"><i class="sf-cogs"></i>{%trans "Settings"%}</a></li>
 
 {%if current_team.short_name%}
