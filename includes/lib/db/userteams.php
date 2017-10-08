@@ -75,6 +75,74 @@ class userteams
 
 
 	/**
+	 * Counts the number of detail.
+	 *
+	 * @param      <type>   $_ids         The identifiers
+	 * @param      boolean  $_encode_key  The encode key
+	 */
+	public static function count_detail($_ids, $_encode_key = false)
+	{
+		if(is_numeric($_ids))
+		{
+			$_ids = [$_ids];
+		}
+
+		if(!is_array($_ids))
+		{
+			return false;
+		}
+
+		$userteam_id = implode(',', $_ids);
+		$resutl = [];
+
+		$last_traffic =
+		"
+			SELECT
+				CONCAT(hourlogs.date, ' ', hourlogs.time) AS `hourdate`,
+				hourlogs.userteam_id AS `userteamid`
+			FROM
+				hourlogs
+			GROUP BY hourdate, userteamid
+			HAVING hourlogs.userteam_id IN ($userteam_id)
+		";
+		$last_traffic = \lib\db::get($last_traffic, ['userteamid', 'hourdate']);
+
+		$traffic_count = "SELECT COUNT(*) AS `count`, hourlogs.userteam_id AS `userteamid` FROM hourlogs  GROUP BY userteamid HAVING hourlogs.userteam_id IN ($userteam_id) ";
+		$traffic_count = \lib\db::get($traffic_count, ['userteamid', 'count']);
+
+		$i = max(count($last_traffic), count($traffic_count));
+
+
+		if(count($last_traffic) === $i)	 $larger_array = $last_traffic;
+		if(count($traffic_count) === $i) $larger_array = $traffic_count;
+
+		$resutl = [];
+		foreach ($larger_array as $key => $value)
+		{
+			$my_key = $key;
+			if($_encode_key)
+			{
+				$my_key = \lib\utility\shortURL::encode($key);
+			}
+
+
+
+			if(array_key_exists($key, $last_traffic))
+			{
+				$resutl[$my_key]['last_traffic'] = $last_traffic[$key];
+				$resutl[$my_key]['last_traffic_string'] = \lib\utility::humanTiming($last_traffic[$key]);
+			}
+
+			if(array_key_exists($key, $traffic_count))
+			{
+				$resutl[$my_key]['traffic_count'] = $traffic_count[$key];
+			}
+		}
+		return $resutl;
+	}
+
+
+	/**
 	 * Gets the parent of team
 	 *
 	 * @param      <type>   $_team_id  The team identifier
