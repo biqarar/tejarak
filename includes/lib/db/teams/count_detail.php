@@ -7,7 +7,7 @@ trait count_detail
 	 *
 	 * @param      <type>  $_team_id  The team identifier
 	 */
-	public static function count_detail($_team_ids, $_encode_key = false)
+	public static function count_detail($_team_ids, $_encode_key = false, $_user_id = null)
 	{
 		if(is_numeric($_team_ids))
 		{
@@ -21,7 +21,6 @@ trait count_detail
 
 		$team_ids = implode(',', $_team_ids);
 		$resutl = [];
-
 		$member_count =
 		"
 			SELECT
@@ -38,6 +37,12 @@ trait count_detail
 
 		$member_count = \lib\db::get($member_count, ['teamid', 'count']);
 
+		$user_id = null;
+		if($_user_id)
+		{
+			$user_id = " WHERE hourlogs.user_id = $_user_id ";
+		}
+
 		$last_traffic =
 		"
 			SELECT
@@ -45,12 +50,13 @@ trait count_detail
 				hourlogs.team_id AS `teamid`
 			FROM
 				hourlogs
+			$user_id
 			GROUP BY hourdate, teamid
 			HAVING hourlogs.team_id IN ($team_ids)
 		";
 		$last_traffic = \lib\db::get($last_traffic, ['teamid', 'hourdate']);
 
-		$traffic_count = "SELECT COUNT(*) AS `count`, hourlogs.team_id AS `teamid` FROM hourlogs  GROUP BY teamid HAVING hourlogs.team_id IN ($team_ids) ";
+		$traffic_count = "SELECT COUNT(*) AS `count`, hourlogs.team_id AS `teamid` FROM hourlogs $user_id GROUP BY teamid HAVING hourlogs.team_id IN ($team_ids) ";
 		$traffic_count = \lib\db::get($traffic_count, ['teamid', 'count']);
 
 		$i = max(count($member_count), count($last_traffic), count($traffic_count));
