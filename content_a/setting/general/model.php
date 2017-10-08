@@ -12,6 +12,7 @@ class model extends \content_a\main\model
 	 */
 	public function getPost()
 	{
+		$args = [];
 		if(utility::post('formType') === 'public')
 		{
 			$args =

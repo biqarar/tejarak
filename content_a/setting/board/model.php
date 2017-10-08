@@ -13,14 +13,26 @@ class model extends \content_a\main\model
 	 */
 	public function getPost()
 	{
-		$args =
-		[
-			'event_title' => utility::post('event_title'),
-			'event_date'  => utility\human::number(utility::post('event_date'), 'en'),
+		$args = [];
+		if(utility::post('formType') === 'event')
+		{
+			$args =
+			[
+				'event_title'      => utility::post('event_title'),
+				'event_date_start' => utility\human::number(utility::post('event_date_start'), 'en'),
+				'event_date'       => utility\human::number(utility::post('event_date'), 'en'),
+			];
+		}
 
-			'language'    => utility::post('language'),
-			'cardsize'    => utility::post('cardsize'),
-		];
+		if(utility::post('formType') === 'board')
+		{
+			$args =
+			[
+				'language'    => utility::post('language'),
+				'cardsize'    => utility::post('cardsize'),
+			];
+		}
+
 		return $args;
 	}
 

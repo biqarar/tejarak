@@ -205,6 +205,20 @@ trait add
 			return false;
 		}
 
+		$event_date_start  = utility::request('event_date_start');
+		if($event_date_start && strtotime($event_date_start) === false)
+		{
+			logs::set('api:team:event_date_start:invalid', $this->user_id, $log_meta);
+			debug::error(T_("Invalid event date"), 'event_date', 'arguments');
+			return false;
+		}
+
+		if($event_date_start)
+		{
+			$event_date_start = date("Y-m-d", strtotime($event_date_start));
+		}
+
+
 		$eventdate  = utility::request('event_date');
 		if($eventdate && strtotime($eventdate) === false)
 		{
@@ -363,7 +377,9 @@ trait add
 
 		$args['lang']            = $lang;
 		$args['eventtitle']      = $eventtitle;
-		$args['eventdate']       = $eventdate;
+		$args['eventdate']       = $event_date_start;
+		$args['eventenddate']    = $eventdate;
+
 		$args['manualtimeexit']  = utility::isset_request('manual_time_exit')   ? utility::request('manual_time_exit')		? 1 : 0 : null;
 		$args['manualtimeenter'] = utility::isset_request('manual_time_enter')  ? utility::request('manual_time_enter')		? 1 : 0 : null;
 		$args['sendphoto']       = utility::isset_request('send_photo')         ? utility::request('send_photo')			? 1 : 0 : null;
@@ -498,7 +514,8 @@ trait add
 
 			if(!utility::isset_request('language'))         unset($args['lang']);
 			if(!utility::isset_request('event_title'))      unset($args['eventtitle']);
-			if(!utility::isset_request('event_date'))       unset($args['eventdate']);
+			if(!utility::isset_request('event_date_start')) unset($args['eventdate']);
+			if(!utility::isset_request('event_date'))       unset($args['eventenddate']);
 			if(!utility::isset_request('manual_time_exit')) unset($args['manualtimeexit']);
 			if(!utility::isset_request('manual_time_enter'))unset($args['manualtimeenter']);
 			if(!utility::isset_request('send_photo'))       unset($args['sendphoto']);

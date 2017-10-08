@@ -138,19 +138,21 @@ trait get
 					break;
 
 				case 'eventdate':
+				case 'eventenddate':
+					$myKey = $key === 'eventenddate' ? 'event_date' : 'event_date_start';
 					if($value)
 					{
 						$strtotime            = strtotime($value);
-						$result['event_date'] = date("Y-m-d", $strtotime);
+						$result[$myKey] = date("Y-m-d", $strtotime);
 						$toGregorian          = \lib\utility\jdate::toGregorian(date("Y", $strtotime), date("m", $strtotime), date("d", $strtotime));
 					 	if(is_array($toGregorian))
 					 	{
-							$result['event_date_gregorian'] = implode('-', $toGregorian);
+							$result[$myKey. '_gregorian'] = implode('-', $toGregorian);
 					 	}
 					}
 					else
 					{
-						$result['event_date'] = null;
+						$result[$myKey] = null;
 					}
 					break;
 
