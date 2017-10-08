@@ -14,11 +14,18 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'name'       => utility::post('name'),
-			'short_name' => utility::post('short_name'),
-			'website'    => utility::post('website'),
-			'desc'       => utility::post('desc'),
-			'privacy'    => utility::post('privacy'),
+			'name'          => utility::post('name'),
+			'short_name'    => utility::post('short_name'),
+			'website'       => utility::post('website'),
+			'desc'          => utility::post('desc'),
+			'privacy'       => utility::post('privacy'),
+
+			'show_avatar'   => utility::post('showAvatar'),
+			'quick_traffic' => utility::post('quickTraffic'),
+			'allow_plus'    => utility::post('allowPlus'),
+			'allow_minus'   => utility::post('allowMinus'),
+			'remote_user'   => utility::post('remoteUser'),
+			'24h'           => utility::post('24h'),
 		];
 
 		return $args;
