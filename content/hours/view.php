@@ -81,7 +81,15 @@ class view extends \mvc\view
 
 			// get deadline datetime
 			$deadline  = strtotime($current_team['event_date_gregorian']);
-			$startDate = 20;
+			if(isset($current_team['event']['days']))
+			{
+				$startDate = intval($current_team['event']['days']);
+			}
+			else
+			{
+				$startDate = 20;
+			}
+
 			// calc deadline ramain date
 			$current_team['event_remain'] = floor(($deadline - time()) / (60 * 60 * 24));
 			if($current_team['event_remain'] <= 0)
