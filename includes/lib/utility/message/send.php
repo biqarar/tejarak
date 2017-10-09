@@ -41,7 +41,7 @@ trait send
 	 * @param      <type>  $_message  The message
 	 * @param      array   $_sort     The sort
 	 */
-	public function send_to_yourself_parent($_message, $_sort = [])
+	public function send_to_yourself_parent($_message, $_sort = [], $_send_sms = false)
 	{
 		$must_send_to = $this->must_send_to_user_data;
 		if(is_array($must_send_to))
@@ -59,6 +59,58 @@ trait send
 					if(intval($this->member_id) === intval($user_id))
 					{
 
+					}
+					else
+					{
+						if(in_array('sms', $this->send_by) && $_send_sms)
+						{
+							$temp          = $must_send_to;
+                            unset($temp[$this->member_id]);
+							$parent_mobile = array_column($temp, 'mobile');
+							$parent_mobile = array_filter($parent_mobile);
+							$parent_mobile = array_unique($parent_mobile);
+
+							// send sms
+							// \lib\utility\sms::send_array($parent_mobile, $_message);
+
+							// minus price of sms
+							$per_sms       = 15;
+							$sms_len       = mb_strlen($_message);
+							$count_sms     = ceil($sms_len / 70);
+							$price         = $count_sms * $per_sms * count($parent_mobile);
+
+							if(isset($this->team_details['creator']))
+							{
+								// get user budget
+								$user_budget = \lib\db\transactions::budget($this->team_details['creator'], ['unit' => 'toman']);
+
+								if($user_budget && is_array($user_budget))
+								{
+									$user_budget = array_sum($user_budget);
+								}
+
+								if(intval($user_budget) >= $price)
+								{
+									$transaction_set =
+							        [
+										'caller'          => 'send:sms',
+										'title'           => T_("Send sms"),
+										'user_id'         => $this->team_details['creator'],
+										'minus'           => $price,
+										'payment'         => null,
+										// 'related_foreign' => 'teams',
+										// 'related_id'      => $this->team_id,
+										'verify'          => 1,
+										'type'            => 'money',
+										'unit'            => 'toman',
+										'date'            => date("Y-m-d H:i:s"),
+										// 'invoice_id'      => $invoice_id,
+							        ];
+
+							        \lib\db\transactions::set($transaction_set);
+								}
+							}
+						}
 					}
 
 					if(isset($must_send_to[$user_id]['chatid']))
@@ -107,10 +159,10 @@ trait send
 
 		foreach ($this->message as $message_type => $message)
 		{
+			$first_msg = false;
 			switch ($message_type)
 			{
 				case 'enter':
-					$first_msg = false;
 
 					if(plan::access('telegram:enter:msg', $this->team_id))
 					{
@@ -122,7 +174,7 @@ trait send
 								$first_msg = true;
 							}
 						}
-						$this->send_to_yourself_parent($message);
+						$this->send_to_yourself_parent($message, ['sort' => 7], true);
 					}
 					break;
 
@@ -154,7 +206,7 @@ trait send
 								}
 							}
 							$this->send_to_yourself_parent($this->date_now());
-							$this->send_to_yourself_parent($message);
+							$this->send_to_yourself_parent($message, ['sort' => 7], true);
 
 						}
 					}
@@ -190,7 +242,7 @@ trait send
 							}
 						}
 						$this->send_to_yourself_parent($this->date_now());
-						$this->send_to_yourself_parent($message);
+						$this->send_to_yourself_parent($message, ['sort' => 7], true);
 					}
 					break;
 
@@ -217,7 +269,7 @@ trait send
 									telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								}
 							}
-							$this->send_to_yourself_parent($message);
+							$this->send_to_yourself_parent($message, ['sort' => 7], true);
 
 						}
 					}
