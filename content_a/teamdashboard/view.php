@@ -42,6 +42,7 @@ class view extends \content_a\main\view
 			}
 			$dashboard_detail['last_time_chart'] = json_encode($chart, JSON_UNESCAPED_UNICODE);
 		}
+		$dashboard_detail['month_detail'] = \lib\utility\jdate::month_precent();
 
 		$this->data->dashboard_detail = $dashboard_detail;
 
