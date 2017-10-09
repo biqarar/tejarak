@@ -18,7 +18,6 @@
 {%block psidebar%}
 <div class="cbox normal">
 
-
   <a class="vcard mA10 shadow {{cardColor}}" href='{{url.baseFull}}/{{team}}/member/avatar/{{member.id}}'>
     <img src="{{member.file}}" alt="{{member.name}}" class="pA10-f">
     <div class="content">
@@ -29,9 +28,8 @@
 
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/general/{{member.id}}'>{%trans "General Detail"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/identify/{{member.id}}'>{%trans "Personnel Card"%}</a>
- <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/observer/{{member.id}}'>{%trans "Observer and parent"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/permission/{{member.id}}'>{%trans "Special Access"%}</a>
- <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/personal/{{member.id}}'>{%trans "Personal"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/observer/{{member.id}}'>{%trans "Observer or Parent"%}</a>
 </div>
 {%endblock%}
 
@@ -199,9 +197,49 @@
 {%endblock%}
 
 
+{%block iParentMobile%}
+<label for="title">{%trans "Mobile of observer or parent"%}</label>
+<div class="input">
+ <input type="tel" name="parent_mobile" placeholder='{%trans "Parent mobile"%}' required>
+</div>
+{%endblock%}
 
 
+{%block iParentTitle%}
+<label for="title">{%trans "Title of observer"%}</label>
+<select name="title" class="select">
+ <option value="">{%trans "Please select one items"%}</option>
+ <option value="father">{%trans "Father"%}</option>
+ <option value="mother">{%trans "Mother"%}</option>
+ <option value="sister">{%trans "Sister"%}</option>
+ <option value="brother">{%trans "Brother"%}</option>
+ <option value="grandfather">{%trans "Grandfather"%}</option>
+ <option value="grandmother">{%trans "Grandmother"%}</option>
+ <option value="aunt">{%trans "Aunt"%}</option>
+ <option value="husband of the aunt">{%trans "Husband of the aunt"%}</option>
+ <option value="uncle">{%trans "Uncle"%}</option>
+ <option value="boy">{%trans "Boy"%}</option>
+ <option value="girl">{%trans "Girl"%}</option>
+ <option value="spouse">{%trans "Spouse"%}</option>
+ <option value="stepmother">{%trans "Stepmother"%}</option>
+ <option value="stepfather">{%trans "Stepfather"%}</option>
+ <option value="neighbor">{%trans "Neighbor"%}</option>
+ <option value="teacher">{%trans "Teacher"%}</option>
+ <option value="friend">{%trans "Friend"%}</option>
+ <option value="boss">{%trans "Boss"%}</option>
+ <option value="supervisor">{%trans "Supervisor"%}</option>
+ <option value="child">{%trans "Child"%}</option>
+ <option value="grandson">{%trans "Grandson"%}</option>
+ <option value="custom">{%trans "Custom"%}</option>
+</select>
 
+<div class="mT10" data-response="title" data-response-where="custom" data-response-effect='slide' data-response-hide>
+ <label for="othertitle">{%trans "Custom title"%}</label>
+ <div class="input">
+  <input type="text" name="othertitle" placeholder='{%trans "Other title"%}' class="">
+ </div>
+</div>
+{%endblock%}
 
 
 
