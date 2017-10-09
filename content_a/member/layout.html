@@ -94,11 +94,16 @@
 
 
 {%block iRole%}
-<label for='rule'>{%trans "Role of this member"%}</label>
-<select name="rule" class="select">
- <option value="user" {%if member.rule == 'user'%} selected {%endif%} >{%trans "User"%}</option>
- <option value="admin" {%if member.rule == 'admin'%} selected {%endif%} >{%trans "Admin"%}</option>
-</select>
+<label class="mT25" for='rule'>{%trans "Role of this member in team"%}</label>
+<div class="radio1">
+ <input type="radio" id="r-user" name="rule" value="user" {%if member.rule == 'user' or not member.rule%} checked{%endif%} >
+ <label for="r-user">{%trans "User"%} <small>{%trans "Only can see personal report"%}</small></label>
+</div>
+
+<div class="radio1">
+ <input type="radio" id="r-admin" name="rule" value="admin" {%if member.rule == 'admin' %} checked{%endif%}>
+ <label for="r-admin">{%trans "Admin"%} <small>{%trans "All permission like owner except billing of team"%}</small></label>
+</div>
 {%endblock%}
 
 
