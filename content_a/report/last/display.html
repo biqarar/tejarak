@@ -17,7 +17,7 @@
       <th>{%trans "Personal work"%}</th>
       <th>{%trans "Mission"%}</th>
       <th>{%trans "Accepted"%}</th>
-      <th>{%trans "Type"%}</th>
+      <!-- <th>{%trans "Type"%}</th> -->
       <!-- <th>{%trans "Request Edit"%}</th> -->
     </tr>
   </thead>
@@ -40,7 +40,7 @@
       <td xclass="c s0">{{value.plus | humantime | fitNumber}}</td>
       <td xclass="c">{{value.accepted | humantime | fitNumber}}</td>
 {%endif%}
-      <td xclass="c s0">{%set myType = value.type %}{%trans myType%}</td>
+      <!-- <td xclass="c s0">{%set myType = value.type %}{%trans myType%}</td> -->
       <!-- <td xclass="c"><a href="{{url.baseFull}}/{{team_code}}/request/hour/{{value.id}}">{%trans "Request Edit"%}</a></td> -->
     </tr>
     {%endfor%}

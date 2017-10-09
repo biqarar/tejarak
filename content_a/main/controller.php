@@ -54,6 +54,7 @@ class controller extends \mvc\controller
 
 		$team_id    = $url_0;
 		$rule       = 'user';
+		\lib\temp::set('team_code_url', $url_0);
 
 		$team_id = \lib\utility\shortURL::decode($team_id);
 
@@ -127,7 +128,6 @@ class controller extends \mvc\controller
 		}
 
 		$check_controller = '\\content_a\\'. $raw_url .'\\controller';
-
 		if(class_exists($check_controller))
 		{
 			$this->have_permission($raw_url);

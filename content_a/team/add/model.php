@@ -18,69 +18,31 @@ class model extends \content_a\main\model
 		$args =
 		[
 			'name'              => utility::post('name'),
-			'website'           => utility::post('website'),
+			// 'website'           => utility::post('website'),
 			'privacy'           => utility::post('privacy'),
 			'short_name'        => utility::post('shortName'),
 			'desc'              => utility::post('desc'),
-			'show_avatar'       => utility::post('showAvatar'),
-			'quick_traffic'     => utility::post('quickTraffic'),
-			'allow_plus'        => utility::post('allowPlus'),
-			'allow_minus'       => utility::post('allowMinus'),
-			'remote_user'       => utility::post('remoteUser'),
-			'24h'               => utility::post('24h'),
-			'manual_time_enter' => utility::post('manual_time_enter'),
-			'manual_time_exit'  => utility::post('manual_time_exit'),
-			'language'          => utility::post('language'),
-			'event_title'       => utility::post('event_title'),
-			'event_date'        => utility\human::number(utility::post('event_date'), 'en'),
-			'cardsize'          => utility::post('cardsize'),
-			'allow_desc_enter'  => utility::post('allowDescEnter'),
-			'allow_desc_exit'   => utility::post('allowDescExit'),
+			// 'show_avatar'       => utility::post('showAvatar'),
+			// 'quick_traffic'     => utility::post('quickTraffic'),
+			// 'allow_plus'        => utility::post('allowPlus'),
+			// 'allow_minus'       => utility::post('allowMinus'),
+			// 'remote_user'       => utility::post('remoteUser'),
+			// '24h'               => utility::post('24h'),
+			// 'manual_time_enter' => utility::post('manual_time_enter'),
+			// 'manual_time_exit'  => utility::post('manual_time_exit'),
+			// 'language'          => utility::post('language'),
+			// 'event_title'       => utility::post('event_title'),
+			// 'event_date'        => utility\human::number(utility::post('event_date'), 'en'),
+			// 'cardsize'          => utility::post('cardsize'),
+			// 'allow_desc_enter'  => utility::post('allowDescEnter'),
+			// 'allow_desc_exit'   => utility::post('allowDescExit'),
 			// 'parent'      => utility::post('the-parent'),
 		];
 
-		if(utility::files('logo'))
-		{
-			$args['logo'] = $this->upload_logo();
-		}
 
-		/**
-		 * if the user not check parent check box
-		 * not save the parent
-		 */
-		// if(!utility::post('parent'))
-		// {
-		// 	$args['parent'] = null;
-		// }
-
-		// if(utility::post('parent') && !utility::post('the-parent'))
-		// {
-		// 	debug::error(T_("Please select the parent team"), 'the-parent');
-		// 	return false;
-		// }
 		return $args;
 	}
 
-
-	/**
-	 * Uploads a logo.
-	 *
-	 * @return     boolean  ( description_of_the_return_value )
-	 */
-	public function upload_logo()
-	{
-		if(utility::files('logo'))
-		{
-			$this->user_id = $this->login('id');
-			utility::set_request_array(['upload_name' => 'logo']);
-			$uploaded_file = $this->upload_file(['debug' => false]);
-			if(isset($uploaded_file['code']))
-			{
-				return $uploaded_file['code'];
-			}
-		}
-		return null;
-	}
 
 
 	/**
@@ -109,44 +71,6 @@ class model extends \content_a\main\model
 				$this->redirector()->set_domain()->set_url("a/$new_team_code");
 			}
 		}
-
-	}
-
-
-	/**
-	 * load team data to load for edit
-	 *
-	 * @param      <type>  $_code  The team
-	 *
-	 * @return     <type>  ( description_of_the_return_value )
-	 */
-	public function edit($_code)
-	{
-		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => $_code]);
-		$result = $this->get_team();
-		// var_dump($result);exit();
-		return $result;
-	}
-
-
-	/**
-	 * Posts an add.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function post_edit($_args)
-	{
-		$code = \lib\router::get_url(0);
-
-		$request       = $this->getPost();
-		$this->user_id = $this->login('id');
-		$request['id'] = $code;
-
-		utility::set_request_array($request);
-
-		// THE API ADD TEAM FUNCTION BY METHOD PATHC
-		$this->add_team(['method' => 'patch']);
 	}
 }
 ?>

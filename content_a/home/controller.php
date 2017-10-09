@@ -10,8 +10,25 @@ class controller extends \content_a\main\controller
 	{
 		parent::_route();
 
+
 		// list of all team the user is them
 		$this->get(false, 'dashboard')->ALL();
+
+		// check if the user is gateway redirect to hours page
+		if(!$this->login('mobile') && $this->login('parent') && $this->login('username') && $this->login('password'))
+		{
+			$check_is_gateway = \lib\db\userteams::get(['user_id' => $this->login('id'), 'rule' => 'gateway', 'limit'=> 1]);
+			if(isset($check_is_gateway['team_id']))
+			{
+				$shortname = \lib\db\teams::get_by_id($check_is_gateway['team_id']);
+				if(isset($shortname['shortname']))
+				{
+					$new_url = $this->url('base'). '/'. $shortname['shortname'];
+					$this->redirector($new_url)->redirect();
+					return;
+				}
+			}
+		}
 
 		// if setup is null redirect to setup page
 		// The user is the first time he uses the system,
@@ -31,20 +48,6 @@ class controller extends \content_a\main\controller
 			}
 		}
 
-		// check if the user is gateway redirect to hours page
-		if(!$this->login('mobile') && $this->login('parent') && $this->login('username') && $this->login('password'))
-		{
-			$check_is_gateway = \lib\db\userteams::get(['user_id' => $this->login('id'), 'rule' => 'gateway', 'limit'=> 1]);
-			if(isset($check_is_gateway['team_id']))
-			{
-				$shortname = \lib\db\teams::get_by_id($check_is_gateway['team_id']);
-				if(isset($shortname['shortname']))
-				{
-					$this->redirector($this->view()->url->base. '/'. $shortname['shortname'])->redirect();
-					return;
-				}
-			}
-		}
 	}
 }
 ?>

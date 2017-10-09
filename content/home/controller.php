@@ -46,6 +46,7 @@ class controller extends \content\main\controller
 		'daily',
 		'account',
 		'for',
+		'files',
 
 	];
 

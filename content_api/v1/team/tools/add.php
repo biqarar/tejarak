@@ -459,11 +459,13 @@ trait add
 
 			if($_args['auto_insert_userteam'])
 			{
-				$userteam_args                = [];
-				$userteam_args['user_id']     = $this->user_id;
-				$userteam_args['team_id']     = $team_id;
-				$userteam_args['rule']        = 'admin';
-				$userteam_args['displayname'] = 'You';
+				$userteam_args                    = [];
+				$userteam_args['user_id']         = $this->user_id;
+				$userteam_args['team_id']         = $team_id;
+				$userteam_args['rule']            = 'admin';
+				$userteam_args['displayname']     = T_('You');
+				$userteam_args['reportdaily']     = 1;
+				$userteam_args['reportenterexit'] = 1;
 				\lib\db\userteams::insert($userteam_args);
 			}
 

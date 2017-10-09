@@ -8,7 +8,7 @@ class controller extends \content_a\main\controller
 	 */
 	public function _route()
 	{
-		parent::_route();
+		// parent::_route();
 
 		/**
 		 * the router remove first url

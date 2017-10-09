@@ -76,7 +76,7 @@
   </div>
 
 {%if current_team.event_date%}
-  <div class="deadline {{current_team.event_class}}"  title='{{current_team.event_date | jdate("d/m/Y")}}'>
+  <div class="deadline {{current_team.event_class}}"  title='{{current_team.event_date}}'>
 {%if current_team.event_title%}
    <div class="title">{{current_team.event_title}}</div>
 {%endif%}
