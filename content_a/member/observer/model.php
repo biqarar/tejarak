@@ -43,6 +43,15 @@ class model extends \content_a\member\model
 	{
 		$this->user_id                = $this->login('id');
 
+		if(utility::post('remove'))
+		{
+			utility::set_request_array(['id' => utility::post('remove')]);
+			$this->delete_parent();
+			$this->redirector($this->url('full'));
+			return ;
+
+
+		}
 
 		$user_id =
 		[

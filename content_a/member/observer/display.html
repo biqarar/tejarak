@@ -34,7 +34,7 @@
 {%endif%}
     </div>
     <div>
-     <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"remove": {{value.id}} }' class="fc-red">{%trans "Remove"%}</a>
+     <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"remove": "{{value.id|shortURL("encode")}}" }' class="fc-red">{%trans "Remove"%}</a>
     </div>
 
   </div>
