@@ -16,7 +16,7 @@ class twigTransTerms
 	echo T_("Email");                                                                 // Line 27
 	echo T_("Message");                                                               // Line 32
 	echo T_("Your Message");                                                          // Line 33
-	echo T_("Send");                                                                  // Line 58
+	echo T_("Send");                                                                  // Line 37
 	echo T_("How to contact us");                                                     // Line 45
 	echo T_("tejarak");                                                               // Line 51
 	echo T_("Ermile, Floor2, Yas Building");                                          // Line 54
@@ -162,14 +162,16 @@ class twigTransTerms
 
 	//------------------------------------------content\template\static\changelog.html
 	echo T_("Change log of Tejarak");                                                 // Line 3
-	echo T_("We were born to do Best!");                                              // Line 53
+	echo T_("We were born to do Best!");                                              // Line 63
 	echo T_("We are Developers, please wait!");                                       // Line 20
 	echo T_("Date");                                                                  // Line 26
-	echo T_("Version 1 of Tejarak is comming");                                       // Line 26
-	echo T_("Beta version of Tejarak released");                                      // Line 31
-	echo T_("Finally Tejarak logo is accepted and we started branding");              // Line 38
-	echo T_("Alfa version of Tejarak released");                                      // Line 44
-	echo T_("The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> domains registered.");// Line 48
+	echo T_("Version 2 of Tejarak released");                                         // Line 26
+	echo T_("Version 1 of Tejarak released");                                         // Line 31
+	echo T_("Version 1 of Tejarak is coming");                                        // Line 36
+	echo T_("Beta version of Tejarak released");                                      // Line 41
+	echo T_("Finally Tejarak logo is accepted and we started branding");              // Line 48
+	echo T_("Alfa version of Tejarak released");                                      // Line 54
+	echo T_("The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> domains registered.");// Line 58
 
 	//-----------------------------------------content\template\static\enterprise.html
 	echo T_("Enterprise");                                                            // Line 3
@@ -392,36 +394,6 @@ class twigTransTerms
 	echo T_("traffic");                                                               // Line 32
 	echo T_("Owner of team");                                                         // Line 42
 
-	//--------------------------------------------------content_a\houredit\detail.html
-	echo T_("Start date");                                                            // Line 13
-	echo T_("Start time");                                                            // Line 7
-	echo T_("End date");                                                              // Line 14
-	echo T_("End time");                                                              // Line 45
-	echo T_("Response");                                                              // Line 18
-
-	//-------------------------------------------------content_a\houredit\display.html
-	echo T_("Request Edit");                                                          // Line 44
-	echo T_("Request list");                                                          // Line 8
-	echo T_("Request to edit your hours");                                            // Line 17
-	echo T_("You can send change request time");                                      // Line 20
-	echo T_("Start Date");                                                            // Line 26
-	echo T_("Start Time");                                                            // Line 10
-	echo T_("End Date");                                                              // Line 27
-	echo T_("End Time");                                                              // Line 12
-	echo T_("You can send some description for this problem");                        // Line 49
-
-	//----------------------------------------------------content_a\houredit\list.html
-	echo T_("Action");                                                                // Line 8
-	echo T_("Type");                                                                  // Line 29
-	echo T_("Set Response");                                                          // Line 77
-	echo T_("Accept");                                                                // Line 125
-	echo T_("Reject");                                                                // Line 133
-	echo T_("Remove");                                                                // Line 45
-	echo T_("More");                                                                  // Line 34
-	echo T_("Edit");                                                                  // Line 47
-	echo T_("Add");                                                                   // Line 52
-	echo T_("No description");                                                        // Line 57
-
 	//-----------------------------------------------------content_a\main\display.html
 	echo T_("Add team");                                                              // Line 6
 	echo T_("List team");                                                             // Line 9
@@ -437,7 +409,7 @@ class twigTransTerms
 	echo T_("Gateway");                                                               // Line 12
 	echo T_("Reports");                                                               // Line 14
 	echo T_("Settings");                                                              // Line 16
-	echo T_("Board");                                                                 // Line 19
+	echo T_("Board");                                                                 // Line 81 Seperate
 
 	//----------------------------------------------------content_a\main\teamLink.html
 	echo T_("Show member");                                                           // Line 1
@@ -466,6 +438,7 @@ class twigTransTerms
 	echo T_("Allow set desc in exit");                                                // Line 270
 	echo T_("Active");                                                                // Line 109
 	echo T_("Deactive");                                                              // Line 114
+	echo T_("Remove");                                                                // Line 35
 	echo T_("Visibility");                                                            // Line 33
 	echo T_("Visible");                                                               // Line 129
 	echo T_("Hidden");                                                                // Line 134
@@ -476,6 +449,8 @@ class twigTransTerms
 	echo T_("Qrcode");                                                                // Line 157
 	echo T_("Scan Qrcode here...");                                                   // Line 159
 	echo T_("Advance");                                                               // Line 405
+	echo T_("Edit");                                                                  // Line 47
+	echo T_("Add");                                                                   // Line 52
 	echo T_("Parent");                                                                // Line 314
 	echo T_("Add new parent");                                                        // Line 58
 	echo T_("Parent mobile");                                                         // Line 203
@@ -544,7 +519,7 @@ class twigTransTerms
 
 	//------------------------------------------content_a\member\observer\display.html
 	echo T_("Add new observer");                                                      // Line 6
-	echo T_("List of observer");                                                      // Line 15
+	echo T_("List of observer");                                                      // Line 16
 
 	//------------------------------------------content_a\member\personal\display.html
 
@@ -558,6 +533,8 @@ class twigTransTerms
 	echo T_("Be sure to take control of individuals and managers after transferring ownership of the team");// Line 67
 	echo T_("Usage of this team now:");                                               // Line 68
 	echo T_("Are you accept?");                                                       // Line 115
+	echo T_("Accept");                                                                // Line 72
+	echo T_("Reject");                                                                // Line 81
 
 	//--------------------------------------------------content_a\profile\display.html
 	echo T_("Your profile information");                                              // Line 7
@@ -638,6 +615,9 @@ class twigTransTerms
 	echo T_("Diff");                                                                  // Line 33
 	echo T_("Mission");                                                               // Line 18
 	echo T_("Accepted");                                                              // Line 19
+	echo T_("Type");                                                                  // Line 29
+	echo T_("Request Edit");                                                          // Line 44
+	echo T_("Add request");                                                           // Line 55
 	echo T_("Export");                                                                // Line 52
 
 	//---------------------------------------------content_a\report\month\display.html
@@ -650,9 +630,31 @@ class twigTransTerms
 
 	//--------------------------------------------content_a\report\period\display.html
 	echo T_("Filter by get data of specefic time");                                   // Line 11
+	echo T_("Start date");                                                            // Line 19
+	echo T_("End date");                                                              // Line 27
+	echo T_("Start Date");                                                            // Line 9
+	echo T_("End Date");                                                              // Line 11
 
 	//----------------------------------------------content_a\report\year\display.html
 	echo T_("Export as CSV file");                                                    // Line 53
+
+	//--------------------------------------------------content_a\request\display.html
+	echo T_("Action");                                                                // Line 8
+	echo T_("Start Time");                                                            // Line 10
+	echo T_("End Time");                                                              // Line 12
+	echo T_("Response");                                                              // Line 18
+	echo T_("Set Response");                                                          // Line 77
+	echo T_("More");                                                                  // Line 34
+	echo T_("No description");                                                        // Line 57
+
+	//---------------------------------------------------content_a\request\layout.html
+	echo T_("Send request");                                                          // Line 105
+	echo T_("Start your work in this team");                                          // Line 17
+	echo T_("Event date");                                                            // Line 300
+	echo T_("End your work in this team");                                            // Line 25
+	echo T_("Start time");                                                            // Line 36
+	echo T_("End time");                                                              // Line 46
+	echo T_("You can send some description for this request");                        // Line 54
 
 	//-----------------------------------------------content_a\sendnotify\display.html
 	echo T_("Type your message here...");                                             // Line 7
@@ -661,7 +663,6 @@ class twigTransTerms
 	//------------------------------------------content_a\setting\-event-\display.html
 	echo T_("Special event day counter");                                             // Line 8
 	echo T_("Event title");                                                           // Line 284
-	echo T_("Event date");                                                            // Line 300
 
 	//-----------------------------------------content_a\setting\-member-\display.html
 	echo T_("Default setting for new members of team");                               // Line 10
@@ -790,7 +791,6 @@ class twigTransTerms
 	echo T_("You can give over your team to another people.");                        // Line 97
 	echo T_("If you are not sure, leave this page!");                                 // Line 99
 	echo T_("New owner mobile");                                                      // Line 103
-	echo T_("Send request");                                                          // Line 105
 
 	//-----------------------------------------------------content_a\setup\setup1.html
 	echo T_("Welcome to Tejarak initialization process!");                            // Line 7
@@ -926,9 +926,10 @@ class twigTransTerms
 	echo T_("centeral");                                                              // Line 75 Seperate
 	echo T_("Pay by zarinpal payment");                                               // Line 77 Seperate
 	echo T_("Pay by parsian payment");                                                // Line 78 Seperate
-	echo T_(" ");                                                                     // Line 82 Seperate
-	echo T_("money");                                                                 // Line 84 Seperate
-	echo T_("toman");                                                                 // Line 85 Seperate
+	echo T_("General");                                                               // Line 80 Seperate
+	echo T_(" ");                                                                     // Line 85 Seperate
+	echo T_("money");                                                                 // Line 87 Seperate
+	echo T_("toman");                                                                 // Line 88 Seperate
 
 	//---------------------public_html\static\siftal\fonts\siftal\icons-reference.html
 
