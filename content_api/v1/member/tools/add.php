@@ -117,7 +117,7 @@ trait add
 
 		// check file is set or no
 		// if file is not set and the user have a file load the default file
-		if($_args['method'] === 'post' && (!$args['fileid'] && !$args['fileurl']) || (!$args['firstname'] || !$args['lastname']))
+		if($this->master_user_id && $_args['method'] === 'post' && ((!$args['fileid'] && !$args['fileurl']) || (!$args['firstname'] || !$args['lastname'])))
 		{
 			$user_detail = \lib\db\users::get(['id' => $args['user_id'], 'limit' => 1]);
 			if(isset($user_detail['fileid']))

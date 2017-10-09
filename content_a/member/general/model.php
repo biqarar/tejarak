@@ -46,6 +46,11 @@ class model extends \content_a\member\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
+
+		if(debug::$status)
+		{
+			$this->redirector($this->url('full'));
+		}
 	}
 }
 ?>
