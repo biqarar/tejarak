@@ -1,0 +1,58 @@
+{%extends display.adminTeam%}
+
+
+
+
+
+
+
+
+{%block isendrequest%}
+<button class="btn primary block mT20">{%trans "Send request"%}</button>
+{%endblock%}
+
+
+
+{%block iEventDateStart%}
+<label for="startdate">{%trans "Start date"%} <small>{%trans "Start your work in this team"%}</small></label>
+<div class="input">
+  <input type="text" name="start_date" id="startdate" placeholder='{%trans "Start date"%}' {%if site.currentlang == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.startdate_gregorian%} value="{{current_team.startdate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
+</div>
+{%endblock%}
+
+
+{%block iEventDateEnd%}
+<label for="enddate">{%trans "End date"%} <small>{%trans "End your work in this team"%}</small></label>
+<div class="input">
+  <input type="text" name="end_date" id="enddate" placeholder='{%trans "End date"%}' {%if site.currentlang == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.enddate_gregorian%} value="{{current_team.enddate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
+</div>
+{%endblock%}
+
+
+{%block iAutoTrafficReportHourStart%}
+
+<label for="start_time">{%trans "Start time"%}</label>
+<div class="input clockpicker">
+  <input type="text" name="start_time" id="start_time" placeholder='{%trans "Start time"%}' value="{{current_teams.timed_auto_report}}">
+</div>
+{%endblock%}
+
+
+
+{%block iAutoTrafficReportHourEnd%}
+
+<label for="end_time">{%trans "End time"%}</label>
+<div class="input clockpicker">
+  <input type="text" name="end_time" id="end_time" placeholder='{%trans "End time"%}' value="{{current_teams.timed_auto_report}}">
+</div>
+{%endblock%}
+
+{%block iRequestDescription%}
+
+   <label for="desc">{%trans "Description"%}</label>
+       <div class="input">
+         <textarea  name="desc" id="desc" placeholder='{%trans "You can send some description for this request"%}' class="txt" rows="3"  maxlength='3000'>{{myTime.desc}}</textarea>
+       </div>
+{%endblock%}
+
+

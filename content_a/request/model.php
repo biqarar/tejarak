@@ -1,5 +1,5 @@
 <?php
-namespace content_a\houredit;
+namespace content_a\request;
 use \lib\debug;
 use \lib\utility;
 
@@ -45,7 +45,7 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		utility::set_request_array(['id' => $hourrequest_id]);
 		$this->hourrequest_delete(['method' => 'delete']);
-		$this->redirector($this->url('baseFull'). "/$team_id/houredit/list")->redirect();
+		$this->redirector($this->url('baseFull'). "/$team_id/request/list")->redirect();
 	}
 
 
@@ -60,7 +60,7 @@ class model extends \content_a\main\model
 	{
 		$this->user_id = $this->login('id');
 		utility::set_request_array($_request);
-		return $this->get_houredit_detail();
+		return $this->get_request_detail();
 	}
 
 
@@ -91,7 +91,7 @@ class model extends \content_a\main\model
 	{
 		utility::set_request_array($_args);
 		$this->user_id = $this->login('id');
-		$result = $this->get_houredit();
+		$result = $this->get_request();
 
 		if(!$result)
 		{
@@ -125,7 +125,7 @@ class model extends \content_a\main\model
 
 		utility::set_request_array($request);
 		$this->user_id = $this->login('id');
-		$this->add_houredit();
+		$this->add_request();
 	}
 }
 ?>

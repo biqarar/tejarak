@@ -1,0 +1,20 @@
+{%extends "content_a/request/layout.html"%}
+
+
+{%block pageContent%}
+<div class="f justify-center">
+
+  <div class="c6 s12">
+    <form method="post" class="cbox">
+		{{block('iEventDateStart')}}
+		{{block('iAutoTrafficReportHourStart')}}
+		{{block('iEventDateEnd')}}
+		{{block('iAutoTrafficReportHourEnd')}}
+		{{block('iRequestDescription')}}
+		{{block('isendrequest')}}
+    </form>
+  </div>
+</div>
+{%endblock%}
+
+
