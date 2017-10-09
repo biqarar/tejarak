@@ -11,13 +11,14 @@
 </form>
 
 
+{%if member_parent%}
 <div class="cbox">
   <h4 class="mB25">{%trans "List of observer"%}</h4>
 {%for key, value in member_parent%}
 {%set my_title = value.title | capitalize %}
 
   <div class="icard">
-    <a class="icard-avatar" href="{{url.baseFull}}/student/edit={{value.id}}">
+    <a class="size-we50 size-he50 pA2p5" href="{{url.baseFull}}/student/edit={{value.id}}">
       {%if value.fileurl%}
         <img src="{{value.fileurl}}" alt="{{value.name}} {{value.lastname}}">
       {%else%}
@@ -25,26 +26,21 @@
       {%endif%}
     </a>
 
-    <div class="icard-owner">
-      {{value.displayname}}
+    <div class="f-column align-start fc-black">{{value.displayname}}<small></small></div>
+    <div class="vdivider">{%trans my_title%}</div>
+    <div class="justify-start">
+{%if value.mobile%}
+      <span class="icon sf-mobile fs18"></span> {{value.mobile|fitNumber}}
+{%endif%}
+    </div>
+    <div>
+     <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"remove": {{value.id}} }' class="fc-red">{%trans "Remove"%}</a>
     </div>
 
-    <div>
-      {%set my_title = value.title | capitalize %}
-      {%trans my_title%}
-    </div>
-
-    <div>
-      {%if value.mobile%}<span class="icon sf-mobile fs18"></span>{%endif%}
-      {{value.mobile|fitNumber}}
-    </div>
-
-    <div>
-      <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"remove": {{value.id}} }' class="fc-red">{%trans "Remove"%}</a>
-    </div>
   </div>
 {%endfor%}
 </div>
+{%endif%}
 
 {%endblock%}
 
