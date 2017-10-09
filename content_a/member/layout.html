@@ -1,0 +1,82 @@
+{%extends display.adminTeam%}
+
+{%block pageContent%}
+<div class="f">
+ <div class="cauto s12 pA10">
+{{block("psidebar")}}
+ </div>
+ <div class="c s12 pA10">
+{%block data%}{%endblock%}
+ </div>
+</div>
+{%endblock%}
+
+
+
+
+
+{%block psidebar%}
+<div class="cbox normal">
+
+
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.baseFull}}/{{team}}/member/avatar/{{member.id}}'>
+    <img src="{{member.file}}" alt="{{member.name}}" class="pA10-f">
+    <div class="content">
+      <div class="header">{{member.displayname}}</div>
+        <div class="meta"><span>{{member.postion}}</span></div>
+    </div>
+  </a>
+
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/general/{{member.id}}'>{%trans "General Detail"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/identify/{{member.id}}'>{%trans "Identify"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/observer/{{member.id}}'>{%trans "Observer and parent"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/permission/{{member.id}}'>{%trans "Permission"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/personal/{{member.id}}'>{%trans "Personal"%}</a>
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+{%block iadd%}
+<button class="btn primary block mT20">{%trans "Add"%}</button>
+{%endblock%}
+
+
+{%block isave%}
+<button class="btn primary block mT20">{%trans "Save"%}</button>
+{%endblock%}
+
+{%block iInsert%}
+<button class="btn primary block mT20">{%trans "Insert"%}</button>
+{%endblock%}
+
+{%block iSaveAll%}
+<button class="btn primary block mT20">{%trans "Save All"%}</button>
+{%endblock%}
+
+
+{%block iAvatar%}
+ <div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="avatar" id="avatar1" data-preview data-max="500">
+ <label for="avatar1" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
+{%if member.file%}
+   <img src="{{member.file}}" alt="{{member.displayname}}" id="avatarPreview">
+{%endif%}
+ </label>
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+

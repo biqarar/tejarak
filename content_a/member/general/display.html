@@ -1,12 +1,10 @@
-{%extends display.adminTeam%}
+{%extends "content_a/member/layout.html"%}
 
-{%block pageContent%}
-  <div class="f justify-center">
-    <div class="c8 s12">
-      <div class="cbox">
 
-        <form method="post" enctype="multipart/form-data">
-          <div class="f">
+{%block data%}
+<form class="cbox" method="post" enctype="multipart/form-data">
+
+ <div class="f">
             <div class="c s12">
               <label for='fname'>{%trans "Name"%} *</label>
               <div class="input">
@@ -72,14 +70,7 @@
 
 
 
-          <button class="btn primary block mT25">{%if general_mode%}{%trans "general"%}{%else%}{%trans "Add"%}{%endif%}</button>
+{{block("isave")}}
 
-
-        </form>
-      </div>
-    </div>
-
-  </div>
+</form>
 {%endblock%}
-
-

@@ -1,14 +1,10 @@
-{%extends display.adminTeam%}
-
-{%block pageContent%}
-  <div class="f justify-center">
-    <div class="c8 s12">
-      <div class="cbox">
-
-        <form method="post" enctype="multipart/form-data">
+{%extends "content_a/member/layout.html"%}
 
 
-            <p>{%trans "Extra setting for special use"%}</p>
+{%block data%}
+<form class="cbox" method="post" enctype="multipart/form-data">
+
+  <p>{%trans "Extra setting for special use"%}</p>
 
              <label for="firstName">{%trans "First name"%}</label>
              <div class="input">
@@ -25,16 +21,7 @@
                <input type="text" name="personnelcode" id="personnelcode" placeholder='{%trans "Personnel code"%}' value="{{member.personnel_code}}" maxlength='30'>
              </div>
 
+{{block("isave")}}
 
-
-          <button class="btn primary block mT25">{%if personal_mode%}{%trans "personal"%}{%else%}{%trans "Add"%}{%endif%}</button>
-
-
-        </form>
-      </div>
-    </div>
-
-  </div>
+</form>
 {%endblock%}
-
-

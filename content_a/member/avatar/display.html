@@ -1,23 +1,13 @@
-{%extends display.adminTeam%}
+{%extends "content_a/member/layout.html"%}
 
-{%block pageContent%}
-  <div class="f justify-center">
-    <div class="c8 s12">
-      <div class="cbox">
-        <form method="post" enctype="multipart/form-data">
-            <div class="cauto s12">
-              <div class="input preview pA10 pT25">
-                <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview data-max="500">
-                <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-                {%if member.file%}
-                  <img src="{{member.file}}" alt="{{member.displayname}}" id="avatarPreview">
-                {%endif%}
-                </label>
-              </div>
-            </div>
-          <button class="btn primary block mT25">{%if avatar_mode%}{%trans "avatar"%}{%else%}{%trans "Add"%}{%endif%}</button>
-        </form>
-      </div>
-    </div>
-  </div>
+
+{%block data%}
+<form class="cbox" method="post" enctype="multipart/form-data">
+
+{{block("iAvatar")}}
+
+{{block("isave")}}
+
+</form>
 {%endblock%}
+

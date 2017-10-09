@@ -1,11 +1,8 @@
-{%extends display.adminTeam%}
+{%extends "content_a/member/layout.html"%}
 
-{%block pageContent%}
-  <div class="f justify-center">
-    <div class="c8 s12">
-      <div class="cbox">
 
-        <form method="post" enctype="multipart/form-data">
+{%block data%}
+<form class="cbox" method="post" >
 
      <div class="f g1">
       {%if member_parent%}
@@ -71,15 +68,8 @@
           </div>
       </div>
 
+{{block("isave")}}
 
-          <button class="btn primary block mT25">{%if observer_mode%}{%trans "observer"%}{%else%}{%trans "Add"%}{%endif%}</button>
-
-
-        </form>
-      </div>
-    </div>
-
-  </div>
+</form>
 {%endblock%}
-
 
