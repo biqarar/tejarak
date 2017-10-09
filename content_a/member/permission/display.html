@@ -2,39 +2,12 @@
 
 
 {%block data%}
-<form class="cbox" method="post" enctype="multipart/form-data">
+<form class="cbox" method="post">
+{{block("iDefaultMemberRemote")}}
+{{block("iDefaultMember24")}}
+{{block("iDefaultMemberMission")}}
+{{block("iDefaultMemberPersonalwork")}}
 
-
-             <div class="check1t">
-              <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or team_default.allow_plus or ( not member and not team_default) %}checked{%endif%}>
-              <label for="allowPlus">{%trans "Allow plus"%}</label>
-             </div>
-
-             <div class="check1t">
-              <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or team_default.allow_minus or ( not member and not team_default)%}checked{%endif%}>
-              <label for="allowMinus">{%trans "Allow minus"%}</label>
-             </div>
-
-             <div class="check1t">
-              <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
-              <label for="remoteUser">{%trans "Remote user"%}</label>
-             </div>
-
-             <div class="check1t">
-              <input type="checkbox" name="24h" id="24h" {%if member['24h'] or team_default['24h'] %}checked{%endif%}>
-              <label for="24h">{%trans "24 hour"%}</label>
-             </div>
-
-             <div class="check1t hide">
-              <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if member.allow_desc_enter or team_default.allow_desc_enter %}checked{%endif%}>
-              <label for="allowDescEnter">{%trans "Allow set desc in enter"%}</label>
-             </div>
-
-             <div class="check1t hide">
-              <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if member.allow_desc_exit or team_default.allow_desc_exit %}checked{%endif%}>
-              <label for="allowDescExit">{%trans "Allow set desc in exit"%}</label>
-             </div>
 {{block("isave")}}
-
 </form>
 {%endblock%}

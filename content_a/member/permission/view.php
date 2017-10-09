@@ -11,16 +11,8 @@ class view extends \content_a\member\view
 	 */
 	public function view_permission($_args)
 	{
-		if(isset($member['displayname']))
-		{
-			$this->data->page['title'] = T_('permission :name', ['name' => $member['displayname']]);
-		}
-		else
-		{
-			$this->data->page['title'] = T_('permission member!');
-		}
-		$this->data->page['desc']  = $this->data->page['title'];
-
+		$this->data->page['title'] = T_('Special Access');
+		$this->data->page['desc']  = T_('You can set some permission to member to do some more activity in Tejarak.');
 	}
 
 }

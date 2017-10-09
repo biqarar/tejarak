@@ -30,7 +30,7 @@
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/general/{{member.id}}'>{%trans "General Detail"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/identify/{{member.id}}'>{%trans "Personnel Card"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/observer/{{member.id}}'>{%trans "Observer and parent"%}</a>
- <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/permission/{{member.id}}'>{%trans "Permission"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/permission/{{member.id}}'>{%trans "Special Access"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/personal/{{member.id}}'>{%trans "Personal"%}</a>
 </div>
 {%endblock%}
@@ -161,5 +161,49 @@
  <input type="text" name="qrcode" id="qrcode" placeholder='{%trans "Scan Qrcode here..."%}' value="{{member.codes.qrcode1}}" class="barcode">
 </div>
 {%endblock%}
+
+
+{%block iDefaultMemberRemote%}
+<div class="switch1">
+ <input type="checkbox" name="remoteUser" id="remoteUser" {% if member.remote_user%} checked{%endif%}>
+ <label for="remoteUser"></label>
+ <label for="remoteUser">{%trans "Remote member"%} <small>{%trans "can set enter and exit with their account without need another permission"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block iDefaultMember24%}
+<div class="switch1">
+ <input type="checkbox" name="24h" id="24h" {% if member['24h']%} checked{%endif%}>
+ <label for="24h"></label>
+ <label for="24h">{%trans "24 hour member"%} <small>{%trans "can stay more than one day and after 23:59! Like night workers"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block iDefaultMemberMission%}
+<div class="switch1">
+ <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or not team%} checked{%endif%}>
+ <label for="allowPlus"></label>
+ <label for="allowPlus">{%trans "Allow to set mission time"%} <small>{%trans "used for someone work on home or suppliers"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block iDefaultMemberPersonalwork%}
+<div class="switch1">
+ <input type="checkbox" name="allowMinus" id="allowMinus" {% if member.allow_minus or not team%} checked{%endif%}>
+ <label for="allowMinus"></label>
+ <label for="allowMinus">{%trans "Allow to set personal work time"%} <small>{%trans "member can enter waste time as personal work"%}</small></label>
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+
 
 
