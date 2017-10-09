@@ -11,15 +11,14 @@ class view extends \content_a\member\view
 	 */
 	public function view_general($_args)
 	{
-		if(isset($member['displayname']))
+		$memberName = '';
+		if(isset($this->data->member['displayname']))
 		{
-			$this->data->page['title'] = T_('general :name', ['name' => $member['displayname']]);
+			$memberName = $this->data->member['displayname'];
 		}
-		else
-		{
-			$this->data->page['title'] = T_('general member!');
-		}
-		$this->data->page['desc']  = $this->data->page['title'];
+
+		$this->data->page['title'] = T_('General setting | :name', ['name' => $memberName]);
+		$this->data->page['desc']  = T_('Manage general setting of member like name and position, you can change another setting by choose another type of setting.');
 
 	}
 

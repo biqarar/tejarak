@@ -71,9 +71,73 @@
 {%endblock%}
 
 
+{%block iName%}
+<label for='fname'>{%trans "Name"%} <span class="fc-red">*</span></label>
+<div class="input">
+ <input type="text" name="name" placeholder='{%trans "Name of member"%}' value="{{member.displayname}}" required autofocus maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid name"%}' id='fname'>
+</div>
+{%endblock%}
 
 
+{%block iPosition%}
+<label for="position">{%trans "Postion"%}</label>
+<div class="input">
+ <input type="text" name="postion" id="position" placeholder='{%trans "Postion in team show below name" %}' value="{{member.postion}}" maxlength='50' pattern=".{1,50}" title='{%trans "Enter a valid team position from 3 to 50 character"%}'>
+</div>
+{%endblock%}
 
+
+{%block iMobile%}
+<label for='mobile'>{%trans "Mobile"%}</label>
+<div class="input">
+ <input type="tel" name="mobile" id="mobile" placeholder='{%trans "Mobile"%}' value="{{member.mobile}}" maxlength="15" class='ltr'>
+</div>
+{%endblock%}
+
+
+{%block iRole%}
+<label for='rule'>{%trans "Role of this member"%}</label>
+<select name="rule" class="select">
+ <option value="user" {%if member.rule == 'user'%} selected {%endif%} >{%trans "User"%}</option>
+ <option value="admin" {%if member.rule == 'admin'%} selected {%endif%} >{%trans "Admin"%}</option>
+</select>
+{%endblock%}
+
+
+{%block iStatus%}
+<label class="mT25">{%trans "Status of member"%}</label>
+<div class="radio1 green">
+ <input type="radio" id="r-active" name="status" value="active" {%if member.status == 'active' or not member.status%} checked{%endif%} >
+ <label for="r-active">{%trans "Active"%} <small>{%trans "Normal status for member"%}</small></label>
+</div>
+
+<div class="radio1 yellow">
+ <input type="radio" id="r-deactive" name="status" value="deactive" {%if member.status == 'deactive' %} checked{%endif%}>
+ <label for="r-deactive">{%trans "Deactive"%} <small>{%trans "Temporary deactive member"%}</small></label>
+</div>
+
+<div class="radio1 red">
+ <input type="radio" id="r-suspended" name="status" value="suspended" {%if member.status == 'suspended' %} checked{%endif%}>
+ <label for="r-suspended">{%trans "Remove"%} <small>{%trans "does not exist and quit from team, don't show in board"%}</small></label>
+</div>
+
+{%endblock%}
+
+
+{%block iVisibility%}
+<div data-response='status' data-response-where='active|deactive' data-response-effect='slide' {%if member.status == 'suspended' %} data-response-hide{%endif%}>
+ <label class="mT25">{%trans "Visibility of member in board"%}</label>
+ <div class="radio1">
+  <input type="radio" id="r-visible" name="visibility" value="visible" {%if member.visibility == 'visible' or not member.visibility%} checked{%endif%} >
+  <label for="r-visible">{%trans "Visible"%}</label>
+ </div>
+
+ <div class="radio1 black">
+  <input type="radio" id="r-hidden" name="visibility" value="hidden" {%if member.visibility == 'hidden' %} checked{%endif%}>
+  <label for="r-hidden">{%trans "Hidden"%}</label>
+ </div>
+</div>
+{%endblock%}
 
 
 
