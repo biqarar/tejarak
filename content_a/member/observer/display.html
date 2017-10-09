@@ -3,6 +3,7 @@
 
 {%block data%}
 <form method="post" class="cbox">
+<h3>{%trans "Add new observer"%}</h3>
 {{block("iParentMobile")}}
 {{block("iParentTitle")}}
 
@@ -11,24 +12,39 @@
 
 
 <div class="cbox">
-{%if member_parent%}
-  <div class="cauto s0 lbl"><span>{%trans "Parent"%}</span></div>
-  <div class="c">
-    {%for k, v in member_parent%}
-     <div class="f">
-      <div class="c">
-        <img src="{{v.fileurl}}" class="mini">
-      </div>
-      <div class="c">
-        <p>{{v.mobile|fitNumber}}</p>
-      </div>
-      <div class="c">
-        <p>{%set my_title = v.title | capitalize %}{%trans my_title%}</p>
-      </div>
-     </div>
-    {%endfor%}
+  <h4 class="mB25">{%trans "List of observer"%}</h4>
+{%for key, value in member_parent%}
+{%set my_title = value.title | capitalize %}
+
+  <div class="icard">
+    <a class="icard-avatar" href="{{url.baseFull}}/student/edit={{value.id}}">
+      {%if value.fileurl%}
+        <img src="{{value.fileurl}}" alt="{{value.name}} {{value.lastname}}">
+      {%else%}
+        <img src="{{url.static}}siftal/images/useful/user1.png" alt="{{value.name}} {{value.lastname}}">
+      {%endif%}
+    </a>
+
+    <div class="icard-owner">
+      {{value.displayname}}
+    </div>
+
+    <div>
+      {%set my_title = value.title | capitalize %}
+      {%trans my_title%}
+    </div>
+
+    <div>
+      {%if value.mobile%}<span class="icon sf-mobile fs18"></span>{%endif%}
+      {{value.mobile|fitNumber}}
+    </div>
+
+    <div>
+      <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"remove": {{value.id}} }' class="fc-red">{%trans "Remove"%}</a>
+    </div>
   </div>
-{%endif%}
+{%endfor%}
 </div>
+
 {%endblock%}
 

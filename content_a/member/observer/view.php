@@ -14,17 +14,8 @@ class view extends \content_a\member\view
 
 		$this->data->member_parent = $this->model()->getParent();
 
-		if(isset($member['displayname']))
-		{
-			$this->data->page['title'] = T_('observer :name', ['name' => $member['displayname']]);
-		}
-		else
-		{
-			$this->data->page['title'] = T_('observer member!');
-		}
-		$this->data->page['desc']  = $this->data->page['title'];
-
+		$this->data->page['title'] = T_('Observer or parents');
+		$this->data->page['desc']  = T_('After each activity like enter or exit of this member, we are send notify via Telegram or if not present via sms to defined observer.');
 	}
-
 }
 ?>
