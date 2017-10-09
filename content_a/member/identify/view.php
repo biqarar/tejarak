@@ -11,15 +11,9 @@ class view extends \content_a\member\view
 	 */
 	public function view_identify($_args)
 	{
-		if(isset($member['displayname']))
-		{
-			$this->data->page['title'] = T_('identify :name', ['name' => $member['displayname']]);
-		}
-		else
-		{
-			$this->data->page['title'] = T_('identify member!');
-		}
-		$this->data->page['desc']  = $this->data->page['title'];
+
+		$this->data->page['title'] = T_('Personnel Card');
+		$this->data->page['desc']  = T_('You can set special verify code for member, like rfid card, barcode or qrcode and we allow you to use this codes on board.');
 
 	}
 

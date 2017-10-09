@@ -28,7 +28,7 @@
   </a>
 
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/general/{{member.id}}'>{%trans "General Detail"%}</a>
- <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/identify/{{member.id}}'>{%trans "Identify"%}</a>
+ <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/identify/{{member.id}}'>{%trans "Personnel Card"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/observer/{{member.id}}'>{%trans "Observer and parent"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/permission/{{member.id}}'>{%trans "Permission"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{team}}/member/personal/{{member.id}}'>{%trans "Personal"%}</a>
@@ -120,7 +120,6 @@
  <input type="radio" id="r-suspended" name="status" value="suspended" {%if member.status == 'suspended' %} checked{%endif%}>
  <label for="r-suspended">{%trans "Remove"%} <small>{%trans "does not exist and quit from team, don't show in board"%}</small></label>
 </div>
-
 {%endblock%}
 
 
@@ -140,7 +139,27 @@
 {%endblock%}
 
 
+{%block iBarcode%}
+<label for="barcode">{%trans "Barcode"%}</label>
+<div class="input">
+ <input type="text" name="barcode" id="barcode" placeholder='{%trans "Scan Barcode here..."%}' value="{{member.codes.barcode1}}" class="barcode">
+</div>
+{%endblock%}
 
 
+{%block iRfid%}
+<label for="rfid">{%trans "Rfid card"%}</label>
+<div class="input">
+ <input type="text" name="rfid" id="rfid" placeholder='{%trans "Scan Rfid here..."%}' value="{{member.codes.rfid1}}" class="barcode">
+</div>
+{%endblock%}
+
+
+{%block iQrcode%}
+<label for="qrcode">{%trans "Qrcode"%}</label>
+<div class="input">
+ <input type="text" name="qrcode" id="qrcode" placeholder='{%trans "Scan Qrcode here..."%}' value="{{member.codes.qrcode1}}" class="barcode">
+</div>
+{%endblock%}
 
 
