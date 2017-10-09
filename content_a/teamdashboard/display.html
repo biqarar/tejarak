@@ -80,8 +80,13 @@ remain_percent -->
 <div class="dcard">
  <div class="block">
   <div class="f">
+  {%if site.currentlang == 'fa'%}
    <h5 class="c fc-mute">{{"now" | jdate('M')}}</h5>
    <h4 class="cauto fc-info fs30 txtra">{{"now" | jdate('d')}}</h4>
+  {%else%}
+    <h5 class="c fc-mute">{{"now" | date('M')}}</h5>
+    <h4 class="cauto fc-info fs30 txtra">{{"now" | date('d')}}</h4>
+  {%endif%}
   </div>
   <div class="f">
    <div class="progress" data-percent='{{dashboard_detail.month_detail.left}}'>
