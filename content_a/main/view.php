@@ -32,6 +32,9 @@ class view extends \mvc\view
 			$this->data->current_team = $this->model()->getTeamDetail($this->data->team);
 		}
 
+		$this->data->is_admin       = \lib\temp::get('is_admin');
+		$this->data->is_creator     = \lib\temp::get('is_creator');
+
 		if($this->login('id'))
 		{
 			// get count unread notifiation

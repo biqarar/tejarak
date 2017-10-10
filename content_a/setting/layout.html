@@ -35,7 +35,9 @@
   </a>
 
  <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/general'>{%trans "General Detail"%}</a>
- <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/plan'>{%trans "Team Plan"%}</a>
+ {%if is_creator%}
+  <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/plan'>{%trans "Team Plan"%}</a>
+ {%endif%}
  <!-- <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/security'>{%trans "Security and privacy"%}</a> -->
  <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/report'>{%trans "Report Settings"%}</a>
  <a class="btn block mTB5" href='{{url.baseFull}}/{{current_team.id}}/setting/board'>{%trans "Board Settings"%}</a>
