@@ -6,11 +6,11 @@ use \lib\db\logs;
 
 trait add
 {
-	private $master_user_id = null;
-	private $OLD_USER_ID    = null;
-	private $old_user_id    = null;
-	private $NEW_USER_ID    = null;
-
+	private $master_user_id         = null;
+	private $OLD_USER_ID            = null;
+	private $old_user_id            = null;
+	private $NEW_USER_ID            = null;
+	private $userteam_record_detail = [];
 	use check_args;
 	use member_id;
 	use security;
@@ -80,7 +80,6 @@ trait add
 			if($_args['debug']) debug::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
-
 		$check_security = $this->check_security($team_id, $_args, $args, $log_meta);
 
 		if($check_security === false || !debug::$status)

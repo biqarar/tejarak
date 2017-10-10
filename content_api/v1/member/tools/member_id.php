@@ -108,7 +108,7 @@ trait member_id
 
 			if($request_id)
 			{
-				$request_user_id = \lib\db\userteams::get(['id' => $request_id, 'limit' => 1]);
+				$request_user_id = $this->userteam_record_detail;
 			}
 
 			if(isset($request_user_id['user_id']))

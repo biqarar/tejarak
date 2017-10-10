@@ -145,9 +145,20 @@ trait get_barcodes
 			return false;
 		}
 
-		$this->check_barcode_update($barcode1, $_id, 'barcode1');
-		$this->check_barcode_update($qrcode1, $_id, 'qrcode1');
-		$this->check_barcode_update($rfid1, $_id, 'rfid1');
+		if(utility::isset_request('barcode1'))
+		{
+			$this->check_barcode_update($barcode1, $_id, 'barcode1');
+		}
+
+		if(utility::isset_request('qrcode1'))
+		{
+			$this->check_barcode_update($qrcode1, $_id, 'qrcode1');
+		}
+
+		if(utility::isset_request('rfid1'))
+		{
+			$this->check_barcode_update($rfid1, $_id, 'rfid1');
+		}
 
 	}
 

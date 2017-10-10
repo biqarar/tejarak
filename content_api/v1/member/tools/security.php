@@ -17,7 +17,7 @@ trait security
 	public function check_security($_team_id, $_args, $args, $log_meta)
 	{
 		// load team data
-		$load_team_data = \lib\db\teams::get(['id' => $_team_id, 'limit' => 1]);
+		$load_team_data = \lib\db\teams::get_by_id($_team_id);
 		if(!$load_team_data || !isset($load_team_data['creator']))
 		{
 			if($_args['save_log']) logs::set('api:member:team:notfound', $this->user_id, $log_meta);
@@ -74,7 +74,7 @@ trait security
 			return false;
 		}
 
-		$change_id_in_team = \lib\db\userteams::get(['id' => $change_id, 'team_id' => $_team_id, 'limit' => 1]);
+		$change_id_in_team = $this->userteam_record_detail = \lib\db\userteams::get(['id' => $change_id, 'team_id' => $_team_id, 'limit' => 1]);
 		if(!$change_id_in_team || !isset($change_id_in_team['rule']) || !isset($change_id_in_team['user_id']))
 		{
 			if($_args['save_log']) logs::set('api:member:user-id:notfound', $this->user_id, $log_meta);

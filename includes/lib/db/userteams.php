@@ -324,9 +324,20 @@ class userteams
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function get()
+	public static function get($_args)
 	{
-		return \lib\db\config::public_get('userteams', ...func_get_args());
+		$key = $_args;
+		krsort($key);
+		$cash = \lib\db\cache::get_cache('userteams', $key);
+		if($cash)
+		{
+			return $cash;
+		}
+
+		$result = \lib\db\config::public_get('userteams', $_args);
+		\lib\db\cache::set_cache('userteams', $key , $result);
+		return $result;
+
 	}
 
 
