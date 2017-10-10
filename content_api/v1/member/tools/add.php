@@ -80,6 +80,17 @@ trait add
 			if($_args['debug']) debug::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
+
+		/**
+		 * check and set the args
+		 */
+		$return_function = $this->check_args($_args, $args, $log_meta, $team_id);
+
+		if(!debug::$status || $return_function === false)
+		{
+			return false;
+		}
+
 		$check_security = $this->check_security($team_id, $_args, $args, $log_meta);
 
 		if($check_security === false || !debug::$status)
@@ -94,15 +105,6 @@ trait add
 			return false;
 		}
 
-		/**
-		 * check and set the args
-		 */
-		$return_function = $this->check_args($_args, $args, $log_meta, $team_id);
-
-		if(!debug::$status || $return_function === false)
-		{
-			return false;
-		}
 
 		if($_args['method'] === 'post')
 		{

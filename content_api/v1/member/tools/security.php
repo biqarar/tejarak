@@ -95,10 +95,61 @@ trait security
 			$change_admin = true;
 		}
 
+		$change_creator = false;
+		// try to change creator detail
+		if(intval($change_id_in_team['user_id']) === intval($load_team_data['creator']) && !$is_creator)
+		{
+			$change_creator = true;
+			if(utility::isset_request('rule') && utility::request('rule') !== 'admin')
+			{
+				if($_args['save_log']) logs::set('api:member:admin:can:not:change:detail:creator:rule', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Only creator of team can edit her security detail"), 'user', 'permission');
+				return false;
+			}
+
+			if(utility::isset_request('status') && utility::request('status') !== 'active')
+			{
+				if($_args['save_log']) logs::set('api:member:admin:can:not:change:detail:creator:status:not:active', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Only creator of team can edit her security detail"), 'status', 'permission');
+				return false;
+			}
+			// the creator sended mobile
+			if(utility::request('mobile') && $mobile = utility\filter::mobile(utility::request('mobile')))
+			{
+				$load_creator_mobile = \lib\db\users::get_by_id($load_team_data['creator']);
+
+				// the creator have old mobile
+				if(isset($load_creator_mobile['mobile']) && $mobile == $load_creator_mobile['mobile'])
+				{
+					// no problem
+				}
+				else
+				{
+					if($_args['save_log']) logs::set('api:member:admin:can:not:change:detail:creator:status:not:mobole', $this->user_id, $log_meta);
+					if($_args['debug']) debug::error(T_("Only creator of team can edit her security detail"), 'mobile', 'permission');
+					return false;
+				}
+			}
+		}
+
 		$access = true;
+
 
 		if($change_admin && !$is_creator)
 		{
+			if(utility::isset_request('rule') && utility::request('rule') !== 'user' && !$change_creator)
+			{
+				if($_args['save_log']) logs::set('api:member:admin:can:not:add:admin:rule:not:user', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Only creator of team can add or edit admins"), 'user', 'permission');
+				return false;
+			}
+
+			if(utility::isset_request('status') && utility::request('status') !== 'active')
+			{
+				if($_args['save_log']) logs::set('api:member:admin:can:not:add:admin:status:not:active', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Only creator of team can diactive admins"), 'user', 'permission');
+				return false;
+			}
 			// the creator change her detail
 			if(intval($this->user_id) === intval($change_id_in_team['user_id']))
 			{
@@ -136,6 +187,19 @@ trait security
 			// the creator change her detail
 			if(intval($this->user_id) === intval($change_id_in_team['user_id']))
 			{
+				if(utility::isset_request('rule') && utility::request('rule') !== 'admin')
+				{
+					if($_args['save_log']) logs::set('api:member:creator:can:not:set:her:as:user', $this->user_id, $log_meta);
+					if($_args['debug']) debug::error(T_("You are creator of this team. you must be admin"), 'user', 'permission');
+					return false;
+				}
+
+				if(utility::isset_request('status') && utility::request('status') !== 'active')
+				{
+					if($_args['save_log']) logs::set('api:member:creator:can:not:set:her:as:not:active', $this->user_id, $log_meta);
+					if($_args['debug']) debug::error(T_("You are creator of this team. you must be active"), 'user', 'permission');
+					return false;
+				}
 				// the creator sended mobile
 				if(utility::request('mobile') && $mobile = utility\filter::mobile(utility::request('mobile')))
 				{
