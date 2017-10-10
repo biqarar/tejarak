@@ -18,22 +18,27 @@ class model extends \content_a\main\model
 			'displayname'      => utility::post('name'),
 			'postion'          => utility::post('postion'),
 			'mobile'           => utility::post('mobile'),
-			'rule'             => utility::post('rule'),
-			'firstname'        => utility::post('firstName'),
-			'lastname'         => utility::post('lastName'),
-			'personnel_code'   => utility::post('personnelcode'),
-			'allow_plus'       => utility::post('allowPlus'),
-			'allow_minus'      => utility::post('allowMinus'),
-			'remote_user'      => utility::post('remoteUser'),
-			'24h'              => utility::post('24h'),
-			'status'           => utility::post('status'),
-			'visibility'       => utility::post('visibility'),
-			'barcode1'         => utility::post('barcode'),
-			'rfid1'            => utility::post('rfid'),
-			'qrcode1'          => utility::post('qrcode'),
-			'allow_desc_enter' => utility::post('allowDescEnter'),
-			'allow_desc_exit'  => utility::post('allowDescExit'),
+			// 'rule'             => utility::post('rule'),
+			// 'firstname'        => utility::post('firstName'),
+			// 'lastname'         => utility::post('lastName'),
+			// 'personnel_code'   => utility::post('personnelcode'),
+			// 'allow_plus'       => utility::post('allowPlus'),
+			// 'allow_minus'      => utility::post('allowMinus'),
+			// 'remote_user'      => utility::post('remoteUser'),
+			// '24h'              => utility::post('24h'),
+			// 'status'           => utility::post('status'),
+			// 'visibility'       => utility::post('visibility'),
+			// 'barcode1'         => utility::post('barcode'),
+			// 'rfid1'            => utility::post('rfid'),
+			// 'qrcode1'          => utility::post('qrcode'),
+			// 'allow_desc_enter' => utility::post('allowDescEnter'),
+			// 'allow_desc_exit'  => utility::post('allowDescExit'),
 		];
+
+		if(utility::post('rule'))
+		{
+			$args['rule'] = utility::post('rule');
+		}
 
 		return $args;
 	}

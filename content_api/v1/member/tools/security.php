@@ -134,6 +134,15 @@ trait security
 
 		$access = true;
 
+		if(!$change_admin && !$is_creator && !$change_creator)
+		{
+			if(utility::isset_request('rule') && utility::request('rule') !== 'user')
+			{
+				if($_args['save_log']) logs::set('api:member:admin:can:not:add:admin:rule:not:user1', $this->user_id, $log_meta);
+				if($_args['debug']) debug::error(T_("Only creator of team can add or edit admins"), 'user', 'permission');
+				return false;
+			}
+		}
 
 		if($change_admin && !$is_creator)
 		{

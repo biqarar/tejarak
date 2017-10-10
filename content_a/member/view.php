@@ -10,6 +10,39 @@ class view extends \content_a\main\view
 
 		$team                      = \lib\router::get_url(0);
 		$member                    = \lib\router::get_url(3);
+
+		if(isset($this->data->current_team['creator']))
+		{
+			$creator_id = $this->data->current_team['creator'];
+			$creator_id = \lib\utility\shortURL::decode($creator_id);
+
+			$userteam_id = $member;
+			$userteam_id = \lib\utility\shortURL::decode($userteam_id);
+
+			if($userteam_id)
+			{
+				$get_user_id = \lib\db\userteams::get(['id' => $userteam_id, 'limit' => 1]);
+
+				if(isset($get_user_id['user_id']))
+				{
+					if(intval($get_user_id['user_id']) === intval($creator_id))
+					{
+						\lib\temp::set('change_creator', true);
+					}
+				}
+
+				if(isset($get_user_id['rule']) && $get_user_id['rule'] === 'admin')
+				{
+					\lib\temp::set('change_admin', true);
+				}
+			}
+		}
+
+		$this->data->change_creator = \lib\temp::get('change_creator');
+		$this->data->change_admin   = \lib\temp::get('change_admin');
+		$this->data->is_admin       = \lib\temp::get('is_admin');
+		$this->data->is_creator     = \lib\temp::get('is_creator');
+
 		if($member)
 		{
 			$member                    = $this->model()->edit($team, $member);

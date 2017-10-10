@@ -17,11 +17,12 @@ class model extends \content_a\member\model
 		[
 			'displayname'      => utility::post('name'),
 			'postion'          => utility::post('postion'),
-			'mobile'           => utility::post('mobile'),
-			'rule'             => utility::post('rule'),
-			'status'           => utility::post('status'),
 			'visibility'       => utility::post('visibility'),
 		];
+
+		if(utility::post('mobile')) $args['mobile'] = utility::post('mobile');
+		if(utility::post('rule')) $args['rule']     = utility::post('rule');
+		if(utility::post('status')) $args['status'] = utility::post('status');
 
 		return $args;
 	}
