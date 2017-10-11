@@ -42,7 +42,7 @@
 
 
 {%block prDeadline%}
-<div class="dcard">
+<a class="dcard" href='{{url.full}}/setting/board'>
  <div class="block">
   <div class="f">
   {%if current_team.event_title%}
@@ -60,7 +60,7 @@ remain_percent -->
    </div>
   </div>
  </div>
-</div>
+</a>
 {%endblock%}
 
 {%block prPresentCount%}
@@ -113,12 +113,12 @@ remain_percent -->
 
 
 {%block stTraffics%}
-<div class="dcard">
+<a class="dcard" href='{{url.full}}/report/last'>
  <div class="statistic teal">
   <div class="value"><i class="sf-retweet"></i><span class="fs08">{{dashboard_detail.traffic_count |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Traffic Record"%}</div>
  </div>
-</div>
+</a>
 {%endblock%}
 
 
