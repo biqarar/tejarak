@@ -80,7 +80,10 @@ trait get
 				if(is_array($result))
 				{
 					sort($result);
-					$result = $result[0];
+					if(isset($result[0]))
+					{
+						$result = $result[0];
+					}
 				}
 
             	if(!$result)
