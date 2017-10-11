@@ -212,11 +212,18 @@ trait get
 					$result['allow_desc_exit'] = $value ? true : false;
 					break;
 
+				case 'createdate':
+					$result[$key] = $value;
+					$date_now = new \DateTime("now");
+					$start    = new \DateTime($value);
+					$result['day_use']    = $date_now->diff($start)->days;
+					$result['day_use']++;
+					break;
+
 				case 'fileid':
 				case 'telegram_id':
 				case 'plan':
 				case 'until':
-				case 'createdate':
 				case 'date_modified':
 				case 'meta':
 				case 'value':

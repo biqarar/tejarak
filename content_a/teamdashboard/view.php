@@ -28,6 +28,7 @@ class view extends \content_a\main\view
 			$dashboard_detail = \lib\session::get('last_time_chart'. (string) $team_id );
 		}
 
+
 		if(isset($dashboard_detail['last_time_chart']) && is_array($dashboard_detail['last_time_chart']))
 		{
 			$chart = [];

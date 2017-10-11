@@ -45,7 +45,11 @@
 <div class="dcard">
  <div class="block">
   <div class="f">
+  {%if current_team.event_title%}
+   <h5 class="c fc-mute">{{current_team.event_title}}</h5>
+  {%else%}
    <h5 class="c fc-mute">{%trans "Deadline"%}</h5>
+  {%endif%}
    <h4 class="cauto fc-danger fs30 txtra counter">{{current_team.event.left | number_format}}</h4>
   </div>
 <!-- left_percent
@@ -129,7 +133,11 @@ remain_percent -->
 
 
 {%block stDayUsed%}
-  <div class="dcard">
+{%if site.currentlang == 'fa'%}
+  <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{current_team.createdate |jdate("Y-m-d")}} | {{current_team.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
+{%else%}
+  <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{current_team.createdate | date("Y-m-d")}} | {{current_team.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
+{%endif%}
    <div class="statistic blue">
     <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{dashboard_detail.count_day_work | number_format}}</span></div>
     <div class="label">{%trans "Day Used"%}</div>

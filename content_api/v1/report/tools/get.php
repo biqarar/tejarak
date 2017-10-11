@@ -82,8 +82,12 @@ trait get
 					sort($result);
 					$result = $result[0];
 				}
-            	// // \lib\utility\telegram::sendMessage(33263188, $result);
-            	// var_dump($result);exit();
+
+            	if(!$result)
+            	{
+            		$result = T_("Report not found");
+            	}
+
 				return $result;
 			}
 			else
