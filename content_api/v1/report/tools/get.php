@@ -77,7 +77,12 @@ trait get
 				$msg = new \lib\utility\message($id);
 				$msg->type($_report_type);
 				$result = $msg->get_message_text();
-            	// \lib\utility\telegram::sendMessage(33263188, $result);
+				if(is_array($result))
+				{
+					sort($result);
+				}
+            	// // \lib\utility\telegram::sendMessage(33263188, $result);
+            	// var_dump($result);exit();
 				return $result;
 			}
 			else
