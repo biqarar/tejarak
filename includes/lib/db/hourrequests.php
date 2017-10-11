@@ -6,6 +6,12 @@ use \lib\utility;
 
 class hourrequests
 {
+	public static $public_field =
+	"
+		userteams.displayname,
+		hourrequests.*
+	";
+
 
 	/**
 	 * insert new record in hourrequests table
@@ -42,14 +48,41 @@ class hourrequests
 	}
 
 
+
 	/**
 	 * Searches for the first match.
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public static function search()
+	public static function search($_search = null, $_option = [])
 	{
-		return db\config::public_search('hourrequests', ...func_get_args());
+		if(!is_array($_option))
+		{
+			$_option = [];
+		}
+
+		$default_option =
+		[
+			'public_show_field' => self::$public_field,
+			'master_join'       => "LEFT JOIN userteams ON hourrequests.userteam_id = userteams.id",
+			// 'search_field'      =>
+			// "
+			// 	(
+			// 	 	users.displayname 	LIKE '%__string__%' OR
+			// 	 	users.birthday 		LIKE '%__string__%' OR
+			// 	 	users.nationalcode 	LIKE '%__string__%' OR
+			// 	 	users.father 		LIKE '%__string__%' OR
+			// 	 	users.mobile 		LIKE '%__string__%'
+			// 	)
+			// ",
+		];
+
+		$_option = array_merge($default_option, $_option);
+
+		$result = \lib\db\config::public_search('hourrequests', $_search, $_option);
+
+
+		return $result;
 	}
 
 

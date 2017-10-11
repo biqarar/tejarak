@@ -5,7 +5,7 @@
 <div class="mB25 msg">
   <table class="tbl">
     <thead class="primary">
-      <th>{%trans "Action"%}</th>
+      <th>{%trans "Name"%}</th>
       <th>{%trans "Start Date"%}</th>
       <th>{%trans "Start Time"%}</th>
       <th>{%trans "End Date"%}</th>
@@ -14,15 +14,15 @@
       <th>{%trans "Type"%}</th>
       <th>{%trans "Description"%}</th>
 
-      {%if not show_all_user%}
+      {%if not is_admin%}
         <th>{%trans "Response"%}</th>
       {%endif%}
-<!--
-      {%if show_all_user%}
-        <th>{%trans "Set Response"%}</th>
+
+      {%if is_admin %}
+        <!-- <th>{%trans "Set Response"%}</th> -->
         <th>{%trans "Accept"%}</th>
         <th>{%trans "Reject"%}</th>
-      {%endif%} -->
+      {%endif%}
 
     </thead>
     <tbody>
@@ -30,13 +30,14 @@
   {%for key, value in request_list%}
 
   <tr >
-
+<!--
     {%if value.status == 'awaiting' %}
       <td><a href="{{url.baseFull}}/{{team_code}}/request/remove={{value.id}}">{%trans "Remove"%}</a></td>
     {%else%}
       <td><a href="{{url.baseFull}}/{{team_code}}/request/detail={{value.id}}">{%trans "More"%}</a></td>
-    {%endif%}
+    {%endif%} -->
 
+      <td>{{value.displayname}}</td>
     {%if site.currentlang == 'fa'%}
       <td>{{value.shamsi_date|fitNumber}}</td>
     {%else%}
@@ -49,7 +50,7 @@
       <td>{{value.enddate|fitNumber}}</td>
     {%endif%}
     <td>{{value.end|fitNumber}}</td>
-    <td>{%set myStatus = value.status%}{% trans myStatus %}</td>
+    <td>{%set myStatus = value.status | capitalize %}{% trans myStatus %}</td>
     <td>{%if value.hour_id%}{% trans "Edit" %}{%else%}{% trans "Add" %}{%endif%}</td>
     {%if value.desc%}
       <td>{{value.desc}}</td>
@@ -57,13 +58,15 @@
       <td><i>{%trans "No description"%}</i></td>
     {%endif%}
 
-    {%if not show_all_user%}
+    {%if not is_admin%}
       <td>{{value.response}}</td>
     {%endif%}
 
-    {%if show_all_user%}
-<!--
-      <form method="post">
+    {%if is_admin %}
+        <td><button type="submit" class="btn success" name="accept" data-method='post' data-ajaxify data-data='{"id": "{{value.id}}", "type": "accept"}' >{%trans "Accept"%}</button></td>
+        <td><button type="submit" class="btn danger" name="reject" data-method='post' data-ajaxify data-data='{"id": "{{value.id}}", "type": "reject"}' >{%trans "Reject"%}</button></td>
+
+<!--       <form method="post">
         <div class="c df"><textarea name="response" my_code="{{value.id}}" class="description_main " placeholder='{%trans "Set Response"%}' ></textarea></div>
         <div class="hidden">
           <input type="hidden" name="id" value="{{value.id}}">
@@ -79,8 +82,8 @@
           <input type="hidden" name="type" value="reject">
         </div>
         <div class="c df"><input type="submit" class="bn" name="reject" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'></div>
-      </form>
- -->
+      </form> -->
+
     {%endif%}
   </tr>
   {%endfor%}

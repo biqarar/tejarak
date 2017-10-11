@@ -178,14 +178,14 @@ trait get
 		}
 
 		$meta = [];
-		$meta['team_id'] = $team;
+		$meta['hourrequests.team_id'] = $team;
 
 		if($user)
 		{
-			$meta['creator'] = $user;
+			$meta['hourrequests.creator'] = $user;
 		}
 
-		$meta['status'] = ['<>', "'deleted'"];
+		$meta['hourrequests.status'] = ['<>', "'deleted'"];
 
 		$result = \lib\db\hourrequests::search(null, $meta);
 
