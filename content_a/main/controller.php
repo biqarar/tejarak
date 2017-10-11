@@ -188,6 +188,9 @@ class controller extends \mvc\controller
 			case 'report\year':
 			case 'report\month':
 			case 'report\period':
+			case 'request':
+			case 'request\add':
+			case 'request\hour':
 				return true;
 				break;
 
