@@ -71,7 +71,7 @@ class teams
 		teams.desc4      			AS `desc4`,
 		teams.zipcode      			AS `zipcode`,
 		teams.type      			AS `type`,
-
+		teams.createdate     	    AS `createdate`,
 		userteams.gender 			AS `userteams_gender`,
 		userteams.allowdescenter 	AS `userteams_allowdescenter`,
 		userteams.allowdescexit  	AS `userteams_allowdescexit`,
