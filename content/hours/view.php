@@ -84,6 +84,10 @@ class view extends \mvc\view
 			if(isset($current_team['event']['days']))
 			{
 				$startDate = intval($current_team['event']['days']);
+				if($startDate === 0)
+				{
+					$startDate = 1;
+				}
 			}
 			else
 			{
