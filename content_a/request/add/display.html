@@ -6,9 +6,18 @@
 
   <div class="c6 s12">
     <form method="post" class="cbox">
-		{{block('iEventDateStart')}}
+		{%if is_24h%}
+			{{block('iEventDateStart')}}
+		{%else%}
+			{{block('iEventDate')}}
+		{%endif%}
+
 		{{block('iAutoTrafficReportHourStart')}}
-		{{block('iEventDateEnd')}}
+
+		{%if is_24h%}
+			{{block('iEventDateEnd')}}
+		{%endif%}
+
 		{{block('iAutoTrafficReportHourEnd')}}
 		{{block('iRequestDescription')}}
 		{{block('isendrequest')}}

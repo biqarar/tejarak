@@ -17,7 +17,7 @@ trait thismonth
 		$args['user_id']        = null;
 		$args['userteam_id']    = null;
 		$args['year']           = \lib\utility\jdate::date("Y", false, false);
-		$args['month']          = \lib\utility\jdate::date("m", false, false);;
+		$args['month']          = \lib\utility\jdate::date("m", false, false);
 		$args['date_is_shamsi'] = true;
 
 		$result = \lib\db\hours::sum_month_time($args);

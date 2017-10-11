@@ -8,6 +8,10 @@ class view extends \content_a\request\view
 	 */
 	public function view_add()
 	{
+		$user_id = $this->login('id');
+
+
+
 		// $this->data->page['title'] = T_('Add new team');
 		// $this->data->page['desc']  = T_('Set some basic detail, after insert you can add avatar and change all settings');
 	}

@@ -18,7 +18,7 @@
       <th>{%trans "Mission"%}</th>
       <th>{%trans "Accepted"%}</th>
       <!-- <th>{%trans "Type"%}</th> -->
-      <!-- <th>{%trans "Request Edit"%}</th> -->
+      <th>{%trans "Request Edit"%}</th>
     </tr>
   </thead>
   <tbody>
@@ -41,7 +41,7 @@
       <td xclass="c">{{value.accepted | humantime | fitNumber}}</td>
 {%endif%}
       <!-- <td xclass="c s0">{%set myType = value.type %}{%trans myType%}</td> -->
-      <!-- <td xclass="c"><a href="{{url.baseFull}}/{{team_code}}/request/hour/{{value.id}}">{%trans "Request Edit"%}</a></td> -->
+      <td xclass="c"><a href="{{url.baseFull}}/{{team_code}}/request/hour/{{value.id}}">{%trans "Request Edit"%}</a></td>
     </tr>
     {%endfor%}
 
@@ -50,11 +50,11 @@
 {%include display.pagination%}
 
 <div class="f">
-  <!-- <div class="cauto pA5">
+  <div class="cauto pA5">
     <a href="{{url.baseFull}}/{{team_code}}/request/add">
       <i class="sf-plus btn"></i> {%trans "Add request"%}
     </a>
-  </div> -->
+  </div>
 
   <div class="cauto  pA5">
     <a href="{{export_url|raw}}">

@@ -31,13 +31,19 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_add($_args)
+	public function post_hour($_args)
 	{
-		$request         = $this->getPost();;
+		$request         = $this->getPost();
 		$request['team'] = \lib\router::get_url(0);
+		$request['hour_id']   = \lib\router::get_url(3);
+
 		utility::set_request_array($request);
 		$this->user_id = $this->login('id');
-		$this->add_request_hour();
+		$this->add_houredit();
+		if(debug::$status)
+		{
+			$this->redirector($this->url('baseFull'). '/'. $request['team']. '/request');
+		}
 	}
 }
 ?>

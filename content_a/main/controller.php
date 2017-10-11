@@ -81,6 +81,8 @@ class controller extends \mvc\controller
 
 			$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => $this->login('id'), 'limit' => 1]);
 
+			\lib\temp::set('userteam_login_detail', $load_userteam_record);
+
 			if(isset($load_userteam_record['rule']))
 			{
 				$rule = $load_userteam_record['rule'];

@@ -41,6 +41,7 @@ trait add
 			]
 		];
 
+
 		if(!$this->user_id)
 		{
 			logs::set('api:houredit:user_id:not:set', $this->user_id, $log_meta);
@@ -48,14 +49,15 @@ trait add
 			return false;
 		}
 
-		$id         = utility::request('id');
-		$start_date = utility\human::number(utility::request('start_date'), 'en');
-		$start_time = utility\human::number(utility::request('start_time'), 'en');
-		$end_date   = utility\human::number(utility::request('end_date'), 'en');
-		$end_time   = utility\human::number(utility::request('end_time'), 'en');
+		$id         = utility::request('hour_id');
+		$start_date = utility::request('start_date');
+		$start_time = utility::request('start_time');
+		$end_date   = utility::request('end_date');
+		$end_time   = utility::request('end_time');
 		$desc       = utility::request('desc');
 
 		$id = utility\shortURL::decode($id);
+
 		if(utility::request('id') && !$id)
 		{
 			logs::set('api:houredit:id:not:set', $this->user_id, $log_meta);
@@ -70,7 +72,7 @@ trait add
 			return false;
 		}
 
-		if(\DateTime::createFromFormat('Y-m-d', $start_date) === false)
+		if(strtotime($start_date) === false)
 		{
 		 	logs::set('api:houredit:start_date:invalid', $this->user_id, $log_meta);
 			debug::error(T_("Invalid start date"), 'start_date', 'arguments');
@@ -93,16 +95,21 @@ trait add
 
 		if(!$end_date)
 		{
-			logs::set('api:houredit:end_date:not:set', $this->user_id, $log_meta);
-			debug::error(T_("end date not set"), 'end_date', 'arguments');
-			return false;
-		}
+			// if user is not 24h needless to set end date
+			$end_date = $start_date;
 
-		if(\DateTime::createFromFormat('Y-m-d', $end_date) === false)
+			// logs::set('api:houredit:end_date:not:set', $this->user_id, $log_meta);
+			// debug::error(T_("end date not set"), 'end_date', 'arguments');
+			// return false;
+		}
+		else
 		{
-		 	logs::set('api:houredit:end_date:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid end date"), 'end_date', 'arguments');
-			return false;
+			if(strtotime($end_date) === false)
+			{
+			 	logs::set('api:houredit:end_date:invalid', $this->user_id, $log_meta);
+				debug::error(T_("Invalid end date"), 'end_date', 'arguments');
+				return false;
+			}
 		}
 
 		if(!$end_time)
@@ -127,6 +134,7 @@ trait add
 		}
 
 		$team_id = utility::request('team');
+
 		$team_id = utility\shortURL::decode($team_id);
 		if(!$team_id)
 		{
@@ -143,22 +151,13 @@ trait add
 			debug::error(T_("This user is not in this team"), 'team', 'arguments');
 			return false;
 		}
-		// get the first date this user added to this team
-		$date_added_to_team = $userteam_detail['userteam_createdate'];
+
 		// set gregorian date
 		$start_date_gregorian = $start_date;
 		// if start date is jalali convert to gregorian
 		if(utility\jdate::is_jalali($start_date))
 		{
 			$start_date_gregorian = utility\jdate::to_gregorian($start_date, "Y-m-d");
-		}
-
-		// check start date > date added user in team
-		if(strtotime($start_date_gregorian) < strtotime($date_added_to_team))
-		{
-			logs::set('api:houredit:start:date:less:than:added:to:team', $this->user_id, $log_meta);
-			debug::error(T_("On this time you are not in this team!"), 'start_date', 'arguments');
-			return false;
 		}
 
 		// set gregorian date
@@ -169,13 +168,13 @@ trait add
 			$end_date_gregorian = utility\jdate::to_gregorian($end_date, "Y-m-d");
 		}
 
-		// check end date > date added user in team
-		if(strtotime($end_date_gregorian) > time())
-		{
-			logs::set('api:houredit:end:date:larger:than:now', $this->user_id, $log_meta);
-			debug::error(T_("End date can not be in the future"), 'end_date', 'arguments');
-			return false;
-		}
+		// // check end date > date added user in team
+		// if(strtotime($end_date_gregorian) > time())
+		// {
+		// 	logs::set('api:houredit:end:date:larger:than:now', $this->user_id, $log_meta);
+		// 	debug::error(T_("End date can not be in the future"), 'end_date', 'arguments');
+		// 	return false;
+		// }
 
 		// check end date > start date
 		if(strtotime($end_date_gregorian) < strtotime($start_date_gregorian))
@@ -276,8 +275,8 @@ trait add
 		// start date shamsi
 		$args['shamsi_date']     = utility\jdate::date("Y-m-d", strtotime($start_date_gregorian), false, true);
 		$args['shamsi_year']     = utility\jdate::date("Y", strtotime($start_date_gregorian), false, true);
-		$args['shamsi_month']    = utility\jdate::date("m", strtotime($start_date_gregorian), false, true);;
-		$args['shamsi_day']      = utility\jdate::date("d", strtotime($start_date_gregorian), false, true);;
+		$args['shamsi_month']    = utility\jdate::date("m", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_day']      = utility\jdate::date("d", strtotime($start_date_gregorian), false, true);
 		// start time
 		$args['start']           = $start_time;
 		// end time
@@ -297,6 +296,7 @@ trait add
 		$args['creator']         = $this->user_id;
 		$args['team_id']         = $team_id;
 		$args['userteam_id']     = "(SELECT id FROM userteams WHERE user_id = ". $this->user_id. " AND team_id = $team_id LIMIT 1)";
+
 
 		if($_args['method'] === 'post' && !$update_mode)
 		{
