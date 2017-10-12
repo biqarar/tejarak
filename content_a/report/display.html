@@ -1,24 +1,20 @@
 {%extends display.adminTeam%}
 
-{%block pageCenter%}
-   <div class='cbox c5 s12' id="reportList">
+{%block pageContent%}
+<div class="f">
+ <div class="c3 s6">{{block ("stLastTraffic")}}</div>
+ <div class="c3 s6">{{block ("stTrafficMonth")}}</div>
+ <div class="c3 s6">{{block ("stTrafficYear")}}</div>
+ <div class="c3 s6">{{block ("prDate")}}</div>
+</div>
 
-    <ul class="list">
-     <li><a class="c12" href="{{url.full}}/last">{%trans "Last traffic"%}</a></li>
-     <li><a class="c12" href="{{url.full}}/month">{%trans "Sum times in month"%}</a></li>
-     <li><a class="c12" href="{{url.full}}/year">{%trans "Sum times in year"%}</a></li>
-     <!-- <li><a class="c12" href="{{url.full}}/period">{%trans "Sum times in period"%}</a></li> -->
-    </ul>
-
-    <hr>
-
-    <ul class="list">
-      <li><a class="c12" href="{{url.baseFull}}/{{team_code}}/request">{%trans "Hour request edit list"%}</a></li>
-    </ul>
-
-   </div>
+<h3 class="mT50">{%trans "Manual request of change hours"%}</h3>
+<div class="f">
+ <div class="c4 s6">{{block ("stRequestList")}}</div>
+ <div class="c4 s6">{{block ("stRequestAdd")}}</div>
+ <div class="c4 s6">{{block ("stRequestEdit")}}</div>
+</div>
 {%endblock%}
-
 
 
 
@@ -39,3 +35,83 @@
 {%endif%}
 {%endblock%}
 
+
+
+{%block stRequestList%}
+<a class="dcard" href='{{url.baseFull}}/{{team_code}}/request'>
+ <div class="statistic gray">
+  <div class="label">{%trans "List of current requests"%}</div>
+ </div>
+</a>
+{%endblock%}
+
+
+{%block stRequestAdd%}
+<a class="dcard" href='{{url.baseFull}}/{{team_code}}/request/add'>
+ <div class="statistic gray">
+  <div class="label">{%trans "Add new request"%}</div>
+ </div>
+</a>
+{%endblock%}
+
+
+{%block stRequestEdit%}
+<a class="dcard" href='{{url.baseFull}}/{{team_code}}/report/last'>
+ <div class="statistic gray">
+  <div class="label">{%trans "Edit existing record"%}</div>
+ </div>
+</a>
+{%endblock%}
+
+
+{%block stLastTraffic%}
+<a class="dcard" href='{{url.full}}/last'>
+ <div class="statistic gray">
+  <div class="label">{%trans "Last traffics"%}</div>
+ </div>
+</a>
+{%endblock%}
+
+
+{%block stTrafficMonth%}
+<a class="dcard" href='{{url.full}}/month'>
+ <div class="statistic teal">
+  <div class="label">{%trans "Sum times in month"%}</div>
+ </div>
+</a>
+{%endblock%}
+
+
+{%block stTrafficYear%}
+  <a class="dcard" href="{{url.full}}/year">
+   <div class="statistic orange">
+    <div class="label">{%trans "Sum times in year"%}</div>
+   </div>
+  </a>
+{%endblock%}
+
+
+{%block stDayUsed%}
+  <div class="dcard">
+   <div class="statistic orange">
+    <div class="label">{%trans "Today"%} {{"now" | tdate('d M Y')}}</div>
+   </div>
+  </div>
+{%endblock%}
+
+
+{%block prDate%}
+<div class="dcard">
+ <div class="block">
+  <div class="f">
+   <h5 class="c fc-mute">{{"now" | tdate("M")}}</h5>
+   <h4 class="cauto fc-info fs30 txtra">{{"now" | tdate("d")}}</h4>
+  </div>
+  <div class="f">
+   <div class="progress" data-percent='{{month.left}}'>
+    <div class="bar"></div>
+   </div>
+  </div>
+ </div>
+</div>
+{%endblock%}

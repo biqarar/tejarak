@@ -8,6 +8,8 @@ class view extends \content_a\main\view
 	{
 		parent::config();
 
+
+		$this->data->month = \lib\utility\date::month_precent();
 		/**
 		* get raw time
 		* skip humantime
