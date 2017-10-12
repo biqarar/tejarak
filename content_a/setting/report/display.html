@@ -46,10 +46,11 @@
   <h3>{%trans "Telegram Group Reports"%}</h3>
   <p>{%trans "You can connect your team to one group."%} {%trans "Use our @tejarakBot menu and connect your team to your team telegram group."%} {%trans "After that we can send some summary message to your group."%} {%trans "You can customize these settings and create your favorite message."%}</p>
 
-  {%if telegram_id or 1%}
-  <p class="msg info2">{%trans "Enjoy using telegram free messages on our paid plans, not on FREE!"%}</p>
+  {%if current_team.telegram%}
+{%if current_team.plan == "free" or current_team.plan == "simple"%}
+  <p class="msg warn2">{%trans "Enjoy using automatic report on your telegram group on standard and complete plan."%}</p>
 {{block("iAutoTrafficReportHour")}}
-
+{%endif%}
 
 {{block("iTgGroup")}}
   <div data-response='sendtelegram_group' {% if not report_settings.telegram_group%} data-response-hide {%endif%}>
