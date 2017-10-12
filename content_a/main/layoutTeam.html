@@ -18,7 +18,7 @@
 {%endif%}
 
 {%if current_team.short_name%}
-{%if current_team.privacy=="private"%}
+{%if current_team.privacy=="private" and not is_admin%}
 <li title='{%trans "Team is private and you can not see board!"%}'><a class="disabled"><i class="sf-heart-o"></i>{%trans "Board"%}</a></li>
 {%else%}
 <li><a href="{{url.base}}/{{current_team.short_name}}" data-direct target="_blank"><i class="sf-heart-o"></i>{%trans "Board"%}</a></li>

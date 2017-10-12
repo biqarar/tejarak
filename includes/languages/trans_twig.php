@@ -405,12 +405,13 @@ class twigTransTerms
 	echo T_("Billing");                                                               // Line 8
 
 	//--------------------------------------------------content_a\main\layoutTeam.html
-	echo T_("Team Operation");                                                        // Line 8
-	echo T_("Team Dashboard");                                                        // Line 9
-	echo T_("Team Members");                                                          // Line 11
-	echo T_("Gateway");                                                               // Line 12
-	echo T_("Reports");                                                               // Line 14
-	echo T_("Settings");                                                              // Line 16
+	echo T_("Team Operation");                                                        // Line 9
+	echo T_("Team Dashboard");                                                        // Line 10
+	echo T_("Team Members");                                                          // Line 12
+	echo T_("Gateway");                                                               // Line 13
+	echo T_("Reports");                                                               // Line 15
+	echo T_("Settings");                                                              // Line 17
+	echo T_("Team is private and you can not see board!");                            // Line 22
 	echo T_("Board");                                                                 // Line 81 Seperate
 
 	//----------------------------------------------------content_a\main\teamLink.html
