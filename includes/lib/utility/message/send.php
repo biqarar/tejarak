@@ -156,9 +156,9 @@ trait send
 		// }
 		//
 
-
 		foreach ($this->message as $message_type => $message)
 		{
+
 			$first_msg = false;
 			switch ($message_type)
 			{
@@ -185,7 +185,7 @@ trait send
 						// check if this user is first login user
 						if(\lib\db\hours::enter($this->team_id) <=1)
 						{
-							if(isset($this->team_meta['my_report_settings']['telegram_group']) && $this->team_meta['my_report_settings']['telegram_group'])
+							if(isset($this->team_meta['report_settings']['telegram_group']) && $this->team_meta['report_settings']['telegram_group'])
 							{
 								if(plan::access('telegram:first:of:day:msg:group', $this->team_id))
 								{
@@ -221,7 +221,7 @@ trait send
 
 						if($is_first_transaction)
 						{
-							if(isset($this->team_meta['my_report_settings']['telegram_group']) && $this->team_meta['my_report_settings']['telegram_group'])
+							if(isset($this->team_meta['report_settings']['telegram_group']) && $this->team_meta['report_settings']['telegram_group'])
 							{
 								if(plan::access('telegram:first:of:day:msg:group', $this->team_id))
 								{
@@ -247,13 +247,16 @@ trait send
 					break;
 
 				case 'end_day':
+
 					if(plan::access('telegram:end:day:report', $this->team_id))
 					{
-						if(\lib\db\hours::live($this->team_id) <= 0 )
+
+						$live = \lib\db\hours::live($this->team_id);
+						if(intval($live) <= 0 )
 						{
-							if(isset($this->team_meta['my_report_settings']['telegram_group']) && $this->team_meta['my_report_settings']['telegram_group'])
+							if(isset($this->team_meta['report_settings']['telegram_group']) && $this->team_meta['report_settings']['telegram_group'])
 							{
-								if(isset($this->team_meta['my_report_settings']['report_daily']) && $this->team_meta['my_report_settings']['report_daily'])
+								if(isset($this->team_meta['report_settings']['report_daily']) && $this->team_meta['report_settings']['report_daily'])
 								{
 									if(plan::access('telegram:end:day:report:group', $this->team_id))
 									{
@@ -261,6 +264,7 @@ trait send
 									}
 								}
 							}
+
 
 							foreach ($admins_access_detail as $key => $value)
 							{
@@ -273,6 +277,7 @@ trait send
 
 						}
 					}
+
 					break;
 
 				default:
@@ -295,10 +300,10 @@ trait send
 					break;
 			}
 
+		}
 			// send message by sorting
 			telegram::sort_send();
 			telegram::clean_cash();
-		}
 
 	}
 }
