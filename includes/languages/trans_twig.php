@@ -162,15 +162,18 @@ class twigTransTerms
 
 	//------------------------------------------content\template\static\changelog.html
 	echo T_("Change log of Tejarak");                                                 // Line 3
-	echo T_("We were born to do Best!");                                              // Line 58
+	echo T_("We were born to do Best!");                                              // Line 61
 	echo T_("We are Developers, please wait!");                                       // Line 20
 	echo T_("Date");                                                                  // Line 26
-	echo T_("Version 2 of Tejarak released");                                         // Line 26
-	echo T_("Version 1 of Tejarak released");                                         // Line 31
-	echo T_("Beta version of Tejarak released");                                      // Line 36
-	echo T_("Finally Tejarak logo is accepted and we started branding");              // Line 43
-	echo T_("Alfa version of Tejarak released");                                      // Line 49
-	echo T_("The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> domains registered.");// Line 53
+	echo T_("Version 3 of Tejarak released with new features and bugfixes and improvements.");// Line 26
+	echo T_("Version 2 of Tejarak is released and ready to used by everyone in everyteam.");// Line 31
+	echo T_("We are ready to have some change on Tejarak and publish it as public service.");// Line 36
+	echo T_("Version 1 of Tejarak released.");                                        // Line 41
+	echo T_("This version is used in Ermile without plan to publish it.");            // Line 41
+	echo T_("Beta version of Tejarak released");                                      // Line 46
+	echo T_("Alfa version of Tejarak released");                                      // Line 51
+	echo T_("First enterence traffic of Tejarak is registered for Ermile.");          // Line 51
+	echo T_("The name of project selected as Tejarak and <a href='http://Tejarak.ir'>Tejarak.ir</a> domains registered.");// Line 56
 
 	//-----------------------------------------content\template\static\enterprise.html
 	echo T_("Enterprise");                                                            // Line 3
@@ -535,8 +538,8 @@ class twigTransTerms
 	echo T_("Be sure to take control of individuals and managers after transferring ownership of the team");// Line 67
 	echo T_("Usage of this team now:");                                               // Line 68
 	echo T_("Are you accept?");                                                       // Line 115
-	echo T_("Accept");                                                                // Line 72
-	echo T_("Reject");                                                                // Line 81
+	echo T_("Accept");                                                                // Line 75
+	echo T_("Reject");                                                                // Line 84
 
 	//--------------------------------------------------content_a\profile\display.html
 	echo T_("Your profile information");                                              // Line 7
@@ -641,13 +644,12 @@ class twigTransTerms
 	echo T_("Export as CSV file");                                                    // Line 53
 
 	//--------------------------------------------------content_a\request\display.html
-	echo T_("Action");                                                                // Line 8
 	echo T_("Start Time");                                                            // Line 10
 	echo T_("End Time");                                                              // Line 12
 	echo T_("Response");                                                              // Line 18
-	echo T_("Set Response");                                                          // Line 77
+	echo T_("Set Response");                                                          // Line 80
 	echo T_("More");                                                                  // Line 34
-	echo T_("No description");                                                        // Line 57
+	echo T_("No description");                                                        // Line 58
 
 	//---------------------------------------------------content_a\request\layout.html
 	echo T_("Send request");                                                          // Line 105
