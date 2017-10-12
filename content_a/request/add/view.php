@@ -12,8 +12,8 @@ class view extends \content_a\request\view
 
 
 
-		// $this->data->page['title'] = T_('Add new team');
-		// $this->data->page['desc']  = T_('Set some basic detail, after insert you can add avatar and change all settings');
+		$this->data->page['title'] = T_('Add new request');
+		$this->data->page['desc']  = T_('You can add new request of time and after confirm of team admin, this time is added to your hours.');
 	}
 }
 ?>

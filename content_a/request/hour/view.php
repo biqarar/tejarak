@@ -9,8 +9,8 @@ class view extends \content_a\main\view
 	public function view_hour()
 	{
 
-		// $this->data->page['title'] = T_('Add new team');
-		// $this->data->page['desc']  = T_('Set some basic detail, after insert you can hour avatar and change all settings');
+		$this->data->page['title'] = T_('Request edit existing hour');
+		$this->data->page['desc']  = T_('you can register a change request for this time record.');
 	}
 }
 ?>

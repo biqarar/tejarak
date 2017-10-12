@@ -609,10 +609,14 @@ class twigTransTerms
 	echo T_("Enter to Tejarak");                                                      // Line 144
 
 	//---------------------------------------------------content_a\report\display.html
-	echo T_("Sum times in month");                                                    // Line 8
-	echo T_("Sum times in year");                                                     // Line 9
-	echo T_("Sum times in period");                                                   // Line 10
-	echo T_("Hour request edit list");                                                // Line 16
+	echo T_("Manual request of change hours");                                        // Line 11
+	echo T_("List of current requests");                                              // Line 43
+	echo T_("Add new request");                                                       // Line 52
+	echo T_("Edit existing record");                                                  // Line 61
+	echo T_("Last traffics");                                                         // Line 175
+	echo T_("Sum times in month");                                                    // Line 79
+	echo T_("Sum times in year");                                                     // Line 88
+	echo T_("Today");                                                                 // Line 97
 
 	//----------------------------------------------content_a\report\last\display.html
 	echo T_("Start");                                                                 // Line 26
@@ -773,11 +777,11 @@ class twigTransTerms
 	echo T_("Use our @tejarakBot menu and connect your team to your team telegram group.");// Line 47
 	echo T_("After that we can send some summary message to your group.");            // Line 47
 	echo T_("You can customize these settings and create your favorite message.");    // Line 47
-	echo T_("Enjoy using telegram free messages on our paid plans, not on FREE!");    // Line 50
-	echo T_("First entrance");                                                        // Line 57
-	echo T_("Last entrance");                                                         // Line 61
-	echo T_("Group not connected!");                                                  // Line 72
-	echo T_("connect via @tejarakBot to your Telegram group and enjoy our reports."); // Line 72
+	echo T_("Enjoy using automatic report on your telegram group on standard and complete plan.");// Line 51
+	echo T_("First entrance");                                                        // Line 58
+	echo T_("Last entrance");                                                         // Line 62
+	echo T_("Group not connected!");                                                  // Line 73
+	echo T_("connect via @tejarakBot to your Telegram group and enjoy our reports."); // Line 73
 
 	//-----------------------------------------content_a\setting\security\display.html
 	echo T_("Transfer owner of team to another person");                              // Line 59
@@ -820,7 +824,6 @@ class twigTransTerms
 	echo T_("day ago");                                                               // Line 139
 	echo T_("Day Used");                                                              // Line 143
 	echo T_("Top Members");                                                           // Line 169
-	echo T_("Last traffics");                                                         // Line 175
 
 	//-------------------------------------------------content_api\v1\doc\display.html
 	echo T_("Tejarak API");                                                           // Line 6

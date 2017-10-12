@@ -5,7 +5,8 @@
 {{parent()}}
 
 {%if team is not null%}
-<li class="title">{%trans "Team Operation"%}</li>
+
+<li class="title">{%trans "Team Operation"%} <b>{{current_team.name}}</b></li>
 <li><a href="{{url.baseFull}}/{{team}}"><i class="sf-home"></i>{%trans "Team Dashboard"%}</a></li>
 {%if is_admin%}
 <li><a href="{{url.baseFull}}/{{team}}/member"><i class="sf-users"></i>{%trans "Team Members"%}</a></li>

@@ -13,7 +13,11 @@ class view extends \content_a\main\view
 		{
 			$this->data->is_24h = true;
 		}
+
+		$this->data->page['title'] = T_('Request list');
+		$this->data->page['desc']  = T_('See list of request registered and status of them. Depending on your permission you can do some actions.');
 	}
+
 
 
 	// /**
