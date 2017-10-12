@@ -219,10 +219,15 @@ trait get
 					$result['day_use']    = $date_now->diff($start)->days;
 					$result['day_use']++;
 					break;
+				case 'telegram_id':
+					$result['telegram'] = $value ? true : false;
+					break;
+
+				case 'plan':
+					$result[$key] = $value;
+					break;
 
 				case 'fileid':
-				case 'telegram_id':
-				case 'plan':
 				case 'until':
 				case 'date_modified':
 				case 'meta':
