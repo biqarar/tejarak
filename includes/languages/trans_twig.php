@@ -343,7 +343,7 @@ class twigTransTerms
 	echo T_("Creator");                                                               // Line 24
 	echo T_("Plan");                                                                  // Line 25
 	echo T_("Start");                                                                 // Line 12
-	echo T_("End");                                                                   // Line 15
+	echo T_("End");                                                                   // Line 80
 	echo T_("status");                                                                // Line 29
 	echo T_("Last Calc Date");                                                        // Line 29
 	echo T_("Renew at");                                                              // Line 30
@@ -480,11 +480,12 @@ class twigTransTerms
 	echo T_("Add new Gateway");                                                       // Line 17
 
 	//----------------------------------------------content_a/report/last/display.html
+	echo T_("Last time for");                                                         // Line 21
+	echo T_("Export");                                                                // Line 52
 	echo T_("Mission");                                                               // Line 18
 	echo T_("Accepted");                                                              // Line 31
-	echo T_("Request Edit");                                                          // Line 44
-	echo T_("Add request");                                                           // Line 55
-	echo T_("Export");                                                                // Line 52
+	echo T_("Request Edit");                                                          // Line 109
+	echo T_("Add request");                                                           // Line 120
 
 	//---------------------------------------------content_a/report/month/display.html
 	echo T_("Filter by specefic month of specefic year");                             // Line 10

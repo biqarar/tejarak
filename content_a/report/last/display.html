@@ -5,6 +5,71 @@
 
 {{block('userList')}}
 
+
+{%if utilityGET.printmode%}
+  {{block('lastTimePrintMode')}}
+{%else%}
+  {{block('lastTime')}}
+{%endif%}
+
+{%endblock%}
+
+
+
+{%block lastTimePrintMode%}
+
+<div class="msg info">{%trans "Last time for"%}| {{report_current_user.displayname}}</div>
+<table class="tbl">
+  <thead class="primary">
+    <tr>
+      <th>{%trans "Name"%}</th>
+      <th>{%trans "Postion"%}</th>
+      <th>{%trans "Date"%}</th>
+      <th>{%trans "Start"%}</th>
+      <th>{%trans "End"%}</th>
+      <th>{%trans "Diff"%}</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {%for key, value in last_time%}
+    <tr xclass="f">
+      <td xclass="c">{{value.displayname}}</td>
+      <td xclass="c s0 m0">{{value.postion}}</td>
+      <td xclass="c">{{value.date|jdate("Y-m-d")}}</td>
+      <td xclass="c">{{value.start|fitNumber}}</td>
+      <td xclass="c">{{value.end|fitNumber}}</td>
+{%if time_raw %}
+      <td xclass="c s0">{{value.diff | fitNumber}}</td>
+{%else%}
+      <td xclass="c s0">{{value.diff | humantime | fitNumber}}</td>
+
+{%endif%}
+
+    </tr>
+    {%endfor%}
+
+  </tbody>
+</table>
+{%include display.pagination%}
+
+<div class="f">
+  <div class="cauto  pA5">
+    <a href="{{export_url|raw}}">
+      <i class="sf-list btn"></i> {%trans "Export"%}
+    </a>
+  </div>
+
+</div>
+
+{%endblock%}
+
+
+
+
+
+{%block lastTime%}
+
 <table class="tbl">
   <thead class="primary">
     <tr>
@@ -65,4 +130,3 @@
 </div>
 
 {%endblock%}
-
