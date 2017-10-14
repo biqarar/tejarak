@@ -155,12 +155,32 @@ trait get
 			return false;
 		}
 
+		$where               = [];
+
+		$status = utility::request('status');
+
+		if($status)
+		{
+			if(!in_array($status, ['active','deactive','disable','filter','leave','delete','parent','suspended']))
+			{
+				logs::set('api:member:team:search:invalid:status', $this->user_id, $log_meta);
+				debug::error(T_("Parameter status is incurrect"), 'status', 'arguments');
+				return false;
+			}
+			$where['status'] = $status;
+		}
+		else
+		{
+			$where['status']     = ['IN', "('active', 'deactive')"];
+		}
+
+
+
 		if(isset($team_detail['id']))
 		{
-			$where               = [];
 			$where['team_id']    = $team_detail['id'];
 			$where['get_hours']  = $get_hours;
-			$where['status']     = ['IN', "('active', 'deactive')"];
+			// $where['status']     = ['IN', "('active', 'deactive')"];
 			$where['rule']       = ['IN', "('user', 'admin')"];
 			$where['pagenation'] = $_args['pagenation'];
 			if($type)
