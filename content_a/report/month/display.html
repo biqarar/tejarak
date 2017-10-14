@@ -15,6 +15,16 @@
   </div>
 </form>
 
+{%if month_time%}
+  {{block('tableMonthTime')}}
+{%else%}
+  <div class="msg warn">{%trans "No result for"%}: {{report_current_user.displayname}}</div>
+{%endif%}
+
+{%endblock%}
+
+
+{%block tableMonthTime%}
 
 <div class="cbox fs11">
   <table class="tbl">
@@ -58,6 +68,4 @@
     <i class="sf-list btn"></i>
   </a>
 </div>
-
 {%endblock%}
-
