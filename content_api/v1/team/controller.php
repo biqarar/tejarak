@@ -7,7 +7,7 @@ class controller extends \addons\content_api\home\controller
 	/**
 	 * team
 	 */
-	public function _route()
+	public function ready()
 	{
 		// get team list
 		$this->get('teamList')->ALL('v1/team/list');

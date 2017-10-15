@@ -7,10 +7,8 @@ class controller extends \mvc\controller
 	/**
 	 * rout
 	 */
-	public function _route()
+	public function repository()
 	{
-		parent::_route();
-
 		if(!$this->login())
 		{
 			$this->redirector($this->url('base'). '/enter')->redirect();

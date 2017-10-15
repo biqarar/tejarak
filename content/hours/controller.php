@@ -6,11 +6,8 @@ class controller extends \content\main\controller
 	/**
 	 * route hous page
 	 */
-	public function _route()
+	public function ready()
 	{
-
-		parent::_route();
-
 		$url = \lib\router::get_url();
 		// this module name is hours
 		// the house url can not be route

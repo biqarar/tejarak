@@ -7,9 +7,8 @@ class controller extends \addons\content_api\home\controller
 	/**
 	 * member
 	 */
-	public function _route()
+	public function ready()
 	{
-
 		// get member list
 		$this->get('memberList')->ALL('v1/memberlist');
 		// get 1 member detail

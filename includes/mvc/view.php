@@ -48,9 +48,9 @@ class view extends \lib\view
 	 * [pushState description]
 	 * @return [type] [description]
 	 */
-	function pushState()
-	{
+	// function pushState()
+	// {
 
-	}
+	// }
 }
 ?>

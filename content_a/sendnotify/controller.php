@@ -1,12 +1,12 @@
 <?php
 namespace content_a\sendnotify;
 
-class controller extends  \content_a\main\controller
+class controller extends \content_a\main\controller
 {
 
-	public function _route()
+	public function ready()
 	{
-		parent::_route();
+
 
 		$url = \lib\router::get_url();
 

@@ -48,7 +48,7 @@ class controller extends \mvc\controller
 		'page'
 	];
 
-	public function _route()
+	public function ready()
 	{
 		\lib\permission::access('cp:user:hours', 'block');
 

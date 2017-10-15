@@ -6,9 +6,9 @@ class controller extends \content_a\report\controller
 	/**
 	 * rout
 	 */
-	function _route()
+	function ready()
 	{
-		parent::_route();
+		parent::ready();
 
 		$this->get(false, 'last')->ALL("/^([a-zA-Z0-9]+)\/report\/last$/");
 

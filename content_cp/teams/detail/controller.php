@@ -3,7 +3,7 @@ namespace content_cp\teams\detail;
 
 class controller extends \mvc\controller
 {
-	public function _route()
+	public function ready()
 	{
 		\lib\permission::access('cp:user:detail', 'block');
 

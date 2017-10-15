@@ -3,7 +3,7 @@ namespace content_api\v1\report;
 
 class controller extends \addons\content_api\home\controller
 {
-	public function _route()
+	public function ready()
 	{
 		$this->get("list")->ALL('v1/report/list');
 

@@ -4,9 +4,9 @@ namespace content_a\billing\invoice;
 class controller extends  \content_a\main\controller
 {
 
-	public function _route()
+	public function ready()
 	{
-		parent::_route();
+
 
 		$this->get("invoice", "invoice")->ALL("/^billing\/invoice\/(\d+)$/");
 

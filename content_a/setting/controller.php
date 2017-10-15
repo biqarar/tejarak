@@ -6,10 +6,10 @@ class controller extends \content_a\main\controller
 	/**
 	 * rout
 	 */
-	function _route()
+	function ready()
 	{
 
-		parent::_route();
+
 
 		$new_url = $this->url('baseFull'). '/'. \lib\router::get_url(0). '/setting/general';
 

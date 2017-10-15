@@ -6,9 +6,9 @@ class controller extends \content_a\main\controller
 	/**
 	 * rout
 	 */
-	public function _route()
+	public function ready()
 	{
-		// parent::_route();
+		//
 
 		/**
 		 * the router remove first url

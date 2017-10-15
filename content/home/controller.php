@@ -43,10 +43,8 @@ class controller extends \content\main\controller
 	];
 
 	// for routing check
-	function _route()
+	function ready()
 	{
-		parent::_route();
-
 		// if have display return false
 		if($this->display_name !== null)
 		{

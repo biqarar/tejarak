@@ -7,9 +7,8 @@ class controller extends  \addons\content_api\home\controller
 	/**
 	 * route
 	 */
-	public function _route()
+	public function ready()
 	{
-		parent::_route();
 		$url = \lib\router::get_url();
 
 		switch ($url)

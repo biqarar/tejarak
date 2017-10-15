@@ -6,9 +6,9 @@ class controller extends \content_a\main\controller
 	/**
 	 * rout
 	 */
-	function _route()
+	function ready()
 	{
-		parent::_route();
+
 
 		// request list
 		$this->get(false, 'hour')->ALL("/.*/");

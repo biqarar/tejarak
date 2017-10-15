@@ -9,9 +9,9 @@ class controller extends  \mvc\controller
 		\lib\temp::set('api', false);
 	}
 
-	public function _route()
+	public function ready()
 	{
-		$this->get(false,false)->ALL("/.*/");
+		$this->get()->ALL("/.*/");
 	}
 }
 ?>

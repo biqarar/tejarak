@@ -7,7 +7,7 @@ class controller extends \addons\content_api\home\controller
 	/**
 	 * hours
 	 */
-	public function _route()
+	public function ready()
 	{
 		// get hours list
 		$this->get('hoursList')->ALL('v1/hourslist');
