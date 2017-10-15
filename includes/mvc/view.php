@@ -3,7 +3,7 @@ namespace mvc;
 
 class view extends \lib\view
 {
-	function _construct()
+	function project()
 	{
 		// define default value for global
 
@@ -41,10 +41,6 @@ class view extends \lib\view
 		// if you need to set a class for body element in html add in this value
 		$this->data->bodyclass           = null;
 
-		if(method_exists($this, 'options'))
-		{
-			$this->options();
-		}
 	}
 
 

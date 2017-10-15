@@ -3,12 +3,6 @@ namespace content\main;
 
 class view extends \mvc\view
 {
-	function config()
-	{
-
-	}
-
-
 	/**
 	 * [pushState description]
 	 * @return [type] [description]

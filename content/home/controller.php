@@ -3,14 +3,6 @@ namespace content\home;
 
 class controller extends \content\main\controller
 {
-	/**
-	 * test.dev
-	 */
-	public function config()
-	{
-
-	}
-
 
 	/**
 	 * the static page to not run any query
