@@ -5,7 +5,6 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-		parent::config();
 		$this->data->page['title'] = T_("Invoice Detail");
 		$this->data->page['desc'] = T_("Check invoice and detail of it");
 

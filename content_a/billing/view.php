@@ -5,7 +5,6 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-		parent::config();
 
 		$this->data->amount        = \lib\utility::get('amount');
 		$this->data->page['title'] = T_("Billing information");

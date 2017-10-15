@@ -5,8 +5,6 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-
-		parent::config();
 		$team_name = '';
 		if(isset($this->data->current_team['name']))
 		{

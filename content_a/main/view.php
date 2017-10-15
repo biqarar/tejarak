@@ -8,7 +8,7 @@ class view extends \mvc\view
 	/**
 	 * config
 	 */
-	public function config()
+	public function repository()
 	{
 		$this->data->bodyclass = 'fixed unselectable siftal';
 		$this->include->css    = true;

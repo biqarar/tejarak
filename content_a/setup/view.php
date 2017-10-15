@@ -8,8 +8,6 @@ class view extends \content_a\main\view
 	 */
 	public function config()
 	{
-		parent::config();
-
 		// set page title
 		$step = null;
 		switch (\lib\router::get_url(1))

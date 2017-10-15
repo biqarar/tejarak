@@ -6,8 +6,6 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-		parent::config();
-
 		$load_user_in_team = \lib\temp::get('userteam_login_detail');
 		if(isset($load_user_in_team['24h']) && $load_user_in_team['24h'])
 		{

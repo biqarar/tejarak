@@ -6,8 +6,6 @@ class view extends \content_a\main\view
 
 	public function config()
 	{
-		parent::config();
-
 		$team                      = \lib\router::get_url(0);
 		$member                    = \lib\router::get_url(3);
 

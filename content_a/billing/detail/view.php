@@ -5,7 +5,6 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-		parent::config();
 		$this->data->page['title'] = T_("Billing usage detail");
 		$this->data->page['desc']  = T_("Check your current usage and active user and price for this period of time.");
 	}

@@ -3,13 +3,6 @@ namespace content_a\notifications;
 
 class view extends \content_a\main\view
 {
-	public function config()
-	{
-		parent::config();
-	}
-
-
-
 	/**
 	 * { function_description }
 	 *
