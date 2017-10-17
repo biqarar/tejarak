@@ -513,6 +513,10 @@ trait get
 					break;
 
 
+				case 'have_telegram':
+					$result['have_telegram'] = isset($value) ? true : false;
+					break;
+
 				case 'cardnumber':
 					$result['payment_account_number'] = isset($value) ? $value : null;
 					break;
