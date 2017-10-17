@@ -8327,6 +8327,9 @@ html[lang=fa] .switch1.gender input:checked + label:first-of-type:before {
   min-height: 60px;
   font-size: 150%; }
 
+.btn.weAreHere {
+  border-color: #168187; }
+
 .pA0 {
   padding: 0px 0px; }
 
@@ -11285,6 +11288,9 @@ body.siftal.loading-page #sidebar .avatar:before {
 
 .siftal #sidebar ul > li > ul > li > a {
   padding: 0.8em 3em; }
+
+.siftal #sidebar ul > li > a.weAreHere {
+  background-color: rgba(0, 0, 0, 0.8); }
 
 /* footer */
 .siftal footer {
