@@ -1,0 +1,55 @@
+{%extends display.adminTeam%}
+
+{%block pageContent%}
+  <div class='middle normal f justify-center'>
+
+
+  <div class="vcard mA10">
+    <img src="{{url.static}}siftal/images/useful/adduser.png" alt='{%trans "Add new member"%}'>
+    <div class="content"></div>
+    <div class="footer pAn">
+     <a class="btn block primary" href="{{url.baseFull}}/{{team}}/member/add">{%trans "Add new member"%}</a>
+    </div>
+  </div>
+
+
+
+{%for key, value in list_member%}
+{%set cardColor%}
+{%if value.status == 'remove'%}red{%elseif value.status == 'deactive'%}yellow{%elseif value.traffic%}black{%else%}green{%endif%}
+{%endset%}
+
+  <a class="vcard mA10 shadow {{cardColor}}" href="{{url.baseFull}}/{{team}}/member/general/{{value.id}}">
+    <img src="{{value.file}}" alt="{{value.displayname}}">
+    <div class="content">
+      <div class="header">{{value.displayname}}</div>
+      {%if value.postion%}<div class="meta">{{value.postion}}</div>{%endif%}
+
+    </div>
+    <div class="footer">
+	{%for i, parent in value.parent%}
+      {%set myTitle = parent.title |capitalize%}{%trans myTitle %}: {%if parent.displayname%}{{parent.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}
+      {%if parent.telegram%}<i class="sf-paper-plane"></i>{%endif%}
+      {%if parent.mobile%}<i class="sf-mobile"></i>{{parent.mobile|fitNumber}}{%endif%}
+      <hr>
+
+	{%endfor%}
+    	<!--
+    {%if value.stats.traffic_count%}
+      <i class="sf-hourglass-end"></i>{{value.stats.last_traffic_string|fitNumber}}
+      <i class="sf-retweet"></i><span>{{value.stats.traffic_count | number_format | fitNumber}}</span> {%trans "traffic"%}
+
+    {%else%}
+      {%trans "Without traffic"%}
+    {%endif%}
+    {%if value.rule=='admin'%} <i class="sf-star fc-gold" title='{%trans "Admin of team"%}'></i>{%endif%}
+
+    {%if value.have_telegram%}<i class="sf-paper-plane"></i>{%endif%}
+    {%if value.mobile%}<i class="sf-mobile"></i>{%endif%} -->
+    </div>
+  </a>
+{%endfor%}
+
+  </div>
+{%endblock%}
+
