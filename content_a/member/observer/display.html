@@ -29,9 +29,11 @@
     <div class="f-column align-start fc-black">{{value.displayname}}<small></small></div>
     <div class="vdivider">{%trans my_title%}</div>
     <div class="justify-start">
+{%if value.telegram%}<span class="icon sf-paper-plane "></span>{%endif%}
 {%if value.mobile%}
       <span class="icon sf-mobile fs18"></span> {{value.mobile|fitNumber}}
 {%endif%}
+
     </div>
     <div>
      <a href="{{url.full}}" data-ajaxify data-method="post" data-data='{"remove": "{{value.id|shortURL("encode")}}" }' class="fc-red">{%trans "Remove"%}</a>

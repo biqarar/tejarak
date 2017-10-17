@@ -110,7 +110,7 @@ trait ready
 
 			if($this->send_parent && $this->member_id)
 			{
-				$get_parent = \lib\db\userparents::get(['user_id' => $this->member_id, 'status' => 'enable']);
+				$get_parent = \lib\db\userparents::get(['user_id' => $this->member_id, 'status' => 'enable', 'related_id' => $this->team_id]);
 				if(is_array($get_parent))
 				{
 					$must_send_to = array_merge($must_send_to, array_column($get_parent, 'parent'));
