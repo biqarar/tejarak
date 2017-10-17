@@ -221,6 +221,7 @@ class plan
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
 				'telegram:first:of:day:msg'       => true,
+				'telegram:first:of:day:date_now'  => true,
 				'telegram:first:of:day:msg:group' => true,
 				'telegram:end:day:report'         => true,
 				'telegram:end:day:report:group'   => true,
@@ -242,6 +243,7 @@ class plan
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
 				'telegram:first:of:day:msg'       => true,
+				'telegram:first:of:day:date_now'  => true,
 				'telegram:first:of:day:msg:group' => true,
 				'telegram:end:day:report'         => true,
 				'telegram:end:day:report:group'   => true,
@@ -261,10 +263,11 @@ class plan
 			'prepayment' => false,
 			'contain'    =>
 			[
-				'telegram:enter:msg'        => true,
-				'telegram:exit:msg'         => true,
-				'telegram:first:of:day:msg' => true,
-				'telegram:end:day:report'   => true,
+				'telegram:enter:msg'             => true,
+				'telegram:exit:msg'              => true,
+				'telegram:first:of:day:msg'      => true,
+				'telegram:first:of:day:date_now' => true,
+				'telegram:end:day:report'        => true,
 			],
 		];
 
@@ -283,6 +286,7 @@ class plan
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
 				'telegram:first:of:day:msg'       => true,
+				'telegram:first:of:day:date_now'  => true,
 				'telegram:first:of:day:msg:group' => true,
 				'telegram:end:day:report'         => true,
 				'telegram:end:day:report:group'   => true,
@@ -304,6 +308,7 @@ class plan
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
 				'telegram:first:of:day:msg'       => true,
+				'telegram:first:of:day:date_now'  => true,
 				'telegram:first:of:day:msg:group' => true,
 				'telegram:end:day:report'         => true,
 				'telegram:end:day:report:group'   => true,
@@ -325,6 +330,7 @@ class plan
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
 				'telegram:first:of:day:msg'       => true,
+				'telegram:first:of:day:date_now'  => true,
 				'telegram:first:of:day:msg:group' => true,
 				'telegram:end:day:report'         => true,
 				'telegram:end:day:report:group'   => true,
@@ -343,10 +349,11 @@ class plan
 			'prepayment' => false,
 			'contain'    =>
 			[
-				'telegram:enter:msg'        => true,
-				'telegram:exit:msg'         => true,
-				'telegram:first:of:day:msg' => true,
-				'telegram:end:day:report'   => true,
+				'telegram:enter:msg'             => true,
+				'telegram:exit:msg'              => true,
+				'telegram:first:of:day:msg'      => true,
+				'telegram:first:of:day:date_now' => true,
+				'telegram:end:day:report'        => true,
 			],
 		];
 
@@ -365,6 +372,7 @@ class plan
 				'telegram:enter:msg'              => true,
 				'telegram:exit:msg'               => true,
 				'telegram:first:of:day:msg'       => true,
+				'telegram:first:of:day:date_now' => true,
 				'telegram:first:of:day:msg:group' => true,
 				'telegram:end:day:report'         => true,
 				'telegram:end:day:report:group'   => true,

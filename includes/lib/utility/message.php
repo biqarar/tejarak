@@ -6,7 +6,8 @@ class message
 	// the team id
 	public $team_id       = null;
 	// send by sms or telegram or other thing
-	public $send_by       = []; // as default
+	// send by every thing sms, telegram, ...
+	public $send_by       = [];
 	// the message must be send
 	public $message       = [];
 	// send notify to parent
@@ -100,8 +101,6 @@ class message
 	 */
 	public function send()
 	{
-		$this->message = array_filter($this->message);
-
 		// ready data
 		// load admins
 		// load team data
@@ -185,16 +184,10 @@ class message
 		// generate text message
 		$this->generate_message();
 
-		if(count($this->message) === 1 && isset($this->message[0]))
-		{
-			return $this->message[0];
-		}
-		else
-		{
-			return $this->message;
-		}
-
+		// return the message list
+		return $this->message;
 	}
+
 
 	/**
 	 * generate message by message type
@@ -214,6 +207,9 @@ class message
 				{
 					if(method_exists($this, $value))
 					{
+						// for example
+						// $this->first_enter();
+						// $this->date_now();
 						$msg = $this->{$value}();
 						if($msg)
 						{

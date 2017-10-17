@@ -34,6 +34,43 @@ trait send
 		}
 	}
 
+	/**
+	 * check sended date now to user
+	 * if $_is_send is true save for this user as the user was resived the date now message
+	 *
+	 * @param      <type>   $_user_id  The user identifier
+	 * @param      boolean  $_is_send  The is send
+	 */
+	public function sended_date_now_to_user($_user_id, $_is_send = false)
+	{
+		if(!$_is_send)
+		{
+			$get_notify =
+			[
+				'user_id'  => $_user_id,
+				'category' => 1001,
+				'title'    => date("Y-m-d"),
+				'limit'    => 1,
+			];
+			$check_sended = \lib\db\notifications::get($get_notify);
+			if($check_sended)
+			{
+				return true;
+			}
+			return false;
+		}
+		else
+		{
+			$insert =
+			[
+				'user_id'  => $_user_id,
+				'category' => 1001,
+				'title'    => date("Y-m-d"),
+			];
+			return \lib\db\notifications::insert($insert);
+		}
+	}
+
 
 	/**
 	 * Sends to yourself and parent.
@@ -41,7 +78,7 @@ trait send
 	 * @param      <type>  $_message  The message
 	 * @param      array   $_sort     The sort
 	 */
-	public function send_to_yourself_parent($_message, $_sort = [], $_send_sms = false)
+	public function send_to_yourself_parent($_message, $_sort = [], $_send_sms = false, $_option = [])
 	{
 		$must_send_to = $this->must_send_to_user_data;
 		if(is_array($must_send_to))
@@ -115,7 +152,18 @@ trait send
 
 					if(isset($must_send_to[$user_id]['chatid']))
 					{
-						telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
+						if(isset($_option['date_now']) && $_option['date_now'])
+						{
+							if(!$this->sended_date_now_to_user($user_id))
+							{
+								$this->sended_date_now_to_user($user_id, true);
+								telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
+							}
+						}
+						else
+						{
+							telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
+						}
 					}
 				}
 			}
@@ -140,28 +188,35 @@ trait send
 			return false;
 		}
 
-		// foreach ($this->message as $key => $message)
-		// {
-		// 	if(isset($this->team_group) && $this->team_group)
-		// 	{
-		// 		if(plan::access('telegram:first:of:day:msg:group', $this->team_id))
-		// 		{
-		// 			telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
-		// 		}
-		// 	}
-		// 	foreach ($admins_access_detail as $k => $value)
-		// 	{
-		// 		telegram::sendMessage($value['chat_id'], $message, ['sort' => 1]);
-		// 	}
-		// }
-		//
-
 		foreach ($this->message as $message_type => $message)
 		{
 
 			$first_msg = false;
 			switch ($message_type)
 			{
+				// @example:
+				// دوشنبه ۲۴ مهر ۱۳۹۶
+				case 'date_now':
+					// first msg in day
+					if(plan::access('telegram:first:of:day:date_now', $this->team_id))
+					{
+						foreach ($admins_access_detail as $key => $value)
+						{
+							// if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
+							// if no message sended to this user in this time send it
+							// else not send this message
+							if(!$this->sended_date_now_to_user($key))
+							{
+								$this->sended_date_now_to_user($key, true);
+								telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+							}
+						}
+						$this->send_to_yourself_parent($message, ['sort' => 7], false, ['date_now' => true]);
+					}
+					break;
+
+				// @example:
+				// ✅ رضا محیطی
 				case 'enter':
 
 					if(plan::access('telegram:enter:msg', $this->team_id))
@@ -178,6 +233,10 @@ trait send
 					}
 					break;
 
+				// @example:
+				// دوشنبه ۲۴ مهر ۱۳۹۶
+				// 💪 رضا محیطی
+				// 🌖 🌱 👨‍💻 🥇
 				case 'first_enter':
 					// first msg in day
 					if(plan::access('telegram:first:of:day:msg', $this->team_id))
@@ -193,25 +252,29 @@ trait send
 								}
 							}
 
-							foreach ($admins_access_detail as $key => $value)
-							{
-								if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
-								{
-									if(!$first_msg)
-									{
-										telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
-									}
+							// foreach ($admins_access_detail as $key => $value)
+							// {
+							// 	if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
+							// 	{
+							// 		if(!$first_msg)
+							// 		{
+							// 			telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+							// 		}
 
-									telegram::sendMessage($value['chat_id'], $this->date_now(), ['sort' => 1]);
-								}
-							}
-							$this->send_to_yourself_parent($this->date_now());
-							$this->send_to_yourself_parent($message, ['sort' => 7], true);
+							// 		// telegram::sendMessage($value['chat_id'], $this->date_now(), ['sort' => 1]);
+							// 	}
+							// }
+							// // $this->send_to_yourself_parent($this->date_now());
+							// $this->send_to_yourself_parent($message, ['sort' => 7], true);
 
 						}
 					}
 					break;
 
+				// @example:
+				// 💤 رضا محیطی
+				// ۰۸:۲۸ تا ۱۷:۴۹
+				// 🕗 ۹ ساعت و ۲۱ دقیقه
 				case 'exit_message':
 					if(plan::access('telegram:exit:msg', $this->team_id))
 					{
@@ -225,7 +288,7 @@ trait send
 							{
 								if(plan::access('telegram:first:of:day:msg:group', $this->team_id))
 								{
-									telegram::sendMessageGroup($this->team_group, $this->date_now(), ['sort' => 1]);
+									// telegram::sendMessageGroup($this->team_group, $this->date_now(), ['sort' => 1]);
 								}
 							}
 						}
@@ -236,16 +299,22 @@ trait send
 							{
 								if($is_first_transaction)
 								{
-									telegram::sendMessage($value['chat_id'], $this->date_now(), ['sort' => 1]);
+									// telegram::sendMessage($value['chat_id'], $this->date_now(), ['sort' => 1]);
 								}
 								telegram::sendMessage($value['chat_id'], $message, ['sort' => 2]);
 							}
 						}
-						$this->send_to_yourself_parent($this->date_now());
+						// $this->send_to_yourself_parent($this->date_now());
 						$this->send_to_yourself_parent($message, ['sort' => 7], true);
 					}
 					break;
 
+				// @example:
+				// #گزارش دوشنبه ۲۴ مهر ۱۳۹۶
+				// 🏆 رضا محیطی🥇 ۹:۲۱
+				// 🏆 جواد عوض‌زاده🥈 ۸:۳۸
+				// 🏆 احمد کریمی🥉 ۱:۳۶
+				// 👥 ۳  🕰 ۱۱۷۵
 				case 'end_day':
 
 					if(plan::access('telegram:end:day:report', $this->team_id))
@@ -265,7 +334,6 @@ trait send
 								}
 							}
 
-
 							foreach ($admins_access_detail as $key => $value)
 							{
 								if(isset($value['chat_id']) && isset($value['reportdaily']) && $value['reportdaily'])
@@ -273,7 +341,7 @@ trait send
 									telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								}
 							}
-							$this->send_to_yourself_parent($message, ['sort' => 7], true);
+							// $this->send_to_yourself_parent($message, ['sort' => 7], true);
 
 						}
 					}
@@ -301,10 +369,9 @@ trait send
 			}
 
 		}
-			// send message by sorting
-			telegram::sort_send();
-			telegram::clean_cash();
-
+		// send message by sorting
+		telegram::sort_send();
+		telegram::clean_cash();
 	}
 }
 ?>

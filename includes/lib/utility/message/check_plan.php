@@ -13,28 +13,7 @@ trait check_plan
 	 */
 	private function check_plan()
 	{
-		if($this->status)
-		{
-			if($this->type)
-			{
-				if(method_exists($this, $this->type))
-				{
-					$msg = $this->{$this->type}();
-					if($msg)
-					{
-						if(Tld === 'dev')
-						{
-							$msg .= "\n #Dev";
-						}
-					}
-					$this->message[] = $msg;
-				}
-			}
-			else
-			{
-				$this->status = false;
-			}
-		}
+
 	}
 }
 ?>

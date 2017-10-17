@@ -4,6 +4,7 @@
  * send notification status
  */
 self::$config['notification']['status'] = true;
+
 self::$config['notification']['sort'] =
 [
 	'telegram',
@@ -143,11 +144,16 @@ self::$config['notification']['cat'][10] =
 	],
 ];
 
-
+// send supervisro in su/sendnotify to every thing
 self::$config['notification']['cat'][1000] =
 [
 	'title'   => 'supervisor',
+];
 
+// send system notification
+self::$config['notification']['cat'][1001] =
+[
+	'title'   => 'system',
 ];
 
 ?>

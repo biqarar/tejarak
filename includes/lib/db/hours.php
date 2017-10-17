@@ -364,8 +364,11 @@ class hours
 		$msg = new \lib\utility\message($_args['team_id']);
 		$msg->type('first_enter');
 		$msg->type('enter');
+		$msg->type('date_now');
+		// send by
 		$msg->send_by('telegram');
 		$msg->send_by('sms');
+		// send to parent
 		$msg->send_parent(true);
 		// detail to use in message
 		$msg->displayname = \lib\temp::get('enter_exit_name');
@@ -485,6 +488,7 @@ class hours
 		$msg = new \lib\utility\message($_args['team_id']);
 		$msg->type('exit_message');
 		$msg->type('end_day');
+		$msg->type('date_now');
 		// meta need to create message
 		$msg->displayname = \lib\temp::get('enter_exit_name');
 		$msg->member_id   = \lib\temp::get('enter_exit_id');
@@ -498,8 +502,6 @@ class hours
 		$msg->send_parent(true);
 
 		$msg->send();
-
-		// \lib\utility\plan::check_feature($plan_feature);
 
 		return $updated;
 	}

@@ -72,6 +72,7 @@ class teams
 		teams.zipcode      			AS `zipcode`,
 		teams.type      			AS `type`,
 		teams.createdate     	    AS `createdate`,
+		teams.telegram_id     	    AS `telegram_id`,
 		userteams.gender 			AS `userteams_gender`,
 		userteams.allowdescenter 	AS `userteams_allowdescenter`,
 		userteams.allowdescexit  	AS `userteams_allowdescexit`,
@@ -87,6 +88,7 @@ class teams
 		userteams.fileurl        	AS `userteam_fileurl`,
 		userteams.isdefault      	AS `userteam_isdefault`,
 		userteams.createdate     	AS `userteam_createdate`,
+		userteams.telegram_id     	AS `userteam_telegram_id`,
 		userteams.date_modified  	AS `userteam_date_modified`
 	";
 
