@@ -10,15 +10,24 @@ trait enter
 	 *
 	 * @return     string  ( description_of_the_return_value )
 	 */
-	public function enter()
+	public function enter($_type = null)
 	{
 		$msg = null;
 		if($this->displayname)
 		{
-			$msg = "✅ ". $this->displayname;
-			if($this->plus)
+			switch ($_type)
 			{
-				$msg .= "\n➕ ". human::number($this->my_plus, $this->current_language);
+				case 'sms':
+					$msg = $this->displayname. "\n". T_("Entered");
+					break;
+
+				default:
+					$msg = "✅ ". $this->displayname;
+					if($this->plus)
+					{
+						$msg .= "\n➕ ". human::number($this->my_plus, $this->current_language);
+					}
+					break;
 			}
 		}
 

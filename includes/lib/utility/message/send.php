@@ -81,89 +81,98 @@ trait send
 	public function send_to_yourself_parent($_message, $_sort = [], $_send_sms = false, $_option = [])
 	{
 		$must_send_to = $this->must_send_to_user_data;
-		if(is_array($must_send_to))
+		if(!is_array($must_send_to))
 		{
-			$must_send_to_user_id = array_column($must_send_to, 'id');
-			$all_admin_user_id = $this->all_admin_user_id;
+			return;
+		}
 
-			$not_admin = array_diff($must_send_to_user_id, $all_admin_user_id);
-			$not_admin = array_unique($not_admin);
+		$must_send_to_user_id = array_column($must_send_to, 'id');
+		$all_admin_user_id    = $this->all_admin_user_id;
 
-			foreach ($not_admin as $key => $user_id)
+		$not_admin            = array_diff($must_send_to_user_id, $all_admin_user_id);
+		$not_admin            = array_unique($not_admin);
+
+		foreach ($not_admin as $key => $user_id)
+		{
+			if(!array_key_exists($user_id, $must_send_to))
 			{
-				if(array_key_exists($user_id, $must_send_to))
+				continue;
+			}
+
+			if(isset($must_send_to[$user_id]['chatid']))
+			{
+				if(isset($_option['date_now']) && $_option['date_now'])
 				{
-					if(intval($this->member_id) === intval($user_id))
+					if(!$this->sended_date_now_to_user($user_id))
 					{
-
+						$this->sended_date_now_to_user($user_id, true);
+						telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
 					}
-					else
+				}
+				else
+				{
+					telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
+				}
+                unset($must_send_to[$user_id]);
+			}
+		}
+
+		if(in_array('sms', $this->send_by) && $_send_sms)
+		{
+			$temp          = $must_send_to;
+            unset($temp[$this->member_id]);
+
+			$parent_mobile = array_column($temp, 'mobile');
+			$parent_mobile = array_filter($parent_mobile);
+			$parent_mobile = array_unique($parent_mobile);
+			if(!empty($parent_mobile))
+			{
+				$sms_text = $_message;
+
+				if(isset($_option['message_type']))
+				{
+					if(method_exists($this, $_option['message_type']))
 					{
-						if(in_array('sms', $this->send_by) && $_send_sms)
-						{
-							$temp          = $must_send_to;
-                            unset($temp[$this->member_id]);
-							$parent_mobile = array_column($temp, 'mobile');
-							$parent_mobile = array_filter($parent_mobile);
-							$parent_mobile = array_unique($parent_mobile);
+						$sms_text = $this->{$_option['message_type']}('sms');
+					}
+				}
 
-							// send sms
-							// \lib\utility\sms::send_array($parent_mobile, $_message);
 
-							// minus price of sms
-							$per_sms       = 15;
-							$sms_len       = mb_strlen($_message);
-							$count_sms     = ceil($sms_len / 70);
-							$price         = $count_sms * $per_sms * count($parent_mobile);
+				// minus price of sms
+				$per_sms   = 15;
+				$sms_len   = mb_strlen($sms_text);
+				$count_sms = ceil($sms_len / 70);
+				$price     = $count_sms * $per_sms * count($parent_mobile);
 
-							if(isset($this->team_details['creator']))
-							{
-								// get user budget
-								$user_budget = \lib\db\transactions::budget($this->team_details['creator'], ['unit' => 'toman']);
+				if(isset($this->team_details['creator']))
+				{
+					// get user budget
+					$user_budget = \lib\db\transactions::budget($this->team_details['creator'], ['unit' => 'toman']);
 
-								if($user_budget && is_array($user_budget))
-								{
-									$user_budget = array_sum($user_budget);
-								}
-
-								if(intval($user_budget) >= $price)
-								{
-									$transaction_set =
-							        [
-										'caller'          => 'send:sms',
-										'title'           => T_("Send sms"),
-										'user_id'         => $this->team_details['creator'],
-										'minus'           => $price,
-										'payment'         => null,
-										// 'related_foreign' => 'teams',
-										// 'related_id'      => $this->team_id,
-										'verify'          => 1,
-										'type'            => 'money',
-										'unit'            => 'toman',
-										'date'            => date("Y-m-d H:i:s"),
-										// 'invoice_id'      => $invoice_id,
-							        ];
-
-							        \lib\db\transactions::set($transaction_set);
-								}
-							}
-						}
+					if($user_budget && is_array($user_budget))
+					{
+						$user_budget = array_sum($user_budget);
 					}
 
-					if(isset($must_send_to[$user_id]['chatid']))
+					if(intval($user_budget) >= $price)
 					{
-						if(isset($_option['date_now']) && $_option['date_now'])
-						{
-							if(!$this->sended_date_now_to_user($user_id))
-							{
-								$this->sended_date_now_to_user($user_id, true);
-								telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
-							}
-						}
-						else
-						{
-							telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
-						}
+						$transaction_set =
+				        [
+							'caller'  => 'send:sms',
+							'title'   => T_("Send sms"),
+							'user_id' => $this->team_details['creator'],
+							'minus'   => $price,
+							'payment' => null,
+							'verify'  => 1,
+							'type'    => 'money',
+							'unit'    => 'toman',
+							'date'    => date("Y-m-d H:i:s"),
+				        ];
+
+				        \lib\db\transactions::set($transaction_set);
+
+						// send sms
+						\lib\utility\sms::send_array($parent_mobile, $sms_text);
 					}
 				}
 			}
@@ -188,9 +197,9 @@ trait send
 			return false;
 		}
 
+		// send message
 		foreach ($this->message as $message_type => $message)
 		{
-
 			$first_msg = false;
 			switch ($message_type)
 			{
@@ -202,7 +211,6 @@ trait send
 					{
 						foreach ($admins_access_detail as $key => $value)
 						{
-							// if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							// if no message sended to this user in this time send it
 							// else not send this message
 							if(!$this->sended_date_now_to_user($key))
@@ -218,7 +226,6 @@ trait send
 				// @example:
 				// ✅ رضا محیطی
 				case 'enter':
-
 					if(plan::access('telegram:enter:msg', $this->team_id))
 					{
 						foreach ($admins_access_detail as $key => $value)
@@ -229,7 +236,7 @@ trait send
 								$first_msg = true;
 							}
 						}
-						$this->send_to_yourself_parent($message, ['sort' => 7], true);
+						$this->send_to_yourself_parent($message, ['sort' => 7], true, ['message_type' => $message_type]);
 					}
 					break;
 
@@ -251,22 +258,6 @@ trait send
 									telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
 								}
 							}
-
-							// foreach ($admins_access_detail as $key => $value)
-							// {
-							// 	if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
-							// 	{
-							// 		if(!$first_msg)
-							// 		{
-							// 			telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
-							// 		}
-
-							// 		// telegram::sendMessage($value['chat_id'], $this->date_now(), ['sort' => 1]);
-							// 	}
-							// }
-							// // $this->send_to_yourself_parent($this->date_now());
-							// $this->send_to_yourself_parent($message, ['sort' => 7], true);
-
 						}
 					}
 					break;
@@ -282,30 +273,15 @@ trait send
 						$is_first_transaction = \lib\db\hours::enter($this->team_id);
 						$is_first_transaction = ($is_first_transaction <= 1) ? true : false;
 
-						if($is_first_transaction)
-						{
-							if(isset($this->team_meta['report_settings']['telegram_group']) && $this->team_meta['report_settings']['telegram_group'])
-							{
-								if(plan::access('telegram:first:of:day:msg:group', $this->team_id))
-								{
-									// telegram::sendMessageGroup($this->team_group, $this->date_now(), ['sort' => 1]);
-								}
-							}
-						}
-
 						foreach ($admins_access_detail as $key => $value)
 						{
 							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							{
-								if($is_first_transaction)
-								{
-									// telegram::sendMessage($value['chat_id'], $this->date_now(), ['sort' => 1]);
-								}
 								telegram::sendMessage($value['chat_id'], $message, ['sort' => 2]);
 							}
 						}
-						// $this->send_to_yourself_parent($this->date_now());
-						$this->send_to_yourself_parent($message, ['sort' => 7], true);
+
+						$this->send_to_yourself_parent($message, ['sort' => 7], true, ['message_type' => $message_type]);
 					}
 					break;
 
@@ -316,10 +292,8 @@ trait send
 				// 🏆 احمد کریمی🥉 ۱:۳۶
 				// 👥 ۳  🕰 ۱۱۷۵
 				case 'end_day':
-
 					if(plan::access('telegram:end:day:report', $this->team_id))
 					{
-
 						$live = \lib\db\hours::live($this->team_id);
 						if(intval($live) <= 0 )
 						{
@@ -341,11 +315,8 @@ trait send
 									telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								}
 							}
-							// $this->send_to_yourself_parent($message, ['sort' => 7], true);
-
 						}
 					}
-
 					break;
 
 				default:

@@ -600,6 +600,13 @@ class twigTransTerms
 	echo T_("First name");                                                            // Line 49
 	echo T_("Last name");                                                             // Line 56
 
+	//--------------------------------------------content_a/member/parent/display.html
+	echo T_("Add new member");                                                        // Line 11
+	echo T_("No name");                                                               // Line 104
+	echo T_("traffic");                                                               // Line 40
+	echo T_("Without traffic");                                                       // Line 31
+	echo T_("Admin of team");                                                         // Line 37
+
 	//-----------------------------------------------content_a/member/add/display.html
 	echo T_("Enter a valid name from 3 to 40 character");                             // Line 86
 	echo T_("Enter a valid team position from 3 to 50 character");                    // Line 45
@@ -655,10 +662,6 @@ class twigTransTerms
 	echo T_("Extra gadget to use for enter and exit");                                // Line 138
 
 	//---------------------------------------------------content_a/member/display.html
-	echo T_("Add new member");                                                        // Line 11
-	echo T_("traffic");                                                               // Line 40
-	echo T_("Without traffic");                                                       // Line 31
-	echo T_("Admin of team");                                                         // Line 36
 
 	//----------------------------------------------------content_a/member/layout.html
 	echo T_("General Detail");                                                        // Line 37
@@ -758,7 +761,6 @@ class twigTransTerms
 	echo T_("If you are not sure, dont do this!");                                    // Line 11
 	echo T_("After transfer your permission is changed to admin");                    // Line 11
 	echo T_("Your ownership transfer request will be sent to the following person. Are you sure?");// Line 113
-	echo T_("No name");                                                               // Line 104
 	echo T_("Are you sure?");                                                         // Line 129
 	echo T_("OK, Send");                                                              // Line 135
 	echo T_("Cancel");                                                                // Line 42
