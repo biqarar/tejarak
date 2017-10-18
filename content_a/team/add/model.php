@@ -20,7 +20,7 @@ class model extends \content_a\main\model
 			'name'              => utility::post('name'),
 			// 'website'           => utility::post('website'),
 			'privacy'           => utility::post('privacy'),
-			'short_name'        => utility::post('shortName'),
+			'short_name'        => utility::post('slug'),
 			'desc'              => utility::post('desc'),
 			// 'show_avatar'       => utility::post('showAvatar'),
 			// 'quick_traffic'     => utility::post('quickTraffic'),
@@ -38,7 +38,6 @@ class model extends \content_a\main\model
 			// 'allow_desc_exit'   => utility::post('allowDescExit'),
 			// 'parent'      => utility::post('the-parent'),
 		];
-
 
 		return $args;
 	}
@@ -68,7 +67,7 @@ class model extends \content_a\main\model
 			if($new_team_code)
 			{
 				// debug::msg('direct', true);
-				$this->redirector()->set_domain()->set_url("a/$new_team_code");
+				$this->redirector()->set_domain()->set_url("a/$new_team_code/setting/plan");
 			}
 		}
 	}

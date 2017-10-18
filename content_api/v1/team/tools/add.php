@@ -433,6 +433,11 @@ trait add
 
 		if($_args['method'] === 'post')
 		{
+			// default on add team
+			if($args['showavatar'] === null) $args['showavatar'] = 1;
+			if($args['allowplus']  === null) $args['allowplus']  = 1;
+			if($args['allowminus'] === null) $args['allowminus'] = 1;
+
 			// set default settings in meta
 			$args['meta']         = json_encode(['report_settings' => \lib\db\teams::$default_settings_true], JSON_UNESCAPED_UNICODE);
 
