@@ -169,10 +169,10 @@ trait send
 							'date'    => date("Y-m-d H:i:s"),
 				        ];
 
-				        \lib\db\transactions::set($transaction_set);
+				        // \lib\db\transactions::set($transaction_set);
 
 						// send sms
-						\lib\utility\sms::send_array($parent_mobile, $sms_text);
+						// \lib\utility\sms::send_array($parent_mobile, $sms_text);
 					}
 				}
 			}
