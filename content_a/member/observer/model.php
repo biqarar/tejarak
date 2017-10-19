@@ -73,6 +73,30 @@ class model extends \content_a\member\model
 			if(debug::$status)
 			{
 				debug::true(T_("Observer was saved"));
+
+				$t_T =
+				[
+					'title' => (utility::post('othertitle') && utility::post('title') === 'custom') ? utility::post('othertitle') : T_(ucfirst(utility::post('title'))),
+					'name'  => $this->view()->data->member['displayname'],
+					'team'  => $this->view()->data->current_team['name'],
+				];
+
+				$message = T_("You are registered as :title of :name in :team", $t_T). '.';
+				$message .= "\n\n". T_("Tejarak"). " | ". T_("Modern Approach");
+				$message .= "\n". 'tejarak.'. Tld. '/'. $this->view()->data->current_team['short_name'];
+				$parent_detail = \lib\temp::get('add_parent_detail');
+
+				if(isset($parent_detail['chatid']))
+				{
+					// user have telegram
+					\lib\utility\telegram::sendMessage($parent_detail['chatid'], $message);
+				}
+				else
+				{
+					// send by sms
+					\lib\utility\sms::send(utility::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
+				}
+
 				$this->redirector($this->url('full'));
 			}
 		}

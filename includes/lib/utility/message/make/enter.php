@@ -18,7 +18,14 @@ trait enter
 			switch ($_type)
 			{
 				case 'sms':
-					$msg = $this->displayname. "\n". T_("Entered");
+					$T_T =
+					[
+						'name' => $this->displayname,
+						'team' => $this->team_name,
+						'time' => human::number(date("H:i"), $this->current_language),
+					];
+					$msg = T_(":name entered in :team at :time", $T_T);
+
 					break;
 
 				default:

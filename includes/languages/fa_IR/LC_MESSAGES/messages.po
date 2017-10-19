@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2017-10-17 18:03+0330\n"
-"PO-Revision-Date: 2017-10-17 18:03+0330\n"
+"POT-Creation-Date: 2017-10-19 14:34+0330\n"
+"PO-Revision-Date: 2017-10-19 14:36+0330\n"
 "Last-Translator: Reza <rm.biqarar@gmail.com>\n"
 "Language-Team: Ermile <J.Evazzadeh@gmail.com>\n"
 "Language: fa_IR\n"
@@ -59,7 +59,7 @@ msgstr "کد یافت نشد"
 #: dash/addons/content_api/v1/user/tools/add.php:238
 #: tejarak/content_api/v1/gateway/tools/add.php:293
 #: tejarak/content_api/v1/member/tools/add.php:263
-#: tejarak/content_api/v1/team/tools/add.php:620
+#: tejarak/content_api/v1/team/tools/add.php:625
 #: tejarak/content_api/v1/team/tools/close.php:55
 #: tejarak/content_api/v1/team/tools/delete.php:55
 msgid "Operation Complete"
@@ -154,7 +154,7 @@ msgstr "کاربر یافت نشد"
 #: tejarak/content_api/v1/houredit/tools/add.php:64
 #: tejarak/content_api/v1/member/tools/add.php:163
 #: tejarak/content_api/v1/member/tools/get.php:248
-#: tejarak/content_api/v1/team/tools/add.php:491
+#: tejarak/content_api/v1/team/tools/add.php:496
 #: tejarak/content_api/v1/team/tools/close.php:39
 #: tejarak/content_api/v1/team/tools/delete.php:39
 msgid "Id not set"
@@ -291,38 +291,38 @@ msgstr "شماره‌ی تلفن همراه نامعتبر است"
 msgid "Please select one title"
 msgstr "لطفا یک عنوان انتخاب کنید"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:108
+#: dash/addons/content_api/v1/parent/tools/add.php:110
 #: dash/addons/content_api/v1/parent/tools/get.php:56
 msgid "Related id is incurrect"
 msgstr "شناسه داخلی اشتباه است"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:118
+#: dash/addons/content_api/v1/parent/tools/add.php:120
 msgid "You can not set parent yourself"
 msgstr "شما نمی‌توانید والد خودتان باشید"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:151
+#: dash/addons/content_api/v1/parent/tools/add.php:153
 msgid "Invalid title"
 msgstr "عنوان اشتباه است"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:159
+#: dash/addons/content_api/v1/parent/tools/add.php:161
 msgid "Plase set the other title field"
 msgstr "لطفا عنوان دلخواه خود را وارد کنید"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:166
+#: dash/addons/content_api/v1/parent/tools/add.php:168
 msgid "You must set other title less than 50 character"
 msgstr "عنوان دلخواه نمی‌تواند بیشتر از ۵۰ کاراکتر باشد"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:175
+#: dash/addons/content_api/v1/parent/tools/add.php:177
 msgid "Your request was sended to user, wait for answer user"
 msgstr ""
 "درخواست شما به کاربر ارسال شده است. منتظر بمانید تا جواب کاربر به درخواست شما مشخص "
 "شود"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:202
+#: dash/addons/content_api/v1/parent/tools/add.php:204
 msgid "Are you :title of this user?"
 msgstr "آیا شما  :title این کاربر هستید؟"
 
-#: dash/addons/content_api/v1/parent/tools/add.php:209
+#: dash/addons/content_api/v1/parent/tools/add.php:211
 #: tejarak/content_a/setting/security/model.php:207
 msgid "Your request was sended"
 msgstr "درخواست شما ارسال شد"
@@ -4143,6 +4143,7 @@ msgid "Sarshomar"
 msgstr "سرشمار"
 
 #: dash/addons/includes/languages/trans_addons.php:643
+#: tejarak/content_a/member/observer/model.php:85
 #: tejarak/includes/languages/trans_addons.php:752
 #: tejarak/includes/languages/trans_twig.php:280 tejarak/includes/mvc/view.php:10
 msgid "Tejarak"
@@ -6678,7 +6679,7 @@ msgstr " به "
 #: dash/addons/includes/languages/trans_addons.php:1198
 #: tejarak/includes/languages/trans_addons.php:1198
 #: tejarak/includes/languages/trans_twig.php:451
-#: tejarak/includes/lib/utility/message/make/exit_message.php:67
+#: tejarak/includes/lib/utility/message/make/exit_message.php:74
 msgid "until"
 msgstr "تا"
 
@@ -7865,7 +7866,15 @@ msgstr ""
 msgid "Observer was saved"
 msgstr "ناظر ذخیره شد"
 
-#: tejarak/content_a/member/observer/model.php:81
+#: tejarak/content_a/member/observer/model.php:84
+msgid "You are registered as :title of :name in :team"
+msgstr "شما به عنوان :title :name در :team ثبت شدید"
+
+#: tejarak/content_a/member/observer/model.php:85 tejarak/includes/mvc/view.php:12
+msgid "Modern Approach"
+msgstr "رویکرد مدرن"
+
+#: tejarak/content_a/member/observer/model.php:105
 #: tejarak/content_api/v1/houredit/tools/get.php:147
 #: tejarak/content_api/v1/member/tools/member_id.php:121
 #: tejarak/content_api/v1/member/tools/member_id.php:138
@@ -8203,7 +8212,7 @@ msgstr "تیم"
 msgid "Set team name"
 msgstr "نام تیم خود را وارد کنید"
 
-#: tejarak/content_a/setup/view.php:21 tejarak/content_api/v1/team/tools/add.php:466
+#: tejarak/content_a/setup/view.php:21 tejarak/content_api/v1/team/tools/add.php:471
 msgid "You"
 msgstr "شما"
 
@@ -8516,7 +8525,7 @@ msgstr "متن شما بسیار بزرگ است"
 
 #: tejarak/content_api/v1/hours/tools/add.php:150
 #: tejarak/content_api/v1/hours/tools/manage.php:160
-#: tejarak/content_api/v1/team/tools/add.php:613
+#: tejarak/content_api/v1/team/tools/add.php:618
 msgid "Invalid method of api"
 msgstr "متد API نامعتبر"
 
@@ -8811,7 +8820,7 @@ msgid "group not set"
 msgstr "گروه تنظیم نشده است"
 
 #: tejarak/content_api/v1/team/tools/add.php:50
-#: tejarak/content_api/v1/team/tools/add.php:564
+#: tejarak/content_api/v1/team/tools/add.php:569
 msgid "Team name of team can not be null"
 msgstr "نام تیم نمی‌تواند خالی باشد"
 
@@ -8824,12 +8833,12 @@ msgid "Team website must be less than 1000 character"
 msgstr "سایت تیم باید کمتر از ۱۰۰۰ کاراکتر باشد"
 
 #: tejarak/content_api/v1/team/tools/add.php:80
-#: tejarak/content_api/v1/team/tools/add.php:578
+#: tejarak/content_api/v1/team/tools/add.php:583
 msgid "Invalid privacy field"
 msgstr "حریم خصوصی نامعتبر است"
 
 #: tejarak/content_api/v1/team/tools/add.php:91
-#: tejarak/content_api/v1/team/tools/add.php:571
+#: tejarak/content_api/v1/team/tools/add.php:576
 msgid "shortname of team can not be null"
 msgstr "نام کوتاه تیم نمی‌تواند null باشد"
 
@@ -8927,23 +8936,23 @@ msgstr "اندازه کلاس باید عددی باشد"
 msgid "Invalid status of teams"
 msgstr "وضعیت تیم نامعتبر"
 
-#: tejarak/content_api/v1/team/tools/add.php:452
+#: tejarak/content_api/v1/team/tools/add.php:457
 msgid "No way to insert team"
 msgstr "راهی برای ثبت تیم نیست"
 
-#: tejarak/content_api/v1/team/tools/add.php:500
+#: tejarak/content_api/v1/team/tools/add.php:505
 msgid "Can not access to edit it"
 msgstr "دسترسی لازم برای ویرایش را ندارید"
 
-#: tejarak/content_api/v1/team/tools/add.php:557
+#: tejarak/content_api/v1/team/tools/add.php:562
 msgid "A team can not be the parent himself"
 msgstr "یک تیم نمیتواند والد خود باشد"
 
-#: tejarak/content_api/v1/team/tools/add.php:623
+#: tejarak/content_api/v1/team/tools/add.php:628
 msgid "Team successfuly edited"
 msgstr "تیم با موفقیت ویرایش شد"
 
-#: tejarak/content_api/v1/team/tools/add.php:627
+#: tejarak/content_api/v1/team/tools/add.php:632
 msgid "Team successfuly added"
 msgstr "تیم با موفقیت افزوده شد"
 
@@ -12616,13 +12625,13 @@ msgstr "فاکتور  :team"
 msgid "Absents"
 msgstr "غایبین"
 
-#: tejarak/includes/lib/utility/message/make/enter.php:21
-msgid "Entered"
-msgstr "وارد شد"
+#: tejarak/includes/lib/utility/message/make/enter.php:27
+msgid ":name entered in :team at :time"
+msgstr ":name در ساعت :time وارد :team شد."
 
-#: tejarak/includes/lib/utility/message/make/exit_message.php:21
-msgid "Exited"
-msgstr "خارج شد"
+#: tejarak/includes/lib/utility/message/make/exit_message.php:27
+msgid ":name exited from :team at :time"
+msgstr ":name در ساعت :time از :team خارج شد."
 
 #: tejarak/includes/lib/utility/message/make/lasttraffic.php:81
 msgid "Last_traffic"
@@ -12640,17 +12649,13 @@ msgstr "حاضرین"
 msgid "Current_month"
 msgstr "ماه_جاری"
 
-#: tejarak/includes/lib/utility/message/send.php:162
+#: tejarak/includes/lib/utility/message/send.php:168
 msgid "Send sms"
 msgstr "ارسال پیامک"
 
 #: tejarak/includes/mvc/view.php:11
 msgid "Do attendance easily and enjoy realtime reports."
 msgstr "به‌سادگی حضور و غیاب کنید و از گزارش‌های آنلاین لذت ببرید."
-
-#: tejarak/includes/mvc/view.php:12
-msgid "Modern Approach"
-msgstr "رویکرد مدرن"
 
 #: tejarak/includes/mvc/view.php:33
 msgid "We help :count people to work beter!"
@@ -12679,6 +12684,15 @@ msgstr "اجازه مشاهده لاگ‌های سیستم"
 #: tejarak/includes/permission/permission.php:104
 msgid "Allow to login by another session"
 msgstr "اجازه ورود با کاربر دیگر"
+
+#~ msgid "Entered"
+#~ msgstr "وارد شد"
+
+#~ msgid "Exited"
+#~ msgstr "خارج شد"
+
+#~ msgid "You are registered as :title of :name  in :team"
+#~ msgstr "شما به عنوان  :title   :name در  :team ثبت شده  اید"
 
 #~ msgid "Sum times in period"
 #~ msgstr "جمع ساعات در بازه زمانی"

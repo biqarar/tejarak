@@ -92,39 +92,45 @@ trait send
 		$not_admin            = array_diff($must_send_to_user_id, $all_admin_user_id);
 		$not_admin            = array_unique($not_admin);
 
-		foreach ($not_admin as $key => $user_id)
+		$temp_not_admin = [];
+		foreach ($must_send_to as $key => $value)
 		{
-			if(!array_key_exists($user_id, $must_send_to))
+			if(in_array($key, $not_admin))
 			{
-				continue;
+				$temp_not_admin[$key] = $value;
 			}
+		}
+		$not_admin = $temp_not_admin;
 
-			if(isset($must_send_to[$user_id]['chatid']))
+		foreach ($not_admin as $user_id => $user_detail)
+		{
+			if(isset($user_detail['chatid']))
 			{
 				if(isset($_option['date_now']) && $_option['date_now'])
 				{
 					if(!$this->sended_date_now_to_user($user_id))
 					{
 						$this->sended_date_now_to_user($user_id, true);
-						telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
+						telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
 					}
 				}
 				else
 				{
-					telegram::sendMessage($must_send_to[$user_id]['chatid'], $_message, ['sort' => 10]);
+					telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
 				}
-                unset($must_send_to[$user_id]);
+                unset($not_admin[$user_id]);
 			}
 		}
 
 		if(in_array('sms', $this->send_by) && $_send_sms)
 		{
-			$temp          = $must_send_to;
+			$temp          = $not_admin;
             unset($temp[$this->member_id]);
 
 			$parent_mobile = array_column($temp, 'mobile');
 			$parent_mobile = array_filter($parent_mobile);
 			$parent_mobile = array_unique($parent_mobile);
+
 			if(!empty($parent_mobile))
 			{
 				$sms_text = $_message;
@@ -169,10 +175,10 @@ trait send
 							'date'    => date("Y-m-d H:i:s"),
 				        ];
 
-				        // \lib\db\transactions::set($transaction_set);
+				        \lib\db\transactions::set($transaction_set);
 
 						// send sms
-						// \lib\utility\sms::send_array($parent_mobile, $sms_text);
+						\lib\utility\sms::send_array($parent_mobile, $sms_text);
 					}
 				}
 			}

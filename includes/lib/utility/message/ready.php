@@ -30,6 +30,11 @@ trait ready
 		{
 			$this->team_details = \lib\db\teams::get_by_id($this->team_id);
 
+			if(isset($this->team_details['name']))
+			{
+				$this->team_name = $this->team_details['name'];
+			}
+
 			$this->report_setting();
 		}
 	}

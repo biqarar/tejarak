@@ -39,7 +39,12 @@ class controller extends \content\main\controller
 		'account',
 		'for',
 		'files',
-
+		'cronjob',
+		'home',
+		'crontab',
+		'main',
+		'template',
+		'hour',
 	];
 
 	// for routing check

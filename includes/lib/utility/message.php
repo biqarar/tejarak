@@ -4,37 +4,38 @@ namespace lib\utility;
 class message
 {
 	// the team id
-	public $team_id       = null;
+	public $team_id          = null;
 	// send by sms or telegram or other thing
 	// send by every thing sms, telegram, ...
-	public $send_by       = [];
+	public $send_by          = [];
 	// the message must be send
-	public $message       = [];
+	public $message          = [];
 	// send notify to parent
-	public $send_parent   = false;
+	public $send_parent      = false;
 	// the team details
-	public $team_details  = [];
+	public $team_details     = [];
 	// the team admins details
-	public $team_admins   = [];
+	public $team_admins      = [];
 	public $admins_detail_id = [];
 	// the team group chat id
-	public $team_group    = null;
+	public $team_group       = null;
 	// if the status is false no sending any thing
-	public $status        = true;
+	public $status           = true;
+	public $team_name        = null;
 	// the message type
-	public $type          = [];
+	public $type             = [];
 	// format of message
 	// as json
 	// or im
-	public $format        = 'im';
+	public $format           = 'im';
 	// the report header and footer
-	public $report_header = null;
-	public $report_footer = null;
+	public $report_header    = null;
+	public $report_footer    = null;
 	// every thing need to create the message
 	// for example count hours
 	// minus, plus, ....
 	// set by function __call()
-	public $meta = [];
+	public $meta             = [];
 	// other function
 
 	use message\ready;
