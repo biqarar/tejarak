@@ -35,6 +35,11 @@ trait ready
 				$this->team_name = $this->team_details['name'];
 			}
 
+			if(isset($this->team_details['shortname']))
+			{
+				$this->team_short_name = $this->team_details['shortname'];
+			}
+
 			$this->report_setting();
 		}
 	}

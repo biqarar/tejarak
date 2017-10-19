@@ -178,7 +178,7 @@ trait send
 				        \lib\db\transactions::set($transaction_set);
 
 						// send sms
-						\lib\utility\sms::send_array($parent_mobile, $sms_text);
+						\lib\utility\sms::send_array($parent_mobile, $sms_text, ['header' => false, 'footer' => false]);
 					}
 				}
 			}

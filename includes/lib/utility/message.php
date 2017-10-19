@@ -22,6 +22,7 @@ class message
 	// if the status is false no sending any thing
 	public $status           = true;
 	public $team_name        = null;
+	public $team_short_name  = null;
 	// the message type
 	public $type             = [];
 	// format of message
