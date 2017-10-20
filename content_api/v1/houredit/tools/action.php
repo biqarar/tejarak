@@ -161,7 +161,7 @@ trait action
 
 				$log_meta['meta']['hourrequests_details'] = $hourrequests_details;
 				$log_meta['meta']['hour_detail']          = $hour_detail;
-				\lib\db\hours::record_process($hourrequests_details, $id, ['hour_detail' => $hour_detail, 'type' => 'update']);
+				\lib\db\hours::record_process($hourrequests_details, $hour_detail['id'], ['hour_detail' => $hour_detail, 'type' => 'update']);
 				logs::set('api:hour:edited:request:accepted', $this->user_id, $log_meta);
 			}
 			else
