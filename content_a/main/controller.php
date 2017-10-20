@@ -9,6 +9,13 @@ class controller extends \mvc\controller
 	 */
 	public function repository()
 	{
+		if(\lib\temp::get('main_controller_is_run'))
+		{
+			return;
+		}
+
+		\lib\temp::set('main_controller_is_run', true);
+
 		if(!$this->login())
 		{
 			$this->redirector($this->url('base'). '/enter')->redirect();
