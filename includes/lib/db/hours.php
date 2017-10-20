@@ -13,6 +13,53 @@ class hours
 	use hours\month;
 	use hours\period;
 
+		/**
+	 * get total of userteam
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function total_sum()
+	{
+		return intval(\lib\db::get("SELECT SUM(hours.total) AS `sum` FROM hours", 'sum', true));
+	}
+
+
+	/**
+	 * get total userteam and save in file
+	 * to show in footer
+	 *
+	 * @return     integer  ( description_of_the_return_value )
+	 */
+	public static function sum_total_hours()
+	{
+		$result = 0;
+		$url    = root. 'public_html/files/data/';
+		if(!\lib\utility\file::exists($url))
+		{
+			\lib\utility\file::makeDir($url, null, true);
+		}
+		$url .= 'sum_total_hours.txt';
+		if(!\lib\utility\file::exists($url))
+		{
+			$result = self::total_sum();
+			\lib\utility\file::write($url, $result);
+		}
+		else
+		{
+			$file_time = \filemtime($url);
+			if((time() - $file_time) >  (60 * 10))
+			{
+				$result       = self::total_sum();
+				\lib\utility\file::write($url, $result);
+			}
+			else
+			{
+				$result = \lib\utility\file::read($url);
+			}
+		}
+		return $result;
+	}
+
 	/**
 	 * insert new record in hours table
 	 *

@@ -342,7 +342,7 @@ class twigTransTerms
 	echo T_("Team");                                                                  // Line 123
 	echo T_("Creator");                                                               // Line 24
 	echo T_("Plan");                                                                  // Line 25
-	echo T_("Start");                                                                 // Line 12
+	echo T_("Start");                                                                 // Line 79
 	echo T_("End");                                                                   // Line 80
 	echo T_("status");                                                                // Line 29
 	echo T_("Last Calc Date");                                                        // Line 29
@@ -836,28 +836,14 @@ class twigTransTerms
 	echo T_("Show member avatar on board");                                           // Line 348
 	echo T_("Maybe for privacy you need to hide avatar on board!");                   // Line 348
 
-	//-----------------------------------------------------content_a/setup/setup3.html
-	echo T_("Congratulations! Now you can use Tejarak.");                             // Line 10
-
-	//-----------------------------------------------------content_a/setup/setup2.html
-	echo T_("Please enter your information");                                         // Line 7
-	echo T_("First Name *");                                                          // Line 35
-	echo T_("Last Name");                                                             // Line 40
-	echo T_("Enter a valid family from 3 to 50 character");                           // Line 40
-	echo T_("Job position");                                                          // Line 19
-	echo T_("Finish");                                                                // Line 33
-
-	//-----------------------------------------------------content_a/setup/setup1.html
-	echo T_("Welcome to Tejarak initialization process!");                            // Line 7
-	echo T_("Please enter team name *");                                              // Line 10
-	echo T_("Enter a valid team name from 3 to 30 character");                        // Line 10
-	echo T_("Next");                                                                  // Line 12
-
 	//-------------------------------------------content_a/profile/parent/display.html
 	echo T_("Parents manager");                                                       // Line 6
 
 	//--------------------------------------------------content_a/profile/display.html
 	echo T_("Your profile information");                                              // Line 7
+	echo T_("First Name *");                                                          // Line 35
+	echo T_("Last Name");                                                             // Line 40
+	echo T_("Enter a valid family from 3 to 50 character");                           // Line 40
 	echo T_("Display name");                                                          // Line 45
 	echo T_("mobile");                                                                // Line 64
 	echo T_("Your mobile");                                                           // Line 66

@@ -27,10 +27,11 @@ class view extends \lib\view
 		if(in_array(\lib\router::get_repository_name(), ['content']))
 		{
 			// get total uses
-			$total_users                     = intval(\lib\db\userteams::total_userteam());
+			$total_users                     = ceil(intval(\lib\db\hours::sum_total_hours()) / 60);
 			$total_users                     = number_format($total_users);
 			$this->data->total_users         = \lib\utility\human::number($total_users);
-			$this->data->footer_stat         = T_("We help :count people to work beter!", ['count' => $this->data->total_users]);
+			// $this->data->footer_stat         = T_("We help :count people to work beter!", ['count' => $this->data->total_users]);
+			$this->data->footer_stat         = T_("We registered :count work hour in tejarak!", ['count' => $this->data->total_users]);
 		}
 
 		$this->include->css_ermile       = false;
