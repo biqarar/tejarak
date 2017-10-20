@@ -1,2 +1,0 @@
-ALTER TABLE `teams` CHANGE `eventdate` `eventdate` VARCHAR(20) NULL DEFAULT NULL;
-ALTER TABLE `teams` ADD `eventenddate` VARCHAR(20) NULL DEFAULT NULL;

@@ -1,1 +1,0 @@
-ALTER TABLE `teams` CHANGE `type` `type` enum('team','school', 'classroom', 'place', 'other') NULL DEFAULT NULL

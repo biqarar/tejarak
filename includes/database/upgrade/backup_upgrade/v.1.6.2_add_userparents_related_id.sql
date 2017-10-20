@@ -1,1 +1,0 @@
-ALTER TABLE `userparents` ADD `related_id` BIGINT(20) UNSIGNED NULL DEFAULT NULL;

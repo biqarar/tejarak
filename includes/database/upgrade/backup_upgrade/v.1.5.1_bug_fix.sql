@@ -1,2 +1,0 @@
-ALTER TABLE `teams` CHANGE `type` `type` enum('team','school', 'classroom', 'place', 'other') NULL DEFAULT NULL;
-ALTER TABLE `lessontimes` CHANGE `classtimes_id` `classtime_id` BIGINT(20) UNSIGNED NOT NULL;
