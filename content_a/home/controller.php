@@ -8,9 +8,6 @@ class controller extends \content_a\main\controller
 	 */
 	function ready()
 	{
-
-
-
 		// list of all team the user is them
 		$this->get(false, 'dashboard')->ALL();
 
@@ -29,25 +26,6 @@ class controller extends \content_a\main\controller
 				}
 			}
 		}
-
-		// if setup is null redirect to setup page
-		// The user is the first time he uses the system,
-		// so we will transfer him to the installation file
-		// But before that we check that this user is not registered in any team.
-		if($this->login('id') && !$this->login('setup'))
-		{
-			// if  the user is login and first login
-			// we set the setup field of user on 1
-			$_SESSION['user']['setup'] = '1';
-			\lib\db\users::update(['setup' => 1], $this->login('id'));
-
-			if(!\lib\db\userteams::get(['user_id' => $this->login('id'), 'status' => 'active', 'limit' => 1]))
-			{
-				$this->redirector()->set_domain()->set_url('a/setup')->redirect();
-				return;
-			}
-		}
-
 	}
 }
 ?>

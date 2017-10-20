@@ -82,7 +82,7 @@ self::$config['enter']['static_token'][]  = '**Ermile**Azvir^^Tejarak--Token__St
  * first signup url
  * main redirect url . signup redirect url
  */
-self::$config['enter']['singup_redirect']     = 'a/setup';
+self::$config['enter']['singup_redirect']     = 'a';
 
 
 /**
