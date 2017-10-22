@@ -14,10 +14,11 @@ trait count_detail
 			$_team_ids = [$_team_ids];
 		}
 
-		if(!is_array($_team_ids))
+		if(!is_array($_team_ids) || empty($_team_ids) || !$_team_ids)
 		{
 			return false;
 		}
+
 
 		$team_ids = implode(',', $_team_ids);
 		$resutl = [];
