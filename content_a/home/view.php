@@ -37,11 +37,14 @@ class view extends \content_a\main\view
 				$static_count = \lib\session::get('team_list_detail');
 			}
 
-			foreach ($team_list as $key => $value)
+			if(is_array($static_count))
 			{
-				if(array_key_exists($key, $static_count))
+				foreach ($team_list as $key => $value)
 				{
-					$team_list[$key]['stats'] = $static_count[$key];
+					if(array_key_exists($key, $static_count))
+					{
+						$team_list[$key]['stats'] = $static_count[$key];
+					}
 				}
 			}
 		}
