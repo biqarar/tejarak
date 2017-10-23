@@ -66,13 +66,6 @@ class model extends \content_a\main\model
 			utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
 
-			if(isset($uploaded_file['code']))
-			{
-				$file_code              = $uploaded_file['code'];
-				$file_id                = utility\shortURL::decode($uploaded_file['code']);
-				$update_user['fileid']  = $file_id;
-				$user_session['fileid'] = $update_user['fileid'];
-			}
 			if(isset($uploaded_file['url']))
 			{
 				$temp_url                = $uploaded_file['url'];
@@ -88,19 +81,19 @@ class model extends \content_a\main\model
 			}
 		}
 
-		// if the name exist update user display name
-		if(utility::post('name') != $this->login('name'))
-		{
-			$update_user['name'] = utility::post('name');
-			$user_session['name'] = $update_user['name'];
-		}
+		// // if the name exist update user display name
+		// if(utility::post('name') != $this->login('name'))
+		// {
+		// 	$update_user['name'] = utility::post('name');
+		// 	$user_session['name'] = $update_user['name'];
+		// }
 
-		// if the family exist update user display family
-		if(utility::post('family') != $this->login('family'))
-		{
-			$update_user['lastname'] = utility::post('family');
-			$user_session['family'] = $update_user['lastname'];
-		}
+		// // if the family exist update user display family
+		// if(utility::post('family') != $this->login('family'))
+		// {
+		// 	$update_user['lastname'] = utility::post('family');
+		// 	$user_session['family'] = $update_user['lastname'];
+		// }
 
 		// if the postion exist update user display postion
 		if(utility::post('displayname') != $this->login('displayname'))

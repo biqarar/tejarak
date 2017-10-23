@@ -7,16 +7,10 @@
     <h2 class='title'>{%trans "Your profile information"%}</h2>
 
     <form method="post" class="df">
-     <div class="f">
-      <div class="c s12 g1 f">
-       <div class="c6 s12">{{block ("iname")}}</div>
-       <div class="c6 s12">{{block ("ifamily")}}</div>
-       <div class="c12 s12">{{block ("inickname")}}</div>
-      </div>
-
 
 {{block ("iavatar")}}
-     </div>
+{{block ("inickname")}}
+
 
 {{block ("imobile")}}
 {{block ("iemail")}}
@@ -47,13 +41,15 @@
 
 
 {%block iavatar%}
-<div class="cauto s12 g1 df-file">
- <div>
-  <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
-  <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-   {%if login.avatar%}<img src="{{url.root}}/{{login.avatar}}" alt="{{member.displayname}}" id="avatarPreview">{%endif%}
-  </label>
- </div>
+<div class="f">
+  <div class="c s12 g1 df-file">
+   <div>
+    <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
+    <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
+     {%if login.avatar%}<img src="{{url.root}}/{{login.avatar}}" alt="{{member.displayname}}" id="avatarPreview">{%endif%}
+    </label>
+   </div>
+  </div>
 </div>
 {%endblock%}
 
