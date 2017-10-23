@@ -118,7 +118,7 @@ trait add
 
 		// check file is set or no
 		// if file is not set and the user have a file load the default file
-		if($this->master_user_id && $_args['method'] === 'post' && ((!$args['fileid'] && !$args['fileurl']) || (!$args['firstname'] || !$args['lastname'])))
+		if($this->master_user_id && $_args['method'] === 'post' && ((!$args['fileid'] && !$args['avatar']) || (!$args['firstname'] || !$args['lastname'])))
 		{
 			$user_detail = \lib\db\users::get(['id' => $args['user_id'], 'limit' => 1]);
 			if(isset($user_detail['fileid']))
@@ -126,9 +126,9 @@ trait add
 				$args['fileid'] = $user_detail['fileid'];
 			}
 
-			if(isset($user_detail['fileurl']))
+			if(isset($user_detail['avatar']))
 			{
-				$args['fileurl'] = $user_detail['fileurl'];
+				$args['avatar'] = $user_detail['avatar'];
 			}
 
 			if(isset($user_detail['name']) && !$args['firstname'])
@@ -185,7 +185,7 @@ trait add
 			if(!utility::isset_request('date_exit'))             unset($args['dateexit']);
 			if(!utility::isset_request('firstname'))             unset($args['firstname']);
 			if(!utility::isset_request('lastname'))              unset($args['lastname']);
-			if(!utility::isset_request('file'))                  unset($args['fileid'], $args['fileurl']);
+			if(!utility::isset_request('file'))                  unset($args['fileid'], $args['avatar']);
 			if(!utility::isset_request('allow_plus'))            unset($args['allowplus']);
 			if(!utility::isset_request('allow_minus'))           unset($args['allowminus']);
 			if(!utility::isset_request('status'))                unset($args['status']);

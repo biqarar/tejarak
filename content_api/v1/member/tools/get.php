@@ -451,7 +451,7 @@ trait get
 					$result['user_id'] = \lib\utility\shortURL::encode($value);
 					break;
 
-				case 'fileurl':
+				case 'avatar':
 					if($value)
 					{
 						$result['file'] = $this->host('file'). '/'. $value;

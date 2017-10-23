@@ -20,7 +20,7 @@ class controller extends \mvc\controller
 		'status',
 		'creator',
 		'fileid',
-		'fileurl',
+		'avatar',
 		'logo',
 		'logourl',
 		'plan',

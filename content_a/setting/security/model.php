@@ -26,7 +26,7 @@ class model extends \content_a\main\model
 			$result                = [];
 			$result['mobile']      = (isset($user_data['mobile'])) ? $user_data['mobile'] : null;
 			$result['displayname'] = (isset($user_data['displayname'])) ? $user_data['displayname'] : null;
-			$result['fileurl']    = (isset($user_data['fileurl'])) ? $user_data['fileurl'] : null;
+			$result['avatar']    = (isset($user_data['avatar'])) ? $user_data['avatar'] : null;
 			$result['status']      = (isset($load_last_request['status'])) ? $load_last_request['status'] : null;
 			$result['id']          = (isset($load_last_request['id'])) ? $load_last_request['id'] : null;
 			return $result;
@@ -178,7 +178,7 @@ class model extends \content_a\main\model
 		$meta['team_name']         = $this->current_team['name'];
 		$meta['sender_name']       = $this->login('displayname');
 		$meta['sender_mobile']     = $this->login('mobile');
-		$meta['sender_logo']       = $this->login('fileurl');
+		$meta['sender_logo']       = $this->login('avatar');
 
 		if(intval($this->login('id')) === intval($this->user_data['id']))
 		{

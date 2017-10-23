@@ -126,7 +126,7 @@ trait check_args
 		// get file code
 		$file_code = utility::request('file');
 		$file_id   = null;
-		$fileurl  = null;
+		$avatar  = null;
 		if($file_code)
 		{
 			$file_id = \lib\utility\shortURL::decode($file_code);
@@ -139,7 +139,7 @@ trait check_args
 				}
 				elseif(isset($logo_record['meta']['url']))
 				{
-					$fileurl = $logo_record['meta']['url'];
+					$avatar = $logo_record['meta']['url'];
 				}
 			}
 			else
@@ -346,7 +346,7 @@ trait check_args
 		$args['firstname']      = trim($firstname);
 		$args['lastname']       = trim($lastname);
 		$args['fileid']         = $file_id;
-		$args['fileurl']        = $fileurl;
+		$args['avatar']        = $avatar;
 
 		$args['status']         = $status;
 

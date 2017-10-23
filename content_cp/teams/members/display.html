@@ -28,7 +28,7 @@
 			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url['24h']}}">{%trans "24h"%}</a></div>
 			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url.remote}}">{%trans "remote"%}</a></div>
 			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url.dateenter}}">{%trans "Date enter"%}</a></div>
-			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url.fileurl}}">{%trans "Avatar"%}</a></div>
+			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url.avatar}}">{%trans "Avatar"%}</a></div>
 			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url.status}}">{%trans "Status"%}</a></div>
 			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url.visibility}}">{%trans "Visibility"%}</a></div>
 			<div class="c"><a href="{{url.base}}/cp/teams/members/{{team_id}}/{{order_url.reportdaily}}">{%trans "Report daily"%}</a></div>
@@ -50,8 +50,8 @@
 			{%else%}
 				<div class="c">{{value.dateenter|date("Y-m-d")}}</div>
 			{%endif%}
-			{%if value.fileurl%}
-				<div class="c"><img src="{{url.root}}/{{value.fileurl}}" height="15" width="15"></div>
+			{%if value.avatar%}
+				<div class="c"><img src="{{url.root}}/{{value.avatar}}" height="15" width="15"></div>
 			{%else%}
 				<div class="c"><i>{%trans "Not set"%}</i></div>
 			{%endif%}

@@ -29,8 +29,8 @@
           <p>{%set my_title = value.title | capitalize %}{%trans my_title%}</p>
         </div>
         <div class="c pT10">
-        {%if value.fileurl%}
-          <img src="{{value.fileurl}}" class="mini">
+        {%if value.avatar%}
+          <img src="{{value.avatar}}" class="mini">
         {%else%}
            <i class="sf-user fs30"></i>
         {%endif%}

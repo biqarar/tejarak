@@ -78,8 +78,8 @@ class model extends \content_a\main\model
 				$temp_url                = $uploaded_file['url'];
 				$host                    = Protocol."://" . \lib\router::get_root_domain(). '/';
 				$temp_url                = str_replace($host, '', $temp_url);
-				$update_user['fileurl']  = $temp_url;
-				$user_session['fileurl'] = $temp_url;
+				$update_user['avatar']  = $temp_url;
+				$user_session['avatar'] = $temp_url;
 			}
 			// if in upload have error return
 			if(!debug::$status)

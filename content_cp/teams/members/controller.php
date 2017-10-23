@@ -19,7 +19,7 @@ class controller extends \mvc\controller
 		'dateenter',
 		'dateexit',
 		'fileid',
-		'fileurl',
+		'avatar',
 		'postion',
 		'displayname',
 		'firstname',

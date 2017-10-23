@@ -85,7 +85,7 @@ class teams
 		userteams.allowplus      	AS `userteam_allowplus`,
 		userteams.status         	AS `userteam_status`,
 		userteams.fileid         	AS `userteam_fileid`,
-		userteams.fileurl        	AS `userteam_fileurl`,
+		userteams.avatar        	AS `userteam_avatar`,
 		userteams.isdefault      	AS `userteam_isdefault`,
 		userteams.createdate     	AS `userteam_createdate`,
 		userteams.telegram_id     	AS `userteam_telegram_id`,
