@@ -227,8 +227,28 @@ trait add
 					return false;
 				}
 			}
-
 		}
+
+		$edit_user_id = $this->user_id;
+
+		if(\lib\team::is_admin($this->user_id))
+		{
+			$user_id_sended = utility::request('user_id');
+			$user_id_sended = utility\shortURL::decode($user_id_sended);
+			if($user_id_sended)
+			{
+				if(!\lib\team::in_team($user_id_sended))
+				{
+					logs::set('api:houredit:user:id:sended:not:in:team', $this->user_id, $log_meta);
+					debug::error(T_("This user is not in this team!"));
+					return false;
+				}
+
+				$edit_user_id = $user_id_sended;
+			}
+		}
+
+
 
 		$update_mode = false;
 		// if the hourrequest have hour id
@@ -253,7 +273,7 @@ trait add
 				'date'        => $start_date,
 				'team_id'     => $team_id,
 				'status'      => 'awaiting',
-				'userteam_id' => "(SELECT id FROM userteams WHERE user_id = ". $this->user_id. " AND team_id = $team_id LIMIT 1)",
+				'userteam_id' => "(SELECT id FROM userteams WHERE user_id = $edit_user_id AND team_id = $team_id LIMIT 1)",
 				'limit'       => 1
 			]);
 
@@ -295,7 +315,7 @@ trait add
 		$args['desc']            = $desc;
 		$args['creator']         = $this->user_id;
 		$args['team_id']         = $team_id;
-		$args['userteam_id']     = "(SELECT id FROM userteams WHERE user_id = ". $this->user_id. " AND team_id = $team_id LIMIT 1)";
+		$args['userteam_id']     = "(SELECT id FROM userteams WHERE user_id = $edit_user_id AND team_id = $team_id LIMIT 1)";
 
 
 		if($_args['method'] === 'post' && !$update_mode)

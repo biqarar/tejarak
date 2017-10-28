@@ -2,10 +2,18 @@
 
 
 {%block pageContent%}
-<div class="f justify-center">
 
+{{block('userList')}}
+
+<div class="f justify-center">
   <div class="c6 s12">
     <form method="post" class="cbox">
+    	{%if report_current_user.displayname %}
+		<hr>
+		<p>{%trans "Add new request for"%} {{report_current_user.displayname}}</p>
+		<hr>
+    	{%endif%}
+
 		{%if is_24h%}
 			{{block('iEventDateStart')}}
 		{%else%}
@@ -24,6 +32,13 @@
     </form>
   </div>
 </div>
+  <div class="f">
+	<div class="cauto pA5">
+	   <a href="{{url.baseFull}}/{{team_code}}/request/add">
+	    <i class="sf-plus btn"></i> {%trans "Add request"%}
+	   </a>
+	</div>
+ </div>
 {%endblock%}
 
 

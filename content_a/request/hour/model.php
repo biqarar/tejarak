@@ -33,9 +33,9 @@ class model extends \content_a\main\model
 	 */
 	public function post_hour($_args)
 	{
-		$request         = $this->getPost();
-		$request['team'] = \lib\router::get_url(0);
-		$request['hour_id']   = \lib\router::get_url(3);
+		$request            = $this->getPost();
+		$request['team']    = \lib\router::get_url(0);
+		$request['hour_id'] = \lib\router::get_url(3);
 
 		utility::set_request_array($request);
 		$this->user_id = $this->login('id');
