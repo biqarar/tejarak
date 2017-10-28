@@ -49,16 +49,16 @@ trait add
 			return false;
 		}
 
-		$id         = utility::request('hour_id');
+		$hour_id         = utility::request('hour_id');
 		$start_date = utility::request('start_date');
 		$start_time = utility::request('start_time');
 		$end_date   = utility::request('end_date');
 		$end_time   = utility::request('end_time');
 		$desc       = utility::request('desc');
 
-		$id = utility\shortURL::decode($id);
+		$hour_id = utility\shortURL::decode($hour_id);
 
-		if(utility::request('id') && !$id)
+		if(utility::request('hour_id') && !$hour_id)
 		{
 			logs::set('api:houredit:id:not:set', $this->user_id, $log_meta);
 			debug::error(T_("Id not set"), 'id', 'arguments');
@@ -195,40 +195,6 @@ trait add
 			}
 		}
 
-		// the request have hour id
-		if($id && utility::request('id'))
-		{
-			// load hour data
-			$hour_detail = \lib\db\hours::access_hours_id($id, $this->user_id, ['action' => 'view']);
-
-			// check the hour exist
-			if(isset($hour_detail['id']))
-			{
-				$hour_id = $hour_detail['id'];
-			}
-			else
-			{
-				logs::set('api:houredit:hour:notfound:invalid', $this->user_id, $log_meta);
-				debug::error(T_("Can not access to set time of this hour"), 'hour', 'permission');
-				return false;
-			}
-
-			// check one of the request was change
-			if(isset($hour_detail['date']) && isset($hour_detail['start']) && isset($hour_detail['end']) && isset($hour_detail['enddate']))
-			{
-				if
-				(
-					strtotime("$hour_detail[date] $hour_detail[start]") === strtotime("$start_date_gregorian $start_time") &&
-					strtotime("$hour_detail[enddate] $hour_detail[end]") === strtotime("$end_date_gregorian $end_time")
-				)
-				{
-					logs::set('api:houredit:hour:no:thing:edit', $this->user_id, $log_meta);
-					debug::error(T_("No thing changed!"), null, 'arguments');
-					return false;
-				}
-			}
-		}
-
 		$edit_user_id = $this->user_id;
 
 		if(\lib\team::is_admin($this->user_id))
@@ -249,16 +215,66 @@ trait add
 		}
 
 
+		// the request have hour id
+		if($hour_id && utility::request('hour_id'))
+		{
+			if(\lib\team::is_admin($this->user_id))
+			{
+				// load hour data
+				$hour_detail = \lib\db\hours::access_hours_id_team($hour_id, \lib\team::id(), ['action' => 'view']);
+			}
+			else
+			{
+				// load hour data
+				$hour_detail = \lib\db\hours::access_hours_id($hour_id, $this->user_id, ['action' => 'view']);
+			}
+
+
+			// check the hour exist
+			if(isset($hour_detail['id']))
+			{
+				$hour_id = $hour_detail['id'];
+			}
+			else
+			{
+				logs::set('api:houredit:hour:notfound:invalid', $this->user_id, $log_meta);
+				debug::error(T_("Can not access to set time of this hour"), 'hour', 'permission');
+				return false;
+			}
+
+			if(isset($hour_detail['my_user_id']))
+			{
+				$edit_user_id = $hour_detail['my_user_id'];
+			}
+
+			// check one of the request was change
+			if(isset($hour_detail['date']) && isset($hour_detail['start']) && isset($hour_detail['end']) && isset($hour_detail['enddate']))
+			{
+				if
+				(
+					strtotime("$hour_detail[date] $hour_detail[start]") === strtotime("$start_date_gregorian $start_time") &&
+					strtotime("$hour_detail[enddate] $hour_detail[end]") === strtotime("$end_date_gregorian $end_time")
+				)
+				{
+					logs::set('api:houredit:hour:no:thing:edit', $this->user_id, $log_meta);
+					debug::error(T_("No thing changed!"), null, 'arguments');
+					return false;
+				}
+			}
+		}
+
+
+
 
 		$update_mode = false;
 		// if the hourrequest have hour id
 		// check the user on this hour id hava any awaiting request
 		// if hava awaiting request update it
 		// and if not have insert new
-		if(utility::request('id') && $id && is_numeric($id))
+		if(utility::request('hour_id') && $hour_id && is_numeric($hour_id))
 		{
 			// get this hour id is set old or no
-			$check_exist = \lib\db\hourrequests::get(['hour_id' => $id, 'status' => 'awaiting', 'limit' => 1]);
+			$check_exist = \lib\db\hourrequests::get(['hour_id' => $hour_id, 'status' => 'awaiting', 'limit' => 1]);
 
 			if(isset($check_exist['id']))
 			{
@@ -286,7 +302,7 @@ trait add
 		}
 
 		$args                    = [];
-		$args['hour_id']         = $id ? $id : null;
+		$args['hour_id']         = $hour_id ? $hour_id : null;
 		// start date gregorian
 		$args['date']            = $start_date_gregorian;
 		$args['year']            = date("Y", strtotime($start_date_gregorian));

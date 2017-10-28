@@ -96,6 +96,36 @@ class hours
 
 
 	/**
+	 * check this hour is in this team or no
+	 *
+	 * @param      <type>  $_id       The identifier
+	 * @param      <type>  $_team_id  The team identifier
+	 */
+	public static function access_hours_id_team($_id, $_team_id)
+	{
+		if(!$_id || !is_numeric($_id) || !$_team_id || !is_numeric($_team_id))
+		{
+			return false;
+		}
+
+		$query =
+		"
+			SELECT
+				hours.*,
+				userteams.user_id AS `my_user_id`
+			FROM hours
+			INNER JOIN userteams ON userteams.id = hours.userteam_id
+			WHERE
+				hours.id = $_id AND
+				userteams.team_id = $_team_id
+			LIMIT 1
+		";
+		$result = \lib\db::get($query, null, true);
+		return $result;
+
+	}
+
+	/**
 	 * load one hours record details
 	 *
 	 * @param      <type>  $_id       The identifier
@@ -112,7 +142,8 @@ class hours
 		$query =
 		"
 			SELECT
-				hours.*
+				hours.*,
+				userteams.user_id AS `my_user_id`
 			FROM hours
 			INNER JOIN userteams ON userteams.id = hours.userteam_id
 			WHERE
