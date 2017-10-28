@@ -314,6 +314,9 @@ class userteams
 	 */
 	public static function insert()
 	{
+		// clean data on session
+		\lib\team::clean();
+
 		\lib\db\config::public_insert('userteams', ...func_get_args());
 		return \lib\db::insert_id();
 	}
@@ -585,6 +588,9 @@ class userteams
 	 */
 	public static function remove($_args)
 	{
+		// clean data on session
+		\lib\team::clean();
+
 		if(isset($_args['team_id']) && isset($_args['user_id']) && is_numeric($_args['team_id']) && is_numeric($_args['user_id']))
 		{
 			$query =
@@ -610,6 +616,9 @@ class userteams
 	 */
 	public static function update()
 	{
+		// clean data on session
+		\lib\team::clean();
+
 		return \lib\db\config::public_update('userteams', ...func_get_args());
 	}
 

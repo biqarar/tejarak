@@ -224,6 +224,9 @@ class teams
 	 */
 	public static function update()
 	{
+		// clean data on session
+		\lib\team::clean();
+
 		return \lib\db\config::public_update('teams', ...func_get_args());
 	}
 
