@@ -62,27 +62,14 @@
       <td>{{value.response}}</td>
     {%endif%}
 
-    {%if is_admin %}
+    {%if is_admin  %}
+      {% if value.status == 'awaiting' %}
         <td><button type="submit" class="btn success" name="accept" data-method='post' data-ajaxify data-data='{"id": "{{value.id}}", "type": "accept"}' >{%trans "Accept"%}</button></td>
         <td><button type="submit" class="btn danger" name="reject" data-method='post' data-ajaxify data-data='{"id": "{{value.id}}", "type": "reject"}' >{%trans "Reject"%}</button></td>
-
-<!--       <form method="post">
-        <div class="c df"><textarea name="response" my_code="{{value.id}}" class="description_main " placeholder='{%trans "Set Response"%}' ></textarea></div>
-        <div class="hidden">
-          <input type="hidden" name="id" value="{{value.id}}">
-          <input type="hidden" name="type" value="accept">
-        </div>
-        <div class="c df"><input type="submit" class="bp" name="accept" data-data='{"id": "{{value.id}}", "type": "accept"}' value='{%trans "Accept"%}'></div>
-      </form>
-
-      <form method="post" class="c">
-        <div class="hidden">
-          <textarea my_code="{{value.id}}" class="description_copy" name="response"  placeholder='{%trans "Set Response"%}'></textarea>
-          <input type="hidden" name="id" value="{{value.id}}">
-          <input type="hidden" name="type" value="reject">
-        </div>
-        <div class="c df"><input type="submit" class="bn" name="reject" data-data='{"id": "{{value.id}}", "type": "reject"}' value='{%trans "Reject"%}'></div>
-      </form> -->
+      {%else%}
+        <td></td>
+        <td></td>
+      {%endif%}
 
     {%endif%}
   </tr>
