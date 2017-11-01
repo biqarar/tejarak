@@ -69,27 +69,6 @@ class model extends \mvc\model
 			]
 		];
 
-		/**
-		 * register user if set mobile and not register
-		 */
-		if($mobile && !$this->login())
-		{
-			// check valid mobile
-			if(\lib\utility\filter::mobile($mobile))
-			{
-				// check existing mobile
-				$exists_user = \lib\db\users::get_by_mobile($mobile);
-				// register if the mobile is valid
-				if(!$exists_user || empty($exists_user))
-				{
-					// signup user by site_guest
-					$user_id = \lib\db\users::signup(['mobile' => $mobile ,'type' => 'inspection', 'port' => 'site_guest']);
-					// save log by caller 'user:send:contact:register:by:mobile'
-					\lib\db\logs::set('user:send:contact:register:by:mobile', $user_id, $log_meta);
-				}
-			}
-		}
-
 		// check content
 		if($content == '')
 		{
