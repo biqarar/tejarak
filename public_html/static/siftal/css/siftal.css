@@ -645,26 +645,7 @@ ul.list li a {
 .center {
   text-align: center; }
 
-[data-develop-del]:after {
-  content: "Dev";
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0.5;
-  transition: 0.3s;
-  color: #333;
-  padding: 20px;
-  font-size: 100px;
-  font-family: sans-serif;
-  border-bottom: 5px solid #b5c015;
-  text-align: right; }
-
-[data-develop-del]:hover:after {
-  opacity: 0;
-  z-index: -1; }
-
-/*! Hint.css - v1.3.3 - 2014-07-06 * http://kushagragour.in/lab/hint/ * Copyright (c) 2014 Kushagra Gour; Licensed MIT */
+/* Hint.css - v1.3.3 - 2014-07-06 * http://kushagragour.in/lab/hint/ * Copyright (c) 2014 Kushagra Gour; Licensed MIT */
 /* add rtl support - Javad Evazzadeh  v1.3*/
 .hint, [data-hint] {
   position: relative;
@@ -987,7 +968,7 @@ ul.list li a {
     display: none; } }
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.3;
   margin-bottom: 0.3em;
   color: inherit; }
 
@@ -1018,7 +999,13 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 
 p {
   margin-bottom: 1em;
+  line-height: 1.7; }
+
+.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 {
   line-height: 1.5; }
+
+.rtl p {
+  line-height: 2; }
 
 a {
   color: #4080c0;
@@ -1542,6 +1529,10 @@ a:active {
   transition: 0.3s; }
   .badge:empty {
     display: none; }
+  .badge:hover {
+    color: #fff; }
+  .badge:focus {
+    color: #fff; }
 
 .btn .badge {
   position: relative;
@@ -2077,6 +2068,10 @@ progress.xl, meter.xl {
 .tbox h2 {
   font-weight: 700;
   font-size: 1.5em; }
+
+.tbox .badge {
+  font-size: 60%;
+  line-height: 1.3; }
 
 .cbox {
   font-size: 1.4em;
@@ -3455,6 +3450,118 @@ img.mini {
 
 .floated.statistic:last-child {
   margin-bottom: 0; }
+
+.share1 a {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  margin: 5px;
+  width: 35px;
+  height: 35px;
+  font-size: 0;
+  line-height: 0;
+  border-radius: 1px;
+  background-color: #333; }
+
+.share1 a::before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: 1;
+  -webkit-transition: box-shadow .3s;
+  transition: box-shadow .2s; }
+
+.share1 a::after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: 2;
+  font-family: "siftal" !important;
+  color: #eee;
+  font-size: 20px;
+  line-height: 1;
+  padding: 7px; }
+
+.share1 .facebook::before {
+  box-shadow: inset 0 0 0 48px #3b5998; }
+
+.share1 .facebook:hover::before {
+  box-shadow: inset 0 0 0 4px #3b5998; }
+
+.share1 .facebook::after {
+  content: "\e18f"; }
+
+.share1 .twitter::before {
+  box-shadow: inset 0 0 0 48px #4099ff; }
+
+.share1 .twitter:hover::before {
+  box-shadow: inset 0 0 0 4px #4099ff; }
+
+.share1 .twitter::after {
+  content: "\e054"; }
+
+.share1 .googleplus::before {
+  box-shadow: inset 0 0 0 48px #d34836; }
+
+.share1 .googleplus:hover::before {
+  box-shadow: inset 0 0 0 4px #d34836; }
+
+.share1 .googleplus::after {
+  content: "\e0e5"; }
+
+.share1 .github::before {
+  box-shadow: inset 0 0 0 48px #333; }
+
+.share1 .github:hover::before {
+  box-shadow: inset 0 0 0 4px #333; }
+
+.share1 .github::after {
+  content: "\5f"; }
+
+.share1 .rss::before {
+  box-shadow: inset 0 0 0 48px #ee802f; }
+
+.share1 .rss:hover::before {
+  box-shadow: inset 0 0 0 4px #ee802f; }
+
+.share1 .rss::after {
+  content: "\e009"; }
+
+.share1 .telegram::before {
+  box-shadow: inset 0 0 0 48px #34a3dd; }
+
+.share1 .telegram:hover::before {
+  box-shadow: inset 0 0 0 4px #34a3dd; }
+
+.share1 .telegram::after {
+  content: "\e10d"; }
+
+.share1 .linkedin::before {
+  box-shadow: inset 0 0 0 48px #1283ad; }
+
+.share1 .linkedin:hover::before {
+  box-shadow: inset 0 0 0 4px #1283ad; }
+
+.share1 .linkedin::after {
+  content: "\e052"; }
+
+.share1 .instagram::before {
+  box-shadow: inset 0 0 0 48px #f22579; }
+
+.share1 .instagram:hover::before {
+  box-shadow: inset 0 0 0 4px #f22579; }
+
+.share1 .instagram::after {
+  content: "\e045"; }
 
 [class^="sf-"] {
   display: inline-block;
