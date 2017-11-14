@@ -33,8 +33,9 @@ trait enter
 					$msg = "✅ ". $this->displayname;
 					if($this->plus)
 					{
-						$msg .= "\n➕ ". human::number($this->my_plus, $this->current_language);
+						$msg .= "\n➕ ". human::number($this->plus, $this->current_language);
 					}
+
 					break;
 			}
 		}
