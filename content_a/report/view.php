@@ -86,6 +86,43 @@ class view extends \content_a\main\view
 		{
 			$this->data->report_current_user = $all_user[utility::get('user')];
 		}
+
+		$team_id = \lib\utility\shortURL::decode($this->data->team_code);
+
+		$cache_chart = \lib\session::get('report_last_month_chart_'. $team_id);
+		if($cache_chart === null)
+		{
+
+			if($this->data->is_admin)
+			{
+				$user_id = null;
+			}
+			else
+			{
+				$user_id = \lib\user::id();
+			}
+
+			$chart_last_month = \lib\db\teams::last_time_chart($team_id, $user_id, 30);
+			$cache_chart = [];
+
+			if(is_array($chart_last_month))
+			{
+				foreach ($chart_last_month as $key => $value)
+				{
+					$date = $key;
+					if(\lib\define::get_language() === 'fa')
+					{
+						$date = \lib\utility\jdate::date("Y-m-d", strtotime($key), false);
+					}
+
+					$cache_chart[] = ['key' => $date, 'value' => $value];
+				}
+			}
+			$cache_chart = json_encode($cache_chart, JSON_UNESCAPED_UNICODE);
+			\lib\session::set('report_last_month_chart_'. $team_id, $cache_chart, null, 60);
+		}
+		$this->data->chart_last_month = $cache_chart;
+
 	}
 }
 ?>

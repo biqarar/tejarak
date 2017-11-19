@@ -64,10 +64,10 @@ trait dashboard
 	 *
 	 * @param      <type>  $_team_id  The team identifier
 	 */
-	public static function last_time_chart($_team_id, $_user_id = null)
+	public static function last_time_chart($_team_id, $_user_id = null, $_day = 10)
 	{
 		$now = date("Y-m-d");
-		$last_10_day = date("Y-m-d", strtotime("-10 day"));
+		$last_10_day = date("Y-m-d", strtotime("-$_day day"));
 
 		$user_id = null;
 		if($_user_id)
@@ -95,7 +95,7 @@ trait dashboard
 		if(is_array($result))
 		{
 			$temp = [];
-			for ($i = 0; $i < 10 ; $i++)
+			for ($i = 0; $i < $_day ; $i++)
 			{
 				$key = date("Y-m-d", strtotime("-$i day"));
 				if(isset($result[$key]))

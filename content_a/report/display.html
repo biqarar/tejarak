@@ -1,13 +1,13 @@
 {%extends display.adminTeam%}
 
 {%block pageContent%}
+{{block('chart_last_month')}}
 <div class="f">
  <div class="c3 s6">{{block ("stLastTraffic")}}</div>
  <div class="c3 s6">{{block ("stTrafficMonth")}}</div>
  <div class="c3 s6">{{block ("stTrafficYear")}}</div>
  <div class="c3 s6">{{block ("prDate")}}</div>
 </div>
-
 <h3 class="mT50">{%trans "Manual request of change hours"%}</h3>
 <div class="f">
  <div class="c4 s6">{{block ("stRequestList")}}</div>
@@ -18,7 +18,12 @@
 
 
 
-
+{%block chart_last_month%}
+<div class="dcard x3 pA0">
+ <div class="chart" data-vals='{{chart_last_month|raw}}'>
+ </div>
+</div>
+{%endblock%}
 
 
 {%block stRequestList%}
