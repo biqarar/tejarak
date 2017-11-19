@@ -67,8 +67,8 @@ self::$config['main_site']                    = 'http://tejarak.dev';
  * call kavenegar template
  */
 self::$config['enter']['call']                = true;
-self::$config['enter']['call_template_fa'] = 'tejarak-fa';
-self::$config['enter']['call_template_en'] = 'tejarak-en';
+self::$config['enter']['call_template_fa'] = 'ermile-fa';
+self::$config['enter']['call_template_en'] = 'ermile-en';
 
 /**
  * telegram hook
@@ -119,6 +119,10 @@ self::$config['force_unit']   = 1;
 self::$config['transactions_code'][100] = "invoice:team";
 self::$config['transactions_code'][150] = "promo:ref";
 
+self::$config['enter']['verify_telegram'] = true;
+self::$config['enter']['verify_sms']      = true;
+self::$config['enter']['verify_call']     = true;
+self::$config['enter']['verify_sendsms']  = true;
 
 
 
