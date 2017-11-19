@@ -109,10 +109,11 @@ class view extends \content_a\main\view
 			{
 				foreach ($chart_last_month as $key => $value)
 				{
-					$date = $key;
+					$format = "Y-m-d D";
+					$date = date($format, strtotime($key));
 					if(\lib\define::get_language() === 'fa')
 					{
-						$date = \lib\utility\jdate::date("Y-m-d", strtotime($key), false);
+						$date = \lib\utility\jdate::date($format, strtotime($key), false);
 					}
 
 					$cache_chart[] = ['key' => $date, 'value' => $value];
