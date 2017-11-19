@@ -77,7 +77,7 @@ trait dashboard
 		$query =
 		"
 			SELECT
-				SUM(hours.total) AS `total`,
+				ROUND(SUM(hours.total) / 60, 2) AS `total`,
 				hours.date
 			FROM
 				hours
