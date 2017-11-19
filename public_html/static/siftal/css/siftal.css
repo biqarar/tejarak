@@ -323,7 +323,8 @@ sub {
 code, kbd, samp {
   font-family: monospace, monospace, sans-serif;
   font-size: 1em;
-  display: inline-block; }
+  display: inline-block;
+  direction: ltr; }
 
 pre {
   white-space: pre;
