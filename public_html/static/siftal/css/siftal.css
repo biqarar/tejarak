@@ -6189,7 +6189,7 @@ li.sortable-placeholder {
 
 .awesomplete > ul > li {
   position: relative;
-  padding: 10px 15px;
+  padding: 0.8em 1.1em;
   cursor: pointer;
   overflow: hidden;
   -o-text-overflow: ellipsis;
@@ -6245,6 +6245,9 @@ li.sortable-placeholder {
 
 .profile-module .awesomplete > ul {
   min-width: 400px; }
+
+.small .awesomplete > ul {
+  font-size: 0.8em; }
 
 /*
 * iziToast | v1.1.5
