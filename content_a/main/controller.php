@@ -52,7 +52,7 @@ class controller extends \mvc\controller
 		}
 
 		// if !the url 0 is a short url
-		if(!\lib\utility\shortURL::is($url_0))
+		if(!\lib\utility\shortURL::is($url_0) && $url_0 != 'notifications')
 		{
 			\lib\error::page();
 		}
@@ -162,6 +162,7 @@ class controller extends \mvc\controller
 			case 'team':
 			case 'billing':
 			case 'profile':
+			case 'notifications':
 				$result = true;
 				break;
 
