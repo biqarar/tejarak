@@ -283,13 +283,23 @@ trait add
 		}
 		else
 		{
+			$userteam_id = \lib\db\userteams::get(['user_id' => $edit_user_id, 'team_id' => $team_id, 'limit' => 1]);
+			if(isset($userteam_id['id']))
+			{
+				$userteam_id = $userteam_id['id'];
+			}
+			else
+			{
+				\lib\debug::error(T_("Id not found"));
+				return false;
+			}
 			// get this hour id is set old or no
 			$check_exist = \lib\db\hourrequests::get(
 			[
 				'date'        => $start_date,
 				'team_id'     => $team_id,
 				'status'      => 'awaiting',
-				'userteam_id' => "(SELECT id FROM userteams WHERE user_id = $edit_user_id AND team_id = $team_id LIMIT 1)",
+				'userteam_id' => $userteam_id,
 				'limit'       => 1
 			]);
 
@@ -331,8 +341,15 @@ trait add
 		$args['desc']            = $desc;
 		$args['creator']         = $this->user_id;
 		$args['team_id']         = $team_id;
-		$args['userteam_id']     = "(SELECT id FROM userteams WHERE user_id = $edit_user_id AND team_id = $team_id LIMIT 1)";
+		$userteam_id = \lib\db\userteams::get(['user_id' => $edit_user_id, 'team_id' => $team_id, 'limit' => 1]);
 
+		if(!isset($userteam_id['id']))
+		{
+			\lib\debug::error(T_("Id not found"));
+			return false;
+		}
+
+		$args['userteam_id']     = $userteam_id['id'];
 
 		if($_args['method'] === 'post' && !$update_mode)
 		{

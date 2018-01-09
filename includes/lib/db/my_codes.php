@@ -12,7 +12,7 @@ class my_codes extends \lib\db\codes
 			$get_term =
 			[
 				'type'  => 'code',
-				'slug'  => "(SELECT '$_args[code]')",
+				'slug'  => "$_args[code]",
 				'limit' => 1,
 			];
 			$term_detail = \lib\db\terms::get($get_term);
