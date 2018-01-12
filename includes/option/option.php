@@ -27,11 +27,11 @@ self::$language =
  * system default lanuage
  */
 self::$config['default_language']             = 'fa';
-self::$config['redirect_url']                 = 'http://tejarak.dev';
+self::$config['redirect_url']                 = 'http://tejarak.local';
 self::$config['multi_domain']                 = true;
 self::$config['redirect_to_main']             = true;
 self::$config['https']                        = false;
-self::$config['default_tld']                  = 'dev';
+self::$config['default_tld']                  = 'local';
 self::$config['default_permission']           = null;
 self::$config['debug']                        = true;
 self::$config['coming']                       = false;
@@ -57,7 +57,7 @@ self::$config['use_main_account']             = false;
 
 self::$config['domain_same']                  = true;
 self::$config['domain_name']                  = 'tejarak';
-self::$config['main_site']                    = 'http://tejarak.dev';
+self::$config['main_site']                    = 'http://tejarak.local';
 
 
 
