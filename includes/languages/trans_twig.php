@@ -613,13 +613,13 @@ class twigTransTerms
 
 	//---------------------------------------------------content_a\report\display.html
 	echo T_("Manual request of change hours");                                        // Line 11
-	echo T_("List of current requests");                                              // Line 27
-	echo T_("Add new request");                                                       // Line 36
-	echo T_("Edit existing record");                                                  // Line 45
+	echo T_("List of current requests");                                              // Line 32
+	echo T_("Add new request");                                                       // Line 41
+	echo T_("Edit existing record");                                                  // Line 50
 	echo T_("Last traffics");                                                         // Line 175
-	echo T_("Sum times in month");                                                    // Line 63
-	echo T_("Sum times in year");                                                     // Line 72
-	echo T_("Today");                                                                 // Line 81
+	echo T_("Sum times in month");                                                    // Line 68
+	echo T_("Sum times in year");                                                     // Line 77
+	echo T_("Today");                                                                 // Line 86
 
 	//----------------------------------------------content_a\report\last\display.html
 	echo T_("Last time for");                                                         // Line 21
@@ -933,6 +933,7 @@ class twigTransTerms
 	echo T_(" ");                                                                     // Line 85 Seperate
 	echo T_("money");                                                                 // Line 87 Seperate
 	echo T_("toman");                                                                 // Line 88 Seperate
+	echo T_("Tejarak; Modern Approach");                                              // Line 89 Seperate
 
 	//---------------------public_html\static\siftal\fonts\siftal\icons-reference.html
 
