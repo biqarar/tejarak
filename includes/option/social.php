@@ -6,7 +6,7 @@
 self::$social['status']                       = true;
 
 self::$social['list']['telegram']             = 'tejarak';
-self::$social['list']['facebook']             = 'tejarak.ermile';
+self::$social['list']['facebook']             = 'ermile.tejarak';
 self::$social['list']['twitter']              = 'ermile_tejarak';
 self::$social['list']['instagram']            = 'ermile_tejarak';
 self::$social['list']['googleplus']           = '113130164586721131168';
