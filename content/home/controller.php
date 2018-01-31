@@ -14,6 +14,8 @@ class controller extends \content\main\controller
 		'benefits',
 		'pricing',
 		'help',
+		'help/faq',
+		'for/school',
 		'admin',
 		'enter',
 		'about',
