@@ -92,6 +92,11 @@ class userteams
 			return false;
 		}
 
+		if(!$_ids)
+		{
+			return false;
+		}
+
 		$userteam_id = implode(',', $_ids);
 		$resutl = [];
 
