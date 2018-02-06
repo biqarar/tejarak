@@ -10,7 +10,7 @@ class view extends \mvc\view
 	 */
 	public function repository()
 	{
-		$this->data->bodyclass = 'fixed unselectable siftal';
+		$this->data->bodyclass = 'siftal';
 		$this->include->css    = true;
 		$this->include->chart  = true;
 

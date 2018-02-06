@@ -5,7 +5,7 @@ class view extends \mvc\view
 {
 	function config()
 	{
-		$this->data->bodyclass = 'fixed unselectable siftal';
+		$this->data->bodyclass = 'siftal';
 
 	}
 
