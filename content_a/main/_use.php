@@ -76,7 +76,7 @@ trait _use
 			if(\lib\utility\location\languages::check($team_language))
 			{
 				$new_url               = \lib\url::pwd();
-				$url                   = $this->url('root');
+				$url                   = \lib\url::base();
 				$url_property          = \lib\router::get_url();
 				$url_get               = utility::get();
 

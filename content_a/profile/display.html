@@ -46,7 +46,7 @@
    <div>
     <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
     <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-     {%if login.avatar%}<img src="{{url.root}}/{{login.avatar}}" alt="{{member.displayname}}" id="avatarPreview">{%endif%}
+     {%if login.avatar%}<img src="{{url.base}}/{{login.avatar}}" alt="{{member.displayname}}" id="avatarPreview">{%endif%}
     </label>
    </div>
   </div>
