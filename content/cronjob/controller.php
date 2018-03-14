@@ -11,7 +11,7 @@ class controller extends \content\main\controller
 			\lib\error::page();
 		}
 
-		if(Tld === 'dev')
+		if(\lib\url::isLocal())
 		{
 			return;
 		}

@@ -25,7 +25,7 @@ trait exit_message
 						'time' => human::number(date("H:i"), $this->current_language),
 					];
 					$msg = T_(":name exited from :team at :time", $T_T);
-					$msg .= "\n\n". 'tejarak.'.Tld. '/'. $this->team_short_name;
+					$msg .= "\n\n". 'tejarak.'.\lib\url::tld(). '/'. $this->team_short_name;
 
 					break;
 

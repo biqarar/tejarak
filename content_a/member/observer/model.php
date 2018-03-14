@@ -83,7 +83,7 @@ class model extends \content_a\member\model
 
 				$message = T_("You are registered as :title of :name in :team", $t_T). '.';
 				$message .= "\n\n". T_("Tejarak"). " | ". T_("Modern Approach");
-				$message .= "\n". 'tejarak.'. Tld. '/'. $this->view()->data->current_team['short_name'];
+				$message .= "\n". 'tejarak.'. \lib\url::tld(). '/'. $this->view()->data->current_team['short_name'];
 				$parent_detail = \lib\temp::get('add_parent_detail');
 
 				if(isset($parent_detail['chatid']))
