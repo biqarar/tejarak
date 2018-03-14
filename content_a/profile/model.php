@@ -69,7 +69,7 @@ class model extends \content_a\main\model
 			if(isset($uploaded_file['url']))
 			{
 				$temp_url                = $uploaded_file['url'];
-				$host                    = Protocol."://" . \lib\router::get_root_domain(). '/';
+				$host                    = \lib\url::protocol()."://" . \lib\router::get_root_domain(). '/';
 				$temp_url                = str_replace($host, '', $temp_url);
 				$update_user['avatar']  = $temp_url;
 				$user_session['avatar'] = $temp_url;
