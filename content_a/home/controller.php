@@ -20,7 +20,7 @@ class controller extends \content_a\main\controller
 				$shortname = \lib\db\teams::get_by_id($check_is_gateway['team_id']);
 				if(isset($shortname['shortname']))
 				{
-					$new_url = $this->url('base'). '/'. $shortname['shortname'];
+					$new_url = \lib\url::base(). '/'. $shortname['shortname'];
 					$this->redirector($new_url)->redirect();
 					return;
 				}
