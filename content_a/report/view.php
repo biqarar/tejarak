@@ -24,16 +24,16 @@ class view extends \content_a\main\view
 		{
 			if(!utility::get('export'))
 			{
-				$this->data->export_url = $this->url('full'). '&export=true';
+				$this->data->export_url = \lib\url::pwd(). '&export=true';
 			}
 			else
 			{
-				$this->data->export_url = $this->url('full');
+				$this->data->export_url = \lib\url::pwd();
 			}
 		}
 		else
 		{
-			$this->data->export_url = $this->url('full'). '?export=true';
+			$this->data->export_url = \lib\url::pwd(). '?export=true';
 		}
 
 		if(utility::get('year') && is_numeric(utility::get('year')) && mb_strlen(utility::get('year')) === 4)

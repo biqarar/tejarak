@@ -75,7 +75,7 @@ trait _use
 
 			if(\lib\utility\location\languages::check($team_language))
 			{
-				$new_url               = $this->url('full');
+				$new_url               = \lib\url::pwd();
 				$url                   = $this->url('root');
 				$url_property          = \lib\router::get_url();
 				$url_get               = utility::get();
@@ -112,7 +112,7 @@ trait _use
 						}
 					}
 				}
-				if($new_url !== $this->url('full'))
+				if($new_url !== \lib\url::pwd())
 				{
 					$this->redirector($new_url)->redirect();
 				}

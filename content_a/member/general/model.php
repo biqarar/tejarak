@@ -50,7 +50,7 @@ class model extends \content_a\member\model
 
 		if(debug::$status)
 		{
-			$this->redirector($this->url('full'));
+			$this->redirector(\lib\url::pwd());
 		}
 	}
 }

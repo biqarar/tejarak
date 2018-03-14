@@ -103,7 +103,7 @@ class model extends \content_a\main\model
 			debug::true(T_("Your team plan was changed"));
 			if(debug::$status)
 			{
-				$this->redirector($this->url('full'));
+				$this->redirector(\lib\url::pwd());
 			}
 		}
 		else

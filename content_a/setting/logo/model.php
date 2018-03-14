@@ -52,7 +52,7 @@ class model extends \content_a\main\model
 
 		if(debug::$status)
 		{
-			$this->redirector($this->url('full'));
+			$this->redirector(\lib\url::pwd());
 		}
 	}
 }
