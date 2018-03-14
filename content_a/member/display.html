@@ -8,7 +8,7 @@
     <img src="{{url.static}}siftal/images/useful/adduser.png" alt='{%trans "Add new member"%}'>
     <div class="content"></div>
     <div class="footer pAn">
-     <a class="btn block primary" href="{{url.baseFull}}/{{team}}/member/add">{%trans "Add new member"%}</a>
+     <a class="btn block primary" href="{{url.here}}/{{team}}/member/add">{%trans "Add new member"%}</a>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
 {%if value.status == 'remove'%}red{%elseif value.status == 'deactive'%}yellow{%elseif value.traffic%}black{%else%}green{%endif%}
 {%endset%}
 
-  <a class="vcard mA10 shadow {{cardColor}}" href="{{url.baseFull}}/{{team}}/member/general/{{value.id}}">
+  <a class="vcard mA10 shadow {{cardColor}}" href="{{url.here}}/{{team}}/member/general/{{value.id}}">
     <img src="{{value.file}}" alt="{{value.displayname}}">
     <div class="content">
       <div class="header">{{value.displayname}}</div>

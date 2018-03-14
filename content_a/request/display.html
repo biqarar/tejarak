@@ -32,9 +32,9 @@
   <tr >
 <!--
     {%if value.status == 'awaiting' %}
-      <td><a href="{{url.baseFull}}/{{team_code}}/request/remove={{value.id}}">{%trans "Remove"%}</a></td>
+      <td><a href="{{url.here}}/{{team_code}}/request/remove={{value.id}}">{%trans "Remove"%}</a></td>
     {%else%}
-      <td><a href="{{url.baseFull}}/{{team_code}}/request/detail={{value.id}}">{%trans "More"%}</a></td>
+      <td><a href="{{url.here}}/{{team_code}}/request/detail={{value.id}}">{%trans "More"%}</a></td>
     {%endif%} -->
 
       <td>{{value.displayname}}</td>
@@ -85,7 +85,7 @@
 
 <div class="f">
   <div class="cauto pA5">
-     <a href="{{url.baseFull}}/{{team_code}}/request/add">
+     <a href="{{url.here}}/{{team_code}}/request/add">
       <i class="sf-plus btn"></i> {%trans "Add request"%}
      </a>
   </div>

@@ -42,7 +42,7 @@ class model extends \content_a\main\model
 		$this->add_houredit();
 		if(debug::$status)
 		{
-			$this->redirector($this->url('baseFull'). '/'. $request['team']. '/request');
+			$this->redirector(\lib\url::here(). '/'. $request['team']. '/request');
 		}
 	}
 }

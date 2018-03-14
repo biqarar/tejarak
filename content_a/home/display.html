@@ -11,7 +11,7 @@
     <img src="{{url.static}}siftal/images/useful/plus1.png" alt="add new team">
     <div class="content"></div>
     <div class="footer pAn">
-     <a class="btn block primary" href="{{url.baseFull}}/team/add">{%trans "Add new team"%}</a>
+     <a class="btn block primary" href="{{url.here}}/team/add">{%trans "Add new team"%}</a>
     </div>
   </div>
 
@@ -21,7 +21,7 @@
 {%if value.status == 'close'%}red{%elseif not value.stats.traffic_count%}black{%elseif value.rule == 'admin'%}blue{%else%}{%endif%}
 {%endset%}
 
-  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.baseFull}}/{{value.id}}'>
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/{{value.id}}'>
     <img src="{{value.logo}}" alt="{{value.name}}" class="pA10-f">
     <div class="content">
       <div class="header">{{value.name}}</div>

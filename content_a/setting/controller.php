@@ -11,7 +11,7 @@ class controller extends \content_a\main\controller
 
 
 
-		$new_url = $this->url('baseFull'). '/'. \lib\router::get_url(0). '/setting/general';
+		$new_url = \lib\url::here(). '/'. \lib\router::get_url(0). '/setting/general';
 
 		$this->redirector($new_url)->redirect();
 

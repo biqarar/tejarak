@@ -18,7 +18,7 @@
 {%set my_title = value.title | capitalize %}
 
   <div class="icard">
-    <a class="size-we50 size-he50 pA2p5" href="{{url.baseFull}}/student/edit={{value.id}}">
+    <a class="size-we50 size-he50 pA2p5" href="{{url.here}}/student/edit={{value.id}}">
       {%if value.avatar%}
         <img src="{{value.avatar}}" alt="{{value.name}} {{value.lastname}}">
       {%else%}
