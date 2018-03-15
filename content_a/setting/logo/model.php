@@ -34,7 +34,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_logo($_args)
 	{
-		$code = \lib\router::get_url(0);
+		$code = \lib\url::dir(0);
 		$request       = [];
 
 		if(utility::files('logo'))

@@ -15,7 +15,7 @@ class controller extends \content_a\main\controller
 		 * we set this on the contetn_a/home/controller
 		 * and set on the url manually!!!
 		 */
-		if(\lib\temp::get('team_code_url') && \lib\temp::get('team_code_url') !== \lib\router::get_url(0))
+		if(\lib\temp::get('team_code_url') && \lib\temp::get('team_code_url') !== \lib\url::dir(0))
 		{
 			\lib\router::set_url(\lib\temp::get('team_code_url'). '/'. \lib\url::directory());
 		}

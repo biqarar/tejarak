@@ -11,7 +11,7 @@ class view extends \content_a\main\view
 	 */
 	public function view_list($_args)
 	{
-		$team                     = \lib\router::get_url(0);
+		$team                     = \lib\url::dir(0);
 		$request                  = [];
 		$request['id']            = $team;
 		$list                     = $this->model()->list_gateway($request);

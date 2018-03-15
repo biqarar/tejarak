@@ -50,7 +50,7 @@ class team
 			return;
 		}
 
-		$team_code = \lib\router::get_url(0);
+		$team_code = \lib\url::dir(0);
 		$team_id   = \lib\utility\shortURL::decode($team_code);
 		if($team_id)
 		{

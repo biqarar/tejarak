@@ -74,7 +74,7 @@ class model extends \content_a\main\model
 			$request['file'] = $file_code;
 		}
 
-		$team = \lib\router::get_url(0);
+		$team = \lib\url::dir(0);
 		// get posted data to create the request
 		$request['team']  = $team;
 

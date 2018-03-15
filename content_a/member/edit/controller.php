@@ -11,7 +11,7 @@ class controller extends \content_a\main\controller
 
 
 
-		$new_url = \lib\url::here(). '/'. \lib\router::get_url(0). '/member/general/'. \lib\router::get_url(3);
+		$new_url = \lib\url::here(). '/'. \lib\url::dir(0). '/member/general/'. \lib\router::get_url(3);
 
 		$this->redirector($new_url)->redirect();
 

@@ -14,7 +14,7 @@ class view extends \content_a\member\view
 
 		$this->data->edit_mode     = true;
 		$url                       = \lib\url::directory();
-		$team                      = \lib\router::get_url(0);
+		$team                      = \lib\url::dir(0);
 		$member                    = \lib\router::get_url(3);
 
 		$member                    = $this->model()->edit($team, $member);

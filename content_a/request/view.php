@@ -35,7 +35,7 @@ class view extends \content_a\main\view
 	// 	$result                     = $this->model()->request_detail($args);
 
 	// 	$this->data->request_detail = $result;
-	// 	$this->data->team_code      = \lib\router::get_url(0);
+	// 	$this->data->team_code      = \lib\url::dir(0);
 	// }
 
 
@@ -47,12 +47,12 @@ class view extends \content_a\main\view
 	public function view_hour($_args)
 	{
 		$args                     = [];
-		$args['team']             = \lib\router::get_url(0);
+		$args['team']             = \lib\url::dir(0);
 		$args['user']             = utility::get('user');
 		$result                   = $this->model()->request_list($args);
 
 		$this->data->request_list = $result;
-		$this->data->team_code    = \lib\router::get_url(0);
+		$this->data->team_code    = \lib\url::dir(0);
 
 	}
 
@@ -75,7 +75,7 @@ class view extends \content_a\main\view
 	// 		$args            = [];
 	// 		$args['id']      = $hour_code;
 	// 		$args['hour_id'] = $hour_code;
-	// 		$args['team']    = \lib\router::get_url(0);
+	// 		$args['team']    = \lib\url::dir(0);
 	// 		$myTime = $this->model()->getMyTime($args);
 	// 		$this->data->myTime = $myTime;
 	// 	}

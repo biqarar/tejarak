@@ -18,7 +18,7 @@ class model extends \content_a\main\model
 			]
 		];
 
-		$team_code = \lib\router::get_url(0);
+		$team_code = \lib\url::dir(0);
 
 
 		$team_id = null;
@@ -92,7 +92,7 @@ class model extends \content_a\main\model
 
 		$update_user_teams = [];
 		$args              = [];
-		$args['id']        = \lib\router::get_url(0);
+		$args['id']        = \lib\url::dir(0);
 		$admins            = \lib\db\userteams::get_admins($args);
 		$admins = array_map(function($_a)
 		{

@@ -15,7 +15,7 @@ class model extends \content_a\member\model
 	{
 		$this->user_id = $this->login('id');
 
-		$team_id = utility\shortURL::decode(\lib\router::get_url(0));
+		$team_id = utility\shortURL::decode(\lib\url::dir(0));
 
 		$user_id =
 		[
@@ -26,7 +26,7 @@ class model extends \content_a\member\model
 		$user_id = \lib\db\userteams::get($user_id);
 		if(isset($user_id['user_id']))
 		{
-			utility::set_request_array(['id' => \lib\utility\shortURL::encode($user_id['user_id']), 'related_id' => \lib\router::get_url(0) ]);
+			utility::set_request_array(['id' => \lib\utility\shortURL::encode($user_id['user_id']), 'related_id' => \lib\url::dir(0) ]);
 			$result           = $this->get_list_parent();
 			return $result;
 		}
@@ -47,7 +47,7 @@ class model extends \content_a\member\model
 
 		if(utility::post('remove'))
 		{
-			utility::set_request_array(['id' => utility::post('remove'), 'related_id' => \lib\router::get_url(0)]);
+			utility::set_request_array(['id' => utility::post('remove'), 'related_id' => \lib\url::dir(0)]);
 			$this->delete_parent();
 			$this->redirector(\lib\url::pwd());
 			return ;
@@ -56,7 +56,7 @@ class model extends \content_a\member\model
 		$user_id =
 		[
 			'id'      => utility\shortURL::decode(\lib\router::get_url(3)),
-			'team_id' => utility\shortURL::decode(\lib\router::get_url(0)),
+			'team_id' => utility\shortURL::decode(\lib\url::dir(0)),
 			'limit'   => 1,
 		];
 		$user_id = \lib\db\userteams::get($user_id);
@@ -67,7 +67,7 @@ class model extends \content_a\member\model
 			$parent_request['id']         = utility\shortURL::encode($user_id['user_id']);
 			$parent_request['title']      = utility::post('title');
 			$parent_request['mobile']     = utility::post('parent_mobile');
-			$parent_request['related_id'] = \lib\router::get_url(0);
+			$parent_request['related_id'] = \lib\url::dir(0);
 			utility::set_request_array($parent_request);
 			$this->add_parent();
 			if(debug::$status)

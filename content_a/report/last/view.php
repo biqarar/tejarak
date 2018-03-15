@@ -14,7 +14,7 @@ class view extends \content_a\report\view
 	public function view_last()
 	{
 		$args                  = [];
-		$args['id']            = \lib\router::get_url(0);
+		$args['id']            = \lib\url::dir(0);
 		$this->data->team_code = $args['id'];
 
 		if(utility::get('user'))

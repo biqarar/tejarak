@@ -12,7 +12,7 @@ class controller extends \content_a\main\controller
 
 		$url = \lib\url::directory();
 
-		$team_code = \lib\router::get_url(0);
+		$team_code = \lib\url::dir(0);
 
 		unset($_SESSION['first_go_to_setup']);
 

@@ -24,7 +24,7 @@ class model extends \content_a\main\model
 		}
 
 		// add sign to footer
-		$my_team = $this->getTeamDetail(\lib\router::get_url(0));
+		$my_team = $this->getTeamDetail(\lib\url::dir(0));
 		$sign    = 'Sended by admin of team';
 		if(isset($my_team['name']))
 		{
@@ -33,7 +33,7 @@ class model extends \content_a\main\model
 		$text .= "\n". $sign;
 
 
-		$team_code = \lib\router::get_url(0);
+		$team_code = \lib\url::dir(0);
 
 		$list = $this->listMember($team_code, 'code', ['pagenation' => false]);
 		if($list && is_array($list))

@@ -13,7 +13,7 @@ class view extends \content_a\main\view
 		$this->data->page['title'] = T_('Dashboard of :name', ['name'=> $team_name]);
 		$this->data->page['desc'] = T_('Glance at your team summary and compare some important data together and enjoy Tejarak!'). ' '. T_('Have a good day;)');
 
-		$team_id = \lib\utility\shortURL::decode(\lib\router::get_url(0));
+		$team_id = \lib\utility\shortURL::decode(\lib\url::dir(0));
 
 		if(time() - intval(\lib\session::get('last_time_chart_time_'. (string) $team_id )) > 60)
 		{

@@ -43,7 +43,7 @@ class model extends \content_a\main\model
 		// ready request
 		$request           = $this->getPost();
 
-		$team = \lib\router::get_url(0);
+		$team = \lib\url::dir(0);
 		// get posted data to create the request
 		$request['team']  = $team;
 

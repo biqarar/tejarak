@@ -40,7 +40,7 @@ class model extends \content_a\member\model
 
 		$member          = \lib\router::get_url(3);
 		$request['id']   = $member;
-		$request['team'] = $team = \lib\router::get_url(0);
+		$request['team'] = $team = \lib\url::dir(0);
 		utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION

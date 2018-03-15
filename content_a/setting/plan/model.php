@@ -15,7 +15,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$team = \lib\router::get_url(0);
+		$team = \lib\url::dir(0);
 		$team = \lib\utility\shortURL::decode($team);
 
 		if(!$team)
@@ -71,7 +71,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$team = \lib\router::get_url(0);
+		$team = \lib\url::dir(0);
 		$team = \lib\utility\shortURL::decode($team);
 
 		if(!$team)

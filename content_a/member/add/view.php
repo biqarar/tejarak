@@ -10,7 +10,7 @@ class view extends \content_a\member\view
 	 */
 	public function view_add($_args)
 	{
-		$team                      = \lib\router::get_url(0);
+		$team                      = \lib\url::dir(0);
 		$this->data->team_default  = $team_default = $this->data->current_team ;
 
 		$this->data->page['title'] = T_('Add new member');

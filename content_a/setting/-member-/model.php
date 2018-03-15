@@ -37,7 +37,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_member($_args)
 	{
-		$code = \lib\router::get_url(0);
+		$code = \lib\url::dir(0);
 
 		$request       = $this->getPost();
 		$this->user_id = $this->login('id');

@@ -28,7 +28,7 @@ class view extends \content_a\report\view
 		}
 
 		$args           = [];
-		$args['id']     = \lib\router::get_url(0);
+		$args['id']     = \lib\url::dir(0);
 		$args['year']   = utility::get('year');
 		$args['month']  = utility::get('month');
 		$args['user']   = utility::get('user');

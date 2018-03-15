@@ -16,7 +16,7 @@ class model extends \content_a\member\model
 		$this->user_id  = $this->login('id');
 
 
-		$team_id        = utility\shortURL::decode(\lib\router::get_url(0));
+		$team_id        = utility\shortURL::decode(\lib\url::dir(0));
 		$get_userparent = ['related_id' => $team_id, 'status' => 'enable'];
 		$userparent     = \lib\db\userparents::load_parent($get_userparent);
 

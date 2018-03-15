@@ -19,7 +19,7 @@ class model extends \content_a\main\model
 
 		$this->user_id       = $this->login('id');
 		$request             = [];
-		$request['team']     = \lib\router::get_url(0);
+		$request['team']     = \lib\url::dir(0);
 		$request['id']       = $id;
 		$request['type']     = $type;
 		$request['response'] = $response;

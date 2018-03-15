@@ -33,7 +33,7 @@ class model extends \content_a\main\model
 	public function post_add($_args)
 	{
 		$request            = $this->getPost();
-		$request['team']    = \lib\router::get_url(0);
+		$request['team']    = \lib\url::dir(0);
 		$request['user_id'] = \lib\utility::get('user');
 
 		utility::set_request_array($request);

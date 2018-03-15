@@ -6,7 +6,7 @@ class view extends \content_a\main\view
 
 	public function config()
 	{
-		$team                      = \lib\router::get_url(0);
+		$team                      = \lib\url::dir(0);
 		$member                    = \lib\router::get_url(3);
 
 		if(isset($this->data->current_team['creator']))
@@ -56,7 +56,7 @@ class view extends \content_a\main\view
 	 */
 	public function view_list($_args)
 	{
-		$team                    = \lib\router::get_url(0);
+		$team                    = \lib\url::dir(0);
 		$request                 = [];
 		$request['id']           = $team;
 		$member_list             = $this->model()->list_member($request);
