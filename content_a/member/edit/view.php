@@ -13,7 +13,7 @@ class view extends \content_a\member\view
 	{
 
 		$this->data->edit_mode     = true;
-		$url                       = \lib\router::get_url();
+		$url                       = \lib\url::directory();
 		$team                      = \lib\router::get_url(0);
 		$member                    = \lib\router::get_url(3);
 

@@ -10,7 +10,7 @@ class controller extends \content_a\main\controller
 	{
 
 
-		$url = \lib\router::get_url();
+		$url = \lib\url::directory();
 
 		$team_code = \lib\router::get_url(0);
 

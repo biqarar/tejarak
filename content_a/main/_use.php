@@ -77,7 +77,7 @@ trait _use
 			{
 				$new_url               = \lib\url::pwd();
 				$url                   = \lib\url::base();
-				$url_property          = \lib\router::get_url();
+				$url_property          = \lib\url::directory();
 				$url_get               = utility::get();
 
 				$site_language         = \lib\define::get_language();

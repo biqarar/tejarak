@@ -17,10 +17,10 @@ class controller extends \content_a\main\controller
 		 */
 		if(\lib\temp::get('team_code_url') && \lib\temp::get('team_code_url') !== \lib\router::get_url(0))
 		{
-			\lib\router::set_url(\lib\temp::get('team_code_url'). '/'. \lib\router::get_url());
+			\lib\router::set_url(\lib\temp::get('team_code_url'). '/'. \lib\url::directory());
 		}
 
-		$url = \lib\router::get_url();
+		$url = \lib\url::directory();
 
 		$split = explode('/', $url);
 

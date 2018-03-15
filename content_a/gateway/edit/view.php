@@ -12,7 +12,7 @@ class view extends \content_a\main\view
 	{
 
 		$this->data->edit_mode = true;
-		$url                   = \lib\router::get_url();
+		$url                   = \lib\url::directory();
 		$team                  = \lib\router::get_url(0);
 		$gateway               = \lib\router::get_url(3);
 		$gateway               = $this->model()->edit($team, $gateway);

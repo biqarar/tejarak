@@ -19,7 +19,7 @@ class controller extends \content_a\main\controller
 		// $this->post('save')->ALL("/^([a-zA-Z0-9]+)\/request(|\=([a-zA-Z0-9]+))$/");
 		// // show list of request time
 		// $this->get(false, 'showRequestList')->ALL("/^([a-zA-Z0-9]+)\/request\/list$/");
-		// $url = \lib\router::get_url();
+		// $url = \lib\url::directory();
 		// if(preg_match("/^([a-zA-Z0-9]+)\/request\/list$/", $url))
 		// {
 		// 	$this->display_name = 'content_a\\request\\list.html';
@@ -29,7 +29,7 @@ class controller extends \content_a\main\controller
 
 		// // show detail of one request
 		// $this->get(false, 'showRequestDetail')->ALL("/^([a-zA-Z0-9]+)\/request\/detail\=([a-zA-Z0-9]+)$/");
-		// $url = \lib\router::get_url();
+		// $url = \lib\url::directory();
 		// if(preg_match("/^([a-zA-Z0-9]+)\/request\/detail\=([a-zA-Z0-9]+)$/", $url))
 		// {
 		// 	$this->display_name = 'content_a\\request\\detail.html';

@@ -63,7 +63,7 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		$request       = $this->getPost();
 
-		$url             = \lib\router::get_url();
+		$url             = \lib\url::directory();
 		$gateway         = \lib\router::get_url(3);
 		$request['id']   = $gateway;
 		$request['team'] = $team = \lib\router::get_url(0);

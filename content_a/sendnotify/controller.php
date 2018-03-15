@@ -8,7 +8,7 @@ class controller extends \content_a\main\controller
 	{
 
 
-		$url = \lib\router::get_url();
+		$url = \lib\url::directory();
 
 		if($url === 'sendnotify')
 		{

@@ -8,7 +8,7 @@ class controller extends \content\main\controller
 	 */
 	public function ready()
 	{
-		$url = \lib\router::get_url();
+		$url = \lib\url::directory();
 		// this module name is hours
 		// the house url can not be route
 		if($url === 'hours')

@@ -120,7 +120,7 @@ class model extends \content_a\main\model
 			$request['file'] = $file_code;
 		}
 
-		$url             = \lib\router::get_url();
+		$url             = \lib\url::directory();
 		$member          = \lib\router::get_url(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \lib\router::get_url(0);
