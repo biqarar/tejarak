@@ -14,7 +14,7 @@ class model extends \mvc\model
 		$meta['limit']     = 100;
 		$meta['end_limit'] = 100;
 
-		$url_property      = \lib\router::$url_array_property;
+		$url_property      = \lib\url::dir();
 
 		foreach ($url_property as $key => $value)
 		{
