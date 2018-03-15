@@ -189,7 +189,7 @@ trait add
 
 
 		$lang = utility::request('language');
-		if($lang && (mb_strlen($lang) !== 2 || !utility\location\languages::check($lang)))
+		if($lang && (mb_strlen($lang) !== 2 || !\lib\language::check($lang)))
 		{
 			logs::set('api:team:invalid:lang', $this->user_id, $log_meta);
 			debug::error(T_("Invalid language field"), 'language', 'arguments');

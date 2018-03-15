@@ -73,7 +73,7 @@ trait _use
 		{
 			$team_language = $team_data['language'];
 
-			if(\lib\utility\location\languages::check($team_language))
+			if(\lib\language::check($team_language))
 			{
 				$new_url               = \lib\url::pwd();
 				$url                   = \lib\url::base();
