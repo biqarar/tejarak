@@ -5,7 +5,7 @@ class view extends \content_cp\main\view
 {
 	public function view_list($_args)
 	{
-		$this->data->team_id = \lib\router::get_url(2);
+		$this->data->team_id = \lib\url::dir(2);
 
 		$field = $this->controller()->fields;
 

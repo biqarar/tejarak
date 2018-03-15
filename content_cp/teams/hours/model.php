@@ -7,7 +7,7 @@ class model extends \mvc\model
 {
 	public function hours_list($_args, $_fields)
 	{
-		$team_id           = \lib\router::get_url(2);
+		$team_id           = \lib\url::dir(2);
 
 		$meta              = [];
 		$meta['admin']     = true;

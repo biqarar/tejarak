@@ -125,7 +125,7 @@ class controller extends \mvc\controller
 			return;
 		}
 
-		$url_2 = \lib\router::get_url(2);
+		$url_2 = \lib\url::dir(2);
 
 		$raw_url = $url_1;
 
