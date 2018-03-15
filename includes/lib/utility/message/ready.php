@@ -1,9 +1,6 @@
 <?php
 namespace lib\utility\message;
-use \lib\utility;
-use \lib\utility\human;
-use \lib\debug;
-use \lib\db;
+
 
 trait ready
 {

@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\gateway\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait add
 {
@@ -30,8 +28,8 @@ trait add
 		// merge default args and args
 		$_args = array_merge($default_args, $_args);
 
-		// set default title of debug
-		debug::title(T_("Operation Faild"));
+		// set default title of \lib\debug
+		\lib\debug::title(T_("Operation Faild"));
 
 		// delete gateway mode
 		$delete_mode = false;
@@ -42,25 +40,25 @@ trait add
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
 		// check user id is exist
 		if(!$this->user_id)
 		{
-			logs::set('api:gateway:user_id:notfound', $this->user_id, $log_meta);
-			debug::error(T_("User not found"), 'user', 'permission');
+			\lib\db\logs::set('api:gateway:user_id:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
 		// get team and check it
-		$team = utility::request('team');
-		$team = utility\shortURL::decode($team);
+		$team = \lib\utility::request('team');
+		$team = \lib\utility\shortURL::decode($team);
 		if(!$team)
 		{
-			logs::set('api:gateway:team:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Team not set"), 'user', 'permission');
+			\lib\db\logs::set('api:gateway:team:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team not set"), 'user', 'permission');
 			return false;
 		}
 		// load team data
@@ -72,25 +70,25 @@ trait add
 		}
 		else
 		{
-			logs::set('api:gateway:team:notfound:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Team not found"), 'user', 'permission');
+			\lib\db\logs::set('api:gateway:team:notfound:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
 
 		// get firstname
-		$name = utility::request("name");
+		$name = \lib\utility::request("name");
 		$name = trim($name);
 		if($name && mb_strlen($name) > 50)
 		{
-			logs::set('api:gateway:name:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
+			\lib\db\logs::set('api:gateway:name:max:length', $this->user_id, $log_meta);
+			\lib\debug::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
 
 		if(!$name)
 		{
-			logs::set('api:gateway:name:not:set', $this->user_id, $log_meta);
-			debug::error(T_("The gateway name can not be null"), 'name', 'arguments');
+			\lib\db\logs::set('api:gateway:name:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("The gateway name can not be null"), 'name', 'arguments');
 			return false;
 		}
 
@@ -98,22 +96,22 @@ trait add
 
 		if(!isset($team_detail['shortname']))
 		{
-			logs::set('api:gateway:shortname:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Shortname of your team is not definde"), 'shortname', 'system');
+			\lib\db\logs::set('api:gateway:shortname:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Shortname of your team is not definde"), 'shortname', 'system');
 			return false;
 		}
 
-		$password = utility::request('password');
+		$password = \lib\utility::request('password');
 		if(!$password && $_args['method'] === 'post')
 		{
-			logs::set('api:gateway:password:not:set', $this->user_id, $log_meta);
-			debug::error(T_("You can set the password as null"), 'password', 'arguments');
+			\lib\db\logs::set('api:gateway:password:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("You can set the password as null"), 'password', 'arguments');
 			return false;
 		}
 		if(mb_strlen($password) > 50)
 		{
-			logs::set('api:gateway:password:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the password less than 50 character"), 'password', 'arguments');
+			\lib\db\logs::set('api:gateway:password:max:length', $this->user_id, $log_meta);
+			\lib\debug::error(T_("You can set the password less than 50 character"), 'password', 'arguments');
 			return false;
 		}
 
@@ -122,23 +120,23 @@ trait add
 			$password = \lib\utility::hasher($password);
 		}
 
-		$username = utility::request('username');
+		$username = \lib\utility::request('username');
 		if(!$username)
 		{
-			logs::set('api:gateway:username:not:set', $this->user_id, $log_meta);
-			debug::error(T_("You can set the username as null"), 'username', 'arguments');
+			\lib\db\logs::set('api:gateway:username:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("You can set the username as null"), 'username', 'arguments');
 			return false;
 		}
 		if(mb_strlen($username) > 10)
 		{
-			logs::set('api:gateway:username:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You can set the username less than 50 character"), 'username', 'arguments');
+			\lib\db\logs::set('api:gateway:username:max:length', $this->user_id, $log_meta);
+			\lib\debug::error(T_("You can set the username less than 50 character"), 'username', 'arguments');
 			return false;
 		}
 		if(!preg_match("/^[a-zA-Z0-9]+$/", $username))
 		{
-			logs::set('api:gateway:username:reqular:not:match', $this->user_id, $log_meta);
-			debug::error(T_("Only [a-z,A-Z,0-9] character can use in username"), 'username', 'arguments');
+			\lib\db\logs::set('api:gateway:username:reqular:not:match', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Only [a-z,A-Z,0-9] character can use in username"), 'username', 'arguments');
 			return false;
 		}
 
@@ -151,8 +149,8 @@ trait add
 			$check_duplicate_username = \lib\db\users::get_by_username($username);
 			if($check_duplicate_username)
 			{
-				logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate username! Please select another username"), 'username', 'arguments');
+				\lib\db\logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Duplicate username! Please select another username"), 'username', 'arguments');
 				return false;
 			}
 
@@ -169,15 +167,15 @@ trait add
 		}
 		elseif($_args['method'] === 'patch')
 		{
-			$id = utility::request('id');
-			$user_id = utility\shortURL::decode($id);
+			$id = \lib\utility::request('id');
+			$user_id = \lib\utility\shortURL::decode($id);
 			if($user_id)
 			{
 				$check_user_is_gateway = \lib\db\userteams::get(['user_id' => $user_id, 'rule' => 'gateway', 'limit' => 1]);
 				if(!$check_user_is_gateway)
 				{
-					logs::set('api:gateway:user_id:is:not:gateway:user', $this->user_id, $log_meta);
-					debug::error(T_("User id is not a gateway user!"), 'user', 'permission');
+					\lib\db\logs::set('api:gateway:user_id:is:not:gateway:user', $this->user_id, $log_meta);
+					\lib\debug::error(T_("User id is not a gateway user!"), 'user', 'permission');
 					return false;
 				}
 
@@ -190,8 +188,8 @@ trait add
 					}
 					else
 					{
-						logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
-						debug::error(T_("Duplicate username! Please select another username"), 'username', 'arguments');
+						\lib\db\logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
+						\lib\debug::error(T_("Duplicate username! Please select another username"), 'username', 'arguments');
 						return false;
 					}
 				}
@@ -201,20 +199,20 @@ trait add
 
 		if(!$user_id)
 		{
-			logs::set('api:gateway:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
-			debug::error(T_("User id not found"), 'user', 'system');
+			\lib\db\logs::set('api:gateway:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			\lib\debug::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
 
 		// get status
-		$status = utility::request('status');
+		$status = \lib\utility::request('status');
 
 		if($status)
 		{
 			if(!in_array($status, ['active', 'deactive']))
 			{
-				logs::set('api:gateway:status:invalid', $this->user_id, $log_meta);
-				debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				\lib\db\logs::set('api:gateway:status:invalid', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
 		}
@@ -237,12 +235,12 @@ trait add
 		}
 		elseif($_args['method'] === 'patch')
 		{
-			$id = utility::request('id');
-			$id = utility\shortURL::decode($id);
+			$id = \lib\utility::request('id');
+			$id = \lib\utility\shortURL::decode($id);
 			if(!$id)
 			{
-				logs::set('api:gateway:pathc:id:not:set', $this->user_id, $log_meta);
-				debug::error(T_("Id not set"), 'id', 'arguments');
+				\lib\db\logs::set('api:gateway:pathc:id:not:set', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Id not set"), 'id', 'arguments');
 				return false;
 			}
 
@@ -250,16 +248,16 @@ trait add
 
 			if(!$check_user_in_team || !isset($check_user_in_team['id']))
 			{
-				logs::set('api:gateway:user:not:in:team', $this->user_id, $log_meta);
-				debug::error(T_("This user is not in this team"), 'id', 'arguments');
+				\lib\db\logs::set('api:gateway:user:not:in:team', $this->user_id, $log_meta);
+				\lib\debug::error(T_("This user is not in this team"), 'id', 'arguments');
 				return false;
 			}
 
 			unset($args['team_id']);
 
-			if(!utility::isset_request('status')) 		unset($args['status']);
-			if(!utility::isset_request('name')) 		unset($args['displayname']);
-			if(!utility::isset_request('rule')) 		unset($args['rule']);
+			if(!\lib\utility::isset_request('status')) 		unset($args['status']);
+			if(!\lib\utility::isset_request('name')) 		unset($args['displayname']);
+			if(!\lib\utility::isset_request('rule')) 		unset($args['rule']);
 
 			if(!empty($args))
 			{
@@ -272,7 +270,7 @@ trait add
 				$update_user['password'] = $password;
 			}
 
-			if(utility::isset_request('username'))
+			if(\lib\utility::isset_request('username'))
 			{
 				$update_user['username'] = $username;
 			}
@@ -288,21 +286,21 @@ trait add
 			// \lib\db\gateways::remove($args);
 		}
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::title(T_("Operation Complete"));
+			\lib\debug::title(T_("Operation Complete"));
 
 			if($_args['method'] === 'post')
 			{
-				debug::true(T_("gateway successfully added"));
+				\lib\debug::true(T_("gateway successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				debug::true(T_("gateway successfully updated"));
+				\lib\debug::true(T_("gateway successfully updated"));
 			}
 			else
 			{
-				debug::true(T_("gateway successfully removed"));
+				\lib\debug::true(T_("gateway successfully removed"));
 			}
 		}
 

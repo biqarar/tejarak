@@ -1,11 +1,6 @@
 <?php
 namespace lib\utility\message;
-use \lib\utility;
-use \lib\utility\human;
-use \lib\debug;
-use \lib\db;
-use \lib\utility\telegram;
-use \lib\utility\plan;
+
 
 trait send
 {
@@ -111,12 +106,12 @@ trait send
 					if(!$this->sended_date_now_to_user($user_id))
 					{
 						$this->sended_date_now_to_user($user_id, true);
-						telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
+						\lib\utility\telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
 					}
 				}
 				else
 				{
-					telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
+					\lib\utility\telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
 				}
                 unset($not_admin[$user_id]);
 			}
@@ -213,7 +208,7 @@ trait send
 				// دوشنبه ۲۴ مهر ۱۳۹۶
 				case 'date_now':
 					// first msg in day
-					if(plan::access('telegram:first:of:day:date_now', $this->team_id))
+					if(\lib\utility\plan::access('telegram:first:of:day:date_now', $this->team_id))
 					{
 						foreach ($admins_access_detail as $key => $value)
 						{
@@ -222,7 +217,7 @@ trait send
 							if(!$this->sended_date_now_to_user($key))
 							{
 								$this->sended_date_now_to_user($key, true);
-								telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+								\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 							}
 						}
 						$this->send_to_yourself_parent($message, ['sort' => 7], false, ['date_now' => true]);
@@ -232,13 +227,13 @@ trait send
 				// @example:
 				// ✅ رضا محیطی
 				case 'enter':
-					if(plan::access('telegram:enter:msg', $this->team_id))
+					if(\lib\utility\plan::access('telegram:enter:msg', $this->team_id))
 					{
 						foreach ($admins_access_detail as $key => $value)
 						{
 							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							{
-								telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+								\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								$first_msg = true;
 							}
 						}
@@ -252,16 +247,16 @@ trait send
 				// 🌖 🌱 👨‍💻 🥇
 				case 'first_enter':
 					// first msg in day
-					if(plan::access('telegram:first:of:day:msg', $this->team_id))
+					if(\lib\utility\plan::access('telegram:first:of:day:msg', $this->team_id))
 					{
 						// check if this user is first login user
 						if(\lib\db\hours::enter($this->team_id) <=1)
 						{
 							if(isset($this->team_meta['report_settings']['telegram_group']) && $this->team_meta['report_settings']['telegram_group'])
 							{
-								if(plan::access('telegram:first:of:day:msg:group', $this->team_id))
+								if(\lib\utility\plan::access('telegram:first:of:day:msg:group', $this->team_id))
 								{
-									telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
+									\lib\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
 								}
 							}
 						}
@@ -273,7 +268,7 @@ trait send
 				// ۰۸:۲۸ تا ۱۷:۴۹
 				// 🕗 ۹ ساعت و ۲۱ دقیقه
 				case 'exit_message':
-					if(plan::access('telegram:exit:msg', $this->team_id))
+					if(\lib\utility\plan::access('telegram:exit:msg', $this->team_id))
 					{
 						// check if this user is first login user
 						$is_first_transaction = \lib\db\hours::enter($this->team_id);
@@ -283,7 +278,7 @@ trait send
 						{
 							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							{
-								telegram::sendMessage($value['chat_id'], $message, ['sort' => 2]);
+								\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 2]);
 							}
 						}
 
@@ -298,7 +293,7 @@ trait send
 				// 🏆 احمد کریمی🥉 ۱:۳۶
 				// 👥 ۳  🕰 ۱۱۷۵
 				case 'end_day':
-					if(plan::access('telegram:end:day:report', $this->team_id))
+					if(\lib\utility\plan::access('telegram:end:day:report', $this->team_id))
 					{
 						$live = \lib\db\hours::live($this->team_id);
 						if(intval($live) <= 0 )
@@ -307,9 +302,9 @@ trait send
 							{
 								if(isset($this->team_meta['report_settings']['report_daily']) && $this->team_meta['report_settings']['report_daily'])
 								{
-									if(plan::access('telegram:end:day:report:group', $this->team_id))
+									if(\lib\utility\plan::access('telegram:end:day:report:group', $this->team_id))
 									{
-										telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
+										\lib\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
 									}
 								}
 							}
@@ -318,7 +313,7 @@ trait send
 							{
 								if(isset($value['chat_id']) && isset($value['reportdaily']) && $value['reportdaily'])
 								{
-									telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+									\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								}
 							}
 						}
@@ -331,15 +326,15 @@ trait send
 					// if have admin send to admin
 					if(isset($this->team_group) && $this->team_group)
 					{
-						if(plan::access('telegram:first:of:day:msg:group', $this->team_id))
+						if(\lib\utility\plan::access('telegram:first:of:day:msg:group', $this->team_id))
 						{
-							telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
+							\lib\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
 						}
 					}
 
 					foreach ($this->admins_access_detail as $key => $value)
 					{
-						telegram::sendMessage($value['chat_id'], $message, ['sort' => 1]);
+						\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 1]);
 					}
 
 					break;
@@ -347,8 +342,8 @@ trait send
 
 		}
 		// send message by sorting
-		telegram::sort_send();
-		telegram::clean_cash();
+		\lib\utility\telegram::sort_send();
+		\lib\utility\telegram::clean_cash();
 	}
 }
 ?>

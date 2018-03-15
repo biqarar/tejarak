@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\member\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait member_id
 {
@@ -16,7 +14,7 @@ trait member_id
 	 */
 	public function find_member_id($_args, $_log_meta, $_team_id)
 	{
-		if($_args['method'] === 'patch' && !utility::request('mobile'))
+		if($_args['method'] === 'patch' && !\lib\utility::request('mobile'))
 		{
 			return true;
 		}
@@ -28,13 +26,13 @@ trait member_id
 		$log_meta = $_log_meta;
 
 		// get mobile of user
-		$mobile           = utility::request("mobile");
+		$mobile           = \lib\utility::request("mobile");
 		$mobile_syntax    = \lib\utility\filter::mobile($mobile);
 		$check_user_exist = null;
 		if($mobile && !$mobile_syntax)
 		{
-			if($_args['save_log']) logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("Invalid mobile number"), 'mobile', 'arguments');
+			if($_args['save_log']) \lib\db\logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
+			if($_args['debug']) \lib\debug::error(T_("Invalid mobile number"), 'mobile', 'arguments');
 			return false;
 		}
 		elseif($mobile && $mobile_syntax && ctype_digit($mobile))
@@ -103,8 +101,8 @@ trait member_id
 		elseif($_args['method'] === 'patch')
 		{
 
-			$request_id = utility::request('id');
-			$request_id = utility\shortURL::decode($request_id);
+			$request_id = \lib\utility::request('id');
+			$request_id = \lib\utility\shortURL::decode($request_id);
 
 			if($request_id)
 			{
@@ -117,8 +115,8 @@ trait member_id
 			}
 			else
 			{
-				if($_args['save_log']) logs::set('api:member:user_id:not:invalid:patch:not:found', $this->user_id, $log_meta);
-				if($_args['debug']) debug::error(T_("Invalid user id"), 'user', 'system');
+				if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:invalid:patch:not:found', $this->user_id, $log_meta);
+				if($_args['debug']) \lib\debug::error(T_("Invalid user id"), 'user', 'system');
 				return false;
 			}
 
@@ -134,15 +132,15 @@ trait member_id
 
 				if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
 				{
-					if($_args['save_log']) logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
-					if($_args['debug']) debug::error(T_("Invalid user id"), 'user', 'system');
+					if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
+					if($_args['debug']) \lib\debug::error(T_("Invalid user id"), 'user', 'system');
 					return false;
 				}
 			}
 			else
 			{
-				if($_args['save_log']) logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
-				if($_args['debug']) debug::error(T_("User id not set"), 'user', 'system');
+				if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
+				if($_args['debug']) \lib\debug::error(T_("User id not set"), 'user', 'system');
 				return false;
 			}
 
@@ -246,8 +244,8 @@ trait member_id
 
 		if(!$this->master_user_id)
 		{
-			if($_args['save_log']) logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
-			if($_args['debug']) debug::error(T_("User id not found"), 'user', 'system');
+			if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			if($_args['debug']) \lib\debug::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
 
@@ -255,15 +253,15 @@ trait member_id
 
 
 		// to redirect site in new url
-		\lib\temp::set('new_shcode', utility\shortURL::encode($this->master_user_id));
+		\lib\temp::set('new_shcode', \lib\utility\shortURL::encode($this->master_user_id));
 
 		if($check_not_duplicate_userteam)
 		{
 			$userteam_record = \lib\db\userteams::get(['user_id' => $this->master_user_id, 'team_id' => $_team_id, 'limit' => 1]);
 			if($userteam_record)
 			{
-				if($_args['save_log']) logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
-				if($_args['debug']) debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
+				if($_args['save_log']) \lib\db\logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
+				if($_args['debug']) \lib\debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
 				return false;
 			}
 		}

@@ -1,7 +1,6 @@
 <?php
 namespace content_a\request\add;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\main\model
 {
@@ -15,11 +14,11 @@ class model extends \content_a\main\model
 	public function getPost()
 	{
 		$args               = [];
-		$args['start_date'] = \lib\utility\human::number(utility::post('start_date'), 'en');
-		$args['start_time'] = \lib\utility\human::number(utility::post('start_time'), 'en');
-		$args['end_date']   = \lib\utility\human::number(utility::post('end_date'), 'en');
-		$args['end_time']   = \lib\utility\human::number(utility::post('end_time'), 'en');
-		$args['desc']       = utility::post('desc');
+		$args['start_date'] = \lib\utility\human::number(\lib\utility::post('start_date'), 'en');
+		$args['start_time'] = \lib\utility\human::number(\lib\utility::post('start_time'), 'en');
+		$args['end_date']   = \lib\utility\human::number(\lib\utility::post('end_date'), 'en');
+		$args['end_time']   = \lib\utility\human::number(\lib\utility::post('end_time'), 'en');
+		$args['desc']       = \lib\utility::post('desc');
 
 		return $args;
 	}
@@ -36,11 +35,11 @@ class model extends \content_a\main\model
 		$request['team']    = \lib\url::dir(0);
 		$request['user_id'] = \lib\utility::get('user');
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		$this->user_id = $this->login('id');
 		$this->add_houredit();
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector(\lib\url::here(). '/'. $request['team']. '/request');
 		}

@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\observer;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\member\model
 {
@@ -15,18 +14,18 @@ class model extends \content_a\member\model
 	{
 		$this->user_id = $this->login('id');
 
-		$team_id = utility\shortURL::decode(\lib\url::dir(0));
+		$team_id = \lib\utility\shortURL::decode(\lib\url::dir(0));
 
 		$user_id =
 		[
-			'id'      => utility\shortURL::decode(\lib\router::get_url(3)),
+			'id'      => \lib\utility\shortURL::decode(\lib\router::get_url(3)),
 			'team_id' => $team_id,
 			'limit'   => 1,
 		];
 		$user_id = \lib\db\userteams::get($user_id);
 		if(isset($user_id['user_id']))
 		{
-			utility::set_request_array(['id' => \lib\utility\shortURL::encode($user_id['user_id']), 'related_id' => \lib\url::dir(0) ]);
+			\lib\utility::set_request_array(['id' => \lib\utility\shortURL::encode($user_id['user_id']), 'related_id' => \lib\url::dir(0) ]);
 			$result           = $this->get_list_parent();
 			return $result;
 		}
@@ -45,9 +44,9 @@ class model extends \content_a\member\model
 	{
 		$this->user_id                = $this->login('id');
 
-		if(utility::post('remove'))
+		if(\lib\utility::post('remove'))
 		{
-			utility::set_request_array(['id' => utility::post('remove'), 'related_id' => \lib\url::dir(0)]);
+			\lib\utility::set_request_array(['id' => \lib\utility::post('remove'), 'related_id' => \lib\url::dir(0)]);
 			$this->delete_parent();
 			$this->redirector(\lib\url::pwd());
 			return ;
@@ -55,28 +54,28 @@ class model extends \content_a\member\model
 
 		$user_id =
 		[
-			'id'      => utility\shortURL::decode(\lib\router::get_url(3)),
-			'team_id' => utility\shortURL::decode(\lib\url::dir(0)),
+			'id'      => \lib\utility\shortURL::decode(\lib\router::get_url(3)),
+			'team_id' => \lib\utility\shortURL::decode(\lib\url::dir(0)),
 			'limit'   => 1,
 		];
 		$user_id = \lib\db\userteams::get($user_id);
 		if(isset($user_id['user_id']))
 		{
 			$parent_request               = [];
-			$parent_request['othertitle'] = utility::post('othertitle');
-			$parent_request['id']         = utility\shortURL::encode($user_id['user_id']);
-			$parent_request['title']      = utility::post('title');
-			$parent_request['mobile']     = utility::post('parent_mobile');
+			$parent_request['othertitle'] = \lib\utility::post('othertitle');
+			$parent_request['id']         = \lib\utility\shortURL::encode($user_id['user_id']);
+			$parent_request['title']      = \lib\utility::post('title');
+			$parent_request['mobile']     = \lib\utility::post('parent_mobile');
 			$parent_request['related_id'] = \lib\url::dir(0);
-			utility::set_request_array($parent_request);
+			\lib\utility::set_request_array($parent_request);
 			$this->add_parent();
-			if(debug::$status)
+			if(\lib\debug::$status)
 			{
-				debug::true(T_("Observer was saved"));
+				\lib\debug::true(T_("Observer was saved"));
 
 				$t_T =
 				[
-					'title' => (utility::post('othertitle') && utility::post('title') === 'custom') ? utility::post('othertitle') : T_(ucfirst(utility::post('title'))),
+					'title' => (\lib\utility::post('othertitle') && \lib\utility::post('title') === 'custom') ? \lib\utility::post('othertitle') : T_(ucfirst(\lib\utility::post('title'))),
 					'name'  => $this->view()->data->member['displayname'],
 					'team'  => $this->view()->data->current_team['name'],
 				];
@@ -94,7 +93,7 @@ class model extends \content_a\member\model
 				else
 				{
 					// send by sms
-					\lib\utility\sms::send(utility::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
+					\lib\utility\sms::send(\lib\utility::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
 				}
 
 				$this->redirector(\lib\url::pwd());
@@ -102,7 +101,7 @@ class model extends \content_a\member\model
 		}
 		else
 		{
-			debug::error(T_("Invalid user id"));
+			\lib\debug::error(T_("Invalid user id"));
 		}
 
 	}

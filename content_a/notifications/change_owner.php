@@ -1,8 +1,6 @@
 <?php
 namespace content_a\notifications;
-use \lib\utility;
-use \lib\debug;
-use \lib\utility\payment;
+
 
 trait change_owner
 {
@@ -14,27 +12,27 @@ trait change_owner
 		//  'type' => string 'owner' (length=5)
 		//  'notify' => string 'q' (length=1)
 
-		if(!in_array(utility::post('answer'), ['accept', 'reject']))
+		if(!in_array(\lib\utility::post('answer'), ['accept', 'reject']))
 		{
-			debug::error(T_("Invalid answer!"));
+			\lib\debug::error(T_("Invalid answer!"));
 			return false;
 		}
 
-		$notify = utility::post('notify');
-		$notify = utility\shortURL::decode($notify);
+		$notify = \lib\utility::post('notify');
+		$notify = \lib\utility\shortURL::decode($notify);
 
 		if(!$notify)
 		{
-			debug::error(T_("Invalid notify!"));
+			\lib\debug::error(T_("Invalid notify!"));
 			return false;
 		}
 
-		$team_id = utility::post('team_code');
-		$team_id = utility\shortURL::decode($team_id);
+		$team_id = \lib\utility::post('team_code');
+		$team_id = \lib\utility\shortURL::decode($team_id);
 
 		if(!$team_id)
 		{
-			debug::error(T_("Invalid team id!"));
+			\lib\debug::error(T_("Invalid team id!"));
 			return false;
 		}
 
@@ -69,7 +67,7 @@ trait change_owner
 				'readdate' => date("Y-m-d H:i:s"),
 			];
 
-			$action = utility::post('answer');
+			$action = \lib\utility::post('answer');
 
 			$team_name = isset($check['meta']['team_name']) ? $check['meta']['team_name'] : null;
 
@@ -81,7 +79,7 @@ trait change_owner
 			];
 			\lib\db\notifications::set($notify_set);
 
-			if(utility::post('answer') === 'accept')
+			if(\lib\utility::post('answer') === 'accept')
 			{
 				// ACCEPT
 				// the accept in index 0 of array answer in options
@@ -131,7 +129,7 @@ trait change_owner
 		}
 		else
 		{
-			debug::error(T_("Invalid notify detail"));
+			\lib\debug::error(T_("Invalid notify detail"));
 			return false;
 		}
 

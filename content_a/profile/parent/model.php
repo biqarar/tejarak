@@ -1,7 +1,6 @@
 <?php
 namespace content_a\profile\parent;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -16,7 +15,7 @@ class model extends \content_a\main\model
 	public function list_parent()
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => utility\shortURL::encode($this->user_id)]);
+		\lib\utility::set_request_array(['id' => \lib\utility\shortURL::encode($this->user_id)]);
 		$result = $this->get_list_parent();
 		return $result;
 	}
@@ -28,7 +27,7 @@ class model extends \content_a\main\model
 	public function cancel_request()
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => utility::post('cancel')]);
+		\lib\utility::set_request_array(['id' => \lib\utility::post('cancel')]);
 		$this->parent_cancel_request();
 		$this->redirector_refresh();
 	}
@@ -39,7 +38,7 @@ class model extends \content_a\main\model
 	 */
 	public function redirector_refresh()
 	{
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector(\lib\url::pwd());
 			return;
@@ -54,7 +53,7 @@ class model extends \content_a\main\model
 	public function remove_parent()
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => utility::post('remove')]);
+		\lib\utility::set_request_array(['id' => \lib\utility::post('remove')]);
 		$this->delete_parent();
 		$this->redirector_refresh();
 	}
@@ -72,20 +71,20 @@ class model extends \content_a\main\model
 
 		$request               = [];
 
-		$request['othertitle'] = utility::post('othertitle');
-		$request['title']      = utility::post('title');
-		$request['mobile']     = utility::post('mobile');
-		$request['id']         = utility\shortURL::encode($this->user_id);
+		$request['othertitle'] = \lib\utility::post('othertitle');
+		$request['title']      = \lib\utility::post('title');
+		$request['mobile']     = \lib\utility::post('mobile');
+		$request['id']         = \lib\utility\shortURL::encode($this->user_id);
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
-		if(utility::post('cancel') && \lib\utility\shortURL::is(utility::post('cancel')))
+		if(\lib\utility::post('cancel') && \lib\utility\shortURL::is(\lib\utility::post('cancel')))
 		{
 			$this->cancel_request();
 			return ;
 		}
 
-		if(utility::post('remove') && \lib\utility\shortURL::is(utility::post('remove')))
+		if(\lib\utility::post('remove') && \lib\utility\shortURL::is(\lib\utility::post('remove')))
 		{
 			$this->remove_parent();
 			return ;

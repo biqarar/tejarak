@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\report\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait last
 {
@@ -26,30 +24,30 @@ trait last
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			],
 		];
 
-		$id = utility::request('id');
-		$id = utility\shortURL::decode($id);
+		$id = \lib\utility::request('id');
+		$id = \lib\utility\shortURL::decode($id);
 
 		if(!$id)
 		{
-			logs::set('api:report:team:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
 		$user_id = null;
-		$user    = utility::request('user');
+		$user    = \lib\utility::request('user');
 
 		if($user)
 		{
-			$user_id = utility\shortURL::decode($user);
+			$user_id = \lib\utility\shortURL::decode($user);
 			if(!$user_id)
 			{
-				logs::set('api:report:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
-				debug::error(T_("Invalid user id"), 'user', 'arguments');
+				\lib\db\logs::set('api:report:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Invalid user id"), 'user', 'arguments');
 				return false;
 			}
 		}
@@ -60,8 +58,8 @@ trait last
 		{
 			if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'report_last_all']))
 			{
-				logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
 		}
@@ -82,16 +80,16 @@ trait last
 			}
 			else
 			{
-				logs::set('api:report:last:permission:denide', $this->user_id, $log_meta);
-				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				\lib\db\logs::set('api:report:last:permission:denide', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
 		}
 
 		if(!isset($check_is_my_team['id']))
 		{
-			logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Invalid team data"), 'team', 'system');
+			\lib\db\logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
 
@@ -104,7 +102,7 @@ trait last
 		}
 
 		$meta['order']      = 'DESC';
-		$meta['pagenation'] = utility::request('export') ? false : true;
+		$meta['pagenation'] = \lib\utility::request('export') ? false : true;
 
 		if(!$meta['pagenation'])
 		{
@@ -123,7 +121,7 @@ trait last
 			}
 		}
 
-		if(utility::request('export'))
+		if(\lib\utility::request('export'))
 		{
 			\lib\utility\export::csv(['data'=> $temp, 'name' => T_('tejarak-last-report')]);
 		}

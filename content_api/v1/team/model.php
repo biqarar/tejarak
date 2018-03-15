@@ -1,8 +1,7 @@
 <?php
 namespace content_api\v1\team;
-use \lib\debug;
-use \lib\utility;
-use \lib\db\logs;
+
+
 class model extends \addons\content_api\v1\home\model
 {
 	use tools\add;
@@ -66,30 +65,30 @@ class model extends \addons\content_api\v1\home\model
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
 
 		if(!$this->user_id)
 		{
-			debug::error(T_("User id not found"));
+			\lib\debug::error(T_("User id not found"));
 			return false;
 		}
-		$code  = utility::request('id');
-		$group = utility::request('group');
+		$code  = \lib\utility::request('id');
+		$group = \lib\utility::request('group');
 
 		if(!$code)
 		{
-			logs::set('api:team:telegram:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("id not set"), 'id', 'arguments');
+			\lib\db\logs::set('api:team:telegram:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("id not set"), 'id', 'arguments');
 			return false;
 		}
 
 		if(!$group)
 		{
-			logs::set('api:team:telegram:group:not:set', $this->user_id, $log_meta);
-			debug::error(T_("group not set"), 'group', 'arguments');
+			\lib\db\logs::set('api:team:telegram:group:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("group not set"), 'group', 'arguments');
 			return false;
 		}
 
@@ -97,7 +96,7 @@ class model extends \addons\content_api\v1\home\model
 
 		if(!isset($load_team['team_id']))
 		{
-			debug::error(T_("Can not access to load this team"), 'id', 'arguments');
+			\lib\debug::error(T_("Can not access to load this team"), 'id', 'arguments');
 			return false;
 		}
 
@@ -106,15 +105,15 @@ class model extends \addons\content_api\v1\home\model
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 				'old'   => $load_team,
 			]
 		];
 
-		logs::set('api:team:telegram:group:changed', $this->user_id, $log_meta);
+		\lib\db\logs::set('api:team:telegram:group:changed', $this->user_id, $log_meta);
 		\lib\db\teams::update(['telegram_id' => $group], $load_team['team_id']);
 
-		debug::title(T_("Operation complete"));
+		\lib\debug::title(T_("Operation complete"));
 	}
 }
 ?>

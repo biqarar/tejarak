@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\avatar;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\member\model
 {
@@ -13,16 +12,16 @@ class model extends \content_a\member\model
 	 */
 	public function upload_avatar()
 	{
-		if(utility::files('avatar'))
+		if(\lib\utility::files('avatar'))
 		{
-			utility::set_request_array(['upload_name' => 'avatar']);
+			\lib\utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!debug::$status)
+			if(!\lib\debug::$status)
 			{
 				return false;
 			}
@@ -56,11 +55,11 @@ class model extends \content_a\member\model
 		$member          = \lib\router::get_url(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \lib\url::dir(0);
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector(\lib\url::pwd());
 		}

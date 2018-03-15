@@ -1,7 +1,6 @@
 <?php
 namespace content_a\setting\delete;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -17,11 +16,11 @@ class model extends \content_a\main\model
 	{
 		$code = \lib\url::dir(0);
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => $code]);
+		\lib\utility::set_request_array(['id' => $code]);
 		$this->close_team();
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			// debug::msg('direct', true);
+			// \lib\debug::msg('direct', true);
 			$this->redirector()->set_domain()->set_url('a');
 		}
 	}

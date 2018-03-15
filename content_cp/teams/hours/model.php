@@ -1,7 +1,6 @@
 <?php
 namespace content_cp\teams\hours;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \mvc\model
 {
@@ -31,9 +30,9 @@ class model extends \mvc\model
 		}
 
 		$search = null;
-		if(utility::get('search'))
+		if(\lib\utility::get('search'))
 		{
-			$search = utility::get('search');
+			$search = \lib\utility::get('search');
 		}
 
 		$result = \lib\db\hourlogs::search($search, $meta);

@@ -1,8 +1,7 @@
 <?php
 namespace content_api\v1\hours\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
+
 trait add
 {
 
@@ -29,41 +28,41 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		// debug::title(T_("Operation Faild"));
+		// \lib\debug::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
 		if(!$this->user_id)
 		{
-			logs::set('api:hours:user_id:notfound', $this->user_id, $log_meta);
-			debug::error(T_("User not found"), 'user', 'permission');
+			\lib\db\logs::set('api:hours:user_id:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
-		$user = utility::request('user');
-		$user = utility\shortURL::decode($user);
+		$user = \lib\utility::request('user');
+		$user = \lib\utility\shortURL::decode($user);
 
 		if(!$user)
 		{
-			logs::set('api:hours:user:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Member not found"), 'user', 'arguments');
+			\lib\db\logs::set('api:hours:user:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Member not found"), 'user', 'arguments');
 			return false;
 		}
 
 
 		// get team and check it
-		$team = utility::request('team');
+		$team = \lib\utility::request('team');
 		if(!$team)
 		{
-			logs::set('api:hours:team:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Team not found"), 'team', 'permission');
+			\lib\db\logs::set('api:hours:team:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team not found"), 'team', 'permission');
 			return false;
 		}
 		// load team data
@@ -76,50 +75,50 @@ trait add
 		}
 		else
 		{
-			logs::set('api:hours:team:notfound:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to set time of this team"), 'team', 'permission');
+			\lib\db\logs::set('api:hours:team:notfound:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Can not access to set time of this team"), 'team', 'permission');
 			return false;
 		}
 
 		// CHECK PERMISSION TO ADD TIME
 		// if(\lib\db\teams::access_in_team_id($team_id, $this->user_id))
 
-		$minus = utility::request('minus');
+		$minus = \lib\utility::request('minus');
 		if($minus && !is_numeric($minus))
 		{
-			logs::set('api:hours:minus:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Member not found"), 'minus', 'arguments');
+			\lib\db\logs::set('api:hours:minus:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Member not found"), 'minus', 'arguments');
 			return false;
 		}
 
-		$plus = utility::request('plus');
+		$plus = \lib\utility::request('plus');
 		if($plus && !is_numeric($plus))
 		{
-			logs::set('api:hours:plus:notfound', $this->user_id, $log_meta);
-			debug::error(T_("Member not found"), 'plus', 'arguments');
+			\lib\db\logs::set('api:hours:plus:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Member not found"), 'plus', 'arguments');
 			return false;
 		}
 
-		$type = utility::request('type');
+		$type = \lib\utility::request('type');
 		if(!$type)
 		{
-			logs::set('api:hours:type:notset', $this->user_id, $log_meta);
-			debug::error(T_("Type not set"), 'type', 'arguments');
+			\lib\db\logs::set('api:hours:type:notset', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Type not set"), 'type', 'arguments');
 			return false;
 		}
 
 		if(!in_array($type, ['enter', 'exit']))
 		{
-			logs::set('api:hours:type:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid arguments type"), 'type', 'arguments');
+			\lib\db\logs::set('api:hours:type:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid arguments type"), 'type', 'arguments');
 			return false;
 		}
 
-		$desc = utility::request('desc');
+		$desc = \lib\utility::request('desc');
 		if($desc && mb_strlen($desc) > 500)
 		{
-			logs::set('api:hours:desc:max:limit', $this->user_id, $log_meta);
-			debug::error(T_("Your text is too large"), 'text_enter', 'arguments');
+			\lib\db\logs::set('api:hours:desc:max:limit', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Your text is too large"), 'text_enter', 'arguments');
 			return false;
 		}
 
@@ -146,14 +145,14 @@ trait add
 		}
 		else
 		{
-			logs::set('api:hours:method:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid method of api"), 'method', 'permission');
+			\lib\db\logs::set('api:hours:method:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid method of api"), 'method', 'permission');
 			return false;
 		}
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::title(null);
+			\lib\debug::title(null);
 			$name = null;
 
 			if(\lib\temp::get('enter_exit_name'))
@@ -163,12 +162,12 @@ trait add
 			if($type === 'enter')
 			{
 				$msg_notify = T_("Dear :name;", ['name'=> $name])."<br />". T_('Your enter was registered.').' '. T_("Have a good time.");
-				debug::true($msg_notify);
+				\lib\debug::true($msg_notify);
 			}
 			else
 			{
 				$msg_notify = T_("Bye Bye :name ;)", ['name'=> $name]);
-				debug::true($msg_notify);
+				\lib\debug::true($msg_notify);
 			}
 		}
 	}

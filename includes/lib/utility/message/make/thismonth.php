@@ -1,9 +1,5 @@
 <?php
 namespace lib\utility\message\make;
-use \lib\utility;
-use \lib\utility\human;
-use \lib\debug;
-use \lib\db;
 
 
 trait thismonth
@@ -35,7 +31,7 @@ trait thismonth
 				if(isset($value['displayname']) && array_key_exists('diff', $value))
 				{
 					$total_diff += intval($value['diff']);
-					$msg .= "\n💠 ". $value['displayname']. " ". human::time($value['diff'],'number', $default_language);
+					$msg .= "\n💠 ". $value['displayname']. " ". \lib\utility\human::time($value['diff'],'number', $default_language);
 				}
 			}
 		}
@@ -46,8 +42,8 @@ trait thismonth
 			$msg .= " ". \lib\utility::date('F', time() , 'current');
 			$msg .= "\n". \lib\utility::date('l j F Y H:i', time() , 'current');
 			$msg .= "\n". $temp_message;
-			$msg .= "\n🕰 ". human::time($total_diff,'number', $default_language);
-			$msg .= "\n👥 ". human::number(count($count_person), $default_language);
+			$msg .= "\n🕰 ". \lib\utility\human::time($total_diff,'number', $default_language);
+			$msg .= "\n👥 ". \lib\utility\human::number(count($count_person), $default_language);
 		}
 		return $msg;
 	}

@@ -1,6 +1,6 @@
 <?php
 namespace content_a\report\period;
-use \lib\utility;
+
 
 class view extends \content_a\report\view
 {
@@ -13,22 +13,22 @@ class view extends \content_a\report\view
 
 	public function view_period()
 	{
-		if(utility::get('start'))
+		if(\lib\utility::get('start'))
 		{
-			$this->data->get_start_date = utility::get('start');
+			$this->data->get_start_date = \lib\utility::get('start');
 		}
 
-		if(utility::get('end'))
+		if(\lib\utility::get('end'))
 		{
-			$this->data->get_end_date = utility::get('end');
+			$this->data->get_end_date = \lib\utility::get('end');
 		}
 
 		$args           = [];
 		$args['id']     = \lib\url::dir(0);
-		$args['start']  = utility::get('start');
-		$args['end']    = utility::get('end');
-		$args['user']   = utility::get('user');
-		$args['export'] = utility::get('export');
+		$args['start']  = \lib\utility::get('start');
+		$args['end']    = \lib\utility::get('end');
+		$args['user']   = \lib\utility::get('user');
+		$args['export'] = \lib\utility::get('export');
 		$this->data->period_time = $this->model()->get_period_time($args);
 
 		if(isset($this->controller->pagnation))

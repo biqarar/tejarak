@@ -1,6 +1,6 @@
 <?php
 namespace content_a\main;
-use \lib\utility;
+
 
 trait _use
 {
@@ -78,7 +78,7 @@ trait _use
 				$new_url               = \lib\url::pwd();
 				$url                   = \lib\url::base();
 				$url_property          = \lib\url::directory();
-				$url_get               = utility::get();
+				$url_get               = \lib\utility::get();
 
 				$site_language         = \lib\language::get_language();
 				$site_language_default = \lib\language::get_language('default');
@@ -131,7 +131,7 @@ trait _use
 		$request       = [];
 		$this->user_id = $this->login('id');
 		$request['id'] = $_team;
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result        = $this->get_team(['debug' => false]);
 
 		return $result;
@@ -148,7 +148,7 @@ trait _use
 		$request             = [];
 		$this->user_id       = $this->login('id');
 		$request['shortname'] = $_shortname;
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result = $this->get_team();
 		return $result;
 	}
@@ -199,7 +199,7 @@ trait _use
 	 */
 	public function is_exist_team($_unique, $_type = null)
 	{
-		$_unique = utility\safe::safe($_unique);
+		$_unique = \lib\utility\safe::safe($_unique);
 
 		if(!$_unique)
 		{
@@ -211,7 +211,7 @@ trait _use
 		switch ($_type)
 		{
 			case 'code':
-				$_unique = utility\shortURL::decode($_unique);
+				$_unique = \lib\utility\shortURL::decode($_unique);
 			case 'id':
 				$search_team = \lib\db\teams::get(['id' => $_unique, 'limit' => 1]);
 				break;
@@ -241,7 +241,7 @@ trait _use
 			{
 				return false;
 			}
-			$request['id'] = utility\shortURL::encode($_team_id_or_code);
+			$request['id'] = \lib\utility\shortURL::encode($_team_id_or_code);
 		}
 		elseif($_type === 'code')
 		{
@@ -252,7 +252,7 @@ trait _use
 			return false;
 		}
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result =  $this->get_list_member($_args);
 		return $result;
 	}

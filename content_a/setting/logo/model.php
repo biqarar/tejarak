@@ -1,7 +1,6 @@
 <?php
 namespace content_a\setting\logo;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -13,10 +12,10 @@ class model extends \content_a\main\model
 	 */
 	public function upload_logo()
 	{
-		if(utility::files('logo'))
+		if(\lib\utility::files('logo'))
 		{
 			$this->user_id = $this->login('id');
-			utility::set_request_array(['upload_name' => 'logo']);
+			\lib\utility::set_request_array(['upload_name' => 'logo']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
@@ -37,7 +36,7 @@ class model extends \content_a\main\model
 		$code = \lib\url::dir(0);
 		$request       = [];
 
-		if(utility::files('logo'))
+		if(\lib\utility::files('logo'))
 		{
 			$request['logo'] = $this->upload_logo();
 		}
@@ -45,12 +44,12 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		$request['id'] = $code;
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector(\lib\url::pwd());
 		}

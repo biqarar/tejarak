@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\parent;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\member\model
 {
@@ -16,7 +15,7 @@ class model extends \content_a\member\model
 		$this->user_id  = $this->login('id');
 
 
-		$team_id        = utility\shortURL::decode(\lib\url::dir(0));
+		$team_id        = \lib\utility\shortURL::decode(\lib\url::dir(0));
 		$get_userparent = ['related_id' => $team_id, 'status' => 'enable'];
 		$userparent     = \lib\db\userparents::load_parent($get_userparent);
 
@@ -24,7 +23,7 @@ class model extends \content_a\member\model
 
 		$request        = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result =  $this->get_list_member();
 
 		if(!is_array($result))

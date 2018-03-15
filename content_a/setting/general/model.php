@@ -1,7 +1,6 @@
 <?php
 namespace content_a\setting\general;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -13,29 +12,29 @@ class model extends \content_a\main\model
 	public function getPost()
 	{
 		$args = [];
-		if(utility::post('formType') === 'public')
+		if(\lib\utility::post('formType') === 'public')
 		{
 			$args =
 			[
-				'name'          => utility::post('name'),
-				'short_name'    => utility::post('slug'),
-				'website'       => utility::post('website'),
-				'desc'          => utility::post('desc'),
-				'privacy'       => utility::post('privacy'),
+				'name'          => \lib\utility::post('name'),
+				'short_name'    => \lib\utility::post('slug'),
+				'website'       => \lib\utility::post('website'),
+				'desc'          => \lib\utility::post('desc'),
+				'privacy'       => \lib\utility::post('privacy'),
 			];
 
 		}
 
-		if(utility::post('formType') === 'member')
+		if(\lib\utility::post('formType') === 'member')
 		{
 			$args =
 			[
-				'show_avatar'   => utility::post('showAvatar'),
-				// 'quick_traffic' => utility::post('quickTraffic'),
-				'allow_plus'    => utility::post('allowPlus'),
-				'allow_minus'   => utility::post('allowMinus'),
-				'remote_user'   => utility::post('remoteUser'),
-				'24h'           => utility::post('24h'),
+				'show_avatar'   => \lib\utility::post('showAvatar'),
+				// 'quick_traffic' => \lib\utility::post('quickTraffic'),
+				'allow_plus'    => \lib\utility::post('allowPlus'),
+				'allow_minus'   => \lib\utility::post('allowMinus'),
+				'remote_user'   => \lib\utility::post('remoteUser'),
+				'24h'           => \lib\utility::post('24h'),
 			];
 		}
 
@@ -56,11 +55,11 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		$request['id'] = $code;
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector(\lib\url::pwd());
 		}

@@ -1,7 +1,6 @@
 <?php
 namespace content_a\sendnotify;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\main\model
 {
@@ -10,16 +9,16 @@ class model extends \content_a\main\model
 	 */
 	public function post_sendnotify($_args)
 	{
-		$text = utility::post('message-text');
+		$text = \lib\utility::post('message-text');
 		if(!$text)
 		{
-			debug::error(T_("Please fill the message box"), 'message-text');
+			\lib\debug::error(T_("Please fill the message box"), 'message-text');
 			return false;
 		}
 
 		if(mb_strlen($text) > 10000)
 		{
-			debug::error(T_("Ops! your text is very large"), 'message-text');
+			\lib\debug::error(T_("Ops! your text is very large"), 'message-text');
 			return false;
 		}
 
@@ -66,9 +65,9 @@ class model extends \content_a\main\model
 			\lib\db\notifications::set_multi_record();
 		}
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::true(T_("The notification was sended"));
+			\lib\debug::true(T_("The notification was sended"));
 		}
 	}
 }

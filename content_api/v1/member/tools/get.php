@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\member\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait get
 {
@@ -40,7 +38,7 @@ trait get
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 		if(!$this->user_id)
@@ -48,30 +46,30 @@ trait get
 			// return false;
 		}
 
-		$id = utility::request('id');
+		$id = \lib\utility::request('id');
 		$id = \lib\utility\shortURL::decode($id);
 		// in this api must be get the team
 		// but i get the id
 		// this is incurrect
-		$team = utility::request('team');
+		$team = \lib\utility::request('team');
 		$team = \lib\utility\shortURL::decode($team);
 		if($team && !$id)
 		{
 			$id = $team;
 		}
 
-		$shortname =  utility::request('shortname');
+		$shortname =  \lib\utility::request('shortname');
 
 		if(!$id && !$shortname)
 		{
-			logs::set('api:member:team:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Id or shortname not set"), 'id', 'arguments');
+			\lib\db\logs::set('api:member:team:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Id or shortname not set"), 'id', 'arguments');
 			return false;
 		}
 		elseif($id && $shortname)
 		{
-			logs::set('api:member:team:id:and:shortname:together:set', $this->user_id, $log_meta);
-			debug::error(T_("Can not set id and shortname together"), 'id', 'arguments');
+			\lib\db\logs::set('api:member:team:id:and:shortname:together:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Can not set id and shortname together"), 'id', 'arguments');
 			return false;
 		}
 
@@ -114,12 +112,12 @@ trait get
 
 		if(!$team_detail)
 		{
-			logs::set('api:member:team:id:permission:denide', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to load this team"), 'id', 'permission');
+			\lib\db\logs::set('api:member:team:id:permission:denide', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Can not access to load this team"), 'id', 'permission');
 			return false;
 		}
 
-		$get_hours = utility::request('hours');
+		$get_hours = \lib\utility::request('hours');
 		$get_hours = $get_hours ? true : false;
 
 		if(isset($team_detail['userteam_remote']) && $team_detail['userteam_remote'])
@@ -139,32 +137,32 @@ trait get
 
 		$this->show_another_status = true;
 
-		$type = utility::request('type');
+		$type = \lib\utility::request('type');
 		if($type && !is_string($type))
 		{
-			logs::set('api:member:team:type:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid type of user"), 'type', 'arguments');
+			\lib\db\logs::set('api:member:team:type:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid type of user"), 'type', 'arguments');
 			return false;
 		}
 
-		$search = utility::request('search');
+		$search = \lib\utility::request('search');
 		if($search && !is_string($search))
 		{
-			logs::set('api:member:team:search:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid search of user"), 'search', 'arguments');
+			\lib\db\logs::set('api:member:team:search:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid search of user"), 'search', 'arguments');
 			return false;
 		}
 
 		$where               = [];
 
-		$status = utility::request('status');
+		$status = \lib\utility::request('status');
 
 		if($status)
 		{
 			if(!in_array($status, ['active','deactive','disable','filter','leave','delete','parent','suspended']))
 			{
-				logs::set('api:member:team:search:invalid:status', $this->user_id, $log_meta);
-				debug::error(T_("Parameter status is incurrect"), 'status', 'arguments');
+				\lib\db\logs::set('api:member:team:search:invalid:status', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Parameter status is incurrect"), 'status', 'arguments');
 				return false;
 			}
 			$where['status'] = $status;
@@ -217,35 +215,35 @@ trait get
 	 */
 	public function get_member($_args = [])
 	{
-		debug::title(T_("Operation Faild"));
+		\lib\debug::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 		if(!$this->user_id)
 		{
-			logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
-			debug::error(T_("User not found"), 'user', 'permission');
+			\lib\db\logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
-		$team = utility::request('team');
+		$team = \lib\utility::request('team');
 		if(!$team)
 		{
-			logs::set('api:member:team:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Team not set"), 'team', 'arguments');
+			\lib\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
 
-		$id = utility::request('id');
-		$id = utility\shortURL::decode($id);
+		$id = \lib\utility::request('id');
+		$id = \lib\utility\shortURL::decode($id);
 		if(!$id)
 		{
-			logs::set('api:member:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Id not set"), 'id', 'arguments');
+			\lib\db\logs::set('api:member:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -262,8 +260,8 @@ trait get
 
 		if(!$check_user_in_team)
 		{
-			logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
-			debug::error(T_("This user is not in this team"), 'id', 'arguments');
+			\lib\db\logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
+			\lib\debug::error(T_("This user is not in this team"), 'id', 'arguments');
 			return false;
 		}
 
@@ -282,28 +280,28 @@ trait get
 	 */
 	public function userteam_get_details()
 	{
-		$userteam_id  = utility::request("id");
+		$userteam_id  = \lib\utility::request("id");
 
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
 		if(!$this->user_id)
 		{
-			logs::set('api:member:user_id:not:set:userteam_get_details', $this->user_id, $log_meta);
-			debug::error(T_("User not found"), 'user', 'permission');
+			\lib\db\logs::set('api:member:user_id:not:set:userteam_get_details', $this->user_id, $log_meta);
+			\lib\debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
 		if(!$userteam_id)
 		{
-			logs::set('api:userteam_id:team:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Invalid team id"), 'team', 'permission');
+			\lib\db\logs::set('api:userteam_id:team:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid team id"), 'team', 'permission');
 			return false;
 		}
 

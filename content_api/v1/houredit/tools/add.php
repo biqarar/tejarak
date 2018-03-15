@@ -1,8 +1,7 @@
 <?php
 namespace content_api\v1\houredit\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
+
 trait add
 {
 
@@ -30,66 +29,66 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		debug::title(T_("Operation Faild"));
+		\lib\debug::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
 
 		if(!$this->user_id)
 		{
-			logs::set('api:houredit:user_id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("User not found"), 'user', 'permission');
+			\lib\db\logs::set('api:houredit:user_id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
-		$hour_id         = utility::request('hour_id');
-		$start_date = utility::request('start_date');
-		$start_time = utility::request('start_time');
-		$end_date   = utility::request('end_date');
-		$end_time   = utility::request('end_time');
-		$desc       = utility::request('desc');
+		$hour_id         = \lib\utility::request('hour_id');
+		$start_date = \lib\utility::request('start_date');
+		$start_time = \lib\utility::request('start_time');
+		$end_date   = \lib\utility::request('end_date');
+		$end_time   = \lib\utility::request('end_time');
+		$desc       = \lib\utility::request('desc');
 
-		$hour_id = utility\shortURL::decode($hour_id);
+		$hour_id = \lib\utility\shortURL::decode($hour_id);
 
-		if(utility::request('hour_id') && !$hour_id)
+		if(\lib\utility::request('hour_id') && !$hour_id)
 		{
-			logs::set('api:houredit:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Id not set"), 'id', 'arguments');
+			\lib\db\logs::set('api:houredit:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
 		if(!$start_date)
 		{
-			logs::set('api:houredit:start_date:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Start date not set"), 'start_date', 'arguments');
+			\lib\db\logs::set('api:houredit:start_date:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Start date not set"), 'start_date', 'arguments');
 			return false;
 		}
 
 		if(strtotime($start_date) === false)
 		{
-		 	logs::set('api:houredit:start_date:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid start date"), 'start_date', 'arguments');
+		 	\lib\db\logs::set('api:houredit:start_date:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid start date"), 'start_date', 'arguments');
 			return false;
 		}
 
 		if(!$start_time)
 		{
-			logs::set('api:houredit:start_time:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Start time not set"), 'start_time', 'arguments');
+			\lib\db\logs::set('api:houredit:start_time:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Start time not set"), 'start_time', 'arguments');
 			return false;
 		}
 
 		if(\DateTime::createFromFormat('H:i', $start_time) === false && \DateTime::createFromFormat('H:i:s', $start_time) === false)
 		{
-		 	logs::set('api:houredit:start_time:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid start time"), 'start_time', 'arguments');
+		 	\lib\db\logs::set('api:houredit:start_time:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid start time"), 'start_time', 'arguments');
 			return false;
 		}
 
@@ -98,48 +97,48 @@ trait add
 			// if user is not 24h needless to set end date
 			$end_date = $start_date;
 
-			// logs::set('api:houredit:end_date:not:set', $this->user_id, $log_meta);
-			// debug::error(T_("end date not set"), 'end_date', 'arguments');
+			// \lib\db\logs::set('api:houredit:end_date:not:set', $this->user_id, $log_meta);
+			// \lib\debug::error(T_("end date not set"), 'end_date', 'arguments');
 			// return false;
 		}
 		else
 		{
 			if(strtotime($end_date) === false)
 			{
-			 	logs::set('api:houredit:end_date:invalid', $this->user_id, $log_meta);
-				debug::error(T_("Invalid end date"), 'end_date', 'arguments');
+			 	\lib\db\logs::set('api:houredit:end_date:invalid', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Invalid end date"), 'end_date', 'arguments');
 				return false;
 			}
 		}
 
 		if(!$end_time)
 		{
-			logs::set('api:houredit:end_time:not:set', $this->user_id, $log_meta);
-			debug::error(T_("end time not set"), 'end_time', 'arguments');
+			\lib\db\logs::set('api:houredit:end_time:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("end time not set"), 'end_time', 'arguments');
 			return false;
 		}
 
 		if(\DateTime::createFromFormat('H:i', $end_time) === false && \DateTime::createFromFormat('H:i:s', $end_time) === false)
 		{
-		 	logs::set('api:houredit:end_time:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid end time"), 'end_time', 'arguments');
+		 	\lib\db\logs::set('api:houredit:end_time:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid end time"), 'end_time', 'arguments');
 			return false;
 		}
 
 		if($desc && mb_strlen($desc) > 500)
 		{
-			logs::set('api:houredit:desc:max:length', $this->user_id, $log_meta);
-			debug::error(T_("You must be set less than 500 character in description field"), 'desc', 'arguments');
+			\lib\db\logs::set('api:houredit:desc:max:length', $this->user_id, $log_meta);
+			\lib\debug::error(T_("You must be set less than 500 character in description field"), 'desc', 'arguments');
 			return false;
 		}
 
-		$team_id = utility::request('team');
+		$team_id = \lib\utility::request('team');
 
-		$team_id = utility\shortURL::decode($team_id);
+		$team_id = \lib\utility\shortURL::decode($team_id);
 		if(!$team_id)
 		{
-			logs::set('api:houredit:team:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\db\logs::set('api:houredit:team:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 		// get userteam detail
@@ -147,40 +146,40 @@ trait add
 
 		if(!isset($userteam_detail['userteam_createdate']))
 		{
-			logs::set('api:houredit:userteam:id:not:found', $this->user_id, $log_meta);
-			debug::error(T_("This user is not in this team"), 'team', 'arguments');
+			\lib\db\logs::set('api:houredit:userteam:id:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("This user is not in this team"), 'team', 'arguments');
 			return false;
 		}
 
 		// set gregorian date
 		$start_date_gregorian = $start_date;
 		// if start date is jalali convert to gregorian
-		if(utility\jdate::is_jalali($start_date))
+		if(\lib\utility\jdate::is_jalali($start_date))
 		{
-			$start_date_gregorian = utility\jdate::to_gregorian($start_date, "Y-m-d");
+			$start_date_gregorian = \lib\utility\jdate::to_gregorian($start_date, "Y-m-d");
 		}
 
 		// set gregorian date
 		$end_date_gregorian = $end_date;
 		// if end date is jalali convert to gregorian
-		if(utility\jdate::is_jalali($end_date))
+		if(\lib\utility\jdate::is_jalali($end_date))
 		{
-			$end_date_gregorian = utility\jdate::to_gregorian($end_date, "Y-m-d");
+			$end_date_gregorian = \lib\utility\jdate::to_gregorian($end_date, "Y-m-d");
 		}
 
 		// // check end date > date added user in team
 		// if(strtotime($end_date_gregorian) > time())
 		// {
-		// 	logs::set('api:houredit:end:date:larger:than:now', $this->user_id, $log_meta);
-		// 	debug::error(T_("End date can not be in the future"), 'end_date', 'arguments');
+		// 	\lib\db\logs::set('api:houredit:end:date:larger:than:now', $this->user_id, $log_meta);
+		// 	\lib\debug::error(T_("End date can not be in the future"), 'end_date', 'arguments');
 		// 	return false;
 		// }
 
 		// check end date > start date
 		if(strtotime($end_date_gregorian) < strtotime($start_date_gregorian))
 		{
-			logs::set('api:houredit:end:date:larger:start:date', $this->user_id, $log_meta);
-			debug::error(T_("End date can not larger than start date"), 'end_date', 'arguments');
+			\lib\db\logs::set('api:houredit:end:date:larger:start:date', $this->user_id, $log_meta);
+			\lib\debug::error(T_("End date can not larger than start date"), 'end_date', 'arguments');
 			return false;
 		}
 
@@ -189,8 +188,8 @@ trait add
 		{
 			if(strtotime("$end_date_gregorian $end_time") < strtotime("$start_date_gregorian $start_time"))
 			{
-				logs::set('api:houredit:end:time:larger:start:time:date:is:equal', $this->user_id, $log_meta);
-				debug::error(T_("Can not set end time larger than start time in one date"), 'end_time', 'arguments');
+				\lib\db\logs::set('api:houredit:end:time:larger:start:time:date:is:equal', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Can not set end time larger than start time in one date"), 'end_time', 'arguments');
 				return false;
 			}
 		}
@@ -199,14 +198,14 @@ trait add
 
 		if(\lib\team::is_admin($this->user_id))
 		{
-			$user_id_sended = utility::request('user_id');
-			$user_id_sended = utility\shortURL::decode($user_id_sended);
+			$user_id_sended = \lib\utility::request('user_id');
+			$user_id_sended = \lib\utility\shortURL::decode($user_id_sended);
 			if($user_id_sended)
 			{
 				if(!\lib\team::in_team($user_id_sended))
 				{
-					logs::set('api:houredit:user:id:sended:not:in:team', $this->user_id, $log_meta);
-					debug::error(T_("This user is not in this team!"));
+					\lib\db\logs::set('api:houredit:user:id:sended:not:in:team', $this->user_id, $log_meta);
+					\lib\debug::error(T_("This user is not in this team!"));
 					return false;
 				}
 
@@ -216,7 +215,7 @@ trait add
 
 
 		// the request have hour id
-		if($hour_id && utility::request('hour_id'))
+		if($hour_id && \lib\utility::request('hour_id'))
 		{
 			if(\lib\team::is_admin($this->user_id))
 			{
@@ -237,8 +236,8 @@ trait add
 			}
 			else
 			{
-				logs::set('api:houredit:hour:notfound:invalid', $this->user_id, $log_meta);
-				debug::error(T_("Can not access to set time of this hour"), 'hour', 'permission');
+				\lib\db\logs::set('api:houredit:hour:notfound:invalid', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Can not access to set time of this hour"), 'hour', 'permission');
 				return false;
 			}
 
@@ -256,8 +255,8 @@ trait add
 					strtotime("$hour_detail[enddate] $hour_detail[end]") === strtotime("$end_date_gregorian $end_time")
 				)
 				{
-					logs::set('api:houredit:hour:no:thing:edit', $this->user_id, $log_meta);
-					debug::error(T_("No thing changed!"), null, 'arguments');
+					\lib\db\logs::set('api:houredit:hour:no:thing:edit', $this->user_id, $log_meta);
+					\lib\debug::error(T_("No thing changed!"), null, 'arguments');
 					return false;
 				}
 			}
@@ -271,7 +270,7 @@ trait add
 		// check the user on this hour id hava any awaiting request
 		// if hava awaiting request update it
 		// and if not have insert new
-		if(utility::request('hour_id') && $hour_id && is_numeric($hour_id))
+		if(\lib\utility::request('hour_id') && $hour_id && is_numeric($hour_id))
 		{
 			// get this hour id is set old or no
 			$check_exist = \lib\db\hourrequests::get(['hour_id' => $hour_id, 'status' => 'awaiting', 'limit' => 1]);
@@ -305,8 +304,8 @@ trait add
 
 			if($check_exist)
 			{
-				logs::set('api:houredit:duplicate:start:date:hour_id:is:null', $this->user_id, $log_meta);
-				debug::error(T_("Duplicate request of this start time"), 'id', 'arguments');
+				\lib\db\logs::set('api:houredit:duplicate:start:date:hour_id:is:null', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Duplicate request of this start time"), 'id', 'arguments');
 				return false;
 			}
 		}
@@ -319,10 +318,10 @@ trait add
 		$args['month']           = date("m", strtotime($start_date_gregorian));
 		$args['day']             = date("d", strtotime($start_date_gregorian));
 		// start date shamsi
-		$args['shamsi_date']     = utility\jdate::date("Y-m-d", strtotime($start_date_gregorian), false, true);
-		$args['shamsi_year']     = utility\jdate::date("Y", strtotime($start_date_gregorian), false, true);
-		$args['shamsi_month']    = utility\jdate::date("m", strtotime($start_date_gregorian), false, true);
-		$args['shamsi_day']      = utility\jdate::date("d", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_date']     = \lib\utility\jdate::date("Y-m-d", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_year']     = \lib\utility\jdate::date("Y", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_month']    = \lib\utility\jdate::date("m", strtotime($start_date_gregorian), false, true);
+		$args['shamsi_day']      = \lib\utility\jdate::date("d", strtotime($start_date_gregorian), false, true);
 		// start time
 		$args['start']           = $start_time;
 		// end time
@@ -333,10 +332,10 @@ trait add
 		$args['endmonth']        = date("m", strtotime($end_date_gregorian));
 		$args['endday']          = date("d", strtotime($end_date_gregorian));
 		// enddate shamsi
-		$args['endshamsi_date']  = utility\jdate::date("Y-m-d", strtotime($end_date_gregorian), false, true);
-		$args['endshamsi_year']  = utility\jdate::date("Y", strtotime($end_date_gregorian), false, true);
-		$args['endshamsi_month'] = utility\jdate::date("m", strtotime($end_date_gregorian), false, true);
-		$args['endshamsi_day']   = utility\jdate::date("d", strtotime($end_date_gregorian), false, true);
+		$args['endshamsi_date']  = \lib\utility\jdate::date("Y-m-d", strtotime($end_date_gregorian), false, true);
+		$args['endshamsi_year']  = \lib\utility\jdate::date("Y", strtotime($end_date_gregorian), false, true);
+		$args['endshamsi_month'] = \lib\utility\jdate::date("m", strtotime($end_date_gregorian), false, true);
+		$args['endshamsi_day']   = \lib\utility\jdate::date("d", strtotime($end_date_gregorian), false, true);
 		// other field
 		$args['desc']            = $desc;
 		$args['creator']         = $this->user_id;
@@ -361,21 +360,21 @@ trait add
 		}
 		else
 		{
-			logs::set('api:houredit:method:error', $this->user_id, $log_meta);
-			debug::error(T_("Syste error"), 'system', 'error');
+			\lib\db\logs::set('api:houredit:method:error', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Syste error"), 'system', 'error');
 			return false;
 		}
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::title(T_("Operation complete"));
+			\lib\debug::title(T_("Operation complete"));
 			if($update_mode)
 			{
-				debug::true(T_("Your request updated"));
+				\lib\debug::true(T_("Your request updated"));
 			}
 			else
 			{
-				debug::true(T_("Your request sended"));
+				\lib\debug::true(T_("Your request sended"));
 			}
 		}
 	}

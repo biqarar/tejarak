@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\removed;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\member\model
 {
@@ -17,7 +16,7 @@ class model extends \content_a\member\model
 		$request       = [];
 		$request['status'] = 'suspended';
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result =  $this->get_list_member();
 
 		return $result;

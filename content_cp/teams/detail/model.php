@@ -1,7 +1,6 @@
 <?php
 namespace content_cp\teams\detail;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \mvc\model
 {

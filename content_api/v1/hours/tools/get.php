@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\hours\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait get
 {
@@ -101,13 +99,13 @@ trait get
 	 */
 	public function get_hours($_options = [])
 	{
-		debug::title(T_("Operation Faild"));
+		\lib\debug::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
@@ -116,13 +114,13 @@ trait get
 			// return false;
 		}
 
-		$id = utility::request("id");
+		$id = \lib\utility::request("id");
 		$id = \lib\utility\shortURL::decode($id);
 
 		if(!$id)
 		{
-			logs::set('api:hours:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("hours id not set"), 'id', 'arguments');
+			\lib\db\logs::set('api:hours:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("hours id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -130,12 +128,12 @@ trait get
 
 		if(!$result)
 		{
-			logs::set('api:hours:access:denide', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to load this hours details"), 'hours', 'permission');
+			\lib\db\logs::set('api:hours:access:denide', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Can not access to load this hours details"), 'hours', 'permission');
 			return false;
 		}
 
-		debug::title(T_("Operation complete"));
+		\lib\debug::title(T_("Operation complete"));
 
 		$result = $this->ready_hours($result);
 

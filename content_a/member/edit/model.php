@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\edit;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\main\model
 {
@@ -15,24 +14,24 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'displayname'      => utility::post('name'),
-			'postion'          => utility::post('postion'),
-			'mobile'           => utility::post('mobile'),
-			'rule'             => utility::post('rule'),
-			'firstname'        => utility::post('firstName'),
-			'lastname'         => utility::post('lastName'),
-			'personnel_code'   => utility::post('personnelcode'),
-			'allow_plus'       => utility::post('allowPlus'),
-			'allow_minus'      => utility::post('allowMinus'),
-			'remote_user'      => utility::post('remoteUser'),
-			'24h'              => utility::post('24h'),
-			'status'           => utility::post('status'),
-			'visibility'       => utility::post('visibility'),
-			'barcode1'         => utility::post('barcode'),
-			'rfid1'            => utility::post('rfid'),
-			'qrcode1'          => utility::post('qrcode'),
-			'allow_desc_enter' => utility::post('allowDescEnter'),
-			'allow_desc_exit'  => utility::post('allowDescExit'),
+			'displayname'      => \lib\utility::post('name'),
+			'postion'          => \lib\utility::post('postion'),
+			'mobile'           => \lib\utility::post('mobile'),
+			'rule'             => \lib\utility::post('rule'),
+			'firstname'        => \lib\utility::post('firstName'),
+			'lastname'         => \lib\utility::post('lastName'),
+			'personnel_code'   => \lib\utility::post('personnelcode'),
+			'allow_plus'       => \lib\utility::post('allowPlus'),
+			'allow_minus'      => \lib\utility::post('allowMinus'),
+			'remote_user'      => \lib\utility::post('remoteUser'),
+			'24h'              => \lib\utility::post('24h'),
+			'status'           => \lib\utility::post('status'),
+			'visibility'       => \lib\utility::post('visibility'),
+			'barcode1'         => \lib\utility::post('barcode'),
+			'rfid1'            => \lib\utility::post('rfid'),
+			'qrcode1'          => \lib\utility::post('qrcode'),
+			'allow_desc_enter' => \lib\utility::post('allowDescEnter'),
+			'allow_desc_exit'  => \lib\utility::post('allowDescExit'),
 		];
 
 		return $args;
@@ -47,16 +46,16 @@ class model extends \content_a\main\model
 	 */
 	public function upload_avatar()
 	{
-		if(utility::files('avatar'))
+		if(\lib\utility::files('avatar'))
 		{
-			utility::set_request_array(['upload_name' => 'avatar']);
-			$uploaded_file = $this->upload_file(['debug' => false]);
+			\lib\utility::set_request_array(['upload_name' => 'avatar']);
+			$uploaded_file = $this->upload_file(['\lib\debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!debug::$status)
+			if(!\lib\debug::$status)
 			{
 				return false;
 			}
@@ -81,10 +80,10 @@ class model extends \content_a\main\model
 		$request          = [];
 		$request['team']  = $_team;
 		$request['id']    = $_member;
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result           =  $this->get_member();
 		// $member_id        = \lib\utility\shortURL::decode($_member);
-		utility::set_request_array(['id' => $_member]);
+		\lib\utility::set_request_array(['id' => $_member]);
 		$parent           = $this->get_list_parent();
 		$result['parent'] = $parent;
 
@@ -102,7 +101,7 @@ class model extends \content_a\main\model
 		// check the user is login
 		if(!$this->login())
 		{
-			debug::error(T_("Please login to add a team"), false, 'arguments');
+			\lib\debug::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
@@ -124,26 +123,26 @@ class model extends \content_a\main\model
 		$member          = \lib\router::get_url(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \lib\url::dir(0);
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			if(utility::post('parent_mobile'))
+			if(\lib\utility::post('parent_mobile'))
 			{
 				$parent_request               = [];
-				$parent_request['othertitle'] = utility::post('othertitle');
+				$parent_request['othertitle'] = \lib\utility::post('othertitle');
 				$parent_request['id']    = $member;
-				$parent_request['title']      = utility::post('title');
-				$parent_request['mobile']     = utility::post('parent_mobile');
-				utility::set_request_array($parent_request);
+				$parent_request['title']      = \lib\utility::post('title');
+				$parent_request['mobile']     = \lib\utility::post('parent_mobile');
+				\lib\utility::set_request_array($parent_request);
 				$this->add_parent();
 			}
 		}
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector()->set_domain()->set_url("a/$team/member");
 		}

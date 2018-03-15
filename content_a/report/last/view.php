@@ -1,6 +1,6 @@
 <?php
 namespace content_a\report\last;
-use \lib\utility;
+
 
 class view extends \content_a\report\view
 {
@@ -17,12 +17,12 @@ class view extends \content_a\report\view
 		$args['id']            = \lib\url::dir(0);
 		$this->data->team_code = $args['id'];
 
-		if(utility::get('user'))
+		if(\lib\utility::get('user'))
 		{
-			$args['user'] = utility::get('user');
+			$args['user'] = \lib\utility::get('user');
 		}
 
-		$args['export'] = utility::get('export');
+		$args['export'] = \lib\utility::get('export');
 
 		$this->data->last_time = $this->model()->get_last_time($args);
 

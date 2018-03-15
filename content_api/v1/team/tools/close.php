@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\team\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait close
 {
@@ -21,39 +19,39 @@ trait close
 			return false;
 		}
 
-		debug::title(T_("Operation Faild"));
+		\lib\debug::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
-		$id = utility::request("id");
+		$id = \lib\utility::request("id");
 		$id = \lib\utility\shortURL::decode($id);
 		if(!$id)
 		{
-			logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Id not set"), 'id', 'arguments');
+			\lib\db\logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
 		$team_details = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'close']);
 		if(!$team_details || !isset($team_details['id']))
 		{
-			logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to delete this team"), 'id', 'permission');
+			\lib\db\logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Can not access to delete this team"), 'id', 'permission');
 			return false;
 		}
 
 		if(\lib\db\teams::update(['status' => 'close'], $team_details['id']))
 		{
 			$log_meta['meta']['team'] = $team_details;
-			logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
-			debug::title(T_("Operation Complete"));
-			debug::warn(T_("The team was closed"));
+			\lib\db\logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
+			\lib\debug::title(T_("Operation Complete"));
+			\lib\debug::warn(T_("The team was closed"));
 		}
 
 	}

@@ -1,8 +1,6 @@
 <?php
 namespace content_a\notifications;
-use \lib\utility;
-use \lib\debug;
-use \lib\utility\payment;
+
 
 trait set_parent
 {
@@ -14,27 +12,27 @@ trait set_parent
 		//  'type' => string 'parent' (length=5)
 		//  'notify' => string 'q' (length=1)
 
-		if(!in_array(utility::post('answer'), ['accept', 'reject']))
+		if(!in_array(\lib\utility::post('answer'), ['accept', 'reject']))
 		{
-			debug::error(T_("Invalid answer!"));
+			\lib\debug::error(T_("Invalid answer!"));
 			return false;
 		}
 
-		$notify = utility::post('notify');
-		$notify = utility\shortURL::decode($notify);
+		$notify = \lib\utility::post('notify');
+		$notify = \lib\utility\shortURL::decode($notify);
 
 		if(!$notify)
 		{
-			debug::error(T_("Invalid notify!"));
+			\lib\debug::error(T_("Invalid notify!"));
 			return false;
 		}
 
-		$child = utility::post('child');
-		$child = utility\shortURL::decode($child);
+		$child = \lib\utility::post('child');
+		$child = \lib\utility\shortURL::decode($child);
 
 		if(!$child)
 		{
-			debug::error(T_("Invalid parent!"));
+			\lib\debug::error(T_("Invalid parent!"));
 			return false;
 		}
 
@@ -75,7 +73,7 @@ trait set_parent
 				'readdate' => date("Y-m-d H:i:s"),
 			];
 
-			$action = utility::post('answer');
+			$action = \lib\utility::post('answer');
 
 			$notify_set =
 			[
@@ -85,7 +83,7 @@ trait set_parent
 			];
 			\lib\db\notifications::set($notify_set);
 
-			if(utility::post('answer') === 'accept')
+			if(\lib\utility::post('answer') === 'accept')
 			{
 				// ACCEPT
 				// the accept in index 0 of array answer in options
@@ -134,7 +132,7 @@ trait set_parent
 		}
 		else
 		{
-			debug::error(T_("Invalid notify detail"));
+			\lib\debug::error(T_("Invalid notify detail"));
 			return false;
 		}
 	}

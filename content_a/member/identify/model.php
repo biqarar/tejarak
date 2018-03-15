@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\identify;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\member\model
 {
@@ -15,9 +14,9 @@ class model extends \content_a\member\model
 	{
 		$args =
 		[
-			'barcode1'         => utility::post('barcode'),
-			'rfid1'            => utility::post('rfid'),
-			'qrcode1'          => utility::post('qrcode'),
+			'barcode1'         => \lib\utility::post('barcode'),
+			'rfid1'            => \lib\utility::post('rfid'),
+			'qrcode1'          => \lib\utility::post('qrcode'),
 		];
 
 		return $args;
@@ -39,11 +38,11 @@ class model extends \content_a\member\model
 		$member          = \lib\router::get_url(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \lib\url::dir(0);
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector(\lib\url::pwd());
 		}

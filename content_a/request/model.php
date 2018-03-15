@@ -1,7 +1,6 @@
 <?php
 namespace content_a\request;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -13,9 +12,9 @@ class model extends \content_a\main\model
 	public function post_hour($_args)
 	{
 
-		$response = utility::post('response');
-		$id       = utility::post('id');
-		$type     = utility::post('type');
+		$response = \lib\utility::post('response');
+		$id       = \lib\utility::post('id');
+		$type     = \lib\utility::post('type');
 
 		$this->user_id       = $this->login('id');
 		$request             = [];
@@ -24,7 +23,7 @@ class model extends \content_a\main\model
 		$request['type']     = $type;
 		$request['response'] = $response;
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$this->hourrequest_action();
 	}
 
@@ -44,7 +43,7 @@ class model extends \content_a\main\model
 		}
 
 		$this->user_id = $this->login('id');
-		utility::set_request_array(['id' => $hourrequest_id]);
+		\lib\utility::set_request_array(['id' => $hourrequest_id]);
 		$this->hourrequest_delete(['method' => 'delete']);
 		$this->redirector(\lib\url::here(). "/$team_id/request")->redirect();
 	}
@@ -60,7 +59,7 @@ class model extends \content_a\main\model
 	// public function request_detail($_request)
 	// {
 	// 	$this->user_id = $this->login('id');
-	// 	utility::set_request_array($_request);
+	// 	\lib\utility::set_request_array($_request);
 	// 	return $this->get_request_detail();
 	// }
 
@@ -75,7 +74,7 @@ class model extends \content_a\main\model
 	public function request_list($_request)
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array($_request);
+		\lib\utility::set_request_array($_request);
 		return $this->get_houredit_list();
 	}
 
@@ -90,13 +89,13 @@ class model extends \content_a\main\model
 	//  */
 	// public function getMyTime($_args)
 	// {
-	// 	utility::set_request_array($_args);
+	// 	\lib\utility::set_request_array($_args);
 	// 	$this->user_id = $this->login('id');
 	// 	$result = $this->get_request();
 
 	// 	if(!$result)
 	// 	{
-	// 		debug::$status = 1;
+	// 		\lib\debug::$status = 1;
 	// 		$result = $this->get_hours();
 	// 	}
 	// 	return $result;

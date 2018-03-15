@@ -1,8 +1,6 @@
 <?php
 namespace content_a\notifications;
-use \lib\utility;
-use \lib\debug;
-use \lib\utility\payment;
+
 
 class model extends \content_a\main\model
 {
@@ -76,18 +74,18 @@ class model extends \content_a\main\model
 	{
 		if(!$this->login())
 		{
-			debug::error(T_("You must login to pay amount"));
+			\lib\debug::error(T_("You must login to pay amount"));
 			return false;
 		}
 
 		$this->user_id = $this->login('id');
 
-		if(utility::post('notify_type') === 'owner')
+		if(\lib\utility::post('notify_type') === 'owner')
 		{
 			$this->change_owner();
 		}
 
-		if(utility::post('notify_type') === 'parent')
+		if(\lib\utility::post('notify_type') === 'parent')
 		{
 			$this->set_parent();
 		}

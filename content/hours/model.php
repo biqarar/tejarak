@@ -1,7 +1,6 @@
 <?php
 namespace content\hours;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content\main\model
 {
@@ -18,7 +17,7 @@ class model extends \content\main\model
 		$request['shortname'] = isset($_args['shortname']) ? $_args['shortname'] : null;
 		$request['hours']     = true;
 		// to get last hours. what i want to do?
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result =  $this->get_list_member();
 
 		// if($result === false)
@@ -59,31 +58,31 @@ class model extends \content\main\model
 		/**
 		 * ajax to check members status
 		 */
-		if(utility::post('check'))
+		if(\lib\utility::post('check'))
 		{
 			$request['shortname'] = isset($url[0]) ? $url[0] : null;
 			$request['hours']     = true;
 
 			// to get last hours. what i want to do?
-			utility::set_request_array($request);
+			\lib\utility::set_request_array($request);
 			$result = $this->get_list_member();
-			debug::msg('memberList', json_encode($result, JSON_UNESCAPED_UNICODE));
+			\lib\debug::msg('memberList', json_encode($result, JSON_UNESCAPED_UNICODE));
 			return true;
 		}
 
 		$request['team']   = isset($url[0]) ? $url[0] : null;
-		$request['user']   = utility::post('user');
-		$request['plus']   = utility::post('plus');
-		$request['minus']  = utility::post('minus');
-		$request['type']   = utility::post('type');
-		$request['desc']   = utility::post('desc');
+		$request['user']   = \lib\utility::post('user');
+		$request['plus']   = \lib\utility::post('plus');
+		$request['minus']  = \lib\utility::post('minus');
+		$request['type']   = \lib\utility::post('type');
+		$request['desc']   = \lib\utility::post('desc');
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		$this->add_hours();
 
-		debug::msg('now_val', date("Y-m-d H:i:s"));
-		debug::msg('now', date("H:i"));
+		\lib\debug::msg('now_val', date("Y-m-d H:i:s"));
+		\lib\debug::msg('now', date("H:i"));
 	}
 }
 ?>

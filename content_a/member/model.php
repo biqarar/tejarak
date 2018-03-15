@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\main\model
 {
@@ -16,7 +15,7 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		$request       = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result =  $this->get_list_member();
 		return $result;
 	}
@@ -37,7 +36,7 @@ class model extends \content_a\main\model
 		$request          = [];
 		$request['team']  = $_team;
 		$request['id']    = $_member;
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 		$result           =  $this->get_member();
 		return $result;
 	}

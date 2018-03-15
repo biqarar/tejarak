@@ -1,7 +1,6 @@
 <?php
 namespace content_a\setting\report;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -13,7 +12,7 @@ class model extends \content_a\main\model
 		[
 			'meta' =>
 			[
-				'input'   => utility::post(),
+				'input'   => \lib\utility::post(),
 				'session' => $_SESSION,
 			]
 		];
@@ -31,29 +30,29 @@ class model extends \content_a\main\model
 		if(!$team_id)
 		{
 			logs::set('team:id:not:found:teport:setting', $this->login('id'), $log_meta);
-			debug::error(T_("Team id not found"));
+			\lib\debug::error(T_("Team id not found"));
 			return false;
 		}
 
-		if(utility::post('deleteGroup'))
+		if(\lib\utility::post('deleteGroup'))
 		{
 			\lib\db\teams::update(['telegram_id' => null], $team_id);
-			debug::warn(T_("The telegram group was removed"));
+			\lib\debug::warn(T_("The telegram group was removed"));
 			return;
 		}
 
 		$update_team = [];
-		if(utility::post('reportHeader') && mb_strlen(utility::post('reportHeader')) > 255)
+		if(\lib\utility::post('reportHeader') && mb_strlen(\lib\utility::post('reportHeader')) > 255)
 		{
 			logs::set('report:header:max:leng', $this->login('id'), $log_meta);
-			debug::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
+			\lib\debug::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
 			return false;
 		}
 
-		if(utility::post('reportFooter') && mb_strlen(utility::post('reportFooter')) > 255)
+		if(\lib\utility::post('reportFooter') && mb_strlen(\lib\utility::post('reportFooter')) > 255)
 		{
 			logs::set('report:footer:max:leng', $this->login('id'), $log_meta);
-			debug::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
+			\lib\debug::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
 			return false;
 		}
 
@@ -62,21 +61,21 @@ class model extends \content_a\main\model
 		if(!$access)
 		{
 			\lib\db\logs::set('report:settings:no:access:to:change:settings', $this->login('id'));
-			debug::error(T_("No access to change settings"), 'team');
+			\lib\debug::error(T_("No access to change settings"), 'team');
 			return false;
 		}
 
 
-		if(utility::post('timed_auto_report_time'))
+		if(\lib\utility::post('timed_auto_report_time'))
 		{
-			if(!preg_match("/^\d{2}\:\d{2}$/", utility::post('timed_auto_report_time')))
+			if(!preg_match("/^\d{2}\:\d{2}$/", \lib\utility::post('timed_auto_report_time')))
 			{
 				\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', $this->login('id'));
-				debug::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
+				\lib\debug::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
 				return false;
 			}
 
-			$time_changed = \lib\utility\timezone::change_time('H:i', utility::post('timed_auto_report_time'), "Asia/Tehran");
+			$time_changed = \lib\utility\timezone::change_time('H:i', \lib\utility::post('timed_auto_report_time'), "Asia/Tehran");
 			$update_team['timed_auto_report'] = $time_changed;
 		}
 		else
@@ -86,9 +85,9 @@ class model extends \content_a\main\model
 		}
 
 
-		$update_team['reportheader'] = utility::post('reportHeader');
+		$update_team['reportheader'] = \lib\utility::post('reportHeader');
 
-		$update_team['reportfooter'] = utility::post('reportFooter');
+		$update_team['reportfooter'] = \lib\utility::post('reportFooter');
 
 		$update_user_teams = [];
 		$args              = [];
@@ -114,7 +113,7 @@ class model extends \content_a\main\model
 
 		$report_settings = \lib\db\teams::$default_settings;
 
-		foreach (utility::post() as $key => $value)
+		foreach (\lib\utility::post() as $key => $value)
 		{
 			if(preg_match("/^(daily|enterexit)\_(.*)$/", $key, $split))
 			{
@@ -177,9 +176,9 @@ class model extends \content_a\main\model
 			}
 		}
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::true(T_("Report settings was changed"));
+			\lib\debug::true(T_("Report settings was changed"));
 		}
 	}
 }

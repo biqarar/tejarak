@@ -1,7 +1,6 @@
 <?php
 namespace content_a\gateway\add;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\main\model
 {
@@ -15,10 +14,10 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'name'     => utility::post('name'),
-			'username' => utility::post('username'),
-			'password' => utility::post('ramz'),
-			'status'   => (utility::post('status') !== null)? 'active': 'deactive',
+			'name'     => \lib\utility::post('name'),
+			'username' => \lib\utility::post('username'),
+			'password' => \lib\utility::post('ramz'),
+			'status'   => (\lib\utility::post('status') !== null)? 'active': 'deactive',
 		];
 
 		return $args;
@@ -35,7 +34,7 @@ class model extends \content_a\main\model
 		// check the user is login
 		if(!$this->login())
 		{
-			debug::error(T_("Please login to add a team"), false, 'arguments');
+			\lib\debug::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
@@ -47,11 +46,11 @@ class model extends \content_a\main\model
 		// get posted data to create the request
 		$request['team']  = $team;
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway();
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector()->set_domain()->set_url("a/$team/gateway");
 		}

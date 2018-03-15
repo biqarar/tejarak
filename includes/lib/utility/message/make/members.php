@@ -1,9 +1,5 @@
 <?php
 namespace lib\utility\message\make;
-use \lib\utility;
-use \lib\utility\human;
-use \lib\debug;
-use \lib\db;
 
 
 trait members
@@ -46,7 +42,7 @@ trait members
 		if($msg)
 		{
 			$msg = "#". T_("Member_status"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n". $msg;
-			$msg .= "\n👥 ". human::number(count($members), \lib\language::get_language());
+			$msg .= "\n👥 ". \lib\utility\human::number(count($members), \lib\language::get_language());
 		}
 		return $msg;
 	}

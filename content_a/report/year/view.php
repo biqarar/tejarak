@@ -1,6 +1,6 @@
 <?php
 namespace content_a\report\year;
-use \lib\utility;
+
 
 class view extends \content_a\report\view
 {
@@ -15,16 +15,16 @@ class view extends \content_a\report\view
 	{
 		$args           = [];
 		$args['id']     = \lib\url::dir(0);
-		$args['export'] = utility::get('export');
+		$args['export'] = \lib\utility::get('export');
 
-		if(utility::get('user'))
+		if(\lib\utility::get('user'))
 		{
-			$args['user'] = utility::get('user');
+			$args['user'] = \lib\utility::get('user');
 		}
 
-		if(utility::get('year'))
+		if(\lib\utility::get('year'))
 		{
-			$args['year'] = utility::get('year');
+			$args['year'] = \lib\utility::get('year');
 		}
 
 		$this->data->year_time = $this->model()->get_year_time($args);

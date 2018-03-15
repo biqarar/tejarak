@@ -1,9 +1,5 @@
 <?php
 namespace lib\utility\message\make;
-use \lib\utility;
-use \lib\utility\human;
-use \lib\debug;
-use \lib\db;
 
 
 trait present
@@ -27,7 +23,7 @@ trait present
 		if($msg)
 		{
 			$msg = "#". T_("Presents"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n". $msg;
-			$msg .= "\n👥 ". human::number(count($result), \lib\language::get_language());
+			$msg .= "\n👥 ". \lib\utility\human::number(count($result), \lib\language::get_language());
 		}
 		return $msg;
 	}

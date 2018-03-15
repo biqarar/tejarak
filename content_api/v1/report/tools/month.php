@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\report\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait month
 {
@@ -26,30 +24,30 @@ trait month
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			],
 		];
 
-		$id = utility::request('id');
-		$id = utility\shortURL::decode($id);
+		$id = \lib\utility::request('id');
+		$id = \lib\utility\shortURL::decode($id);
 
 		if(!$id)
 		{
-			logs::set('api:report:month:team:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\db\logs::set('api:report:month:team:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
 		$user_id = null;
-		$user    = utility::request('user');
+		$user    = \lib\utility::request('user');
 
 		if($user)
 		{
-			$user_id = utility\shortURL::decode($user);
+			$user_id = \lib\utility\shortURL::decode($user);
 			if(!$user_id)
 			{
-				logs::set('api:report:month:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
-				debug::error(T_("Invalid user id"), 'user', 'arguments');
+				\lib\db\logs::set('api:report:month:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Invalid user id"), 'user', 'arguments');
 				return false;
 			}
 		}
@@ -61,15 +59,15 @@ trait month
 			{
 				if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $user_id, ['action'=> 'report_u']))
 				{
-					logs::set('api:report:month:user:is:not:in:team', $this->user_id, $log_meta);
-					debug::error(T_("This user is not in this team"), 'user', 'arguments');
+					\lib\db\logs::set('api:report:month:user:is:not:in:team', $this->user_id, $log_meta);
+					\lib\debug::error(T_("This user is not in this team"), 'user', 'arguments');
 					return false;
 				}
 			}
 			else
 			{
-				logs::set('api:report:month:user:access:load:report', $this->user_id, $log_meta);
-				debug::error(T_("No access to load this report"), 'user', 'arguments');
+				\lib\db\logs::set('api:report:month:user:access:load:report', $this->user_id, $log_meta);
+				\lib\debug::error(T_("No access to load this report"), 'user', 'arguments');
 				return false;
 			}
 		}
@@ -90,28 +88,28 @@ trait month
 			}
 			else
 			{
-				logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
 		}
 
 		if(!isset($check_is_my_team['id']))
 		{
-			logs::set('api:report:month:team:id:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Invalid team data"), 'team', 'system');
+			\lib\db\logs::set('api:report:month:team:id:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
 
-		$year  = utility::request('year');
-		$month = utility::request('month');
+		$year  = \lib\utility::request('year');
+		$month = \lib\utility::request('month');
 
 		if($year)
 		{
 			if(!is_numeric($year) || mb_strlen($year) !== 4)
 			{
-				logs::set('api:report:month:invalid:year', $this->user_id, $log_meta);
-				debug::error(T_("Invalid input year"), 'year', 'arguments');
+				\lib\db\logs::set('api:report:month:invalid:year', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Invalid input year"), 'year', 'arguments');
 				return false;
 			}
 		}
@@ -134,8 +132,8 @@ trait month
 
 		if($month && (!is_numeric($month) || mb_strlen($month) !== 2))
 		{
-			logs::set('api:report:month:invalid:month', $this->user_id, $log_meta);
-			debug::error(T_("Invalid input month"), 'month', 'arguments');
+			\lib\db\logs::set('api:report:month:invalid:month', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid input month"), 'month', 'arguments');
 			return false;
 		}
 
@@ -153,7 +151,7 @@ trait month
 		$meta['user_id']        = $user_id;
 		$meta['userteam_id']    = $check_is_my_team['userteam_id'];
 		$meta['date_is_shamsi'] = $date_is_shamsi;
-		$meta['export']	        = utility::request('export');
+		$meta['export']	        = \lib\utility::request('export');
 
 		$result  = \lib\db\hours::sum_month_time($meta);
 
@@ -167,7 +165,7 @@ trait month
 			}
 		}
 
-		if(utility::request('export'))
+		if(\lib\utility::request('export'))
 		{
 			\lib\utility\export::csv(['data' => $temp, 'name' => T_('tejarak-month-report')]);
 		}

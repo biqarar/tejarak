@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\report\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait year
 {
@@ -26,27 +24,27 @@ trait year
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			],
 		];
 
-		$id = utility::request('id');
+		$id = \lib\utility::request('id');
 		$id = utility\shortURL::decode($id);
 		if(!$id)
 		{
-			logs::set('api:report:team:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
-		$user = utility::request('user');
+		$user = \lib\utility::request('user');
 		$user = utility\shortURL::decode($user);
 		if($user)
 		{
 			if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $user, ['action'=> 'report_u']))
 			{
-				logs::set('api:report:sum:user:is:not:in:team', $this->user_id, $log_meta);
-				debug::error(T_("This user is not in this team"), 'user', 'arguments');
+				\lib\db\logs::set('api:report:sum:user:is:not:in:team', $this->user_id, $log_meta);
+				\lib\debug::error(T_("This user is not in this team"), 'user', 'arguments');
 				return false;
 			}
 		}
@@ -67,25 +65,25 @@ trait year
 			}
 			else
 			{
-				logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-				debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
 		}
 
 		if(!isset($check_is_my_team['id']))
 		{
-			logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Invalid team data"), 'team', 'system');
+			\lib\db\logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
 
-		$year  = utility::request('year');
+		$year  = \lib\utility::request('year');
 
 		if($year && (!is_numeric($year) || mb_strlen($year) !== 4))
 		{
-			logs::set('api:report:sum:invalid:year', $this->user_id, $log_meta);
-			debug::error(T_("Invalid input year"), 'year', 'arguments');
+			\lib\db\logs::set('api:report:sum:invalid:year', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid input year"), 'year', 'arguments');
 			return false;
 		}
 
@@ -111,7 +109,7 @@ trait year
 		$meta['userteam_id']    = $check_is_my_team['userteam_id'];
 		$meta['year']           = $year;
 		$meta['date_is_shamsi'] = $date_is_shamsi;
-		$meta['export']         = utility::request('export');
+		$meta['export']         = \lib\utility::request('export');
 		$result                 = \lib\db\hours::sum_time($meta);
 		$temp                   = [];
 
@@ -124,7 +122,7 @@ trait year
 			}
 		}
 
-		if (utility::request('export'))
+		if (\lib\utility::request('export'))
 		{
 			\lib\utility\export::csv(['data' => $temp, 'name' => T_("tejarak-year-report")]);
 		}

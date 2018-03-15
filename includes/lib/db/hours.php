@@ -1,9 +1,6 @@
 <?php
 namespace lib\db;
-use \lib\db;
-use \lib\utility\jdate;
-use \lib\debug;
-use \lib\utility;
+
 
 class hours
 {
@@ -69,7 +66,7 @@ class hours
 	 */
 	public static function insert()
 	{
-		return db\config::public_insert('hours', ...func_get_args());
+		return \lib\db\config::public_insert('hours', ...func_get_args());
 	}
 
 
@@ -80,7 +77,7 @@ class hours
 	 */
 	public static function get()
 	{
-		return db\config::public_get('hours', ...func_get_args());
+		return \lib\db\config::public_get('hours', ...func_get_args());
 	}
 
 
@@ -91,7 +88,7 @@ class hours
 	 */
 	public static function update()
 	{
-		return db\config::public_update('hours', ...func_get_args());
+		return \lib\db\config::public_update('hours', ...func_get_args());
 	}
 
 
@@ -354,13 +351,13 @@ class hours
 
 		if(!$userteam_id || !isset($userteam_id['id']) || !isset($userteam_id['status']))
 		{
-			debug::error(T_("User team not found!"));
+			\lib\debug::error(T_("User team not found!"));
 			return false;
 		}
 
 		if($userteam_id['status'] !== 'active')
 		{
-			debug::error(T_("User is diactive!"));
+			\lib\debug::error(T_("User is diactive!"));
 			return false;
 		}
 
@@ -384,7 +381,7 @@ class hours
 
 		$_args = self::check_before_save($_args);
 
-		if(!debug::$status)
+		if(!\lib\debug::$status)
 		{
 			return false;
 		}
@@ -393,7 +390,7 @@ class hours
 
 		if($in_use_time && array_key_exists('end', $in_use_time) && !$in_use_time['end'])
 		{
-			debug::error(T_("You was already entered once before this request"));
+			\lib\debug::error(T_("You was already entered once before this request"));
 			return false;
 		}
 
@@ -421,10 +418,10 @@ class hours
 		$insert['year']              = date("Y");
 		$insert['month']             = date("m");
 		$insert['day']               = date("d");
-		$insert['shamsi_date']       = jdate::date("Y-m-d", strtotime($date), false, true);
-		$insert['shamsi_year']       = jdate::date("Y", strtotime($date), false, true);
-		$insert['shamsi_month']      = jdate::date("m", strtotime($date), false, true);
-		$insert['shamsi_day']        = jdate::date("d", strtotime($date), false, true);
+		$insert['shamsi_date']       = \lib\utility\jdate::date("Y-m-d", strtotime($date), false, true);
+		$insert['shamsi_year']       = \lib\utility\jdate::date("Y", strtotime($date), false, true);
+		$insert['shamsi_month']      = \lib\utility\jdate::date("m", strtotime($date), false, true);
+		$insert['shamsi_day']        = \lib\utility\jdate::date("d", strtotime($date), false, true);
 		$insert['start']             = date("H:i");
 		$insert['start_gateway_id']  = $_args['gateway'];
 		$insert['start_time']        = date("Y-m-d H:i:s");
@@ -470,7 +467,7 @@ class hours
 
 		$_args = self::check_before_save($_args);
 
-		if(!debug::$status)
+		if(!\lib\debug::$status)
 		{
 			return false;
 		}
@@ -480,7 +477,7 @@ class hours
 
 		if(!$start || ($start && isset($start['end']) && $start['end']))
 		{
-			debug::error(T_("You was already exited before this request or not entered"));
+			\lib\debug::error(T_("You was already exited before this request or not entered"));
 			return ;
 		}
 
@@ -492,7 +489,7 @@ class hours
 
 		if(!$check)
 		{
-			debug::error(T_("Invalid data"));
+			\lib\debug::error(T_("Invalid data"));
 			return false;
 		}
 
@@ -545,10 +542,10 @@ class hours
 		$update['endyear']         = date("Y");
 		$update['endmonth']        = date("m");
 		$update['endday']          = date("d");
-		$update['endshamsi_date']  = jdate::date("Y-m-d", strtotime($date), false, true);
-		$update['endshamsi_year']  = jdate::date("Y", strtotime($date), false, true);
-		$update['endshamsi_month'] = jdate::date("m", strtotime($date), false, true);
-		$update['endshamsi_day']   = jdate::date("d", strtotime($date), false, true);
+		$update['endshamsi_date']  = \lib\utility\jdate::date("Y-m-d", strtotime($date), false, true);
+		$update['endshamsi_year']  = \lib\utility\jdate::date("Y", strtotime($date), false, true);
+		$update['endshamsi_month'] = \lib\utility\jdate::date("m", strtotime($date), false, true);
+		$update['endshamsi_day']   = \lib\utility\jdate::date("d", strtotime($date), false, true);
 		$update['end_gateway_id']  = $_args['gateway'];
 		$update['end_userteam_id'] = $_args['userteam_id'];
 		$update['end_time']        = date("Y-m-d H:i:s");

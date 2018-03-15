@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\personal;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\member\model
 {
@@ -16,9 +15,9 @@ class model extends \content_a\member\model
 		$args =
 		[
 
-			'firstname'        => utility::post('firstName'),
-			'lastname'         => utility::post('lastName'),
-			'personnel_code'   => utility::post('personnelcode'),
+			'firstname'        => \lib\utility::post('firstName'),
+			'lastname'         => \lib\utility::post('lastName'),
+			'personnel_code'   => \lib\utility::post('personnelcode'),
 		];
 
 		return $args;
@@ -41,7 +40,7 @@ class model extends \content_a\member\model
 		$member          = \lib\router::get_url(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \lib\url::dir(0);
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);

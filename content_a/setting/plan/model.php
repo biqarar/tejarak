@@ -1,7 +1,6 @@
 <?php
 namespace content_a\setting\plan;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -21,7 +20,7 @@ class model extends \content_a\main\model
 		if(!$team)
 		{
 			\lib\db\logs::set('plan:invalid:team', $this->login('id'));
-			debug::error(T_("Invalid team!"), 'team');
+			\lib\debug::error(T_("Invalid team!"), 'team');
 			return false;
 		}
 
@@ -43,7 +42,7 @@ class model extends \content_a\main\model
 		if(!$plan)
 		{
 			\lib\db\logs::set('plan:plan:not:set', $this->login('id'));
-			debug::error(T_("Please select one of plan"), 'plan');
+			\lib\debug::error(T_("Please select one of plan"), 'plan');
 			return false;
 		}
 
@@ -67,7 +66,7 @@ class model extends \content_a\main\model
 		if(!in_array($plan, $all_plan_list))
 		{
 			\lib\db\logs::set('plan:invalid:plan', $this->login('id'));
-			debug::error(T_("Invalid plan!"), 'plan');
+			\lib\debug::error(T_("Invalid plan!"), 'plan');
 			return false;
 		}
 
@@ -77,7 +76,7 @@ class model extends \content_a\main\model
 		if(!$team)
 		{
 			\lib\db\logs::set('plan:invalid:team', $this->login('id'));
-			debug::error(T_("Invalid team!"), 'team');
+			\lib\debug::error(T_("Invalid team!"), 'team');
 			return false;
 		}
 
@@ -86,7 +85,7 @@ class model extends \content_a\main\model
 		if(!$access)
 		{
 			\lib\db\logs::set('plan:no:access:to:change:plan', $this->login('id'));
-			debug::error(T_("No access to change plan"), 'team');
+			\lib\debug::error(T_("No access to change plan"), 'team');
 			return false;
 		}
 
@@ -100,15 +99,15 @@ class model extends \content_a\main\model
 
 		if($result)
 		{
-			debug::true(T_("Your team plan was changed"));
-			if(debug::$status)
+			\lib\debug::true(T_("Your team plan was changed"));
+			if(\lib\debug::$status)
 			{
 				$this->redirector(\lib\url::pwd());
 			}
 		}
 		else
 		{
-			// debug::error(T_("Can not save this plan of your team"));
+			// \lib\debug::error(T_("Can not save this plan of your team"));
 			return false;
 		}
 	}

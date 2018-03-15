@@ -1,7 +1,6 @@
 <?php
 namespace content_a\member\general;
-use \lib\utility;
-use \lib\debug;
+
 
 class model extends \content_a\member\model
 {
@@ -15,14 +14,14 @@ class model extends \content_a\member\model
 	{
 		$args =
 		[
-			'displayname'      => utility::post('name'),
-			'postion'          => utility::post('postion'),
-			'visibility'       => utility::post('visibility'),
+			'displayname'      => \lib\utility::post('name'),
+			'postion'          => \lib\utility::post('postion'),
+			'visibility'       => \lib\utility::post('visibility'),
 		];
 
-		if(utility::post('mobile')) $args['mobile'] = utility::post('mobile');
-		if(utility::post('rule')) $args['rule']     = utility::post('rule');
-		if(utility::post('status')) $args['status'] = utility::post('status');
+		if(\lib\utility::post('mobile')) $args['mobile'] = \lib\utility::post('mobile');
+		if(\lib\utility::post('rule')) $args['rule']     = \lib\utility::post('rule');
+		if(\lib\utility::post('status')) $args['status'] = \lib\utility::post('status');
 
 		return $args;
 	}
@@ -43,12 +42,12 @@ class model extends \content_a\member\model
 		$member          = \lib\router::get_url(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \lib\url::dir(0);
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
 			$this->redirector(\lib\url::pwd());
 		}

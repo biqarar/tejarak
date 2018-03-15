@@ -1,8 +1,7 @@
 <?php
 namespace content_cp\teamplans;
 
-use \lib\utility;
-use \lib\debug;
+
 class model extends \mvc\model
 {
 	public function teamplans_list($_args, $_fields = [])
@@ -10,9 +9,9 @@ class model extends \mvc\model
 		$meta   = [];
 
 		$search = null;
-		if(utility::get('search'))
+		if(\lib\utility::get('search'))
 		{
-			$search = utility::get('search');
+			$search = \lib\utility::get('search');
 		}
 
 		foreach ($_fields as $key => $value)

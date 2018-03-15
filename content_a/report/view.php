@@ -1,6 +1,6 @@
 <?php
 namespace content_a\report;
-use \lib\utility;
+
 
 class view extends \content_a\main\view
 {
@@ -20,9 +20,9 @@ class view extends \content_a\main\view
 			$this->data->time_raw = false;
 		}
 
-		if(utility::get())
+		if(\lib\utility::get())
 		{
-			if(!utility::get('export'))
+			if(!\lib\utility::get('export'))
 			{
 				$this->data->export_url = \lib\url::pwd(). '&export=true';
 			}
@@ -36,9 +36,9 @@ class view extends \content_a\main\view
 			$this->data->export_url = \lib\url::pwd(). '?export=true';
 		}
 
-		if(utility::get('year') && is_numeric(utility::get('year')) && mb_strlen(utility::get('year')) === 4)
+		if(\lib\utility::get('year') && is_numeric(\lib\utility::get('year')) && mb_strlen(\lib\utility::get('year')) === 4)
 		{
-			$this->data->get_year = utility::get('year');
+			$this->data->get_year = \lib\utility::get('year');
 		}
 
 
@@ -82,9 +82,9 @@ class view extends \content_a\main\view
 			}
 		}
 
-		if(utility::get('user') && isset($all_user[utility::get('user')]))
+		if(\lib\utility::get('user') && isset($all_user[\lib\utility::get('user')]))
 		{
-			$this->data->report_current_user = $all_user[utility::get('user')];
+			$this->data->report_current_user = $all_user[\lib\utility::get('user')];
 		}
 
 		$team_id = \lib\utility\shortURL::decode($this->data->team_code);

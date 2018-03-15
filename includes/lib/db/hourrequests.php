@@ -1,8 +1,6 @@
 <?php
 namespace lib\db;
-use \lib\db;
-use \lib\debug;
-use \lib\utility;
+
 
 class hourrequests
 {
@@ -22,7 +20,7 @@ class hourrequests
 	 */
 	public static function insert()
 	{
-		return db\config::public_insert('hourrequests', ...func_get_args());
+		return \lib\db\config::public_insert('hourrequests', ...func_get_args());
 	}
 
 
@@ -33,7 +31,7 @@ class hourrequests
 	 */
 	public static function get()
 	{
-		return db\config::public_get('hourrequests', ...func_get_args());
+		return \lib\db\config::public_get('hourrequests', ...func_get_args());
 	}
 
 
@@ -44,7 +42,7 @@ class hourrequests
 	 */
 	public static function update()
 	{
-		return db\config::public_update('hourrequests', ...func_get_args());
+		return \lib\db\config::public_update('hourrequests', ...func_get_args());
 	}
 
 

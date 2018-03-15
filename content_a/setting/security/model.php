@@ -1,7 +1,6 @@
 <?php
 namespace content_a\setting\security;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -46,7 +45,7 @@ class model extends \content_a\main\model
 	{
 		if(!$this->login())
 		{
-			debug::error(T_("Please login to change owner"), 'owner');
+			\lib\debug::error(T_("Please login to change owner"), 'owner');
 			return $this->refresh_page();
 		}
 
@@ -55,18 +54,18 @@ class model extends \content_a\main\model
 		{
 			if($load_last_request['status'] === 'awaiting')
 			{
-				if(utility::post('send') === 'ok')
+				if(\lib\utility::post('send') === 'ok')
 				{
 					\lib\db\notifications::update(['status' => 'enable'], $load_last_request['id']);
 				}
-				elseif(utility::post('send') === 'cancel')
+				elseif(\lib\utility::post('send') === 'cancel')
 				{
 					\lib\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
 			}
 			elseif($load_last_request['status'] === 'enable')
 			{
-				if(utility::post('request') === 'cancel')
+				if(\lib\utility::post('request') === 'cancel')
 				{
 					\lib\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
@@ -75,23 +74,23 @@ class model extends \content_a\main\model
 		}
 
 
-		$new_owner = utility::post('owner');
+		$new_owner = \lib\utility::post('owner');
 		if(!$new_owner)
 		{
-			debug::error(T_("Plese fill the mobile field"), 'owner');
+			\lib\debug::error(T_("Plese fill the mobile field"), 'owner');
 			return $this->refresh_page();
 		}
 
 		if(!$this->mobile = \lib\utility\filter::mobile($new_owner))
 		{
-			debug::error(T_("Invalid mobile number"), 'owner');
+			\lib\debug::error(T_("Invalid mobile number"), 'owner');
 			return $this->refresh_page();
 		}
 
 		$this->user_data = \lib\db\users::get_by_mobile($this->mobile);
 		if(!isset($this->user_data['id']))
 		{
-			debug::error(T_("User not found"), 'owner');
+			\lib\debug::error(T_("User not found"), 'owner');
 			return $this->refresh_page();
 		}
 
@@ -182,7 +181,7 @@ class model extends \content_a\main\model
 
 		if(intval($this->login('id')) === intval($this->user_data['id']))
 		{
-			debug::error(T_("You try to move team to yourself!"), 'owner');
+			\lib\debug::error(T_("You try to move team to yourself!"), 'owner');
 			$this->_processor(['force_stop' => true]);
 			return false;
 		}
@@ -202,9 +201,9 @@ class model extends \content_a\main\model
 		$a = \lib\db\notifications::set($send_notify);
 
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::true(T_("Your request was sended"));
+			\lib\debug::true(T_("Your request was sended"));
 		}
 	}
 }

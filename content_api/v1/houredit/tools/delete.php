@@ -1,8 +1,7 @@
 <?php
 namespace content_api\v1\houredit\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
+
 trait delete
 {
 
@@ -17,13 +16,13 @@ trait delete
 	 */
 	public function hourrequest_delete($_args = [])
 	{
-		debug::title(T_("Operation Faild"));
+		\lib\debug::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
@@ -32,13 +31,13 @@ trait delete
 			return false;
 		}
 
-		$id = utility::request("id");
+		$id = \lib\utility::request("id");
 		$id = \lib\utility\shortURL::decode($id);
 
 		if(!$id)
 		{
-			logs::set('api:houredit:delete:id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("houredit id not set"), 'id', 'arguments');
+			\lib\db\logs::set('api:houredit:delete:id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("houredit id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -46,18 +45,18 @@ trait delete
 
 		if(!$result)
 		{
-			logs::set('api:houredit:delete:access:denide', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to delete this request"), 'houredit', 'permission');
+			\lib\db\logs::set('api:houredit:delete:access:denide', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Can not access to delete this request"), 'houredit', 'permission');
 			return false;
 		}
 
 
 		\lib\db\hourrequests::update(['status' => 'deleted'], $id);
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::title(T_("Operation complete"));
-			debug::warn(T_("Your request was deleted"));
+			\lib\debug::title(T_("Operation complete"));
+			\lib\debug::warn(T_("Your request was deleted"));
 		}
 		return;
 	}

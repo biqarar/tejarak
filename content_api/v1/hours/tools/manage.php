@@ -1,8 +1,7 @@
 <?php
 namespace content_api\v1\hours\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
+
 trait manage
 {
 
@@ -32,45 +31,45 @@ trait manage
 
 		$_args = array_merge($default_args, $_args);
 
-		// debug::title(T_("Operation Faild"));
+		// \lib\debug::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
 		if(!$this->user_id)
 		{
-			logs::set('api:hours:change:user_id:notfound', $this->user_id, $log_meta);
-			debug::error(T_("User not found"), 'user', 'permission');
+			\lib\db\logs::set('api:hours:change:user_id:notfound', $this->user_id, $log_meta);
+			\lib\debug::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
-		$hour_id = utility::request('hour_id');
-		$hour_id = utility\shortURL::decode($hour_id);
+		$hour_id = \lib\utility::request('hour_id');
+		$hour_id = \lib\utility\shortURL::decode($hour_id);
 		if(!$hour_id)
 		{
-			logs::set('api:hours:change:hour_id:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Hour id not set"), 'hour_id', 'arguments');
+			\lib\db\logs::set('api:hours:change:hour_id:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Hour id not set"), 'hour_id', 'arguments');
 			return false;
 		}
 
-		$type = utility::request('type');
+		$type = \lib\utility::request('type');
 		if(!$type || $type === '' || $type == '')
 		{
-			logs::set('api:hours:change:type:not:set', $this->user_id, $log_meta);
-			debug::error(T_("Type not set"), 'type', 'arguments');
+			\lib\db\logs::set('api:hours:change:type:not:set', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Type not set"), 'type', 'arguments');
 			return false;
 		}
 
 		if(!in_array($type, ['all', 'wplus', 'wminus', 'nothing', 'base']))
 		{
-			logs::set('api:hours:change:type:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid type"), 'type', 'arguments');
+			\lib\db\logs::set('api:hours:change:type:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid type"), 'type', 'arguments');
 			return false;
 		}
 
@@ -89,16 +88,16 @@ trait manage
 			!array_key_exists('accepted', $get_hour_record)
 		)
 		{
-			logs::set('api:hours:change:hour_id:record:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Invalid hour id"), 'hour_id', 'arguments');
+			\lib\db\logs::set('api:hours:change:hour_id:record:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid hour id"), 'hour_id', 'arguments');
 			return false;
 		}
 		// load userteam
 		$get_userteam_record = \lib\db\userteams::get(['id' => $get_hour_record['userteam_id'], 'limit' => 1]);
 		if(!$get_userteam_record || !isset($get_userteam_record['team_id']))
 		{
-			logs::set('api:hours:change:hour_id:team:record:not:found', $this->user_id, $log_meta);
-			debug::error(T_("Team detail not found"), 'hour_id', 'system');
+			\lib\db\logs::set('api:hours:change:hour_id:team:record:not:found', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Team detail not found"), 'hour_id', 'system');
 			return false;
 		}
 
@@ -112,8 +111,8 @@ trait manage
 		}
 		else
 		{
-			logs::set('api:hours:change:team:access', $this->user_id, $log_meta);
-			debug::error(T_("Can not access to set time of this team"), 'team', 'permission');
+			\lib\db\logs::set('api:hours:change:team:access', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Can not access to set time of this team"), 'team', 'permission');
 			return false;
 		}
 
@@ -156,14 +155,14 @@ trait manage
 		}
 		else
 		{
-			logs::set('api:hours:change:method:invalid', $this->user_id, $log_meta);
-			debug::error(T_("Invalid method of api"), 'method', 'permission');
+			\lib\db\logs::set('api:hours:change:method:invalid', $this->user_id, $log_meta);
+			\lib\debug::error(T_("Invalid method of api"), 'method', 'permission');
 			return false;
 		}
 
-		if(debug::$status)
+		if(\lib\debug::$status)
 		{
-			debug::true(T_("Hour type changed"));
+			\lib\debug::true(T_("Hour type changed"));
 		}
 	}
 }

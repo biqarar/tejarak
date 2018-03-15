@@ -1,8 +1,6 @@
 <?php
 namespace content_api\v1\team\tools;
-use \lib\utility;
-use \lib\debug;
-use \lib\db\logs;
+
 
 trait get
 {
@@ -325,11 +323,11 @@ trait get
 
 		$meta = [];
 
-		$type = utility::request('type');
+		$type = \lib\utility::request('type');
 		if($type && !is_string($type))
 		{
-			logs::set('api:team:get:list:type:invalid', $this->user_id);
-			debug::error(T_("Invalid team type"), 'type', 'arguments');
+			\lib\db\logs::set('api:team:get:list:type:invalid', $this->user_id);
+			\lib\debug::error(T_("Invalid team type"), 'type', 'arguments');
 			return false;
 		}
 
@@ -388,7 +386,7 @@ trait get
 
 		if($_options['debug'])
 		{
-			debug::title(T_("Operation Faild"));
+			\lib\debug::title(T_("Operation Faild"));
 		}
 
 		$log_meta =
@@ -396,7 +394,7 @@ trait get
 			'data' => null,
 			'meta' =>
 			[
-				'input' => utility::request(),
+				'input' => \lib\utility::request(),
 			]
 		];
 
@@ -405,27 +403,27 @@ trait get
 			// return false;
 		}
 
-		$id = utility::request("id");
+		$id = \lib\utility::request("id");
 		$id = \lib\utility\shortURL::decode($id);
 
-		$shortname = utility::request('shortname');
+		$shortname = \lib\utility::request('shortname');
 
 		if(!$id && !$shortname)
 		{
 			if($_options['debug'])
 			{
-				logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
-				debug::error(T_("Team id or shortname not set"), 'id', 'arguments');
+				\lib\db\logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
+				\lib\debug::error(T_("Team id or shortname not set"), 'id', 'arguments');
 			}
 			return false;
 		}
 
 		if($id && $shortname)
 		{
-			logs::set('api:team:id:shortname:together:set', $this->user_id, $log_meta);
+			\lib\db\logs::set('api:team:id:shortname:together:set', $this->user_id, $log_meta);
 			if($_options['debug'])
 			{
-				debug::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
+				\lib\debug::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
 			}
 			return false;
 		}
@@ -467,17 +465,17 @@ trait get
 
 		if(!$result)
 		{
-			logs::set('api:team:access:denide', $this->user_id, $log_meta);
+			\lib\db\logs::set('api:team:access:denide', $this->user_id, $log_meta);
 			if($_options['debug'])
 			{
-				debug::error(T_("Can not access to load this team details"), 'team', 'permission');
+				\lib\debug::error(T_("Can not access to load this team details"), 'team', 'permission');
 			}
 			return false;
 		}
 
 		if($_options['debug'])
 		{
-			debug::title(T_("Operation complete"));
+			\lib\debug::title(T_("Operation complete"));
 		}
 
 		$result = $this->ready_team($result);

@@ -1,7 +1,6 @@
 <?php
 namespace content_a\setting\event;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -14,8 +13,8 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'event_title'       => utility::post('event_title'),
-			'event_date'        => utility\human::number(utility::post('event_date'), 'en'),
+			'event_title'       => \lib\utility::post('event_title'),
+			'event_date'        => \lib\utility\human::number(\lib\utility::post('event_date'), 'en'),
 		];
 
 		return $args;
@@ -35,7 +34,7 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		$request['id'] = $code;
 
-		utility::set_request_array($request);
+		\lib\utility::set_request_array($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);

@@ -1,9 +1,5 @@
 <?php
 namespace lib\utility\message\make;
-use \lib\utility;
-use \lib\utility\human;
-use \lib\debug;
-use \lib\db;
 
 
 trait lasttraffic
@@ -69,7 +65,7 @@ trait lasttraffic
 							$emoji = "✅";
 						}
 						$msg .= "\n". $emoji. " ". $value['displayname'];
-						$msg .= " ". human::number(preg_replace("/\:00$/", '', $value['time']), $default_language);
+						$msg .= " ". \lib\utility\human::number(preg_replace("/\:00$/", '', $value['time']), $default_language);
 					}
 				}
 			}
@@ -81,7 +77,7 @@ trait lasttraffic
 			$msg = "#". T_("Last_traffic");
 			$msg .= "\n". \lib\utility::date('l j F Y H:i', time() , $default_language) . "\n";
 			$msg .= $temp_message;
-			$msg .= "\n👥 ". human::number(count($count_person), $default_language);
+			$msg .= "\n👥 ". \lib\utility\human::number(count($count_person), $default_language);
 		}
 
 		return $msg;

@@ -1,7 +1,6 @@
 <?php
 namespace content_a\report\last;
-use \lib\debug;
-use \lib\utility;
+
 
 class model extends \content_a\main\model
 {
@@ -14,7 +13,7 @@ class model extends \content_a\main\model
 	public function get_last_time($_request)
 	{
 		$this->user_id = $this->login('id');
-		utility::set_request_array($_request);
+		\lib\utility::set_request_array($_request);
 		return $this->report_last_time();
 	}
 
@@ -25,8 +24,8 @@ class model extends \content_a\main\model
 	public function post_last()
 	{
 		$request            = [];
-		$request['hour_id'] = utility::post('hour_id');
-		$request['type']  = utility::post('type');
+		$request['hour_id'] = \lib\utility::post('hour_id');
+		$request['type']  = \lib\utility::post('type');
 		$this->user_id      = $this->login('id');
 
 		return $this->hour_change_type();
