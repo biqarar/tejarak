@@ -17,12 +17,12 @@ class view extends \content_a\report\view
 		$args['id']            = \lib\url::dir(0);
 		$this->data->team_code = $args['id'];
 
-		if(\lib\utility::get('user'))
+		if(\lib\request::get('user'))
 		{
-			$args['user'] = \lib\utility::get('user');
+			$args['user'] = \lib\request::get('user');
 		}
 
-		$args['export'] = \lib\utility::get('export');
+		$args['export'] = \lib\request::get('export');
 
 		$this->data->last_time = $this->model()->get_last_time($args);
 

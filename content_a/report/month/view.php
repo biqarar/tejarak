@@ -17,22 +17,22 @@ class view extends \content_a\report\view
 	 */
 	public function view_month()
 	{
-		if(\lib\utility::get('year') && is_numeric(\lib\utility::get('year')) && mb_strlen(\lib\utility::get('year')) === 4)
+		if(\lib\request::get('year') && is_numeric(\lib\request::get('year')) && mb_strlen(\lib\request::get('year')) === 4)
 		{
-			$this->data->get_year = \lib\utility::get('year');
+			$this->data->get_year = \lib\request::get('year');
 		}
 
-		if(\lib\utility::get('month') && is_numeric(\lib\utility::get('month')) && mb_strlen(\lib\utility::get('month')) <= 2)
+		if(\lib\request::get('month') && is_numeric(\lib\request::get('month')) && mb_strlen(\lib\request::get('month')) <= 2)
 		{
-			$this->data->get_month = \lib\utility::get('month');
+			$this->data->get_month = \lib\request::get('month');
 		}
 
 		$args           = [];
 		$args['id']     = \lib\url::dir(0);
-		$args['year']   = \lib\utility::get('year');
-		$args['month']  = \lib\utility::get('month');
-		$args['user']   = \lib\utility::get('user');
-		$args['export'] = \lib\utility::get('export') ? true : false;
+		$args['year']   = \lib\request::get('year');
+		$args['month']  = \lib\request::get('month');
+		$args['user']   = \lib\request::get('user');
+		$args['export'] = \lib\request::get('export') ? true : false;
 
 		$this->data->month_time = $this->model()->get_month_time($args);
 

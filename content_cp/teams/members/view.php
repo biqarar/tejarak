@@ -20,9 +20,9 @@ class view extends \content_cp\main\view
 			$this->data->pagnation = $this->controller->pagnation_get();
 		}
 
-		if(\lib\utility::get('search'))
+		if(\lib\request::get('search'))
 		{
-			$this->data->get_search = \lib\utility::get('search');
+			$this->data->get_search = \lib\request::get('search');
 		}
 	}
 

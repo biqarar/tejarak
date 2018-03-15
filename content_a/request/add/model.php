@@ -33,7 +33,7 @@ class model extends \content_a\main\model
 	{
 		$request            = $this->getPost();
 		$request['team']    = \lib\url::dir(0);
-		$request['user_id'] = \lib\utility::get('user');
+		$request['user_id'] = \lib\request::get('user');
 
 		\lib\utility::set_request_array($request);
 

@@ -48,7 +48,7 @@ class view extends \content_a\main\view
 	{
 		$args                     = [];
 		$args['team']             = \lib\url::dir(0);
-		$args['user']             = \lib\utility::get('user');
+		$args['user']             = \lib\request::get('user');
 		$result                   = $this->model()->request_list($args);
 
 		$this->data->request_list = $result;

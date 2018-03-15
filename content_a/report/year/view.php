@@ -15,16 +15,16 @@ class view extends \content_a\report\view
 	{
 		$args           = [];
 		$args['id']     = \lib\url::dir(0);
-		$args['export'] = \lib\utility::get('export');
+		$args['export'] = \lib\request::get('export');
 
-		if(\lib\utility::get('user'))
+		if(\lib\request::get('user'))
 		{
-			$args['user'] = \lib\utility::get('user');
+			$args['user'] = \lib\request::get('user');
 		}
 
-		if(\lib\utility::get('year'))
+		if(\lib\request::get('year'))
 		{
-			$args['year'] = \lib\utility::get('year');
+			$args['year'] = \lib\request::get('year');
 		}
 
 		$this->data->year_time = $this->model()->get_year_time($args);

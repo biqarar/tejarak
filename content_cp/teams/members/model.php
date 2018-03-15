@@ -30,9 +30,9 @@ class model extends \mvc\model
 		}
 
 		$search = null;
-		if(\lib\utility::get('search'))
+		if(\lib\request::get('search'))
 		{
-			$search = \lib\utility::get('search');
+			$search = \lib\request::get('search');
 		}
 
 		$result = \lib\db\userteams::search($search, $meta);

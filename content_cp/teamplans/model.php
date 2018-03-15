@@ -9,9 +9,9 @@ class model extends \mvc\model
 		$meta   = [];
 
 		$search = null;
-		if(\lib\utility::get('search'))
+		if(\lib\request::get('search'))
 		{
-			$search = \lib\utility::get('search');
+			$search = \lib\request::get('search');
 		}
 
 		foreach ($_fields as $key => $value)

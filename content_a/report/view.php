@@ -11,7 +11,7 @@ class view extends \content_a\main\view
 		* get raw time
 		* skip humantime
 		*/
-		if(\lib\utility::get('time') === 'raw')
+		if(\lib\request::get('time') === 'raw')
 		{
 			$this->data->time_raw = true;
 		}
@@ -20,9 +20,9 @@ class view extends \content_a\main\view
 			$this->data->time_raw = false;
 		}
 
-		if(\lib\utility::get())
+		if(\lib\request::get())
 		{
-			if(!\lib\utility::get('export'))
+			if(!\lib\request::get('export'))
 			{
 				$this->data->export_url = \lib\url::pwd(). '&export=true';
 			}
@@ -36,9 +36,9 @@ class view extends \content_a\main\view
 			$this->data->export_url = \lib\url::pwd(). '?export=true';
 		}
 
-		if(\lib\utility::get('year') && is_numeric(\lib\utility::get('year')) && mb_strlen(\lib\utility::get('year')) === 4)
+		if(\lib\request::get('year') && is_numeric(\lib\request::get('year')) && mb_strlen(\lib\request::get('year')) === 4)
 		{
-			$this->data->get_year = \lib\utility::get('year');
+			$this->data->get_year = \lib\request::get('year');
 		}
 
 
@@ -82,9 +82,9 @@ class view extends \content_a\main\view
 			}
 		}
 
-		if(\lib\utility::get('user') && isset($all_user[\lib\utility::get('user')]))
+		if(\lib\request::get('user') && isset($all_user[\lib\request::get('user')]))
 		{
-			$this->data->report_current_user = $all_user[\lib\utility::get('user')];
+			$this->data->report_current_user = $all_user[\lib\request::get('user')];
 		}
 
 		$team_id = \lib\utility\shortURL::decode($this->data->team_code);
