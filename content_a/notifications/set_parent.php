@@ -12,13 +12,13 @@ trait set_parent
 		//  'type' => string 'parent' (length=5)
 		//  'notify' => string 'q' (length=1)
 
-		if(!in_array(\lib\utility::post('answer'), ['accept', 'reject']))
+		if(!in_array(\lib\request::post('answer'), ['accept', 'reject']))
 		{
 			\lib\debug::error(T_("Invalid answer!"));
 			return false;
 		}
 
-		$notify = \lib\utility::post('notify');
+		$notify = \lib\request::post('notify');
 		$notify = \lib\utility\shortURL::decode($notify);
 
 		if(!$notify)
@@ -27,7 +27,7 @@ trait set_parent
 			return false;
 		}
 
-		$child = \lib\utility::post('child');
+		$child = \lib\request::post('child');
 		$child = \lib\utility\shortURL::decode($child);
 
 		if(!$child)
@@ -73,7 +73,7 @@ trait set_parent
 				'readdate' => date("Y-m-d H:i:s"),
 			];
 
-			$action = \lib\utility::post('answer');
+			$action = \lib\request::post('answer');
 
 			$notify_set =
 			[
@@ -83,7 +83,7 @@ trait set_parent
 			];
 			\lib\db\notifications::set($notify_set);
 
-			if(\lib\utility::post('answer') === 'accept')
+			if(\lib\request::post('answer') === 'accept')
 			{
 				// ACCEPT
 				// the accept in index 0 of array answer in options

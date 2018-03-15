@@ -14,9 +14,9 @@ class model extends \content_a\member\model
 	{
 		$args =
 		[
-			'barcode1'         => \lib\utility::post('barcode'),
-			'rfid1'            => \lib\utility::post('rfid'),
-			'qrcode1'          => \lib\utility::post('qrcode'),
+			'barcode1'         => \lib\request::post('barcode'),
+			'rfid1'            => \lib\request::post('rfid'),
+			'qrcode1'          => \lib\request::post('qrcode'),
 		];
 
 		return $args;

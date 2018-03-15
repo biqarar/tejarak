@@ -9,7 +9,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_sendnotify($_args)
 	{
-		$text = \lib\utility::post('message-text');
+		$text = \lib\request::post('message-text');
 		if(!$text)
 		{
 			\lib\debug::error(T_("Please fill the message box"), 'message-text');

@@ -14,29 +14,29 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'displayname'      => \lib\utility::post('name'),
-			'postion'          => \lib\utility::post('postion'),
-			'mobile'           => \lib\utility::post('mobile'),
-			// 'rule'             => \lib\utility::post('rule'),
-			// 'firstname'        => \lib\utility::post('firstName'),
-			// 'lastname'         => \lib\utility::post('lastName'),
-			// 'personnel_code'   => \lib\utility::post('personnelcode'),
-			// 'allow_plus'       => \lib\utility::post('allowPlus'),
-			// 'allow_minus'      => \lib\utility::post('allowMinus'),
-			// 'remote_user'      => \lib\utility::post('remoteUser'),
-			// '24h'              => \lib\utility::post('24h'),
-			// 'status'           => \lib\utility::post('status'),
-			// 'visibility'       => \lib\utility::post('visibility'),
-			// 'barcode1'         => \lib\utility::post('barcode'),
-			// 'rfid1'            => \lib\utility::post('rfid'),
-			// 'qrcode1'          => \lib\utility::post('qrcode'),
-			// 'allow_desc_enter' => \lib\utility::post('allowDescEnter'),
-			// 'allow_desc_exit'  => \lib\utility::post('allowDescExit'),
+			'displayname'      => \lib\request::post('name'),
+			'postion'          => \lib\request::post('postion'),
+			'mobile'           => \lib\request::post('mobile'),
+			// 'rule'             => \lib\request::post('rule'),
+			// 'firstname'        => \lib\request::post('firstName'),
+			// 'lastname'         => \lib\request::post('lastName'),
+			// 'personnel_code'   => \lib\request::post('personnelcode'),
+			// 'allow_plus'       => \lib\request::post('allowPlus'),
+			// 'allow_minus'      => \lib\request::post('allowMinus'),
+			// 'remote_user'      => \lib\request::post('remoteUser'),
+			// '24h'              => \lib\request::post('24h'),
+			// 'status'           => \lib\request::post('status'),
+			// 'visibility'       => \lib\request::post('visibility'),
+			// 'barcode1'         => \lib\request::post('barcode'),
+			// 'rfid1'            => \lib\request::post('rfid'),
+			// 'qrcode1'          => \lib\request::post('qrcode'),
+			// 'allow_desc_enter' => \lib\request::post('allowDescEnter'),
+			// 'allow_desc_exit'  => \lib\request::post('allowDescExit'),
 		];
 
-		if(\lib\utility::post('rule'))
+		if(\lib\request::post('rule'))
 		{
-			$args['rule'] = \lib\utility::post('rule');
+			$args['rule'] = \lib\request::post('rule');
 		}
 
 		return $args;

@@ -14,24 +14,24 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'displayname'      => \lib\utility::post('name'),
-			'postion'          => \lib\utility::post('postion'),
-			'mobile'           => \lib\utility::post('mobile'),
-			'rule'             => \lib\utility::post('rule'),
-			'firstname'        => \lib\utility::post('firstName'),
-			'lastname'         => \lib\utility::post('lastName'),
-			'personnel_code'   => \lib\utility::post('personnelcode'),
-			'allow_plus'       => \lib\utility::post('allowPlus'),
-			'allow_minus'      => \lib\utility::post('allowMinus'),
-			'remote_user'      => \lib\utility::post('remoteUser'),
-			'24h'              => \lib\utility::post('24h'),
-			'status'           => \lib\utility::post('status'),
-			'visibility'       => \lib\utility::post('visibility'),
-			'barcode1'         => \lib\utility::post('barcode'),
-			'rfid1'            => \lib\utility::post('rfid'),
-			'qrcode1'          => \lib\utility::post('qrcode'),
-			'allow_desc_enter' => \lib\utility::post('allowDescEnter'),
-			'allow_desc_exit'  => \lib\utility::post('allowDescExit'),
+			'displayname'      => \lib\request::post('name'),
+			'postion'          => \lib\request::post('postion'),
+			'mobile'           => \lib\request::post('mobile'),
+			'rule'             => \lib\request::post('rule'),
+			'firstname'        => \lib\request::post('firstName'),
+			'lastname'         => \lib\request::post('lastName'),
+			'personnel_code'   => \lib\request::post('personnelcode'),
+			'allow_plus'       => \lib\request::post('allowPlus'),
+			'allow_minus'      => \lib\request::post('allowMinus'),
+			'remote_user'      => \lib\request::post('remoteUser'),
+			'24h'              => \lib\request::post('24h'),
+			'status'           => \lib\request::post('status'),
+			'visibility'       => \lib\request::post('visibility'),
+			'barcode1'         => \lib\request::post('barcode'),
+			'rfid1'            => \lib\request::post('rfid'),
+			'qrcode1'          => \lib\request::post('qrcode'),
+			'allow_desc_enter' => \lib\request::post('allowDescEnter'),
+			'allow_desc_exit'  => \lib\request::post('allowDescExit'),
 		];
 
 		return $args;
@@ -130,13 +130,13 @@ class model extends \content_a\main\model
 
 		if(\lib\debug::$status)
 		{
-			if(\lib\utility::post('parent_mobile'))
+			if(\lib\request::post('parent_mobile'))
 			{
 				$parent_request               = [];
-				$parent_request['othertitle'] = \lib\utility::post('othertitle');
+				$parent_request['othertitle'] = \lib\request::post('othertitle');
 				$parent_request['id']    = $member;
-				$parent_request['title']      = \lib\utility::post('title');
-				$parent_request['mobile']     = \lib\utility::post('parent_mobile');
+				$parent_request['title']      = \lib\request::post('title');
+				$parent_request['mobile']     = \lib\request::post('parent_mobile');
 				\lib\utility::set_request_array($parent_request);
 				$this->add_parent();
 			}

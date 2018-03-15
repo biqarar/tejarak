@@ -80,12 +80,12 @@ class model extends \content_a\main\model
 
 		$this->user_id = $this->login('id');
 
-		if(\lib\utility::post('notify_type') === 'owner')
+		if(\lib\request::post('notify_type') === 'owner')
 		{
 			$this->change_owner();
 		}
 
-		if(\lib\utility::post('notify_type') === 'parent')
+		if(\lib\request::post('notify_type') === 'parent')
 		{
 			$this->set_parent();
 		}

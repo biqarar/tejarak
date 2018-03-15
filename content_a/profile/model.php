@@ -17,7 +17,7 @@ class model extends \content_a\main\model
 			'data' => null,
 			'meta' =>
 			[
-				'input'   => \lib\utility::post(),
+				'input'   => \lib\request::post(),
 				'session' => $_SESSION,
 			],
 		];
@@ -35,7 +35,7 @@ class model extends \content_a\main\model
 
 
 		// check name lenght
-		if(mb_strlen(\lib\utility::post('name')) > 50)
+		if(mb_strlen(\lib\request::post('name')) > 50)
 		{
 			\lib\debug::error(T_("Please enter your name less than 50 character"), 'name', 'arguments');
 			return false;
@@ -43,7 +43,7 @@ class model extends \content_a\main\model
 
 
 		// check name lenght
-		if(mb_strlen(\lib\utility::post('displayname')) > 50)
+		if(mb_strlen(\lib\request::post('displayname')) > 50)
 		{
 			\lib\debug::error(T_("Please enter your displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
@@ -51,7 +51,7 @@ class model extends \content_a\main\model
 
 
 		// check name lenght
-		if(mb_strlen(\lib\utility::post('family')) > 50)
+		if(mb_strlen(\lib\request::post('family')) > 50)
 		{
 			\lib\debug::error(T_("Please enter your family less than 50 character"), 'family', 'arguments');
 			return false;
@@ -81,27 +81,27 @@ class model extends \content_a\main\model
 		}
 
 		// // if the name exist update user display name
-		// if(\lib\utility::post('name') != $this->login('name'))
+		// if(\lib\request::post('name') != $this->login('name'))
 		// {
-		// 	$update_user['name'] = \lib\utility::post('name');
+		// 	$update_user['name'] = \lib\request::post('name');
 		// 	$user_session['name'] = $update_user['name'];
 		// }
 
 		// // if the family exist update user display family
-		// if(\lib\utility::post('family') != $this->login('family'))
+		// if(\lib\request::post('family') != $this->login('family'))
 		// {
-		// 	$update_user['lastname'] = \lib\utility::post('family');
+		// 	$update_user['lastname'] = \lib\request::post('family');
 		// 	$user_session['family'] = $update_user['lastname'];
 		// }
 
 		// if the postion exist update user display postion
-		if(\lib\utility::post('displayname') != $this->login('displayname'))
+		if(\lib\request::post('displayname') != $this->login('displayname'))
 		{
-			$update_user['displayname'] = \lib\utility::post('displayname');
+			$update_user['displayname'] = \lib\request::post('displayname');
 			$user_session['displayname'] = $update_user['displayname'];
 		}
 
-		// $new_unit = \lib\utility::post('user-unit');
+		// $new_unit = \lib\request::post('user-unit');
 
 		// if($new_unit === '')
 		// {

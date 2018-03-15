@@ -12,9 +12,9 @@ class model extends \content_a\main\model
 	public function post_hour($_args)
 	{
 
-		$response = \lib\utility::post('response');
-		$id       = \lib\utility::post('id');
-		$type     = \lib\utility::post('type');
+		$response = \lib\request::post('response');
+		$id       = \lib\request::post('id');
+		$type     = \lib\request::post('type');
 
 		$this->user_id       = $this->login('id');
 		$request             = [];

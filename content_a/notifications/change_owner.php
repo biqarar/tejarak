@@ -12,13 +12,13 @@ trait change_owner
 		//  'type' => string 'owner' (length=5)
 		//  'notify' => string 'q' (length=1)
 
-		if(!in_array(\lib\utility::post('answer'), ['accept', 'reject']))
+		if(!in_array(\lib\request::post('answer'), ['accept', 'reject']))
 		{
 			\lib\debug::error(T_("Invalid answer!"));
 			return false;
 		}
 
-		$notify = \lib\utility::post('notify');
+		$notify = \lib\request::post('notify');
 		$notify = \lib\utility\shortURL::decode($notify);
 
 		if(!$notify)
@@ -27,7 +27,7 @@ trait change_owner
 			return false;
 		}
 
-		$team_id = \lib\utility::post('team_code');
+		$team_id = \lib\request::post('team_code');
 		$team_id = \lib\utility\shortURL::decode($team_id);
 
 		if(!$team_id)
@@ -67,7 +67,7 @@ trait change_owner
 				'readdate' => date("Y-m-d H:i:s"),
 			];
 
-			$action = \lib\utility::post('answer');
+			$action = \lib\request::post('answer');
 
 			$team_name = isset($check['meta']['team_name']) ? $check['meta']['team_name'] : null;
 
@@ -79,7 +79,7 @@ trait change_owner
 			];
 			\lib\db\notifications::set($notify_set);
 
-			if(\lib\utility::post('answer') === 'accept')
+			if(\lib\request::post('answer') === 'accept')
 			{
 				// ACCEPT
 				// the accept in index 0 of array answer in options

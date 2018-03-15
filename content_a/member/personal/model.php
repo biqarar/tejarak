@@ -15,9 +15,9 @@ class model extends \content_a\member\model
 		$args =
 		[
 
-			'firstname'        => \lib\utility::post('firstName'),
-			'lastname'         => \lib\utility::post('lastName'),
-			'personnel_code'   => \lib\utility::post('personnelcode'),
+			'firstname'        => \lib\request::post('firstName'),
+			'lastname'         => \lib\request::post('lastName'),
+			'personnel_code'   => \lib\request::post('personnelcode'),
 		];
 
 		return $args;

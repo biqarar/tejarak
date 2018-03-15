@@ -12,7 +12,7 @@ class model extends \content_a\main\model
 		[
 			'meta' =>
 			[
-				'input'   => \lib\utility::post(),
+				'input'   => \lib\request::post(),
 				'session' => $_SESSION,
 			]
 		];
@@ -34,7 +34,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		if(\lib\utility::post('deleteGroup'))
+		if(\lib\request::post('deleteGroup'))
 		{
 			\lib\db\teams::update(['telegram_id' => null], $team_id);
 			\lib\debug::warn(T_("The telegram group was removed"));
@@ -42,14 +42,14 @@ class model extends \content_a\main\model
 		}
 
 		$update_team = [];
-		if(\lib\utility::post('reportHeader') && mb_strlen(\lib\utility::post('reportHeader')) > 255)
+		if(\lib\request::post('reportHeader') && mb_strlen(\lib\request::post('reportHeader')) > 255)
 		{
 			logs::set('report:header:max:leng', $this->login('id'), $log_meta);
 			\lib\debug::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
 			return false;
 		}
 
-		if(\lib\utility::post('reportFooter') && mb_strlen(\lib\utility::post('reportFooter')) > 255)
+		if(\lib\request::post('reportFooter') && mb_strlen(\lib\request::post('reportFooter')) > 255)
 		{
 			logs::set('report:footer:max:leng', $this->login('id'), $log_meta);
 			\lib\debug::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
@@ -66,16 +66,16 @@ class model extends \content_a\main\model
 		}
 
 
-		if(\lib\utility::post('timed_auto_report_time'))
+		if(\lib\request::post('timed_auto_report_time'))
 		{
-			if(!preg_match("/^\d{2}\:\d{2}$/", \lib\utility::post('timed_auto_report_time')))
+			if(!preg_match("/^\d{2}\:\d{2}$/", \lib\request::post('timed_auto_report_time')))
 			{
 				\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', $this->login('id'));
 				\lib\debug::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
 				return false;
 			}
 
-			$time_changed = \lib\utility\timezone::change_time('H:i', \lib\utility::post('timed_auto_report_time'), "Asia/Tehran");
+			$time_changed = \lib\utility\timezone::change_time('H:i', \lib\request::post('timed_auto_report_time'), "Asia/Tehran");
 			$update_team['timed_auto_report'] = $time_changed;
 		}
 		else
@@ -85,9 +85,9 @@ class model extends \content_a\main\model
 		}
 
 
-		$update_team['reportheader'] = \lib\utility::post('reportHeader');
+		$update_team['reportheader'] = \lib\request::post('reportHeader');
 
-		$update_team['reportfooter'] = \lib\utility::post('reportFooter');
+		$update_team['reportfooter'] = \lib\request::post('reportFooter');
 
 		$update_user_teams = [];
 		$args              = [];
@@ -113,7 +113,7 @@ class model extends \content_a\main\model
 
 		$report_settings = \lib\db\teams::$default_settings;
 
-		foreach (\lib\utility::post() as $key => $value)
+		foreach (\lib\request::post() as $key => $value)
 		{
 			if(preg_match("/^(daily|enterexit)\_(.*)$/", $key, $split))
 			{

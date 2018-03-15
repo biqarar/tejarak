@@ -15,12 +15,12 @@ class model extends \content_a\main\model
 		$args =
 		[
 
-			'show_avatar'       => \lib\utility::post('showAvatar'),
-			'quick_traffic'     => \lib\utility::post('quickTraffic'),
-			'allow_plus'        => \lib\utility::post('allowPlus'),
-			'allow_minus'       => \lib\utility::post('allowMinus'),
-			'remote_user'       => \lib\utility::post('remoteUser'),
-			'24h'               => \lib\utility::post('24h'),
+			'show_avatar'       => \lib\request::post('showAvatar'),
+			'quick_traffic'     => \lib\request::post('quickTraffic'),
+			'allow_plus'        => \lib\request::post('allowPlus'),
+			'allow_minus'       => \lib\request::post('allowMinus'),
+			'remote_user'       => \lib\request::post('remoteUser'),
+			'24h'               => \lib\request::post('24h'),
 
 
 		];

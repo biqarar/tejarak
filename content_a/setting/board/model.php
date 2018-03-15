@@ -13,22 +13,22 @@ class model extends \content_a\main\model
 	public function getPost()
 	{
 		$args = [];
-		if(\lib\utility::post('formType') === 'event')
+		if(\lib\request::post('formType') === 'event')
 		{
 			$args =
 			[
-				'event_title'      => \lib\utility::post('event_title'),
-				'event_date_start' => \lib\utility\human::number(\lib\utility::post('event_date_start'), 'en'),
-				'event_date'       => \lib\utility\human::number(\lib\utility::post('event_date'), 'en'),
+				'event_title'      => \lib\request::post('event_title'),
+				'event_date_start' => \lib\utility\human::number(\lib\request::post('event_date_start'), 'en'),
+				'event_date'       => \lib\utility\human::number(\lib\request::post('event_date'), 'en'),
 			];
 		}
 
-		if(\lib\utility::post('formType') === 'board')
+		if(\lib\request::post('formType') === 'board')
 		{
 			$args =
 			[
-				'language'    => \lib\utility::post('language'),
-				'cardsize'    => \lib\utility::post('cardsize'),
+				'language'    => \lib\request::post('language'),
+				'cardsize'    => \lib\request::post('cardsize'),
 			];
 		}
 

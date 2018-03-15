@@ -44,9 +44,9 @@ class model extends \content_a\member\model
 	{
 		$this->user_id                = $this->login('id');
 
-		if(\lib\utility::post('remove'))
+		if(\lib\request::post('remove'))
 		{
-			\lib\utility::set_request_array(['id' => \lib\utility::post('remove'), 'related_id' => \lib\url::dir(0)]);
+			\lib\utility::set_request_array(['id' => \lib\request::post('remove'), 'related_id' => \lib\url::dir(0)]);
 			$this->delete_parent();
 			$this->redirector(\lib\url::pwd());
 			return ;
@@ -62,10 +62,10 @@ class model extends \content_a\member\model
 		if(isset($user_id['user_id']))
 		{
 			$parent_request               = [];
-			$parent_request['othertitle'] = \lib\utility::post('othertitle');
+			$parent_request['othertitle'] = \lib\request::post('othertitle');
 			$parent_request['id']         = \lib\utility\shortURL::encode($user_id['user_id']);
-			$parent_request['title']      = \lib\utility::post('title');
-			$parent_request['mobile']     = \lib\utility::post('parent_mobile');
+			$parent_request['title']      = \lib\request::post('title');
+			$parent_request['mobile']     = \lib\request::post('parent_mobile');
 			$parent_request['related_id'] = \lib\url::dir(0);
 			\lib\utility::set_request_array($parent_request);
 			$this->add_parent();
@@ -75,7 +75,7 @@ class model extends \content_a\member\model
 
 				$t_T =
 				[
-					'title' => (\lib\utility::post('othertitle') && \lib\utility::post('title') === 'custom') ? \lib\utility::post('othertitle') : T_(ucfirst(\lib\utility::post('title'))),
+					'title' => (\lib\request::post('othertitle') && \lib\request::post('title') === 'custom') ? \lib\request::post('othertitle') : T_(ucfirst(\lib\request::post('title'))),
 					'name'  => $this->view()->data->member['displayname'],
 					'team'  => $this->view()->data->current_team['name'],
 				];
@@ -93,7 +93,7 @@ class model extends \content_a\member\model
 				else
 				{
 					// send by sms
-					\lib\utility\sms::send(\lib\utility::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
+					\lib\utility\sms::send(\lib\request::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
 				}
 
 				$this->redirector(\lib\url::pwd());

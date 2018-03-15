@@ -24,8 +24,8 @@ class model extends \content_a\main\model
 	public function post_last()
 	{
 		$request            = [];
-		$request['hour_id'] = \lib\utility::post('hour_id');
-		$request['type']  = \lib\utility::post('type');
+		$request['hour_id'] = \lib\request::post('hour_id');
+		$request['type']  = \lib\request::post('type');
 		$this->user_id      = $this->login('id');
 
 		return $this->hour_change_type();
