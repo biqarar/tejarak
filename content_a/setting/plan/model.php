@@ -38,7 +38,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$plan = utility::post('plan');
+		$plan = \lib\request::post('plan');
 		if(!$plan)
 		{
 			\lib\db\logs::set('plan:plan:not:set', $this->login('id'));
