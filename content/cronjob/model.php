@@ -11,7 +11,7 @@ class model extends \mvc\model
 	public function post_cronjob($_args = null)
 	{
 
-		$url = \lib\router::get_url(1);
+		$url = \lib\url::dir(1);
 
 		switch ($url)
 		{

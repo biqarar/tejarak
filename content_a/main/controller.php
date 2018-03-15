@@ -117,7 +117,7 @@ class controller extends \mvc\controller
 			}
 		}
 
-		$url_1 = \lib\router::get_url(1);
+		$url_1 = \lib\url::dir(1);
 
 		if(is_null($url_1))
 		{
