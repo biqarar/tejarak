@@ -18,7 +18,7 @@ class model extends \content_a\member\model
 
 		$user_id =
 		[
-			'id'      => \lib\utility\shortURL::decode(\lib\router::get_url(3)),
+			'id'      => \lib\utility\shortURL::decode(\lib\url::dir(3)),
 			'team_id' => $team_id,
 			'limit'   => 1,
 		];
@@ -54,7 +54,7 @@ class model extends \content_a\member\model
 
 		$user_id =
 		[
-			'id'      => \lib\utility\shortURL::decode(\lib\router::get_url(3)),
+			'id'      => \lib\utility\shortURL::decode(\lib\url::dir(3)),
 			'team_id' => \lib\utility\shortURL::decode(\lib\url::dir(0)),
 			'limit'   => 1,
 		];

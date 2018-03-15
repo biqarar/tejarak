@@ -120,7 +120,7 @@ class model extends \content_a\main\model
 		}
 
 		$url             = \lib\url::directory();
-		$member          = \lib\router::get_url(3);
+		$member          = \lib\url::dir(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \lib\url::dir(0);
 		\lib\utility::set_request_array($request);

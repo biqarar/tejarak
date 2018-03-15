@@ -34,7 +34,7 @@ class model extends \content_a\main\model
 	{
 		$request            = $this->getPost();
 		$request['team']    = \lib\url::dir(0);
-		$request['hour_id'] = \lib\router::get_url(3);
+		$request['hour_id'] = \lib\url::dir(3);
 
 		\lib\utility::set_request_array($request);
 		$this->user_id = $this->login('id');

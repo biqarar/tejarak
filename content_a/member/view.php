@@ -7,7 +7,7 @@ class view extends \content_a\main\view
 	public function config()
 	{
 		$team                      = \lib\url::dir(0);
-		$member                    = \lib\router::get_url(3);
+		$member                    = \lib\url::dir(3);
 
 		if(isset($this->data->current_team['creator']))
 		{
