@@ -272,7 +272,7 @@ trait full
 	        $notify_text = T_("You have new invoice for :team by amount :amount :unit",
 			[
 				'team'   => $this->team_details['name'],
-				'amount' => \lib\utility\human::number(number_format($amount), \lib\define::get_language()),
+				'amount' => \lib\utility\human::number(number_format($amount), \lib\language::get_language()),
 				'unit'   => T_("toman"),
 			]);
 

@@ -99,7 +99,7 @@ trait year
 		}
 		else
 		{
-			if(\lib\define::get_language() === 'fa')
+			if(\lib\language::get_language() === 'fa')
 			{
 				$date_is_shamsi = true;
 			}

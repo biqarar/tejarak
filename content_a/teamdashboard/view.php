@@ -33,7 +33,7 @@ class view extends \content_a\main\view
 			foreach ($dashboard_detail['last_time_chart'] as $key => $value)
 			{
 				$date = $key;
-				if(\lib\define::get_language() === 'fa')
+				if(\lib\language::get_language() === 'fa')
 				{
 					$date = \lib\utility\jdate::date("Y-m-d", strtotime($date), false);
 				}

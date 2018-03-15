@@ -11,7 +11,7 @@ trait lasttraffic
 
 	public function lasttraffic()
 	{
-		$default_language = \lib\define::get_language();
+		$default_language = \lib\language::get_language();
 		$meta             = [];
 		$meta['limit']    = 10;
 		$meta['team_id']  = $this->team_id;

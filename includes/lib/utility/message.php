@@ -65,7 +65,7 @@ class message
 	public function __construct($_team_id, $_option = [])
 	{
 		$this->team_id = $_team_id;
-		$this->current_language = \lib\define::get_language();
+		$this->current_language = \lib\language::get_language();
 	}
 
 

@@ -111,7 +111,7 @@ class view extends \content_a\main\view
 				{
 					$format = "Y-m-d D";
 					$date = date($format, strtotime($key));
-					if(\lib\define::get_language() === 'fa')
+					if(\lib\language::get_language() === 'fa')
 					{
 						$date = \lib\utility\jdate::date($format, strtotime($key), false);
 					}
