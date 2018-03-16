@@ -24,7 +24,7 @@ class view extends \lib\view
 		$this->data->template['price']       = 'content/template/priceTable.html';
 		$this->data->template['priceSchool'] = 'content/template/priceSchoolTable.html';
 
-		if(in_array(\lib\engine\content::name(), ['content']))
+		if(\lib\url::content() === null)
 		{
 			// get total uses
 			$total_users                     = ceil(intval(\lib\db\hours::sum_total_hours()) / 60);
