@@ -32,7 +32,7 @@ trait member_id
 		if($mobile && !$mobile_syntax)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Invalid mobile number"), 'mobile', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("Invalid mobile number"), 'mobile', 'arguments');
 			return false;
 		}
 		elseif($mobile && $mobile_syntax && ctype_digit($mobile))
@@ -116,7 +116,7 @@ trait member_id
 			else
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:invalid:patch:not:found', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Invalid user id"), 'user', 'system');
+				if($_args['debug']) \lib\notif::error(T_("Invalid user id"), 'user', 'system');
 				return false;
 			}
 
@@ -133,14 +133,14 @@ trait member_id
 				if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
 				{
 					if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
-					if($_args['debug']) \lib\debug::error(T_("Invalid user id"), 'user', 'system');
+					if($_args['debug']) \lib\notif::error(T_("Invalid user id"), 'user', 'system');
 					return false;
 				}
 			}
 			else
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("User id not set"), 'user', 'system');
+				if($_args['debug']) \lib\notif::error(T_("User id not set"), 'user', 'system');
 				return false;
 			}
 
@@ -245,7 +245,7 @@ trait member_id
 		if(!$this->master_user_id)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("User id not found"), 'user', 'system');
+			if($_args['debug']) \lib\notif::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
 
@@ -261,7 +261,7 @@ trait member_id
 			if($userteam_record)
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("This user was already added to this team"), 'mobile', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("This user was already added to this team"), 'mobile', 'arguments');
 				return false;
 			}
 		}

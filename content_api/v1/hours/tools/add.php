@@ -28,7 +28,7 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		// \lib\debug::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
@@ -42,7 +42,7 @@ trait add
 		if(!$this->user_id)
 		{
 			\lib\db\logs::set('api:hours:user_id:notfound', $this->user_id, $log_meta);
-			\lib\debug::error(T_("User not found"), 'user', 'permission');
+			\lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
@@ -52,7 +52,7 @@ trait add
 		if(!$user)
 		{
 			\lib\db\logs::set('api:hours:user:notfound', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Member not found"), 'user', 'arguments');
+			\lib\notif::error(T_("Member not found"), 'user', 'arguments');
 			return false;
 		}
 
@@ -62,7 +62,7 @@ trait add
 		if(!$team)
 		{
 			\lib\db\logs::set('api:hours:team:notfound', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Team not found"), 'team', 'permission');
+			\lib\notif::error(T_("Team not found"), 'team', 'permission');
 			return false;
 		}
 		// load team data
@@ -76,7 +76,7 @@ trait add
 		else
 		{
 			\lib\db\logs::set('api:hours:team:notfound:invalid', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Can not access to set time of this team"), 'team', 'permission');
+			\lib\notif::error(T_("Can not access to set time of this team"), 'team', 'permission');
 			return false;
 		}
 
@@ -87,7 +87,7 @@ trait add
 		if($minus && !is_numeric($minus))
 		{
 			\lib\db\logs::set('api:hours:minus:notfound', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Member not found"), 'minus', 'arguments');
+			\lib\notif::error(T_("Member not found"), 'minus', 'arguments');
 			return false;
 		}
 
@@ -95,7 +95,7 @@ trait add
 		if($plus && !is_numeric($plus))
 		{
 			\lib\db\logs::set('api:hours:plus:notfound', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Member not found"), 'plus', 'arguments');
+			\lib\notif::error(T_("Member not found"), 'plus', 'arguments');
 			return false;
 		}
 
@@ -103,14 +103,14 @@ trait add
 		if(!$type)
 		{
 			\lib\db\logs::set('api:hours:type:notset', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Type not set"), 'type', 'arguments');
+			\lib\notif::error(T_("Type not set"), 'type', 'arguments');
 			return false;
 		}
 
 		if(!in_array($type, ['enter', 'exit']))
 		{
 			\lib\db\logs::set('api:hours:type:invalid', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid arguments type"), 'type', 'arguments');
+			\lib\notif::error(T_("Invalid arguments type"), 'type', 'arguments');
 			return false;
 		}
 
@@ -118,7 +118,7 @@ trait add
 		if($desc && mb_strlen($desc) > 500)
 		{
 			\lib\db\logs::set('api:hours:desc:max:limit', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Your text is too large"), 'text_enter', 'arguments');
+			\lib\notif::error(T_("Your text is too large"), 'text_enter', 'arguments');
 			return false;
 		}
 
@@ -146,13 +146,13 @@ trait add
 		else
 		{
 			\lib\db\logs::set('api:hours:method:invalid', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid method of api"), 'method', 'permission');
+			\lib\notif::error(T_("Invalid method of api"), 'method', 'permission');
 			return false;
 		}
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
-			\lib\debug::title(null);
+			\lib\notif::title(null);
 			$name = null;
 
 			if(\lib\temp::get('enter_exit_name'))
@@ -162,12 +162,12 @@ trait add
 			if($type === 'enter')
 			{
 				$msg_notify = T_("Dear :name;", ['name'=> $name])."<br />". T_('Your enter was registered.').' '. T_("Have a good time.");
-				\lib\debug::true($msg_notify);
+				\lib\notif::true($msg_notify);
 			}
 			else
 			{
 				$msg_notify = T_("Bye Bye :name ;)", ['name'=> $name]);
-				\lib\debug::true($msg_notify);
+				\lib\notif::true($msg_notify);
 			}
 		}
 	}

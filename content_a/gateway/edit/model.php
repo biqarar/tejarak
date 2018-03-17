@@ -55,7 +55,7 @@ class model extends \content_a\main\model
 		// check the user is login
 		if(!$this->login())
 		{
-			\lib\debug::error(T_("Please login to add a team"), false, 'arguments');
+			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
@@ -70,7 +70,7 @@ class model extends \content_a\main\model
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway(['method' => 'patch']);
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\redirect::to()->set_domain()->set_url("a/$team/gateway");
 		}

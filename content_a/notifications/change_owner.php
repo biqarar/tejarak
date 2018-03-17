@@ -14,7 +14,7 @@ trait change_owner
 
 		if(!in_array(\lib\request::post('answer'), ['accept', 'reject']))
 		{
-			\lib\debug::error(T_("Invalid answer!"));
+			\lib\notif::error(T_("Invalid answer!"));
 			return false;
 		}
 
@@ -23,7 +23,7 @@ trait change_owner
 
 		if(!$notify)
 		{
-			\lib\debug::error(T_("Invalid notify!"));
+			\lib\notif::error(T_("Invalid notify!"));
 			return false;
 		}
 
@@ -32,7 +32,7 @@ trait change_owner
 
 		if(!$team_id)
 		{
-			\lib\debug::error(T_("Invalid team id!"));
+			\lib\notif::error(T_("Invalid team id!"));
 			return false;
 		}
 
@@ -129,7 +129,7 @@ trait change_owner
 		}
 		else
 		{
-			\lib\debug::error(T_("Invalid notify detail"));
+			\lib\notif::error(T_("Invalid notify detail"));
 			return false;
 		}
 

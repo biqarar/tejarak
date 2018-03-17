@@ -33,21 +33,21 @@ trait u
 		if(!$id)
 		{
 			\lib\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
 		if(!$check_is_my_in_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_u']))
 		{
 			\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+			\lib\notif::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 			return false;
 		}
 
 		if(!isset($check_is_my_in_team['id']) || !isset($check_is_my_in_team['userteam_id']))
 		{
 			\lib\db\logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid team data"), 'team', 'system');
+			\lib\notif::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
 

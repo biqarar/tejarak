@@ -14,7 +14,7 @@ trait set_parent
 
 		if(!in_array(\lib\request::post('answer'), ['accept', 'reject']))
 		{
-			\lib\debug::error(T_("Invalid answer!"));
+			\lib\notif::error(T_("Invalid answer!"));
 			return false;
 		}
 
@@ -23,7 +23,7 @@ trait set_parent
 
 		if(!$notify)
 		{
-			\lib\debug::error(T_("Invalid notify!"));
+			\lib\notif::error(T_("Invalid notify!"));
 			return false;
 		}
 
@@ -32,7 +32,7 @@ trait set_parent
 
 		if(!$child)
 		{
-			\lib\debug::error(T_("Invalid parent!"));
+			\lib\notif::error(T_("Invalid parent!"));
 			return false;
 		}
 
@@ -132,7 +132,7 @@ trait set_parent
 		}
 		else
 		{
-			\lib\debug::error(T_("Invalid notify detail"));
+			\lib\notif::error(T_("Invalid notify detail"));
 			return false;
 		}
 	}

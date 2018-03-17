@@ -20,7 +20,7 @@ class model extends \content_a\main\model
 		if(!$team)
 		{
 			\lib\db\logs::set('plan:invalid:team', $this->login('id'));
-			\lib\debug::error(T_("Invalid team!"), 'team');
+			\lib\notif::error(T_("Invalid team!"), 'team');
 			return false;
 		}
 
@@ -42,7 +42,7 @@ class model extends \content_a\main\model
 		if(!$plan)
 		{
 			\lib\db\logs::set('plan:plan:not:set', $this->login('id'));
-			\lib\debug::error(T_("Please select one of plan"), 'plan');
+			\lib\notif::error(T_("Please select one of plan"), 'plan');
 			return false;
 		}
 
@@ -66,7 +66,7 @@ class model extends \content_a\main\model
 		if(!in_array($plan, $all_plan_list))
 		{
 			\lib\db\logs::set('plan:invalid:plan', $this->login('id'));
-			\lib\debug::error(T_("Invalid plan!"), 'plan');
+			\lib\notif::error(T_("Invalid plan!"), 'plan');
 			return false;
 		}
 
@@ -76,7 +76,7 @@ class model extends \content_a\main\model
 		if(!$team)
 		{
 			\lib\db\logs::set('plan:invalid:team', $this->login('id'));
-			\lib\debug::error(T_("Invalid team!"), 'team');
+			\lib\notif::error(T_("Invalid team!"), 'team');
 			return false;
 		}
 
@@ -85,7 +85,7 @@ class model extends \content_a\main\model
 		if(!$access)
 		{
 			\lib\db\logs::set('plan:no:access:to:change:plan', $this->login('id'));
-			\lib\debug::error(T_("No access to change plan"), 'team');
+			\lib\notif::error(T_("No access to change plan"), 'team');
 			return false;
 		}
 
@@ -99,15 +99,15 @@ class model extends \content_a\main\model
 
 		if($result)
 		{
-			\lib\debug::true(T_("Your team plan was changed"));
-			if(\lib\debug::$status)
+			\lib\notif::true(T_("Your team plan was changed"));
+			if(\lib\notif::$status)
 			{
 				\lib\redirect::pwd();
 			}
 		}
 		else
 		{
-			// \lib\debug::error(T_("Can not save this plan of your team"));
+			// \lib\notif::error(T_("Can not save this plan of your team"));
 			return false;
 		}
 	}

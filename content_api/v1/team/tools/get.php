@@ -327,7 +327,7 @@ trait get
 		if($type && !is_string($type))
 		{
 			\lib\db\logs::set('api:team:get:list:type:invalid', $this->user_id);
-			\lib\debug::error(T_("Invalid team type"), 'type', 'arguments');
+			\lib\notif::error(T_("Invalid team type"), 'type', 'arguments');
 			return false;
 		}
 
@@ -386,7 +386,7 @@ trait get
 
 		if($_options['debug'])
 		{
-			\lib\debug::title(T_("Operation Faild"));
+			\lib\notif::title(T_("Operation Faild"));
 		}
 
 		$log_meta =
@@ -413,7 +413,7 @@ trait get
 			if($_options['debug'])
 			{
 				\lib\db\logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
-				\lib\debug::error(T_("Team id or shortname not set"), 'id', 'arguments');
+				\lib\notif::error(T_("Team id or shortname not set"), 'id', 'arguments');
 			}
 			return false;
 		}
@@ -423,7 +423,7 @@ trait get
 			\lib\db\logs::set('api:team:id:shortname:together:set', $this->user_id, $log_meta);
 			if($_options['debug'])
 			{
-				\lib\debug::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
+				\lib\notif::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
 			}
 			return false;
 		}
@@ -468,14 +468,14 @@ trait get
 			\lib\db\logs::set('api:team:access:denide', $this->user_id, $log_meta);
 			if($_options['debug'])
 			{
-				\lib\debug::error(T_("Can not access to load this team details"), 'team', 'permission');
+				\lib\notif::error(T_("Can not access to load this team details"), 'team', 'permission');
 			}
 			return false;
 		}
 
 		if($_options['debug'])
 		{
-			\lib\debug::title(T_("Operation complete"));
+			\lib\notif::title(T_("Operation complete"));
 		}
 
 		$result = $this->ready_team($result);

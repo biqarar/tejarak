@@ -38,7 +38,7 @@ class model extends \content_a\main\model
 	 */
 	public function redirector_refresh()
 	{
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\redirect::pwd();
 			return;

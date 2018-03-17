@@ -19,7 +19,7 @@ trait delete
 			return false;
 		}
 
-		\lib\debug::title(T_("Operation Faild"));
+		\lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -34,7 +34,7 @@ trait delete
 		if(!$id)
 		{
 			\lib\db\logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Id not set"), 'id', 'arguments');
+			\lib\notif::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -42,7 +42,7 @@ trait delete
 		if(!$team_details || !isset($team_details['id']))
 		{
 			\lib\db\logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Can not access to delete this team"), 'id', 'permission');
+			\lib\notif::error(T_("Can not access to delete this team"), 'id', 'permission');
 			return false;
 		}
 
@@ -50,8 +50,8 @@ trait delete
 		{
 			$log_meta['meta']['team'] = $team_details;
 			\lib\db\logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
-			\lib\debug::title(T_("Operation Complete"));
-			\lib\debug::warn(T_("The team was deleted"));
+			\lib\notif::title(T_("Operation Complete"));
+			\lib\notif::warn(T_("The team was deleted"));
 		}
 
 	}

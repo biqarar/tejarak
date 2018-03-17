@@ -28,7 +28,7 @@ trait action
 
 		$_args = array_merge($default_args, $_args);
 
-		\lib\debug::title(T_("Operation Faild"));
+		\lib\notif::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
@@ -42,7 +42,7 @@ trait action
 		if(!$this->user_id)
 		{
 			\lib\db\logs::set('api:houredit:action:user_id:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("User not found"), 'user', 'permission');
+			\lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
@@ -52,7 +52,7 @@ trait action
 		if(!$id)
 		{
 			\lib\db\logs::set('api:houredit:action:id:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Id not set or invalid id"), 'id', 'arguments');
+			\lib\notif::error(T_("Id not set or invalid id"), 'id', 'arguments');
 			return false;
 		}
 
@@ -60,14 +60,14 @@ trait action
 		if(!$type)
 		{
 			\lib\db\logs::set('api:houredit:action:type:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Action type not set"), 'type', 'arguments');
+			\lib\notif::error(T_("Action type not set"), 'type', 'arguments');
 			return false;
 		}
 
 		if(!in_array($type, ['accept', 'reject']))
 		{
 			\lib\db\logs::set('api:houredit:action:type:inavalid', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid action type"), 'type', 'arguments');
+			\lib\notif::error(T_("Invalid action type"), 'type', 'arguments');
 			return false;
 		}
 
@@ -75,7 +75,7 @@ trait action
 		if($response && mb_strlen($response) > 500)
 		{
 			\lib\db\logs::set('api:houredit:action:response:max:length', $this->user_id, $log_meta);
-			\lib\debug::error(T_("You can set less than 500 character in response"));
+			\lib\notif::error(T_("You can set less than 500 character in response"));
 			return false;
 		}
 
@@ -84,7 +84,7 @@ trait action
 		if(!$team_id)
 		{
 			\lib\db\logs::set('api:houredit:action:team:id:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
@@ -95,7 +95,7 @@ trait action
 		if(!isset($access_team['id']))
 		{
 			\lib\db\logs::set('api:houredit:action:access:forbidden', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Can not access to accept or reject hour edit request"), 'team', 'permission');
+			\lib\notif::error(T_("Can not access to accept or reject hour edit request"), 'team', 'permission');
 			return false;
 		}
 
@@ -103,14 +103,14 @@ trait action
 		if(!$is_exist_record || !isset($is_exist_record['team_id']) || !isset($is_exist_record['creator']) || !isset($is_exist_record['status']))
 		{
 			\lib\db\logs::set('api:houredit:id:record:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invaid id. record not found"), 'id', 'arguments');
+			\lib\notif::error(T_("Invaid id. record not found"), 'id', 'arguments');
 			return false;
 		}
 
 		if($is_exist_record['status'] != 'awaiting')
 		{
 			\lib\db\logs::set('api:houredit:id:record:is:not:awaiting', $this->user_id, $log_meta);
-			\lib\debug::error(T_("This request has already been reviewed"), 'id', 'arguments');
+			\lib\notif::error(T_("This request has already been reviewed"), 'id', 'arguments');
 			return false;
 		}
 
@@ -121,7 +121,7 @@ trait action
 		else
 		{
 			\lib\db\logs::set('api:houredit:team:id:hourrequests:team_id:not:mathc', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invaid team id"), 'team', 'permission');
+			\lib\notif::error(T_("Invaid team id"), 'team', 'permission');
 			return false;
 		}
 
@@ -132,7 +132,7 @@ trait action
 		if(!isset($access_team_user['id']))
 		{
 			\lib\db\logs::set('api:houredit:action:access:forbidden:user:not:in:team', $this->user_id, $log_meta);
-			\lib\debug::error(T_("This user is not in this team"), 'team', 'permission');
+			\lib\notif::error(T_("This user is not in this team"), 'team', 'permission');
 			return false;
 		}
 
@@ -154,7 +154,7 @@ trait action
 				if(!isset($hour_detail['id']))
 				{
 					\lib\db\logs::set('api:houredit:action:hour_id:set:but:not:found', $this->user_id, $log_meta);
-					\lib\debug::error(T_("Hour id not found!"), 'id', 'system');
+					\lib\notif::error(T_("Hour id not found!"), 'id', 'system');
 					return false;
 				}
 
@@ -180,16 +180,16 @@ trait action
 
 		\lib\db\hourrequests::update($update, $id);
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
-			\lib\debug::title(T_("Operation complete"));
+			\lib\notif::title(T_("Operation complete"));
 			if($type === 'accept')
 			{
-				\lib\debug::true(T_("Request accepted"));
+				\lib\notif::true(T_("Request accepted"));
 			}
 			else
 			{
-				\lib\debug::warn(T_("Request rejected"));
+				\lib\notif::warn(T_("Request rejected"));
 			}
 		}
 	}

@@ -40,7 +40,7 @@ trait get
 		if(!$id)
 		{
 			\lib\db\logs::set('api:report:get:team:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Team id not set"), 'id', 'arguments');
+			\lib\notif::error(T_("Team id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -48,14 +48,14 @@ trait get
 		if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'admin']))
 		{
 			\lib\db\logs::set('api:report:list:access:deniy', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Can not access to load this team details"), 'id', 'permission');
+			\lib\notif::error(T_("Can not access to load this team details"), 'id', 'permission');
 			return false;
 		}
 
 		if(!isset($check_is_my_team['id']))
 		{
 			\lib\db\logs::set('api:report:get:team:id:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid team data"), 'id', 'system');
+			\lib\notif::error(T_("Invalid team data"), 'id', 'system');
 			return false;
 		}
 

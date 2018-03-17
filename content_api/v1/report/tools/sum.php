@@ -33,21 +33,21 @@ trait sum
 		if(!$id)
 		{
 			\lib\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
 		if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'report_sum']))
 		{
 			\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+			\lib\notif::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 			return false;
 		}
 
 		if(!isset($check_is_my_team['id']))
 		{
 			\lib\db\logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid team data"), 'team', 'system');
+			\lib\notif::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
 
@@ -58,7 +58,7 @@ trait sum
 		if($year && (!is_numeric($year) || mb_strlen($year) !== 4))
 		{
 			\lib\db\logs::set('api:report:sum:invalid:year', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid input year"), 'year', 'arguments');
+			\lib\notif::error(T_("Invalid input year"), 'year', 'arguments');
 			return false;
 		}
 
@@ -70,7 +70,7 @@ trait sum
 		if($month && (!is_numeric($month) || mb_strlen($month) !== 2))
 		{
 			\lib\db\logs::set('api:report:sum:invalid:month', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid input month"), 'month', 'arguments');
+			\lib\notif::error(T_("Invalid input month"), 'month', 'arguments');
 			return false;
 		}
 
@@ -82,7 +82,7 @@ trait sum
 		if($day && (!is_numeric($day) || mb_strlen($day) !== 2))
 		{
 			\lib\db\logs::set('api:report:sum:invalid:day', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid input day"), 'day', 'arguments');
+			\lib\notif::error(T_("Invalid input day"), 'day', 'arguments');
 			return false;
 		}
 
@@ -101,7 +101,7 @@ trait sum
 			if(!$check_is_my_team || !isset($check_is_my_team['userteam_id']))
 			{
 				\lib\db\logs::set('api:report:sum:user:is:not:in:team', $this->user_id, $log_meta);
-				\lib\debug::error(T_("This user is not in this team"), 'user', 'arguments');
+				\lib\notif::error(T_("This user is not in this team"), 'user', 'arguments');
 				return false;
 			}
 		}

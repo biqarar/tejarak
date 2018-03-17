@@ -66,7 +66,7 @@ class model extends \content\main\model
 			// to get last hours. what i want to do?
 			\lib\utility::set_request_array($request);
 			$result = $this->get_list_member();
-			\lib\debug::msg('memberList', json_encode($result, JSON_UNESCAPED_UNICODE));
+			\lib\notif::msg('memberList', json_encode($result, JSON_UNESCAPED_UNICODE));
 			return true;
 		}
 
@@ -81,8 +81,8 @@ class model extends \content\main\model
 
 		$this->add_hours();
 
-		\lib\debug::msg('now_val', date("Y-m-d H:i:s"));
-		\lib\debug::msg('now', date("H:i"));
+		\lib\notif::msg('now_val', date("Y-m-d H:i:s"));
+		\lib\notif::msg('now', date("H:i"));
 	}
 }
 ?>

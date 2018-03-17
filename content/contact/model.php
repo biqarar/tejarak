@@ -72,7 +72,7 @@ class model extends \mvc\model
 		if($content == '')
 		{
 			\lib\db\logs::set('user:send:contact:empty:message', $user_id, $log_meta);
-			\lib\debug::error(T_("Please try type something!"), "content");
+			\lib\notif::error(T_("Please try type something!"), "content");
 			return false;
 		}
 		// ready to insert comments
@@ -99,12 +99,12 @@ class model extends \mvc\model
 			// \lib\utility\mail::send($mail);
 
 			\lib\db\logs::set('user:send:contact', $user_id, $log_meta);
-			\lib\debug::true(T_("Thank You For contacting us"));
+			\lib\notif::true(T_("Thank You For contacting us"));
 		}
 		else
 		{
 			\lib\db\logs::set('user:send:contact:fail', $user_id, $log_meta);
-			\lib\debug::error(T_("We could'nt save the contact"));
+			\lib\notif::error(T_("We could'nt save the contact"));
 		}
 	}
 }

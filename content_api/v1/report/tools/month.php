@@ -34,7 +34,7 @@ trait month
 		if(!$id)
 		{
 			\lib\db\logs::set('api:report:month:team:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Team id not set"), 'team', 'arguments');
+			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
@@ -47,7 +47,7 @@ trait month
 			if(!$user_id)
 			{
 				\lib\db\logs::set('api:report:month:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
-				\lib\debug::error(T_("Invalid user id"), 'user', 'arguments');
+				\lib\notif::error(T_("Invalid user id"), 'user', 'arguments');
 				return false;
 			}
 		}
@@ -60,14 +60,14 @@ trait month
 				if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $user_id, ['action'=> 'report_u']))
 				{
 					\lib\db\logs::set('api:report:month:user:is:not:in:team', $this->user_id, $log_meta);
-					\lib\debug::error(T_("This user is not in this team"), 'user', 'arguments');
+					\lib\notif::error(T_("This user is not in this team"), 'user', 'arguments');
 					return false;
 				}
 			}
 			else
 			{
 				\lib\db\logs::set('api:report:month:user:access:load:report', $this->user_id, $log_meta);
-				\lib\debug::error(T_("No access to load this report"), 'user', 'arguments');
+				\lib\notif::error(T_("No access to load this report"), 'user', 'arguments');
 				return false;
 			}
 		}
@@ -89,7 +89,7 @@ trait month
 			else
 			{
 				\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
-				\lib\debug::error(T_("Can not access to load detail of this team"), 'team', 'permission');
+				\lib\notif::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
 		}
@@ -97,7 +97,7 @@ trait month
 		if(!isset($check_is_my_team['id']))
 		{
 			\lib\db\logs::set('api:report:month:team:id:not:found', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid team data"), 'team', 'system');
+			\lib\notif::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
 
@@ -109,7 +109,7 @@ trait month
 			if(!is_numeric($year) || mb_strlen($year) !== 4)
 			{
 				\lib\db\logs::set('api:report:month:invalid:year', $this->user_id, $log_meta);
-				\lib\debug::error(T_("Invalid input year"), 'year', 'arguments');
+				\lib\notif::error(T_("Invalid input year"), 'year', 'arguments');
 				return false;
 			}
 		}
@@ -133,7 +133,7 @@ trait month
 		if($month && (!is_numeric($month) || mb_strlen($month) !== 2))
 		{
 			\lib\db\logs::set('api:report:month:invalid:month', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Invalid input month"), 'month', 'arguments');
+			\lib\notif::error(T_("Invalid input month"), 'month', 'arguments');
 			return false;
 		}
 

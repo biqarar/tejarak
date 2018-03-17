@@ -14,7 +14,7 @@ trait check_args
 		if($displayname && mb_strlen($displayname) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:displayname:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
 		}
 
@@ -24,7 +24,7 @@ trait check_args
 		if($firstname && mb_strlen($firstname) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:firstname:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
 			return false;
 		}
 
@@ -34,7 +34,7 @@ trait check_args
 		if($lastname && mb_strlen($lastname) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:lastname:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
 			return false;
 		}
 
@@ -42,7 +42,7 @@ trait check_args
 		if($postion && mb_strlen($postion) > 100)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:postion:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
 			return false;
 		}
 
@@ -52,7 +52,7 @@ trait check_args
 		if($personnelcode && mb_strlen($personnelcode) > 9)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:code:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
 			return false;
 		}
 
@@ -63,7 +63,7 @@ trait check_args
 			if(!in_array($rule, ['user', 'admin', 'gateway']))
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Invalid parameter rule"), 'rule', 'arguments');
 				return false;
 			}
 		}
@@ -78,7 +78,7 @@ trait check_args
 			if(!in_array($visibility, ['visible', 'hidden']))
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
 				return false;
 			}
 		}
@@ -94,7 +94,7 @@ trait check_args
 			if(!in_array($status, ['active', 'deactive', 'suspended']))
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:status:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
 		}
@@ -108,7 +108,7 @@ trait check_args
 		if($date_enter && \DateTime::createFromFormat('Y-m-d', $date_enter) === false)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:date_enter:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
 			return false;
 		}
 
@@ -117,7 +117,7 @@ trait check_args
 		if($date_exit && \DateTime::createFromFormat('Y-m-d', $date_exit) === false)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:date_exit:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
 			return false;
 		}
 
@@ -159,7 +159,7 @@ trait check_args
 		if($national_code && mb_strlen($national_code) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:national_code:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
 			return false;
 		}
 
@@ -167,7 +167,7 @@ trait check_args
 		if($father && mb_strlen($father) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:father:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
 			return false;
 		}
 
@@ -175,7 +175,7 @@ trait check_args
 		if($birthday && mb_strlen($birthday) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:birthday:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
 			return false;
 		}
 
@@ -183,7 +183,7 @@ trait check_args
 		if($gender && !in_array($gender, ['male', 'female']))
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:gender:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Invalid gender field"), 'gender', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("Invalid gender field"), 'gender', 'arguments');
 			return false;
 		}
 
@@ -191,7 +191,7 @@ trait check_args
 		if($type && !in_array($type, ['teacher','student','manager','deputy','janitor','organizer','sponsor', 'takenunit_teacher', 'takenunit_student']))
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:type:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Invalid type of member"), 'type', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("Invalid type of member"), 'type', 'arguments');
 			return false;
 		}
 
@@ -200,7 +200,7 @@ trait check_args
 		if($marital && !in_array($marital, ['single', 'married']))
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:marital:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Invalid marital field"), 'marital', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("Invalid marital field"), 'marital', 'arguments');
 			return false;
 		}
 
@@ -208,7 +208,7 @@ trait check_args
 		if($child && mb_strlen($child) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:child:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the child less than 50 character"), 'child', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the child less than 50 character"), 'child', 'arguments');
 			return false;
 		}
 
@@ -216,7 +216,7 @@ trait check_args
 		if($birthcity && mb_strlen($birthcity) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:birthcity:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the birthcity less than 50 character"), 'birthcity', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the birthcity less than 50 character"), 'birthcity', 'arguments');
 			return false;
 		}
 
@@ -224,7 +224,7 @@ trait check_args
 		if($shfrom && mb_strlen($shfrom) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:shfrom:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the shfrom less than 50 character"), 'shfrom', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the shfrom less than 50 character"), 'shfrom', 'arguments');
 			return false;
 		}
 
@@ -232,7 +232,7 @@ trait check_args
 		if($shcode && mb_strlen($shcode) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:shcode:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the shcode less than 50 character"), 'shcode', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the shcode less than 50 character"), 'shcode', 'arguments');
 			return false;
 		}
 
@@ -240,7 +240,7 @@ trait check_args
 		if($education && mb_strlen($education) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:education:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the education less than 50 character"), 'education', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the education less than 50 character"), 'education', 'arguments');
 			return false;
 		}
 
@@ -248,7 +248,7 @@ trait check_args
 		if($job && mb_strlen($job) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:job:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the job less than 50 character"), 'job', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the job less than 50 character"), 'job', 'arguments');
 			return false;
 		}
 
@@ -256,7 +256,7 @@ trait check_args
 		if($passport_code && mb_strlen($passport_code) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:passport_code:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the passport_code less than 50 character"), 'passport_code', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the passport_code less than 50 character"), 'passport_code', 'arguments');
 			return false;
 		}
 
@@ -264,7 +264,7 @@ trait check_args
 		// if($passport_expire && mb_strlen($passport_expire) > 50)
 		// {
 		// 	if($_args['save_log']) \lib\db\logs::set('api:userteam:passport_expire:max:lenght', $this->user_id, $log_meta);
-		// 	if($_args['debug']) \lib\debug::error(T_("You must set the passport_expire less than 50 character"), 'passport_expire', 'arguments');
+		// 	if($_args['debug']) \lib\notif::error(T_("You must set the passport_expire less than 50 character"), 'passport_expire', 'arguments');
 		// 	return false;
 		// }
 
@@ -272,7 +272,7 @@ trait check_args
 		if($payment_account_number && mb_strlen($payment_account_number) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:payment_account_number:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the payment_account_number less than 50 character"), 'payment_account_number', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the payment_account_number less than 50 character"), 'payment_account_number', 'arguments');
 			return false;
 		}
 
@@ -280,7 +280,7 @@ trait check_args
 		if($shaba && mb_strlen($shaba) > 50)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:userteam:shaba:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You must set the shaba less than 50 character"), 'shaba', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("You must set the shaba less than 50 character"), 'shaba', 'arguments');
 			return false;
 		}
 
@@ -292,7 +292,7 @@ trait check_args
 			if(count($another_admin) === 1)
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:no:admin:in:team', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
 				return false;
 			}
 		}

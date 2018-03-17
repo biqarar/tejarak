@@ -53,7 +53,7 @@ class model extends \content_a\main\model
 		// check the user is login
 		if(!$this->login())
 		{
-			\lib\debug::error(T_("Please login to add a team"), false, 'arguments');
+			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
@@ -81,7 +81,7 @@ class model extends \content_a\main\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member();
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\redirect::to()->set_domain()->set_url("a/$team/member");
 		}
@@ -105,7 +105,7 @@ class model extends \content_a\main\model
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!\lib\debug::$status)
+			if(!\lib\notif::$status)
 			{
 				return false;
 			}

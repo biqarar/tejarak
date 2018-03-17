@@ -66,7 +66,7 @@ class model extends \addons\content_api\v1\home\model
 			{
 				\lib\utility::set_request_array($value);
 				$result[] = $this->add_member(['method' => $_method]);
-				\lib\debug::$status = 1;
+				\lib\notif::$status = 1;
 			}
 		}
 		return $result;

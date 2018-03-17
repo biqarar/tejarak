@@ -12,13 +12,13 @@ class model extends \content_a\main\model
 		$text = \lib\request::post('message-text');
 		if(!$text)
 		{
-			\lib\debug::error(T_("Please fill the message box"), 'message-text');
+			\lib\notif::error(T_("Please fill the message box"), 'message-text');
 			return false;
 		}
 
 		if(mb_strlen($text) > 10000)
 		{
-			\lib\debug::error(T_("Ops! your text is very large"), 'message-text');
+			\lib\notif::error(T_("Ops! your text is very large"), 'message-text');
 			return false;
 		}
 
@@ -65,9 +65,9 @@ class model extends \content_a\main\model
 			\lib\db\notifications::set_multi_record();
 		}
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
-			\lib\debug::true(T_("The notification was sended"));
+			\lib\notif::true(T_("The notification was sended"));
 		}
 	}
 }

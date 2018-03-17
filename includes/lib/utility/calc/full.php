@@ -173,9 +173,9 @@ trait full
 
         \lib\db\transactions::set($transaction_set);
 
-        $this->log_meta['meta']['debug'] = \lib\debug::compile();
+        $this->log_meta['meta']['debug'] = \lib\notif::compile();
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\db\logs::set('invoice:team:back:full:money:transaction:set', null, $this->log_meta);
 			return true;
@@ -221,7 +221,7 @@ trait full
         if(intval($user_budget) < intval($amount))
         {
 			\lib\db\logs::set('invoice:team:full:money>credit', null, $this->log_meta);
-        	\lib\debug::error(T_("Your credit is less than amount of this plan, please charge your account"));
+        	\lib\notif::error(T_("Your credit is less than amount of this plan, please charge your account"));
         	return false;
         }
 
@@ -305,7 +305,7 @@ trait full
 
         \lib\db\transactions::set($transaction_set);
 
-        if(\lib\debug::$status)
+        if(\lib\notif::$status)
         {
         	return true;
         }

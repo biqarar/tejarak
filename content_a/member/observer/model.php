@@ -69,9 +69,9 @@ class model extends \content_a\member\model
 			$parent_request['related_id'] = \lib\url::dir(0);
 			\lib\utility::set_request_array($parent_request);
 			$this->add_parent();
-			if(\lib\debug::$status)
+			if(\lib\notif::$status)
 			{
-				\lib\debug::true(T_("Observer was saved"));
+				\lib\notif::true(T_("Observer was saved"));
 
 				$t_T =
 				[
@@ -101,7 +101,7 @@ class model extends \content_a\member\model
 		}
 		else
 		{
-			\lib\debug::error(T_("Invalid user id"));
+			\lib\notif::error(T_("Invalid user id"));
 		}
 
 	}

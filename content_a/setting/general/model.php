@@ -59,7 +59,7 @@ class model extends \content_a\main\model
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\redirect::pwd();
 		}

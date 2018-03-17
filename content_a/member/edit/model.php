@@ -49,13 +49,13 @@ class model extends \content_a\main\model
 		if(\lib\utility::files('avatar'))
 		{
 			\lib\utility::set_request_array(['upload_name' => 'avatar']);
-			$uploaded_file = $this->upload_file(['\lib\debug' => false]);
+			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
 			if(isset($uploaded_file['code']))
 			{
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!\lib\debug::$status)
+			if(!\lib\notif::$status)
 			{
 				return false;
 			}
@@ -101,7 +101,7 @@ class model extends \content_a\main\model
 		// check the user is login
 		if(!$this->login())
 		{
-			\lib\debug::error(T_("Please login to add a team"), false, 'arguments');
+			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
@@ -128,7 +128,7 @@ class model extends \content_a\main\model
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			if(\lib\request::post('parent_mobile'))
 			{
@@ -142,7 +142,7 @@ class model extends \content_a\main\model
 			}
 		}
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\redirect::to()->set_domain()->set_url("a/$team/member");
 		}

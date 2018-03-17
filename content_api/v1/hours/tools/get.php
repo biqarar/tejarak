@@ -99,7 +99,7 @@ trait get
 	 */
 	public function get_hours($_options = [])
 	{
-		\lib\debug::title(T_("Operation Faild"));
+		\lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -120,7 +120,7 @@ trait get
 		if(!$id)
 		{
 			\lib\db\logs::set('api:hours:id:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("hours id not set"), 'id', 'arguments');
+			\lib\notif::error(T_("hours id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -129,11 +129,11 @@ trait get
 		if(!$result)
 		{
 			\lib\db\logs::set('api:hours:access:denide', $this->user_id, $log_meta);
-			\lib\debug::error(T_("Can not access to load this hours details"), 'hours', 'permission');
+			\lib\notif::error(T_("Can not access to load this hours details"), 'hours', 'permission');
 			return false;
 		}
 
-		\lib\debug::title(T_("Operation complete"));
+		\lib\notif::title(T_("Operation complete"));
 
 		$result = $this->ready_hours($result);
 

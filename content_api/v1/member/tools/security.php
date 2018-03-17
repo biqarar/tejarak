@@ -19,7 +19,7 @@ trait security
 		if(!$load_team_data || !isset($load_team_data['creator']))
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:team:notfound', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Team not found"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
 		// load the logined user data
@@ -27,7 +27,7 @@ trait security
 		if(!$load_user || !isset($load_user['id']))
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:user-id:notfound', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("User not found"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
@@ -36,7 +36,7 @@ trait security
 		if(!$user_in_team || !isset($user_in_team['rule']))
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:user-id:notfound', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You not in this team"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("You not in this team"), 'user', 'permission');
 			return false;
 		}
 
@@ -44,7 +44,7 @@ trait security
 		if($user_in_team['rule'] === 'user')
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:user:can:not:edit:member', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can not edit member data"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("You can not edit member data"), 'user', 'permission');
 			return false;
 		}
 
@@ -59,7 +59,7 @@ trait security
 		if(!$change_id)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:edit:id:not:set:member', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can not edit member data"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("You can not edit member data"), 'user', 'permission');
 			return false;
 		}
 
@@ -68,7 +68,7 @@ trait security
 		if(!$change_id)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:id:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Invalid parameter id"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("Invalid parameter id"), 'user', 'permission');
 			return false;
 		}
 
@@ -76,7 +76,7 @@ trait security
 		if(!$change_id_in_team || !isset($change_id_in_team['rule']) || !isset($change_id_in_team['user_id']))
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:user-id:notfound', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("User not in this team"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("User not in this team"), 'user', 'permission');
 			return false;
 		}
 
@@ -101,14 +101,14 @@ trait security
 			if(\lib\utility::isset_request('rule') && \lib\utility::request('rule') !== 'admin')
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:admin:can:not:change:detail:creator:rule', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Only creator of team can edit her security detail"), 'user', 'permission');
+				if($_args['debug']) \lib\notif::error(T_("Only creator of team can edit her security detail"), 'user', 'permission');
 				return false;
 			}
 
 			if(\lib\utility::isset_request('status') && \lib\utility::request('status') !== 'active')
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:admin:can:not:change:detail:creator:status:not:active', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Only creator of team can edit her security detail"), 'status', 'permission');
+				if($_args['debug']) \lib\notif::error(T_("Only creator of team can edit her security detail"), 'status', 'permission');
 				return false;
 			}
 			// the creator sended mobile
@@ -124,7 +124,7 @@ trait security
 				else
 				{
 					if($_args['save_log']) \lib\db\logs::set('api:member:admin:can:not:change:detail:creator:status:not:mobole', $this->user_id, $log_meta);
-					if($_args['debug']) \lib\debug::error(T_("Only creator of team can edit her security detail"), 'mobile', 'permission');
+					if($_args['debug']) \lib\notif::error(T_("Only creator of team can edit her security detail"), 'mobile', 'permission');
 					return false;
 				}
 			}
@@ -137,7 +137,7 @@ trait security
 			if(\lib\utility::isset_request('rule') && \lib\utility::request('rule') !== 'user')
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:admin:can:not:add:admin:rule:not:user1', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Only creator of team can add or edit admins"), 'user', 'permission');
+				if($_args['debug']) \lib\notif::error(T_("Only creator of team can add or edit admins"), 'user', 'permission');
 				return false;
 			}
 		}
@@ -147,14 +147,14 @@ trait security
 			if(\lib\utility::isset_request('rule') && \lib\utility::request('rule') !== 'user' && !$change_creator)
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:admin:can:not:add:admin:rule:not:user', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Only creator of team can add or edit admins"), 'user', 'permission');
+				if($_args['debug']) \lib\notif::error(T_("Only creator of team can add or edit admins"), 'user', 'permission');
 				return false;
 			}
 
 			if(\lib\utility::isset_request('status') && \lib\utility::request('status') !== 'active')
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:admin:can:not:add:admin:status:not:active', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Only creator of team can diactive admins"), 'user', 'permission');
+				if($_args['debug']) \lib\notif::error(T_("Only creator of team can diactive admins"), 'user', 'permission');
 				return false;
 			}
 			// the creator change her detail
@@ -183,7 +183,7 @@ trait security
 			if(!$access)
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:admin:can:not:edit:admin', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Only creator of team can edit admins"), 'user', 'permission');
+				if($_args['debug']) \lib\notif::error(T_("Only creator of team can edit admins"), 'user', 'permission');
 				return false;
 			}
 		}
@@ -197,14 +197,14 @@ trait security
 				if(\lib\utility::isset_request('rule') && \lib\utility::request('rule') !== 'admin')
 				{
 					if($_args['save_log']) \lib\db\logs::set('api:member:creator:can:not:set:her:as:user', $this->user_id, $log_meta);
-					if($_args['debug']) \lib\debug::error(T_("You are creator of this team. you must be admin"), 'user', 'permission');
+					if($_args['debug']) \lib\notif::error(T_("You are creator of this team. you must be admin"), 'user', 'permission');
 					return false;
 				}
 
 				if(\lib\utility::isset_request('status') && \lib\utility::request('status') !== 'active')
 				{
 					if($_args['save_log']) \lib\db\logs::set('api:member:creator:can:not:set:her:as:not:active', $this->user_id, $log_meta);
-					if($_args['debug']) \lib\debug::error(T_("You are creator of this team. you must be active"), 'user', 'permission');
+					if($_args['debug']) \lib\notif::error(T_("You are creator of this team. you must be active"), 'user', 'permission');
 					return false;
 				}
 				// the creator sended mobile
@@ -231,7 +231,7 @@ trait security
 		if(!$access)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:crator:can:not:edit:her:mobile', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("You can not change your mobile."), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("You can not change your mobile."), 'user', 'permission');
 			return false;
 		}
 

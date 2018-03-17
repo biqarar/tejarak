@@ -351,13 +351,13 @@ class hours
 
 		if(!$userteam_id || !isset($userteam_id['id']) || !isset($userteam_id['status']))
 		{
-			\lib\debug::error(T_("User team not found!"));
+			\lib\notif::error(T_("User team not found!"));
 			return false;
 		}
 
 		if($userteam_id['status'] !== 'active')
 		{
-			\lib\debug::error(T_("User is diactive!"));
+			\lib\notif::error(T_("User is diactive!"));
 			return false;
 		}
 
@@ -381,7 +381,7 @@ class hours
 
 		$_args = self::check_before_save($_args);
 
-		if(!\lib\debug::$status)
+		if(!\lib\notif::$status)
 		{
 			return false;
 		}
@@ -390,7 +390,7 @@ class hours
 
 		if($in_use_time && array_key_exists('end', $in_use_time) && !$in_use_time['end'])
 		{
-			\lib\debug::error(T_("You was already entered once before this request"));
+			\lib\notif::error(T_("You was already entered once before this request"));
 			return false;
 		}
 
@@ -467,7 +467,7 @@ class hours
 
 		$_args = self::check_before_save($_args);
 
-		if(!\lib\debug::$status)
+		if(!\lib\notif::$status)
 		{
 			return false;
 		}
@@ -477,7 +477,7 @@ class hours
 
 		if(!$start || ($start && isset($start['end']) && $start['end']))
 		{
-			\lib\debug::error(T_("You was already exited before this request or not entered"));
+			\lib\notif::error(T_("You was already exited before this request or not entered"));
 			return ;
 		}
 
@@ -489,7 +489,7 @@ class hours
 
 		if(!$check)
 		{
-			\lib\debug::error(T_("Invalid data"));
+			\lib\notif::error(T_("Invalid data"));
 			return false;
 		}
 

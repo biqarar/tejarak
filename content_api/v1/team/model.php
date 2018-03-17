@@ -72,7 +72,7 @@ class model extends \addons\content_api\v1\home\model
 
 		if(!$this->user_id)
 		{
-			\lib\debug::error(T_("User id not found"));
+			\lib\notif::error(T_("User id not found"));
 			return false;
 		}
 		$code  = \lib\utility::request('id');
@@ -81,14 +81,14 @@ class model extends \addons\content_api\v1\home\model
 		if(!$code)
 		{
 			\lib\db\logs::set('api:team:telegram:id:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("id not set"), 'id', 'arguments');
+			\lib\notif::error(T_("id not set"), 'id', 'arguments');
 			return false;
 		}
 
 		if(!$group)
 		{
 			\lib\db\logs::set('api:team:telegram:group:not:set', $this->user_id, $log_meta);
-			\lib\debug::error(T_("group not set"), 'group', 'arguments');
+			\lib\notif::error(T_("group not set"), 'group', 'arguments');
 			return false;
 		}
 
@@ -96,7 +96,7 @@ class model extends \addons\content_api\v1\home\model
 
 		if(!isset($load_team['team_id']))
 		{
-			\lib\debug::error(T_("Can not access to load this team"), 'id', 'arguments');
+			\lib\notif::error(T_("Can not access to load this team"), 'id', 'arguments');
 			return false;
 		}
 
@@ -113,7 +113,7 @@ class model extends \addons\content_api\v1\home\model
 		\lib\db\logs::set('api:team:telegram:group:changed', $this->user_id, $log_meta);
 		\lib\db\teams::update(['telegram_id' => $group], $load_team['team_id']);
 
-		\lib\debug::title(T_("Operation complete"));
+		\lib\notif::title(T_("Operation complete"));
 	}
 }
 ?>

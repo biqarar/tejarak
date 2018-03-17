@@ -74,7 +74,7 @@ class model extends \content_a\main\model
 	{
 		if(!$this->login())
 		{
-			\lib\debug::error(T_("You must login to pay amount"));
+			\lib\notif::error(T_("You must login to pay amount"));
 			return false;
 		}
 

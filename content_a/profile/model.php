@@ -29,7 +29,7 @@ class model extends \content_a\main\model
 		// check the user is login
 		if(!$this->login())
 		{
-			\lib\debug::error(T_("Please login to change your profile"), false, 'arguments');
+			\lib\notif::error(T_("Please login to change your profile"), false, 'arguments');
 			return false;
 		}
 
@@ -37,7 +37,7 @@ class model extends \content_a\main\model
 		// check name lenght
 		if(mb_strlen(\lib\request::post('name')) > 50)
 		{
-			\lib\debug::error(T_("Please enter your name less than 50 character"), 'name', 'arguments');
+			\lib\notif::error(T_("Please enter your name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
 
@@ -45,7 +45,7 @@ class model extends \content_a\main\model
 		// check name lenght
 		if(mb_strlen(\lib\request::post('displayname')) > 50)
 		{
-			\lib\debug::error(T_("Please enter your displayname less than 50 character"), 'displayname', 'arguments');
+			\lib\notif::error(T_("Please enter your displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
 		}
 
@@ -53,7 +53,7 @@ class model extends \content_a\main\model
 		// check name lenght
 		if(mb_strlen(\lib\request::post('family')) > 50)
 		{
-			\lib\debug::error(T_("Please enter your family less than 50 character"), 'family', 'arguments');
+			\lib\notif::error(T_("Please enter your family less than 50 character"), 'family', 'arguments');
 			return false;
 		}
 
@@ -63,7 +63,7 @@ class model extends \content_a\main\model
 		{
 			$this->user_id = $this->login('id');
 			\lib\utility::set_request_array(['upload_name' => 'avatar']);
-			$uploaded_file = $this->upload_file(['\lib\debug' => false]);
+			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
 
 			if(isset($uploaded_file['url']))
 			{
@@ -74,7 +74,7 @@ class model extends \content_a\main\model
 				$user_session['avatar'] = $temp_url;
 			}
 			// if in upload have error return
-			if(!\lib\debug::$status)
+			if(!\lib\notif::$status)
 			{
 				return false;
 			}
@@ -106,7 +106,7 @@ class model extends \content_a\main\model
 		// if($new_unit === '')
 		// {
 		// 	\lib\db\logs::set('user:unit:set:empty', $this->login('id'), $log_meta);
-		// 	\lib\debug::error(T_("Please select one units"), 'user-unit', 'arguments');
+		// 	\lib\notif::error(T_("Please select one units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
 
@@ -118,7 +118,7 @@ class model extends \content_a\main\model
 		// else
 		// {
 		// 	\lib\db\logs::set('user:unit:set:invalid:unit', $this->login('id'), $log_meta);
-		// 	\lib\debug::error(T_("Please select a valid units"), 'user-unit', 'arguments');
+		// 	\lib\notif::error(T_("Please select a valid units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
 
@@ -134,10 +134,10 @@ class model extends \content_a\main\model
 			}
 		}
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
-			\lib\debug::true(T_("Profile data was updated"));
-			\lib\debug::msg('direct', true);
+			\lib\notif::true(T_("Profile data was updated"));
+			\lib\notif::msg('direct', true);
 			\lib\redirect::to()->set_domain()->set_url('a');
 		}
 	}

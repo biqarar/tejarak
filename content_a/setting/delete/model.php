@@ -18,9 +18,9 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		\lib\utility::set_request_array(['id' => $code]);
 		$this->close_team();
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
-			// \lib\debug::msg('direct', true);
+			// \lib\notif::msg('direct', true);
 			\lib\redirect::to()->set_domain()->set_url('a');
 		}
 	}

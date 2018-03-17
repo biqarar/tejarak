@@ -244,9 +244,9 @@ trait make
 
         \lib\db\transactions::set($transaction_set);
 
-        $this->log_meta['meta']['debug'] = \lib\debug::compile();
+        $this->log_meta['meta']['debug'] = \lib\notif::compile();
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\db\logs::set('invoice:team:set:transaction:set', $this->user_id, $this->log_meta);
 			return true;

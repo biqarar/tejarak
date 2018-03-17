@@ -44,7 +44,7 @@ trait add
 		$_args = array_merge($default_args, $_args);
 
 		// set default title of debug
-		if($_args['debug']) \lib\debug::title(T_("Operation Faild"));
+		if($_args['debug']) \lib\notif::title(T_("Operation Faild"));
 
 		// delete member mode
 		$delete_mode = false;
@@ -64,7 +64,7 @@ trait add
 		if(!$this->user_id)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("User not found"), 'user', 'permission');
+			if($_args['debug']) \lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
@@ -75,7 +75,7 @@ trait add
 		if(!$team_id)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\debug::error(T_("Team not set"), 'team', 'arguments');
+			if($_args['debug']) \lib\notif::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
 
@@ -84,21 +84,21 @@ trait add
 		 */
 		$return_function = $this->check_args($_args, $args, $log_meta, $team_id);
 
-		if(!\lib\debug::$status || $return_function === false)
+		if(!\lib\notif::$status || $return_function === false)
 		{
 			return false;
 		}
 
 		$check_security = $this->check_security($team_id, $_args, $args, $log_meta);
 
-		if($check_security === false || !\lib\debug::$status)
+		if($check_security === false || !\lib\notif::$status)
 		{
 			return false;
 		}
 
 		$res = $this->find_member_id($_args, $log_meta, $team_id);
 
-		if(!\lib\debug::$status || $res === false)
+		if(!\lib\notif::$status || $res === false)
 		{
 			return false;
 		}
@@ -158,7 +158,7 @@ trait add
 			if(!$id)
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Id not set"), 'id', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Id not set"), 'id', 'arguments');
 				return false;
 			}
 
@@ -167,7 +167,7 @@ trait add
 				// old user id and new user id is set but different
 				// we must update all user id in main parent of this team
 				\lib\db\userteams::update_all_user_id($this->OLD_USER_ID, $this->NEW_USER_ID, $team_id, $log_meta);
-				if(!\lib\debug::$status)
+				if(!\lib\notif::$status)
 				{
 					return false;
 				}
@@ -213,21 +213,21 @@ trait add
 			if(array_key_exists('rule', $args) && !in_array($args['rule'], ['user', 'admin', 'gateway']))
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:rule:invalid:edit', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Invalid parameter rule"), 'rule', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Invalid parameter rule"), 'rule', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('status', $args) && !in_array($args['status'], ['active', 'deactive', 'suspended']))
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:status:invalid:edit', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Invalid parameter status"), 'status', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('visibility', $args) && !in_array($args['visibility'], ['visible', 'hidden']))
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\debug::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
+				if($_args['debug']) \lib\notif::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
 				return false;
 			}
 			// check barcode, qrcode and rfid,
@@ -236,7 +236,7 @@ trait add
 			// check from $args
 			$this->check_barcode($id);
 			// if have error in checking barcode
-			if(!\lib\debug::$status)
+			if(!\lib\notif::$status)
 			{
 				return;
 			}
@@ -246,7 +246,7 @@ trait add
 				\lib\db\userteams::update($args, $id);
 			}
 
-			if(\lib\debug::$status)
+			if(\lib\notif::$status)
 			{
 				$return = true;
 			}
@@ -256,21 +256,21 @@ trait add
 			// \lib\db\members::remove($args);
 		}
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
-			if($_args['debug']) \lib\debug::title(T_("Operation Complete"));
+			if($_args['debug']) \lib\notif::title(T_("Operation Complete"));
 
 			if($_args['method'] === 'post')
 			{
-				if($_args['debug']) \lib\debug::true(T_("Member successfully added"));
+				if($_args['debug']) \lib\notif::true(T_("Member successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				if($_args['debug']) \lib\debug::true(T_("Member successfully updated"));
+				if($_args['debug']) \lib\notif::true(T_("Member successfully updated"));
 			}
 			else
 			{
-				if($_args['debug']) \lib\debug::true(T_("Member successfully removed"));
+				if($_args['debug']) \lib\notif::true(T_("Member successfully removed"));
 			}
 		}
 

@@ -21,7 +21,7 @@ class model extends \content_a\member\model
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!\lib\debug::$status)
+			if(!\lib\notif::$status)
 			{
 				return false;
 			}
@@ -59,7 +59,7 @@ class model extends \content_a\member\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
 			\lib\redirect::pwd();
 		}

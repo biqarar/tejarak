@@ -95,7 +95,7 @@ class model extends \content_a\main\model
 
 	// 	if(!$result)
 	// 	{
-	// 		\lib\debug::$status = 1;
+	// 		\lib\notif::$status = 1;
 	// 		$result = $this->get_hours();
 	// 	}
 	// 	return $result;

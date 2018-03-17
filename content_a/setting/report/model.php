@@ -30,14 +30,14 @@ class model extends \content_a\main\model
 		if(!$team_id)
 		{
 			logs::set('team:id:not:found:teport:setting', $this->login('id'), $log_meta);
-			\lib\debug::error(T_("Team id not found"));
+			\lib\notif::error(T_("Team id not found"));
 			return false;
 		}
 
 		if(\lib\request::post('deleteGroup'))
 		{
 			\lib\db\teams::update(['telegram_id' => null], $team_id);
-			\lib\debug::warn(T_("The telegram group was removed"));
+			\lib\notif::warn(T_("The telegram group was removed"));
 			return;
 		}
 
@@ -45,14 +45,14 @@ class model extends \content_a\main\model
 		if(\lib\request::post('reportHeader') && mb_strlen(\lib\request::post('reportHeader')) > 255)
 		{
 			logs::set('report:header:max:leng', $this->login('id'), $log_meta);
-			\lib\debug::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
+			\lib\notif::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
 			return false;
 		}
 
 		if(\lib\request::post('reportFooter') && mb_strlen(\lib\request::post('reportFooter')) > 255)
 		{
 			logs::set('report:footer:max:leng', $this->login('id'), $log_meta);
-			\lib\debug::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
+			\lib\notif::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
 			return false;
 		}
 
@@ -61,7 +61,7 @@ class model extends \content_a\main\model
 		if(!$access)
 		{
 			\lib\db\logs::set('report:settings:no:access:to:change:settings', $this->login('id'));
-			\lib\debug::error(T_("No access to change settings"), 'team');
+			\lib\notif::error(T_("No access to change settings"), 'team');
 			return false;
 		}
 
@@ -71,7 +71,7 @@ class model extends \content_a\main\model
 			if(!preg_match("/^\d{2}\:\d{2}$/", \lib\request::post('timed_auto_report_time')))
 			{
 				\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', $this->login('id'));
-				\lib\debug::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
+				\lib\notif::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
 				return false;
 			}
 
@@ -176,9 +176,9 @@ class model extends \content_a\main\model
 			}
 		}
 
-		if(\lib\debug::$status)
+		if(\lib\notif::$status)
 		{
-			\lib\debug::true(T_("Report settings was changed"));
+			\lib\notif::true(T_("Report settings was changed"));
 		}
 	}
 }
