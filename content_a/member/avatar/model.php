@@ -39,7 +39,7 @@ class model extends \content_a\member\model
 	 */
 	public function post_avatar($_args)
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$file_code     = $this->upload_avatar();
 		// we have an error in upload avatar
 		if($file_code === false)

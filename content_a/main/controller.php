@@ -16,7 +16,7 @@ class controller extends \mvc\controller
 
 		\lib\temp::set('main_controller_is_run', true);
 
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			\lib\redirect::to(\lib\url::base(). '/enter');
 			return;
@@ -63,11 +63,11 @@ class controller extends \mvc\controller
 
 		$team_id = \lib\utility\shortURL::decode($team_id);
 
-		if($team_id && $this->login('id'))
+		if($team_id && \lib\user::id())
 		{
 			$team_details = \lib\db\teams::get_by_id($team_id);
 
-			if(isset($team_details['creator']) && intval($team_details['creator']) === intval($this->login('id')))
+			if(isset($team_details['creator']) && intval($team_details['creator']) === intval(\lib\user::id()))
 			{
 				\lib\temp::set('is_creator', true);
 			}
@@ -84,7 +84,7 @@ class controller extends \mvc\controller
 				}
 			}
 
-			$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => $this->login('id'), 'limit' => 1]);
+			$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => \lib\user::id(), 'limit' => 1]);
 
 			\lib\temp::set('userteam_login_detail', $load_userteam_record);
 

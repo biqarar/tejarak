@@ -37,7 +37,7 @@ class model extends \content_a\main\model
 
 		\lib\utility::set_request_array($request);
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$this->add_houredit();
 		if(\lib\notif::$status)
 		{

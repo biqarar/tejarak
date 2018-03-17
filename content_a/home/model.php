@@ -10,9 +10,9 @@ class model extends \content_a\main\model
 	 */
 	public function team_list()
 	{
-		if($this->login())
+		if(\lib\user::login())
 		{
-			$this->user_id = $this->login('id');
+			$this->user_id = \lib\user::id();
 			// API GET LIST TEAM FUNCTION
 			return $this->get_list_team();
 		}

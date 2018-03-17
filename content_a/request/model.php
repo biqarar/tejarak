@@ -16,7 +16,7 @@ class model extends \content_a\main\model
 		$id       = \lib\request::post('id');
 		$type     = \lib\request::post('type');
 
-		$this->user_id       = $this->login('id');
+		$this->user_id       = \lib\user::id();
 		$request             = [];
 		$request['team']     = \lib\url::dir(0);
 		$request['id']       = $id;
@@ -42,7 +42,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		\lib\utility::set_request_array(['id' => $hourrequest_id]);
 		$this->hourrequest_delete(['method' => 'delete']);
 		\lib\redirect::to(\lib\url::here(). "/$team_id/request");
@@ -58,7 +58,7 @@ class model extends \content_a\main\model
 	//  */
 	// public function request_detail($_request)
 	// {
-	// 	$this->user_id = $this->login('id');
+	// 	$this->user_id = \lib\user::id();
 	// 	\lib\utility::set_request_array($_request);
 	// 	return $this->get_request_detail();
 	// }
@@ -73,7 +73,7 @@ class model extends \content_a\main\model
 	 */
 	public function request_list($_request)
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		\lib\utility::set_request_array($_request);
 		return $this->get_houredit_list();
 	}
@@ -90,7 +90,7 @@ class model extends \content_a\main\model
 	// public function getMyTime($_args)
 	// {
 	// 	\lib\utility::set_request_array($_args);
-	// 	$this->user_id = $this->login('id');
+	// 	$this->user_id = \lib\user::id();
 	// 	$result = $this->get_request();
 
 	// 	if(!$result)

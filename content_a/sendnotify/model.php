@@ -53,7 +53,7 @@ class model extends \content_a\main\model
 						[
 							'to'       => $userid,
 							'cat'      => 'public',
-							'from'   => $this->login('id'),
+							'from'   => \lib\user::id(),
 							'content'  => $text,
 							'telegram' => true,
 							'multi'    => true,

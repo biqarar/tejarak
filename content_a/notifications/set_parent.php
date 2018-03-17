@@ -38,7 +38,7 @@ trait set_parent
 
 		$get =
 		[
-			'user_id'         => $this->login('id'),
+			'user_id'         => \lib\user::id(),
 			'category'        => 9,
 			'read'            => null,
 			'id'              => $notify,
@@ -88,7 +88,7 @@ trait set_parent
 				// ACCEPT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 0;
-				\lib\db\logs::set('notify:change:parent:accept', $this->login('id'), $log_meta);
+				\lib\db\logs::set('notify:change:parent:accept', \lib\user::id(), $log_meta);
 				$user_id   = $check['user_idsender'];
 				$parent_id = $check['user_id'];
 				$title = isset($check['meta']['title']) ? $check['meta']['title'] : null;
@@ -101,7 +101,7 @@ trait set_parent
 					[
 						'title'  => $title,
 						'status' => 'enable',
-						'creator' => $this->login('id'),
+						'creator' => \lib\user::id(),
 					];
 					\lib\db\userparents::update($update_userparents, $check_exist['id']);
 				}
@@ -114,7 +114,7 @@ trait set_parent
 						'status'  => 'enable',
 						'title'   => $title,
 						'status'  => 'enable',
-						'creator' => $this->login('id'),
+						'creator' => \lib\user::id(),
 					];
 					\lib\db\userparents::insert($insert_parent);
 				}
@@ -125,7 +125,7 @@ trait set_parent
 				// REJECT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 1;
-				\lib\db\logs::set('notify:change:parent:reject', $this->login('id'), $log_meta);
+				\lib\db\logs::set('notify:change:parent:reject', \lib\user::id(), $log_meta);
 			}
 
 			\lib\db\notifications::update($update_notify, $check['id']);

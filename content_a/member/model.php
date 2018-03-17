@@ -12,7 +12,7 @@ class model extends \content_a\main\model
 	 */
 	public function list_member($_args)
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$request       = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
 		\lib\utility::set_request_array($request);
@@ -32,7 +32,7 @@ class model extends \content_a\main\model
 	 */
 	public function edit($_team, $_member)
 	{
-		$this->user_id    = $this->login('id');
+		$this->user_id    = \lib\user::id();
 		$request          = [];
 		$request['team']  = $_team;
 		$request['id']    = $_member;

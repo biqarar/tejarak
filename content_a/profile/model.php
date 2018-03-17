@@ -27,7 +27,7 @@ class model extends \content_a\main\model
 		$user_session = [];
 
 		// check the user is login
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			\lib\notif::error(T_("Please login to change your profile"), false, 'arguments');
 			return false;
@@ -61,7 +61,7 @@ class model extends \content_a\main\model
 		$temp_url  = null;
 		if(\lib\utility::files('avatar'))
 		{
-			$this->user_id = $this->login('id');
+			$this->user_id = \lib\user::id();
 			\lib\utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
 
@@ -81,21 +81,21 @@ class model extends \content_a\main\model
 		}
 
 		// // if the name exist update user display name
-		// if(\lib\request::post('name') != $this->login('name'))
+		// if(\lib\request::post('name') != \lib\user::login('name'))
 		// {
 		// 	$update_user['name'] = \lib\request::post('name');
 		// 	$user_session['name'] = $update_user['name'];
 		// }
 
 		// // if the family exist update user display family
-		// if(\lib\request::post('family') != $this->login('family'))
+		// if(\lib\request::post('family') != \lib\user::login('family'))
 		// {
 		// 	$update_user['lastname'] = \lib\request::post('family');
 		// 	$user_session['family'] = $update_user['lastname'];
 		// }
 
 		// if the postion exist update user display postion
-		if(\lib\request::post('displayname') != $this->login('displayname'))
+		if(\lib\request::post('displayname') != \lib\user::login('displayname'))
 		{
 			$update_user['displayname'] = \lib\request::post('displayname');
 			$user_session['displayname'] = $update_user['displayname'];
@@ -105,7 +105,7 @@ class model extends \content_a\main\model
 
 		// if($new_unit === '')
 		// {
-		// 	\lib\db\logs::set('user:unit:set:empty', $this->login('id'), $log_meta);
+		// 	\lib\db\logs::set('user:unit:set:empty', \lib\user::id(), $log_meta);
 		// 	\lib\notif::error(T_("Please select one units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
@@ -117,7 +117,7 @@ class model extends \content_a\main\model
 		// }
 		// else
 		// {
-		// 	\lib\db\logs::set('user:unit:set:invalid:unit', $this->login('id'), $log_meta);
+		// 	\lib\db\logs::set('user:unit:set:invalid:unit', \lib\user::id(), $log_meta);
 		// 	\lib\notif::error(T_("Please select a valid units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
@@ -127,7 +127,7 @@ class model extends \content_a\main\model
 		if(!empty($update_user))
 		{
 
-			\lib\db\users::update($update_user, $this->login('id'));
+			\lib\db\users::update($update_user, \lib\user::id());
 			if(isset($_SESSION['user']) && is_array($_SESSION['user']))
 			{
 				$_SESSION['user'] = array_merge($_SESSION['user'], $user_session);

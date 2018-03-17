@@ -43,7 +43,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_security($_args)
 	{
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			\lib\notif::error(T_("Please login to change owner"), 'owner');
 			return $this->refresh_page();
@@ -134,7 +134,7 @@ class model extends \content_a\main\model
 
 		$get =
 		[
-			'user_idsender'   => $this->login('id'),
+			'user_idsender'   => \lib\user::id(),
 			'category'        => 4,
 			'status'          => ["IN", "('awaiting', 'enable')"],
 			'related_id'      => $_team_id,
@@ -168,18 +168,18 @@ class model extends \content_a\main\model
 		$meta                      = [];
 		$meta['team_code']         = $this->team_code;
 		$meta['team_id']           = $this->team_id;
-		$meta['old_owner']         = $this->login('id');
+		$meta['old_owner']         = \lib\user::id();
 		$meta['new_owner']         = $this->user_data['id'];
 		// $meta['new_owner_data'] = $this->user_data;
 		$meta['new_owner_mobile']  = $this->mobile;
 		// $meta['team']           = $this->current_team;
 		$meta['team_logo']         = $this->current_team['logourl'];
 		$meta['team_name']         = $this->current_team['name'];
-		$meta['sender_name']       = $this->login('displayname');
-		$meta['sender_mobile']     = $this->login('mobile');
-		$meta['sender_logo']       = $this->login('avatar');
+		$meta['sender_name']       = \lib\user::login('displayname');
+		$meta['sender_mobile']     = \lib\user::login('mobile');
+		$meta['sender_logo']       = \lib\user::login('avatar');
 
-		if(intval($this->login('id')) === intval($this->user_data['id']))
+		if(intval(\lib\user::id()) === intval($this->user_data['id']))
 		{
 			\lib\notif::error(T_("You try to move team to yourself!"), 'owner');
 			$this->_processor(['force_stop' => true]);
@@ -187,7 +187,7 @@ class model extends \content_a\main\model
 		}
 		$send_notify =
 		[
-			'from'            => $this->login('id'),
+			'from'            => \lib\user::id(),
 			'to'              => $this->user_data['id'],
 			'cat'             => 'change_owner',
 			'related_foreign' => 'teams',

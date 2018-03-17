@@ -14,7 +14,7 @@ class model extends \content_a\main\model
 	 */
 	public function list_parent()
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		\lib\utility::set_request_array(['id' => \lib\utility\shortURL::encode($this->user_id)]);
 		$result = $this->get_list_parent();
 		return $result;
@@ -26,7 +26,7 @@ class model extends \content_a\main\model
 	 */
 	public function cancel_request()
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		\lib\utility::set_request_array(['id' => \lib\request::post('cancel')]);
 		$this->parent_cancel_request();
 		$this->redirector_refresh();
@@ -52,7 +52,7 @@ class model extends \content_a\main\model
 	 */
 	public function remove_parent()
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		\lib\utility::set_request_array(['id' => \lib\request::post('remove')]);
 		$this->delete_parent();
 		$this->redirector_refresh();
@@ -67,7 +67,7 @@ class model extends \content_a\main\model
 	public function post_parent($_args)
 	{
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 
 		$request               = [];
 

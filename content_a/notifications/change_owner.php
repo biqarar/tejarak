@@ -38,7 +38,7 @@ trait change_owner
 
 		$get =
 		[
-			'user_id'         => $this->login('id'),
+			'user_id'         => \lib\user::id(),
 			'category'        => 4,
 			'read'            => null,
 			'id'              => $notify,
@@ -84,12 +84,12 @@ trait change_owner
 				// ACCEPT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 0;
-				\lib\db\logs::set('notify:change:owner:accept', $this->login('id'), $log_meta);
-				\lib\db\teams::update(['creator' => $this->login('id')], $team_id);
+				\lib\db\logs::set('notify:change:owner:accept', \lib\user::id(), $log_meta);
+				\lib\db\teams::update(['creator' => \lib\user::id()], $team_id);
 				$check_exist_team_user =
 				[
 					'team_id' => $team_id,
-					'user_id' => $this->login('id'),
+					'user_id' => \lib\user::id(),
 					'limit'   => 1,
 				];
 				$check_exist_team_user = \lib\db\userteams::get($check_exist_team_user);
@@ -99,7 +99,7 @@ trait change_owner
 					[
 						'rule'        => 'admin',
 						'status'      => 'active',
-						'displayname' => $this->login('displayname'),
+						'displayname' => \lib\user::login('displayname'),
 					];
 					\lib\db\userteams::update($update_user_team, $check_exist_team_user['id']);
 				}
@@ -108,10 +108,10 @@ trait change_owner
 					$insert_user_team =
 					[
 						'team_id'     => $team_id,
-						'user_id'     => $this->login('id'),
+						'user_id'     => \lib\user::id(),
 						'rule'        => 'admin',
 						'status'      => 'active',
-						'displayname' => $this->login('displayname'),
+						'displayname' => \lib\user::login('displayname'),
 					];
 					\lib\db\userteams::insert($insert_user_team);
 				}
@@ -122,7 +122,7 @@ trait change_owner
 				// REJECT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 1;
-				\lib\db\logs::set('notify:change:owner:reject', $this->login('id'), $log_meta);
+				\lib\db\logs::set('notify:change:owner:reject', \lib\user::id(), $log_meta);
 			}
 
 			\lib\db\notifications::update($update_notify, $check['id']);

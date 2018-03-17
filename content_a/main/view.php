@@ -35,10 +35,10 @@ class view extends \mvc\view
 		$this->data->is_admin       = \lib\temp::get('is_admin');
 		$this->data->is_creator     = \lib\temp::get('is_creator');
 
-		if($this->login('id'))
+		if(\lib\user::id())
 		{
 			// get count unread notifiation
-			// $this->data->notification_count = \lib\db\notifications::unread($this->login('id'), true);
+			// $this->data->notification_count = \lib\db\notifications::unread(\lib\user::id(), true);
 		}
 
 	}

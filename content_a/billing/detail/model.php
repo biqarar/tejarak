@@ -10,7 +10,7 @@ class model extends \mvc\model
 	 */
 	public function get_detail($_args)
 	{
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			return false;
 		}
@@ -51,12 +51,12 @@ class model extends \mvc\model
 	 */
 	public function run_usage()
 	{
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			return false;
 		}
 
-		$user_id = $this->login('id');
+		$user_id = \lib\user::id();
 
 		$all_creator_team = \lib\db\teams::get(['creator' => $user_id]);
 

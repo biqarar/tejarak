@@ -13,12 +13,12 @@ class model extends \content_a\main\model
 	 */
 	public function get_notifications($_args)
 	{
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			return false;
 		}
 		$meta            = [];
-		$this->user_id   = $this->login('id');
+		$this->user_id   = \lib\user::id();
 		$meta['user_id'] = $this->user_id;
 		$meta['status']  = ["IN", "('enable')"];
 		$meta['sort']    = 'id';
@@ -72,13 +72,13 @@ class model extends \content_a\main\model
 	 */
 	public function post_notifications()
 	{
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			\lib\notif::error(T_("You must login to pay amount"));
 			return false;
 		}
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 
 		if(\lib\request::post('notify_type') === 'owner')
 		{

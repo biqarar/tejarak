@@ -52,7 +52,7 @@ class model extends \content_a\main\model
 		$code = \lib\url::dir(0);
 
 		$request       = $this->getPost();
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$request['id'] = $code;
 
 		\lib\utility::set_request_array($request);

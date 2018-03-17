@@ -12,7 +12,7 @@ class model extends \content\main\model
 	 */
 	public function list_member($_args)
 	{
-		$this->user_id        = $this->login('id');
+		$this->user_id        = \lib\user::id();
 		$request              = [];
 		$request['shortname'] = isset($_args['shortname']) ? $_args['shortname'] : null;
 		$request['hours']     = true;
@@ -38,14 +38,14 @@ class model extends \content\main\model
 	public function post_hours($_args)
 	{
 
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			return false;
 		}
 
 		$url = (isset($_args->match->url[0])) ? $_args->match->url[0] : null;
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		if(!$url)
 		{
 			return false;

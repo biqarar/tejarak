@@ -14,7 +14,7 @@ class model extends \content_a\main\model
 	{
 		if(\lib\utility::files('logo'))
 		{
-			$this->user_id = $this->login('id');
+			$this->user_id = \lib\user::id();
 			\lib\utility::set_request_array(['upload_name' => 'logo']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
@@ -41,7 +41,7 @@ class model extends \content_a\main\model
 			$request['logo'] = $this->upload_logo();
 		}
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$request['id'] = $code;
 
 		\lib\utility::set_request_array($request);

@@ -32,13 +32,13 @@ class model extends \content_a\main\model
 	public function post_add($_args)
 	{
 		// check the user is login
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		// ready request
 		$request           = $this->getPost();
 

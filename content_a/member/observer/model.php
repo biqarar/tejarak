@@ -12,7 +12,7 @@ class model extends \content_a\member\model
 	 */
 	public function getParent()
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 
 		$team_id = \lib\utility\shortURL::decode(\lib\url::dir(0));
 
@@ -42,7 +42,7 @@ class model extends \content_a\member\model
 	 */
 	public function post_observer($_args)
 	{
-		$this->user_id                = $this->login('id');
+		$this->user_id                = \lib\user::id();
 
 		if(\lib\request::post('remove'))
 		{

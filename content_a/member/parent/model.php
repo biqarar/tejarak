@@ -12,7 +12,7 @@ class model extends \content_a\member\model
 	 */
 	public function list_member($_args)
 	{
-		$this->user_id  = $this->login('id');
+		$this->user_id  = \lib\user::id();
 
 
 		$team_id        = \lib\utility\shortURL::decode(\lib\url::dir(0));

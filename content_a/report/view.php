@@ -57,7 +57,7 @@ class view extends \content_a\main\view
 				// check admin or user of team
 				$user_status = \lib\db\userteams::get(
 				[
-					'user_id' => $this->login('id'),
+					'user_id' => \lib\user::id(),
 					'team_id' => $team_id,
 					'limit'   => 1
 				]);

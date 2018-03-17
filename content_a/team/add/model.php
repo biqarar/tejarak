@@ -55,7 +55,7 @@ class model extends \content_a\main\model
 		{
 			return false;
 		}
-		$this->user_id    = $this->login('id');
+		$this->user_id    = \lib\user::id();
 		\lib\utility::set_request_array($request);
 		$this->add_team();
 

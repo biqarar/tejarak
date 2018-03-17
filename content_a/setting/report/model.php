@@ -29,7 +29,7 @@ class model extends \content_a\main\model
 
 		if(!$team_id)
 		{
-			logs::set('team:id:not:found:teport:setting', $this->login('id'), $log_meta);
+			logs::set('team:id:not:found:teport:setting', \lib\user::id(), $log_meta);
 			\lib\notif::error(T_("Team id not found"));
 			return false;
 		}
@@ -44,23 +44,23 @@ class model extends \content_a\main\model
 		$update_team = [];
 		if(\lib\request::post('reportHeader') && mb_strlen(\lib\request::post('reportHeader')) > 255)
 		{
-			logs::set('report:header:max:leng', $this->login('id'), $log_meta);
+			logs::set('report:header:max:leng', \lib\user::id(), $log_meta);
 			\lib\notif::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
 			return false;
 		}
 
 		if(\lib\request::post('reportFooter') && mb_strlen(\lib\request::post('reportFooter')) > 255)
 		{
-			logs::set('report:footer:max:leng', $this->login('id'), $log_meta);
+			logs::set('report:footer:max:leng', \lib\user::id(), $log_meta);
 			\lib\notif::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
 			return false;
 		}
 
-		$access = \lib\db\teams::access_team_id($team_id, $this->login('id'), ['action' => 'admin']);
+		$access = \lib\db\teams::access_team_id($team_id, \lib\user::id(), ['action' => 'admin']);
 
 		if(!$access)
 		{
-			\lib\db\logs::set('report:settings:no:access:to:change:settings', $this->login('id'));
+			\lib\db\logs::set('report:settings:no:access:to:change:settings', \lib\user::id());
 			\lib\notif::error(T_("No access to change settings"), 'team');
 			return false;
 		}
@@ -70,7 +70,7 @@ class model extends \content_a\main\model
 		{
 			if(!preg_match("/^\d{2}\:\d{2}$/", \lib\request::post('timed_auto_report_time')))
 			{
-				\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', $this->login('id'));
+				\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', \lib\user::id());
 				\lib\notif::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
 				return false;
 			}

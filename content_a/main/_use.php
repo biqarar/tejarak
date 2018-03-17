@@ -129,7 +129,7 @@ trait _use
 	public function getTeamDetail($_team)
 	{
 		$request       = [];
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$request['id'] = $_team;
 		\lib\utility::set_request_array($request);
 		$result        = $this->get_team(['debug' => false]);
@@ -146,7 +146,7 @@ trait _use
 	public function getTeamDetailShortname($_shortname)
 	{
 		$request             = [];
-		$this->user_id       = $this->login('id');
+		$this->user_id       = \lib\user::id();
 		$request['shortname'] = $_shortname;
 		\lib\utility::set_request_array($request);
 		$result = $this->get_team();
@@ -233,7 +233,7 @@ trait _use
 	 */
 	public function listMember($_team_id_or_code, $_type = 'id', $_args = [])
 	{
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$request       = [];
 		if($_type === 'id')
 		{

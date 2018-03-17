@@ -17,7 +17,7 @@ class view extends \content_a\main\view
 
 		if(time() - intval(\lib\session::get('last_time_chart_time_'. (string) $team_id )) > 60)
 		{
-			$dashboard_detail = \lib\db\teams::dashboard_detail($team_id, $this->login('id'));
+			$dashboard_detail = \lib\db\teams::dashboard_detail($team_id, \lib\user::id());
 			\lib\session::set('last_time_chart'. (string) $team_id , $dashboard_detail);
 			\lib\session::set('last_time_chart_time_'. (string) $team_id , time());
 		}

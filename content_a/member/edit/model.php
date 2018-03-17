@@ -76,7 +76,7 @@ class model extends \content_a\main\model
 	 */
 	public function edit($_team, $_member)
 	{
-		$this->user_id    = $this->login('id');
+		$this->user_id    = \lib\user::id();
 		$request          = [];
 		$request['team']  = $_team;
 		$request['id']    = $_member;
@@ -99,13 +99,13 @@ class model extends \content_a\main\model
 	public function post_edit($_args)
 	{
 		// check the user is login
-		if(!$this->login())
+		if(!\lib\user::login())
 		{
 			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
-		$this->user_id = $this->login('id');
+		$this->user_id = \lib\user::id();
 		$request       = $this->getPost();
 		$file_code     = $this->upload_avatar();
 		// we have an error in upload avatar

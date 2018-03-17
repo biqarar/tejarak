@@ -33,7 +33,7 @@ class model extends \content_a\member\model
 	 */
 	public function post_identify($_args)
 	{
-		$this->user_id   = $this->login('id');
+		$this->user_id   = \lib\user::id();
 		$request         = $this->getPost();
 		$member          = \lib\url::dir(3);
 		$request['id']   = $member;
