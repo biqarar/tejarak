@@ -121,7 +121,7 @@ class controller extends \mvc\controller
 
 		if(is_null($url_1))
 		{
-			\lib\router::set_controller("content_a\\teamdashboard\\controller");
+			\lib\engine\main::controller_set("content_a\\teamdashboard\\controller");
 			return;
 		}
 
@@ -139,7 +139,7 @@ class controller extends \mvc\controller
 		{
 			$this->have_permission($raw_url);
 
-			\lib\router::set_controller($check_controller);
+			\lib\engine\main::controller_set($check_controller);
 			return;
 		}
 		else
