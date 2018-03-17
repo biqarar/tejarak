@@ -138,7 +138,7 @@ class model extends \content_a\main\model
 		{
 			\lib\notif::true(T_("Profile data was updated"));
 			\lib\notif::msg('direct', true);
-			\lib\redirect::to()->set_domain()->set_url('a');
+			\lib\redirect::pwd();
 		}
 	}
 
