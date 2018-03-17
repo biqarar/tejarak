@@ -81,7 +81,7 @@ trait _use
 				$url_get               = \lib\request::get();
 
 				$site_language         = \lib\language::get_language();
-				$site_language_default = \lib\language::get_language('default');
+				$site_language_default = \lib\language::default();
 
 				if($team_language === $site_language)
 				{
