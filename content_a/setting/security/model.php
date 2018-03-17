@@ -113,7 +113,7 @@ class model extends \content_a\main\model
 	 */
 	public function refresh_page()
 	{
-		$this->redirector(\lib\url::pwd());
+		\lib\redirect::pwd();
 		return ;
 	}
 

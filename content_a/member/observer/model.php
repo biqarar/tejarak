@@ -48,7 +48,7 @@ class model extends \content_a\member\model
 		{
 			\lib\utility::set_request_array(['id' => \lib\request::post('remove'), 'related_id' => \lib\url::dir(0)]);
 			$this->delete_parent();
-			$this->redirector(\lib\url::pwd());
+			\lib\redirect::pwd();
 			return ;
 		}
 
@@ -96,7 +96,7 @@ class model extends \content_a\member\model
 					\lib\utility\sms::send(\lib\request::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
 				}
 
-				$this->redirector(\lib\url::pwd());
+				\lib\redirect::pwd();
 			}
 		}
 		else

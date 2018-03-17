@@ -40,7 +40,7 @@ class model extends \content_a\main\model
 	{
 		if(\lib\debug::$status)
 		{
-			$this->redirector(\lib\url::pwd());
+			\lib\redirect::pwd();
 			return;
 		}
 		return;

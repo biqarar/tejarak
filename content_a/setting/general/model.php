@@ -61,7 +61,7 @@ class model extends \content_a\main\model
 		$this->add_team(['method' => 'patch']);
 		if(\lib\debug::$status)
 		{
-			$this->redirector(\lib\url::pwd());
+			\lib\redirect::pwd();
 		}
 	}
 }

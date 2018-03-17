@@ -45,7 +45,7 @@ class model extends \content_a\main\model
 		$this->user_id = $this->login('id');
 		\lib\utility::set_request_array(['id' => $hourrequest_id]);
 		$this->hourrequest_delete(['method' => 'delete']);
-		$this->redirector(\lib\url::here(). "/$team_id/request")->redirect();
+		\lib\redirect::to(\lib\url::here(). "/$team_id/request");
 	}
 
 

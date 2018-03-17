@@ -72,7 +72,7 @@ class model extends \content_a\main\model
 		$this->add_gateway(['method' => 'patch']);
 		if(\lib\debug::$status)
 		{
-			$this->redirector()->set_domain()->set_url("a/$team/gateway");
+			\lib\redirect::to()->set_domain()->set_url("a/$team/gateway");
 		}
 	}
 }

@@ -61,7 +61,7 @@ class model extends \content_a\member\model
 		$this->add_member(['method' => 'patch']);
 		if(\lib\debug::$status)
 		{
-			$this->redirector(\lib\url::pwd());
+			\lib\redirect::pwd();
 		}
 	}
 }

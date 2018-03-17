@@ -18,7 +18,7 @@ class controller extends \mvc\controller
 
 		if(!$this->login())
 		{
-			$this->redirector(\lib\url::base(). '/enter')->redirect();
+			\lib\redirect::to(\lib\url::base(). '/enter');
 			return;
 		}
 

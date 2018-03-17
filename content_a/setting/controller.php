@@ -13,7 +13,7 @@ class controller extends \content_a\main\controller
 
 		$new_url = \lib\url::here(). '/'. \lib\url::dir(0). '/setting/general';
 
-		$this->redirector($new_url)->redirect();
+		\lib\redirect::to($new_url);
 
 	}
 }

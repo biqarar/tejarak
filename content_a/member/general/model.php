@@ -49,7 +49,7 @@ class model extends \content_a\member\model
 
 		if(\lib\debug::$status)
 		{
-			$this->redirector(\lib\url::pwd());
+			\lib\redirect::pwd();
 		}
 	}
 }

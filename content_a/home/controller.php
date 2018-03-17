@@ -21,7 +21,7 @@ class controller extends \content_a\main\controller
 				if(isset($shortname['shortname']))
 				{
 					$new_url = \lib\url::base(). '/'. $shortname['shortname'];
-					$this->redirector($new_url)->redirect();
+					\lib\redirect::to($new_url);
 					return;
 				}
 			}

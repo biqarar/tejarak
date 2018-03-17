@@ -91,7 +91,7 @@ class model extends \content_a\main\model
 		}
 
 
-		$this->redirector(\lib\url::pwd());
+		\lib\redirect::pwd();
 	}
 
 

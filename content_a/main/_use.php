@@ -114,7 +114,7 @@ trait _use
 				}
 				if($new_url !== \lib\url::pwd())
 				{
-					$this->redirector($new_url)->redirect();
+					\lib\redirect::to($new_url);
 				}
 			}
 		}

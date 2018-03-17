@@ -144,7 +144,7 @@ class model extends \content_a\main\model
 
 		if(\lib\debug::$status)
 		{
-			$this->redirector()->set_domain()->set_url("a/$team/member");
+			\lib\redirect::to()->set_domain()->set_url("a/$team/member");
 		}
 	}
 }
