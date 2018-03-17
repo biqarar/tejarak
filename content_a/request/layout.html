@@ -15,7 +15,7 @@
 {%block iEventDate%}
 <label for="startdate">{%trans "Date"%}</label>
 <div class="input">
-  <input type="text" name="start_date" id="startdate" placeholder='{%trans "Date"%}' {%if site.currentlang == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "Date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.startdate_gregorian%} value="{{current_team.startdate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
+  <input type="text" name="start_date" id="startdate" placeholder='{%trans "Date"%}' {%if lang.current == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "Date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.startdate_gregorian%} value="{{current_team.startdate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
 </div>
 {%endblock%}
 
@@ -23,7 +23,7 @@
 {%block iEventDateStart%}
 <label for="startdate">{%trans "Start date"%} <small>{%trans "Start your work at date"%}</small></label>
 <div class="input">
-  <input type="text" name="start_date" id="startdate" placeholder='{%trans "Start date"%}' {%if site.currentlang == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "Start date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.startdate_gregorian%} value="{{current_team.startdate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
+  <input type="text" name="start_date" id="startdate" placeholder='{%trans "Start date"%}' {%if lang.current == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "Start date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.startdate_gregorian%} value="{{current_team.startdate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
 </div>
 {%endblock%}
 
@@ -31,7 +31,7 @@
 {%block iEventDateEnd%}
 <label for="enddate">{%trans "End date"%} <small>{%trans "End your work at date"%}</small></label>
 <div class="input">
-  <input type="text" name="end_date" id="enddate" placeholder='{%trans "End date"%}' {%if site.currentlang == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "End date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.enddate_gregorian%} value="{{current_team.enddate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
+  <input type="text" name="end_date" id="enddate" placeholder='{%trans "End date"%}' {%if lang.current == 'fa' %} class="datepicker" {%endif%} placeholder='{%trans "End date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.enddate_gregorian%} value="{{current_team.enddate_gregorian}}" {%else%} data-initialValue="false" {%endif%}>
 </div>
 {%endblock%}
 

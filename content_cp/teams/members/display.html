@@ -45,7 +45,7 @@
 			<div class="c">{{value.allowminus|fitNumber}}</div>
 			<div class="c">{{value['24h']|fitNumber}}</div>
 			<div class="c">{{value.remote|fitNumber}}</div>
-			{%if site.currentlang == 'fa' %}
+			{%if lang.current == 'fa' %}
 				<div class="c">{{value.dateenter|jdate("Y-m-d")}}</div>
 			{%else%}
 				<div class="c">{{value.dateenter|date("Y-m-d")}}</div>

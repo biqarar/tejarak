@@ -37,7 +37,7 @@
 			<td><a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}</a></td>
 			<td><a href="{{url.base}}/enter?userid={{value.creator}}" data-direct>{{value.creator|fitNumber}}</a></td>
 			<td>{%set my_plan = value.plan | capitalize  %}{%trans my_plan%}</td>
-			{%if site.currentlang == 'fa'%}
+			{%if lang.current == 'fa'%}
 				<td>{{value.start|jdate("Y-m-d H:i:s")}}</td>
 				{%if value.end%}
 					<td>{{value.end|jdate("Y-m-d H:i:s")}}</td>
@@ -54,7 +54,7 @@
 			{%endif%}
 			<td>{%set my_status = value.status  %}{%trans my_status%}</td>
 
-			{%if site.currentlang == 'fa'%}
+			{%if lang.current == 'fa'%}
 				<td>{{value.lastcalcdate|jdate("Y-m-d H:i:s")}}</td>
 			{%else%}
 				<td>{{value.lastcalcdate|date("Y-m-d H:i:s")}}</td>

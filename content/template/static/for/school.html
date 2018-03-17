@@ -8,7 +8,7 @@
 
 
 {%block page%}
-{%if site.currentlang == 'fa'%}
+{%if lang.current == 'fa'%}
 {{block ('pageFa')}}
 {%else%}
 	<h4 class="tile">
@@ -20,7 +20,7 @@
 
 
 {%block pageExtra%}
-{%if site.currentlang == 'fa'%}
+{%if lang.current == 'fa'%}
 {{block ('pageExtraFa')}}
 {%endif%}
 {%endblock%}

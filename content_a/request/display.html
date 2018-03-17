@@ -38,13 +38,13 @@
     {%endif%} -->
 
       <td>{{value.displayname}}</td>
-    {%if site.currentlang == 'fa'%}
+    {%if lang.current == 'fa'%}
       <td>{{value.shamsi_date|fitNumber}}</td>
     {%else%}
       <td>{{value.date|fitNumber}}</td>
     {%endif%}
     <td>{{value.start|fitNumber}}</td>
-    {%if site.currentlang == 'fa'%}
+    {%if lang.current == 'fa'%}
       <td>{{value.endshamsi_date|fitNumber}}</td>
     {%else%}
       <td>{{value.enddate|fitNumber}}</td>

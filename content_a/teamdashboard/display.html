@@ -84,7 +84,7 @@ remain_percent -->
 <div class="dcard">
  <div class="block">
   <div class="f">
-  {%if site.currentlang == 'fa'%}
+  {%if lang.current == 'fa'%}
    <h5 class="c fc-mute">{{"now" | jdate('F')}}</h5>
    <h4 class="cauto fc-info fs30 txtra">{{"now" | jdate('d')}}</h4>
   {%else%}
@@ -133,7 +133,7 @@ remain_percent -->
 
 
 {%block stDayUsed%}
-{%if site.currentlang == 'fa'%}
+{%if lang.current == 'fa'%}
   <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{current_team.createdate |jdate("Y-m-d")}} | {{current_team.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
 {%else%}
   <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{current_team.createdate | date("Y-m-d")}} | {{current_team.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
