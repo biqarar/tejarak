@@ -7,7 +7,7 @@ trait thismonth
 
 	public function thismonth()
 	{
-		$default_language = \lib\language::get_language();
+		$default_language = \lib\language::current();
 
 		$args['team_id']        = $this->team_id;
 		$args['user_id']        = null;

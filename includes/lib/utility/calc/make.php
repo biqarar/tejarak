@@ -139,10 +139,10 @@ trait make
 
 		$title = T_("Using :d :v From plan :p By :c active member",
 		[
-			'd' => \lib\utility\human::number($count_use,\lib\language::get_language()),
+			'd' => \lib\utility\human::number($count_use,\lib\language::current()),
 			'v' => $invoice_unit_title,
 			'p' => T_($this->old_plan_name),
-			'c' => \lib\utility\human::number($count_active_user, \lib\language::get_language()),
+			'c' => \lib\utility\human::number($count_active_user, \lib\language::current()),
 		]);
 
 		$this->count_active_user = $count_active_user;
@@ -213,7 +213,7 @@ trait make
 	        $notify_text = T_("You have new invoice for :team by amount :amount :unit",
 			[
 				'team'   => $this->team_details['name'],
-				'amount' => \lib\utility\human::number(number_format($amount), \lib\language::get_language()),
+				'amount' => \lib\utility\human::number(number_format($amount), \lib\language::current()),
 				'unit'   => T_("toman"),
 			]);
 

@@ -115,7 +115,7 @@ trait month
 		}
 		else
 		{
-			if(\lib\language::get_language() === 'fa')
+			if(\lib\language::current() === 'fa')
 			{
 				$year = \lib\utility\jdate::date("Y", false, false);
 			}

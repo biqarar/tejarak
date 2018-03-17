@@ -97,7 +97,7 @@ trait year
 		}
 		else
 		{
-			if(\lib\language::get_language() === 'fa')
+			if(\lib\language::current() === 'fa')
 			{
 				$date_is_shamsi = true;
 			}

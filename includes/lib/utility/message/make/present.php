@@ -23,7 +23,7 @@ trait present
 		if($msg)
 		{
 			$msg = "#". T_("Presents"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n". $msg;
-			$msg .= "\n👥 ". \lib\utility\human::number(count($result), \lib\language::get_language());
+			$msg .= "\n👥 ". \lib\utility\human::number(count($result), \lib\language::current());
 		}
 		return $msg;
 	}

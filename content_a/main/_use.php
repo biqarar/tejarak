@@ -80,7 +80,7 @@ trait _use
 				$url_property          = \lib\url::directory();
 				$url_get               = \lib\request::get();
 
-				$site_language         = \lib\language::get_language();
+				$site_language         = \lib\language::current();
 				$site_language_default = \lib\language::default();
 
 				if($team_language === $site_language)
