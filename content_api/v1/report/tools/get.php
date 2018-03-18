@@ -93,12 +93,12 @@ trait get
 			}
 			else
 			{
-				\lib\error::page(T_("Invalid parameter format"));
+				\lib\header::status(404, T_("Invalid parameter format"));
 			}
 			break;
 
 			default:
-				\lib\error::page(T_("Invalid url"));
+				\lib\header::status(404, T_("Invalid url"));
 				break;
 		}
 	}

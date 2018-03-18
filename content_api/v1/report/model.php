@@ -30,7 +30,7 @@ class model extends \addons\content_api\v1\home\model
 		}
 		else
 		{
-			\lib\error::page(T_("Invalid url"));
+			\lib\header::status(404, T_("Invalid url"));
 		}
 
 	}

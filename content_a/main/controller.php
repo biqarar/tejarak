@@ -76,7 +76,7 @@ class controller extends \mvc\controller
 				// team not found
 				if(!$team_details)
 				{
-					\lib\error::page(T_("Team not found"));
+					\lib\header::status(404, T_("Team not found"));
 				}
 				else
 				{
@@ -144,7 +144,7 @@ class controller extends \mvc\controller
 		}
 		else
 		{
-			\lib\error::page(T_("Invalid url"));
+			\lib\header::status(404, T_("Invalid url"));
 		}
 	}
 
