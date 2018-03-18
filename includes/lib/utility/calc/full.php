@@ -173,7 +173,7 @@ trait full
 
         \lib\db\transactions::set($transaction_set);
 
-        $this->log_meta['meta']['debug'] = \lib\notif::compile();
+        $this->log_meta['meta']['debug'] = \lib\notif::get();
 
 		if(\lib\engine\process::status())
 		{
