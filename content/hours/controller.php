@@ -13,7 +13,7 @@ class controller extends \content\main\controller
 		// the house url can not be route
 		if($url === 'hours')
 		{
-			\lib\error::page();
+			\lib\header::status(404);
 		}
 		$list_member = $this->model()->list_member(['shortname' => $url]);
 

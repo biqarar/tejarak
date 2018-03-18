@@ -46,7 +46,7 @@ class controller extends \content_a\main\controller
 								break;
 
 							default:
-								\lib\error::page();
+								\lib\header::status(404);
 								break;
 						}
 					}
@@ -59,7 +59,7 @@ class controller extends \content_a\main\controller
 					}
 					break;
 				default:
-					\lib\error::page();
+					\lib\header::status(404);
 					break;
 			}
 		}

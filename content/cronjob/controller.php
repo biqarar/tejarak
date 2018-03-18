@@ -8,7 +8,7 @@ class controller extends \content\main\controller
 	{
 		if(isset($_SERVER['REQUEST_METHOD']) && mb_strtolower($_SERVER['REQUEST_METHOD']) === 'get')
 		{
-			\lib\error::page();
+			\lib\header::status(404);
 		}
 
 		if(\lib\url::isLocal())
@@ -35,7 +35,7 @@ class controller extends \content\main\controller
 		else
 		{
 			\lib\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
-			\lib\error::page();
+			\lib\header::status(404);
 		}
 
 	}

@@ -15,7 +15,7 @@ class controller extends \content_a\main\controller
 
 		if($url === 'setting/report')
 		{
-			\lib\error::page();
+			\lib\header::status(404);
 		}
 		$this->get(false, 'report')->ALL("/.*/");
 		$this->post('report')->ALL("/.*/");

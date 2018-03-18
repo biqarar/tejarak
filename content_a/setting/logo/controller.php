@@ -15,7 +15,7 @@ class controller extends \content_a\main\controller
 
 		if($url === 'setting/logo')
 		{
-			\lib\error::page();
+			\lib\header::status(404);
 		}
 		$this->get()->ALL("/.*/");
 		$this->post('logo')->ALL("/.*/");

@@ -54,7 +54,7 @@ class controller extends \mvc\controller
 		// if !the url 0 is a short url
 		if(!\lib\utility\shortURL::is($url_0) && $url_0 != 'notifications')
 		{
-			\lib\error::page();
+			\lib\header::status(404);
 		}
 
 		$team_id    = $url_0;
