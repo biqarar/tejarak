@@ -106,7 +106,7 @@ class controller extends \mvc\controller
 				// this user is not in this team
 				if(!$load_userteam_record)
 				{
-					\lib\error::access();
+					\lib\header::status(403);
 				}
 				else
 				{

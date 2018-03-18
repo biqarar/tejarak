@@ -34,7 +34,7 @@ class controller extends \content_a\main\controller
 							case 'settings':
 								if(!\lib\temp::get('is_admin'))
 								{
-									\lib\error::access();
+									\lib\header::status(403);
 								}
 							case 'last':
 							case 'year':
