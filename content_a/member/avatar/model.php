@@ -12,7 +12,7 @@ class model extends \content_a\member\model
 	 */
 	public function upload_avatar()
 	{
-		if(\lib\utility::files('avatar'))
+		if(\lib\request::files('avatar'))
 		{
 			\lib\utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
