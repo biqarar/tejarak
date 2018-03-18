@@ -162,7 +162,7 @@ trait manage
 
 		if(\lib\notif::$status)
 		{
-			\lib\notif::true(T_("Hour type changed"));
+			\lib\notif::ok(T_("Hour type changed"));
 		}
 	}
 }

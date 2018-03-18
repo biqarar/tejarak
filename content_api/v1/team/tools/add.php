@@ -624,11 +624,11 @@ trait add
 			\lib\notif::title(T_("Operation Complete"));
 			if($edit_mode)
 			{
-				\lib\notif::true(T_("Team successfuly edited"));
+				\lib\notif::ok(T_("Team successfuly edited"));
 			}
 			else
 			{
-				\lib\notif::true(T_("Team successfuly added"));
+				\lib\notif::ok(T_("Team successfuly added"));
 			}
 		}
 

@@ -185,7 +185,7 @@ trait action
 			\lib\notif::title(T_("Operation complete"));
 			if($type === 'accept')
 			{
-				\lib\notif::true(T_("Request accepted"));
+				\lib\notif::ok(T_("Request accepted"));
 			}
 			else
 			{

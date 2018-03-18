@@ -71,7 +71,7 @@ class model extends \content_a\member\model
 			$this->add_parent();
 			if(\lib\notif::$status)
 			{
-				\lib\notif::true(T_("Observer was saved"));
+				\lib\notif::ok(T_("Observer was saved"));
 
 				$t_T =
 				[

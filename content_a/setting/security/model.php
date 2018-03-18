@@ -203,7 +203,7 @@ class model extends \content_a\main\model
 
 		if(\lib\notif::$status)
 		{
-			\lib\notif::true(T_("Your request was sended"));
+			\lib\notif::ok(T_("Your request was sended"));
 		}
 	}
 }

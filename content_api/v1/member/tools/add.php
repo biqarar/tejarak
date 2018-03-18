@@ -262,15 +262,15 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				if($_args['debug']) \lib\notif::true(T_("Member successfully added"));
+				if($_args['debug']) \lib\notif::ok(T_("Member successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				if($_args['debug']) \lib\notif::true(T_("Member successfully updated"));
+				if($_args['debug']) \lib\notif::ok(T_("Member successfully updated"));
 			}
 			else
 			{
-				if($_args['debug']) \lib\notif::true(T_("Member successfully removed"));
+				if($_args['debug']) \lib\notif::ok(T_("Member successfully removed"));
 			}
 		}
 

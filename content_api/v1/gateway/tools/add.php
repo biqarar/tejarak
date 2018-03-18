@@ -292,15 +292,15 @@ trait add
 
 			if($_args['method'] === 'post')
 			{
-				\lib\notif::true(T_("gateway successfully added"));
+				\lib\notif::ok(T_("gateway successfully added"));
 			}
 			elseif($_args['method'] === 'patch')
 			{
-				\lib\notif::true(T_("gateway successfully updated"));
+				\lib\notif::ok(T_("gateway successfully updated"));
 			}
 			else
 			{
-				\lib\notif::true(T_("gateway successfully removed"));
+				\lib\notif::ok(T_("gateway successfully removed"));
 			}
 		}
 

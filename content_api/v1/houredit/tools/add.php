@@ -370,11 +370,11 @@ trait add
 			\lib\notif::title(T_("Operation complete"));
 			if($update_mode)
 			{
-				\lib\notif::true(T_("Your request updated"));
+				\lib\notif::ok(T_("Your request updated"));
 			}
 			else
 			{
-				\lib\notif::true(T_("Your request sended"));
+				\lib\notif::ok(T_("Your request sended"));
 			}
 		}
 	}

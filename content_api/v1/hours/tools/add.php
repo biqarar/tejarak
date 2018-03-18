@@ -162,12 +162,12 @@ trait add
 			if($type === 'enter')
 			{
 				$msg_notify = T_("Dear :name;", ['name'=> $name])."<br />". T_('Your enter was registered.').' '. T_("Have a good time.");
-				\lib\notif::true($msg_notify);
+				\lib\notif::ok($msg_notify);
 			}
 			else
 			{
 				$msg_notify = T_("Bye Bye :name ;)", ['name'=> $name]);
-				\lib\notif::true($msg_notify);
+				\lib\notif::ok($msg_notify);
 			}
 		}
 	}

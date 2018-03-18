@@ -99,7 +99,7 @@ class model extends \mvc\model
 			// \lib\utility\mail::send($mail);
 
 			\lib\db\logs::set('user:send:contact', $user_id, $log_meta);
-			\lib\notif::true(T_("Thank You For contacting us"));
+			\lib\notif::ok(T_("Thank You For contacting us"));
 		}
 		else
 		{
