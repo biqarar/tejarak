@@ -23,7 +23,7 @@ trait first_enter
 			$this->displayname
 		  )
 		{
-			$msg = \lib\utility::date('l j F Y', time() , 'current');
+			$msg = \lib\date::fit_lang('l j F Y', time() , 'current');
 			$msg .= "\n";
 			$msg .= "💪 ". $this->displayname;
 			$msg .= "\n"."🌖 🌱 👨‍💻 🥇";

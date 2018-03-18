@@ -39,8 +39,8 @@ trait thismonth
 		{
 			$temp_message = $msg;
 			$msg = "#".	T_("Current_month");
-			$msg .= " ". \lib\utility::date('F', time() , 'current');
-			$msg .= "\n". \lib\utility::date('l j F Y H:i', time() , 'current');
+			$msg .= " ". \lib\date::fit_lang('F', time() , 'current');
+			$msg .= "\n". \lib\date::fit_lang('l j F Y H:i', time() , 'current');
 			$msg .= "\n". $temp_message;
 			$msg .= "\n🕰 ". \lib\utility\human::time($total_diff,'number', $default_language);
 			$msg .= "\n👥 ". \lib\utility\human::number(count($count_person), $default_language);

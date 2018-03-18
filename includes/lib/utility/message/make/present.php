@@ -22,7 +22,7 @@ trait present
 
 		if($msg)
 		{
-			$msg = "#". T_("Presents"). "\n". \lib\utility::date('l j F Y H:i', time() , 'current') . "\n". $msg;
+			$msg = "#". T_("Presents"). "\n". \lib\date::fit_lang('l j F Y H:i', time() , 'current') . "\n". $msg;
 			$msg .= "\n👥 ". \lib\utility\human::number(count($result), \lib\language::current());
 		}
 		return $msg;

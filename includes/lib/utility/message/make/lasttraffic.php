@@ -36,7 +36,7 @@ trait lasttraffic
 							}
 							else
 							{
-								$msg .= "\n". \lib\utility::date('l j F Y', strtotime($value['date']) , $default_language);
+								$msg .= "\n". \lib\date::fit_lang('l j F Y', strtotime($value['date']) , $default_language);
 							}
 
 							$first_log_date = $value['date'];
@@ -48,7 +48,7 @@ trait lasttraffic
 							}
 							else
 							{
-								$msg .= "\n\n". \lib\utility::date('l j F Y', strtotime($value['date']) , $default_language);
+								$msg .= "\n\n". \lib\date::fit_lang('l j F Y', strtotime($value['date']) , $default_language);
 								$first_log_date = $value['date'];
 							}
 						}
@@ -75,7 +75,7 @@ trait lasttraffic
 		{
 			$temp_message = $msg;
 			$msg = "#". T_("Last_traffic");
-			$msg .= "\n". \lib\utility::date('l j F Y H:i', time() , $default_language) . "\n";
+			$msg .= "\n". \lib\date::fit_lang('l j F Y H:i', time() , $default_language) . "\n";
 			$msg .= $temp_message;
 			$msg .= "\n👥 ". \lib\utility\human::number(count($count_person), $default_language);
 		}

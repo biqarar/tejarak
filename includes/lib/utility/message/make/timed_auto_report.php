@@ -70,7 +70,7 @@ trait timed_auto_report
 
 		if($msg_string)
 		{
-			$msg_string = \lib\utility::date('l j F Y', time() , 'current') . "\n\n" . $msg_string;
+			$msg_string = \lib\date::fit_lang('l j F Y', time() , 'current') . "\n\n" . $msg_string;
 			$msg_string = $this->report_header . "\n". $msg_string. "\n". $this->report_footer;
 		}
 

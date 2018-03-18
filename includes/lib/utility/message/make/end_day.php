@@ -47,7 +47,7 @@ trait end_day
 			$msg .= "#". T_('Report');
 			// $msg .=  $this->team_name . " ";
 
-			$msg  .= " ". \lib\utility::date("l j F Y", time(), 'current'). "\n\n";
+			$msg  .= " ". \lib\date::fit_lang("l j F Y", time(), 'current'). "\n\n";
 			$msg_admin  = $msg;
 
 			$total_time = 0;

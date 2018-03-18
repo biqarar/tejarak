@@ -12,7 +12,7 @@ trait date_now
 	 */
 	public function date_now()
 	{
-		$msg = \lib\utility::date('l j F Y', time() , 'current');
+		$msg = \lib\date::fit_lang('l j F Y', time() , 'current');
 		return $msg;
 	}
 }
