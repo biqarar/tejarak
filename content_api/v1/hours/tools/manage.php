@@ -160,7 +160,7 @@ trait manage
 			return false;
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::ok(T_("Hour type changed"));
 		}

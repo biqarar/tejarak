@@ -175,7 +175,7 @@ trait full
 
         $this->log_meta['meta']['debug'] = \lib\notif::compile();
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\db\logs::set('invoice:team:back:full:money:transaction:set', null, $this->log_meta);
 			return true;
@@ -305,7 +305,7 @@ trait full
 
         \lib\db\transactions::set($transaction_set);
 
-        if(\lib\notif::$status)
+        if(\lib\engine\process::status())
         {
         	return true;
         }

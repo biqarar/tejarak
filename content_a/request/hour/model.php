@@ -39,7 +39,7 @@ class model extends \content_a\main\model
 		\lib\utility::set_request_array($request);
 		$this->user_id = \lib\user::id();
 		$this->add_houredit();
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\redirect::to(\lib\url::here(). '/'. $request['team']. '/request');
 		}

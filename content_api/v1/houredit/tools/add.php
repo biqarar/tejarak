@@ -365,7 +365,7 @@ trait add
 			return false;
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::title(T_("Operation complete"));
 			if($update_mode)

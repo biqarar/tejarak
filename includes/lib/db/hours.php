@@ -381,7 +381,7 @@ class hours
 
 		$_args = self::check_before_save($_args);
 
-		if(!\lib\notif::$status)
+		if(!\lib\engine\process::status())
 		{
 			return false;
 		}
@@ -467,7 +467,7 @@ class hours
 
 		$_args = self::check_before_save($_args);
 
-		if(!\lib\notif::$status)
+		if(!\lib\engine\process::status())
 		{
 			return false;
 		}

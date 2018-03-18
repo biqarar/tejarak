@@ -286,7 +286,7 @@ trait add
 			// \lib\db\gateways::remove($args);
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::title(T_("Operation Complete"));
 

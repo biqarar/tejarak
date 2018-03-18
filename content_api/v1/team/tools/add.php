@@ -619,7 +619,7 @@ trait add
 		}
 
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::title(T_("Operation Complete"));
 			if($edit_mode)

@@ -176,7 +176,7 @@ class model extends \content_a\main\model
 			}
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::ok(T_("Report settings was changed"));
 		}

@@ -150,7 +150,7 @@ trait add
 			return false;
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::title(null);
 			$name = null;

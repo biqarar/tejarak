@@ -55,7 +55,7 @@ class model extends \content_a\main\model
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!\lib\notif::$status)
+			if(!\lib\engine\process::status())
 			{
 				return false;
 			}
@@ -128,7 +128,7 @@ class model extends \content_a\main\model
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			if(\lib\request::post('parent_mobile'))
 			{
@@ -142,7 +142,7 @@ class model extends \content_a\main\model
 			}
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\redirect::to(\lib\url::here(). "/$team/member");
 		}

@@ -84,21 +84,21 @@ trait add
 		 */
 		$return_function = $this->check_args($_args, $args, $log_meta, $team_id);
 
-		if(!\lib\notif::$status || $return_function === false)
+		if(!\lib\engine\process::status() || $return_function === false)
 		{
 			return false;
 		}
 
 		$check_security = $this->check_security($team_id, $_args, $args, $log_meta);
 
-		if($check_security === false || !\lib\notif::$status)
+		if($check_security === false || !\lib\engine\process::status())
 		{
 			return false;
 		}
 
 		$res = $this->find_member_id($_args, $log_meta, $team_id);
 
-		if(!\lib\notif::$status || $res === false)
+		if(!\lib\engine\process::status() || $res === false)
 		{
 			return false;
 		}
@@ -167,7 +167,7 @@ trait add
 				// old user id and new user id is set but different
 				// we must update all user id in main parent of this team
 				\lib\db\userteams::update_all_user_id($this->OLD_USER_ID, $this->NEW_USER_ID, $team_id, $log_meta);
-				if(!\lib\notif::$status)
+				if(!\lib\engine\process::status())
 				{
 					return false;
 				}
@@ -236,7 +236,7 @@ trait add
 			// check from $args
 			$this->check_barcode($id);
 			// if have error in checking barcode
-			if(!\lib\notif::$status)
+			if(!\lib\engine\process::status())
 			{
 				return;
 			}
@@ -246,7 +246,7 @@ trait add
 				\lib\db\userteams::update($args, $id);
 			}
 
-			if(\lib\notif::$status)
+			if(\lib\engine\process::status())
 			{
 				$return = true;
 			}
@@ -256,7 +256,7 @@ trait add
 			// \lib\db\members::remove($args);
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			// if($_args['debug']) \lib\notif::title(T_("Operation Complete"));
 

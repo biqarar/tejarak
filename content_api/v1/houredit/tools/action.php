@@ -180,7 +180,7 @@ trait action
 
 		\lib\db\hourrequests::update($update, $id);
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::title(T_("Operation complete"));
 			if($type === 'accept')

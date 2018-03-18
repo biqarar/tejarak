@@ -69,7 +69,7 @@ class model extends \content_a\member\model
 			$parent_request['related_id'] = \lib\url::dir(0);
 			\lib\utility::set_request_array($parent_request);
 			$this->add_parent();
-			if(\lib\notif::$status)
+			if(\lib\engine\process::status())
 			{
 				\lib\notif::ok(T_("Observer was saved"));
 

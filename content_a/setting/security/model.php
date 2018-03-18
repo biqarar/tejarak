@@ -201,7 +201,7 @@ class model extends \content_a\main\model
 		$a = \lib\db\notifications::set($send_notify);
 
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::ok(T_("Your request was sended"));
 		}

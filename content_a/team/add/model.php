@@ -59,7 +59,7 @@ class model extends \content_a\main\model
 		\lib\utility::set_request_array($request);
 		$this->add_team();
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			$new_team_code = \lib\temp::get('last_team_code_added');
 

@@ -81,7 +81,7 @@ class model extends \content_a\main\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member();
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\redirect::to(\lib\url::here(). "/$team/member");
 		}
@@ -105,7 +105,7 @@ class model extends \content_a\main\model
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!\lib\notif::$status)
+			if(!\lib\engine\process::status())
 			{
 				return false;
 			}

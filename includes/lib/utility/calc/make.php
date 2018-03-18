@@ -246,7 +246,7 @@ trait make
 
         $this->log_meta['meta']['debug'] = \lib\notif::compile();
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\db\logs::set('invoice:team:set:transaction:set', $this->user_id, $this->log_meta);
 			return true;

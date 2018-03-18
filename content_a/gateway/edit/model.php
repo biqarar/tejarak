@@ -70,7 +70,7 @@ class model extends \content_a\main\model
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway(['method' => 'patch']);
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\redirect::to(\lib\url::here(). "/$team/gateway");
 		}

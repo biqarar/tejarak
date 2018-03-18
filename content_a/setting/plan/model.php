@@ -100,7 +100,7 @@ class model extends \content_a\main\model
 		if($result)
 		{
 			\lib\notif::ok(T_("Your team plan was changed"));
-			if(\lib\notif::$status)
+			if(\lib\engine\process::status())
 			{
 				\lib\redirect::pwd();
 			}

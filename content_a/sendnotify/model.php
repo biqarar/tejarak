@@ -65,7 +65,7 @@ class model extends \content_a\main\model
 			\lib\db\notifications::set_multi_record();
 		}
 
-		if(\lib\notif::$status)
+		if(\lib\engine\process::status())
 		{
 			\lib\notif::ok(T_("The notification was sended"));
 		}
