@@ -137,7 +137,7 @@ class model extends \content_a\main\model
 		if(\lib\notif::$status)
 		{
 			\lib\notif::true(T_("Profile data was updated"));
-			\lib\notif::msg('direct', true);
+			\lib\notif::direct();
 			\lib\redirect::pwd();
 		}
 	}

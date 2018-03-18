@@ -20,7 +20,7 @@ class model extends \content_a\main\model
 		$this->close_team();
 		if(\lib\notif::$status)
 		{
-			// \lib\notif::msg('direct', true);
+			// \lib\notif::direct();
 			\lib\redirect::pwd();
 		}
 	}
