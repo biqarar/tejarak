@@ -22,7 +22,7 @@ class model extends \content\main\model
 
 		// if($result === false)
 		// {
-		// 	\lib\error::access(T_("Can not access to show this team"));
+		// 	\lib\header::status(403, T_("Can not access to show this team"));
 		// }
 
 		return $result;

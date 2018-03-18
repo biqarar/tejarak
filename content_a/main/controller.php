@@ -186,7 +186,7 @@ class controller extends \mvc\controller
 			case 'setting\plan':
 				if(!\lib\temp::get('is_creator'))
 				{
-					\lib\error::access(T_("Can not access to load this page"));
+					\lib\header::status(403, T_("Can not access to load this page"));
 				}
 				break;
 			case 'report':
@@ -205,7 +205,7 @@ class controller extends \mvc\controller
 			default:
 				if(!\lib\temp::get('is_admin'))
 				{
-					\lib\error::access(T_("Can not access to load this page"));
+					\lib\header::status(403, T_("Can not access to load this page"));
 				}
 				break;
 		}

@@ -26,7 +26,7 @@ class controller extends \content\main\controller
 		}
 		elseif(\lib\temp::get('team_exist'))
 		{
-			\lib\error::access(T_("Access denied to load this team data"));
+			\lib\header::status(403, T_("Access denied to load this team data"));
 		}
 	}
 }
