@@ -112,7 +112,7 @@ class controller extends \mvc\controller
 				{
 					// record is set but the rule is not in this record
 					// this is a bug
-					\lib\error::service();
+					\lib\header::status(503);
 				}
 			}
 		}
