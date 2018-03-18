@@ -6,7 +6,7 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-		$this->data->month = \lib\utility\date::month_precent();
+		$this->data->month = \lib\date::month_precent();
 		/**
 		* get raw time
 		* skip humantime
