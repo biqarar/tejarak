@@ -38,10 +38,10 @@
         <div class="cauto pT10">
         <form method="post">
             {%if value.notify%}
-              <input type="hidden" name="cancel" value='{{value.id|shortURL("encode")}}'>
+              <input type="hidden" name="cancel" value='{{value.id|coding("encode")}}'>
               <button class="btn sm mA3 danger" type="submit" >{%trans "Cancel"%}</button>
             {%else%}
-              <input type="hidden" name="remove" value='{{value.id|shortURL("encode")}}'>
+              <input type="hidden" name="remove" value='{{value.id|coding("encode")}}'>
               <button class="btn sm mA3 danger" type="submit" >{%trans "Remove"%}</button>
             {%endif%}
         </form>

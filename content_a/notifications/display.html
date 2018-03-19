@@ -74,14 +74,14 @@
                 <form method="post">
                   <input type="hidden" name="answer", value="accept">
                   <input type="hidden" name="notify_type", value="owner">
-                  <input type="hidden" name="notify", value='{{value.id|shortURL("encode")}}'>
+                  <input type="hidden" name="notify", value='{{value.id|coding("encode")}}'>
                   <input type="hidden" name="team_code", value='{{value.meta.team_code}}'>
                   <div class="c6 pA5 s12"><button class="btn success outline block">{%trans "Accept"%}</button></div>
                 </form>
                 <form method="post">
                   <input type="hidden" name="answer", value="reject">
                   <input type="hidden" name="notify_type", value="owner">
-                  <input type="hidden" name="notify", value='{{value.id|shortURL("encode")}}'>
+                  <input type="hidden" name="notify", value='{{value.id|coding("encode")}}'>
                   <input type="hidden" name="team_code", value='{{value.meta.team_code}}'>
                     <div class="c6 pA5 s12"><button class="btn danger outline block">{%trans "Reject"%}</button></div>
                 </form>
@@ -119,16 +119,16 @@
                 <form method="post">
                   <input type="hidden" name="answer", value="accept">
                   <input type="hidden" name="notify_type", value="parent">
-                  <input type="hidden" name="notify", value='{{value.id|shortURL("encode")}}'>
-                  <input type="hidden" name="child", value='{{value.user_idsender|shortURL("encode")}}'>
+                  <input type="hidden" name="notify", value='{{value.id|coding("encode")}}'>
+                  <input type="hidden" name="child", value='{{value.user_idsender|coding("encode")}}'>
 
                   <div class="c6 pA5 s12"><button class="btn success outline block">{%trans "Accept"%}</button></div>
                 </form>
                 <form method="post">
                   <input type="hidden" name="answer", value="reject">
                   <input type="hidden" name="notify_type", value="parent">
-                  <input type="hidden" name="notify", value='{{value.id|shortURL("encode")}}'>
-                  <input type="hidden" name="child", value='{{value.user_idsender|shortURL("encode")}}'>
+                  <input type="hidden" name="notify", value='{{value.id|coding("encode")}}'>
+                  <input type="hidden" name="child", value='{{value.user_idsender|coding("encode")}}'>
 
                     <div class="c6 pA5 s12"><button class="btn danger outline block">{%trans "Reject"%}</button></div>
                 </form>
