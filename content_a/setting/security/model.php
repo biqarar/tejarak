@@ -193,7 +193,7 @@ class model extends \content_a\main\model
 			'related_foreign' => 'teams',
 			'status'		  => 'awaiting',
 			'related_id'      => $meta['team_id'],
-			'meta'            => json_encode(\lib\utility\safe::safe($meta), JSON_UNESCAPED_UNICODE),
+			'meta'            => json_encode(\lib\safe::safe($meta), JSON_UNESCAPED_UNICODE),
 			'needanswer'      => 1,
 			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->current_team['name']]),
 		];

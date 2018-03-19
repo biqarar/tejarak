@@ -199,7 +199,7 @@ trait _use
 	 */
 	public function is_exist_team($_unique, $_type = null)
 	{
-		$_unique = \lib\utility\safe::safe($_unique);
+		$_unique = \lib\safe::safe($_unique);
 
 		if(!$_unique)
 		{
