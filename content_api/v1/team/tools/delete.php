@@ -19,7 +19,7 @@ trait delete
 			return false;
 		}
 
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -50,7 +50,7 @@ trait delete
 		{
 			$log_meta['meta']['team'] = $team_details;
 			\lib\db\logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
-			\lib\notif::title(T_("Operation Complete"));
+			// \lib\notif::title(T_("Operation Complete"));
 			\lib\notif::warn(T_("The team was deleted"));
 		}
 

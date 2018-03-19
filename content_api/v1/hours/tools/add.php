@@ -28,7 +28,7 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		// \lib\notif::title(T_("Operation Faild"));
+		// // \lib\notif::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
@@ -152,7 +152,7 @@ trait add
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::title(null);
+			// \lib\notif::title(null);
 			$name = null;
 
 			if(\lib\temp::get('enter_exit_name'))

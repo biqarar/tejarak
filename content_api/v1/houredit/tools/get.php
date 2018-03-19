@@ -65,7 +65,7 @@ trait get
 	 */
 	public function get_houredit($_options = [])
 	{
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -98,7 +98,7 @@ trait get
 			return false;
 		}
 
-		\lib\notif::title(T_("Operation complete"));
+		// \lib\notif::title(T_("Operation complete"));
 
 		$result = $this->ready_houredit($result);
 
@@ -110,7 +110,7 @@ trait get
 	 */
 	public function get_houredit_list()
 	{
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -187,7 +187,7 @@ trait get
 
 		$result = \lib\db\hourrequests::search(null, $meta);
 
-		\lib\notif::title(T_("Operation complete"));
+		// \lib\notif::title(T_("Operation complete"));
 		$temp_result = [];
 		foreach ($result as $key => $value)
 		{
@@ -209,7 +209,7 @@ trait get
 	 */
 	public function get_houredit_detail($_options = [])
 	{
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -243,7 +243,7 @@ trait get
 			return false;
 		}
 
-		\lib\notif::title(T_("Operation complete"));
+		// \lib\notif::title(T_("Operation complete"));
 
 		$result = $this->ready_houredit($result);
 

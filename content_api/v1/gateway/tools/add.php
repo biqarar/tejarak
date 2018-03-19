@@ -29,7 +29,7 @@ trait add
 		$_args = array_merge($default_args, $_args);
 
 		// set default title of \lib\notif
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 
 		// delete gateway mode
 		$delete_mode = false;
@@ -288,7 +288,7 @@ trait add
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::title(T_("Operation Complete"));
+			// \lib\notif::title(T_("Operation Complete"));
 
 			if($_args['method'] === 'post')
 			{

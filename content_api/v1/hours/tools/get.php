@@ -99,7 +99,7 @@ trait get
 	 */
 	public function get_hours($_options = [])
 	{
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -133,7 +133,7 @@ trait get
 			return false;
 		}
 
-		\lib\notif::title(T_("Operation complete"));
+		// \lib\notif::title(T_("Operation complete"));
 
 		$result = $this->ready_hours($result);
 

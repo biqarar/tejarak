@@ -16,7 +16,7 @@ trait delete
 	 */
 	public function hourrequest_delete($_args = [])
 	{
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
@@ -55,7 +55,7 @@ trait delete
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::title(T_("Operation complete"));
+			// \lib\notif::title(T_("Operation complete"));
 			\lib\notif::warn(T_("Your request was deleted"));
 		}
 		return;

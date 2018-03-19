@@ -113,7 +113,7 @@ class model extends \addons\content_api\v1\home\model
 		\lib\db\logs::set('api:team:telegram:group:changed', $this->user_id, $log_meta);
 		\lib\db\teams::update(['telegram_id' => $group], $load_team['team_id']);
 
-		\lib\notif::title(T_("Operation complete"));
+		// \lib\notif::title(T_("Operation complete"));
 	}
 }
 ?>

@@ -29,7 +29,7 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
@@ -367,7 +367,7 @@ trait add
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::title(T_("Operation complete"));
+			// \lib\notif::title(T_("Operation complete"));
 			if($update_mode)
 			{
 				\lib\notif::ok(T_("Your request updated"));

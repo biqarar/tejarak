@@ -28,7 +28,7 @@ trait action
 
 		$_args = array_merge($default_args, $_args);
 
-		\lib\notif::title(T_("Operation Faild"));
+		// \lib\notif::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
@@ -182,7 +182,7 @@ trait action
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::title(T_("Operation complete"));
+			// \lib\notif::title(T_("Operation complete"));
 			if($type === 'accept')
 			{
 				\lib\notif::ok(T_("Request accepted"));
