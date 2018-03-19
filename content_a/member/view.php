@@ -12,10 +12,10 @@ class view extends \content_a\main\view
 		if(isset($this->data->current_team['creator']))
 		{
 			$creator_id = $this->data->current_team['creator'];
-			$creator_id = \lib\utility\shortURL::decode($creator_id);
+			$creator_id = \lib\coding::decode($creator_id);
 
 			$userteam_id = $member;
-			$userteam_id = \lib\utility\shortURL::decode($userteam_id);
+			$userteam_id = \lib\coding::decode($userteam_id);
 
 			if($userteam_id)
 			{
@@ -66,7 +66,7 @@ class view extends \content_a\main\view
 		{
 			$ids          = array_column($member_list, 'id');
 			$member_list    = array_combine($ids, $member_list);
-			$ids          = array_map(function($_a){return \lib\utility\shortURL::decode($_a);}, $ids);
+			$ids          = array_map(function($_a){return \lib\coding::decode($_a);}, $ids);
 			$member_session_list_time = \lib\session::get('member_list_detail_time');
 			if(time() - intval($member_session_list_time) > 60)
 			{

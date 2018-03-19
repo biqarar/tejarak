@@ -26,7 +26,7 @@ trait get_barcodes
 			$userteam_ids = array_column($_data, 'id');
 		}
 
-		$userteam_ids_decode = array_map(function($_a){return \lib\utility\shortURL::decode($_a);}, $userteam_ids);
+		$userteam_ids_decode = array_map(function($_a){return \lib\coding::decode($_a);}, $userteam_ids);
 
 		$get_multi_codes =
 		[
@@ -44,7 +44,7 @@ trait get_barcodes
 			{
 				if(isset($value['related_id']) && isset($value['termusage_type']) && isset($value['slug']))
 				{
-					$related_encode = \lib\utility\shortURL::encode($value['related_id']);
+					$related_encode = \lib\coding::encode($value['related_id']);
 					$codes[$related_encode][$value['termusage_type']] = $value['slug'];
 				}
 			}

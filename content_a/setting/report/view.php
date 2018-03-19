@@ -19,7 +19,7 @@ class view extends \content_a\setting\view
 		$this->data->server_timezone = \lib\utility\timezone::current();
 
 		$team_code = \lib\url::dir(0);
-		$team_id   = \lib\utility\shortURL::decode($team_code);
+		$team_id   = \lib\coding::decode($team_code);
 
 		if(!$team_id)
 		{

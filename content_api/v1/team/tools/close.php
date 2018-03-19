@@ -30,7 +30,7 @@ trait close
 		];
 
 		$id = \lib\utility::request("id");
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 		if(!$id)
 		{
 			\lib\db\logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);

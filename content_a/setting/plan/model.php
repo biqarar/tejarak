@@ -15,7 +15,7 @@ class model extends \content_a\main\model
 		}
 
 		$team = \lib\url::dir(0);
-		$team = \lib\utility\shortURL::decode($team);
+		$team = \lib\coding::decode($team);
 
 		if(!$team)
 		{
@@ -71,7 +71,7 @@ class model extends \content_a\main\model
 		}
 
 		$team = \lib\url::dir(0);
-		$team = \lib\utility\shortURL::decode($team);
+		$team = \lib\coding::decode($team);
 
 		if(!$team)
 		{

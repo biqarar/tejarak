@@ -51,7 +51,7 @@ class team
 		}
 
 		$team_code = \lib\url::dir(0);
-		$team_id   = \lib\utility\shortURL::decode($team_code);
+		$team_id   = \lib\coding::decode($team_code);
 		if($team_id)
 		{
 			$lib_team_detail = \lib\db\teams::get(['id' => $team_id, 'limit' => 1]);

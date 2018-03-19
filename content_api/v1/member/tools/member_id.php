@@ -102,7 +102,7 @@ trait member_id
 		{
 
 			$request_id = \lib\utility::request('id');
-			$request_id = \lib\utility\shortURL::decode($request_id);
+			$request_id = \lib\coding::decode($request_id);
 
 			if($request_id)
 			{
@@ -253,7 +253,7 @@ trait member_id
 
 
 		// to redirect site in new url
-		\lib\temp::set('new_shcode', \lib\utility\shortURL::encode($this->master_user_id));
+		\lib\temp::set('new_shcode', \lib\coding::encode($this->master_user_id));
 
 		if($check_not_duplicate_userteam)
 		{

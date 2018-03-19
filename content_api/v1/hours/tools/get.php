@@ -33,7 +33,7 @@ trait get
 				case 'id':
 				case 'start_gateway_id':
 				case 'end_gateway_id':
-					$result[$key] = \lib\utility\shortURL::encode($value);
+					$result[$key] = \lib\coding::encode($value);
 					break;
 
 				case 'date':
@@ -115,7 +115,7 @@ trait get
 		}
 
 		$id = \lib\utility::request("id");
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 
 		if(!$id)
 		{

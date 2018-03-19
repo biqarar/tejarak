@@ -18,7 +18,7 @@ class view extends \content_a\setting\view
 
 		if(isset($this->data->current_plan['team_id']))
 		{
-			$team_code = \lib\utility\shortURL::encode($this->data->current_plan['team_id']);
+			$team_code = \lib\coding::encode($this->data->current_plan['team_id']);
 			$current_team = $this->model()->getTeamDetail($team_code);
 
 			if(isset($current_team['name']))

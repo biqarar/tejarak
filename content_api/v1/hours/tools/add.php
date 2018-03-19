@@ -47,7 +47,7 @@ trait add
 		}
 
 		$user = \lib\utility::request('user');
-		$user = \lib\utility\shortURL::decode($user);
+		$user = \lib\coding::decode($user);
 
 		if(!$user)
 		{

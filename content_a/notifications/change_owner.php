@@ -19,7 +19,7 @@ trait change_owner
 		}
 
 		$notify = \lib\request::post('notify');
-		$notify = \lib\utility\shortURL::decode($notify);
+		$notify = \lib\coding::decode($notify);
 
 		if(!$notify)
 		{
@@ -28,7 +28,7 @@ trait change_owner
 		}
 
 		$team_id = \lib\request::post('team_code');
-		$team_id = \lib\utility\shortURL::decode($team_id);
+		$team_id = \lib\coding::decode($team_id);
 
 		if(!$team_id)
 		{

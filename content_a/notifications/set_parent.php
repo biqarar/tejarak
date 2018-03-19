@@ -19,7 +19,7 @@ trait set_parent
 		}
 
 		$notify = \lib\request::post('notify');
-		$notify = \lib\utility\shortURL::decode($notify);
+		$notify = \lib\coding::decode($notify);
 
 		if(!$notify)
 		{
@@ -28,7 +28,7 @@ trait set_parent
 		}
 
 		$child = \lib\request::post('child');
-		$child = \lib\utility\shortURL::decode($child);
+		$child = \lib\coding::decode($child);
 
 		if(!$child)
 		{

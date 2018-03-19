@@ -36,7 +36,7 @@ trait get
 				// case 'parent':
 					if(isset($value))
 					{
-						$result[$key] = \lib\utility\shortURL::encode($value);
+						$result[$key] = \lib\coding::encode($value);
 					}
 					else
 					{
@@ -404,7 +404,7 @@ trait get
 		}
 
 		$id = \lib\utility::request("id");
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 
 		$shortname = \lib\utility::request('shortname');
 

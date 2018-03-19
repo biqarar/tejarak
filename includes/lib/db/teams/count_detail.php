@@ -72,7 +72,7 @@ trait count_detail
 			$my_key = $key;
 			if($_encode_key)
 			{
-				$my_key = \lib\utility\shortURL::encode($key);
+				$my_key = \lib\coding::encode($key);
 			}
 
 			if(array_key_exists($key, $member_count))

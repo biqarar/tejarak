@@ -127,7 +127,7 @@ trait check_args
 		$avatar  = null;
 		if($file_code)
 		{
-			$file_id = \lib\utility\shortURL::decode($file_code);
+			$file_id = \lib\coding::decode($file_code);
 			if($file_id)
 			{
 				$logo_record = \lib\db\posts::is_attachment($file_id);

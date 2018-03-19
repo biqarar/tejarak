@@ -15,7 +15,7 @@ class model extends \content_a\member\model
 		$this->user_id  = \lib\user::id();
 
 
-		$team_id        = \lib\utility\shortURL::decode(\lib\url::dir(0));
+		$team_id        = \lib\coding::decode(\lib\url::dir(0));
 		$get_userparent = ['related_id' => $team_id, 'status' => 'enable'];
 		$userparent     = \lib\db\userparents::load_parent($get_userparent);
 
@@ -32,7 +32,7 @@ class model extends \content_a\member\model
 		}
 
 		$user_ids      = array_column($result, 'user_id');
-		$user_ids      = array_map(function($_a){return \lib\utility\shortURL::decode($_a);}, $user_ids);
+		$user_ids      = array_map(function($_a){return \lib\coding::decode($_a);}, $user_ids);
 		$result        = array_combine($user_ids, $result);
 
 		foreach ($userparent as $key => $value)

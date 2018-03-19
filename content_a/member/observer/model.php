@@ -14,18 +14,18 @@ class model extends \content_a\member\model
 	{
 		$this->user_id = \lib\user::id();
 
-		$team_id = \lib\utility\shortURL::decode(\lib\url::dir(0));
+		$team_id = \lib\coding::decode(\lib\url::dir(0));
 
 		$user_id =
 		[
-			'id'      => \lib\utility\shortURL::decode(\lib\url::dir(3)),
+			'id'      => \lib\coding::decode(\lib\url::dir(3)),
 			'team_id' => $team_id,
 			'limit'   => 1,
 		];
 		$user_id = \lib\db\userteams::get($user_id);
 		if(isset($user_id['user_id']))
 		{
-			\lib\utility::set_request_array(['id' => \lib\utility\shortURL::encode($user_id['user_id']), 'related_id' => \lib\url::dir(0) ]);
+			\lib\utility::set_request_array(['id' => \lib\coding::encode($user_id['user_id']), 'related_id' => \lib\url::dir(0) ]);
 			$result           = $this->get_list_parent();
 			return $result;
 		}
@@ -54,8 +54,8 @@ class model extends \content_a\member\model
 
 		$user_id =
 		[
-			'id'      => \lib\utility\shortURL::decode(\lib\url::dir(3)),
-			'team_id' => \lib\utility\shortURL::decode(\lib\url::dir(0)),
+			'id'      => \lib\coding::decode(\lib\url::dir(3)),
+			'team_id' => \lib\coding::decode(\lib\url::dir(0)),
 			'limit'   => 1,
 		];
 		$user_id = \lib\db\userteams::get($user_id);
@@ -63,7 +63,7 @@ class model extends \content_a\member\model
 		{
 			$parent_request               = [];
 			$parent_request['othertitle'] = \lib\request::post('othertitle');
-			$parent_request['id']         = \lib\utility\shortURL::encode($user_id['user_id']);
+			$parent_request['id']         = \lib\coding::encode($user_id['user_id']);
 			$parent_request['title']      = \lib\request::post('title');
 			$parent_request['mobile']     = \lib\request::post('parent_mobile');
 			$parent_request['related_id'] = \lib\url::dir(0);

@@ -32,7 +32,7 @@ trait get
 			{
 				case 'id':
 				// case 'hour_id':
-					$result['id'] = \lib\utility\shortURL::encode(intval($value));
+					$result['id'] = \lib\coding::encode(intval($value));
 					break;
 
 				case 'shamsi_date':
@@ -81,7 +81,7 @@ trait get
 		}
 
 		$id = \lib\utility::request("id");
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 
 		if(!$id)
 		{
@@ -126,7 +126,7 @@ trait get
 		}
 
 		$team = \lib\utility::request("team");
-		$team = \lib\utility\shortURL::decode($team);
+		$team = \lib\coding::decode($team);
 
 		if(!$team)
 		{
@@ -137,7 +137,7 @@ trait get
 
 
 		$user = \lib\utility::request("user");
-		$user = \lib\utility\shortURL::decode($user);
+		$user = \lib\coding::decode($user);
 
 		if(\lib\utility::request('user') && !$user)
 		{
@@ -225,7 +225,7 @@ trait get
 		}
 
 		$id = \lib\utility::request("id");
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 
 		if(!$id)
 		{

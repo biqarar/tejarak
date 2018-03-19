@@ -15,7 +15,7 @@ class model extends \content_a\main\model
 	public function list_parent()
 	{
 		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => \lib\utility\shortURL::encode($this->user_id)]);
+		\lib\utility::set_request_array(['id' => \lib\coding::encode($this->user_id)]);
 		$result = $this->get_list_parent();
 		return $result;
 	}
@@ -74,17 +74,17 @@ class model extends \content_a\main\model
 		$request['othertitle'] = \lib\request::post('othertitle');
 		$request['title']      = \lib\request::post('title');
 		$request['mobile']     = \lib\request::post('mobile');
-		$request['id']         = \lib\utility\shortURL::encode($this->user_id);
+		$request['id']         = \lib\coding::encode($this->user_id);
 
 		\lib\utility::set_request_array($request);
 
-		if(\lib\request::post('cancel') && \lib\utility\shortURL::is(\lib\request::post('cancel')))
+		if(\lib\request::post('cancel') && \lib\coding::is(\lib\request::post('cancel')))
 		{
 			$this->cancel_request();
 			return ;
 		}
 
-		if(\lib\request::post('remove') && \lib\utility\shortURL::is(\lib\request::post('remove')))
+		if(\lib\request::post('remove') && \lib\coding::is(\lib\request::post('remove')))
 		{
 			$this->remove_parent();
 			return ;

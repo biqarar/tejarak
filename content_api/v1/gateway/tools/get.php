@@ -32,7 +32,7 @@ trait get
 		}
 
 		$id = \lib\utility::request('id');
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 
 		$shortname =  \lib\utility::request('shortname');
 
@@ -124,7 +124,7 @@ trait get
 		}
 
 		$id = \lib\utility::request('id');
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 		if(!$id)
 		{
 			\lib\db\logs::set('api:gateway:id:not:set', $this->user_id, $log_meta);
@@ -186,7 +186,7 @@ trait get
 			switch ($key)
 			{
 				case 'user_id':
-					$result['user_id'] = \lib\utility\shortURL::encode($value);
+					$result['user_id'] = \lib\coding::encode($value);
 					break;
 
 				case 'displayname':

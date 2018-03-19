@@ -55,7 +55,7 @@ trait add
 		$end_time   = \lib\utility::request('end_time');
 		$desc       = \lib\utility::request('desc');
 
-		$hour_id = \lib\utility\shortURL::decode($hour_id);
+		$hour_id = \lib\coding::decode($hour_id);
 
 		if(\lib\utility::request('hour_id') && !$hour_id)
 		{
@@ -134,7 +134,7 @@ trait add
 
 		$team_id = \lib\utility::request('team');
 
-		$team_id = \lib\utility\shortURL::decode($team_id);
+		$team_id = \lib\coding::decode($team_id);
 		if(!$team_id)
 		{
 			\lib\db\logs::set('api:houredit:team:id:not:set', $this->user_id, $log_meta);
@@ -199,7 +199,7 @@ trait add
 		if(\lib\team::is_admin($this->user_id))
 		{
 			$user_id_sended = \lib\utility::request('user_id');
-			$user_id_sended = \lib\utility\shortURL::decode($user_id_sended);
+			$user_id_sended = \lib\coding::decode($user_id_sended);
 			if($user_id_sended)
 			{
 				if(!\lib\team::in_team($user_id_sended))

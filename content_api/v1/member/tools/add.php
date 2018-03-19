@@ -71,7 +71,7 @@ trait add
 
 		// get team and check it
 		$team_id = \lib\utility::request('team');
-		$team_id = \lib\utility\shortURL::decode($team_id);
+		$team_id = \lib\coding::decode($team_id);
 		if(!$team_id)
 		{
 			if($_args['save_log']) \lib\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
@@ -148,13 +148,13 @@ trait add
 		if($_args['method'] === 'post')
 		{
 			$user_team_id          = \lib\db\userteams::insert($args);
-			$return['userteam_id'] = \lib\utility\shortURL::encode($user_team_id);
-			$return['user_id']     = \lib\utility\shortURL::encode($this->master_user_id);
+			$return['userteam_id'] = \lib\coding::encode($user_team_id);
+			$return['user_id']     = \lib\coding::encode($this->master_user_id);
 		}
 		elseif($_args['method'] === 'patch')
 		{
 			$id = \lib\utility::request('id');
-			$id = \lib\utility\shortURL::decode($id);
+			$id = \lib\coding::decode($id);
 			if(!$id)
 			{
 				if($_args['save_log']) \lib\db\logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);

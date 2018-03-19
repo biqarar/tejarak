@@ -29,7 +29,7 @@ trait sum
 		];
 
 		$id = \lib\utility::request('id');
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 		if(!$id)
 		{
 			\lib\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
@@ -93,7 +93,7 @@ trait sum
 		}
 
 		$user = \lib\utility::request('user');
-		$user = \lib\utility\shortURL::decode($user);
+		$user = \lib\coding::decode($user);
 		if($user)
 		{
 			$check_user_in_team = \lib\db\userteams::get(['team_id' => $id, 'user_id' => $user, 'limit' => 1, 'rule'=> ['IN', '("user", "admin")']]);

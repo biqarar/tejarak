@@ -94,7 +94,7 @@ trait add
 		// get slug of name in shortname if the shortname is not set
 		if(!$shortname && $name)
 		{
-			$shortname = \lib\utility\shortURL::encode((int) $this->user_id + (int) rand(10000,99999) * 10000);
+			$shortname = \lib\coding::encode((int) $this->user_id + (int) rand(10000,99999) * 10000);
 			// $shortname = \lib\utility\filter::slug($name);
 		}
 
@@ -140,7 +140,7 @@ trait add
 		$logo = \lib\utility::request('logo');
 		if($logo)
 		{
-			$logo_id = \lib\utility\shortURL::decode($logo);
+			$logo_id = \lib\coding::decode($logo);
 			if($logo_id)
 			{
 				$logo_record = \lib\db\posts::is_attachment($logo_id);
@@ -164,7 +164,7 @@ trait add
 		$parent = \lib\utility::request('parent');
 		if($parent)
 		{
-			$parent = \lib\utility\shortURL::decode($parent);
+			$parent = \lib\coding::decode($parent);
 		}
 
 		if($parent)
@@ -459,7 +459,7 @@ trait add
 
 			\lib\temp::set('last_team_shortname_added', $args['shortname']);
 			\lib\temp::set('last_team_id_added', $team_id);
-			\lib\temp::set('last_team_code_added', \lib\utility\shortURL::encode($team_id));
+			\lib\temp::set('last_team_code_added', \lib\coding::encode($team_id));
 
 			if($_args['auto_insert_userteam'])
 			{
@@ -481,14 +481,14 @@ trait add
 			];
 			\lib\db\teamplans::set($insert_team_plan);
 
-			$return['team_id'] = \lib\utility\shortURL::encode($team_id);
+			$return['team_id'] = \lib\coding::encode($team_id);
 
 		}
 		elseif ($_args['method'] === 'patch')
 		{
 			$edit_mode = true;
 			$id = \lib\utility::request('id');
-			$id = \lib\utility\shortURL::decode($id);
+			$id = \lib\coding::decode($id);
 			if(!$id || !is_numeric($id))
 			{
 				\lib\db\logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);

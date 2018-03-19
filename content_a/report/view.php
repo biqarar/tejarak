@@ -51,7 +51,7 @@ class view extends \content_a\main\view
 		{
 			$this->data->reportUrl = \lib\url::here(). '/'. \lib\url::directory();
 			// var_dump($this->data->reportUrl);exit();
-			$team_id = \lib\utility\shortURL::decode($team_code);
+			$team_id = \lib\coding::decode($team_code);
 			if($team_id)
 			{
 				// check admin or user of team
@@ -87,7 +87,7 @@ class view extends \content_a\main\view
 			$this->data->report_current_user = $all_user[\lib\request::get('user')];
 		}
 
-		$team_id = \lib\utility\shortURL::decode($this->data->team_code);
+		$team_id = \lib\coding::decode($this->data->team_code);
 
 		$cache_chart = \lib\session::get('report_last_month_chart_'. $team_id);
 		if($cache_chart === null)

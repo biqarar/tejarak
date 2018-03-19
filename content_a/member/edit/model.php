@@ -82,7 +82,7 @@ class model extends \content_a\main\model
 		$request['id']    = $_member;
 		\lib\utility::set_request_array($request);
 		$result           =  $this->get_member();
-		// $member_id        = \lib\utility\shortURL::decode($_member);
+		// $member_id        = \lib\coding::decode($_member);
 		\lib\utility::set_request_array(['id' => $_member]);
 		$parent           = $this->get_list_parent();
 		$result['parent'] = $parent;

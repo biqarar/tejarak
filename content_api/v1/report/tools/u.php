@@ -29,7 +29,7 @@ trait u
 		];
 
 		$id = \lib\utility::request('id');
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 		if(!$id)
 		{
 			\lib\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
@@ -86,7 +86,7 @@ trait u
 			switch ($key)
 			{
 				case 'hour_id':
-					$temp['id'] = \lib\utility\shortURL::encode($value);
+					$temp['id'] = \lib\coding::encode($value);
 					break;
 
 				case 'date':

@@ -17,7 +17,7 @@ class model extends \content_a\main\model
 	 */
 	public function load_last_request()
 	{
-		$team_id = \lib\utility\shortURL::decode(\lib\url::dir(0));
+		$team_id = \lib\coding::decode(\lib\url::dir(0));
 		$load_last_request = $this->check_sended_request($team_id);
 		if(isset($load_last_request['user_id']))
 		{
@@ -95,7 +95,7 @@ class model extends \content_a\main\model
 		}
 
 		$this->team_code = \lib\url::dir(0);
-		$this->team_id = \lib\utility\shortURL::decode($this->team_code);
+		$this->team_id = \lib\coding::decode($this->team_code);
 		$this->current_team = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
 
 		if($this->check_sended_request() === false)

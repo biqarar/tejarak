@@ -29,7 +29,7 @@ trait month
 		];
 
 		$id = \lib\utility::request('id');
-		$id = \lib\utility\shortURL::decode($id);
+		$id = \lib\coding::decode($id);
 
 		if(!$id)
 		{
@@ -43,7 +43,7 @@ trait month
 
 		if($user)
 		{
-			$user_id = \lib\utility\shortURL::decode($user);
+			$user_id = \lib\coding::decode($user);
 			if(!$user_id)
 			{
 				\lib\db\logs::set('api:report:month:user:id:set:but:is:not:valid', $this->user_id, $log_meta);

@@ -42,7 +42,7 @@ class plan
 		self::list();
 		if(self::$team_id)
 		{
-			// self::$team_id = \lib\utility\shortURL::decode(self::$team_id);
+			// self::$team_id = \lib\coding::decode(self::$team_id);
 			$team_detail   = \lib\db\teams::get_by_id(self::$team_id);
 		}
 		elseif(self::$shortname)
