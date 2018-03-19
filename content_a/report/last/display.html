@@ -6,7 +6,7 @@
 {{block('userList')}}
 
 
-{%if utilityGET.printmode%}
+{%if requestGET.printmode%}
   {{block('lastTimePrintMode')}}
 {%else%}
   {{block('lastTime')}}
