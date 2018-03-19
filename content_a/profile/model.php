@@ -112,7 +112,7 @@ class model extends \content_a\main\model
 
 		// if(in_array($new_unit, ['toman','dollar']))
 		// {
-		// 	$update_user['unit_id']  = \lib\utility\units::get_id($new_unit);
+		// 	$update_user['unit_id']  = \lib\app\units::get_id($new_unit);
 		// 	$user_session['unit_id'] = $update_user['unit_id'];
 		// }
 		// else
