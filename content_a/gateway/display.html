@@ -5,7 +5,7 @@
   <div class='normal f fs13'>
 
   <div class="vcard mA10">
-    <img src="{{url.static}}siftal/images/useful/plus1.png" alt='{%trans "Add new Gateway"%}'>
+    <img src="{{url.site}}/static/siftal/images/useful/plus1.png" alt='{%trans "Add new Gateway"%}'>
     <div class="content"></div>
     <div class="footer pAn">
       <a class="btn block primary" href="{{url.here}}/{{team}}/gateway/add">{%trans "Add new Gateway"%}</a>
@@ -14,7 +14,7 @@
 
 {%for key, value in list_gateway%}
   <a class="vcard mA10" data-status='{{value.status}}' href="{{url.here}}/{{team}}/gateway/edit/{{value.user_id}}">
-    <img src="{{url.static}}siftal/images/useful/gate.png" alt='{%trans "Add new Gateway"%}'>
+    <img src="{{url.site}}/static/siftal/images/useful/gate.png" alt='{%trans "Add new Gateway"%}'>
     <div class="content">
        <div class="header">{{value.name}}</div>
     </div>
