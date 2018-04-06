@@ -24,16 +24,16 @@ class view extends \content_a\main\view
 		{
 			if(!\lib\request::get('export'))
 			{
-				$this->data->export_url = \lib\url::pwd(). '&export=true';
+				$this->data->export_url = \dash\url::pwd(). '&export=true';
 			}
 			else
 			{
-				$this->data->export_url = \lib\url::pwd();
+				$this->data->export_url = \dash\url::pwd();
 			}
 		}
 		else
 		{
-			$this->data->export_url = \lib\url::pwd(). '?export=true';
+			$this->data->export_url = \dash\url::pwd(). '?export=true';
 		}
 
 		if(\lib\request::get('year') && is_numeric(\lib\request::get('year')) && mb_strlen(\lib\request::get('year')) === 4)
@@ -49,7 +49,7 @@ class view extends \content_a\main\view
 
 		if($team_code = \lib\temp::get('team_code_url'))
 		{
-			$this->data->reportUrl = \lib\url::here(). '/'. \lib\url::directory();
+			$this->data->reportUrl = \dash\url::here(). '/'. \dash\url::directory();
 			// var_dump($this->data->reportUrl);exit();
 			$team_id = \lib\coding::decode($team_code);
 			if($team_id)

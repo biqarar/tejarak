@@ -18,7 +18,7 @@ class controller extends \mvc\controller
 
 		if(!\lib\user::login())
 		{
-			\lib\redirect::to(\lib\url::base(). '/enter');
+			\lib\redirect::to(\dash\url::base(). '/enter');
 			return;
 		}
 
@@ -32,7 +32,7 @@ class controller extends \mvc\controller
 	 */
 	public function tejarak_controller_checker()
 	{
-		$url_0 = \lib\url::dir(0);
+		$url_0 = \dash\url::dir(0);
 		// the url in static page
 		// return to get the url in her controller
 		if($this->reservedNames($url_0) === true)
@@ -117,7 +117,7 @@ class controller extends \mvc\controller
 			}
 		}
 
-		$url_1 = \lib\url::dir(1);
+		$url_1 = \dash\url::dir(1);
 
 		if(is_null($url_1))
 		{
@@ -125,7 +125,7 @@ class controller extends \mvc\controller
 			return;
 		}
 
-		$url_2 = \lib\url::dir(2);
+		$url_2 = \dash\url::dir(2);
 
 		$raw_url = $url_1;
 

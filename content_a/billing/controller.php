@@ -10,7 +10,7 @@ class controller extends  \content_a\main\controller
 		$this->get("billing", "billing")->ALL();
 		$this->post("billing")->ALL();
 
-		$url = \lib\url::directory();
+		$url = \dash\url::directory();
 		if(preg_match("/^billing\/invoice\/\d+$/", $url))
 		{
 			\lib\engine\main::controller_set('\\content_a\\billing\\invoice');

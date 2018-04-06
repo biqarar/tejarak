@@ -119,10 +119,10 @@ class model extends \content_a\main\model
 			$request['file'] = $file_code;
 		}
 
-		$url             = \lib\url::directory();
-		$member          = \lib\url::dir(3);
+		$url             = \dash\url::directory();
+		$member          = \dash\url::dir(3);
 		$request['id']   = $member;
-		$request['team'] = $team = \lib\url::dir(0);
+		$request['team'] = $team = \dash\url::dir(0);
 		\lib\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
@@ -144,7 +144,7 @@ class model extends \content_a\main\model
 
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\lib\url::here(). "/$team/member");
+			\lib\redirect::to(\dash\url::here(). "/$team/member");
 		}
 	}
 }

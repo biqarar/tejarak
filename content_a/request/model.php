@@ -18,7 +18,7 @@ class model extends \content_a\main\model
 
 		$this->user_id       = \lib\user::id();
 		$request             = [];
-		$request['team']     = \lib\url::dir(0);
+		$request['team']     = \dash\url::dir(0);
 		$request['id']       = $id;
 		$request['type']     = $type;
 		$request['response'] = $response;
@@ -45,7 +45,7 @@ class model extends \content_a\main\model
 		$this->user_id = \lib\user::id();
 		\lib\utility::set_request_array(['id' => $hourrequest_id]);
 		$this->hourrequest_delete(['method' => 'delete']);
-		\lib\redirect::to(\lib\url::here(). "/$team_id/request");
+		\lib\redirect::to(\dash\url::here(). "/$team_id/request");
 	}
 
 

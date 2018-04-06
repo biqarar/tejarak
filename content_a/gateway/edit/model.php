@@ -62,17 +62,17 @@ class model extends \content_a\main\model
 		$this->user_id = \lib\user::id();
 		$request       = $this->getPost();
 
-		$url             = \lib\url::directory();
-		$gateway         = \lib\url::dir(3);
+		$url             = \dash\url::directory();
+		$gateway         = \dash\url::dir(3);
 		$request['id']   = $gateway;
-		$request['team'] = $team = \lib\url::dir(0);
+		$request['team'] = $team = \dash\url::dir(0);
 		\lib\utility::set_request_array($request);
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway(['method' => 'patch']);
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\lib\url::here(). "/$team/gateway");
+			\lib\redirect::to(\dash\url::here(). "/$team/gateway");
 		}
 	}
 }

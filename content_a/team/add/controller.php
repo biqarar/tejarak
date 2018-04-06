@@ -10,7 +10,7 @@ class controller extends \content_a\main\controller
 	{
 
 
-		$url = \lib\url::directory();
+		$url = \dash\url::directory();
 
 		// add team
 		$this->get(false, 'add')->ALL();

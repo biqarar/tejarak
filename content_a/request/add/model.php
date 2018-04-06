@@ -32,7 +32,7 @@ class model extends \content_a\main\model
 	public function post_add($_args)
 	{
 		$request            = $this->getPost();
-		$request['team']    = \lib\url::dir(0);
+		$request['team']    = \dash\url::dir(0);
 		$request['user_id'] = \lib\request::get('user');
 
 		\lib\utility::set_request_array($request);
@@ -41,7 +41,7 @@ class model extends \content_a\main\model
 		$this->add_houredit();
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\lib\url::here(). '/'. $request['team']. '/request');
+			\lib\redirect::to(\dash\url::here(). '/'. $request['team']. '/request');
 		}
 	}
 }

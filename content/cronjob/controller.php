@@ -11,7 +11,7 @@ class controller extends \content\main\controller
 			\lib\header::status(404);
 		}
 
-		if(\lib\url::isLocal())
+		if(\dash\url::isLocal())
 		{
 			return;
 		}

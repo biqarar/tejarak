@@ -10,9 +10,9 @@ class controller extends \content_a\main\controller
 	{
 
 
-		$url = \lib\url::directory();
+		$url = \dash\url::directory();
 
-		$team_code = \lib\url::dir(0);
+		$team_code = \dash\url::dir(0);
 
 		unset($_SESSION['first_go_to_setup']);
 

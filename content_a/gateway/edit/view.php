@@ -12,9 +12,9 @@ class view extends \content_a\main\view
 	{
 
 		$this->data->edit_mode = true;
-		$url                   = \lib\url::directory();
-		$team                  = \lib\url::dir(0);
-		$gateway               = \lib\url::dir(3);
+		$url                   = \dash\url::directory();
+		$team                  = \dash\url::dir(0);
+		$gateway               = \dash\url::dir(3);
 		$gateway               = $this->model()->edit($team, $gateway);
 		$this->data->gateway   = $gateway;
 

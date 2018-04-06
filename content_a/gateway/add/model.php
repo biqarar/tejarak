@@ -42,7 +42,7 @@ class model extends \content_a\main\model
 		// ready request
 		$request           = $this->getPost();
 
-		$team = \lib\url::dir(0);
+		$team = \dash\url::dir(0);
 		// get posted data to create the request
 		$request['team']  = $team;
 
@@ -52,7 +52,7 @@ class model extends \content_a\main\model
 		$this->add_gateway();
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\lib\url::here(). "/$team/gateway");
+			\lib\redirect::to(\dash\url::here(). "/$team/gateway");
 		}
 
 	}

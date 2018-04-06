@@ -58,7 +58,7 @@ class controller extends \content\main\controller
 			return false;
 		}
 		// if on homepage return false
-		$url = \lib\url::directory();
+		$url = \dash\url::directory();
 		if(!$url)
 		{
 			return false;

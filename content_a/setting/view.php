@@ -11,7 +11,7 @@ class view extends \content_a\main\view
 		$this->data->page['desc'] = T_('Change all settings of team and edit them to customize and have a good experience.');
 
 		// simply set title of child, if needed change it in config of them
-		$child = \lib\url::dir(2);
+		$child = \dash\url::dir(2);
 		if($child)
 		{
 			$child = ucfirst($child);

@@ -73,7 +73,7 @@ class model extends \content_a\main\model
 			$request['file'] = $file_code;
 		}
 
-		$team = \lib\url::dir(0);
+		$team = \dash\url::dir(0);
 		// get posted data to create the request
 		$request['team']  = $team;
 
@@ -83,7 +83,7 @@ class model extends \content_a\main\model
 		$this->add_member();
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\lib\url::here(). "/$team/member");
+			\lib\redirect::to(\dash\url::here(). "/$team/member");
 		}
 
 	}

@@ -9,7 +9,7 @@ class controller extends  \addons\content_api\home\controller
 	 */
 	public function ready()
 	{
-		$url = \lib\url::directory();
+		$url = \dash\url::directory();
 
 		switch ($url)
 		{

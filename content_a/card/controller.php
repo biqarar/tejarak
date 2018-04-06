@@ -9,7 +9,7 @@ class controller extends \content_a\main\controller
 	function ready()
 	{
 
-		$url = \lib\url::directory();
+		$url = \dash\url::directory();
 		$this->get()->ALL("/.*/");
 	}
 }

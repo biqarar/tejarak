@@ -14,18 +14,18 @@ class model extends \content_a\member\model
 	{
 		$this->user_id = \lib\user::id();
 
-		$team_id = \lib\coding::decode(\lib\url::dir(0));
+		$team_id = \lib\coding::decode(\dash\url::dir(0));
 
 		$user_id =
 		[
-			'id'      => \lib\coding::decode(\lib\url::dir(3)),
+			'id'      => \lib\coding::decode(\dash\url::dir(3)),
 			'team_id' => $team_id,
 			'limit'   => 1,
 		];
 		$user_id = \lib\db\userteams::get($user_id);
 		if(isset($user_id['user_id']))
 		{
-			\lib\utility::set_request_array(['id' => \lib\coding::encode($user_id['user_id']), 'related_id' => \lib\url::dir(0) ]);
+			\lib\utility::set_request_array(['id' => \lib\coding::encode($user_id['user_id']), 'related_id' => \dash\url::dir(0) ]);
 			$result           = $this->get_list_parent();
 			return $result;
 		}
@@ -46,7 +46,7 @@ class model extends \content_a\member\model
 
 		if(\lib\request::post('remove'))
 		{
-			\lib\utility::set_request_array(['id' => \lib\request::post('remove'), 'related_id' => \lib\url::dir(0)]);
+			\lib\utility::set_request_array(['id' => \lib\request::post('remove'), 'related_id' => \dash\url::dir(0)]);
 			$this->delete_parent();
 			\lib\redirect::pwd();
 			return ;
@@ -54,8 +54,8 @@ class model extends \content_a\member\model
 
 		$user_id =
 		[
-			'id'      => \lib\coding::decode(\lib\url::dir(3)),
-			'team_id' => \lib\coding::decode(\lib\url::dir(0)),
+			'id'      => \lib\coding::decode(\dash\url::dir(3)),
+			'team_id' => \lib\coding::decode(\dash\url::dir(0)),
 			'limit'   => 1,
 		];
 		$user_id = \lib\db\userteams::get($user_id);
@@ -66,7 +66,7 @@ class model extends \content_a\member\model
 			$parent_request['id']         = \lib\coding::encode($user_id['user_id']);
 			$parent_request['title']      = \lib\request::post('title');
 			$parent_request['mobile']     = \lib\request::post('parent_mobile');
-			$parent_request['related_id'] = \lib\url::dir(0);
+			$parent_request['related_id'] = \dash\url::dir(0);
 			\lib\utility::set_request_array($parent_request);
 			$this->add_parent();
 			if(\lib\engine\process::status())
@@ -82,7 +82,7 @@ class model extends \content_a\member\model
 
 				$message = T_("You are registered as :title of :name in :team", $t_T). '.';
 				$message .= "\n\n". T_("Tejarak"). " | ". T_("Modern Approach");
-				$message .= "\n". 'tejarak.'. \lib\url::tld(). '/'. $this->view()->data->current_team['short_name'];
+				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. $this->view()->data->current_team['short_name'];
 				$parent_detail = \lib\temp::get('add_parent_detail');
 
 				if(isset($parent_detail['chatid']))

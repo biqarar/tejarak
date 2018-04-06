@@ -6,7 +6,7 @@ class model extends \mvc\model
 {
 	public function members_list($_args, $_fields)
 	{
-		$team_id            = \lib\url::dir(2);
+		$team_id            = \dash\url::dir(2);
 
 		$meta               = [];
 		$meta['admin']      = true;
@@ -14,7 +14,7 @@ class model extends \mvc\model
 		$meta['pagenation'] = false;
 		$meta['end_limit']  = 1000;
 
-		$url_property       = \lib\url::dir();
+		$url_property       = \dash\url::dir();
 
 		foreach ($url_property as $key => $value)
 		{

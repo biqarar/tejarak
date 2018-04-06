@@ -215,7 +215,7 @@ class message
 						$msg = $this->{$value}();
 						if($msg)
 						{
-							if(\lib\url::isLocal())
+							if(\dash\url::isLocal())
 							{
 								$msg .= "\n #Dev";
 							}

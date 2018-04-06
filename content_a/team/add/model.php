@@ -66,7 +66,7 @@ class model extends \content_a\main\model
 			if($new_team_code)
 			{
 				// \lib\notif::direct();
-				\lib\redirect::to(\lib\url::here(). "/$new_team_code/setting/plan");
+				\lib\redirect::to(\dash\url::here(). "/$new_team_code/setting/plan");
 			}
 		}
 	}

@@ -50,7 +50,7 @@ class team
 			return;
 		}
 
-		$team_code = \lib\url::dir(0);
+		$team_code = \dash\url::dir(0);
 		$team_id   = \lib\coding::decode($team_code);
 		if($team_id)
 		{

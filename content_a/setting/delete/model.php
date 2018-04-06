@@ -14,7 +14,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_delete()
 	{
-		$code = \lib\url::dir(0);
+		$code = \dash\url::dir(0);
 		$this->user_id = \lib\user::id();
 		\lib\utility::set_request_array(['id' => $code]);
 		$this->close_team();

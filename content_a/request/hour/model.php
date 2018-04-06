@@ -33,15 +33,15 @@ class model extends \content_a\main\model
 	public function post_hour($_args)
 	{
 		$request            = $this->getPost();
-		$request['team']    = \lib\url::dir(0);
-		$request['hour_id'] = \lib\url::dir(3);
+		$request['team']    = \dash\url::dir(0);
+		$request['hour_id'] = \dash\url::dir(3);
 
 		\lib\utility::set_request_array($request);
 		$this->user_id = \lib\user::id();
 		$this->add_houredit();
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\lib\url::here(). '/'. $request['team']. '/request');
+			\lib\redirect::to(\dash\url::here(). '/'. $request['team']. '/request');
 		}
 	}
 }

@@ -75,9 +75,9 @@ trait _use
 
 			if(\lib\language::check($team_language))
 			{
-				$new_url               = \lib\url::pwd();
-				$url                   = \lib\url::base();
-				$url_property          = \lib\url::directory();
+				$new_url               = \dash\url::pwd();
+				$url                   = \dash\url::base();
+				$url_property          = \dash\url::directory();
 				$url_get               = \lib\request::get();
 
 				$site_language         = \lib\language::current();
@@ -112,7 +112,7 @@ trait _use
 						}
 					}
 				}
-				if($new_url !== \lib\url::pwd())
+				if($new_url !== \dash\url::pwd())
 				{
 					\lib\redirect::to($new_url);
 				}

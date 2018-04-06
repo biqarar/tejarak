@@ -56,7 +56,7 @@ class model extends \mvc\model
 			}
 		}
 
-		$meta = ['turn_back' => \lib\url::pwd()];
+		$meta = ['turn_back' => \dash\url::pwd()];
 
 		\lib\utility\payment\pay::start(\lib\user::id(), \lib\request::post('bank'), \lib\request::post('amount'), $meta);
 	}

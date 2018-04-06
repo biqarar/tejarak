@@ -16,7 +16,7 @@ class view extends \mvc\view
 
 
 		// get part 2 of url and use as team name
-		$this->data->team = $this->data->team_code = \lib\url::dir(0);
+		$this->data->team = $this->data->team_code = \dash\url::dir(0);
 
 		if($this->reservedNames($this->data->team))
 		{

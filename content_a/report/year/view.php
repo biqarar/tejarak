@@ -14,7 +14,7 @@ class view extends \content_a\report\view
 	public function view_year()
 	{
 		$args           = [];
-		$args['id']     = \lib\url::dir(0);
+		$args['id']     = \dash\url::dir(0);
 		$args['export'] = \lib\request::get('export');
 
 		if(\lib\request::get('user'))

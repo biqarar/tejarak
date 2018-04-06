@@ -25,7 +25,7 @@ trait enter
 						'time' => human::number(date("H:i"), $this->current_language),
 					];
 					$msg = T_(":name entered in :team at :time", $T_T);
-					$msg .= "\n\n". 'tejarak.'.\lib\url::tld(). '/'. $this->team_short_name;
+					$msg .= "\n\n". 'tejarak.'.\dash\url::tld(). '/'. $this->team_short_name;
 
 					break;
 

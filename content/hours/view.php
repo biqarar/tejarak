@@ -23,7 +23,7 @@ class view extends \mvc\view
 	 */
 	public function view_show($_args)
 	{
-		$team = \lib\url::directory();
+		$team = \dash\url::directory();
 		$request            = [];
 		$this->data->team   = $request['shortname']         = $team;
 		if(\lib\temp::get('list_member'))

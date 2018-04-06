@@ -13,9 +13,9 @@ class view extends \content_a\member\view
 	{
 
 		$this->data->edit_mode     = true;
-		$url                       = \lib\url::directory();
-		$team                      = \lib\url::dir(0);
-		$member                    = \lib\url::dir(3);
+		$url                       = \dash\url::directory();
+		$team                      = \dash\url::dir(0);
+		$member                    = \dash\url::dir(3);
 
 		$member                    = $this->model()->edit($team, $member);
 
