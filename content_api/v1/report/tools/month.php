@@ -117,7 +117,7 @@ trait month
 		{
 			if(\lib\language::current() === 'fa')
 			{
-				$year = \lib\utility\jdate::date("Y", false, false);
+				$year = \dash\utility\jdate::date("Y", false, false);
 			}
 			else
 			{
@@ -167,7 +167,7 @@ trait month
 
 		if(\lib\utility::request('export'))
 		{
-			\lib\utility\export::csv(['data' => $temp, 'name' => T_('tejarak-month-report')]);
+			\dash\utility\export::csv(['data' => $temp, 'name' => T_('tejarak-month-report')]);
 		}
 		else
 		{

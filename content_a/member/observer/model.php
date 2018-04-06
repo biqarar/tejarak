@@ -88,12 +88,12 @@ class model extends \content_a\member\model
 				if(isset($parent_detail['chatid']))
 				{
 					// user have telegram
-					\lib\utility\telegram::sendMessage($parent_detail['chatid'], $message);
+					\dash\utility\telegram::sendMessage($parent_detail['chatid'], $message);
 				}
 				else
 				{
 					// send by sms
-					\lib\utility\sms::send(\dash\request::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
+					\dash\utility\sms::send(\dash\request::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
 				}
 
 				\lib\redirect::pwd();

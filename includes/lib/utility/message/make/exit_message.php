@@ -66,7 +66,7 @@ trait exit_message
 			$start_date = $this->start_date;
 			if($this->current_language == 'fa')
 			{
-				$start_date = \lib\utility\jdate::date("Y-m-d", strtotime($start_date));
+				$start_date = \dash\utility\jdate::date("Y-m-d", strtotime($start_date));
 			}
 			$msg .="🌖 ". $start_date." ".  $time_start. "\n🌑 ". \lib\date::fit_lang("Y-m-d H:i", time(), 'current'); //$time_now;
 		}

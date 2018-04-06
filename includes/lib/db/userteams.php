@@ -135,7 +135,7 @@ class userteams
 			if(array_key_exists($key, $last_traffic))
 			{
 				$resutl[$my_key]['last_traffic'] = $last_traffic[$key];
-				$resutl[$my_key]['last_traffic_string'] = \lib\utility\human::timing($last_traffic[$key]);
+				$resutl[$my_key]['last_traffic_string'] = \dash\utility\human::timing($last_traffic[$key]);
 			}
 
 			if(array_key_exists($key, $traffic_count))

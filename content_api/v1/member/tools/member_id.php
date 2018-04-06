@@ -27,7 +27,7 @@ trait member_id
 
 		// get mobile of user
 		$mobile           = \lib\utility::request("mobile");
-		$mobile_syntax    = \lib\utility\filter::mobile($mobile);
+		$mobile_syntax    = \dash\utility\filter::mobile($mobile);
 		$check_user_exist = null;
 		if($mobile && !$mobile_syntax)
 		{

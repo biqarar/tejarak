@@ -182,7 +182,7 @@ trait period
 
 		if(\lib\utility::request('export'))
 		{
-			\lib\utility\export::csv(['data' => $temp, 'name' => T_("tejarak-period-report")]);
+			\dash\utility\export::csv(['data' => $temp, 'name' => T_("tejarak-period-report")]);
 		}
 		else
 		{

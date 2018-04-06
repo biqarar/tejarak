@@ -75,7 +75,7 @@ class model extends \content_a\main\model
 				return false;
 			}
 
-			$time_changed = \lib\utility\timezone::change_time('H:i', \dash\request::post('timed_auto_report_time'), "Asia/Tehran");
+			$time_changed = \dash\utility\timezone::change_time('H:i', \dash\request::post('timed_auto_report_time'), "Asia/Tehran");
 			$update_team['timed_auto_report'] = $time_changed;
 		}
 		else

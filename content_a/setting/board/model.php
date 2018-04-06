@@ -18,8 +18,8 @@ class model extends \content_a\main\model
 			$args =
 			[
 				'event_title'      => \dash\request::post('event_title'),
-				'event_date_start' => \lib\utility\human::number(\dash\request::post('event_date_start'), 'en'),
-				'event_date'       => \lib\utility\human::number(\dash\request::post('event_date'), 'en'),
+				'event_date_start' => \dash\utility\human::number(\dash\request::post('event_date_start'), 'en'),
+				'event_date'       => \dash\utility\human::number(\dash\request::post('event_date'), 'en'),
 			];
 		}
 

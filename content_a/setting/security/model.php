@@ -81,7 +81,7 @@ class model extends \content_a\main\model
 			return $this->refresh_page();
 		}
 
-		if(!$this->mobile = \lib\utility\filter::mobile($new_owner))
+		if(!$this->mobile = \dash\utility\filter::mobile($new_owner))
 		{
 			\lib\notif::error(T_("Invalid mobile number"), 'owner');
 			return $this->refresh_page();

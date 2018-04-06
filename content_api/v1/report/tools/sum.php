@@ -132,7 +132,7 @@ trait sum
 		}
 		if(\lib\utility::request('export'))
 		{
-			\lib\utility\export::csv(['data' => $temp, 'name' => T_("tejarak-sum-report")]);
+			\dash\utility\export::csv(['data' => $temp, 'name' => T_("tejarak-sum-report")]);
 		}
 		else
 		{

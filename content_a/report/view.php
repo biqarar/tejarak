@@ -113,7 +113,7 @@ class view extends \content_a\main\view
 					$date = date($format, strtotime($key));
 					if(\lib\language::current() === 'fa')
 					{
-						$date = \lib\utility\jdate::date($format, strtotime($key), false);
+						$date = \dash\utility\jdate::date($format, strtotime($key), false);
 					}
 
 					$cache_chart[] = ['key' => $date, 'value' => $value];

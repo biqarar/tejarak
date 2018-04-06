@@ -65,7 +65,7 @@ trait lasttraffic
 							$emoji = "✅";
 						}
 						$msg .= "\n". $emoji. " ". $value['displayname'];
-						$msg .= " ". \lib\utility\human::number(preg_replace("/\:00$/", '', $value['time']), $default_language);
+						$msg .= " ". \dash\utility\human::number(preg_replace("/\:00$/", '', $value['time']), $default_language);
 					}
 				}
 			}
@@ -77,7 +77,7 @@ trait lasttraffic
 			$msg = "#". T_("Last_traffic");
 			$msg .= "\n". \lib\date::fit_lang('l j F Y H:i', time() , $default_language) . "\n";
 			$msg .= $temp_message;
-			$msg .= "\n👥 ". \lib\utility\human::number(count($count_person), $default_language);
+			$msg .= "\n👥 ". \dash\utility\human::number(count($count_person), $default_language);
 		}
 
 		return $msg;

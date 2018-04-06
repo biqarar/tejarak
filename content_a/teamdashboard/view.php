@@ -35,7 +35,7 @@ class view extends \content_a\main\view
 				$date = $key;
 				if(\lib\language::current() === 'fa')
 				{
-					$date = \lib\utility\jdate::date("Y-m-d", strtotime($date), false);
+					$date = \dash\utility\jdate::date("Y-m-d", strtotime($date), false);
 				}
 				array_push($chart, ['key' => $date, 'value' => $value]);
 			}

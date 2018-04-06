@@ -31,7 +31,7 @@ class model extends \content_a\main\model
 			// 'manual_time_exit'  => \dash\request::post('manual_time_exit'),
 			// 'language'          => \dash\request::post('language'),
 			// 'event_title'       => \dash\request::post('event_title'),
-			// 'event_date'        => \lib\utility\human::number(\dash\request::post('event_date'), 'en'),
+			// 'event_date'        => \dash\utility\human::number(\dash\request::post('event_date'), 'en'),
 			// 'cardsize'          => \dash\request::post('cardsize'),
 			// 'allow_desc_enter'  => \dash\request::post('allowDescEnter'),
 			// 'allow_desc_exit'   => \dash\request::post('allowDescExit'),

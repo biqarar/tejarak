@@ -95,7 +95,7 @@ trait add
 		if(!$shortname && $name)
 		{
 			$shortname = \lib\coding::encode((int) $this->user_id + (int) rand(10000,99999) * 10000);
-			// $shortname = \lib\utility\filter::slug($name);
+			// $shortname = \dash\utility\filter::slug($name);
 		}
 
 		// remove - from shortname

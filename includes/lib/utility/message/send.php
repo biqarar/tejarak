@@ -106,12 +106,12 @@ trait send
 					if(!$this->sended_date_now_to_user($user_id))
 					{
 						$this->sended_date_now_to_user($user_id, true);
-						\lib\utility\telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
+						\dash\utility\telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
 					}
 				}
 				else
 				{
-					\lib\utility\telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
+					\dash\utility\telegram::sendMessage($user_detail['chatid'], $_message, ['sort' => 10]);
 				}
                 unset($not_admin[$user_id]);
 			}
@@ -173,7 +173,7 @@ trait send
 				        \dash\db\transactions::set($transaction_set);
 
 						// send sms
-						\lib\utility\sms::send_array($parent_mobile, $sms_text, ['header' => false, 'footer' => false]);
+						\dash\utility\sms::send_array($parent_mobile, $sms_text, ['header' => false, 'footer' => false]);
 					}
 				}
 			}
@@ -217,7 +217,7 @@ trait send
 							if(!$this->sended_date_now_to_user($key))
 							{
 								$this->sended_date_now_to_user($key, true);
-								\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+								\dash\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 							}
 						}
 						$this->send_to_yourself_parent($message, ['sort' => 7], false, ['date_now' => true]);
@@ -233,7 +233,7 @@ trait send
 						{
 							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							{
-								\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+								\dash\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								$first_msg = true;
 							}
 						}
@@ -256,7 +256,7 @@ trait send
 							{
 								if(\lib\utility\plan::access('telegram:first:of:day:msg:group', $this->team_id))
 								{
-									\lib\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
+									\dash\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
 								}
 							}
 						}
@@ -278,7 +278,7 @@ trait send
 						{
 							if(isset($value['chat_id']) && isset($value['reportenterexit']) && $value['reportenterexit'])
 							{
-								\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 2]);
+								\dash\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 2]);
 							}
 						}
 
@@ -304,7 +304,7 @@ trait send
 								{
 									if(\lib\utility\plan::access('telegram:end:day:report:group', $this->team_id))
 									{
-										\lib\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
+										\dash\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
 									}
 								}
 							}
@@ -313,7 +313,7 @@ trait send
 							{
 								if(isset($value['chat_id']) && isset($value['reportdaily']) && $value['reportdaily'])
 								{
-									\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+									\dash\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
 								}
 							}
 						}
@@ -328,13 +328,13 @@ trait send
 					{
 						if(\lib\utility\plan::access('telegram:first:of:day:msg:group', $this->team_id))
 						{
-							\lib\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
+							\dash\utility\telegram::sendMessageGroup($this->team_group, $message, ['sort' => 4]);
 						}
 					}
 
 					foreach ($this->admins_access_detail as $key => $value)
 					{
-						\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 1]);
+						\dash\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 1]);
 					}
 
 					break;
@@ -342,8 +342,8 @@ trait send
 
 		}
 		// send message by sorting
-		\lib\utility\telegram::sort_send();
-		\lib\utility\telegram::clean_cash();
+		\dash\utility\telegram::sort_send();
+		\dash\utility\telegram::clean_cash();
 	}
 }
 ?>
