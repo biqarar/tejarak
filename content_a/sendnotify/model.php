@@ -58,11 +58,11 @@ class model extends \content_a\main\model
 							'telegram' => true,
 							'multi'    => true,
 						];
-						\lib\db\notifications::set($insert_notify);
+						\dash\db\notifications::set($insert_notify);
 					}
 				}
 			}
-			\lib\db\notifications::set_multi_record();
+			\dash\db\notifications::set_multi_record();
 		}
 
 		if(\lib\engine\process::status())

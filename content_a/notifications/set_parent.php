@@ -58,7 +58,7 @@ trait set_parent
 			],
 		];
 
-		$check = \lib\db\notifications::get($get);
+		$check = \dash\db\notifications::get($get);
 
 		if(isset($check['meta']) && is_string($check['meta']) && substr($check['meta'], 0, 1) === '{')
 		{
@@ -81,20 +81,20 @@ trait set_parent
 				'to'      => $check['user_idsender'],
 				'content' => T_("Your request to set parent was :action", ['action' => T_($action)]),
 			];
-			\lib\db\notifications::set($notify_set);
+			\dash\db\notifications::set($notify_set);
 
 			if(\dash\request::post('answer') === 'accept')
 			{
 				// ACCEPT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 0;
-				\lib\db\logs::set('notify:change:parent:accept', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('notify:change:parent:accept', \lib\user::id(), $log_meta);
 				$user_id   = $check['user_idsender'];
 				$parent_id = $check['user_id'];
 				$title = isset($check['meta']['title']) ? $check['meta']['title'] : null;
 				$check_exist = ['user_id' => $user_id, 'parent' => $parent_id, 'status' => 'enable', 'limit' => 1];
 
-				$check_exist = \lib\db\userparents::get($check_exist);
+				$check_exist = \dash\db\userparents::get($check_exist);
 				if(isset($check_exist['id']))
 				{
 					$update_userparents =
@@ -103,7 +103,7 @@ trait set_parent
 						'status' => 'enable',
 						'creator' => \lib\user::id(),
 					];
-					\lib\db\userparents::update($update_userparents, $check_exist['id']);
+					\dash\db\userparents::update($update_userparents, $check_exist['id']);
 				}
 				else
 				{
@@ -116,7 +116,7 @@ trait set_parent
 						'status'  => 'enable',
 						'creator' => \lib\user::id(),
 					];
-					\lib\db\userparents::insert($insert_parent);
+					\dash\db\userparents::insert($insert_parent);
 				}
 
 			}
@@ -125,10 +125,10 @@ trait set_parent
 				// REJECT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 1;
-				\lib\db\logs::set('notify:change:parent:reject', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('notify:change:parent:reject', \lib\user::id(), $log_meta);
 			}
 
-			\lib\db\notifications::update($update_notify, $check['id']);
+			\dash\db\notifications::update($update_notify, $check['id']);
 		}
 		else
 		{

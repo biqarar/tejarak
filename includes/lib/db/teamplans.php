@@ -171,14 +171,14 @@ class teamplans
 			}
 			else
 			{
-				\lib\db\logs::set('plan:change:not:creator', $_args['creator'], $log_meta);
+				\dash\db\logs::set('plan:change:not:creator', $_args['creator'], $log_meta);
 				\lib\notif::error(T_("Just creator of team can change the plan"));
 				return false;
 			}
 		}
 		else
 		{
-			\lib\db\logs::set('plan:change:team:details:not:found', $_args['creator'], $log_meta);
+			\dash\db\logs::set('plan:change:team:details:not:found', $_args['creator'], $log_meta);
 			return false;
 		}
 
@@ -187,7 +187,7 @@ class teamplans
 		$_args['plan'] = self::plan_code($_args['plan']);
 		if(!$_args['plan'])
 		{
-			\lib\db\logs::set('plan:cannot:support', $_args['creator'], $log_meta);
+			\dash\db\logs::set('plan:cannot:support', $_args['creator'], $log_meta);
 			return false;
 		}
 
@@ -277,7 +277,7 @@ class teamplans
 
 		$log_meta['meta']['current'] = $current;
 
-		\lib\db\logs::set('plan:changed', $_args['creator'], $log_meta);
+		\dash\db\logs::set('plan:changed', $_args['creator'], $log_meta);
 		// insert new teamplans
 		self::insert($_args);
 
@@ -320,7 +320,7 @@ class teamplans
 
 		$_options = array_merge($default_option, $_options);
 
-		return \lib\db\config::public_search('teamplans', $_string, $_options);
+		return \dash\db\config::public_search('teamplans', $_string, $_options);
 
 	}
 }

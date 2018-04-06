@@ -295,7 +295,7 @@ trait get
 			$logos = array_unique($logos);
 			if(!empty($logos))
 			{
-				$get_post_record = \lib\db\posts::get_some_id($logos);
+				$get_post_record = \dash\db\posts::get_some_id($logos);
 				if(!empty($get_post_record))
 				{
 					$id              = array_column($get_post_record, 'id');
@@ -326,7 +326,7 @@ trait get
 		$type = \lib\utility::request('type');
 		if($type && !is_string($type))
 		{
-			\lib\db\logs::set('api:team:get:list:type:invalid', $this->user_id);
+			\dash\db\logs::set('api:team:get:list:type:invalid', $this->user_id);
 			\lib\notif::error(T_("Invalid team type"), 'type', 'arguments');
 			return false;
 		}
@@ -412,7 +412,7 @@ trait get
 		{
 			if($_options['debug'])
 			{
-				\lib\db\logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:id:shortname:not:set', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Team id or shortname not set"), 'id', 'arguments');
 			}
 			return false;
@@ -420,7 +420,7 @@ trait get
 
 		if($id && $shortname)
 		{
-			\lib\db\logs::set('api:team:id:shortname:together:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:id:shortname:together:set', $this->user_id, $log_meta);
 			if($_options['debug'])
 			{
 				\lib\notif::error(T_("Can not set team id and shortname together"), 'id', 'arguments');
@@ -465,7 +465,7 @@ trait get
 
 		if(!$result)
 		{
-			\lib\db\logs::set('api:team:access:denide', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:access:denide', $this->user_id, $log_meta);
 			if($_options['debug'])
 			{
 				\lib\notif::error(T_("Can not access to load this team details"), 'team', 'permission');

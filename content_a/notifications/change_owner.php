@@ -58,7 +58,7 @@ trait change_owner
 			],
 		];
 
-		$check = \lib\db\notifications::get($get);
+		$check = \dash\db\notifications::get($get);
 		if(isset($check['id']))
 		{
 			$update_notify =
@@ -77,14 +77,14 @@ trait change_owner
 				'to'      => $check['user_idsender'],
 				'content' => T_("Your request to change owner of team :team was :action", ['action' => T_($action), 'team' => $team_name]),
 			];
-			\lib\db\notifications::set($notify_set);
+			\dash\db\notifications::set($notify_set);
 
 			if(\dash\request::post('answer') === 'accept')
 			{
 				// ACCEPT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 0;
-				\lib\db\logs::set('notify:change:owner:accept', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('notify:change:owner:accept', \lib\user::id(), $log_meta);
 				\lib\db\teams::update(['creator' => \lib\user::id()], $team_id);
 				$check_exist_team_user =
 				[
@@ -122,10 +122,10 @@ trait change_owner
 				// REJECT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 1;
-				\lib\db\logs::set('notify:change:owner:reject', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('notify:change:owner:reject', \lib\user::id(), $log_meta);
 			}
 
-			\lib\db\notifications::update($update_notify, $check['id']);
+			\dash\db\notifications::update($update_notify, $check['id']);
 		}
 		else
 		{

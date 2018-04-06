@@ -33,7 +33,7 @@ trait last
 
 		if(!$id)
 		{
-			\lib\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
@@ -46,7 +46,7 @@ trait last
 			$user_id = \lib\coding::decode($user);
 			if(!$user_id)
 			{
-				\lib\db\logs::set('api:report:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:report:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Invalid user id"), 'user', 'arguments');
 				return false;
 			}
@@ -58,7 +58,7 @@ trait last
 		{
 			if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'report_last_all']))
 			{
-				\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
@@ -80,7 +80,7 @@ trait last
 			}
 			else
 			{
-				\lib\db\logs::set('api:report:last:permission:denide', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:report:last:permission:denide', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
@@ -88,7 +88,7 @@ trait last
 
 		if(!isset($check_is_my_team['id']))
 		{
-			\lib\db\logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:report:team:id:not:found', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}

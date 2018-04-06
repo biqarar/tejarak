@@ -117,7 +117,7 @@ trait ready
 
 			if($this->send_parent && $this->member_id)
 			{
-				$get_parent = \lib\db\userparents::get(['user_id' => $this->member_id, 'status' => 'enable', 'related_id' => $this->team_id]);
+				$get_parent = \dash\db\userparents::get(['user_id' => $this->member_id, 'status' => 'enable', 'related_id' => $this->team_id]);
 				if(is_array($get_parent))
 				{
 					$must_send_to = array_merge($must_send_to, array_column($get_parent, 'parent'));
@@ -130,7 +130,7 @@ trait ready
 			if(!empty($must_send_to))
 			{
 				$in = implode(',' , $must_send_to);
-				$must_send_to_user_data = \lib\db\users::get(['id' => ["IN", "($in)"]]);
+				$must_send_to_user_data = \dash\db\users::get(['id' => ["IN", "($in)"]]);
 				if(is_array($must_send_to_user_data))
 				{
 					$key                           = array_column($must_send_to_user_data, 'id');

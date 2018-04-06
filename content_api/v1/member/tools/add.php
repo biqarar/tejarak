@@ -63,7 +63,7 @@ trait add
 		// check user id is exist
 		if(!$this->user_id)
 		{
-			if($_args['save_log']) \lib\db\logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
+			if($_args['save_log']) \dash\db\logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
 			if($_args['debug']) \lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -74,7 +74,7 @@ trait add
 		$team_id = \lib\coding::decode($team_id);
 		if(!$team_id)
 		{
-			if($_args['save_log']) \lib\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
+			if($_args['save_log']) \dash\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
 			if($_args['debug']) \lib\notif::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
@@ -118,7 +118,7 @@ trait add
 		// if file is not set and the user have a file load the default file
 		if($this->master_user_id && $_args['method'] === 'post' && ((!$args['fileid'] && !$args['avatar']) || (!$args['firstname'] || !$args['lastname'])))
 		{
-			$user_detail = \lib\db\users::get(['id' => $args['user_id'], 'limit' => 1]);
+			$user_detail = \dash\db\users::get(['id' => $args['user_id'], 'limit' => 1]);
 			if(isset($user_detail['fileid']))
 			{
 				$args['fileid'] = $user_detail['fileid'];
@@ -157,7 +157,7 @@ trait add
 			$id = \lib\coding::decode($id);
 			if(!$id)
 			{
-				if($_args['save_log']) \lib\db\logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
+				if($_args['save_log']) \dash\db\logs::set('api:member:pathc:id:not:set', $this->user_id, $log_meta);
 				if($_args['debug']) \lib\notif::error(T_("Id not set"), 'id', 'arguments');
 				return false;
 			}
@@ -212,21 +212,21 @@ trait add
 
 			if(array_key_exists('rule', $args) && !in_array($args['rule'], ['user', 'admin', 'gateway']))
 			{
-				if($_args['save_log']) \lib\db\logs::set('api:member:rule:invalid:edit', $this->user_id, $log_meta);
+				if($_args['save_log']) \dash\db\logs::set('api:member:rule:invalid:edit', $this->user_id, $log_meta);
 				if($_args['debug']) \lib\notif::error(T_("Invalid parameter rule"), 'rule', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('status', $args) && !in_array($args['status'], ['active', 'deactive', 'suspended']))
 			{
-				if($_args['save_log']) \lib\db\logs::set('api:member:status:invalid:edit', $this->user_id, $log_meta);
+				if($_args['save_log']) \dash\db\logs::set('api:member:status:invalid:edit', $this->user_id, $log_meta);
 				if($_args['debug']) \lib\notif::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('visibility', $args) && !in_array($args['visibility'], ['visible', 'hidden']))
 			{
-				if($_args['save_log']) \lib\db\logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
+				if($_args['save_log']) \dash\db\logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
 				if($_args['debug']) \lib\notif::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
 				return false;
 			}

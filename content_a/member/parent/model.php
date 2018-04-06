@@ -17,7 +17,7 @@ class model extends \content_a\member\model
 
 		$team_id        = \lib\coding::decode(\dash\url::dir(0));
 		$get_userparent = ['related_id' => $team_id, 'status' => 'enable'];
-		$userparent     = \lib\db\userparents::load_parent($get_userparent);
+		$userparent     = \dash\db\userparents::load_parent($get_userparent);
 
 
 

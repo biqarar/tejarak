@@ -33,7 +33,7 @@ trait period
 
 		if(!$id)
 		{
-			\lib\db\logs::set('api:report:period:team:not:found', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:report:period:team:not:found', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
@@ -46,7 +46,7 @@ trait period
 			$user_id = \lib\coding::decode($user);
 			if(!$user_id)
 			{
-				\lib\db\logs::set('api:report:period:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:report:period:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Invalid user id"), 'user', 'arguments');
 				return false;
 			}
@@ -59,14 +59,14 @@ trait period
 			{
 				if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $user_id, ['action'=> 'report_u']))
 				{
-					\lib\db\logs::set('api:report:period:user:is:not:in:team', $this->user_id, $log_meta);
+					\dash\db\logs::set('api:report:period:user:is:not:in:team', $this->user_id, $log_meta);
 					\lib\notif::error(T_("This user is not in this team"), 'user', 'arguments');
 					return false;
 				}
 			}
 			else
 			{
-				\lib\db\logs::set('api:report:period:user:access:load:report', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:report:period:user:access:load:report', $this->user_id, $log_meta);
 				\lib\notif::error(T_("No access to load this report"), 'user', 'arguments');
 				return false;
 			}
@@ -88,7 +88,7 @@ trait period
 			}
 			else
 			{
-				\lib\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:report:team:permission:denide', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Can not access to load detail of this team"), 'team', 'permission');
 				return false;
 			}
@@ -96,7 +96,7 @@ trait period
 
 		if(!isset($check_is_my_team['id']))
 		{
-			\lib\db\logs::set('api:report:period:team:id:not:found', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:report:period:team:id:not:found', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid team data"), 'team', 'system');
 			return false;
 		}
@@ -108,7 +108,7 @@ trait period
 		{
 			if(($date_start = \DateTime::createFromFormat('Y-m-d', $start)) === false)
 			{
-			 	\lib\db\logs::set('api:report:period:start:invalid', $this->user_id, $log_meta);
+			 	\dash\db\logs::set('api:report:period:start:invalid', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Invalid start date"), 'start', 'arguments');
 				return false;
 			}
@@ -123,7 +123,7 @@ trait period
 		{
 			if(\DateTime::createFromFormat('Y-m-d', $end) === false)
 			{
-			 	\lib\db\logs::set('api:report:period:end:invalid', $this->user_id, $log_meta);
+			 	\dash\db\logs::set('api:report:period:end:invalid', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Invalid end date"), 'end', 'arguments');
 				return false;
 			}
@@ -154,7 +154,7 @@ trait period
 		}
 		else
 		{
-			\lib\db\logs::set('api:report:period:start:end:date:shamsi:not:mathc', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:report:period:start:end:date:shamsi:not:mathc', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Start date and end date is not match"), null, 'arguments');
 			return false;
 		}

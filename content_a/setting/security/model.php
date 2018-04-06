@@ -21,7 +21,7 @@ class model extends \content_a\main\model
 		$load_last_request = $this->check_sended_request($team_id);
 		if(isset($load_last_request['user_id']))
 		{
-			$user_data             = \lib\db\users::get_by_id($load_last_request['user_id']);
+			$user_data             = \dash\db\users::get_by_id($load_last_request['user_id']);
 			$result                = [];
 			$result['mobile']      = (isset($user_data['mobile'])) ? $user_data['mobile'] : null;
 			$result['displayname'] = (isset($user_data['displayname'])) ? $user_data['displayname'] : null;
@@ -56,18 +56,18 @@ class model extends \content_a\main\model
 			{
 				if(\dash\request::post('send') === 'ok')
 				{
-					\lib\db\notifications::update(['status' => 'enable'], $load_last_request['id']);
+					\dash\db\notifications::update(['status' => 'enable'], $load_last_request['id']);
 				}
 				elseif(\dash\request::post('send') === 'cancel')
 				{
-					\lib\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
+					\dash\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
 			}
 			elseif($load_last_request['status'] === 'enable')
 			{
 				if(\dash\request::post('request') === 'cancel')
 				{
-					\lib\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
+					\dash\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
 			}
 			return $this->refresh_page();
@@ -87,7 +87,7 @@ class model extends \content_a\main\model
 			return $this->refresh_page();
 		}
 
-		$this->user_data = \lib\db\users::get_by_mobile($this->mobile);
+		$this->user_data = \dash\db\users::get_by_mobile($this->mobile);
 		if(!isset($this->user_data['id']))
 		{
 			\lib\notif::error(T_("User not found"), 'owner');
@@ -144,7 +144,7 @@ class model extends \content_a\main\model
 			'limit'           => 1,
 		];
 
-		$check_notify = \lib\db\notifications::get($get);
+		$check_notify = \dash\db\notifications::get($get);
 
 		if($check_notify && is_array($check_notify))
 		{
@@ -198,7 +198,7 @@ class model extends \content_a\main\model
 			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->current_team['name']]),
 		];
 
-		$a = \lib\db\notifications::set($send_notify);
+		$a = \dash\db\notifications::set($send_notify);
 
 
 		if(\lib\engine\process::status())

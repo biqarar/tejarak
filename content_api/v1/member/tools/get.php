@@ -62,13 +62,13 @@ trait get
 
 		if(!$id && !$shortname)
 		{
-			\lib\db\logs::set('api:member:team:id:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:team:id:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Id or shortname not set"), 'id', 'arguments');
 			return false;
 		}
 		elseif($id && $shortname)
 		{
-			\lib\db\logs::set('api:member:team:id:and:shortname:together:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:team:id:and:shortname:together:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Can not set id and shortname together"), 'id', 'arguments');
 			return false;
 		}
@@ -112,7 +112,7 @@ trait get
 
 		if(!$team_detail)
 		{
-			\lib\db\logs::set('api:member:team:id:permission:denide', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:team:id:permission:denide', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Can not access to load this team"), 'id', 'permission');
 			return false;
 		}
@@ -140,7 +140,7 @@ trait get
 		$type = \lib\utility::request('type');
 		if($type && !is_string($type))
 		{
-			\lib\db\logs::set('api:member:team:type:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:team:type:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid type of user"), 'type', 'arguments');
 			return false;
 		}
@@ -148,7 +148,7 @@ trait get
 		$search = \lib\utility::request('search');
 		if($search && !is_string($search))
 		{
-			\lib\db\logs::set('api:member:team:search:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:team:search:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid search of user"), 'search', 'arguments');
 			return false;
 		}
@@ -161,7 +161,7 @@ trait get
 		{
 			if(!in_array($status, ['active','deactive','disable','filter','leave','delete','parent','suspended']))
 			{
-				\lib\db\logs::set('api:member:team:search:invalid:status', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:member:team:search:invalid:status', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Parameter status is incurrect"), 'status', 'arguments');
 				return false;
 			}
@@ -226,14 +226,14 @@ trait get
 		];
 		if(!$this->user_id)
 		{
-			\lib\db\logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
 			\lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 		$team = \lib\utility::request('team');
 		if(!$team)
 		{
-			\lib\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
@@ -242,7 +242,7 @@ trait get
 		$id = \lib\coding::decode($id);
 		if(!$id)
 		{
-			\lib\db\logs::set('api:member:id:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:id:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
@@ -260,7 +260,7 @@ trait get
 
 		if(!$check_user_in_team)
 		{
-			\lib\db\logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
 			\lib\notif::error(T_("This user is not in this team"), 'id', 'arguments');
 			return false;
 		}
@@ -293,14 +293,14 @@ trait get
 
 		if(!$this->user_id)
 		{
-			\lib\db\logs::set('api:member:user_id:not:set:userteam_get_details', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:member:user_id:not:set:userteam_get_details', $this->user_id, $log_meta);
 			\lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
 		if(!$userteam_id)
 		{
-			\lib\db\logs::set('api:userteam_id:team:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:userteam_id:team:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid team id"), 'team', 'permission');
 			return false;
 		}

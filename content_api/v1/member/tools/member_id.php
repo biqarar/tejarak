@@ -31,7 +31,7 @@ trait member_id
 		$check_user_exist = null;
 		if($mobile && !$mobile_syntax)
 		{
-			if($_args['save_log']) \lib\db\logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
+			if($_args['save_log']) \dash\db\logs::set('api:member:mobile:not:set', $this->user_id, $log_meta);
 			if($_args['debug']) \lib\notif::error(T_("Invalid mobile number"), 'mobile', 'arguments');
 			return false;
 		}
@@ -59,7 +59,7 @@ trait member_id
 			// mobile is set
 			if($mobile)
 			{
-				$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+				$check_user_exist = \dash\db\users::get_by_mobile($mobile);
 				// the mobile was exist
 				if(isset($check_user_exist['id']))
 				{
@@ -78,7 +78,7 @@ trait member_id
 						'datecreated' => date("Y-m-d H:i:s"),
 					];
 
-					\lib\db\users::insert($signup);
+					\dash\db\users::insert($signup);
 					$this->master_user_id = \lib\db::insert_id();
 				}
 			}
@@ -94,7 +94,7 @@ trait member_id
 					'datecreated' => date("Y-m-d H:i:s"),
 				];
 
-				\lib\db\users::insert($signup);
+				\dash\db\users::insert($signup);
 				$this->master_user_id = \lib\db::insert_id();
 			}
 		}
@@ -115,7 +115,7 @@ trait member_id
 			}
 			else
 			{
-				if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:invalid:patch:not:found', $this->user_id, $log_meta);
+				if($_args['save_log']) \dash\db\logs::set('api:member:user_id:not:invalid:patch:not:found', $this->user_id, $log_meta);
 				if($_args['debug']) \lib\notif::error(T_("Invalid user id"), 'user', 'system');
 				return false;
 			}
@@ -132,14 +132,14 @@ trait member_id
 
 				if(!isset($old_user_id['user_id']) || !array_key_exists('mobile', $old_user_id))
 				{
-					if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
+					if($_args['save_log']) \dash\db\logs::set('api:member:user_id:not:invalid:patch', $this->user_id, $log_meta);
 					if($_args['debug']) \lib\notif::error(T_("Invalid user id"), 'user', 'system');
 					return false;
 				}
 			}
 			else
 			{
-				if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
+				if($_args['save_log']) \dash\db\logs::set('api:member:user_id:not:set:patch', $this->user_id, $log_meta);
 				if($_args['debug']) \lib\notif::error(T_("User id not set"), 'user', 'system');
 				return false;
 			}
@@ -159,7 +159,7 @@ trait member_id
 					}
 					else
 					{
-						$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+						$check_user_exist = \dash\db\users::get_by_mobile($mobile);
 						// the mobile was exist
 						if(isset($check_user_exist['id']))
 						{
@@ -178,7 +178,7 @@ trait member_id
 								'datecreated' => date("Y-m-d H:i:s"),
 							];
 
-							\lib\db\users::insert($signup);
+							\dash\db\users::insert($signup);
 							$this->master_user_id = \lib\db::insert_id();
 						}
 					}
@@ -195,7 +195,7 @@ trait member_id
 						'datecreated' => date("Y-m-d H:i:s"),
 					];
 
-					\lib\db\users::insert($signup);
+					\dash\db\users::insert($signup);
 					$this->master_user_id = \lib\db::insert_id();
 				}
 			}
@@ -204,9 +204,9 @@ trait member_id
 				if($mobile)
 				{
 					// unreachable old user id
-					\lib\db\users::update(['status' => 'unreachable'], $old_user_id['user_id']);
+					\dash\db\users::update(['status' => 'unreachable'], $old_user_id['user_id']);
 
-					$check_user_exist = \lib\db\users::get_by_mobile($mobile);
+					$check_user_exist = \dash\db\users::get_by_mobile($mobile);
 					// the mobile was exist
 					if(isset($check_user_exist['id']))
 					{
@@ -225,7 +225,7 @@ trait member_id
 							'datecreated' => date("Y-m-d H:i:s"),
 						];
 
-						\lib\db\users::insert($signup);
+						\dash\db\users::insert($signup);
 						$this->master_user_id = \lib\db::insert_id();
 					}
 				}
@@ -244,7 +244,7 @@ trait member_id
 
 		if(!$this->master_user_id)
 		{
-			if($_args['save_log']) \lib\db\logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			if($_args['save_log']) \dash\db\logs::set('api:member:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
 			if($_args['debug']) \lib\notif::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
@@ -260,7 +260,7 @@ trait member_id
 			$userteam_record = \lib\db\userteams::get(['user_id' => $this->master_user_id, 'team_id' => $_team_id, 'limit' => 1]);
 			if($userteam_record)
 			{
-				if($_args['save_log']) \lib\db\logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
+				if($_args['save_log']) \dash\db\logs::set('api:member:duplicate:user:team', $this->user_id, $log_meta);
 				if($_args['debug']) \lib\notif::error(T_("This user was already added to this team"), 'mobile', 'arguments');
 				return false;
 			}

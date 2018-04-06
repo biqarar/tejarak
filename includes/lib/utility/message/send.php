@@ -47,7 +47,7 @@ trait send
 				'title'    => date("Y-m-d"),
 				'limit'    => 1,
 			];
-			$check_sended = \lib\db\notifications::get($get_notify);
+			$check_sended = \dash\db\notifications::get($get_notify);
 			if($check_sended)
 			{
 				return true;
@@ -62,7 +62,7 @@ trait send
 				'category' => 1001,
 				'title'    => date("Y-m-d"),
 			];
-			return \lib\db\notifications::insert($insert);
+			return \dash\db\notifications::insert($insert);
 		}
 	}
 
@@ -148,7 +148,7 @@ trait send
 				if(isset($this->team_details['creator']))
 				{
 					// get user budget
-					$user_budget = \lib\db\transactions::budget($this->team_details['creator'], ['unit' => 'toman']);
+					$user_budget = \dash\db\transactions::budget($this->team_details['creator'], ['unit' => 'toman']);
 
 					if($user_budget && is_array($user_budget))
 					{
@@ -170,7 +170,7 @@ trait send
 							'date'    => date("Y-m-d H:i:s"),
 				        ];
 
-				        \lib\db\transactions::set($transaction_set);
+				        \dash\db\transactions::set($transaction_set);
 
 						// send sms
 						\lib\utility\sms::send_array($parent_mobile, $sms_text, ['header' => false, 'footer' => false]);

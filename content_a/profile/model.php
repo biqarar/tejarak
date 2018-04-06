@@ -105,7 +105,7 @@ class model extends \content_a\main\model
 
 		// if($new_unit === '')
 		// {
-		// 	\lib\db\logs::set('user:unit:set:empty', \lib\user::id(), $log_meta);
+		// 	\dash\db\logs::set('user:unit:set:empty', \lib\user::id(), $log_meta);
 		// 	\lib\notif::error(T_("Please select one units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
@@ -117,7 +117,7 @@ class model extends \content_a\main\model
 		// }
 		// else
 		// {
-		// 	\lib\db\logs::set('user:unit:set:invalid:unit', \lib\user::id(), $log_meta);
+		// 	\dash\db\logs::set('user:unit:set:invalid:unit', \lib\user::id(), $log_meta);
 		// 	\lib\notif::error(T_("Please select a valid units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
@@ -127,7 +127,7 @@ class model extends \content_a\main\model
 		if(!empty($update_user))
 		{
 
-			\lib\db\users::update($update_user, \lib\user::id());
+			\dash\db\users::update($update_user, \lib\user::id());
 			if(isset($_SESSION['user']) && is_array($_SESSION['user']))
 			{
 				$_SESSION['user'] = array_merge($_SESSION['user'], $user_session);

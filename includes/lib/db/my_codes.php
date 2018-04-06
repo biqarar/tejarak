@@ -15,7 +15,7 @@ class my_codes extends \lib\db\codes
 				'slug'  => "$_args[code]",
 				'limit' => 1,
 			];
-			$term_detail = \lib\db\terms::get($get_term);
+			$term_detail = \dash\db\terms::get($get_term);
 
 			if(isset($term_detail['id']))
 			{

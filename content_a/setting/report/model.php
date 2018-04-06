@@ -60,7 +60,7 @@ class model extends \content_a\main\model
 
 		if(!$access)
 		{
-			\lib\db\logs::set('report:settings:no:access:to:change:settings', \lib\user::id());
+			\dash\db\logs::set('report:settings:no:access:to:change:settings', \lib\user::id());
 			\lib\notif::error(T_("No access to change settings"), 'team');
 			return false;
 		}
@@ -70,7 +70,7 @@ class model extends \content_a\main\model
 		{
 			if(!preg_match("/^\d{2}\:\d{2}$/", \dash\request::post('timed_auto_report_time')))
 			{
-				\lib\db\logs::set('report:settings:invalid:timed_auto_report_time', \lib\user::id());
+				\dash\db\logs::set('report:settings:invalid:timed_auto_report_time', \lib\user::id());
 				\lib\notif::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
 				return false;
 			}

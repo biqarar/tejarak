@@ -33,7 +33,7 @@ trait delete
 		$id = \lib\coding::decode($id);
 		if(!$id)
 		{
-			\lib\db\logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
@@ -41,7 +41,7 @@ trait delete
 		$team_details = \lib\db\teams::access_team_id($id, $this->user_id, ['action' => 'delete']);
 		if(!$team_details || !isset($team_details['id']))
 		{
-			\lib\db\logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Can not access to delete this team"), 'id', 'permission');
 			return false;
 		}
@@ -49,7 +49,7 @@ trait delete
 		if(\lib\db\teams::update(['status' => 'deleted'], $team_details['id']))
 		{
 			$log_meta['meta']['team'] = $team_details;
-			\lib\db\logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
 			// \lib\notif::title(T_("Operation Complete"));
 			\lib\notif::warn(T_("The team was deleted"));
 		}

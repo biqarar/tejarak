@@ -27,7 +27,7 @@ class model extends \mvc\model
 		$meta['user_id'] = $this->user_id;
 		// $meta['admin']   = false ;
 		$meta['verify'] = 1;
-		$billing_history = \lib\db\transactions::search(null, $meta);
+		$billing_history = \dash\db\transactions::search(null, $meta);
 		return $billing_history;
 	}
 
@@ -84,7 +84,7 @@ class model extends \mvc\model
 
 		if(!preg_match("/^ref\_([A-Za-z0-9]+)$/", $promo, $split))
 		{
-			\lib\db\logs::set('ref:reqular:invalid', \lib\user::id(), $log_meta);
+			\dash\db\logs::set('ref:reqular:invalid', \lib\user::id(), $log_meta);
 			\lib\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
 			return false;
 		}
@@ -94,7 +94,7 @@ class model extends \mvc\model
 			$ref = \lib\coding::decode($shcode);
 			if(!$ref)
 			{
-				\lib\db\logs::set('ref:shortURL:invalid', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('ref:shortURL:invalid', \lib\user::id(), $log_meta);
 				\lib\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
 				return false;
 			}
@@ -102,28 +102,28 @@ class model extends \mvc\model
 
 		if(intval(\lib\user::id()) === intval($ref))
 		{
-			\lib\db\logs::set('ref:yourself', \lib\user::id(), $log_meta);
+			\dash\db\logs::set('ref:yourself', \lib\user::id(), $log_meta);
 			\lib\notif::error(T_("You try to referral yourself!"), 'promo', 'arguments');
 			return false;
 		}
 
 		if(\lib\user::login('ref'))
 		{
-			\lib\db\logs::set('ref:full', \lib\user::id(), $log_meta);
+			\dash\db\logs::set('ref:full', \lib\user::id(), $log_meta);
 			\lib\notif::error(T_("You have ref. can not set another ref"), 'promo', 'arguments');
 			return false;
 		}
 
-		$check_ref = \lib\db\users::get_by_id($ref);
+		$check_ref = \dash\db\users::get_by_id($ref);
 
 		if(!isset($check_ref['id']))
 		{
-			\lib\db\logs::set('ref:user:not:found', \lib\user::id(), $log_meta);
+			\dash\db\logs::set('ref:user:not:found', \lib\user::id(), $log_meta);
 			\lib\notif::error(T_("Ref not found"), 'promo', 'arguments');
 			return false;
 		}
 
-		\lib\db\users::update(['ref' => $ref], \lib\user::id());
+		\dash\db\users::update(['ref' => $ref], \lib\user::id());
 		$_SESSION['user']['ref'] = $ref;
 
 		$transaction_set =
@@ -141,7 +141,7 @@ class model extends \mvc\model
 			'date'            => date("Y-m-d H:i:s"),
         ];
 
-        \lib\db\transactions::set($transaction_set);
+        \dash\db\transactions::set($transaction_set);
 
 
         $notify_ref =
@@ -150,7 +150,7 @@ class model extends \mvc\model
 			'cat'     => 'ref',
 			'content' => T_("Someone used your ref link in her referral"),
         ];
-        \lib\db\notifications::set($notify_ref);
+        \dash\db\notifications::set($notify_ref);
 
 
         $notify_ref =
@@ -159,13 +159,13 @@ class model extends \mvc\model
 			'cat'     => 'useref',
 			'content' => T_("Your are using referral program and your account was charged"),
         ];
-        \lib\db\notifications::set($notify_ref);
+        \dash\db\notifications::set($notify_ref);
 
 
         if(\lib\engine\process::status())
         {
-        	\lib\db\logs::set('user:use:ref', \lib\user::id(), $log_meta);
-        	\lib\db\logs::set('user:was:ref', $ref, $log_meta);
+        	\dash\db\logs::set('user:use:ref', \lib\user::id(), $log_meta);
+        	\dash\db\logs::set('user:was:ref', $ref, $log_meta);
         	\lib\notif::ok(T_("Your ref was set and your account was charge"));
         }
 	}

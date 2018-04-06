@@ -39,7 +39,7 @@ class model extends \mvc\model
 				$displayname = \dash\request::post("name");
 			}
 			// get email from user login session
-			$email = \lib\db\users::get_email($user_id);
+			$email = \dash\db\users::get_email($user_id);
 			// user not set users email, we get email from contact form
 			if(!$email)
 			{
@@ -71,7 +71,7 @@ class model extends \mvc\model
 		// check content
 		if($content == '')
 		{
-			\lib\db\logs::set('user:send:contact:empty:message', $user_id, $log_meta);
+			\dash\db\logs::set('user:send:contact:empty:message', $user_id, $log_meta);
 			\lib\notif::error(T_("Please try type something!"), "content");
 			return false;
 		}
@@ -85,7 +85,7 @@ class model extends \mvc\model
 			'user_id'         => $user_id
 		];
 		// insert comments
-		$result = \lib\db\comments::insert($args);
+		$result = \dash\db\comments::insert($args);
 		if($result)
 		{
 			// $mail =
@@ -96,12 +96,12 @@ class model extends \mvc\model
 			// ];
 			// \lib\mail::send($mail);
 
-			\lib\db\logs::set('user:send:contact', $user_id, $log_meta);
+			\dash\db\logs::set('user:send:contact', $user_id, $log_meta);
 			\lib\notif::ok(T_("Thank You For contacting us"));
 		}
 		else
 		{
-			\lib\db\logs::set('user:send:contact:fail', $user_id, $log_meta);
+			\dash\db\logs::set('user:send:contact:fail', $user_id, $log_meta);
 			\lib\notif::error(T_("We could'nt save the contact"));
 		}
 	}

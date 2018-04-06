@@ -17,7 +17,7 @@ trait make
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:cteator:not:found:return:false', $this->user_id, $this->log_meta);
+				\dash\db\logs::set('invoice:team:cteator:not:found:return:false', $this->user_id, $this->log_meta);
 			}
 			return false;
 		}
@@ -29,7 +29,7 @@ trait make
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:amount:0:return:true', $this->user_id, $this->log_meta);
+				\dash\db\logs::set('invoice:team:amount:0:return:true', $this->user_id, $this->log_meta);
 			}
 			return true;
 		}
@@ -38,7 +38,7 @@ trait make
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:current:lastcalcdate:not:found:return:false', $this->user_id, $this->log_meta);
+				\dash\db\logs::set('invoice:team:current:lastcalcdate:not:found:return:false', $this->user_id, $this->log_meta);
 			}
 			return false;
 		}
@@ -87,7 +87,7 @@ trait make
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:active:user:0:return:true', $this->user_id, $this->log_meta);
+				\dash\db\logs::set('invoice:team:active:user:0:return:true', $this->user_id, $this->log_meta);
 				return true;
 			}
 			else
@@ -112,7 +112,7 @@ trait make
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:amout:<100:return:true', $this->user_id, $this->log_meta);
+				\dash\db\logs::set('invoice:team:amout:<100:return:true', $this->user_id, $this->log_meta);
 				return true;
 			}
 			else
@@ -125,7 +125,7 @@ trait make
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:!amout:return:true', $this->user_id, $this->log_meta);
+				\dash\db\logs::set('invoice:team:!amout:return:true', $this->user_id, $this->log_meta);
 				return true;
 			}
 			else
@@ -181,7 +181,7 @@ trait make
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:>499:we:get:499', $this->user_id, $this->log_meta);
+				\dash\db\logs::set('invoice:team:>499:we:get:499', $this->user_id, $this->log_meta);
 			}
 			$new_amount = 499000;
 		}
@@ -225,7 +225,7 @@ trait make
 				'cat'     => 'invoice',
 	        ];
 
-	        \lib\db\notifications::set($notify_set);
+	        \dash\db\notifications::set($notify_set);
         }
 
         $transaction_set =
@@ -242,17 +242,17 @@ trait make
 			'invoice_id'     => $invoice_id,
         ];
 
-        \lib\db\transactions::set($transaction_set);
+        \dash\db\transactions::set($transaction_set);
 
         $this->log_meta['meta']['debug'] = \lib\notif::get();
 
 		if(\lib\engine\process::status())
 		{
-			\lib\db\logs::set('invoice:team:set:transaction:set', $this->user_id, $this->log_meta);
+			\dash\db\logs::set('invoice:team:set:transaction:set', $this->user_id, $this->log_meta);
 			return true;
 		}
 
-		\lib\db\logs::set('invoice:team:error:end', $this->user_id, $this->log_meta);
+		\dash\db\logs::set('invoice:team:error:end', $this->user_id, $this->log_meta);
 		return false;
 	}
 }

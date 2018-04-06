@@ -29,9 +29,9 @@ class view extends \content_a\main\view
 		];
 		$result = [];
 
-		$result['click'] = \lib\db\logs::search(null, array_merge($meta, ['caller' => 'user:ref:set']));
-		$result['signup'] = \lib\db\logs::search(null, array_merge($meta, ['caller' => 'user:ref:signup']));
-		$result['profile'] = \lib\db\logs::search(null, array_merge($meta, ['caller' => 'user:ref:complete:profile']));
+		$result['click'] = \dash\db\logs::search(null, array_merge($meta, ['caller' => 'user:ref:set']));
+		$result['signup'] = \dash\db\logs::search(null, array_merge($meta, ['caller' => 'user:ref:signup']));
+		$result['profile'] = \dash\db\logs::search(null, array_merge($meta, ['caller' => 'user:ref:complete:profile']));
 		return $result;
 	}
 }

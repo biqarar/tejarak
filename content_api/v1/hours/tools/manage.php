@@ -44,7 +44,7 @@ trait manage
 
 		if(!$this->user_id)
 		{
-			\lib\db\logs::set('api:hours:change:user_id:notfound', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:user_id:notfound', $this->user_id, $log_meta);
 			\lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -53,7 +53,7 @@ trait manage
 		$hour_id = \lib\coding::decode($hour_id);
 		if(!$hour_id)
 		{
-			\lib\db\logs::set('api:hours:change:hour_id:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:hour_id:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Hour id not set"), 'hour_id', 'arguments');
 			return false;
 		}
@@ -61,14 +61,14 @@ trait manage
 		$type = \lib\utility::request('type');
 		if(!$type || $type === '' || $type == '')
 		{
-			\lib\db\logs::set('api:hours:change:type:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:type:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Type not set"), 'type', 'arguments');
 			return false;
 		}
 
 		if(!in_array($type, ['all', 'wplus', 'wminus', 'nothing', 'base']))
 		{
-			\lib\db\logs::set('api:hours:change:type:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:type:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid type"), 'type', 'arguments');
 			return false;
 		}
@@ -88,7 +88,7 @@ trait manage
 			!array_key_exists('accepted', $get_hour_record)
 		)
 		{
-			\lib\db\logs::set('api:hours:change:hour_id:record:not:found', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:hour_id:record:not:found', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid hour id"), 'hour_id', 'arguments');
 			return false;
 		}
@@ -96,7 +96,7 @@ trait manage
 		$get_userteam_record = \lib\db\userteams::get(['id' => $get_hour_record['userteam_id'], 'limit' => 1]);
 		if(!$get_userteam_record || !isset($get_userteam_record['team_id']))
 		{
-			\lib\db\logs::set('api:hours:change:hour_id:team:record:not:found', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:hour_id:team:record:not:found', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team detail not found"), 'hour_id', 'system');
 			return false;
 		}
@@ -111,7 +111,7 @@ trait manage
 		}
 		else
 		{
-			\lib\db\logs::set('api:hours:change:team:access', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:team:access', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Can not access to set time of this team"), 'team', 'permission');
 			return false;
 		}
@@ -155,7 +155,7 @@ trait manage
 		}
 		else
 		{
-			\lib\db\logs::set('api:hours:change:method:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:change:method:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid method of api"), 'method', 'permission');
 			return false;
 		}

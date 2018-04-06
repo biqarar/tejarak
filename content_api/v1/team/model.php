@@ -80,14 +80,14 @@ class model extends \addons\content_api\v1\home\model
 
 		if(!$code)
 		{
-			\lib\db\logs::set('api:team:telegram:id:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:telegram:id:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("id not set"), 'id', 'arguments');
 			return false;
 		}
 
 		if(!$group)
 		{
-			\lib\db\logs::set('api:team:telegram:group:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:telegram:group:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("group not set"), 'group', 'arguments');
 			return false;
 		}
@@ -110,7 +110,7 @@ class model extends \addons\content_api\v1\home\model
 			]
 		];
 
-		\lib\db\logs::set('api:team:telegram:group:changed', $this->user_id, $log_meta);
+		\dash\db\logs::set('api:team:telegram:group:changed', $this->user_id, $log_meta);
 		\lib\db\teams::update(['telegram_id' => $group], $load_team['team_id']);
 
 		// \lib\notif::title(T_("Operation complete"));

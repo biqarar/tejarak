@@ -21,7 +21,7 @@ class view extends \content_a\main\view
 			}
 			$this->data->user_unit = T_($user_unit);
 
-			$user_cash_all = \lib\db\transactions::budget(\lib\user::id(), ['unit' => 'all']);
+			$user_cash_all = \dash\db\transactions::budget(\lib\user::id(), ['unit' => 'all']);
 			$this->data->user_cash_all = $user_cash_all;
 			if(is_array($user_cash_all))
 			{

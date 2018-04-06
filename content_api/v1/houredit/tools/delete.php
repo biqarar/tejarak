@@ -36,7 +36,7 @@ trait delete
 
 		if(!$id)
 		{
-			\lib\db\logs::set('api:houredit:delete:id:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:houredit:delete:id:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("houredit id not set"), 'id', 'arguments');
 			return false;
 		}
@@ -45,7 +45,7 @@ trait delete
 
 		if(!$result)
 		{
-			\lib\db\logs::set('api:houredit:delete:access:denide', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:houredit:delete:access:denide', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Can not access to delete this request"), 'houredit', 'permission');
 			return false;
 		}

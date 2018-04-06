@@ -47,7 +47,7 @@ trait add
 		// check user id is exist
 		if(!$this->user_id)
 		{
-			\lib\db\logs::set('api:gateway:user_id:notfound', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:user_id:notfound', $this->user_id, $log_meta);
 			\lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -57,7 +57,7 @@ trait add
 		$team = \lib\coding::decode($team);
 		if(!$team)
 		{
-			\lib\db\logs::set('api:gateway:team:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:team:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team not set"), 'user', 'permission');
 			return false;
 		}
@@ -70,7 +70,7 @@ trait add
 		}
 		else
 		{
-			\lib\db\logs::set('api:gateway:team:notfound:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:team:notfound:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team not found"), 'user', 'permission');
 			return false;
 		}
@@ -80,14 +80,14 @@ trait add
 		$name = trim($name);
 		if($name && mb_strlen($name) > 50)
 		{
-			\lib\db\logs::set('api:gateway:name:max:length', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:name:max:length', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You can set the name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
 
 		if(!$name)
 		{
-			\lib\db\logs::set('api:gateway:name:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:name:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("The gateway name can not be null"), 'name', 'arguments');
 			return false;
 		}
@@ -96,7 +96,7 @@ trait add
 
 		if(!isset($team_detail['shortname']))
 		{
-			\lib\db\logs::set('api:gateway:shortname:not:found', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:shortname:not:found', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Shortname of your team is not definde"), 'shortname', 'system');
 			return false;
 		}
@@ -104,13 +104,13 @@ trait add
 		$password = \lib\utility::request('password');
 		if(!$password && $_args['method'] === 'post')
 		{
-			\lib\db\logs::set('api:gateway:password:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:password:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You can set the password as null"), 'password', 'arguments');
 			return false;
 		}
 		if(mb_strlen($password) > 50)
 		{
-			\lib\db\logs::set('api:gateway:password:max:length', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:password:max:length', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You can set the password less than 50 character"), 'password', 'arguments');
 			return false;
 		}
@@ -123,19 +123,19 @@ trait add
 		$username = \lib\utility::request('username');
 		if(!$username)
 		{
-			\lib\db\logs::set('api:gateway:username:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:username:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You can set the username as null"), 'username', 'arguments');
 			return false;
 		}
 		if(mb_strlen($username) > 10)
 		{
-			\lib\db\logs::set('api:gateway:username:max:length', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:username:max:length', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You can set the username less than 50 character"), 'username', 'arguments');
 			return false;
 		}
 		if(!preg_match("/^[a-zA-Z0-9]+$/", $username))
 		{
-			\lib\db\logs::set('api:gateway:username:reqular:not:match', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:username:reqular:not:match', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Only [a-z,A-Z,0-9] character can use in username"), 'username', 'arguments');
 			return false;
 		}
@@ -146,10 +146,10 @@ trait add
 
 		if($_args['method'] === 'post')
 		{
-			$check_duplicate_username = \lib\db\users::get_by_username($username);
+			$check_duplicate_username = \dash\db\users::get_by_username($username);
 			if($check_duplicate_username)
 			{
-				\lib\db\logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Duplicate username! Please select another username"), 'username', 'arguments');
 				return false;
 			}
@@ -162,7 +162,7 @@ trait add
 				'username'    => $username,
 				'password'    => $password,
 			];
-			\lib\db\users::insert($insert_users);
+			\dash\db\users::insert($insert_users);
 			$user_id = \lib\db::insert_id();
 		}
 		elseif($_args['method'] === 'patch')
@@ -174,12 +174,12 @@ trait add
 				$check_user_is_gateway = \lib\db\userteams::get(['user_id' => $user_id, 'rule' => 'gateway', 'limit' => 1]);
 				if(!$check_user_is_gateway)
 				{
-					\lib\db\logs::set('api:gateway:user_id:is:not:gateway:user', $this->user_id, $log_meta);
+					\dash\db\logs::set('api:gateway:user_id:is:not:gateway:user', $this->user_id, $log_meta);
 					\lib\notif::error(T_("User id is not a gateway user!"), 'user', 'permission');
 					return false;
 				}
 
-				$check_duplicate_username = \lib\db\users::get_by_username($username);
+				$check_duplicate_username = \dash\db\users::get_by_username($username);
 				if($check_duplicate_username)
 				{
 					if(isset($check_duplicate_username['id']) && intval($check_duplicate_username['id']) === intval($user_id))
@@ -188,7 +188,7 @@ trait add
 					}
 					else
 					{
-						\lib\db\logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
+						\dash\db\logs::set('api:gateway:username:duplicate', $this->user_id, $log_meta);
 						\lib\notif::error(T_("Duplicate username! Please select another username"), 'username', 'arguments');
 						return false;
 					}
@@ -199,7 +199,7 @@ trait add
 
 		if(!$user_id)
 		{
-			\lib\db\logs::set('api:gateway:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:gateway:user_id:not:found:and:cannot:signup', $this->user_id, $log_meta);
 			\lib\notif::error(T_("User id not found"), 'user', 'system');
 			return false;
 		}
@@ -211,7 +211,7 @@ trait add
 		{
 			if(!in_array($status, ['active', 'deactive']))
 			{
-				\lib\db\logs::set('api:gateway:status:invalid', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:gateway:status:invalid', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
@@ -239,7 +239,7 @@ trait add
 			$id = \lib\coding::decode($id);
 			if(!$id)
 			{
-				\lib\db\logs::set('api:gateway:pathc:id:not:set', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:gateway:pathc:id:not:set', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Id not set"), 'id', 'arguments');
 				return false;
 			}
@@ -248,7 +248,7 @@ trait add
 
 			if(!$check_user_in_team || !isset($check_user_in_team['id']))
 			{
-				\lib\db\logs::set('api:gateway:user:not:in:team', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:gateway:user:not:in:team', $this->user_id, $log_meta);
 				\lib\notif::error(T_("This user is not in this team"), 'id', 'arguments');
 				return false;
 			}
@@ -277,7 +277,7 @@ trait add
 
 			if(!empty($update_user))
 			{
-				\lib\db\users::update($update_user, $id);
+				\dash\db\users::update($update_user, $id);
 			}
 
 		}

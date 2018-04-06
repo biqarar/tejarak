@@ -19,7 +19,7 @@ class model extends \content_a\main\model
 
 		if(!$team)
 		{
-			\lib\db\logs::set('plan:invalid:team', \lib\user::id());
+			\dash\db\logs::set('plan:invalid:team', \lib\user::id());
 			\lib\notif::error(T_("Invalid team!"), 'team');
 			return false;
 		}
@@ -41,7 +41,7 @@ class model extends \content_a\main\model
 		$plan = \dash\request::post('plan');
 		if(!$plan)
 		{
-			\lib\db\logs::set('plan:plan:not:set', \lib\user::id());
+			\dash\db\logs::set('plan:plan:not:set', \lib\user::id());
 			\lib\notif::error(T_("Please select one of plan"), 'plan');
 			return false;
 		}
@@ -65,7 +65,7 @@ class model extends \content_a\main\model
 
 		if(!in_array($plan, $all_plan_list))
 		{
-			\lib\db\logs::set('plan:invalid:plan', \lib\user::id());
+			\dash\db\logs::set('plan:invalid:plan', \lib\user::id());
 			\lib\notif::error(T_("Invalid plan!"), 'plan');
 			return false;
 		}
@@ -75,7 +75,7 @@ class model extends \content_a\main\model
 
 		if(!$team)
 		{
-			\lib\db\logs::set('plan:invalid:team', \lib\user::id());
+			\dash\db\logs::set('plan:invalid:team', \lib\user::id());
 			\lib\notif::error(T_("Invalid team!"), 'team');
 			return false;
 		}
@@ -84,7 +84,7 @@ class model extends \content_a\main\model
 
 		if(!$access)
 		{
-			\lib\db\logs::set('plan:no:access:to:change:plan', \lib\user::id());
+			\dash\db\logs::set('plan:no:access:to:change:plan', \lib\user::id());
 			\lib\notif::error(T_("No access to change plan"), 'team');
 			return false;
 		}

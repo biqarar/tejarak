@@ -119,7 +119,7 @@ trait get
 
 		if(!$id)
 		{
-			\lib\db\logs::set('api:hours:id:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:id:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("hours id not set"), 'id', 'arguments');
 			return false;
 		}
@@ -128,7 +128,7 @@ trait get
 
 		if(!$result)
 		{
-			\lib\db\logs::set('api:hours:access:denide', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:hours:access:denide', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Can not access to load this hours details"), 'hours', 'permission');
 			return false;
 		}

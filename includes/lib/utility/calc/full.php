@@ -17,7 +17,7 @@ trait full
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:full:current:lastcalcdate:not:found:return:false', null, $this->log_meta);
+				\dash\db\logs::set('invoice:team:full:current:lastcalcdate:not:found:return:false', null, $this->log_meta);
 			}
 			return false;
 		}
@@ -29,7 +29,7 @@ trait full
 		{
 			if($this->save)
 			{
-				\lib\db\logs::set('invoice:team:full:amount:0:return:true', null, $this->log_meta);
+				\dash\db\logs::set('invoice:team:full:amount:0:return:true', null, $this->log_meta);
 			}
 			return true;
 		}
@@ -83,7 +83,7 @@ trait full
 					'date'           => date("Y-m-d H:i:s"),
 		        ];
 
-		        \lib\db\transactions::set($transaction_set);
+		        \dash\db\transactions::set($transaction_set);
 
 				return true;
 			}
@@ -106,7 +106,7 @@ trait full
 
 		if($new_amount < 100)
 		{
-			\lib\db\logs::set('invoice:team:full:amout:<100:return:true', null, $this->log_meta);
+			\dash\db\logs::set('invoice:team:full:amout:<100:return:true', null, $this->log_meta);
 			return true;
 		}
 
@@ -122,7 +122,7 @@ trait full
 			'total'   => $new_amount,
 		];
 
-		$creator_details = \lib\db\users::get_by_id($this->team_details['creator']);
+		$creator_details = \dash\db\users::get_by_id($this->team_details['creator']);
 
 		$meta = [];
 
@@ -171,16 +171,16 @@ trait full
 			'invoice_id'     => $invoice_id,
         ];
 
-        \lib\db\transactions::set($transaction_set);
+        \dash\db\transactions::set($transaction_set);
 
         $this->log_meta['meta']['debug'] = \lib\notif::get();
 
 		if(\lib\engine\process::status())
 		{
-			\lib\db\logs::set('invoice:team:back:full:money:transaction:set', null, $this->log_meta);
+			\dash\db\logs::set('invoice:team:back:full:money:transaction:set', null, $this->log_meta);
 			return true;
 		}
-		\lib\db\logs::set('invoice:team:error:back:full:end', null, $this->log_meta);
+		\dash\db\logs::set('invoice:team:error:back:full:end', null, $this->log_meta);
 		return false;
 
 	}
@@ -206,12 +206,12 @@ trait full
 		// for the free plan
 		if(!$amount)
 		{
-			\lib\db\logs::set('invoice:team:full:make:amount:0:return:true', null, $this->log_meta);
+			\dash\db\logs::set('invoice:team:full:make:amount:0:return:true', null, $this->log_meta);
 			return true;
 		}
 
         // get user budget
-        $user_budget = \lib\db\transactions::budget($this->team_details['creator'], ['unit' => 'toman']);
+        $user_budget = \dash\db\transactions::budget($this->team_details['creator'], ['unit' => 'toman']);
 
         if($user_budget && is_array($user_budget))
         {
@@ -220,7 +220,7 @@ trait full
 
         if(intval($user_budget) < intval($amount))
         {
-			\lib\db\logs::set('invoice:team:full:money>credit', null, $this->log_meta);
+			\dash\db\logs::set('invoice:team:full:money>credit', null, $this->log_meta);
         	\lib\notif::error(T_("Your credit is less than amount of this plan, please charge your account"));
         	return false;
         }
@@ -284,7 +284,7 @@ trait full
 				'cat'     => 'invoice',
 	        ];
 
-	        \lib\db\notifications::set($notify_set);
+	        \dash\db\notifications::set($notify_set);
         }
 
 		$transaction_set =
@@ -303,7 +303,7 @@ trait full
 			'invoice_id'      => $invoice_id,
         ];
 
-        \lib\db\transactions::set($transaction_set);
+        \dash\db\transactions::set($transaction_set);
 
         if(\lib\engine\process::status())
         {

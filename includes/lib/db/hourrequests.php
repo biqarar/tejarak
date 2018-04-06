@@ -20,7 +20,7 @@ class hourrequests
 	 */
 	public static function insert()
 	{
-		return \lib\db\config::public_insert('hourrequests', ...func_get_args());
+		return \dash\db\config::public_insert('hourrequests', ...func_get_args());
 	}
 
 
@@ -31,7 +31,7 @@ class hourrequests
 	 */
 	public static function get()
 	{
-		return \lib\db\config::public_get('hourrequests', ...func_get_args());
+		return \dash\db\config::public_get('hourrequests', ...func_get_args());
 	}
 
 
@@ -42,7 +42,7 @@ class hourrequests
 	 */
 	public static function update()
 	{
-		return \lib\db\config::public_update('hourrequests', ...func_get_args());
+		return \dash\db\config::public_update('hourrequests', ...func_get_args());
 	}
 
 
@@ -77,7 +77,7 @@ class hourrequests
 
 		$_option = array_merge($default_option, $_option);
 
-		$result = \lib\db\config::public_search('hourrequests', $_search, $_option);
+		$result = \dash\db\config::public_search('hourrequests', $_search, $_option);
 
 
 		return $result;

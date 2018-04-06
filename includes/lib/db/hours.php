@@ -66,7 +66,7 @@ class hours
 	 */
 	public static function insert()
 	{
-		return \lib\db\config::public_insert('hours', ...func_get_args());
+		return \dash\db\config::public_insert('hours', ...func_get_args());
 	}
 
 
@@ -77,7 +77,7 @@ class hours
 	 */
 	public static function get()
 	{
-		return \lib\db\config::public_get('hours', ...func_get_args());
+		return \dash\db\config::public_get('hours', ...func_get_args());
 	}
 
 
@@ -88,7 +88,7 @@ class hours
 	 */
 	public static function update()
 	{
-		return \lib\db\config::public_update('hours', ...func_get_args());
+		return \dash\db\config::public_update('hours', ...func_get_args());
 	}
 
 

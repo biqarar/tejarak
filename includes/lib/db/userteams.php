@@ -64,7 +64,7 @@ class userteams
 			$check_duplicate = \lib\db::get($check_duplicate);
 			if($check_duplicate)
 			{
-				\lib\db\logs::set('change:all:user:id:team:duplicate', null, $log_meta);
+				\dash\db\logs::set('change:all:user:id:team:duplicate', null, $log_meta);
 				\lib\notif::error(T_("This already exist in this team, can not add again"));
 				return false;
 			}
@@ -322,7 +322,7 @@ class userteams
 		// clean data on session
 		\lib\team::clean();
 
-		\lib\db\config::public_insert('userteams', ...func_get_args());
+		\dash\db\config::public_insert('userteams', ...func_get_args());
 		return \lib\db::insert_id();
 	}
 
@@ -336,14 +336,14 @@ class userteams
 	{
 		$key = $_args;
 		krsort($key);
-		$cash = \lib\db\cache::get_cache('userteams', $key);
+		$cash = \dash\db\cache::get_cache('userteams', $key);
 		if($cash)
 		{
 			return $cash;
 		}
 
-		$result = \lib\db\config::public_get('userteams', $_args);
-		\lib\db\cache::set_cache('userteams', $key , $result);
+		$result = \dash\db\config::public_get('userteams', $_args);
+		\dash\db\cache::set_cache('userteams', $key , $result);
 		return $result;
 
 	}
@@ -359,7 +359,7 @@ class userteams
 	public static function get_id($_where)
 	{
 		$_where['limit'] = 1;
-		$id              =  \lib\db\config::public_get('userteams', $_where);
+		$id              =  \dash\db\config::public_get('userteams', $_where);
 		if(isset($id['id']))
 		{
 			return $id['id'];
@@ -465,7 +465,7 @@ class userteams
 			unset($_args['limit']);
 			unset($_args['get_hours']);
 
-			$where = \lib\db\config::make_where($_args, ['table_name' => 'userteams']);
+			$where = \dash\db\config::make_where($_args, ['table_name' => 'userteams']);
 
 			$date = date("Y-m-d");
 
@@ -624,7 +624,7 @@ class userteams
 		// clean data on session
 		\lib\team::clean();
 
-		return \lib\db\config::public_update('userteams', ...func_get_args());
+		return \dash\db\config::public_update('userteams', ...func_get_args());
 	}
 
 
@@ -647,7 +647,7 @@ class userteams
 		];
 
 		$_options = array_merge($default_option, $_options);
-		return \lib\db\config::public_search('userteams', $_string, $_options);
+		return \dash\db\config::public_search('userteams', $_string, $_options);
 	}
 
 }

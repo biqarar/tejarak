@@ -102,9 +102,9 @@ class teams
 	 */
 	public static function insert($_args)
 	{
-		\lib\db\cache::clean('teams');
+		\dash\db\cache::clean('teams');
 
-		$set = \lib\db\config::make_set($_args);
+		$set = \dash\db\config::make_set($_args);
 		if($set)
 		{
 			\lib\db::query("INSERT INTO teams SET $set");
@@ -159,7 +159,7 @@ class teams
 			return false;
 		}
 
-		$cash = \lib\db\cache::get_cache('teams', ['id' => $_id] );
+		$cash = \dash\db\cache::get_cache('teams', ['id' => $_id] );
 		if($cash)
 		{
 			return $cash;
@@ -169,7 +169,7 @@ class teams
 		{
 			$query = "SELECT * FROM teams WHERE teams.id = '$_id' LIMIT 1";
 			$result = \lib\db::get($query, null, true);
-			\lib\db\cache::set_cache('teams', ['id' => $_id] , $result);
+			\dash\db\cache::set_cache('teams', ['id' => $_id] , $result);
 			return $result;
 		}
 
@@ -190,7 +190,7 @@ class teams
 			return false;
 		}
 
-		$cash = \lib\db\cache::get_cache('teams', ['shortname' => $_shortname]);
+		$cash = \dash\db\cache::get_cache('teams', ['shortname' => $_shortname]);
 		if($cash)
 		{
 			return $cash;
@@ -198,7 +198,7 @@ class teams
 
 		$query = "SELECT * FROM teams WHERE teams.shortname = '$_shortname' LIMIT 1";
 		$result = \lib\db::get($query, null, true);
-		\lib\db\cache::set_cache('teams', ['shortname' => $_shortname], $result);
+		\dash\db\cache::set_cache('teams', ['shortname' => $_shortname], $result);
 		return $result;
 	}
 
@@ -212,7 +212,7 @@ class teams
 	 */
 	public static function get()
 	{
-		return \lib\db\config::public_get('teams', ...func_get_args());
+		return \dash\db\config::public_get('teams', ...func_get_args());
 	}
 
 
@@ -227,7 +227,7 @@ class teams
 		// clean data on session
 		\lib\team::clean();
 
-		return \lib\db\config::public_update('teams', ...func_get_args());
+		return \dash\db\config::public_update('teams', ...func_get_args());
 	}
 
 
@@ -453,7 +453,7 @@ class teams
 			$cash_key = func_get_args();
 		}
 
-		$cash     = \lib\db\cache::get_cache('teams', $cash_key, 60);
+		$cash     = \dash\db\cache::get_cache('teams', $cash_key, 60);
 
 		if($cash)
 		{
@@ -462,7 +462,7 @@ class teams
 		else
 		{
 			$result =  \lib\db::get($query, null, true);
-			\lib\db\cache::set_cache('teams', $cash_key, $result);
+			\dash\db\cache::set_cache('teams', $cash_key, $result);
 		}
 
 		return $result;
@@ -560,7 +560,7 @@ class teams
 				$type_query
 		";
 
-		$cash = \lib\db\cache::get_cache('teams', ['team_list' => $_user_id, $_options], 60);
+		$cash = \dash\db\cache::get_cache('teams', ['team_list' => $_user_id, $_options], 60);
 		if($cash)
 		{
 			$result = $cash;
@@ -568,7 +568,7 @@ class teams
 		else
 		{
 			$result =  \lib\db::get($query);
-			\lib\db\cache::set_cache('teams', ['team_list' => $_user_id, $_options], $result);
+			\dash\db\cache::set_cache('teams', ['team_list' => $_user_id, $_options], $result);
 
 		}
 		return $result;

@@ -38,7 +38,7 @@ class view extends \mvc\view
 		if(\lib\user::id())
 		{
 			// get count unread notifiation
-			// $this->data->notification_count = \lib\db\notifications::unread(\lib\user::id(), true);
+			// $this->data->notification_count = \dash\db\notifications::unread(\lib\user::id(), true);
 		}
 
 	}

@@ -14,7 +14,7 @@ class getwaies
 	 */
 	public static function insert($_args)
 	{
-		$set = \lib\db\config::make_set($_args);
+		$set = \dash\db\config::make_set($_args);
 		if($set)
 		{
 			\lib\db::query("INSERT INTO getwaies SET $set");
@@ -43,7 +43,7 @@ class getwaies
 				$limit = " LIMIT 1 ";
 				unset($_args['limit']);
 			}
-			$where = \lib\db\config::make_where($_args, ['table_name' => 'getwaies']);
+			$where = \dash\db\config::make_where($_args, ['table_name' => 'getwaies']);
 			$query = " SELECT getwaies.* FROM getwaies WHERE $where $limit ";
 			$result = \lib\db::get($query, null, $only_one_value);
 			return $result;
@@ -121,7 +121,7 @@ class getwaies
 	 */
 	public static function update($_args, $_id)
 	{
-		$set = \lib\db\config::make_set($_args);
+		$set = \dash\db\config::make_set($_args);
 		if(!$set || !$_id || !is_numeric($_id))
 		{
 			return false;

@@ -36,7 +36,7 @@ trait add
 
 		if(!$this->user_id)
 		{
-			\lib\db\logs::set('api:team:user_id:notfound', null, $log_meta);
+			\dash\db\logs::set('api:team:user_id:notfound', null, $log_meta);
 			\lib\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
@@ -45,14 +45,14 @@ trait add
 		$name = trim($name);
 		if(!$name && $_args['method'] === 'post')
 		{
-			\lib\db\logs::set('api:team:name:not:set', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:name:not:set', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team name of team can not be null"), 'name', 'arguments');
 			return false;
 		}
 
 		if(mb_strlen($name) > 100)
 		{
-			\lib\db\logs::set('api:team:maxlength:name', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:maxlength:name', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team name must be less than 100 character"), 'name', 'arguments');
 			return false;
 		}
@@ -61,7 +61,7 @@ trait add
 		$website = trim($website);
 		if($website && mb_strlen($website) > 1000)
 		{
-			\lib\db\logs::set('api:team:maxlength:website', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:maxlength:website', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team website must be less than 1000 character"), 'website', 'arguments');
 			return false;
 		}
@@ -75,7 +75,7 @@ trait add
 		$privacy = mb_strtolower($privacy);
 		if($privacy && !in_array($privacy, ['public', 'private', 'team']))
 		{
-			\lib\db\logs::set('api:team:privacy:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:privacy:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid privacy field"), 'privacy', 'arguments');
 			return false;
 		}
@@ -86,7 +86,7 @@ trait add
 
 		if(!$shortname && !$name && $_args['method'] === 'post')
 		{
-			\lib\db\logs::set('api:team:shortname:not:sert', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:shortname:not:sert', $this->user_id, $log_meta);
 			\lib\notif::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
 			return false;
 		}
@@ -106,14 +106,14 @@ trait add
 
 		if($shortname && mb_strlen($shortname) < 5)
 		{
-			\lib\db\logs::set('api:team:minlength:shortname', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:minlength:shortname', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team shortname must be larger than 5 character"), 'shortname', 'arguments');
 			return false;
 		}
 
 		if($shortname && !preg_match("/^[A-Za-z0-9]+$/", $shortname))
 		{
-			\lib\db\logs::set('api:team:invalid:shortname', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:invalid:shortname', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Only [A-Za-z0-9] can use in team shortname"), 'shortname', 'arguments');
 			return false;
 		}
@@ -121,7 +121,7 @@ trait add
 		// check shortname
 		if($shortname && mb_strlen($shortname) > 100)
 		{
-			\lib\db\logs::set('api:team:maxlength:shortname', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:maxlength:shortname', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team shortname must be less than 500 character"), 'shortname', 'arguments');
 			return false;
 		}
@@ -129,7 +129,7 @@ trait add
 		$desc = \lib\utility::request('desc');
 		if($desc && mb_strlen($desc) > 200)
 		{
-			\lib\db\logs::set('api:team:maxlength:desc', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:maxlength:desc', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Team desc must be less than 200 character"), 'desc', 'arguments');
 			return false;
 		}
@@ -143,7 +143,7 @@ trait add
 			$logo_id = \lib\coding::decode($logo);
 			if($logo_id)
 			{
-				$logo_record = \lib\db\posts::is_attachment($logo_id);
+				$logo_record = \dash\db\posts::is_attachment($logo_id);
 				if(!$logo_record)
 				{
 					$logo_id = null;
@@ -173,14 +173,14 @@ trait add
 			$check_owner = \lib\db\teams::get(['id' => $parent, 'creator' => $this->user_id, 'limit' => 1]);
 			if(!array_key_exists('parent', $check_owner))
 			{
-				\lib\db\logs::set('api:team:parent:owner:not:match', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:parent:owner:not:match', $this->user_id, $log_meta);
 				\lib\notif::error(T_("The parent is not in your team"), 'parent', 'arguments');
 				return false;
 			}
 
 			// if($check_owner['parent'])
 			// {
-			// 	\lib\db\logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
+			// 	\dash\db\logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
 			// 	\lib\notif::error(T_("This parent is a child of another team"), 'parent', 'arguments');
 			// 	return false;
 			// }
@@ -190,7 +190,7 @@ trait add
 		$lang = \lib\utility::request('language');
 		if($lang && (mb_strlen($lang) !== 2 || !\lib\language::check($lang)))
 		{
-			\lib\db\logs::set('api:team:invalid:lang', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:invalid:lang', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid language field"), 'language', 'arguments');
 			return false;
 		}
@@ -199,7 +199,7 @@ trait add
 		$eventtitle = \lib\utility::request('event_title');
 		if($eventtitle && mb_strlen($eventtitle) > 100)
 		{
-			\lib\db\logs::set('api:team:eventtitle:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:eventtitle:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set the evert title less than 100 character"), 'event_title', 'arguments');
 			return false;
 		}
@@ -207,7 +207,7 @@ trait add
 		$event_date_start  = \lib\utility::request('event_date_start');
 		if($event_date_start && strtotime($event_date_start) === false)
 		{
-			\lib\db\logs::set('api:team:event_date_start:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:event_date_start:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid event date"), 'event_date', 'arguments');
 			return false;
 		}
@@ -221,7 +221,7 @@ trait add
 		$eventdate  = \lib\utility::request('event_date');
 		if($eventdate && strtotime($eventdate) === false)
 		{
-			\lib\db\logs::set('api:team:eventdate:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:eventdate:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid event date"), 'event_date', 'arguments');
 			return false;
 		}
@@ -234,7 +234,7 @@ trait add
 		$cardsize = \lib\utility::request('cardsize');
 		if($cardsize && !is_numeric($cardsize))
 		{
-			\lib\db\logs::set('api:team:cardsize:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:cardsize:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid card size"), 'cardsize', 'arguments');
 			return false;
 		}
@@ -242,7 +242,7 @@ trait add
 		$type = \lib\utility::request('type');
 		if($type && !is_string($type))
 		{
-			\lib\db\logs::set('api:team:add:type:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:type:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid team type"), 'type', 'arguments');
 			return false;
 		}
@@ -251,7 +251,7 @@ trait add
 		$gender = \lib\utility::request('gender');
 		if($gender && !in_array($gender, ['male', 'female']))
 		{
-			\lib\db\logs::set('api:team:add:gender:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:gender:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid team gender"), 'gender', 'arguments');
 			return false;
 		}
@@ -260,7 +260,7 @@ trait add
 		$country           = \lib\utility::request('country');
 		if($country && mb_strlen($country) > 50)
 		{
-			\lib\db\logs::set('api:team:add:country:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:country:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set country less than 50 character", 'country', 'arguments'));
 			return false;
 		}
@@ -268,7 +268,7 @@ trait add
 		$province          = \lib\utility::request('province');
 		if($province && mb_strlen($province) > 50)
 		{
-			\lib\db\logs::set('api:team:add:province:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:province:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set province less than 50 character", 'province', 'arguments'));
 			return false;
 		}
@@ -276,7 +276,7 @@ trait add
 		$city              = \lib\utility::request('city');
 		if($city && mb_strlen($city) > 50)
 		{
-			\lib\db\logs::set('api:team:add:city:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:city:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set city less than 50 character", 'city', 'arguments'));
 			return false;
 		}
@@ -284,7 +284,7 @@ trait add
 		$tel               = \lib\utility::request('tel');
 		if($tel && mb_strlen($tel) > 50)
 		{
-			\lib\db\logs::set('api:team:add:tel:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:tel:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set tel less than 50 character", 'tel', 'arguments'));
 			return false;
 		}
@@ -292,7 +292,7 @@ trait add
 		$fax               = \lib\utility::request('fax');
 		if($fax && mb_strlen($fax) > 50)
 		{
-			\lib\db\logs::set('api:team:add:fax:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:fax:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set fax less than 50 character", 'fax', 'arguments'));
 			return false;
 		}
@@ -300,7 +300,7 @@ trait add
 		$zipcode           = \lib\utility::request('zipcode');
 		if($zipcode && mb_strlen($zipcode) > 50)
 		{
-			\lib\db\logs::set('api:team:add:zipcode:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:zipcode:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set zipcode less than 50 character", 'zipcode', 'arguments'));
 			return false;
 		}
@@ -308,7 +308,7 @@ trait add
 		$awards            = \lib\utility::request('awards');
 		if($awards && mb_strlen($awards) > 5000)
 		{
-			\lib\db\logs::set('api:team:add:awards:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:awards:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set awards less than 5000 character", 'awards', 'arguments'));
 			return false;
 		}
@@ -316,7 +316,7 @@ trait add
 		$desc              = \lib\utility::request('desc');
 		if($desc && mb_strlen($desc) > 5000)
 		{
-			\lib\db\logs::set('api:team:add:desc:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:desc:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set desc less than 5000 character", 'desc', 'arguments'));
 			return false;
 		}
@@ -324,7 +324,7 @@ trait add
 		$about             = \lib\utility::request('about');
 		if($about && mb_strlen($about) > 5000)
 		{
-			\lib\db\logs::set('api:team:add:about:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:about:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set about less than 5000 character", 'about', 'arguments'));
 			return false;
 		}
@@ -332,7 +332,7 @@ trait add
 		$address             = \lib\utility::request('address');
 		if($address && mb_strlen($address) > 5000)
 		{
-			\lib\db\logs::set('api:team:add:address:max:lenght', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:address:max:lenght', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set address less than 5000 character", 'address', 'arguments'));
 			return false;
 		}
@@ -340,7 +340,7 @@ trait add
 		$classroom_size = \lib\utility::request('classroom_size');
 		if($classroom_size && !is_numeric($classroom_size))
 		{
-			\lib\db\logs::set('api:team:add:classroom_size:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:classroom_size:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("You must set classroom size as a number", 'classroom_size', 'arguments'));
 			return false;
 		}
@@ -348,7 +348,7 @@ trait add
 		$status = \lib\utility::request('status');
 		if($status && !in_array($status, ['enable', 'disable']))
 		{
-			\lib\db\logs::set('api:team:add:status:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:add:status:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid status of teams", 'status', 'arguments'));
 			return false;
 		}
@@ -452,7 +452,7 @@ trait add
 
 			if(!$team_id)
 			{
-				\lib\db\logs::set('api:team:no:way:to:insert:team', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:no:way:to:insert:team', $this->user_id, $log_meta);
 				\lib\notif::error(T_("No way to insert team"), 'db', 'system');
 				return false;
 			}
@@ -491,7 +491,7 @@ trait add
 			$id = \lib\coding::decode($id);
 			if(!$id || !is_numeric($id))
 			{
-				\lib\db\logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Id not set"), 'id', 'permission');
 				return false;
 			}
@@ -500,7 +500,7 @@ trait add
 
 			if(!$admin_of_team || !isset($admin_of_team['id']) || !isset($admin_of_team['shortname']))
 			{
-				\lib\db\logs::set('api:team:method:put:permission:denide', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:method:put:permission:denide', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Can not access to edit it"), 'team', 'permission');
 				return false;
 			}
@@ -557,28 +557,28 @@ trait add
 
 			if(isset($args['parent']) && intval($args['parent']) === intval($id))
 			{
-				\lib\db\logs::set('api:team:parent:is:the:team', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:parent:is:the:team', $this->user_id, $log_meta);
 				\lib\notif::error(T_("A team can not be the parent himself"), 'parent', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('name', $args) && !$args['name'])
 			{
-				\lib\db\logs::set('api:team:name:not:set:edit', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:name:not:set:edit', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Team name of team can not be null"), 'name', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('shortname', $args) && !$args['shortname'])
 			{
-				\lib\db\logs::set('api:team:shortname:not:set:edit', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:shortname:not:set:edit', $this->user_id, $log_meta);
 				\lib\notif::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('privacy', $args) && !in_array($args['privacy'], ['public', 'private', 'team']))
 			{
-				\lib\db\logs::set('api:team:privacy:invalid:edit', $this->user_id, $log_meta);
+				\dash\db\logs::set('api:team:privacy:invalid:edit', $this->user_id, $log_meta);
 				\lib\notif::error(T_("Invalid privacy field"), 'privacy', 'arguments');
 				return false;
 			}
@@ -597,7 +597,7 @@ trait add
 					// user change shortname
 					if($admin_of_team['shortname'] != $args['shortname'])
 					{
-						\lib\db\logs::set('api:team:change:shortname', $this->user_id, $log_meta);
+						\dash\db\logs::set('api:team:change:shortname', $this->user_id, $log_meta);
 						// must be update all gateway username user old shortname at the first of herusername
 						// to new shortname
 						$update_gateway =
@@ -613,7 +613,7 @@ trait add
 		}
 		else
 		{
-			\lib\db\logs::set('api:team:method:invalid', $this->user_id, $log_meta);
+			\dash\db\logs::set('api:team:method:invalid', $this->user_id, $log_meta);
 			\lib\notif::error(T_("Invalid method of api"), 'method', 'permission');
 			return false;
 		}
