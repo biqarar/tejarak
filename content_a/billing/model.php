@@ -91,7 +91,7 @@ class model extends \mvc\model
 		if(isset($split[1]))
 		{
 			$shcode = $split[1];
-			$ref = \lib\coding::decode($shcode);
+			$ref = \dash\coding::decode($shcode);
 			if(!$ref)
 			{
 				\dash\db\logs::set('ref:shortURL:invalid', \lib\user::id(), $log_meta);

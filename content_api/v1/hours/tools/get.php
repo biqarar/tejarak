@@ -33,7 +33,7 @@ trait get
 				case 'id':
 				case 'start_gateway_id':
 				case 'end_gateway_id':
-					$result[$key] = \lib\coding::encode($value);
+					$result[$key] = \dash\coding::encode($value);
 					break;
 
 				case 'date':
@@ -115,7 +115,7 @@ trait get
 		}
 
 		$id = \lib\utility::request("id");
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 
 		if(!$id)
 		{

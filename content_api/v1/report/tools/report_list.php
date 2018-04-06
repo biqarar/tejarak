@@ -21,7 +21,7 @@ trait report_list
 		];
 
 		$id = \lib\utility::request('id');
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);

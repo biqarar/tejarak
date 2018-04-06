@@ -36,7 +36,7 @@ trait get
 
 
 		$id = \lib\utility::request('id');
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:report:get:team:not:found', $this->user_id, $log_meta);

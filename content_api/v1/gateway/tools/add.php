@@ -54,7 +54,7 @@ trait add
 
 		// get team and check it
 		$team = \lib\utility::request('team');
-		$team = \lib\coding::decode($team);
+		$team = \dash\coding::decode($team);
 		if(!$team)
 		{
 			\dash\db\logs::set('api:gateway:team:not:set', $this->user_id, $log_meta);
@@ -168,7 +168,7 @@ trait add
 		elseif($_args['method'] === 'patch')
 		{
 			$id = \lib\utility::request('id');
-			$user_id = \lib\coding::decode($id);
+			$user_id = \dash\coding::decode($id);
 			if($user_id)
 			{
 				$check_user_is_gateway = \lib\db\userteams::get(['user_id' => $user_id, 'rule' => 'gateway', 'limit' => 1]);
@@ -236,7 +236,7 @@ trait add
 		elseif($_args['method'] === 'patch')
 		{
 			$id = \lib\utility::request('id');
-			$id = \lib\coding::decode($id);
+			$id = \dash\coding::decode($id);
 			if(!$id)
 			{
 				\dash\db\logs::set('api:gateway:pathc:id:not:set', $this->user_id, $log_meta);

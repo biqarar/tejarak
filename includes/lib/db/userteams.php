@@ -127,7 +127,7 @@ class userteams
 			$my_key = $key;
 			if($_encode_key)
 			{
-				$my_key = \lib\coding::encode($key);
+				$my_key = \dash\coding::encode($key);
 			}
 
 
@@ -200,7 +200,7 @@ class userteams
 		{
 			return false;
 		}
-		$team_id = \lib\coding::decode($_args['id']);
+		$team_id = \dash\coding::decode($_args['id']);
 
 		if(!$team_id || !is_numeric($team_id))
 		{
@@ -228,7 +228,7 @@ class userteams
 			{
 				if(isset($_a['id']))
 				{
-					$_a['id'] = \lib\coding::encode($_a['id']);
+					$_a['id'] = \dash\coding::encode($_a['id']);
 				}
 				if(array_key_exists('daily', $_a))
 				{

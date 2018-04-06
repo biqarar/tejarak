@@ -52,7 +52,7 @@ class controller extends \mvc\controller
 		}
 
 		// if !the url 0 is a short url
-		if(!\lib\coding::is($url_0) && $url_0 != 'notifications')
+		if(!\dash\coding::is($url_0) && $url_0 != 'notifications')
 		{
 			\lib\header::status(404);
 		}
@@ -61,7 +61,7 @@ class controller extends \mvc\controller
 		$rule       = 'user';
 		\lib\temp::set('team_code_url', $url_0);
 
-		$team_id = \lib\coding::decode($team_id);
+		$team_id = \dash\coding::decode($team_id);
 
 		if($team_id && \lib\user::id())
 		{

@@ -48,7 +48,7 @@ trait action
 
 
 		$id = \lib\utility::request('id');
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:houredit:action:id:not:set', $this->user_id, $log_meta);
@@ -80,7 +80,7 @@ trait action
 		}
 
 		$team_id = \lib\utility::request('team');
-		$team_id = \lib\coding::decode($team_id);
+		$team_id = \dash\coding::decode($team_id);
 		if(!$team_id)
 		{
 			\dash\db\logs::set('api:houredit:action:team:id:not:set', $this->user_id, $log_meta);

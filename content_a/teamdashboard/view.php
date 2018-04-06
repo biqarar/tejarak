@@ -13,7 +13,7 @@ class view extends \content_a\main\view
 		$this->data->page['title'] = T_('Dashboard of :name', ['name'=> $team_name]);
 		$this->data->page['desc'] = T_('Glance at your team summary and compare some important data together and enjoy Tejarak!'). ' '. T_('Have a good day;)');
 
-		$team_id = \lib\coding::decode(\dash\url::dir(0));
+		$team_id = \dash\coding::decode(\dash\url::dir(0));
 
 		if(time() - intval(\lib\session::get('last_time_chart_time_'. (string) $team_id )) > 60)
 		{
@@ -41,7 +41,7 @@ class view extends \content_a\main\view
 			}
 			$dashboard_detail['last_time_chart'] = json_encode($chart, JSON_UNESCAPED_UNICODE);
 		}
-		$dashboard_detail['month_detail'] = \lib\date::month_precent();
+		$dashboard_detail['month_detail'] = \dash\date::month_precent();
 
 		$this->data->dashboard_detail = $dashboard_detail;
 

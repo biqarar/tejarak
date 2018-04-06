@@ -59,7 +59,7 @@ trait exit_message
 
 		$pure_human = human::time($pure, 'text', $this->current_language);
 
-		$time_start = \lib\date::fit_lang('H:i', $start , 'current');
+		$time_start = \dash\date::fit_lang('H:i', $start , 'current');
 
 		if($this->start_date && $this->start_date != date("Y-m-d"))
 		{
@@ -68,11 +68,11 @@ trait exit_message
 			{
 				$start_date = \dash\utility\jdate::date("Y-m-d", strtotime($start_date));
 			}
-			$msg .="🌖 ". $start_date." ".  $time_start. "\n🌑 ". \lib\date::fit_lang("Y-m-d H:i", time(), 'current'); //$time_now;
+			$msg .="🌖 ". $start_date." ".  $time_start. "\n🌑 ". \dash\date::fit_lang("Y-m-d H:i", time(), 'current'); //$time_now;
 		}
 		else
 		{
-			$msg .= $time_start. ' '. T_('until'). ' '. \lib\date::fit_lang("H:i", time(), 'current'); //$time_now;
+			$msg .= $time_start. ' '. T_('until'). ' '. \dash\date::fit_lang("H:i", time(), 'current'); //$time_now;
 		}
 
 		if($this->plus || $this->minus)

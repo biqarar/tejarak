@@ -38,7 +38,7 @@ class model extends \content_a\main\model
 		if($list && is_array($list))
 		{
 			$user_ids = array_column($list, 'user_id');
-			$user_ids = array_map(function($_a){return \lib\coding::decode($_a);},$user_ids);
+			$user_ids = array_map(function($_a){return \dash\coding::decode($_a);},$user_ids);
 			$notify = new \lib\utility\notifications;
 			$notify->find_way($user_ids);
 			$insert_notify = [];
@@ -46,7 +46,7 @@ class model extends \content_a\main\model
 			{
 				if(isset($value['user_id']) && isset($value['status']) && $value['status'] === 'active')
 				{
-					$userid = \lib\coding::decode($value['user_id']);
+					$userid = \dash\coding::decode($value['user_id']);
 					if($userid)
 					{
 						$insert_notify =

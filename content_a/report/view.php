@@ -6,7 +6,7 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-		$this->data->month = \lib\date::month_precent();
+		$this->data->month = \dash\date::month_precent();
 		/**
 		* get raw time
 		* skip humantime
@@ -51,7 +51,7 @@ class view extends \content_a\main\view
 		{
 			$this->data->reportUrl = \dash\url::here(). '/'. \dash\url::directory();
 			// var_dump($this->data->reportUrl);exit();
-			$team_id = \lib\coding::decode($team_code);
+			$team_id = \dash\coding::decode($team_code);
 			if($team_id)
 			{
 				// check admin or user of team
@@ -87,7 +87,7 @@ class view extends \content_a\main\view
 			$this->data->report_current_user = $all_user[\dash\request::get('user')];
 		}
 
-		$team_id = \lib\coding::decode($this->data->team_code);
+		$team_id = \dash\coding::decode($this->data->team_code);
 
 		$cache_chart = \lib\session::get('report_last_month_chart_'. $team_id);
 		if($cache_chart === null)

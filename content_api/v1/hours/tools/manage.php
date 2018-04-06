@@ -50,7 +50,7 @@ trait manage
 		}
 
 		$hour_id = \lib\utility::request('hour_id');
-		$hour_id = \lib\coding::decode($hour_id);
+		$hour_id = \dash\coding::decode($hour_id);
 		if(!$hour_id)
 		{
 			\dash\db\logs::set('api:hours:change:hour_id:not:set', $this->user_id, $log_meta);

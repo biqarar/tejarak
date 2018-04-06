@@ -19,7 +19,7 @@ trait set_parent
 		}
 
 		$notify = \dash\request::post('notify');
-		$notify = \lib\coding::decode($notify);
+		$notify = \dash\coding::decode($notify);
 
 		if(!$notify)
 		{
@@ -28,7 +28,7 @@ trait set_parent
 		}
 
 		$child = \dash\request::post('child');
-		$child = \lib\coding::decode($child);
+		$child = \dash\coding::decode($child);
 
 		if(!$child)
 		{

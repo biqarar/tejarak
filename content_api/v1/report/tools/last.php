@@ -29,7 +29,7 @@ trait last
 		];
 
 		$id = \lib\utility::request('id');
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 
 		if(!$id)
 		{
@@ -43,7 +43,7 @@ trait last
 
 		if($user)
 		{
-			$user_id = \lib\coding::decode($user);
+			$user_id = \dash\coding::decode($user);
 			if(!$user_id)
 			{
 				\dash\db\logs::set('api:report:user:id:set:but:is:not:valid', $this->user_id, $log_meta);
@@ -150,7 +150,7 @@ trait last
 			switch ($key)
 			{
 				case 'hour_id':
-					$temp['id'] = \lib\coding::encode($value);
+					$temp['id'] = \dash\coding::encode($value);
 					break;
 
 				case 'date':

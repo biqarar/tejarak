@@ -15,7 +15,7 @@ class model extends \content_a\main\model
 		}
 
 		$team = \dash\url::dir(0);
-		$team = \lib\coding::decode($team);
+		$team = \dash\coding::decode($team);
 
 		if(!$team)
 		{
@@ -71,7 +71,7 @@ class model extends \content_a\main\model
 		}
 
 		$team = \dash\url::dir(0);
-		$team = \lib\coding::decode($team);
+		$team = \dash\coding::decode($team);
 
 		if(!$team)
 		{

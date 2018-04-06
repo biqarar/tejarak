@@ -47,7 +47,7 @@ trait add
 		}
 
 		$user = \lib\utility::request('user');
-		$user = \lib\coding::decode($user);
+		$user = \dash\coding::decode($user);
 
 		if(!$user)
 		{

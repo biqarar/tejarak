@@ -47,12 +47,12 @@ trait get
 		}
 
 		$id = \lib\utility::request('id');
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 		// in this api must be get the team
 		// but i get the id
 		// this is incurrect
 		$team = \lib\utility::request('team');
-		$team = \lib\coding::decode($team);
+		$team = \dash\coding::decode($team);
 		if($team && !$id)
 		{
 			$id = $team;
@@ -239,7 +239,7 @@ trait get
 		}
 
 		$id = \lib\utility::request('id');
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:member:id:not:set', $this->user_id, $log_meta);
@@ -446,7 +446,7 @@ trait get
 							return false;
 						}
 					}
-					$result['user_id'] = \lib\coding::encode($value);
+					$result['user_id'] = \dash\coding::encode($value);
 					break;
 
 				case 'avatar':
@@ -595,7 +595,7 @@ trait get
 					break;
 				case 'id':
 				case 'team_id':
-					$result[$key] = \lib\coding::encode($value);
+					$result[$key] = \dash\coding::encode($value);
 					break;
 
 				case 'allowdescenter':

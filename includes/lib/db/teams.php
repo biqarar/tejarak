@@ -502,7 +502,7 @@ class teams
 		}
 
 		$_options = array_merge($_options, ['type' => 'id']);
-		$id = \lib\coding::decode($_code);
+		$id = \dash\coding::decode($_code);
 		if(!$id)
 		{
 			return false;

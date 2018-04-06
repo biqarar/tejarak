@@ -211,7 +211,7 @@ trait _use
 		switch ($_type)
 		{
 			case 'code':
-				$_unique = \lib\coding::decode($_unique);
+				$_unique = \dash\coding::decode($_unique);
 			case 'id':
 				$search_team = \lib\db\teams::get(['id' => $_unique, 'limit' => 1]);
 				break;
@@ -241,7 +241,7 @@ trait _use
 			{
 				return false;
 			}
-			$request['id'] = \lib\coding::encode($_team_id_or_code);
+			$request['id'] = \dash\coding::encode($_team_id_or_code);
 		}
 		elseif($_type === 'code')
 		{

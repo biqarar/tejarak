@@ -64,7 +64,7 @@ trait security
 		}
 
 		// method is not post and id not found
-		$change_id = \lib\coding::decode($change_id);
+		$change_id = \dash\coding::decode($change_id);
 		if(!$change_id)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:id:invalid', $this->user_id, $log_meta);

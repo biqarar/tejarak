@@ -52,7 +52,7 @@ class view extends \mvc\view
 		{
 			if(isset($current_team['id']))
 			{
-				$team_id = \lib\coding::decode($current_team['id']);
+				$team_id = \dash\coding::decode($current_team['id']);
 				if($team_id)
 				{
 					if(!\lib\utility\plan::access('show:logo', $team_id))

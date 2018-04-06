@@ -29,7 +29,7 @@ trait year
 		];
 
 		$id = \lib\utility::request('id');
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:report:team:not:found', $this->user_id, $log_meta);
@@ -38,7 +38,7 @@ trait year
 		}
 
 		$user = \lib\utility::request('user');
-		$user = \lib\coding::decode($user);
+		$user = \dash\coding::decode($user);
 		if($user)
 		{
 			if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $user, ['action'=> 'report_u']))

@@ -32,7 +32,7 @@ trait delete
 		}
 
 		$id = \lib\utility::request("id");
-		$id = \lib\coding::decode($id);
+		$id = \dash\coding::decode($id);
 
 		if(!$id)
 		{

@@ -24,7 +24,7 @@ class model extends \content_a\main\model
 
 		if($team_code)
 		{
-			$team_id = \lib\coding::decode($team_code);
+			$team_id = \dash\coding::decode($team_code);
 		}
 
 		if(!$team_id)
@@ -97,7 +97,7 @@ class model extends \content_a\main\model
 		{
 			if(isset($_a['id']))
 			{
-				$_a['id'] = \lib\coding::decode($_a['id']);
+				$_a['id'] = \dash\coding::decode($_a['id']);
 			}
 			return $_a;
 		}, $admins);
@@ -117,7 +117,7 @@ class model extends \content_a\main\model
 		{
 			if(preg_match("/^(daily|enterexit)\_(.*)$/", $key, $split))
 			{
-				$userteam_id = \lib\coding::decode($split[2]);
+				$userteam_id = \dash\coding::decode($split[2]);
 				if($userteam_id)
 				{
 					$update_user_teams[$userteam_id]['report'. $split[1]] = 1;
