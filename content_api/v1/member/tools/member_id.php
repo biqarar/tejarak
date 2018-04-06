@@ -79,7 +79,7 @@ trait member_id
 					];
 
 					\dash\db\users::insert($signup);
-					$this->master_user_id = \lib\db::insert_id();
+					$this->master_user_id = \dash\db::insert_id();
 				}
 			}
 			else
@@ -95,7 +95,7 @@ trait member_id
 				];
 
 				\dash\db\users::insert($signup);
-				$this->master_user_id = \lib\db::insert_id();
+				$this->master_user_id = \dash\db::insert_id();
 			}
 		}
 		elseif($_args['method'] === 'patch')
@@ -179,7 +179,7 @@ trait member_id
 							];
 
 							\dash\db\users::insert($signup);
-							$this->master_user_id = \lib\db::insert_id();
+							$this->master_user_id = \dash\db::insert_id();
 						}
 					}
 				}
@@ -196,7 +196,7 @@ trait member_id
 					];
 
 					\dash\db\users::insert($signup);
-					$this->master_user_id = \lib\db::insert_id();
+					$this->master_user_id = \dash\db::insert_id();
 				}
 			}
 			else
@@ -226,7 +226,7 @@ trait member_id
 						];
 
 						\dash\db\users::insert($signup);
-						$this->master_user_id = \lib\db::insert_id();
+						$this->master_user_id = \dash\db::insert_id();
 					}
 				}
 				else

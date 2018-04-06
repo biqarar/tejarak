@@ -45,7 +45,7 @@ class model extends \mvc\model
 
 		$time_now    = date("H:i");
 		$query       = "SELECT teams.id AS `id` FROM teams WHERE teams.timed_auto_report = '$time_now'";
-		$check_exist = \lib\db::get($query, 'id');
+		$check_exist = \dash\db::get($query, 'id');
 
 		if($check_exist && is_array($check_exist))
 		{
@@ -76,7 +76,7 @@ class model extends \mvc\model
 			AND   MINUTE(teams.startplan) = MINUTE('$time_now')
 		";
 
-		$check_exist = \lib\db::get($query, 'id');
+		$check_exist = \dash\db::get($query, 'id');
 
 		if($check_exist && is_array($check_exist))
 		{

@@ -34,7 +34,7 @@ trait report
 			ORDER BY hours.id ASC
 		";
 
-		$resutl = \lib\db::get($query);
+		$resutl = \dash\db::get($query);
 
 		return $resutl;
 	}

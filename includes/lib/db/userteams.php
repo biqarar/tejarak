@@ -61,7 +61,7 @@ class userteams
 		{
 			$all_team_id = implode(',', $ids);
 			$check_duplicate =  "SELECT userteams.id, userteams.type FROM userteams WHERE userteams.user_id = $_new_user_id AND userteams.team_id IN ($all_team_id) ";
-			$check_duplicate = \lib\db::get($check_duplicate);
+			$check_duplicate = \dash\db::get($check_duplicate);
 			if($check_duplicate)
 			{
 				\dash\db\logs::set('change:all:user:id:team:duplicate', null, $log_meta);
@@ -69,7 +69,7 @@ class userteams
 				return false;
 			}
 			$query = "UPDATE userteams SET userteams.user_id = $_new_user_id WHERE userteams.user_id = $_old_user_id AND userteams.team_id IN ($all_team_id) ";
-			\lib\db::query($query);
+			\dash\db::query($query);
 		}
 	}
 
@@ -110,10 +110,10 @@ class userteams
 			GROUP BY hourdate, userteamid
 			HAVING hourlogs.userteam_id IN ($userteam_id)
 		";
-		$last_traffic = \lib\db::get($last_traffic, ['userteamid', 'hourdate']);
+		$last_traffic = \dash\db::get($last_traffic, ['userteamid', 'hourdate']);
 
 		$traffic_count = "SELECT COUNT(*) AS `count`, hourlogs.userteam_id AS `userteamid` FROM hourlogs  GROUP BY userteamid HAVING hourlogs.userteam_id IN ($userteam_id) ";
-		$traffic_count = \lib\db::get($traffic_count, ['userteamid', 'count']);
+		$traffic_count = \dash\db::get($traffic_count, ['userteamid', 'count']);
 
 		$i = max(count($last_traffic), count($traffic_count));
 
@@ -162,7 +162,7 @@ class userteams
 		}
 
 		$query = "SELECT teams.parent AS `parent` FROM teams WHERE teams.id = $_team_id LIMIT 1";
-		$result = \lib\db::get($query, 'parent', true);
+		$result = \dash\db::get($query, 'parent', true);
 		return $result;
 	}
 
@@ -182,7 +182,7 @@ class userteams
 		}
 
 		$query = "SELECT teams.id AS `id` FROM teams WHERE teams.parent = $_team_id LIMIT 1";
-		$result = \lib\db::get($query, 'id', true);
+		$result = \dash\db::get($query, 'id', true);
 		return $result;
 	}
 
@@ -219,7 +219,7 @@ class userteams
 				team_id = $team_id AND
 				rule    = 'admin'
 		";
-		$result = \lib\db::get($query);
+		$result = \dash\db::get($query);
 		if(is_array($result))
 		{
 			// encode id of userteam
@@ -269,7 +269,7 @@ class userteams
 	 */
 	public static function total_count()
 	{
-		return intval(\lib\db::get("SELECT COUNT(*) AS `count` FROM userteams", 'count', true));
+		return intval(\dash\db::get("SELECT COUNT(*) AS `count` FROM userteams", 'count', true));
 	}
 
 
@@ -323,7 +323,7 @@ class userteams
 		\lib\team::clean();
 
 		\dash\db\config::public_insert('userteams', ...func_get_args());
-		return \lib\db::insert_id();
+		return \dash\db::insert_id();
 	}
 
 
@@ -412,7 +412,7 @@ class userteams
 						userteams.rule = 'gateway'
 				)
 		";
-		\lib\db::query($query);
+		\dash\db::query($query);
 	}
 
 
@@ -541,7 +541,7 @@ class userteams
 					$limit
 				";
 			}
-			$result = \lib\db::get($query, null, $only_one_value);
+			$result = \dash\db::get($query, null, $only_one_value);
 			// var_dump($result);exit();
 			return $result;
 		}
@@ -576,7 +576,7 @@ class userteams
 					userteams.id = $_userteams_id
 				LIMIT 1
 			";
-			$result = \lib\db::get($query, null, true);
+			$result = \dash\db::get($query, null, true);
 			return $result;
 		}
 		return false;
@@ -606,7 +606,7 @@ class userteams
 					userteams.user_id = $_args[user_id]
 				LIMIT 1
 			";
-			$result = \lib\db::get($query, null, true);
+			$result = \dash\db::get($query, null, true);
 			return $result;
 
 		}

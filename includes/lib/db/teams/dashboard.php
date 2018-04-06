@@ -90,7 +90,7 @@ trait dashboard
 
 		";
 
-		$result = \lib\db::get($query, ['date', 'total']);
+		$result = \dash\db::get($query, ['date', 'total']);
 
 		if(is_array($result))
 		{
@@ -139,7 +139,7 @@ trait dashboard
 				hours.userteam_id IN (SELECT id FROM userteams WHERE userteams.team_id = $_team_id)
 				$user_id
 			";
-		$result = \lib\db::get($query, 'total', true);
+		$result = \dash\db::get($query, 'total', true);
 		return $result;
 	}
 
@@ -168,7 +168,7 @@ trait dashboard
 				hours.userteam_id IN (SELECT id FROM userteams WHERE userteams.team_id = $_team_id)
 				$user_id
 			GROUP BY hours.date";
-		$result = \lib\db::get($query, 'count', true);
+		$result = \dash\db::get($query, 'count', true);
 		$result = count($result);
 		return $result;
 	}

@@ -119,7 +119,7 @@ class hourrequests
 							hourrequests.status <> 'deleted'
 						LIMIT 1
 					";
-					$result = \lib\db::get($query, null, true);
+					$result = \dash\db::get($query, null, true);
 					break;
 
 				// only awaiting request can delete
@@ -136,7 +136,7 @@ class hourrequests
 							hourrequests.status  = 'awaiting'
 						LIMIT 1
 					";
-					$result = \lib\db::get($query, null, true);
+					$result = \dash\db::get($query, null, true);
 					break;
 				default:
 					return false;

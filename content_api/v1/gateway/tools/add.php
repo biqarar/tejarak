@@ -163,7 +163,7 @@ trait add
 				'password'    => $password,
 			];
 			\dash\db\users::insert($insert_users);
-			$user_id = \lib\db::insert_id();
+			$user_id = \dash\db::insert_id();
 		}
 		elseif($_args['method'] === 'patch')
 		{

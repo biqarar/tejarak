@@ -56,7 +56,7 @@ class calc
 	 */
 	public function __construct($_team_id)
 	{
-		// \lib\db::transaction();
+		// \dash\db::transaction();
 
 		$this->team_id = $_team_id;
 

@@ -440,9 +440,9 @@ trait add
 			// set default settings in meta
 			$args['meta']         = json_encode(['report_settings' => \lib\db\teams::$default_settings_true], JSON_UNESCAPED_UNICODE);
 
-			\lib\db::$debug_error = false;
+			\dash\db::$debug_error = false;
 			$team_id              = \lib\db\teams::insert($args);
-			\lib\db::$debug_error = true;
+			\dash\db::$debug_error = true;
 
 			if(!$team_id)
 			{

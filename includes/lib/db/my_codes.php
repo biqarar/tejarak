@@ -53,7 +53,7 @@ class my_codes extends \lib\db\codes
 									)
 							)
 					";
-					$check_duplicate_code = \lib\db::get($query, 'count', true);
+					$check_duplicate_code = \dash\db::get($query, 'count', true);
 
 					if($check_duplicate_code)
 					{

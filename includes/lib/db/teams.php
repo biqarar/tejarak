@@ -107,8 +107,8 @@ class teams
 		$set = \dash\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT INTO teams SET $set");
-			return \lib\db::insert_id();
+			\dash\db::query("INSERT INTO teams SET $set");
+			return \dash\db::insert_id();
 		}
 	}
 
@@ -141,7 +141,7 @@ class teams
 				userteams.rule   = 'admin' AND
 				userteams.status = 'active'
 		";
-		return \lib\db::get($query);
+		return \dash\db::get($query);
 	}
 
 
@@ -168,7 +168,7 @@ class teams
 		if($_id)
 		{
 			$query = "SELECT * FROM teams WHERE teams.id = '$_id' LIMIT 1";
-			$result = \lib\db::get($query, null, true);
+			$result = \dash\db::get($query, null, true);
 			\dash\db\cache::set_cache('teams', ['id' => $_id] , $result);
 			return $result;
 		}
@@ -197,7 +197,7 @@ class teams
 		}
 
 		$query = "SELECT * FROM teams WHERE teams.shortname = '$_shortname' LIMIT 1";
-		$result = \lib\db::get($query, null, true);
+		$result = \dash\db::get($query, null, true);
 		\dash\db\cache::set_cache('teams', ['shortname' => $_shortname], $result);
 		return $result;
 	}
@@ -461,7 +461,7 @@ class teams
 		}
 		else
 		{
-			$result =  \lib\db::get($query, null, true);
+			$result =  \dash\db::get($query, null, true);
 			\dash\db\cache::set_cache('teams', $cash_key, $result);
 		}
 
@@ -567,7 +567,7 @@ class teams
 		}
 		else
 		{
-			$result =  \lib\db::get($query);
+			$result =  \dash\db::get($query);
 			\dash\db\cache::set_cache('teams', ['team_list' => $_user_id, $_options], $result);
 
 		}
@@ -585,7 +585,7 @@ class teams
 	public static function get_similar_shortname($_like)
 	{
 		$query = "SELECT teams.shortname AS `shortname` FROM teams WHERE teams.shortname LIKE '$_like%' ";
-		return \lib\db::get($query, 'shortname');
+		return \dash\db::get($query, 'shortname');
 	}
 
 
@@ -763,9 +763,9 @@ class teams
 		if($pagenation && !$get_count)
 		{
 			$pagenation_query = "SELECT	COUNT(teams.id) AS `count`	FROM teams	$where $search ";
-			$pagenation_query = \lib\db::get($pagenation_query, 'count', true);
+			$pagenation_query = \dash\db::get($pagenation_query, 'count', true);
 
-			list($limit_start, $limit) = \lib\db::pagnation((int) $pagenation_query, $limit);
+			list($limit_start, $limit) = \dash\db::pagnation((int) $pagenation_query, $limit);
 			$limit = " LIMIT $limit_start, $limit ";
 		}
 		else
@@ -786,12 +786,12 @@ class teams
 
 		if(!$only_one_value)
 		{
-			$result = \lib\db::get($query, null, false);
+			$result = \dash\db::get($query, null, false);
 			$result = \dash\utility\filter::meta_decode($result);
 		}
 		else
 		{
-			$result = \lib\db::get($query, 'teamscount', true);
+			$result = \dash\db::get($query, 'teamscount', true);
 		}
 
 		return $result;

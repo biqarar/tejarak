@@ -17,8 +17,8 @@ class getwaies
 		$set = \dash\db\config::make_set($_args);
 		if($set)
 		{
-			\lib\db::query("INSERT INTO getwaies SET $set");
-			return \lib\db::insert_id();
+			\dash\db::query("INSERT INTO getwaies SET $set");
+			return \dash\db::insert_id();
 		}
 	}
 
@@ -45,7 +45,7 @@ class getwaies
 			}
 			$where = \dash\db\config::make_where($_args, ['table_name' => 'getwaies']);
 			$query = " SELECT getwaies.* FROM getwaies WHERE $where $limit ";
-			$result = \lib\db::get($query, null, $only_one_value);
+			$result = \dash\db::get($query, null, $only_one_value);
 			return $result;
 		}
 		return false;
@@ -79,7 +79,7 @@ class getwaies
 					getwaies.id = $_getwaies_id AND teams.boss = $_boss
 				LIMIT 1
 			";
-			$result = \lib\db::get($query, null, true);
+			$result = \dash\db::get($query, null, true);
 			return $result;
 		}
 		return false;
@@ -106,7 +106,7 @@ class getwaies
 					getwaies.user_id = $_args[user_id]
 				LIMIT 1
 			";
-			$result = \lib\db::get($query, null, true);
+			$result = \dash\db::get($query, null, true);
 			return $result;
 
 		}
@@ -128,7 +128,7 @@ class getwaies
 		}
 
 		$query = "UPDATE getwaies SET $set WHERE id = $_id LIMIT 1";
-		return \lib\db::query($query);
+		return \dash\db::query($query);
 	}
 
 
@@ -306,9 +306,9 @@ class getwaies
 		if($pagenation && !$get_count)
 		{
 			$pagenation_query = "SELECT	COUNT(getwaies.id) AS `count`	FROM getwaies	$where $search ";
-			$pagenation_query = \lib\db::get($pagenation_query, 'count', true);
+			$pagenation_query = \dash\db::get($pagenation_query, 'count', true);
 
-			list($limit_start, $limit) = \lib\db::pagnation((int) $pagenation_query, $limit);
+			list($limit_start, $limit) = \dash\db::pagnation((int) $pagenation_query, $limit);
 			$limit = " LIMIT $limit_start, $limit ";
 		}
 		else
@@ -329,12 +329,12 @@ class getwaies
 
 		if(!$only_one_value)
 		{
-			$result = \lib\db::get($query, null, false);
+			$result = \dash\db::get($query, null, false);
 			$result = \dash\utility\filter::meta_decode($result);
 		}
 		else
 		{
-			$result = \lib\db::get($query, 'getwaiescount', true);
+			$result = \dash\db::get($query, 'getwaiescount', true);
 		}
 
 		return $result;

@@ -17,7 +17,7 @@ class hours
 	 */
 	public static function total_sum()
 	{
-		return intval(\lib\db::get("SELECT SUM(hours.total) AS `sum` FROM hours", 'sum', true));
+		return intval(\dash\db::get("SELECT SUM(hours.total) AS `sum` FROM hours", 'sum', true));
 	}
 
 
@@ -117,7 +117,7 @@ class hours
 				userteams.team_id = $_team_id
 			LIMIT 1
 		";
-		$result = \lib\db::get($query, null, true);
+		$result = \dash\db::get($query, null, true);
 		return $result;
 
 	}
@@ -148,7 +148,7 @@ class hours
 				userteams.user_id = $_user_id
 			LIMIT 1
 		";
-		$result = \lib\db::get($query, null, true);
+		$result = \dash\db::get($query, null, true);
 		return $result;
 	}
 
@@ -179,7 +179,7 @@ class hours
 			LIMIT 1
 		";
 
-		$total = \lib\db::get($query, "total", true);
+		$total = \dash\db::get($query, "total", true);
 		// return result as number of live users
 		return $total;
 	}
@@ -210,7 +210,7 @@ class hours
 				hours.end IS NULL
 			LIMIT 1
 		";
-		$total = \lib\db::get($query, "total", true);
+		$total = \dash\db::get($query, "total", true);
 		// return result as number of live users
 		return $total;
 	}
@@ -246,7 +246,7 @@ class hours
 			GROUP BY name
 			ORDER BY accepted DESC
 		";
-		$peresence = \lib\db::get($query, ['name', 'accepted'] );
+		$peresence = \dash\db::get($query, ['name', 'accepted'] );
 		return $peresence;
 	}
 
@@ -614,7 +614,7 @@ class hours
 			$where = implode(' AND ', $where);
 			$query = "SELECT * FROM hours WHERE $where ORDER BY hours.id DESC LIMIT 1";
 
-			$hours_data =  \lib\db::get($query, null, true);
+			$hours_data =  \dash\db::get($query, null, true);
 			return $hours_data;
 		}
 	}
@@ -645,7 +645,7 @@ class hours
 			HAVING sum_diff > $_args[active_time]
 		";
 
-		$result = \lib\db::get($query);
+		$result = \dash\db::get($query);
 		return $result;
 	}
 }

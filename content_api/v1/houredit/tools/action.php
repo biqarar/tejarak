@@ -168,7 +168,7 @@ trait action
 				// hour request have not hour id
 				// need to add new record
 				\lib\db\hours::record_process($hourrequests_details, null, ['type' => 'insert', 'user_id' => $this->user_id]);
-				$meta['inserted_hour_id'] = \lib\db::insert_id();
+				$meta['inserted_hour_id'] = \dash\db::insert_id();
 				\dash\db\logs::set('api:hour:added:request:accepted', $this->user_id, $log_meta);
 			}
 		}

@@ -108,7 +108,7 @@ class teamplans
 				teamplans.id DESC
 			LIMIT 1
 		";
-		$result = \lib\db::get($query, null, true);
+		$result = \dash\db::get($query, null, true);
 		if(isset($result['plan']))
 		{
 			$result['plan_name'] = self::plan_name($result['plan']);

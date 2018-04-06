@@ -811,8 +811,8 @@ trait sum
 		$result = [];
 		if($query && $pagenation_query)
 		{
-			$count_record              = \lib\db::get($pagenation_query, 'count', true);
-			list($limit_start, $limit) = \lib\db::pagnation((int) $count_record, 10);
+			$count_record              = \dash\db::get($pagenation_query, 'count', true);
+			list($limit_start, $limit) = \dash\db::pagnation((int) $count_record, 10);
 			$query                     = sprintf($query, $limit_start, $limit);
 
 			if($export)
@@ -820,7 +820,7 @@ trait sum
 				$query  = preg_replace("/LIMIT \d+\, \d+/", '', $query);
 			}
 
-			$result = \lib\db::get($query);
+			$result = \dash\db::get($query);
 		}
 		return $result;
 
