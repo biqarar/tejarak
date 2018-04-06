@@ -32,9 +32,9 @@ class controller extends \content_a\main\controller
 						switch ($split[2])
 						{
 							case 'settings':
-								if(!\lib\temp::get('is_admin'))
+								if(!\dash\temp::get('is_admin'))
 								{
-									\lib\header::status(403);
+									\dash\header::status(403);
 								}
 							case 'last':
 							case 'year':
@@ -46,7 +46,7 @@ class controller extends \content_a\main\controller
 								break;
 
 							default:
-								\lib\header::status(404);
+								\dash\header::status(404);
 								break;
 						}
 					}
@@ -59,7 +59,7 @@ class controller extends \content_a\main\controller
 					}
 					break;
 				default:
-					\lib\header::status(404);
+					\dash\header::status(404);
 					break;
 			}
 		}

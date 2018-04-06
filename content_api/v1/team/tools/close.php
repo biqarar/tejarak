@@ -19,22 +19,22 @@ trait close
 			return false;
 		}
 
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
-		$id = \lib\utility::request("id");
+		$id = \dash\utility::request("id");
 		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:team:delete:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -42,7 +42,7 @@ trait close
 		if(!$team_details || !isset($team_details['id']))
 		{
 			\dash\db\logs::set('api:team:delete:permission:denide', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to delete this team"), 'id', 'permission');
+			\dash\notif::error(T_("Can not access to delete this team"), 'id', 'permission');
 			return false;
 		}
 
@@ -50,8 +50,8 @@ trait close
 		{
 			$log_meta['meta']['team'] = $team_details;
 			\dash\db\logs::set('api:team:delete:team:complete', $this->user_id, $log_meta);
-			// \lib\notif::title(T_("Operation Complete"));
-			\lib\notif::warn(T_("The team was closed"));
+			// \dash\notif::title(T_("Operation Complete"));
+			\dash\notif::warn(T_("The team was closed"));
 		}
 
 	}

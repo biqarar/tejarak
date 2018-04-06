@@ -12,16 +12,16 @@ class controller extends \content_a\main\controller
 		$this->get(false, 'dashboard')->ALL();
 
 		// check if the user is gateway redirect to hours page
-		if(!\lib\user::login('mobile') && \lib\user::login('parent') && \lib\user::login('username') && \lib\user::login('password'))
+		if(!\dash\user::login('mobile') && \dash\user::login('parent') && \dash\user::login('username') && \dash\user::login('password'))
 		{
-			$check_is_gateway = \lib\db\userteams::get(['user_id' => \lib\user::id(), 'rule' => 'gateway', 'limit'=> 1]);
+			$check_is_gateway = \lib\db\userteams::get(['user_id' => \dash\user::id(), 'rule' => 'gateway', 'limit'=> 1]);
 			if(isset($check_is_gateway['team_id']))
 			{
 				$shortname = \lib\db\teams::get_by_id($check_is_gateway['team_id']);
 				if(isset($shortname['shortname']))
 				{
 					$new_url = \dash\url::base(). '/'. $shortname['shortname'];
-					\lib\redirect::to($new_url);
+					\dash\redirect::to($new_url);
 					return;
 				}
 			}

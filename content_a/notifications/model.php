@@ -13,18 +13,18 @@ class model extends \content_a\main\model
 	 */
 	public function get_notifications($_args)
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
 		$meta            = [];
-		$this->user_id   = \lib\user::id();
+		$this->user_id   = \dash\user::id();
 		$meta['user_id'] = $this->user_id;
 		$meta['status']  = ["IN", "('enable')"];
 		$meta['sort']    = 'id';
 		$meta['order']   = 'desc';
 		$notify          = \dash\db\notifications::search(null, $meta);
-		$cat_list        = \lib\option::config('notification', 'cat');
+		$cat_list        = \dash\option::config('notification', 'cat');
 
 		if(is_array($notify))
 		{
@@ -72,13 +72,13 @@ class model extends \content_a\main\model
 	 */
 	public function post_notifications()
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\notif::error(T_("You must login to pay amount"));
+			\dash\notif::error(T_("You must login to pay amount"));
 			return false;
 		}
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 
 		if(\dash\request::post('notify_type') === 'owner')
 		{
@@ -91,7 +91,7 @@ class model extends \content_a\main\model
 		}
 
 
-		\lib\redirect::pwd();
+		\dash\redirect::pwd();
 	}
 
 

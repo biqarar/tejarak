@@ -9,16 +9,16 @@ class controller extends \mvc\controller
 	 */
 	public function repository()
 	{
-		if(\lib\temp::get('main_controller_is_run'))
+		if(\dash\temp::get('main_controller_is_run'))
 		{
 			return;
 		}
 
-		\lib\temp::set('main_controller_is_run', true);
+		\dash\temp::set('main_controller_is_run', true);
 
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\redirect::to(\dash\url::base(). '/enter');
+			\dash\redirect::to(\dash\url::base(). '/enter');
 			return;
 		}
 
@@ -54,39 +54,39 @@ class controller extends \mvc\controller
 		// if !the url 0 is a short url
 		if(!\dash\coding::is($url_0) && $url_0 != 'notifications')
 		{
-			\lib\header::status(404);
+			\dash\header::status(404);
 		}
 
 		$team_id    = $url_0;
 		$rule       = 'user';
-		\lib\temp::set('team_code_url', $url_0);
+		\dash\temp::set('team_code_url', $url_0);
 
 		$team_id = \dash\coding::decode($team_id);
 
-		if($team_id && \lib\user::id())
+		if($team_id && \dash\user::id())
 		{
 			$team_details = \lib\db\teams::get_by_id($team_id);
 
-			if(isset($team_details['creator']) && intval($team_details['creator']) === intval(\lib\user::id()))
+			if(isset($team_details['creator']) && intval($team_details['creator']) === intval(\dash\user::id()))
 			{
-				\lib\temp::set('is_creator', true);
+				\dash\temp::set('is_creator', true);
 			}
 			else
 			{
 				// team not found
 				if(!$team_details)
 				{
-					\lib\header::status(404, T_("Team not found"));
+					\dash\header::status(404, T_("Team not found"));
 				}
 				else
 				{
-					\lib\temp::set('is_creator', false);
+					\dash\temp::set('is_creator', false);
 				}
 			}
 
-			$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => \lib\user::id(), 'limit' => 1]);
+			$load_userteam_record = \lib\db\userteams::get(['team_id' => $team_id, 'user_id' => \dash\user::id(), 'limit' => 1]);
 
-			\lib\temp::set('userteam_login_detail', $load_userteam_record);
+			\dash\temp::set('userteam_login_detail', $load_userteam_record);
 
 			if(isset($load_userteam_record['rule']))
 			{
@@ -94,11 +94,11 @@ class controller extends \mvc\controller
 				if($rule === 'admin')
 				{
 
-					\lib\temp::set('is_admin', true);
+					\dash\temp::set('is_admin', true);
 				}
 				else
 				{
-					\lib\temp::set('is_admin', false);
+					\dash\temp::set('is_admin', false);
 				}
 			}
 			else
@@ -106,13 +106,13 @@ class controller extends \mvc\controller
 				// this user is not in this team
 				if(!$load_userteam_record)
 				{
-					\lib\header::status(403);
+					\dash\header::status(403);
 				}
 				else
 				{
 					// record is set but the rule is not in this record
 					// this is a bug
-					\lib\header::status(503);
+					\dash\header::status(503);
 				}
 			}
 		}
@@ -144,7 +144,7 @@ class controller extends \mvc\controller
 		}
 		else
 		{
-			\lib\header::status(404, T_("Invalid url"));
+			\dash\header::status(404, T_("Invalid url"));
 		}
 	}
 
@@ -184,9 +184,9 @@ class controller extends \mvc\controller
 		switch ($_controller)
 		{
 			case 'setting\plan':
-				if(!\lib\temp::get('is_creator'))
+				if(!\dash\temp::get('is_creator'))
 				{
-					\lib\header::status(403, T_("Can not access to load this page"));
+					\dash\header::status(403, T_("Can not access to load this page"));
 				}
 				break;
 			case 'report':
@@ -203,9 +203,9 @@ class controller extends \mvc\controller
 			case 'setting':
 			case 'member':
 			default:
-				if(!\lib\temp::get('is_admin'))
+				if(!\dash\temp::get('is_admin'))
 				{
-					\lib\header::status(403, T_("Can not access to load this page"));
+					\dash\header::status(403, T_("Can not access to load this page"));
 				}
 				break;
 		}

@@ -58,13 +58,13 @@ class model extends \addons\content_api\v1\home\model
 	 */
 	public function member_multi($_method)
 	{
-		$all_request = \lib\utility::request();
+		$all_request = \dash\utility::request();
 		$result = [];
 		if(is_array($all_request))
 		{
 			foreach ($all_request as $key => $value)
 			{
-				\lib\utility::set_request_array($value);
+				\dash\utility::set_request_array($value);
 				$result[] = $this->add_member(['method' => $_method]);
 				\lib\engine\process::status() = 1;
 			}

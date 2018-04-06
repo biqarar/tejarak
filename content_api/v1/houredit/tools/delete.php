@@ -16,13 +16,13 @@ trait delete
 	 */
 	public function hourrequest_delete($_args = [])
 	{
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
@@ -31,13 +31,13 @@ trait delete
 			return false;
 		}
 
-		$id = \lib\utility::request("id");
+		$id = \dash\utility::request("id");
 		$id = \dash\coding::decode($id);
 
 		if(!$id)
 		{
 			\dash\db\logs::set('api:houredit:delete:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("houredit id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("houredit id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -46,7 +46,7 @@ trait delete
 		if(!$result)
 		{
 			\dash\db\logs::set('api:houredit:delete:access:denide', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to delete this request"), 'houredit', 'permission');
+			\dash\notif::error(T_("Can not access to delete this request"), 'houredit', 'permission');
 			return false;
 		}
 
@@ -55,8 +55,8 @@ trait delete
 
 		if(\lib\engine\process::status())
 		{
-			// \lib\notif::title(T_("Operation complete"));
-			\lib\notif::warn(T_("Your request was deleted"));
+			// \dash\notif::title(T_("Operation complete"));
+			\dash\notif::warn(T_("Your request was deleted"));
 		}
 		return;
 	}

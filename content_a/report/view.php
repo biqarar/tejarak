@@ -47,7 +47,7 @@ class view extends \content_a\main\view
 
 		$all_user = [];
 
-		if($team_code = \lib\temp::get('team_code_url'))
+		if($team_code = \dash\temp::get('team_code_url'))
 		{
 			$this->data->reportUrl = \dash\url::here(). '/'. \dash\url::directory();
 			// var_dump($this->data->reportUrl);exit();
@@ -57,7 +57,7 @@ class view extends \content_a\main\view
 				// check admin or user of team
 				$user_status = \lib\db\userteams::get(
 				[
-					'user_id' => \lib\user::id(),
+					'user_id' => \dash\user::id(),
 					'team_id' => $team_id,
 					'limit'   => 1
 				]);
@@ -89,7 +89,7 @@ class view extends \content_a\main\view
 
 		$team_id = \dash\coding::decode($this->data->team_code);
 
-		$cache_chart = \lib\session::get('report_last_month_chart_'. $team_id);
+		$cache_chart = \dash\session::get('report_last_month_chart_'. $team_id);
 		if($cache_chart === null)
 		{
 
@@ -99,7 +99,7 @@ class view extends \content_a\main\view
 			}
 			else
 			{
-				$user_id = \lib\user::id();
+				$user_id = \dash\user::id();
 			}
 
 			$chart_last_month = \lib\db\teams::last_time_chart($team_id, $user_id, 30);
@@ -111,7 +111,7 @@ class view extends \content_a\main\view
 				{
 					$format = "Y-m-d D";
 					$date = date($format, strtotime($key));
-					if(\lib\language::current() === 'fa')
+					if(\dash\language::current() === 'fa')
 					{
 						$date = \dash\utility\jdate::date($format, strtotime($key), false);
 					}
@@ -120,7 +120,7 @@ class view extends \content_a\main\view
 				}
 			}
 			$cache_chart = json_encode($cache_chart, JSON_UNESCAPED_UNICODE);
-			\lib\session::set('report_last_month_chart_'. $team_id, $cache_chart, null, 60);
+			\dash\session::set('report_last_month_chart_'. $team_id, $cache_chart, null, 60);
 		}
 		$this->data->chart_last_month = $cache_chart;
 

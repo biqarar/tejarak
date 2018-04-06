@@ -12,17 +12,17 @@ class model extends \content\main\model
 	 */
 	public function list_member($_args)
 	{
-		$this->user_id        = \lib\user::id();
+		$this->user_id        = \dash\user::id();
 		$request              = [];
 		$request['shortname'] = isset($_args['shortname']) ? $_args['shortname'] : null;
 		$request['hours']     = true;
 		// to get last hours. what i want to do?
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result =  $this->get_list_member();
 
 		// if($result === false)
 		// {
-		// 	\lib\header::status(403, T_("Can not access to show this team"));
+		// 	\dash\header::status(403, T_("Can not access to show this team"));
 		// }
 
 		return $result;
@@ -38,14 +38,14 @@ class model extends \content\main\model
 	public function post_hours($_args)
 	{
 
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
 
 		$url = (isset($_args->match->url[0])) ? $_args->match->url[0] : null;
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		if(!$url)
 		{
 			return false;
@@ -64,9 +64,9 @@ class model extends \content\main\model
 			$request['hours']     = true;
 
 			// to get last hours. what i want to do?
-			\lib\utility::set_request_array($request);
+			\dash\utility::set_request_array($request);
 			$result = $this->get_list_member();
-			\lib\notif::result(['memberList' => json_encode($result, JSON_UNESCAPED_UNICODE)]);
+			\dash\notif::result(['memberList' => json_encode($result, JSON_UNESCAPED_UNICODE)]);
 			return true;
 		}
 
@@ -77,11 +77,11 @@ class model extends \content\main\model
 		$request['type']   = \dash\request::post('type');
 		$request['desc']   = \dash\request::post('desc');
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		$this->add_hours();
 
-		\lib\notif::result(['now_val' => date("Y-m-d H:i:s"), 'now' => date("H:i")]);
+		\dash\notif::result(['now_val' => date("Y-m-d H:i:s"), 'now' => date("H:i")]);
 	}
 }
 ?>

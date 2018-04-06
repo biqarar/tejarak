@@ -38,7 +38,7 @@ trait get
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 		if(!$this->user_id)
@@ -46,30 +46,30 @@ trait get
 			// return false;
 		}
 
-		$id = \lib\utility::request('id');
+		$id = \dash\utility::request('id');
 		$id = \dash\coding::decode($id);
 		// in this api must be get the team
 		// but i get the id
 		// this is incurrect
-		$team = \lib\utility::request('team');
+		$team = \dash\utility::request('team');
 		$team = \dash\coding::decode($team);
 		if($team && !$id)
 		{
 			$id = $team;
 		}
 
-		$shortname =  \lib\utility::request('shortname');
+		$shortname =  \dash\utility::request('shortname');
 
 		if(!$id && !$shortname)
 		{
 			\dash\db\logs::set('api:member:team:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Id or shortname not set"), 'id', 'arguments');
+			\dash\notif::error(T_("Id or shortname not set"), 'id', 'arguments');
 			return false;
 		}
 		elseif($id && $shortname)
 		{
 			\dash\db\logs::set('api:member:team:id:and:shortname:together:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not set id and shortname together"), 'id', 'arguments');
+			\dash\notif::error(T_("Can not set id and shortname together"), 'id', 'arguments');
 			return false;
 		}
 
@@ -97,14 +97,14 @@ trait get
 
 			if($team_detail)
 			{
-				if(\lib\permission::access('load:all:team', null, $this->user_id) || $_args['admin'])
+				if(\dash\permission::access('load:all:team', null, $this->user_id) || $_args['admin'])
 				{
 					$team_detail = $team_detail;
 				}
 				else
 				{
-					\lib\temp::set('team_access_denied', true);
-					\lib\temp::set('team_exist', true);
+					\dash\temp::set('team_access_denied', true);
+					\dash\temp::set('team_exist', true);
 					$team_detail = false;
 				}
 			}
@@ -113,11 +113,11 @@ trait get
 		if(!$team_detail)
 		{
 			\dash\db\logs::set('api:member:team:id:permission:denide', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to load this team"), 'id', 'permission');
+			\dash\notif::error(T_("Can not access to load this team"), 'id', 'permission');
 			return false;
 		}
 
-		$get_hours = \lib\utility::request('hours');
+		$get_hours = \dash\utility::request('hours');
 		$get_hours = $get_hours ? true : false;
 
 		if(isset($team_detail['userteam_remote']) && $team_detail['userteam_remote'])
@@ -137,32 +137,32 @@ trait get
 
 		$this->show_another_status = true;
 
-		$type = \lib\utility::request('type');
+		$type = \dash\utility::request('type');
 		if($type && !is_string($type))
 		{
 			\dash\db\logs::set('api:member:team:type:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid type of user"), 'type', 'arguments');
+			\dash\notif::error(T_("Invalid type of user"), 'type', 'arguments');
 			return false;
 		}
 
-		$search = \lib\utility::request('search');
+		$search = \dash\utility::request('search');
 		if($search && !is_string($search))
 		{
 			\dash\db\logs::set('api:member:team:search:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid search of user"), 'search', 'arguments');
+			\dash\notif::error(T_("Invalid search of user"), 'search', 'arguments');
 			return false;
 		}
 
 		$where               = [];
 
-		$status = \lib\utility::request('status');
+		$status = \dash\utility::request('status');
 
 		if($status)
 		{
 			if(!in_array($status, ['active','deactive','disable','filter','leave','delete','parent','suspended']))
 			{
 				\dash\db\logs::set('api:member:team:search:invalid:status', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Parameter status is incurrect"), 'status', 'arguments');
+				\dash\notif::error(T_("Parameter status is incurrect"), 'status', 'arguments');
 				return false;
 			}
 			$where['status'] = $status;
@@ -215,35 +215,35 @@ trait get
 	 */
 	public function get_member($_args = [])
 	{
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 		if(!$this->user_id)
 		{
 			\dash\db\logs::set('api:member:user_id:notfound', $this->user_id, $log_meta);
-			\lib\notif::error(T_("User not found"), 'user', 'permission');
+			\dash\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
-		$team = \lib\utility::request('team');
+		$team = \dash\utility::request('team');
 		if(!$team)
 		{
 			\dash\db\logs::set('api:member:team:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team not set"), 'team', 'arguments');
+			\dash\notif::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
 
-		$id = \lib\utility::request('id');
+		$id = \dash\utility::request('id');
 		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:member:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -261,7 +261,7 @@ trait get
 		if(!$check_user_in_team)
 		{
 			\dash\db\logs::set('api:member:user:not:in:team', $this->user_id, $log_meta);
-			\lib\notif::error(T_("This user is not in this team"), 'id', 'arguments');
+			\dash\notif::error(T_("This user is not in this team"), 'id', 'arguments');
 			return false;
 		}
 
@@ -280,28 +280,28 @@ trait get
 	 */
 	public function userteam_get_details()
 	{
-		$userteam_id  = \lib\utility::request("id");
+		$userteam_id  = \dash\utility::request("id");
 
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
 		if(!$this->user_id)
 		{
 			\dash\db\logs::set('api:member:user_id:not:set:userteam_get_details', $this->user_id, $log_meta);
-			\lib\notif::error(T_("User not found"), 'user', 'permission');
+			\dash\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
 		if(!$userteam_id)
 		{
 			\dash\db\logs::set('api:userteam_id:team:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid team id"), 'team', 'permission');
+			\dash\notif::error(T_("Invalid team id"), 'team', 'permission');
 			return false;
 		}
 

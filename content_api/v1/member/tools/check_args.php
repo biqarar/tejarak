@@ -9,61 +9,61 @@ trait check_args
 		$log_meta = $_log_meta;
 
 		// get firstname
-		$displayname = \lib\utility::request("displayname");
+		$displayname = \dash\utility::request("displayname");
 		$displayname = trim($displayname);
 		if($displayname && mb_strlen($displayname) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:displayname:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You can set the displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
 		}
 
 		// get firstname
-		$firstname = \lib\utility::request("firstname");
+		$firstname = \dash\utility::request("firstname");
 		$firstname = trim($firstname);
 		if($firstname && mb_strlen($firstname) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:firstname:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You can set the firstname less than 50 character"), 'firstname', 'arguments');
 			return false;
 		}
 
 		// get lastname
-		$lastname = \lib\utility::request("lastname");
+		$lastname = \dash\utility::request("lastname");
 		$lastname = trim($lastname);
 		if($lastname && mb_strlen($lastname) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:lastname:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You can set the lastname less than 50 character"), 'lastname', 'arguments');
 			return false;
 		}
 
-		$postion     = \lib\utility::request('postion');
+		$postion     = \dash\utility::request('postion');
 		if($postion && mb_strlen($postion) > 100)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:postion:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You can set the postion less than 100 character"), 'postion', 'arguments');
 			return false;
 		}
 
 		// get the code
-		$personnelcode = \lib\utility::request('personnel_code');
+		$personnelcode = \dash\utility::request('personnel_code');
 		$personnelcode = trim($personnelcode);
 		if($personnelcode && mb_strlen($personnelcode) > 9)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:code:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You can set the personnel_code less than 9 character "), 'personnel_code', 'arguments');
 			return false;
 		}
 
 		// get rule
-		$rule = \lib\utility::request('rule');
+		$rule = \dash\utility::request('rule');
 		if($rule)
 		{
 			if(!in_array($rule, ['user', 'admin', 'gateway']))
 			{
 				if($_args['save_log']) \dash\db\logs::set('api:member:rule:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\notif::error(T_("Invalid parameter rule"), 'rule', 'arguments');
+				if($_args['debug']) \dash\notif::error(T_("Invalid parameter rule"), 'rule', 'arguments');
 				return false;
 			}
 		}
@@ -72,13 +72,13 @@ trait check_args
 			$rule = 'user';
 		}
 
-		$visibility = \lib\utility::request('visibility');
+		$visibility = \dash\utility::request('visibility');
 		if($visibility)
 		{
 			if(!in_array($visibility, ['visible', 'hidden']))
 			{
 				if($_args['save_log']) \dash\db\logs::set('api:member:visibility:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\notif::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
+				if($_args['debug']) \dash\notif::error(T_("Invalid parameter visibility"), 'visibility', 'arguments');
 				return false;
 			}
 		}
@@ -88,13 +88,13 @@ trait check_args
 		}
 
 		// get status
-		$status = \lib\utility::request('status');
+		$status = \dash\utility::request('status');
 		if($status)
 		{
 			if(!in_array($status, ['active', 'deactive', 'suspended']))
 			{
 				if($_args['save_log']) \dash\db\logs::set('api:member:status:invalid', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\notif::error(T_("Invalid parameter status"), 'status', 'arguments');
+				if($_args['debug']) \dash\notif::error(T_("Invalid parameter status"), 'status', 'arguments');
 				return false;
 			}
 		}
@@ -104,25 +104,25 @@ trait check_args
 		}
 
 		// get date enter
-		$date_enter  = \lib\utility::request('date_enter');
+		$date_enter  = \dash\utility::request('date_enter');
 		if($date_enter && \DateTime::createFromFormat('Y-m-d', $date_enter) === false)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:date_enter:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("Invalid date of date enter"), 'date_enter', 'arguments');
 			return false;
 		}
 
 		// get date exit
-		$date_exit   = \lib\utility::request('date_exit');
+		$date_exit   = \dash\utility::request('date_exit');
 		if($date_exit && \DateTime::createFromFormat('Y-m-d', $date_exit) === false)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:date_exit:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("Invalid date of date exit"), 'date_exit', 'arguments');
 			return false;
 		}
 
 		// get file code
-		$file_code = \lib\utility::request('file');
+		$file_code = \dash\utility::request('file');
 		$file_id   = null;
 		$avatar  = null;
 		if($file_code)
@@ -147,140 +147,140 @@ trait check_args
 		}
 
 
-		$allowplus      = \lib\utility::isset_request('allow_plus') 		? \lib\utility::request('allow_plus') 		? 1 : 0 : null;
-		$allowminus     = \lib\utility::isset_request('allow_minus')		? \lib\utility::request('allow_minus') 		? 1 : 0 : null;
-		$is24h          = \lib\utility::isset_request('24h') 			? \lib\utility::request('24h') 				? 1 : 0 : null;
-		$remote         = \lib\utility::isset_request('remote_user')		? \lib\utility::request('remote_user') 		? 1 : 0 : null;
-		$isdefault      = \lib\utility::isset_request('is_default') 		? \lib\utility::request('is_default')		? 1 : 0 : null;
-		$allowdescenter = \lib\utility::isset_request('allow_desc_enter')? \lib\utility::request('allow_desc_enter')	? 1 : 0 : null;
-		$allowdescexit  = \lib\utility::isset_request('allow_desc_exit') ? \lib\utility::request('allow_desc_exit')	? 1 : 0 : null;
+		$allowplus      = \dash\utility::isset_request('allow_plus') 		? \dash\utility::request('allow_plus') 		? 1 : 0 : null;
+		$allowminus     = \dash\utility::isset_request('allow_minus')		? \dash\utility::request('allow_minus') 		? 1 : 0 : null;
+		$is24h          = \dash\utility::isset_request('24h') 			? \dash\utility::request('24h') 				? 1 : 0 : null;
+		$remote         = \dash\utility::isset_request('remote_user')		? \dash\utility::request('remote_user') 		? 1 : 0 : null;
+		$isdefault      = \dash\utility::isset_request('is_default') 		? \dash\utility::request('is_default')		? 1 : 0 : null;
+		$allowdescenter = \dash\utility::isset_request('allow_desc_enter')? \dash\utility::request('allow_desc_enter')	? 1 : 0 : null;
+		$allowdescexit  = \dash\utility::isset_request('allow_desc_exit') ? \dash\utility::request('allow_desc_exit')	? 1 : 0 : null;
 
-		$national_code = \lib\utility::request('national_code');
+		$national_code = \dash\utility::request('national_code');
 		if($national_code && mb_strlen($national_code) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:national_code:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the national code less than 50 character"), 'national_code', 'arguments');
 			return false;
 		}
 
-		$father = \lib\utility::request('father');
+		$father = \dash\utility::request('father');
 		if($father && mb_strlen($father) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:father:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the father name less than 50 character"), 'father', 'arguments');
 			return false;
 		}
 
-		$birthday      = \lib\utility::request('birthday');
+		$birthday      = \dash\utility::request('birthday');
 		if($birthday && mb_strlen($birthday) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:birthday:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the birthday name less than 50 character"), 'birthday', 'arguments');
 			return false;
 		}
 
-		$gender        = \lib\utility::request('gender');
+		$gender        = \dash\utility::request('gender');
 		if($gender && !in_array($gender, ['male', 'female']))
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:gender:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("Invalid gender field"), 'gender', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("Invalid gender field"), 'gender', 'arguments');
 			return false;
 		}
 
-		$type  = \lib\utility::request('type');
+		$type  = \dash\utility::request('type');
 		if($type && !in_array($type, ['teacher','student','manager','deputy','janitor','organizer','sponsor', 'takenunit_teacher', 'takenunit_student']))
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:type:max:length', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("Invalid type of member"), 'type', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("Invalid type of member"), 'type', 'arguments');
 			return false;
 		}
 
 
-		$marital                = \lib\utility::request('marital');
+		$marital                = \dash\utility::request('marital');
 		if($marital && !in_array($marital, ['single', 'married']))
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:marital:invalid', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("Invalid marital field"), 'marital', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("Invalid marital field"), 'marital', 'arguments');
 			return false;
 		}
 
-		$child                  = \lib\utility::request('child');
+		$child                  = \dash\utility::request('child');
 		if($child && mb_strlen($child) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:child:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the child less than 50 character"), 'child', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the child less than 50 character"), 'child', 'arguments');
 			return false;
 		}
 
-		$birthcity              = \lib\utility::request('birthcity');
+		$birthcity              = \dash\utility::request('birthcity');
 		if($birthcity && mb_strlen($birthcity) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:birthcity:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the birthcity less than 50 character"), 'birthcity', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the birthcity less than 50 character"), 'birthcity', 'arguments');
 			return false;
 		}
 
-		$shfrom                 = \lib\utility::request('shfrom');
+		$shfrom                 = \dash\utility::request('shfrom');
 		if($shfrom && mb_strlen($shfrom) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:shfrom:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the shfrom less than 50 character"), 'shfrom', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the shfrom less than 50 character"), 'shfrom', 'arguments');
 			return false;
 		}
 
-		$shcode                 = \lib\utility::request('shcode');
+		$shcode                 = \dash\utility::request('shcode');
 		if($shcode && mb_strlen($shcode) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:shcode:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the shcode less than 50 character"), 'shcode', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the shcode less than 50 character"), 'shcode', 'arguments');
 			return false;
 		}
 
-		$education              = \lib\utility::request('education');
+		$education              = \dash\utility::request('education');
 		if($education && mb_strlen($education) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:education:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the education less than 50 character"), 'education', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the education less than 50 character"), 'education', 'arguments');
 			return false;
 		}
 
-		$job       = \lib\utility::request('job');
+		$job       = \dash\utility::request('job');
 		if($job && mb_strlen($job) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:job:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the job less than 50 character"), 'job', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the job less than 50 character"), 'job', 'arguments');
 			return false;
 		}
 
-		$passport_code          = \lib\utility::request('passport_code');
+		$passport_code          = \dash\utility::request('passport_code');
 		if($passport_code && mb_strlen($passport_code) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:passport_code:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the passport_code less than 50 character"), 'passport_code', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the passport_code less than 50 character"), 'passport_code', 'arguments');
 			return false;
 		}
 
-		// $passport_expire        = \lib\utility::request('passport_expire');
+		// $passport_expire        = \dash\utility::request('passport_expire');
 		// if($passport_expire && mb_strlen($passport_expire) > 50)
 		// {
 		// 	if($_args['save_log']) \dash\db\logs::set('api:userteam:passport_expire:max:lenght', $this->user_id, $log_meta);
-		// 	if($_args['debug']) \lib\notif::error(T_("You must set the passport_expire less than 50 character"), 'passport_expire', 'arguments');
+		// 	if($_args['debug']) \dash\notif::error(T_("You must set the passport_expire less than 50 character"), 'passport_expire', 'arguments');
 		// 	return false;
 		// }
 
-		$payment_account_number = \lib\utility::request('payment_account_number');
+		$payment_account_number = \dash\utility::request('payment_account_number');
 		if($payment_account_number && mb_strlen($payment_account_number) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:payment_account_number:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the payment_account_number less than 50 character"), 'payment_account_number', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the payment_account_number less than 50 character"), 'payment_account_number', 'arguments');
 			return false;
 		}
 
-		$shaba                  = \lib\utility::request('shaba');
+		$shaba                  = \dash\utility::request('shaba');
 		if($shaba && mb_strlen($shaba) > 50)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:userteam:shaba:max:lenght', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set the shaba less than 50 character"), 'shaba', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set the shaba less than 50 character"), 'shaba', 'arguments');
 			return false;
 		}
 
@@ -292,7 +292,7 @@ trait check_args
 			if(count($another_admin) === 1)
 			{
 				if($_args['save_log']) \dash\db\logs::set('api:member:no:admin:in:team', $this->user_id, $log_meta);
-				if($_args['debug']) \lib\notif::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
+				if($_args['debug']) \dash\notif::error(T_("Only you are the team admin, You can not delete all admins"), 'rule', 'arguments');
 				return false;
 			}
 		}

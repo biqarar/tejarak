@@ -28,63 +28,63 @@ trait action
 
 		$_args = array_merge($default_args, $_args);
 
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
 		if(!$this->user_id)
 		{
 			\dash\db\logs::set('api:houredit:action:user_id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("User not found"), 'user', 'permission');
+			\dash\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
 
-		$id = \lib\utility::request('id');
+		$id = \dash\utility::request('id');
 		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:houredit:action:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Id not set or invalid id"), 'id', 'arguments');
+			\dash\notif::error(T_("Id not set or invalid id"), 'id', 'arguments');
 			return false;
 		}
 
-		$type = \lib\utility::request('type');
+		$type = \dash\utility::request('type');
 		if(!$type)
 		{
 			\dash\db\logs::set('api:houredit:action:type:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Action type not set"), 'type', 'arguments');
+			\dash\notif::error(T_("Action type not set"), 'type', 'arguments');
 			return false;
 		}
 
 		if(!in_array($type, ['accept', 'reject']))
 		{
 			\dash\db\logs::set('api:houredit:action:type:inavalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid action type"), 'type', 'arguments');
+			\dash\notif::error(T_("Invalid action type"), 'type', 'arguments');
 			return false;
 		}
 
-		$response = \lib\utility::request('response');
+		$response = \dash\utility::request('response');
 		if($response && mb_strlen($response) > 500)
 		{
 			\dash\db\logs::set('api:houredit:action:response:max:length', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You can set less than 500 character in response"));
+			\dash\notif::error(T_("You can set less than 500 character in response"));
 			return false;
 		}
 
-		$team_id = \lib\utility::request('team');
+		$team_id = \dash\utility::request('team');
 		$team_id = \dash\coding::decode($team_id);
 		if(!$team_id)
 		{
 			\dash\db\logs::set('api:houredit:action:team:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
+			\dash\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 
@@ -95,7 +95,7 @@ trait action
 		if(!isset($access_team['id']))
 		{
 			\dash\db\logs::set('api:houredit:action:access:forbidden', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to accept or reject hour edit request"), 'team', 'permission');
+			\dash\notif::error(T_("Can not access to accept or reject hour edit request"), 'team', 'permission');
 			return false;
 		}
 
@@ -103,14 +103,14 @@ trait action
 		if(!$is_exist_record || !isset($is_exist_record['team_id']) || !isset($is_exist_record['creator']) || !isset($is_exist_record['status']))
 		{
 			\dash\db\logs::set('api:houredit:id:record:not:found', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invaid id. record not found"), 'id', 'arguments');
+			\dash\notif::error(T_("Invaid id. record not found"), 'id', 'arguments');
 			return false;
 		}
 
 		if($is_exist_record['status'] != 'awaiting')
 		{
 			\dash\db\logs::set('api:houredit:id:record:is:not:awaiting', $this->user_id, $log_meta);
-			\lib\notif::error(T_("This request has already been reviewed"), 'id', 'arguments');
+			\dash\notif::error(T_("This request has already been reviewed"), 'id', 'arguments');
 			return false;
 		}
 
@@ -121,7 +121,7 @@ trait action
 		else
 		{
 			\dash\db\logs::set('api:houredit:team:id:hourrequests:team_id:not:mathc', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invaid team id"), 'team', 'permission');
+			\dash\notif::error(T_("Invaid team id"), 'team', 'permission');
 			return false;
 		}
 
@@ -132,7 +132,7 @@ trait action
 		if(!isset($access_team_user['id']))
 		{
 			\dash\db\logs::set('api:houredit:action:access:forbidden:user:not:in:team', $this->user_id, $log_meta);
-			\lib\notif::error(T_("This user is not in this team"), 'team', 'permission');
+			\dash\notif::error(T_("This user is not in this team"), 'team', 'permission');
 			return false;
 		}
 
@@ -154,7 +154,7 @@ trait action
 				if(!isset($hour_detail['id']))
 				{
 					\dash\db\logs::set('api:houredit:action:hour_id:set:but:not:found', $this->user_id, $log_meta);
-					\lib\notif::error(T_("Hour id not found!"), 'id', 'system');
+					\dash\notif::error(T_("Hour id not found!"), 'id', 'system');
 					return false;
 				}
 
@@ -182,14 +182,14 @@ trait action
 
 		if(\lib\engine\process::status())
 		{
-			// \lib\notif::title(T_("Operation complete"));
+			// \dash\notif::title(T_("Operation complete"));
 			if($type === 'accept')
 			{
-				\lib\notif::ok(T_("Request accepted"));
+				\dash\notif::ok(T_("Request accepted"));
 			}
 			else
 			{
-				\lib\notif::warn(T_("Request rejected"));
+				\dash\notif::warn(T_("Request rejected"));
 			}
 		}
 	}

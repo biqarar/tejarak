@@ -351,13 +351,13 @@ class hours
 
 		if(!$userteam_id || !isset($userteam_id['id']) || !isset($userteam_id['status']))
 		{
-			\lib\notif::error(T_("User team not found!"));
+			\dash\notif::error(T_("User team not found!"));
 			return false;
 		}
 
 		if($userteam_id['status'] !== 'active')
 		{
-			\lib\notif::error(T_("User is diactive!"));
+			\dash\notif::error(T_("User is diactive!"));
 			return false;
 		}
 
@@ -390,7 +390,7 @@ class hours
 
 		if($in_use_time && array_key_exists('end', $in_use_time) && !$in_use_time['end'])
 		{
-			\lib\notif::error(T_("You was already entered once before this request"));
+			\dash\notif::error(T_("You was already entered once before this request"));
 			return false;
 		}
 
@@ -405,7 +405,7 @@ class hours
 
 		if(isset($_args['userteam_details']['displayname']))
 		{
-			\lib\temp::set('enter_exit_name', $_args['userteam_details']['displayname']);
+			\dash\temp::set('enter_exit_name', $_args['userteam_details']['displayname']);
 		}
 
 		$insert                      = [];
@@ -446,7 +446,7 @@ class hours
 		// send to parent
 		$msg->send_parent(true);
 		// detail to use in message
-		$msg->displayname = \lib\temp::get('enter_exit_name');
+		$msg->displayname = \dash\temp::get('enter_exit_name');
 		$msg->plus        = $_args['plus'];
 		$msg->member_id   = $_args['user_id'];
 
@@ -477,7 +477,7 @@ class hours
 
 		if(!$start || ($start && isset($start['end']) && $start['end']))
 		{
-			\lib\notif::error(T_("You was already exited before this request or not entered"));
+			\dash\notif::error(T_("You was already exited before this request or not entered"));
 			return ;
 		}
 
@@ -489,7 +489,7 @@ class hours
 
 		if(!$check)
 		{
-			\lib\notif::error(T_("Invalid data"));
+			\dash\notif::error(T_("Invalid data"));
 			return false;
 		}
 
@@ -504,12 +504,12 @@ class hours
 
 		if(isset($_args['userteam_details']['displayname']))
 		{
-			\lib\temp::set('enter_exit_name', $_args['userteam_details']['displayname']);
+			\dash\temp::set('enter_exit_name', $_args['userteam_details']['displayname']);
 		}
 
 		if(isset($_args['userteam_details']['user_id']))
 		{
-			\lib\temp::set('enter_exit_id', $_args['userteam_details']['user_id']);
+			\dash\temp::set('enter_exit_id', $_args['userteam_details']['user_id']);
 		}
 
 		$update = [];
@@ -565,8 +565,8 @@ class hours
 		$msg->type('end_day');
 		$msg->type('date_now');
 		// meta need to create message
-		$msg->displayname = \lib\temp::get('enter_exit_name');
-		$msg->member_id   = \lib\temp::get('enter_exit_id');
+		$msg->displayname = \dash\temp::get('enter_exit_name');
+		$msg->member_id   = \dash\temp::get('enter_exit_id');
 		$msg->minus       = $_args['minus'];
 		$msg->plus        = $plus;
 		$msg->start_time  = $start['date'] . ' '. $start['start'];

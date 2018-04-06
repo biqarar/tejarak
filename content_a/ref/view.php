@@ -17,7 +17,7 @@ class view extends \content_a\main\view
 
 	public function get_ref()
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return null;
 		}
@@ -25,7 +25,7 @@ class view extends \content_a\main\view
 		$meta =
 		[
 			'get_count' => true,
-			'data'  => \lib\user::id(),
+			'data'  => \dash\user::id(),
 		];
 		$result = [];
 

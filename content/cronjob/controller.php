@@ -8,7 +8,7 @@ class controller extends \content\main\controller
 	{
 		if(isset($_SERVER['REQUEST_METHOD']) && mb_strtolower($_SERVER['REQUEST_METHOD']) === 'get')
 		{
-			\lib\header::status(404);
+			\dash\header::status(404);
 		}
 
 		if(\dash\url::isLocal())
@@ -26,7 +26,7 @@ class controller extends \content\main\controller
 			)
 		)
 		{
-			if(\lib\option::config('cronjob','status'))
+			if(\dash\option::config('cronjob','status'))
 			{
 				$this->post("cronjob")->ALL("/.*/");
 				$this->display = false;
@@ -35,7 +35,7 @@ class controller extends \content\main\controller
 		else
 		{
 			\dash\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
-			\lib\header::status(404);
+			\dash\header::status(404);
 		}
 
 	}

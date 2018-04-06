@@ -139,10 +139,10 @@ trait make
 
 		$title = T_("Using :d :v From plan :p By :c active member",
 		[
-			'd' => \dash\utility\human::number($count_use,\lib\language::current()),
+			'd' => \dash\utility\human::number($count_use,\dash\language::current()),
 			'v' => $invoice_unit_title,
 			'p' => T_($this->old_plan_name),
-			'c' => \dash\utility\human::number($count_active_user, \lib\language::current()),
+			'c' => \dash\utility\human::number($count_active_user, \dash\language::current()),
 		]);
 
 		$this->count_active_user = $count_active_user;
@@ -213,7 +213,7 @@ trait make
 	        $notify_text = T_("You have new invoice for :team by amount :amount :unit",
 			[
 				'team'   => $this->team_details['name'],
-				'amount' => \dash\utility\human::number(number_format($amount), \lib\language::current()),
+				'amount' => \dash\utility\human::number(number_format($amount), \dash\language::current()),
 				'unit'   => T_("toman"),
 			]);
 
@@ -244,7 +244,7 @@ trait make
 
         \dash\db\transactions::set($transaction_set);
 
-        $this->log_meta['meta']['debug'] = \lib\notif::get();
+        $this->log_meta['meta']['debug'] = \dash\notif::get();
 
 		if(\lib\engine\process::status())
 		{

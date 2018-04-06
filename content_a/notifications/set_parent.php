@@ -14,7 +14,7 @@ trait set_parent
 
 		if(!in_array(\dash\request::post('answer'), ['accept', 'reject']))
 		{
-			\lib\notif::error(T_("Invalid answer!"));
+			\dash\notif::error(T_("Invalid answer!"));
 			return false;
 		}
 
@@ -23,7 +23,7 @@ trait set_parent
 
 		if(!$notify)
 		{
-			\lib\notif::error(T_("Invalid notify!"));
+			\dash\notif::error(T_("Invalid notify!"));
 			return false;
 		}
 
@@ -32,13 +32,13 @@ trait set_parent
 
 		if(!$child)
 		{
-			\lib\notif::error(T_("Invalid parent!"));
+			\dash\notif::error(T_("Invalid parent!"));
 			return false;
 		}
 
 		$get =
 		[
-			'user_id'         => \lib\user::id(),
+			'user_id'         => \dash\user::id(),
 			'category'        => 9,
 			'read'            => null,
 			'id'              => $notify,
@@ -88,7 +88,7 @@ trait set_parent
 				// ACCEPT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 0;
-				\dash\db\logs::set('notify:change:parent:accept', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('notify:change:parent:accept', \dash\user::id(), $log_meta);
 				$user_id   = $check['user_idsender'];
 				$parent_id = $check['user_id'];
 				$title = isset($check['meta']['title']) ? $check['meta']['title'] : null;
@@ -101,7 +101,7 @@ trait set_parent
 					[
 						'title'  => $title,
 						'status' => 'enable',
-						'creator' => \lib\user::id(),
+						'creator' => \dash\user::id(),
 					];
 					\dash\db\userparents::update($update_userparents, $check_exist['id']);
 				}
@@ -114,7 +114,7 @@ trait set_parent
 						'status'  => 'enable',
 						'title'   => $title,
 						'status'  => 'enable',
-						'creator' => \lib\user::id(),
+						'creator' => \dash\user::id(),
 					];
 					\dash\db\userparents::insert($insert_parent);
 				}
@@ -125,14 +125,14 @@ trait set_parent
 				// REJECT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 1;
-				\dash\db\logs::set('notify:change:parent:reject', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('notify:change:parent:reject', \dash\user::id(), $log_meta);
 			}
 
 			\dash\db\notifications::update($update_notify, $check['id']);
 		}
 		else
 		{
-			\lib\notif::error(T_("Invalid notify detail"));
+			\dash\notif::error(T_("Invalid notify detail"));
 			return false;
 		}
 	}

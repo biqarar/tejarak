@@ -50,7 +50,7 @@ class controller extends \mvc\controller
 
 	public function ready()
 	{
-		\lib\permission::access('cp:user:hours', 'block');
+		\dash\permission::access('cp:user:hours', 'block');
 
 		$property                     = [];
 		foreach ($this->fields as $key => $value)

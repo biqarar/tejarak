@@ -12,7 +12,7 @@ class model extends \content_a\member\model
 	 */
 	public function list_member($_args)
 	{
-		$this->user_id  = \lib\user::id();
+		$this->user_id  = \dash\user::id();
 
 
 		$team_id        = \dash\coding::decode(\dash\url::dir(0));
@@ -23,7 +23,7 @@ class model extends \content_a\member\model
 
 		$request        = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result =  $this->get_list_member();
 
 		if(!is_array($result))

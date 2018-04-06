@@ -43,9 +43,9 @@ class model extends \content_a\main\model
 	 */
 	public function post_security($_args)
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\notif::error(T_("Please login to change owner"), 'owner');
+			\dash\notif::error(T_("Please login to change owner"), 'owner');
 			return $this->refresh_page();
 		}
 
@@ -77,20 +77,20 @@ class model extends \content_a\main\model
 		$new_owner = \dash\request::post('owner');
 		if(!$new_owner)
 		{
-			\lib\notif::error(T_("Plese fill the mobile field"), 'owner');
+			\dash\notif::error(T_("Plese fill the mobile field"), 'owner');
 			return $this->refresh_page();
 		}
 
 		if(!$this->mobile = \dash\utility\filter::mobile($new_owner))
 		{
-			\lib\notif::error(T_("Invalid mobile number"), 'owner');
+			\dash\notif::error(T_("Invalid mobile number"), 'owner');
 			return $this->refresh_page();
 		}
 
 		$this->user_data = \dash\db\users::get_by_mobile($this->mobile);
 		if(!isset($this->user_data['id']))
 		{
-			\lib\notif::error(T_("User not found"), 'owner');
+			\dash\notif::error(T_("User not found"), 'owner');
 			return $this->refresh_page();
 		}
 
@@ -113,7 +113,7 @@ class model extends \content_a\main\model
 	 */
 	public function refresh_page()
 	{
-		\lib\redirect::pwd();
+		\dash\redirect::pwd();
 		return ;
 	}
 
@@ -134,7 +134,7 @@ class model extends \content_a\main\model
 
 		$get =
 		[
-			'user_idsender'   => \lib\user::id(),
+			'user_idsender'   => \dash\user::id(),
 			'category'        => 4,
 			'status'          => ["IN", "('awaiting', 'enable')"],
 			'related_id'      => $_team_id,
@@ -168,32 +168,32 @@ class model extends \content_a\main\model
 		$meta                      = [];
 		$meta['team_code']         = $this->team_code;
 		$meta['team_id']           = $this->team_id;
-		$meta['old_owner']         = \lib\user::id();
+		$meta['old_owner']         = \dash\user::id();
 		$meta['new_owner']         = $this->user_data['id'];
 		// $meta['new_owner_data'] = $this->user_data;
 		$meta['new_owner_mobile']  = $this->mobile;
 		// $meta['team']           = $this->current_team;
 		$meta['team_logo']         = $this->current_team['logourl'];
 		$meta['team_name']         = $this->current_team['name'];
-		$meta['sender_name']       = \lib\user::login('displayname');
-		$meta['sender_mobile']     = \lib\user::login('mobile');
-		$meta['sender_logo']       = \lib\user::login('avatar');
+		$meta['sender_name']       = \dash\user::login('displayname');
+		$meta['sender_mobile']     = \dash\user::login('mobile');
+		$meta['sender_logo']       = \dash\user::login('avatar');
 
-		if(intval(\lib\user::id()) === intval($this->user_data['id']))
+		if(intval(\dash\user::id()) === intval($this->user_data['id']))
 		{
-			\lib\notif::error(T_("You try to move team to yourself!"), 'owner');
+			\dash\notif::error(T_("You try to move team to yourself!"), 'owner');
 			$this->_processor(['force_stop' => true]);
 			return false;
 		}
 		$send_notify =
 		[
-			'from'            => \lib\user::id(),
+			'from'            => \dash\user::id(),
 			'to'              => $this->user_data['id'],
 			'cat'             => 'change_owner',
 			'related_foreign' => 'teams',
 			'status'		  => 'awaiting',
 			'related_id'      => $meta['team_id'],
-			'meta'            => json_encode(\lib\safe::safe($meta), JSON_UNESCAPED_UNICODE),
+			'meta'            => json_encode(\dash\safe::safe($meta), JSON_UNESCAPED_UNICODE),
 			'needanswer'      => 1,
 			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->current_team['name']]),
 		];
@@ -203,7 +203,7 @@ class model extends \content_a\main\model
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::ok(T_("Your request was sended"));
+			\dash\notif::ok(T_("Your request was sended"));
 		}
 	}
 }

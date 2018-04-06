@@ -172,7 +172,7 @@ class teamplans
 			else
 			{
 				\dash\db\logs::set('plan:change:not:creator', $_args['creator'], $log_meta);
-				\lib\notif::error(T_("Just creator of team can change the plan"));
+				\dash\notif::error(T_("Just creator of team can change the plan"));
 				return false;
 			}
 		}
@@ -195,7 +195,7 @@ class teamplans
 
 		if(isset($current['plan']) && intval($current['plan']) === intval($_args['plan']))
 		{
-			\lib\notif::error(T_("This plan is already active for you"));
+			\dash\notif::error(T_("This plan is already active for you"));
 			return false;
 		}
 

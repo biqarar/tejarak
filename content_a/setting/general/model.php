@@ -52,16 +52,16 @@ class model extends \content_a\main\model
 		$code = \dash\url::dir(0);
 
 		$request       = $this->getPost();
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$request['id'] = $code;
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::pwd();
+			\dash\redirect::pwd();
 		}
 	}
 }

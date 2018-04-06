@@ -15,13 +15,13 @@ class model extends \content_a\main\model
 	public function post_delete()
 	{
 		$code = \dash\url::dir(0);
-		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => $code]);
+		$this->user_id = \dash\user::id();
+		\dash\utility::set_request_array(['id' => $code]);
 		$this->close_team();
 		if(\lib\engine\process::status())
 		{
-			// \lib\notif::direct();
-			\lib\redirect::pwd();
+			// \dash\notif::direct();
+			\dash\redirect::pwd();
 		}
 	}
 }

@@ -35,13 +35,13 @@ class model extends \content_a\main\model
 		$request['team']    = \dash\url::dir(0);
 		$request['user_id'] = \dash\request::get('user');
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$this->add_houredit();
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\dash\url::here(). '/'. $request['team']. '/request');
+			\dash\redirect::to(\dash\url::here(). '/'. $request['team']. '/request');
 		}
 	}
 }

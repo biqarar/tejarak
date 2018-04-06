@@ -99,13 +99,13 @@ trait get
 	 */
 	public function get_hours($_options = [])
 	{
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
@@ -114,13 +114,13 @@ trait get
 			// return false;
 		}
 
-		$id = \lib\utility::request("id");
+		$id = \dash\utility::request("id");
 		$id = \dash\coding::decode($id);
 
 		if(!$id)
 		{
 			\dash\db\logs::set('api:hours:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("hours id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("hours id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -129,11 +129,11 @@ trait get
 		if(!$result)
 		{
 			\dash\db\logs::set('api:hours:access:denide', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to load this hours details"), 'hours', 'permission');
+			\dash\notif::error(T_("Can not access to load this hours details"), 'hours', 'permission');
 			return false;
 		}
 
-		// \lib\notif::title(T_("Operation complete"));
+		// \dash\notif::title(T_("Operation complete"));
 
 		$result = $this->ready_hours($result);
 

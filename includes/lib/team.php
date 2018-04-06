@@ -18,9 +18,9 @@ class team
 	 */
 	public static function clean()
 	{
-		\lib\session::set('lib_team_detail', null);
-		\lib\session::set('lib_team_admin', null);
-		\lib\session::set('lib_team_member', null);
+		\dash\session::set('lib_team_detail', null);
+		\dash\session::set('lib_team_admin', null);
+		\dash\session::set('lib_team_member', null);
 		self::$team = [];
 	}
 
@@ -38,14 +38,14 @@ class team
 
 		if
 		(
-			\lib\session::get('lib_team_admin') &&
-			\lib\session::get('lib_team_member') &&
-			\lib\session::get('lib_team_detail')
+			\dash\session::get('lib_team_admin') &&
+			\dash\session::get('lib_team_member') &&
+			\dash\session::get('lib_team_detail')
 		)
 		{
-			self::$team_admins  = \lib\session::get('lib_team_admin');
-			self::$team_members = \lib\session::get('lib_team_member');
-			self::$team         = \lib\session::get('lib_team_detail');
+			self::$team_admins  = \dash\session::get('lib_team_admin');
+			self::$team_members = \dash\session::get('lib_team_member');
+			self::$team         = \dash\session::get('lib_team_detail');
 
 			return;
 		}
@@ -59,7 +59,7 @@ class team
 			if(is_array($lib_team_detail))
 			{
 				self::$team = $lib_team_detail;
-				\lib\session::set('lib_team_detail', $lib_team_detail);
+				\dash\session::set('lib_team_detail', $lib_team_detail);
 			}
 
 			self::$team_members = \lib\db\userteams::get(['team_id' => $team_id, 'status' => ["IN", "('active','deactive')"], 'rule' => ["<>", "'gateway'"]]);
@@ -75,8 +75,8 @@ class team
 				}
 			}
 
-			\lib\session::set('lib_team_admin', self::$team_admins);
-			\lib\session::set('lib_team_member', self::$team_members);
+			\dash\session::set('lib_team_admin', self::$team_admins);
+			\dash\session::set('lib_team_member', self::$team_members);
 		}
 	}
 

@@ -6,7 +6,7 @@ class view extends \content_a\main\view
 {
 	public function config()
 	{
-		$load_user_in_team = \lib\temp::get('userteam_login_detail');
+		$load_user_in_team = \dash\temp::get('userteam_login_detail');
 		if(isset($load_user_in_team['24h']) && $load_user_in_team['24h'])
 		{
 			$this->data->is_24h = true;

@@ -32,13 +32,13 @@ class model extends \content_a\main\model
 	public function post_add($_args)
 	{
 		// check the user is login
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
+			\dash\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		// ready request
 		$request           = $this->getPost();
 
@@ -46,13 +46,13 @@ class model extends \content_a\main\model
 		// get posted data to create the request
 		$request['team']  = $team;
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway();
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\dash\url::here(). "/$team/gateway");
+			\dash\redirect::to(\dash\url::here(). "/$team/gateway");
 		}
 
 	}

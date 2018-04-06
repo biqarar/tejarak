@@ -14,8 +14,8 @@ class model extends \content_a\main\model
 	{
 		if(\dash\request::files('logo'))
 		{
-			$this->user_id = \lib\user::id();
-			\lib\utility::set_request_array(['upload_name' => 'logo']);
+			$this->user_id = \dash\user::id();
+			\dash\utility::set_request_array(['upload_name' => 'logo']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
@@ -41,17 +41,17 @@ class model extends \content_a\main\model
 			$request['logo'] = $this->upload_logo();
 		}
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$request['id'] = $code;
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);
 
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::pwd();
+			\dash\redirect::pwd();
 		}
 	}
 }

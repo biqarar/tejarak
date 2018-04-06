@@ -10,7 +10,7 @@ class model extends \mvc\model
 	 */
 	public function get_detail($_args)
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
@@ -51,12 +51,12 @@ class model extends \mvc\model
 	 */
 	public function run_usage()
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
 
-		$user_id = \lib\user::id();
+		$user_id = \dash\user::id();
 
 		$all_creator_team = \lib\db\teams::get(['creator' => $user_id]);
 

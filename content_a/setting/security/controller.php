@@ -15,7 +15,7 @@ class controller extends \content_a\main\controller
 
 		if($url === 'setting/security')
 		{
-			\lib\header::status(404);
+			\dash\header::status(404);
 		}
 		$this->get(false, 'security')->ALL("/.*/");
 		$this->post('security')->ALL("/.*/");

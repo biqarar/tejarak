@@ -25,16 +25,16 @@ class view extends \content_a\main\view
 			$ids          = array_column($team_list, 'id');
 			$team_list    = array_combine($ids, $team_list);
 			$ids          = array_map(function($_a){return \dash\coding::decode($_a);}, $ids);
-			$session_team_list_time = \lib\session::get('team_list_detail_time');
+			$session_team_list_time = \dash\session::get('team_list_detail_time');
 			if(time() - intval($session_team_list_time) > 60)
 			{
 				$static_count = \lib\db\teams::count_detail($ids, true);
-				\lib\session::set('team_list_detail', $static_count);
-				\lib\session::set('team_list_detail_time', time());
+				\dash\session::set('team_list_detail', $static_count);
+				\dash\session::set('team_list_detail_time', time());
 			}
 			else
 			{
-				$static_count = \lib\session::get('team_list_detail');
+				$static_count = \dash\session::get('team_list_detail');
 			}
 
 			if(is_array($static_count))

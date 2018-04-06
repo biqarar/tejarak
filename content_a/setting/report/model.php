@@ -29,39 +29,39 @@ class model extends \content_a\main\model
 
 		if(!$team_id)
 		{
-			logs::set('team:id:not:found:teport:setting', \lib\user::id(), $log_meta);
-			\lib\notif::error(T_("Team id not found"));
+			logs::set('team:id:not:found:teport:setting', \dash\user::id(), $log_meta);
+			\dash\notif::error(T_("Team id not found"));
 			return false;
 		}
 
 		if(\dash\request::post('deleteGroup'))
 		{
 			\lib\db\teams::update(['telegram_id' => null], $team_id);
-			\lib\notif::warn(T_("The telegram group was removed"));
+			\dash\notif::warn(T_("The telegram group was removed"));
 			return;
 		}
 
 		$update_team = [];
 		if(\dash\request::post('reportHeader') && mb_strlen(\dash\request::post('reportHeader')) > 255)
 		{
-			logs::set('report:header:max:leng', \lib\user::id(), $log_meta);
-			\lib\notif::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
+			logs::set('report:header:max:leng', \dash\user::id(), $log_meta);
+			\dash\notif::error(T_("Can not set report header larger than 255 character"), 'reportHeader');
 			return false;
 		}
 
 		if(\dash\request::post('reportFooter') && mb_strlen(\dash\request::post('reportFooter')) > 255)
 		{
-			logs::set('report:footer:max:leng', \lib\user::id(), $log_meta);
-			\lib\notif::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
+			logs::set('report:footer:max:leng', \dash\user::id(), $log_meta);
+			\dash\notif::error(T_("Can not set report footer larger than 255 character"), 'reportFooter');
 			return false;
 		}
 
-		$access = \lib\db\teams::access_team_id($team_id, \lib\user::id(), ['action' => 'admin']);
+		$access = \lib\db\teams::access_team_id($team_id, \dash\user::id(), ['action' => 'admin']);
 
 		if(!$access)
 		{
-			\dash\db\logs::set('report:settings:no:access:to:change:settings', \lib\user::id());
-			\lib\notif::error(T_("No access to change settings"), 'team');
+			\dash\db\logs::set('report:settings:no:access:to:change:settings', \dash\user::id());
+			\dash\notif::error(T_("No access to change settings"), 'team');
 			return false;
 		}
 
@@ -70,8 +70,8 @@ class model extends \content_a\main\model
 		{
 			if(!preg_match("/^\d{2}\:\d{2}$/", \dash\request::post('timed_auto_report_time')))
 			{
-				\dash\db\logs::set('report:settings:invalid:timed_auto_report_time', \lib\user::id());
-				\lib\notif::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
+				\dash\db\logs::set('report:settings:invalid:timed_auto_report_time', \dash\user::id());
+				\dash\notif::error(T_("Invalid timed auto report time"), 'timed_auto_report_time');
 				return false;
 			}
 
@@ -178,7 +178,7 @@ class model extends \content_a\main\model
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::ok(T_("Report settings was changed"));
+			\dash\notif::ok(T_("Report settings was changed"));
 		}
 	}
 }

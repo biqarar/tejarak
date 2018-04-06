@@ -57,7 +57,7 @@ class my_codes extends \lib\db\codes
 
 					if($check_duplicate_code)
 					{
-						\lib\notif::error(T_("Duplicate code in team"));
+						\dash\notif::error(T_("Duplicate code in team"));
 						return false;
 					}
 				}

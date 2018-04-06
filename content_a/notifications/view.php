@@ -10,7 +10,7 @@ class view extends \content_a\main\view
 	 */
 	public function view_notifications($_args)
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return;
 		}

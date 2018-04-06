@@ -26,9 +26,9 @@ class view extends \mvc\view
 		$team = \dash\url::directory();
 		$request            = [];
 		$this->data->team   = $request['shortname']         = $team;
-		if(\lib\temp::get('list_member'))
+		if(\dash\temp::get('list_member'))
 		{
-			$this->data->list_member = \lib\temp::get('list_member');
+			$this->data->list_member = \dash\temp::get('list_member');
 
 		}
 		else

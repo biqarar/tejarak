@@ -12,11 +12,11 @@ class model extends \content_a\member\model
 	 */
 	public function list_member($_args)
 	{
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$request       = [];
 		$request['status'] = 'suspended';
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result =  $this->get_list_member();
 
 		return $result;

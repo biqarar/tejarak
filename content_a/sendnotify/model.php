@@ -12,13 +12,13 @@ class model extends \content_a\main\model
 		$text = \dash\request::post('message-text');
 		if(!$text)
 		{
-			\lib\notif::error(T_("Please fill the message box"), 'message-text');
+			\dash\notif::error(T_("Please fill the message box"), 'message-text');
 			return false;
 		}
 
 		if(mb_strlen($text) > 10000)
 		{
-			\lib\notif::error(T_("Ops! your text is very large"), 'message-text');
+			\dash\notif::error(T_("Ops! your text is very large"), 'message-text');
 			return false;
 		}
 
@@ -53,7 +53,7 @@ class model extends \content_a\main\model
 						[
 							'to'       => $userid,
 							'cat'      => 'public',
-							'from'   => \lib\user::id(),
+							'from'   => \dash\user::id(),
 							'content'  => $text,
 							'telegram' => true,
 							'multi'    => true,
@@ -67,7 +67,7 @@ class model extends \content_a\main\model
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::ok(T_("The notification was sended"));
+			\dash\notif::ok(T_("The notification was sended"));
 		}
 	}
 }

@@ -12,8 +12,8 @@ class model extends \content_a\main\model
 	 */
 	public function get_last_time($_request)
 	{
-		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array($_request);
+		$this->user_id = \dash\user::id();
+		\dash\utility::set_request_array($_request);
 		return $this->report_last_time();
 	}
 
@@ -26,7 +26,7 @@ class model extends \content_a\main\model
 		$request            = [];
 		$request['hour_id'] = \dash\request::post('hour_id');
 		$request['type']  = \dash\request::post('type');
-		$this->user_id      = \lib\user::id();
+		$this->user_id      = \dash\user::id();
 
 		return $this->hour_change_type();
 

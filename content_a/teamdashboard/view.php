@@ -15,15 +15,15 @@ class view extends \content_a\main\view
 
 		$team_id = \dash\coding::decode(\dash\url::dir(0));
 
-		if(time() - intval(\lib\session::get('last_time_chart_time_'. (string) $team_id )) > 60)
+		if(time() - intval(\dash\session::get('last_time_chart_time_'. (string) $team_id )) > 60)
 		{
-			$dashboard_detail = \lib\db\teams::dashboard_detail($team_id, \lib\user::id());
-			\lib\session::set('last_time_chart'. (string) $team_id , $dashboard_detail);
-			\lib\session::set('last_time_chart_time_'. (string) $team_id , time());
+			$dashboard_detail = \lib\db\teams::dashboard_detail($team_id, \dash\user::id());
+			\dash\session::set('last_time_chart'. (string) $team_id , $dashboard_detail);
+			\dash\session::set('last_time_chart_time_'. (string) $team_id , time());
 		}
 		else
 		{
-			$dashboard_detail = \lib\session::get('last_time_chart'. (string) $team_id );
+			$dashboard_detail = \dash\session::get('last_time_chart'. (string) $team_id );
 		}
 
 
@@ -33,7 +33,7 @@ class view extends \content_a\main\view
 			foreach ($dashboard_detail['last_time_chart'] as $key => $value)
 			{
 				$date = $key;
-				if(\lib\language::current() === 'fa')
+				if(\dash\language::current() === 'fa')
 				{
 					$date = \dash\utility\jdate::date("Y-m-d", strtotime($date), false);
 				}

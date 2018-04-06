@@ -16,14 +16,14 @@ class model extends \content_a\main\model
 		$id       = \dash\request::post('id');
 		$type     = \dash\request::post('type');
 
-		$this->user_id       = \lib\user::id();
+		$this->user_id       = \dash\user::id();
 		$request             = [];
 		$request['team']     = \dash\url::dir(0);
 		$request['id']       = $id;
 		$request['type']     = $type;
 		$request['response'] = $response;
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$this->hourrequest_action();
 	}
 
@@ -42,10 +42,10 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => $hourrequest_id]);
+		$this->user_id = \dash\user::id();
+		\dash\utility::set_request_array(['id' => $hourrequest_id]);
 		$this->hourrequest_delete(['method' => 'delete']);
-		\lib\redirect::to(\dash\url::here(). "/$team_id/request");
+		\dash\redirect::to(\dash\url::here(). "/$team_id/request");
 	}
 
 
@@ -58,8 +58,8 @@ class model extends \content_a\main\model
 	//  */
 	// public function request_detail($_request)
 	// {
-	// 	$this->user_id = \lib\user::id();
-	// 	\lib\utility::set_request_array($_request);
+	// 	$this->user_id = \dash\user::id();
+	// 	\dash\utility::set_request_array($_request);
 	// 	return $this->get_request_detail();
 	// }
 
@@ -73,8 +73,8 @@ class model extends \content_a\main\model
 	 */
 	public function request_list($_request)
 	{
-		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array($_request);
+		$this->user_id = \dash\user::id();
+		\dash\utility::set_request_array($_request);
 		return $this->get_houredit_list();
 	}
 
@@ -89,8 +89,8 @@ class model extends \content_a\main\model
 	//  */
 	// public function getMyTime($_args)
 	// {
-	// 	\lib\utility::set_request_array($_args);
-	// 	$this->user_id = \lib\user::id();
+	// 	\dash\utility::set_request_array($_args);
+	// 	$this->user_id = \dash\user::id();
 	// 	$result = $this->get_request();
 
 	// 	if(!$result)

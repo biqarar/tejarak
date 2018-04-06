@@ -13,7 +13,7 @@ class controller extends \content_a\main\controller
 
 		$new_url = \dash\url::here(). '/'. \dash\url::dir(0). '/setting/general';
 
-		\lib\redirect::to($new_url);
+		\dash\redirect::to($new_url);
 
 	}
 }

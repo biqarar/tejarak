@@ -40,7 +40,7 @@ class controller extends \mvc\controller
 	public function ready()
 	{
 
-		\lib\permission::access('cp:user', 'block');
+		\dash\permission::access('cp:user', 'block');
 
 
 		$property                     = [];

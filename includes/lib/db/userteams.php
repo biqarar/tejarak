@@ -65,7 +65,7 @@ class userteams
 			if($check_duplicate)
 			{
 				\dash\db\logs::set('change:all:user:id:team:duplicate', null, $log_meta);
-				\lib\notif::error(T_("This already exist in this team, can not add again"));
+				\dash\notif::error(T_("This already exist in this team, can not add again"));
 				return false;
 			}
 			$query = "UPDATE userteams SET userteams.user_id = $_new_user_id WHERE userteams.user_id = $_old_user_id AND userteams.team_id IN ($all_team_id) ";

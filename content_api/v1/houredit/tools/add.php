@@ -29,14 +29,14 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
@@ -44,51 +44,51 @@ trait add
 		if(!$this->user_id)
 		{
 			\dash\db\logs::set('api:houredit:user_id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("User not found"), 'user', 'permission');
+			\dash\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
-		$hour_id         = \lib\utility::request('hour_id');
-		$start_date = \lib\utility::request('start_date');
-		$start_time = \lib\utility::request('start_time');
-		$end_date   = \lib\utility::request('end_date');
-		$end_time   = \lib\utility::request('end_time');
-		$desc       = \lib\utility::request('desc');
+		$hour_id         = \dash\utility::request('hour_id');
+		$start_date = \dash\utility::request('start_date');
+		$start_time = \dash\utility::request('start_time');
+		$end_date   = \dash\utility::request('end_date');
+		$end_time   = \dash\utility::request('end_time');
+		$desc       = \dash\utility::request('desc');
 
 		$hour_id = \dash\coding::decode($hour_id);
 
-		if(\lib\utility::request('hour_id') && !$hour_id)
+		if(\dash\utility::request('hour_id') && !$hour_id)
 		{
 			\dash\db\logs::set('api:houredit:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
 		if(!$start_date)
 		{
 			\dash\db\logs::set('api:houredit:start_date:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Start date not set"), 'start_date', 'arguments');
+			\dash\notif::error(T_("Start date not set"), 'start_date', 'arguments');
 			return false;
 		}
 
 		if(strtotime($start_date) === false)
 		{
 		 	\dash\db\logs::set('api:houredit:start_date:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid start date"), 'start_date', 'arguments');
+			\dash\notif::error(T_("Invalid start date"), 'start_date', 'arguments');
 			return false;
 		}
 
 		if(!$start_time)
 		{
 			\dash\db\logs::set('api:houredit:start_time:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Start time not set"), 'start_time', 'arguments');
+			\dash\notif::error(T_("Start time not set"), 'start_time', 'arguments');
 			return false;
 		}
 
 		if(\DateTime::createFromFormat('H:i', $start_time) === false && \DateTime::createFromFormat('H:i:s', $start_time) === false)
 		{
 		 	\dash\db\logs::set('api:houredit:start_time:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid start time"), 'start_time', 'arguments');
+			\dash\notif::error(T_("Invalid start time"), 'start_time', 'arguments');
 			return false;
 		}
 
@@ -98,7 +98,7 @@ trait add
 			$end_date = $start_date;
 
 			// \dash\db\logs::set('api:houredit:end_date:not:set', $this->user_id, $log_meta);
-			// \lib\notif::error(T_("end date not set"), 'end_date', 'arguments');
+			// \dash\notif::error(T_("end date not set"), 'end_date', 'arguments');
 			// return false;
 		}
 		else
@@ -106,7 +106,7 @@ trait add
 			if(strtotime($end_date) === false)
 			{
 			 	\dash\db\logs::set('api:houredit:end_date:invalid', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Invalid end date"), 'end_date', 'arguments');
+				\dash\notif::error(T_("Invalid end date"), 'end_date', 'arguments');
 				return false;
 			}
 		}
@@ -114,31 +114,31 @@ trait add
 		if(!$end_time)
 		{
 			\dash\db\logs::set('api:houredit:end_time:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("end time not set"), 'end_time', 'arguments');
+			\dash\notif::error(T_("end time not set"), 'end_time', 'arguments');
 			return false;
 		}
 
 		if(\DateTime::createFromFormat('H:i', $end_time) === false && \DateTime::createFromFormat('H:i:s', $end_time) === false)
 		{
 		 	\dash\db\logs::set('api:houredit:end_time:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid end time"), 'end_time', 'arguments');
+			\dash\notif::error(T_("Invalid end time"), 'end_time', 'arguments');
 			return false;
 		}
 
 		if($desc && mb_strlen($desc) > 500)
 		{
 			\dash\db\logs::set('api:houredit:desc:max:length', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must be set less than 500 character in description field"), 'desc', 'arguments');
+			\dash\notif::error(T_("You must be set less than 500 character in description field"), 'desc', 'arguments');
 			return false;
 		}
 
-		$team_id = \lib\utility::request('team');
+		$team_id = \dash\utility::request('team');
 
 		$team_id = \dash\coding::decode($team_id);
 		if(!$team_id)
 		{
 			\dash\db\logs::set('api:houredit:team:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team id not set"), 'team', 'arguments');
+			\dash\notif::error(T_("Team id not set"), 'team', 'arguments');
 			return false;
 		}
 		// get userteam detail
@@ -147,7 +147,7 @@ trait add
 		if(!isset($userteam_detail['userteam_createdate']))
 		{
 			\dash\db\logs::set('api:houredit:userteam:id:not:found', $this->user_id, $log_meta);
-			\lib\notif::error(T_("This user is not in this team"), 'team', 'arguments');
+			\dash\notif::error(T_("This user is not in this team"), 'team', 'arguments');
 			return false;
 		}
 
@@ -171,7 +171,7 @@ trait add
 		// if(strtotime($end_date_gregorian) > time())
 		// {
 		// 	\dash\db\logs::set('api:houredit:end:date:larger:than:now', $this->user_id, $log_meta);
-		// 	\lib\notif::error(T_("End date can not be in the future"), 'end_date', 'arguments');
+		// 	\dash\notif::error(T_("End date can not be in the future"), 'end_date', 'arguments');
 		// 	return false;
 		// }
 
@@ -179,7 +179,7 @@ trait add
 		if(strtotime($end_date_gregorian) < strtotime($start_date_gregorian))
 		{
 			\dash\db\logs::set('api:houredit:end:date:larger:start:date', $this->user_id, $log_meta);
-			\lib\notif::error(T_("End date can not larger than start date"), 'end_date', 'arguments');
+			\dash\notif::error(T_("End date can not larger than start date"), 'end_date', 'arguments');
 			return false;
 		}
 
@@ -189,7 +189,7 @@ trait add
 			if(strtotime("$end_date_gregorian $end_time") < strtotime("$start_date_gregorian $start_time"))
 			{
 				\dash\db\logs::set('api:houredit:end:time:larger:start:time:date:is:equal', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Can not set end time larger than start time in one date"), 'end_time', 'arguments');
+				\dash\notif::error(T_("Can not set end time larger than start time in one date"), 'end_time', 'arguments');
 				return false;
 			}
 		}
@@ -198,14 +198,14 @@ trait add
 
 		if(\lib\team::is_admin($this->user_id))
 		{
-			$user_id_sended = \lib\utility::request('user_id');
+			$user_id_sended = \dash\utility::request('user_id');
 			$user_id_sended = \dash\coding::decode($user_id_sended);
 			if($user_id_sended)
 			{
 				if(!\lib\team::in_team($user_id_sended))
 				{
 					\dash\db\logs::set('api:houredit:user:id:sended:not:in:team', $this->user_id, $log_meta);
-					\lib\notif::error(T_("This user is not in this team!"));
+					\dash\notif::error(T_("This user is not in this team!"));
 					return false;
 				}
 
@@ -215,7 +215,7 @@ trait add
 
 
 		// the request have hour id
-		if($hour_id && \lib\utility::request('hour_id'))
+		if($hour_id && \dash\utility::request('hour_id'))
 		{
 			if(\lib\team::is_admin($this->user_id))
 			{
@@ -237,7 +237,7 @@ trait add
 			else
 			{
 				\dash\db\logs::set('api:houredit:hour:notfound:invalid', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Can not access to set time of this hour"), 'hour', 'permission');
+				\dash\notif::error(T_("Can not access to set time of this hour"), 'hour', 'permission');
 				return false;
 			}
 
@@ -256,7 +256,7 @@ trait add
 				)
 				{
 					\dash\db\logs::set('api:houredit:hour:no:thing:edit', $this->user_id, $log_meta);
-					\lib\notif::error(T_("No thing changed!"), null, 'arguments');
+					\dash\notif::error(T_("No thing changed!"), null, 'arguments');
 					return false;
 				}
 			}
@@ -270,7 +270,7 @@ trait add
 		// check the user on this hour id hava any awaiting request
 		// if hava awaiting request update it
 		// and if not have insert new
-		if(\lib\utility::request('hour_id') && $hour_id && is_numeric($hour_id))
+		if(\dash\utility::request('hour_id') && $hour_id && is_numeric($hour_id))
 		{
 			// get this hour id is set old or no
 			$check_exist = \lib\db\hourrequests::get(['hour_id' => $hour_id, 'status' => 'awaiting', 'limit' => 1]);
@@ -289,7 +289,7 @@ trait add
 			}
 			else
 			{
-				\lib\notif::error(T_("Id not found"));
+				\dash\notif::error(T_("Id not found"));
 				return false;
 			}
 			// get this hour id is set old or no
@@ -305,7 +305,7 @@ trait add
 			if($check_exist)
 			{
 				\dash\db\logs::set('api:houredit:duplicate:start:date:hour_id:is:null', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Duplicate request of this start time"), 'id', 'arguments');
+				\dash\notif::error(T_("Duplicate request of this start time"), 'id', 'arguments');
 				return false;
 			}
 		}
@@ -344,7 +344,7 @@ trait add
 
 		if(!isset($userteam_id['id']))
 		{
-			\lib\notif::error(T_("Id not found"));
+			\dash\notif::error(T_("Id not found"));
 			return false;
 		}
 
@@ -361,20 +361,20 @@ trait add
 		else
 		{
 			\dash\db\logs::set('api:houredit:method:error', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Syste error"), 'system', 'error');
+			\dash\notif::error(T_("Syste error"), 'system', 'error');
 			return false;
 		}
 
 		if(\lib\engine\process::status())
 		{
-			// \lib\notif::title(T_("Operation complete"));
+			// \dash\notif::title(T_("Operation complete"));
 			if($update_mode)
 			{
-				\lib\notif::ok(T_("Your request updated"));
+				\dash\notif::ok(T_("Your request updated"));
 			}
 			else
 			{
-				\lib\notif::ok(T_("Your request sended"));
+				\dash\notif::ok(T_("Your request sended"));
 			}
 		}
 	}

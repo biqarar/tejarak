@@ -65,30 +65,30 @@ class model extends \addons\content_api\v1\home\model
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
 
 		if(!$this->user_id)
 		{
-			\lib\notif::error(T_("User id not found"));
+			\dash\notif::error(T_("User id not found"));
 			return false;
 		}
-		$code  = \lib\utility::request('id');
-		$group = \lib\utility::request('group');
+		$code  = \dash\utility::request('id');
+		$group = \dash\utility::request('group');
 
 		if(!$code)
 		{
 			\dash\db\logs::set('api:team:telegram:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("id not set"), 'id', 'arguments');
 			return false;
 		}
 
 		if(!$group)
 		{
 			\dash\db\logs::set('api:team:telegram:group:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("group not set"), 'group', 'arguments');
+			\dash\notif::error(T_("group not set"), 'group', 'arguments');
 			return false;
 		}
 
@@ -96,7 +96,7 @@ class model extends \addons\content_api\v1\home\model
 
 		if(!isset($load_team['team_id']))
 		{
-			\lib\notif::error(T_("Can not access to load this team"), 'id', 'arguments');
+			\dash\notif::error(T_("Can not access to load this team"), 'id', 'arguments');
 			return false;
 		}
 
@@ -105,7 +105,7 @@ class model extends \addons\content_api\v1\home\model
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 				'old'   => $load_team,
 			]
 		];
@@ -113,7 +113,7 @@ class model extends \addons\content_api\v1\home\model
 		\dash\db\logs::set('api:team:telegram:group:changed', $this->user_id, $log_meta);
 		\lib\db\teams::update(['telegram_id' => $group], $load_team['team_id']);
 
-		// \lib\notif::title(T_("Operation complete"));
+		// \dash\notif::title(T_("Operation complete"));
 	}
 }
 ?>

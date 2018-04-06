@@ -13,7 +13,7 @@ class controller extends \content_a\main\controller
 
 		$new_url = \dash\url::here(). '/'. \dash\url::dir(0). '/member/general/'. \dash\url::dir(3);
 
-		\lib\redirect::to($new_url);
+		\dash\redirect::to($new_url);
 
 
 		$this->get(false, 'edit')->ALL("/.*/");

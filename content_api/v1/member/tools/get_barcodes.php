@@ -81,7 +81,7 @@ trait get_barcodes
 	/**
 	 * check barcode, qrcode and rfid,
 	 * update it if changed
-	 * get from \lib\utility::request()
+	 * get from \dash\utility::request()
 	 * check from $args
 	 *
 	 * @param      array  $_args  The arguments
@@ -94,66 +94,66 @@ trait get_barcodes
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
-		$barcode1 = \lib\utility::request("barcode1");
+		$barcode1 = \dash\utility::request("barcode1");
 		if($barcode1 && mb_strlen($barcode1) > 100)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:barcode:max:limit:barcode1', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set barcode less than 100 character"), 'barcode', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set barcode less than 100 character"), 'barcode', 'arguments');
 			return false;
 		}
 
 		if($barcode1 && mb_strlen($barcode1) < 3)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:barcode:min:limit:barcode1', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set barcode larger than 3 character"), 'barcode', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set barcode larger than 3 character"), 'barcode', 'arguments');
 			return false;
 		}
 
-		$qrcode1 = \lib\utility::request("qrcode1");
+		$qrcode1 = \dash\utility::request("qrcode1");
 		if($qrcode1 && mb_strlen($qrcode1) > 100)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:qrcode:max:limit:qrcode1', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set qrcode less than 100 character"), 'qrcode', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set qrcode less than 100 character"), 'qrcode', 'arguments');
 			return false;
 		}
 
 		if($qrcode1 && mb_strlen($qrcode1) < 3)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:qrcode:min:limit:qrcode1', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set qrcode larger than 3 character"), 'qrcode', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set qrcode larger than 3 character"), 'qrcode', 'arguments');
 			return false;
 		}
 
-		$rfid1 = \lib\utility::request("rfid1");
+		$rfid1 = \dash\utility::request("rfid1");
 		if($rfid1 && mb_strlen($rfid1) > 100)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:rfid:max:limit:rfid1', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set rfid less than 100 character"), 'rfid', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set rfid less than 100 character"), 'rfid', 'arguments');
 			return false;
 		}
 
 		if($rfid1 && mb_strlen($rfid1) < 3)
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:rfid:min:limit:rfid1', $this->user_id, $log_meta);
-			if($_args['debug']) \lib\notif::error(T_("You must set rfid larger than 3 character"), 'rfid', 'arguments');
+			if($_args['debug']) \dash\notif::error(T_("You must set rfid larger than 3 character"), 'rfid', 'arguments');
 			return false;
 		}
 
-		if(\lib\utility::isset_request('barcode1'))
+		if(\dash\utility::isset_request('barcode1'))
 		{
 			$this->check_barcode_update($barcode1, $_id, 'barcode1');
 		}
 
-		if(\lib\utility::isset_request('qrcode1'))
+		if(\dash\utility::isset_request('qrcode1'))
 		{
 			$this->check_barcode_update($qrcode1, $_id, 'qrcode1');
 		}
 
-		if(\lib\utility::isset_request('rfid1'))
+		if(\dash\utility::isset_request('rfid1'))
 		{
 			$this->check_barcode_update($rfid1, $_id, 'rfid1');
 		}

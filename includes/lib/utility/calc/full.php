@@ -173,7 +173,7 @@ trait full
 
         \dash\db\transactions::set($transaction_set);
 
-        $this->log_meta['meta']['debug'] = \lib\notif::get();
+        $this->log_meta['meta']['debug'] = \dash\notif::get();
 
 		if(\lib\engine\process::status())
 		{
@@ -221,7 +221,7 @@ trait full
         if(intval($user_budget) < intval($amount))
         {
 			\dash\db\logs::set('invoice:team:full:money>credit', null, $this->log_meta);
-        	\lib\notif::error(T_("Your credit is less than amount of this plan, please charge your account"));
+        	\dash\notif::error(T_("Your credit is less than amount of this plan, please charge your account"));
         	return false;
         }
 
@@ -272,7 +272,7 @@ trait full
 	        $notify_text = T_("You have new invoice for :team by amount :amount :unit",
 			[
 				'team'   => $this->team_details['name'],
-				'amount' => \dash\utility\human::number(number_format($amount), \lib\language::current()),
+				'amount' => \dash\utility\human::number(number_format($amount), \dash\language::current()),
 				'unit'   => T_("toman"),
 			]);
 

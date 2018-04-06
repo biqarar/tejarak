@@ -5,7 +5,7 @@ class controller extends \mvc\controller
 {
 	public function ready()
 	{
-		\lib\permission::access('cp:user:detail', 'block');
+		\dash\permission::access('cp:user:detail', 'block');
 
 		$this->get(false, "detail")->ALL();
 

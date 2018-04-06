@@ -37,12 +37,12 @@ class model extends \content_a\member\model
 	 */
 	public function post_permission($_args)
 	{
-		$this->user_id   = \lib\user::id();
+		$this->user_id   = \dash\user::id();
 		$request         = $this->getPost();
 		$member          = \dash\url::dir(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\url::dir(0);
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);

@@ -41,7 +41,7 @@ class controller extends \mvc\controller
 
 	public function ready()
 	{
-		\lib\permission::access('cp:user:members', 'block');
+		\dash\permission::access('cp:user:members', 'block');
 
 		$property                     = [];
 		foreach ($this->fields as $key => $value)

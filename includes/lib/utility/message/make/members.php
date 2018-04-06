@@ -42,7 +42,7 @@ trait members
 		if($msg)
 		{
 			$msg = "#". T_("Member_status"). "\n". \dash\date::fit_lang('l j F Y H:i', time() , 'current') . "\n". $msg;
-			$msg .= "\n👥 ". \dash\utility\human::number(count($members), \lib\language::current());
+			$msg .= "\n👥 ". \dash\utility\human::number(count($members), \dash\language::current());
 		}
 		return $msg;
 	}

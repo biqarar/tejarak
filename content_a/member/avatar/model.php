@@ -14,7 +14,7 @@ class model extends \content_a\member\model
 	{
 		if(\dash\request::files('avatar'))
 		{
-			\lib\utility::set_request_array(['upload_name' => 'avatar']);
+			\dash\utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
@@ -39,7 +39,7 @@ class model extends \content_a\member\model
 	 */
 	public function post_avatar($_args)
 	{
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$file_code     = $this->upload_avatar();
 		// we have an error in upload avatar
 		if($file_code === false)
@@ -55,13 +55,13 @@ class model extends \content_a\member\model
 		$member          = \dash\url::dir(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\url::dir(0);
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::pwd();
+			\dash\redirect::pwd();
 		}
 	}
 }

@@ -14,8 +14,8 @@ class model extends \content_a\main\model
 	 */
 	public function list_parent()
 	{
-		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => \dash\coding::encode($this->user_id)]);
+		$this->user_id = \dash\user::id();
+		\dash\utility::set_request_array(['id' => \dash\coding::encode($this->user_id)]);
 		$result = $this->get_list_parent();
 		return $result;
 	}
@@ -26,8 +26,8 @@ class model extends \content_a\main\model
 	 */
 	public function cancel_request()
 	{
-		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => \dash\request::post('cancel')]);
+		$this->user_id = \dash\user::id();
+		\dash\utility::set_request_array(['id' => \dash\request::post('cancel')]);
 		$this->parent_cancel_request();
 		$this->redirector_refresh();
 	}
@@ -40,7 +40,7 @@ class model extends \content_a\main\model
 	{
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::pwd();
+			\dash\redirect::pwd();
 			return;
 		}
 		return;
@@ -52,8 +52,8 @@ class model extends \content_a\main\model
 	 */
 	public function remove_parent()
 	{
-		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => \dash\request::post('remove')]);
+		$this->user_id = \dash\user::id();
+		\dash\utility::set_request_array(['id' => \dash\request::post('remove')]);
 		$this->delete_parent();
 		$this->redirector_refresh();
 	}
@@ -67,7 +67,7 @@ class model extends \content_a\main\model
 	public function post_parent($_args)
 	{
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 
 		$request               = [];
 
@@ -76,7 +76,7 @@ class model extends \content_a\main\model
 		$request['mobile']     = \dash\request::post('mobile');
 		$request['id']         = \dash\coding::encode($this->user_id);
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		if(\dash\request::post('cancel') && \dash\coding::is(\dash\request::post('cancel')))
 		{

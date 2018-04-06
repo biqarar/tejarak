@@ -12,7 +12,7 @@ class model extends \content_a\member\model
 	 */
 	public function getParent()
 	{
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 
 		$team_id = \dash\coding::decode(\dash\url::dir(0));
 
@@ -25,7 +25,7 @@ class model extends \content_a\member\model
 		$user_id = \lib\db\userteams::get($user_id);
 		if(isset($user_id['user_id']))
 		{
-			\lib\utility::set_request_array(['id' => \dash\coding::encode($user_id['user_id']), 'related_id' => \dash\url::dir(0) ]);
+			\dash\utility::set_request_array(['id' => \dash\coding::encode($user_id['user_id']), 'related_id' => \dash\url::dir(0) ]);
 			$result           = $this->get_list_parent();
 			return $result;
 		}
@@ -42,13 +42,13 @@ class model extends \content_a\member\model
 	 */
 	public function post_observer($_args)
 	{
-		$this->user_id                = \lib\user::id();
+		$this->user_id                = \dash\user::id();
 
 		if(\dash\request::post('remove'))
 		{
-			\lib\utility::set_request_array(['id' => \dash\request::post('remove'), 'related_id' => \dash\url::dir(0)]);
+			\dash\utility::set_request_array(['id' => \dash\request::post('remove'), 'related_id' => \dash\url::dir(0)]);
 			$this->delete_parent();
-			\lib\redirect::pwd();
+			\dash\redirect::pwd();
 			return ;
 		}
 
@@ -67,11 +67,11 @@ class model extends \content_a\member\model
 			$parent_request['title']      = \dash\request::post('title');
 			$parent_request['mobile']     = \dash\request::post('parent_mobile');
 			$parent_request['related_id'] = \dash\url::dir(0);
-			\lib\utility::set_request_array($parent_request);
+			\dash\utility::set_request_array($parent_request);
 			$this->add_parent();
 			if(\lib\engine\process::status())
 			{
-				\lib\notif::ok(T_("Observer was saved"));
+				\dash\notif::ok(T_("Observer was saved"));
 
 				$t_T =
 				[
@@ -83,7 +83,7 @@ class model extends \content_a\member\model
 				$message = T_("You are registered as :title of :name in :team", $t_T). '.';
 				$message .= "\n\n". T_("Tejarak"). " | ". T_("Modern Approach");
 				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. $this->view()->data->current_team['short_name'];
-				$parent_detail = \lib\temp::get('add_parent_detail');
+				$parent_detail = \dash\temp::get('add_parent_detail');
 
 				if(isset($parent_detail['chatid']))
 				{
@@ -96,12 +96,12 @@ class model extends \content_a\member\model
 					\dash\utility\sms::send(\dash\request::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
 				}
 
-				\lib\redirect::pwd();
+				\dash\redirect::pwd();
 			}
 		}
 		else
 		{
-			\lib\notif::error(T_("Invalid user id"));
+			\dash\notif::error(T_("Invalid user id"));
 		}
 
 	}

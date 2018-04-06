@@ -24,49 +24,49 @@ trait add
 
 		$_args = array_merge($default_args, $_args);
 
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
 		if(!$this->user_id)
 		{
 			\dash\db\logs::set('api:team:user_id:notfound', null, $log_meta);
-			\lib\notif::error(T_("User not found"), 'user', 'permission');
+			\dash\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
-		$name = \lib\utility::request('name');
+		$name = \dash\utility::request('name');
 		$name = trim($name);
 		if(!$name && $_args['method'] === 'post')
 		{
 			\dash\db\logs::set('api:team:name:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team name of team can not be null"), 'name', 'arguments');
+			\dash\notif::error(T_("Team name of team can not be null"), 'name', 'arguments');
 			return false;
 		}
 
 		if(mb_strlen($name) > 100)
 		{
 			\dash\db\logs::set('api:team:maxlength:name', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team name must be less than 100 character"), 'name', 'arguments');
+			\dash\notif::error(T_("Team name must be less than 100 character"), 'name', 'arguments');
 			return false;
 		}
 
-		$website = \lib\utility::request('website');
+		$website = \dash\utility::request('website');
 		$website = trim($website);
 		if($website && mb_strlen($website) > 1000)
 		{
 			\dash\db\logs::set('api:team:maxlength:website', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team website must be less than 1000 character"), 'website', 'arguments');
+			\dash\notif::error(T_("Team website must be less than 1000 character"), 'website', 'arguments');
 			return false;
 		}
 
-		$privacy = \lib\utility::request('privacy');
+		$privacy = \dash\utility::request('privacy');
 		if(!$privacy && $_args['method'] === 'post')
 		{
 			$privacy = 'private';
@@ -76,18 +76,18 @@ trait add
 		if($privacy && !in_array($privacy, ['public', 'private', 'team']))
 		{
 			\dash\db\logs::set('api:team:privacy:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid privacy field"), 'privacy', 'arguments');
+			\dash\notif::error(T_("Invalid privacy field"), 'privacy', 'arguments');
 			return false;
 		}
 
 
-		$shortname = \lib\utility::request('short_name');
+		$shortname = \dash\utility::request('short_name');
 		$shortname = trim($shortname);
 
 		if(!$shortname && !$name && $_args['method'] === 'post')
 		{
 			\dash\db\logs::set('api:team:shortname:not:sert', $this->user_id, $log_meta);
-			\lib\notif::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
+			\dash\notif::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
 			return false;
 		}
 
@@ -107,14 +107,14 @@ trait add
 		if($shortname && mb_strlen($shortname) < 5)
 		{
 			\dash\db\logs::set('api:team:minlength:shortname', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team shortname must be larger than 5 character"), 'shortname', 'arguments');
+			\dash\notif::error(T_("Team shortname must be larger than 5 character"), 'shortname', 'arguments');
 			return false;
 		}
 
 		if($shortname && !preg_match("/^[A-Za-z0-9]+$/", $shortname))
 		{
 			\dash\db\logs::set('api:team:invalid:shortname', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Only [A-Za-z0-9] can use in team shortname"), 'shortname', 'arguments');
+			\dash\notif::error(T_("Only [A-Za-z0-9] can use in team shortname"), 'shortname', 'arguments');
 			return false;
 		}
 
@@ -122,22 +122,22 @@ trait add
 		if($shortname && mb_strlen($shortname) > 100)
 		{
 			\dash\db\logs::set('api:team:maxlength:shortname', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team shortname must be less than 500 character"), 'shortname', 'arguments');
+			\dash\notif::error(T_("Team shortname must be less than 500 character"), 'shortname', 'arguments');
 			return false;
 		}
 
-		$desc = \lib\utility::request('desc');
+		$desc = \dash\utility::request('desc');
 		if($desc && mb_strlen($desc) > 200)
 		{
 			\dash\db\logs::set('api:team:maxlength:desc', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team desc must be less than 200 character"), 'desc', 'arguments');
+			\dash\notif::error(T_("Team desc must be less than 200 character"), 'desc', 'arguments');
 			return false;
 		}
 
 		$logo_id = null;
 		$logo_url = null;
 
-		$logo = \lib\utility::request('logo');
+		$logo = \dash\utility::request('logo');
 		if($logo)
 		{
 			$logo_id = \dash\coding::decode($logo);
@@ -161,7 +161,7 @@ trait add
 
 		$parent = null;
 
-		$parent = \lib\utility::request('parent');
+		$parent = \dash\utility::request('parent');
 		if($parent)
 		{
 			$parent = \dash\coding::decode($parent);
@@ -174,41 +174,41 @@ trait add
 			if(!array_key_exists('parent', $check_owner))
 			{
 				\dash\db\logs::set('api:team:parent:owner:not:match', $this->user_id, $log_meta);
-				\lib\notif::error(T_("The parent is not in your team"), 'parent', 'arguments');
+				\dash\notif::error(T_("The parent is not in your team"), 'parent', 'arguments');
 				return false;
 			}
 
 			// if($check_owner['parent'])
 			// {
 			// 	\dash\db\logs::set('api:team:parent:parent:full', $this->user_id, $log_meta);
-			// 	\lib\notif::error(T_("This parent is a child of another team"), 'parent', 'arguments');
+			// 	\dash\notif::error(T_("This parent is a child of another team"), 'parent', 'arguments');
 			// 	return false;
 			// }
 		}
 
 
-		$lang = \lib\utility::request('language');
-		if($lang && (mb_strlen($lang) !== 2 || !\lib\language::check($lang)))
+		$lang = \dash\utility::request('language');
+		if($lang && (mb_strlen($lang) !== 2 || !\dash\language::check($lang)))
 		{
 			\dash\db\logs::set('api:team:invalid:lang', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid language field"), 'language', 'arguments');
+			\dash\notif::error(T_("Invalid language field"), 'language', 'arguments');
 			return false;
 		}
 
 
-		$eventtitle = \lib\utility::request('event_title');
+		$eventtitle = \dash\utility::request('event_title');
 		if($eventtitle && mb_strlen($eventtitle) > 100)
 		{
 			\dash\db\logs::set('api:team:eventtitle:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set the evert title less than 100 character"), 'event_title', 'arguments');
+			\dash\notif::error(T_("You must set the evert title less than 100 character"), 'event_title', 'arguments');
 			return false;
 		}
 
-		$event_date_start  = \lib\utility::request('event_date_start');
+		$event_date_start  = \dash\utility::request('event_date_start');
 		if($event_date_start && strtotime($event_date_start) === false)
 		{
 			\dash\db\logs::set('api:team:event_date_start:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid event date"), 'event_date', 'arguments');
+			\dash\notif::error(T_("Invalid event date"), 'event_date', 'arguments');
 			return false;
 		}
 
@@ -218,11 +218,11 @@ trait add
 		}
 
 
-		$eventdate  = \lib\utility::request('event_date');
+		$eventdate  = \dash\utility::request('event_date');
 		if($eventdate && strtotime($eventdate) === false)
 		{
 			\dash\db\logs::set('api:team:eventdate:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid event date"), 'event_date', 'arguments');
+			\dash\notif::error(T_("Invalid event date"), 'event_date', 'arguments');
 			return false;
 		}
 
@@ -231,129 +231,129 @@ trait add
 			$eventdate = date("Y-m-d", strtotime($eventdate));
 		}
 
-		$cardsize = \lib\utility::request('cardsize');
+		$cardsize = \dash\utility::request('cardsize');
 		if($cardsize && !is_numeric($cardsize))
 		{
 			\dash\db\logs::set('api:team:cardsize:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid card size"), 'cardsize', 'arguments');
+			\dash\notif::error(T_("Invalid card size"), 'cardsize', 'arguments');
 			return false;
 		}
 
-		$type = \lib\utility::request('type');
+		$type = \dash\utility::request('type');
 		if($type && !is_string($type))
 		{
 			\dash\db\logs::set('api:team:add:type:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid team type"), 'type', 'arguments');
+			\dash\notif::error(T_("Invalid team type"), 'type', 'arguments');
 			return false;
 		}
 
 
-		$gender = \lib\utility::request('gender');
+		$gender = \dash\utility::request('gender');
 		if($gender && !in_array($gender, ['male', 'female']))
 		{
 			\dash\db\logs::set('api:team:add:gender:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid team gender"), 'gender', 'arguments');
+			\dash\notif::error(T_("Invalid team gender"), 'gender', 'arguments');
 			return false;
 		}
 
 
-		$country           = \lib\utility::request('country');
+		$country           = \dash\utility::request('country');
 		if($country && mb_strlen($country) > 50)
 		{
 			\dash\db\logs::set('api:team:add:country:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set country less than 50 character", 'country', 'arguments'));
+			\dash\notif::error(T_("You must set country less than 50 character", 'country', 'arguments'));
 			return false;
 		}
 
-		$province          = \lib\utility::request('province');
+		$province          = \dash\utility::request('province');
 		if($province && mb_strlen($province) > 50)
 		{
 			\dash\db\logs::set('api:team:add:province:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set province less than 50 character", 'province', 'arguments'));
+			\dash\notif::error(T_("You must set province less than 50 character", 'province', 'arguments'));
 			return false;
 		}
 
-		$city              = \lib\utility::request('city');
+		$city              = \dash\utility::request('city');
 		if($city && mb_strlen($city) > 50)
 		{
 			\dash\db\logs::set('api:team:add:city:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set city less than 50 character", 'city', 'arguments'));
+			\dash\notif::error(T_("You must set city less than 50 character", 'city', 'arguments'));
 			return false;
 		}
 
-		$tel               = \lib\utility::request('tel');
+		$tel               = \dash\utility::request('tel');
 		if($tel && mb_strlen($tel) > 50)
 		{
 			\dash\db\logs::set('api:team:add:tel:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set tel less than 50 character", 'tel', 'arguments'));
+			\dash\notif::error(T_("You must set tel less than 50 character", 'tel', 'arguments'));
 			return false;
 		}
 
-		$fax               = \lib\utility::request('fax');
+		$fax               = \dash\utility::request('fax');
 		if($fax && mb_strlen($fax) > 50)
 		{
 			\dash\db\logs::set('api:team:add:fax:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set fax less than 50 character", 'fax', 'arguments'));
+			\dash\notif::error(T_("You must set fax less than 50 character", 'fax', 'arguments'));
 			return false;
 		}
 
-		$zipcode           = \lib\utility::request('zipcode');
+		$zipcode           = \dash\utility::request('zipcode');
 		if($zipcode && mb_strlen($zipcode) > 50)
 		{
 			\dash\db\logs::set('api:team:add:zipcode:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set zipcode less than 50 character", 'zipcode', 'arguments'));
+			\dash\notif::error(T_("You must set zipcode less than 50 character", 'zipcode', 'arguments'));
 			return false;
 		}
 
-		$awards            = \lib\utility::request('awards');
+		$awards            = \dash\utility::request('awards');
 		if($awards && mb_strlen($awards) > 5000)
 		{
 			\dash\db\logs::set('api:team:add:awards:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set awards less than 5000 character", 'awards', 'arguments'));
+			\dash\notif::error(T_("You must set awards less than 5000 character", 'awards', 'arguments'));
 			return false;
 		}
 
-		$desc              = \lib\utility::request('desc');
+		$desc              = \dash\utility::request('desc');
 		if($desc && mb_strlen($desc) > 5000)
 		{
 			\dash\db\logs::set('api:team:add:desc:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set desc less than 5000 character", 'desc', 'arguments'));
+			\dash\notif::error(T_("You must set desc less than 5000 character", 'desc', 'arguments'));
 			return false;
 		}
 
-		$about             = \lib\utility::request('about');
+		$about             = \dash\utility::request('about');
 		if($about && mb_strlen($about) > 5000)
 		{
 			\dash\db\logs::set('api:team:add:about:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set about less than 5000 character", 'about', 'arguments'));
+			\dash\notif::error(T_("You must set about less than 5000 character", 'about', 'arguments'));
 			return false;
 		}
 
-		$address             = \lib\utility::request('address');
+		$address             = \dash\utility::request('address');
 		if($address && mb_strlen($address) > 5000)
 		{
 			\dash\db\logs::set('api:team:add:address:max:lenght', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set address less than 5000 character", 'address', 'arguments'));
+			\dash\notif::error(T_("You must set address less than 5000 character", 'address', 'arguments'));
 			return false;
 		}
 
-		$classroom_size = \lib\utility::request('classroom_size');
+		$classroom_size = \dash\utility::request('classroom_size');
 		if($classroom_size && !is_numeric($classroom_size))
 		{
 			\dash\db\logs::set('api:team:add:classroom_size:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("You must set classroom size as a number", 'classroom_size', 'arguments'));
+			\dash\notif::error(T_("You must set classroom size as a number", 'classroom_size', 'arguments'));
 			return false;
 		}
 
-		$status = \lib\utility::request('status');
+		$status = \dash\utility::request('status');
 		if($status && !in_array($status, ['enable', 'disable']))
 		{
 			\dash\db\logs::set('api:team:add:status:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid status of teams", 'status', 'arguments'));
+			\dash\notif::error(T_("Invalid status of teams", 'status', 'arguments'));
 			return false;
 		}
 
-		$multi_classroom = \lib\utility::request('multi_classroom');
+		$multi_classroom = \dash\utility::request('multi_classroom');
 		$multi_classroom = $multi_classroom ? true : false;
 
 
@@ -363,25 +363,25 @@ trait add
 		$args['shortname']       = $shortname;
 		$args['website']         = $website;
 		$args['desc']            = $desc;
-		$args['showavatar']      = \lib\utility::isset_request('show_avatar') ? \lib\utility::request('show_avatar')   ? 1 : 0 : null;
-		$args['allowplus']       = \lib\utility::isset_request('allow_plus')  ? \lib\utility::request('allow_plus')    ? 1 : 0 : null;
-		$args['allowminus']      = \lib\utility::isset_request('allow_minus') ? \lib\utility::request('allow_minus')   ? 1 : 0 : null;
-		$args['remote']          = \lib\utility::isset_request('remote_user') ? \lib\utility::request('remote_user')   ? 1 : 0 : null;
-		$args['24h']             = \lib\utility::isset_request('24h')         ? \lib\utility::request('24h')			 ? 1 : 0 : null;
+		$args['showavatar']      = \dash\utility::isset_request('show_avatar') ? \dash\utility::request('show_avatar')   ? 1 : 0 : null;
+		$args['allowplus']       = \dash\utility::isset_request('allow_plus')  ? \dash\utility::request('allow_plus')    ? 1 : 0 : null;
+		$args['allowminus']      = \dash\utility::isset_request('allow_minus') ? \dash\utility::request('allow_minus')   ? 1 : 0 : null;
+		$args['remote']          = \dash\utility::isset_request('remote_user') ? \dash\utility::request('remote_user')   ? 1 : 0 : null;
+		$args['24h']             = \dash\utility::isset_request('24h')         ? \dash\utility::request('24h')			 ? 1 : 0 : null;
 
-		$args['quick']           = \lib\utility::isset_request('quick_traffic')  ? \lib\utility::request('quick_traffic')    ? 1 : 0 : null;
+		$args['quick']           = \dash\utility::isset_request('quick_traffic')  ? \dash\utility::request('quick_traffic')    ? 1 : 0 : null;
 
-		$args['allowdescenter']  = \lib\utility::isset_request('allow_desc_enter') ? \lib\utility::request('allow_desc_enter')     ? 1 : 0 : null;
-		$args['allowdescexit']   = \lib\utility::isset_request('allow_desc_exit') ? \lib\utility::request('allow_desc_exit')  	 ? 1 : 0 : null;
+		$args['allowdescenter']  = \dash\utility::isset_request('allow_desc_enter') ? \dash\utility::request('allow_desc_enter')     ? 1 : 0 : null;
+		$args['allowdescexit']   = \dash\utility::isset_request('allow_desc_exit') ? \dash\utility::request('allow_desc_exit')  	 ? 1 : 0 : null;
 
 		$args['lang']            = $lang;
 		$args['eventtitle']      = $eventtitle;
 		$args['eventdate']       = $event_date_start;
 		$args['eventenddate']    = $eventdate;
 
-		$args['manualtimeexit']  = \lib\utility::isset_request('manual_time_exit')   ? \lib\utility::request('manual_time_exit')		? 1 : 0 : null;
-		$args['manualtimeenter'] = \lib\utility::isset_request('manual_time_enter')  ? \lib\utility::request('manual_time_enter')		? 1 : 0 : null;
-		$args['sendphoto']       = \lib\utility::isset_request('send_photo')         ? \lib\utility::request('send_photo')			? 1 : 0 : null;
+		$args['manualtimeexit']  = \dash\utility::isset_request('manual_time_exit')   ? \dash\utility::request('manual_time_exit')		? 1 : 0 : null;
+		$args['manualtimeenter'] = \dash\utility::isset_request('manual_time_enter')  ? \dash\utility::request('manual_time_enter')		? 1 : 0 : null;
+		$args['sendphoto']       = \dash\utility::isset_request('send_photo')         ? \dash\utility::request('send_photo')			? 1 : 0 : null;
 
 		$args['logo']            = $logo_id;
 		$args['logourl']         = $logo_url;
@@ -428,7 +428,7 @@ trait add
 
 		$return = [];
 
-		\lib\temp::set('last_team_added', $shortname);
+		\dash\temp::set('last_team_added', $shortname);
 
 		if($_args['method'] === 'post')
 		{
@@ -453,13 +453,13 @@ trait add
 			if(!$team_id)
 			{
 				\dash\db\logs::set('api:team:no:way:to:insert:team', $this->user_id, $log_meta);
-				\lib\notif::error(T_("No way to insert team"), 'db', 'system');
+				\dash\notif::error(T_("No way to insert team"), 'db', 'system');
 				return false;
 			}
 
-			\lib\temp::set('last_team_shortname_added', $args['shortname']);
-			\lib\temp::set('last_team_id_added', $team_id);
-			\lib\temp::set('last_team_code_added', \dash\coding::encode($team_id));
+			\dash\temp::set('last_team_shortname_added', $args['shortname']);
+			\dash\temp::set('last_team_id_added', $team_id);
+			\dash\temp::set('last_team_code_added', \dash\coding::encode($team_id));
 
 			if($_args['auto_insert_userteam'])
 			{
@@ -487,12 +487,12 @@ trait add
 		elseif ($_args['method'] === 'patch')
 		{
 			$edit_mode = true;
-			$id = \lib\utility::request('id');
+			$id = \dash\utility::request('id');
 			$id = \dash\coding::decode($id);
 			if(!$id || !is_numeric($id))
 			{
 				\dash\db\logs::set('api:team:method:put:id:not:set', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Id not set"), 'id', 'permission');
+				\dash\notif::error(T_("Id not set"), 'id', 'permission');
 				return false;
 			}
 
@@ -501,85 +501,85 @@ trait add
 			if(!$admin_of_team || !isset($admin_of_team['id']) || !isset($admin_of_team['shortname']))
 			{
 				\dash\db\logs::set('api:team:method:put:permission:denide', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Can not access to edit it"), 'team', 'permission');
+				\dash\notif::error(T_("Can not access to edit it"), 'team', 'permission');
 				return false;
 			}
 
 			unset($args['creator']);
-			if(!\lib\utility::isset_request('name'))             unset($args['name']);
-			if(!\lib\utility::isset_request('short_name'))       unset($args['shortname']);
-			if(!\lib\utility::isset_request('website'))          unset($args['website']);
-			if(!\lib\utility::isset_request('desc'))             unset($args['desc']);
-			if(!\lib\utility::isset_request('show_avatar'))      unset($args['showavatar']);
-			if(!\lib\utility::isset_request('allow_plus'))       unset($args['allowplus']);
-			if(!\lib\utility::isset_request('allow_minus'))      unset($args['allowminus']);
-			if(!\lib\utility::isset_request('remote_user'))      unset($args['remote']);
-			if(!\lib\utility::isset_request('24h'))              unset($args['24h']);
-			if(!\lib\utility::isset_request('logo'))             unset($args['logo'], $args['logourl']);
-			if(!\lib\utility::isset_request('privacy'))          unset($args['privacy']);
+			if(!\dash\utility::isset_request('name'))             unset($args['name']);
+			if(!\dash\utility::isset_request('short_name'))       unset($args['shortname']);
+			if(!\dash\utility::isset_request('website'))          unset($args['website']);
+			if(!\dash\utility::isset_request('desc'))             unset($args['desc']);
+			if(!\dash\utility::isset_request('show_avatar'))      unset($args['showavatar']);
+			if(!\dash\utility::isset_request('allow_plus'))       unset($args['allowplus']);
+			if(!\dash\utility::isset_request('allow_minus'))      unset($args['allowminus']);
+			if(!\dash\utility::isset_request('remote_user'))      unset($args['remote']);
+			if(!\dash\utility::isset_request('24h'))              unset($args['24h']);
+			if(!\dash\utility::isset_request('logo'))             unset($args['logo'], $args['logourl']);
+			if(!\dash\utility::isset_request('privacy'))          unset($args['privacy']);
 
-			if(!\lib\utility::isset_request('language'))         unset($args['lang']);
-			if(!\lib\utility::isset_request('event_title'))      unset($args['eventtitle']);
-			if(!\lib\utility::isset_request('event_date_start')) unset($args['eventdate']);
-			if(!\lib\utility::isset_request('event_date'))       unset($args['eventenddate']);
-			if(!\lib\utility::isset_request('manual_time_exit')) unset($args['manualtimeexit']);
-			if(!\lib\utility::isset_request('manual_time_enter'))unset($args['manualtimeenter']);
-			if(!\lib\utility::isset_request('send_photo'))       unset($args['sendphoto']);
-			if(!\lib\utility::isset_request('cardsize'))         unset($args['cardsize']);
-			if(!\lib\utility::isset_request('allow_desc_enter')) unset($args['allowdescenter']);
-			if(!\lib\utility::isset_request('allow_desc_exit'))  unset($args['allowdescexit']);
-			if(!\lib\utility::isset_request('type'))             unset($args['type']);
-			if(!\lib\utility::isset_request('gender'))           unset($args['gender']);
-			if(!\lib\utility::isset_request('quick_traffic'))    unset($args['quick']);
+			if(!\dash\utility::isset_request('language'))         unset($args['lang']);
+			if(!\dash\utility::isset_request('event_title'))      unset($args['eventtitle']);
+			if(!\dash\utility::isset_request('event_date_start')) unset($args['eventdate']);
+			if(!\dash\utility::isset_request('event_date'))       unset($args['eventenddate']);
+			if(!\dash\utility::isset_request('manual_time_exit')) unset($args['manualtimeexit']);
+			if(!\dash\utility::isset_request('manual_time_enter'))unset($args['manualtimeenter']);
+			if(!\dash\utility::isset_request('send_photo'))       unset($args['sendphoto']);
+			if(!\dash\utility::isset_request('cardsize'))         unset($args['cardsize']);
+			if(!\dash\utility::isset_request('allow_desc_enter')) unset($args['allowdescenter']);
+			if(!\dash\utility::isset_request('allow_desc_exit'))  unset($args['allowdescexit']);
+			if(!\dash\utility::isset_request('type'))             unset($args['type']);
+			if(!\dash\utility::isset_request('gender'))           unset($args['gender']);
+			if(!\dash\utility::isset_request('quick_traffic'))    unset($args['quick']);
 
-			if(!\lib\utility::isset_request('parent'))           unset($args['parent']);
+			if(!\dash\utility::isset_request('parent'))           unset($args['parent']);
 
-			if(!\lib\utility::isset_request('country'))          unset($args['country']);
-			if(!\lib\utility::isset_request('province'))         unset($args['province']);
-			if(!\lib\utility::isset_request('city'))             unset($args['city']);
-			if(!\lib\utility::isset_request('tel'))              unset($args['phone1']);
-			if(!\lib\utility::isset_request('fax'))              unset($args['phone2']);
-			if(!\lib\utility::isset_request('zipcode'))          unset($args['zipcode']);
-			if(!\lib\utility::isset_request('desc'))             unset($args['desc']);
-			if(!\lib\utility::isset_request('address'))          unset($args['desc2']);
-			if(!\lib\utility::isset_request('status'))           unset($args['status']);
+			if(!\dash\utility::isset_request('country'))          unset($args['country']);
+			if(!\dash\utility::isset_request('province'))         unset($args['province']);
+			if(!\dash\utility::isset_request('city'))             unset($args['city']);
+			if(!\dash\utility::isset_request('tel'))              unset($args['phone1']);
+			if(!\dash\utility::isset_request('fax'))              unset($args['phone2']);
+			if(!\dash\utility::isset_request('zipcode'))          unset($args['zipcode']);
+			if(!\dash\utility::isset_request('desc'))             unset($args['desc']);
+			if(!\dash\utility::isset_request('address'))          unset($args['desc2']);
+			if(!\dash\utility::isset_request('status'))           unset($args['status']);
 
 			if($type  === 'classroom')
 			{
-				if(!\lib\utility::isset_request('multi_classroom'))  unset($args['desc3']);
-				if(!\lib\utility::isset_request('classroom_size'))   unset($args['desc4']);
+				if(!\dash\utility::isset_request('multi_classroom'))  unset($args['desc3']);
+				if(!\dash\utility::isset_request('classroom_size'))   unset($args['desc4']);
 			}
 			else
 			{
-				if(!\lib\utility::isset_request('awards'))           unset($args['desc3']);
-				if(!\lib\utility::isset_request('about'))            unset($args['desc4']);
+				if(!\dash\utility::isset_request('awards'))           unset($args['desc3']);
+				if(!\dash\utility::isset_request('about'))            unset($args['desc4']);
 			}
 
 			if(isset($args['parent']) && intval($args['parent']) === intval($id))
 			{
 				\dash\db\logs::set('api:team:parent:is:the:team', $this->user_id, $log_meta);
-				\lib\notif::error(T_("A team can not be the parent himself"), 'parent', 'arguments');
+				\dash\notif::error(T_("A team can not be the parent himself"), 'parent', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('name', $args) && !$args['name'])
 			{
 				\dash\db\logs::set('api:team:name:not:set:edit', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Team name of team can not be null"), 'name', 'arguments');
+				\dash\notif::error(T_("Team name of team can not be null"), 'name', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('shortname', $args) && !$args['shortname'])
 			{
 				\dash\db\logs::set('api:team:shortname:not:set:edit', $this->user_id, $log_meta);
-				\lib\notif::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
+				\dash\notif::error(T_("shortname of team can not be null"), 'shortname', 'arguments');
 				return false;
 			}
 
 			if(array_key_exists('privacy', $args) && !in_array($args['privacy'], ['public', 'private', 'team']))
 			{
 				\dash\db\logs::set('api:team:privacy:invalid:edit', $this->user_id, $log_meta);
-				\lib\notif::error(T_("Invalid privacy field"), 'privacy', 'arguments');
+				\dash\notif::error(T_("Invalid privacy field"), 'privacy', 'arguments');
 				return false;
 			}
 
@@ -614,21 +614,21 @@ trait add
 		else
 		{
 			\dash\db\logs::set('api:team:method:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid method of api"), 'method', 'permission');
+			\dash\notif::error(T_("Invalid method of api"), 'method', 'permission');
 			return false;
 		}
 
 
 		if(\lib\engine\process::status())
 		{
-			// \lib\notif::title(T_("Operation Complete"));
+			// \dash\notif::title(T_("Operation Complete"));
 			if($edit_mode)
 			{
-				\lib\notif::ok(T_("Team successfuly edited"));
+				\dash\notif::ok(T_("Team successfuly edited"));
 			}
 			else
 			{
-				\lib\notif::ok(T_("Team successfuly added"));
+				\dash\notif::ok(T_("Team successfuly added"));
 			}
 		}
 
@@ -659,7 +659,7 @@ trait add
 			$new_short_name    = (string) $_args['shortname']. (string) ((int) $count +  (int) $i);
 		}
 
-		\lib\temp::set('last_team_added', $new_short_name);
+		\dash\temp::set('last_team_added', $new_short_name);
 		return $new_short_name;
 	}
 }

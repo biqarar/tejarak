@@ -15,7 +15,7 @@ class controller extends \content_a\main\controller
 
 		if($url === 'setting/event')
 		{
-			\lib\header::status(404);
+			\dash\header::status(404);
 		}
 		$this->get(false, 'event')->ALL("/.*/");
 		$this->post('event')->ALL("/.*/");

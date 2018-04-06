@@ -23,7 +23,7 @@ trait get
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 		if(!$this->user_id)
@@ -31,21 +31,21 @@ trait get
 			// return false;
 		}
 
-		$id = \lib\utility::request('id');
+		$id = \dash\utility::request('id');
 		$id = \dash\coding::decode($id);
 
-		$shortname =  \lib\utility::request('shortname');
+		$shortname =  \dash\utility::request('shortname');
 
 		if(!$id && !$shortname)
 		{
 			\dash\db\logs::set('api:gateway:team:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Id or shortname not set"), 'id', 'arguments');
+			\dash\notif::error(T_("Id or shortname not set"), 'id', 'arguments');
 			return false;
 		}
 		elseif($id && $shortname)
 		{
 			\dash\db\logs::set('api:gateway:team:id:and:shortname:together:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not set id and shortname together"), 'id', 'arguments');
+			\dash\notif::error(T_("Can not set id and shortname together"), 'id', 'arguments');
 			return false;
 		}
 
@@ -61,7 +61,7 @@ trait get
 		if(!$team_detail)
 		{
 			\dash\db\logs::set('api:gateway:team:id:permission:denide', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to load this team"), 'id', 'permission');
+			\dash\notif::error(T_("Can not access to load this team"), 'id', 'permission');
 			return false;
 		}
 
@@ -99,36 +99,36 @@ trait get
 	 */
 	public function get_gateway($_args = [])
 	{
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 		if(!$this->user_id)
 		{
 			\dash\db\logs::set('api:gateway:user_id:notfound', $this->user_id, $log_meta);
-			\lib\notif::error(T_("User not found"), 'user', 'permission');
+			\dash\notif::error(T_("User not found"), 'user', 'permission');
 			return false;
 		}
 
-		$team = \lib\utility::request('team');
+		$team = \dash\utility::request('team');
 		if(!$team)
 		{
 			\dash\db\logs::set('api:gateway:team:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team not set"), 'team', 'arguments');
+			\dash\notif::error(T_("Team not set"), 'team', 'arguments');
 			return false;
 		}
 
-		$id = \lib\utility::request('id');
+		$id = \dash\utility::request('id');
 		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:gateway:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("Id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -146,7 +146,7 @@ trait get
 		if(!$check_user_in_team)
 		{
 			\dash\db\logs::set('api:gateway:user:not:in:team', $this->user_id, $log_meta);
-			\lib\notif::error(T_("This user is not in this team"), 'id', 'arguments');
+			\dash\notif::error(T_("This user is not in this team"), 'id', 'arguments');
 			return false;
 		}
 

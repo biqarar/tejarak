@@ -25,21 +25,21 @@ class view extends \content_a\main\view
 				{
 					if(intval($get_user_id['user_id']) === intval($creator_id))
 					{
-						\lib\temp::set('change_creator', true);
+						\dash\temp::set('change_creator', true);
 					}
 				}
 
 				if(isset($get_user_id['rule']) && $get_user_id['rule'] === 'admin')
 				{
-					\lib\temp::set('change_admin', true);
+					\dash\temp::set('change_admin', true);
 				}
 			}
 		}
 
-		$this->data->change_creator = \lib\temp::get('change_creator');
-		$this->data->change_admin   = \lib\temp::get('change_admin');
-		$this->data->is_admin       = \lib\temp::get('is_admin');
-		$this->data->is_creator     = \lib\temp::get('is_creator');
+		$this->data->change_creator = \dash\temp::get('change_creator');
+		$this->data->change_admin   = \dash\temp::get('change_admin');
+		$this->data->is_admin       = \dash\temp::get('is_admin');
+		$this->data->is_creator     = \dash\temp::get('is_creator');
 
 		if($member)
 		{
@@ -67,16 +67,16 @@ class view extends \content_a\main\view
 			$ids          = array_column($member_list, 'id');
 			$member_list    = array_combine($ids, $member_list);
 			$ids          = array_map(function($_a){return \dash\coding::decode($_a);}, $ids);
-			$member_session_list_time = \lib\session::get('member_list_detail_time');
+			$member_session_list_time = \dash\session::get('member_list_detail_time');
 			if(time() - intval($member_session_list_time) > 60)
 			{
 				$static_count = \lib\db\userteams::count_detail($ids, true);
-				\lib\session::set('member_list_detail', $static_count);
-				\lib\session::set('member_list_detail_time', time());
+				\dash\session::set('member_list_detail', $static_count);
+				\dash\session::set('member_list_detail_time', time());
 			}
 			else
 			{
-				$static_count = \lib\session::get('member_list_detail');
+				$static_count = \dash\session::get('member_list_detail');
 			}
 
 			foreach ($member_list as $key => $value)

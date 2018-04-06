@@ -27,9 +27,9 @@ class model extends \content_a\main\model
 		$user_session = [];
 
 		// check the user is login
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\notif::error(T_("Please login to change your profile"), false, 'arguments');
+			\dash\notif::error(T_("Please login to change your profile"), false, 'arguments');
 			return false;
 		}
 
@@ -37,7 +37,7 @@ class model extends \content_a\main\model
 		// check name lenght
 		if(mb_strlen(\dash\request::post('name')) > 50)
 		{
-			\lib\notif::error(T_("Please enter your name less than 50 character"), 'name', 'arguments');
+			\dash\notif::error(T_("Please enter your name less than 50 character"), 'name', 'arguments');
 			return false;
 		}
 
@@ -45,7 +45,7 @@ class model extends \content_a\main\model
 		// check name lenght
 		if(mb_strlen(\dash\request::post('displayname')) > 50)
 		{
-			\lib\notif::error(T_("Please enter your displayname less than 50 character"), 'displayname', 'arguments');
+			\dash\notif::error(T_("Please enter your displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
 		}
 
@@ -53,7 +53,7 @@ class model extends \content_a\main\model
 		// check name lenght
 		if(mb_strlen(\dash\request::post('family')) > 50)
 		{
-			\lib\notif::error(T_("Please enter your family less than 50 character"), 'family', 'arguments');
+			\dash\notif::error(T_("Please enter your family less than 50 character"), 'family', 'arguments');
 			return false;
 		}
 
@@ -61,8 +61,8 @@ class model extends \content_a\main\model
 		$temp_url  = null;
 		if(\dash\request::files('avatar'))
 		{
-			$this->user_id = \lib\user::id();
-			\lib\utility::set_request_array(['upload_name' => 'avatar']);
+			$this->user_id = \dash\user::id();
+			\dash\utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
 
 			if(isset($uploaded_file['url']))
@@ -81,21 +81,21 @@ class model extends \content_a\main\model
 		}
 
 		// // if the name exist update user display name
-		// if(\dash\request::post('name') != \lib\user::login('name'))
+		// if(\dash\request::post('name') != \dash\user::login('name'))
 		// {
 		// 	$update_user['name'] = \dash\request::post('name');
 		// 	$user_session['name'] = $update_user['name'];
 		// }
 
 		// // if the family exist update user display family
-		// if(\dash\request::post('family') != \lib\user::login('family'))
+		// if(\dash\request::post('family') != \dash\user::login('family'))
 		// {
 		// 	$update_user['lastname'] = \dash\request::post('family');
 		// 	$user_session['family'] = $update_user['lastname'];
 		// }
 
 		// if the postion exist update user display postion
-		if(\dash\request::post('displayname') != \lib\user::login('displayname'))
+		if(\dash\request::post('displayname') != \dash\user::login('displayname'))
 		{
 			$update_user['displayname'] = \dash\request::post('displayname');
 			$user_session['displayname'] = $update_user['displayname'];
@@ -105,8 +105,8 @@ class model extends \content_a\main\model
 
 		// if($new_unit === '')
 		// {
-		// 	\dash\db\logs::set('user:unit:set:empty', \lib\user::id(), $log_meta);
-		// 	\lib\notif::error(T_("Please select one units"), 'user-unit', 'arguments');
+		// 	\dash\db\logs::set('user:unit:set:empty', \dash\user::id(), $log_meta);
+		// 	\dash\notif::error(T_("Please select one units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
 
@@ -117,8 +117,8 @@ class model extends \content_a\main\model
 		// }
 		// else
 		// {
-		// 	\dash\db\logs::set('user:unit:set:invalid:unit', \lib\user::id(), $log_meta);
-		// 	\lib\notif::error(T_("Please select a valid units"), 'user-unit', 'arguments');
+		// 	\dash\db\logs::set('user:unit:set:invalid:unit', \dash\user::id(), $log_meta);
+		// 	\dash\notif::error(T_("Please select a valid units"), 'user-unit', 'arguments');
 		// 	return false;
 		// }
 
@@ -127,7 +127,7 @@ class model extends \content_a\main\model
 		if(!empty($update_user))
 		{
 
-			\dash\db\users::update($update_user, \lib\user::id());
+			\dash\db\users::update($update_user, \dash\user::id());
 			if(isset($_SESSION['user']) && is_array($_SESSION['user']))
 			{
 				$_SESSION['user'] = array_merge($_SESSION['user'], $user_session);
@@ -136,9 +136,9 @@ class model extends \content_a\main\model
 
 		if(\lib\engine\process::status())
 		{
-			\lib\notif::ok(T_("Profile data was updated"));
-			\lib\notif::direct();
-			\lib\redirect::pwd();
+			\dash\notif::ok(T_("Profile data was updated"));
+			\dash\notif::direct();
+			\dash\redirect::pwd();
 		}
 	}
 

@@ -73,15 +73,15 @@ trait _use
 		{
 			$team_language = $team_data['language'];
 
-			if(\lib\language::check($team_language))
+			if(\dash\language::check($team_language))
 			{
 				$new_url               = \dash\url::pwd();
 				$url                   = \dash\url::base();
 				$url_property          = \dash\url::directory();
 				$url_get               = \dash\request::get();
 
-				$site_language         = \lib\language::current();
-				$site_language_default = \lib\language::default();
+				$site_language         = \dash\language::current();
+				$site_language_default = \dash\language::default();
 
 				if($team_language === $site_language)
 				{
@@ -114,7 +114,7 @@ trait _use
 				}
 				if($new_url !== \dash\url::pwd())
 				{
-					\lib\redirect::to($new_url);
+					\dash\redirect::to($new_url);
 				}
 			}
 		}
@@ -129,9 +129,9 @@ trait _use
 	public function getTeamDetail($_team)
 	{
 		$request       = [];
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$request['id'] = $_team;
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result        = $this->get_team(['debug' => false]);
 
 		return $result;
@@ -146,9 +146,9 @@ trait _use
 	public function getTeamDetailShortname($_shortname)
 	{
 		$request             = [];
-		$this->user_id       = \lib\user::id();
+		$this->user_id       = \dash\user::id();
 		$request['shortname'] = $_shortname;
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result = $this->get_team();
 		return $result;
 	}
@@ -199,7 +199,7 @@ trait _use
 	 */
 	public function is_exist_team($_unique, $_type = null)
 	{
-		$_unique = \lib\safe::safe($_unique);
+		$_unique = \dash\safe::safe($_unique);
 
 		if(!$_unique)
 		{
@@ -233,7 +233,7 @@ trait _use
 	 */
 	public function listMember($_team_id_or_code, $_type = 'id', $_args = [])
 	{
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$request       = [];
 		if($_type === 'id')
 		{
@@ -252,7 +252,7 @@ trait _use
 			return false;
 		}
 
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result =  $this->get_list_member($_args);
 		return $result;
 	}

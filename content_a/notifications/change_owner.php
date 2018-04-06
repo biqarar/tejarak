@@ -14,7 +14,7 @@ trait change_owner
 
 		if(!in_array(\dash\request::post('answer'), ['accept', 'reject']))
 		{
-			\lib\notif::error(T_("Invalid answer!"));
+			\dash\notif::error(T_("Invalid answer!"));
 			return false;
 		}
 
@@ -23,7 +23,7 @@ trait change_owner
 
 		if(!$notify)
 		{
-			\lib\notif::error(T_("Invalid notify!"));
+			\dash\notif::error(T_("Invalid notify!"));
 			return false;
 		}
 
@@ -32,13 +32,13 @@ trait change_owner
 
 		if(!$team_id)
 		{
-			\lib\notif::error(T_("Invalid team id!"));
+			\dash\notif::error(T_("Invalid team id!"));
 			return false;
 		}
 
 		$get =
 		[
-			'user_id'         => \lib\user::id(),
+			'user_id'         => \dash\user::id(),
 			'category'        => 4,
 			'read'            => null,
 			'id'              => $notify,
@@ -84,12 +84,12 @@ trait change_owner
 				// ACCEPT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 0;
-				\dash\db\logs::set('notify:change:owner:accept', \lib\user::id(), $log_meta);
-				\lib\db\teams::update(['creator' => \lib\user::id()], $team_id);
+				\dash\db\logs::set('notify:change:owner:accept', \dash\user::id(), $log_meta);
+				\lib\db\teams::update(['creator' => \dash\user::id()], $team_id);
 				$check_exist_team_user =
 				[
 					'team_id' => $team_id,
-					'user_id' => \lib\user::id(),
+					'user_id' => \dash\user::id(),
 					'limit'   => 1,
 				];
 				$check_exist_team_user = \lib\db\userteams::get($check_exist_team_user);
@@ -99,7 +99,7 @@ trait change_owner
 					[
 						'rule'        => 'admin',
 						'status'      => 'active',
-						'displayname' => \lib\user::login('displayname'),
+						'displayname' => \dash\user::login('displayname'),
 					];
 					\lib\db\userteams::update($update_user_team, $check_exist_team_user['id']);
 				}
@@ -108,10 +108,10 @@ trait change_owner
 					$insert_user_team =
 					[
 						'team_id'     => $team_id,
-						'user_id'     => \lib\user::id(),
+						'user_id'     => \dash\user::id(),
 						'rule'        => 'admin',
 						'status'      => 'active',
-						'displayname' => \lib\user::login('displayname'),
+						'displayname' => \dash\user::login('displayname'),
 					];
 					\lib\db\userteams::insert($insert_user_team);
 				}
@@ -122,14 +122,14 @@ trait change_owner
 				// REJECT
 				// the accept in index 0 of array answer in options
 				$update_notify['answer'] = 1;
-				\dash\db\logs::set('notify:change:owner:reject', \lib\user::id(), $log_meta);
+				\dash\db\logs::set('notify:change:owner:reject', \dash\user::id(), $log_meta);
 			}
 
 			\dash\db\notifications::update($update_notify, $check['id']);
 		}
 		else
 		{
-			\lib\notif::error(T_("Invalid notify detail"));
+			\dash\notif::error(T_("Invalid notify detail"));
 			return false;
 		}
 

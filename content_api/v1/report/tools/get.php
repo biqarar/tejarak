@@ -25,7 +25,7 @@ trait get
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			],
 		];
 
@@ -35,12 +35,12 @@ trait get
 		}
 
 
-		$id = \lib\utility::request('id');
+		$id = \dash\utility::request('id');
 		$id = \dash\coding::decode($id);
 		if(!$id)
 		{
 			\dash\db\logs::set('api:report:get:team:not:found', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Team id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("Team id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -48,14 +48,14 @@ trait get
 		if(!$check_is_my_team = \lib\db\teams::access_team_id($id, $this->user_id, ['action'=> 'admin']))
 		{
 			\dash\db\logs::set('api:report:list:access:deniy', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to load this team details"), 'id', 'permission');
+			\dash\notif::error(T_("Can not access to load this team details"), 'id', 'permission');
 			return false;
 		}
 
 		if(!isset($check_is_my_team['id']))
 		{
 			\dash\db\logs::set('api:report:get:team:id:not:found', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid team data"), 'id', 'system');
+			\dash\notif::error(T_("Invalid team data"), 'id', 'system');
 			return false;
 		}
 
@@ -70,7 +70,7 @@ trait get
 			case 'members':
 			case 'memberstatus':
 			case 'last24hour':
-			if(\lib\utility::request('format') == 'im')
+			if(\dash\utility::request('format') == 'im')
 			{
 				$msg = new \lib\utility\message($id);
 				$msg->type($_report_type);
@@ -93,12 +93,12 @@ trait get
 			}
 			else
 			{
-				\lib\header::status(404, T_("Invalid parameter format"));
+				\dash\header::status(404, T_("Invalid parameter format"));
 			}
 			break;
 
 			default:
-				\lib\header::status(404, T_("Invalid url"));
+				\dash\header::status(404, T_("Invalid url"));
 				break;
 		}
 	}

@@ -48,7 +48,7 @@ class model extends \content_a\main\model
 	{
 		if(\dash\request::files('avatar'))
 		{
-			\lib\utility::set_request_array(['upload_name' => 'avatar']);
+			\dash\utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
 			if(isset($uploaded_file['code']))
 			{
@@ -76,14 +76,14 @@ class model extends \content_a\main\model
 	 */
 	public function edit($_team, $_member)
 	{
-		$this->user_id    = \lib\user::id();
+		$this->user_id    = \dash\user::id();
 		$request          = [];
 		$request['team']  = $_team;
 		$request['id']    = $_member;
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result           =  $this->get_member();
 		// $member_id        = \dash\coding::decode($_member);
-		\lib\utility::set_request_array(['id' => $_member]);
+		\dash\utility::set_request_array(['id' => $_member]);
 		$parent           = $this->get_list_parent();
 		$result['parent'] = $parent;
 
@@ -99,13 +99,13 @@ class model extends \content_a\main\model
 	public function post_edit($_args)
 	{
 		// check the user is login
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
+			\dash\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$request       = $this->getPost();
 		$file_code     = $this->upload_avatar();
 		// we have an error in upload avatar
@@ -123,7 +123,7 @@ class model extends \content_a\main\model
 		$member          = \dash\url::dir(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\url::dir(0);
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
@@ -137,14 +137,14 @@ class model extends \content_a\main\model
 				$parent_request['id']    = $member;
 				$parent_request['title']      = \dash\request::post('title');
 				$parent_request['mobile']     = \dash\request::post('parent_mobile');
-				\lib\utility::set_request_array($parent_request);
+				\dash\utility::set_request_array($parent_request);
 				$this->add_parent();
 			}
 		}
 
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\dash\url::here(). "/$team/member");
+			\dash\redirect::to(\dash\url::here(). "/$team/member");
 		}
 	}
 }

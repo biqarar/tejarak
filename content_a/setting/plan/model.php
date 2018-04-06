@@ -9,7 +9,7 @@ class model extends \content_a\main\model
 	 */
 	public function plan()
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
@@ -19,8 +19,8 @@ class model extends \content_a\main\model
 
 		if(!$team)
 		{
-			\dash\db\logs::set('plan:invalid:team', \lib\user::id());
-			\lib\notif::error(T_("Invalid team!"), 'team');
+			\dash\db\logs::set('plan:invalid:team', \dash\user::id());
+			\dash\notif::error(T_("Invalid team!"), 'team');
 			return false;
 		}
 
@@ -33,7 +33,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_plan()
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
@@ -41,8 +41,8 @@ class model extends \content_a\main\model
 		$plan = \dash\request::post('plan');
 		if(!$plan)
 		{
-			\dash\db\logs::set('plan:plan:not:set', \lib\user::id());
-			\lib\notif::error(T_("Please select one of plan"), 'plan');
+			\dash\db\logs::set('plan:plan:not:set', \dash\user::id());
+			\dash\notif::error(T_("Please select one of plan"), 'plan');
 			return false;
 		}
 
@@ -65,8 +65,8 @@ class model extends \content_a\main\model
 
 		if(!in_array($plan, $all_plan_list))
 		{
-			\dash\db\logs::set('plan:invalid:plan', \lib\user::id());
-			\lib\notif::error(T_("Invalid plan!"), 'plan');
+			\dash\db\logs::set('plan:invalid:plan', \dash\user::id());
+			\dash\notif::error(T_("Invalid plan!"), 'plan');
 			return false;
 		}
 
@@ -75,17 +75,17 @@ class model extends \content_a\main\model
 
 		if(!$team)
 		{
-			\dash\db\logs::set('plan:invalid:team', \lib\user::id());
-			\lib\notif::error(T_("Invalid team!"), 'team');
+			\dash\db\logs::set('plan:invalid:team', \dash\user::id());
+			\dash\notif::error(T_("Invalid team!"), 'team');
 			return false;
 		}
 
-		$access = \lib\db\teams::access_team_id($team, \lib\user::id(), ['action' => 'admin']);
+		$access = \lib\db\teams::access_team_id($team, \dash\user::id(), ['action' => 'admin']);
 
 		if(!$access)
 		{
-			\dash\db\logs::set('plan:no:access:to:change:plan', \lib\user::id());
-			\lib\notif::error(T_("No access to change plan"), 'team');
+			\dash\db\logs::set('plan:no:access:to:change:plan', \dash\user::id());
+			\dash\notif::error(T_("No access to change plan"), 'team');
 			return false;
 		}
 
@@ -93,21 +93,21 @@ class model extends \content_a\main\model
 		[
 			'team_id' => $team,
 			'plan'    => $plan,
-			'creator' => \lib\user::id(),
+			'creator' => \dash\user::id(),
 		];
 		$result = \lib\db\teamplans::set($args);
 
 		if($result)
 		{
-			\lib\notif::ok(T_("Your team plan was changed"));
+			\dash\notif::ok(T_("Your team plan was changed"));
 			if(\lib\engine\process::status())
 			{
-				\lib\redirect::pwd();
+				\dash\redirect::pwd();
 			}
 		}
 		else
 		{
-			// \lib\notif::error(T_("Can not save this plan of your team"));
+			// \dash\notif::error(T_("Can not save this plan of your team"));
 			return false;
 		}
 	}

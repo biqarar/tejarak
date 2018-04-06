@@ -18,12 +18,12 @@ class model extends \mvc\model
 	 */
 	public function get_billing($_args)
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
 		$meta            = [];
-		$this->user_id   = \lib\user::id();
+		$this->user_id   = \dash\user::id();
 		$meta['user_id'] = $this->user_id;
 		// $meta['admin']   = false ;
 		$meta['verify'] = 1;
@@ -36,9 +36,9 @@ class model extends \mvc\model
 	 */
 	public function post_billing()
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\notif::error(T_("You must login to pay amount"));
+			\dash\notif::error(T_("You must login to pay amount"));
 			return false;
 		}
 
@@ -51,14 +51,14 @@ class model extends \mvc\model
 			}
 			else
 			{
-				\lib\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
+				\dash\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
 				return false;
 			}
 		}
 
 		$meta = ['turn_back' => \dash\url::pwd()];
 
-		\dash\utility\payment\pay::start(\lib\user::id(), \dash\request::post('bank'), \dash\request::post('amount'), $meta);
+		\dash\utility\payment\pay::start(\dash\user::id(), \dash\request::post('bank'), \dash\request::post('amount'), $meta);
 	}
 
 
@@ -75,7 +75,7 @@ class model extends \mvc\model
         	'data' => null,
         	'meta' =>
         	[
-				'user'    => \lib\user::id(),
+				'user'    => \dash\user::id(),
 				'ref'     => $ref,
 				'post'    => \dash\request::post(),
 				'session' => $_SESSION,
@@ -84,8 +84,8 @@ class model extends \mvc\model
 
 		if(!preg_match("/^ref\_([A-Za-z0-9]+)$/", $promo, $split))
 		{
-			\dash\db\logs::set('ref:reqular:invalid', \lib\user::id(), $log_meta);
-			\lib\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
+			\dash\db\logs::set('ref:reqular:invalid', \dash\user::id(), $log_meta);
+			\dash\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
 			return false;
 		}
 		if(isset($split[1]))
@@ -94,23 +94,23 @@ class model extends \mvc\model
 			$ref = \dash\coding::decode($shcode);
 			if(!$ref)
 			{
-				\dash\db\logs::set('ref:shortURL:invalid', \lib\user::id(), $log_meta);
-				\lib\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
+				\dash\db\logs::set('ref:shortURL:invalid', \dash\user::id(), $log_meta);
+				\dash\notif::error(T_("Invalid promo code"), 'promo', 'arguments');
 				return false;
 			}
 		}
 
-		if(intval(\lib\user::id()) === intval($ref))
+		if(intval(\dash\user::id()) === intval($ref))
 		{
-			\dash\db\logs::set('ref:yourself', \lib\user::id(), $log_meta);
-			\lib\notif::error(T_("You try to referral yourself!"), 'promo', 'arguments');
+			\dash\db\logs::set('ref:yourself', \dash\user::id(), $log_meta);
+			\dash\notif::error(T_("You try to referral yourself!"), 'promo', 'arguments');
 			return false;
 		}
 
-		if(\lib\user::login('ref'))
+		if(\dash\user::login('ref'))
 		{
-			\dash\db\logs::set('ref:full', \lib\user::id(), $log_meta);
-			\lib\notif::error(T_("You have ref. can not set another ref"), 'promo', 'arguments');
+			\dash\db\logs::set('ref:full', \dash\user::id(), $log_meta);
+			\dash\notif::error(T_("You have ref. can not set another ref"), 'promo', 'arguments');
 			return false;
 		}
 
@@ -118,19 +118,19 @@ class model extends \mvc\model
 
 		if(!isset($check_ref['id']))
 		{
-			\dash\db\logs::set('ref:user:not:found', \lib\user::id(), $log_meta);
-			\lib\notif::error(T_("Ref not found"), 'promo', 'arguments');
+			\dash\db\logs::set('ref:user:not:found', \dash\user::id(), $log_meta);
+			\dash\notif::error(T_("Ref not found"), 'promo', 'arguments');
 			return false;
 		}
 
-		\dash\db\users::update(['ref' => $ref], \lib\user::id());
+		\dash\db\users::update(['ref' => $ref], \dash\user::id());
 		$_SESSION['user']['ref'] = $ref;
 
 		$transaction_set =
         [
 			'caller'          => 'promo:ref',
 			'title'           => T_("Promo for using ref"),
-			'user_id'         => \lib\user::id(),
+			'user_id'         => \dash\user::id(),
 			'plus'            => 10 * 1000,
 			'payment'         => null,
 			'related_foreign' => 'users',
@@ -155,7 +155,7 @@ class model extends \mvc\model
 
         $notify_ref =
         [
-			'to'      => \lib\user::id(),
+			'to'      => \dash\user::id(),
 			'cat'     => 'useref',
 			'content' => T_("Your are using referral program and your account was charged"),
         ];
@@ -164,9 +164,9 @@ class model extends \mvc\model
 
         if(\lib\engine\process::status())
         {
-        	\dash\db\logs::set('user:use:ref', \lib\user::id(), $log_meta);
+        	\dash\db\logs::set('user:use:ref', \dash\user::id(), $log_meta);
         	\dash\db\logs::set('user:was:ref', $ref, $log_meta);
-        	\lib\notif::ok(T_("Your ref was set and your account was charge"));
+        	\dash\notif::ok(T_("Your ref was set and your account was charge"));
         }
 	}
 
@@ -202,12 +202,12 @@ class model extends \mvc\model
 	 */
 	public function run_usage()
 	{
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
 			return false;
 		}
 
-		$user_id = \lib\user::id();
+		$user_id = \dash\user::id();
 
 		$all_creator_team = \lib\db\teams::get(['creator' => $user_id]);
 

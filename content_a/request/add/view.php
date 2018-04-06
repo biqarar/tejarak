@@ -8,7 +8,7 @@ class view extends \content_a\report\view
 	 */
 	public function view_add()
 	{
-		$user_id = \lib\user::id();
+		$user_id = \dash\user::id();
 		$this->data->page['title'] = T_('Add new request');
 		$this->data->page['desc']  = T_('You can add new request of time and after confirm of team admin, this time is added to your hours.');
 

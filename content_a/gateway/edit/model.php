@@ -35,11 +35,11 @@ class model extends \content_a\main\model
 	 */
 	public function edit($_team, $_gateway)
 	{
-		$this->user_id   = \lib\user::id();
+		$this->user_id   = \dash\user::id();
 		$request         = [];
 		$request['team'] = $_team;
 		$request['id']   = $_gateway;
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 		$result =  $this->get_gateway();
 		return $result;
 	}
@@ -53,26 +53,26 @@ class model extends \content_a\main\model
 	public function post_edit($_args)
 	{
 		// check the user is login
-		if(!\lib\user::login())
+		if(!\dash\user::login())
 		{
-			\lib\notif::error(T_("Please login to add a team"), false, 'arguments');
+			\dash\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
 
-		$this->user_id = \lib\user::id();
+		$this->user_id = \dash\user::id();
 		$request       = $this->getPost();
 
 		$url             = \dash\url::directory();
 		$gateway         = \dash\url::dir(3);
 		$request['id']   = $gateway;
 		$request['team'] = $team = \dash\url::dir(0);
-		\lib\utility::set_request_array($request);
+		\dash\utility::set_request_array($request);
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway(['method' => 'patch']);
 		if(\lib\engine\process::status())
 		{
-			\lib\redirect::to(\dash\url::here(). "/$team/gateway");
+			\dash\redirect::to(\dash\url::here(). "/$team/gateway");
 		}
 	}
 }

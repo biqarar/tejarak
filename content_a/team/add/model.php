@@ -55,18 +55,18 @@ class model extends \content_a\main\model
 		{
 			return false;
 		}
-		$this->user_id    = \lib\user::id();
-		\lib\utility::set_request_array($request);
+		$this->user_id    = \dash\user::id();
+		\dash\utility::set_request_array($request);
 		$this->add_team();
 
 		if(\lib\engine\process::status())
 		{
-			$new_team_code = \lib\temp::get('last_team_code_added');
+			$new_team_code = \dash\temp::get('last_team_code_added');
 
 			if($new_team_code)
 			{
-				// \lib\notif::direct();
-				\lib\redirect::to(\dash\url::here(). "/$new_team_code/setting/plan");
+				// \dash\notif::direct();
+				\dash\redirect::to(\dash\url::here(). "/$new_team_code/setting/plan");
 			}
 		}
 	}

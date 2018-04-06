@@ -65,13 +65,13 @@ trait get
 	 */
 	public function get_houredit($_options = [])
 	{
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
@@ -80,13 +80,13 @@ trait get
 			return false;
 		}
 
-		$id = \lib\utility::request("id");
+		$id = \dash\utility::request("id");
 		$id = \dash\coding::decode($id);
 
 		if(!$id)
 		{
 			\dash\db\logs::set('api:houredit:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("houredit id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("houredit id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -94,11 +94,11 @@ trait get
 		if(!$result)
 		{
 			// \dash\db\logs::set('api:houredit:access:denide', $this->user_id, $log_meta);
-			// \lib\notif::error(T_("Can not access to load this houredit details"), 'houredit', 'permission');
+			// \dash\notif::error(T_("Can not access to load this houredit details"), 'houredit', 'permission');
 			return false;
 		}
 
-		// \lib\notif::title(T_("Operation complete"));
+		// \dash\notif::title(T_("Operation complete"));
 
 		$result = $this->ready_houredit($result);
 
@@ -110,13 +110,13 @@ trait get
 	 */
 	public function get_houredit_list()
 	{
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
@@ -125,24 +125,24 @@ trait get
 			return false;
 		}
 
-		$team = \lib\utility::request("team");
+		$team = \dash\utility::request("team");
 		$team = \dash\coding::decode($team);
 
 		if(!$team)
 		{
 			\dash\db\logs::set('api:houredit:team:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("houredit team not set"), 'team', 'arguments');
+			\dash\notif::error(T_("houredit team not set"), 'team', 'arguments');
 			return false;
 		}
 
 
-		$user = \lib\utility::request("user");
+		$user = \dash\utility::request("user");
 		$user = \dash\coding::decode($user);
 
-		if(\lib\utility::request('user') && !$user)
+		if(\dash\utility::request('user') && !$user)
 		{
 			\dash\db\logs::set('api:houredit:user:invalid', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Invalid user id"), 'user', 'arguments');
+			\dash\notif::error(T_("Invalid user id"), 'user', 'arguments');
 			return false;
 		}
 
@@ -155,7 +155,7 @@ trait get
 				if(!$check_is_my_team = \lib\db\teams::access_team_id($team, $user, ['action'=> 'in_team']))
 				{
 					\dash\db\logs::set('api:houredit:get:user:is:not:in:team', $this->user_id, $log_meta);
-					\lib\notif::error(T_("This user is not in this team"), 'team', 'arguments');
+					\dash\notif::error(T_("This user is not in this team"), 'team', 'arguments');
 					return false;
 				}
 			}
@@ -169,7 +169,7 @@ trait get
 			if(!$check_is_my_team = \lib\db\teams::access_team_id($team, $this->user_id, ['action'=> 'in_team']))
 			{
 				\dash\db\logs::set('api:houredit:get:user:is:not:in:team', $this->user_id, $log_meta);
-				\lib\notif::error(T_("No access to load this list"), 'team', 'arguments');
+				\dash\notif::error(T_("No access to load this list"), 'team', 'arguments');
 				return false;
 			}
 			$user = $this->user_id;
@@ -187,7 +187,7 @@ trait get
 
 		$result = \lib\db\hourrequests::search(null, $meta);
 
-		// \lib\notif::title(T_("Operation complete"));
+		// \dash\notif::title(T_("Operation complete"));
 		$temp_result = [];
 		foreach ($result as $key => $value)
 		{
@@ -209,13 +209,13 @@ trait get
 	 */
 	public function get_houredit_detail($_options = [])
 	{
-		// \lib\notif::title(T_("Operation Faild"));
+		// \dash\notif::title(T_("Operation Faild"));
 		$log_meta =
 		[
 			'data' => null,
 			'meta' =>
 			[
-				'input' => \lib\utility::request(),
+				'input' => \dash\utility::request(),
 			]
 		];
 
@@ -224,13 +224,13 @@ trait get
 			return false;
 		}
 
-		$id = \lib\utility::request("id");
+		$id = \dash\utility::request("id");
 		$id = \dash\coding::decode($id);
 
 		if(!$id)
 		{
 			\dash\db\logs::set('api:houredit:id:not:set', $this->user_id, $log_meta);
-			\lib\notif::error(T_("houredit id not set"), 'id', 'arguments');
+			\dash\notif::error(T_("houredit id not set"), 'id', 'arguments');
 			return false;
 		}
 
@@ -239,11 +239,11 @@ trait get
 		if(!$result)
 		{
 			\dash\db\logs::set('api:houredit:access:denide', $this->user_id, $log_meta);
-			\lib\notif::error(T_("Can not access to load this houredit details"), 'houredit', 'permission');
+			\dash\notif::error(T_("Can not access to load this houredit details"), 'houredit', 'permission');
 			return false;
 		}
 
-		// \lib\notif::title(T_("Operation complete"));
+		// \dash\notif::title(T_("Operation complete"));
 
 		$result = $this->ready_houredit($result);
 

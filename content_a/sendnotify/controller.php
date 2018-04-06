@@ -12,7 +12,7 @@ class controller extends \content_a\main\controller
 
 		if($url === 'sendnotify')
 		{
-			\lib\header::status(404);
+			\dash\header::status(404);
 		}
 
 		$this->get(false, "sendnotify")->ALL("/^([A-Za-z0-9]+)\/sendnotify$/");
