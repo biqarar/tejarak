@@ -164,13 +164,13 @@ class model extends \mvc\model
 		$date = date("Y-m-d H:i:s");
 		$url  = __DIR__ . '/last_ping_time.txt';
 
-		if(!\lib\file::exists($url))
+		if(!\dash\file::exists($url))
 		{
-			\lib\file::write($url, $date);
+			\dash\file::write($url, $date);
 		}
 		else
 		{
-			$date = \lib\file::read($url);
+			$date = \dash\file::read($url);
 		}
 		return $date;
 	}
@@ -182,6 +182,6 @@ class model extends \mvc\model
 	{
 		$date = date("Y-m-d H:i:s");
 		$url  = __DIR__ . '/last_ping_time.txt';
-		\lib\file::write($url, $date);
+		\dash\file::write($url, $date);
 	}
 }

@@ -31,15 +31,15 @@ class hours
 	{
 		$result = 0;
 		$url    = root. 'public_html/files/data/';
-		if(!\lib\file::exists($url))
+		if(!\dash\file::exists($url))
 		{
-			\lib\file::makeDir($url, null, true);
+			\dash\file::makeDir($url, null, true);
 		}
 		$url .= 'sum_total_hours.txt';
-		if(!\lib\file::exists($url))
+		if(!\dash\file::exists($url))
 		{
 			$result = self::total_sum();
-			\lib\file::write($url, $result);
+			\dash\file::write($url, $result);
 		}
 		else
 		{
@@ -47,11 +47,11 @@ class hours
 			if((time() - $file_time) >  (60 * 10))
 			{
 				$result       = self::total_sum();
-				\lib\file::write($url, $result);
+				\dash\file::write($url, $result);
 			}
 			else
 			{
-				$result = \lib\file::read($url);
+				$result = \dash\file::read($url);
 			}
 		}
 		return $result;
