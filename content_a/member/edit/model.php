@@ -14,24 +14,24 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'displayname'      => \lib\request::post('name'),
-			'postion'          => \lib\request::post('postion'),
-			'mobile'           => \lib\request::post('mobile'),
-			'rule'             => \lib\request::post('rule'),
-			'firstname'        => \lib\request::post('firstName'),
-			'lastname'         => \lib\request::post('lastName'),
-			'personnel_code'   => \lib\request::post('personnelcode'),
-			'allow_plus'       => \lib\request::post('allowPlus'),
-			'allow_minus'      => \lib\request::post('allowMinus'),
-			'remote_user'      => \lib\request::post('remoteUser'),
-			'24h'              => \lib\request::post('24h'),
-			'status'           => \lib\request::post('status'),
-			'visibility'       => \lib\request::post('visibility'),
-			'barcode1'         => \lib\request::post('barcode'),
-			'rfid1'            => \lib\request::post('rfid'),
-			'qrcode1'          => \lib\request::post('qrcode'),
-			'allow_desc_enter' => \lib\request::post('allowDescEnter'),
-			'allow_desc_exit'  => \lib\request::post('allowDescExit'),
+			'displayname'      => \dash\request::post('name'),
+			'postion'          => \dash\request::post('postion'),
+			'mobile'           => \dash\request::post('mobile'),
+			'rule'             => \dash\request::post('rule'),
+			'firstname'        => \dash\request::post('firstName'),
+			'lastname'         => \dash\request::post('lastName'),
+			'personnel_code'   => \dash\request::post('personnelcode'),
+			'allow_plus'       => \dash\request::post('allowPlus'),
+			'allow_minus'      => \dash\request::post('allowMinus'),
+			'remote_user'      => \dash\request::post('remoteUser'),
+			'24h'              => \dash\request::post('24h'),
+			'status'           => \dash\request::post('status'),
+			'visibility'       => \dash\request::post('visibility'),
+			'barcode1'         => \dash\request::post('barcode'),
+			'rfid1'            => \dash\request::post('rfid'),
+			'qrcode1'          => \dash\request::post('qrcode'),
+			'allow_desc_enter' => \dash\request::post('allowDescEnter'),
+			'allow_desc_exit'  => \dash\request::post('allowDescExit'),
 		];
 
 		return $args;
@@ -46,7 +46,7 @@ class model extends \content_a\main\model
 	 */
 	public function upload_avatar()
 	{
-		if(\lib\request::files('avatar'))
+		if(\dash\request::files('avatar'))
 		{
 			\lib\utility::set_request_array(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
@@ -130,13 +130,13 @@ class model extends \content_a\main\model
 
 		if(\lib\engine\process::status())
 		{
-			if(\lib\request::post('parent_mobile'))
+			if(\dash\request::post('parent_mobile'))
 			{
 				$parent_request               = [];
-				$parent_request['othertitle'] = \lib\request::post('othertitle');
+				$parent_request['othertitle'] = \dash\request::post('othertitle');
 				$parent_request['id']    = $member;
-				$parent_request['title']      = \lib\request::post('title');
-				$parent_request['mobile']     = \lib\request::post('parent_mobile');
+				$parent_request['title']      = \dash\request::post('title');
+				$parent_request['mobile']     = \dash\request::post('parent_mobile');
 				\lib\utility::set_request_array($parent_request);
 				$this->add_parent();
 			}

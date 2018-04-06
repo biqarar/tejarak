@@ -54,18 +54,18 @@ class model extends \content_a\main\model
 		{
 			if($load_last_request['status'] === 'awaiting')
 			{
-				if(\lib\request::post('send') === 'ok')
+				if(\dash\request::post('send') === 'ok')
 				{
 					\lib\db\notifications::update(['status' => 'enable'], $load_last_request['id']);
 				}
-				elseif(\lib\request::post('send') === 'cancel')
+				elseif(\dash\request::post('send') === 'cancel')
 				{
 					\lib\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
 			}
 			elseif($load_last_request['status'] === 'enable')
 			{
-				if(\lib\request::post('request') === 'cancel')
+				if(\dash\request::post('request') === 'cancel')
 				{
 					\lib\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
@@ -74,7 +74,7 @@ class model extends \content_a\main\model
 		}
 
 
-		$new_owner = \lib\request::post('owner');
+		$new_owner = \dash\request::post('owner');
 		if(!$new_owner)
 		{
 			\lib\notif::error(T_("Plese fill the mobile field"), 'owner');

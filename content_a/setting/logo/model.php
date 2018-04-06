@@ -12,7 +12,7 @@ class model extends \content_a\main\model
 	 */
 	public function upload_logo()
 	{
-		if(\lib\request::files('logo'))
+		if(\dash\request::files('logo'))
 		{
 			$this->user_id = \lib\user::id();
 			\lib\utility::set_request_array(['upload_name' => 'logo']);
@@ -36,7 +36,7 @@ class model extends \content_a\main\model
 		$code = \dash\url::dir(0);
 		$request       = [];
 
-		if(\lib\request::files('logo'))
+		if(\dash\request::files('logo'))
 		{
 			$request['logo'] = $this->upload_logo();
 		}

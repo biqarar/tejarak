@@ -27,7 +27,7 @@ class model extends \content_a\main\model
 	public function cancel_request()
 	{
 		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => \lib\request::post('cancel')]);
+		\lib\utility::set_request_array(['id' => \dash\request::post('cancel')]);
 		$this->parent_cancel_request();
 		$this->redirector_refresh();
 	}
@@ -53,7 +53,7 @@ class model extends \content_a\main\model
 	public function remove_parent()
 	{
 		$this->user_id = \lib\user::id();
-		\lib\utility::set_request_array(['id' => \lib\request::post('remove')]);
+		\lib\utility::set_request_array(['id' => \dash\request::post('remove')]);
 		$this->delete_parent();
 		$this->redirector_refresh();
 	}
@@ -71,20 +71,20 @@ class model extends \content_a\main\model
 
 		$request               = [];
 
-		$request['othertitle'] = \lib\request::post('othertitle');
-		$request['title']      = \lib\request::post('title');
-		$request['mobile']     = \lib\request::post('mobile');
+		$request['othertitle'] = \dash\request::post('othertitle');
+		$request['title']      = \dash\request::post('title');
+		$request['mobile']     = \dash\request::post('mobile');
 		$request['id']         = \lib\coding::encode($this->user_id);
 
 		\lib\utility::set_request_array($request);
 
-		if(\lib\request::post('cancel') && \lib\coding::is(\lib\request::post('cancel')))
+		if(\dash\request::post('cancel') && \lib\coding::is(\dash\request::post('cancel')))
 		{
 			$this->cancel_request();
 			return ;
 		}
 
-		if(\lib\request::post('remove') && \lib\coding::is(\lib\request::post('remove')))
+		if(\dash\request::post('remove') && \lib\coding::is(\dash\request::post('remove')))
 		{
 			$this->remove_parent();
 			return ;

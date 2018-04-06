@@ -11,7 +11,7 @@ class controller extends \content_a\main\controller
 
 
 
-		if(\lib\request::post())
+		if(\dash\request::post())
 		{
 			$this->model()->sms();
 		}

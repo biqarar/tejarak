@@ -6,7 +6,7 @@ class view extends \content_a\main\view
 	public function config()
 	{
 
-		$this->data->amount        = \lib\request::get('amount');
+		$this->data->amount        = \dash\request::get('amount');
 		$this->data->page['title'] = T_("Billing information");
 		$this->data->page['desc']  = T_("Check your balance, charge your account, and bill your invoices!");
 

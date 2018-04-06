@@ -15,12 +15,12 @@ class model extends \content_a\member\model
 		$args =
 		[
 
-			'allow_plus'       => \lib\request::post('allowPlus'),
-			'allow_minus'      => \lib\request::post('allowMinus'),
-			'remote_user'      => \lib\request::post('remoteUser'),
-			'24h'              => \lib\request::post('24h'),
-			// 'allow_desc_enter' => \lib\request::post('allowDescEnter'),
-			// 'allow_desc_exit'  => \lib\request::post('allowDescExit'),
+			'allow_plus'       => \dash\request::post('allowPlus'),
+			'allow_minus'      => \dash\request::post('allowMinus'),
+			'remote_user'      => \dash\request::post('remoteUser'),
+			'24h'              => \dash\request::post('24h'),
+			// 'allow_desc_enter' => \dash\request::post('allowDescEnter'),
+			// 'allow_desc_exit'  => \dash\request::post('allowDescExit'),
 		];
 
 		return $args;

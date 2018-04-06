@@ -78,7 +78,7 @@ trait _use
 				$new_url               = \dash\url::pwd();
 				$url                   = \dash\url::base();
 				$url_property          = \dash\url::directory();
-				$url_get               = \lib\request::get();
+				$url_get               = \dash\request::get();
 
 				$site_language         = \lib\language::current();
 				$site_language_default = \lib\language::default();

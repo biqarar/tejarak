@@ -17,7 +17,7 @@ class model extends \content_a\main\model
 			'data' => null,
 			'meta' =>
 			[
-				'input'   => \lib\request::post(),
+				'input'   => \dash\request::post(),
 				'session' => $_SESSION,
 			],
 		];
@@ -35,7 +35,7 @@ class model extends \content_a\main\model
 
 
 		// check name lenght
-		if(mb_strlen(\lib\request::post('name')) > 50)
+		if(mb_strlen(\dash\request::post('name')) > 50)
 		{
 			\lib\notif::error(T_("Please enter your name less than 50 character"), 'name', 'arguments');
 			return false;
@@ -43,7 +43,7 @@ class model extends \content_a\main\model
 
 
 		// check name lenght
-		if(mb_strlen(\lib\request::post('displayname')) > 50)
+		if(mb_strlen(\dash\request::post('displayname')) > 50)
 		{
 			\lib\notif::error(T_("Please enter your displayname less than 50 character"), 'displayname', 'arguments');
 			return false;
@@ -51,7 +51,7 @@ class model extends \content_a\main\model
 
 
 		// check name lenght
-		if(mb_strlen(\lib\request::post('family')) > 50)
+		if(mb_strlen(\dash\request::post('family')) > 50)
 		{
 			\lib\notif::error(T_("Please enter your family less than 50 character"), 'family', 'arguments');
 			return false;
@@ -59,7 +59,7 @@ class model extends \content_a\main\model
 
 		$file_code = null;
 		$temp_url  = null;
-		if(\lib\request::files('avatar'))
+		if(\dash\request::files('avatar'))
 		{
 			$this->user_id = \lib\user::id();
 			\lib\utility::set_request_array(['upload_name' => 'avatar']);
@@ -81,27 +81,27 @@ class model extends \content_a\main\model
 		}
 
 		// // if the name exist update user display name
-		// if(\lib\request::post('name') != \lib\user::login('name'))
+		// if(\dash\request::post('name') != \lib\user::login('name'))
 		// {
-		// 	$update_user['name'] = \lib\request::post('name');
+		// 	$update_user['name'] = \dash\request::post('name');
 		// 	$user_session['name'] = $update_user['name'];
 		// }
 
 		// // if the family exist update user display family
-		// if(\lib\request::post('family') != \lib\user::login('family'))
+		// if(\dash\request::post('family') != \lib\user::login('family'))
 		// {
-		// 	$update_user['lastname'] = \lib\request::post('family');
+		// 	$update_user['lastname'] = \dash\request::post('family');
 		// 	$user_session['family'] = $update_user['lastname'];
 		// }
 
 		// if the postion exist update user display postion
-		if(\lib\request::post('displayname') != \lib\user::login('displayname'))
+		if(\dash\request::post('displayname') != \lib\user::login('displayname'))
 		{
-			$update_user['displayname'] = \lib\request::post('displayname');
+			$update_user['displayname'] = \dash\request::post('displayname');
 			$user_session['displayname'] = $update_user['displayname'];
 		}
 
-		// $new_unit = \lib\request::post('user-unit');
+		// $new_unit = \dash\request::post('user-unit');
 
 		// if($new_unit === '')
 		// {

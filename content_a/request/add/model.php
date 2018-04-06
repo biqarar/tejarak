@@ -14,11 +14,11 @@ class model extends \content_a\main\model
 	public function getPost()
 	{
 		$args               = [];
-		$args['start_date'] = \lib\utility\human::number(\lib\request::post('start_date'), 'en');
-		$args['start_time'] = \lib\utility\human::number(\lib\request::post('start_time'), 'en');
-		$args['end_date']   = \lib\utility\human::number(\lib\request::post('end_date'), 'en');
-		$args['end_time']   = \lib\utility\human::number(\lib\request::post('end_time'), 'en');
-		$args['desc']       = \lib\request::post('desc');
+		$args['start_date'] = \lib\utility\human::number(\dash\request::post('start_date'), 'en');
+		$args['start_time'] = \lib\utility\human::number(\dash\request::post('start_time'), 'en');
+		$args['end_date']   = \lib\utility\human::number(\dash\request::post('end_date'), 'en');
+		$args['end_time']   = \lib\utility\human::number(\dash\request::post('end_time'), 'en');
+		$args['desc']       = \dash\request::post('desc');
 
 		return $args;
 	}
@@ -33,7 +33,7 @@ class model extends \content_a\main\model
 	{
 		$request            = $this->getPost();
 		$request['team']    = \dash\url::dir(0);
-		$request['user_id'] = \lib\request::get('user');
+		$request['user_id'] = \dash\request::get('user');
 
 		\lib\utility::set_request_array($request);
 

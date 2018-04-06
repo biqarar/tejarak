@@ -10,9 +10,9 @@ class model extends \mvc\model
 		$meta['admin'] = true;
 
 		$search = null;
-		if(\lib\request::get('search'))
+		if(\dash\request::get('search'))
 		{
-			$search = \lib\request::get('search');
+			$search = \dash\request::get('search');
 		}
 
 		foreach ($_fields as $key => $value)

@@ -9,7 +9,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_sendnotify($_args)
 	{
-		$text = \lib\request::post('message-text');
+		$text = \dash\request::post('message-text');
 		if(!$text)
 		{
 			\lib\notif::error(T_("Please fill the message box"), 'message-text');

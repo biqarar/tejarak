@@ -58,7 +58,7 @@ class model extends \content\main\model
 		/**
 		 * ajax to check members status
 		 */
-		if(\lib\request::post('check'))
+		if(\dash\request::post('check'))
 		{
 			$request['shortname'] = isset($url[0]) ? $url[0] : null;
 			$request['hours']     = true;
@@ -71,11 +71,11 @@ class model extends \content\main\model
 		}
 
 		$request['team']   = isset($url[0]) ? $url[0] : null;
-		$request['user']   = \lib\request::post('user');
-		$request['plus']   = \lib\request::post('plus');
-		$request['minus']  = \lib\request::post('minus');
-		$request['type']   = \lib\request::post('type');
-		$request['desc']   = \lib\request::post('desc');
+		$request['user']   = \dash\request::post('user');
+		$request['plus']   = \dash\request::post('plus');
+		$request['minus']  = \dash\request::post('minus');
+		$request['type']   = \dash\request::post('type');
+		$request['desc']   = \dash\request::post('desc');
 
 		\lib\utility::set_request_array($request);
 

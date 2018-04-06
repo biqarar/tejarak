@@ -17,12 +17,12 @@ class view extends \content_a\report\view
 		$args['id']            = \dash\url::dir(0);
 		$this->data->team_code = $args['id'];
 
-		if(\lib\request::get('user'))
+		if(\dash\request::get('user'))
 		{
-			$args['user'] = \lib\request::get('user');
+			$args['user'] = \dash\request::get('user');
 		}
 
-		$args['export'] = \lib\request::get('export');
+		$args['export'] = \dash\request::get('export');
 
 		$this->data->last_time = $this->model()->get_last_time($args);
 

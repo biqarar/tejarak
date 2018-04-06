@@ -13,22 +13,22 @@ class view extends \content_a\report\view
 
 	public function view_period()
 	{
-		if(\lib\request::get('start'))
+		if(\dash\request::get('start'))
 		{
-			$this->data->get_start_date = \lib\request::get('start');
+			$this->data->get_start_date = \dash\request::get('start');
 		}
 
-		if(\lib\request::get('end'))
+		if(\dash\request::get('end'))
 		{
-			$this->data->get_end_date = \lib\request::get('end');
+			$this->data->get_end_date = \dash\request::get('end');
 		}
 
 		$args           = [];
 		$args['id']     = \dash\url::dir(0);
-		$args['start']  = \lib\request::get('start');
-		$args['end']    = \lib\request::get('end');
-		$args['user']   = \lib\request::get('user');
-		$args['export'] = \lib\request::get('export');
+		$args['start']  = \dash\request::get('start');
+		$args['end']    = \dash\request::get('end');
+		$args['user']   = \dash\request::get('user');
+		$args['export'] = \dash\request::get('export');
 		$this->data->period_time = $this->model()->get_period_time($args);
 
 		if(isset($this->controller->pagnation))

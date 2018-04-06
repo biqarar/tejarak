@@ -14,14 +14,14 @@ class model extends \content_a\member\model
 	{
 		$args =
 		[
-			'displayname'      => \lib\request::post('name'),
-			'postion'          => \lib\request::post('postion'),
-			'visibility'       => \lib\request::post('visibility'),
+			'displayname'      => \dash\request::post('name'),
+			'postion'          => \dash\request::post('postion'),
+			'visibility'       => \dash\request::post('visibility'),
 		];
 
-		if(\lib\request::post('mobile')) $args['mobile'] = \lib\request::post('mobile');
-		if(\lib\request::post('rule')) $args['rule']     = \lib\request::post('rule');
-		if(\lib\request::post('status')) $args['status'] = \lib\request::post('status');
+		if(\dash\request::post('mobile')) $args['mobile'] = \dash\request::post('mobile');
+		if(\dash\request::post('rule')) $args['rule']     = \dash\request::post('rule');
+		if(\dash\request::post('status')) $args['status'] = \dash\request::post('status');
 
 		return $args;
 	}

@@ -14,10 +14,10 @@ class model extends \content_a\main\model
 	{
 		$args =
 		[
-			'name'     => \lib\request::post('name'),
-			'username' => \lib\request::post('username'),
-			'password' => \lib\request::post('ramz'),
-			'status'   => (\lib\request::post('status') !== null)? 'active': 'deactive',
+			'name'     => \dash\request::post('name'),
+			'username' => \dash\request::post('username'),
+			'password' => \dash\request::post('ramz'),
+			'status'   => (\dash\request::post('status') !== null)? 'active': 'deactive',
 		];
 
 		return $args;

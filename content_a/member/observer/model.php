@@ -44,9 +44,9 @@ class model extends \content_a\member\model
 	{
 		$this->user_id                = \lib\user::id();
 
-		if(\lib\request::post('remove'))
+		if(\dash\request::post('remove'))
 		{
-			\lib\utility::set_request_array(['id' => \lib\request::post('remove'), 'related_id' => \dash\url::dir(0)]);
+			\lib\utility::set_request_array(['id' => \dash\request::post('remove'), 'related_id' => \dash\url::dir(0)]);
 			$this->delete_parent();
 			\lib\redirect::pwd();
 			return ;
@@ -62,10 +62,10 @@ class model extends \content_a\member\model
 		if(isset($user_id['user_id']))
 		{
 			$parent_request               = [];
-			$parent_request['othertitle'] = \lib\request::post('othertitle');
+			$parent_request['othertitle'] = \dash\request::post('othertitle');
 			$parent_request['id']         = \lib\coding::encode($user_id['user_id']);
-			$parent_request['title']      = \lib\request::post('title');
-			$parent_request['mobile']     = \lib\request::post('parent_mobile');
+			$parent_request['title']      = \dash\request::post('title');
+			$parent_request['mobile']     = \dash\request::post('parent_mobile');
 			$parent_request['related_id'] = \dash\url::dir(0);
 			\lib\utility::set_request_array($parent_request);
 			$this->add_parent();
@@ -75,7 +75,7 @@ class model extends \content_a\member\model
 
 				$t_T =
 				[
-					'title' => (\lib\request::post('othertitle') && \lib\request::post('title') === 'custom') ? \lib\request::post('othertitle') : T_(ucfirst(\lib\request::post('title'))),
+					'title' => (\dash\request::post('othertitle') && \dash\request::post('title') === 'custom') ? \dash\request::post('othertitle') : T_(ucfirst(\dash\request::post('title'))),
 					'name'  => $this->view()->data->member['displayname'],
 					'team'  => $this->view()->data->current_team['name'],
 				];
@@ -93,7 +93,7 @@ class model extends \content_a\member\model
 				else
 				{
 					// send by sms
-					\lib\utility\sms::send(\lib\request::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
+					\lib\utility\sms::send(\dash\request::post('parent_mobile'), $message, ['header' => false, 'footer' => false]);
 				}
 
 				\lib\redirect::pwd();

@@ -38,7 +38,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$plan = \lib\request::post('plan');
+		$plan = \dash\request::post('plan');
 		if(!$plan)
 		{
 			\lib\db\logs::set('plan:plan:not:set', \lib\user::id());
