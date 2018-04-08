@@ -201,7 +201,7 @@ class model extends \content_a\main\model
 		$a = \dash\db\notifications::set($send_notify);
 
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\notif::ok(T_("Your request was sended"));
 		}

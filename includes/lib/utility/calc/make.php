@@ -246,7 +246,7 @@ trait make
 
         $this->log_meta['meta']['debug'] = \dash\notif::get();
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\db\logs::set('invoice:team:set:transaction:set', $this->user_id, $this->log_meta);
 			return true;

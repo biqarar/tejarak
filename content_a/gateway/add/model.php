@@ -50,7 +50,7 @@ class model extends \content_a\main\model
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway();
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\redirect::to(\dash\url::here(). "/$team/gateway");
 		}

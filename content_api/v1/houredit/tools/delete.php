@@ -53,7 +53,7 @@ trait delete
 
 		\lib\db\hourrequests::update(['status' => 'deleted'], $id);
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			// \dash\notif::title(T_("Operation complete"));
 			\dash\notif::warn(T_("Your request was deleted"));

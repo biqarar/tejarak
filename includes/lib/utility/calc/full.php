@@ -175,7 +175,7 @@ trait full
 
         $this->log_meta['meta']['debug'] = \dash\notif::get();
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\db\logs::set('invoice:team:back:full:money:transaction:set', null, $this->log_meta);
 			return true;
@@ -305,7 +305,7 @@ trait full
 
         \dash\db\transactions::set($transaction_set);
 
-        if(\lib\engine\process::status())
+        if(\dash\engine\process::status())
         {
         	return true;
         }

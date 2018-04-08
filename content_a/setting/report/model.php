@@ -176,7 +176,7 @@ class model extends \content_a\main\model
 			}
 		}
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\notif::ok(T_("Report settings was changed"));
 		}

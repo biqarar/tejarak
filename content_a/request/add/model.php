@@ -39,7 +39,7 @@ class model extends \content_a\main\model
 
 		$this->user_id = \dash\user::id();
 		$this->add_houredit();
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\redirect::to(\dash\url::here(). '/'. $request['team']. '/request');
 		}

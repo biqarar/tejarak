@@ -81,7 +81,7 @@ class model extends \content_a\main\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member();
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\redirect::to(\dash\url::here(). "/$team/member");
 		}
@@ -105,7 +105,7 @@ class model extends \content_a\main\model
 				return $uploaded_file['code'];
 			}
 			// if in upload have error return
-			if(!\lib\engine\process::status())
+			if(!\dash\engine\process::status())
 			{
 				return false;
 			}

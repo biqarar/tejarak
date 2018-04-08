@@ -69,7 +69,7 @@ class model extends \content_a\member\model
 			$parent_request['related_id'] = \dash\url::dir(0);
 			\dash\utility::set_request_array($parent_request);
 			$this->add_parent();
-			if(\lib\engine\process::status())
+			if(\dash\engine\process::status())
 			{
 				\dash\notif::ok(T_("Observer was saved"));
 

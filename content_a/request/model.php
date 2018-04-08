@@ -95,7 +95,7 @@ class model extends \content_a\main\model
 
 	// 	if(!$result)
 	// 	{
-	// 		\lib\engine\process::status() = 1;
+	// 		\dash\engine\process::status() = 1;
 	// 		$result = $this->get_hours();
 	// 	}
 	// 	return $result;

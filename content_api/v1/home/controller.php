@@ -14,18 +14,18 @@ class controller extends  \addons\content_api\home\controller
 		switch ($url)
 		{
 			case 'v1/teamlist':
-				\lib\engine\main::controller_set("\\content_api\\v1\\team\\controller");
+				\dash\engine\main::controller_set("\\content_api\\v1\\team\\controller");
 				return;
 				break;
 
 			case 'v1/memberlist':
 			case 'v1/membermulti':
-				\lib\engine\main::controller_set("\\content_api\\v1\\member\\controller");
+				\dash\engine\main::controller_set("\\content_api\\v1\\member\\controller");
 				return;
 				break;
 
 			case 'v1/hourslist':
-				\lib\engine\main::controller_set("\\content_api\\v1\\hours\\controller");
+				\dash\engine\main::controller_set("\\content_api\\v1\\hours\\controller");
 				return;
 				break;
 

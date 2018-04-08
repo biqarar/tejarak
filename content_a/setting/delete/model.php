@@ -18,7 +18,7 @@ class model extends \content_a\main\model
 		$this->user_id = \dash\user::id();
 		\dash\utility::set_request_array(['id' => $code]);
 		$this->close_team();
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			// \dash\notif::direct();
 			\dash\redirect::pwd();

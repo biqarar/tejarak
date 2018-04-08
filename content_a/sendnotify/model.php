@@ -65,7 +65,7 @@ class model extends \content_a\main\model
 			\dash\db\notifications::set_multi_record();
 		}
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\notif::ok(T_("The notification was sended"));
 		}

@@ -41,7 +41,7 @@ class controller extends \content_a\main\controller
 							case 'month':
 							case 'period':
 
-								\lib\engine\main::controller_set("content_a\\report\\$split[2]\\controller");
+								\dash\engine\main::controller_set("content_a\\report\\$split[2]\\controller");
 								return;
 								break;
 

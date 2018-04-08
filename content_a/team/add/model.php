@@ -59,7 +59,7 @@ class model extends \content_a\main\model
 		\dash\utility::set_request_array($request);
 		$this->add_team();
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			$new_team_code = \dash\temp::get('last_team_code_added');
 

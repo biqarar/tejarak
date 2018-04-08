@@ -42,7 +42,7 @@ class model extends \content_a\member\model
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\redirect::pwd();
 		}

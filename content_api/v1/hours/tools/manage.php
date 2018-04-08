@@ -160,7 +160,7 @@ trait manage
 			return false;
 		}
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\notif::ok(T_("Hour type changed"));
 		}

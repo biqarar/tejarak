@@ -13,7 +13,7 @@ class controller extends  \content_a\main\controller
 		$url = \dash\url::directory();
 		if(preg_match("/^billing\/invoice\/\d+$/", $url))
 		{
-			\lib\engine\main::controller_set('\\content_a\\billing\\invoice');
+			\dash\engine\main::controller_set('\\content_a\\billing\\invoice');
 			return;
 		}
 	}

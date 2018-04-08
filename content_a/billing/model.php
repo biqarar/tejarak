@@ -162,7 +162,7 @@ class model extends \mvc\model
         \dash\db\notifications::set($notify_ref);
 
 
-        if(\lib\engine\process::status())
+        if(\dash\engine\process::status())
         {
         	\dash\db\logs::set('user:use:ref', \dash\user::id(), $log_meta);
         	\dash\db\logs::set('user:was:ref', $ref, $log_meta);

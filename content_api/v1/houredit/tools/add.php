@@ -365,7 +365,7 @@ trait add
 			return false;
 		}
 
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			// \dash\notif::title(T_("Operation complete"));
 			if($update_mode)

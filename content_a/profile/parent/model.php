@@ -38,7 +38,7 @@ class model extends \content_a\main\model
 	 */
 	public function redirector_refresh()
 	{
-		if(\lib\engine\process::status())
+		if(\dash\engine\process::status())
 		{
 			\dash\redirect::pwd();
 			return;
