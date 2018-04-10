@@ -1,7 +1,7 @@
 <?php
 namespace content\home;
 
-class controller extends \content\main\controller
+class controller
 {
 
 	/**
@@ -50,29 +50,12 @@ class controller extends \content\main\controller
 	];
 
 	// for routing check
-	function ready()
+	public static function routing()
 	{
-		// if have display return false
-		if($this->display_name !== null)
-		{
-			return false;
-		}
-		// if on homepage return false
-		$url = \dash\url::directory();
-		if(!$url)
-		{
-			return false;
-		}
-		// if the url in static page [and black list] return
-		if(in_array($url, self::$static_pages))
-		{
-			return;
-		}
-
 		// check url like this /ermile/tejarak
-		if(preg_match("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/", $url, $split))
+		if(preg_match("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/", \dash\url::module(), $split))
 		{
-			\dash\engine\main::controller_set('content\\hours\\controller');
+			// \dash\engine\main::controller_set('content\\hours\\controller');
 			return;
 		}
 	}

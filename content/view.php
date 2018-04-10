@@ -26,7 +26,7 @@ class view
 		$total_users             = ceil(intval(\lib\db\hours::sum_total_hours()) / 60);
 		$total_users             = number_format($total_users);
 		$total_users             = \dash\utility\human::number($total_users);
-		\dash\data::footer_stat = T_("We registered :count work hour in tejarak!", ['count' => $total_users]);
+		\dash\data::footer_stat(T_("We registered :count work hour in tejarak!", ['count' => $total_users]));
 
 
 		\dash\data::include_css(false);
