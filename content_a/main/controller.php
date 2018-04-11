@@ -59,7 +59,7 @@ class controller extends \mvc\controller
 
 		$team_id    = $url_0;
 		$rule       = 'user';
-		\dash\temp::set('team_code_url', $url_0);
+		\dash\temp::set('teamCode_url', $url_0);
 
 		$team_id = \dash\coding::decode($team_id);
 

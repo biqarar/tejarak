@@ -18,8 +18,8 @@ class view extends \content_a\setting\view
 	{
 		$this->data->server_timezone = \dash\utility\timezone::current();
 
-		$team_code = \dash\request::get('id');
-		$team_id   = \dash\coding::decode($team_code);
+		$teamCode = \dash\request::get('id');
+		$team_id   = \dash\coding::decode($teamCode);
 
 		if(!$team_id)
 		{

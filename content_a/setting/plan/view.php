@@ -18,8 +18,8 @@ class view extends \content_a\setting\view
 
 		if(isset($this->data->current_plan['team_id']))
 		{
-			$team_code = \dash\coding::encode($this->data->current_plan['team_id']);
-			$currentTeam = $this->model()->getTeamDetail($team_code);
+			$teamCode = \dash\coding::encode($this->data->current_plan['team_id']);
+			$currentTeam = $this->model()->getTeamDetail($teamCode);
 
 			if(isset($currentTeam['name']))
 			{

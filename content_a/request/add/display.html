@@ -14,7 +14,7 @@
 		<hr>
     	{%endif%}
 
-		{%if is_24h%}
+		{%if is24h%}
 			{{block('iEventDateStart')}}
 		{%else%}
 			{{block('iEventDate')}}
@@ -22,7 +22,7 @@
 
 		{{block('iAutoTrafficReportHourStart')}}
 
-		{%if is_24h%}
+		{%if is24h%}
 			{{block('iEventDateEnd')}}
 		{%endif%}
 

@@ -2,7 +2,7 @@
 namespace content_a\request\hour;
 
 
-class model extends \content_a\main\model
+class model
 {
 
 
@@ -12,7 +12,7 @@ class model extends \content_a\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args               = [];
 		$args['start_date'] = \dash\utility\human::number(\dash\request::post('start_date'), 'en');
@@ -30,18 +30,18 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_hour($_args)
+	public static function post()
 	{
-		$request            = $this->getPost();
+		$request            = self::getPost();
 		$request['team']    = \dash\request::get('id');
 		$request['hour_id'] = \dash\url::dir(3);
 
 		\dash\app::variable($request);
-		$this->user_id = \dash\user::id();
-		$this->add_houredit();
+
+		\lib\app\houredit::add_houredit();
 		if(\dash\engine\process::status())
 		{
-			\dash\redirect::to(\dash\url::here(). '/'. $request['team']. '/request');
+			\dash\redirect::to(\dash\url::here(). '/request?id='. $request['team']);
 		}
 	}
 }

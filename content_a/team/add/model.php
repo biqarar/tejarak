@@ -2,7 +2,7 @@
 namespace content_a\team\add;
 
 
-class model extends \content_a\main\model
+class model
 {
 
 
@@ -12,7 +12,7 @@ class model extends \content_a\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args =
 		[
@@ -48,25 +48,25 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_add($_args)
+	public static function post()
 	{
-		$request          = $this->getPost();
+		$request          = self::getPost();
 		if($request === false)
 		{
 			return false;
 		}
-		$this->user_id    = \dash\user::id();
+
 		\dash\app::variable($request);
-		$this->add_team();
+		\lib\app\team::add_team();
 
 		if(\dash\engine\process::status())
 		{
-			$new_team_code = \dash\temp::get('last_team_code_added');
+			$new_teamCode = \dash\temp::get('last_teamCode_added');
 
-			if($new_team_code)
+			if($new_teamCode)
 			{
 				// \dash\notif::direct();
-				\dash\redirect::to(\dash\url::here(). "/$new_team_code/setting/plan");
+				\dash\redirect::to(\dash\url::here(). "/setting/plan?id=$new_teamCode");
 			}
 		}
 	}

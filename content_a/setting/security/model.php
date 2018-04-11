@@ -8,7 +8,7 @@ class model extends \content_a\main\model
 	public $mobile;
 	public $user_id;
 	public $team_id;
-	public $team_code;
+	public $teamCode;
 	public $currentTeam;
 
 
@@ -94,8 +94,8 @@ class model extends \content_a\main\model
 			return $this->refresh_page();
 		}
 
-		$this->team_code = \dash\request::get('id');
-		$this->team_id = \dash\coding::decode($this->team_code);
+		$this->teamCode = \dash\request::get('id');
+		$this->team_id = \dash\coding::decode($this->teamCode);
 		$this->currentTeam = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
 
 		if($this->check_sended_request() === false)
@@ -166,7 +166,7 @@ class model extends \content_a\main\model
 	{
 
 		$meta                      = [];
-		$meta['team_code']         = $this->team_code;
+		$meta['teamCode']         = $this->teamCode;
 		$meta['team_id']           = $this->team_id;
 		$meta['old_owner']         = \dash\user::id();
 		$meta['new_owner']         = $this->user_data['id'];

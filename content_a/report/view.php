@@ -47,11 +47,11 @@ class view
 
 		$all_user = [];
 
-		if($team_code = \dash\temp::get('team_code_url'))
+		if($teamCode = \dash\temp::get('teamCode_url'))
 		{
 			\dash\data::reportUrl(\dash\url::here(). '/'. \dash\url::directory());
 			// var_dump($this->data->reportUrl);exit();
-			$team_id = \dash\coding::decode($team_code);
+			$team_id = \dash\coding::decode($teamCode);
 			if($team_id)
 			{
 				// check admin or user of team

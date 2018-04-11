@@ -17,14 +17,14 @@ class model extends \content_a\main\model
 			]
 		];
 
-		$team_code = \dash\request::get('id');
+		$teamCode = \dash\request::get('id');
 
 
 		$team_id = null;
 
-		if($team_code)
+		if($teamCode)
 		{
-			$team_id = \dash\coding::decode($team_code);
+			$team_id = \dash\coding::decode($teamCode);
 		}
 
 		if(!$team_id)

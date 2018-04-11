@@ -2,12 +2,12 @@
 namespace content_a\sendnotify;
 
 
-class model extends \content_a\main\model
+class model
 {
 	/**
 	 * post data and update or insert sendnotify data
 	 */
-	public function post_sendnotify($_args)
+	public static function post()
 	{
 		$text = \dash\request::post('message-text');
 		if(!$text)
@@ -23,7 +23,7 @@ class model extends \content_a\main\model
 		}
 
 		// add sign to footer
-		$my_team = $this->getTeamDetail(\dash\request::get('id'));
+		$my_team = \lib\app\team::getTeamDetail(\dash\request::get('id'));
 		$sign    = 'Sended by admin of team';
 		if(isset($my_team['name']))
 		{
@@ -32,9 +32,9 @@ class model extends \content_a\main\model
 		$text .= "\n". $sign;
 
 
-		$team_code = \dash\request::get('id');
+		$teamCode = \dash\request::get('id');
 
-		$list = $this->listMember($team_code, 'code', ['pagenation' => false]);
+		$list = \lib\app\member::listMember($teamCode, 'code', ['pagenation' => false]);
 		if($list && is_array($list))
 		{
 			$user_ids = array_column($list, 'user_id');

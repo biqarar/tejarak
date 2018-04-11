@@ -1,19 +1,12 @@
 <?php
 namespace content_a\request\add;
 
-class view extends \content_a\report\view
+class view
 {
-	/**
-	 * view to add team
-	 */
-	public function view_add()
+	public static function config()
 	{
-		$user_id = \dash\user::id();
-		$this->data->page['title'] = T_('Add new request');
-		$this->data->page['desc']  = T_('You can add new request of time and after confirm of team admin, this time is added to your hours.');
-
-
-
+		\dash\data::page_title(T_('Add new request'));
+		\dash\data::page_desc(T_('You can add new request of time and after confirm of team admin, this time is added to your hours.'));
 	}
 }
 ?>

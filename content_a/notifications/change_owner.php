@@ -27,7 +27,7 @@ trait change_owner
 			return false;
 		}
 
-		$team_id = \dash\request::post('team_code');
+		$team_id = \dash\request::post('teamCode');
 		$team_id = \dash\coding::decode($team_id);
 
 		if(!$team_id)

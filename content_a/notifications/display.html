@@ -75,14 +75,14 @@
                   <input type="hidden" name="answer", value="accept">
                   <input type="hidden" name="notify_type", value="owner">
                   <input type="hidden" name="notify", value='{{value.id|coding("encode")}}'>
-                  <input type="hidden" name="team_code", value='{{value.meta.team_code}}'>
+                  <input type="hidden" name="teamCode", value='{{value.meta.teamCode}}'>
                   <div class="c6 pA5 s12"><button class="btn success outline block">{%trans "Accept"%}</button></div>
                 </form>
                 <form method="post">
                   <input type="hidden" name="answer", value="reject">
                   <input type="hidden" name="notify_type", value="owner">
                   <input type="hidden" name="notify", value='{{value.id|coding("encode")}}'>
-                  <input type="hidden" name="team_code", value='{{value.meta.team_code}}'>
+                  <input type="hidden" name="teamCode", value='{{value.meta.teamCode}}'>
                     <div class="c6 pA5 s12"><button class="btn danger outline block">{%trans "Reject"%}</button></div>
                 </form>
               </div>
