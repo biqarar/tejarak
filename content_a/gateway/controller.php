@@ -1,16 +1,14 @@
 <?php
 namespace content_a\gateway;
 
-class controller extends \content_a\main\controller
+class controller
 {
 	/**
 	 * rout
 	 */
-	public function ready()
+	public static function routing()
 	{
 
-
-		$this->get(false, 'list')->ALL("/.*/");
 	}
 }
 ?>

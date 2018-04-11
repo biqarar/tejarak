@@ -2,7 +2,7 @@
 namespace content_a\gateway\edit;
 
 
-class model extends \content_a\main\model
+class model
 {
 
 	/**
@@ -10,7 +10,7 @@ class model extends \content_a\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args =
 		[
@@ -25,32 +25,11 @@ class model extends \content_a\main\model
 
 
 	/**
-	 * ready to edit gateway
-	 * load data
-	 *
-	 * @param      <type>  $_team    The team
-	 * @param      <type>  $_gateway  The gateway
-	 *
-	 * @return     <type>  ( description_of_the_return_value )
-	 */
-	public function edit($_team, $_gateway)
-	{
-		$this->user_id   = \dash\user::id();
-		$request         = [];
-		$request['team'] = $_team;
-		$request['id']   = $_gateway;
-		\dash\app::variable($request);
-		$result =  $this->get_gateway();
-		return $result;
-	}
-
-
-	/**
 	 * Posts an addgateway.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_edit($_args)
+	public static function post()
 	{
 		// check the user is login
 		if(!\dash\user::login())
@@ -59,20 +38,20 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$this->user_id = \dash\user::id();
-		$request       = $this->getPost();
+		$request       = self::getPost();
 
 		$url             = \dash\url::directory();
-		$gateway         = \dash\url::dir(3);
+		$gateway         = \dash\request::get('gateway');
 		$request['id']   = $gateway;
-		$request['team'] = $team = \dash\url::dir(0);
+		$request['team'] = $team = \dash\request::get('id');
 		\dash\app::variable($request);
 
 		// API ADD gateway FUNCTION
-		$this->add_gateway(['method' => 'patch']);
+		\lib\app\gateway::add_gateway(['method' => 'patch']);
+
 		if(\dash\engine\process::status())
 		{
-			\dash\redirect::to(\dash\url::here(). "/$team/gateway");
+			\dash\redirect::to(\dash\url::here(). "/gateway?id=". \dash\request::get('id'));
 		}
 	}
 }

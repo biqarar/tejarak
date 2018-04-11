@@ -23,7 +23,7 @@
               <div class="input preview pA10 pT25">
                 <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview data-max="500">
                 <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-                {%if edit_mode and member.file%}
+                {%if editMode and member.file%}
                   <img src="{{member.file}}" alt="{{member.displayname}}" id="avatarPreview">
                 {%endif%}
                 </label>
@@ -45,7 +45,7 @@
             </select>
           {%endif%}
 
-          <button class="btn primary block mT25">{%if edit_mode%}{%trans "Edit"%}{%else%}{%trans "Add"%}{%endif%}</button>
+          <button class="btn primary block mT25">{%if editMode%}{%trans "Edit"%}{%else%}{%trans "Add"%}{%endif%}</button>
 
 
         </form>
@@ -78,7 +78,7 @@
        <div>
         <input type="file" name="avatar" id="avatar" accept="image/gif, image/jpeg, image/png" data-preview>
         <label for="avatar" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-        {%if edit_mode and member.file%}
+        {%if editMode and member.file%}
          <img src="{{member.file}}" alt="{{member.displayname}}" id="avatarPreview">
         {%endif%}
         </label>
@@ -98,7 +98,7 @@
        </div>
       </div>
 
-     <div data-response='advance' data-response-effect='slide' {%if not edit_mode%}data-response-hide{%endif%}>
+     <div data-response='advance' data-response-effect='slide' {%if not editMode%}data-response-hide{%endif%}>
 
       <div class="f g1">
        <div class="cauto s0 lbl"><label for="firstName">{%trans "First name"%}</label></div>
@@ -125,32 +125,32 @@
        <h4>{%trans "Extra setting for special use"%}</h4>
        <div class="f">
         <div class="c4 s6">
-         <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or team_default.allow_plus or ( not member and not team_default) %}checked{%endif%}>
+         <input type="checkbox" name="allowPlus" id="allowPlus" {%if member.allow_plus or currentTeam.allow_plus or ( not member and not currentTeam) %}checked{%endif%}>
          <label for="allowPlus">{%trans "Allow plus"%}</label>
         </div>
         <div class="c4 s6">
-         <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or team_default.allow_minus or ( not member and not team_default)%}checked{%endif%}>
+         <input type="checkbox" name="allowMinus" id="allowMinus" {%if member.allow_minus or currentTeam.allow_minus or ( not member and not currentTeam)%}checked{%endif%}>
          <label for="allowMinus">{%trans "Allow minus"%}</label>
         </div>
 
         <div class="c4 s6">
-         <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or team_default.remote_user %}checked{%endif%}>
+         <input type="checkbox" name="remoteUser" id="remoteUser" {%if member.remote_user or currentTeam.remote_user %}checked{%endif%}>
          <label for="remoteUser">{%trans "Remote user"%}</label>
         </div>
 
         <div class="c4 s6">
-         <input type="checkbox" name="24h" id="24h" {%if member['24h'] or team_default['24h'] %}checked{%endif%}>
+         <input type="checkbox" name="24h" id="24h" {%if member['24h'] or currentTeam['24h'] %}checked{%endif%}>
          <label for="24h">{%trans "24 hour"%}</label>
         </div>
 
 
         <div class="c6 s6">
-         <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if member.allow_desc_enter or team_default.allow_desc_enter %}checked{%endif%}>
+         <input type="checkbox" name="allowDescEnter" id="allowDescEnter" {%if member.allow_desc_enter or currentTeam.allow_desc_enter %}checked{%endif%}>
          <label for="allowDescEnter">{%trans "Allow set desc in enter"%}</label>
         </div>
 
         <div class="c6 s6">
-         <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if member.allow_desc_exit or team_default.allow_desc_exit %}checked{%endif%}>
+         <input type="checkbox" name="allowDescExit" id="allowDescExit" {%if member.allow_desc_exit or currentTeam.allow_desc_exit %}checked{%endif%}>
          <label for="allowDescExit">{%trans "Allow set desc in exit"%}</label>
         </div>
 
@@ -285,11 +285,11 @@
 
      <div class="f g1">
        <div class="c9 s12 check1t">
-        <input type="checkbox" name="advance" id="advance" {%if edit_mode%} checked="checked" {%endif%}>
+        <input type="checkbox" name="advance" id="advance" {%if editMode%} checked="checked" {%endif%}>
         <label for="advance">{%trans "Advance"%}</label>
        </div>
       <div class="c3 os">
-       {%if edit_mode%}
+       {%if editMode%}
         <input type="submit" value='{%trans "Edit"%}' class="b1">
        {%else%}
         <input type="submit" value='{%trans "Add"%}' class="bp">

@@ -12,7 +12,7 @@ class view extends \content_a\member\view
 	public function view_edit($_args)
 	{
 
-		$this->data->edit_mode     = true;
+		$this->data->editMode     = true;
 		$url                       = \dash\url::directory();
 		$team                      = \dash\url::dir(0);
 		$member                    = \dash\url::dir(3);

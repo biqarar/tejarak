@@ -24,12 +24,12 @@
       </div>
 
 {%set passPlaceholder%}
-{%if edit_mode%}{%trans "Enter to change password"%}{%else%}{%trans "More than 6 character"%}{%endif%}
+{%if editMode%}{%trans "Enter to change password"%}{%else%}{%trans "More than 6 character"%}{%endif%}
 {%endset%}
       <div class="c s12">
-        <label for='ramz'>{%trans "Password for enter"%} {%if edit_mode%}{%else%}<span class="fc-red">*</span>{%endif%}</label>
+        <label for='ramz'>{%trans "Password for enter"%} {%if editMode%}{%else%}<span class="fc-red">*</span>{%endif%}</label>
         <div class="input">
-          <input id='ramz' name="ramz" type='password' placeholder='{{passPlaceholder}}' autocomplete="new-password" autocapitalize="off" minlength="6" maxlength="40" pattern=".{6,40}" title='{%trans "Enter a valid password from 6 to 40 character"%}' {%if edit_mode%}{%else%}required{%endif%}>
+          <input id='ramz' name="ramz" type='password' placeholder='{{passPlaceholder}}' autocomplete="new-password" autocapitalize="off" minlength="6" maxlength="40" pattern=".{6,40}" title='{%trans "Enter a valid password from 6 to 40 character"%}' {%if editMode%}{%else%}required{%endif%}>
         </div>
 
       </div>

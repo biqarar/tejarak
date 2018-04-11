@@ -2,7 +2,7 @@
 namespace content_a\gateway\add;
 
 
-class model extends \content_a\main\model
+class model
 {
 
 	/**
@@ -10,7 +10,7 @@ class model extends \content_a\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args =
 		[
@@ -29,7 +29,7 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_add($_args)
+	public static function post()
 	{
 		// check the user is login
 		if(!\dash\user::login())
@@ -38,9 +38,8 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$this->user_id = \dash\user::id();
 		// ready request
-		$request           = $this->getPost();
+		$request           = self::getPost();
 
 		$team = \dash\url::dir(0);
 		// get posted data to create the request
@@ -49,7 +48,8 @@ class model extends \content_a\main\model
 		\dash\app::variable($request);
 
 		// API ADD gateway FUNCTION
-		$this->add_gateway();
+		\lib\app\gateway::add_gateway();
+
 		if(\dash\engine\process::status())
 		{
 			\dash\redirect::to(\dash\url::here(). "/$team/gateway");

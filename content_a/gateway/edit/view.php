@@ -1,34 +1,42 @@
 <?php
 namespace content_a\gateway\edit;
 
-class view extends \content_a\main\view
+class view
 {
 	/**
 	 * edit gateway
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_edit($_args)
+	public static function config()
 	{
-
-		$this->data->edit_mode = true;
+		\dash\data::editMode(true);
 		$url                   = \dash\url::directory();
-		$team                  = \dash\url::dir(0);
-		$gateway               = \dash\url::dir(3);
-		$gateway               = $this->model()->edit($team, $gateway);
-		$this->data->gateway   = $gateway;
+		$team                  = \dash\request::get('id');
+		$gateway               = \dash\request::get('gateway');
+		$gateway               = self::edit($team, $gateway);
+		\dash\data::gateway($gateway);
 
 		if(isset($gateway['displayname']))
 		{
-			$this->data->page['title'] = T_('Edit :name', ['name' => $gateway['displayname']]);
+			\dash\data::page_title(T_('Edit :name', ['name' => $gateway['displayname']]));
 		}
 		else
 		{
-			$this->data->page['title'] = T_('Edit gateway!');
+			\dash\data::page_title(T_('Edit gateway!'));
 		}
-		$this->data->page['desc']  = T_('change user and password of gateway or disable it.');
-
+		\dash\data::page_desc(T_('change user and password of gateway or disable it.'));
 	}
 
+
+	public static function edit($_team, $_gateway)
+	{
+		$request         = [];
+		$request['team'] = $_team;
+		$request['id']   = $_gateway;
+		\dash\app::variable($request);
+		$result =  \lib\app\gateway::get_gateway();
+		return $result;
+	}
 }
 ?>

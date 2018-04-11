@@ -11,7 +11,7 @@ class view extends \content_a\member\view
 	public function view_add($_args)
 	{
 		$team                      = \dash\url::dir(0);
-		$this->data->team_default  = $team_default = $this->data->currentTeam ;
+		$this->data->currentTeam  = $currentTeam = $this->data->currentTeam ;
 
 		$this->data->page['title'] = T_('Add new member');
 		$this->data->page['desc']  = T_('You can set detail of team member and assign some extra data to use later');

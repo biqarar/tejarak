@@ -1,7 +1,7 @@
 <?php
 namespace content_a\gateway;
 
-class view extends \content_a\main\view
+class view
 {
 
 	/**
@@ -9,23 +9,16 @@ class view extends \content_a\main\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_list($_args)
+	public static function config()
 	{
-		$team                     = \dash\url::dir(0);
-		$request                  = [];
-		$request['id']            = $team;
-		$list                     = $this->model()->list_gateway($request);
-		$this->data->list_gateway  = $list;
+		$request['id']            = \dash\request::get('id');
+		\dash\app::variable($request);
+		$list =  \lib\app\gateway::get_list_gateway();
 
-		if(isset($this->data->currentTeam['name']))
-		{
-			$this->data->page['title'] = $this->data->currentTeam['name'];
-			$this->data->page['desc']  = $this->data->page['title'];
-		}
+		\dash\data::listGateway($list);
 
-		$this->data->page['title'] = T_('gateway');
-		$this->data->page['desc']  = T_('Gateway is a simple user that allow to see Tejarak board and set enter and exit of members.'). ' '. T_('This is useful when you dont want to login with your admin account and only want to register attendance data.');
-
+		\dash\data::page_title(T_('gateway'));
+		\dash\data::page_desc(T_('Gateway is a simple user that allow to see Tejarak board and set enter and exit of members.'). ' '. T_('This is useful when you dont want to login with your admin account and only want to register attendance data.'));
 	}
 
 }
