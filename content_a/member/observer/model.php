@@ -42,6 +42,7 @@ class model
 			if(\dash\engine\process::status())
 			{
 				\dash\notif::ok(T_("Observer was saved"));
+				\lib\app\team::rule(\dash\coding::decode(\dash\request::get('id')));
 
 				$t_T =
 				[
@@ -52,7 +53,7 @@ class model
 
 				$message = T_("You are registered as :title of :name in :team", $t_T). '.';
 				$message .= "\n\n". T_("Tejarak"). " | ". T_("Modern Approach");
-				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. \dash\data::currentTeam_short_name();
+				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. \dash\data::currentTeam_shortname();
 				$parent_detail = \dash\temp::get('add_parent_detail');
 
 				if(isset($parent_detail['chatid']))
@@ -93,6 +94,7 @@ class model
 		$request['id']    = \dash\request::get('member');
 		\dash\app::variable($request);
 		$result           =  \lib\app\member::get_member();
+
 		if(isset($result['displayname']))
 		{
 			return $result['displayname'];

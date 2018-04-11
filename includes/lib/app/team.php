@@ -15,7 +15,7 @@ class team
 		if($_team_id && \dash\user::id())
 		{
 			$team_details = \lib\db\teams::get_by_id($_team_id);
-
+			\dash\data::currentTeam($team_details);
 			if(isset($team_details['creator']) && intval($team_details['creator']) === intval(\dash\user::id()))
 			{
 				\dash\temp::set('isCreator', true);
