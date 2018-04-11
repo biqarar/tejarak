@@ -103,7 +103,7 @@ remain_percent -->
 
 
 {%block stMembers%}
-<a class="dcard" href='{{url.here}}/{{team}}/member'>
+<a class="dcard" href='{{url.here}}/member?id={{requestGET.id}}'>
  <div class="statistic gray">
   <div class="value"><i class="sf-users"></i><span>{{dashboardDetail.member_count |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Member"%}</div>
@@ -113,7 +113,7 @@ remain_percent -->
 
 
 {%block stTraffics%}
-<a class="dcard" href='{{url.pwd}}/report/last'>
+<a class="dcard" href='{{url.here}}/report/last?id={{requestGET.id}}'>
  <div class="statistic teal">
   <div class="value"><i class="sf-retweet"></i><span class="fs08">{{dashboardDetail.traffic_count |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Traffic Record"%}</div>
