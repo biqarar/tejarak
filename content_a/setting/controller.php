@@ -1,17 +1,14 @@
 <?php
 namespace content_a\setting;
 
-class controller extends \content_a\main\controller
+class controller
 {
 	/**
 	 * rout
 	 */
-	function ready()
+	public static function routing()
 	{
-
-
-
-		$new_url = \dash\url::here(). '/'. \dash\request::get('id'). '/setting/general';
+		$new_url = \dash\url::here(). '/setting/general?id='. \dash\request::get('id');
 
 		\dash\redirect::to($new_url);
 
