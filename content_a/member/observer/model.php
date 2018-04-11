@@ -15,7 +15,7 @@ class model
 		if(\dash\request::post('remove'))
 		{
 			\dash\app::variable(['id' => \dash\request::post('remove'), 'related_id' => \dash\request::get('id')]);
-			\lib\app\member::delete_parent();
+			\dash\app\iparent::delete_parent();
 			\dash\redirect::pwd();
 			return ;
 		}
@@ -37,7 +37,7 @@ class model
 			$parent_request['related_id'] = \dash\request::get('id');
 			\dash\app::variable($parent_request);
 
-			\lib\app\member::add_parent();
+			\dash\app\iparent::add_parent();
 
 			if(\dash\engine\process::status())
 			{
@@ -46,7 +46,7 @@ class model
 				$t_T =
 				[
 					'title' => (\dash\request::post('othertitle') && \dash\request::post('title') === 'custom') ? \dash\request::post('othertitle') : T_(ucfirst(\dash\request::post('title'))),
-					'name'  => \dash\data::member_displayname(),
+					'name'  => self::get_user_displayname(),
 					'team'  => \dash\data::currentTeam_name(),
 				];
 
@@ -74,6 +74,30 @@ class model
 			\dash\notif::error(T_("Invalid user id"));
 		}
 
+	}
+
+
+	/**
+	 * ready to edit member
+	 * load data
+	 *
+	 * @param      <type>  $_team    The team
+	 * @param      <type>  $_member  The member
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
+	public static function get_user_displayname()
+	{
+		$request          = [];
+		$request['team']  = \dash\request::get('id');
+		$request['id']    = \dash\request::get('member');
+		\dash\app::variable($request);
+		$result           =  \lib\app\member::get_member();
+		if(isset($result['displayname']))
+		{
+			return $result['displayname'];
+		}
+		return null;
 	}
 }
 ?>

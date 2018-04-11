@@ -30,9 +30,9 @@ class view
 		if(isset($user_id['user_id']))
 		{
 			\dash\app::variable(['id' => \dash\coding::encode($user_id['user_id']), 'related_id' => \dash\request::get('id') ]);
-			// @check
-			// $result           = $this->get_list_parent();
-			// return $result;
+
+			$result           = \dash\app\iparent::get_list_parent();
+			return $result;
 		}
 	}
 

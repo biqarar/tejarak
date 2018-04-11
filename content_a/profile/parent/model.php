@@ -2,21 +2,20 @@
 namespace content_a\profile\parent;
 
 
-class model extends \content_a\main\model
+class model
 {
-	public $get_data;
-	public $parent_id;
+	public static $get_data;
+	public static $parent_id;
 
 	/**
 	 * get list parent
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function list_parent()
+	public static function list_parent()
 	{
-		$this->user_id = \dash\user::id();
-		\dash\app::variable(['id' => \dash\coding::encode($this->user_id)]);
-		$result = $this->get_list_parent();
+		\dash\app::variable(['id' => \dash\coding::encode(\dash\user::id())]);
+		$result = \dash\app\iparent::get_list_parent();
 		return $result;
 	}
 
@@ -24,19 +23,18 @@ class model extends \content_a\main\model
 	/**
 	 * cancel request
 	 */
-	public function cancel_request()
+	public static function cancel_request()
 	{
-		$this->user_id = \dash\user::id();
 		\dash\app::variable(['id' => \dash\request::post('cancel')]);
-		$this->parent_cancel_request();
-		$this->redirector_refresh();
+		\dash\app\iparent::parent_cancel_request();
+		self::redirector_refresh();
 	}
 
 
 	/**
 	 * redirect to full
 	 */
-	public function redirector_refresh()
+	public static function redirector_refresh()
 	{
 		if(\dash\engine\process::status())
 		{
@@ -50,12 +48,11 @@ class model extends \content_a\main\model
 	/**
 	 * Removes a parent.
 	 */
-	public function remove_parent()
+	public static function remove_parent()
 	{
-		$this->user_id = \dash\user::id();
 		\dash\app::variable(['id' => \dash\request::post('remove')]);
-		$this->delete_parent();
-		$this->redirector_refresh();
+		\dash\app\iparent::delete_parent();
+		self::redirector_refresh();
 	}
 
 
@@ -64,10 +61,8 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_parent($_args)
+	public static function post_parent($_args)
 	{
-
-		$this->user_id = \dash\user::id();
 
 		$request               = [];
 
@@ -80,18 +75,18 @@ class model extends \content_a\main\model
 
 		if(\dash\request::post('cancel') && \dash\coding::is(\dash\request::post('cancel')))
 		{
-			$this->cancel_request();
+			self::cancel_request();
 			return ;
 		}
 
 		if(\dash\request::post('remove') && \dash\coding::is(\dash\request::post('remove')))
 		{
-			$this->remove_parent();
+			self::remove_parent();
 			return ;
 		}
 
-		$this->add_parent();
-		$this->redirector_refresh();
+		\dash\app\iparent::add_parent();
+		self::redirector_refresh();
 	}
 }
 ?>

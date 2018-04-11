@@ -1,13 +1,13 @@
 <?php
 namespace content_a\profile\parent;
 
-class view extends \content_a\main\view
+class view
 {
-	public function view_parent()
+	public static function config()
 	{
-		$list = $this->model()->list_parent();
-		// var_dump($list);exit();
-		$this->data->parent_list = $list;
+		$list = \content_a\profile\parent\model::list_parent();
+
+		\dash\data::parentList($list);
 	}
 }
 ?>

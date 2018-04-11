@@ -44,6 +44,11 @@ class view
 
 		\dash\data::isAdmin(\dash\temp::get('isAdmin'));
 		\dash\data::isCreator(\dash\temp::get('isCreator'));
+
+		if(\dash\url::module() === 'member')
+		{
+			\content_a\member\view::config();
+		}
 	}
 
 

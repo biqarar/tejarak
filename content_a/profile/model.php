@@ -80,19 +80,6 @@ class model
 			}
 		}
 
-		// // if the name exist update user display name
-		// if(\dash\request::post('name') != \dash\user::login('name'))
-		// {
-		// 	$update_user['name'] = \dash\request::post('name');
-		// 	$user_session['name'] = $update_user['name'];
-		// }
-
-		// // if the family exist update user display family
-		// if(\dash\request::post('family') != \dash\user::login('family'))
-		// {
-		// 	$update_user['lastname'] = \dash\request::post('family');
-		// 	$user_session['family'] = $update_user['lastname'];
-		// }
 
 		// if the postion exist update user display postion
 		if(\dash\request::post('displayname') != \dash\user::login('displayname'))
@@ -100,27 +87,6 @@ class model
 			$update_user['displayname'] = \dash\request::post('displayname');
 			$user_session['displayname'] = $update_user['displayname'];
 		}
-
-		// $new_unit = \dash\request::post('user-unit');
-
-		// if($new_unit === '')
-		// {
-		// 	\dash\db\logs::set('user:unit:set:empty', \dash\user::id(), $log_meta);
-		// 	\dash\notif::error(T_("Please select one units"), 'user-unit', 'arguments');
-		// 	return false;
-		// }
-
-		// if(in_array($new_unit, ['toman','dollar']))
-		// {
-		// 	$update_user['unit_id']  = \dash\app\units::get_id($new_unit);
-		// 	$user_session['unit_id'] = $update_user['unit_id'];
-		// }
-		// else
-		// {
-		// 	\dash\db\logs::set('user:unit:set:invalid:unit', \dash\user::id(), $log_meta);
-		// 	\dash\notif::error(T_("Please select a valid units"), 'user-unit', 'arguments');
-		// 	return false;
-		// }
 
 
 		// update user record
