@@ -21,6 +21,7 @@ class view
 		\dash\data::template_share('content/template/share.html');
 		\dash\data::template_price('content/template/priceTable.html');
 		\dash\data::template_priceSchool('content/template/priceSchoolTable.html');
+		\dash\data::display_adminTeam('content_a\main\layoutTeam.html');
 
 		\dash\data::include_css(true);
 		\dash\data::include_chart(true);
