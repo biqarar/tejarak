@@ -71,12 +71,12 @@ class view extends \content_a\main\view
 					$all_user = $this->model()->listMember($team_id);
 					$all_user_id = array_column($all_user, 'user_id');
 					$all_user    = array_combine($all_user_id, $all_user);
-					$this->data->all_user_list = $all_user;
+					$this->data->allUserList = $all_user;
 				}
 				else
 				{
 					$this->data->show_all_user = false;
-					$this->data->all_user_list = [];
+					$this->data->allUserList = [];
 					// this user is user
 				}
 			}

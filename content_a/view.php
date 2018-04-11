@@ -41,7 +41,6 @@ class view
 		\dash\data::isAdmin(\dash\temp::get('isAdmin'));
 		\dash\data::isCreator(\dash\temp::get('isCreator'));
 
-		\dash\data::display_adminTeam('content_a\main\layoutTeam.html');
 		if(\dash\data::team())
 		{
 			\dash\data::currentTeam(\lib\app\team::getTeamDetail(\dash\data::team()));

@@ -10,6 +10,68 @@ class team
 	use \lib\app\team\delete;
 
 
+	public static function rule($_team_id)
+	{
+		if($_team_id && \dash\user::id())
+		{
+			$team_details = \lib\db\teams::get_by_id($_team_id);
+
+			if(isset($team_details['creator']) && intval($team_details['creator']) === intval(\dash\user::id()))
+			{
+				\dash\temp::set('isCreator', true);
+			}
+			else
+			{
+				// team not found
+				if(!$team_details)
+				{
+					\dash\header::status(404, T_("Team not found"));
+				}
+				else
+				{
+					\dash\temp::set('isCreator', false);
+				}
+			}
+
+			$load_userteam_record = \lib\db\userteams::get(['team_id' => $_team_id, 'user_id' => \dash\user::id(), 'limit' => 1]);
+
+			\dash\temp::set('userteam_login_detail', $load_userteam_record);
+
+			if(isset($load_userteam_record['rule']))
+			{
+				$rule = $load_userteam_record['rule'];
+				if($rule === 'admin')
+				{
+
+					\dash\temp::set('isAdmin', true);
+				}
+				else
+				{
+					\dash\temp::set('isAdmin', false);
+				}
+			}
+			else
+			{
+				// this user is not in this team
+				if(!$load_userteam_record)
+				{
+					\dash\header::status(403);
+				}
+				else
+				{
+					// record is set but the rule is not in this record
+					// this is a bug
+					\dash\header::status(503);
+				}
+			}
+		}
+
+		\dash\data::isAdmin(\dash\temp::get('isAdmin'));
+		\dash\data::isCreator(\dash\temp::get('isCreator'));
+
+	}
+
+
 	/**
 	 * check team language and redirect if is set
 	 * the 'data' mean the arguments of  function is data of team
@@ -107,7 +169,10 @@ class team
 		$request['id'] = $_team;
 		\dash\app::variable($request);
 		$result        = self::get_team(['debug' => false]);
-
+		if($result)
+		{
+			self::rule(\dash\coding::decode($_team));
+		}
 		return $result;
 	}
 
@@ -124,6 +189,10 @@ class team
 		$request['shortname'] = $_shortname;
 		\dash\app::variable($request);
 		$result = self::get_team();
+		if(isset($result['id']))
+		{
+			self::rule(\dash\coding::decode($result['id']));
+		}
 		return $result;
 	}
 
