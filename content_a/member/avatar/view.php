@@ -9,7 +9,7 @@ class view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view()
+	public static function view()
 	{
 		\content_a\member\view::master_config();
 		\dash\data::page_title(T_('avatar member!'));

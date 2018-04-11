@@ -2,7 +2,7 @@
 namespace content_a\member\parent;
 
 
-class model extends \content_a\member\model
+class model
 {
 
 	/**
@@ -10,7 +10,7 @@ class model extends \content_a\member\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function listMember($_args)
+	public static function listMember($_args)
 	{
 		$this->user_id  = \dash\user::id();
 

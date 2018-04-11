@@ -6,7 +6,7 @@ trait change_owner
 {
 
 
-	public function change_owner()
+	public static function change_owner()
 	{
 		// 'answer' => string 'reject' (length=6)
 		//  'type' => string 'owner' (length=5)

@@ -6,7 +6,7 @@ class view
 
 	public static function config()
 	{
-
+		\content_a\member\view::master_config();
 		\dash\data::memberParent(self::getParent());
 
 		\dash\data::page_title(T_('Observer or parents'));

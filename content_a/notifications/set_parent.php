@@ -6,7 +6,7 @@ trait set_parent
 {
 
 
-	public function set_parent()
+	public static function set_parent()
 	{
 		// 'answer' => string 'reject' (length=6)
 		//  'type' => string 'parent' (length=5)

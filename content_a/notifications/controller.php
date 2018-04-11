@@ -1,14 +1,12 @@
 <?php
 namespace content_a\notifications;
 
-class controller extends  \content_a\main\controller
+class controller
 {
 
-	public function ready()
+	public static function routing()
 	{
 
-		$this->get("notifications", "notifications")->ALL();
-		$this->post("notifications")->ALL();
 	}
 }
 ?>

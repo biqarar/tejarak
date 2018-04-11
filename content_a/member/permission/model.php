@@ -21,7 +21,7 @@ class model
 	}
 
 
-	public function post_permission($_args)
+	public static function post()
 	{
 		$request         = self::getPost();
 		$member          = \dash\request::get('member');

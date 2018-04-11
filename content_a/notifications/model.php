@@ -2,24 +2,24 @@
 namespace content_a\notifications;
 
 
-class model extends \content_a\main\model
+class model
 {
-	use change_owner;
-	use set_parent;
+	use \content_a\notifications\change_owner;
+	use \content_a\notifications\set_parent;
 
-	public $user_id = null;
+	public static $user_id = null;
 	/**
 	 * get notifications data to show
 	 */
-	public function get_notifications($_args)
+	public static function get_notifications()
 	{
 		if(!\dash\user::login())
 		{
 			return false;
 		}
 		$meta            = [];
-		$this->user_id   = \dash\user::id();
-		$meta['user_id'] = $this->user_id;
+		self::$user_id   = \dash\user::id();
+		$meta['user_id'] = self::$user_id;
 		$meta['status']  = ["IN", "('enable')"];
 		$meta['sort']    = 'id';
 		$meta['order']   = 'desc';
@@ -70,7 +70,7 @@ class model extends \content_a\main\model
 	/**
 	 * post data and update or insert notifications data
 	 */
-	public function post_notifications()
+	public static function post()
 	{
 		if(!\dash\user::login())
 		{
@@ -78,16 +78,14 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$this->user_id = \dash\user::id();
-
 		if(\dash\request::post('notify_type') === 'owner')
 		{
-			$this->change_owner();
+			self::change_owner();
 		}
 
 		if(\dash\request::post('notify_type') === 'parent')
 		{
-			$this->set_parent();
+			self::set_parent();
 		}
 
 

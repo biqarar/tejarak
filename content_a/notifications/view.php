@@ -1,30 +1,12 @@
 <?php
 namespace content_a\notifications;
 
-class view extends \content_a\main\view
+class view
 {
-	/**
-	 * { function_description }
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function view_notifications($_args)
+
+	public static function config()
 	{
-		if(!\dash\user::login())
-		{
-			return;
-		}
-
-		$notify = $_args->api_callback;
-		// var_dump($notify);exit();
-		$this->data->notify = $notify;
-
-
-		if(isset($this->controller->pagnation))
-		{
-			$this->data->pagnation = $this->controller->pagnation_get();
-		}
-
+		\dash\data::notify(\content_a\notifications\model::get_notifications());
 	}
 
 }
