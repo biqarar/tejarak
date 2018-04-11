@@ -1,7 +1,7 @@
 {%extends display.adminTeam%}
 
 {%block pageContent%}
-{{block('chart_last_month')}}
+{{block('chartLast_month')}}
 <div class="f">
  <div class="c3 s6">{{block ("stLastTraffic")}}</div>
  <div class="c3 s6">{{block ("stTrafficMonth")}}</div>
@@ -18,16 +18,16 @@
 
 
 
-{%block chart_last_month%}
+{%block chartLast_month%}
 <div class="dcard x3 pA0">
- <div class="chart" data-vals='{{chart_last_month|raw}}'>
+ <div class="chart" data-vals='{{chartLast_month|raw}}'>
  </div>
 </div>
 {%endblock%}
 
 
 {%block stRequestList%}
-<a class="dcard" href='{{url.here}}/{{teamCode}}/request'>
+<a class="dcard" href='{{url.here}}/request?id={{requestGET.id}}'>
  <div class="statistic gray">
   <div class="label">{%trans "List of current requests"%}</div>
  </div>
@@ -36,7 +36,7 @@
 
 
 {%block stRequestAdd%}
-<a class="dcard" href='{{url.here}}/{{teamCode}}/request/add'>
+<a class="dcard" href='{{url.here}}/request/add?id={{requestGET.id}}'>
  <div class="statistic gray">
   <div class="label">{%trans "Add new request"%}</div>
  </div>
@@ -45,7 +45,7 @@
 
 
 {%block stRequestEdit%}
-<a class="dcard" href='{{url.here}}/{{teamCode}}/report/last'>
+<a class="dcard" href='{{url.here}}/report/last?id={{requestGET.id}}'>
  <div class="statistic gray">
   <div class="label">{%trans "Edit existing record"%}</div>
  </div>
@@ -54,7 +54,7 @@
 
 
 {%block stLastTraffic%}
-<a class="dcard" href='{{url.pwd}}/last'>
+<a class="dcard" href='{{url.here}}/report/last?id={{requestGET.id}}'>
  <div class="statistic gray">
   <div class="label">{%trans "Last traffics"%}</div>
  </div>
@@ -63,7 +63,7 @@
 
 
 {%block stTrafficMonth%}
-<a class="dcard" href='{{url.pwd}}/month'>
+<a class="dcard" href='{{url.here}}/report/month?id={{requestGET.id}}'>
  <div class="statistic teal">
   <div class="label">{%trans "Sum times in month"%}</div>
  </div>
@@ -72,7 +72,7 @@
 
 
 {%block stTrafficYear%}
-  <a class="dcard" href="{{url.pwd}}/year">
+  <a class="dcard" href="{{url.here}}/report/year?id={{requestGET.id}}">
    <div class="statistic orange">
     <div class="label">{%trans "Sum times in year"%}</div>
    </div>

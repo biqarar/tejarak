@@ -20,13 +20,13 @@
 		<th>{%trans "Total"%}</th>
 	</thead>
 	<tbody>
-	{%for key, value in year_time%}
+	{%for key, value in yearTime%}
 	<tr>
 		<td >{{value.displayname}}</td>
 		<td >{{value.year|fitNumber}}</td>
 		<td >{{value.month|fitNumber}}</td>
 		<td >{{value.count|fitNumber}}</td>
-		{%if time_raw%}
+		{%if timeRaw%}
 			<td >{{value.diff | fitNumber}}</td>
 			<td >{{value.minus | fitNumber}}</td>
 			<td >{{value.plus | fitNumber}}</td>
@@ -49,7 +49,7 @@
 {%include display.pagination%}
 
 <div>
-	<a href="{{export_url|raw}}"> {%trans "Export"%}
+	<a href="{{exportUrl|raw}}"> {%trans "Export"%}
 		<i title='{%trans "Export as CSV file"%}' class="sf-list btn"></i>
 	</a>
 </div>

@@ -1,13 +1,13 @@
 <?php
 namespace content_a\profile;
 
-class view extends \content_a\main\view
+class view
 {
-	public function view_profile()
+	public static function config()
 	{
 		if(\dash\user::login('unit_id'))
 		{
-			$this->data->user_unit = \dash\app\units::get(\dash\user::login('unit_id'), true);
+			\dash\data::userUnit(\dash\app\units::get(\dash\user::login('unit_id'), true));
 		}
 	}
 }

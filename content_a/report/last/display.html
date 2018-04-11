@@ -18,7 +18,7 @@
 
 {%block lastTimePrintMode%}
 
-<div class="msg info">{%trans "Last time for"%}| {{report_current_user.displayname}}</div>
+<div class="msg info">{%trans "Last time for"%}| {{reportCurrent_user.displayname}}</div>
 <table class="tbl">
   <thead class="primary">
     <tr>
@@ -32,14 +32,14 @@
     </tr>
   </thead>
   <tbody>
-    {%for key, value in last_time%}
+    {%for key, value in lastTime%}
     <tr xclass="f">
       <td xclass="c">{{value.displayname}}</td>
       <td xclass="c s0 m0">{{value.postion}}</td>
       <td xclass="c">{{value.date|jdate("Y-m-d")}}</td>
       <td xclass="c">{{value.start|fitNumber}}</td>
       <td xclass="c">{{value.end|fitNumber}}</td>
-{%if time_raw %}
+{%if timeRaw %}
       <td xclass="c s0">{{value.diff | fitNumber}}</td>
 {%else%}
       <td xclass="c s0">{{value.diff | humantime | fitNumber}}</td>
@@ -55,7 +55,7 @@
 
 <div class="f">
   <div class="cauto  pA5">
-    <a href="{{export_url|raw}}">
+    <a href="{{exportUrl|raw}}">
       <i class="sf-list btn"></i> {%trans "Export"%}
     </a>
   </div>
@@ -87,14 +87,14 @@
     </tr>
   </thead>
   <tbody>
-    {%for key, value in last_time%}
+    {%for key, value in lastTime%}
     <tr xclass="f">
       <td xclass="c">{{value.displayname}}</td>
       <td xclass="c s0 m0">{{value.postion}}</td>
       <td xclass="c">{{value.date|jdate("Y-m-d")}}</td>
       <td xclass="c">{{value.start|fitNumber}}</td>
       <td xclass="c">{{value.end|fitNumber}}</td>
-{%if time_raw %}
+{%if timeRaw %}
       <td xclass="c s0">{{value.diff | fitNumber}}</td>
       <td xclass="c s0">{{value.minus | fitNumber}}</td>
       <td xclass="c s0">{{value.plus | fitNumber}}</td>
@@ -122,7 +122,7 @@
   </div>
 
   <div class="cauto  pA5">
-    <a href="{{export_url|raw}}">
+    <a href="{{exportUrl|raw}}">
       <i class="sf-list btn"></i> {%trans "Export"%}
     </a>
   </div>

@@ -12,14 +12,14 @@ class view extends \content_a\main\view
 
 		if(\dash\user::login())
 		{
-			$user_unit             = \dash\app\units::find_user_unit(\dash\user::id(), true);
-			$user_unit_id          = \dash\app\units::get_id($user_unit);
-			$user_unit_id          = (int) $user_unit_id;
-			if($user_unit          == 'dollar')
+			$userUnit             = \dash\app\units::find_userUnit(\dash\user::id(), true);
+			$userUnit_id          = \dash\app\units::get_id($userUnit);
+			$userUnit_id          = (int) $userUnit_id;
+			if($userUnit          == 'dollar')
 			{
-				$user_unit             = '$';
+				$userUnit             = '$';
 			}
-			$this->data->user_unit = T_($user_unit);
+			$this->data->userUnit = T_($userUnit);
 
 			$user_cash_all = \dash\db\transactions::budget(\dash\user::id(), ['unit' => 'all']);
 			$this->data->user_cash_all = $user_cash_all;

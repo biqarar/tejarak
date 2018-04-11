@@ -2,14 +2,14 @@
 namespace content_a\profile;
 
 
-class model extends \content_a\main\model
+class model
 {
 	/**
 	 * Posts a setup 2.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_profile($_args)
+	public static function post()
 	{
 
 		$log_meta =
@@ -61,9 +61,9 @@ class model extends \content_a\main\model
 		$temp_url  = null;
 		if(\dash\request::files('avatar'))
 		{
-			$this->user_id = \dash\user::id();
+
 			\dash\app::variable(['upload_name' => 'avatar']);
-			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
+			$uploaded_file = \dash\app\file::upload(['\lib\notif' => false]);
 
 			if(isset($uploaded_file['url']))
 			{

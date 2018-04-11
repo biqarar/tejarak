@@ -10,14 +10,14 @@
 <form method="get" class="cbox" data-action>
   <label for="year">{%trans "Filter by get data of specefic time"%}</label>
   <div class="input">
-    <input class="datepicker" data-format='YYYY/MM/DD' placeholder='{%trans "Start date"%}' name="start" {%if get_start_date%} value="{{get_start_date}}"{%else%} data-initialValue='false' data-view='year'{%endif%}>
-    <input class="datepicker" data-format='YYYY/MM/DD' placeholder='{%trans "End date"%}' name="end" {%if get_start_date%} value="{{get_end_date}}"{%else%}{%endif%}>
+    <input class="datepicker" data-format='YYYY/MM/DD' placeholder='{%trans "Start date"%}' name="start" {%if getStart_date%} value="{{getStart_date}}"{%else%} data-initialValue='false' data-view='year'{%endif%}>
+    <input class="datepicker" data-format='YYYY/MM/DD' placeholder='{%trans "End date"%}' name="end" {%if getStart_date%} value="{{getEnd_date}}"{%else%}{%endif%}>
     <button class="addons btn primary">{%trans "Go"%}</button>
   </div>
 </form>
 
 
-{%if period_time%}
+{%if periodTime%}
 <div class="cbox fs11">
   <table class="tbl">
     <thead class="primary">
@@ -32,12 +32,12 @@
       </tr>
     </thead>
     <tbody>
-    {%for key, value in period_time%}
+    {%for key, value in periodTime%}
     <tr>
       <td>{{value.displayname}}</td>
       <td>{{value.start|fitNumber}}</td>
       <td>{{value.end|fitNumber}}</td>
-      {%if time_raw%}
+      {%if timeRaw%}
         <td>{{value.diff | fitNumber}}</td>
         <td>{{value.minus | fitNumber}}</td>
         <td>{{value.plus | fitNumber}}</td>
@@ -57,7 +57,7 @@
 {%include display.pagination%}
 
 <div>
-  <a href="{{export_url|raw}}">
+  <a href="{{exportUrl|raw}}">
     <i class="sf-list btn"></i>
   </a>
 </div>

@@ -2,54 +2,54 @@
 namespace content_a\report;
 
 
-class view extends \content_a\main\view
+class view
 {
-	public function config()
+	public static function config()
 	{
-		$this->data->month = \dash\date::month_precent();
+		\dash\data::month(\dash\date::month_precent());
 		/**
 		* get raw time
 		* skip humantime
 		*/
 		if(\dash\request::get('time') === 'raw')
 		{
-			$this->data->time_raw = true;
+			\dash\data::timeRaw(true);
 		}
 		else
 		{
-			$this->data->time_raw = false;
+			\dash\data::timeRaw(false);
 		}
 
 		if(\dash\request::get())
 		{
 			if(!\dash\request::get('export'))
 			{
-				$this->data->export_url = \dash\url::pwd(). '&export=true';
+				\dash\data::exportUrl(\dash\url::pwd(). '&export=true');
 			}
 			else
 			{
-				$this->data->export_url = \dash\url::pwd();
+				\dash\data::exportUrl(\dash\url::pwd());
 			}
 		}
 		else
 		{
-			$this->data->export_url = \dash\url::pwd(). '?export=true';
+			\dash\data::exportUrl(\dash\url::pwd(). '?export=true');
 		}
 
 		if(\dash\request::get('year') && is_numeric(\dash\request::get('year')) && mb_strlen(\dash\request::get('year')) === 4)
 		{
-			$this->data->get_year = \dash\request::get('year');
+			\dash\data::getYear(\dash\request::get('year'));
 		}
 
 
-		$this->data->page['title'] = T_('Reports');
-		$this->data->page['desc']  = T_('You can see reports and compare data of members and give export from report to use in another programs.');
+		\dash\data::page_title(T_('Reports'));
+		\dash\data::page_desc(T_('You can see reports and compare data of members and give export from report to use in another programs.'));
 
 		$all_user = [];
 
 		if($team_code = \dash\temp::get('team_code_url'))
 		{
-			$this->data->reportUrl = \dash\url::here(). '/'. \dash\url::directory();
+			\dash\data::reportUrl(\dash\url::here(). '/'. \dash\url::directory());
 			// var_dump($this->data->reportUrl);exit();
 			$team_id = \dash\coding::decode($team_code);
 			if($team_id)
@@ -65,18 +65,18 @@ class view extends \content_a\main\view
 				if(isset($user_status['rule']) && $user_status['rule'] === 'admin')
 				{
 					// this user is admin
-					// set true on show_all_user
-					$this->data->show_all_user = true;
+					// set true on showAll_user
+					\dash\data::showAll_user(true);
 					// load all user data to show
-					$all_user = $this->model()->listMember($team_id);
+					$all_user = \lib\app\team::listMember($team_id);
 					$all_user_id = array_column($all_user, 'user_id');
 					$all_user    = array_combine($all_user_id, $all_user);
-					$this->data->allUserList = $all_user;
+					\dash\data::allUserList($all_user);
 				}
 				else
 				{
-					$this->data->show_all_user = false;
-					$this->data->allUserList = [];
+					\dash\data::showAll_user(false);
+					\dash\data::allUserList([]);
 					// this user is user
 				}
 			}
@@ -84,16 +84,16 @@ class view extends \content_a\main\view
 
 		if(\dash\request::get('user') && isset($all_user[\dash\request::get('user')]))
 		{
-			$this->data->report_current_user = $all_user[\dash\request::get('user')];
+			\dash\data::reportCurrent_user($all_user[\dash\request::get('user')]);
 		}
 
-		$team_id = \dash\coding::decode($this->data->team_code);
+		$team_id = \dash\coding::decode(\dash\request::get('id'));
 
 		$cache_chart = \dash\session::get('report_last_month_chart_'. $team_id);
 		if($cache_chart === null)
 		{
 
-			if($this->data->isAdmin)
+			if(\dash\data::isAdmin())
 			{
 				$user_id = null;
 			}
@@ -102,12 +102,12 @@ class view extends \content_a\main\view
 				$user_id = \dash\user::id();
 			}
 
-			$chart_last_month = \lib\db\teams::last_time_chart($team_id, $user_id, 30);
+			$chartLast_month = \lib\db\teams::last_time_chart($team_id, $user_id, 30);
 			$cache_chart = [];
 
-			if(is_array($chart_last_month))
+			if(is_array($chartLast_month))
 			{
-				foreach ($chart_last_month as $key => $value)
+				foreach ($chartLast_month as $key => $value)
 				{
 					$format = "Y-m-d D";
 					$date = date($format, strtotime($key));
@@ -122,7 +122,7 @@ class view extends \content_a\main\view
 			$cache_chart = json_encode($cache_chart, JSON_UNESCAPED_UNICODE);
 			\dash\session::set('report_last_month_chart_'. $team_id, $cache_chart, null, 60);
 		}
-		$this->data->chart_last_month = $cache_chart;
+		\dash\data::chartLast_month($cache_chart);
 
 	}
 }

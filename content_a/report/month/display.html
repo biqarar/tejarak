@@ -7,18 +7,20 @@
 {{block('userList')}}
 
 <form method="get" class="cbox" data-action>
+  <input type="hidden" name="id" value="{{requestGET.id}}">
   <label for="year">{%trans "Filter by specefic month of specefic year"%}</label>
   <div class="input">
-    <input type="number" name="year" id="year" value='{%if get_year%}{{get_year}}{%else%}{{"now"|jdate("Y", false)}}{%endif%}' placeholder="Year" min="1300" max="3000">
-    <input type="number" name="month" id="month" value='{{get_month}}' placeholder="Month" min="1" max="12">
+
+    <input type="number" name="year" id="year" value='{%if getYear%}{{getYear}}{%else%}{{"now"|jdate("Y", false)}}{%endif%}' placeholder="Year" min="1300" max="3000">
+    <input type="number" name="month" id="month" value='{{getMonth}}' placeholder="Month" min="1" max="12">
     <button class="addons btn primary">{%trans "Go"%}</button>
   </div>
 </form>
 
-{%if month_time%}
+{%if monthTime%}
   {{block('tableMonthTime')}}
 {%else%}
-  <div class="msg warn">{%trans "No result for"%}: {{report_current_user.displayname}}</div>
+  <div class="msg warn">{%trans "No result for"%}: {{reportCurrent_user.displayname}}</div>
 {%endif%}
 
 {%endblock%}
@@ -38,12 +40,12 @@
       <th>{%trans "Accepted"%}</th>
     </thead>
     <tbody>
-    {%for key, value in month_time%}
+    {%for key, value in monthTime%}
     <tr>
       <td>{{value.displayname}}</td>
       <td>{{value.year|fitNumber}}</td>
       <td>{{value.month|fitNumber}}</td>
-      {%if time_raw%}
+      {%if timeRaw%}
         <td>{{value.diff | fitNumber}}</td>
         <td>{{value.minus | fitNumber}}</td>
         <td>{{value.plus | fitNumber}}</td>
@@ -64,7 +66,7 @@
 {%include display.pagination%}
 
 <div>
-  <a href="{{export_url|raw}}">
+  <a href="{{exportUrl|raw}}">
     <i class="sf-list btn"></i>
   </a>
 </div>

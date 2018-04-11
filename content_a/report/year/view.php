@@ -2,17 +2,14 @@
 namespace content_a\report\year;
 
 
-class view extends \content_a\report\view
+class view
 {
-	public function config()
+	public static function config()
 	{
-		parent::config();
-		$this->data->page['title'] = T_('Report group by year');
-		$this->data->page['desc']  = T_('check last attendace data and filter it based on member and see it for specefic member and exprort data of them.');
-	}
 
-	public function view_year()
-	{
+		\dash\data::page_title(T_('Report group by year'));
+		\dash\data::page_desc(T_('check last attendace data and filter it based on member and see it for specefic member and exprort data of them.'));
+
 		$args           = [];
 		$args['id']     = \dash\request::get('id');
 		$args['export'] = \dash\request::get('export');
@@ -27,12 +24,14 @@ class view extends \content_a\report\view
 			$args['year'] = \dash\request::get('year');
 		}
 
-		$this->data->year_time = $this->model()->get_year_time($args);
+		\dash\data::yearTime(self::getYear_time($args));
+	}
 
-		if(isset($this->controller->pagnation))
-		{
-			$this->data->pagnation = $this->controller->pagnation_get();
-		}
+
+	public static function getYear_time($_request)
+	{
+		\dash\app::variable($_request);
+		return \lib\app\report::report_year_time();
 	}
 }
 ?>

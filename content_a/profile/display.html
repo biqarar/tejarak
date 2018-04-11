@@ -88,8 +88,8 @@
 {%block iunitSelect%}
   <select name="user-unit">
    <option value="" readonly>{%trans "Please select one unit for default"%}</option>
-   <option value="toman" {% if user_unit == 'toman' or user_unit == 'تومان' %} selected="selected" {%endif%}>{%trans "Toman"%}</option>
-   <option value="dollar" {% if user_unit == 'dollar' or user_unit == '$' %} selected="selected" {%endif%}>{%trans "$"%}</option>
+   <option value="toman" {% if userUnit == 'toman' or userUnit == 'تومان' %} selected="selected" {%endif%}>{%trans "Toman"%}</option>
+   <option value="dollar" {% if userUnit == 'dollar' or userUnit == '$' %} selected="selected" {%endif%}>{%trans "$"%}</option>
   </select>
 {%endblock%}
 
@@ -97,12 +97,12 @@
 {%block iunitRadio%}
  <div class="f radio1t">
   <div class="c">
-   <input type="radio" id="r-toman" name="user-unit" value="toman" {%if user_unit=='toman' or user_unit=='تومان'%}checked{%endif%}>
+   <input type="radio" id="r-toman" name="user-unit" value="toman" {%if userUnit=='toman' or userUnit=='تومان'%}checked{%endif%}>
    <label for="r-toman">{%trans "Toman"%}</label>
   </div>
 
   <div class="c">
-   <input type="radio" id="r-dollar" name="user-unit" value="dollar" {%if user_unit=='dollar' or user_unit=='$'%}checked{%endif%}>
+   <input type="radio" id="r-dollar" name="user-unit" value="dollar" {%if userUnit=='dollar' or userUnit=='$'%}checked{%endif%}>
    <label for="r-dollar">{%trans "Dollar"%}</label>
   </div>
  </div>

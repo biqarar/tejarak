@@ -2,25 +2,21 @@
 namespace content_a\report\period;
 
 
-class view extends \content_a\report\view
+class view
 {
-	public function config()
+	public static function config()
 	{
-		parent::config();
-		$this->data->page['title'] = T_('Report in period of time');
-		$this->data->page['desc']  = T_('check last attendace data and filter it based on member and see it for specefic member and exprort data of them.');
-	}
+		\dash\data::page_title(T_('Report in period of time'));
+		\dash\data::page_desc(T_('check last attendace data and filter it based on member and see it for specefic member and exprort data of them.'));
 
-	public function view_period()
-	{
 		if(\dash\request::get('start'))
 		{
-			$this->data->get_start_date = \dash\request::get('start');
+			\dash\data::getStart_date(\dash\request::get('start'));
 		}
 
 		if(\dash\request::get('end'))
 		{
-			$this->data->get_end_date = \dash\request::get('end');
+			\dash\data::getEnd_date(\dash\request::get('end'));
 		}
 
 		$args           = [];
@@ -29,12 +25,15 @@ class view extends \content_a\report\view
 		$args['end']    = \dash\request::get('end');
 		$args['user']   = \dash\request::get('user');
 		$args['export'] = \dash\request::get('export');
-		$this->data->period_time = $this->model()->get_period_time($args);
-
-		if(isset($this->controller->pagnation))
-		{
-			$this->data->pagnation = $this->controller->pagnation_get();
-		}
+		\dash\data::periodTime(self::get_period_time($args));
 	}
+
+
+	public static function get_period_time($_request)
+	{
+		\dash\app::variable($_request);
+		return \lib\app\report::report_period_time();
+	}
+
 }
 ?>
