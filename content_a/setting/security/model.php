@@ -2,23 +2,23 @@
 namespace content_a\setting\security;
 
 
-class model extends \content_a\main\model
+class model
 {
-	public $user_data;
-	public $mobile;
-	public $user_id;
-	public $team_id;
-	public $teamCode;
-	public $currentTeam;
+	public static $user_data;
+	public static $mobile;
+	public static $user_id;
+	public static $team_id;
+	public static $teamCode;
+	public static $currentTeam;
 
 
 	/**
 	 * Loads a last request.
 	 */
-	public function load_last_request()
+	public static function load_last_request()
 	{
 		$team_id = \dash\coding::decode(\dash\request::get('id'));
-		$load_last_request = $this->check_sended_request($team_id);
+		$load_last_request = self::check_sended_request($team_id);
 		if(isset($load_last_request['user_id']))
 		{
 			$user_data             = \dash\db\users::get_by_id($load_last_request['user_id']);
@@ -41,16 +41,16 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_security($_args)
+	public static function post_security($_args)
 	{
 		if(!\dash\user::login())
 		{
 			\dash\notif::error(T_("Please login to change owner"), 'owner');
-			return $this->refresh_page();
+			return self::refresh_page();
 		}
 
 		// the request was sended
-		if($load_last_request = $this->load_last_request())
+		if($load_last_request = self::load_last_request())
 		{
 			if($load_last_request['status'] === 'awaiting')
 			{
@@ -70,7 +70,7 @@ class model extends \content_a\main\model
 					\dash\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
 			}
-			return $this->refresh_page();
+			return self::refresh_page();
 		}
 
 
@@ -78,32 +78,32 @@ class model extends \content_a\main\model
 		if(!$new_owner)
 		{
 			\dash\notif::error(T_("Plese fill the mobile field"), 'owner');
-			return $this->refresh_page();
+			return self::refresh_page();
 		}
 
-		if(!$this->mobile = \dash\utility\filter::mobile($new_owner))
+		if(!self::$mobile = \dash\utility\filter::mobile($new_owner))
 		{
 			\dash\notif::error(T_("Invalid mobile number"), 'owner');
-			return $this->refresh_page();
+			return self::refresh_page();
 		}
 
-		$this->user_data = \dash\db\users::get_by_mobile($this->mobile);
-		if(!isset($this->user_data['id']))
+		self::$user_data = \dash\db\users::get_by_mobile(self::$mobile);
+		if(!isset(self::$user_data['id']))
 		{
 			\dash\notif::error(T_("User not found"), 'owner');
-			return $this->refresh_page();
+			return self::refresh_page();
 		}
 
-		$this->teamCode = \dash\request::get('id');
-		$this->team_id = \dash\coding::decode($this->teamCode);
-		$this->currentTeam = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
+		self::$teamCode = \dash\request::get('id');
+		self::$team_id = \dash\coding::decode(self::$teamCode);
+		self::$currentTeam = \lib\db\teams::get(['id' => self::$team_id, 'limit' => 1]);
 
-		if($this->check_sended_request() === false)
+		if(self::check_sended_request() === false)
 		{
-			$this->send_request();
+			self::send_request();
 		}
 
-		return $this->refresh_page();
+		return self::refresh_page();
 
 	}
 
@@ -111,7 +111,7 @@ class model extends \content_a\main\model
 	/**
 	 * { function_description }
 	 */
-	public function refresh_page()
+	public static function refresh_page()
 	{
 		\dash\redirect::pwd();
 		return ;
@@ -125,11 +125,11 @@ class model extends \content_a\main\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function check_sended_request($_team_id = null)
+	public static function check_sended_request($_team_id = null)
 	{
 		if($_team_id === null)
 		{
-			$_team_id = $this->team_id;
+			$_team_id = self::$team_id;
 		}
 
 		$get =
@@ -162,40 +162,40 @@ class model extends \content_a\main\model
 	/**
 	 * Sends a request.
 	 */
-	public function send_request()
+	public static function send_request()
 	{
 
 		$meta                      = [];
-		$meta['teamCode']         = $this->teamCode;
-		$meta['team_id']           = $this->team_id;
+		$meta['teamCode']         = self::$teamCode;
+		$meta['team_id']           = self::$team_id;
 		$meta['old_owner']         = \dash\user::id();
-		$meta['new_owner']         = $this->user_data['id'];
-		// $meta['new_owner_data'] = $this->user_data;
-		$meta['new_owner_mobile']  = $this->mobile;
-		// $meta['team']           = $this->currentTeam;
-		$meta['team_logo']         = $this->currentTeam['logourl'];
-		$meta['team_name']         = $this->currentTeam['name'];
+		$meta['new_owner']         = self::$user_data['id'];
+		// $meta['new_owner_data'] = self::$user_data;
+		$meta['new_owner_mobile']  = self::$mobile;
+		// $meta['team']           = self::$currentTeam;
+		$meta['team_logo']         = self::$currentTeam['logourl'];
+		$meta['team_name']         = self::$currentTeam['name'];
 		$meta['sender_name']       = \dash\user::login('displayname');
 		$meta['sender_mobile']     = \dash\user::login('mobile');
 		$meta['sender_logo']       = \dash\user::login('avatar');
 
-		if(intval(\dash\user::id()) === intval($this->user_data['id']))
+		if(intval(\dash\user::id()) === intval(self::$user_data['id']))
 		{
 			\dash\notif::error(T_("You try to move team to yourself!"), 'owner');
-			$this->_processor(['force_stop' => true]);
+			\dahs\code::end();
 			return false;
 		}
 		$send_notify =
 		[
 			'from'            => \dash\user::id(),
-			'to'              => $this->user_data['id'],
+			'to'              => self::$user_data['id'],
 			'cat'             => 'change_owner',
 			'related_foreign' => 'teams',
 			'status'		  => 'awaiting',
 			'related_id'      => $meta['team_id'],
 			'meta'            => json_encode(\dash\safe::safe($meta), JSON_UNESCAPED_UNICODE),
 			'needanswer'      => 1,
-			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->currentTeam['name']]),
+			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => self::$currentTeam['name']]),
 		];
 
 		$a = \dash\db\notifications::set($send_notify);

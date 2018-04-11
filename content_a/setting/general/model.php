@@ -2,14 +2,14 @@
 namespace content_a\setting\general;
 
 
-class model extends \content_a\main\model
+class model
 {
-/**
+	/**
 	 * Gets the post.
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args = [];
 		if(\dash\request::post('formType') === 'public')
@@ -47,18 +47,18 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_general($_args)
+	public static function post()
 	{
 		$code = \dash\request::get('id');
 
-		$request       = $this->getPost();
-		$this->user_id = \dash\user::id();
+		$request       = self::getPost();
+
 		$request['id'] = $code;
 
 		\dash\app::variable($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
-		$this->add_team(['method' => 'patch']);
+		\lib\app\team::add_team(['method' => 'patch']);
 		if(\dash\engine\process::status())
 		{
 			\dash\redirect::pwd();

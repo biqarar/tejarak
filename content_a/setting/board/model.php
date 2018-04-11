@@ -2,7 +2,7 @@
 namespace content_a\setting\board;
 
 
-class model extends \content_a\main\model
+class model
 {
 
 	/**
@@ -10,7 +10,7 @@ class model extends \content_a\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args = [];
 		if(\dash\request::post('formType') === 'event')
@@ -41,16 +41,15 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_board()
+	public static function post()
 	{
 		$code          = \dash\request::get('id');
-		$request       = $this->getPost();
+		$request       = self::getPost();
 
-		$this->user_id = \dash\user::id();
 		$request['id'] = $code;
 		\dash\app::variable($request);
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
-		$this->add_team(['method' => 'patch']);
+		\lib\app\team::add_team(['method' => 'patch']);
 	}
 }
 ?>

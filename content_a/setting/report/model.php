@@ -2,9 +2,9 @@
 namespace content_a\setting\report;
 
 
-class model extends \content_a\main\model
+class model
 {
-	public function post_report($_args)
+	public static function post()
 	{
 
 

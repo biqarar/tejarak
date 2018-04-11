@@ -1,26 +1,15 @@
 <?php
 namespace content_a\setting\security;
 
-class view extends \content_a\setting\view
+class view
 {
 
-	public function config()
+	public static function config()
 	{
-		parent::config();
-		$this->data->page['title']  = T_('Setting'). ' | '. T_('Security and Privacy');
-		// $this->data->page['desc']  = T_('');
+		\dash\data::page_title(T_('Setting'). ' | '. T_('Security and Privacy'));
+		$request_data = \content_a\setting\security\model::load_last_request();
+		\dash\data::sendedData($request_data);
 	}
 
-
-	/**
-	 * { function_description }
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function view_security($_args)
-	{
-		$request_data = $this->model()->load_last_request();
-		$this->data->sended_data = $request_data;
-	}
 }
 ?>

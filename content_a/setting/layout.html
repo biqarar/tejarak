@@ -134,22 +134,22 @@
 <label>{%trans "Choose your plan"%}</label>
 
 <div class="radio1">
-  <input type="radio" name="plan" id="r-free" value="free" {%if current_plan.plan_name =='free'%}checked{%endif%}>
+  <input type="radio" name="plan" id="r-free" value="free" {%if currentPlan.plan_name =='free'%}checked{%endif%}>
   <label for="r-free">{%trans "Free"%} <small>{%trans "All the basics for personal use."%}</small></label>
 </div>
 
 <div class="radio1">
-  <input type="radio" name="plan" id="r-simple" value="simple" {%if current_plan.plan_name =='simple'%}checked{%endif%}>
+  <input type="radio" name="plan" id="r-simple" value="simple" {%if currentPlan.plan_name =='simple'%}checked{%endif%}>
   <label for="r-simple">{%trans "Simple"%} <small>{%trans "Everything in Free plus automatic report via Telegram."%}</small></label>
 </div>
 
 <div class="radio1">
-  <input type="radio" name="plan" id="r-standard" value="standard" {%if current_plan.plan_name =='standard'%}checked{%endif%}>
+  <input type="radio" name="plan" id="r-standard" value="standard" {%if currentPlan.plan_name =='standard'%}checked{%endif%}>
   <label for="r-standard">{%trans "Standard"%} <small>{%trans "Everything you need for a growing business."%}</small></label>
 </div>
 
 <div class="radio1">
-  <input type="radio" name="plan" id="r-full" value="full" {%if current_plan.plan_name =='full'%}checked{%endif%}>
+  <input type="radio" name="plan" id="r-full" value="full" {%if currentPlan.plan_name =='full'%}checked{%endif%}>
   <label for="r-full">{%trans "Full"%} <small>{%trans "For big companies that need fix price per month."%}</small></label>
 </div>
 {%endblock%}
@@ -212,7 +212,7 @@
 {%block iAutoTrafficReportHour%}
 <label for="timed_auto_report_time">{%trans "Automatic daily traffic count report"%} <small>{%trans "We automatically send report in Telegram on this time"%}</small></label>
 <div class="input clockpicker">
-  <label class="addon">{%trans server_timezone%}</label>
+  <label class="addon">{%trans serverTimezone%}</label>
   <input type="text" name="timed_auto_report_time" id="timed_auto_report_time" placeholder='{%trans "Time of send automatic daily report"%}' value="{{currentTeams.timed_auto_report}}">
 </div>
 {%endblock%}

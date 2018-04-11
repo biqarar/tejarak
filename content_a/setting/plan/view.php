@@ -1,7 +1,7 @@
 <?php
 namespace content_a\setting\plan;
 
-class view extends \content_a\setting\view
+class view
 {
 
 
@@ -10,24 +10,22 @@ class view extends \content_a\setting\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_plan($_args)
+	public static function config()
 	{
-		$this->data->current_plan = $this->model()->plan();
+		\dash\data::currentPlan(\content_a\setting\plan\model::plan());
 
 		$myTeam = 'myTeam';
 
-		if(isset($this->data->current_plan['team_id']))
-		{
-			$teamCode = \dash\coding::encode($this->data->current_plan['team_id']);
-			$currentTeam = $this->model()->getTeamDetail($teamCode);
+		$teamCode = \dash\coding::encode(\dash\data::currentPlan_team_id());
+		$currentTeam = \lib\app\team::getTeamDetail($teamCode);
 
-			if(isset($currentTeam['name']))
-			{
-				$myTeam = $currentTeam['name'];
-			}
+		if(isset($currentTeam['name']))
+		{
+			$myTeam = $currentTeam['name'];
 		}
-		$this->data->page['title'] = T_('Setting | '). T_('Change Plan of :name', ['name'=>$myTeam]);
-		$this->data->page['desc']  = T_('By choose new plan, we generate your invoice until now and next invoice is created one month later exactly at this time and you can pay it from billing.');
+
+		\dash\data::page_title(T_('Setting | '). T_('Change Plan of :name', ['name' => $myTeam]));
+		\dash\data::page_desc(T_('By choose new plan, we generate your invoice until now and next invoice is created one month later exactly at this time and you can pay it from billing.'));
 	}
 }
 ?>

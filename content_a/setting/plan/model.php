@@ -2,12 +2,12 @@
 namespace content_a\setting\plan;
 
 
-class model extends \content_a\main\model
+class model
 {
 /**
 	 * get plan data to show
 	 */
-	public function plan()
+	public static function plan()
 	{
 		if(!\dash\user::login())
 		{
@@ -31,7 +31,7 @@ class model extends \content_a\main\model
 	/**
 	 * post data and update or insert plan data
 	 */
-	public function post_plan()
+	public static function post()
 	{
 		if(!\dash\user::login())
 		{

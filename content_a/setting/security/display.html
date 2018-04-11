@@ -2,12 +2,12 @@
 
 
 {%block data%}
-{%if not sended_data.status %}
+{%if not sendedData.status %}
 <div class="cbox">
   <h3>{%trans "Transfer owner of team to another person"%}</h3>
   <p>{%trans "You can transfer this yeam to another person."%} {%trans "To start process choose new owner"%}</p>
 
-{%if not sended_data.mobile%}
+{%if not sendedData.mobile%}
   <p class="msg warn2">{%trans "If you are not sure, dont do this!"%} {%trans "After transfer your permission is changed to admin"%}</p>
 {%endif%}
 
@@ -19,19 +19,19 @@
 {%endif%}
 
 
-{%if sended_data.status == 'awaiting'%}
+{%if sendedData.status == 'awaiting'%}
 <div class="cbox">
   <h3>{%trans "Transfer owner of team to another person"%}</h3>
   <p class="mT25">{%trans "Your ownership transfer request will be sent to the following person. Are you sure?" %}</p>
   <div class="vcard w300">
     <div class="content f">
       <div class="c">
-        <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-        <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
+        <a class="header">{%if sendedData.displayname%}{{sendedData.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
+        <div class="meta"><span>{{sendedData.mobile|fitNumber}}</span></div>
       </div>
       <div class="cauto">
-        {%if sended_data.avatar%}
-          <img src="{{url.base}}/{{sended_data.avatar}}" class="mini">
+        {%if sendedData.avatar%}
+          <img src="{{url.base}}/{{sendedData.avatar}}" class="mini">
         {%else%}
           <img src="http://code.ermile.dev/siftal/images/avatar/1.png" class="mini">
         {%endif%}
@@ -54,19 +54,19 @@
 {%endif%}
 
 
-{%if sended_data.status == 'enable'%}
+{%if sendedData.status == 'enable'%}
 <div class="cbox">
   <h3>{%trans "Transfer owner of team to another person"%}</h3>
   <p>{%trans "Your ownership transfer request sended to the following person." %}</p>
     <div class="vcard w300">
       <div class="content f">
         <div class="c">
-          <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-          <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
+          <a class="header">{%if sendedData.displayname%}{{sendedData.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
+          <div class="meta"><span>{{sendedData.mobile|fitNumber}}</span></div>
         </div>
         <div class="cauto">
-          {%if sended_data.avatar%}
-            <img src="{{url.base}}/{{sended_data.avatar}}" class="mini">
+          {%if sendedData.avatar%}
+            <img src="{{url.base}}/{{sendedData.avatar}}" class="mini">
           {%else%}
             <img src="http://code.ermile.com/siftal/images/avatar/1.png" class="mini">
           {%endif%}
@@ -95,20 +95,20 @@
 {%block dataOld%}
 <div class="cbox">
   <p>{%trans "You can give over your team to another people." %}</p>
-  {%if not sended_data.mobile%}
+  {%if not sendedData.mobile%}
     <p class="msg danger2">{%trans "If you are not sure, leave this page!" %}</p>
   {%endif%}
   <form method="post">
     <div class="f " >
       <label class="cauto pT25" for="owner" >{%trans "New owner mobile"%}</label>
-      <input class="c2 mA10 s12" type="number" name="owner" placeholder='{%trans "Mobile"%}' value="{{sended_data.mobile|fitNumber}}" {%if sended_data.mobile%} disabled {%endif%}>
-      <input class="cauto btn primary mA10 s12" type="submit" value='{%trans "Send request"%}' {%if sended_data.mobile%} disabled {%endif%}>
+      <input class="c2 mA10 s12" type="number" name="owner" placeholder='{%trans "Mobile"%}' value="{{sendedData.mobile|fitNumber}}" {%if sendedData.mobile%} disabled {%endif%}>
+      <input class="cauto btn primary mA10 s12" type="submit" value='{%trans "Send request"%}' {%if sendedData.mobile%} disabled {%endif%}>
     </div>
   </form>
 </div>
 
 
-{%if sended_data.status == 'awaiting'%}
+{%if sendedData.status == 'awaiting'%}
 <div class="cbox">
   <p>{%trans "Your ownership transfer request will be sent to the following person. Are you sure?" %}</p>
   <div class="f">
@@ -116,12 +116,12 @@
         <div class="vcard w300">
           <div class="content f">
             <div class="c">
-              <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-              <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
+              <a class="header">{%if sendedData.displayname%}{{sendedData.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
+              <div class="meta"><span>{{sendedData.mobile|fitNumber}}</span></div>
             </div>
             <div class="cauto">
-              {%if sended_data.avatar%}
-                <img src="{{url.base}}/{{sended_data.avatar}}" class="mini">
+              {%if sendedData.avatar%}
+                <img src="{{url.base}}/{{sendedData.avatar}}" class="mini">
               {%else%}
                 <img src="http://code.ermile.dev/siftal/images/avatar/1.png" class="mini">
               {%endif%}
@@ -146,7 +146,7 @@
 {%endif%}
 
 
-{%if sended_data.status == 'enable'%}
+{%if sendedData.status == 'enable'%}
 <div class="cbox">
   <p>{%trans "Your ownership transfer request sended to the following person." %}</p>
   <div class="f">
@@ -154,12 +154,12 @@
         <div class="vcard w300">
           <div class="content f">
             <div class="c">
-              <a class="header">{%if sended_data.displayname%}{{sended_data.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
-              <div class="meta"><span>{{sended_data.mobile|fitNumber}}</span></div>
+              <a class="header">{%if sendedData.displayname%}{{sendedData.displayname}}{%else%}<i>{%trans "No name"%}</i>{%endif%}</a>
+              <div class="meta"><span>{{sendedData.mobile|fitNumber}}</span></div>
             </div>
             <div class="cauto">
-              {%if sended_data.avatar%}
-                <img src="{{url.base}}/{{sended_data.avatar}}" class="mini">
+              {%if sendedData.avatar%}
+                <img src="{{url.base}}/{{sendedData.avatar}}" class="mini">
               {%else%}
                 <img src="http://code.ermile.com/siftal/images/avatar/1.png" class="mini">
               {%endif%}
