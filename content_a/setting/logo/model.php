@@ -15,8 +15,7 @@ class model
 		if(\dash\request::files('logo'))
 		{
 
-			\dash\app::variable(['upload_name' => 'logo']);
-			$uploaded_file = \dash\app\file::upload(['debug' => false]);
+			$uploaded_file = \dash\app\file::upload(['debug' => false, 'upload_name' => 'logo']);
 			if(isset($uploaded_file['code']))
 			{
 				return $uploaded_file['code'];

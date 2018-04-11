@@ -62,8 +62,7 @@ class model
 		if(\dash\request::files('avatar'))
 		{
 
-			\dash\app::variable(['upload_name' => 'avatar']);
-			$uploaded_file = \dash\app\file::upload(['\lib\notif' => false]);
+			$uploaded_file = \dash\app\file::upload(['debug' => false, 'upload_name' => 'avatar']);
 
 			if(isset($uploaded_file['url']))
 			{
