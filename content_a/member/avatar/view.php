@@ -1,7 +1,7 @@
 <?php
 namespace content_a\member\avatar;
 
-class view extends \content_a\member\view
+class view
 {
 
 	/**
@@ -9,18 +9,11 @@ class view extends \content_a\member\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_avatar($_args)
+	public function view()
 	{
-		if(isset($member['displayname']))
-		{
-			$this->data->page['title'] = T_('avatar :name', ['name' => $member['displayname']]);
-		}
-		else
-		{
-			$this->data->page['title'] = T_('avatar member!');
-		}
-		$this->data->page['desc']  = $this->data->page['title'];
-
+		\content_a\member\view::master_config();
+		\dash\data::page_title(T_('avatar member!'));
+		\dash\data::page_desc(\dash\data::page_title());
 	}
 
 }

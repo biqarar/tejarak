@@ -11,10 +11,10 @@
 </form>
 
 
-{%if member_parent%}
+{%if memberParent%}
 <div class="cbox">
   <h4 class="mB25">{%trans "List of observer"%}</h4>
-{%for key, value in member_parent%}
+{%for key, value in memberParent%}
 {%set my_title = value.title | capitalize %}
 
   <div class="icard">

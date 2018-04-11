@@ -2,15 +2,10 @@
 namespace content_a\member\permission;
 
 
-class model extends \content_a\member\model
+class model
 {
 
-	/**
-	 * Gets the post.
-	 *
-	 * @return     array  The post.
-	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args =
 		[
@@ -22,30 +17,20 @@ class model extends \content_a\member\model
 			// 'allow_desc_enter' => \dash\request::post('allowDescEnter'),
 			// 'allow_desc_exit'  => \dash\request::post('allowDescExit'),
 		];
-
 		return $args;
 	}
 
 
-
-
-
-	/**
-	 * Posts an addmember.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
 	public function post_permission($_args)
 	{
-		$this->user_id   = \dash\user::id();
-		$request         = $this->getPost();
+		$request         = self::getPost();
 		$member          = \dash\request::get('member');
 		$request['id']   = $member;
-		$request['team'] = $team = \dash\request::get('id');
+		$request['team'] = \dash\request::get('id');
 		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION
-		$this->add_member(['method' => 'patch']);
+		\lib\app\member::add_member(['method' => 'patch']);
 	}
 }
 ?>

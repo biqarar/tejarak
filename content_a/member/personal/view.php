@@ -1,27 +1,13 @@
 <?php
 namespace content_a\member\personal;
 
-class view extends \content_a\member\view
+class view
 {
 
-	/**
-	 * personal member
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function view_personal($_args)
+	public static function config()
 	{
-		if(isset($member['displayname']))
-		{
-			$this->data->page['title'] = T_('personal :name', ['name' => $member['displayname']]);
-		}
-		else
-		{
-			$this->data->page['title'] = T_('personal member!');
-		}
-		$this->data->page['desc']  = $this->data->page['title'];
-
+		\dash\data::page_title(T_('personal member!'));
+		\dash\data::page_desc(\dash\data::page_title());
 	}
-
 }
 ?>

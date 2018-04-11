@@ -2,7 +2,7 @@
 namespace content_a\member\personal;
 
 
-class model extends \content_a\member\model
+class model
 {
 
 	/**
@@ -10,7 +10,7 @@ class model extends \content_a\member\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args =
 		[
@@ -32,10 +32,10 @@ class model extends \content_a\member\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_personal($_args)
+	public static function post()
 	{
-		$this->user_id = \dash\user::id();
-		$request       = $this->getPost();
+
+		$request       = self::getPost();
 
 		$member          = \dash\request::get('member');
 		$request['id']   = $member;
@@ -43,7 +43,7 @@ class model extends \content_a\member\model
 		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION
-		$this->add_member(['method' => 'patch']);
+		\lib\app\member::add_member(['method' => 'patch']);
 	}
 }
 ?>

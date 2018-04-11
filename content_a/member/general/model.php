@@ -45,7 +45,7 @@ class model
 		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION
-		$this->add_member(['method' => 'patch']);
+		\lib\app\member::add_member(['method' => 'patch']);
 
 		if(\dash\engine\process::status())
 		{

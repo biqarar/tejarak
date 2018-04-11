@@ -1,23 +1,15 @@
 <?php
 namespace content_a\member\edit;
 
-class controller extends \content_a\main\controller
+class controller
 {
 	/**
 	 * rout
 	 */
-	public function ready()
+	public static function routing()
 	{
-
-
-
-		$new_url = \dash\url::here(). '/'. \dash\request::get('id'). '/member/general/'. \dash\request::get('member');
-
+		$new_url = \dash\url::here(). '/member/general?id=' \dash\request::get('id'). '&member='. \dash\request::get('member');
 		\dash\redirect::to($new_url);
-
-
-		$this->get(false, 'edit')->ALL("/.*/");
-		$this->post('edit')->ALL("/.*/");
 	}
 }
 ?>

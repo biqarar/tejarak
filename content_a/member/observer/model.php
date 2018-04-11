@@ -2,52 +2,20 @@
 namespace content_a\member\observer;
 
 
-class model extends \content_a\member\model
+class model
 {
-
-	/**
-	 * Gets the post.
-	 *
-	 * @return     array  The post.
-	 */
-	public function getParent()
-	{
-		$this->user_id = \dash\user::id();
-
-		$team_id = \dash\coding::decode(\dash\request::get('id'));
-
-		$user_id =
-		[
-			'id'      => \dash\coding::decode(\dash\request::get('member')),
-			'team_id' => $team_id,
-			'limit'   => 1,
-		];
-		$user_id = \lib\db\userteams::get($user_id);
-		if(isset($user_id['user_id']))
-		{
-			\dash\app::variable(['id' => \dash\coding::encode($user_id['user_id']), 'related_id' => \dash\request::get('id') ]);
-			$result           = $this->get_list_parent();
-			return $result;
-		}
-	}
-
-
-
-
 
 	/**
 	 * Posts an addmember.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_observer($_args)
+	public static function post()
 	{
-		$this->user_id                = \dash\user::id();
-
 		if(\dash\request::post('remove'))
 		{
 			\dash\app::variable(['id' => \dash\request::post('remove'), 'related_id' => \dash\request::get('id')]);
-			$this->delete_parent();
+			\lib\app\member::delete_parent();
 			\dash\redirect::pwd();
 			return ;
 		}
@@ -68,7 +36,9 @@ class model extends \content_a\member\model
 			$parent_request['mobile']     = \dash\request::post('parent_mobile');
 			$parent_request['related_id'] = \dash\request::get('id');
 			\dash\app::variable($parent_request);
-			$this->add_parent();
+
+			\lib\app\member::add_parent();
+
 			if(\dash\engine\process::status())
 			{
 				\dash\notif::ok(T_("Observer was saved"));
@@ -76,13 +46,13 @@ class model extends \content_a\member\model
 				$t_T =
 				[
 					'title' => (\dash\request::post('othertitle') && \dash\request::post('title') === 'custom') ? \dash\request::post('othertitle') : T_(ucfirst(\dash\request::post('title'))),
-					'name'  => $this->view()->data->member['displayname'],
-					'team'  => $this->view()->data->currentTeam['name'],
+					'name'  => \dash\data::member_displayname(),
+					'team'  => \dash\data::currentTeam_name(),
 				];
 
 				$message = T_("You are registered as :title of :name in :team", $t_T). '.';
 				$message .= "\n\n". T_("Tejarak"). " | ". T_("Modern Approach");
-				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. $this->view()->data->currentTeam['short_name'];
+				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. \dash\data::currentTeam_short_name();
 				$parent_detail = \dash\temp::get('add_parent_detail');
 
 				if(isset($parent_detail['chatid']))
