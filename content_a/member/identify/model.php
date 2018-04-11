@@ -37,7 +37,7 @@ class model extends \content_a\member\model
 		$request         = $this->getPost();
 		$member          = \dash\url::dir(3);
 		$request['id']   = $member;
-		$request['team'] = $team = \dash\url::dir(0);
+		$request['team'] = $team = \dash\request::get('id');
 		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION

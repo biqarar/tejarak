@@ -14,7 +14,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$team = \dash\url::dir(0);
+		$team = \dash\request::get('id');
 		$team = \dash\coding::decode($team);
 
 		if(!$team)
@@ -70,7 +70,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 
-		$team = \dash\url::dir(0);
+		$team = \dash\request::get('id');
 		$team = \dash\coding::decode($team);
 
 		if(!$team)

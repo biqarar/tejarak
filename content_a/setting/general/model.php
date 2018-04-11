@@ -49,7 +49,7 @@ class model extends \content_a\main\model
 	 */
 	public function post_general($_args)
 	{
-		$code = \dash\url::dir(0);
+		$code = \dash\request::get('id');
 
 		$request       = $this->getPost();
 		$this->user_id = \dash\user::id();

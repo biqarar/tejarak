@@ -72,7 +72,7 @@ trait security
 			return false;
 		}
 
-		$change_id_in_team = self::userteam_record_detail = \lib\db\userteams::get(['id' => $change_id, 'team_id' => $_team_id, 'limit' => 1]);
+		$change_id_in_team = self::$userteam_record_detail = \lib\db\userteams::get(['id' => $change_id, 'team_id' => $_team_id, 'limit' => 1]);
 		if(!$change_id_in_team || !isset($change_id_in_team['rule']) || !isset($change_id_in_team['user_id']))
 		{
 			if($_args['save_log']) \dash\db\logs::set('api:member:user-id:notfound', \dash\user::id(), $log_meta);

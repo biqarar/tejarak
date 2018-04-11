@@ -14,7 +14,7 @@
 
 
 
-{%for key, value in list_member%}
+{%for key, value in listMember%}
 {%set cardColor%}
 {%if value.status == 'remove'%}red{%elseif value.status == 'deactive'%}yellow{%elseif value.traffic%}black{%else%}green{%endif%}
 {%endset%}

@@ -10,12 +10,12 @@ class model extends \content_a\member\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function list_member($_args)
+	public function listMember($_args)
 	{
 		$this->user_id  = \dash\user::id();
 
 
-		$team_id        = \dash\coding::decode(\dash\url::dir(0));
+		$team_id        = \dash\coding::decode(\dash\request::get('id'));
 		$get_userparent = ['related_id' => $team_id, 'status' => 'enable'];
 		$userparent     = \dash\db\userparents::load_parent($get_userparent);
 
@@ -24,7 +24,7 @@ class model extends \content_a\member\model
 		$request        = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
 		\dash\app::variable($request);
-		$result =  $this->get_list_member();
+		$result =  $this->get_listMember();
 
 		if(!is_array($result))
 		{

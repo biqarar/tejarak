@@ -17,7 +17,7 @@ class model extends \content_a\main\model
 	 */
 	public function load_last_request()
 	{
-		$team_id = \dash\coding::decode(\dash\url::dir(0));
+		$team_id = \dash\coding::decode(\dash\request::get('id'));
 		$load_last_request = $this->check_sended_request($team_id);
 		if(isset($load_last_request['user_id']))
 		{
@@ -94,7 +94,7 @@ class model extends \content_a\main\model
 			return $this->refresh_page();
 		}
 
-		$this->team_code = \dash\url::dir(0);
+		$this->team_code = \dash\request::get('id');
 		$this->team_id = \dash\coding::decode($this->team_code);
 		$this->currentTeam = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
 

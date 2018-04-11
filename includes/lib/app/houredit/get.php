@@ -4,7 +4,7 @@ namespace lib\app\houredit;
 
 trait get
 {
-	public $logo_urls = [];
+	public static $logo_urls = [];
 
 	/**
 	 * ready data of houredit to load in api

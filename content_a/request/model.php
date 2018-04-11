@@ -18,7 +18,7 @@ class model extends \content_a\main\model
 
 		$this->user_id       = \dash\user::id();
 		$request             = [];
-		$request['team']     = \dash\url::dir(0);
+		$request['team']     = \dash\request::get('id');
 		$request['id']       = $id;
 		$request['type']     = $type;
 		$request['response'] = $response;

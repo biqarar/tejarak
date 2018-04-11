@@ -2,7 +2,7 @@
 namespace lib\db;
 
 /** codes managing **/
-class my_codes extends \lib\db\codes
+class my_codes extends \dash\db\codes
 {
 
 	public static function set($_args)

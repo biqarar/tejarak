@@ -106,7 +106,7 @@ trait member_id
 
 			if($request_id)
 			{
-				$request_user_id = self::userteam_record_detail;
+				$request_user_id = self::$userteam_record_detail;
 			}
 
 			if(isset($request_user_id['user_id']))

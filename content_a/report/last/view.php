@@ -14,7 +14,7 @@ class view extends \content_a\report\view
 	public function view_last()
 	{
 		$args                  = [];
-		$args['id']            = \dash\url::dir(0);
+		$args['id']            = \dash\request::get('id');
 		$this->data->team_code = $args['id'];
 
 		if(\dash\request::get('user'))

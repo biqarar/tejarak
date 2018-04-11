@@ -33,7 +33,7 @@ class model extends \content_a\main\model
 	public function post_hour($_args)
 	{
 		$request            = $this->getPost();
-		$request['team']    = \dash\url::dir(0);
+		$request['team']    = \dash\request::get('id');
 		$request['hour_id'] = \dash\url::dir(3);
 
 		\dash\app::variable($request);

@@ -73,7 +73,7 @@ class model extends \content_a\main\model
 			$request['file'] = $file_code;
 		}
 
-		$team = \dash\url::dir(0);
+		$team = \dash\request::get('id');
 		// get posted data to create the request
 		$request['team']  = $team;
 

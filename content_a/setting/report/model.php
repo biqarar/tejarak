@@ -17,7 +17,7 @@ class model extends \content_a\main\model
 			]
 		];
 
-		$team_code = \dash\url::dir(0);
+		$team_code = \dash\request::get('id');
 
 
 		$team_id = null;
@@ -91,7 +91,7 @@ class model extends \content_a\main\model
 
 		$update_user_teams = [];
 		$args              = [];
-		$args['id']        = \dash\url::dir(0);
+		$args['id']        = \dash\request::get('id');
 		$admins            = \lib\db\userteams::get_admins($args);
 		$admins = array_map(function($_a)
 		{

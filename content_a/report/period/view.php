@@ -24,7 +24,7 @@ class view extends \content_a\report\view
 		}
 
 		$args           = [];
-		$args['id']     = \dash\url::dir(0);
+		$args['id']     = \dash\request::get('id');
 		$args['start']  = \dash\request::get('start');
 		$args['end']    = \dash\request::get('end');
 		$args['user']   = \dash\request::get('user');

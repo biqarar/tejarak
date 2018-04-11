@@ -23,7 +23,7 @@ class model extends \content_a\main\model
 		}
 
 		// add sign to footer
-		$my_team = $this->getTeamDetail(\dash\url::dir(0));
+		$my_team = $this->getTeamDetail(\dash\request::get('id'));
 		$sign    = 'Sended by admin of team';
 		if(isset($my_team['name']))
 		{
@@ -32,7 +32,7 @@ class model extends \content_a\main\model
 		$text .= "\n". $sign;
 
 
-		$team_code = \dash\url::dir(0);
+		$team_code = \dash\request::get('id');
 
 		$list = $this->listMember($team_code, 'code', ['pagenation' => false]);
 		if($list && is_array($list))

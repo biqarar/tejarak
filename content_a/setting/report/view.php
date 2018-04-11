@@ -18,7 +18,7 @@ class view extends \content_a\setting\view
 	{
 		$this->data->server_timezone = \dash\utility\timezone::current();
 
-		$team_code = \dash\url::dir(0);
+		$team_code = \dash\request::get('id');
 		$team_id   = \dash\coding::decode($team_code);
 
 		if(!$team_id)
@@ -27,7 +27,7 @@ class view extends \content_a\setting\view
 		}
 
 		$args               = [];
-		$args['id']         = \dash\url::dir(0);
+		$args['id']         = \dash\request::get('id');
 		$admins             = \lib\db\userteams::get_admins($args);
 		$this->data->admins = $admins;
 		$currentTeams = \lib\db\teams::get_by_id($team_id);

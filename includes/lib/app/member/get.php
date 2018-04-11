@@ -451,11 +451,11 @@ trait get
 				case 'avatar':
 					if($value)
 					{
-						$result['file'] = self::host('file'). '/'. $value;
+						$result['file'] = \lib\app\option::host('file'). '/'. $value;
 					}
 					else
 					{
-						$result['file'] = self::host('siftal_user');
+						$result['file'] = \lib\app\option::host('siftal_user');
 					}
 
 					break;

@@ -4,14 +4,11 @@ namespace lib\app\member;
 
 trait add
 {
-	private $master_user_id         = null;
-	private $OLD_USER_ID            = null;
-	private $old_user_id            = null;
-	private $NEW_USER_ID            = null;
-	private $userteam_record_detail = [];
-	use check_args;
-	use member_id;
-	use security;
+	private static $master_user_id         = null;
+	private static $OLD_USER_ID            = null;
+	private static $old_user_id            = null;
+	private static $NEW_USER_ID            = null;
+	private static $userteam_record_detail = [];
 
 	/**
 	 * Adds a member.

@@ -11,7 +11,7 @@ class controller extends \content_a\main\controller
 
 
 
-		$new_url = \dash\url::here(). '/'. \dash\url::dir(0). '/member/general/'. \dash\url::dir(3);
+		$new_url = \dash\url::here(). '/'. \dash\request::get('id'). '/member/general/'. \dash\url::dir(3);
 
 		\dash\redirect::to($new_url);
 

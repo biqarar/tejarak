@@ -10,7 +10,7 @@ class view extends \content_a\member\view
 	 */
 	public function view_add($_args)
 	{
-		$team                      = \dash\url::dir(0);
+		$team                      = \dash\request::get('id');
 		$this->data->currentTeam  = $currentTeam = $this->data->currentTeam ;
 
 		$this->data->page['title'] = T_('Add new member');

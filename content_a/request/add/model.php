@@ -32,7 +32,7 @@ class model extends \content_a\main\model
 	public function post_add($_args)
 	{
 		$request            = $this->getPost();
-		$request['team']    = \dash\url::dir(0);
+		$request['team']    = \dash\request::get('id');
 		$request['user_id'] = \dash\request::get('user');
 
 		\dash\app::variable($request);

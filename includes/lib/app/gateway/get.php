@@ -4,10 +4,10 @@ namespace lib\app\gateway;
 
 trait get
 {
-	public $remote_user         = false;
-	public $rule                = null;
-	public $show_another_status = false;
-	public $team_privacy        = 'private';
+	public static $remote_user         = false;
+	public static $rule                = null;
+	public static $show_another_status = false;
+	public static $team_privacy        = 'private';
 
 	/**
 	 * Gets the gateway.

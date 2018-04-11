@@ -29,8 +29,8 @@ class view
 		\dash\data::bodyclass('siftal');
 
 		// get part 2 of url and use as team name
-		\dash\data::team(\dash\url::dir(0));
-		\dash\data::teamCode(\dash\url::dir(0));
+		\dash\data::team(\dash\request::get('id'));
+		\dash\data::teamCode(\dash\request::get('id'));
 
 		if(self::reservedNames(\dash\data::team()))
 		{

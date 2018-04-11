@@ -12,7 +12,7 @@ class controller extends \content_a\main\controller
 
 		$url = \dash\url::directory();
 
-		$team_code = \dash\url::dir(0);
+		$team_code = \dash\request::get('id');
 
 		unset($_SESSION['first_go_to_setup']);
 

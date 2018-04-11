@@ -4,7 +4,7 @@ namespace lib\app\hours;
 
 trait get
 {
-	public $logo_urls = [];
+	public static $logo_urls = [];
 
 	/**
 	 * ready data of hours to load in api

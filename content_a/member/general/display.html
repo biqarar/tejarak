@@ -6,16 +6,16 @@
 {{block ("iName")}}
 {{block ("iPosition")}}
 
-{%if isCreator or (isAdmin and not change_creator and not change_admin) %}
-	{%if not change_creator%}
+{%if isCreator or (isAdmin and not changeCreator and not changeAdmin) %}
+	{%if not changeCreator%}
 		{{block ("iMobile")}}
 	{%endif%}
 
-	{%if isCreator and not change_creator%}
+	{%if isCreator and not changeCreator%}
 		{{block ("iRole")}}
 	{%endif%}
 
-	{%if not change_creator%}
+	{%if not changeCreator%}
 		{{block ("iStatus")}}
 	{%endif%}
 

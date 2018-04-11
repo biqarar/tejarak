@@ -32,7 +32,7 @@ class controller extends \mvc\controller
 	 */
 	public function tejarak_controller_checker()
 	{
-		$url_0 = \dash\url::dir(0);
+		$url_0 = \dash\request::get('id');
 		// the url in static page
 		// return to get the url in her controller
 		if($this->reservedNames($url_0) === true)
