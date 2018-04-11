@@ -50,7 +50,7 @@ class view
 		if($teamCode = \dash\temp::get('teamCode_url'))
 		{
 			\dash\data::reportUrl(\dash\url::here(). '/'. \dash\url::directory());
-			// var_dump($this->data->reportUrl);exit();
+
 			$team_id = \dash\coding::decode($teamCode);
 			if($team_id)
 			{
