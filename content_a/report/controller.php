@@ -32,7 +32,7 @@ class controller extends \content_a\main\controller
 						switch ($split[2])
 						{
 							case 'settings':
-								if(!\dash\temp::get('is_admin'))
+								if(!\dash\temp::get('isAdmin'))
 								{
 									\dash\header::status(403);
 								}

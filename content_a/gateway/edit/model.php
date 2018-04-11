@@ -39,7 +39,7 @@ class model extends \content_a\main\model
 		$request         = [];
 		$request['team'] = $_team;
 		$request['id']   = $_gateway;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result =  $this->get_gateway();
 		return $result;
 	}
@@ -66,7 +66,7 @@ class model extends \content_a\main\model
 		$gateway         = \dash\url::dir(3);
 		$request['id']   = $gateway;
 		$request['team'] = $team = \dash\url::dir(0);
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway(['method' => 'patch']);

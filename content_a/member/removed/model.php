@@ -16,7 +16,7 @@ class model extends \content_a\member\model
 		$request       = [];
 		$request['status'] = 'suspended';
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result =  $this->get_list_member();
 
 		return $result;

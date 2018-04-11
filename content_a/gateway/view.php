@@ -17,9 +17,9 @@ class view extends \content_a\main\view
 		$list                     = $this->model()->list_gateway($request);
 		$this->data->list_gateway  = $list;
 
-		if(isset($this->data->current_team['name']))
+		if(isset($this->data->currentTeam['name']))
 		{
-			$this->data->page['title'] = $this->data->current_team['name'];
+			$this->data->page['title'] = $this->data->currentTeam['name'];
 			$this->data->page['desc']  = $this->data->page['title'];
 		}
 

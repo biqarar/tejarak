@@ -42,7 +42,7 @@ class model extends \content_a\main\model
 		$this->user_id = \dash\user::id();
 		$request['id'] = $code;
 
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		// THE API ADD TEAM FUNCTION BY METHOD PATHC
 		$this->add_team(['method' => 'patch']);

@@ -77,7 +77,7 @@ class model extends \content_a\main\model
 		// get posted data to create the request
 		$request['team']  = $team;
 
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member();
@@ -98,7 +98,7 @@ class model extends \content_a\main\model
 	{
 		if(\dash\request::files('avatar'))
 		{
-			\dash\utility::set_request_array(['upload_name' => 'avatar']);
+			\dash\app::variable(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{

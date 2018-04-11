@@ -45,17 +45,17 @@
 <a class="dcard" href='{{url.pwd}}/setting/board'>
  <div class="block">
   <div class="f">
-  {%if current_team.event_title%}
-   <h5 class="c fc-mute">{{current_team.event_title}}</h5>
+  {%if currentTeam.event_title%}
+   <h5 class="c fc-mute">{{currentTeam.event_title}}</h5>
   {%else%}
    <h5 class="c fc-mute">{%trans "Add event day counter"%}</h5>
   {%endif%}
-   <h4 class="cauto fc-danger fs30 txtra counter">{{current_team.event.left | number_format}}</h4>
+   <h4 class="cauto fc-danger fs30 txtra counter">{{currentTeam.event.left | number_format}}</h4>
   </div>
 <!-- left_percent
 remain_percent -->
   <div class="f">
-   <div class="progress" data-percent='{{current_team.event.left_percent}}'>
+   <div class="progress" data-percent='{{currentTeam.event.left_percent}}'>
     <div class="bar"></div>
    </div>
   </div>
@@ -134,9 +134,9 @@ remain_percent -->
 
 {%block stDayUsed%}
 {%if lang.current == 'fa'%}
-  <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{current_team.createdate |jdate("Y-m-d")}} | {{current_team.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
+  <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{currentTeam.createdate |jdate("Y-m-d")}} | {{currentTeam.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
 {%else%}
-  <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{current_team.createdate | date("Y-m-d")}} | {{current_team.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
+  <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{currentTeam.createdate | date("Y-m-d")}} | {{currentTeam.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
 {%endif%}
    <div class="statistic blue">
     <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{dashboard_detail.count_day_work | number_format}}</span></div>

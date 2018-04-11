@@ -19,11 +19,11 @@ class view extends \content_a\setting\view
 		if(isset($this->data->current_plan['team_id']))
 		{
 			$team_code = \dash\coding::encode($this->data->current_plan['team_id']);
-			$current_team = $this->model()->getTeamDetail($team_code);
+			$currentTeam = $this->model()->getTeamDetail($team_code);
 
-			if(isset($current_team['name']))
+			if(isset($currentTeam['name']))
 			{
-				$myTeam = $current_team['name'];
+				$myTeam = $currentTeam['name'];
 			}
 		}
 		$this->data->page['title'] = T_('Setting | '). T_('Change Plan of :name', ['name'=>$myTeam]);

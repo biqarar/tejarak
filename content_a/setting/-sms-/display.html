@@ -7,10 +7,10 @@
  <form method="post" class="df">
  <div class="f c s12 g1">
        <div class="c12">
-        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{current_team.name}}" required autofocus maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid name from 5 to 50 character"%}'>
+        <input type="text" name="name" placeholder='{%trans "Name"%} *' value="{{currentTeam.name}}" required autofocus maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid name from 5 to 50 character"%}'>
        </div>
        <div class="c12">
-        <input type="url" name="website" placeholder='{%trans "Website"%}' value="{{current_team.website}}" maxlength='30' minlength="3" class="ltr">
+        <input type="url" name="website" placeholder='{%trans "Website"%}' value="{{currentTeam.website}}" maxlength='30' minlength="3" class="ltr">
        </div>
       </div>
 
@@ -19,17 +19,17 @@
          <div class="f radio1t">
 
           <div class="c4">
-           <input type="radio" id="r-private" name="privacy" value="private" {%if current_team.privacy == 'private' or not current_team.prvacy%}checked{%endif%} >
+           <input type="radio" id="r-private" name="privacy" value="private" {%if currentTeam.privacy == 'private' or not currentTeam.prvacy%}checked{%endif%} >
            <label for="r-private">{%trans "Private"%}</label>
           </div>
 
           <div class="c4">
-           <input type="radio" id="r-team" name="privacy" value="team" {%if current_team.privacy == 'team' %}checked{%endif%}>
+           <input type="radio" id="r-team" name="privacy" value="team" {%if currentTeam.privacy == 'team' %}checked{%endif%}>
            <label for="r-team">{%trans "Team"%}</label>
           </div>
 
           <div class="c4">
-           <input type="radio" id="r-public" name="privacy" value="public" {%if current_team.privacy == 'public' %}checked{%endif%}>
+           <input type="radio" id="r-public" name="privacy" value="public" {%if currentTeam.privacy == 'public' %}checked{%endif%}>
            <label for="r-public">{%trans "Public"%}</label>
           </div>
 
@@ -39,7 +39,7 @@
 
          <div class="f g1">
        <div class="c12">
-        <textarea name="desc" placeholder='{%trans "Description"%}' maxlength='200'>{{current_team.desc}}</textarea>
+        <textarea name="desc" placeholder='{%trans "Description"%}' maxlength='200'>{{currentTeam.desc}}</textarea>
        </div>
       </div>
 

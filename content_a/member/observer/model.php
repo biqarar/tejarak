@@ -25,7 +25,7 @@ class model extends \content_a\member\model
 		$user_id = \lib\db\userteams::get($user_id);
 		if(isset($user_id['user_id']))
 		{
-			\dash\utility::set_request_array(['id' => \dash\coding::encode($user_id['user_id']), 'related_id' => \dash\url::dir(0) ]);
+			\dash\app::variable(['id' => \dash\coding::encode($user_id['user_id']), 'related_id' => \dash\url::dir(0) ]);
 			$result           = $this->get_list_parent();
 			return $result;
 		}
@@ -46,7 +46,7 @@ class model extends \content_a\member\model
 
 		if(\dash\request::post('remove'))
 		{
-			\dash\utility::set_request_array(['id' => \dash\request::post('remove'), 'related_id' => \dash\url::dir(0)]);
+			\dash\app::variable(['id' => \dash\request::post('remove'), 'related_id' => \dash\url::dir(0)]);
 			$this->delete_parent();
 			\dash\redirect::pwd();
 			return ;
@@ -67,7 +67,7 @@ class model extends \content_a\member\model
 			$parent_request['title']      = \dash\request::post('title');
 			$parent_request['mobile']     = \dash\request::post('parent_mobile');
 			$parent_request['related_id'] = \dash\url::dir(0);
-			\dash\utility::set_request_array($parent_request);
+			\dash\app::variable($parent_request);
 			$this->add_parent();
 			if(\dash\engine\process::status())
 			{
@@ -77,12 +77,12 @@ class model extends \content_a\member\model
 				[
 					'title' => (\dash\request::post('othertitle') && \dash\request::post('title') === 'custom') ? \dash\request::post('othertitle') : T_(ucfirst(\dash\request::post('title'))),
 					'name'  => $this->view()->data->member['displayname'],
-					'team'  => $this->view()->data->current_team['name'],
+					'team'  => $this->view()->data->currentTeam['name'],
 				];
 
 				$message = T_("You are registered as :title of :name in :team", $t_T). '.';
 				$message .= "\n\n". T_("Tejarak"). " | ". T_("Modern Approach");
-				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. $this->view()->data->current_team['short_name'];
+				$message .= "\n". 'tejarak.'. \dash\url::tld(). '/'. $this->view()->data->currentTeam['short_name'];
 				$parent_detail = \dash\temp::get('add_parent_detail');
 
 				if(isset($parent_detail['chatid']))

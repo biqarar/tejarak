@@ -93,7 +93,7 @@ class view extends \content_a\main\view
 		if($cache_chart === null)
 		{
 
-			if($this->data->is_admin)
+			if($this->data->isAdmin)
 			{
 				$user_id = null;
 			}

@@ -46,7 +46,7 @@ class model extends \content_a\main\model
 		// get posted data to create the request
 		$request['team']  = $team;
 
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		// API ADD gateway FUNCTION
 		$this->add_gateway();

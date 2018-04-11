@@ -13,7 +13,7 @@ class model extends \content_a\main\model
 	public function get_last_time($_request)
 	{
 		$this->user_id = \dash\user::id();
-		\dash\utility::set_request_array($_request);
+		\dash\app::variable($_request);
 		return $this->report_last_time();
 	}
 

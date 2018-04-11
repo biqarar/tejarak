@@ -30,34 +30,34 @@ class view extends \content_a\setting\view
 		$args['id']         = \dash\url::dir(0);
 		$admins             = \lib\db\userteams::get_admins($args);
 		$this->data->admins = $admins;
-		$current_teams = \lib\db\teams::get_by_id($team_id);
+		$currentTeams = \lib\db\teams::get_by_id($team_id);
 
-		if(isset($current_teams['reportheader']))
+		if(isset($currentTeams['reportheader']))
 		{
-			$this->data->reportHeader = $current_teams['reportheader'];
+			$this->data->reportHeader = $currentTeams['reportheader'];
 		}
 
-		$this->data->current_teams = $current_teams;
+		$this->data->currentTeams = $currentTeams;
 
-		if(isset($current_teams['reportfooter']))
+		if(isset($currentTeams['reportfooter']))
 		{
-			$this->data->reportFooter = $current_teams['reportfooter'];
+			$this->data->reportFooter = $currentTeams['reportfooter'];
 		}
 
 		$report_settings = [];
 
-		if(isset($current_teams['meta']) && is_string($current_teams['meta']) && substr($current_teams['meta'], 0,1) === '{')
+		if(isset($currentTeams['meta']) && is_string($currentTeams['meta']) && substr($currentTeams['meta'], 0,1) === '{')
 		{
-			$meta = json_decode($current_teams['meta'], true);
+			$meta = json_decode($currentTeams['meta'], true);
 			if(isset($meta['report_settings']))
 			{
 				$report_settings = $meta['report_settings'];
 			}
 		}
 
-		if(isset($current_teams['telegram_id']) && $current_teams['telegram_id'])
+		if(isset($currentTeams['telegram_id']) && $currentTeams['telegram_id'])
 		{
-			$this->data->telegram_id = $current_teams['telegram_id'];
+			$this->data->telegram_id = $currentTeams['telegram_id'];
 		}
 
 		$this->data->report_settings = $report_settings;

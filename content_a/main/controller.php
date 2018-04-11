@@ -69,7 +69,7 @@ class controller extends \mvc\controller
 
 			if(isset($team_details['creator']) && intval($team_details['creator']) === intval(\dash\user::id()))
 			{
-				\dash\temp::set('is_creator', true);
+				\dash\temp::set('isCreator', true);
 			}
 			else
 			{
@@ -80,7 +80,7 @@ class controller extends \mvc\controller
 				}
 				else
 				{
-					\dash\temp::set('is_creator', false);
+					\dash\temp::set('isCreator', false);
 				}
 			}
 
@@ -94,11 +94,11 @@ class controller extends \mvc\controller
 				if($rule === 'admin')
 				{
 
-					\dash\temp::set('is_admin', true);
+					\dash\temp::set('isAdmin', true);
 				}
 				else
 				{
-					\dash\temp::set('is_admin', false);
+					\dash\temp::set('isAdmin', false);
 				}
 			}
 			else
@@ -184,7 +184,7 @@ class controller extends \mvc\controller
 		switch ($_controller)
 		{
 			case 'setting\plan':
-				if(!\dash\temp::get('is_creator'))
+				if(!\dash\temp::get('isCreator'))
 				{
 					\dash\header::status(403, T_("Can not access to load this page"));
 				}
@@ -203,7 +203,7 @@ class controller extends \mvc\controller
 			case 'setting':
 			case 'member':
 			default:
-				if(!\dash\temp::get('is_admin'))
+				if(!\dash\temp::get('isAdmin'))
 				{
 					\dash\header::status(403, T_("Can not access to load this page"));
 				}

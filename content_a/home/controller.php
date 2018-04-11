@@ -1,16 +1,13 @@
 <?php
 namespace content_a\home;
 
-class controller extends \content_a\main\controller
+class controller
 {
 	/**
 	 * rout
 	 */
-	function ready()
+	public static function routing()
 	{
-		// list of all team the user is them
-		$this->get(false, 'dashboard')->ALL();
-
 		// check if the user is gateway redirect to hours page
 		if(!\dash\user::login('mobile') && \dash\user::login('parent') && \dash\user::login('username') && \dash\user::login('password'))
 		{

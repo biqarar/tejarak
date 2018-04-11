@@ -1,5 +1,5 @@
 <?php
-namespace content;
+namespace content_a;
 
 class view
 {
@@ -22,7 +22,50 @@ class view
 		\dash\data::template_price('content/template/priceTable.html');
 		\dash\data::template_priceSchool('content/template/priceSchoolTable.html');
 
-		\dash\data::include_css(false);
+		\dash\data::include_css(true);
+		\dash\data::include_chart(true);
+
+		\dash\data::bodyclass('siftal');
+
+
+		// get part 2 of url and use as team name
+		\dash\data::team(\dash\url::dir(0));
+		\dash\data::teamCode(\dash\url::dir(0));
+
+		if(self::reservedNames(\dash\data::team()))
+		{
+			\dash\data::team(null);
+		}
+
+		\dash\data::isAdmin(\dash\temp::get('isAdmin'));
+		\dash\data::isCreator(\dash\temp::get('isCreator'));
+
+		\dash\data::display_adminTeam('content_a\main\layoutTeam.html');
+		if(\dash\data::team())
+		{
+			\dash\data::currentTeam(\lib\app\team::getTeamDetail(\dash\data::team()));
+		}
+	}
+
+
+	private static function reservedNames($_name)
+	{
+		$result = null;
+		switch ($_name)
+		{
+			case 'home':
+			case 'team':
+			case 'billing':
+			case 'profile':
+			case 'notifications':
+				$result = true;
+				break;
+
+			default:
+				$result = false;
+				break;
+		}
+		return $result;
 	}
 }
 ?>

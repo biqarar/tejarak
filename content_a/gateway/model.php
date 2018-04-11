@@ -16,7 +16,7 @@ class model extends \content_a\main\model
 		$this->user_id = \dash\user::id();
 		$request       = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result =  $this->get_list_gateway();
 		return $result;
 	}

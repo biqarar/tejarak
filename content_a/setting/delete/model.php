@@ -16,7 +16,7 @@ class model extends \content_a\main\model
 	{
 		$code = \dash\url::dir(0);
 		$this->user_id = \dash\user::id();
-		\dash\utility::set_request_array(['id' => $code]);
+		\dash\app::variable(['id' => $code]);
 		$this->close_team();
 		if(\dash\engine\process::status())
 		{

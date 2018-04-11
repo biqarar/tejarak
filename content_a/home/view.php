@@ -1,24 +1,18 @@
 <?php
 namespace content_a\home;
 
-class view extends \content_a\main\view
+
+class view
 {
-	public function config()
+	public static function config()
 	{
-		$this->data->page['title'] = T_("Dashboard");
-		$this->data->page['desc'] = T_("View team summary and add new team or change it");
-	}
+		\dash\data::page_title(T_("Dashboard"));
+		\dash\data::page_desc(T_("View team summary and add new team or change it"));
 
-
-	/**
-	 * view all team and branch
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function view_dashboard($_args)
-	{
-		$team_list = $this->model()->team_list();
-
+		if(\dash\user::login())
+		{
+			$team_list = \lib\app\team::get_list_team();
+		}
 
 		if(is_array($team_list))
 		{
@@ -49,7 +43,7 @@ class view extends \content_a\main\view
 			}
 		}
 
-		$this->data->team_list = $team_list;
+		\dash\data::teamList($team_list);
 	}
 }
 ?>

@@ -48,7 +48,7 @@ class model extends \content_a\main\model
 	{
 		if(\dash\request::files('avatar'))
 		{
-			\dash\utility::set_request_array(['upload_name' => 'avatar']);
+			\dash\app::variable(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
 			if(isset($uploaded_file['code']))
 			{
@@ -80,10 +80,10 @@ class model extends \content_a\main\model
 		$request          = [];
 		$request['team']  = $_team;
 		$request['id']    = $_member;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result           =  $this->get_member();
 		// $member_id        = \dash\coding::decode($_member);
-		\dash\utility::set_request_array(['id' => $_member]);
+		\dash\app::variable(['id' => $_member]);
 		$parent           = $this->get_list_parent();
 		$result['parent'] = $parent;
 
@@ -123,7 +123,7 @@ class model extends \content_a\main\model
 		$member          = \dash\url::dir(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\url::dir(0);
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
@@ -137,7 +137,7 @@ class model extends \content_a\main\model
 				$parent_request['id']    = $member;
 				$parent_request['title']      = \dash\request::post('title');
 				$parent_request['mobile']     = \dash\request::post('parent_mobile');
-				\dash\utility::set_request_array($parent_request);
+				\dash\app::variable($parent_request);
 				$this->add_parent();
 			}
 		}

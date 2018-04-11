@@ -15,7 +15,7 @@ class model extends \content_a\main\model
 		$this->user_id = \dash\user::id();
 		$request       = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result =  $this->get_list_member();
 		return $result;
 	}
@@ -36,7 +36,7 @@ class model extends \content_a\main\model
 		$request          = [];
 		$request['team']  = $_team;
 		$request['id']    = $_member;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result           =  $this->get_member();
 		return $result;
 	}

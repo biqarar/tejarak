@@ -23,7 +23,7 @@ class model extends \content_a\main\model
 		$request['type']     = $type;
 		$request['response'] = $response;
 
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$this->hourrequest_action();
 	}
 
@@ -43,7 +43,7 @@ class model extends \content_a\main\model
 		}
 
 		$this->user_id = \dash\user::id();
-		\dash\utility::set_request_array(['id' => $hourrequest_id]);
+		\dash\app::variable(['id' => $hourrequest_id]);
 		$this->hourrequest_delete(['method' => 'delete']);
 		\dash\redirect::to(\dash\url::here(). "/$team_id/request");
 	}
@@ -59,7 +59,7 @@ class model extends \content_a\main\model
 	// public function request_detail($_request)
 	// {
 	// 	$this->user_id = \dash\user::id();
-	// 	\dash\utility::set_request_array($_request);
+	// 	\dash\app::variable($_request);
 	// 	return $this->get_request_detail();
 	// }
 
@@ -74,7 +74,7 @@ class model extends \content_a\main\model
 	public function request_list($_request)
 	{
 		$this->user_id = \dash\user::id();
-		\dash\utility::set_request_array($_request);
+		\dash\app::variable($_request);
 		return $this->get_houredit_list();
 	}
 
@@ -89,7 +89,7 @@ class model extends \content_a\main\model
 	//  */
 	// public function getMyTime($_args)
 	// {
-	// 	\dash\utility::set_request_array($_args);
+	// 	\dash\app::variable($_args);
 	// 	$this->user_id = \dash\user::id();
 	// 	$result = $this->get_request();
 

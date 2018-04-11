@@ -62,7 +62,7 @@ class model extends \content_a\main\model
 		if(\dash\request::files('avatar'))
 		{
 			$this->user_id = \dash\user::id();
-			\dash\utility::set_request_array(['upload_name' => 'avatar']);
+			\dash\app::variable(['upload_name' => 'avatar']);
 			$uploaded_file = $this->upload_file(['\lib\notif' => false]);
 
 			if(isset($uploaded_file['url']))

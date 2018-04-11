@@ -56,7 +56,7 @@ class model extends \content_a\main\model
 			return false;
 		}
 		$this->user_id    = \dash\user::id();
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$this->add_team();
 
 		if(\dash\engine\process::status())

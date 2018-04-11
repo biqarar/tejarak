@@ -15,7 +15,7 @@
     </div>
   </div>
 
-{%for key, value in team_list%}
+{%for key, value in teamList%}
 
 {%set cardColor%}
 {%if value.status == 'close'%}red{%elseif not value.stats.traffic_count%}black{%elseif value.rule == 'admin'%}blue{%else%}{%endif%}

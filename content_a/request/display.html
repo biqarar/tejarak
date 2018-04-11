@@ -14,11 +14,11 @@
       <th>{%trans "Type"%}</th>
       <th>{%trans "Description"%}</th>
 
-      {%if not is_admin%}
+      {%if not isAdmin%}
         <th>{%trans "Response"%}</th>
       {%endif%}
 
-      {%if is_admin %}
+      {%if isAdmin %}
         <!-- <th>{%trans "Set Response"%}</th> -->
         <th>{%trans "Accept"%}</th>
         <th>{%trans "Reject"%}</th>
@@ -32,9 +32,9 @@
   <tr >
 <!--
     {%if value.status == 'awaiting' %}
-      <td><a href="{{url.here}}/{{team_code}}/request/remove={{value.id}}">{%trans "Remove"%}</a></td>
+      <td><a href="{{url.here}}/{{teamCode}}/request/remove={{value.id}}">{%trans "Remove"%}</a></td>
     {%else%}
-      <td><a href="{{url.here}}/{{team_code}}/request/detail={{value.id}}">{%trans "More"%}</a></td>
+      <td><a href="{{url.here}}/{{teamCode}}/request/detail={{value.id}}">{%trans "More"%}</a></td>
     {%endif%} -->
 
       <td>{{value.displayname}}</td>
@@ -58,11 +58,11 @@
       <td><i>{%trans "No description"%}</i></td>
     {%endif%}
 
-    {%if not is_admin%}
+    {%if not isAdmin%}
       <td>{{value.response}}</td>
     {%endif%}
 
-    {%if is_admin  %}
+    {%if isAdmin  %}
       {% if value.status == 'awaiting' %}
         <td><button type="submit" class="btn success" name="accept" data-method='post' data-ajaxify data-data='{"id": "{{value.id}}", "type": "accept"}' >{%trans "Accept"%}</button></td>
         <td><button type="submit" class="btn danger" name="reject" data-method='post' data-ajaxify data-data='{"id": "{{value.id}}", "type": "reject"}' >{%trans "Reject"%}</button></td>
@@ -85,7 +85,7 @@
 
 <div class="f">
   <div class="cauto pA5">
-     <a href="{{url.here}}/{{team_code}}/request/add">
+     <a href="{{url.here}}/{{teamCode}}/request/add">
       <i class="sf-plus btn"></i> {%trans "Add request"%}
      </a>
   </div>

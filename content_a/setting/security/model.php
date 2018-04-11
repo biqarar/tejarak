@@ -9,7 +9,7 @@ class model extends \content_a\main\model
 	public $user_id;
 	public $team_id;
 	public $team_code;
-	public $current_team;
+	public $currentTeam;
 
 
 	/**
@@ -96,7 +96,7 @@ class model extends \content_a\main\model
 
 		$this->team_code = \dash\url::dir(0);
 		$this->team_id = \dash\coding::decode($this->team_code);
-		$this->current_team = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
+		$this->currentTeam = \lib\db\teams::get(['id' => $this->team_id, 'limit' => 1]);
 
 		if($this->check_sended_request() === false)
 		{
@@ -172,9 +172,9 @@ class model extends \content_a\main\model
 		$meta['new_owner']         = $this->user_data['id'];
 		// $meta['new_owner_data'] = $this->user_data;
 		$meta['new_owner_mobile']  = $this->mobile;
-		// $meta['team']           = $this->current_team;
-		$meta['team_logo']         = $this->current_team['logourl'];
-		$meta['team_name']         = $this->current_team['name'];
+		// $meta['team']           = $this->currentTeam;
+		$meta['team_logo']         = $this->currentTeam['logourl'];
+		$meta['team_name']         = $this->currentTeam['name'];
 		$meta['sender_name']       = \dash\user::login('displayname');
 		$meta['sender_mobile']     = \dash\user::login('mobile');
 		$meta['sender_logo']       = \dash\user::login('avatar');
@@ -195,7 +195,7 @@ class model extends \content_a\main\model
 			'related_id'      => $meta['team_id'],
 			'meta'            => json_encode(\dash\safe::safe($meta), JSON_UNESCAPED_UNICODE),
 			'needanswer'      => 1,
-			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->current_team['name']]),
+			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => $this->currentTeam['name']]),
 		];
 
 		$a = \dash\db\notifications::set($send_notify);

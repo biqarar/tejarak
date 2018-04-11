@@ -35,7 +35,7 @@ class model extends \content_a\main\model
 		$request['team']    = \dash\url::dir(0);
 		$request['user_id'] = \dash\request::get('user');
 
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		$this->user_id = \dash\user::id();
 		$this->add_houredit();

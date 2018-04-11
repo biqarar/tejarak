@@ -23,17 +23,17 @@ class view extends \mvc\view
 			$this->data->team  = null;
 		}
 
-		$this->data->is_admin   = \dash\temp::get('is_admin');
-		$this->data->is_creator = \dash\temp::get('is_creator');
+		$this->data->isAdmin   = \dash\temp::get('isAdmin');
+		$this->data->isCreator = \dash\temp::get('isCreator');
 
 		$this->data->display['adminTeam'] = 'content_a\main\layoutTeam.html';
 		if($this->data->team)
 		{
-			$this->data->current_team = $this->model()->getTeamDetail($this->data->team);
+			$this->data->currentTeam = $this->model()->getTeamDetail($this->data->team);
 		}
 
-		$this->data->is_admin       = \dash\temp::get('is_admin');
-		$this->data->is_creator     = \dash\temp::get('is_creator');
+		$this->data->isAdmin       = \dash\temp::get('isAdmin');
+		$this->data->isCreator     = \dash\temp::get('isCreator');
 
 		if(\dash\user::id())
 		{

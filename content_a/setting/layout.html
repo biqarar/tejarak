@@ -19,28 +19,28 @@
 <div class="cbox normal">
 
 
-  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/{{current_team.id}}/setting/logo'>
-    <img src="{{current_team.logo}}" alt="{{current_team.name}}" class="pA10-f">
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/{{currentTeam.id}}/setting/logo'>
+    <img src="{{currentTeam.logo}}" alt="{{currentTeam.name}}" class="pA10-f">
     <div class="content">
-      <div class="header">{{current_team.name}}</div>
-      {%if current_team.rule != 'admin' and current_team.privacy == 'private' or true%}
+      <div class="header">{{currentTeam.name}}</div>
+      {%if currentTeam.rule != 'admin' and currentTeam.privacy == 'private' or true%}
       {%else%}
-        {%if not current_team.stats.last_traffic_string%}
+        {%if not currentTeam.stats.last_traffic_string%}
           <div class="meta"><span>{%trans "Without traffic"%}</span></div>
         {%else%}
-          <div class="meta"><span>{%trans "Last traffic"%} {{current_team.stats.last_traffic_string| fitNumber}}</span></div>
+          <div class="meta"><span>{%trans "Last traffic"%} {{currentTeam.stats.last_traffic_string| fitNumber}}</span></div>
         {%endif%}
       {%endif%}
     </div>
   </a>
 
- <a class="btn block mTB5" href='{{url.here}}/{{current_team.id}}/setting/general'>{%trans "General Detail"%}</a>
- {%if is_creator%}
-  <a class="btn block mTB5" href='{{url.here}}/{{current_team.id}}/setting/plan'>{%trans "Team Plan"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/general'>{%trans "General Detail"%}</a>
+ {%if isCreator%}
+  <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/plan'>{%trans "Team Plan"%}</a>
  {%endif%}
- <!-- <a class="btn block mTB5" href='{{url.here}}/{{current_team.id}}/setting/security'>{%trans "Security and privacy"%}</a> -->
- <a class="btn block mTB5" href='{{url.here}}/{{current_team.id}}/setting/report'>{%trans "Report Settings"%}</a>
- <a class="btn block mTB5" href='{{url.here}}/{{current_team.id}}/setting/board'>{%trans "Board Settings"%}</a>
+ <!-- <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/security'>{%trans "Security and privacy"%}</a> -->
+ <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/report'>{%trans "Report Settings"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/board'>{%trans "Board Settings"%}</a>
 </div>
 {%endblock%}
 
@@ -72,8 +72,8 @@
 <div class="input preview">
  <input type="file" accept="image/gif, image/jpeg, image/png" name="logo" id="logo1" data-preview data-max="500">
  <label for="logo1" title='{%trans "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"%}'>
-{%if current_team.logo%}
-  <img src="{{current_team.logo}}" alt="{{current_team.name}}" id="logoPreview">
+{%if currentTeam.logo%}
+  <img src="{{currentTeam.logo}}" alt="{{currentTeam.name}}" id="logoPreview">
 {%endif%}
  </label>
 </div>
@@ -83,7 +83,7 @@
 {%block iname%}
 <label for="name">{%trans "Name"%} <span class="fc-red">*</span></label>
 <div class="input">
-  <input type="text" name="name" id="name" placeholder='{%trans "Name"%}' value="{{current_team.name}}" autofocus maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid name from 3 to 40 character"%}' required>
+  <input type="text" name="name" id="name" placeholder='{%trans "Name"%}' value="{{currentTeam.name}}" autofocus maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid name from 3 to 40 character"%}' required>
 </div>
 {%endblock%}
 
@@ -92,7 +92,7 @@
 <label for="slug">{%trans "Team short name"%} <small>{%trans "Used for url of board"%}</small></label>
 <div class="input fix">
   <label class="addon ltr" for="slug">Tejarak.com/</label>
-  <input type="text" name="slug" id="slug" placeholder='{%trans "Slug of team for board url"%}' value="{{current_team.short_name}}" maxlength='30' class="ltr">
+  <input type="text" name="slug" id="slug" placeholder='{%trans "Slug of team for board url"%}' value="{{currentTeam.short_name}}" maxlength='30' class="ltr">
 </div>
 {%endblock%}
 
@@ -100,31 +100,31 @@
 {%block iwebsite%}
 <label for="website">{%trans "Website"%} <small>{%trans "Link your logo on board for visitors"%}</small></label>
 <div class="input">
-  <input type="url" name="website" id="website" placeholder='{%trans "Website"%}' value="{{current_team.website}}" maxlength='30'>
+  <input type="url" name="website" id="website" placeholder='{%trans "Website"%}' value="{{currentTeam.website}}" maxlength='30'>
 </div>
 {%endblock%}
 
 
 {%block idesc%}
 <label for="desc">{%trans "Description"%} <small>{%trans "Used for description of board and show in social media links"%}</small></label>
-<textarea class="txt mB10" name="desc" placeholder='{%trans "Description"%}' maxlength='300' rows="3">{{current_team.desc}}</textarea>
+<textarea class="txt mB10" name="desc" placeholder='{%trans "Description"%}' maxlength='300' rows="3">{{currentTeam.desc}}</textarea>
 {%endblock%}
 
 
 {%block iprivacy%}
 <label class="mT25">{%trans "Board privacy mode"%}</label>
 <div class="radio1">
- <input type="radio" id="r-private" name="privacy" value="private" {%if current_team.privacy == 'private' or not current_team.prvacy%}checked{%endif%} >
+ <input type="radio" id="r-private" name="privacy" value="private" {%if currentTeam.privacy == 'private' or not currentTeam.prvacy%}checked{%endif%} >
  <label for="r-private">{%trans "Private"%} <small>{%trans "Only admin of team can see board"%}</small></label>
 </div>
 
 <div class="radio1">
- <input type="radio" id="r-team" name="privacy" value="team" {%if current_team.privacy == 'team' %}checked{%endif%}>
+ <input type="radio" id="r-team" name="privacy" value="team" {%if currentTeam.privacy == 'team' %}checked{%endif%}>
  <label for="r-team">{%trans "Team"%} <small>{%trans "Admin and all member of team can see board"%}</small></label>
 </div>
 
 <div class="radio1">
- <input type="radio" id="r-public" name="privacy" value="public" {%if current_team.privacy == 'public' %}checked{%endif%}>
+ <input type="radio" id="r-public" name="privacy" value="public" {%if currentTeam.privacy == 'public' %}checked{%endif%}>
  <label for="r-public">{%trans "Public"%} <small>{%trans "Anyone can access to link of board can see team board"%}</small></label>
 </div>
 {%endblock%}
@@ -173,10 +173,10 @@
 {%block iCardSize%}
 <label for="cardsize">{%trans "Card size"%}</label>
 <select class="select" name="cardsize" id='cardsize'>
- <option value=""   {%if not current_team.cardsize %} selected {%endif%}>{%trans "Auto size"%}</option>
- <option value="10" {%if current_team.cardsize == '10'%} selected {%endif%}>{%trans "Small"%}</option>
- <option value="20" {%if current_team.cardsize == '20'%} selected {%endif%}>{%trans "Medium"%}</option>
- <option value="30" {%if current_team.cardsize == '30'%} selected {%endif%}>{%trans "Large"%}</option>
+ <option value=""   {%if not currentTeam.cardsize %} selected {%endif%}>{%trans "Auto size"%}</option>
+ <option value="10" {%if currentTeam.cardsize == '10'%} selected {%endif%}>{%trans "Small"%}</option>
+ <option value="20" {%if currentTeam.cardsize == '20'%} selected {%endif%}>{%trans "Medium"%}</option>
+ <option value="30" {%if currentTeam.cardsize == '30'%} selected {%endif%}>{%trans "Large"%}</option>
 </select>
 {%endblock%}
 
@@ -185,8 +185,8 @@
 <label for="language">{%trans "Force show in specefic language"%}</label>
  <select class="select" name="language" id='language'>
    <option value="">{%trans "Please select one language"%}</option>
-   <option value="fa" {%if current_team.language == 'fa'%} selected {%endif%}>{%trans "Persian"%}</option>
-   <option value="en" {%if current_team.language == 'en'%} selected {%endif%}>{%trans "English"%}</option>
+   <option value="fa" {%if currentTeam.language == 'fa'%} selected {%endif%}>{%trans "Persian"%}</option>
+   <option value="en" {%if currentTeam.language == 'en'%} selected {%endif%}>{%trans "English"%}</option>
  </select>
 {%endblock%}
 
@@ -213,7 +213,7 @@
 <label for="timed_auto_report_time">{%trans "Automatic daily traffic count report"%} <small>{%trans "We automatically send report in Telegram on this time"%}</small></label>
 <div class="input clockpicker">
   <label class="addon">{%trans server_timezone%}</label>
-  <input type="text" name="timed_auto_report_time" id="timed_auto_report_time" placeholder='{%trans "Time of send automatic daily report"%}' value="{{current_teams.timed_auto_report}}">
+  <input type="text" name="timed_auto_report_time" id="timed_auto_report_time" placeholder='{%trans "Time of send automatic daily report"%}' value="{{currentTeams.timed_auto_report}}">
 </div>
 {%endblock%}
 
@@ -283,7 +283,7 @@
 {%block iEventTitle%}
 <label for="event_title">{%trans "Event title"%}</label>
 <div class="input">
-  <input type="text" name="event_title" id="event_title" placeholder='{%trans "Event title"%}' value="{{current_team.event_title}}" maxlength='30'>
+  <input type="text" name="event_title" id="event_title" placeholder='{%trans "Event title"%}' value="{{currentTeam.event_title}}" maxlength='30'>
 </div>
 {%endblock%}
 
@@ -291,7 +291,7 @@
 {%block iEventDateStart%}
 <label for="event_date_start">{%trans "Event date start"%} <small>{%trans "Need to calc remain percentage of deadline. Today as default"%}</small></label>
 <div class="input">
-  <input type="text" name="event_date_start" id="event_date_start" placeholder='{%trans "Event date start"%}' class="datepicker" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.event_date_start_gregorian%} value="{{current_team.event_date_start_gregorian}}" {%else%}{%endif%}>
+  <input type="text" name="event_date_start" id="event_date_start" placeholder='{%trans "Event date start"%}' class="datepicker" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if currentTeam.event_date_start_gregorian%} value="{{currentTeam.event_date_start_gregorian}}" {%else%}{%endif%}>
 </div>
 {%endblock%}
 
@@ -299,7 +299,7 @@
 {%block iEventDate%}
 <label for="event_date">{%trans "Event date"%}</label>
 <div class="input">
-  <input type="text" name="event_date" id="event_date" placeholder='{%trans "Event date"%}' class="datepicker" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if current_team.event_date_gregorian%} value="{{current_team.event_date_gregorian}}" {%else%} data-initialValue='false'{%endif%}>
+  <input type="text" name="event_date" id="event_date" placeholder='{%trans "Event date"%}' class="datepicker" placeholder='{%trans "Event date"%}' data-format='YYYY/MM/DD' data-position='bottom' {%if currentTeam.event_date_gregorian%} value="{{currentTeam.event_date_gregorian}}" {%else%} data-initialValue='false'{%endif%}>
 </div>
 {%endblock%}
 
@@ -307,7 +307,7 @@
 
 {%block iDefaultMemberRemote%}
 <div class="switch1">
- <input type="checkbox" name="remoteUser" id="remoteUser" {% if current_team.remote_user%} checked{%endif%}>
+ <input type="checkbox" name="remoteUser" id="remoteUser" {% if currentTeam.remote_user%} checked{%endif%}>
  <label for="remoteUser"></label>
  <label for="remoteUser">{%trans "Remote member"%} <small>{%trans "can set enter and exit with their account without need another permission"%}</small></label>
 </div>
@@ -316,7 +316,7 @@
 
 {%block iDefaultMember24%}
 <div class="switch1">
- <input type="checkbox" name="24h" id="24h" {% if current_team['24h']%} checked{%endif%}>
+ <input type="checkbox" name="24h" id="24h" {% if currentTeam['24h']%} checked{%endif%}>
  <label for="24h"></label>
  <label for="24h">{%trans "24 hour member"%} <small>{%trans "can stay more than one day and after 23:59! Like night workers"%}</small></label>
 </div>
@@ -325,7 +325,7 @@
 
 {%block iDefaultMemberMission%}
 <div class="switch1">
- <input type="checkbox" name="allowPlus" id="allowPlus" {%if current_team.allow_plus or not team%} checked{%endif%}>
+ <input type="checkbox" name="allowPlus" id="allowPlus" {%if currentTeam.allow_plus or not team%} checked{%endif%}>
  <label for="allowPlus"></label>
  <label for="allowPlus">{%trans "Allow to set mission time"%} <small>{%trans "used for someone work on home or suppliers"%}</small></label>
 </div>
@@ -334,7 +334,7 @@
 
 {%block iDefaultMemberPersonalwork%}
 <div class="switch1">
- <input type="checkbox" name="allowMinus" id="allowMinus" {% if current_team.allow_minus or not team%} checked{%endif%}>
+ <input type="checkbox" name="allowMinus" id="allowMinus" {% if currentTeam.allow_minus or not team%} checked{%endif%}>
  <label for="allowMinus"></label>
  <label for="allowMinus">{%trans "Allow to set personal work time"%} <small>{%trans "member can enter waste time as personal work"%}</small></label>
 </div>
@@ -343,7 +343,7 @@
 
 {%block iDefaultMemberAvatar%}
 <div class="switch1">
- <input type="checkbox" name="showAvatar" id="showAvatar" {% if current_team.show_avatar or not team%} checked{%endif%}>
+ <input type="checkbox" name="showAvatar" id="showAvatar" {% if currentTeam.show_avatar or not team%} checked{%endif%}>
  <label for="showAvatar"></label>
  <label for="showAvatar">{%trans "Show member avatar on board"%} <small>{%trans "Maybe for privacy you need to hide avatar on board!"%}</small></label>
 </div>

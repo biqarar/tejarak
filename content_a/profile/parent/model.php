@@ -15,7 +15,7 @@ class model extends \content_a\main\model
 	public function list_parent()
 	{
 		$this->user_id = \dash\user::id();
-		\dash\utility::set_request_array(['id' => \dash\coding::encode($this->user_id)]);
+		\dash\app::variable(['id' => \dash\coding::encode($this->user_id)]);
 		$result = $this->get_list_parent();
 		return $result;
 	}
@@ -27,7 +27,7 @@ class model extends \content_a\main\model
 	public function cancel_request()
 	{
 		$this->user_id = \dash\user::id();
-		\dash\utility::set_request_array(['id' => \dash\request::post('cancel')]);
+		\dash\app::variable(['id' => \dash\request::post('cancel')]);
 		$this->parent_cancel_request();
 		$this->redirector_refresh();
 	}
@@ -53,7 +53,7 @@ class model extends \content_a\main\model
 	public function remove_parent()
 	{
 		$this->user_id = \dash\user::id();
-		\dash\utility::set_request_array(['id' => \dash\request::post('remove')]);
+		\dash\app::variable(['id' => \dash\request::post('remove')]);
 		$this->delete_parent();
 		$this->redirector_refresh();
 	}
@@ -76,7 +76,7 @@ class model extends \content_a\main\model
 		$request['mobile']     = \dash\request::post('mobile');
 		$request['id']         = \dash\coding::encode($this->user_id);
 
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		if(\dash\request::post('cancel') && \dash\coding::is(\dash\request::post('cancel')))
 		{

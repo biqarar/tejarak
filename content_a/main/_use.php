@@ -131,7 +131,7 @@ trait _use
 		$request       = [];
 		$this->user_id = \dash\user::id();
 		$request['id'] = $_team;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result        = $this->get_team(['debug' => false]);
 
 		return $result;
@@ -148,7 +148,7 @@ trait _use
 		$request             = [];
 		$this->user_id       = \dash\user::id();
 		$request['shortname'] = $_shortname;
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result = $this->get_team();
 		return $result;
 	}
@@ -252,7 +252,7 @@ trait _use
 			return false;
 		}
 
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 		$result =  $this->get_list_member($_args);
 		return $result;
 	}

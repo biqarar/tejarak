@@ -9,9 +9,9 @@ class view extends \content_a\main\view
 		$team                      = \dash\url::dir(0);
 		$member                    = \dash\url::dir(3);
 
-		if(isset($this->data->current_team['creator']))
+		if(isset($this->data->currentTeam['creator']))
 		{
-			$creator_id = $this->data->current_team['creator'];
+			$creator_id = $this->data->currentTeam['creator'];
 			$creator_id = \dash\coding::decode($creator_id);
 
 			$userteam_id = $member;
@@ -38,8 +38,8 @@ class view extends \content_a\main\view
 
 		$this->data->change_creator = \dash\temp::get('change_creator');
 		$this->data->change_admin   = \dash\temp::get('change_admin');
-		$this->data->is_admin       = \dash\temp::get('is_admin');
-		$this->data->is_creator     = \dash\temp::get('is_creator');
+		$this->data->isAdmin       = \dash\temp::get('isAdmin');
+		$this->data->isCreator     = \dash\temp::get('isCreator');
 
 		if($member)
 		{
@@ -90,9 +90,9 @@ class view extends \content_a\main\view
 
 		$this->data->list_member = $member_list;
 
-		if(isset($this->data->current_team['name']))
+		if(isset($this->data->currentTeam['name']))
 		{
-			$this->data->page['title'] = T_('Member of :name', ['name'=> $this->data->current_team['name']]);
+			$this->data->page['title'] = T_('Member of :name', ['name'=> $this->data->currentTeam['name']]);
 			$this->data->page['desc']  = T_('Quick view to team members and add or edit detail of members');
 		}
 	}

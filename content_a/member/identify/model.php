@@ -38,7 +38,7 @@ class model extends \content_a\member\model
 		$member          = \dash\url::dir(3);
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\url::dir(0);
-		\dash\utility::set_request_array($request);
+		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION
 		$this->add_member(['method' => 'patch']);
