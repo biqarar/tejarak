@@ -2,7 +2,7 @@
 namespace content_a\member\general;
 
 
-class model extends \content_a\member\model
+class model
 {
 
 	/**
@@ -10,7 +10,7 @@ class model extends \content_a\member\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args =
 		[
@@ -35,11 +35,11 @@ class model extends \content_a\member\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_general($_args)
+	public static function post()
 	{
-		$this->user_id = \dash\user::id();
-		$request       = $this->getPost();
-		$member          = \dash\url::dir(3);
+
+		$request       = self::getPost();
+		$member          = \dash\request::get('member');
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\request::get('id');
 		\dash\app::variable($request);

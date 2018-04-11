@@ -18,7 +18,7 @@
 {%block psidebar%}
 <div class="cbox normal">
 
-  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/{{team}}/member/avatar/{{member.id}}'>
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/member/avatar?id={{requestGET.id}}&member={{member.id}}'>
     <img src="{{member.file}}" alt="{{member.name}}" class="pA10-f">
     <div class="content">
       <div class="header">{{member.displayname}}</div>
@@ -26,10 +26,10 @@
     </div>
   </a>
 
- <a class="btn block mTB5" href='{{url.here}}/{{team}}/member/general/{{member.id}}'>{%trans "General Detail"%}</a>
- <a class="btn block mTB5" href='{{url.here}}/{{team}}/member/identify/{{member.id}}'>{%trans "Personnel Card"%}</a>
- <a class="btn block mTB5" href='{{url.here}}/{{team}}/member/permission/{{member.id}}'>{%trans "Special Access"%}</a>
- <a class="btn block mTB5" href='{{url.here}}/{{team}}/member/observer/{{member.id}}'>{%trans "Observer or Parent"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/member/general?id={{requestGET.id}}&member={{member.id}}'>{%trans "General Detail"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/member/identify?id={{requestGET.id}}&member={{member.id}}'>{%trans "Personnel Card"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/member/permission?id={{requestGET.id}}&member={{member.id}}'>{%trans "Special Access"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/member/observer?id={{requestGET.id}}&member={{member.id}}'>{%trans "Observer or Parent"%}</a>
 </div>
 {%endblock%}
 

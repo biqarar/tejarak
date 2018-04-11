@@ -18,7 +18,7 @@ class model extends \content_a\member\model
 
 		$user_id =
 		[
-			'id'      => \dash\coding::decode(\dash\url::dir(3)),
+			'id'      => \dash\coding::decode(\dash\request::get('member')),
 			'team_id' => $team_id,
 			'limit'   => 1,
 		];
@@ -54,7 +54,7 @@ class model extends \content_a\member\model
 
 		$user_id =
 		[
-			'id'      => \dash\coding::decode(\dash\url::dir(3)),
+			'id'      => \dash\coding::decode(\dash\request::get('member')),
 			'team_id' => \dash\coding::decode(\dash\request::get('id')),
 			'limit'   => 1,
 		];

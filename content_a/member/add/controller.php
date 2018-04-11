@@ -1,23 +1,15 @@
 <?php
 namespace content_a\member\add;
 
-class controller extends \content_a\main\controller
+class controller
 {
 	/**
 	 * rout
 	 */
-	public function ready()
+	public static function routing()
 	{
-
-
-		$url = \dash\url::directory();
-
-		$team_code = \dash\request::get('id');
-
 		unset($_SESSION['first_go_to_setup']);
 
-		$this->get(false, 'add')->ALL("/.*/");
-		$this->post('add')->ALL("/.*/");
 	}
 }
 ?>

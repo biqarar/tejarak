@@ -1,24 +1,16 @@
 <?php
 namespace content_a\member\general;
 
-class view extends \content_a\member\view
+class view
 {
 
-	/**
-	 * general member
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function view_general($_args)
+	public static function config()
 	{
-		$memberName = '';
-		if(isset($this->data->member['displayname']))
-		{
-			$memberName = $this->data->member['displayname'];
-		}
+		\content_a\member\view::master_config();
+		$memberName = \dash\data::member_displayname();
 
-		$this->data->page['title'] = T_('General setting | :name', ['name' => $memberName]);
-		$this->data->page['desc']  = T_('Manage general setting of member like name and position, you can change another setting by choose another type of setting.');
+		\dash\data::page_title(T_('General setting | :name', ['name' => $memberName]));
+		\dash\data::page_desc(T_('Manage general setting of member like name and position, you can change another setting by choose another type of setting.'));
 
 	}
 

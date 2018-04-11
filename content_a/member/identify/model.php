@@ -35,7 +35,7 @@ class model extends \content_a\member\model
 	{
 		$this->user_id   = \dash\user::id();
 		$request         = $this->getPost();
-		$member          = \dash\url::dir(3);
+		$member          = \dash\request::get('member');
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\request::get('id');
 		\dash\app::variable($request);

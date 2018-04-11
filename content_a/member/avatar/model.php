@@ -52,7 +52,7 @@ class model extends \content_a\member\model
 			$request['file'] = $file_code;
 		}
 
-		$member          = \dash\url::dir(3);
+		$member          = \dash\request::get('member');
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\request::get('id');
 		\dash\app::variable($request);

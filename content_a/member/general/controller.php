@@ -1,17 +1,14 @@
 <?php
 namespace content_a\member\general;
 
-class controller extends \content_a\main\controller
+class controller
 {
 	/**
 	 * rout
 	 */
-	public function ready()
+	public static function routing()
 	{
 
-
-		$this->get(false, 'general')->ALL("/.*/");
-		$this->post('general')->ALL("/.*/");
 	}
 }
 ?>

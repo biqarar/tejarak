@@ -120,7 +120,7 @@ class model extends \content_a\main\model
 		}
 
 		$url             = \dash\url::directory();
-		$member          = \dash\url::dir(3);
+		$member          = \dash\request::get('member');
 		$request['id']   = $member;
 		$request['team'] = $team = \dash\request::get('id');
 		\dash\app::variable($request);

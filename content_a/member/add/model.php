@@ -2,7 +2,7 @@
 namespace content_a\member\add;
 
 
-class model extends \content_a\main\model
+class model
 {
 
 	/**
@@ -10,7 +10,7 @@ class model extends \content_a\main\model
 	 *
 	 * @return     array  The post.
 	 */
-	public function getPost()
+	public static function getPost()
 	{
 		$args =
 		[
@@ -48,7 +48,7 @@ class model extends \content_a\main\model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post_add($_args)
+	public static function post()
 	{
 		// check the user is login
 		if(!\dash\user::login())
@@ -56,12 +56,9 @@ class model extends \content_a\main\model
 			\dash\notif::error(T_("Please login to add a team"), false, 'arguments');
 			return false;
 		}
+		$request           = self::getPost();
 
-		$this->user_id = \dash\user::id();
-		// ready request
-		$request           = $this->getPost();
-
-		$file_code = $this->upload_avatar();
+		$file_code = self::upload_avatar();
 		// we have an error in upload avatar
 		if($file_code === false)
 		{
@@ -80,10 +77,11 @@ class model extends \content_a\main\model
 		\dash\app::variable($request);
 
 		// API ADD MEMBER FUNCTION
-		$this->add_member();
+		\lib\app\member::add_member();
+
 		if(\dash\engine\process::status())
 		{
-			\dash\redirect::to(\dash\url::here(). "/$team/member");
+			\dash\redirect::to(\dash\url::here(). "/member?id=". \dash\request::get('id'));
 		}
 
 	}
@@ -94,12 +92,12 @@ class model extends \content_a\main\model
 	 *
 	 * @return     boolean  ( description_of_the_return_value )
 	 */
-	public function upload_avatar()
+	public static function upload_avatar()
 	{
 		if(\dash\request::files('avatar'))
 		{
 			\dash\app::variable(['upload_name' => 'avatar']);
-			$uploaded_file = $this->upload_file(['debug' => false]);
+			$uploaded_file = \dash\app\file::upload(['debug' => false]);
 			if(isset($uploaded_file['code']))
 			{
 				return $uploaded_file['code'];

@@ -15,7 +15,7 @@ class view extends \content_a\member\view
 		$this->data->editMode     = true;
 		$url                       = \dash\url::directory();
 		$team                      = \dash\request::get('id');
-		$member                    = \dash\url::dir(3);
+		$member                    = \dash\request::get('member');
 
 		$member                    = $this->model()->edit($team, $member);
 
