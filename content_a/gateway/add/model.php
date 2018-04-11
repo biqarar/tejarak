@@ -41,7 +41,7 @@ class model
 		// ready request
 		$request           = self::getPost();
 
-		$team = \dash\url::dir(0);
+		$team = \dash\request::get('id');
 		// get posted data to create the request
 		$request['team']  = $team;
 
@@ -52,7 +52,7 @@ class model
 
 		if(\dash\engine\process::status())
 		{
-			\dash\redirect::to(\dash\url::here(). "/$team/gateway");
+			\dash\redirect::to(\dash\url::here(). "/gateway?id=". \dash\request::get('id'));
 		}
 
 	}

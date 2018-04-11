@@ -28,7 +28,6 @@ class view
 
 		\dash\data::bodyclass('siftal');
 
-
 		// get part 2 of url and use as team name
 		\dash\data::team(\dash\url::dir(0));
 		\dash\data::teamCode(\dash\url::dir(0));
@@ -38,13 +37,13 @@ class view
 			\dash\data::team(null);
 		}
 
+		if(\dash\request::get('id'))
+		{
+			\dash\data::currentTeam(\lib\app\team::getTeamDetail(\dash\request::get('id')));
+		}
+
 		\dash\data::isAdmin(\dash\temp::get('isAdmin'));
 		\dash\data::isCreator(\dash\temp::get('isCreator'));
-
-		if(\dash\data::team())
-		{
-			\dash\data::currentTeam(\lib\app\team::getTeamDetail(\dash\data::team()));
-		}
 	}
 
 
