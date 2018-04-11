@@ -1,31 +1,13 @@
 <?php
 namespace content_a\billing\detail;
 
-class view extends \content_a\main\view
+class view
 {
-	public function config()
+	public static function config()
 	{
-		$this->data->page['title'] = T_("Billing usage detail");
-		$this->data->page['desc']  = T_("Check your current usage and active user and price for this period of time.");
+		\dash\data::page_title(T_("Billing usage detail"));
+		\dash\data::page_desc(T_("Check your current usage and active user and price for this period of time."));
+		\dash\data::detail(\content_a\billing\model::usage());
 	}
-
-
-	/**
-	 * { function_description }
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function view_detail($_args)
-	{
-		if(!\dash\user::login())
-		{
-			return;
-		}
-		// var_dump($_args);exit();
-		$detail = $_args->api_callback;
-		$this->data->detail = $detail;
-
-	}
-
 }
 ?>

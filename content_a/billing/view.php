@@ -1,57 +1,57 @@
 <?php
 namespace content_a\billing;
 
-class view extends \content_a\main\view
+class view
 {
-	public function config()
+	public static function config()
 	{
 
-		$this->data->amount        = \dash\request::get('amount');
-		$this->data->page['title'] = T_("Billing information");
-		$this->data->page['desc']  = T_("Check your balance, charge your account, and bill your invoices!");
+		\dash\data::amount(\dash\request::get('amount'));
+		\dash\data::page_title(T_("Billing information"));
+		\dash\data::page_desc(T_("Check your balance, charge your account, and bill your invoices!"));
 
 		if(\dash\user::login())
 		{
-			$userUnit             = \dash\app\units::find_userUnit(\dash\user::id(), true);
+			$userUnit             = \dash\app\units::find_user_unit(\dash\user::id(), true);
 			$userUnit_id          = \dash\app\units::get_id($userUnit);
 			$userUnit_id          = (int) $userUnit_id;
 			if($userUnit          == 'dollar')
 			{
 				$userUnit             = '$';
 			}
-			$this->data->userUnit = T_($userUnit);
+			\dash\data::userUnit(T_($userUnit));
 
-			$user_cash_all = \dash\db\transactions::budget(\dash\user::id(), ['unit' => 'all']);
-			$this->data->user_cash_all = $user_cash_all;
-			if(is_array($user_cash_all))
+			$userCash_all = \dash\db\transactions::budget(\dash\user::id(), ['unit' => 'all']);
+			\dash\data::userCash_all($userCash_all);
+			if(is_array($userCash_all))
 			{
-				$user_cash_all['total']    = array_sum($user_cash_all);
+				$userCash_all['total']    = array_sum($userCash_all);
 			}
-			$this->data->user_cash = $user_cash_all;
+			\dash\data::userCash($userCash_all);
 
-			$this->data->usage = $this->model()->usage();
+			\dash\data::usage(\content_a\billing\model::usage());
+
+
+			\dash\data::history(self::get_billing());
 		}
 	}
-
 
 
 	/**
-	 * { function_description }
-	 *
-	 * @param      <type>  $_args  The arguments
+	 * get billing data to show
 	 */
-	public function view_billing($_args)
+	public static function get_billing()
 	{
 		if(!\dash\user::login())
 		{
-			return;
+			return false;
 		}
 
-		$history = $_args->api_callback;
-		// var_dump($history);exit();
-		$this->data->history = $history;
-
+		$meta            = [];
+		$meta['user_id'] = \dash\user::id();
+		$meta['verify']  = 1;
+		$billing_history = \dash\db\transactions::search(null, $meta);
+		return $billing_history;
 	}
-
 }
 ?>

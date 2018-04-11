@@ -55,7 +55,7 @@
        <div class="statistic blue">
         <div class="value">
           <i class="sf-credit-card"></i>
-          <span>{{user_cash.total|number_format| fitNumber}}</span>
+          <span>{{userCash.total|number_format| fitNumber}}</span>
         </div>
         <div class="label">{%trans "Your credit"%} <small>{%trans userUnit%}</small></div>
        </div>
@@ -113,7 +113,7 @@
           <td>{{value.budget|number_format|fitNumber}} {%trans my_unit%}</td>
           <td>
 {%if value.invoice_id%}
-            <a href="{{url.here}}/billing/invoice/{{value.invoice_id}}"><i class="sf-file-text"></i></a>
+            <a href="{{url.here}}/billing/invoice?id={{value.invoice_id}}"><i class="sf-file-text"></i></a>
 {%else%}
             <i>-</i>
 {%endif%}

@@ -2,21 +2,9 @@
 namespace content_a\billing\detail;
 
 
-class model extends \mvc\model
+class model
 {
 
-	/**
-	 * get detail data to show
-	 */
-	public function get_detail($_args)
-	{
-		if(!\dash\user::login())
-		{
-			return false;
-		}
-
-		return $this->usage();
-	}
 
 
 
@@ -25,20 +13,20 @@ class model extends \mvc\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function usage()
+	public static function usage()
 	{
 
 		if(isset($_SESSION['usage_team_detail']) && isset($_SESSION['usage_team_detail_time']))
 		{
 			if(time() - strtotime($_SESSION['usage_team_detail_time']) > (60*60))
 			{
-				$_SESSION['usage_team_detail'] = $this->run_usage();
+				$_SESSION['usage_team_detail'] = self::run_usage();
 				$_SESSION['usage_team_detail_time'] = date("Y-m-d H:i:s");
 			}
 		}
 		else
 		{
-			$_SESSION['usage_team_detail'] = $this->run_usage();
+			$_SESSION['usage_team_detail'] = self::run_usage();
 			$_SESSION['usage_team_detail_time'] = date("Y-m-d H:i:s");
 		}
 
@@ -49,7 +37,7 @@ class model extends \mvc\model
 	/**
 	 * { function_description }
 	 */
-	public function run_usage()
+	public static function run_usage()
 	{
 		if(!\dash\user::login())
 		{
@@ -79,12 +67,5 @@ class model extends \mvc\model
 		return $all_creator_team;
 	}
 
-	/**
-	 * post data and update or insert detail data
-	 */
-	public function post_detail()
-	{
-
-	}
 }
 ?>

@@ -1,31 +1,30 @@
 <?php
 namespace content_a\billing\invoice;
 
-class view extends \content_a\main\view
+class view
 {
-	public function config()
+
+	public static function config()
 	{
-		$this->data->page['title'] = T_("Invoice Detail");
-		$this->data->page['desc'] = T_("Check invoice and detail of it");
+		\dash\data::page_title(T_("Invoice Detail"));
+		\dash\data::page_desc(T_("Check invoice and detail of it"));
+		\dash\data::invoice(self::get_invoice());
 
 	}
 
 
 	/**
-	 * { function_description }
-	 *
-	 * @param      <type>  $_args  The arguments
+	 * get invoice data to show
 	 */
-	public function view_invoice($_args)
+	public static function get_invoice()
 	{
 		if(!\dash\user::login())
 		{
-			return;
+			return false;
 		}
-
-		$invoice = $_args->api_callback;
-		$this->data->invoice = $invoice;
-
+		$invoice_id = \dash\request::get('id');
+		$invoice_detail = \dash\db\invoices::load($invoice_id, \dash\user::id());
+		return $invoice_detail;
 	}
 
 }

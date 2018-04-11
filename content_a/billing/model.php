@@ -2,7 +2,7 @@
 namespace content_a\billing;
 
 
-class model extends \mvc\model
+class model
 {
 
 	/**
@@ -10,31 +10,15 @@ class model extends \mvc\model
 	 *
 	 * @var        <type>
 	 */
-	public $user_id = null;
+	public static $user_id = null;
 
 
-	/**
-	 * get billing data to show
-	 */
-	public function get_billing($_args)
-	{
-		if(!\dash\user::login())
-		{
-			return false;
-		}
-		$meta            = [];
-		$this->user_id   = \dash\user::id();
-		$meta['user_id'] = $this->user_id;
-		// $meta['admin']   = false ;
-		$meta['verify'] = 1;
-		$billing_history = \dash\db\transactions::search(null, $meta);
-		return $billing_history;
-	}
+
 
 	/**
 	 * post data and update or insert billing data
 	 */
-	public function post_billing()
+	public static function post()
 	{
 		if(!\dash\user::login())
 		{
@@ -46,7 +30,7 @@ class model extends \mvc\model
 		{
 			if(\dash\request::post('promo'))
 			{
-				$this->check_promo();
+				self::check_promo();
 				return;
 			}
 			else
@@ -63,7 +47,7 @@ class model extends \mvc\model
 
 
 
-	public function check_promo()
+	public static function check_promo()
 	{
 		$promo     = \dash\request::post('promo');
 		$amount    = 0;
@@ -176,20 +160,20 @@ class model extends \mvc\model
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
 	 */
-	public function usage()
+	public static function usage()
 	{
 
 		if(isset($_SESSION['usage_team']) && isset($_SESSION['usage_team_time']))
 		{
 			if(time() - strtotime($_SESSION['usage_team_time']) > (60*60))
 			{
-				$_SESSION['usage_team'] = $this->run_usage();
+				$_SESSION['usage_team'] = self::run_usage();
 				$_SESSION['usage_team_time'] = date("Y-m-d H:i:s");
 			}
 		}
 		else
 		{
-			$_SESSION['usage_team'] = $this->run_usage();
+			$_SESSION['usage_team'] = self::run_usage();
 			$_SESSION['usage_team_time'] = date("Y-m-d H:i:s");
 		}
 
@@ -200,7 +184,7 @@ class model extends \mvc\model
 	/**
 	 * { function_description }
 	 */
-	public function run_usage()
+	public static function run_usage()
 	{
 		if(!\dash\user::login())
 		{
