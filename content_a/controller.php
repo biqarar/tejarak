@@ -18,8 +18,15 @@ class controller
 		}
 		else
 		{
+
+			if(self::reservedNames(\dash\url::module()))
+			{
+				return;
+			}
+
 			$team_id = \dash\request::get('id');
 			$team_id = \dash\coding::decode($team_id);
+
 			if(!$team_id)
 			{
 				\dash\header::status(404, T_("Id not set"));
@@ -46,6 +53,7 @@ class controller
 		{
 			case null:
 			case 'team':
+			case 'card':
 			case 'billing':
 			case 'profile':
 			case 'notifications':
