@@ -1,6 +1,6 @@
 <?php
 namespace lib\db;
-use \lib\db;
+
 
 class teamplans
 {
@@ -69,7 +69,7 @@ class teamplans
 	 */
 	public static function insert()
 	{
-		return db\config::public_insert('teamplans', ...func_get_args());
+		return \dash\db\config::public_insert('teamplans', ...func_get_args());
 	}
 
 
@@ -78,7 +78,7 @@ class teamplans
 	 */
 	public static function update()
 	{
-		return db\config::public_update('teamplans', ...func_get_args());
+		return \dash\db\config::public_update('teamplans', ...func_get_args());
 	}
 
 

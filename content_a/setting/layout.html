@@ -19,7 +19,7 @@
 <div class="cbox normal">
 
 
-  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/{{currentTeam.id}}/setting/logo'>
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/setting/logo?id={{requestGET.id}}'>
     <img src="{{currentTeam.logo}}" alt="{{currentTeam.name}}" class="pA10-f">
     <div class="content">
       <div class="header">{{currentTeam.name}}</div>
@@ -34,13 +34,13 @@
     </div>
   </a>
 
- <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/general'>{%trans "General Detail"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/setting/general?id={{requestGET.id}}'>{%trans "General Detail"%}</a>
  {%if isCreator%}
-  <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/plan'>{%trans "Team Plan"%}</a>
+  <a class="btn block mTB5" href='{{url.here}}/setting/plan?id={{requestGET.id}}'>{%trans "Team Plan"%}</a>
  {%endif%}
- <!-- <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/security'>{%trans "Security and privacy"%}</a> -->
- <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/report'>{%trans "Report Settings"%}</a>
- <a class="btn block mTB5" href='{{url.here}}/{{currentTeam.id}}/setting/board'>{%trans "Board Settings"%}</a>
+ <!-- <a class="btn block mTB5" href='{{url.here}}/setting/security?id={{requestGET.id}}'>{%trans "Security and privacy"%}</a> -->
+ <a class="btn block mTB5" href='{{url.here}}/setting/report?id={{requestGET.id}}'>{%trans "Report Settings"%}</a>
+ <a class="btn block mTB5" href='{{url.here}}/setting/board?id={{requestGET.id}}'>{%trans "Board Settings"%}</a>
 </div>
 {%endblock%}
 
