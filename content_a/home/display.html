@@ -21,7 +21,7 @@
 {%if value.status == 'close'%}red{%elseif not value.stats.traffic_count%}black{%elseif value.rule == 'admin'%}blue{%else%}{%endif%}
 {%endset%}
 
-  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/{{value.id}}'>
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/team?id={{value.id}}'>
     <img src="{{value.logo}}" alt="{{value.name}}" class="pA10-f">
     <div class="content">
       <div class="header">{{value.name}}</div>

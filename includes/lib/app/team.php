@@ -12,7 +12,7 @@ class team
 
 	/**
 	 * check team language and redirect if is set
-	 * the 'data' mean the arguments of this function is data of team
+	 * the 'data' mean the arguments of  function is data of team
 	 * you can set the id or shortname of team and change the data to 'id' or 'shortname'
 	 */
 	public static function checkout_team_lanuage_force($_args = null, $_type = 'data')
@@ -106,7 +106,7 @@ class team
 
 		$request['id'] = $_team;
 		\dash\app::variable($request);
-		$result        = $this->get_team(['debug' => false]);
+		$result        = self::get_team(['debug' => false]);
 
 		return $result;
 	}
@@ -123,7 +123,7 @@ class team
 
 		$request['shortname'] = $_shortname;
 		\dash\app::variable($request);
-		$result = $this->get_team();
+		$result = self::get_team();
 		return $result;
 	}
 
@@ -137,7 +137,7 @@ class team
 	 */
 	public static function is_exist_team_shortname($_shortname)
 	{
-		return $this->is_exist_team($_shortname, 'shortname');
+		return self::is_exist_team($_shortname, 'shortname');
 	}
 
 
@@ -148,7 +148,7 @@ class team
 	 */
 	public static function is_exist_team_code($_code)
 	{
-		return $this->is_exist_team($_code, 'code');
+		return self::is_exist_team($_code, 'code');
 	}
 
 	/**
@@ -160,7 +160,7 @@ class team
 	 */
 	public static function is_exist_team_id($_id)
 	{
-		return $this->is_exist_team($_id, 'id');
+		return self::is_exist_team($_id, 'id');
 	}
 
 	/**
@@ -227,7 +227,7 @@ class team
 		}
 
 		\dash\app::variable($request);
-		$result =  $this->get_list_member($_args);
+		$result =  self::get_list_member($_args);
 		return $result;
 	}
 }

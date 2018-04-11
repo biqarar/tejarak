@@ -68,10 +68,10 @@ remain_percent -->
  <div class="block">
   <div class="f">
    <h5 class="c fc-mute">{%trans "Present Members"%}</h5>
-   <h4 class="cauto fc-warn fs30 txtra counter">{{dashboard_detail.member_present | number_format}}</h4>
+   <h4 class="cauto fc-warn fs30 txtra counter">{{dashboardDetail.member_present | number_format}}</h4>
   </div>
   <div class="f">
-   <div class="progress" data-percent='{{dashboard_detail.member_percent}}'>
+   <div class="progress" data-percent='{{dashboardDetail.member_percent}}'>
     <div class="bar"></div>
    </div>
   </div>
@@ -93,7 +93,7 @@ remain_percent -->
   {%endif%}
   </div>
   <div class="f">
-   <div class="progress" data-percent='{{dashboard_detail.month_detail.left}}'>
+   <div class="progress" data-percent='{{dashboardDetail.month_detail.left}}'>
     <div class="bar"></div>
    </div>
   </div>
@@ -105,7 +105,7 @@ remain_percent -->
 {%block stMembers%}
 <a class="dcard" href='{{url.here}}/{{team}}/member'>
  <div class="statistic gray">
-  <div class="value"><i class="sf-users"></i><span>{{dashboard_detail.member_count |number_format |fitNumber}}</span></div>
+  <div class="value"><i class="sf-users"></i><span>{{dashboardDetail.member_count |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Member"%}</div>
  </div>
 </a>
@@ -115,7 +115,7 @@ remain_percent -->
 {%block stTraffics%}
 <a class="dcard" href='{{url.pwd}}/report/last'>
  <div class="statistic teal">
-  <div class="value"><i class="sf-retweet"></i><span class="fs08">{{dashboard_detail.traffic_count |number_format |fitNumber}}</span></div>
+  <div class="value"><i class="sf-retweet"></i><span class="fs08">{{dashboardDetail.traffic_count |number_format |fitNumber}}</span></div>
   <div class="label">{%trans "Traffic Record"%}</div>
  </div>
 </a>
@@ -125,7 +125,7 @@ remain_percent -->
 {%block stTotalHour%}
   <div class="dcard">
    <div class="statistic orange">
-    <div class="value"><i class="sf-hourglass-end"></i><span>{{(dashboard_detail.hour_count/60) |round | number_format  |fitNumber}}</span></div>
+    <div class="value"><i class="sf-hourglass-end"></i><span>{{(dashboardDetail.hour_count/60) |round | number_format  |fitNumber}}</span></div>
     <div class="label">{%trans "Total Hour Work"%}</div>
    </div>
   </div>
@@ -139,7 +139,7 @@ remain_percent -->
   <div class="dcard"  title='{%trans "Start date of using tejarak"%}: {{currentTeam.createdate | date("Y-m-d")}} | {{currentTeam.day_use|number_format | fitNumber}} {%trans "day ago"%}'>
 {%endif%}
    <div class="statistic blue">
-    <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{dashboard_detail.count_day_work | number_format}}</span></div>
+    <div class="value"><i class="sf-calendar-check-o"></i><span class="counter">{{dashboardDetail.count_day_work | number_format}}</span></div>
     <div class="label">{%trans "Day Used"%}</div>
    </div>
   </div>
@@ -148,7 +148,7 @@ remain_percent -->
 
 {%block chart_primary%}
 <div class="dcard x3 pA0">
- <div class="chart" data-vals='{{dashboard_detail.last_time_chart|raw}}'>
+ <div class="chart" data-vals='{{dashboardDetail.last_time_chart|raw}}'>
  </div>
 </div>
 {%endblock%}

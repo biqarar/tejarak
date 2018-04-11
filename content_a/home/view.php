@@ -8,7 +8,7 @@ class view
 	{
 		\dash\data::page_title(T_("Dashboard"));
 		\dash\data::page_desc(T_("View team summary and add new team or change it"));
-
+		$team_list = null;
 		if(\dash\user::login())
 		{
 			$team_list = \lib\app\team::get_list_team();
