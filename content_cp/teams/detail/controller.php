@@ -1,18 +1,11 @@
 <?php
 namespace content_cp\teams\detail;
 
-class controller extends \mvc\controller
+class controller
 {
-	public function ready()
+	public static function routing()
 	{
 		\dash\permission::access('cp:user:detail', 'block');
-
-		$this->get(false, "detail")->ALL();
-
-		$this->get("load", "detail")->ALL("/teams\/detail\/(\d+)/");
-
-		$this->post('detail')->ALL();
-		$this->post('detail')->ALL("/teams\/detail\/(\d+)/");
 	}
 }
 ?>

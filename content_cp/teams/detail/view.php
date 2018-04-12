@@ -1,19 +1,19 @@
 <?php
 namespace content_cp\teams\detail;
 
-class view extends \content_cp\main\view
+class view
 {
-	public function view_detail($_args)
+	public static function config()
 	{
-		if(isset($_args->api_callback))
+
+		$id = \dash\request::get('id');
+		$result = [];
+		if($id && is_numeric($id))
 		{
-			$data = $_args->api_callback;
-			if(isset($data['user_id']))
-			{
-				$this->data->get_mobile = \lib\db\teams::get_mobile($data['user_id']);
-			}
-			$this->data->user_record = $data;
+			$result = \lib\db\teams::get(['id' => $id, 'limit' => 1]);
 		}
+
+		\dash\data::userRecord($result);
 	}
 }
 ?>

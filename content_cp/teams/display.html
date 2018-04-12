@@ -35,7 +35,7 @@
 		<div class="c1">{%trans "Members"%}</div>
 		<div class="c1">{%trans "Hours"%}</div>
 	</div>
-	{%for key, value in teams_list%}
+	{%for key, value in teamsList%}
 	<div class="f">
 
 		<div class="c">
@@ -65,10 +65,10 @@
 		<div class="c">{{value.plan}}</div>
 		<div class="c">{{value.parent}}</div>
 		<div class="c">{{value.desc}}</div>
-		<div class="c1"><a href='{{url.base}}/cp/teams/detail/{{value.id}}'><span class="sf-align-left-1"></span></a></div>
+		<div class="c1"><a href='{{url.base}}/cp/teams/detail?id={{value.id}}'><span class="sf-align-left-1"></span></a></div>
 		<!-- <div class="c1"><a href='{{url.base}}/cp/teams/edit/{{value.id}}'><span class="sf-edit-write"></span></a></div> -->
-		<div class="c1"><a href='{{url.base}}/cp/teams/members/{{value.id}}'><span class="sf-users"></span></a></div>
-		<div class="c1"><a href='{{url.base}}/cp/teams/hours/{{value.id}}'><span class="sf-history"></span></a></div>
+		<div class="c1"><a href='{{url.base}}/cp/teams/members?id={{value.id}}'><span class="sf-users"></span></a></div>
+		<div class="c1"><a href='{{url.base}}/cp/teams/hours?id={{value.id}}'><span class="sf-history"></span></a></div>
 
 	</div>
 	{%endfor%}
