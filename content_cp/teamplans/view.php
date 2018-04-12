@@ -1,69 +1,54 @@
 <?php
 namespace content_cp\teamplans;
 
-class view extends \content_cp\main\view
+class view
 {
-	public function view_list($_args)
+	public static function config()
 	{
-
-		$field = $this->controller()->fields;
-
-		$list = $this->model()->teamplans_list($_args, $field);
-
-		$this->data->teamplans_list = $list;
-
-		$this->order_url($_args, $field);
-
-		if(isset($this->controller->pagnation))
-		{
-			$this->data->pagnation = $this->controller->pagnation_get();
-		}
-
-		if(isset($_args->get("search")[0]))
-		{
-			$this->data->get_search = $_args->get("search")[0];
-		}
+		$list = self::teamplans_list();
+		\dash\data::teamplansList($list);
 	}
 
-
-	/**
-	 * MAKE ORDER URL
-	 *
-	 * @param      <type>  $_args    The arguments
-	 * @param      <type>  $_fields  The fields
-	 */
-	public function order_url($_args, $_fields)
+	public static function teamplans_list()
 	{
-		$order_url = [];
-		foreach ($_fields as $key => $value)
+		$meta   = [];
+
+		$search = null;
+		if(\dash\request::get('search'))
 		{
+			$search = \dash\request::get('search');
+		}
 
-			if(isset($_args->get("sort")[0]))
-			{
-				if($_args->get("sort")[0] == $value)
-				{
-					if(mb_strtolower($_args->get("order")[0]) == mb_strtolower('ASC'))
-					{
-						$order_url[$value] = "sort=$value/order=desc";
-					}
-					else
-					{
-						$order_url[$value] = "sort=$value/order=asc";
-					}
-				}
-				else
-				{
 
-					$order_url[$value] = "sort=$value/order=asc";
-				}
-			}
-			else
+		if(empty($meta))
+		{
+			$meta['teamplans.status'] = 'enable';
+			$meta['sort']             = 'teamplans.lastcalcdate';
+			$meta['order']            = 'desc';
+		}
+
+		$meta['admin'] = true;
+
+
+		$result = \lib\db\teamplans::search($search, $meta);
+		if(is_array($result))
+		{
+			foreach ($result as $key => $value)
 			{
-				$order_url[$value] = "sort=$value/order=asc";
+				if(isset($value['plan']))
+				{
+					$result[$key]['plan'] = \lib\utility\plan::plan_name($value['plan']);
+				}
+				if(isset($value['lastcalcdate']))
+				{
+					$renew_time = strtotime("+30 day") - strtotime($value['lastcalcdate']);
+					$renew_time = date("d", $renew_time). ' '. T_("Day"). ' '. T_("And"). ' '. date("H", $renew_time). " ". T_("Hour");
+					$result[$key]['renew_time'] = $renew_time;
+				}
 			}
 		}
 
-		$this->data->order_url = $order_url;
+		return $result;
 	}
 }
 ?>
