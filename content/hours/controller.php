@@ -1,28 +1,24 @@
 <?php
 namespace content\hours;
 
-class controller extends \content\main\controller
+class controller
 {
-	/**
-	 * route hous page
-	 */
-	public function ready()
+
+	public static function routing()
 	{
-		$url = \dash\url::directory();
+		$url = \dash\url::module();
 		// this module name is hours
 		// the house url can not be route
 		if($url === 'hours')
 		{
 			\dash\header::status(404);
 		}
-		$list_member = $this->model()->list_member(['shortname' => $url]);
+
+		$list_member = \content\hours\view::list_member();
 
 		if($list_member)
 		{
 			\dash\temp::set('list_member', $list_member);
-			//check valid url and exits team
-			$this->get(false, 'show')->ALL($url);
-			$this->post('hours')->ALL($url);
 		}
 		elseif(\dash\temp::get('team_exist'))
 		{

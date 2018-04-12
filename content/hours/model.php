@@ -5,37 +5,7 @@ namespace content\hours;
 class model extends \content\main\model
 {
 
-	/**
-	 * Gets the list.
-	 *
-	 * @param      <type>  $_args  The arguments
-	 */
-	public function list_member($_args)
-	{
-		$this->user_id        = \dash\user::id();
-		$request              = [];
-		$request['shortname'] = isset($_args['shortname']) ? $_args['shortname'] : null;
-		$request['hours']     = true;
-		// to get last hours. what i want to do?
-		\dash\utility::set_request_array($request);
-		$result =  $this->get_list_member();
-
-		// if($result === false)
-		// {
-		// 	\dash\header::status(403, T_("Can not access to show this team"));
-		// }
-
-		return $result;
-	}
-
-
-	/**
-	 * Posts hours.
-	 * save enter and exit of users
-	 *
-	 * @return     boolean  ( description_of_the_return_value )
-	 */
-	public function post_hours($_args)
+	public static function post()
 	{
 
 		if(!\dash\user::login())

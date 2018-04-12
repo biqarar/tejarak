@@ -1,19 +1,38 @@
 <?php
 namespace content\hours;
 
-class view extends \mvc\view
-{
-	use \content_a\main\_use;
 
-	function config()
+class view
+{
+
+	public static function config()
 	{
-		$this->data->bodyclass    = 'unselectable attendance two-column';
-		$this->data->current_time = date("Y-m-d H:i:s");
+		\dash\data::bodyclass('unselectable attendance two-column');
+		\dash\data::currentTime(date("Y-m-d H:i:s"));
+		\dash\data::include_css(true);
+
+		self::view_show();
 
 		// add life to page to refresh automatically after end this time
 		// $this->data->bodyel = 'data-life=20000';
-		$this->include->css    = true;
 	}
+
+
+	/**
+	 * Gets the list.
+	 *
+	 * @param      <type>  $_args  The arguments
+	 */
+	public static function listMember()
+	{
+		$request              = [];
+		$request['shortname'] = \dash\url::module();
+		$request['hours']     = true;
+		$result =  \lib\app\member::get_list_member();
+		return $result;
+	}
+
+
 
 
 	/**
@@ -21,32 +40,32 @@ class view extends \mvc\view
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function view_show($_args)
+	public static function view_show($_args)
 	{
-		$team = \dash\url::directory();
-		$request            = [];
-		$this->data->team   = $request['shortname']         = $team;
-		if(\dash\temp::get('list_member'))
+		$team = \dash\url::module();
+		$request              = [];
+		$request['shortname'] = $team;
+		if(\dash\temp::get('listMember'))
 		{
-			$this->data->list_member = \dash\temp::get('list_member');
-
+			\dash\data::listMember(\dash\temp::get('listMember'));
 		}
 		else
 		{
-			$this->data->list_member = $this->model()->list_member($request);
+			\dash\data::listMember(self::listMember());
 		}
 
-		$current_team = $this->model()->getTeamDetailShortname($team);
+		$current_team = \lib\app\team::getTeamDetailShortname($team);
+
 		if(!isset($current_team['logo']) || (isset($current_team['logo']) && !$current_team['logo']))
 		{
-			$current_team['logo'] = $this->url->static. 'images/logo.png';
+			$current_team['logo'] = \dash\data::url_static(). 'images/logo.png';
 		}
 		/**
 		 * check team language and redirect if is set
 		 * the 'data' mean the arguments of this function is data of team
 		 * you can set the id or shortname of team and change the data to 'id' or 'shortname'
 		 */
-		$this->checkout_team_lanuage_force($current_team, 'data');
+		\lib\app\team::checkout_team_lanuage_force($current_team, 'data');
 
 		if(isset($current_team['logo']) && $current_team['logo'])
 		{
@@ -57,7 +76,7 @@ class view extends \mvc\view
 				{
 					if(!\lib\utility\plan::access('show:logo', $team_id))
 					{
-						$current_team['logo'] = $this->url->static. 'images/logo.png';
+						$current_team['logo'] = \dash\data::url_static(). 'images/logo.png';
 					}
 				}
 			}
@@ -124,30 +143,26 @@ class view extends \mvc\view
 		}
 
 
-
-
-
-
-		$this->data->current_team = $current_team;
+		\dash\data::currentTeam($current_team);
 
 		if(isset($current_team['name']))
 		{
-			$this->data->page['title'] = T_($current_team['name']);
+			\dash\data::page_title(T_($current_team['name']));
 		}
 		else
 		{
-			$this->data->page['title'] = T_($team);
+			\dash\data::page_title(T_($team));
 		}
 		// set page desc
-		$this->data->page['desc']  = T_('Tejarak provides beautiful solutions for your business;');
+		\dash\data::page_desc(T_('Tejarak provides beautiful solutions for your business;'));
 		if(isset($current_team['desc']))
 		{
-			$this->data->page['desc'] = $current_team['desc']. ' | '. $this->data->page['desc'];
+			\dash\data::page_desc($current_team['desc']. ' | '. \dash\data::page_desc());
 		}
 		// set page logo
 		if(isset($current_team['logo']))
 		{
-			$this->data->share['image'] = $current_team['logo'];
+			\dash\data::share_image($current_team['logo']);
 		}
 	}
 }

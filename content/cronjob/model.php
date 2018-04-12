@@ -2,28 +2,33 @@
 namespace content\cronjob;
 
 
-class model extends \mvc\model
+class model
 {
 	/**
 	 * save cronjob form
 	 */
-	public function post_cronjob($_args = null)
+	public static function post()
 	{
 
-		$url = \dash\url::dir(1);
+		if(!\dash\option::config('cronjob','status'))
+		{
+			return;
+		}
+
+		$url = \dash\url::module();
 
 		switch ($url)
 		{
 			case 'pinger':
-				$this->pinger();
+				self::pinger();
 				break;
 
 			case 'report':
-				$this->report();
+				self::report();
 				break;
 
 			case 'calc':
-				$this->calc();
+				self::calc();
 				break;
 
 			case 'notification':
@@ -40,7 +45,7 @@ class model extends \mvc\model
 	/**
 	 * check in this time have any report or no
 	 */
-	public function report()
+	public static function report()
 	{
 
 		$time_now    = date("H:i");
@@ -64,7 +69,7 @@ class model extends \mvc\model
 	}
 
 
-	public function calc()
+	public static function calc()
 	{
 		$time_now = date("H:i");
 		$date     = date("Y-m-d H:i:s");
@@ -99,7 +104,7 @@ class model extends \mvc\model
 	/**
 	 * ping every 1 min
 	 */
-	public function pinger()
+	public static function pinger()
 	{
 		$host = 'sarshomar.com';
 
@@ -159,7 +164,7 @@ class model extends \mvc\model
 	/**
 	 * Gets the last pinged time.
 	 */
-	public function get_last_pinged_time()
+	public static function get_last_pinged_time()
 	{
 		$date = date("Y-m-d H:i:s");
 		$url  = __DIR__ . '/last_ping_time.txt';
@@ -178,7 +183,7 @@ class model extends \mvc\model
 	/**
 	 * Sets the last pinged time.
 	 */
-	public function set_last_pinged_time()
+	public static function set_last_pinged_time()
 	{
 		$date = date("Y-m-d H:i:s");
 		$url  = __DIR__ . '/last_ping_time.txt';

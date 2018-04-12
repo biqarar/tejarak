@@ -1,10 +1,10 @@
 <?php
 namespace content\cronjob;
-use \lib\saloos;
 
-class controller extends \content\main\controller
+
+class controller
 {
-	function ready()
+	public static function routing()
 	{
 		if(isset($_SERVER['REQUEST_METHOD']) && mb_strtolower($_SERVER['REQUEST_METHOD']) === 'get')
 		{
@@ -26,11 +26,7 @@ class controller extends \content\main\controller
 			)
 		)
 		{
-			if(\dash\option::config('cronjob','status'))
-			{
-				$this->post("cronjob")->ALL("/.*/");
-				$this->display = false;
-			}
+			// no thing
 		}
 		else
 		{

@@ -1,11 +1,11 @@
 <?php
 namespace content\contact;
 
-class controller extends \content\main\controller
+class controller
 {
-	function ready()
+	public static function routing()
 	{
-		$this->post("contact")->ALL("/contact/");
+
 	}
 }
 ?>
