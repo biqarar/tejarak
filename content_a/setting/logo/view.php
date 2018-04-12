@@ -1,8 +1,11 @@
 <?php
 namespace content_a\setting\logo;
 
-class view extends \content_a\setting\view
+class view
 {
+	public static function config()
+	{
 
+	}
 }
 ?>

@@ -61,7 +61,7 @@ class model
 
 		if(\dash\engine\process::status())
 		{
-			$new_teamCode = \dash\temp::get('last_teamCode_added');
+			$new_teamCode = \dash\temp::get('last_team_code_added');
 
 			if($new_teamCode)
 			{
