@@ -12,8 +12,6 @@ class model
 	 */
 	public static function listMember($_args)
 	{
-		$this->user_id  = \dash\user::id();
-
 
 		$team_id        = \dash\coding::decode(\dash\request::get('id'));
 		$get_userparent = ['related_id' => $team_id, 'status' => 'enable'];
@@ -24,7 +22,7 @@ class model
 		$request        = [];
 		$request['id'] = isset($_args['id']) ? $_args['id'] : null;
 		\dash\app::variable($request);
-		$result =  $this->get_listMember();
+		$result =  \lib\app\member::get_list_member();
 
 		if(!is_array($result))
 		{

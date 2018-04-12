@@ -1,16 +1,14 @@
 <?php
 namespace content_a\profile\parent;
 
-class controller extends \content_a\main\controller
+class controller
 {
 	/**
 	 * rout
 	 */
-	function ready()
+	public static function routing()
 	{
 
-		$this->get(false, 'parent')->ALL('profile/parent');
-		$this->post('parent')->ALL('profile/parent');
 	}
 }
 ?>
