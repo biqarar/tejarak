@@ -106,7 +106,7 @@
       <td xclass="c">{{value.accepted | humantime | fitNumber}}</td>
 {%endif%}
       <!-- <td xclass="c s0">{%set myType = value.type %}{%trans myType%}</td> -->
-      <td xclass="c"><a href="{{url.here}}/{{teamCode}}/request/hour/{{value.id}}">{%trans "Request Edit"%}</a></td>
+      <td xclass="c"><a href="{{url.here}}/request/hour?id={{requestGET.id}}&hourid={{value.id}}">{%trans "Request Edit"%}</a></td>
     </tr>
     {%endfor%}
 
@@ -116,13 +116,13 @@
 
 <div class="f">
   <div class="cauto pA5">
-    <a href="{{url.here}}/{{teamCode}}/request/add">
+    <a href="{{url.here}}/request/add?id={{requestGET.id}}">
       <i class="sf-plus btn"></i> {%trans "Add request"%}
     </a>
   </div>
 
   <div class="cauto  pA5">
-    <a href="{{exportUrl|raw}}">
+    <a href="{{url.current}}?id={{requestGET.id}}&export=true">
       <i class="sf-list btn"></i> {%trans "Export"%}
     </a>
   </div>

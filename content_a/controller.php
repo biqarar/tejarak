@@ -54,6 +54,7 @@ class controller
 			case null:
 			case 'team':
 			case 'card':
+			case 'ref':
 			case 'billing':
 			case 'profile':
 			case 'notifications':

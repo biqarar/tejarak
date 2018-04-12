@@ -3,7 +3,7 @@ namespace content_a\ref;
 
 class view
 {
-	public function view_ref($_args)
+	public static function config()
 	{
 		$result = self::get_ref();
 		if(is_array($result))

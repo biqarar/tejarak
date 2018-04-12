@@ -9,7 +9,7 @@ class model
 	 *
 	 * @param      <type>  $_args  The arguments
 	 */
-	public function post()
+	public static function post()
 	{
 
 		$response = \dash\request::post('response');
