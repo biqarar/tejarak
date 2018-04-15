@@ -23,17 +23,15 @@ class view
 	}
 
 
-
 	public static function listMember()
 	{
 		$request              = [];
-		$request['shortname'] = \dash\url::module();
+		$request['shortname'] = \dash\url::directory();
 		$request['hours']     = true;
 		\dash\app::variable($request);
 		$result =  \lib\app\member::get_list_member();
 		return $result;
 	}
-
 
 
 	/**
@@ -43,7 +41,7 @@ class view
 	 */
 	public static function view_show()
 	{
-		$team = \dash\url::module();
+		$team                 = \dash\url::module();
 		$request              = [];
 		$request['shortname'] = $team;
 		if(\dash\temp::get('listMember'))

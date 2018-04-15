@@ -9,7 +9,7 @@ class controller
 	 * and brand black list
 	 * @var        array
 	 */
-	public static  $static_pages =
+	public static $static_pages =
 	[
 		'benefits',
 		'pricing',
@@ -57,16 +57,16 @@ class controller
 		if(!in_array(\dash\url::directory(), self::$static_pages))
 		{
 			// check url like this /ermile/tejarak
-			if(preg_match("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/", \dash\url::module(), $split))
+			if(preg_match("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/", \dash\url::directory(), $split))
 			{
 				$list_member = \content\home\view::listMember();
 
 				if($list_member)
 				{
-					\dash\data::tejarak_home_page(false);
-
 					\dash\open::get();
 					\dash\open::post();
+
+					\dash\data::tejarak_home_page(false);
 
 					\dash\temp::set('list_member', $list_member);
 				}
@@ -77,9 +77,5 @@ class controller
 			}
 		}
 	}
-
-
-
-
 }
 ?>
