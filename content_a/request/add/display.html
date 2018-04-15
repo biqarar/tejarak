@@ -8,9 +8,9 @@
 <div class="f justify-center">
   <div class="c6 s12">
     <form method="post" class="cbox">
-    	{%if report_current_user.displayname %}
+    	{%if requestList[0]['displayname'] %}
 		<hr>
-		<p>{%trans "Add new request for"%} {{report_current_user.displayname}}</p>
+		<p>{%trans "Add new request for"%} {{requestList[0]['displayname']}}</p>
 		<hr>
     	{%endif%}
 
