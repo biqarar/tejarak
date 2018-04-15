@@ -200,7 +200,7 @@ trait make
 			'total'      => $new_amount,
 		];
 
-		$invoice = new \lib\db\invoices;
+		$invoice = new \dash\db\invoices;
 
         $invoice->add($new_invoice);
 
