@@ -24,6 +24,7 @@ class model
 
 		\dash\app::variable($request);
 		\lib\app\houredit::hourrequest_action();
+		\dash\redirect::pwd();
 	}
 }
 ?>
