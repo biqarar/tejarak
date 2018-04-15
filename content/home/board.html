@@ -71,20 +71,20 @@
   </div>
 
   <div id="logo">
-   <img src="{{current_team.logo}}" alt='{{current_team.name}}'>
-    <h1>{{current_team.name}}</h1>
+   <img src="{{currentTeam.logo}}" alt='{{currentTeam.name}}'>
+    <h1>{{currentTeam.name}}</h1>
   </div>
 
-{%if current_team.event_date%}
-  <div class="deadline {{current_team.event_class}}"  title='{{current_team.event_date}}'>
-{%if current_team.event_title%}
-   <div class="title">{{current_team.event_title}}</div>
+{%if currentTeam.event_date%}
+  <div class="deadline {{currentTeam.event_class}}"  title='{{currentTeam.event_date}}'>
+{%if currentTeam.event_title%}
+   <div class="title">{{currentTeam.event_title}}</div>
 {%endif%}
    <div class="info">
-   {%if current_team.event_remain == '?' %}
-    <time datetime="P{{current_team.event_date}}D" >{{current_team.event_remain}}</time>
+   {%if currentTeam.event_remain == '?' %}
+    <time datetime="P{{currentTeam.event_date}}D" >{{currentTeam.event_remain}}</time>
    {%else%}
-    <time datetime="P{{current_team.event_date}}D" class="counter" data-counter={{current_team.event_remain}}>-</time>
+    <time datetime="P{{currentTeam.event_date}}D" class="counter" data-counter={{currentTeam.event_remain}}>-</time>
    {%endif%}
     <span>{%trans "days left"%}</span>
    </div>
@@ -105,7 +105,7 @@
 
 
 {%block facebookImages%}
- <meta property ="og:image"                content="{{current_team.logo}}"/>
+ <meta property ="og:image"                content="{{currentTeam.logo}}"/>
  <meta property ="og:image:width"          content="512"/>
  <meta property ="og:image:height"         content="512"/>
 {%endblock%}
