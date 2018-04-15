@@ -1,6 +1,7 @@
 <?php
 namespace lib\utility\message\make;
-use \lib\utility\human;
+
+
 
 trait exit_message
 {
@@ -22,7 +23,7 @@ trait exit_message
 					[
 						'name' => $this->displayname,
 						'team' => $this->team_name,
-						'time' => human::number(date("H:i"), $this->current_language),
+						'time' => \dash\utility\human::number(date("H:i"), $this->current_language),
 					];
 					$msg = T_(":name exited from :team at :time", $T_T);
 					$msg .= "\n\n". 'tejarak.'.\dash\url::tld(). '/'. $this->team_short_name;
@@ -57,7 +58,7 @@ trait exit_message
 			$pure = 0;
 		}
 
-		$pure_human = human::time($pure, 'text', $this->current_language);
+		$pure_human = \dash\utility\human::time($pure, 'text', $this->current_language);
 
 		$time_start = \dash\date::fit_lang('H:i', $start , 'current');
 
@@ -77,12 +78,12 @@ trait exit_message
 
 		if($this->plus || $this->minus)
 		{
-			$msg        .= "\n🚩 ". human::number($total, $this->current_language);
+			$msg        .= "\n🚩 ". \dash\utility\human::number($total, $this->current_language);
 		}
 
 		if($this->minus)
 		{
-			$msg .= "\n➖ ". human::number($this->minus, $this->current_language);
+			$msg .= "\n➖ ". \dash\utility\human::number($this->minus, $this->current_language);
 		}
 
 		$msg   .= "\n🕗 ". $pure_human;

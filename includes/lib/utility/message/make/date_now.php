@@ -1,6 +1,6 @@
 <?php
 namespace lib\utility\message\make;
-use \lib\utility\human;
+
 
 trait date_now
 {

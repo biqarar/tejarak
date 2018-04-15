@@ -1,6 +1,6 @@
 <?php
 namespace lib\utility\message\make;
-use \lib\utility\human;
+
 
 trait end_day
 {
@@ -76,8 +76,8 @@ trait end_day
 
 				$i += 1;
 				$total_time += $accepted;
-				$accepted = human::time($accepted, 'number', 'current');
-				$accepted = human::number($accepted, $this->current_language);
+				$accepted = \dash\utility\human::time($accepted, 'number', 'current');
+				$accepted = \dash\utility\human::number($accepted, $this->current_language);
 				$accepted = " <code>$accepted</code>";
 
 				$accepted_time = null;
@@ -126,18 +126,18 @@ trait end_day
 				$msg .= "\n";
 				$msg_admin .= "\n";
 			}
-			$enterExit    = human::number(\lib\db\hours::enter($this->team_id), $this->current_language);
-			$countPersons = human::number(count($presence), $this->current_language);
+			$enterExit    = \dash\utility\human::number(\lib\db\hours::enter($this->team_id), $this->current_language);
+			$countPersons = \dash\utility\human::number(count($presence), $this->current_language);
 			// fill message of group
 
-			$msg .= "👥 ". human::number($countPersons, $this->current_language). "  ";
+			$msg .= "👥 ". \dash\utility\human::number($countPersons, $this->current_language). "  ";
 
 			if($enterExit != $countPersons)
 			{
-				$msg .= "🎭 ". human::number($enterExit, $this->current_language) . "  ";
+				$msg .= "🎭 ". \dash\utility\human::number($enterExit, $this->current_language) . "  ";
 			}
 
-			$msg .= "🕰 ". human::number($total_time, $this->current_language);
+			$msg .= "🕰 ". \dash\utility\human::number($total_time, $this->current_language);
 			// fill message of admin
 
 			$msg_admin .= "👥 ". $countPersons. "  ";
@@ -147,7 +147,7 @@ trait end_day
 				$msg_admin .= "🎭 ". $enterExit . "  ";
 			}
 
-			$msg_admin .= "🕰 ". human::number(human::time($total_time, 'text', 'current'), $this->current_language);
+			$msg_admin .= "🕰 ". \dash\utility\human::number(\dash\utility\human::time($total_time, 'text', 'current'), $this->current_language);
 
 		}
 		return $msg;

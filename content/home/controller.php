@@ -52,12 +52,34 @@ class controller
 	// for routing check
 	public static function routing()
 	{
-		// check url like this /ermile/tejarak
-		if(preg_match("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/", \dash\url::module(), $split))
+		\dash\data::tejarak_home_page(true);
+
+		if(!in_array(\dash\url::directory(), self::$static_pages))
 		{
-			// \dash\engine\main::controller_set('content\\hours\\controller');
-			return;
+			// check url like this /ermile/tejarak
+			if(preg_match("/^([a-zA-Z0-9]+)(|\/([a-zA-Z0-9]+))$/", \dash\url::module(), $split))
+			{
+				$list_member = \content\home\view::listMember();
+
+				if($list_member)
+				{
+					\dash\data::tejarak_home_page(false);
+
+					\dash\open::get();
+					\dash\open::post();
+
+					\dash\temp::set('list_member', $list_member);
+				}
+				elseif(\dash\temp::get('team_exist'))
+				{
+					\dash\header::status(403, T_("Access denied to load this team data"));
+				}
+			}
 		}
 	}
+
+
+
+
 }
 ?>
