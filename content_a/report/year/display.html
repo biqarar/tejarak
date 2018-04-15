@@ -49,7 +49,7 @@
 {%include display.pagination%}
 
 <div>
-	<a href="{{exportUrl|raw}}"> {%trans "Export"%}
+	<a href="{{url.current}}?id={{requestGET.id}}&export=1"> {%trans "Export"%}
 		<i title='{%trans "Export as CSV file"%}' class="sf-list btn"></i>
 	</a>
 </div>

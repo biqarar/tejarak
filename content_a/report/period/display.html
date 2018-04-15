@@ -57,7 +57,7 @@
 {%include display.pagination%}
 
 <div>
-  <a href="{{exportUrl|raw}}">
+  <a href="{{url.current}}?id={{requestGET.id}}&start={{requestGET.start}}&end={{requestGET.end}}&export=1">
     <i class="sf-list btn"></i>
   </a>
 </div>
