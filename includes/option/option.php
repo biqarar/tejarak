@@ -26,7 +26,7 @@ self::$language =
 /**
  * system default lanuage
  */
-self::$config['default_language']             = 'fa';
+
 self::$config['redirect_url']                 = 'http://tejarak.local';
 self::$config['multi_domain']                 = true;
 self::$config['redirect_to_main']             = true;
