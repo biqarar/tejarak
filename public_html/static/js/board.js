@@ -119,7 +119,7 @@ function changeCardStatusOnResult()
   $('.attendance form').on('ajaxify:success', function(_e, _result)
   {
     // our request is done successfully
-    if(_result.status === 1)
+    if(_result.ok === true)
     {
       var myUser    = $(this).find('input[name="user"]').val();
       var $userCard = $('#showMember .vcard[data-user='+ myUser +']');
@@ -130,9 +130,9 @@ function changeCardStatusOnResult()
       {
         $userCard.attr('data-live', 'on');
         $userCard.data('live', 'on');
-        if(_result.msg.now_val)
+        if(_result.now_val)
         {
-          $userCard.attr('data-enter', _result.msg.now_val);
+          $userCard.attr('data-enter', _result.now_val);
         }
       }
       else if($(this).hasClass('exit'))
