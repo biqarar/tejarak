@@ -7,7 +7,7 @@ class view
 	{
 		\dash\data::page_title(T_("Billing usage detail"));
 		\dash\data::page_desc(T_("Check your current usage and active user and price for this period of time."));
-		\dash\data::detail(\content_a\billing\model::usage());
+		\dash\data::detail(\content_a\billing\detail\model::usage());
 	}
 }
 ?>

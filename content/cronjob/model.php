@@ -19,9 +19,9 @@ class model
 
 		switch ($url)
 		{
-			case 'pinger':
-				self::pinger();
-				break;
+			// case 'pinger':
+			// 	self::pinger();
+			// 	break;
 
 			case 'report':
 				self::report();
