@@ -10,7 +10,21 @@ class hours
 	use hours\month;
 	use hours\period;
 
-		/**
+	public static function getLastHursTeam()
+	{
+		$query =
+		"
+			SELECT teams.name, MAX(hours.date) as `date`, MAX(hours.end) as 	`end`
+			FROM hours
+			INNER JOIN userteams ON userteams.id = hours.userteam_id
+			INNER JOIN teams ON teams.id = userteams.team_id
+			GROUP BY teams.id, teams.name
+			ORDER BY date DESC
+		";
+		return \dash\db::get($query);
+	}
+
+	/**
 	 * get total of userteam
 	 *
 	 * @return     <type>  ( description_of_the_return_value )
