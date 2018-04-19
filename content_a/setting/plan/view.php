@@ -12,6 +12,7 @@ class view
 	 */
 	public static function config()
 	{
+		$temp = \dash\data::currentTeam();
 		\dash\data::currentPlan(\content_a\setting\plan\model::plan());
 
 		$myTeam = 'myTeam';
@@ -26,6 +27,7 @@ class view
 
 		\dash\data::page_title(T_('Setting | '). T_('Change Plan of :name', ['name' => $myTeam]));
 		\dash\data::page_desc(T_('By choose new plan, we generate your invoice until now and next invoice is created one month later exactly at this time and you can pay it from billing.'));
+		\dash\data::currentTeam($temp);
 	}
 }
 ?>
