@@ -19,6 +19,8 @@ class view
 			\dash\data::getEnd_date(\dash\request::get('end'));
 		}
 
+		\content_a\report\view::showAllUser();
+
 		$args           = [];
 		$args['id']     = \dash\request::get('id');
 		$args['start']  = \dash\request::get('start');

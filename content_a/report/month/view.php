@@ -19,6 +19,9 @@ class view
 			\dash\data::getMonth(\dash\request::get('month'));
 		}
 
+		\content_a\report\view::showAllUser();
+
+
 		$args           = [];
 		$args['id']     = \dash\request::get('id');
 		$args['year']   = \dash\request::get('year');

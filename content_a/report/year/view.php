@@ -14,6 +14,10 @@ class view
 		$args['id']     = \dash\request::get('id');
 		$args['export'] = \dash\request::get('export');
 
+
+		\content_a\report\view::showAllUser();
+
+
 		if(\dash\request::get('user'))
 		{
 			$args['user'] = \dash\request::get('user');

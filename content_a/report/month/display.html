@@ -8,6 +8,9 @@
 
 <form method="get" class="cbox" data-action>
   <input type="hidden" name="id" value="{{requestGET.id}}">
+  {% if requestGET.user %}
+  <input type="hidden" name="user" value="{{requestGET.user}}">
+  {%endif%}
   <label for="year">{%trans "Filter by specefic month of specefic year"%}</label>
   <div class="input">
 

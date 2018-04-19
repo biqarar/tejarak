@@ -12,6 +12,7 @@ class view
 		$args                  = [];
 		$args['id']            = \dash\request::get('id');
 
+		\content_a\report\view::showAllUser();
 
 		if(\dash\request::get('user'))
 		{

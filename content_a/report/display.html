@@ -1,7 +1,7 @@
 {%extends display.adminTeam%}
 
 {%block pageContent%}
-{{block('chartLast_month')}}
+{{block('chartLastMonth')}}
 <div class="f">
  <div class="c3 s6">{{block ("stLastTraffic")}}</div>
  <div class="c3 s6">{{block ("stTrafficMonth")}}</div>
@@ -16,14 +16,31 @@
 </div>
 {%endblock%}
 
+{%block userList%}
 
+{%if allUserList%}
+<div class="tiny f justify-center">
+  {%for key, value in allUserList%}
+  <a href="{{url.current}}?id={{requestGET.id}}&user={{value.user_id}}" class="vcard shadow">
+  <img src="{%if value.file%}{{value.file}}{%else%}{{url.static}}siftal/images/useful/user1.png{%endif%}" alt="{{value.displayname}}">
+    <div class="content">
+      <div class="header">{{value.displayname}}</div>
+      <div class="meta"><span>{{value.postion}}</span></div>
+    </div>
+  </a>
+  {%endfor%}
+</div>
+<br/>
+{%endif%}
+{%endblock%}
 
-{%block chartLast_month%}
+{%block chartLastMonth%}
 <div class="dcard x3 pA0">
- <div class="chart" data-vals='{{chartLast_month|raw}}'>
+ <div class="chart" data-vals='{{chartLastMonth|raw}}'>
  </div>
 </div>
 {%endblock%}
+
 
 
 {%block stRequestList%}

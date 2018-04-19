@@ -296,7 +296,8 @@ class team
 		}
 
 		\dash\app::variable($request);
-		$result =  self::get_list_member($_args);
+		$result =  \lib\app\member::get_list_member($_args);
+
 		return $result;
 	}
 }
