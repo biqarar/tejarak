@@ -25,7 +25,19 @@ class twigTransTerms
 	echo T_("Iran");                                                                  // Line 59
 	echo T_("Floor2, Yas Building");                                                  // Line 62
 
-	//-------------------------------------------------------content\home\display.html
+	//---------------------------------------------------------content\home\board.html
+	echo T_("Login to enjoy!");                                                       // Line 56
+	echo T_("In the Name of God");                                                    // Line 66
+	echo T_("days left");                                                             // Line 89
+	echo T_("Enter");                                                                 // Line 26
+	echo T_("Mission Time");                                                          // Line 137
+	echo T_("I was on the mission");                                                  // Line 142
+	echo T_("Description");                                                           // Line 33
+	echo T_("Now");                                                                   // Line 157
+	echo T_("Personal work");                                                         // Line 17
+	echo T_("Exit");                                                                  // Line 175
+
+	//----------------------------------------------------------content\home\home.html
 	echo T_("Do attendance easily and enjoy real time reports");                      // Line 23
 	echo T_("Setup your dedicated and beautiful attendance system in less than a minute and have a <span>real time</span> and scrupulously monitoring on your business from anywhere");// Line 22
 	echo T_("Enter your team name");                                                  // Line 37
@@ -59,17 +71,6 @@ class twigTransTerms
 	echo T_("Set up a team in less than a minute!");                                  // Line 170
 	echo T_("It's FREE!");                                                            // Line 170
 	echo T_("Try it.");                                                               // Line 170
-
-	//------------------------------------------------------content\hours\display.html
-	echo T_("Login to enjoy!");                                                       // Line 56
-	echo T_("In the Name of God");                                                    // Line 66
-	echo T_("days left");                                                             // Line 89
-	echo T_("Enter");                                                                 // Line 26
-	echo T_("Mission Time");                                                          // Line 137
-	echo T_("I was on the mission");                                                  // Line 142
-	echo T_("Description");                                                           // Line 33
-	echo T_("Personal work");                                                         // Line 17
-	echo T_("Exit");                                                                  // Line 175
 
 	//--------------------------------------------------------content\main\layout.html
 	echo T_("Next →");                                                                // Line 39
@@ -405,13 +406,13 @@ class twigTransTerms
 	echo T_("Billing");                                                               // Line 8
 
 	//--------------------------------------------------content_a\main\layoutTeam.html
-	echo T_("Team Operation");                                                        // Line 9
-	echo T_("Team Dashboard");                                                        // Line 10
-	echo T_("Team Members");                                                          // Line 12
-	echo T_("Gateway");                                                               // Line 13
-	echo T_("Reports");                                                               // Line 15
-	echo T_("Settings");                                                              // Line 17
-	echo T_("Team is private and you can not see board!");                            // Line 22
+	echo T_("Team Operation");                                                        // Line 8
+	echo T_("Team Dashboard");                                                        // Line 9
+	echo T_("Team Members");                                                          // Line 11
+	echo T_("Gateway");                                                               // Line 12
+	echo T_("Reports");                                                               // Line 14
+	echo T_("Settings");                                                              // Line 16
+	echo T_("Team is private and you can not see board!");                            // Line 21
 	echo T_("Board");                                                                 // Line 81 Seperate
 
 	//----------------------------------------------------content_a\main\teamLink.html
@@ -426,28 +427,28 @@ class twigTransTerms
 	echo T_("Postion");                                                               // Line 23
 	echo T_("Enter a valid team position from 3 to 50 character");                    // Line 39
 	echo T_("allowed extentions jpg, png (gif for bussiness plans). Max 500Kb");      // Line 74
-	echo T_("Role of this member");                                                   // Line 39
+	echo T_("Role of this member");                                                   // Line 41
 	echo T_("User");                                                                  // Line 100
 	echo T_("Admin");                                                                 // Line 105
-	echo T_("Edit");                                                                  // Line 47
+	echo T_("Edit");                                                                  // Line 54
 	echo T_("Add");                                                                   // Line 54
 	echo T_("First name");                                                            // Line 11
 	echo T_("Last name");                                                             // Line 16
 	echo T_("Personnel code");                                                        // Line 25
 	echo T_("Extra setting for special use");                                         // Line 7
-	echo T_("Allow plus");                                                            // Line 245
-	echo T_("Allow minus");                                                           // Line 249
-	echo T_("Remote user");                                                           // Line 29
-	echo T_("24 hour");                                                               // Line 33
-	echo T_("Allow set desc in enter");                                               // Line 265
-	echo T_("Allow set desc in exit");                                                // Line 270
+	echo T_("Allow plus");                                                            // Line 129
+	echo T_("Allow minus");                                                           // Line 133
+	echo T_("Remote user");                                                           // Line 138
+	echo T_("24 hour");                                                               // Line 143
+	echo T_("Allow set desc in enter");                                               // Line 149
+	echo T_("Allow set desc in exit");                                                // Line 154
 	echo T_("Active");                                                                // Line 114
 	echo T_("Deactive");                                                              // Line 119
 	echo T_("Remove");                                                                // Line 35
 	echo T_("Visibility");                                                            // Line 33
 	echo T_("Visible");                                                               // Line 134
 	echo T_("Hidden");                                                                // Line 139
-	echo T_("Parent");                                                                // Line 314
+	echo T_("Parent");                                                                // Line 198
 	echo T_("Add new parent");                                                        // Line 58
 	echo T_("Parent mobile");                                                         // Line 208
 	echo T_("Please select one items");                                               // Line 66
@@ -475,23 +476,15 @@ class twigTransTerms
 	echo T_("Custom");                                                                // Line 88
 	echo T_("Other title");                                                           // Line 92
 	echo T_("Scan Barcode here...");                                                  // Line 148
-	echo T_("Rfid");                                                                  // Line 385
+	echo T_("Rfid");                                                                  // Line 269
 	echo T_("Scan Rfid here...");                                                     // Line 156
 	echo T_("Qrcode");                                                                // Line 162
 	echo T_("Scan Qrcode here...");                                                   // Line 164
-	echo T_("Advance");                                                               // Line 405
-
-	//-----------------------------------------------content_a\member\display-old.html
-	echo T_("Allow register mission");                                                // Line 20
-	echo T_("Allow register personal work");                                          // Line 24
-	echo T_("Extra setting for special tools to enter and exit");                     // Line 204
+	echo T_("Advance");                                                               // Line 289
 
 	//---------------------------------------------------content_a\member\display.html
 	echo T_("Add new member");                                                        // Line 11
 	echo T_("Admin of team");                                                         // Line 45
-
-	//----------------------------------------------content_a\member\edit\display.html
-	echo T_("Extra gadget to use for enter and exit");                                // Line 138
 
 	//----------------------------------------------------content_a\member\layout.html
 	echo T_("General Detail");                                                        // Line 37
@@ -613,13 +606,13 @@ class twigTransTerms
 
 	//---------------------------------------------------content_a\report\display.html
 	echo T_("Manual request of change hours");                                        // Line 11
-	echo T_("List of current requests");                                              // Line 32
-	echo T_("Add new request");                                                       // Line 41
-	echo T_("Edit existing record");                                                  // Line 50
+	echo T_("List of current requests");                                              // Line 49
+	echo T_("Add new request");                                                       // Line 58
+	echo T_("Edit existing record");                                                  // Line 67
 	echo T_("Last traffics");                                                         // Line 175
-	echo T_("Sum times in month");                                                    // Line 68
-	echo T_("Sum times in year");                                                     // Line 77
-	echo T_("Today");                                                                 // Line 86
+	echo T_("Sum times in month");                                                    // Line 85
+	echo T_("Sum times in year");                                                     // Line 94
+	echo T_("Today");                                                                 // Line 103
 
 	//----------------------------------------------content_a\report\last\display.html
 	echo T_("Last time for");                                                         // Line 21
@@ -634,16 +627,16 @@ class twigTransTerms
 	echo T_("Add request");                                                           // Line 89
 
 	//---------------------------------------------content_a\report\month\display.html
-	echo T_("Filter by specefic month of specefic year");                             // Line 10
+	echo T_("Filter by specefic month of specefic year");                             // Line 14
 	echo T_("Go");                                                                    // Line 15
-	echo T_("No result for");                                                         // Line 21
+	echo T_("No result for");                                                         // Line 26
 	echo T_("Year");                                                                  // Line 13
 	echo T_("Month");                                                                 // Line 14
 
 	//--------------------------------------------content_a\report\period\display.html
 	echo T_("Filter by get data of specefic time");                                   // Line 11
-	echo T_("Start date");                                                            // Line 26
-	echo T_("End date");                                                              // Line 34
+	echo T_("Start date");                                                            // Line 43
+	echo T_("End date");                                                              // Line 51
 	echo T_("Start Date");                                                            // Line 9
 	echo T_("End Date");                                                              // Line 11
 	echo T_("Minus");                                                                 // Line 30
@@ -665,37 +658,15 @@ class twigTransTerms
 
 	//---------------------------------------------------content_a\request\layout.html
 	echo T_("Send request");                                                          // Line 105
-	echo T_("Start your work at date");                                               // Line 24
-	echo T_("End your work at date");                                                 // Line 32
-	echo T_("Start time");                                                            // Line 42
-	echo T_("End time");                                                              // Line 51
-	echo T_("You can set some description for this request");                         // Line 58
+	echo T_("Start your work at date");                                               // Line 41
+	echo T_("End your work at date");                                                 // Line 49
+	echo T_("Start time");                                                            // Line 59
+	echo T_("End time");                                                              // Line 68
+	echo T_("You can set some description for this request");                         // Line 75
 
 	//-----------------------------------------------content_a\sendnotify\display.html
 	echo T_("Type your message here...");                                             // Line 7
 	echo T_("Send to all members");                                                   // Line 9
-
-	//------------------------------------------content_a\setting\-event-\display.html
-	echo T_("Special event day counter");                                             // Line 8
-	echo T_("Event title");                                                           // Line 286
-	echo T_("Event date");                                                            // Line 302
-
-	//-----------------------------------------content_a\setting\-member-\display.html
-	echo T_("Default setting for new members of team");                               // Line 10
-	echo T_("Show users avatars");                                                    // Line 15
-	echo T_("Quick Traffic");                                                         // Line 38
-	echo T_("Allow set enter desc");                                                  // Line 43
-	echo T_("Allow set Exit desc");                                                   // Line 48
-	echo T_("Manual time enter");                                                     // Line 54
-	echo T_("Manual time exit");                                                      // Line 59
-
-	//--------------------------------------------content_a\setting\-sms-\display.html
-	echo T_("Enter a valid name from 5 to 50 character");                             // Line 10
-	echo T_("Website");                                                               // Line 103
-	echo T_("Privacy mode");                                                          // Line 17
-	echo T_("Private");                                                               // Line 118
-	echo T_("Team");                                                                  // Line 23
-	echo T_("Public");                                                                // Line 128
 
 	//--------------------------------------------content_a\setting\board\display.html
 	echo T_("Event day counter");                                                     // Line 7
@@ -720,16 +691,21 @@ class twigTransTerms
 	echo T_("Team short name");                                                       // Line 92
 	echo T_("Used for url of board");                                                 // Line 92
 	echo T_("Slug of team for board url");                                            // Line 95
+	echo T_("Website");                                                               // Line 103
 	echo T_("Link your logo on board for visitors");                                  // Line 101
 	echo T_("Used for description of board and show in social media links");          // Line 109
 	echo T_("Board privacy mode");                                                    // Line 115
+	echo T_("Private");                                                               // Line 118
 	echo T_("Only admin of team can see board");                                      // Line 118
+	echo T_("Team");                                                                  // Line 23
 	echo T_("Admin and all member of team can see board");                            // Line 123
+	echo T_("Public");                                                                // Line 128
 	echo T_("Anyone can access to link of board can see team board");                 // Line 128
 	echo T_("Choose your plan");                                                      // Line 134
 	echo T_("All the basics for personal use.");                                      // Line 138
 	echo T_("Everything in Free plus automatic report via Telegram.");                // Line 143
 	echo T_("Everything you need for a growing business.");                           // Line 148
+	echo T_("Disabled");                                                              // Line 153
 	echo T_("For big companies that need fix price per month.");                      // Line 153
 	echo T_("New Owner Mobile");                                                      // Line 160
 	echo T_("Send Request");                                                          // Line 168
@@ -761,8 +737,10 @@ class twigTransTerms
 	echo T_("Limit count of person list in daily report.");                           // Line 274
 	echo T_("-1 means have no limit");                                                // Line 274
 	echo T_("Used for large companies");                                              // Line 274
+	echo T_("Event title");                                                           // Line 286
 	echo T_("Event date start");                                                      // Line 294
 	echo T_("Need to calc remain percentage of deadline. Today as default");          // Line 292
+	echo T_("Event date");                                                            // Line 302
 	echo T_("Show member avatar on board");                                           // Line 348
 	echo T_("Maybe for privacy you need to hide avatar on board!");                   // Line 348
 
@@ -808,7 +786,7 @@ class twigTransTerms
 	echo T_("If you are not sure, leave this page!");                                 // Line 99
 	echo T_("New owner mobile");                                                      // Line 103
 
-	//--------------------------------------------content_a\teamdashboard\display.html
+	//------------------------------------------------content_a\team\home\display.html
 	echo T_("Add event day counter");                                                 // Line 51
 	echo T_("Present Members");                                                       // Line 70
 	echo T_("Member");                                                                // Line 109
@@ -819,12 +797,15 @@ class twigTransTerms
 	echo T_("Day Used");                                                              // Line 143
 	echo T_("Top Members");                                                           // Line 169
 
-	//-------------------------------------------------content_api\v1\doc\display.html
-	echo T_("Tejarak API");                                                           // Line 6
+	//---------------------------------------------------content_cp\hours\display.html
+	echo T_("hours of teams");                                                        // Line 5
+	echo T_("Search");                                                                // Line 14
+	echo T_("Last date");                                                             // Line 25
+	echo T_("Last time");                                                             // Line 26
+	echo T_("Mean");                                                                  // Line 27
 
 	//-----------------------------------------------content_cp\teamplans\display.html
 	echo T_("Teams plan");                                                            // Line 10
-	echo T_("Search");                                                                // Line 14
 	echo T_("Creator");                                                               // Line 24
 	echo T_("Plan");                                                                  // Line 25
 	echo T_("status");                                                                // Line 29
@@ -846,7 +827,6 @@ class twigTransTerms
 	echo T_("No logo");                                                               // Line 63
 
 	//---------------------------------------------content_cp\teams\hours\display.html
-	echo T_("hours of teams");                                                        // Line 5
 	echo T_("Displayname");                                                           // Line 22
 	echo T_("Rule");                                                                  // Line 24
 	echo T_("Shamsi date");                                                           // Line 27
