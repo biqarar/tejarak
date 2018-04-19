@@ -30,9 +30,12 @@ self::$language =
 // fix url and redirect
 // http://tejarak.ir
 // to https://tejarak.com
-self::$url['tld']                   = 'com';
-self::$url['protocol']              = 'https';
+self::$url['tld']               = 'com';
+self::$url['protocol']          = 'https';
 
+self::$config['site']['title']  = "Tejarak";
+self::$config['site']['desc']   = "Tejarak provides beautiful solutions for your business; Do attendance easily and enjoy realtime reports.";
+self::$config['site']['slogan'] = "Modern Approach";
 
 
 self::$config['debug']              = false;
