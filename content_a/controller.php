@@ -106,7 +106,7 @@ class controller
 			default:
 				if(!\dash\temp::get('isAdmin'))
 				{
-					\dash\header::status(403, T_("Can not access to load this page"));
+					\dash\redirect::to(\dash\url::here(). '/report/last?id='. \dash\request::get('id'));
 				}
 				break;
 		}
