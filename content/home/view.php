@@ -57,7 +57,7 @@ class view
 
 		if(!isset($current_team['logo']) || (isset($current_team['logo']) && !$current_team['logo']))
 		{
-			$current_team['logo'] = \dash\data::url_static(). 'images/logo.png';
+			$current_team['logo'] = \dash\url::site(). '/static/images/logo.png';
 		}
 		/**
 		 * check team language and redirect if is set
@@ -75,7 +75,7 @@ class view
 				{
 					if(!\lib\utility\plan::access('show:logo', $team_id))
 					{
-						$current_team['logo'] = \dash\data::url_static(). 'images/logo.png';
+						$current_team['logo'] = \dash\url::site(). '/static/images/logo.png';
 					}
 				}
 			}
