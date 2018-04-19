@@ -144,13 +144,13 @@
 </div>
 
 <div class="radio1">
-  <input type="radio" name="plan" id="r-standard" value="standard" {%if currentPlan.plan_name =='standard'%}checked{%endif%}>
-  <label for="r-standard">{%trans "Standard"%} <small>{%trans "Everything you need for a growing business."%}</small></label>
+  <input type="radio" name="plan" id="r-standard" value="standard" disabled {%if currentPlan.plan_name =='standard'%}checked{%endif%}>
+  <label for="r-standard">{%trans "Standard"%} <small>{%trans "Everything you need for a growing business."%} <b class="fc-red">{%trans "Disabled"%}</b></small></label>
 </div>
 
 <div class="radio1">
-  <input type="radio" name="plan" id="r-full" value="full" {%if currentPlan.plan_name =='full'%}checked{%endif%}>
-  <label for="r-full">{%trans "Full"%} <small>{%trans "For big companies that need fix price per month."%}</small></label>
+  <input type="radio" name="plan" id="r-full" value="full" disabled {%if currentPlan.plan_name =='full'%}checked{%endif%}>
+  <label for="r-full">{%trans "Full"%} <small>{%trans "For big companies that need fix price per month."%} <b class="fc-red">{%trans "Disabled"%}</b></small></label>
 </div>
 {%endblock%}
 
