@@ -23,7 +23,7 @@
 	{%for key, value in yearTime%}
 	<tr>
 		<td >{{value.displayname}}</td>
-		<td >{{value.year|fitNumber}}</td>
+		<td >{{value.year|fitNumber(false)}}</td>
 		<td >{{value.month|fitNumber}}</td>
 		<td >{{value.count|fitNumber}}</td>
 		{%if timeRaw%}

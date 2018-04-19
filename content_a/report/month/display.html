@@ -46,7 +46,7 @@
     {%for key, value in monthTime%}
     <tr>
       <td>{{value.displayname}}</td>
-      <td>{{value.year|fitNumber}}</td>
+      <td>{{value.year|fitNumber(false)}}</td>
       <td>{{value.month|fitNumber}}</td>
       {%if timeRaw%}
         <td>{{value.diff | fitNumber}}</td>
