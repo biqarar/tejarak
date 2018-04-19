@@ -33,7 +33,7 @@
   {%if value.allow_desc_enter%} data-enterdesc="true" {%else%}  data-enterdesc="false"  {%endif%}
   {%if value.allow_desc_exit%}  data-exitdesc="true"  {%else%}  data-exitdesc="false"   {%endif%}
 
-  {%if value.last_time%}data-enter='{{value.last_time| date("Y-m-d H:i:s") }}'{%endif%}
+  {%if value.last_time%}data-enter='{{value.last_time| tdate("Y-m-d H:i:s") }}'{%endif%}
   {%if value.plus%}data-plus='{{value.plus}}'{%endif%}
 
 {%endif%}>
@@ -151,10 +151,10 @@
 
        <form class="exit f" method="post">
         <div class="tinfo c12">
-         <div class="inOut">
+         <div class="inOut msg info2">
           <span data-val='{{value.last_time| date("Y-m-d H:i:s") }}' class='timeEnter'>{{value.last_time | tdate('H:i')}}</span>
           <span data-val='400' class='timeDiff'>-</span>
-          <span class='timeNow'>Now</span>
+          <span class='timeNow'>{%trans "Now"%}</span>
          </div>
          {%if value.plus%}<div class="timePlus" data-val='100'>{{value.plus | fitNumber}}</div>{%else%}{%endif%}
         </div>
