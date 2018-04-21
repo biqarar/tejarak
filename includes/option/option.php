@@ -1,4 +1,9 @@
 <?php
+
+/**
+@ In the name Of Allah
+* The base configurations of the tejarak.
+*/
 require_once('social.php');
 require_once('notification.php');
 require_once('payment.php');
@@ -13,19 +18,11 @@ if(!defined('db_log_name'))
 }
 
 
-
-/**
-@ In the name Of Allah
-* The base configurations of the tejarak.
-*/
 self::$language =
 [
 	'default' => 'fa',
 	'list'    => ['fa','en',],
 ];
-/**
- * system default lanuage
- */
 
 // fix url and redirect
 // http://tejarak.ir
@@ -33,16 +30,21 @@ self::$language =
 self::$url['tld']               = 'com';
 self::$url['protocol']          = 'https';
 
+
+// site title
 self::$config['site']['title']  = "Tejarak";
 self::$config['site']['desc']   = "Tejarak provides beautiful solutions for your business; Do attendance easily and enjoy realtime reports.";
 self::$config['site']['slogan'] = "Modern Approach";
 
 
-self::$config['debug']              = false;
-self::$config['coming']             = false;
 self::$config['redirect']           = 'a';
 
 
+/**
+ * first signup url
+ * main redirect url . signup redirect url
+ */
+self::$config['enter']['singup_redirect']     = 'a';
 
 
 
@@ -52,20 +54,6 @@ self::$config['redirect']           = 'a';
 self::$config['enter']['call']                = true;
 self::$config['enter']['call_template_fa'] = 'ermile-fa';
 self::$config['enter']['call_template_en'] = 'ermile-en';
-
-/**
- * telegram hook
- */
-self::$config['enter']['telegram_hook']   = '**Ermile**vHTnEoYth43MwBH7o6mPk807Tejarakf0DUbXZ7k2Bju5n^^Telegram^^';
-// static token
-// get the user id by mobile in api header
-self::$config['enter']['static_token'][]  = '**Ermile**Azvir^^Tejarak--Token__Static++6mPf0DUbXZ7kth43MwBH7o6mPk8';
-
-/**
- * first signup url
- * main redirect url . signup redirect url
- */
-self::$config['enter']['singup_redirect']     = 'a';
 
 
 /**
@@ -101,6 +89,7 @@ self::$config['force_unit']   = 1;
  */
 self::$config['transactions_code'][100] = "invoice:team";
 self::$config['transactions_code'][150] = "promo:ref";
+
 
 self::$config['enter']['verify_telegram'] = true;
 self::$config['enter']['verify_sms']      = true;
