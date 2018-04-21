@@ -13,6 +13,7 @@ class controller
 
 		if(\dash\url::isLocal())
 		{
+			\dash\header::status(404, "Hi Developer :))");
 			return;
 		}
 

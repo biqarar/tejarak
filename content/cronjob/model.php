@@ -15,7 +15,7 @@ class model
 			return;
 		}
 
-		$url = \dash\url::module();
+		$url = \dash\request::get('type');
 
 		switch ($url)
 		{
