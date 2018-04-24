@@ -82,9 +82,9 @@
 {%endif%}
    <div class="info">
    {%if currentTeam.event_remain == '?' %}
-    <time datetime="P{{currentTeam.event_date}}D" >{{currentTeam.event_remain}}</time>
+    <time datetime="{{currentTeam.event_date}}" >{{currentTeam.event_remain}}</time>
    {%else%}
-    <time datetime="P{{currentTeam.event_date}}D" class="counter" data-counter={{currentTeam.event_remain}}>-</time>
+    <time datetime="{{currentTeam.event_date}}" class="counter" data-counter={{currentTeam.event_remain}}>-</time>
    {%endif%}
     <span>{%trans "days left"%}</span>
    </div>
