@@ -450,7 +450,7 @@ trait get
 
 			if($result)
 			{
-				if(\dash\permission::access('load:all:team', null, \dash\user::id()))
+				if(\dash\permission::check('load:all:team', \dash\user::id()))
 				{
 					$result = $result;
 				}

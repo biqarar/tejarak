@@ -96,7 +96,7 @@ trait get
 
 			if($team_detail)
 			{
-				if(\dash\permission::access('load:all:team', null, \dash\user::id()) || $_args['admin'])
+				if(\dash\permission::check('load:all:team', \dash\user::id()) || $_args['admin'])
 				{
 					$team_detail = $team_detail;
 				}

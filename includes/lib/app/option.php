@@ -67,7 +67,7 @@ class option
 	public static function check_api_permission($_caller, $_action = null, $_user_id = null)
 	{
 		\dash\permission::$user_id = $_user_id;
-		return \dash\permission::access(...func_get_args());
+		return \dash\permission::check(...func_get_args());
 	}
 }
 ?>
