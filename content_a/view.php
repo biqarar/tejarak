@@ -26,7 +26,8 @@ class view
 		\dash\data::include_css(true);
 		\dash\data::include_chart(true);
 
-		\dash\data::bodyclass('siftal');
+		\dash\data::include_siftal(true);
+		\dash\data::include_css(false);
 
 		// get part 2 of url and use as team name
 		\dash\data::team(\dash\request::get('id'));
