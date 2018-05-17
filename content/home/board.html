@@ -15,7 +15,7 @@
 {%for key, value in listMember%}
 <a
   href             ='{{url.pwd}}{{url.class}}#{{(key+1)}}'
-  class            ="vcard shadow mA10"
+  class            ="vcard shadow mA10{%if value.status == 'deactive'%} disabled{%endif%}"
   data-overwrite   =true
   data-status      ='{{value.status}}'
   data-live        ='{{value.live}}'
