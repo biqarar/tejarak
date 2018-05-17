@@ -49,7 +49,13 @@ class model
 		\dash\app::variable($request);
 		\lib\app\hours::add_hours();
 
-		\dash\notif::result(['now_val' => date("Y-m-d H:i:s"), 'now' => date("H:i")]);
+		\dash\notif::result(
+			[
+				'now_val' => date("Y-m-d H:i:s"),
+				'now'     => date("H:i"),
+				'user'    => \dash\request::post('user'),
+			]);
+
 	}
 }
 ?>

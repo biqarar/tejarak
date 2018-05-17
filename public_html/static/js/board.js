@@ -122,17 +122,20 @@ function changeCardStatusOnResult()
     if(_result.ok === true)
     {
       var myUser    = $(this).find('input[name="user"]').val();
+      if(_result.result.user)
+      {
+        myUser = _result.result.user;
+      }
       var $userCard = $('#showMember .vcard[data-user='+ myUser +']');
-
 
       // if this request is enter, enable card
       if($(this).hasClass('enter'))
       {
         $userCard.attr('data-live', 'on');
         $userCard.data('live', 'on');
-        if(_result.now_val)
+        if(_result.result.now_val)
         {
-          $userCard.attr('data-enter', _result.now_val);
+          $userCard.attr('data-enter', _result.result.now_val);
         }
       }
       else if($(this).hasClass('exit'))
