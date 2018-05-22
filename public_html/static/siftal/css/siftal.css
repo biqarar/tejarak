@@ -381,7 +381,8 @@ kbd {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 2px 6px;
   transition: 0.3s;
-  border-radius: 0.25rem; }
+  border-radius: 0.25rem;
+  line-height: 1.25; }
 
 kbd:hover {
   background-color: rgba(0, 0, 0, 0.2); }
@@ -570,6 +571,9 @@ canvas {
  */
 template {
   display: none; }
+
+address {
+  font-style: normal; }
 
 /* Hidden
    ========================================================================== */
@@ -1880,14 +1884,34 @@ progress.xl, meter.xl {
 .cbox:hover h2, .cbox:hover h3, .cbox:hover h4 {
   border-bottom-color: #80c0d0; }
 
-.cbox [class^="sf-"]:before, .cbox [class*=" sf-"]:before {
+.cbox h2 [class^="sf-"]:before, .cbox h2 [class*=" sf-"]:before {
   vertical-align: middle;
   transition-duration: 0.3s;
   transition-property: opacity, background-color, color;
   color: #ccc;
   font-size: 1.3em; }
 
-.cbox:hover [class^="sf-"]:before {
+.cbox:hover h2 [class^="sf-"]:before {
+  color: #777; }
+
+.cbox h3 [class^="sf-"]:before, .cbox h3 [class*=" sf-"]:before {
+  vertical-align: middle;
+  transition-duration: 0.3s;
+  transition-property: opacity, background-color, color;
+  color: #ccc;
+  font-size: 1.3em; }
+
+.cbox:hover h3 [class^="sf-"]:before {
+  color: #777; }
+
+.cbox h4 [class^="sf-"]:before, .cbox h4 [class*=" sf-"]:before {
+  vertical-align: middle;
+  transition-duration: 0.3s;
+  transition-property: opacity, background-color, color;
+  color: #ccc;
+  font-size: 1.3em; }
+
+.cbox:hover h4 [class^="sf-"]:before {
   color: #777; }
 
 .cbox .example {
@@ -12863,7 +12887,7 @@ input[type="tel"], input[type="email"], input[type="date"], input[type="number"]
 
 .switch1 {
   overflow: hidden;
-  margin: 10px 0;
+  margin: 0 auto;
   vertical-align: middle;
   height: 36px; }
 
@@ -12883,7 +12907,7 @@ input[type="tel"], input[type="email"], input[type="date"], input[type="number"]
 .switch1 label:first-of-type {
   position: relative;
   cursor: pointer;
-  height: 35px;
+  height: 36px;
   width: 80px;
   background: #eee;
   border-radius: 15px;
@@ -12924,6 +12948,16 @@ input[type="tel"], input[type="email"], input[type="date"], input[type="number"]
   background: #7F8C9A;
   top: 3px;
   left: 3px; }
+
+.switch1 input.disabled + label:first-of-type {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none; }
+
+.switch1 input:disabled + label:first-of-type {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none; }
 
 .switch1 input:checked + label:first-of-type {
   background: #33414e;
@@ -12996,6 +13030,9 @@ html[lang=fa] .switch1.gender label:first-of-type:before {
 html[lang=fa] .switch1.gender input:checked + label:first-of-type:before {
   content: "زن";
   font-size: 12px; }
+
+.switch1.flat label:first-of-type {
+  border-radius: 0; }
 
 .radio1 {
   padding: 8px 0;
