@@ -1,13 +1,3 @@
-// on start
-route('*', function ()
-{
-
-}).once(function()
-{
-
-
-});
-
 
 $(document).ready(function()
 {
