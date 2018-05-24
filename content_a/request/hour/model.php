@@ -34,7 +34,7 @@ class model
 	{
 		$request            = self::getPost();
 		$request['team']    = \dash\request::get('id');
-		$request['hour_id'] = \dash\url::dir(3);
+		$request['hour_id'] = \dash\request::get('hourid');
 
 		\dash\app::variable($request);
 
