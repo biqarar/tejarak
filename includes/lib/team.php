@@ -50,8 +50,9 @@ class team
 			return;
 		}
 
-		$team_code = \dash\url::dir(0);
+		$team_code = \dash\request::get('id');
 		$team_id   = \dash\coding::decode($team_code);
+
 		if($team_id)
 		{
 			$lib_team_detail = \lib\db\teams::get(['id' => $team_id, 'limit' => 1]);
