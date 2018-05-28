@@ -148,7 +148,7 @@ remain_percent -->
 
 {%block chart_primary%}
 <div class="dcard x3 pA0">
- <div class="chart" data-vals='{{dashboardDetail.last_time_chart|raw}}'>
+ <div class="chart" id="chartdiv" >
  </div>
 </div>
 {%endblock%}
@@ -178,3 +178,9 @@ remain_percent -->
 {%endblock%}
 
 
+
+{%block foot_js%}
+<script type="text/javascript">
+  {%include 'content_a/team/home/chart.js'%}
+</script>
+{%endblock%}

@@ -36,7 +36,7 @@
 
 {%block chartLastMonth%}
 <div class="dcard x3 pA0">
- <div class="chart" data-vals='{{chartLastMonth|raw}}'>
+ <div class="chart" id="chartdiv" >
  </div>
 </div>
 {%endblock%}
@@ -120,4 +120,12 @@
   </div>
  </div>
 </div>
+{%endblock%}
+
+
+
+{%block foot_js%}
+<script type="text/javascript">
+  {%include 'content_a/report/chart.js'%}
+</script>
 {%endblock%}
