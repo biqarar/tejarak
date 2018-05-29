@@ -9790,7 +9790,10 @@ body:not(.tippy-touch) .tippy-popper[x-placement=left] .tippy-tooltip[data-anima
   width: auto;
   margin-top: -0.5em;
   margin-bottom: -0.5em;
-  max-height: 36px; }
+  min-height: 28px;
+  min-width: 28px;
+  max-height: 28px;
+  max-width: 28px; }
 
 /*******************************
             Coupling
