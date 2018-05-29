@@ -3572,7 +3572,6 @@ img.mini {
   -webkit-print-color-adjust: exact; }
 
 [class^="sf-"] {
-  display: inline-block;
   margin: 0;
   min-width: 1.2em;
   text-align: center;
@@ -3590,7 +3589,9 @@ img.mini {
   speak: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: opacity, background-color, color; }
 
 [class^="sf-"]:before,
 [class*=" sf-"]:before {
@@ -3603,7 +3604,9 @@ img.mini {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle; }
+  vertical-align: middle;
+  transition-duration: 0.3s;
+  transition-property: opacity, background-color, color; }
 
 .sf-cash:before {
   content: "\e104"; }
@@ -7232,6 +7235,9 @@ li.sortable-placeholder {
 
 .chart * {
   font-family: IRANSans, Tahoma, sans-serif !important; }
+
+.chart .amcharts-chart-div > a {
+  display: none !important; }
 
 .rtl .chart {
   text-align: right; }
