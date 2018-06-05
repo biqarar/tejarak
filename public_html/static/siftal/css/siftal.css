@@ -9862,7 +9862,8 @@ body:not(.tippy-touch) .tippy-popper[x-placement=left] .tippy-tooltip[data-anima
   -webkit-transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: box-shadow 0.1s ease, width 0.1s ease;
-  transition: box-shadow 0.1s ease, width 0.1s ease, -webkit-box-shadow 0.1s ease; }
+  transition: box-shadow 0.1s ease, width 0.1s ease, -webkit-box-shadow 0.1s ease;
+  transition: box-shadow 0.1s ease, width 0.1s ease, -webkit-box-shadow 0.1s ease, border 0.3s; }
 
 .ui.selection.dropdown.visible,
 .ui.selection.dropdown.active {
@@ -10047,7 +10048,8 @@ select.ui.dropdown {
   position: relative;
   left: 1px;
   z-index: 3;
-  line-height: 24px; }
+  line-height: 24px;
+  transition: 0.3s color; }
 
 /* Search Selection */
 .ui.search.selection.dropdown > input.search {
@@ -10212,7 +10214,7 @@ select.ui.dropdown {
 ----------------------*/
 /* Menu Item Hover */
 .ui.dropdown .menu > .item:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.95);
   z-index: 13; }
 
@@ -12600,6 +12602,9 @@ input[name="website"] {
   margin: 0 auto;
   vertical-align: middle;
   height: 36px; }
+
+.f > .switch1 {
+  margin: 0 0 5px 0; }
 
 .switch1 input {
   padding: 0;
@@ -15928,16 +15933,22 @@ body.siftal .full .middle {
 /* sidebar */
 .siftal #sidebar {
   overflow: hidden;
-  overflow-y: auto;
   width: 250px;
+  height: 100%;
   position: relative;
   background-color: #302b2b;
   transition-duration: 0.3s;
   transition-property: right, left;
-  user-select: none; }
+  user-select: none;
+  padding-bottom: 80px; }
+
+.siftal #sidebar .scr {
+  overflow: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 70px); }
 
 .siftal #sidebar figure {
-  margin: 4em 0;
+  padding: 4em 0;
   text-align: center;
   color: #ddd; }
 
@@ -16029,7 +16040,6 @@ body.siftal.rtl[data-sidebar] #sidebar {
   position: fixed;
   top: 0;
   bottom: 0;
-  overflow-y: auto;
   z-index: 3;
   left: -250px; }
 
@@ -16039,9 +16049,6 @@ body.siftal.rtl[data-sidebar] #sidebar {
 
 .siftal[data-clean] #sidebar figure {
   margin: 2em 0; }
-
-.siftal[data-clean] #sidebar h2 {
-  display: none; }
 
 .siftal[data-clean] header #sidenavHandler {
   -webkit-box-flex: 0;
@@ -16151,6 +16158,50 @@ body.siftal.loading-page #sidebar .avatar:before {
 
 .siftal #sidebar ul > li > a.weAreHere {
   background-color: rgba(0, 0, 0, 0.8);
+  color: #fff; }
+
+.siftal #ermile {
+  padding: 10px 1.5em;
+  background-color: #24292e;
+  color: #eee;
+  transition: 0.3s;
+  height: 70px;
+  user-select: none; }
+
+.siftal #ermile:hover {
+  background-color: #044f6f; }
+
+.siftal #ermile img {
+  border-radius: 50%;
+  background-color: #eee;
+  width: 50px;
+  height: 50px;
+  display: block;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: 0.3s; }
+
+.siftal #ermile img:hover {
+  background-color: #fff; }
+
+.siftal #ermile h2 {
+  color: #eee;
+  font-size: 2em;
+  margin: 0;
+  line-height: 30px;
+  transition: 0.3s; }
+
+.siftal #ermile h2:hover {
+  color: #fff; }
+
+.siftal #ermile h3 {
+  color: #eee;
+  font-size: 1em;
+  margin: 0;
+  line-height: 10px;
+  transition: 0.3s; }
+
+.siftal #ermile h3:hover {
   color: #fff; }
 
 /* footer */
@@ -17164,7 +17215,6 @@ body.siftal.loading-page #sidebar .avatar:before {
     position: fixed;
     top: 0;
     bottom: 0;
-    overflow-y: auto;
     z-index: 3;
     left: -250px; }
 
@@ -17174,9 +17224,6 @@ body.siftal.loading-page #sidebar .avatar:before {
 
   .siftal #sidebar figure {
     margin: 2em 0; }
-
-  .siftal #sidebar h2 {
-    display: none; }
 
   .mp0 {
     padding: 0; }
@@ -17558,7 +17605,6 @@ body.siftal.loading-page #sidebar .avatar:before {
     position: fixed;
     top: 0;
     bottom: 0;
-    overflow-y: auto;
     z-index: 3;
     left: -250px; }
 
@@ -17571,9 +17617,6 @@ body.siftal.loading-page #sidebar .avatar:before {
 
   .siftal #sidebar ul > li > a {
     padding: 1.2em 2em; }
-
-  .siftal #sidebar h2 {
-    display: none; }
 
   .tbl td.collapsing.sauto, .tbl th.collapsing.sauto {
     white-space: initial; }
