@@ -594,12 +594,15 @@ address {
   clear: both; }
 
 #ermileBadge {
-  padding: 10px 1.5em;
+  padding: 10px 0 10px 1.5em;
   background-color: #24292e;
   color: #eee;
   transition: 0.3s;
   height: 70px;
   user-select: none; }
+
+.rtl #ermileBadge {
+  padding: 10px 1.5em 10px 0; }
 
 #ermileBadge:hover {
   background-color: #044f6f; }
@@ -1391,29 +1394,24 @@ a.badge.danger {
 /* breadcrumb */
 .breadcrumb {
   padding: 5px 1em;
-  display: inline;
+  display: inline-block;
   line-height: 30px;
   height: 30px;
   outline: none; }
 
 .breadcrumb a {
   font-size: 1em;
-  line-height: 1.5em;
-  color: #99a0aa;
+  line-height: 20px;
   float: left;
-  font-weight: 700;
+  font-weight: 500;
   transition: 0.3s; }
 
-.breadcrumb a:hover {
-  color: #656d78; }
-
 .breadcrumb a:last-child {
-  color: #656d78; }
+  font-weight: 900; }
 
 .breadcrumb > a + a:before {
   font-family: "siftal";
   content: "\63";
-  color: #99a0aa;
   padding: 0px 8px;
   float: left; }
 
@@ -1433,20 +1431,15 @@ a.badge.danger {
 .breadcrumb2 a {
   font-size: 1em;
   line-height: 20px;
-  color: #99a0aa;
   float: left;
-  font-weight: 700;
+  font-weight: 500;
   transition: 0.3s; }
 
-.breadcrumb2 a:hover {
-  color: #656d78; }
-
 .breadcrumb2 a:last-child {
-  color: #656d78; }
+  font-weight: 900; }
 
 .breadcrumb2 > a + a:before {
   content: "/";
-  color: #99a0aa;
   padding: 0px 8px;
   float: left; }
 
@@ -16543,7 +16536,8 @@ body.siftal.loading-page #sidebar .avatar:before {
   transition: background-color 0.3s;
   cursor: pointer;
   max-width: 300px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  line-height: 1.5em; }
 
 .siftal #sidebar ul > li > a > i {
   font-size: 1.2em;
