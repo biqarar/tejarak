@@ -594,15 +594,12 @@ address {
   clear: both; }
 
 #ermileBadge {
-  padding: 10px 0 10px 1.5em;
+  padding: 10px 1.5em;
   background-color: #24292e;
   color: #eee;
   transition: 0.3s;
   height: 70px;
   user-select: none; }
-
-.rtl #ermileBadge {
-  padding: 10px 1.5em 10px 0; }
 
 #ermileBadge:hover {
   background-color: #044f6f; }
@@ -16581,6 +16578,12 @@ body.siftal.loading-page #sidebar .avatar:before {
 .siftal #sidebar ul > li > a.weAreHere {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff; }
+
+.siftal.ltr #sidebar #ermileBadge {
+  padding-right: 0; }
+
+.siftal.rtl #sidebar #ermileBadge {
+  padding-left: 0; }
 
 /* footer */
 .siftal footer {
