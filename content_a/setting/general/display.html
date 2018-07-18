@@ -3,7 +3,7 @@
 
 {%block data%}
   <div class="cbox">
-	<form method="post">
+	<form method="post" autocomplete="off">
 		<input type="hidden" name="formType" value="public">
 		{{block ("iname")}}
 		{{block ("islug")}}
@@ -17,7 +17,7 @@
 
 
 <div class="cbox">
-	<form method="post">
+	<form method="post" autocomplete="off">
 		<input type="hidden" name="formType" value="member">
 		 <h4>{%trans "Team default setting for new members"%}</h4>
 		 <p>{%trans "This settings is only used for new member and you can customize this setting for each member after add them to team."%}</p>
