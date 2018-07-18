@@ -117,7 +117,7 @@ class team
 				$url_get               = \dash\request::get();
 
 				$site_language         = \dash\language::current();
-				$site_language_default = \dash\language::default();
+				$site_language_default = \dash\language::primary();
 
 				if($team_language === $site_language)
 				{
