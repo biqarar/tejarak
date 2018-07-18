@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tejarak - Persian\n"
-"POT-Creation-Date: 2018-07-03 01:09+0430\n"
-"PO-Revision-Date: 2018-07-03 01:10+0430\n"
+"POT-Creation-Date: 2018-07-18 19:34+0430\n"
+"PO-Revision-Date: 2018-07-18 19:36+0430\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: Ermile <J.Evazzadeh@gmail.com>\n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -129,7 +129,7 @@ msgstr "حساب‌کاربری شما برای ویرایش اطلاعات پر
 
 #: dash/addons/content_account/profile/view.php:10
 #: dash/addons/includes/languages/trans_dash.php:692
-#: tejarak/includes/languages/trans_dash.php:667
+#: tejarak/includes/languages/trans_dash.php:762
 msgid "Edit your profile"
 msgstr "پروفایل خود را ویرایش کنید"
 
@@ -178,9 +178,9 @@ msgstr "فایل با موفقیت حذف شد"
 
 #: dash/addons/content_cp/backup/model.php:43
 #: dash/addons/content_cp/sms/verify/model.php:30
-#: dash/addons/content_enter/signup/model.php:29
+#: dash/addons/content_enter/signup/model.php:32
 #: dash/addons/content_enter/username/model.php:11
-#: dash/addons/content_enter/verify/model.php:41
+#: dash/addons/content_enter/verify/model.php:44
 #: dash/addons/content_su/backup/model.php:40
 msgid "Dont!"
 msgstr "نکن عزیزم!"
@@ -199,11 +199,12 @@ msgstr "داشبورد سیستم مدیریت محتوا"
 #: dash/addons/content_cp/contact/edit/view.php:14
 #: dash/addons/content_cp/posts/edit/controller.php:12
 #: dash/addons/content_cp/posts/edit/view.php:31
+#: dash/addons/content_support/ticket/show/view.php:23
 msgid "Invalid id"
 msgstr "شناسه نامعتبر"
 
 #: dash/addons/content_cp/comments/edit/model.php:12
-#: dash/addons/content_cp/contact/edit/model.php:12 dash/lib/app/comment.php:223
+#: dash/addons/content_cp/contact/edit/model.php:12 dash/lib/app/comment.php:243
 msgid "Invalid status"
 msgstr "وضعیت نامعتبر است"
 
@@ -257,6 +258,7 @@ msgstr "همچنین نظر خاص را اضافه یا ویرایش کنید."
 
 #: dash/addons/content_cp/comments/home/view.php:16
 #: dash/addons/content_cp/contact/home/view.php:16
+#: dash/addons/content_cp/log/home/view.php:13
 #: dash/addons/content_cp/posts/home/view.php:50
 #: dash/addons/content_cp/sms/template/view.php:15
 #: dash/addons/content_cp/terms/view.php:44
@@ -265,10 +267,12 @@ msgstr "بازگشت به داشبورد"
 
 #: dash/addons/content_cp/comments/home/view.php:23
 #: dash/addons/content_cp/contact/home/view.php:23
+#: dash/addons/content_cp/log/home/view.php:24
 #: dash/addons/content_cp/posts/home/view.php:63
 #: dash/addons/content_cp/users/home/view.php:23
 #: dash/addons/content_su/dbtables/view.php:20
 #: dash/addons/content_su/transactions/view.php:22
+#: dash/addons/content_support/ticket/home/view.php:23
 msgid "Search for :search"
 msgstr "جستجوی :search"
 
@@ -281,6 +285,7 @@ msgid "Back to list of contact"
 msgstr "بازگشت به لیست تماس با ما"
 
 #: dash/addons/content_cp/contact/home/view.php:11
+#: tejarak/includes/languages/trans_dash.php:229
 #: tejarak/includes/languages/trans_project.php:100
 msgid "Contact"
 msgstr "تماس"
@@ -318,6 +323,16 @@ msgstr "ارسال ایمیل به کاربر"
 #: dash/addons/content_cp/email/send/view.php:11
 msgid "Send every email to every user"
 msgstr "ارسال هر پیامی به کاربر توسط ایمیل"
+
+#: dash/addons/content_cp/log/home/view.php:9
+#: dash/addons/includes/languages/trans_dash.php:664
+#: tejarak/includes/languages/trans_dash.php:628
+msgid "Log"
+msgstr "لاگ"
+
+#: dash/addons/content_cp/log/home/view.php:10
+msgid "Check list of log and search or filter in them to find your logs."
+msgstr "بررسی لیست ردپاها و جستجو در آنها و فیلتر کردن بعضی از ردپاها."
 
 #: dash/addons/content_cp/mycontact/view.php:9
 #: dash/addons/content_cp/mycontact/view.php:10
@@ -368,7 +383,7 @@ msgstr "شناسه تنظیم نشده است"
 #: dash/addons/includes/languages/trans_dash.php:346
 #: dash/addons/includes/languages/trans_static.php:209
 #: dash/addons/includes/languages/trans_static.php:979
-#: tejarak/includes/languages/trans_dash.php:235
+#: tejarak/includes/languages/trans_dash.php:233
 msgid "Permissions"
 msgstr "سطوح‌دسترسی"
 
@@ -443,7 +458,7 @@ msgstr "همچنین افزودن یا ویرایش پست خاص"
 #: dash/addons/includes/languages/trans_dash.php:342
 #: dash/addons/includes/languages/trans_static.php:95
 #: dash/addons/includes/languages/trans_static.php:974
-#: tejarak/includes/languages/trans_dash.php:231
+#: tejarak/includes/languages/trans_dash.php:228
 msgid "Pages"
 msgstr "صفحات"
 
@@ -568,6 +583,7 @@ msgstr "چک کردن شرایط و فیلتر بر اساس نوع یا مشا�
 #: dash/addons/content_cp/terms/view.php:22
 #: dash/addons/includes/languages/trans_dash.php:293
 #: dash/addons/includes/languages/trans_static.php:972
+#: tejarak/includes/languages/trans_dash.php:281
 msgid "Categories"
 msgstr "دسته‌ها"
 
@@ -590,7 +606,7 @@ msgstr "برچسب ها را بررسی کنید و برخی از برچسب ه�
 #: dash/addons/includes/languages/trans_dash.php:138
 #: dash/addons/includes/languages/trans_static.php:112
 #: tejarak/includes/languages/trans_dash.php:198
-#: tejarak/includes/languages/trans_project.php:801
+#: tejarak/includes/languages/trans_project.php:806
 msgid "Search"
 msgstr "جستجو"
 
@@ -620,7 +636,7 @@ msgstr "همچنین کاربر خاصی را اضافه یا ویرایش کن�
 #: dash/addons/content_cp/users/home/view.php:18
 #: dash/addons/content_cp/users/set/view.php:12
 #: dash/addons/includes/languages/trans_dash.php:345
-#: tejarak/includes/languages/trans_dash.php:234
+#: tejarak/includes/languages/trans_dash.php:232
 msgid "Add new user"
 msgstr "افزودن کاربر جدید"
 
@@ -678,7 +694,7 @@ msgstr ""
 
 #: dash/addons/content_cp/users/view/view.php:13
 #: dash/addons/includes/languages/trans_dash.php:601
-#: tejarak/includes/languages/trans_dash.php:635
+#: tejarak/includes/languages/trans_dash.php:691
 msgid "User detail"
 msgstr "جزئیات‌کاربران"
 
@@ -702,17 +718,17 @@ msgid ", "
 msgstr " و "
 
 #: dash/addons/content_enter/alert/view.php:9
-#: dash/addons/content_enter/alert/view.php:15
+#: dash/addons/content_enter/alert/view.php:16
 msgid "Alert!"
 msgstr "هشدار!"
 
-#: dash/addons/content_enter/alert/view.php:15
-#: dash/addons/content_enter/verify/model.php:34 dash/lib/utility/enter.php:754
-#: dash/lib/utility/enter.php:765 dash/lib/utility/enter.php:772
+#: dash/addons/content_enter/alert/view.php:16
+#: dash/addons/content_enter/verify/model.php:36 dash/lib/utility/enter.php:756
+#: dash/lib/utility/enter.php:767 dash/lib/utility/enter.php:774
 msgid "What are you doing?"
 msgstr "اینجا چیکار می‌کنی عزیز جان!؟"
 
-#: dash/addons/content_enter/alert/view.php:27
+#: dash/addons/content_enter/alert/view.php:28
 #: dash/addons/content_enter/callback/model.php:107
 #: dash/addons/includes/languages/trans_static.php:542
 msgid "OK"
@@ -788,15 +804,15 @@ msgstr "لطفا با رایانامه قبلی خود وارد شوید یا و
 msgid "Change google mail"
 msgstr "تغییر رایانامه گوگل"
 
-#: dash/addons/content_enter/email/change/model.php:14
+#: dash/addons/content_enter/email/change/model.php:16
 msgid "Your email was removed"
 msgstr "ایمیل شما حذف شد"
 
-#: dash/addons/content_enter/email/change/model.php:38
+#: dash/addons/content_enter/email/change/model.php:40
 msgid "Plese fill the new email"
 msgstr "ایمیل جدید را وارد کنید"
 
-#: dash/addons/content_enter/email/change/model.php:44
+#: dash/addons/content_enter/email/change/model.php:46
 msgid "Please select a different email"
 msgstr "لطفا یک ایمیل دیگر انتخاب کنید"
 
@@ -816,7 +832,7 @@ msgstr "ثبت رایانامه"
 msgid "Enter to :name with email"
 msgstr "با رایانامه وارد :name شوید"
 
-#: dash/addons/content_enter/google/model.php:133
+#: dash/addons/content_enter/google/model.php:137
 msgid "System error! try again"
 msgstr "خطای سیستم! دوباره امتحان کنید"
 
@@ -828,28 +844,28 @@ msgstr "با استفاده از گوگل وارد :name شوید"
 msgid "Mobile not found"
 msgstr "موبایل یافت نشد"
 
-#: dash/addons/content_enter/home/model.php:103
+#: dash/addons/content_enter/home/model.php:106
 msgid "You hit our maximum try limit."
 msgstr "شما حد اکثر تلاش خود را انجام دادید."
 
-#: dash/addons/content_enter/home/model.php:103
+#: dash/addons/content_enter/home/model.php:106
 msgid "Try again later!"
 msgstr "بعدا مجددا تلاش کنید!"
 
-#: dash/addons/content_enter/home/model.php:118
+#: dash/addons/content_enter/home/model.php:122
 msgid "Please set the username or mobile or email"
 msgstr "لطفا نام‌کاربری یا موبایل یا رایانامه معتبری وارد کنید"
 
-#: dash/addons/content_enter/home/model.php:141
+#: dash/addons/content_enter/home/model.php:147
 #: dash/addons/content_enter/username/model.php:35
 msgid "Username not found"
 msgstr "نام کاربری یافت نشد"
 
-#: dash/addons/content_enter/home/model.php:181
+#: dash/addons/content_enter/home/model.php:191
 msgid "Opts!, Maybe your browser saved your password incorrectly."
 msgstr "اوه! امیدواریم مرورگر شما پسوردتون رو اشتباه ذخیره کرده باشه."
 
-#: dash/addons/content_enter/home/model.php:181
+#: dash/addons/content_enter/home/model.php:191
 msgid "Try again!"
 msgstr "مجددا تلاش کنید!"
 
@@ -858,12 +874,12 @@ msgid "Enter to :name with mobile"
 msgstr "ورود به :name با موبایل"
 
 #: dash/addons/content_enter/hook/model.php:19
-#: dash/addons/content_enter/hook/model.php:139
+#: dash/addons/content_enter/hook/model.php:141
 msgid "Telegram id not found"
 msgstr "آی‌دی تلگرام یافت نشد"
 
 #: dash/addons/content_enter/hook/model.php:25
-#: dash/addons/content_enter/hook/model.php:145
+#: dash/addons/content_enter/hook/model.php:147
 msgid "Invalid telegram id"
 msgstr "آی‌دی تلگرام نامعتبر است"
 
@@ -875,19 +891,19 @@ msgstr "مجوز یافت نشد"
 msgid "Invalid Authorization"
 msgstr "کد تایید نامعتبر است"
 
-#: dash/addons/content_enter/hook/model.php:133
+#: dash/addons/content_enter/hook/model.php:135
 msgid "Mobile is not set"
 msgstr "تلفن همراه تنظیم نشده است"
 
-#: dash/addons/content_enter/hook/model.php:210
+#: dash/addons/content_enter/hook/model.php:212
 msgid "System error 1"
 msgstr "خطای سیستمی‌۱"
 
-#: dash/addons/content_enter/hook/model.php:234
+#: dash/addons/content_enter/hook/model.php:236
 msgid "System error 2"
 msgstr "خطای سیستمی‌۲"
 
-#: dash/addons/content_enter/hook/model.php:251
+#: dash/addons/content_enter/hook/model.php:253
 msgid "System error 3"
 msgstr "خطای سیستمی‌۳"
 
@@ -907,7 +923,7 @@ msgid "Please set a different password!"
 msgstr "لطفا یک رمز عبور متفاوت وارد کنید!"
 
 #: dash/addons/content_enter/mobile/change/model.php:46
-#: dash/addons/content_enter/pass/change/model.php:55
+#: dash/addons/content_enter/pass/change/model.php:58
 msgid "Invalid old password"
 msgstr "گذرواژه قدیمی‌نامعتبر است"
 
@@ -916,8 +932,8 @@ msgid "change mobile number"
 msgstr "تغییر شماره‌ی تلفن همراه"
 
 #: dash/addons/content_enter/mobile/set/model.php:37
-#: dash/addons/content_enter/pass/set/model.php:38
-#: dash/addons/content_enter/pass/signup/model.php:37
+#: dash/addons/content_enter/pass/set/model.php:40
+#: dash/addons/content_enter/pass/signup/model.php:39
 msgid "No password was send"
 msgstr "گذرواژه‌ای ارسال نشد"
 
@@ -933,11 +949,11 @@ msgstr "آفرین!"
 msgid "Live and learn"
 msgstr "زگهواره تا گور دانش بجوی"
 
-#: dash/addons/content_enter/pass/change/model.php:46
+#: dash/addons/content_enter/pass/change/model.php:48
 msgid "You do not have any password!"
 msgstr "هیچ کلمه عبوری برای شما تنظیم نشده است"
 
-#: dash/addons/content_enter/pass/change/model.php:46
+#: dash/addons/content_enter/pass/change/model.php:48
 msgid "Please logout and login again."
 msgstr "لطفا از سیستم خارج شده و مجددا وارد سیستم شوید"
 
@@ -945,29 +961,29 @@ msgstr "لطفا از سیستم خارج شده و مجددا وارد سیست
 msgid "Please enter your password"
 msgstr "لطفا گذرواژه خود را وارد کنید"
 
-#: dash/addons/content_enter/pass/model.php:33
+#: dash/addons/content_enter/pass/model.php:36
 msgid "Invalid password, try again"
 msgstr "گذرواژه‌ی اشتباه، دوباره تلاش کنید"
 
-#: dash/addons/content_enter/pass/recovery/model.php:25
+#: dash/addons/content_enter/pass/recovery/model.php:27
 msgid "Your new password is your old password"
 msgstr "کلمه‌عبور جدید شما همان قدیمی‌است"
 
-#: dash/addons/content_enter/pass/recovery/model.php:27
+#: dash/addons/content_enter/pass/recovery/model.php:29
 #: dash/addons/includes/languages/trans_dash.php:740
-#: tejarak/includes/languages/trans_dash.php:710
+#: tejarak/includes/languages/trans_dash.php:804
 #: tejarak/includes/languages/trans_project.php:32
 msgid "Enter"
 msgstr "ورود"
 
-#: dash/addons/content_enter/pass/recovery/model.php:65
+#: dash/addons/content_enter/pass/recovery/model.php:68
 msgid "Invalid Password"
 msgstr "گذرواژه نامعتبر"
 
 #: dash/addons/content_enter/pass/view.php:10
 #: dash/addons/includes/languages/trans_dash.php:238
 #: dash/addons/includes/languages/trans_static.php:167
-#: tejarak/includes/languages/trans_dash.php:330
+#: tejarak/includes/languages/trans_dash.php:360
 msgid "Password"
 msgstr "کلمه عبور"
 
@@ -989,7 +1005,7 @@ msgstr ""
 
 #: dash/addons/content_enter/pass/view.php:22
 #: dash/addons/includes/languages/trans_dash.php:738
-#: tejarak/includes/languages/trans_dash.php:708
+#: tejarak/includes/languages/trans_dash.php:802
 msgid "Set Password"
 msgstr "تنظیم گذرواژه"
 
@@ -1009,11 +1025,11 @@ msgstr "تغییر گذرواژه"
 msgid "Please set your old and new password to change it"
 msgstr "لطفا گذرواژه‌ی قبلی و جدید خود را برای تغییر وارد کنید"
 
-#: dash/addons/content_enter/payment/controller.php:30
+#: dash/addons/content_enter/payment/controller.php:31
 msgid "Invalid payment type"
 msgstr "خطای نوع درگاه"
 
-#: dash/addons/content_enter/sessions/model.php:20
+#: dash/addons/content_enter/sessions/model.php:21
 msgid "Session terminated"
 msgstr "این روش ورود مسدود شد"
 
@@ -1031,45 +1047,45 @@ msgstr "لینوکس"
 msgid "Active sessions"
 msgstr "ورودهای فعال"
 
-#: dash/addons/content_enter/signup/model.php:23
+#: dash/addons/content_enter/signup/model.php:25
 msgid "How are you?"
 msgstr "حال شما چطوره؟"
 
-#: dash/addons/content_enter/signup/model.php:36
+#: dash/addons/content_enter/signup/model.php:39
 msgid "Pleaes set mobile number"
 msgstr "لطفا شماره تلفن‌همراه را وارد کنید"
 
-#: dash/addons/content_enter/signup/model.php:43
+#: dash/addons/content_enter/signup/model.php:46
 msgid "Pleaes set a valid mobile number"
 msgstr "لطفا شماره تلفن‌همراه معتبری وارد کنید"
 
-#: dash/addons/content_enter/signup/model.php:52
+#: dash/addons/content_enter/signup/model.php:55
 msgid "Pleaes set a valid username"
 msgstr "لطفا نام‌کاربری معتبری وارد کنید"
 
-#: dash/addons/content_enter/signup/model.php:59
+#: dash/addons/content_enter/signup/model.php:63
 msgid "Username must in [A-Za-z0-9]"
 msgstr "نام کاربری تنها باید شامل حروف و اعداد لاتین باشد"
 
-#: dash/addons/content_enter/signup/model.php:66
+#: dash/addons/content_enter/signup/model.php:70
 msgid "Pleaes set a valid password"
 msgstr "لطفا گذرواژه‌ی معتبری تنظیم کنید"
 
-#: dash/addons/content_enter/signup/model.php:73
+#: dash/addons/content_enter/signup/model.php:77
 msgid "Invalid full name"
 msgstr "نام کامل اشتباه"
 
-#: dash/addons/content_enter/signup/model.php:82
+#: dash/addons/content_enter/signup/model.php:87
 msgid "This username is already taken."
 msgstr "این نام‌کاربری پیش از این گرفته شده است."
 
-#: dash/addons/content_enter/signup/model.php:90
+#: dash/addons/content_enter/signup/model.php:96
 msgid "This mobile is already signuped. You can login by this mobile"
 msgstr ""
 "این شماره تلفن‌همراه پیش از این ثبت‌نام کرده است. شما می‌توانید با این شماره وارد "
 "سیستم شوید"
 
-#: dash/addons/content_enter/signup/model.php:112
+#: dash/addons/content_enter/signup/model.php:119
 msgid "We can not signup you"
 msgstr "ما نمی‌توانیم شما را ثبت‌نام کنیم"
 
@@ -1093,8 +1109,8 @@ msgstr "شناسه‌ی کاربری جدید باید کمتر از ۵۵ کار
 msgid "Please select a different username"
 msgstr "لطفا یک نام کاربری متفاوت انتخاب کنید"
 
-#: dash/addons/content_enter/username/change/model.php:58
-#: dash/addons/content_enter/username/set/model.php:31
+#: dash/addons/content_enter/username/change/model.php:59
+#: dash/addons/content_enter/username/set/model.php:32
 msgid "This username alreay taked!"
 msgstr "این نام کاربری در حال حاضر گرفته شده است!"
 
@@ -1114,12 +1130,12 @@ msgstr "شناسه‌ی کاربری باید بزرگتر از ۵ کاراکت�
 msgid "You must set less than 50 character in username"
 msgstr "شناسه‌ی کاربری باید کمتر از ۵۵ کاراکتر باشد"
 
-#: dash/addons/content_enter/username/set/model.php:37
-#: dash/lib/utility/enter.php:927
+#: dash/addons/content_enter/username/set/model.php:41
+#: dash/lib/utility/enter.php:936
 msgid "Your username was set"
 msgstr "نام کاربری شما ثبت شد"
 
-#: dash/addons/content_enter/username/set/model.php:47
+#: dash/addons/content_enter/username/set/model.php:51
 msgid "Please enter the username"
 msgstr "لطفا نام کاربری را وارد کنید"
 
@@ -1131,7 +1147,7 @@ msgstr "ثبت نام کاربری"
 msgid "Enter to :name with username"
 msgstr "با نام کاربری وارد :name شوید"
 
-#: dash/addons/content_enter/verify/model.php:47
+#: dash/addons/content_enter/verify/model.php:50
 msgid "Verify code in local is :code"
 msgstr "کد اعتبارسنجی شما در سیستم محلی :code است"
 
@@ -1201,7 +1217,7 @@ msgstr "این درخواست برای تغییر گذرواژه است."
 
 #: dash/addons/content_enter/verify/view.php:96
 #: dash/addons/includes/languages/trans_dash.php:516
-#: tejarak/includes/languages/trans_dash.php:611
+#: tejarak/includes/languages/trans_dash.php:664
 msgid "Verify"
 msgstr "اعتبارسنجی"
 
@@ -1230,26 +1246,21 @@ msgid "Auto backup schedule saved"
 msgstr "اطلاعات پشتیبان گیری خودکار ذخیر شد"
 
 #: dash/addons/content_su/command/model.php:11
-#, fuzzy
-#| msgid "Please fill the password field"
 msgid "Please fill the password"
 msgstr "لطفا گذرواژه را وارد کنید"
 
-#: dash/addons/content_su/command/model.php:49
-#, fuzzy
-#| msgid "Invalid action"
+#: dash/addons/content_su/command/model.php:33
 msgid "Invalid command"
-msgstr "رویداد‌ نامعتبر‌است"
+msgstr "دستور نا معتبر است"
 
 #: dash/addons/content_su/command/view.php:8
-#, fuzzy
-#| msgid "Comment"
+#: tejarak/includes/languages/trans_dash.php:623
 msgid "Command"
-msgstr "دیدگاه"
+msgstr "دستور"
 
 #: dash/addons/content_su/command/view.php:9
 msgid "Run some command in server"
-msgstr ""
+msgstr "اجرای برخی دستورات در سرور"
 
 #: dash/addons/content_su/cronjob/model.php:11
 msgid "Your cronjob is actived"
@@ -1277,8 +1288,6 @@ msgstr "انتخاب جدول"
 
 #: dash/addons/content_su/gitstatus/model.php:12
 #: dash/addons/content_su/nano/model.php:12
-#, fuzzy
-#| msgid "Please fill the content box"
 msgid "Please fill the file content"
 msgstr "لطفا باکس متن را پر کنید"
 
@@ -1289,27 +1298,21 @@ msgstr "فایل اشتباه"
 
 #: dash/addons/content_su/gitstatus/model.php:25
 #: dash/addons/content_su/nano/model.php:25
-#, fuzzy
-#| msgid "Profile successfully updated"
 msgid "File successfuly update"
-msgstr "اطلاعات با موفقیت به روزرسانی شد"
+msgstr "فایل با موفقیت به روز رسانی شد"
 
 #: dash/addons/content_su/gitstatus/model.php:29
 #: dash/addons/content_su/nano/model.php:29
-#, fuzzy
-#| msgid "Can not upload file"
 msgid "Can not write file"
-msgstr "ناتوان در آپلود فایل"
+msgstr "ناتوان در نوشتن فایل"
 
 #: dash/addons/content_su/gitstatus/view.php:8
-#, fuzzy
-#| msgid "Status"
 msgid "Git Status"
-msgstr "وضعیت"
+msgstr "وضعیت گیت"
 
 #: dash/addons/content_su/gitstatus/view.php:9
 msgid "Check file status on this project"
-msgstr ""
+msgstr "بررسی وضعیت فایل‌ها در این پروژه"
 
 #: dash/addons/content_su/home/view.php:8
 msgid "Supervisor dashboard"
@@ -1320,10 +1323,12 @@ msgid "Hey there!"
 msgstr "سلام رفیق!"
 
 #: dash/addons/content_su/info/controller.php:29
+#: tejarak/includes/languages/trans_dash.php:549
 msgid "First you need to enable COM on windows"
 msgstr "در ابتدا شما باید ویژگی Com را در ویندوز فعال کنید"
 
 #: dash/addons/content_su/info/controller.php:30
+#: tejarak/includes/languages/trans_dash.php:550
 msgid "Read More"
 msgstr "بیشتر بخوانید"
 
@@ -1348,28 +1353,25 @@ msgid "All event in this system"
 msgstr "تمامی اتفاقات درون این سیستم"
 
 #: dash/addons/content_su/nano/view.php:8
+#: tejarak/includes/languages/trans_dash.php:625
 msgid "Nano"
-msgstr ""
+msgstr "نانو"
 
 #: dash/addons/content_su/nano/view.php:9
-#, fuzzy
-#| msgid "Edit your profile"
 msgid "Edit some server file"
-msgstr "پروفایل خود را ویرایش کنید"
+msgstr "ویرایش برخی از فایل های سرور"
 
 #: dash/addons/content_su/permission/model.php:36
 msgid "Permission added to this user"
 msgstr "سطح‌دسترسی برای اضافه‌کردن این‌ کاربر"
 
 #: dash/addons/content_su/time/view.php:8
-#, fuzzy
-#| msgid "End Time"
 msgid "Date and Time"
-msgstr "ساعت پایان"
+msgstr "تاریخ و زمان"
 
 #: dash/addons/content_su/time/view.php:9
 msgid "Check server date and time"
-msgstr ""
+msgstr "بررسی زمان و تاریخ سرور"
 
 #: dash/addons/content_su/tools/log/controller.php:145
 msgid "Do you wanna something here!?"
@@ -1377,7 +1379,7 @@ msgstr "چیز میخواهید اینجا؟"
 
 #: dash/addons/content_su/tools/sitemap/view.php:8
 #: dash/addons/includes/languages/trans_dash.php:662
-#: tejarak/includes/languages/trans_dash.php:572
+#: tejarak/includes/languages/trans_dash.php:622
 msgid "Sitemap"
 msgstr "نقشه‌ی سایت"
 
@@ -1463,8 +1465,6 @@ msgid "Also add or edit specefic transactions."
 msgstr "همچنین تراکنش خاصی را بیافزایید یا آن را ویرایش کنید"
 
 #: dash/addons/content_su/update/model.php:11
-#, fuzzy
-#| msgid "Please fill the password field"
 msgid "Please fill the git password"
 msgstr "لطفا گذرواژه را وارد کنید"
 
@@ -1491,205 +1491,292 @@ msgstr "سراسری"
 msgid "User added"
 msgstr "کاربر اضافه شد"
 
+#: dash/addons/content_support/home/view.php:9
+msgid "Ticketing System"
+msgstr "سامانه پشتیبانی تیکت"
+
+#: dash/addons/content_support/home/view.php:10
+msgid ""
+"Easily manage your tickets and monitor or track them to get best answer until fix "
+"your problem"
+msgstr ""
+"به‌سادگی تیکت‌های خود را مدیریت کنید و با مونیتور و رهگیری آن‌ها به بهترین پاسخ برای "
+"رفع مشکل خود برسید"
+
+#: dash/addons/content_support/home/view.php:13
+#: dash/addons/content_support/ticket/home/view.php:9
+#: tejarak/includes/languages/trans_dash.php:724
+msgid "Tickets"
+msgstr "تیکت‌ها"
+
+#: dash/addons/content_support/ticket/add/model.php:54
+#: dash/addons/content_support/ticket/show/model.php:133
+msgid "Your ticket was sended"
+msgstr "تیکت شما ارسال شد"
+
+#: dash/addons/content_support/ticket/add/view.php:9
+msgid "Add new ticket"
+msgstr "افزودن تیکت جدید"
+
+#: dash/addons/content_support/ticket/add/view.php:10
+msgid "Dot worry!"
+msgstr "نگران نباشید!"
+
+#: dash/addons/content_support/ticket/add/view.php:10
+msgid "Ask your question."
+msgstr "سوال خود را بپرسید"
+
+#: dash/addons/content_support/ticket/add/view.php:10
+msgid "We are here to answer your questions."
+msgstr "ما اینجاییم تا به سوالات شما پاسخ دهیم."
+
+#: dash/addons/content_support/ticket/add/view.php:13
+#: dash/addons/content_support/ticket/show/view.php:14
+msgid "Back to tickets list"
+msgstr "بازگشت به لیست تیکت‌ها"
+
+#: dash/addons/content_support/ticket/home/view.php:10
+msgid "See list of your tickets!"
+msgstr "مشاهده لیست تمام تیکت‌های شما!"
+
+#: dash/addons/content_support/ticket/home/view.php:14
+msgid "New ticket"
+msgstr "تیکت جدید"
+
+#: dash/addons/content_support/ticket/home/view.php:17
+msgid "Back to support panel"
+msgstr "بازگشت به پنل پشتیبانی"
+
+#: dash/addons/content_support/ticket/show/model.php:46
+msgid "Tag was saved"
+msgstr "کلیدواژه ذخیره شد"
+
+#: dash/addons/content_support/ticket/show/model.php:59
+msgid "Ticket status was changed"
+msgstr "وضعیت تیکت تغییر یافت"
+
+#: dash/addons/content_support/ticket/show/model.php:84
+#: dash/addons/content_support/ticket/show/model.php:91
+#: dash/addons/content_support/ticket/show/view.php:29
+#: dash/addons/content_support/ticket/show/view.php:39
+msgid "Ticket not found"
+msgstr "تیکتی یافت نشد"
+
+#: dash/addons/content_support/ticket/show/view.php:9
+msgid "View ticket"
+msgstr "نمایش تیکت"
+
+#: dash/addons/content_support/ticket/show/view.php:10
+msgid "Check detail of your ticket."
+msgstr "بررسی جزئیات تیکت شما"
+
+#: dash/addons/content_support/ticket/show/view.php:10
+msgid "We try to answer to you as soon as posibble."
+msgstr "ما سعی می کنیم تا در اسرع وقت به شما پاسخ دهیم."
+
+#: dash/addons/content_support/ticket/show/view.php:51
+msgid "This is not your ticket!"
+msgstr "این تیکت شما نیست!"
+
 #: dash/addons/includes/languages/trans_dash.php:8
-#: tejarak/includes/languages/trans_dash.php:369
-#: tejarak/includes/languages/trans_project.php:679
+#: tejarak/includes/languages/trans_dash.php:405
+#: tejarak/includes/languages/trans_project.php:682
 msgid "Hi"
 msgstr "سلام"
 
 #: dash/addons/includes/languages/trans_dash.php:9
-#: tejarak/includes/languages/trans_dash.php:370
+#: tejarak/includes/languages/trans_dash.php:406
 msgid "You must not be here!"
 msgstr "شما نباید اینجا باشید!"
 
 #: dash/addons/includes/languages/trans_dash.php:12
-#: tejarak/includes/languages/trans_dash.php:411
+#: tejarak/includes/languages/trans_dash.php:447
 msgid "Remove username"
 msgstr "حذف نام کاربری"
 
 #: dash/addons/includes/languages/trans_dash.php:15
-#: tejarak/includes/languages/trans_dash.php:402
+#: tejarak/includes/languages/trans_dash.php:438
 msgid "Can't access your account?"
 msgstr "نمی‌توانید به حساب خود وارد شوید؟"
 
 #: dash/addons/includes/languages/trans_dash.php:18
-#: tejarak/includes/languages/trans_dash.php:405
+#: tejarak/includes/languages/trans_dash.php:441
 msgid "Remembered your password?"
 msgstr "کلمه عبور خود را به خاطر آوردید!؟"
 
 #: dash/addons/includes/languages/trans_dash.php:21
-#: tejarak/includes/languages/trans_dash.php:397
+#: tejarak/includes/languages/trans_dash.php:433
 msgid "You are logined ;)"
 msgstr "شما وارد سیستم هستید;)"
 
 #: dash/addons/includes/languages/trans_dash.php:22
-#: tejarak/includes/languages/trans_dash.php:398
+#: tejarak/includes/languages/trans_dash.php:434
 msgid "Be patient or"
 msgstr "صبور باشید یا"
 
 #: dash/addons/includes/languages/trans_dash.php:23
-#: tejarak/includes/languages/trans_dash.php:399
+#: tejarak/includes/languages/trans_dash.php:435
 msgid "click here!"
 msgstr "اینجا کلیک کنید!"
 
 #: dash/addons/includes/languages/trans_dash.php:26
-#: tejarak/includes/languages/trans_dash.php:385
+#: tejarak/includes/languages/trans_dash.php:421
 msgid "We found your Google Mail that is different from your current google mail"
 msgstr "رایانامه گوگل وارد شده با رایانامه فعلی شما مطابقت ندارد"
 
 #: dash/addons/includes/languages/trans_dash.php:27
-#: tejarak/includes/languages/trans_dash.php:386
+#: tejarak/includes/languages/trans_dash.php:422
 msgid "Would you like to change your old google mail?"
 msgstr "آیا مایلید رایانامه گوگل قدیمی‌خود را تغییر دهید؟"
 
 #: dash/addons/includes/languages/trans_dash.php:28
-#: tejarak/includes/languages/trans_dash.php:387
+#: tejarak/includes/languages/trans_dash.php:423
 msgid "Change to"
 msgstr "تغییر به"
 
 #: dash/addons/includes/languages/trans_dash.php:29
-#: tejarak/includes/languages/trans_dash.php:388
+#: tejarak/includes/languages/trans_dash.php:424
 msgid "Update google mail"
 msgstr "به‌روزرسانی رایانامه گوگل"
 
 #: dash/addons/includes/languages/trans_dash.php:30
-#: tejarak/includes/languages/trans_dash.php:389
+#: tejarak/includes/languages/trans_dash.php:425
 msgid "Don't change"
 msgstr "تغییر نده"
 
 #: dash/addons/includes/languages/trans_dash.php:33
-#: tejarak/includes/languages/trans_dash.php:382
+#: tejarak/includes/languages/trans_dash.php:418
 msgid "Remove my email address"
 msgstr "بازیابی ایمیل"
 
 #: dash/addons/includes/languages/trans_dash.php:36
-#: tejarak/includes/languages/trans_dash.php:376
+#: tejarak/includes/languages/trans_dash.php:412
 msgid "We detected two accout for you"
 msgstr "ما متوجه وجود دو حساب کاربری برای شما شدیم"
 
 #: dash/addons/includes/languages/trans_dash.php:37
-#: tejarak/includes/languages/trans_dash.php:377
+#: tejarak/includes/languages/trans_dash.php:413
 msgid "Please remove one of them and"
 msgstr "لطفا یکی را حذف کنید و"
 
 #: dash/addons/includes/languages/trans_dash.php:38
-#: tejarak/includes/languages/trans_dash.php:378
+#: tejarak/includes/languages/trans_dash.php:414
 msgid "if you want to delete this account"
 msgstr "اگر می‌خواهید این حساب‌کاربری را حذف کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:39
-#: tejarak/includes/languages/trans_dash.php:379
+#: tejarak/includes/languages/trans_dash.php:415
 msgid "click here"
 msgstr "اینجا کلیک کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:42
-#: tejarak/includes/languages/trans_dash.php:373
+#: tejarak/includes/languages/trans_dash.php:409
 msgid "Why you want to delete your account!?"
 msgstr "چرا می‌خواهید حساب‌کاربری خود را حذف کنید!؟"
 
 #: dash/addons/includes/languages/trans_dash.php:45
-#: tejarak/includes/languages/trans_dash.php:408
+#: tejarak/includes/languages/trans_dash.php:444
 msgid "Terminate"
 msgstr "مسدودسازی"
 
 #: dash/addons/includes/languages/trans_dash.php:48
-#: tejarak/includes/languages/trans_dash.php:421
+#: tejarak/includes/languages/trans_dash.php:457
 msgid "We can not find eny way to send verification code to you!"
 msgstr "ما راهی برای ارسال کد به شما نیافتیم!"
 
 #: dash/addons/includes/languages/trans_dash.php:51
-#: tejarak/includes/languages/trans_dash.php:414
+#: tejarak/includes/languages/trans_dash.php:450
 msgid "Send code in your Telegram"
 msgstr "ارسال کد در تلگرام شما"
 
 #: dash/addons/includes/languages/trans_dash.php:52
-#: tejarak/includes/languages/trans_dash.php:415
+#: tejarak/includes/languages/trans_dash.php:451
 msgid "Send code as sms to your phone"
 msgstr "ارسال کد از طریق پیامک به تلفن‌همراه شما"
 
 #: dash/addons/includes/languages/trans_dash.php:53
-#: tejarak/includes/languages/trans_dash.php:416
+#: tejarak/includes/languages/trans_dash.php:452
 msgid "Call you to send code"
 msgstr "تماس با شما برای ارسال کد"
 
 #: dash/addons/includes/languages/trans_dash.php:54
-#: tejarak/includes/languages/trans_dash.php:417
+#: tejarak/includes/languages/trans_dash.php:453
 msgid "You send code to us and we check it"
 msgstr "شما کد را برای ما ارسال کنید و ما چک کنیم"
 
 #: dash/addons/includes/languages/trans_dash.php:55
-#: tejarak/includes/languages/trans_dash.php:418
+#: tejarak/includes/languages/trans_dash.php:454
 msgid "Send code in your email"
 msgstr "ارسال کد به رایانامه شما"
 
 #: dash/addons/includes/languages/trans_dash.php:58
-#: tejarak/includes/languages/trans_dash.php:424
+#: tejarak/includes/languages/trans_dash.php:460
 msgid "You must set a mobile or email to continue"
 msgstr "برای ادامه شما باید تلفن‌همراه یا رایانامه را وارد کنید."
 
 #: dash/addons/includes/languages/trans_dash.php:59
-#: tejarak/includes/languages/trans_dash.php:425
+#: tejarak/includes/languages/trans_dash.php:461
 msgid "Go back"
 msgstr "برگرد"
 
 #: dash/addons/includes/languages/trans_dash.php:64
-#: tejarak/includes/languages/trans_dash.php:358
+#: tejarak/includes/languages/trans_dash.php:394
 msgid "You are blocked becauese of some reason!"
 msgstr "شما به دلایلی بلاک شده‌اید!"
 
 #: dash/addons/includes/languages/trans_dash.php:65
-#: tejarak/includes/languages/trans_dash.php:359
+#: tejarak/includes/languages/trans_dash.php:395
 msgid "If have problem"
 msgstr "در صورت بروز مشکل"
 
 #: dash/addons/includes/languages/trans_dash.php:66
-#: tejarak/includes/languages/trans_dash.php:360
+#: tejarak/includes/languages/trans_dash.php:396
 msgid "Contact us"
 msgstr "با ما تماس بگیرید"
 
 #: dash/addons/includes/languages/trans_dash.php:69
-#: tejarak/includes/languages/trans_dash.php:363
+#: tejarak/includes/languages/trans_dash.php:399
 msgid "We are so sorry for losing you!"
 msgstr "ما برای از دست دادن شما خیلی متاسفیم!"
 
 #: dash/addons/includes/languages/trans_dash.php:70
-#: tejarak/includes/languages/trans_dash.php:364
+#: tejarak/includes/languages/trans_dash.php:400
 msgid "if you want you can come back to"
 msgstr "در صورتی که بخواهید می‌توانید برگردید"
 
 #: dash/addons/includes/languages/trans_dash.php:71
-#: tejarak/includes/languages/trans_dash.php:365
+#: tejarak/includes/languages/trans_dash.php:401
 msgid "join us"
 msgstr "به ما ملحق شوید"
 
 #: dash/addons/includes/languages/trans_dash.php:72
-#: tejarak/includes/languages/trans_dash.php:366
+#: tejarak/includes/languages/trans_dash.php:402
 msgid "Bye Bye :("
 msgstr "خداحافط :("
 
 #: dash/addons/includes/languages/trans_dash.php:75
-#: tejarak/includes/languages/trans_dash.php:353
+#: tejarak/includes/languages/trans_dash.php:389
 msgid "What are you doing!"
 msgstr "چیکار میکنی!"
 
 #: dash/addons/includes/languages/trans_dash.php:76
-#: tejarak/includes/languages/trans_dash.php:354
+#: tejarak/includes/languages/trans_dash.php:390
 msgid "If you are bot, be easy and call your mom"
 msgstr "اگر شما بات هستید، آرام باشید و با مامان جونتون تماس بگیرید"
 
 #: dash/addons/includes/languages/trans_dash.php:77
-#: tejarak/includes/languages/trans_dash.php:355
+#: tejarak/includes/languages/trans_dash.php:391
 msgid "If you are human being, what are you doing here! be personable..."
 msgstr "اگر انسان هستید، اینجا چیکار میکنید! با شخصیت باشید..."
 
 #: dash/addons/includes/languages/trans_dash.php:80
-#: tejarak/includes/languages/trans_dash.php:350
-#: tejarak/includes/languages/trans_project.php:630
+#: tejarak/includes/languages/trans_dash.php:386
+#: tejarak/includes/languages/trans_project.php:633
 msgid "Go"
 msgstr "برو"
 
 #: dash/addons/includes/languages/trans_dash.php:83
-#: tejarak/includes/languages/trans_dash.php:394
+#: tejarak/includes/languages/trans_dash.php:430
 #: tejarak/includes/lib/app/team/add.php:470
 msgid "You"
 msgstr "شما"
@@ -1702,46 +1789,46 @@ msgid "Mobile"
 msgstr "موبایل"
 
 #: dash/addons/includes/languages/trans_dash.php:87
-#: tejarak/includes/languages/trans_dash.php:221
+#: tejarak/includes/languages/trans_dash.php:218
 msgid "What do you want to send to this user?"
 msgstr "مایل به ارسال چه چیزی به این کاربر هستید؟"
 
 #: dash/addons/includes/languages/trans_dash.php:88
-#: tejarak/includes/languages/trans_dash.php:222
+#: tejarak/includes/languages/trans_dash.php:219
 #: tejarak/includes/languages/trans_project.php:19
 msgid "Send"
 msgstr "ارسال"
 
 #: dash/addons/includes/languages/trans_dash.php:89
-#: tejarak/includes/languages/trans_dash.php:218
+#: tejarak/includes/languages/trans_dash.php:215
 msgid "Template"
 msgstr "قالب"
 
 #: dash/addons/includes/languages/trans_dash.php:90
-#: tejarak/includes/languages/trans_dash.php:299
+#: tejarak/includes/languages/trans_dash.php:328
 msgid "No template"
 msgstr "بدون الگو"
 
 #: dash/addons/includes/languages/trans_dash.php:91
-#: tejarak/includes/languages/trans_dash.php:300
+#: tejarak/includes/languages/trans_dash.php:329
 msgid "Show"
 msgstr "نمایش"
 
 #: dash/addons/includes/languages/trans_dash.php:94
-#: tejarak/includes/languages/trans_dash.php:262
+#: tejarak/includes/languages/trans_dash.php:274
 #: tejarak/includes/languages/trans_project.php:430
 msgid "User"
 msgstr "کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:95
 #: dash/addons/includes/languages/trans_static.php:90
-#: tejarak/includes/languages/trans_dash.php:317
+#: tejarak/includes/languages/trans_dash.php:346
 #: tejarak/includes/languages/trans_project.php:557
 msgid "Cancel"
 msgstr "انصراف"
 
 #: dash/addons/includes/languages/trans_dash.php:98
-#: tejarak/includes/languages/trans_dash.php:309
+#: tejarak/includes/languages/trans_dash.php:338
 msgid "List of template sms"
 msgstr "لیست الگوهای پیامک"
 
@@ -1752,20 +1839,20 @@ msgid "Name"
 msgstr "نام"
 
 #: dash/addons/includes/languages/trans_dash.php:100
-#: tejarak/includes/languages/trans_dash.php:310
+#: tejarak/includes/languages/trans_dash.php:339
 msgid "Template text"
 msgstr "متن الگو"
 
 #: dash/addons/includes/languages/trans_dash.php:101
 #: dash/addons/includes/languages/trans_static.php:148
-#: tejarak/includes/languages/trans_dash.php:205
+#: tejarak/includes/languages/trans_dash.php:203
 #: tejarak/includes/languages/trans_project.php:432
 msgid "Edit"
 msgstr "ویرایش"
 
 #: dash/addons/includes/languages/trans_dash.php:102
 #: dash/addons/includes/languages/trans_static.php:92
-#: tejarak/includes/languages/trans_dash.php:311
+#: tejarak/includes/languages/trans_dash.php:340
 msgid "Delete"
 msgstr "حذف"
 
@@ -1783,63 +1870,63 @@ msgid "Add"
 msgstr "افزودن"
 
 #: dash/addons/includes/languages/trans_dash.php:105
-#: tejarak/includes/languages/trans_dash.php:312
+#: tejarak/includes/languages/trans_dash.php:341
 msgid "Template name"
 msgstr "نام الگو"
 
 #: dash/addons/includes/languages/trans_dash.php:106
-#: tejarak/includes/languages/trans_dash.php:313
+#: tejarak/includes/languages/trans_dash.php:342
 msgid "Template Name"
 msgstr "نام الگو"
 
 #: dash/addons/includes/languages/trans_dash.php:107
-#: tejarak/includes/languages/trans_dash.php:314
+#: tejarak/includes/languages/trans_dash.php:343
 msgid "Template Text"
 msgstr "متن الگو"
 
 #: dash/addons/includes/languages/trans_dash.php:110
-#: tejarak/includes/languages/trans_dash.php:296
+#: tejarak/includes/languages/trans_dash.php:325
 msgid "Users mobile"
 msgstr "تلفن همراه کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:111
-#: tejarak/includes/languages/trans_dash.php:297
+#: tejarak/includes/languages/trans_dash.php:326
 msgid "Every mobile in one line"
 msgstr "هر شماره همراه در یک خط"
 
 #: dash/addons/includes/languages/trans_dash.php:112
-#: tejarak/includes/languages/trans_dash.php:298
+#: tejarak/includes/languages/trans_dash.php:327
 msgid "What do you want to send to this users?"
 msgstr "چه پیامی را میخواهید به این کاربران ارسال کنید؟"
 
 #: dash/addons/includes/languages/trans_dash.php:113
-#: tejarak/includes/languages/trans_dash.php:301
+#: tejarak/includes/languages/trans_dash.php:330
 msgid "Group"
 msgstr "گروه"
 
 #: dash/addons/includes/languages/trans_dash.php:114
-#: tejarak/includes/languages/trans_dash.php:302
+#: tejarak/includes/languages/trans_dash.php:331
 msgid "No group"
 msgstr "بدون گروه"
 
 #: dash/addons/includes/languages/trans_dash.php:117
-#: tejarak/includes/languages/trans_dash.php:214
+#: tejarak/includes/languages/trans_dash.php:211
 msgid "Your sms panel balance"
 msgstr "بالانس مالی پنل پیامک شما"
 
 #: dash/addons/includes/languages/trans_dash.php:118
-#: tejarak/includes/languages/trans_dash.php:215
+#: tejarak/includes/languages/trans_dash.php:212
 #: tejarak/includes/languages/trans_project.php:238
 msgid "Toman"
 msgstr "تومان"
 
 #: dash/addons/includes/languages/trans_dash.php:119
-#: tejarak/includes/languages/trans_dash.php:216
+#: tejarak/includes/languages/trans_dash.php:213
 msgid "Send quick"
 msgstr "ارسال سریع"
 
 #: dash/addons/includes/languages/trans_dash.php:120
-#: tejarak/includes/languages/trans_dash.php:217
+#: tejarak/includes/languages/trans_dash.php:214
 msgid "Group send"
 msgstr "ارسال گروهی"
 
@@ -1858,7 +1945,7 @@ msgstr "رایانامه"
 
 #: dash/addons/includes/languages/trans_dash.php:125
 #: tejarak/includes/languages/trans_dash.php:62
-#: tejarak/includes/languages/trans_project.php:693
+#: tejarak/includes/languages/trans_project.php:696
 msgid "Website"
 msgstr "وب‌سایت"
 
@@ -1921,41 +2008,42 @@ msgid "Date"
 msgstr "تاریخ"
 
 #: dash/addons/includes/languages/trans_dash.php:142
-#: tejarak/includes/languages/trans_dash.php:203
+#: tejarak/includes/languages/trans_dash.php:201
 msgid "Without name"
 msgstr "بدون نام"
 
 #: dash/addons/includes/languages/trans_dash.php:143
-#: tejarak/includes/languages/trans_dash.php:204
+#: tejarak/includes/languages/trans_dash.php:202
 msgid "Visitor detail"
 msgstr "جزئیات بازدیدکننده"
 
 #: dash/addons/includes/languages/trans_dash.php:144
-#: tejarak/includes/languages/trans_dash.php:206
+#: tejarak/includes/languages/trans_dash.php:204
 msgid "Created on"
 msgstr "ساخته شده در"
 
 #: dash/addons/includes/languages/trans_dash.php:145
-#: tejarak/includes/languages/trans_dash.php:207
+#: tejarak/includes/languages/trans_dash.php:205
 msgid "Clear filters"
 msgstr "پاک‌سازی فیلترها"
 
 #: dash/addons/includes/languages/trans_dash.php:146
-#: tejarak/includes/languages/trans_dash.php:208
+#: tejarak/includes/languages/trans_dash.php:206
 msgid "Result not found!"
 msgstr "نتیجه‌ای یافت نشد!"
 
 #: dash/addons/includes/languages/trans_dash.php:147
-#: tejarak/includes/languages/trans_dash.php:209
+#: tejarak/includes/languages/trans_dash.php:207
 msgid "Search with new keywords."
 msgstr "با کلیدواژه‌های بهتری جستجو کنید."
 
 #: dash/addons/includes/languages/trans_dash.php:148
+#: tejarak/includes/languages/trans_dash.php:208
 msgid "No record exist!"
 msgstr "هیچ داده ای وجود ندارد!"
 
 #: dash/addons/includes/languages/trans_dash.php:155
-#: tejarak/includes/languages/trans_dash.php:273
+#: tejarak/includes/languages/trans_dash.php:256
 msgid "Slug"
 msgstr "نامک"
 
@@ -1965,7 +2053,7 @@ msgid "Require"
 msgstr "الزامی"
 
 #: dash/addons/includes/languages/trans_dash.php:157
-#: tejarak/includes/languages/trans_dash.php:245
+#: tejarak/includes/languages/trans_dash.php:257
 msgid ""
 "The permission name should be unique and contain only alphanameric characters and "
 "underscores"
@@ -1973,7 +2061,7 @@ msgstr ""
 "نام سطح دسترسی باید منحصر به فرد باشد و فقط شامل کاراکتر‌های الفبا و زیر خط باشد"
 
 #: dash/addons/includes/languages/trans_dash.php:158
-#: tejarak/includes/languages/trans_dash.php:246
+#: tejarak/includes/languages/trans_dash.php:258
 msgid "Name of your permission"
 msgstr "نام سطح دسترسی شما"
 
@@ -1985,12 +2073,12 @@ msgid "Title"
 msgstr "عنوان"
 
 #: dash/addons/includes/languages/trans_dash.php:160
-#: tejarak/includes/languages/trans_dash.php:248
+#: tejarak/includes/languages/trans_dash.php:259
 msgid "The permission label is used to represent your permission in user management"
 msgstr "برچسب سطح دسترسی برای نشان دادن آن در بخش مدیریت استفاده می‌شود"
 
 #: dash/addons/includes/languages/trans_dash.php:161
-#: tejarak/includes/languages/trans_dash.php:249
+#: tejarak/includes/languages/trans_dash.php:260
 msgid "Label of your permission"
 msgstr "برچسب سطح دسترسی شما"
 
@@ -2001,52 +2089,52 @@ msgid "Save"
 msgstr "ذخیره"
 
 #: dash/addons/includes/languages/trans_dash.php:165
-#: tejarak/includes/languages/trans_dash.php:247
+#: tejarak/includes/languages/trans_dash.php:263
 msgid "Label"
 msgstr "برچسب"
 
 #: dash/addons/includes/languages/trans_dash.php:168
-#: tejarak/includes/languages/trans_dash.php:254
+#: tejarak/includes/languages/trans_dash.php:266
 msgid "Permission title"
 msgstr "عنوان سطح‌دسترسی"
 
 #: dash/addons/includes/languages/trans_dash.php:169
-#: tejarak/includes/languages/trans_dash.php:255
+#: tejarak/includes/languages/trans_dash.php:267
 msgid "Customized"
 msgstr "سفارشی سازی شده"
 
 #: dash/addons/includes/languages/trans_dash.php:170
-#: tejarak/includes/languages/trans_dash.php:256
+#: tejarak/includes/languages/trans_dash.php:268
 msgid "Need double check permission for some sensitive permissions"
 msgstr "نیازمند بررسی دوگانه برای برخی از سطوح دسترسی حساس"
 
 #: dash/addons/includes/languages/trans_dash.php:171
-#: tejarak/includes/languages/trans_dash.php:257
+#: tejarak/includes/languages/trans_dash.php:269
 msgid "Do hard check and need to enter again"
 msgstr "بررسی سخت و نیاز به ورود مجدد به سیستم"
 
 #: dash/addons/includes/languages/trans_dash.php:172
-#: tejarak/includes/languages/trans_dash.php:258
+#: tejarak/includes/languages/trans_dash.php:270
 msgid "Count of user in permission"
 msgstr "تعداد کاربران با این سطح دسترسی"
 
 #: dash/addons/includes/languages/trans_dash.php:173
-#: tejarak/includes/languages/trans_dash.php:259
+#: tejarak/includes/languages/trans_dash.php:271
 msgid "Remove this permission if not need"
 msgstr "اگر به این سطح دسترسی نیازی نداری آن را حذف کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:174
-#: tejarak/includes/languages/trans_dash.php:260
+#: tejarak/includes/languages/trans_dash.php:272
 msgid "No user"
 msgstr "بدون کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:175
-#: tejarak/includes/languages/trans_dash.php:261
+#: tejarak/includes/languages/trans_dash.php:273
 msgid "Click to show list of user by this permission"
 msgstr "برای نمایش لیست افراد با این سطح دسترسی کلیک کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:178
-#: tejarak/includes/languages/trans_dash.php:226
+#: tejarak/includes/languages/trans_dash.php:223
 msgid "CMS"
 msgstr "سیستم مدیریت محتوا"
 
@@ -2061,6 +2149,7 @@ msgid "Category"
 msgstr "دسته‌بندی"
 
 #: dash/addons/includes/languages/trans_dash.php:188
+#: tejarak/includes/languages/trans_dash.php:381
 msgid "Field"
 msgstr "فیلد"
 
@@ -2214,7 +2303,7 @@ msgstr "لطفا عنوانی صحیح بین ۳ تا ۴۰ حرف وارد کن�
 
 #: dash/addons/includes/languages/trans_dash.php:220
 #: tejarak/includes/languages/trans_dash.php:83
-#: tejarak/includes/languages/trans_project.php:624
+#: tejarak/includes/languages/trans_project.php:627
 msgid "Type"
 msgstr "نوع"
 
@@ -2292,6 +2381,7 @@ msgid "Unreachable"
 msgstr "غیر قابل دسترسی"
 
 #: dash/addons/includes/languages/trans_dash.php:235
+#: tejarak/includes/languages/trans_dash.php:376
 msgid "This user is supervisor!"
 msgstr "این کاربر مدیر فنی سیستم است!"
 
@@ -2306,7 +2396,7 @@ msgid "No permission"
 msgstr "بدون سطح دسترسی"
 
 #: dash/addons/includes/languages/trans_dash.php:239
-#: tejarak/includes/languages/trans_dash.php:346
+#: tejarak/includes/languages/trans_dash.php:377
 msgid "Enter to change pass"
 msgstr "برای تغییر کلمه عبور آن را وارد کنید"
 
@@ -2316,7 +2406,7 @@ msgid "Password was set, enter to change it!"
 msgstr "کلمه عبور تنظیم شده است، برای تغییر آن کلمه عبور را وارد کنید!"
 
 #: dash/addons/includes/languages/trans_dash.php:241
-#: tejarak/includes/languages/trans_dash.php:347
+#: tejarak/includes/languages/trans_dash.php:378
 msgid "Password not set, enter  to set it!"
 msgstr "کلمه عبور تنظیم نشده است، آن را تنظیم کنید!"
 
@@ -2336,104 +2426,107 @@ msgid "Save all"
 msgstr "ذخیره همه"
 
 #: dash/addons/includes/languages/trans_dash.php:247
-#: tejarak/includes/languages/trans_dash.php:329
+#: tejarak/includes/languages/trans_dash.php:359
 msgid "Display Name"
 msgstr "نام نمایشی"
 
 #: dash/addons/includes/languages/trans_dash.php:248
-#: tejarak/includes/languages/trans_dash.php:331
+#: tejarak/includes/languages/trans_dash.php:361
 msgid "Created date"
 msgstr "تاریخ ایجاد"
 
 #: dash/addons/includes/languages/trans_dash.php:249
-#: tejarak/includes/languages/trans_dash.php:332
+#: tejarak/includes/languages/trans_dash.php:362
 msgid "Last Modified"
 msgstr "آخرین به‌روز رسانی"
 
 #: dash/addons/includes/languages/trans_dash.php:250
-#: tejarak/includes/languages/trans_dash.php:333
+#: tejarak/includes/languages/trans_dash.php:363
 msgid "Mr"
 msgstr "آقای"
 
 #: dash/addons/includes/languages/trans_dash.php:251
-#: tejarak/includes/languages/trans_dash.php:334
+#: tejarak/includes/languages/trans_dash.php:364
 msgid "Mrs"
 msgstr "خانم"
 
 #: dash/addons/includes/languages/trans_dash.php:252
-#: tejarak/includes/languages/trans_dash.php:335
+#: tejarak/includes/languages/trans_dash.php:365
 msgid "Password is set"
 msgstr "کلمه عبور تنظیم شده است"
 
 #: dash/addons/includes/languages/trans_dash.php:253
-#: tejarak/includes/languages/trans_dash.php:336
+#: tejarak/includes/languages/trans_dash.php:366
 msgid "Password is not set!"
 msgstr "کلمه عبور تنظیم نشده است!"
 
 #: dash/addons/includes/languages/trans_dash.php:254
-#: tejarak/includes/languages/trans_dash.php:337
+#: tejarak/includes/languages/trans_dash.php:367
 msgid "Two step verification in enabled"
 msgstr "ورود دو مرحله ای فعال است"
 
 #: dash/addons/includes/languages/trans_dash.php:255
-#: tejarak/includes/languages/trans_dash.php:338
+#: tejarak/includes/languages/trans_dash.php:368
 msgid "Two step verification in disable"
 msgstr "ورود دو مرحله ای غیر فعال است"
 
 #: dash/addons/includes/languages/trans_dash.php:256
-#: tejarak/includes/languages/trans_dash.php:210
+#: tejarak/includes/languages/trans_dash.php:243
 msgid "Hi!"
 msgstr "سلام!"
 
 #: dash/addons/includes/languages/trans_dash.php:257
-#: tejarak/includes/languages/trans_dash.php:339
+#: tejarak/includes/languages/trans_dash.php:369
 msgid "Try to start with add new user!"
 msgstr "با افزودن کاربر جدید تلاشی برای شروع داشته باشید!"
 
 #: dash/addons/includes/languages/trans_dash.php:258
-#: tejarak/includes/languages/trans_dash.php:340
+#: tejarak/includes/languages/trans_dash.php:370
 msgid "All :Members"
 msgstr "تمامی :Experts"
 
 #: dash/addons/includes/languages/trans_dash.php:259
-#: tejarak/includes/languages/trans_dash.php:341
+#: tejarak/includes/languages/trans_dash.php:371
 msgid ":Experts"
 msgstr ":Experts"
 
 #: dash/addons/includes/languages/trans_dash.php:260
-#: tejarak/includes/languages/trans_dash.php:342
+#: tejarak/includes/languages/trans_dash.php:372
 msgid ":Teachers"
 msgstr ":Teachers"
 
 #: dash/addons/includes/languages/trans_dash.php:261
-#: tejarak/includes/languages/trans_dash.php:343
+#: tejarak/includes/languages/trans_dash.php:373
 msgid "Students"
 msgstr "دانش آموزان"
 
 #: dash/addons/includes/languages/trans_dash.php:264
+#: tejarak/includes/languages/trans_dash.php:349
 msgid "Used"
 msgstr "استفاده شده"
 
 #: dash/addons/includes/languages/trans_dash.php:265
+#: tejarak/includes/languages/trans_dash.php:350
 msgid "Title is used to show on website"
 msgstr "عنوان جهت نمایش در وبسایت"
 
 #: dash/addons/includes/languages/trans_dash.php:266
-#: tejarak/includes/languages/trans_dash.php:321
+#: tejarak/includes/languages/trans_dash.php:351
 msgid "Used for url"
 msgstr "استفاده‌شده برای نشانی وب"
 
 #: dash/addons/includes/languages/trans_dash.php:267
+#: tejarak/includes/languages/trans_dash.php:352
 msgid "Used in url for categorize addresses"
 msgstr "برای طبقه بندی آدرس‌ها استفاده می‌شود"
 
 #: dash/addons/includes/languages/trans_dash.php:268
-#: tejarak/includes/languages/trans_dash.php:323
+#: tejarak/includes/languages/trans_dash.php:353
 msgid "Parent Category"
 msgstr "دسته‌بندی والد"
 
 #: dash/addons/includes/languages/trans_dash.php:269
-#: tejarak/includes/languages/trans_dash.php:324
+#: tejarak/includes/languages/trans_dash.php:354
 msgid "Please select one itme"
 msgstr "لطفا یک گزینه را انتخاب کنید"
 
@@ -2445,22 +2538,22 @@ msgid "Description"
 msgstr "توضیح"
 
 #: dash/addons/includes/languages/trans_dash.php:271
-#: tejarak/includes/languages/trans_dash.php:325
+#: tejarak/includes/languages/trans_dash.php:355
 msgid "Excerpt"
 msgstr "چکیده"
 
 #: dash/addons/includes/languages/trans_dash.php:272
-#: tejarak/includes/languages/trans_dash.php:326
+#: tejarak/includes/languages/trans_dash.php:356
 msgid "Try to start with add new records!"
 msgstr "با افزودن رکورد جدید تلاشی برای شروع داشته باشید!"
 
 #: dash/addons/includes/languages/trans_dash.php:273
-#: tejarak/includes/languages/trans_dash.php:281
+#: tejarak/includes/languages/trans_dash.php:303
 msgid "Language"
 msgstr "زبان"
 
 #: dash/addons/includes/languages/trans_dash.php:274
-#: tejarak/includes/languages/trans_dash.php:596
+#: tejarak/includes/languages/trans_dash.php:304
 msgid "Please select one item"
 msgstr "لطفا یک گزینه را انتخاب کنید"
 
@@ -2501,62 +2594,69 @@ msgstr "هیچ فایل پشتیبانی یافت نشد"
 
 #: dash/addons/includes/languages/trans_dash.php:286
 #: dash/addons/includes/languages/trans_static.php:149
-#: tejarak/includes/languages/trans_dash.php:225
+#: tejarak/includes/languages/trans_dash.php:222
 #: tejarak/includes/languages/trans_project.php:103
 msgid "Control Panel"
 msgstr "کنترل پنل"
 
 #: dash/addons/includes/languages/trans_dash.php:289
+#: tejarak/includes/languages/trans_dash.php:277
 msgid "First save as draft and do all checks, then publish."
 msgstr ""
 "ابتدا به صورت پیش نویس ذخیره کنید و پس از بررسی تمامی موارد آن را منتظر کنید."
 
 #: dash/addons/includes/languages/trans_dash.php:290
+#: tejarak/includes/languages/trans_dash.php:278
 msgid "Save as draft"
 msgstr "ذخیره پیش نویس"
 
 #: dash/addons/includes/languages/trans_dash.php:294
-#: tejarak/includes/languages/trans_dash.php:276
+#: tejarak/includes/languages/trans_dash.php:282
 msgid "Publish date"
 msgstr "تاریخ انتشار"
 
 #: dash/addons/includes/languages/trans_dash.php:295
-#: tejarak/includes/languages/trans_dash.php:211
+#: tejarak/includes/languages/trans_dash.php:244
 msgid "Try to start with add new record!"
 msgstr "با افزودن رکورد جدید تلاشی برای شروع داشته باشید!"
 
 #: dash/addons/includes/languages/trans_dash.php:296
+#: tejarak/includes/languages/trans_dash.php:245
 msgid "All publish posts"
 msgstr "تمامی خبرهای منتشر شده"
 
 #: dash/addons/includes/languages/trans_dash.php:297
+#: tejarak/includes/languages/trans_dash.php:246
 msgid "Published"
 msgstr "منتشر شده"
 
 #: dash/addons/includes/languages/trans_dash.php:298
+#: tejarak/includes/languages/trans_dash.php:247
 msgid "All draft posts"
 msgstr "تمامی خبر‌های پیش‌نویس"
 
 #: dash/addons/includes/languages/trans_dash.php:299
-#: tejarak/includes/languages/trans_dash.php:279
+#: tejarak/includes/languages/trans_dash.php:248
 msgid "Draft"
 msgstr "پیش‌نویس"
 
 #: dash/addons/includes/languages/trans_dash.php:300
+#: tejarak/includes/languages/trans_dash.php:249
 msgid "All trash posts"
 msgstr "تمامی خبرهای حذف شده"
 
 #: dash/addons/includes/languages/trans_dash.php:301
-#: tejarak/includes/languages/trans_dash.php:280
+#: tejarak/includes/languages/trans_dash.php:250
 msgid "Deleted"
 msgstr "حذف شده"
 
 #: dash/addons/includes/languages/trans_dash.php:304
-#: tejarak/includes/languages/trans_dash.php:267
+#: tejarak/includes/languages/trans_dash.php:286
 msgid "Enter title here"
 msgstr "عنوان را اینجا وارد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:305
+#: tejarak/includes/languages/trans_dash.php:287
 msgid ""
 "Recommended being more than 40 character and appear at the beginning of page "
 "content"
@@ -2565,78 +2665,86 @@ msgstr ""
 "ابتدایی نوشته باشد"
 
 #: dash/addons/includes/languages/trans_dash.php:306
-#: tejarak/includes/languages/trans_dash.php:269
+#: tejarak/includes/languages/trans_dash.php:288
 msgid "Enter subtitle here"
 msgstr "زیرنویس را اینجا وارد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:307
+#: tejarak/includes/languages/trans_dash.php:289
 msgid "Subtitle show under title and used on press websites"
 msgstr ""
 "زیرعنوان یا سوتیتر معمولا در زیر عنوان اصلی نمایش داده شده و برای سایت‌های خبری "
 "کاربرد دارد"
 
 #: dash/addons/includes/languages/trans_dash.php:308
-#: tejarak/includes/languages/trans_dash.php:271
+#: tejarak/includes/languages/trans_dash.php:290
 msgid "Enter excerpt here"
 msgstr "گزیده متن را اینجا بنویسید"
 
 #: dash/addons/includes/languages/trans_dash.php:309
-#: tejarak/includes/languages/trans_dash.php:272
+#: tejarak/includes/languages/trans_dash.php:291
 msgid "Excerpt used for social media and search engines"
 msgstr "گزیده متن برای رسانه های اجتماعی و موتورهای جستجو استفاده می شود"
 
 #: dash/addons/includes/languages/trans_dash.php:310
+#: tejarak/includes/languages/trans_dash.php:292
 msgid "Url of this post."
 msgstr "آدرس این نوشته."
 
 #: dash/addons/includes/languages/trans_dash.php:311
+#: tejarak/includes/languages/trans_dash.php:293
 msgid "You can change by set slug and category or parent for this post"
 msgstr ""
 "شما می‌توانید با تنظیم نامک بخش آخر آدرس و با تغییر دسته‌بندی در اخبار یا والد در "
 "صفحات آن را برای این صفحه سفارشی کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:312
-#: tejarak/includes/languages/trans_dash.php:274
+#: tejarak/includes/languages/trans_dash.php:294
 msgid "Slug used to create url"
 msgstr "نامک برای استفاده در آدرس به کار می رود"
 
 #: dash/addons/includes/languages/trans_dash.php:313
-#: tejarak/includes/languages/trans_dash.php:275
+#: tejarak/includes/languages/trans_dash.php:295
 msgid "Write post "
 msgstr "نوشتن پست"
 
 #: dash/addons/includes/languages/trans_dash.php:314
+#: tejarak/includes/languages/trans_dash.php:296
 msgid "Allow change default publish date"
 msgstr "اجازه تغییر تاریخ انتشار پیش‌فرض"
 
 #: dash/addons/includes/languages/trans_dash.php:315
+#: tejarak/includes/languages/trans_dash.php:297
 msgid "Default is now"
 msgstr "به صورت پیشفرض تاریخ امروز"
 
 #: dash/addons/includes/languages/trans_dash.php:316
+#: tejarak/includes/languages/trans_dash.php:298
 msgid "Publish time"
 msgstr "زمان انتشار"
 
 #: dash/addons/includes/languages/trans_dash.php:317
+#: tejarak/includes/languages/trans_dash.php:299
 msgid "Add to gallery"
 msgstr "افزودن به گالری تصاویر"
 
 #: dash/addons/includes/languages/trans_dash.php:318
-#: tejarak/includes/languages/trans_dash.php:277
+#: tejarak/includes/languages/trans_dash.php:300
 msgid "To add image gallery drop file here or"
 msgstr "برای اضافه کردن فایل گالری عکس در اینجا یا"
 
 #: dash/addons/includes/languages/trans_dash.php:319
-#: tejarak/includes/languages/trans_dash.php:278
+#: tejarak/includes/languages/trans_dash.php:301
 msgid "Publish"
 msgstr "انتشار"
 
 #: dash/addons/includes/languages/trans_dash.php:320
+#: tejarak/includes/languages/trans_dash.php:302
 msgid "You can publish in another language"
 msgstr "شما می‌توانید در زبان دیگری آن را منتشر کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:321
-#: tejarak/includes/languages/trans_dash.php:641
+#: tejarak/includes/languages/trans_dash.php:283
 #: tejarak/includes/languages/trans_project.php:450
 msgid "Parent"
 msgstr "والد"
@@ -2646,131 +2754,133 @@ msgid "Master"
 msgstr "کارشناسی ارشد"
 
 #: dash/addons/includes/languages/trans_dash.php:323
-#: tejarak/includes/languages/trans_dash.php:283
+#: tejarak/includes/languages/trans_dash.php:309
 msgid "Choose category of post"
 msgstr "دسته پست را انتخاب کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:324
+#: tejarak/includes/languages/trans_dash.php:310
 msgid "Click on special tags to use this depending on your website design"
 msgstr "بسته به طراحی وب‌سایت با کلیک روی کلیدواژه خاص از ویژگی‌های آن استفاده کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:325
-#: tejarak/includes/languages/trans_dash.php:285
+#: tejarak/includes/languages/trans_dash.php:311
 msgid "Tag"
 msgstr "کلیدواژه"
 
 #: dash/addons/includes/languages/trans_dash.php:326
-#: tejarak/includes/languages/trans_dash.php:284
+#: tejarak/includes/languages/trans_dash.php:312
 msgid "Add tag manually to link articles togethers"
 msgstr "تگ اضافه را به صورت دستی اضافه کنید تا مقالات را در کنار هم قرار دهید"
 
 #: dash/addons/includes/languages/trans_dash.php:327
-#: tejarak/includes/languages/trans_dash.php:286
+#: tejarak/includes/languages/trans_dash.php:313
 msgid "Tag keywords..."
 msgstr "کلیدواژه‌های خود را تگ کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:328
-#: tejarak/includes/languages/trans_dash.php:287
+#: tejarak/includes/languages/trans_dash.php:314
 msgid "Add tag"
 msgstr "افزودن برچسب"
 
 #: dash/addons/includes/languages/trans_dash.php:329
+#: tejarak/includes/languages/trans_dash.php:315
 msgid "Featured Image"
 msgstr "تصویر شاخص"
 
 #: dash/addons/includes/languages/trans_dash.php:330
-#: tejarak/includes/languages/trans_dash.php:288
+#: tejarak/includes/languages/trans_dash.php:316
 msgid "allowed extentions jpg, png. Max 1000Kb"
 msgstr "پسوند مجاز JPG، PNG حداکثر ۱۰۰۰ کیلوبایت"
 
 #: dash/addons/includes/languages/trans_dash.php:331
+#: tejarak/includes/languages/trans_dash.php:317
 msgid "Gallery"
 msgstr "گالری"
 
 #: dash/addons/includes/languages/trans_dash.php:332
-#: tejarak/includes/languages/trans_dash.php:289
+#: tejarak/includes/languages/trans_dash.php:318
 msgid "Click to download"
 msgstr "برای دانلود کلیک کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:333
-#: tejarak/includes/languages/trans_dash.php:290
+#: tejarak/includes/languages/trans_dash.php:319
 msgid "Video"
 msgstr "ویدیو"
 
 #: dash/addons/includes/languages/trans_dash.php:334
-#: tejarak/includes/languages/trans_dash.php:291
+#: tejarak/includes/languages/trans_dash.php:320
 msgid "MP3"
 msgstr "ام‌پی‌تری"
 
 #: dash/addons/includes/languages/trans_dash.php:335
-#: tejarak/includes/languages/trans_dash.php:292
+#: tejarak/includes/languages/trans_dash.php:321
 msgid "PDF"
 msgstr "پی‌دی‌اف"
 
 #: dash/addons/includes/languages/trans_dash.php:336
-#: tejarak/includes/languages/trans_dash.php:293
+#: tejarak/includes/languages/trans_dash.php:322
 msgid "Without preview"
 msgstr "بدون پیش‌نمایش"
 
 #: dash/addons/includes/languages/trans_dash.php:340
-#: tejarak/includes/languages/trans_dash.php:229
+#: tejarak/includes/languages/trans_dash.php:226
 msgid "News"
 msgstr "اخبار"
 
 #: dash/addons/includes/languages/trans_dash.php:341
-#: tejarak/includes/languages/trans_dash.php:230
+#: tejarak/includes/languages/trans_dash.php:227
 msgid "Categries"
 msgstr "دسته‌بندی‌ها"
 
 #: dash/addons/includes/languages/trans_dash.php:343
-#: tejarak/includes/languages/trans_dash.php:232
 msgid "Files"
 msgstr "فایل‌ها"
 
 #: dash/addons/includes/languages/trans_dash.php:344
 #: dash/addons/includes/languages/trans_static.php:100
 #: dash/addons/includes/languages/trans_static.php:978
-#: tejarak/includes/languages/trans_dash.php:233
+#: tejarak/includes/languages/trans_dash.php:231
 msgid "Users"
 msgstr "کاربران"
 
 #: dash/addons/includes/languages/trans_dash.php:347
 #: dash/addons/includes/languages/trans_static.php:938
 #: dash/addons/includes/languages/trans_static.php:980
-#: tejarak/includes/languages/trans_dash.php:236
+#: tejarak/includes/languages/trans_dash.php:234
 msgid "SMS"
 msgstr "پیامک"
 
 #: dash/addons/includes/languages/trans_dash.php:348
-#: tejarak/includes/languages/trans_dash.php:237
+#: tejarak/includes/languages/trans_dash.php:235
 msgid "Quick send"
 msgstr "ارسال سریع"
 
 #: dash/addons/includes/languages/trans_dash.php:349
-#: tejarak/includes/languages/trans_dash.php:238
+#: tejarak/includes/languages/trans_dash.php:236
 msgid "Templates"
 msgstr "الگوها"
 
 #: dash/addons/includes/languages/trans_dash.php:350
-#: tejarak/includes/languages/trans_dash.php:239
+#: tejarak/includes/languages/trans_dash.php:237
 msgid "Powered by"
 msgstr "قدرت گرفته از"
 
 #: dash/addons/includes/languages/trans_dash.php:351
-#: tejarak/includes/languages/trans_dash.php:240
+#: tejarak/includes/languages/trans_dash.php:238
 msgid "Some right reserved"
 msgstr "برخی از حقوق محفوظ است"
 
 #: dash/addons/includes/languages/trans_dash.php:352
 #: dash/addons/includes/languages/trans_static.php:58
 #: dash/addons/includes/languages/trans_static.php:175 dash/lib/engine/view.php:72
-#: tejarak/includes/languages/trans_dash.php:241
+#: tejarak/includes/languages/trans_dash.php:239
 msgid "Ermile"
 msgstr "ارمایل"
 
 #: dash/addons/includes/languages/trans_dash.php:353
 #: dash/addons/includes/languages/trans_static.php:108
-#: tejarak/includes/languages/trans_dash.php:242
+#: tejarak/includes/languages/trans_dash.php:240
 msgid "Version"
 msgstr "نسخه"
 
@@ -3269,151 +3379,151 @@ msgid "You are not have billing detail yet!"
 msgstr "هیچ تراکنش مالی برای شما یافت نشد"
 
 #: dash/addons/includes/languages/trans_dash.php:455
-#: tejarak/includes/languages/trans_dash.php:477
+#: tejarak/includes/languages/trans_dash.php:521
 msgid "Info"
 msgstr "درباره"
 
 #: dash/addons/includes/languages/trans_dash.php:456
-#: tejarak/includes/languages/trans_dash.php:478
+#: tejarak/includes/languages/trans_dash.php:522
 msgid "Show server info"
 msgstr "نمایش اطلاعات سرور"
 
 #: dash/addons/includes/languages/trans_dash.php:457
-#: tejarak/includes/languages/trans_dash.php:479
+#: tejarak/includes/languages/trans_dash.php:523
 msgid "Show PHP info"
 msgstr "نمایش اطلاعات پی‌اچ‌پی"
 
 #: dash/addons/includes/languages/trans_dash.php:460
-#: tejarak/includes/languages/trans_dash.php:561
+#: tejarak/includes/languages/trans_dash.php:611
 msgid "Test coding function"
 msgstr "بررسی تابع کدینگ"
 
 #: dash/addons/includes/languages/trans_dash.php:461
-#: tejarak/includes/languages/trans_dash.php:562
+#: tejarak/includes/languages/trans_dash.php:612
 msgid "String or Number"
 msgstr "رشته یا شماره"
 
 #: dash/addons/includes/languages/trans_dash.php:462
-#: tejarak/includes/languages/trans_dash.php:563
+#: tejarak/includes/languages/trans_dash.php:613
 msgid "Run"
 msgstr "اجرا"
 
 #: dash/addons/includes/languages/trans_dash.php:463
-#: tejarak/includes/languages/trans_dash.php:564
+#: tejarak/includes/languages/trans_dash.php:614
 msgid "Encode"
 msgstr "رمزگذاری"
 
 #: dash/addons/includes/languages/trans_dash.php:464
-#: tejarak/includes/languages/trans_dash.php:565
+#: tejarak/includes/languages/trans_dash.php:615
 msgid "Decode"
 msgstr "رمزگشایی"
 
 #: dash/addons/includes/languages/trans_dash.php:470
-#: tejarak/includes/languages/trans_dash.php:492
+#: tejarak/includes/languages/trans_dash.php:536
 msgid "ID"
 msgstr "شناسه"
 
 #: dash/addons/includes/languages/trans_dash.php:471
-#: tejarak/includes/languages/trans_dash.php:516
+#: tejarak/includes/languages/trans_dash.php:568
 msgid "Log item id"
 msgstr "کد آیتم لاگ"
 
 #: dash/addons/includes/languages/trans_dash.php:472
-#: tejarak/includes/languages/trans_dash.php:501
+#: tejarak/includes/languages/trans_dash.php:553
 msgid "Caller"
 msgstr "صداکننده"
 
 #: dash/addons/includes/languages/trans_dash.php:473
-#: tejarak/includes/languages/trans_dash.php:502
+#: tejarak/includes/languages/trans_dash.php:554
 msgid "Priority"
 msgstr "اولویت"
 
 #: dash/addons/includes/languages/trans_dash.php:474
-#: tejarak/includes/languages/trans_dash.php:517
+#: tejarak/includes/languages/trans_dash.php:569
 msgid "User_id"
 msgstr "کد کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:475
-#: tejarak/includes/languages/trans_dash.php:518
+#: tejarak/includes/languages/trans_dash.php:570
 msgid "Data"
 msgstr "داده"
 
 #: dash/addons/includes/languages/trans_dash.php:476
-#: tejarak/includes/languages/trans_dash.php:519
+#: tejarak/includes/languages/trans_dash.php:571
 msgid "Desc"
 msgstr "توضیح"
 
 #: dash/addons/includes/languages/trans_dash.php:477
 #: tejarak/includes/database/tejarak/translation.php:71
 #: tejarak/includes/database/tejarak/translation.php:151
-#: tejarak/includes/languages/trans_dash.php:520
+#: tejarak/includes/languages/trans_dash.php:572
 msgid "createdate"
 msgstr "تاریخ ایجاد"
 
 #: dash/addons/includes/languages/trans_dash.php:478
-#: tejarak/includes/languages/trans_dash.php:521
+#: tejarak/includes/languages/trans_dash.php:573
 msgid "Meta"
 msgstr "متا"
 
 #: dash/addons/includes/languages/trans_dash.php:481
-#: tejarak/includes/languages/trans_dash.php:493
+#: tejarak/includes/languages/trans_dash.php:537
 msgid "User id"
 msgstr "کد کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:482
-#: tejarak/includes/languages/trans_dash.php:494
+#: tejarak/includes/languages/trans_dash.php:538
 msgid "Is Temp?"
 msgstr "موقتی است؟"
 
 #: dash/addons/includes/languages/trans_dash.php:483
-#: tejarak/includes/languages/trans_dash.php:495
+#: tejarak/includes/languages/trans_dash.php:539
 msgid "Total Discount"
 msgstr "جمع تخفیف"
 
 #: dash/addons/includes/languages/trans_dash.php:484
-#: tejarak/includes/languages/trans_dash.php:496
+#: tejarak/includes/languages/trans_dash.php:540
 msgid "Count Detail"
 msgstr "تعداد جزئیات"
 
 #: dash/addons/includes/languages/trans_dash.php:485
 #: tejarak/includes/database/tejarak/translation.php:56
 #: tejarak/includes/database/tejarak/translation.php:124
-#: tejarak/includes/languages/trans_dash.php:489
+#: tejarak/includes/languages/trans_dash.php:533
 msgid "desc"
 msgstr "توضیح"
 
 #: dash/addons/includes/languages/trans_dash.php:486
-#: tejarak/includes/languages/trans_dash.php:497
+#: tejarak/includes/languages/trans_dash.php:541
 msgid "Yes"
 msgstr "بلی"
 
 #: dash/addons/includes/languages/trans_dash.php:487
-#: tejarak/includes/languages/trans_dash.php:498
+#: tejarak/includes/languages/trans_dash.php:542
 msgid "No"
 msgstr "خیر"
 
 #: dash/addons/includes/languages/trans_dash.php:492
-#: tejarak/includes/languages/trans_dash.php:460
+#: tejarak/includes/languages/trans_dash.php:499
 msgid "Search in :dbtabless"
 msgstr "جستجو..."
 
 #: dash/addons/includes/languages/trans_dash.php:493
-#: tejarak/includes/languages/trans_dash.php:461
+#: tejarak/includes/languages/trans_dash.php:500
 msgid "Try to start with add new :dbtables!"
 msgstr "با افزودن رکورد جدید تلاشی برای شروع داشته باشید!"
 
 #: dash/addons/includes/languages/trans_dash.php:496
-#: tejarak/includes/languages/trans_dash.php:545
+#: tejarak/includes/languages/trans_dash.php:595
 msgid "Change permission of user"
 msgstr "تغییر سطح‌دسترسی کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:497
-#: tejarak/includes/languages/trans_dash.php:546
+#: tejarak/includes/languages/trans_dash.php:596
 msgid "Permission cat"
 msgstr "سطح‌دسترسی فراخوانی"
 
 #: dash/addons/includes/languages/trans_dash.php:498
-#: tejarak/includes/languages/trans_dash.php:547
+#: tejarak/includes/languages/trans_dash.php:597
 msgid "Save change"
 msgstr "ذخیره‌کردن تغییرات"
 
@@ -3422,85 +3532,85 @@ msgstr "ذخیره‌کردن تغییرات"
 #: tejarak/includes/database/tejarak/translation.php:44
 #: tejarak/includes/database/tejarak/translation.php:108
 #: tejarak/includes/database/tejarak/translation.php:120
-#: tejarak/includes/languages/trans_dash.php:595
+#: tejarak/includes/languages/trans_dash.php:649
 msgid "type"
 msgstr "نوع"
 
 #: dash/addons/includes/languages/trans_dash.php:502
-#: tejarak/includes/languages/trans_dash.php:597
+#: tejarak/includes/languages/trans_dash.php:650
 msgid "Money"
 msgstr "پول"
 
 #: dash/addons/includes/languages/trans_dash.php:503
-#: tejarak/includes/languages/trans_dash.php:598
+#: tejarak/includes/languages/trans_dash.php:651
 msgid "Gift"
 msgstr "هدیه"
 
 #: dash/addons/includes/languages/trans_dash.php:504
-#: tejarak/includes/languages/trans_dash.php:599
+#: tejarak/includes/languages/trans_dash.php:652
 msgid "Transfer"
 msgstr "انتقال"
 
 #: dash/addons/includes/languages/trans_dash.php:505
-#: tejarak/includes/languages/trans_dash.php:600
+#: tejarak/includes/languages/trans_dash.php:653
 msgid "Prize"
 msgstr "جایزه"
 
 #: dash/addons/includes/languages/trans_dash.php:506
-#: tejarak/includes/languages/trans_dash.php:601
+#: tejarak/includes/languages/trans_dash.php:654
 msgid "Unit"
 msgstr "واحد"
 
 #: dash/addons/includes/languages/trans_dash.php:507
-#: tejarak/includes/languages/trans_dash.php:602
+#: tejarak/includes/languages/trans_dash.php:655
 #: tejarak/includes/languages/trans_project.php:551
 msgid "$"
 msgstr "$"
 
 #: dash/addons/includes/languages/trans_dash.php:508
-#: tejarak/includes/languages/trans_dash.php:603
-#: tejarak/includes/languages/trans_project.php:641
+#: tejarak/includes/languages/trans_dash.php:656
+#: tejarak/includes/languages/trans_project.php:644
 msgid "Minus"
 msgstr "هدر رفت"
 
 #: dash/addons/includes/languages/trans_dash.php:509
-#: tejarak/includes/languages/trans_dash.php:604
-#: tejarak/includes/languages/trans_project.php:642
+#: tejarak/includes/languages/trans_dash.php:657
+#: tejarak/includes/languages/trans_project.php:645
 msgid "Plus"
 msgstr "افزودن"
 
 #: dash/addons/includes/languages/trans_dash.php:512
-#: tejarak/includes/languages/trans_dash.php:607
+#: tejarak/includes/languages/trans_dash.php:660
 msgid "Search in :transactionss"
 msgstr "جستجو در تراکنش‌ها"
 
 #: dash/addons/includes/languages/trans_dash.php:513
-#: tejarak/includes/languages/trans_dash.php:608
+#: tejarak/includes/languages/trans_dash.php:661
 msgid "Budget before"
 msgstr "بودجه قبل"
 
 #: dash/addons/includes/languages/trans_dash.php:514
-#: tejarak/includes/languages/trans_dash.php:609
+#: tejarak/includes/languages/trans_dash.php:662
 msgid "Budget"
 msgstr "بودجه"
 
 #: dash/addons/includes/languages/trans_dash.php:515
-#: tejarak/includes/languages/trans_dash.php:610
+#: tejarak/includes/languages/trans_dash.php:663
 msgid "Condition"
 msgstr "قانون"
 
 #: dash/addons/includes/languages/trans_dash.php:517
-#: tejarak/includes/languages/trans_dash.php:612
+#: tejarak/includes/languages/trans_dash.php:665
 msgid "Try to start with add new :transactions!"
 msgstr "با افزودن رکورد جدید تلاشی برای شروع داشته باشید!"
 
 #: dash/addons/includes/languages/trans_dash.php:520
-#: tejarak/includes/languages/trans_dash.php:507
+#: tejarak/includes/languages/trans_dash.php:559
 msgid "logitems Detail"
 msgstr "جزئیات لاگ آیتم"
 
 #: dash/addons/includes/languages/trans_dash.php:521
-#: tejarak/includes/languages/trans_dash.php:508
+#: tejarak/includes/languages/trans_dash.php:560
 msgid "caller"
 msgstr "صدا کننده"
 
@@ -3511,398 +3621,398 @@ msgstr "صدا کننده"
 #: tejarak/includes/database/tejarak/translation.php:79
 #: tejarak/includes/database/tejarak/translation.php:103
 #: tejarak/includes/database/tejarak/translation.php:121
-#: tejarak/includes/languages/trans_dash.php:484
+#: tejarak/includes/languages/trans_dash.php:528
 msgid "title"
 msgstr "عنوان"
 
 #: dash/addons/includes/languages/trans_dash.php:523
 #: tejarak/includes/database/tejarak/translation.php:58
-#: tejarak/includes/languages/trans_dash.php:509
+#: tejarak/includes/languages/trans_dash.php:561
 msgid "priority"
 msgstr "اولویت"
 
 #: dash/addons/includes/languages/trans_dash.php:524
-#: tejarak/includes/languages/trans_dash.php:510
+#: tejarak/includes/languages/trans_dash.php:562
 msgid "Critical"
 msgstr "بحرانی"
 
 #: dash/addons/includes/languages/trans_dash.php:525
-#: tejarak/includes/languages/trans_dash.php:511
+#: tejarak/includes/languages/trans_dash.php:563
 msgid "High"
 msgstr "زیاد"
 
 #: dash/addons/includes/languages/trans_dash.php:526
-#: tejarak/includes/languages/trans_dash.php:512
-#: tejarak/includes/languages/trans_project.php:714
+#: tejarak/includes/languages/trans_dash.php:564
+#: tejarak/includes/languages/trans_project.php:717
 msgid "Medium"
 msgstr "متوسط"
 
 #: dash/addons/includes/languages/trans_dash.php:527
-#: tejarak/includes/languages/trans_dash.php:513
+#: tejarak/includes/languages/trans_dash.php:565
 msgid "Low"
 msgstr "کم"
 
 #: dash/addons/includes/languages/trans_dash.php:530
 #: dash/addons/includes/languages/trans_static.php:415
-#: tejarak/includes/languages/trans_dash.php:503
+#: tejarak/includes/languages/trans_dash.php:555
 msgid "datecreated"
 msgstr "تاریخ‌ایجاد"
 
 #: dash/addons/includes/languages/trans_dash.php:531
-#: tejarak/includes/languages/trans_dash.php:504
+#: tejarak/includes/languages/trans_dash.php:556
 msgid "Click to show all logs by this logitems"
 msgstr "کلیک کنید تا تمامی لاگ‌هایی که با این عنوان ثبت شده است نمایش داده شود"
 
 #: dash/addons/includes/languages/trans_dash.php:534
 #: dash/addons/includes/languages/trans_static.php:401
 #: tejarak/includes/database/tejarak/translation.php:12
-#: tejarak/includes/languages/trans_dash.php:482
+#: tejarak/includes/languages/trans_dash.php:526
 msgid "id"
 msgstr "کد"
 
 #: dash/addons/includes/languages/trans_dash.php:535
-#: tejarak/includes/languages/trans_dash.php:483
+#: tejarak/includes/languages/trans_dash.php:527
 msgid "invoice_id"
 msgstr "کد فاکتور"
 
 #: dash/addons/includes/languages/trans_dash.php:536
-#: tejarak/includes/languages/trans_dash.php:485
+#: tejarak/includes/languages/trans_dash.php:529
 msgid "price"
 msgstr "قیمت"
 
 #: dash/addons/includes/languages/trans_dash.php:537
 #: tejarak/includes/database/tejarak/translation.php:110
-#: tejarak/includes/languages/trans_dash.php:486
+#: tejarak/includes/languages/trans_dash.php:530
 msgid "count"
 msgstr "تعداد"
 
 #: dash/addons/includes/languages/trans_dash.php:538
-#: tejarak/includes/languages/trans_dash.php:487
+#: tejarak/includes/languages/trans_dash.php:531
 msgid "total"
 msgstr "مجموع"
 
 #: dash/addons/includes/languages/trans_dash.php:539
 #: dash/addons/includes/languages/trans_static.php:898
-#: tejarak/includes/languages/trans_dash.php:488
+#: tejarak/includes/languages/trans_dash.php:532
 msgid "discount"
 msgstr "تخفیف"
 
 #: dash/addons/includes/languages/trans_dash.php:542
-#: tejarak/includes/languages/trans_dash.php:569
+#: tejarak/includes/languages/trans_dash.php:619
 msgid "If you dont know about this page, leave it!"
 msgstr "اگر چیزی در مورد این صفحه نمی‌دانید، آن را ترک کنید!"
 
 #: dash/addons/includes/languages/trans_dash.php:543
-#: tejarak/includes/languages/trans_dash.php:615
+#: tejarak/includes/languages/trans_dash.php:668
 msgid "Submit this form carefully"
 msgstr "این را با احتیاط بفشارید"
 
 #: dash/addons/includes/languages/trans_dash.php:544
 #: dash/addons/includes/languages/trans_static.php:7
-#: tejarak/includes/languages/trans_dash.php:616
+#: tejarak/includes/languages/trans_dash.php:669
 msgid "Dash"
 msgstr "دش"
 
 #: dash/addons/includes/languages/trans_dash.php:545
-#: tejarak/includes/languages/trans_dash.php:617
+#: tejarak/includes/languages/trans_dash.php:671
 msgid "Press it if you are sure!"
 msgstr "اگر مطمئن هستید، بفشارید!"
 
 #: dash/addons/includes/languages/trans_dash.php:546
-#: tejarak/includes/languages/trans_dash.php:618
+#: tejarak/includes/languages/trans_dash.php:672
 msgid "Update All"
 msgstr "بروزرسانی همه"
 
 #: dash/addons/includes/languages/trans_dash.php:547
-#: tejarak/includes/languages/trans_dash.php:619
+#: tejarak/includes/languages/trans_dash.php:675
 msgid "Last update"
 msgstr "آخرین به‌روزرسانی"
 
 #: dash/addons/includes/languages/trans_dash.php:548
-#: tejarak/includes/languages/trans_dash.php:620
+#: tejarak/includes/languages/trans_dash.php:676
 msgid "Current Version"
 msgstr "نسخه فعلی"
 
 #: dash/addons/includes/languages/trans_dash.php:549
-#: tejarak/includes/languages/trans_dash.php:621
+#: tejarak/includes/languages/trans_dash.php:677
 msgid "Commits"
 msgstr "کامیت‌ها"
 
 #: dash/addons/includes/languages/trans_dash.php:550
-#: tejarak/includes/languages/trans_dash.php:622
+#: tejarak/includes/languages/trans_dash.php:678
 msgid "Do it if you know it"
 msgstr "اگر می‌دانید انجامش دهید"
 
 #: dash/addons/includes/languages/trans_dash.php:551
-#: tejarak/includes/languages/trans_dash.php:623
+#: tejarak/includes/languages/trans_dash.php:679
 msgid "Update Dash Repository"
 msgstr "بروزرسانی مخزن دش"
 
 #: dash/addons/includes/languages/trans_dash.php:552
-#: tejarak/includes/languages/trans_dash.php:624
+#: tejarak/includes/languages/trans_dash.php:680
 msgid "Dash Engine Location"
 msgstr "محل قرارگیری موتور دش"
 
 #: dash/addons/includes/languages/trans_dash.php:553
-#: tejarak/includes/languages/trans_dash.php:625
+#: tejarak/includes/languages/trans_dash.php:681
 msgid "Update Repository"
 msgstr "بروزرسانی مخزن"
 
 #: dash/addons/includes/languages/trans_dash.php:554
-#: tejarak/includes/languages/trans_dash.php:626
+#: tejarak/includes/languages/trans_dash.php:682
 msgid "Project database"
 msgstr "دیتابیس پروژه"
 
 #: dash/addons/includes/languages/trans_dash.php:555
-#: tejarak/includes/languages/trans_dash.php:627
+#: tejarak/includes/languages/trans_dash.php:683
 msgid "Addon Database"
 msgstr "دیتابیس افزونه"
 
 #: dash/addons/includes/languages/trans_dash.php:556
-#: tejarak/includes/languages/trans_dash.php:628
+#: tejarak/includes/languages/trans_dash.php:684
 msgid "Upgrade"
 msgstr "ارتقا"
 
 #: dash/addons/includes/languages/trans_dash.php:557
 #: dash/addons/includes/languages/trans_static.php:977
-#: tejarak/includes/languages/trans_dash.php:571
+#: tejarak/includes/languages/trans_dash.php:621
 msgid "Backup"
 msgstr "پشتیبان‌گیری"
 
 #: dash/addons/includes/languages/trans_dash.php:558
-#: tejarak/includes/languages/trans_dash.php:629
+#: tejarak/includes/languages/trans_dash.php:685
 msgid "Backup by dump"
 msgstr "پشتیبان با دامپ"
 
 #: dash/addons/includes/languages/trans_dash.php:559
-#: tejarak/includes/languages/trans_dash.php:630
+#: tejarak/includes/languages/trans_dash.php:686
 msgid "Submit"
 msgstr "تایید"
 
 #: dash/addons/includes/languages/trans_dash.php:562
-#: tejarak/includes/languages/trans_dash.php:457
+#: tejarak/includes/languages/trans_dash.php:496
 msgid "Run cronjob for this service"
 msgstr "اجرای کرون جاب برای این سرویس"
 
 #: dash/addons/includes/languages/trans_dash.php:565
 #: dash/addons/includes/languages/trans_static.php:160
-#: tejarak/includes/languages/trans_dash.php:467
+#: tejarak/includes/languages/trans_dash.php:511
 msgid "Tools"
 msgstr "ابزارها"
 
 #: dash/addons/includes/languages/trans_dash.php:566
-#: tejarak/includes/languages/trans_dash.php:468
+#: tejarak/includes/languages/trans_dash.php:512
 msgid "Transactions"
 msgstr "تراکنش‌ها"
 
 #: dash/addons/includes/languages/trans_dash.php:567
-#: tejarak/includes/languages/trans_dash.php:470
+#: tejarak/includes/languages/trans_dash.php:514
 msgid "Logs"
 msgstr "لاگ"
 
 #: dash/addons/includes/languages/trans_dash.php:568
-#: tejarak/includes/languages/trans_dash.php:524
+#: tejarak/includes/languages/trans_dash.php:545
 msgid "Send Nofity"
 msgstr "ارسال پیام"
 
 #: dash/addons/includes/languages/trans_dash.php:569
-#: tejarak/includes/languages/trans_dash.php:525
+#: tejarak/includes/languages/trans_dash.php:546
 msgid "Sample Design"
 msgstr "نمونه دیزاین"
 
 #: dash/addons/includes/languages/trans_dash.php:574
-#: tejarak/includes/languages/trans_dash.php:646
+#: tejarak/includes/languages/trans_dash.php:701
 msgid "Edit user detail"
 msgstr "ویرایش‌کردن جزئیات‌‌کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:575
-#: tejarak/includes/languages/trans_dash.php:647
+#: tejarak/includes/languages/trans_dash.php:702
 #: tejarak/includes/languages/trans_project.php:425
 msgid "Enter a valid name from 3 to 40 character"
 msgstr "نام معتبری بین ۳ تا ۳۰ کاراکتر وارد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:576
-#: tejarak/includes/languages/trans_dash.php:648
+#: tejarak/includes/languages/trans_dash.php:703
 #: tejarak/includes/languages/trans_project.php:435
 msgid "Last name"
 msgstr "نام‌خانوادگی"
 
 #: dash/addons/includes/languages/trans_dash.php:577
-#: tejarak/includes/languages/trans_dash.php:649
+#: tejarak/includes/languages/trans_dash.php:704
 #: tejarak/includes/languages/trans_project.php:428
 msgid "allowed extentions jpg, png (gif for bussiness plans). Max 500Kb"
 msgstr ""
 "پسوندهای مجاز jpg و png هستند‌(‌gif برای پلن‌های تجاری). حداکثر حجم مجاز ۵۰۰ کیلوبایت"
 
 #: dash/addons/includes/languages/trans_dash.php:578
-#: tejarak/includes/languages/trans_dash.php:650
+#: tejarak/includes/languages/trans_dash.php:705
 msgid "National code"
 msgstr "کد ملی"
 
 #: dash/addons/includes/languages/trans_dash.php:579
-#: tejarak/includes/languages/trans_dash.php:651
+#: tejarak/includes/languages/trans_dash.php:706
 msgid "Father name"
 msgstr "نام پدر"
 
 #: dash/addons/includes/languages/trans_dash.php:580
-#: tejarak/includes/languages/trans_dash.php:652
+#: tejarak/includes/languages/trans_dash.php:707
 msgid "Marital"
 msgstr "وضعیت تاهل"
 
 #: dash/addons/includes/languages/trans_dash.php:581
-#: tejarak/includes/languages/trans_dash.php:653
+#: tejarak/includes/languages/trans_dash.php:708
 msgid "Single"
 msgstr "مجرد"
 
 #: dash/addons/includes/languages/trans_dash.php:582
-#: tejarak/includes/languages/trans_dash.php:654
+#: tejarak/includes/languages/trans_dash.php:709
 msgid "Married"
 msgstr "متاهل"
 
 #: dash/addons/includes/languages/trans_dash.php:583
-#: tejarak/includes/languages/trans_dash.php:655
+#: tejarak/includes/languages/trans_dash.php:710
 msgid "Child count"
 msgstr "تعداد فرزندان"
 
 #: dash/addons/includes/languages/trans_dash.php:584
-#: tejarak/includes/languages/trans_dash.php:656
+#: tejarak/includes/languages/trans_dash.php:711
 msgid "Birth city"
 msgstr "شهر محل تولد"
 
 #: dash/addons/includes/languages/trans_dash.php:585
-#: tejarak/includes/languages/trans_dash.php:657
+#: tejarak/includes/languages/trans_dash.php:712
 msgid "Sh from"
 msgstr "محل صدور شناسنامه"
 
 #: dash/addons/includes/languages/trans_dash.php:586
-#: tejarak/includes/languages/trans_dash.php:658
+#: tejarak/includes/languages/trans_dash.php:713
 msgid "Sh code"
 msgstr "شماره شناسنامه"
 
 #: dash/addons/includes/languages/trans_dash.php:587
-#: tejarak/includes/languages/trans_dash.php:659
+#: tejarak/includes/languages/trans_dash.php:714
 msgid "Last education"
 msgstr "آخرین مدرک تحصیلی"
 
 #: dash/addons/includes/languages/trans_dash.php:588
-#: tejarak/includes/languages/trans_dash.php:660
+#: tejarak/includes/languages/trans_dash.php:715
 msgid "Job"
 msgstr "شغل"
 
 #: dash/addons/includes/languages/trans_dash.php:589
-#: tejarak/includes/languages/trans_dash.php:661
+#: tejarak/includes/languages/trans_dash.php:716
 msgid "Pasport code"
 msgstr "شماره گذرنامه"
 
 #: dash/addons/includes/languages/trans_dash.php:590
-#: tejarak/includes/languages/trans_dash.php:662
+#: tejarak/includes/languages/trans_dash.php:717
 msgid "Pasport expire"
 msgstr "تاریخ اتمام اعتبار گذرنامه"
 
 #: dash/addons/includes/languages/trans_dash.php:591
-#: tejarak/includes/languages/trans_dash.php:663
+#: tejarak/includes/languages/trans_dash.php:718
 msgid "Bank account number"
 msgstr "شماره حساب بانکی"
 
 #: dash/addons/includes/languages/trans_dash.php:592
-#: tejarak/includes/languages/trans_dash.php:664
+#: tejarak/includes/languages/trans_dash.php:719
 msgid "Last education degree"
 msgstr "معدل آخرین مدرک تحصیلی"
 
 #: dash/addons/includes/languages/trans_dash.php:595
-#: tejarak/includes/languages/trans_dash.php:639
+#: tejarak/includes/languages/trans_dash.php:695
 msgid "Users list"
 msgstr "لیست‌کاربران"
 
 #: dash/addons/includes/languages/trans_dash.php:596
-#: tejarak/includes/languages/trans_dash.php:640
+#: tejarak/includes/languages/trans_dash.php:696
 msgid "Add new"
 msgstr "افزودن جدید"
 
 #: dash/addons/includes/languages/trans_dash.php:597
-#: tejarak/includes/languages/trans_dash.php:642
-#: tejarak/includes/languages/trans_project.php:825
+#: tejarak/includes/languages/trans_dash.php:697
+#: tejarak/includes/languages/trans_project.php:830
 msgid "Avatar"
 msgstr "آواتار"
 
 #: dash/addons/includes/languages/trans_dash.php:598
-#: tejarak/includes/languages/trans_dash.php:643
-#: tejarak/includes/languages/trans_project.php:655
+#: tejarak/includes/languages/trans_dash.php:698
+#: tejarak/includes/languages/trans_project.php:658
 msgid "More"
 msgstr "بیشتر"
 
 #: dash/addons/includes/languages/trans_dash.php:602
 #: dash/addons/includes/languages/trans_static.php:115
-#: tejarak/includes/languages/trans_dash.php:636
+#: tejarak/includes/languages/trans_dash.php:692
 msgid "Key"
 msgstr "کلید"
 
 #: dash/addons/includes/languages/trans_dash.php:605
-#: tejarak/includes/languages/trans_dash.php:428
+#: tejarak/includes/languages/trans_dash.php:464
 msgid "Backup database"
 msgstr "پشتیبان گیری پایگاه داده"
 
 #: dash/addons/includes/languages/trans_dash.php:606
-#: tejarak/includes/languages/trans_dash.php:429
+#: tejarak/includes/languages/trans_dash.php:465
 msgid "Back"
 msgstr "بازگشت"
 
 #: dash/addons/includes/languages/trans_dash.php:607
-#: tejarak/includes/languages/trans_dash.php:430
+#: tejarak/includes/languages/trans_dash.php:466
 msgid "File is empty"
 msgstr "فایل خالی است"
 
 #: dash/addons/includes/languages/trans_dash.php:608
-#: tejarak/includes/languages/trans_dash.php:431
+#: tejarak/includes/languages/trans_dash.php:467
 msgid "Database info"
 msgstr "اطلاعات دیتابیس"
 
 #: dash/addons/includes/languages/trans_dash.php:609
-#: tejarak/includes/languages/trans_dash.php:432
+#: tejarak/includes/languages/trans_dash.php:468
 msgid "Show Auto backup log file"
 msgstr "نمایش لاگ پشتیبان گیری‌های خود کار"
 
 #: dash/addons/includes/languages/trans_dash.php:610
-#: tejarak/includes/languages/trans_dash.php:433
+#: tejarak/includes/languages/trans_dash.php:469
 msgid "You have another database for logs"
 msgstr "شما یک دیتابیس دیگر هم برای لاگ‌ها دارید"
 
 #: dash/addons/includes/languages/trans_dash.php:611
-#: tejarak/includes/languages/trans_dash.php:434
+#: tejarak/includes/languages/trans_dash.php:470
 msgid "Click for create backup from log database"
 msgstr "برای پشتیبان‌گیری از دیتابیس لاگ‌ها کلیک کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:612
-#: tejarak/includes/languages/trans_dash.php:435
+#: tejarak/includes/languages/trans_dash.php:471
 msgid "Auto backup"
 msgstr "پشتیبان گیری خودکار"
 
 #: dash/addons/includes/languages/trans_dash.php:613
-#: tejarak/includes/languages/trans_dash.php:436
+#: tejarak/includes/languages/trans_dash.php:472
 msgid "Start backup every"
 msgstr "شروع عملیات پشتیبان گیری هر"
 
 #: dash/addons/includes/languages/trans_dash.php:614
-#: tejarak/includes/languages/trans_dash.php:437
-#: tejarak/includes/languages/trans_project.php:632
+#: tejarak/includes/languages/trans_dash.php:473
+#: tejarak/includes/languages/trans_project.php:635
 msgid "Year"
 msgstr "سال"
 
 #: dash/addons/includes/languages/trans_dash.php:615
-#: tejarak/includes/languages/trans_dash.php:438
-#: tejarak/includes/languages/trans_project.php:633
+#: tejarak/includes/languages/trans_dash.php:474
+#: tejarak/includes/languages/trans_project.php:636
 msgid "Month"
 msgstr "ماه"
 
 #: dash/addons/includes/languages/trans_dash.php:616
-#: tejarak/includes/languages/trans_dash.php:439
+#: tejarak/includes/languages/trans_dash.php:475
 msgid "Week"
 msgstr "هفته"
 
 #: dash/addons/includes/languages/trans_dash.php:617
 #: dash/addons/includes/languages/trans_static.php:524
 #: tejarak/content_cp/teamplans/view.php:45
-#: tejarak/includes/languages/trans_dash.php:440
+#: tejarak/includes/languages/trans_dash.php:476
 #: tejarak/includes/lib/utility/calc/make.php:73
 msgid "Day"
 msgstr "روز"
@@ -3911,223 +4021,217 @@ msgstr "روز"
 #: dash/addons/includes/languages/trans_static.php:33 dash/lib/utility/human.php:31
 #: dash/lib/utility/human.php:113
 #: tejarak/includes/database/tejarak/translation.php:27
-#: tejarak/includes/languages/trans_dash.php:441
+#: tejarak/includes/languages/trans_dash.php:477
 msgid "hour"
 msgstr "ساعت"
 
 #: dash/addons/includes/languages/trans_dash.php:619
-#: tejarak/includes/languages/trans_dash.php:442
+#: tejarak/includes/languages/trans_dash.php:478
 msgid "Start backup at time"
 msgstr "شروع عملیات پشتیبان گیری در ساعت"
 
 #: dash/addons/includes/languages/trans_dash.php:620
-#: tejarak/includes/languages/trans_dash.php:443
+#: tejarak/includes/languages/trans_dash.php:479
 msgid "Life time of old backup"
 msgstr "طل عمر فایل های پشتیبان گیری قبلی"
 
 #: dash/addons/includes/languages/trans_dash.php:621
-#: tejarak/includes/languages/trans_dash.php:444
+#: tejarak/includes/languages/trans_dash.php:480
 msgid "2 years"
 msgstr "دو سال"
 
 #: dash/addons/includes/languages/trans_dash.php:622
-#: tejarak/includes/languages/trans_dash.php:445
+#: tejarak/includes/languages/trans_dash.php:481
 msgid "one year"
 msgstr "یک سال"
 
 #: dash/addons/includes/languages/trans_dash.php:623
-#: tejarak/includes/languages/trans_dash.php:446
+#: tejarak/includes/languages/trans_dash.php:482
 msgid "6 months"
 msgstr "شش ماه"
 
 #: dash/addons/includes/languages/trans_dash.php:624
-#: tejarak/includes/languages/trans_dash.php:447
+#: tejarak/includes/languages/trans_dash.php:483
 msgid "3 months"
 msgstr "سه ماه"
 
 #: dash/addons/includes/languages/trans_dash.php:625
-#: tejarak/includes/languages/trans_dash.php:448
+#: tejarak/includes/languages/trans_dash.php:484
 msgid "2 months"
 msgstr "دو ماه"
 
 #: dash/addons/includes/languages/trans_dash.php:626
-#: tejarak/includes/languages/trans_dash.php:449
+#: tejarak/includes/languages/trans_dash.php:485
 msgid "one month"
 msgstr "یک ماه"
 
 #: dash/addons/includes/languages/trans_dash.php:627
-#: tejarak/includes/languages/trans_dash.php:450
+#: tejarak/includes/languages/trans_dash.php:486
 msgid "one week"
 msgstr "یک هفته"
 
 #: dash/addons/includes/languages/trans_dash.php:628
-#: tejarak/includes/languages/trans_dash.php:451
+#: tejarak/includes/languages/trans_dash.php:487
 msgid "2 weeks"
 msgstr "۲ هفته"
 
 #: dash/addons/includes/languages/trans_dash.php:629
-#: tejarak/includes/languages/trans_dash.php:452
+#: tejarak/includes/languages/trans_dash.php:488
 msgid "one day"
 msgstr "یک روز"
 
 #: dash/addons/includes/languages/trans_dash.php:630
-#: tejarak/includes/languages/trans_dash.php:453
+#: tejarak/includes/languages/trans_dash.php:489
 msgid "3 days"
 msgstr "۳ روز"
 
 #: dash/addons/includes/languages/trans_dash.php:631
-#: tejarak/includes/languages/trans_dash.php:454
+#: tejarak/includes/languages/trans_dash.php:490
 msgid "5 days"
 msgstr "۵ روز"
 
 #: dash/addons/includes/languages/trans_dash.php:634
-#: tejarak/includes/languages/trans_dash.php:464
 msgid "System master controll"
 msgstr "مدیریت فنی سیستم"
 
 #: dash/addons/includes/languages/trans_dash.php:635
-#: tejarak/includes/languages/trans_dash.php:465
+#: tejarak/includes/languages/trans_dash.php:509
 msgid "Raw table"
 msgstr "جدول‌های خام"
 
 #: dash/addons/includes/languages/trans_dash.php:636
-#: tejarak/includes/languages/trans_dash.php:466
+#: tejarak/includes/languages/trans_dash.php:510
 msgid "Cronjob"
 msgstr "کرون جاب"
 
 #: dash/addons/includes/languages/trans_dash.php:637
-#: tejarak/includes/languages/trans_dash.php:469
+#: tejarak/includes/languages/trans_dash.php:513
 msgid "Log items"
 msgstr "آیتم‌های لاگ"
 
 #: dash/addons/includes/languages/trans_dash.php:638
-#: tejarak/includes/languages/trans_dash.php:471
+#: tejarak/includes/languages/trans_dash.php:515
 msgid "Notifications"
 msgstr "اطلاع‌رسانی‌ها"
 
 #: dash/addons/includes/languages/trans_dash.php:639
-#: tejarak/includes/languages/trans_dash.php:472
+#: tejarak/includes/languages/trans_dash.php:516
 msgid "Short URL"
 msgstr "لینک کوتاه"
 
 #: dash/addons/includes/languages/trans_dash.php:640
-#: tejarak/includes/languages/trans_dash.php:473
+#: tejarak/includes/languages/trans_dash.php:517
 msgid "Send notify"
 msgstr "ارسال پیام"
 
 #: dash/addons/includes/languages/trans_dash.php:641
-#: tejarak/includes/languages/trans_dash.php:474
+#: tejarak/includes/languages/trans_dash.php:518
 msgid "Sample"
 msgstr "نمونه"
 
 #: dash/addons/includes/languages/trans_dash.php:644
-#: tejarak/includes/languages/trans_dash.php:550
+#: tejarak/includes/languages/trans_dash.php:600
 msgid "Send every notification from every way to user"
 msgstr "ارسال هر پیامی از هر روشی به کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:645
-#: tejarak/includes/languages/trans_dash.php:551
+#: tejarak/includes/languages/trans_dash.php:601
 msgid "Mobile or user_id"
 msgstr "موبایل یا کد کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:646
-#: tejarak/includes/languages/trans_dash.php:552
+#: tejarak/includes/languages/trans_dash.php:602
 msgid "Find Connection way"
 msgstr "یافتن روش ارتباط"
 
 #: dash/addons/includes/languages/trans_dash.php:647
-#: tejarak/includes/languages/trans_dash.php:553
+#: tejarak/includes/languages/trans_dash.php:603
 msgid "Inner system notification"
 msgstr "پیام داخل سیستمی"
 
 #: dash/addons/includes/languages/trans_dash.php:650
 #: dash/addons/includes/languages/trans_static.php:49 dash/lib/utility/upload.php:92
-#: tejarak/includes/languages/trans_dash.php:578
+#: tejarak/includes/languages/trans_dash.php:632
 msgid "MB"
 msgstr "مگابایت"
 
 #: dash/addons/includes/languages/trans_dash.php:653
-#: tejarak/includes/languages/trans_dash.php:581
+#: tejarak/includes/languages/trans_dash.php:635
 msgid "Create sitemap automatically by click on this page"
 msgstr "با کلیک در این صفحه نقشه‌ی سایت را بطور خودکار ایجاد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:654
-#: tejarak/includes/languages/trans_dash.php:582
+#: tejarak/includes/languages/trans_dash.php:636
 msgid "Base Sitemap"
 msgstr "سایت‌مپ اصلی"
 
 #: dash/addons/includes/languages/trans_dash.php:655
-#: tejarak/includes/languages/trans_dash.php:583
+#: tejarak/includes/languages/trans_dash.php:637
 msgid "Sitemap Detail"
 msgstr "جزئیات سایت‌مپ"
 
 #: dash/addons/includes/languages/trans_dash.php:656
-#: tejarak/includes/languages/trans_dash.php:584
+#: tejarak/includes/languages/trans_dash.php:638
 msgid "Create it Again"
 msgstr "دوباره بسازش"
 
 #: dash/addons/includes/languages/trans_dash.php:657
-#: tejarak/includes/languages/trans_dash.php:585
+#: tejarak/includes/languages/trans_dash.php:639
 msgid "Create Sitemap Result"
 msgstr "ایجاد نتیجه نقشه سایت"
 
 #: dash/addons/includes/languages/trans_dash.php:660
-#: tejarak/includes/languages/trans_dash.php:568
+#: tejarak/includes/languages/trans_dash.php:618
 msgid "You can use our tools"
 msgstr "شما می‌توانید از ابزارهای ما استفاده کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:661
-#: tejarak/includes/languages/trans_dash.php:570
+#: tejarak/includes/languages/trans_dash.php:620
 msgid "Special tools"
 msgstr "ابزارهای خاص"
 
 #: dash/addons/includes/languages/trans_dash.php:663
-#: tejarak/includes/languages/trans_dash.php:573
+#: tejarak/includes/languages/trans_dash.php:627
 msgid "Server information"
 msgstr "اطلاعات سرور"
 
-#: dash/addons/includes/languages/trans_dash.php:664
-#: tejarak/includes/languages/trans_dash.php:574
-msgid "Log"
-msgstr "لاگ"
-
 #: dash/addons/includes/languages/trans_dash.php:665
-#: tejarak/includes/languages/trans_dash.php:575
+#: tejarak/includes/languages/trans_dash.php:629
 msgid "Translation tools"
 msgstr "ابزارهای ترجمه"
 
 #: dash/addons/includes/languages/trans_dash.php:668
-#: tejarak/includes/languages/trans_dash.php:588
+#: tejarak/includes/languages/trans_dash.php:642
 msgid "Translate"
 msgstr "ترجمه"
 
 #: dash/addons/includes/languages/trans_dash.php:669
-#: tejarak/includes/languages/trans_dash.php:589
+#: tejarak/includes/languages/trans_dash.php:643
 msgid "Extract All trans func"
 msgstr "استخراج توابع ترجمه  در دش و پروژه جاری"
 
 #: dash/addons/includes/languages/trans_dash.php:670
-#: tejarak/includes/languages/trans_dash.php:590
+#: tejarak/includes/languages/trans_dash.php:644
 msgid "Extract twig trans func in current project"
 msgstr "بیرون کشیدن متن‌های قابل ترجمه توئیگ از پروژه جاری"
 
 #: dash/addons/includes/languages/trans_dash.php:671
-#: tejarak/includes/languages/trans_dash.php:591
+#: tejarak/includes/languages/trans_dash.php:645
 msgid "Extract twig trans func in dash addons"
 msgstr "استخراج توابع ترجمه توییگ در دش"
 
 #: dash/addons/includes/languages/trans_dash.php:672
-#: tejarak/includes/languages/trans_dash.php:592
+#: tejarak/includes/languages/trans_dash.php:646
 msgid "Extract twig trans func in dash addons and update on dash addons"
 msgstr "استخراج توابع ترجمه توییگ در دش به‌همراه بروزرسانی آن در هسته"
 
 #: dash/addons/includes/languages/trans_dash.php:675
-#: tejarak/includes/languages/trans_dash.php:528
+#: tejarak/includes/languages/trans_dash.php:578
 msgid "user_id"
 msgstr "کد کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:676
-#: tejarak/includes/languages/trans_dash.php:529
+#: tejarak/includes/languages/trans_dash.php:579
 msgid "user_idsender"
 msgstr "شناسه کاربر ارسال کننده"
 
@@ -4135,7 +4239,7 @@ msgstr "شناسه کاربر ارسال کننده"
 #: tejarak/includes/database/tejarak/translation.php:17
 #: tejarak/includes/database/tejarak/translation.php:80
 #: tejarak/includes/database/tejarak/translation.php:106
-#: tejarak/includes/languages/trans_dash.php:530
+#: tejarak/includes/languages/trans_dash.php:580
 msgid "content"
 msgstr "محتوا"
 
@@ -4144,18 +4248,18 @@ msgstr "محتوا"
 #: tejarak/includes/database/tejarak/translation.php:82
 #: tejarak/includes/database/tejarak/translation.php:105
 #: tejarak/includes/database/tejarak/translation.php:123
-#: tejarak/includes/languages/trans_dash.php:531
+#: tejarak/includes/languages/trans_dash.php:581
 msgid "url"
 msgstr "نشانی اینترنتی"
 
 #: dash/addons/includes/languages/trans_dash.php:679
 #: tejarak/includes/database/tejarak/translation.php:76
-#: tejarak/includes/languages/trans_dash.php:532
+#: tejarak/includes/languages/trans_dash.php:582
 msgid "read"
 msgstr "خوانده شده"
 
 #: dash/addons/includes/languages/trans_dash.php:680
-#: tejarak/includes/languages/trans_dash.php:533
+#: tejarak/includes/languages/trans_dash.php:583
 msgid "star"
 msgstr "ستاره"
 
@@ -4168,185 +4272,185 @@ msgstr "ستاره"
 #: tejarak/includes/database/tejarak/translation.php:92
 #: tejarak/includes/database/tejarak/translation.php:112
 #: tejarak/includes/database/tejarak/translation.php:149
-#: tejarak/includes/languages/trans_dash.php:534
-#: tejarak/includes/languages/trans_project.php:810
+#: tejarak/includes/languages/trans_dash.php:584
+#: tejarak/includes/languages/trans_project.php:815
 msgid "status"
 msgstr "وضعیت"
 
 #: dash/addons/includes/languages/trans_dash.php:682
 #: dash/addons/includes/languages/trans_static.php:137
-#: tejarak/includes/languages/trans_dash.php:535
+#: tejarak/includes/languages/trans_dash.php:585
 msgid "category"
 msgstr "دسته"
 
 #: dash/addons/includes/languages/trans_dash.php:683
-#: tejarak/includes/languages/trans_dash.php:536
+#: tejarak/includes/languages/trans_dash.php:586
 msgid "senddate"
 msgstr "تاریخ ارسال"
 
 #: dash/addons/includes/languages/trans_dash.php:684
-#: tejarak/includes/languages/trans_dash.php:537
+#: tejarak/includes/languages/trans_dash.php:587
 msgid "deliverdate"
 msgstr "تاریخ دلیور"
 
 #: dash/addons/includes/languages/trans_dash.php:685
-#: tejarak/includes/languages/trans_dash.php:538
+#: tejarak/includes/languages/trans_dash.php:588
 msgid "expiredate"
 msgstr "تاریخ انقضا"
 
 #: dash/addons/includes/languages/trans_dash.php:686
-#: tejarak/includes/languages/trans_dash.php:539
+#: tejarak/includes/languages/trans_dash.php:589
 msgid "readdate"
 msgstr "تاریخ مشاهده"
 
 #: dash/addons/includes/languages/trans_dash.php:687
 #: tejarak/content_a/gateway/view.php:20
-#: tejarak/includes/languages/trans_dash.php:540
+#: tejarak/includes/languages/trans_dash.php:590
 msgid "gateway"
 msgstr "ورودی"
 
 #: dash/addons/includes/languages/trans_dash.php:688
-#: tejarak/includes/languages/trans_dash.php:541
+#: tejarak/includes/languages/trans_dash.php:591
 msgid "auto"
 msgstr "خودکار"
 
 #: dash/addons/includes/languages/trans_dash.php:689
 #: dash/addons/includes/languages/trans_static.php:416
-#: tejarak/includes/languages/trans_dash.php:542
+#: tejarak/includes/languages/trans_dash.php:592
 msgid "datemodified"
 msgstr "تاریخ ویرایش"
 
 #: dash/addons/includes/languages/trans_dash.php:693
-#: tejarak/includes/languages/trans_dash.php:668
+#: tejarak/includes/languages/trans_dash.php:763
 msgid "Avatar of you"
 msgstr "آواتار شما"
 
 #: dash/addons/includes/languages/trans_dash.php:694
-#: tejarak/includes/languages/trans_dash.php:669
+#: tejarak/includes/languages/trans_dash.php:764
 msgid "Default Avatar"
 msgstr "آواتار پیش‌فرض"
 
 #: dash/addons/includes/languages/trans_dash.php:695
-#: tejarak/includes/languages/trans_dash.php:670
+#: tejarak/includes/languages/trans_dash.php:765
 msgid "Hello"
 msgstr "سلام"
 
 #: dash/addons/includes/languages/trans_dash.php:696
-#: tejarak/includes/languages/trans_dash.php:671
+#: tejarak/includes/languages/trans_dash.php:766
 msgid "Click to toggle sidebar status"
 msgstr "برای تغییر وضعیت منوی کناری کلیک کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:697
-#: tejarak/includes/languages/trans_dash.php:673
+#: tejarak/includes/languages/trans_dash.php:767
 msgid "View website"
 msgstr "مشاهده وب‌سایت"
 
 #: dash/addons/includes/languages/trans_dash.php:698
-#: tejarak/includes/languages/trans_dash.php:674
+#: tejarak/includes/languages/trans_dash.php:768
 msgid "Work in your language"
 msgstr "به زبان خود کار کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:699
 #: dash/addons/includes/languages/trans_static.php:104
-#: tejarak/includes/languages/trans_dash.php:675
+#: tejarak/includes/languages/trans_dash.php:769
 msgid "Logout"
 msgstr "خروج از سیستم"
 
 #: dash/addons/includes/languages/trans_dash.php:700
-#: tejarak/includes/languages/trans_dash.php:676
+#: tejarak/includes/languages/trans_dash.php:770
 #: tejarak/includes/languages/trans_project.php:81
 msgid "View your current location and navigate to parent of it"
 msgstr "مکان فعلی خود را دیده و به مکان‌های والد آن منتقل شوید"
 
 #: dash/addons/includes/languages/trans_dash.php:703
-#: tejarak/includes/languages/trans_dash.php:726
+#: tejarak/includes/languages/trans_dash.php:820
 msgid "You are supervisor!"
 msgstr "شما مدیر فنی سیستم هستید!"
 
 #: dash/addons/includes/languages/trans_dash.php:704
-#: tejarak/includes/languages/trans_dash.php:727
+#: tejarak/includes/languages/trans_dash.php:821
 msgid "Enter with another user"
 msgstr "ورود با کاربر دیگر"
 
 #: dash/addons/includes/languages/trans_dash.php:709
-#: tejarak/includes/languages/trans_dash.php:679
+#: tejarak/includes/languages/trans_dash.php:773
 msgid "Please enter valid mobile number"
 msgstr "لطفا شماره موبایل معتبری وارد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:710
-#: tejarak/includes/languages/trans_dash.php:680
+#: tejarak/includes/languages/trans_dash.php:774
 msgid "Enter correct iranian mobile from 10 to 14 character"
 msgstr "شماره موبایل صحیح ایران باید بین ۱۰ تا ۱۴ رقم باشد"
 
 #: dash/addons/includes/languages/trans_dash.php:711
-#: tejarak/includes/languages/trans_dash.php:681
+#: tejarak/includes/languages/trans_dash.php:775
 msgid "7 to 15 characters is allowed for mobile"
 msgstr "بین ۷ تا ۱۵ رقم برای موبایل مجاز است"
 
 #: dash/addons/includes/languages/trans_dash.php:712
-#: tejarak/includes/languages/trans_dash.php:682
+#: tejarak/includes/languages/trans_dash.php:776
 msgid "Username or Mobile or email"
 msgstr "نام‌کاربری یا موبایل یا رایانامه"
 
 #: dash/addons/includes/languages/trans_dash.php:713
-#: tejarak/includes/languages/trans_dash.php:683
+#: tejarak/includes/languages/trans_dash.php:777
 msgid "Username or Mobile or Email"
 msgstr "نام‌کاربری یا موبایل یا رایانامه"
 
 #: dash/addons/includes/languages/trans_dash.php:714
-#: tejarak/includes/languages/trans_dash.php:684
+#: tejarak/includes/languages/trans_dash.php:778
 msgid "Please enter valid mobile or username or email number"
 msgstr "لطفا نام‌کاربری یا موبایل یا رایانامه معتبری وارد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:715
-#: tejarak/includes/languages/trans_dash.php:685
+#: tejarak/includes/languages/trans_dash.php:779
 #: tejarak/includes/languages/trans_project.php:387
 msgid "Enter a valid password from 6 to 40 character"
 msgstr "گذرواژه‌ای معتبر بین ۶ تا ۴۰ کاراکتر انتخاب کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:716
 #: dash/addons/includes/languages/trans_static.php:339
-#: tejarak/includes/languages/trans_dash.php:686
+#: tejarak/includes/languages/trans_dash.php:780
 msgid "New Password"
 msgstr "گذرواژه جدید"
 
 #: dash/addons/includes/languages/trans_dash.php:717
-#: tejarak/includes/languages/trans_dash.php:687
+#: tejarak/includes/languages/trans_dash.php:781
 msgid "Password?"
 msgstr "کلمه عبور؟"
 
 #: dash/addons/includes/languages/trans_dash.php:718
-#: tejarak/includes/languages/trans_dash.php:688
+#: tejarak/includes/languages/trans_dash.php:782
 msgid "Verify Code"
 msgstr "کد اعتبارسنجی"
 
 #: dash/addons/includes/languages/trans_dash.php:719
-#: tejarak/includes/languages/trans_dash.php:689
+#: tejarak/includes/languages/trans_dash.php:783
 msgid "Enter a valid code!"
 msgstr "کد معتبر وارد کنید!"
 
 #: dash/addons/includes/languages/trans_dash.php:720
-#: tejarak/includes/languages/trans_dash.php:690
+#: tejarak/includes/languages/trans_dash.php:784
 msgid "Code"
 msgstr "کد"
 
 #: dash/addons/includes/languages/trans_dash.php:721
-#: tejarak/includes/languages/trans_dash.php:691
+#: tejarak/includes/languages/trans_dash.php:785
 msgid "Send this code to our number!"
 msgstr "این کد را به شماره‌ی ما پیامک کنید!"
 
 #: dash/addons/includes/languages/trans_dash.php:722
-#: tejarak/includes/languages/trans_dash.php:692
+#: tejarak/includes/languages/trans_dash.php:786
 msgid "send to this number"
 msgstr "به این شماره پیامک کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:723
-#: tejarak/includes/languages/trans_dash.php:693
+#: tejarak/includes/languages/trans_dash.php:787
 msgid "Send code to this number!"
 msgstr "کد را به این شماره ارسال کنید!"
 
 #: dash/addons/includes/languages/trans_dash.php:724
-#: tejarak/includes/languages/trans_dash.php:694
+#: tejarak/includes/languages/trans_dash.php:788
 msgid "Full name"
 msgstr "نام کامل"
 
@@ -4354,140 +4458,140 @@ msgstr "نام کامل"
 #: dash/addons/includes/languages/trans_static.php:408
 #: tejarak/includes/database/tejarak/translation.php:15
 #: tejarak/includes/database/tejarak/translation.php:145
-#: tejarak/includes/languages/trans_dash.php:695
+#: tejarak/includes/languages/trans_dash.php:789
 #: tejarak/includes/languages/trans_project.php:547
 msgid "email"
 msgstr "رایانامه"
 
 #: dash/addons/includes/languages/trans_dash.php:726
-#: tejarak/includes/languages/trans_dash.php:696
+#: tejarak/includes/languages/trans_dash.php:790
 msgid "Enter a valid eamil!"
 msgstr "رایانامه‌ی معتبر را وارد کنید!"
 
 #: dash/addons/includes/languages/trans_dash.php:727
 #: dash/addons/includes/languages/trans_static.php:402
-#: tejarak/includes/languages/trans_dash.php:697
+#: tejarak/includes/languages/trans_dash.php:791
 msgid "username"
 msgstr "نام‌کاربری"
 
 #: dash/addons/includes/languages/trans_dash.php:728
-#: tejarak/includes/languages/trans_dash.php:698
+#: tejarak/includes/languages/trans_dash.php:792
 msgid "Enter a valid username from 4 to 50 character"
 msgstr "نام‌کاربری معتبری بین ۴ تا ۵۰ کاراکتر وارد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:729
-#: tejarak/includes/languages/trans_dash.php:699
+#: tejarak/includes/languages/trans_dash.php:793
 msgid "Delete Account"
 msgstr "حذف حساب‌کاربری"
 
 #: dash/addons/includes/languages/trans_dash.php:730
-#: tejarak/includes/languages/trans_dash.php:700
+#: tejarak/includes/languages/trans_dash.php:794
 msgid "Go and check it"
 msgstr "برو و چک کن"
 
 #: dash/addons/includes/languages/trans_dash.php:731
-#: tejarak/includes/languages/trans_dash.php:701
+#: tejarak/includes/languages/trans_dash.php:795
 msgid "Next"
 msgstr "بعدی"
 
 #: dash/addons/includes/languages/trans_dash.php:732
-#: tejarak/includes/languages/trans_dash.php:702
+#: tejarak/includes/languages/trans_dash.php:796
 msgid "Sign in instead"
 msgstr "یا وارد شوید"
 
 #: dash/addons/includes/languages/trans_dash.php:733
 #: dash/addons/includes/languages/trans_static.php:170
-#: tejarak/includes/languages/trans_dash.php:703
+#: tejarak/includes/languages/trans_dash.php:797
 msgid "Login"
 msgstr "ورود به سیستم"
 
 #: dash/addons/includes/languages/trans_dash.php:734
-#: tejarak/includes/languages/trans_dash.php:704
+#: tejarak/includes/languages/trans_dash.php:798
 msgid "No account?"
 msgstr "حساب کاربری ندارید؟"
 
 #: dash/addons/includes/languages/trans_dash.php:735
-#: tejarak/includes/languages/trans_dash.php:705
+#: tejarak/includes/languages/trans_dash.php:799
 msgid "Create for yourself"
 msgstr "حساب‌کاربری خود را بسازید"
 
 #: dash/addons/includes/languages/trans_dash.php:736
-#: tejarak/includes/languages/trans_dash.php:706
+#: tejarak/includes/languages/trans_dash.php:800
 msgid "Create Account"
 msgstr "ساخت حساب‌کاربری"
 
 #: dash/addons/includes/languages/trans_dash.php:737
-#: tejarak/includes/languages/trans_dash.php:707
+#: tejarak/includes/languages/trans_dash.php:801
 msgid "Signup"
 msgstr "ثبت‌نام"
 
 #: dash/addons/includes/languages/trans_dash.php:739
-#: tejarak/includes/languages/trans_dash.php:709
+#: tejarak/includes/languages/trans_dash.php:803
 msgid "Recovery password"
 msgstr "بازیابی گذرواژه"
 
 #: dash/addons/includes/languages/trans_dash.php:741
-#: tejarak/includes/languages/trans_dash.php:711
+#: tejarak/includes/languages/trans_dash.php:805
 msgid "Enter with another methods"
 msgstr "ورود با سایر روش‌ها"
 
 #: dash/addons/includes/languages/trans_dash.php:742
-#: tejarak/includes/languages/trans_dash.php:712
+#: tejarak/includes/languages/trans_dash.php:806
 msgid "Log in with mobile"
 msgstr "ورود با موبایل"
 
 #: dash/addons/includes/languages/trans_dash.php:743
-#: tejarak/includes/languages/trans_dash.php:713
+#: tejarak/includes/languages/trans_dash.php:807
 msgid "Enter with mobile"
 msgstr "ورود با موبایل"
 
 #: dash/addons/includes/languages/trans_dash.php:744
-#: tejarak/includes/languages/trans_dash.php:714
+#: tejarak/includes/languages/trans_dash.php:808
 msgid "Enter with Google"
 msgstr "ورود با گوگل"
 
 #: dash/addons/includes/languages/trans_dash.php:745
-#: tejarak/includes/languages/trans_dash.php:715
+#: tejarak/includes/languages/trans_dash.php:809
 msgid "Enter with email"
 msgstr "ورود با رایانامه"
 
 #: dash/addons/includes/languages/trans_dash.php:746
-#: tejarak/includes/languages/trans_dash.php:716
+#: tejarak/includes/languages/trans_dash.php:810
 msgid "Enter with username"
 msgstr "ورود با نام‌کاربری"
 
 #: dash/addons/includes/languages/trans_dash.php:747
-#: tejarak/includes/languages/trans_dash.php:717
+#: tejarak/includes/languages/trans_dash.php:811
 msgid "Resend code"
 msgstr "ارسال دوباره‌ی کد"
 
 #: dash/addons/includes/languages/trans_dash.php:748
-#: tejarak/includes/languages/trans_dash.php:718
+#: tejarak/includes/languages/trans_dash.php:812
 msgid "After end timer you can request code again"
 msgstr "پس از به‌اتمام رسیدن زمان، شما امکان درخواست مجدد کد را خواهید داشت"
 
 #: dash/addons/includes/languages/trans_dash.php:749
-#: tejarak/includes/languages/trans_dash.php:719
+#: tejarak/includes/languages/trans_dash.php:813
 msgid "Another way?"
 msgstr "روش دیگر؟"
 
 #: dash/addons/includes/languages/trans_dash.php:750
-#: tejarak/includes/languages/trans_dash.php:720
+#: tejarak/includes/languages/trans_dash.php:814
 msgid "Restart with new mobile"
 msgstr "شروع دوباره با موبایل جدید"
 
 #: dash/addons/includes/languages/trans_dash.php:751
-#: tejarak/includes/languages/trans_dash.php:721
+#: tejarak/includes/languages/trans_dash.php:815
 msgid "New email"
 msgstr "رایانامه‌ی جدید"
 
 #: dash/addons/includes/languages/trans_dash.php:752
-#: tejarak/includes/languages/trans_dash.php:722
+#: tejarak/includes/languages/trans_dash.php:816
 msgid "New username"
 msgstr "نام کاربری جدید"
 
 #: dash/addons/includes/languages/trans_dash.php:753
-#: tejarak/includes/languages/trans_dash.php:723
+#: tejarak/includes/languages/trans_dash.php:817
 msgid "Enter a valid username!"
 msgstr "نام کاربری معتبر وارد کنید!"
 
@@ -5708,8 +5812,6 @@ msgid " "
 msgstr " "
 
 #: dash/addons/includes/languages/trans_static.php:399
-#, fuzzy
-#| msgid "Table"
 msgid "table"
 msgstr "جدول"
 
@@ -5749,7 +5851,7 @@ msgstr "آواتار"
 #: tejarak/includes/database/tejarak/translation.php:20
 #: tejarak/includes/database/tejarak/translation.php:113
 #: tejarak/includes/database/tejarak/translation.php:126
-#: tejarak/includes/languages/trans_project.php:821
+#: tejarak/includes/languages/trans_project.php:826
 msgid "parent"
 msgstr "والد"
 
@@ -5759,10 +5861,8 @@ msgid "permission"
 msgstr "سطح‌دسترسی"
 
 #: dash/addons/includes/languages/trans_static.php:417
-#, fuzzy
-#| msgid "spain"
 msgid "pin"
-msgstr "اسپانیا"
+msgstr "پین"
 
 #: dash/addons/includes/languages/trans_static.php:418
 msgid "ref"
@@ -6195,7 +6295,7 @@ msgid "Created"
 msgstr "ساخته شده"
 
 #: dash/addons/includes/languages/trans_static.php:544
-#: tejarak/includes/languages/trans_project.php:623
+#: tejarak/includes/languages/trans_project.php:626
 msgid "Accepted"
 msgstr "تاییدشده"
 
@@ -7867,26 +7967,38 @@ msgstr "بازگشت"
 msgid "Please only use below keyboard."
 msgstr "لطفا تنها از منوی زیر استفاده کنید."
 
-#: dash/lib/app/comment.php:74
+#: dash/lib/app/comment.php:79
 msgid "Duplicate comment from you was received"
 msgstr "این دیدگاه قبلا توسط شما ثبت شده است"
 
-#: dash/lib/app/comment.php:99
+#: dash/lib/app/comment.php:91
+msgid "No way to add new data"
+msgstr "هیچ راهی برای افزودن اطلاعات وجود ندارد"
+
+#: dash/lib/app/comment.php:114
 msgid "Can not access to edit comment"
 msgstr "شما دسترسی لازم را برای ویرایش این نظر ندارید"
 
-#: dash/lib/app/comment.php:186
+#: dash/lib/app/comment.php:206
 msgid "Please fill the content box"
 msgstr "لطفا باکس متن را پر کنید"
 
-#: dash/lib/app/comment.php:233 dash/lib/app/comment.php:240
+#: dash/lib/app/comment.php:253 dash/lib/app/comment.php:260
 #: dash/lib/app/posts.php:20 dash/lib/app/posts.php:28
 msgid "Invalid post id"
 msgstr "شناسه پست اشتباه است"
 
-#: dash/lib/app/comment.php:246
+#: dash/lib/app/comment.php:266
 msgid "Comment of this post is closed!"
 msgstr "دیدگاه‌های این نوشته بسته است!"
+
+#: dash/lib/app/comment.php:278
+msgid "Title is out of range!"
+msgstr "عنوان خارج از محدوده است!"
+
+#: dash/lib/app/comment.php:287 dash/lib/app/term.php:164
+msgid "Invalid parent"
+msgstr "شناسه والد اشتباه است"
 
 #: dash/lib/app/contact.php:51 tejarak/includes/lib/app/member/member_id.php:143
 msgid "User id not set"
@@ -8190,10 +8302,6 @@ msgstr "عبارات تکراری"
 msgid "Please set the term excerpt less than 500 character"
 msgstr "لطفا چکیده عبارات را کمتر از ۵۰۰ حرف وارد کنید"
 
-#: dash/lib/app/term.php:164
-msgid "Invalid parent"
-msgstr "شناسه والد اشتباه است"
-
 #: dash/lib/app/term.php:180
 msgid "Parent not found"
 msgstr "والد یافت نشد"
@@ -8424,10 +8532,8 @@ msgid "Software Solution Designer"
 msgstr "ارائه‌دهنده‌ی راه‌کارهای مدرن نرم‌افزاری"
 
 #: dash/lib/engine/view.php:179
-#, fuzzy
-#| msgid "Last name"
 msgid "Latest news"
-msgstr "نام‌خانوادگی"
+msgstr "آخرین اخبار"
 
 #: dash/lib/file.php:449
 msgid "File not exist"
@@ -8509,43 +8615,43 @@ msgstr "عملیات کلادفلر از طریق ای‌پی‌آی با موف
 msgid "The api Cloudflare opration faild"
 msgstr "عملیات کلادفلر از طریق ای‌پی‌آی با موفقیت ناموفق بود"
 
-#: dash/lib/utility/enter.php:695
+#: dash/lib/utility/enter.php:696
 msgid "Please fill the verification code"
 msgstr "لطفا کد اعتبارسنجی را وارد کنید"
 
-#: dash/lib/utility/enter.php:701
+#: dash/lib/utility/enter.php:703
 msgid "What happend? the code is number. you try to send string!?"
 msgstr "چی شده؟ کد باید عددی باشد. شما چطوری دارین متن وارد میکنید!؟"
 
-#: dash/lib/utility/enter.php:722
+#: dash/lib/utility/enter.php:724
 msgid "System error, try again"
 msgstr "خطای سیستم، دوباره تلاش کنید"
 
-#: dash/lib/utility/enter.php:746
+#: dash/lib/utility/enter.php:748
 msgid "Your sms not deliver to us!"
 msgstr "پیامک شما بدست ما نرسیده است!"
 
-#: dash/lib/utility/enter.php:789
+#: dash/lib/utility/enter.php:792
 msgid "Invalid code, try again"
 msgstr "کد اشتباه، دوباره تلاش کنید"
 
-#: dash/lib/utility/enter.php:844
+#: dash/lib/utility/enter.php:848
 msgid "Your username was removed"
 msgstr "نام کاربری شما حذف شد"
 
-#: dash/lib/utility/enter.php:931
+#: dash/lib/utility/enter.php:941
 msgid "Your username was change"
 msgstr "نام کاربری شما تغییر یافت"
 
-#: dash/lib/utility/enter.php:1021
+#: dash/lib/utility/enter.php:1033
 msgid "Your password was changed"
 msgstr "کلمه عبور شما تغییر یافت"
 
-#: dash/lib/utility/enter.php:1183
+#: dash/lib/utility/enter.php:1198
 msgid "You must set 6 character and large in password"
 msgstr "گذرواژه باید حداقل ۶ کاراکتر باشد"
 
-#: dash/lib/utility/enter.php:1193
+#: dash/lib/utility/enter.php:1208
 msgid "You must set less than 99 character in password"
 msgstr "گذرواژه باید کمتر از ۹۹ کاراکتر باشد"
 
@@ -9130,7 +9236,7 @@ msgid "Report group by year"
 msgstr "گزارش به تفکیک سال"
 
 #: tejarak/content_a/request/add/view.php:8
-#: tejarak/includes/languages/trans_project.php:609
+#: tejarak/includes/languages/trans_project.php:612
 msgid "Add new request"
 msgstr "افزودن درخواست جدید"
 
@@ -9265,7 +9371,7 @@ msgstr "تنظیمات گزارش تغییر یافت"
 
 #: tejarak/content_a/setting/report/view.php:10
 #: tejarak/content_a/setting/security/view.php:9
-#: tejarak/includes/languages/trans_project.php:818
+#: tejarak/includes/languages/trans_project.php:823
 msgid "Setting"
 msgstr "تنظیمات"
 
@@ -9539,37 +9645,191 @@ msgstr "کلیدخارجی"
 msgid "pass"
 msgstr "گذرواژه"
 
-#: tejarak/includes/languages/trans_dash.php:201
-msgid "Upvote"
-msgstr "رای مثبت"
+#: tejarak/includes/languages/trans_dash.php:230
+msgid "Contact US"
+msgstr "تماس با ما"
 
-#: tejarak/includes/languages/trans_dash.php:202
-msgid "Downvote"
-msgstr "رای منفی"
+#: tejarak/includes/languages/trans_dash.php:253
+msgid "Admin Contact"
+msgstr "ارتباط با مدیریت"
 
-#: tejarak/includes/languages/trans_dash.php:268
-msgid "Enter a good and short title"
-msgstr "عنوانی کوتاه و مناسب وارد کنید"
+#: tejarak/includes/languages/trans_dash.php:305
+msgid "Choose parent for this page to create related url as tree"
+msgstr "با انتخاب والد برای این صفحه، آدرس‌های نسبی مانند ساختار درختی ایجاد کنید"
 
-#: tejarak/includes/languages/trans_dash.php:270
-msgid "Subtitle can used based on theme support"
-msgstr "زیرنویس می تواند بر اساس پشتیبانی تم مورد استفاده قرار گیرد"
+#: tejarak/includes/languages/trans_dash.php:306
+msgid "Choose Parent"
+msgstr "والد را انتخاب کنید"
 
-#: tejarak/includes/languages/trans_dash.php:282
-msgid "Whithout language"
-msgstr "بدون زبان"
+#: tejarak/includes/languages/trans_dash.php:307
+msgid "Without Parent"
+msgstr "بدون والد"
 
-#: tejarak/includes/languages/trans_dash.php:320
-msgid "Enter a valid title"
-msgstr "عنوان را وارد کنید"
+#: tejarak/includes/languages/trans_dash.php:308
+msgid ""
+"Choose category for posts is fix url of post relative and help people find it "
+"better."
+msgstr ""
+"انتخاب دسته‌بندی برای نوشته منجر به تصحیح آدرس نوشته و ساختارمند کردن آن برای "
+"یافتن بهتر می‌گردد."
 
-#: tejarak/includes/languages/trans_dash.php:322
-msgid "Enter a valid slug"
-msgstr "نامک معتبری وارد کنید"
+#: tejarak/includes/languages/trans_dash.php:493
+msgid "Server password"
+msgstr "کلمه عبور سرور"
 
-#: tejarak/includes/languages/trans_dash.php:672
-msgid "Show side menu"
-msgstr "نمایش منوی کناری"
+#: tejarak/includes/languages/trans_dash.php:503
+msgid "CPU Usage"
+msgstr "مصرف پردازنده"
+
+#: tejarak/includes/languages/trans_dash.php:504
+msgid "Memory"
+msgstr "حافظه"
+
+#: tejarak/includes/languages/trans_dash.php:505
+msgid "Disk usage"
+msgstr "مصرف دیسک"
+
+#: tejarak/includes/languages/trans_dash.php:506
+msgid "percentage"
+msgstr "درصد"
+
+#: tejarak/includes/languages/trans_dash.php:624
+msgid "Date and time"
+msgstr "تاریخ و زمان"
+
+#: tejarak/includes/languages/trans_dash.php:626
+msgid "Git status"
+msgstr "وضعیت گیت"
+
+#: tejarak/includes/languages/trans_dash.php:670
+msgid "If the git password is saved on your server"
+msgstr "اگر پسورد سرور گیت بر روی سیستم شما ذخیره است"
+
+#: tejarak/includes/languages/trans_dash.php:673
+msgid "Git password"
+msgstr "پسورد گیت"
+
+#: tejarak/includes/languages/trans_dash.php:674
+msgid "Enter git pass"
+msgstr "کلمه عبور گیت را وارد کنید"
+
+#: tejarak/includes/languages/trans_dash.php:722
+msgid "Active tickets"
+msgstr "تیکت‌های فعال"
+
+#: tejarak/includes/languages/trans_dash.php:723
+msgid "Open new ticket!"
+msgstr "باز کردن تیکت جدید!"
+
+#: tejarak/includes/languages/trans_dash.php:725
+msgid "Replies"
+msgstr "پاسخ‌ها"
+
+#: tejarak/includes/languages/trans_dash.php:726
+msgid "Archived"
+msgstr "بایگانی‌شده"
+
+#: tejarak/includes/languages/trans_dash.php:727
+msgid "Avg. First Response"
+msgstr "میانگین اولین پاسخگویی"
+
+#: tejarak/includes/languages/trans_dash.php:728
+msgid "Minute"
+msgstr "دقیقه"
+
+#: tejarak/includes/languages/trans_dash.php:729
+msgid "Avg. Time to Archive"
+msgstr "میانگین زمان بایگانی‌شدن"
+
+#: tejarak/includes/languages/trans_dash.php:730
+#: tejarak/includes/languages/trans_project.php:828
+msgid "Hours"
+msgstr "ساعات"
+
+#: tejarak/includes/languages/trans_dash.php:733
+msgid "Support Panel"
+msgstr "پنل پشتیبانی"
+
+#: tejarak/includes/languages/trans_dash.php:734
+msgid "New Ticket"
+msgstr "تیکت جدید"
+
+#: tejarak/includes/languages/trans_dash.php:735
+msgid "Unanswered"
+msgstr "بدون پاسخ"
+
+#: tejarak/includes/languages/trans_dash.php:736
+msgid "Mine"
+msgstr "مال من"
+
+#: tejarak/includes/languages/trans_dash.php:737
+msgid "All"
+msgstr "همه"
+
+#: tejarak/includes/languages/trans_dash.php:738
+msgid "Labels"
+msgstr "برچسب‌ها"
+
+#: tejarak/includes/languages/trans_dash.php:739
+msgid "Bug"
+msgstr "باگ"
+
+#: tejarak/includes/languages/trans_dash.php:740
+msgid "Feature"
+msgstr "ویژگی"
+
+#: tejarak/includes/languages/trans_dash.php:743
+msgid "Subject"
+msgstr "موضوع"
+
+#: tejarak/includes/languages/trans_dash.php:744
+msgid "Subject of your ticket"
+msgstr "عنوان تیکت شما"
+
+#: tejarak/includes/languages/trans_dash.php:745
+msgid "Set title will help us answer quickly"
+msgstr "نتظیم عنوان تیکت به ما کمک می کند تا سریع تر پاسخگو باشیم"
+
+#: tejarak/includes/languages/trans_dash.php:746
+msgid "Attachment"
+msgstr "ضمیمه"
+
+#: tejarak/includes/languages/trans_dash.php:749
+msgid "First response"
+msgstr "اولین پاسخ"
+
+#: tejarak/includes/languages/trans_dash.php:752
+msgid "Ticket No"
+msgstr "شماره تیکت"
+
+#: tejarak/includes/languages/trans_dash.php:753
+msgid "Create date"
+msgstr "تاریخ ایجاد"
+
+#: tejarak/includes/languages/trans_dash.php:754
+msgid "Last activity"
+msgstr "آخرین فعالیت‌ها"
+
+#: tejarak/includes/languages/trans_dash.php:755
+msgid "Submit as Solved"
+msgstr "تایید به عنوان حل شده"
+
+#: tejarak/includes/languages/trans_dash.php:756
+msgid "Close ticket"
+msgstr "بستن تیکت"
+
+#: tejarak/includes/languages/trans_dash.php:757
+#: tejarak/includes/languages/trans_project.php:813
+msgid "Creator"
+msgstr "ایجاد کننده"
+
+#: tejarak/includes/languages/trans_dash.php:758
+msgid "Save tag"
+msgstr "ذخیره کلیدواژه"
+
+#: tejarak/includes/languages/trans_dash.php:759
+msgid "Add tag manually to link tickets togethers"
+msgstr "کلدواژه را به صورت دستی اضافه کنید تا تیکت‌ها را در کنار هم قرار دهید"
 
 #: tejarak/includes/languages/trans_project.php:8
 msgid "Contact Us"
@@ -11595,178 +11855,182 @@ msgid "Enter to Tejarak"
 msgstr "ورود به تجارک"
 
 #: tejarak/includes/languages/trans_project.php:607
+msgid "Price Variation"
+msgstr "پراکندگی قیمت"
+
+#: tejarak/includes/languages/trans_project.php:610
 msgid "Manual request of change hours"
 msgstr "درخواست دستی تغییر ساعت"
 
-#: tejarak/includes/languages/trans_project.php:608
+#: tejarak/includes/languages/trans_project.php:611
 msgid "List of current requests"
 msgstr "لیست درخواست‌های فعلی"
 
-#: tejarak/includes/languages/trans_project.php:610
+#: tejarak/includes/languages/trans_project.php:613
 msgid "Edit existing record"
 msgstr "ویرایش رکورد موجود"
 
-#: tejarak/includes/languages/trans_project.php:611
+#: tejarak/includes/languages/trans_project.php:614
 msgid "Last traffics"
 msgstr "آخرین ترددها"
 
-#: tejarak/includes/languages/trans_project.php:612
+#: tejarak/includes/languages/trans_project.php:615
 msgid "Sum times in month"
 msgstr "جمع ساعات به تفکیک ماه"
 
-#: tejarak/includes/languages/trans_project.php:613
+#: tejarak/includes/languages/trans_project.php:616
 msgid "Sum times in year"
 msgstr "جمع ساعات به تفکیک سال"
 
-#: tejarak/includes/languages/trans_project.php:614
+#: tejarak/includes/languages/trans_project.php:617
 #: tejarak/includes/lib/utility/message/make/lasttraffic.php:35
 msgid "Today"
 msgstr "امروز"
 
-#: tejarak/includes/languages/trans_project.php:617
+#: tejarak/includes/languages/trans_project.php:620
 msgid "Last time for"
 msgstr "آخرین تردد ها برای"
 
-#: tejarak/includes/languages/trans_project.php:618
+#: tejarak/includes/languages/trans_project.php:621
 msgid "Start"
 msgstr "شروع"
 
-#: tejarak/includes/languages/trans_project.php:619
+#: tejarak/includes/languages/trans_project.php:622
 msgid "End"
 msgstr "پایان"
 
-#: tejarak/includes/languages/trans_project.php:620
+#: tejarak/includes/languages/trans_project.php:623
 msgid "Diff"
 msgstr "تفاوت"
 
-#: tejarak/includes/languages/trans_project.php:621
+#: tejarak/includes/languages/trans_project.php:624
 msgid "Export"
 msgstr "خروجی"
 
-#: tejarak/includes/languages/trans_project.php:622
+#: tejarak/includes/languages/trans_project.php:625
 msgid "Mission"
 msgstr "ماموریت"
 
-#: tejarak/includes/languages/trans_project.php:625
+#: tejarak/includes/languages/trans_project.php:628
 msgid "Request Edit"
 msgstr "درخواست ویرایش"
 
-#: tejarak/includes/languages/trans_project.php:626
+#: tejarak/includes/languages/trans_project.php:629
 msgid "Add request"
 msgstr "افزودن درخواست"
 
-#: tejarak/includes/languages/trans_project.php:629
+#: tejarak/includes/languages/trans_project.php:632
 msgid "Filter by specefic month of specefic year"
 msgstr "فیلتر براساس ماه خاص در سال خاص"
 
-#: tejarak/includes/languages/trans_project.php:631
+#: tejarak/includes/languages/trans_project.php:634
 msgid "No result for"
 msgstr "داده ای وجود ندارد برای "
 
-#: tejarak/includes/languages/trans_project.php:636
+#: tejarak/includes/languages/trans_project.php:639
 msgid "Filter by get data of specefic time"
 msgstr "فیلتر براساس دریافت داده‌ها در بازه زمانی خاص"
 
-#: tejarak/includes/languages/trans_project.php:637
+#: tejarak/includes/languages/trans_project.php:640
 msgid "Start date"
 msgstr "تاریخ شروع"
 
-#: tejarak/includes/languages/trans_project.php:638
+#: tejarak/includes/languages/trans_project.php:641
 msgid "End date"
 msgstr "تاریخ پایان"
 
-#: tejarak/includes/languages/trans_project.php:639
+#: tejarak/includes/languages/trans_project.php:642
 msgid "Start Date"
 msgstr "تاریخ شروع"
 
-#: tejarak/includes/languages/trans_project.php:640
+#: tejarak/includes/languages/trans_project.php:643
 msgid "End Date"
 msgstr "تاریخ پایان"
 
-#: tejarak/includes/languages/trans_project.php:645
+#: tejarak/includes/languages/trans_project.php:648
 msgid "Export as CSV file"
 msgstr "خروجی با فرمت csv"
 
-#: tejarak/includes/languages/trans_project.php:648
+#: tejarak/includes/languages/trans_project.php:651
 msgid "Add new request for"
 msgstr "افزودن درخواست جدید برای"
 
-#: tejarak/includes/languages/trans_project.php:651
+#: tejarak/includes/languages/trans_project.php:654
 msgid "Start Time"
 msgstr "ساعت شروع"
 
-#: tejarak/includes/languages/trans_project.php:652
+#: tejarak/includes/languages/trans_project.php:655
 msgid "End Time"
 msgstr "ساعت پایان"
 
-#: tejarak/includes/languages/trans_project.php:653
+#: tejarak/includes/languages/trans_project.php:656
 msgid "Response"
 msgstr "پاسخ"
 
-#: tejarak/includes/languages/trans_project.php:654
+#: tejarak/includes/languages/trans_project.php:657
 msgid "Set Response"
 msgstr "تنظیم پاسخ"
 
-#: tejarak/includes/languages/trans_project.php:656
+#: tejarak/includes/languages/trans_project.php:659
 msgid "No description"
 msgstr "بدون توضیح"
 
-#: tejarak/includes/languages/trans_project.php:659
+#: tejarak/includes/languages/trans_project.php:662
 msgid "Send request"
 msgstr "ارسال درخواست"
 
-#: tejarak/includes/languages/trans_project.php:660
+#: tejarak/includes/languages/trans_project.php:663
 msgid "Start your work at date"
 msgstr "شروع کار شما در تاریخ"
 
-#: tejarak/includes/languages/trans_project.php:661
+#: tejarak/includes/languages/trans_project.php:664
 msgid "End your work at date"
 msgstr "پایان کار شما در تاریخ"
 
-#: tejarak/includes/languages/trans_project.php:662
+#: tejarak/includes/languages/trans_project.php:665
 msgid "Start time"
 msgstr "ساعت شروع"
 
-#: tejarak/includes/languages/trans_project.php:663
+#: tejarak/includes/languages/trans_project.php:666
 msgid "End time"
 msgstr "ساعت پایان"
 
-#: tejarak/includes/languages/trans_project.php:664
+#: tejarak/includes/languages/trans_project.php:667
 msgid "You can set some description for this request"
 msgstr "شما می توانید برای این مورد توضیح بنویسید"
 
-#: tejarak/includes/languages/trans_project.php:667
+#: tejarak/includes/languages/trans_project.php:670
 msgid "Type your message here..."
 msgstr "متن پیام را وارد کنید..."
 
-#: tejarak/includes/languages/trans_project.php:668
+#: tejarak/includes/languages/trans_project.php:671
 msgid "Send to all members"
 msgstr "ارسال به تمام اعضا"
 
-#: tejarak/includes/languages/trans_project.php:671
+#: tejarak/includes/languages/trans_project.php:674
 msgid "Event day counter"
 msgstr "روزشمار رویداد"
 
-#: tejarak/includes/languages/trans_project.php:672
+#: tejarak/includes/languages/trans_project.php:675
 msgid ""
 "Can show next event in your team and have simple day counter with status change "
 "in board."
 msgstr ""
 "امکان نمایش رویداد بعدی در تیم شما بصورت نمایش روزشماری ساده با وضعیت در بورد."
 
-#: tejarak/includes/languages/trans_project.php:673
+#: tejarak/includes/languages/trans_project.php:676
 msgid "Can used for something like deadline of project or etc."
 msgstr "امکان استفاده برای دلاین پروژه، همایش بعدی یا سایر نمونه‌ها."
 
-#: tejarak/includes/languages/trans_project.php:676
+#: tejarak/includes/languages/trans_project.php:679
 msgid "Close"
 msgstr "بستن"
 
-#: tejarak/includes/languages/trans_project.php:682
+#: tejarak/includes/languages/trans_project.php:685
 msgid "Team default setting for new members"
 msgstr "تنظیمات پیش‌فرض تیم برای اعضای جدید"
 
-#: tejarak/includes/languages/trans_project.php:683
+#: tejarak/includes/languages/trans_project.php:686
 msgid ""
 "This settings is only used for new member and you can customize this setting for "
 "each member after add them to team."
@@ -11774,270 +12038,270 @@ msgstr ""
 "این تنظیمات تنها برای کاربران اعضای جدید تیم بوده که بعد از افزودن آنان، می‌توانید "
 "سفارشی‌سازی‌های موردنظر را بر روی هرکدام از اعضا بصورت خاص انجام دهید."
 
-#: tejarak/includes/languages/trans_project.php:686
+#: tejarak/includes/languages/trans_project.php:689
 msgid "Team Plan"
 msgstr "پلن تیم"
 
-#: tejarak/includes/languages/trans_project.php:687
+#: tejarak/includes/languages/trans_project.php:690
 msgid "Security and privacy"
 msgstr "امنیتی و حریم‌خصوصی"
 
-#: tejarak/includes/languages/trans_project.php:688
+#: tejarak/includes/languages/trans_project.php:691
 msgid "Report Settings"
 msgstr "تنظیمات گزارش"
 
-#: tejarak/includes/languages/trans_project.php:689
+#: tejarak/includes/languages/trans_project.php:692
 msgid "Board Settings"
 msgstr "تنظیمات بورد"
 
-#: tejarak/includes/languages/trans_project.php:690
+#: tejarak/includes/languages/trans_project.php:693
 msgid "Team short name"
 msgstr "نام کوتاه تیم"
 
-#: tejarak/includes/languages/trans_project.php:691
+#: tejarak/includes/languages/trans_project.php:694
 msgid "Used for url of board"
 msgstr "استفاده برای آدرس در بورد"
 
-#: tejarak/includes/languages/trans_project.php:692
+#: tejarak/includes/languages/trans_project.php:695
 msgid "Slug of team for board url"
 msgstr "نام کوتاه تیم برای آدرس بورد"
 
-#: tejarak/includes/languages/trans_project.php:694
+#: tejarak/includes/languages/trans_project.php:697
 msgid "Link your logo on board for visitors"
 msgstr "لینک شدن لوگوی شما در بورد برای بازدیدکنندگان"
 
-#: tejarak/includes/languages/trans_project.php:695
+#: tejarak/includes/languages/trans_project.php:698
 msgid "Used for description of board and show in social media links"
 msgstr "استفاده‌شده برای توضیح بورد جهت نمایش در لینک بورد در شبکه‌های اجتماعی"
 
-#: tejarak/includes/languages/trans_project.php:696
+#: tejarak/includes/languages/trans_project.php:699
 msgid "Board privacy mode"
 msgstr "وضعیت حریم‌خصوصی بورد"
 
-#: tejarak/includes/languages/trans_project.php:697
+#: tejarak/includes/languages/trans_project.php:700
 msgid "Private"
 msgstr "خصوصی"
 
-#: tejarak/includes/languages/trans_project.php:698
+#: tejarak/includes/languages/trans_project.php:701
 msgid "Only admin of team can see board"
 msgstr "تنها مدیران تیم می‌توانند بورد را ببینند"
 
-#: tejarak/includes/languages/trans_project.php:699
+#: tejarak/includes/languages/trans_project.php:702
 msgid "Team"
 msgstr "تیم"
 
-#: tejarak/includes/languages/trans_project.php:700
+#: tejarak/includes/languages/trans_project.php:703
 msgid "Admin and all member of team can see board"
 msgstr "مدیران و تمام اعضای تیم می‌توانند تیم را ببینند"
 
-#: tejarak/includes/languages/trans_project.php:701
+#: tejarak/includes/languages/trans_project.php:704
 msgid "Public"
 msgstr "عمومی"
 
-#: tejarak/includes/languages/trans_project.php:702
+#: tejarak/includes/languages/trans_project.php:705
 msgid "Anyone can access to link of board can see team board"
 msgstr "هرکسی که امکان دسترسی به لینک بورد را داشته باشد، می‌تواند تیم را ببیند"
 
-#: tejarak/includes/languages/trans_project.php:703
+#: tejarak/includes/languages/trans_project.php:706
 msgid "Choose your plan"
 msgstr "پلن خود را انتخاب کنید"
 
-#: tejarak/includes/languages/trans_project.php:704
+#: tejarak/includes/languages/trans_project.php:707
 msgid "All the basics for personal use."
 msgstr "تمام نیازهای اولیه برای استفاده شخصی."
 
-#: tejarak/includes/languages/trans_project.php:705
+#: tejarak/includes/languages/trans_project.php:708
 msgid "Everything in Free plus automatic report via Telegram."
 msgstr "تمام داشته‌های پلن رایگان به‌اضافه‌ی گزارش خودکار از طریق تلگرام."
 
-#: tejarak/includes/languages/trans_project.php:706
+#: tejarak/includes/languages/trans_project.php:709
 msgid "Everything you need for a growing business."
 msgstr "تمام نیازهای شما برای یک کسب و کار در حال توسعه."
 
-#: tejarak/includes/languages/trans_project.php:707
+#: tejarak/includes/languages/trans_project.php:710
 msgid "Disabled"
 msgstr "غیرفعال"
 
-#: tejarak/includes/languages/trans_project.php:708
+#: tejarak/includes/languages/trans_project.php:711
 msgid "For big companies that need fix price per month."
 msgstr "برای شرکت‌های بزرگ که نیاز به صرفه‌جویی و پرداخت هزینه ثابت در ماه دارند."
 
-#: tejarak/includes/languages/trans_project.php:709
+#: tejarak/includes/languages/trans_project.php:712
 msgid "New Owner Mobile"
 msgstr "تلفن همراه مالک جدید"
 
-#: tejarak/includes/languages/trans_project.php:710
+#: tejarak/includes/languages/trans_project.php:713
 msgid "Send Request"
 msgstr "ارسال درخواست"
 
-#: tejarak/includes/languages/trans_project.php:711
+#: tejarak/includes/languages/trans_project.php:714
 msgid "Card size"
 msgstr "اندازه کارت"
 
-#: tejarak/includes/languages/trans_project.php:712
+#: tejarak/includes/languages/trans_project.php:715
 msgid "Auto size"
 msgstr "خودکار"
 
-#: tejarak/includes/languages/trans_project.php:713
+#: tejarak/includes/languages/trans_project.php:716
 msgid "Small"
 msgstr "کوچک"
 
-#: tejarak/includes/languages/trans_project.php:715
+#: tejarak/includes/languages/trans_project.php:718
 msgid "Large"
 msgstr "بزرگ"
 
-#: tejarak/includes/languages/trans_project.php:716
+#: tejarak/includes/languages/trans_project.php:719
 msgid "Force show in specefic language"
 msgstr "اجبار به نمایش بورد در زبان خاص"
 
-#: tejarak/includes/languages/trans_project.php:717
+#: tejarak/includes/languages/trans_project.php:720
 msgid "Please select one language"
 msgstr "لطفا یکی از زبانها را انتخاب کنید"
 
-#: tejarak/includes/languages/trans_project.php:718
+#: tejarak/includes/languages/trans_project.php:721
 msgid "Persian"
 msgstr "فارسی"
 
-#: tejarak/includes/languages/trans_project.php:719
+#: tejarak/includes/languages/trans_project.php:722
 msgid "English"
 msgstr "انگلیسی"
 
-#: tejarak/includes/languages/trans_project.php:720
+#: tejarak/includes/languages/trans_project.php:723
 msgid "Report Header"
 msgstr "سرصفحه گزارش"
 
-#: tejarak/includes/languages/trans_project.php:721
+#: tejarak/includes/languages/trans_project.php:724
 msgid "Report Footer"
 msgstr "پانویس گزارش"
 
-#: tejarak/includes/languages/trans_project.php:722
+#: tejarak/includes/languages/trans_project.php:725
 msgid "Automatic daily traffic count report"
 msgstr "ارسال خودکار گزارش تردد روزانه"
 
-#: tejarak/includes/languages/trans_project.php:723
+#: tejarak/includes/languages/trans_project.php:726
 msgid "We automatically send report in Telegram on this time"
 msgstr "ما به‌صورت خودکار گزارش را در این زمان ارسال خواهیم کرد"
 
-#: tejarak/includes/languages/trans_project.php:724
+#: tejarak/includes/languages/trans_project.php:727
 msgid "Time of send automatic daily report"
 msgstr "زمان ارسال گزارش خودکار تردد روزانه"
 
-#: tejarak/includes/languages/trans_project.php:725
+#: tejarak/includes/languages/trans_project.php:728
 msgid "Status of connected group"
 msgstr "وضعیت گروه متصل‌شده"
 
-#: tejarak/includes/languages/trans_project.php:726
+#: tejarak/includes/languages/trans_project.php:729
 msgid "Can disable group activity"
 msgstr "امکان غیرفعال سازی فعالیت‌ها در گروه"
 
-#: tejarak/includes/languages/trans_project.php:727
+#: tejarak/includes/languages/trans_project.php:730
 msgid "Remove Group Connection"
 msgstr "حذف اتصالات گروه"
 
-#: tejarak/includes/languages/trans_project.php:728
+#: tejarak/includes/languages/trans_project.php:731
 msgid "Show name of first person in day first message"
 msgstr "نمایش نام اولین شخص حاضر در پیام اعلام تاریخ روز"
 
-#: tejarak/includes/languages/trans_project.php:729
+#: tejarak/includes/languages/trans_project.php:732
 msgid "Make a motivation to be first one of the day"
 msgstr "انگیزه‌ای برای اولین نفر بودن در روز ایجاد کنید"
 
-#: tejarak/includes/languages/trans_project.php:730
+#: tejarak/includes/languages/trans_project.php:733
 msgid "Send daily report after exit last person on the day"
 msgstr "ارسال گزارش روزانه در پایان هر روز پس از خروج آخرین عضو تیم"
 
-#: tejarak/includes/languages/trans_project.php:731
+#: tejarak/includes/languages/trans_project.php:734
 msgid "List of person present in day"
 msgstr "لیست اعضای حاضر در روز"
 
-#: tejarak/includes/languages/trans_project.php:732
+#: tejarak/includes/languages/trans_project.php:735
 msgid "Show work time of each member in daily report"
 msgstr "نمایش ساعت کاری هر عضو در گزارش روزانه"
 
-#: tejarak/includes/languages/trans_project.php:733
+#: tejarak/includes/languages/trans_project.php:736
 msgid "Useful on open mind companies"
 msgstr "مناسب برای شرکت‌های روشن فکر!"
 
-#: tejarak/includes/languages/trans_project.php:734
+#: tejarak/includes/languages/trans_project.php:737
 msgid "Give a medal to top 3 person of the day"
 msgstr "به سه نفر برتر هر روز مدال بدهید"
 
-#: tejarak/includes/languages/trans_project.php:735
+#: tejarak/includes/languages/trans_project.php:738
 msgid "Gold, silver and bronze medal added to member list"
 msgstr "مدال‌های طلا، نقره و برنز به لیست اعضا اضافه می‌شود"
 
-#: tejarak/includes/languages/trans_project.php:736
+#: tejarak/includes/languages/trans_project.php:739
 msgid "Limit count of person list in daily report."
 msgstr "محدودسازی تعداد نفرات نمایش داده‌شده در لیست گزارش روزانه."
 
-#: tejarak/includes/languages/trans_project.php:737
+#: tejarak/includes/languages/trans_project.php:740
 msgid "-1 means have no limit"
 msgstr "-۱ به معنی عدم محدودیت است"
 
-#: tejarak/includes/languages/trans_project.php:738
+#: tejarak/includes/languages/trans_project.php:741
 msgid "Used for large companies"
 msgstr "مورد استفاده برای شرکت‌های بزرگ"
 
-#: tejarak/includes/languages/trans_project.php:739
+#: tejarak/includes/languages/trans_project.php:742
 msgid "Event title"
 msgstr "عنوان رویداد"
 
-#: tejarak/includes/languages/trans_project.php:740
+#: tejarak/includes/languages/trans_project.php:743
 msgid "Event date start"
 msgstr "زمان شروع محاسبه رویداد"
 
-#: tejarak/includes/languages/trans_project.php:741
+#: tejarak/includes/languages/trans_project.php:744
 msgid "Need to calc remain percentage of deadline. Today as default"
 msgstr "برای محاسبه درصد باقی‌مانده از ددلاین نیاز هست. امروز به‌صورت پیش‌فرض"
 
-#: tejarak/includes/languages/trans_project.php:742
+#: tejarak/includes/languages/trans_project.php:745
 msgid "Event date"
 msgstr "زمان رویداد"
 
-#: tejarak/includes/languages/trans_project.php:743
+#: tejarak/includes/languages/trans_project.php:746
 msgid "Show member avatar on board"
 msgstr "نمایش عکس اعضا در بورد"
 
-#: tejarak/includes/languages/trans_project.php:744
+#: tejarak/includes/languages/trans_project.php:747
 msgid "Maybe for privacy you need to hide avatar on board!"
 msgstr "شاید برای حریم خصوصی شما نیاز به مخفی‌سازی تصاویر در بورد دارید!"
 
-#: tejarak/includes/languages/trans_project.php:747
+#: tejarak/includes/languages/trans_project.php:750
 msgid "Current Plan"
 msgstr "پلن فعلی"
 
-#: tejarak/includes/languages/trans_project.php:748
+#: tejarak/includes/languages/trans_project.php:751
 msgid "Activate on"
 msgstr "فعال‌شده در"
 
-#: tejarak/includes/languages/trans_project.php:751
+#: tejarak/includes/languages/trans_project.php:754
 msgid "Header and Footer"
 msgstr "سرصفحه و پاصفحه"
 
-#: tejarak/includes/languages/trans_project.php:752
+#: tejarak/includes/languages/trans_project.php:755
 msgid ""
 "bind to all reports created by tejarak and you can set special header and footer "
 "for this team."
 msgstr "چسباندن به سرصفحه و پاصفحه تمام گزارشات ایجاد شده توسط تجارک برای این تیم."
 
-#: tejarak/includes/languages/trans_project.php:753
+#: tejarak/includes/languages/trans_project.php:756
 msgid "This is useful when you have more than one team and want to detect them."
 msgstr ""
 "این مورد هنگامی که بیش از یک تیم داشته باشید ‌می‌تواند برای شناسایی آن‌ها موثر باشد."
 
-#: tejarak/includes/languages/trans_project.php:754
+#: tejarak/includes/languages/trans_project.php:757
 msgid "For example add #Ermile to footer."
 msgstr "برای مثال افزودن #ارمایل به پاصفحه."
 
-#: tejarak/includes/languages/trans_project.php:755
+#: tejarak/includes/languages/trans_project.php:758
 msgid "Admin Reports"
 msgstr "گزارشات مدیریتی"
 
-#: tejarak/includes/languages/trans_project.php:756
+#: tejarak/includes/languages/trans_project.php:759
 msgid "You can customize setting of report sending to admins."
 msgstr "شما می‌توانید تنظیمات ارسال گزارش را برای مدیران سفارشی کنید."
 
-#: tejarak/includes/languages/trans_project.php:757
+#: tejarak/includes/languages/trans_project.php:760
 msgid ""
 "For example some admin need to know about all traffic on your team, but some "
 "others only need to know about entrance traffic or someone dont need reports!"
@@ -12045,276 +12309,268 @@ msgstr ""
 "برای مثال برخی از مدیران نیاز به دانستن تمام اطلاعات تردد در تیم دارند، ولی برخی "
 "دیگر تنها نیاز به گزارش خلاصه روز و برخی دیگر نیز بی‌نیاز از گزارش!"
 
-#: tejarak/includes/languages/trans_project.php:758
+#: tejarak/includes/languages/trans_project.php:761
 msgid "End day report"
 msgstr "گزارش آخر روز"
 
-#: tejarak/includes/languages/trans_project.php:759
+#: tejarak/includes/languages/trans_project.php:762
 msgid "Every traffic"
 msgstr "هر ترددی"
 
-#: tejarak/includes/languages/trans_project.php:760
+#: tejarak/includes/languages/trans_project.php:763
 msgid "Telegram Group Reports"
 msgstr "گزارشات گروه تلگرام"
 
-#: tejarak/includes/languages/trans_project.php:761
+#: tejarak/includes/languages/trans_project.php:764
 msgid "You can connect your team to one group."
 msgstr "شما می توانید تیم خود را به یک گروه متصل کنید."
 
-#: tejarak/includes/languages/trans_project.php:762
+#: tejarak/includes/languages/trans_project.php:765
 msgid "Use our @tejarakBot menu and connect your team to your team telegram group."
 msgstr ""
 "با استفاده از منوی تعبیه‌شده در ربات تلگرام @tejarakBot تیم خود را به یک گروه "
 "تلگرام متصل کنید."
 
-#: tejarak/includes/languages/trans_project.php:763
+#: tejarak/includes/languages/trans_project.php:766
 msgid "After that we can send some summary message to your group."
 msgstr "پس از آن ما می‌توانیم یک سری گزارشات خلاصه را در گروه شما ارسال کنیم."
 
-#: tejarak/includes/languages/trans_project.php:764
+#: tejarak/includes/languages/trans_project.php:767
 msgid "You can customize these settings and create your favorite message."
 msgstr "شما می‌توانید این تنظیمات را سفارشی‌سازی کرده و پیام دلخواه خود را بسازید."
 
-#: tejarak/includes/languages/trans_project.php:765
+#: tejarak/includes/languages/trans_project.php:768
 msgid ""
 "Enjoy using automatic report on your telegram group on standard and complete plan."
 msgstr ""
 "با انتخاب پلن‌های استاندارد یا کامل، از گزارش‌های خودکار در گروه تلگرام خود لذت "
 "ببرید."
 
-#: tejarak/includes/languages/trans_project.php:766
+#: tejarak/includes/languages/trans_project.php:769
 msgid "First entrance"
 msgstr "اولین ورود"
 
-#: tejarak/includes/languages/trans_project.php:767
+#: tejarak/includes/languages/trans_project.php:770
 msgid "Last entrance"
 msgstr "آخرین ورود"
 
-#: tejarak/includes/languages/trans_project.php:768
+#: tejarak/includes/languages/trans_project.php:771
 msgid "Group not connected!"
 msgstr "گروه متصل نشده است!"
 
-#: tejarak/includes/languages/trans_project.php:769
+#: tejarak/includes/languages/trans_project.php:772
 msgid "connect via @tejarakBot to your Telegram group and enjoy our reports."
 msgstr ""
 "از طریق اتصال ربات @tejarakBot به گروه تلگرام تیم خود، از گزارشات ما لذت ببرید."
 
-#: tejarak/includes/languages/trans_project.php:772
+#: tejarak/includes/languages/trans_project.php:775
 msgid "Transfer owner of team to another person"
 msgstr "انتقال مالکیت تیم به شخص دیگر"
 
-#: tejarak/includes/languages/trans_project.php:773
+#: tejarak/includes/languages/trans_project.php:776
 msgid "You can transfer this yeam to another person."
 msgstr "شما می توانید مالکیت تیم خود را به کاربر دیگری منتقل کنید."
 
-#: tejarak/includes/languages/trans_project.php:774
+#: tejarak/includes/languages/trans_project.php:777
 msgid "To start process choose new owner"
 msgstr "برای شروع فرآیند مالک جدید را انتخاب کنید"
 
-#: tejarak/includes/languages/trans_project.php:775
+#: tejarak/includes/languages/trans_project.php:778
 msgid "If you are not sure, dont do this!"
 msgstr "اگر مطمئن نیستید این کار را نکنید!"
 
-#: tejarak/includes/languages/trans_project.php:776
+#: tejarak/includes/languages/trans_project.php:779
 msgid "After transfer your permission is changed to admin"
 msgstr "پس از انتقال، سطح دسترسی شما به مدیر تغییر پیدا خواهد کرد"
 
-#: tejarak/includes/languages/trans_project.php:777
+#: tejarak/includes/languages/trans_project.php:780
 msgid ""
 "Your ownership transfer request will be sent to the following person. Are you "
 "sure?"
 msgstr "درخواست تغییر مالکیت تیم شما به کاربر زیر ارسال خواهد شد. آیا مطمئن هستید؟"
 
-#: tejarak/includes/languages/trans_project.php:778
+#: tejarak/includes/languages/trans_project.php:781
 msgid "Are you sure?"
 msgstr "مطمئن هستید؟"
 
-#: tejarak/includes/languages/trans_project.php:779
+#: tejarak/includes/languages/trans_project.php:782
 msgid "OK, Send"
 msgstr "بسیار خوب. ارسال کن"
 
-#: tejarak/includes/languages/trans_project.php:780
+#: tejarak/includes/languages/trans_project.php:783
 msgid "Your ownership transfer request sended to the following person."
 msgstr "درخواست تغییر مالکیت تیم شما به کاربر زیر ارسال شد."
 
-#: tejarak/includes/languages/trans_project.php:781
+#: tejarak/includes/languages/trans_project.php:784
 msgid "Waiting for the user accept or reject this request"
 msgstr "در انتظار تایید یا رد درخواست توسط کاربر"
 
-#: tejarak/includes/languages/trans_project.php:782
+#: tejarak/includes/languages/trans_project.php:785
 msgid "You can <b>cancel</b> the request now"
 msgstr "شما می توانید این درخواست را هم اکنون لغو کنید"
 
-#: tejarak/includes/languages/trans_project.php:783
+#: tejarak/includes/languages/trans_project.php:786
 msgid "Cancel request"
 msgstr "لغو درخواست"
 
-#: tejarak/includes/languages/trans_project.php:784
+#: tejarak/includes/languages/trans_project.php:787
 msgid "You can give over your team to another people."
 msgstr "شما می توانید مالکیت تیم خود را به کاربر دیگری منتقل کنید."
 
-#: tejarak/includes/languages/trans_project.php:785
+#: tejarak/includes/languages/trans_project.php:788
 msgid "If you are not sure, leave this page!"
 msgstr "اگر مطمئن نیستید این صفحه را ترک کنید!"
 
-#: tejarak/includes/languages/trans_project.php:786
+#: tejarak/includes/languages/trans_project.php:789
 msgid "New owner mobile"
 msgstr "شماره همراه مالک جدید"
 
-#: tejarak/includes/languages/trans_project.php:789
+#: tejarak/includes/languages/trans_project.php:794
 msgid "Add event day counter"
 msgstr "افزودن روزشمار رویداد"
 
-#: tejarak/includes/languages/trans_project.php:790
+#: tejarak/includes/languages/trans_project.php:795
 msgid "Present Members"
 msgstr "حاضرین"
 
-#: tejarak/includes/languages/trans_project.php:791
+#: tejarak/includes/languages/trans_project.php:796
 msgid "Member"
 msgstr "اعضا"
 
-#: tejarak/includes/languages/trans_project.php:792
+#: tejarak/includes/languages/trans_project.php:797
 msgid "Traffic Record"
 msgstr "تردد ثبت‌شده"
 
-#: tejarak/includes/languages/trans_project.php:793
+#: tejarak/includes/languages/trans_project.php:798
 msgid "Total Hour Work"
 msgstr "جمع ساعات کارکرد"
 
-#: tejarak/includes/languages/trans_project.php:794
+#: tejarak/includes/languages/trans_project.php:799
 msgid "Start date of using tejarak"
 msgstr "تاریخ شروع استفاده شما از تجارک"
 
-#: tejarak/includes/languages/trans_project.php:795
+#: tejarak/includes/languages/trans_project.php:800
 msgid "day ago"
 msgstr "روز پیش"
 
-#: tejarak/includes/languages/trans_project.php:796
+#: tejarak/includes/languages/trans_project.php:801
 msgid "Day Used"
 msgstr "روز کارکرد"
 
-#: tejarak/includes/languages/trans_project.php:797
+#: tejarak/includes/languages/trans_project.php:802
 msgid "Top Members"
 msgstr "برترین اعضا"
 
-#: tejarak/includes/languages/trans_project.php:800
+#: tejarak/includes/languages/trans_project.php:805
 msgid "hours of teams"
 msgstr "ساعات تیم"
 
-#: tejarak/includes/languages/trans_project.php:802
+#: tejarak/includes/languages/trans_project.php:807
 msgid "Last date"
 msgstr "آخرین تاریخ"
 
-#: tejarak/includes/languages/trans_project.php:803
+#: tejarak/includes/languages/trans_project.php:808
 msgid "Last time"
 msgstr "آخرین زمان"
 
-#: tejarak/includes/languages/trans_project.php:804
+#: tejarak/includes/languages/trans_project.php:809
 msgid "Mean"
 msgstr "یعنی"
 
-#: tejarak/includes/languages/trans_project.php:807
+#: tejarak/includes/languages/trans_project.php:812
 msgid "Teams plan"
 msgstr "پلن تیم‌ها"
 
-#: tejarak/includes/languages/trans_project.php:808
-msgid "Creator"
-msgstr "ایجاد کننده"
-
-#: tejarak/includes/languages/trans_project.php:809
+#: tejarak/includes/languages/trans_project.php:814
 msgid "Plan"
 msgstr "پلن"
 
-#: tejarak/includes/languages/trans_project.php:811
+#: tejarak/includes/languages/trans_project.php:816
 msgid "Last Calc Date"
 msgstr "تاریخ آخرین فاکتور"
 
-#: tejarak/includes/languages/trans_project.php:812
+#: tejarak/includes/languages/trans_project.php:817
 msgid "Renew at"
 msgstr "تمدید در"
 
-#: tejarak/includes/languages/trans_project.php:815
+#: tejarak/includes/languages/trans_project.php:820
 msgid "Detail of user"
 msgstr "جزئیات اطلاعات کاربر"
 
-#: tejarak/includes/languages/trans_project.php:819
+#: tejarak/includes/languages/trans_project.php:824
 msgid "privacy"
 msgstr "خصوصی"
 
-#: tejarak/includes/languages/trans_project.php:820
+#: tejarak/includes/languages/trans_project.php:825
 msgid "logo"
 msgstr "لوگو"
 
-#: tejarak/includes/languages/trans_project.php:822
+#: tejarak/includes/languages/trans_project.php:827
 #: tejarak/includes/lib/app/report/report_list.php:70
 msgid "Members"
 msgstr "اعضا"
 
-#: tejarak/includes/languages/trans_project.php:823
-msgid "Hours"
-msgstr "ساعات"
-
-#: tejarak/includes/languages/trans_project.php:824
+#: tejarak/includes/languages/trans_project.php:829
 msgid "24H"
 msgstr "۲۴ ساعته"
 
-#: tejarak/includes/languages/trans_project.php:826
+#: tejarak/includes/languages/trans_project.php:831
 msgid "No logo"
 msgstr "لوگو ندارد"
 
-#: tejarak/includes/languages/trans_project.php:829
+#: tejarak/includes/languages/trans_project.php:834
 msgid "Displayname"
 msgstr "نام برای نمایش عمومی"
 
-#: tejarak/includes/languages/trans_project.php:830
+#: tejarak/includes/languages/trans_project.php:835
 msgid "Rule"
 msgstr "قانون"
 
-#: tejarak/includes/languages/trans_project.php:831
+#: tejarak/includes/languages/trans_project.php:836
 msgid "Shamsi date"
 msgstr "تاریخ شمسی"
 
-#: tejarak/includes/languages/trans_project.php:832
+#: tejarak/includes/languages/trans_project.php:837
 msgid "Time"
 msgstr "زمان"
 
-#: tejarak/includes/languages/trans_project.php:835
+#: tejarak/includes/languages/trans_project.php:840
 msgid "Members of teams"
 msgstr "اعضاء تیم"
 
-#: tejarak/includes/languages/trans_project.php:836
+#: tejarak/includes/languages/trans_project.php:841
 msgid "allowplus"
 msgstr "اجازه دورکاری"
 
-#: tejarak/includes/languages/trans_project.php:837
+#: tejarak/includes/languages/trans_project.php:842
 msgid "allowminus"
 msgstr "اجازه هدررفت"
 
-#: tejarak/includes/languages/trans_project.php:838
+#: tejarak/includes/languages/trans_project.php:843
 msgid "24h"
 msgstr "۲۴ ساعته"
 
-#: tejarak/includes/languages/trans_project.php:839
+#: tejarak/includes/languages/trans_project.php:844
 msgid "remote"
 msgstr "ریموت"
 
-#: tejarak/includes/languages/trans_project.php:840
+#: tejarak/includes/languages/trans_project.php:845
 msgid "Date enter"
 msgstr "تاریخ ورود"
 
-#: tejarak/includes/languages/trans_project.php:841
+#: tejarak/includes/languages/trans_project.php:846
 msgid "Report daily"
 msgstr "گزارش روزانه"
 
-#: tejarak/includes/languages/trans_project.php:842
+#: tejarak/includes/languages/trans_project.php:847
 msgid "Report ente&rexit"
 msgstr "گزارش ورود و خروج"
 
-#: tejarak/includes/languages/trans_project.php:843
+#: tejarak/includes/languages/trans_project.php:848
 msgid "Sort"
 msgstr "ترتیب"
 
-#: tejarak/includes/languages/trans_project.php:844
+#: tejarak/includes/languages/trans_project.php:849
 msgid "Not set"
 msgstr "تعیین نشده"
 
@@ -13477,6 +13733,30 @@ msgstr "اجازه مشاهده لاگ‌های سیستم"
 #: tejarak/includes/permission/permission.php:104
 msgid "Allow to login by another session"
 msgstr "اجازه ورود با کاربر دیگر"
+
+#~ msgid "Upvote"
+#~ msgstr "رای مثبت"
+
+#~ msgid "Downvote"
+#~ msgstr "رای منفی"
+
+#~ msgid "Enter a good and short title"
+#~ msgstr "عنوانی کوتاه و مناسب وارد کنید"
+
+#~ msgid "Subtitle can used based on theme support"
+#~ msgstr "زیرنویس می تواند بر اساس پشتیبانی تم مورد استفاده قرار گیرد"
+
+#~ msgid "Whithout language"
+#~ msgstr "بدون زبان"
+
+#~ msgid "Enter a valid title"
+#~ msgstr "عنوان را وارد کنید"
+
+#~ msgid "Enter a valid slug"
+#~ msgstr "نامک معتبری وارد کنید"
+
+#~ msgid "Show side menu"
+#~ msgstr "نمایش منوی کناری"
 
 #~ msgid "Auto hide sidebar"
 #~ msgstr "مخفی شدن خودکار نوار کناری"
@@ -16699,9 +16979,6 @@ msgstr "اجازه ورود با کاربر دیگر"
 
 #~ msgid "Send report daily count"
 #~ msgstr "ارسال تعداد در گزارش روزانه"
-
-#~ msgid "All"
-#~ msgstr "همه"
 
 #~ msgid "No Group was set"
 #~ msgstr "گروهی تنظیم نشده است"

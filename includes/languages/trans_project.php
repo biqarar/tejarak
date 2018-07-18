@@ -359,7 +359,7 @@ class twigTransTerms
 	//------------------------------------------content_a\billing\invoice\display.html
 	echo T_("Factor of team");                                                        // Line 8
 	echo T_("Total");                                                                 // Line 20
-	echo T_("Count");                                                                 // Line 15
+	echo T_("Count");                                                                 // Line 24
 
 	//-----------------------------------------------------content_a\card\display.html
 	echo T_("Select people you want to order personnel card for");                    // Line 8
@@ -603,6 +603,9 @@ class twigTransTerms
 	echo T_("Use our logo to help spread the word.");                                 // Line 141
 	echo T_("Enter to Tejarak");                                                      // Line 144
 
+	//-------------------------------------------------------content_a\report\chart.js
+	echo T_("Price Variation");                                                       // Line 42
+
 	//---------------------------------------------------content_a\report\display.html
 	echo T_("Manual request of change hours");                                        // Line 11
 	echo T_("List of current requests");                                              // Line 49
@@ -785,6 +788,8 @@ class twigTransTerms
 	echo T_("If you are not sure, leave this page!");                                 // Line 99
 	echo T_("New owner mobile");                                                      // Line 103
 
+	//----------------------------------------------------content_a\team\home\chart.js
+
 	//------------------------------------------------content_a\team\home\display.html
 	echo T_("Add event day counter");                                                 // Line 51
 	echo T_("Present Members");                                                       // Line 70
@@ -843,7 +848,19 @@ class twigTransTerms
 	echo T_("Sort");                                                                  // Line 36
 	echo T_("Not set");                                                               // Line 56
 
+	//----------------------------------------public_html\static\js\script-corridor.js
+
 	//---------------------public_html\static\siftal\fonts\siftal\icons-reference.html
+
+	//-----------------------------------public_html\static\siftal\js\amcharts3.min.js
+
+	//-----------------------------------public_html\static\siftal\js\amcharts4.min.js
+
+	//--------------------------------------public_html\static\siftal\js\error_page.js
+
+	//-----------------------------------public_html\static\siftal\js\highlight.min.js
+
+	//--------------------------------------public_html\static\siftal\js\siftal.min.js
 
  }
 }
