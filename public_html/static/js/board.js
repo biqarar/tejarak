@@ -169,7 +169,7 @@ function bindExtraInput()
 
 
   // up and down minus with scrool
-  $('#setTraffic form [data-allowminus], #setTraffic form [data-allowplus]').bind('mousewheel', function(e)
+  $('#setTraffic form [data-allowminus], #setTraffic form [data-allowplus]').on('mousewheel', function(e)
   {
     if($('body').hasClass('loading-form'))
     {

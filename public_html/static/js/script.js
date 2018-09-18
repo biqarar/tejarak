@@ -26,7 +26,7 @@ function checkAndRunAttendance()
 
 function checkResize()
 {
-  $( window ).resize(function() {
+  $( window ).on("resize", function() {
     if($('body').hasClass('attendance'))
     {
       checkResolution();
