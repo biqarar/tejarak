@@ -78,11 +78,11 @@ function openCard(_id)
       // press btn of form, enter or exit
       if($modal.attr('data-live') === 'off')
       {
-        $modal.find('form.enter button').click();
+        $modal.find('form.enter button').trigger("click");
       }
       else if($modal.attr('data-live') === 'on')
       {
-        $modal.find('form.exit button').click();
+        $modal.find('form.exit button').trigger("click");
       }
       else
       {
@@ -92,13 +92,13 @@ function openCard(_id)
     else
     {
       // open card of this user
-      $userCard.click();
+      $userCard.trigger("click");
     }
   }
   else
   {
     // only open the card
-    $userCard.click();
+    $userCard.trigger("click");
   }
 }
 
