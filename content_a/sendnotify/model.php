@@ -58,11 +58,11 @@ class model
 							'telegram' => true,
 							'multi'    => true,
 						];
-						\dash\db\notifications::set($insert_notify);
+						// \dash\db\notifications::set($insert_notify);
 					}
 				}
 			}
-			\dash\db\notifications::set_multi_record();
+			// \dash\db\notifications::set_multi_record();
 		}
 
 		if(\dash\engine\process::status())

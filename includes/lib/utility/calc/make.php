@@ -225,7 +225,7 @@ trait make
 				'cat'     => 'invoice',
 	        ];
 
-	        \dash\db\notifications::set($notify_set);
+	        // \dash\db\notifications::set($notify_set);
         }
 
         $transaction_set =

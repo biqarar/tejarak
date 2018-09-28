@@ -58,7 +58,7 @@ trait set_parent
 			],
 		];
 
-		$check = \dash\db\notifications::get($get);
+		$check = null; //\dash\db\notifications::get($get);
 
 		if(isset($check['meta']) && is_string($check['meta']) && substr($check['meta'], 0, 1) === '{')
 		{
@@ -81,7 +81,7 @@ trait set_parent
 				'to'      => $check['user_idsender'],
 				'content' => T_("Your request to set parent was :action", ['action' => T_($action)]),
 			];
-			\dash\db\notifications::set($notify_set);
+			// \dash\db\notifications::set($notify_set);
 
 			if(\dash\request::post('answer') === 'accept')
 			{
@@ -128,7 +128,7 @@ trait set_parent
 				\dash\db\logs::set('notify:change:parent:reject', \dash\user::id(), $log_meta);
 			}
 
-			\dash\db\notifications::update($update_notify, $check['id']);
+			// \dash\db\notifications::update($update_notify, $check['id']);
 		}
 		else
 		{

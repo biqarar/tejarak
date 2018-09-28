@@ -23,7 +23,7 @@ class model
 		$meta['status']  = ["IN", "('enable')"];
 		$meta['sort']    = 'id';
 		$meta['order']   = 'desc';
-		$notify          = \dash\db\notifications::search(null, $meta);
+		$notify          = null; // \dash\db\notifications::search(null, $meta);
 		$cat_list        = \dash\option::config('notification', 'cat');
 
 		if(is_array($notify))

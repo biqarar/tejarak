@@ -56,18 +56,18 @@ class model
 			{
 				if(\dash\request::post('send') === 'ok')
 				{
-					\dash\db\notifications::update(['status' => 'enable'], $load_last_request['id']);
+					// \dash\db\notifications::update(['status' => 'enable'], $load_last_request['id']);
 				}
 				elseif(\dash\request::post('send') === 'cancel')
 				{
-					\dash\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
+					// \dash\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
 			}
 			elseif($load_last_request['status'] === 'enable')
 			{
 				if(\dash\request::post('request') === 'cancel')
 				{
-					\dash\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
+					// \dash\db\notifications::update(['status' => 'cancel'], $load_last_request['id']);
 				}
 			}
 			return self::refresh_page();
@@ -144,7 +144,7 @@ class model
 			'limit'           => 1,
 		];
 
-		$check_notify = \dash\db\notifications::get($get);
+		$check_notify = null; // \dash\db\notifications::get($get);
 
 		if($check_notify && is_array($check_notify))
 		{
@@ -198,7 +198,7 @@ class model
 			'content'         => T_("The :alpha team has filed your ownership transfer request, Do you accept this request?", ['alpha' => self::$currentTeam['name']]),
 		];
 
-		$a = \dash\db\notifications::set($send_notify);
+		// $a = \dash\db\notifications::set($send_notify);
 
 
 		if(\dash\engine\process::status())

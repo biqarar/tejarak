@@ -47,7 +47,7 @@ trait send
 				'title'    => date("Y-m-d"),
 				'limit'    => 1,
 			];
-			$check_sended = \dash\db\notifications::get($get_notify);
+			$check_sended = null; // \dash\db\notifications::get($get_notify);
 			if($check_sended)
 			{
 				return true;
@@ -62,7 +62,7 @@ trait send
 				'category' => 1001,
 				'title'    => date("Y-m-d"),
 			];
-			return \dash\db\notifications::insert($insert);
+			// return \dash\db\notifications::insert($insert);
 		}
 	}
 
