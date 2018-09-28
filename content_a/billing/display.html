@@ -95,7 +95,7 @@
 
          <tr>
           <td class="s0">{%trans my_title%}</td>
-          <td title='{{value.date | dt(true)}}'>{{value.date|sdate}}</td>
+          <td title='{{value.date | dt(true)}}'>{{value.date | dt('human')}}</td>
           <td>
 {%if value.plus%}
 + {{value.plus|number_format|fitNumber}}

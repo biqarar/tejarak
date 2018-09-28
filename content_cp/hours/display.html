@@ -32,7 +32,7 @@
 		<div class="c">{{value.name}}</div>
 		<div class="c">{{value.date | persian}}</div>
 		<div class="c">{{value.end | persian}}</div>
-		<div class="c" title="{{ (value.date ~ ' ' ~ value.end)  | dt(true)}}">{{ (value.date ~ ' ' ~ value.end) | sdate("ultimate") }}</div>
+		<div class="c" title="{{ (value.date ~ ' ' ~ value.end)  | dt(true)}}">{{ (value.date ~ ' ' ~ value.end) | dt("human", "ultimate") }}</div>
 
 
 	</div>
