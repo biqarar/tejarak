@@ -5,7 +5,7 @@
 <div class="cbox">
 {% set myCurrentPlan = currentPlan.plan_name |capitalize %}
   <h3><small>{%trans "Current Plan"%}</small> <b>{%trans myCurrentPlan%}</b></h3>
-  <small title="{{currentPlan.start|tdate("Y-m-d")}}">{%trans "Activate on"%} {{currentPlan.start|sdate}}</small>
+  <small title="{{currentPlan.start | dt(true)}}">{%trans "Activate on"%} {{currentPlan.start|sdate}}</small>
 </div>
 
 <form method="post" class="cbox">
