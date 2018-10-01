@@ -86,9 +86,14 @@ class view
 						$date = \dash\utility\jdate::date($format, strtotime($key), false);
 					}
 
-					$cache_chart[] = ['key' => $date, 'value' => $value];
+					$cache_chart[] = ['key' => $date, 'value' => floatval($value)];
 				}
 			}
+			$hi_chart = [];
+			$hi_chart['categories'] = json_encode(array_column($cache_chart, 'key'), JSON_UNESCAPED_UNICODE);
+			$hi_chart['value'] = json_encode(array_column($cache_chart, 'value'), JSON_UNESCAPED_UNICODE);
+			\dash\data::hiChart($hi_chart);
+
 			$cache_chart = json_encode($cache_chart, JSON_UNESCAPED_UNICODE);
 			\dash\session::set('report_last_month_chart_'. $team_id, $cache_chart, null, 60);
 		}

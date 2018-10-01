@@ -662,7 +662,8 @@ address {
 
 /* list */
 ul {
-  list-style: none inside none; }
+  list-style: none inside none;
+  line-height: 1.5em; }
 
 ul.list {
   list-style: square outside none;
@@ -673,6 +674,9 @@ ul.list li {
 
 ul.list li a {
   padding: 0.3em 0.5em; }
+
+.rtl ul {
+  line-height: 2em; }
 
 /* very usefull styles*/
 .unselectable {
@@ -4158,6 +4162,12 @@ img.mini {
 .printArea {
   -webkit-print-color-adjust: exact; }
 
+.ltr .printArea .tbl1 tr th:first-of-type, .ltr .printArea .tbl1 tr td:first-of-type {
+  padding-left: 1rem; }
+
+.rtl .printArea .tbl1 tr th:first-of-type, .rtl .printArea .tbl1 tr td:first-of-type {
+  padding-right: 1rem; }
+
 body.errorPage {
   background-color: #0e5860;
   color: #fff;
@@ -4432,6 +4442,25 @@ iframe.gMap {
   border-bottom: 1px dashed #ccc;
   margin-bottom: 3em;
   overflow: hidden; }
+
+.cms ul {
+  list-style: square outside none;
+  margin: 0 2em;
+  line-height: 2em; }
+
+.cms ul li {
+  padding-bottom: 0.5em; }
+
+.cms ul li a {
+  padding: 0 0.5em;
+  transition: 0.3s;
+  display: block; }
+
+.cms ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.05); }
+
+.cms ul li a:focus {
+  background-color: rgba(0, 0, 0, 0.1); }
 
 [class^="sf-"] {
   margin: 0;
@@ -8260,6 +8289,20 @@ li.sortable-placeholder {
 
 .chart.x5 {
   min-height: 500px; }
+
+.highcharts-tooltip > span {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid silver;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px #888;
+  padding: 8px; }
+
+.rtl .highcharts-tooltip > span {
+  direction: rtl;
+  text-align: right; }
+
+.highcharts-credits {
+  display: none; }
 
 [class^="spay-256-"] {
   background: url("../images/spay/spay256.png") no-repeat;
@@ -18933,6 +18976,9 @@ body.siftal.loading-page #sidebar .avatar:before {
     display: none; }
 
   .siftal .scr::-webkit-scrollbar {
+    display: none; }
+
+  .siftal .tbox .badge {
     display: none; }
 
   .superAdmin {

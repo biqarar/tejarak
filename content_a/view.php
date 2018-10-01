@@ -24,7 +24,7 @@ class view
 		\dash\data::display_adminTeam('content_a\main\layoutTeam.html');
 
 		\dash\data::include_css(true);
-		\dash\data::include_chart(true);
+		\dash\data::include_highcharts(true);
 
 		\dash\data::include_adminPanel(true);
 		\dash\data::include_css(false);

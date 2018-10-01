@@ -46,8 +46,12 @@ class view
 				{
 					$date = \dash\utility\jdate::date("Y-m-d", strtotime($date), false);
 				}
-				array_push($chart, ['key' => $date, 'value' => $value]);
+				array_push($chart, ['key' => $date, 'value' => floatval($value)]);
 			}
+			$hi_chart = [];
+			$hi_chart['categories'] = json_encode(array_column($chart, 'key'), JSON_UNESCAPED_UNICODE);
+			$hi_chart['value'] = json_encode(array_column($chart, 'value'), JSON_UNESCAPED_UNICODE);
+			\dash\data::hiChart($hi_chart);
 			$dashboard_detail['last_time_chart'] = json_encode($chart, JSON_UNESCAPED_UNICODE);
 		}
 
