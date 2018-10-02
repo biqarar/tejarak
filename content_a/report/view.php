@@ -83,7 +83,7 @@ class view
 					$date = date($format, strtotime($key));
 					if(\dash\language::current() === 'fa')
 					{
-						$date = \dash\utility\jdate::date($format, strtotime($key), false);
+						$date = \dash\utility\jdate::date($format, strtotime($key));
 					}
 
 					$cache_chart[] = ['key' => $date, 'value' => floatval($value)];

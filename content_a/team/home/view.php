@@ -44,7 +44,7 @@ class view
 				$date = $key;
 				if(\dash\language::current() === 'fa')
 				{
-					$date = \dash\utility\jdate::date("Y-m-d", strtotime($date), false);
+					$date = \dash\utility\jdate::date("Y-m-d", strtotime($date));
 				}
 				array_push($chart, ['key' => $date, 'value' => floatval($value)]);
 			}
