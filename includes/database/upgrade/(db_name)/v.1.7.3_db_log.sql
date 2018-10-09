@@ -1,3 +1,4 @@
+-- [database log]
 
 CREATE TABLE `agents` (
   `id` int(10) UNSIGNED NOT NULL,
