@@ -40,6 +40,9 @@ self::$config['site']['slogan'] = "Modern Approach";
 self::$config['redirect']           = 'a';
 
 
+self::$config['visitor']           = true;
+
+
 /**
  * first signup url
  * main redirect url . signup redirect url
