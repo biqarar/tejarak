@@ -31,7 +31,7 @@ trait thismonth
 				if(isset($value['displayname']) && array_key_exists('diff', $value))
 				{
 					$total_diff += intval($value['diff']);
-					$msg .= "\n💠 ". $value['displayname']. " ". \dash\utility\human::time($value['diff'],'number', $default_language);
+					$msg .= "\n💠 ". $value['displayname']. " ". \dash\datetime::fit($value['diff']*60, 'humanTime');
 				}
 			}
 		}
@@ -42,7 +42,7 @@ trait thismonth
 			$msg .= " ". \dash\date::fit_lang('F', time() , 'current');
 			$msg .= "\n". \dash\date::fit_lang('l j F Y H:i', time() , 'current');
 			$msg .= "\n". $temp_message;
-			$msg .= "\n🕰 ". \dash\utility\human::time($total_diff,'number', $default_language);
+			$msg .= "\n🕰 ". \dash\datetime::fit($total_diff*60, 'humanTime');
 			$msg .= "\n👥 ". \dash\utility\human::number(count($count_person), $default_language);
 		}
 		return $msg;

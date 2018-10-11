@@ -9,7 +9,6 @@ class view
 		\dash\data::month(\dash\date::month_precent());
 		/**
 		* get raw time
-		* skip humantime
 		*/
 		if(\dash\request::get('time') === 'raw')
 		{

@@ -42,7 +42,7 @@
 {%if timeRaw %}
       <td xclass="c s0">{{value.diff | fitNumber}}</td>
 {%else%}
-      <td xclass="c s0">{{value.diff | humantime | fitNumber}}</td>
+      <td xclass="c s0">{{(value.diff*60) | dt('humanTime')}}</td>
 
 {%endif%}
 
@@ -100,10 +100,10 @@
       <td xclass="c s0">{{value.plus | fitNumber}}</td>
       <td xclass="c">{{value.accepted | fitNumber}}</td>
 {%else%}
-      <td xclass="c s0">{{value.diff | humantime | fitNumber}}</td>
-      <td xclass="c s0">{{value.minus | humantime | fitNumber}}</td>
-      <td xclass="c s0">{{value.plus | humantime | fitNumber}}</td>
-      <td xclass="c">{{value.accepted | humantime | fitNumber}}</td>
+      <td xclass="c s0">{{(value.diff*60) | dt('humanTime')}}</td>
+      <td xclass="c s0">{{(value.minus*60) | dt('humanTime')}}</td>
+      <td xclass="c s0">{{(value.plus*60) | dt('humanTime')}}</td>
+      <td xclass="c">{{(value.accepted*60) | dt('humanTime')}}</td>
 {%endif%}
       <!-- <td xclass="c s0">{%set myType = value.type %}{%trans myType%}</td> -->
       <td xclass="c"><a href="{{url.here}}/request/hour?id={{requestGET.id}}&hourid={{value.id}}">{%trans "Request Edit"%}</a></td>

@@ -76,7 +76,7 @@ trait end_day
 
 				$i += 1;
 				$total_time += $accepted;
-				$accepted = \dash\utility\human::time($accepted, 'number', 'current');
+				$accepted = \dash\datetime::fit($accepted*60, 'humanTime');
 				$accepted = \dash\utility\human::number($accepted, $this->current_language);
 				$accepted = " <code>$accepted</code>";
 
@@ -147,7 +147,7 @@ trait end_day
 				$msg_admin .= "🎭 ". $enterExit . "  ";
 			}
 
-			$msg_admin .= "🕰 ". \dash\utility\human::number(\dash\utility\human::time($total_time, 'text', 'current'), $this->current_language);
+			$msg_admin .= "🕰 ". \dash\datetime::fit($total_time*60, 'humanTime', true);
 
 		}
 		return $msg;

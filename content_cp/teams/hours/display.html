@@ -44,7 +44,7 @@
 		<div class="c">{{value.minus|fitNumber}}</div>
 		<div class="c">{{value.plus|fitNumber}}</div>
 		<div class="c">{{value.diff|fitNumber}}</div>
-		<div class="c">{{value.diff|humantime|fitNumber}}</div>
+		<div class="c">{{(value.diff*60)| dt('humanTime')}}</div>
 
 	</div>
 	{%endfor%}

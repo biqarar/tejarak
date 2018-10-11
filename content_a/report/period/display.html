@@ -43,10 +43,10 @@
         <td>{{value.plus | fitNumber}}</td>
         <td>{{value.accepted | fitNumber}}</td>
       {%else%}
-        <td>{{value.diff | humantime | fitNumber}}</td>
-        <td>{{value.minus | humantime | fitNumber}}</td>
-        <td>{{value.plus | humantime | fitNumber}}</td>
-        <td>{{value.accepted | humantime | fitNumber}}</td>
+        <td>{{(value.diff*60) | dt('humanTime')}}</td>
+        <td>{{(value.minus*60) | dt('humanTime')}}</td>
+        <td>{{(value.plus*60) | dt('humanTime')}}</td>
+        <td>{{(value.accepted*60) | dt('humanTime')}}</td>
       {%endif%}
     </tr>
     {%endfor%}
