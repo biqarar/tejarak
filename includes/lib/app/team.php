@@ -112,7 +112,7 @@ class team
 			if(\dash\language::check($team_language))
 			{
 				$new_url               = \dash\url::pwd();
-				$url                   = \dash\url::base();
+				$url                   = \dash\url::kingdom();
 				$url_property          = \dash\url::directory();
 				$url_get               = \dash\request::get();
 

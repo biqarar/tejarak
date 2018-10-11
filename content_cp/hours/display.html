@@ -30,8 +30,8 @@
 	{%for key, value in hoursList%}
 	<div class="f">
 		<div class="c">{{value.name}}</div>
-		<div class="c">{{value.date | persian}}</div>
-		<div class="c">{{value.end | persian}}</div>
+		<div class="c">{{value.date | fitNumber(false)}}</div>
+		<div class="c">{{value.end | fitNumber(false)}}</div>
 		<div class="c" title="{{ (value.date ~ ' ' ~ value.end)  | dt(true)}}">{{ (value.date ~ ' ' ~ value.end) | dt("human", "ultimate") }}</div>
 
 

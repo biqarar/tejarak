@@ -17,7 +17,7 @@ class controller
 				$shortname = \lib\db\teams::get_by_id($check_is_gateway['team_id']);
 				if(isset($shortname['shortname']))
 				{
-					$new_url = \dash\url::base(). '/'. $shortname['shortname'];
+					$new_url = \dash\url::kingdom(). '/'. $shortname['shortname'];
 					\dash\redirect::to($new_url);
 					return;
 				}
