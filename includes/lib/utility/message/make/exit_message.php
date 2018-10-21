@@ -58,7 +58,7 @@ trait exit_message
 			$pure = 0;
 		}
 
-		$pure_human = \dash\datetime::time($pure*60, 'humanTime', true);
+		$pure_human = \dash\datetime::fit($pure*60, 'humanTime', true);
 
 		$time_start = \dash\date::fit_lang('H:i', $start , 'current');
 
