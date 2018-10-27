@@ -86,7 +86,11 @@ class TransStatic
 
 	echo T_("money");
 	echo T_("toman");
+	echo T_("Tejarak");
 	echo T_("Tejarak; Modern Approach");
+	echo T_("Modern Approach");
+	echo T_("Tejarak provides beautiful solutions for your business; Do attendance easily and enjoy realtime reports.");
+
 
 
  }
