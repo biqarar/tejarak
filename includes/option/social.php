@@ -18,15 +18,12 @@ self::$social['list']['aparat']               = 'tejarak';
 * TELEGRAM
 * t.me
 */
-self::$social['telegram']['status']           = true;
-self::$social['telegram']['name']             = null;
-self::$social['telegram']['key']              = null;
-self::$social['telegram']['bot']              = '339018788:AAFg-KYxZ8yI-yU74qt1tq0DFNtLfT4Puv8';
-self::$social['telegram']['hookFolder']       = null;
-self::$social['telegram']['hook']             = null;
-self::$social['telegram']['debug']            = true;
-self::$social['telegram']['channel']          = null;
-self::$social['telegram']['botan']            = null;
+self::$social['telegram']['status']     = true;
+self::$social['telegram']['bot']        = 'TejarakBot';
+self::$social['telegram']['hookFolder'] = 'ermile';
+self::$social['telegram']['token']      = '';
+self::$social['telegram']['debug']      = true;
+
 
 /**
 * FACEBOOK
