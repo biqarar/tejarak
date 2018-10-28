@@ -148,7 +148,7 @@ class model
 		}
 
 		// \lib\utility\telegram::$force_send_telegram_service = true;
-		// \lib\utility\telegram::$bot_key                     = '401647634:AAEUeTV5E7CYxZth-6TOWFHdjzABwVavJS0';
+		// \lib\utility\telegram::$bot_key                     = '123';
 		// \lib\utility\telegram::$save_log                    = false;
 
 		// \lib\utility\telegram::sendMessage("@tejarak_monitor", $msg);
