@@ -23,7 +23,6 @@ class telegram
 	 */
 	public static function sendMessage($_chat_id, $_text, $_option = [])
 	{
-
 		if(!$_chat_id || !$_text)
 		{
 			return false;
@@ -111,7 +110,8 @@ class telegram
 			$sort = array_column(self::$SORT, 'sort');
 			array_multisort($sort,SORT_ASC, self::$SORT);
 			self::$SORT = array_filter(self::$SORT);
-			foreach (self::$SORT as $key => $value)
+			$args = array_column(self::$SORT, 'curl');
+			foreach ($args as $key => $value)
 			{
 				if(isset($value['chat_id']) && isset($value['text']))
 				{
