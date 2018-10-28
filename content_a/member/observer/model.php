@@ -59,7 +59,7 @@ class model
 				if(isset($parent_detail['chatid']))
 				{
 					// user have telegram
-					\dash\utility\telegram::sendMessage($parent_detail['chatid'], $message);
+					\lib\utility\telegram::sendMessage($parent_detail['chatid'], $message);
 				}
 				else
 				{

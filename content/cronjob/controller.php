@@ -31,7 +31,7 @@ class controller
 		}
 		else
 		{
-			\dash\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
+			// \lib\utility\telegram::sendMessage("@tejarak_monitor", "#ERROR\n".  json_encode($_SERVER, JSON_UNESCAPED_UNICODE));
 			\dash\header::status(404);
 		}
 

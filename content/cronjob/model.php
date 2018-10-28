@@ -140,22 +140,22 @@ class model
 		}
 
 
-		$default_send_service = \dash\utility\telegram::$force_send_telegram_service;
+		// $default_send_service = \lib\utility\telegram::$force_send_telegram_service;
 
 		if($run)
 		{
 			$this->set_last_pinged_time();
 		}
 
-		\dash\utility\telegram::$force_send_telegram_service = true;
-		\dash\utility\telegram::$bot_key                     = '401647634:AAEUeTV5E7CYxZth-6TOWFHdjzABwVavJS0';
-		\dash\utility\telegram::$save_log                    = false;
+		// \lib\utility\telegram::$force_send_telegram_service = true;
+		// \lib\utility\telegram::$bot_key                     = '401647634:AAEUeTV5E7CYxZth-6TOWFHdjzABwVavJS0';
+		// \lib\utility\telegram::$save_log                    = false;
 
-		\dash\utility\telegram::sendMessage("@tejarak_monitor", $msg);
+		// \lib\utility\telegram::sendMessage("@tejarak_monitor", $msg);
 
-		\dash\utility\telegram::$force_send_telegram_service = $default_send_service;
-		\dash\utility\telegram::$bot_key                     = null;
-		\dash\utility\telegram::$save_log                    = true;
+		// // \lib\utility\telegram::$force_send_telegram_service = $default_send_service;
+		// \lib\utility\telegram::$bot_key                     = null;
+		// \lib\utility\telegram::$save_log                    = true;
 
 
 	}
