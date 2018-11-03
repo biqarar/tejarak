@@ -93,8 +93,5 @@ Highcharts.chart('chartdiv',
 
   }
   ]
-}, function(_chart)
-  {
-    _chart.renderer.image('{{service.logo}}', 10, 5, 30, 30).attr({class: 'chartServiceLogo'}).add();
-  });
+});
 }
