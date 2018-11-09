@@ -50,7 +50,7 @@ class telegram
 		}
 		else
 		{
-			\dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
+			// \dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
 			return;
 		}
 	}
@@ -95,7 +95,7 @@ class telegram
 		}
 		else
 		{
-			\dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
+			// \dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
 		}
 	}
 
@@ -111,6 +111,7 @@ class telegram
 			array_multisort($sort,SORT_ASC, self::$SORT);
 			self::$SORT = array_filter(self::$SORT);
 			$args = array_column(self::$SORT, 'curl');
+
 			foreach ($args as $key => $value)
 			{
 				if(isset($value['chat_id']) && isset($value['text']))
