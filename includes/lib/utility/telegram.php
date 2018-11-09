@@ -116,7 +116,7 @@ class telegram
 			{
 				if(isset($value['chat_id']) && isset($value['text']))
 				{
-					\dash\social\telegram\tg::sendMessage(['chat_id' => $value['chat_id'], 'text' => $value['text']. '  | '. $value['chat_id']]);
+					\dash\social\telegram\tg::sendMessage(['chat_id' => $value['chat_id'], 'text' => $value['text']]);
 				}
 			}
 		}
