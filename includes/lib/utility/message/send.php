@@ -40,14 +40,14 @@ trait send
 	{
 		if(!$_is_send)
 		{
-			$get_notify =
+			$get_log =
 			[
-				'user_id'  => $_user_id,
-				'category' => 1001,
-				'title'    => date("Y-m-d"),
-				'limit'    => 1,
+				'user_id' => $_user_id,
+				'caller'  => 'checkOneMessagePerDay',
+				'code'    => date("Y-m-d"),
+				'limit'   => 1,
 			];
-			$check_sended = null; // \dash\db\notifications::get($get_notify);
+			$check_sended = \dash\db\logs::get($get_log);
 			if($check_sended)
 			{
 				return true;
@@ -58,11 +58,11 @@ trait send
 		{
 			$insert =
 			[
-				'user_id'  => $_user_id,
-				'category' => 1001,
-				'title'    => date("Y-m-d"),
+				'user_id' => $_user_id,
+				'caller'  => 'checkOneMessagePerDay',
+				'code'    => date("Y-m-d"),
 			];
-			// return \dash\db\notifications::insert($insert);
+			return \dash\db\logs::insert($insert);
 		}
 	}
 
