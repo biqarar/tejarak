@@ -50,7 +50,7 @@ class telegram
 		}
 		else
 		{
-			// \dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
+			\dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
 			return;
 		}
 	}
@@ -95,7 +95,7 @@ class telegram
 		}
 		else
 		{
-			// \dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
+			\dash\social\telegram\tg::sendMessage(['chat_id' => $_chat_id, 'text' => $_text]);
 		}
 	}
 
@@ -116,7 +116,7 @@ class telegram
 			{
 				if(isset($value['chat_id']) && isset($value['text']))
 				{
-					\dash\social\telegram\tg::sendMessage(['chat_id' => $value['chat_id'], 'text' => $value['text']]);
+					\dash\social\telegram\tg::sendMessage(['chat_id' => $value['chat_id'], 'text' => $value['text']. '  | '. $value['chat_id']]);
 				}
 			}
 		}
