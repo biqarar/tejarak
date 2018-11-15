@@ -42,6 +42,8 @@ self::$config['redirect']           = 'a';
 
 self::$config['visitor']           = true;
 
+self::$config['botscout']                 = 'hIenwLNiGpPOoSk';
+
 
 /**
  * first signup url
