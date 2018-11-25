@@ -42,7 +42,7 @@ trait send
 		{
 			$get_log =
 			[
-				'user_id' => $_user_id,
+				'to' => $_user_id,
 				'caller'  => 'checkOneMessagePerDay',
 				'code'    => date("Y-m-d"),
 				'limit'   => 1,
@@ -58,7 +58,7 @@ trait send
 		{
 			$insert =
 			[
-				'user_id' => $_user_id,
+				'to' => $_user_id,
 				'caller'  => 'checkOneMessagePerDay',
 				'code'    => date("Y-m-d"),
 			];
