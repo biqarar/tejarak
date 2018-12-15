@@ -53,7 +53,7 @@
 {%endif%}
 
 {{block("iTgGroup")}}
-  <div data-response='sendtelegram_group' {% if not report.settings.telegram_group%} data-response-hide {%endif%}>
+  <div data-response='sendtelegram_group' {% if not report_settings.telegram_group%} data-response-hide {%endif%}>
     <div class="example">
       <h5>{%trans "First entrance"%}</h5>
 {{block("iTgGroupFirstPerson")}}
