@@ -4,7 +4,7 @@
 
 {%block foot_js%}
 
- <script src="{{url.static}}/{{'js/board.js' | filemtime(true)}}"></script>
+ <script src="{{url.static}}{{'/js/board.js' | filemtime(true)}}"></script>
 {%endblock%}
 
 
