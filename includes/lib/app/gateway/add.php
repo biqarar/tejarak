@@ -162,8 +162,7 @@ trait add
 				'username'    => $username,
 				'password'    => $password,
 			];
-			\dash\db\users::insert($insert_users);
-			$user_id = \dash\db::insert_id();
+			$user_id = \dash\db\users::signup($insert_users);
 		}
 		elseif($_args['method'] === 'patch')
 		{

@@ -78,8 +78,7 @@ trait member_id
 						'datecreated' => date("Y-m-d H:i:s"),
 					];
 
-					\dash\db\users::insert($signup);
-					self::$master_user_id = \dash\db::insert_id();
+					self::$master_user_id = \dash\db\users::signup($signup);
 				}
 			}
 			else
@@ -94,8 +93,7 @@ trait member_id
 					'datecreated' => date("Y-m-d H:i:s"),
 				];
 
-				\dash\db\users::insert($signup);
-				self::$master_user_id = \dash\db::insert_id();
+				self::$master_user_id = \dash\db\users::signup($signup);
 			}
 		}
 		elseif($_args['method'] === 'patch')
@@ -178,8 +176,7 @@ trait member_id
 								'datecreated' => date("Y-m-d H:i:s"),
 							];
 
-							\dash\db\users::insert($signup);
-							self::$master_user_id = \dash\db::insert_id();
+							self::$master_user_id = \dash\db\users::signup($signup);
 						}
 					}
 				}
@@ -195,8 +192,7 @@ trait member_id
 						'datecreated' => date("Y-m-d H:i:s"),
 					];
 
-					\dash\db\users::insert($signup);
-					self::$master_user_id = \dash\db::insert_id();
+					self::$master_user_id = \dash\db\users::signup($signup);
 				}
 			}
 			else
@@ -225,8 +221,7 @@ trait member_id
 							'datecreated' => date("Y-m-d H:i:s"),
 						];
 
-						\dash\db\users::insert($signup);
-						self::$master_user_id = \dash\db::insert_id();
+						self::$master_user_id = \dash\db\users::signup($signup);
 					}
 				}
 				else
