@@ -188,10 +188,10 @@ trait get
 					break;
 
 				case 'logo':
-					continue;
-					if(isset(self::logo_urls[$value]))
+					// continue;
+					if(isset(self::$logo_urls[$value]))
 					{
-						$result['logo'] = \lib\app\option::host('file'). '/'. self::logo_urls[$value];
+						$result['logo'] = \lib\app\option::host('file'). '/'. self::$logo_urls[$value];
 					}
 					else
 					{
@@ -231,7 +231,7 @@ trait get
 				case 'meta':
 				case 'value':
 				default:
-					continue;
+
 					break;
 			}
 		}

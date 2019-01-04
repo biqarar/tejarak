@@ -40,9 +40,14 @@ class model
 			}
 		}
 
-		$meta = ['turn_back' => \dash\url::pwd()];
+		$meta =
+		[
+			'turn_back' => \dash\url::pwd(),
+			'user_id'   => \dash\user::id(),
+			'amount'    => \dash\request::post('amount'),
+		];
 
-		\dash\utility\payment\pay::start(\dash\user::id(), \dash\request::post('bank'), \dash\request::post('amount'), $meta);
+		\dash\utility\pay\start::site($meta);
 	}
 
 
