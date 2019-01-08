@@ -606,7 +606,7 @@ trait get
 					break;
 
 				default:
-					continue;
+
 					break;
 			}
 		}

@@ -5,8 +5,17 @@
 {%endblock%}
 
 {%block pageContent%}
-<div class='middle normal f justify-center'>
 
+<div class='middle normal f justify-center'>
+  {%if perm_su()%}
+  <div class="vcard mA10">
+    <img src="{{url.static}}/siftal/images/useful/gate.png" alt="All">
+    <div class="content"></div>
+    <div class="footer pAn">
+     <a class="btn block warn" href="{{url.here}}/teams">{%trans "All"%}</a>
+    </div>
+  </div>
+  {%endif%}
   <div class="vcard mA10">
     <img src="{{url.static}}/siftal/images/useful/plus1.png" alt="add new team">
     <div class="content"></div>

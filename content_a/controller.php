@@ -53,6 +53,7 @@ class controller
 		{
 			case null:
 			case 'team':
+			case 'teams':
 			case 'card':
 			case 'ref':
 			case 'billing':

@@ -1,0 +1,71 @@
+{%extends display.adminTeam%}
+
+{%block sidenav%}
+{{parent()}}
+
+{%endblock%}
+
+{%block pageContent%}
+
+<table class="tbl1 v6 ">
+	<thead>
+
+		<th>{%trans "Name"%}</th>
+		<th>{%trans "Setting"%}</th>
+		<th>{%trans "privacy"%}</th>
+		<th>{%trans "status"%}</th>
+		<th>{%trans "logo"%}</th>
+		<th>{%trans "plan"%}</th>
+		<th>{%trans "parent"%}</th>
+		<th>{%trans "Description"%}</th>
+		<th>{%trans "More"%}</th>
+		<th>{%trans "Members"%}</th>
+		<th>{%trans "Hours"%}</th>
+	</thead>
+	<tbody>
+		{%for key, value in teamsList%}
+	<tr >
+
+		<td>
+		<a href="{{url.base}}/{{value.shortname}}" target="_blank">{{value.name}}
+		{% if value.website%}
+			<a href="{{value.website}}" target="_blank">
+				<i class="sf-link"></i>
+			</a>
+		{%endif%}
+		</a>
+		</td>
+
+		<td>
+			{%if value['24h']%} {% trans "24H" %} {%endif%}
+			{%if value.allowminus%} {% trans "Minus" %} {%endif%}
+			{%if value.allowplus%} {% trans "Plus" %} {%endif%}
+			{%if value.showavatar%} {% trans "Avatar" %} {%endif%}
+		</td>
+
+		<td>{{value.privacy}}</td>
+		<td>{{value.status}}</td>
+		{%if value.logourl%}
+			<td><img src="{{url.base}}/{{value.logourl}}" height="15" width="15"></td>
+		{%else%}
+			<td><i>{%trans "No logo"%}</i></td>
+		{%endif%}
+		<td>{{value.plan}}</td>
+		<td>{{value.parent}}</td>
+		<td>{{value.desc}}</td>
+		<td><a href='{{url.this}}/detail?id={{value.id}}'><span class="sf-align-left-1"></span></a></td>
+		<!-- <td><a href='{{url.this}}/edit/{{value.id}}'><span class="sf-edit-write"></span></a></td> -->
+		<td><a href='{{url.this}}/members?id={{value.id}}'><span class="sf-users"></span></a></td>
+		<td><a href='{{url.this}}/hours?id={{value.id}}'><span class="sf-history"></span></a></td>
+
+	</tr>
+	{%endfor%}
+	</tbody>
+</table>
+
+
+	{%include display.pagination%}
+
+
+
+{%endblock%}

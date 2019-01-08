@@ -52,16 +52,19 @@ class team
 			}
 			else
 			{
-				// this user is not in this team
-				if(!$load_userteam_record)
+				if(!\dash\permission::supervisor())
 				{
-					\dash\header::status(403);
-				}
-				else
-				{
-					// record is set but the rule is not in this record
-					// this is a bug
-					\dash\header::status(503);
+					// this user is not in this team
+					if(!$load_userteam_record)
+					{
+						\dash\header::status(403);
+					}
+					else
+					{
+						// record is set but the rule is not in this record
+						// this is a bug
+						\dash\header::status(503);
+					}
 				}
 			}
 		}

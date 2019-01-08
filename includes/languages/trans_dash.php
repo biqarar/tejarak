@@ -69,12 +69,12 @@ class twigTransTerms
 	echo T_("Featured Image");                                                        // Line 205
 	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 208
 	echo T_("Gallery");                                                               // Line 223
-	echo T_("Click to download");                                                     // Line 55
+	echo T_("Click to download");                                                     // Line 66
 	echo T_("Video");                                                                 // Line 236
 	echo T_("MP3");                                                                   // Line 242
 	echo T_("PDF");                                                                   // Line 88
 	echo T_("Without preview");                                                       // Line 246
-	echo T_("Remove");                                                                // Line 32
+	echo T_("Remove");                                                                // Line 43
 
 	//----------------------------------------addons/content_cp/posts/add/display.html
 	echo T_("First save as draft and do all checks, then publish.");                  // Line 26
@@ -105,7 +105,7 @@ class twigTransTerms
 	echo T_("Backup now");                                                            // Line 34
 	echo T_("Sise");                                                                  // Line 36
 	echo T_("Download");                                                              // Line 88
-	echo T_("No backup was found");                                                   // Line 65
+	echo T_("No backup was found");                                                   // Line 76
 
 	//----------------------------------------------addons/content_cp/cms/display.html
 	echo T_("Attachment");                                                            // Line 27
@@ -174,7 +174,7 @@ class twigTransTerms
 	echo T_("Type");                                                                  // Line 164
 	echo T_("Description");                                                           // Line 51
 	echo T_("Used");                                                                  // Line 119
-	echo T_("Add");                                                                   // Line 25
+	echo T_("Add");                                                                   // Line 36
 	echo T_("Require");                                                               // Line 67
 	echo T_("Title is used to show on website");                                      // Line 180
 	echo T_("Used for url");                                                          // Line 186
@@ -524,7 +524,7 @@ class twigTransTerms
 	//----------------------------------addons/content_support/ticket/ticketTypes.html
 	echo T_("My tickets");                                                            // Line 7
 	echo T_("Manage tickets");                                                        // Line 16
-	echo T_("Manage all tickets");                                                    // Line 26
+	echo T_("Manage all tickets");                                                    // Line 27
 
 	//---------------------------------addons/content_support/ticket/home/display.html
 	echo T_("No ticket was found");                                                   // Line 79
@@ -990,7 +990,7 @@ class twigTransTerms
 	echo T_("You have another database for logs");                                    // Line 38
 	echo T_("Click for create backup from log database");                             // Line 38
 	echo T_("Auto backup");                                                           // Line 51
-	echo T_("MB");                                                                    // Line 58
+	echo T_("MB");                                                                    // Line 69
 	echo T_("Start backup every");                                                    // Line 131
 	echo T_("Year");                                                                  // Line 133
 	echo T_("Month");                                                                 // Line 134
@@ -1071,7 +1071,7 @@ class twigTransTerms
 	//-----------------------------------addons/content_su/tg/sendmessage/display.html
 
 	//-----------------------------------------------addons/content_su/ip/display.html
-	echo T_("Add data to this file");                                                 // Line 21
+	echo T_("Add data to this file");                                                 // Line 32
 
 	//---------------------------------------------addons/content_su/nano/display.html
 
