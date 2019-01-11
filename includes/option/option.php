@@ -27,8 +27,10 @@ self::$language =
 // fix url and redirect
 // http://tejarak.ir
 // to https://tejarak.com
-self::$url['tld']               = 'com';
-self::$url['protocol']          = 'https';
+
+self::$url['protocol']       = 'https';
+self::$url['root']           = 'tejarak';
+// self::$url['tld']            = 'com';
 
 
 // site title
