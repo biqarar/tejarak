@@ -5,12 +5,20 @@
 <h2>{%trans "Detail of user"%}</h2>
 
 <table class="tbl1 v1">
+	<thead>
+		<tr>
+			<th>{%trans "Key"%}</th>
+			<th>{%trans "Value"%}</th>
+		</tr>
+	</thead>
 	<tbody>
 		{%for key, value in userRecord%}
-		<tr>
+		{%if value%}
+		<tr {%if not value%} class="disabled" {%endif%}>
 			<td>{%trans key%}</td>
 			<td>{{value}}</td>
 		</tr>
+		{%endif%}
 		{%endfor%}
 	</tbody>
 </table>

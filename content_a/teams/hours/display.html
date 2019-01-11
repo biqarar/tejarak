@@ -16,39 +16,38 @@
 </form>
 <br>
 
-
-
-<div class="dt big">
-	<div class="f th">
-
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.rule}}">{%trans "Displayname"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.rule}}">{%trans "Rule"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.date}}">{%trans "Date"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.shamsi_date}}">{%trans "Shamsi date"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.time}}">{%trans "Time"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.type}}">{%trans "Type"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.minus}}">{%trans "Minus"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.plus}}">{%trans "Plus"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.diff}}">{%trans "Diff"%}</a></div>
-		<div class="c"><a href="{{url.base}}/cp/teams/hours/{{team_id}}/{{order_url.diff}}">{%trans "Diff"%}</a></div>
-
-	</div>
+<table class="tbl1 v1">
+	<thead>
+		<th>{%trans "Displayname"%}</th>
+		<th>{%trans "Rule"%}</th>
+		<th>{%trans "Date"%}</th>
+		<th>{%trans "Shamsi date"%}</th>
+		<th>{%trans "Time"%}</th>
+		<th>{%trans "Type"%}</th>
+		<th>{%trans "Minus"%}</th>
+		<th>{%trans "Plus"%}</th>
+		<th>{%trans "Diff"%}</th>
+		<th>{%trans "Diff"%}</th>
+	</thead>
+	<tbody>
 	{%for key, value in hoursList%}
-	<div class="f">
-		<div class="c">{{value.displayname}}</div>
-		<div class="c">{%set my_rule = value.rule%}{%trans my_rule%}</div>
-		<div class="c">{{value.date}}</div>
-		<div class="c">{{value.shamsi_date|fitNumber}}</div>
-		<div class="c">{{value.time|fitNumber}}</div>
-		<div class="c">{%set my_type = value.type %}{%trans my_type%}</div>
-		<div class="c">{{value.minus|fitNumber}}</div>
-		<div class="c">{{value.plus|fitNumber}}</div>
-		<div class="c">{{value.diff|fitNumber}}</div>
-		<div class="c">{{(value.diff*60)| dt('humanTime')}}</div>
-
-	</div>
+		<tr>
+			<td>{{value.displayname}}</td>
+			<td>{%set my_rule = value.rule%}{%trans my_rule%}</td>
+			<td>{{value.date}}</td>
+			<td>{{value.shamsi_date|fitNumber}}</td>
+			<td>{{value.time|fitNumber}}</td>
+			<td>{%set my_type = value.type %}{%trans my_type%}</td>
+			<td>{{value.minus|fitNumber}}</td>
+			<td>{{value.plus|fitNumber}}</td>
+			<td>{{value.diff|fitNumber}}</td>
+			<td>{{(value.diff*60)| dt('humanTime')}}</td>
+		</tr>
 	{%endfor%}
-</div>
+
+	</tbody>
+</table>
+
 <div class="pagination-container">
 	{%include display.pagination%}
 </div>
