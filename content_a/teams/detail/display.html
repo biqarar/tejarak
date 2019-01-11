@@ -4,12 +4,15 @@
 {%block content%}
 <h2>{%trans "Detail of user"%}</h2>
 
-<div class="df">
-	{%for key, value in userRecord%}
-	<div class="f">
-		<div class="c">{%trans key%}</div>
-		<div class="c">{{value}}</div>
-	</div>
-	{%endfor%}
-</div>
+<table class="tbl1 v1">
+	<tbody>
+		{%for key, value in userRecord%}
+		<tr>
+			<td>{%trans key%}</td>
+			<td>{{value}}</td>
+		</tr>
+		{%endfor%}
+	</tbody>
+</table>
+
 {%endblock%}
