@@ -25,23 +25,23 @@ trait end_day
 			$show_time  = false;
 			$show_gold  = false;
 			$show_limit = -1;
-			if(isset($this->team_meta['report_settings']['telegram_group']) && $this->team_meta['report_settings']['telegram_group'])
+
+			// if(isset($this->team_meta['report_settings']['telegram_group']) && $this->team_meta['report_settings']['telegram_group'])
+
+			if(isset($this->team_meta['report_settings']['report_daily_time']) && $this->team_meta['report_settings']['report_daily_time'])
 			{
-				if(isset($this->team_meta['report_settings']['report_daily_time']) && $this->team_meta['report_settings']['report_daily_time'])
-				{
-					$show_time = true;
-				}
+				$show_time = true;
+			}
 
-				if(isset($this->team_meta['report_settings']['report_daily_gold']) && $this->team_meta['report_settings']['report_daily_gold'])
-				{
-					$show_gold = true;
-				}
+			if(isset($this->team_meta['report_settings']['report_daily_gold']) && $this->team_meta['report_settings']['report_daily_gold'])
+			{
+				$show_gold = true;
+			}
 
 
-				if(isset($this->team_meta['report_settings']['report_count']))
-				{
-					$show_limit = intval($this->team_meta['report_settings']['report_count']);
-				}
+			if(isset($this->team_meta['report_settings']['report_count']))
+			{
+				$show_limit = intval($this->team_meta['report_settings']['report_count']);
 			}
 
 			$msg .= "#". T_('Report');
@@ -146,7 +146,8 @@ trait end_day
 			{
 				$msg_admin .= "🎭 ". $enterExit . "  ";
 			}
-
+var_dump($msg_admin);
+exit();
 			$msg_admin .= "🕰 ". \dash\datetime::fit($total_time*60, 'humanTime', true);
 
 		}
