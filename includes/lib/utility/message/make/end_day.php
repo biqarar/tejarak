@@ -146,8 +146,7 @@ trait end_day
 			{
 				$msg_admin .= "🎭 ". $enterExit . "  ";
 			}
-var_dump($msg_admin);
-exit();
+
 			$msg_admin .= "🕰 ". \dash\datetime::fit($total_time*60, 'humanTime', true);
 
 		}
