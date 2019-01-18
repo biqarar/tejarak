@@ -23,6 +23,7 @@ self::$social['telegram']['bot']        = 'TejarakBot';
 self::$social['telegram']['hookFolder'] = 'ermile';
 self::$social['telegram']['token']      = '';
 self::$social['telegram']['debug']      = true;
+self::$social['telegram']['tunnel']     = true;
 
 
 /**
