@@ -7,6 +7,7 @@ function chartDrawer()
 
 function highChart()
 {
+{%if hiChart.categories%}
 
   Highcharts.chart('chartdiv',
   {
@@ -97,4 +98,6 @@ function highChart()
   {
     _chart.renderer.image('{{service.logo}}', 10, 5, 30, 30).attr({class: 'chartServiceLogo'}).add();
   });
+
+{%endif%}
 }
