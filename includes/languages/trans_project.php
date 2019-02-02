@@ -94,7 +94,7 @@ class twigTransTerms
 	echo T_("Terms of Service");                                                      // Line 29
 	echo T_("Privacy Policy");                                                        // Line 3
 	echo T_("Changelog");                                                             // Line 31
-	echo T_("Support");                                                               // Line 9
+	echo T_("Support");                                                               // Line 168
 	echo T_("Contact");                                                               // Line 36
 	echo T_("Logo");                                                                  // Line 38
 	echo T_("Proudly Made in IRAN");                                                  // Line 52
