@@ -529,8 +529,7 @@ class userteams
 					SELECT
 						userteams.*,
 						users.username AS `username`,
-						users.mobile AS `mobile`,
-						users.chatid AS `have_telegram`
+						users.mobile AS `mobile`
 					FROM
 						userteams
 					LEFT JOIN users ON users.id = userteams.user_id
