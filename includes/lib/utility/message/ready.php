@@ -130,7 +130,8 @@ trait ready
 			if(!empty($must_send_to))
 			{
 				$in = implode(',' , $must_send_to);
-				$must_send_to_user_data = \dash\db\users::get(['id' => ["IN", "($in)"]]);
+				$must_send_to_user_data = \lib\db\userteams::users_chatid(['id' => ["IN", "($in)"]]);
+				// $must_send_to_user_data = \dash\db\users::get(['id' => ["IN", "($in)"]]);
 				if(is_array($must_send_to_user_data))
 				{
 					$key                           = array_column($must_send_to_user_data, 'id');
@@ -202,6 +203,8 @@ trait ready
 
 		$chat_id = array_column($this->must_send_to_user_data, 'chatid');
 		$chat_id = array_combine(array_keys($this->must_send_to_user_data), $chat_id);
+
+		$admins_detail_telegram_id = [];
 
 		if(!empty($chat_id))
 		{

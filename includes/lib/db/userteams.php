@@ -74,6 +74,17 @@ class userteams
 	}
 
 
+	public static function users_chatid($_where)
+	{
+		$where = \dash\db\config::make_where($_where);
+		if($where)
+		{
+			$query = "SELECT users.*, (SELECT user_telegram.chatid FROM user_telegram WHERE user_telegram.user_id = users.id LIMIT 1) AS `chatid` FROM users WHERE $where";
+			$result = \dash\db::get($query);
+			return $result;
+		}
+	}
+
 	/**
 	 * Counts the number of detail.
 	 *
