@@ -236,7 +236,7 @@ class twigTransTerms
 	echo T_("The date you first select a paid plan will be the recurring billing date. For example: If you sign up for the first time on July 15, all future charges will be billed on the 15th of every month.");// Line 61
 	echo T_("General questions");                                                     // Line 14
 	echo T_("How does Tejarak work?");                                                // Line 17
-	echo T_("The easiest way to learn how to use Tejark is enter to it, which takes less than 3 minutes to setup your team.");// Line 18
+	echo T_("The easiest way to learn how to use Tejarak is enter to it, which takes less than 3 minutes to setup your team.");// Line 18
 	echo T_("What is your privacy and security policy?");                             // Line 21
 	echo T_("View Tejarak's privacy and security policy at");                         // Line 22
 	echo T_("Where can I find your Terms of Service (TOS)?");                         // Line 25

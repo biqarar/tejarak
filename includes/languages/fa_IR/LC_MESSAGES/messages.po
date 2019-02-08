@@ -14516,7 +14516,7 @@ msgstr "تجارک چگونه کار می‌کند؟"
 
 #: tejarak/includes/languages/trans_project.php:239
 msgid ""
-"The easiest way to learn how to use Tejark is enter to it, which takes less than "
+"The easiest way to learn how to use Tejarak is enter to it, which takes less than "
 "3 minutes to setup your team."
 msgstr ""
 "آسان‌ترین راه برای یادگیری نحوه‌ی کارکرد تجارک ورود به آن است که کمتر از ۳ دقیقه از "
