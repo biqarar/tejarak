@@ -13,6 +13,7 @@
 .modal[data-live="on"] .enter{display: none;}
 .modal:not([data-allowminus]) [data-allowminus]{display:none;}
 .modal[data-exitdesc="false"] [data-exitdesc]{display: none;}
+.modal[data-allowminus="false"] [data-allowminus]{display:none;}
 
 /* future feature*/
 .modal[data-onTheMission]{display:none;}
