@@ -7,6 +7,8 @@
 .modal:not([data-allowplus]) [data-onTheMission]{display:none;}
 .modal[data-allowplus]:not([data-enter]) [data-onTheMission]{display:none;}
 .modal[data-enterdesc="false"] [data-enterdesc]{display: none;}
+.modal[data-allowplus="false"] [data-allowplus]{display:none;}
+.modal[data-allowplus="false"] [data-onTheMission]{display:none;}
 /* on exit*/
 .modal[data-live="on"] .enter{display: none;}
 .modal:not([data-allowminus]) [data-allowminus]{display:none;}
