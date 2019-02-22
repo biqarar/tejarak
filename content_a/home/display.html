@@ -16,13 +16,6 @@
     </div>
   </div>
   {%endif%}
-  <div class="vcard mA10">
-    <img src="{{url.static}}/siftal/images/useful/plus1.png" alt="add new team">
-    <div class="content"></div>
-    <div class="footer pAn">
-     <a class="btn block primary" href="{{url.here}}/team/add">{%trans "Add new team"%}</a>
-    </div>
-  </div>
 
 {%for key, value in teamList%}
 
@@ -53,6 +46,13 @@
   </a>
 {%endfor%}
 
+  <div class="vcard mA10">
+    <img src="{{url.static}}/siftal/images/useful/plus1.png" alt="add new team">
+    <div class="content"></div>
+    <div class="footer pAn">
+     <a class="btn block primary" href="{{url.here}}/team/add">{%trans "Add new team"%}</a>
+    </div>
+  </div>
 
 </div>
 {%endblock%}
