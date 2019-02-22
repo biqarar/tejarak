@@ -30,18 +30,18 @@
       {%if value.rule != 'admin' and value.privacy == 'private' %}
       {%else%}
         {%if not value.stats.last_traffic_string%}
-          <div class="meta"><span>{%trans "Without traffic"%}</span></div>
+          <div class="meta mT5"><span>{%trans "Without traffic"%}</span></div>
         {%else%}
-          <div class="meta"><span>{%trans "Last traffic"%} {{value.stats.last_traffic_string| fitNumber}}</span></div>
+          <div class="meta mT5"><span>{%trans "Last traffic"%} {{value.stats.last_traffic_string| fitNumber}}</span></div>
         {%endif%}
       {%endif%}
     </div>
     <div class="footer">
-    <i class="sf-users"></i>{{value.stats.member_count | number_format | fitNumber}} {%trans "member"%}
+    <i class="compact pRa5 sf-users"></i>{{value.stats.member_count | number_format | fitNumber}} {%trans "member"%}
     {%if value.stats.traffic_count%}
-      <i class="sf-refresh"></i><span>{{value.stats.traffic_count | number_format | fitNumber}}</span> {%trans "traffic"%}
+      <i class="compact pRa5 sf-refresh"></i><span>{{value.stats.traffic_count | number_format | fitNumber}}</span> {%trans "traffic"%}
     {%endif%}
-    {%if value.rule=='admin'%} <i class="sf-star fc-gold" title='{%trans "Owner of team"%}'></i>{%endif%}
+    {%if value.rule=='admin'%} <i class="compact pRa5 sf-star fc-gold" title='{%trans "Owner of team"%}'></i>{%endif%}
     </div>
   </a>
 {%endfor%}
