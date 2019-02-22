@@ -828,6 +828,11 @@ body #billing{max-width:800px;margin:0 auto}
     z-index: 3;
     left: -250px;
   }
+
+  .modal-dialog{
+  	min-width: 280px;
+  	width: 96%;
+  }
 }
 
 
