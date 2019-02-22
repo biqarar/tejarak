@@ -4,6 +4,9 @@
 
 {%block pageContent%}
 
+
+{{block ("stBoard")}}
+
 <div class="f">
  <div class="c3 s6">{{block ("stMembers")}}</div>
  <div class="c3 s6">{{block ("stTraffics")}}</div>
@@ -170,6 +173,24 @@ remain_percent -->
  <h3>{%trans "Last traffics"%}</h3>
 
 </div>
+{%endblock%}
+
+
+{%block stBoard%}
+
+{%if currentTeam.short_name%}
+  {%if currentTeam.privacy=="private" and not isAdmin%}
+    <div class='msg pain'>{%trans "Team is private and you can not see board!"%}</div>
+  {%else%}
+  <a class="dcard" href="{{url.kingdom}}/{{currentTeam.short_name}}" data-direct>
+   <div class="statistic gray">
+    <div class="value"><i class="sf-heart-o"></i></div>
+    <div class="label">{%trans "Board"%}</div>
+   </div>
+  </a>
+  {%endif%}
+{%endif%}
+
 {%endblock%}
 
 
