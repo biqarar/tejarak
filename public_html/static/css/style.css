@@ -829,9 +829,16 @@ body #billing{max-width:800px;margin:0 auto}
     left: -250px;
   }
 
+  /*add into siftal*/
   .modal-dialog{
   	min-width: 280px;
   	width: 96%;
+  }
+  .modal-dialog input.input{
+  	line-height: 26px;
+  }
+  .input .addon{
+  	margin: 0 auto;
   }
 }
 
