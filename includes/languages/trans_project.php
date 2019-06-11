@@ -869,8 +869,6 @@ class twigTransTerms
 
 	//-----------------------------------public_html\static\siftal\js\highlight.min.js
 
-	//--------------------------------------public_html\static\siftal\js\siftal.min.js
-
  }
 }
 ?>
