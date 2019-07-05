@@ -119,7 +119,7 @@ function changeCardStatusOnResult()
   $('.attendance form').on('ajaxify:success', function(_e, _result)
   {
     // our request is done successfully
-    if(_result.ok === true)
+    if(_result && _result.ok === true)
     {
       var myUser    = $(this).find('input[name="user"]').val();
       if(_result.result.user)
@@ -146,7 +146,7 @@ function changeCardStatusOnResult()
     }
     else
     {
-      console.log('has error!');
+      notif('error', 'Error on connect to server');
     }
   });
 }
