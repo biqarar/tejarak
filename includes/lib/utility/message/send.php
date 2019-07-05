@@ -217,7 +217,10 @@ trait send
 							if(!$this->sended_date_now_to_user($key))
 							{
 								$this->sended_date_now_to_user($key, true);
-								\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+								if(isset($value['chat_id']))
+								{
+									\lib\utility\telegram::sendMessage($value['chat_id'], $message, ['sort' => 3]);
+								}
 							}
 						}
 						$this->send_to_yourself_parent($message, ['sort' => 7], false, ['date_now' => true]);
