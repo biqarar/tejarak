@@ -1,9 +1,12 @@
 {
   "name": "Tejarak",
-  "version": "3.0.0",
+  "description": "Tejarak",
   "homepage": "https://Tejarak.com",
+  "version": "3.0.0",
+  "repository": "github:Ermile/tejarak",
+  "license": "MIT",
   "dependencies": {
-    "siftal": "^6.9.0",
     "dash": "^18.0.0",
+    "siftal": "^6.9.0"
   }
 }
