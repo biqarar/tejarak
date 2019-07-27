@@ -52,7 +52,7 @@
   </div>
 </div>
   {{block('myModal')}}
-  {%if not login%}
+  {%if not login and not requestGET.ex%}
    <a class="line primary pA15 fs16" href='{{url.base}}/enter' data-direct>{%trans "Login to enjoy!"%}</a>
   {%endif%}
 
