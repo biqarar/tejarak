@@ -61,7 +61,7 @@
 .two-column #sidebar.exportMode{padding-top: 1em;}
 .two-column #sidebar.exportMode #god{margin-bottom: 1em;}
 .attendance #sidebar.exportMode .clock{margin-bottom: 1em;}
-.two-column #sidebar.exportMode #logo img{height: 150px;}
+.two-column #sidebar.exportMode #logo img{height: 120px;}
 
 #content.lock .vcard{
 	opacity: 0.3;
