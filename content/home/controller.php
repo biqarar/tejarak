@@ -68,7 +68,7 @@ class controller
 
 					\dash\data::tejarak_home_page(false);
 
-					\dash\temp::set('list_member', $list_member);
+					\dash\temp::set('listMember', $list_member);
 				}
 				elseif(\dash\temp::get('team_exist'))
 				{

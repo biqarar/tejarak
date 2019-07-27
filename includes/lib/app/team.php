@@ -57,7 +57,15 @@ class team
 					// this user is not in this team
 					if(!$load_userteam_record)
 					{
-						\dash\header::status(403);
+
+						if(!\dash\url::content() && isset($team_details['privacy']) && $team_details['privacy'] === 'public')
+						{
+
+						}
+						else
+						{
+							\dash\header::status(403);
+						}
 					}
 					else
 					{
