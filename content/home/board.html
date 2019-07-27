@@ -62,7 +62,7 @@
 
 
 {%block sideBox%}
- <aside id='sidebar' class="scr">
+ <aside id='sidebar' class="scr {% if requestGET.ex%}exportMode{%endif%}">
   <h3 id="god">{% trans "In the Name of God" %}</h3>
 
   <div class="clock">
@@ -91,10 +91,11 @@
   </div>
 {%endif%}
 <input type="hidden" class="barCode hide">
+{%if not requestGET.ex%}
     <h3 class="footer tejarak">
      <a href='{{url.base}}' tabindex='-1' target="_blank"><img src='{{url.static}}/images/logo/svg/tejarak-logo.svg' alt='{{site.title}} | {{site.desc}}'><span>{{site.title}}</span></a>
     </h3>
-
+{%endif%}
 
  </aside>
 {%endblock%}
