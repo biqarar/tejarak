@@ -97,9 +97,9 @@ class model
 		if(\dash\request::files('avatar'))
 		{
 			$uploaded_file = \dash\app\file::upload(['debug' => false, 'upload_name' => 'avatar']);
-			if(isset($uploaded_file['code']))
+			if(isset($uploaded_file['id']))
 			{
-				return $uploaded_file['code'];
+				return \dash\coding::encode($uploaded_file['id']);
 			}
 			// if in upload have error return
 			if(!\dash\engine\process::status())

@@ -16,9 +16,9 @@ class model
 		{
 
 			$uploaded_file = \dash\app\file::upload(['debug' => false, 'upload_name' => 'logo']);
-			if(isset($uploaded_file['code']))
+			if(isset($uploaded_file['id']))
 			{
-				return $uploaded_file['code'];
+				return \dash\coding::encode($uploaded_file['id']);
 			}
 		}
 		return null;

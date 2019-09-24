@@ -121,7 +121,7 @@ class twigTransTerms
 	//----------------------------------------------------content/template/header.html
 	echo T_("Sales");                                                                 // Line 18
 	echo T_("+98 25 3650 5281");                                                      // Line 18
-	echo T_("Enter");                                                                 // Line 155
+	echo T_("Enter");                                                                 // Line 156
 
 	//------------------------------------------content/template/priceSchoolTable.html
 
@@ -365,10 +365,10 @@ class twigTransTerms
 	echo T_("Login to enjoy!");                                                       // Line 56
 	echo T_("In the Name of God");                                                    // Line 66
 	echo T_("days left");                                                             // Line 89
-	echo T_("Mission Time");                                                          // Line 137
-	echo T_("I was on the mission");                                                  // Line 142
+	echo T_("Mission Time");                                                          // Line 138
+	echo T_("I was on the mission");                                                  // Line 143
 	echo T_("Personal work");                                                         // Line 82
-	echo T_("Exit");                                                                  // Line 174
+	echo T_("Exit");                                                                  // Line 175
 
 	//----------------------------------------------------------content/home/home.html
 	echo T_("Do attendance easily and enjoy real time reports");                      // Line 23

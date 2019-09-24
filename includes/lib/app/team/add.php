@@ -143,14 +143,14 @@ trait add
 			$logo_id = \dash\coding::decode($logo);
 			if($logo_id)
 			{
-				$logo_record = \dash\db\posts::is_attachment($logo_id);
+				$logo_record = \dash\db\files::get(['id' => $logo_id, 'limit' => 1]);
 				if(!$logo_record)
 				{
 					$logo_id = null;
 				}
-				elseif(isset($logo_record['meta']['url']))
+				elseif(isset($logo_record['path']))
 				{
-					$logo_url = $logo_record['meta']['url'];
+					$logo_url = $logo_record['path'];
 				}
 			}
 			else

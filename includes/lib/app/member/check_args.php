@@ -130,14 +130,14 @@ trait check_args
 			$file_id = \dash\coding::decode($file_code);
 			if($file_id)
 			{
-				$logo_record = \dash\db\posts::is_attachment($file_id);
+				$logo_record = \dash\db\files::get(['id' => $file_id, 'limit' => 1]);
 				if(!$logo_record)
 				{
 					$file_id = null;
 				}
-				elseif(isset($logo_record['meta']['url']))
+				elseif(isset($logo_record['path']))
 				{
-					$avatar = $logo_record['meta']['url'];
+					$avatar = $logo_record['path'];
 				}
 			}
 			else
