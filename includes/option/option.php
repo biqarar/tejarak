@@ -101,7 +101,7 @@ self::$config['transactions_code'][150] = "promo:ref";
 self::$config['enter']['verify_telegram'] = true;
 self::$config['enter']['verify_sms']      = true;
 self::$config['enter']['verify_call']     = true;
-self::$config['enter']['verify_sendsms']  = true;
+self::$config['enter']['verify_sendsms']  = false;
 
 
 
