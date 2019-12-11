@@ -16,7 +16,7 @@ self::$config['zarinpal']['exchange']    = 1;
 /**
 * config of parsian payment
 */
-self::$config['parsian']['status']       = true;
+self::$config['parsian']['status']       = false;
 self::$config['parsian']['LoginAccount'] = 'n7RcBk5Wn5Qc033W00t3';
 // set the call back is null to redirecto to default dash callback payment
 self::$config['parsian']['CallBackUrl']  = null;
@@ -27,7 +27,7 @@ self::$config['parsian']['exchange']     = 10;
 /**
 * config of irkish payment
 */
-self::$config['irkish']['status']      = true;
+self::$config['irkish']['status']      = false;
 self::$config['irkish']['merchantId']  = 'C3FC'; // tejarak
 // set the call back is null to redirecto to default dash callback payment
 self::$config['irkish']['revertURL']   = null;
