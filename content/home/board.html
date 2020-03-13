@@ -62,7 +62,7 @@
 
 
 {%block sideBox%}
-{% not if requestGET.ex%}
+{% if not requestGET.ex%}
  <aside id='sidebar' class="scr {% if requestGET.ex%}exportMode{%endif%}">
   <h3 id="god">{% trans "In the Name of God" %}</h3>
 
@@ -99,7 +99,7 @@
 {%endif%}
 
  </aside>
- {% endif%}
+ {%endif%}
 {%endblock%}
 
 
