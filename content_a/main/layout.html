@@ -1,7 +1,9 @@
 {%extends display.dash%}
 
-
-
+{%block contentBox%}
+{%include 'content/template/end.html'%}
+{{parent()}}
+{%endblock%}
 {%block sidenav%}
 
 <li><a href="{{url.here}}"><i class='sf-gauge'></i> <span>{% trans "Dashboard" %}</span></a></li>

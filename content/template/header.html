@@ -1,3 +1,4 @@
+
 {%set logoImg%}
 {%if lang.current =='fa'%}
 <img src='{{url.static}}/images/logo/svg/tejarak-logo.svg' alt='{{site.title}} | {{site.desc}}'>{%else%}
@@ -5,6 +6,7 @@
 {%endset%}
 
  <header id="theader" data-scroll>
+
   <div class="cn f">
    <h1 class="cauto logo">
     <a class="flex" href='{{url.base}}' tabindex='1'>{{logoImg}}<span>{{site.title}}</span></a>
@@ -26,3 +28,4 @@
     </nav>
   </div>
  </header>
+{%include 'content/template/end.html'%}
